@@ -93,6 +93,17 @@ function availability(enabled: boolean, missing: string[]): InferenceAvailabilit
   return { state: "configured", reason: "adapters-ready" };
 }
 
+export function isUsableAppCheckSiteKey(siteKey: string): boolean {
+  const trimmed = siteKey.trim();
+  if (trimmed.length === 0) {
+    return false;
+  }
+  if (trimmed.includes("<") || trimmed.includes(">") || /placeholder|replace_with|your_/i.test(trimmed)) {
+    return false;
+  }
+  return true;
+}
+
 function appCheckStatus(
   siteKey: string,
   debugFlag: boolean,
@@ -101,7 +112,7 @@ function appCheckStatus(
 ): AppCheckStatus {
   const debugBlockedInProduction = debugFlag && productionBuild;
   const debugEnabled = debugFlag && !productionBuild;
-  const siteKeyPresent = siteKey.trim().length > 0;
+  const siteKeyPresent = isUsableAppCheckSiteKey(siteKey);
   const readyForCloud =
     firebaseConfigured && siteKeyPresent && !debugBlockedInProduction;
   let label = "Not configured";
@@ -112,9 +123,11 @@ function appCheckStatus(
   } else if (debugEnabled && siteKeyPresent) {
     label = "Local debug provider (token is not stored in VITE_* )";
   } else if (debugEnabled) {
-    label = "Local debug requested; still requires a safelisted debug token in Firebase Console";
+    label = "Local debug requested; still requires a registered reCAPTCHA Enterprise site key and a safelisted debug token";
   } else if (siteKeyPresent) {
     label = "reCAPTCHA Enterprise site key present";
+  } else if (siteKey.trim().length > 0) {
+    label = "App Check site key is a placeholder — paste the registered public site key";
   }
   return {
     siteKeyPresent,

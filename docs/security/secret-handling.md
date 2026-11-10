@@ -7,4 +7,4 @@
 | Service account JSON | Secret | Not used in the MVP. Do not add |
 | Gemini API keys outside Firebase | Secret | Not used. Do not add a second provider fallback |
 
-`.env.example` contains empty placeholders only. Production App Check uses reCAPTCHA Enterprise (or another attested provider), not the debug provider.
+`.env.example` contains empty placeholders only. `.env` and `.env.local` are gitignored. Production App Check uses reCAPTCHA Enterprise, not the debug provider. The reCAPTCHA site key is public; the debug token is not.

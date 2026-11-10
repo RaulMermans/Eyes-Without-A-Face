@@ -29,6 +29,19 @@ describe("parseAppConfig", () => {
     expect(config.cloud.state).toBe("configured");
   });
 
+  it("treats App Check site-key placeholders as missing", () => {
+    const config = parseAppConfig({
+      VITE_FIREBASE_API_KEY: "public-web-key",
+      VITE_FIREBASE_AUTH_DOMAIN: "demo.firebaseapp.com",
+      VITE_FIREBASE_PROJECT_ID: "demo",
+      VITE_FIREBASE_APP_ID: "1:1:web:abc",
+      VITE_ENABLE_CLOUD_INFERENCE: "true",
+      VITE_FIREBASE_APP_CHECK_SITE_KEY: "<EXISTING_REGISTERED_SITE_KEY>",
+    });
+    expect(config.appCheck.siteKeyPresent).toBe(false);
+    expect(config.appCheck.readyForCloud).toBe(false);
+  });
+
   it("keeps App Check debug as a flag, not a token", () => {
     const config = parseAppConfig({ VITE_APP_CHECK_DEBUG: "true" });
     expect(config.appCheck.debugEnabled).toBe(true);
@@ -56,6 +69,8 @@ describe("inference adapters", () => {
       services.cloud.generateAuthorized({
         requestId: "req",
         payloadHash: "abc",
+        outboundHash: "def",
+        outboundPrompt: "prompt",
         canonicalJson: "{}",
         destinationKey: "firebase-ai-logic:google-ai:gemini-3.5-flash-lite:mapping-proposal",
         payload: {
@@ -84,6 +99,7 @@ describe("inference adapters", () => {
         approval: {
           requestId: "req",
           payloadHash: "abc",
+          outboundHash: "def",
           destinationKey: "firebase-ai-logic:google-ai:gemini-3.5-flash-lite:mapping-proposal",
           purpose: "mapping-proposal",
           approvedAt: new Date().toISOString(),

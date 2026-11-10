@@ -1,5 +1,16 @@
-import type { OnDeviceFieldInput } from "./types.ts";
 import type { AuthorizedCloudRequest } from "../twin/authorization.ts";
+import type { OnDeviceFieldInput } from "./types.ts";
+
+export const CLOUD_PROMPT_INSTRUCTIONS = [
+  "Propose a declarative mapping from the approved disclosure aliases to destination fields email, status, and opened_at.",
+  "Use only the allowed operations: copy, rename, trim, normalize_email, parse_date, map_enum, default_if_missing, concat.",
+  "Do not emit JavaScript, functions, or executable code.",
+  "Use only aliases present in the disclosure payload. Return JSON only.",
+  "Approved disclosure payload:",
+].join("\n");
+
+export const SDK_TRANSPORT_NOTE =
+  "Application payload only. Firebase SDK transport may attach App Check tokens, HTTP headers, and connection metadata that this product cannot display or strip.";
 
 export function buildOnDevicePrompt(input: OnDeviceFieldInput): string {
   return [
@@ -11,15 +22,12 @@ export function buildOnDevicePrompt(input: OnDeviceFieldInput): string {
   ].join("\n");
 }
 
+export function buildCloudPromptText(canonicalDisclosureJson: string): string {
+  return `${CLOUD_PROMPT_INSTRUCTIONS}\n${canonicalDisclosureJson}`;
+}
+
 export function buildCloudPrompt(request: AuthorizedCloudRequest): string {
-  return [
-    "Propose a declarative mapping from the approved disclosure aliases to destination fields email, status, and opened_at.",
-    "Use only the allowed operations: copy, rename, trim, normalize_email, parse_date, map_enum, default_if_missing, concat.",
-    "Do not emit JavaScript, functions, or executable code.",
-    "Use only aliases present in the disclosure payload. Return JSON only.",
-    "Approved disclosure payload:",
-    request.canonicalJson,
-  ].join("\n");
+  return request.outboundPrompt;
 }
 
 export const FIELD_INTERPRETATION_JSON_SCHEMA = {

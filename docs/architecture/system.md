@@ -1,6 +1,6 @@
 # System architecture
 
-Sprint 1 wires Firebase Hybrid AI behind Sprint 0 contracts. Mapping execution is still unimplemented.
+Sprint 1.1 wires Firebase Hybrid AI behind Sprint 0 contracts and hardens live provenance plus disclosure authorization. Mapping execution is still unimplemented.
 
 ## Layers
 
@@ -67,7 +67,7 @@ Canonical schemas live in `src/domain/contracts/schemas/`.
 
 On-device uses `InferenceMode.ONLY_ON_DEVICE`. Cloud uses `InferenceMode.ONLY_IN_CLOUD`. Hybrid “prefer” modes are disallowed because they fall back automatically.
 
-Cloud `generateAuthorized` requires an `AuthorizedCloudRequest`. Free-form prompts are not accepted.
+Cloud `generateAuthorized` requires an `AuthorizedCloudRequest` reserved by `submitApprovedCloudInference`. Free-form prompts are not accepted. Provenance must come from `response.inferenceSource`.
 
 ## Local / cloud separation
 

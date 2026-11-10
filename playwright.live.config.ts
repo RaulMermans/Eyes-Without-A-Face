@@ -1,4 +1,4 @@
-import { defineConfig, devices } from "@playwright/test";
+import { defineConfig } from "@playwright/test";
 
 const port = 5174;
 const baseURL = `http://127.0.0.1:${port}`;
@@ -11,6 +11,7 @@ export default defineConfig({
   timeout: 180_000,
   use: {
     baseURL,
+    headless: false,
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
   },
@@ -24,8 +25,9 @@ export default defineConfig({
     {
       name: "live-chrome",
       use: {
-        ...devices["Desktop Chrome"],
+        browserName: "chromium",
         channel: "chrome",
+        viewport: { width: 1280, height: 800 },
       },
     },
   ],

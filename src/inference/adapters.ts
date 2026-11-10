@@ -70,6 +70,10 @@ function createLazyLiveOnDevice(
           promptApi: "missing",
           languageModelAvailability: "unavailable",
           guidance: "Local model unavailable in this session. Cloud fallback is disabled.",
+          userAgent: null,
+          platform: null,
+          hardwareConcurrency: null,
+          deviceMemoryGiB: null,
         };
       }
       return fallback.probeCapability();

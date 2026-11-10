@@ -25,8 +25,10 @@ It does not clone the Phantom Contract and then delete keys. Internal references
 
 1. Canonical JSON (sorted keys) of the payload bytes.
 2. SHA-256 fingerprint of those bytes.
-3. Human approval bound to `requestId` + `payloadHash` + destination + purpose.
-4. `submitApprovedCloudInference` is the only cloud entry point.
+3. Exact outbound application prompt (fixed instructions + canonical JSON), fingerprinted separately.
+4. Human approval bound to `requestId` + `payloadHash` + `outboundHash` + destination + purpose.
+5. `submitApprovedCloudInference` is the only cloud entry point. Approvals are single-use.
+6. The runtime destination must be `firebase-ai-logic:google-ai:gemini-3.5-flash-lite:mapping-proposal`.
 
 Phantom `approvedForCloud: true` is not sufficient to send data.
 

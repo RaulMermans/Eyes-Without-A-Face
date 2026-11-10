@@ -1,6 +1,6 @@
 # Testing
 
-See [strategy.md](strategy.md) for suites, mock vs live classification, Playwright, and the Sprint 1 regression matrix.
+See [strategy.md](strategy.md) and [playwright-live.md](playwright-live.md).
 
 ```bash
 pnpm test:unit

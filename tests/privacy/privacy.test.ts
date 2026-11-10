@@ -1,5 +1,6 @@
 import fc from "fast-check";
 import { afterEach, describe, expect, it } from "vitest";
+import { resetAuthorizationLedgerForTests } from "../../src/twin/authorization-ledger.ts";
 import { buildExportManifest } from "../../src/export/build-export-manifest.ts";
 import { findExecutableTransformations } from "../../src/domain/mapping/safety.ts";
 import { validateContract } from "../../src/domain/validation/validate-contract.ts";
@@ -32,6 +33,7 @@ import sourceRecords from "../fixtures/valid/source-records.json" with { type: "
 afterEach(() => {
   setCloudGateListener(null);
   clearOutboundAttempts();
+  resetAuthorizationLedgerForTests();
 });
 
 describe("private vs shareable contracts", () => {
@@ -127,6 +129,24 @@ describe("cloud disclosure network gate", () => {
     expect(sent).toEqual([preview.canonicalJson]);
     expect(findForbiddenCloudSubstrings(preview.canonicalJson)).toEqual([]);
     expect(preview.canonicalJson).not.toContain(PRIVATE_DATA_CANARY);
+  });
+
+  it("rejects a second use of the same approval", async () => {
+    const payload = projectCloudDisclosurePayload(phantomContract as PhantomContract);
+    const preview = await createDisclosurePreview(payload);
+    const approval = approveDisclosurePreview(preview);
+    await submitApprovedCloudInference(adapter, preview, approval, {
+      requestId: preview.requestId,
+      destinationKey: preview.destinationKey,
+      purpose: "mapping-proposal",
+    });
+    await expect(
+      submitApprovedCloudInference(adapter, preview, approval, {
+        requestId: preview.requestId,
+        destinationKey: preview.destinationKey,
+        purpose: "mapping-proposal",
+      }),
+    ).rejects.toMatchObject({ reason: "APPROVAL_REUSED" });
   });
 
   it("does not treat failure text as a cloud prompt", async () => {

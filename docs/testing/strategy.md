@@ -24,7 +24,7 @@ Test adapters are injected only in Vite `DEV` via `window.__EYES_WITHOUT_A_FACE_
 - `EYES_LIVE_ON_DEVICE=1` — real `ONLY_ON_DEVICE` generate
 - `EYES_LIVE_CLOUD=1` — real `ONLY_IN_CLOUD` generate (requires `.env.local`)
 
-Do not place debug tokens or private records in traces.
+See [playwright-live.md](playwright-live.md). Do not place debug tokens or private records in traces.
 
 ## Regression matrix
 
@@ -40,8 +40,15 @@ Do not place debug tokens or private records in traces.
 | E2E-009 | Local model unavailable; no cloud fallback |
 | E2E-010 | Malformed structured output rejected |
 | E2E-011 | Controlled test-adapter success labeled simulated |
+| E2E-012 | Duplicate cloud submission requires a new approval |
+| E2E-013 | Timeout is not treated as success |
+| E2E-014 | Unknown / unverified provenance is rejected |
+| E2E-015 | App Check unconfigured without credentials |
 | LIVE-001 | Chrome / Prompt API / model availability |
-| LIVE-002 | Real on-device inference |
-| LIVE-003 | Real cloud inference |
-| LIVE-004 | Unapproved path sends no generateContent |
-| LIVE-005 | Console error inspection |
+| LIVE-002 | Firebase project / web app initialization |
+| LIVE-003 | App Check status |
+| LIVE-004 | Real cloud inference |
+| LIVE-005 | Unapproved path sends no generateContent |
+| LIVE-006 | Outbound prompt fingerprint |
+| LIVE-007 | Real on-device inference or recorded blocker |
+| LIVE-008 | Console errors and responsive layout |

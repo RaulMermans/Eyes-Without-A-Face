@@ -19,6 +19,20 @@ export default defineConfig({
     url: baseURL,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
+    env: {
+      ...process.env,
+      VITE_FIREBASE_API_KEY: "",
+      VITE_FIREBASE_AUTH_DOMAIN: "",
+      VITE_FIREBASE_PROJECT_ID: "",
+      VITE_FIREBASE_STORAGE_BUCKET: "",
+      VITE_FIREBASE_MESSAGING_SENDER_ID: "",
+      VITE_FIREBASE_APP_ID: "",
+      VITE_FIREBASE_MEASUREMENT_ID: "",
+      VITE_ENABLE_ON_DEVICE_INFERENCE: "false",
+      VITE_ENABLE_CLOUD_INFERENCE: "false",
+      VITE_FIREBASE_APP_CHECK_SITE_KEY: "",
+      VITE_APP_CHECK_DEBUG: "false",
+    },
   },
   projects: [
     {

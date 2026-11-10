@@ -11,7 +11,11 @@ declare module "*.webp" {
 }
 
 interface LanguageModelAvailability {
-  availability(): Promise<string>;
+  availability(options?: { expectedInputs?: Array<{ type: string; languages?: string[] }> }): Promise<string>;
+}
+
+interface Navigator {
+  deviceMemory?: number;
 }
 
 interface EyesTestHarness {
@@ -20,6 +24,13 @@ interface EyesTestHarness {
   onDeviceOutput?: unknown;
   cloudOutput?: unknown;
   malformedCloudOutput?: unknown;
+  cloudErrorCode?:
+    | "TIMEOUT"
+    | "PROVENANCE_UNVERIFIED"
+    | "PROVENANCE_UNKNOWN"
+    | "PROVENANCE_MISMATCH"
+    | "SIMULATED_RESULT"
+    | "IN_FLIGHT";
 }
 
 interface Window {

@@ -131,12 +131,16 @@ export function DiagnosticWorkspace({
       const payload = JSON.parse(draftJson) as CloudDisclosurePayload;
       const current = await createDisclosurePreview(payload, preview?.requestId);
       setPreview(current);
-      const result = await submitApprovedCloudInference(inference.cloud, current, approval, {
-        requestId: current.requestId,
-        destinationKey: current.destinationKey,
-        purpose: "mapping-proposal",
-      });
-      setCloudResult(result);
+      try {
+        const result = await submitApprovedCloudInference(inference.cloud, current, approval, {
+          requestId: current.requestId,
+          destinationKey: current.destinationKey,
+          purpose: "mapping-proposal",
+        });
+        setCloudResult(result);
+      } finally {
+        setApproval(null);
+      }
     });
   }
 
@@ -146,9 +150,9 @@ export function DiagnosticWorkspace({
         Hybrid AI diagnostic workspace
       </h2>
       <p className="mt-2 max-w-3xl text-sm leading-6 text-mute">
-        Sprint 1 proves on-device and cloud adapters, App Check readiness, and the disclosure
-        gate. This surface uses synthetic CRM fields only. Approval of a synthetic payload is not
-        proof of anonymization.
+        This surface uses synthetic CRM fields only. Approval of a synthetic payload is not
+        anonymization: field names, constraints, rare categories, and error text can still leak
+        information about a private system.
       </p>
 
       {testHarnessActive ? (
@@ -174,6 +178,12 @@ export function DiagnosticWorkspace({
           <dt className="text-mute">Firebase project</dt>
           <dd data-testid="firebase-config-status">
             {config.firebase ? config.firebase.projectId : "unconfigured"}
+          </dd>
+        </div>
+        <div>
+          <dt className="text-mute">Firebase web app</dt>
+          <dd data-testid="firebase-app-id">
+            {config.firebase ? config.firebase.appId : "unconfigured"}
           </dd>
         </div>
         <div>
@@ -211,6 +221,7 @@ export function DiagnosticWorkspace({
           <p>Chrome version: {capability.chromeVersion ?? "not detected"}</p>
           <p>Prompt API: {capability.promptApi}</p>
           <p>Model availability: {capability.languageModelAvailability ?? "unknown"}</p>
+          <p>Platform: {capability.platform ?? "unknown"}</p>
           <p className="mt-2 text-mute">{capability.guidance}</p>
         </div>
       ) : null}
@@ -228,8 +239,9 @@ export function DiagnosticWorkspace({
       <h3 className="mt-8 text-base font-semibold">Cloud disclosure</h3>
       <p className="mt-2 text-sm leading-6 text-mute">
         Destination: Firebase AI Logic, Gemini Developer API, model{" "}
-        {projected.destination.model}, purpose mapping-proposal. The JSON below is the exact
-        application payload that can be sent after approval.
+        {projected.destination.model}, purpose mapping-proposal. Preview builds the exact
+        application-level prompt before approval. SDK transport metadata (App Check tokens, HTTP
+        headers) is not part of this payload and cannot be displayed.
       </p>
       <label className="mt-3 block text-sm font-medium" htmlFor="cloud-payload">
         Cloud-bound payload
@@ -246,9 +258,23 @@ export function DiagnosticWorkspace({
       />
       <p className="mt-2 font-mono text-xs text-mute" data-testid="payload-hash">
         {preview
-          ? `request ${preview.requestId} · sha256 ${preview.payloadHash}`
+          ? `request ${preview.requestId} · payload ${preview.payloadHash} · outbound ${preview.outboundHash}`
           : "Preview the payload to bind a request id and hash."}
       </p>
+      <p className="mt-1 font-mono text-xs text-mute" data-testid="destination-key">
+        {preview ? `destination ${preview.destinationKey}` : "Destination binds after preview."}
+      </p>
+      {preview ? (
+        <div className="mt-3">
+          <p className="text-sm font-medium">Exact outbound application prompt</p>
+          <pre
+            className="mt-1 max-h-48 overflow-auto border border-rule bg-paper p-3 font-mono text-xs"
+            data-testid="outbound-prompt"
+          >
+            {preview.outboundPrompt}
+          </pre>
+        </div>
+      ) : null}
       <p className="mt-1 text-sm" data-testid="approval-status">
         {approval
           ? `Approved for request ${approval.requestId}`

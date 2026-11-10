@@ -6,3 +6,4 @@
 | [0002](0002-no-automatic-cloud-fallback.md) | No automatic cloud fallback |
 | [0003](0003-client-only-mvp.md) | Client-only MVP |
 | [0004](0004-cloud-disclosure-payload.md) | Separate Cloud Disclosure Payload |
+| [0005](0005-single-use-disclosure-authorization.md) | Single-use disclosure authorization |

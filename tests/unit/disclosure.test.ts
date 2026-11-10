@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it } from "vitest";
 import type { CloudDisclosurePayload, PhantomContract } from "../../src/domain/contracts/types.ts";
 import { validateContract } from "../../src/domain/validation/validate-contract.ts";
 import { findForbiddenCloudSubstrings } from "../../src/privacy/forbidden-cloud-fields.ts";
@@ -8,9 +8,21 @@ import {
   approveDisclosurePreview,
   bindAuthorizedCloudRequest,
   createDisclosurePreview,
+  destinationKey,
   DisclosureRejectedError,
+  effectiveCloudDestination,
 } from "../../src/twin/authorization.ts";
+import { submitApprovedCloudInference } from "../../src/twin/cloud-request-gate.ts";
+import {
+  resetAuthorizationLedgerForTests,
+  reserveAuthorization,
+} from "../../src/twin/authorization-ledger.ts";
+import { createTestCloudAdapter } from "../../src/inference/test-adapters.ts";
 import phantomContract from "../fixtures/valid/phantom-contract.json" with { type: "json" };
+
+afterEach(() => {
+  resetAuthorizationLedgerForTests();
+});
 
 describe("cloud disclosure projection", () => {
   it("builds an allowlisted payload that validates and omits internal references", async () => {
@@ -83,6 +95,72 @@ describe("disclosure authorization", () => {
         purpose: "mapping-proposal",
       }),
     ).rejects.toMatchObject({ reason: "DESTINATION_MISMATCH" });
+  });
+
+  it("binds approval to the exact outbound application prompt", async () => {
+    const payload = projectCloudDisclosurePayload(phantomContract as PhantomContract);
+    const preview = await createDisclosurePreview(payload);
+    expect(preview.outboundPrompt).toContain(preview.canonicalJson);
+    expect(preview.outboundPrompt).toContain("Approved disclosure payload:");
+    const approval = approveDisclosurePreview(preview);
+    expect(approval.outboundHash).toBe(preview.outboundHash);
+    const authorized = await bindAuthorizedCloudRequest(preview, approval, {
+      requestId: preview.requestId,
+      destinationKey: preview.destinationKey,
+      purpose: "mapping-proposal",
+    });
+    expect(authorized.outboundPrompt).toBe(preview.outboundPrompt);
+  });
+
+  it("rejects a payload whose destination is not the effective runtime model", async () => {
+    const payload = projectCloudDisclosurePayload(phantomContract as PhantomContract, {
+      provider: "firebase-ai-logic",
+      backend: "google-ai",
+      model: "other-model",
+      purpose: "mapping-proposal",
+    });
+    const preview = await createDisclosurePreview(payload);
+    const approval = approveDisclosurePreview(preview);
+    const adapter = createTestCloudAdapter(
+      { label: "test-harness" },
+      { state: "configured", reason: "adapters-ready" },
+    );
+    await expect(
+      submitApprovedCloudInference(adapter, preview, approval, {
+        requestId: preview.requestId,
+        destinationKey: preview.destinationKey,
+        purpose: "mapping-proposal",
+      }),
+    ).rejects.toMatchObject({ reason: "EFFECTIVE_DESTINATION_MISMATCH" });
+    expect(preview.destinationKey).not.toBe(destinationKey(effectiveCloudDestination()));
+  });
+
+  it("rejects reused and concurrent submissions of the same approval", async () => {
+    const payload = projectCloudDisclosurePayload(phantomContract as PhantomContract);
+    const preview = await createDisclosurePreview(payload);
+    const approval = approveDisclosurePreview(preview);
+    const adapter = createTestCloudAdapter(
+      { label: "test-harness" },
+      { state: "configured", reason: "adapters-ready" },
+    );
+    await submitApprovedCloudInference(adapter, preview, approval, {
+      requestId: preview.requestId,
+      destinationKey: preview.destinationKey,
+      purpose: "mapping-proposal",
+    });
+    await expect(
+      submitApprovedCloudInference(adapter, preview, approval, {
+        requestId: preview.requestId,
+        destinationKey: preview.destinationKey,
+        purpose: "mapping-proposal",
+      }),
+    ).rejects.toMatchObject({ reason: "APPROVAL_REUSED" });
+
+    resetAuthorizationLedgerForTests();
+    const second = await createDisclosurePreview(payload);
+    const secondApproval = approveDisclosurePreview(second);
+    reserveAuthorization(secondApproval);
+    expect(() => reserveAuthorization(secondApproval)).toThrow(/CONCURRENT_SUBMISSION/);
   });
 
   it("rejects replayed approval against a new request id", async () => {

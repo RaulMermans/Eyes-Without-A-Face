@@ -1,5 +1,8 @@
 import type { InferenceAvailability } from "../config/env.ts";
 import type { AuthorizedCloudRequest } from "../twin/authorization.ts";
+import { FIREBASE_AI_LOGIC_API } from "./firebase-api.ts";
+
+export { FIREBASE_AI_LOGIC_API };
 
 export type InferencePurpose = "schema-interpretation" | "mapping-proposal";
 export type InferenceExecution = "on-device" | "cloud";
@@ -54,6 +57,10 @@ export interface OnDeviceCapability {
   promptApi: "available" | "missing";
   languageModelAvailability: string | null;
   guidance: string;
+  userAgent?: string | null;
+  platform?: string | null;
+  hardwareConcurrency?: number | null;
+  deviceMemoryGiB?: number | null;
 }
 
 export interface OnDeviceInferenceAdapter {
@@ -74,33 +81,6 @@ export interface InferenceServices {
   onDevice: OnDeviceInferenceAdapter;
   cloud: CloudInferenceAdapter;
 }
-
-/**
- * Firebase AI Logic JS SDK v13.2.0 surface used in Sprint 1.
- * Documented from https://firebase.google.com/docs/ai-logic/hybrid/web/get-started
- * Re-verified 2026-11-10.
- *
- * Do not use InferenceMode.PREFER_ON_DEVICE or PREFER_IN_CLOUD.
- */
-export const FIREBASE_AI_LOGIC_API = {
-  package: "firebase",
-  module: "firebase/ai",
-  symbols: [
-    "getAI",
-    "getGenerativeModel",
-    "GoogleAIBackend",
-    "InferenceMode",
-    "Schema",
-    "initializeAppCheck",
-  ],
-  onDeviceInit: "GenerativeModel.initializeDeviceModel",
-  requiredOnDeviceMode: "ONLY_ON_DEVICE",
-  requiredCloudMode: "ONLY_IN_CLOUD",
-  defaultCloudModel: "gemini-3.5-flash-lite",
-  minSdk: "12.5.0",
-  pinnedSdk: "13.2.0",
-  minChrome: 139,
-} as const;
 
 export const SYNTHETIC_ON_DEVICE_INPUT: OnDeviceFieldInput = {
   fieldAlias: "lifecycle_status",

@@ -1,6 +1,7 @@
 import type { InferenceAvailability } from "../config/env.ts";
 import { validateStructuredOutput } from "../domain/inference-output/validate-output.ts";
 import { assertAuthorizedEnvelope, type AuthorizedCloudRequest } from "../twin/authorization.ts";
+import { assertReservedAuthorization } from "../twin/authorization-ledger.ts";
 import { InferenceError, InferenceUnavailableError } from "./errors.ts";
 import { probeOnDeviceCapability } from "./on-device-capability.ts";
 import type {
@@ -17,6 +18,13 @@ export interface TestHarness {
   onDeviceOutput?: unknown;
   cloudOutput?: unknown;
   malformedCloudOutput?: unknown;
+  cloudErrorCode?:
+    | "TIMEOUT"
+    | "PROVENANCE_UNVERIFIED"
+    | "PROVENANCE_UNKNOWN"
+    | "PROVENANCE_MISMATCH"
+    | "SIMULATED_RESULT"
+    | "IN_FLIGHT";
 }
 
 export function createTestOnDeviceAdapter(
@@ -34,6 +42,10 @@ export function createTestOnDeviceAdapter(
           languageModelAvailability: "unavailable",
           guidance:
             "Test harness: local inference unavailable. The app must not call the cloud adapter.",
+          userAgent: null,
+          platform: null,
+          hardwareConcurrency: null,
+          deviceMemoryGiB: null,
         };
       }
       return probeOnDeviceCapability();
@@ -93,6 +105,15 @@ export function createTestCloudAdapter(
     status: () => availability,
     generateAuthorized: async (request: AuthorizedCloudRequest): Promise<InferenceResult> => {
       assertAuthorizedEnvelope(request);
+      assertReservedAuthorization(request);
+      if (harness.cloudErrorCode) {
+        throw new InferenceError(
+          harness.cloudErrorCode,
+          harness.cloudErrorCode === "TIMEOUT"
+            ? "Inference timed out after 45000 ms. The Firebase request may still be in flight; this authorization cannot be reused."
+            : `Test harness forced ${harness.cloudErrorCode}.`,
+        );
+      }
       if (harness.malformedCloudOutput !== undefined) {
         const validation = validateStructuredOutput("mapping-proposal", harness.malformedCloudOutput);
         throw new InferenceError(

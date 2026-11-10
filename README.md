@@ -38,9 +38,11 @@ pnpm dev
 
 The app starts without Firebase credentials. Live inference stays unavailable until `.env.local` is filled and feature flags are enabled.
 
-Copy `.env.example` to `.env.local` only when you have a Firebase web config. Do not commit `.env.local`. `VITE_*` values are exposed to the browser. App Check debug tokens must never be placed in `VITE_*` variables.
+Copy `.env.example` to `.env.local` only when you have a Firebase web config. Do not commit `.env` or `.env.local`. `VITE_*` values are exposed to the browser. App Check debug tokens must never be placed in `VITE_*` variables.
 
-Setup guides: [docs/setup/firebase.md](docs/setup/firebase.md), [docs/setup/app-check.md](docs/setup/app-check.md), [docs/setup/browser-compatibility.md](docs/setup/browser-compatibility.md).
+This repo targets the registered project `eyes-without-a-face-b7281`. Paste the existing reCAPTCHA Enterprise **site key** over the placeholder. Then safelist the local App Check debug token in Firebase Console.
+
+Setup guides: [docs/setup/firebase.md](docs/setup/firebase.md), [docs/setup/app-check.md](docs/setup/app-check.md), [docs/setup/browser-compatibility.md](docs/setup/browser-compatibility.md), [docs/testing/playwright-live.md](docs/testing/playwright-live.md).
 
 ## Commands
 
@@ -60,20 +62,22 @@ pnpm test:all
 `pnpm test:live` is opt-in (`EYES_LIVE_TESTS=1`) and uses installed Chrome. It is **not** part of `pnpm test:all`.  
 Real on-device calls also need `EYES_LIVE_ON_DEVICE=1`. Real cloud calls need credentials and `EYES_LIVE_CLOUD=1`.
 
-## Implementation status (Sprint 1)
+## Implementation status (Sprint 1.1)
 
 | Capability | Status |
 | --- | --- |
 | Application shell and five-step workflow | Implemented |
 | Official emblem, favicon, social-preview foundation | Implemented |
 | Versioned Source / Phantom / Mapping / Validation / Export / Cloud Disclosure contracts | Implemented |
-| Allowlist projection + request-scoped disclosure approval | Implemented |
-| Firebase configuration parsing | Implemented |
-| On-device adapter (`ONLY_ON_DEVICE`) | Implemented; live model **BLOCKED** on this machine (`LanguageModel` availability `unavailable`) |
-| Cloud adapter (`ONLY_IN_CLOUD`) | Implemented; live Gemini **BLOCKED** (no Firebase project in this environment) |
+| Allowlist projection + single-use disclosure approval + destination binding | Implemented |
+| Firebase configuration for `eyes-without-a-face-b7281` | Implemented; live init requires `.env.local` |
+| On-device adapter (`ONLY_ON_DEVICE`) | Implemented; live model previously **BLOCKED** (`LanguageModel` `unavailable`) |
+| Cloud adapter (`ONLY_IN_CLOUD`) | Implemented; live Gemini needs site key + safelisted App Check debug token |
 | Mapping interpreter | Not implemented |
 | JSON import / export packaging | Not implemented |
 | Automatic cloud fallback | Forbidden by design; not implemented |
+
+Do not report `HYBRID_QUALIFIED` unless both cloud and on-device provenance are confirmed. Cloud-only success is `CLOUD_QUALIFIED / ON_DEVICE_BLOCKED`.
 
 Canonical contract source of truth: JSON Schema files in `src/domain/contracts/schemas/`. TypeScript types in `src/domain/contracts/types.ts` must match those schemas.
 
@@ -89,5 +93,5 @@ Index: [docs/README.md](docs/README.md)
 - `docs/contracts/` — contract families
 - `docs/security/` — threat model and disclosure policy
 - `docs/testing/` — test strategy
-- `docs/sprints/` — Sprint 0–1 reports and Sprint 2 readiness
+- `docs/sprints/` — Sprint 0–1.1 reports and Sprint 2 readiness
 - `docs/hackathon-requirements.md` — verified vs unresolved official rules

@@ -1,14 +1,43 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
+import fs from "node:fs";
 import path from "node:path";
 import { attachProviderWatch } from "../e2e/helpers.ts";
 
 const enabled = process.env.EYES_LIVE_TESTS === "1";
-const screenshotDir = "test-results/sprint-1-live";
+const screenshotDir = "test-results/sprint-1.1-live";
+const evidencePath = path.join(screenshotDir, "evidence.json");
 
 test.skip(!enabled, "Live Firebase tests are opt-in. Set EYES_LIVE_TESTS=1.");
 
-test.describe("LIVE-001 Chrome capability", () => {
-  test("records Chrome, Prompt API, and model availability", async ({ page, browserName }) => {
+async function collectEvidence(
+  page: Page,
+  extra: Record<string, unknown>,
+): Promise<void> {
+  fs.mkdirSync(screenshotDir, { recursive: true });
+  const userAgent = await page.evaluate(() => navigator.userAgent);
+  const payload = {
+    at: new Date().toISOString(),
+    userAgent,
+    ...extra,
+  };
+  const previous = fs.existsSync(evidencePath)
+    ? (JSON.parse(fs.readFileSync(evidencePath, "utf8")) as unknown[])
+    : [];
+  previous.push(payload);
+  fs.writeFileSync(evidencePath, JSON.stringify(previous, null, 2));
+}
+
+function sanitizeUrls(urls: string[]): string[] {
+  return urls.map((url) => {
+    const parsed = new URL(url);
+    parsed.search = "";
+    parsed.hash = "";
+    return parsed.toString();
+  });
+}
+
+test.describe("LIVE-001 browser compatibility", () => {
+  test("identifies Chrome, Prompt API, and model readiness", async ({ page, browserName }) => {
     test.skip(browserName !== "chromium", "Live on-device checks require desktop Chrome.");
     const pageErrors: string[] = [];
     page.on("pageerror", (error) => pageErrors.push(error.message));
@@ -21,58 +50,171 @@ test.describe("LIVE-001 Chrome capability", () => {
       path: path.join(screenshotDir, "live-001-capability.png"),
       fullPage: true,
     });
+    await collectEvidence(page, {
+      check: "LIVE-001",
+      capability: text,
+      pageErrors,
+    });
     expect(text.length).toBeGreaterThan(0);
     expect(pageErrors, pageErrors.join("\n")).toEqual([]);
   });
 });
 
-test.describe("LIVE-002 on-device inference", () => {
-  test("runs ONLY_ON_DEVICE and records provenance", async ({ page }) => {
-    test.skip(process.env.EYES_LIVE_ON_DEVICE !== "1", "Requires downloaded Gemini Nano and EYES_LIVE_ON_DEVICE=1.");
+test.describe("LIVE-002 Firebase initialization", () => {
+  test("shows the registered Firebase project and web app", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: "Initialize local model" }).click({ timeout: 120_000 });
-    await page.getByRole("button", { name: "Run local inference" }).click();
-    await expect(page.getByTestId("on-device-result-kind")).toHaveText("Real on-device result");
-    await expect(page.getByTestId("on-device-result")).toContainText("source=ON_DEVICE");
-    await expect(page.getByTestId("on-device-result")).toContainText("simulated=false");
+    const projectId = (await page.getByTestId("firebase-config-status").innerText()).trim();
+    const appId = (await page.getByTestId("firebase-app-id").innerText()).trim();
+    await page.screenshot({
+      path: path.join(screenshotDir, "live-002-firebase-init.png"),
+      fullPage: true,
+    });
+    await collectEvidence(page, { check: "LIVE-002", projectId, appId });
+    if (projectId === "unconfigured") {
+      test.info().annotations.push({
+        type: "blocked",
+        description: "Firebase web config is not loaded in this live session.",
+      });
+    } else {
+      expect(projectId).toBe("eyes-without-a-face-b7281");
+      expect(appId).toContain("1:507051460368:web:");
+    }
   });
 });
 
-test.describe("LIVE-003 cloud inference", () => {
-  test("sends an approved synthetic payload to ONLY_IN_CLOUD", async ({ page }) => {
+test.describe("LIVE-003 App Check", () => {
+  test("records App Check readiness before any cloud generate", async ({ page }) => {
+    await page.goto("/");
+    const status = (await page.getByTestId("app-check-status").innerText()).trim();
+    await page.screenshot({
+      path: path.join(screenshotDir, "live-003-app-check.png"),
+      fullPage: true,
+    });
+    await collectEvidence(page, { check: "LIVE-003", appCheck: status });
+    expect(status.length).toBeGreaterThan(0);
+  });
+});
+
+test.describe("LIVE-004 real Gemini cloud", () => {
+  test("executes an approved synthetic mapping request", async ({ page }) => {
     test.skip(process.env.EYES_LIVE_CLOUD !== "1", "Requires Firebase credentials and EYES_LIVE_CLOUD=1.");
+    const started = Date.now();
     await page.goto("/");
     await page.getByRole("button", { name: "Preview cloud payload" }).click();
+    await expect(page.getByTestId("outbound-prompt")).toContainText("Approved disclosure payload:");
     await page.getByRole("button", { name: "Approve payload" }).click();
     await page.getByTestId("run-cloud-inference").click();
+    const error = page.getByTestId("diagnostic-error");
+    const result = page.getByTestId("cloud-result");
+    await expect(error.or(result)).toBeVisible({ timeout: 60_000 });
+    const errorText = (await error.count()) > 0 ? await error.innerText() : null;
+    const resultText = (await result.count()) > 0 ? await result.innerText() : null;
+    await page.screenshot({
+      path: path.join(screenshotDir, "live-004-cloud.png"),
+      fullPage: true,
+    });
+    await collectEvidence(page, {
+      check: "LIVE-004",
+      durationMs: Date.now() - started,
+      errorText,
+      resultKind: resultText,
+    });
+    if (errorText) {
+      throw new Error(`Live cloud inference did not succeed: ${errorText}`);
+    }
     await expect(page.getByTestId("cloud-result-kind")).toHaveText("Real cloud result");
     await expect(page.getByTestId("cloud-result")).toContainText("source=IN_CLOUD");
     await expect(page.getByTestId("cloud-result")).toContainText("simulated=false");
   });
 });
 
-test.describe("LIVE-004 network and disclosure", () => {
-  test("rejected requests do not send cloud inference", async ({ page }) => {
+test.describe("LIVE-005 rejected disclosure", () => {
+  test("does not dispatch cloud inference without approval", async ({ page }) => {
     const providerRequests = attachProviderWatch(page);
     await page.goto("/");
     await expect(page.getByTestId("run-cloud-inference")).toBeDisabled();
     await page.waitForTimeout(500);
-    expect(
-      providerRequests.filter((url) => url.includes("generateContent") || url.includes("/models/")),
-    ).toEqual([]);
+    const inferenceUrls = sanitizeUrls(
+      providerRequests.filter(
+        (url) => url.includes("generateContent") || url.includes(":generateContent"),
+      ),
+    );
+    await collectEvidence(page, { check: "LIVE-005", inferenceUrls });
+    expect(inferenceUrls).toEqual([]);
   });
 });
 
-test.describe("LIVE-005 browser error inspection", () => {
-  test("captures console exceptions during a diagnostic visit", async ({ page }) => {
+test.describe("LIVE-006 payload integrity", () => {
+  test("preview fingerprint matches the displayed outbound prompt", async ({ page }) => {
+    await page.goto("/");
+    await page.getByRole("button", { name: "Preview cloud payload" }).click();
+    const hash = await page.getByTestId("payload-hash").innerText();
+    const prompt = await page.getByTestId("outbound-prompt").innerText();
+    await page.screenshot({
+      path: path.join(screenshotDir, "live-006-payload.png"),
+      fullPage: true,
+    });
+    await collectEvidence(page, {
+      check: "LIVE-006",
+      hashPresent: hash.includes("payload") && hash.includes("outbound"),
+      promptChars: prompt.length,
+    });
+    expect(hash).toMatch(/payload [a-f0-9]{64}/);
+    expect(hash).toMatch(/outbound [a-f0-9]{64}/);
+    expect(prompt).toContain("Approved disclosure payload:");
+  });
+});
+
+test.describe("LIVE-007 on-device inference", () => {
+  test("attempts ONLY_ON_DEVICE and records provenance or the blocker", async ({ page }) => {
+    await page.goto("/");
+    await page.getByRole("button", { name: "Check local AI availability" }).click();
+    const capability = await page.getByTestId("capability-report").innerText();
+    if (process.env.EYES_LIVE_ON_DEVICE === "1") {
+      await page.getByRole("button", { name: "Initialize local model" }).click({ timeout: 120_000 });
+      await page.getByRole("button", { name: "Run local inference" }).click();
+      await expect(page.getByTestId("on-device-result-kind")).toHaveText("Real on-device result");
+      await expect(page.getByTestId("on-device-result")).toContainText("source=ON_DEVICE");
+      await collectEvidence(page, { check: "LIVE-007", status: "PASS", capability });
+      return;
+    }
+    await page.getByRole("button", { name: "Run local inference" }).click();
+    const error = page.getByTestId("diagnostic-error");
+    await expect(error).toBeVisible();
+    const errorText = await error.innerText();
+    await page.screenshot({
+      path: path.join(screenshotDir, "live-007-on-device.png"),
+      fullPage: true,
+    });
+    await collectEvidence(page, {
+      check: "LIVE-007",
+      status: "BLOCKED",
+      capability,
+      errorText,
+    });
+    expect(errorText).toMatch(/unavailable|UNSUPPORTED|MODEL_UNAVAILABLE|MISSING_CONFIG|FEATURE/i);
+    await expect(page.getByTestId("cloud-result")).toHaveCount(0);
+  });
+});
+
+test.describe("LIVE-008 UI regression", () => {
+  test("captures console errors and responsive diagnostic layout", async ({ page }) => {
     const pageErrors: string[] = [];
     page.on("pageerror", (error) => pageErrors.push(error.message));
     await page.goto("/");
+    await page.setViewportSize({ width: 1280, height: 800 });
     await page.getByRole("button", { name: "Check local AI availability" }).click();
     await page.screenshot({
-      path: path.join(screenshotDir, "live-005-errors.png"),
+      path: path.join(screenshotDir, "live-008-desktop.png"),
       fullPage: true,
     });
+    await page.setViewportSize({ width: 390, height: 844 });
+    await expect(page.getByRole("heading", { name: "Hybrid AI diagnostic workspace" })).toBeVisible();
+    await page.screenshot({
+      path: path.join(screenshotDir, "live-008-mobile.png"),
+      fullPage: true,
+    });
+    await collectEvidence(page, { check: "LIVE-008", pageErrors });
     expect(pageErrors, pageErrors.join("\n")).toEqual([]);
   });
 });

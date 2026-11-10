@@ -94,6 +94,50 @@ test.describe("E2E-010 malformed AI response", () => {
   });
 });
 
+test.describe("E2E-012 duplicate submission", () => {
+  test("requires a new approval after a completed cloud request", async ({ page }) => {
+    await gotoWithHarness(page, {});
+    await page.getByRole("button", { name: "Preview cloud payload" }).click();
+    await page.getByRole("button", { name: "Approve payload" }).click();
+    await page.getByTestId("run-cloud-inference").click();
+    await expect(page.getByTestId("cloud-result-kind")).toHaveText("Simulated test result");
+    await expect(page.getByTestId("approval-status")).toContainText("Approval required");
+    await expect(page.getByTestId("run-cloud-inference")).toBeDisabled();
+  });
+});
+
+test.describe("E2E-013 timeout does not look like success", () => {
+  test("shows TIMEOUT and no cloud result", async ({ page }) => {
+    await gotoWithHarness(page, { cloudErrorCode: "TIMEOUT" });
+    await page.getByRole("button", { name: "Preview cloud payload" }).click();
+    await page.getByRole("button", { name: "Approve payload" }).click();
+    await page.getByTestId("run-cloud-inference").click();
+    await expect(page.getByTestId("diagnostic-error")).toContainText("TIMEOUT");
+    await expect(page.getByTestId("cloud-result")).toHaveCount(0);
+    await expect(page.getByTestId("run-cloud-inference")).toBeDisabled();
+  });
+});
+
+test.describe("E2E-014 unknown inference provenance", () => {
+  test("rejects unverified provenance", async ({ page }) => {
+    await gotoWithHarness(page, { cloudErrorCode: "PROVENANCE_UNVERIFIED" });
+    await page.getByRole("button", { name: "Preview cloud payload" }).click();
+    await page.getByRole("button", { name: "Approve payload" }).click();
+    await page.getByTestId("run-cloud-inference").click();
+    await expect(page.getByTestId("diagnostic-error")).toContainText("PROVENANCE_UNVERIFIED");
+    await expect(page.getByTestId("cloud-result")).toHaveCount(0);
+  });
+});
+
+test.describe("E2E-015 app check unconfigured", () => {
+  test("reports App Check as not ready without credentials", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.getByTestId("app-check-status")).toContainText(
+      /Not configured|Unavailable|placeholder/i,
+    );
+  });
+});
+
 test.describe("E2E-011 successful controlled flow", () => {
   test("preview, approve, and display a labeled test-adapter result", async ({ page }) => {
     await gotoWithHarness(page, {});
@@ -104,6 +148,7 @@ test.describe("E2E-011 successful controlled flow", () => {
     await expect(page.getByTestId("cloud-result-kind")).toHaveText("Simulated test result");
     await expect(page.getByTestId("cloud-result")).toContainText("simulated=true");
     await expect(page.getByTestId("cloud-result")).not.toContainText("Real cloud result");
+    await expect(page.getByTestId("outbound-prompt")).toContainText("Approved disclosure payload:");
     await page.screenshot({
       path: path.join(screenshotDir, "e2e-011-controlled-flow.png"),
       fullPage: true,

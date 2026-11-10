@@ -14,10 +14,14 @@ export type InferenceErrorCode =
   | "USER_REJECTED"
   | "SDK_INIT_FAILED"
   | "PROVENANCE_MISMATCH"
+  | "PROVENANCE_UNVERIFIED"
+  | "PROVENANCE_UNKNOWN"
+  | "SIMULATED_RESULT"
   | "PAYLOAD_TOO_LARGE"
   | "EXECUTABLE_OUTPUT"
   | "CANCELLED"
-  | "IN_FLIGHT";
+  | "IN_FLIGHT"
+  | "DESTINATION_MISMATCH";
 
 export class InferenceError extends Error {
   readonly code: InferenceErrorCode;
@@ -49,7 +53,12 @@ export function classifyUnknownError(error: unknown): InferenceError {
   }
   const message = error instanceof Error ? error.message : String(error);
   const lowered = message.toLowerCase();
-  if (lowered.includes("app check") || lowered.includes("appcheck") || lowered.includes("403")) {
+  if (
+    lowered.includes("app check") ||
+    lowered.includes("appcheck") ||
+    lowered.includes("403") ||
+    lowered.includes("attestation")
+  ) {
     return new InferenceError("APP_CHECK_REJECTED", message);
   }
   if (lowered.includes("timeout") || lowered.includes("timed out")) {

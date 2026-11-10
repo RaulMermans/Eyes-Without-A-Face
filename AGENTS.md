@@ -51,6 +51,8 @@ Do not skip failing tests, stub them empty, or weaken acceptance criteria to go 
 - Source contracts are `localOnly: true`.
 - Phantom contracts must not embed private canaries or raw private records.
 - Cloud inference may receive only a `CloudDisclosurePayload` built by allowlist projection, never a serialized Phantom Contract.
+- Approval is single-use and bound to the exact outbound application prompt plus destination. Do not retry timed-out cloud calls.
+- Do not claim inference provenance from the requested mode. Missing `inferenceSource` is `PROVENANCE_UNVERIFIED`.
 - Export manifests set `includesPrivateSourceFixtures: false`.
 - Private-data canary: `PRIVATE_CANARY_PII_DO_NOT_SHARE`.
 

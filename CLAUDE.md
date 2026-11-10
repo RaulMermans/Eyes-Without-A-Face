@@ -10,6 +10,7 @@ Read, in order:
 4. `docs/architecture/system.md` — boundaries and data flow
 5. `docs/contracts/README.md` — contract families
 6. `docs/sprints/sprint-1.md` — Sprint 1 report
-7. `docs/sprints/sprint-2-readiness.md` — blockers before mapping execution
+7. `docs/sprints/sprint-1.1.md` — live Firebase qualification
+8. `docs/sprints/sprint-2-readiness.md` — blockers before mapping execution
 
 Do not duplicate architecture here. Do not start Sprint 2 automatically.
