@@ -11,5 +11,5 @@ Canonical operating docs for Eyes Without a Face. Root files `README.md`, `AGENT
 | [setup/](setup/) | Firebase, App Check, browser compatibility |
 | [branding/](branding/) | Official emblem provenance and assets |
 | [testing/](testing/) | Test strategy and regression matrix |
-| [sprints/](sprints/) | Sprint 0–1.1 reports and Sprint 2 readiness |
+| [sprints/](sprints/) | Sprint 0–2 reports and Sprint 3 readiness |
 | [hackathon-requirements.md](hackathon-requirements.md) | Verified vs unresolved Devpost rules |

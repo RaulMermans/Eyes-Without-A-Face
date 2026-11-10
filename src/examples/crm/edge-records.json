@@ -1,0 +1,28 @@
+{
+  "datasetId": "fictional-crm-accounts-edge",
+  "localOnly": true,
+  "notes": "Reserved fictional cases. Includes an unmapped status and an incompatible email type.",
+  "records": [
+    {
+      "customer_id": "CUST-EDGE-UNMAPPED",
+      "email_address": "vip@example.com",
+      "account_state": "vip_customer",
+      "joined_at": "2026-04-01",
+      "company_name": "Hidden League"
+    },
+    {
+      "customer_id": "CUST-EDGE-TYPE",
+      "email_address": 42,
+      "account_state": "active_customer",
+      "joined_at": "2026-04-02",
+      "company_name": "Numeric Mail"
+    },
+    {
+      "customer_id": "CUST-EDGE-NULL",
+      "email_address": null,
+      "account_state": "active_customer",
+      "joined_at": "2026-04-03",
+      "company_name": "Null Mail"
+    }
+  ]
+}

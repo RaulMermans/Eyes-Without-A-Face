@@ -1,0 +1,35 @@
+export const MAPPING_FAILURE_CODES = [
+  "INVALID_MAPPING_CONTRACT",
+  "UNSAFE_MAPPING",
+  "UNSUPPORTED_OPERATION",
+  "UNSUPPORTED_SCHEMA_VERSION",
+  "INVALID_FIELD_REF",
+  "FORBIDDEN_KEY",
+  "PROTOTYPE_POLLUTION",
+  "MISSING_SOURCE_FIELD",
+  "NULL_VALUE",
+  "TYPE_MISMATCH",
+  "EMPTY_VALUE",
+  "INVALID_EMAIL",
+  "INVALID_DATE",
+  "UNMAPPED_ENUM",
+  "DEFAULT_UNMAPPED_MISSING",
+  "CONFLICTING_DESTINATION",
+  "UNSUPPORTED_NESTED_STRUCTURE",
+  "MALFORMED_JSON",
+  "INPUT_TOO_LARGE",
+  "BATCH_LIMIT_EXCEEDED",
+  "INVALID_TARGET_SCHEMA",
+  "OUTPUT_SCHEMA_MISMATCH",
+  "INVALID_OPERATION_PARAMS",
+] as const;
+
+export type MappingFailureCode = (typeof MAPPING_FAILURE_CODES)[number];
+
+export interface MappingIssue {
+  code: MappingFailureCode;
+  message: string;
+  path?: string;
+  operationIndex?: number;
+  op?: string;
+}

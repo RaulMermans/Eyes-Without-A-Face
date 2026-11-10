@@ -4,7 +4,7 @@ import path from "node:path";
 import { attachProviderWatch } from "../e2e/helpers.ts";
 
 const enabled = process.env.EYES_LIVE_TESTS === "1";
-const screenshotDir = "test-results/sprint-1.1-live";
+const screenshotDir = "test-results/sprint-2-live";
 const evidencePath = path.join(screenshotDir, "evidence.json");
 
 test.skip(!enabled, "Live Firebase tests are opt-in. Set EYES_LIVE_TESTS=1.");

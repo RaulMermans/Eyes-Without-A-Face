@@ -16,6 +16,7 @@
     "test:unit": "vitest run tests/unit",
     "test:contracts": "vitest run tests/contracts",
     "test:privacy": "vitest run tests/privacy",
+    "test:mapping": "vitest run tests/unit/mapping-engine.test.ts tests/unit/mapping-operations.test.ts tests/contracts/mapping-execution.test.ts tests/privacy/mapping-privacy.test.ts",
     "test:e2e": "playwright test",
     "test:live": "playwright test -c playwright.live.config.ts",
     "test:all": "pnpm lint && pnpm typecheck && pnpm test:unit && pnpm test:contracts && pnpm test:privacy && pnpm build && pnpm test:e2e"

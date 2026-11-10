@@ -1,0 +1,28 @@
+{
+  "datasetId": "fictional-crm-accounts",
+  "localOnly": true,
+  "records": [
+    {
+      "customer_id": "CUST-001",
+      "email_address": " ALICE@EXAMPLE.COM ",
+      "account_state": "active_customer",
+      "joined_at": "2026-01-15",
+      "company_name": "Example Studio",
+      "internal_note": "PRIVATE_CANARY_PII_DO_NOT_SHARE fictional billing note"
+    },
+    {
+      "customer_id": "CUST-002",
+      "email_address": "bob@example.com",
+      "account_state": "inactive_customer",
+      "joined_at": "2025-11-02",
+      "company_name": "  North Bridge Co  "
+    },
+    {
+      "customer_id": "CUST-003",
+      "email_address": "cara@example.org",
+      "account_state": "prospect",
+      "joined_at": "2026-03-08",
+      "company_name": "Cedar & Pine"
+    }
+  ]
+}

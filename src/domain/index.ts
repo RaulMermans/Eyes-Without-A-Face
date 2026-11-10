@@ -11,3 +11,8 @@ export type {
 export { assertValidContract, validateContract } from "./validation/validate-contract.ts";
 export { findExecutableTransformations } from "./mapping/safety.ts";
 export { OPERATION_SPECS, executeMapping, isSupportedOperation } from "./mapping/operations.ts";
+export { executeMappingBatch } from "./mapping/batch.ts";
+export { MAPPING_LIMITS } from "./mapping/limits.ts";
+export type { MappingExecutionResult } from "./mapping/execute.ts";
+export type { MappingBatchResult, MappingRecordResult } from "./mapping/batch.ts";
+export type { MappingFailureCode, MappingIssue } from "./mapping/codes.ts";

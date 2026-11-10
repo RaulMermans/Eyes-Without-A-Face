@@ -55,6 +55,7 @@ pnpm test:contracts
 pnpm test:privacy
 pnpm test:e2e
 pnpm test:live
+pnpm test:mapping
 pnpm test:all
 ```
 
@@ -62,7 +63,9 @@ pnpm test:all
 `pnpm test:live` is opt-in (`EYES_LIVE_TESTS=1`) and uses installed Chrome. It is **not** part of `pnpm test:all`.  
 Real on-device calls also need `EYES_LIVE_ON_DEVICE=1`. Real cloud calls need credentials and `EYES_LIVE_CLOUD=1`.
 
-## Implementation status (Sprint 1.1)
+`pnpm test:mapping` covers the deterministic engine. It is included in the unit, contract, and privacy suites.
+
+## Implementation status (Sprint 2)
 
 | Capability | Status |
 | --- | --- |
@@ -70,11 +73,12 @@ Real on-device calls also need `EYES_LIVE_ON_DEVICE=1`. Real cloud calls need cr
 | Official emblem, favicon, social-preview foundation | Implemented |
 | Versioned Source / Phantom / Mapping / Validation / Export / Cloud Disclosure contracts | Implemented |
 | Allowlist projection + single-use disclosure approval + destination binding | Implemented |
-| Firebase configuration for `eyes-without-a-face-b7281` | Implemented; live init requires `.env.local` |
+| Firebase configuration for `eyes-without-a-face-b7281` | Implemented; live values belong in `.env.local` (Vite prefers it over `.env`) |
 | On-device adapter (`ONLY_ON_DEVICE`) | Implemented; live model previously **BLOCKED** (`LanguageModel` `unavailable`) |
-| Cloud adapter (`ONLY_IN_CLOUD`) | Implemented; live Gemini needs site key + safelisted App Check debug token |
-| Mapping interpreter | Not implemented |
-| JSON import / export packaging | Not implemented |
+| Cloud adapter (`ONLY_IN_CLOUD`) | Implemented; App Check uses the registered public site key; debug token must be safelisted locally |
+| Mapping interpreter | Implemented (`executeMapping` / `executeMappingBatch` in `src/domain/mapping`) |
+| JSON import | Implemented in the Source step (session memory only) |
+| Export packaging | Not implemented |
 | Automatic cloud fallback | Forbidden by design; not implemented |
 
 Do not report `HYBRID_QUALIFIED` unless both cloud and on-device provenance are confirmed. Cloud-only success is `CLOUD_QUALIFIED / ON_DEVICE_BLOCKED`.
@@ -93,5 +97,5 @@ Index: [docs/README.md](docs/README.md)
 - `docs/contracts/` — contract families
 - `docs/security/` — threat model and disclosure policy
 - `docs/testing/` — test strategy
-- `docs/sprints/` — Sprint 0–1.1 reports and Sprint 2 readiness
+- `docs/sprints/` — Sprint 0–2 reports and Sprint 3 readiness
 - `docs/hackathon-requirements.md` — verified vs unresolved official rules

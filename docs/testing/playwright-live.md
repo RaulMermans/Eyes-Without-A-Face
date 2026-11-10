@@ -23,7 +23,7 @@ Opt-in: `EYES_LIVE_TESTS=1`. Uses installed Chrome (`channel: "chrome"`) on port
 | LIVE-007 | `ONLY_ON_DEVICE` or recorded blocker | `EYES_LIVE_ON_DEVICE=1` for a passing generate |
 | LIVE-008 | Console errors and responsive layout | |
 
-Evidence lands in `test-results/sprint-1.1-live/` (gitignored). Do not store debug tokens or private records.
+Evidence lands in `test-results/sprint-2-live/` (gitignored). Do not store debug tokens or private records.
 
 Playwright request interception cannot see every SDK request. Combine network watchers with the application disclosure gate.
 

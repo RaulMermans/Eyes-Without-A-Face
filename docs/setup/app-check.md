@@ -15,8 +15,8 @@ Do not add `localhost` to reCAPTCHA allowed domains. Do not inject a standalone 
 
 Official SDK workflow:
 
-1. Keep the production site key in `.env.local`.
-2. Set `VITE_APP_CHECK_DEBUG=true` (development builds only).
+1. Keep the production site key in `.env.local`. Vite prefers `.env.local` over `.env`; a placeholder in `.env.local` wins.
+2. Set `VITE_APP_CHECK_DEBUG=true` (development builds only). Production builds throw if the debug flag is on.
 3. The runtime sets `self.FIREBASE_APPCHECK_DEBUG_TOKEN = true` **before** `initializeAppCheck`.
 4. Load the app, open DevTools, copy the App Check debug token printed by the SDK.
 5. Firebase Console → App Check → Apps → overflow menu on `eyes-without-a-face-web` → **Manage debug tokens** → register it.

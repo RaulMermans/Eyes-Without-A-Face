@@ -2,7 +2,7 @@
 
 | Suite | Runner | What it proves |
 | --- | --- | --- |
-| `pnpm test:unit` | Vitest | Config parsing, adapter refusal, SDK symbols, disclosure hashes, structured output |
+| `pnpm test:unit` | Vitest | Config parsing, adapter refusal, SDK symbols, disclosure hashes, structured output, mapping engine |
 | `pnpm test:contracts` | Vitest | Ajv validation of contract families, including cloud disclosure |
 | `pnpm test:privacy` | Vitest | Private vs shareable split, canaries, gate, no executable transforms |
 | `pnpm test:e2e` | Playwright + Vite | Branding, unconfigured Firebase, approval, payload integrity, test adapters |
@@ -44,6 +44,15 @@ See [playwright-live.md](playwright-live.md). Do not place debug tokens or priva
 | E2E-013 | Timeout is not treated as success |
 | E2E-014 | Unknown / unverified provenance is rejected |
 | E2E-015 | App Check unconfigured without credentials |
+| E2E-016 | JSON import |
+| E2E-017 | Invalid source JSON |
+| E2E-018 | Destination JSON Schema |
+| E2E-019 | Mapping execution |
+| E2E-020 | Output correctness |
+| E2E-021 | Invalid mapping rejected |
+| E2E-022 | Unmapped enum edge case |
+| E2E-023 | Mapping with AI network blocked |
+| E2E-024 | UI integrity |
 | LIVE-001 | Chrome / Prompt API / model availability |
 | LIVE-002 | Firebase project / web app initialization |
 | LIVE-003 | App Check status |

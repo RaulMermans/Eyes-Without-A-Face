@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://eyes-without-a-face.dev/examples/destination/helpdesk-account/1.0.0",
+  "title": "Helpdesk account destination",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "email", "status", "createdAt", "organization"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "email": { "type": "string", "format": "email" },
+    "status": { "enum": ["active", "inactive", "prospect"] },
+    "createdAt": { "type": "string", "format": "date" },
+    "organization": { "type": "string", "minLength": 1 }
+  }
+}

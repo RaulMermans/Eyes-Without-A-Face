@@ -8,7 +8,7 @@ Build a privacy-aware integration tool: private CRM JSON stays local; on-device 
 
 - Application (React) / domain (contracts) / infrastructure (Firebase, files, config) stay separated.
 - `src/domain` must not import React, Firebase, or browser-only APIs.
-- Mapping execution must not depend on a model provider.
+- Mapping execution must not depend on a model provider. Use `executeMapping` / `executeMappingBatch` in `src/domain/mapping`. Do not execute model-generated JavaScript.
 - Do not use Firebase `InferenceMode.PREFER_ON_DEVICE` or `PREFER_IN_CLOUD`. Automatic cloud fallback is forbidden.
 - Do not execute model-generated JavaScript.
 - Do not persist raw customer datasets.

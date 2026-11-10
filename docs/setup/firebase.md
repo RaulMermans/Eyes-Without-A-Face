@@ -30,11 +30,13 @@ VITE_FIREBASE_APP_ID=1:507051460368:web:086c755a2c003fb30b4795
 VITE_FIREBASE_MEASUREMENT_ID=G-ZXK5NMQ81M
 VITE_ENABLE_ON_DEVICE_INFERENCE=true
 VITE_ENABLE_CLOUD_INFERENCE=true
-VITE_FIREBASE_APP_CHECK_SITE_KEY=<EXISTING_REGISTERED_SITE_KEY>
+VITE_FIREBASE_APP_CHECK_SITE_KEY=6LfwqhkuAAAAACpyHcdwbfHomzixP8fWqU6T7Wjo
 VITE_APP_CHECK_DEBUG=true
 ```
 
-`VITE_*` values are public client identifiers, not service-account secrets. Replace the App Check placeholder with the **site key** already linked to App Check (Fraud Defense / reCAPTCHA Enterprise). Do not invent a key and do not use the secret key.
+Vite loads `.env.local` with higher priority than `.env`. Put the live values only in `.env.local`. A placeholder in `.env.local` will hide a real key in `.env`.
+
+`VITE_*` values are public client identifiers, not service-account secrets. The App Check value is the registered reCAPTCHA Enterprise **site key** (Fraud Defense), not the secret key.
 
 Live initialization compares `projectId`, `authDomain`, and `appId` to `src/config/expected-firebase.ts`. A different Firebase app is rejected.
 

@@ -9,8 +9,8 @@ Read, in order:
 3. `docs/README.md` — documentation index
 4. `docs/architecture/system.md` — boundaries and data flow
 5. `docs/contracts/README.md` — contract families
-6. `docs/sprints/sprint-1.md` — Sprint 1 report
-7. `docs/sprints/sprint-1.1.md` — live Firebase qualification
-8. `docs/sprints/sprint-2-readiness.md` — blockers before mapping execution
+6. `docs/contracts/mapping.md` — mapping DSL and interpreter
+7. `docs/sprints/sprint-2.md` — Sprint 2 report
+8. `docs/sprints/sprint-3-readiness.md` — blockers before Phantom Twin generation
 
-Do not duplicate architecture here. Do not start Sprint 2 automatically.
+Do not duplicate architecture here. Do not start Sprint 3 automatically.

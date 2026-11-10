@@ -6,10 +6,10 @@ Private source data never travels the same path as cloud prompts.
 Browser session (no backend)
 │
 ├─ Local only
-│  ├─ JSON import (not implemented)
+│  ├─ JSON import (session memory)
 │  ├─ Source Contract
 │  ├─ On-device interpretation (ONLY_ON_DEVICE)
-│  ├─ Mapping execution / verification (not implemented)
+│  ├─ Mapping execution / verification (`executeMapping`)
 │  └─ Export package (synthetic fixtures only)
 │
 └─ Cloud (after request-scoped human approval)

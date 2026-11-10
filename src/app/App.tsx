@@ -6,36 +6,28 @@ import { Badge } from "../components/ui/badge.tsx";
 import { ErrorBanner } from "../components/ErrorBanner.tsx";
 import { BrandMark } from "../brand/Logo.tsx";
 import { DiagnosticWorkspace } from "./DiagnosticWorkspace.tsx";
+import { DestinationPanel } from "./DestinationPanel.tsx";
+import { MappingPanel } from "./MappingPanel.tsx";
+import { SourcePanel } from "./SourcePanel.tsx";
+import { VerificationPanel } from "./VerificationPanel.tsx";
+import { initialWorkspaceState } from "./workspace-state.ts";
 import { WORKFLOW_STEPS, type WorkflowStepId } from "./workflow.ts";
 
-const STEP_DETAILS: Record<
-  WorkflowStepId,
-  { available: boolean; body: string; next: string }
-> = {
+const STEP_DETAILS: Record<WorkflowStepId, { body: string }> = {
   source: {
-    available: false,
-    body: "Private JSON import stays on this machine. Sprint 2 will add source-contract extraction. Nothing is uploaded from this step.",
-    next: "File import is not implemented yet.",
+    body: "Private JSON import stays on this machine. Mapping execution later in the workflow does not upload these records.",
   },
   phantom: {
-    available: true,
-    body: "On-device Firebase Hybrid Inference can classify synthetic field structure with InferenceMode.ONLY_ON_DEVICE. Unavailable browsers fail closed. There is no cloud fallback.",
-    next: "Use the diagnostic workspace to probe Chrome Prompt API availability and run a synthetic local call.",
+    body: "Inspect the destination JSON Schema locally. On-device interpretation of private structure is still diagnostic-only in this sprint.",
   },
   mapping: {
-    available: true,
-    body: "Cloud Gemini may see only an approved CloudDisclosurePayload. The Phantom Contract is never serialized as the outbound request.",
-    next: "Preview the allowlisted payload, approve the hash, then run cloud inference.",
+    body: "Edit a declarative Mapping Contract. Cloud Gemini may later propose operations, but this step executes nothing in the cloud.",
   },
   verification: {
-    available: false,
-    body: "The mapping interpreter will run locally against private and exceptional fixtures. Failures produce a Validation Contract with safe diagnostics.",
-    next: "Local execution is not implemented. Contract schemas and sample reports exist for tests.",
+    body: "The mapping interpreter runs locally against the imported records and validates each result against the destination schema.",
   },
   export: {
-    available: false,
     body: "Exports will include the mapping, synthetic fixtures, and verification report. Private source fixtures are excluded by default.",
-    next: "Package generation is not implemented. The export schema already forbids includesPrivateSourceFixtures=true.",
   },
 };
 
@@ -43,6 +35,7 @@ export default function App() {
   const config = useMemo(() => loadAppConfig(), []);
   const inference = useMemo(() => createInferenceServices(config), [config]);
   const [stepId, setStepId] = useState<WorkflowStepId>("source");
+  const [workspace, setWorkspace] = useState(initialWorkspaceState);
   const step = WORKFLOW_STEPS.find((item) => item.id === stepId) ?? WORKFLOW_STEPS[0];
   const details = STEP_DETAILS[step.id];
   const live = isLiveInferenceAvailable(config);
@@ -133,18 +126,33 @@ export default function App() {
             </h2>
             <p className="mt-3 text-sm leading-6">{step.summary}</p>
             <p className="mt-3 text-sm leading-6 text-mute">{details.body}</p>
-            {!details.available ? (
+            {step.id === "export" ? (
               <div className="mt-5">
                 <ErrorBanner title={`${step.title} is not implemented yet`}>
-                  {details.next}
+                  Package generation is not implemented. The export schema already forbids
+                  includesPrivateSourceFixtures=true.
                 </ErrorBanner>
               </div>
-            ) : (
-              <p className="mt-5 text-sm text-mute">{details.next}</p>
-            )}
+            ) : null}
           </section>
 
-          <DiagnosticWorkspace config={config} inference={inference} />
+          {step.id === "source" ? <SourcePanel workspace={workspace} onChange={setWorkspace} /> : null}
+          {step.id === "phantom" ? (
+            <DestinationPanel workspace={workspace} onChange={setWorkspace} />
+          ) : null}
+          {step.id === "mapping" ? <MappingPanel workspace={workspace} onChange={setWorkspace} /> : null}
+          {step.id === "verification" ? (
+            <VerificationPanel workspace={workspace} onChange={setWorkspace} />
+          ) : null}
+
+          <details className="border border-rule bg-panel p-5" open>
+            <summary className="cursor-pointer text-sm font-medium">
+              Advanced engineering: Hybrid AI diagnostic workspace
+            </summary>
+            <div className="mt-4">
+              <DiagnosticWorkspace config={config} inference={inference} />
+            </div>
+          </details>
         </div>
 
         <aside className="space-y-4">

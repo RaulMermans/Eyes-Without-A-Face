@@ -1,0 +1,34 @@
+{
+  "contractKind": "mapping",
+  "schemaVersion": "1.0.0",
+  "mappingId": "crm-helpdesk-account-map",
+  "mappingVersion": "1",
+  "phantomId": "phantom-crm-accounts-v1",
+  "destinationSchemaId": "helpdesk-account",
+  "destinationSchemaVersion": "1.0.0",
+  "operations": [
+    { "op": "copy", "from": "customer_id", "to": "id" },
+    { "op": "normalize_email", "from": "email_address", "to": "email" },
+    {
+      "op": "map_enum",
+      "from": "account_state",
+      "to": "status",
+      "params": {
+        "map": {
+          "active_customer": "active",
+          "inactive_customer": "inactive",
+          "prospect": "prospect"
+        },
+        "unmapped": "fail"
+      }
+    },
+    {
+      "op": "parse_date",
+      "from": "joined_at",
+      "to": "createdAt",
+      "params": { "inputFormat": "YYYY-MM-DD" }
+    },
+    { "op": "trim", "from": "company_name", "to": "organization" }
+  ],
+  "notes": "Local deterministic mapping for the fictional CRM sample. Gemini does not execute this contract."
+}

@@ -1,0 +1,26 @@
+{
+  "datasetId": "fictional-crm-accounts",
+  "records": [
+    {
+      "id": "CUST-001",
+      "email": "alice@example.com",
+      "status": "active",
+      "createdAt": "2026-01-15",
+      "organization": "Example Studio"
+    },
+    {
+      "id": "CUST-002",
+      "email": "bob@example.com",
+      "status": "inactive",
+      "createdAt": "2025-11-02",
+      "organization": "North Bridge Co"
+    },
+    {
+      "id": "CUST-003",
+      "email": "cara@example.org",
+      "status": "prospect",
+      "createdAt": "2026-03-08",
+      "organization": "Cedar & Pine"
+    }
+  ]
+}

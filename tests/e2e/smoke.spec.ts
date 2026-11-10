@@ -23,12 +23,15 @@ test.describe("E2E-001 application boot", () => {
 test.describe("E2E-002 workflow navigation", () => {
   test("moves between shell sections", async ({ page }) => {
     await page.goto("/");
-    const unfinished = ["Source System", "Verification", "Export"];
-    for (const name of unfinished) {
-      await page.getByRole("button", { name: new RegExp(name) }).click();
-      await expect(page.getByRole("heading", { level: 2, name })).toBeVisible();
-      await expect(page.getByText(`${name} is not implemented yet`)).toBeVisible();
-    }
+    await page.getByRole("button", { name: /Source System/ }).click();
+    await expect(page.getByRole("heading", { level: 2, name: "Source System" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Import source JSON" })).toBeVisible();
+    await page.getByRole("button", { name: /Verification/ }).click();
+    await expect(page.getByRole("heading", { level: 2, name: "Verification" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Local mapping execution" })).toBeVisible();
+    await page.getByRole("button", { name: /Export/ }).click();
+    await expect(page.getByRole("heading", { level: 2, name: "Export" })).toBeVisible();
+    await expect(page.getByText("Export is not implemented yet")).toBeVisible();
     await page.getByRole("button", { name: /Phantom Twin/ }).click();
     await expect(page.getByRole("heading", { level: 2, name: "Phantom Twin" })).toBeVisible();
     await expect(page.getByRole("heading", { name: "Hybrid AI diagnostic workspace" })).toBeVisible();

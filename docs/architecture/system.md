@@ -1,12 +1,12 @@
 # System architecture
 
-Sprint 1.1 wires Firebase Hybrid AI behind Sprint 0 contracts and hardens live provenance plus disclosure authorization. Mapping execution is still unimplemented.
+Sprint 2 adds a local deterministic mapping interpreter and a browser import → map → execute workflow. Firebase Hybrid AI remains behind the disclosure gate. Models propose mappings; they do not execute them.
 
 ## Layers
 
-**Application** (`src/app`, `src/components`) — React shell, workflow navigation, diagnostic workspace.
+**Application** (`src/app`, `src/components`) — React shell, workflow navigation, local mapping workspace, diagnostic workspace.
 
-**Domain** (`src/domain`) — versioned contracts, Ajv validation, mapping operation specs, executable-code rejection. No React, Firebase, or DOM APIs.
+**Domain** (`src/domain`) — versioned contracts, Ajv validation, mapping interpreter (`executeMapping`), executable-code rejection. No React, Firebase, or DOM APIs.
 
 **Infrastructure** (`src/config`, `src/inference`) — environment parsing, Firebase live adapters (`src/inference/firebase-live.ts` is the only Firebase import).
 

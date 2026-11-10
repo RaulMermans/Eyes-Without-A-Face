@@ -1,6 +1,6 @@
 # Hackathon requirements
 
-**Verification date:** 2026-11-10 (re-checked during Sprint 1.1; Official Rules still unpublished)  
+**Verification date:** 2026-11-10 (re-checked during Sprint 2; Official Rules still unpublished)  
 **Authoritative listing:** [https://firebasehybridaihackathon.devpost.com/](https://firebasehybridaihackathon.devpost.com/)  
 **Official rules URL:** [https://firebasehybridaihackathon.devpost.com/rules](https://firebasehybridaihackathon.devpost.com/rules)
 

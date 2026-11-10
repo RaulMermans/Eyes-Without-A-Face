@@ -7,3 +7,4 @@
 | [0003](0003-client-only-mvp.md) | Client-only MVP |
 | [0004](0004-cloud-disclosure-payload.md) | Separate Cloud Disclosure Payload |
 | [0005](0005-single-use-disclosure-authorization.md) | Single-use disclosure authorization |
+| [0006](0006-mapping-execution-semantics.md) | Deterministic mapping execution semantics |
