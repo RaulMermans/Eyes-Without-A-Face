@@ -147,11 +147,40 @@ export interface ExportContract {
   knownLimitations: string[];
 }
 
+export interface CloudDisclosureDestination {
+  provider: "firebase-ai-logic";
+  backend: "google-ai";
+  model: string;
+  purpose: "mapping-proposal";
+}
+
+export interface CloudDisclosureField {
+  alias: string;
+  entityId: string;
+  type: Exclude<SourceFieldType, "object" | "array">;
+  semanticDescriptor: string;
+  enumValues?: string[];
+}
+
+export interface CloudDisclosurePayload {
+  contractKind: "cloud-disclosure";
+  schemaVersion: "1.0.0";
+  payloadId: string;
+  phantomId: string;
+  destination: CloudDisclosureDestination;
+  purpose: "mapping-proposal";
+  entities: Array<{ id: string; label: string; description?: string }>;
+  fields: CloudDisclosureField[];
+  syntheticExamples: Array<Record<string, string | number | boolean | null>>;
+  disclosureConstraints?: string[];
+}
+
 export type AnyContract =
   | SourceContract
   | PhantomContract
   | MappingContract
   | ValidationContract
-  | ExportContract;
+  | ExportContract
+  | CloudDisclosurePayload;
 
 export type { MappingOperationName };

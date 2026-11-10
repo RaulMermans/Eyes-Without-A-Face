@@ -1,21 +1,22 @@
 # System architecture
 
-Sprint 0 establishes contracts and boundaries. Live inference is not wired.
+Sprint 1 wires Firebase Hybrid AI behind Sprint 0 contracts. Mapping execution is still unimplemented.
 
 ## Layers
 
-**Application** (`src/app`, `src/components`) — React shell, workflow navigation, status presentation.
+**Application** (`src/app`, `src/components`) — React shell, workflow navigation, diagnostic workspace.
 
 **Domain** (`src/domain`) — versioned contracts, Ajv validation, mapping operation specs, executable-code rejection. No React, Firebase, or DOM APIs.
 
-**Infrastructure** (`src/config`, `src/inference`) — environment parsing, Firebase adapter interfaces, future SDK import boundary (`src/inference/firebase-live.ts`).
+**Infrastructure** (`src/config`, `src/inference`) — environment parsing, Firebase live adapters (`src/inference/firebase-live.ts` is the only Firebase import).
 
 Supporting modules:
 
-- `src/privacy` — disclosure helpers and private-data canaries
-- `src/twin` — cloud-disclosure gate
+- `src/privacy` — canaries, forbidden-field scan, SHA-256 fingerprints
+- `src/twin` — Phantom disclosure checks, allowlist projection, approval gate
 - `src/verification` — validation report summary
 - `src/export` — export manifest builder (always excludes private fixtures)
+- `src/brand` — official emblem
 
 ## Data flow
 
@@ -26,13 +27,16 @@ JSON source (local memory)
  Source Contract (localOnly)
         │
         ▼
- On-device interpretation (Sprint 1, ONLY_ON_DEVICE)
+ On-device interpretation (ONLY_ON_DEVICE)
         │
         ▼
- Phantom Contract (human approval)
-        │  shareable aliases + synthetic examples only
+ Phantom Contract (internal; may contain sourceFieldId)
+        │
         ▼
- Cloud mapping (Sprint 1, ONLY_IN_CLOUD)
+ CloudDisclosurePayload (allowlist projection)
+        │  user approval of SHA-256(bytes)
+        ▼
+ Cloud mapping (ONLY_IN_CLOUD)
         │  declarative operations, never JS
         ▼
  Mapping Contract
@@ -51,16 +55,19 @@ Canonical schemas live in `src/domain/contracts/schemas/`.
 | Family | Purpose |
 | --- | --- |
 | Source | Field inventory and sensitivity of the imported JSON |
-| Phantom | Approved synthetic twin for cloud reasoning |
+| Phantom | Internal synthetic twin (may keep source field ids) |
+| Cloud disclosure | Allowlisted outbound payload for Gemini |
 | Mapping | Declarative ops: copy, rename, trim, normalize_email, parse_date, map_enum, default_if_missing, concat |
 | Validation | Local pass/fail with safe diagnostics |
 | Export | Portable manifest and runtime compatibility |
 
 ## Firebase abstraction
 
-`createInferenceServices(config)` returns adapters that report `disabled`, `unconfigured`, or `not-implemented`. `generate()` throws. The application shell does not import `firebase/app` or `firebase/ai`, so boot makes no provider request.
+`createInferenceServices(config)` returns on-device and cloud adapters. The application does not import `firebase/app` at boot. The live chunk loads only when a configured adapter runs.
 
-Sprint 1 must call `InferenceMode.ONLY_ON_DEVICE` for schema interpretation and `InferenceMode.ONLY_IN_CLOUD` for mapping. Hybrid “prefer” modes are disallowed because they fall back automatically.
+On-device uses `InferenceMode.ONLY_ON_DEVICE`. Cloud uses `InferenceMode.ONLY_IN_CLOUD`. Hybrid “prefer” modes are disallowed because they fall back automatically.
+
+Cloud `generateAuthorized` requires an `AuthorizedCloudRequest`. Free-form prompts are not accepted.
 
 ## Local / cloud separation
 
@@ -68,6 +75,6 @@ Sprint 1 must call `InferenceMode.ONLY_ON_DEVICE` for schema interpretation and 
 | --- | --- | --- |
 | Source import | Private JSON | None |
 | Phantom construction | Structure / approved descriptors | On-device only |
-| Mapping proposal | Approved Phantom Contract | Cloud Gemini via Firebase |
+| Mapping proposal | Approved CloudDisclosurePayload | Cloud Gemini via Firebase |
 | Verification | Private fixtures + mapping | None |
 | Export | Mapping, synthetic fixtures, report | None |

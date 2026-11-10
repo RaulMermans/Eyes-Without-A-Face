@@ -9,7 +9,7 @@ Read, in order:
 3. `docs/README.md` — documentation index
 4. `docs/architecture/system.md` — boundaries and data flow
 5. `docs/contracts/README.md` — contract families
-6. `docs/sprints/sprint-0.md` — what Sprint 0 delivered
-7. `docs/sprints/sprint-1-prerequisites.md` — what Sprint 1 still needs
+6. `docs/sprints/sprint-1.md` — Sprint 1 report
+7. `docs/sprints/sprint-2-readiness.md` — blockers before mapping execution
 
-Do not duplicate architecture here. Do not implement live Firebase inference unless the user starts Sprint 1.
+Do not duplicate architecture here. Do not start Sprint 2 automatically.

@@ -14,7 +14,7 @@ Synthetic representation that may be sent to cloud mapping after human approval.
 - `shareableFieldAliases[]`
 - `nonShareableSourceFieldIds[]`
 
-`approvedForCloud` must be `true` before the disclosure gate allows a cloud call (`src/twin/disclosure-gate.ts`).
+`approvedForCloud` is an internal flag only. Cloud inference requires a separate `CloudDisclosurePayload` and request-scoped user approval (`src/twin/authorization.ts`). See [cloud-disclosure.md](cloud-disclosure.md).
 
 ## Disclosure rules
 

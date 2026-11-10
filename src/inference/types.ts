@@ -1,39 +1,86 @@
 import type { InferenceAvailability } from "../config/env.ts";
+import type { AuthorizedCloudRequest } from "../twin/authorization.ts";
 
 export type InferencePurpose = "schema-interpretation" | "mapping-proposal";
 export type InferenceExecution = "on-device" | "cloud";
+export type RequestedInferenceMode = "ONLY_ON_DEVICE" | "ONLY_IN_CLOUD";
+export type ActualInferenceSource =
+  | "ON_DEVICE"
+  | "IN_CLOUD"
+  | "TEST"
+  | "UNAVAILABLE"
+  | "FAILED";
+export type ResultKind =
+  | "real-on-device"
+  | "real-cloud"
+  | "simulated-test"
+  | "unavailable"
+  | "failed";
 
-export interface InferenceRequest {
-  purpose: InferencePurpose;
-  prompt: string;
-  allowedDisclosure: "none" | "phantom-only";
+export interface OnDeviceFieldInput {
+  fieldAlias: string;
+  sampleValues: string[];
+  hint: string;
+}
+
+export interface OnDeviceInferenceRequest {
+  purpose: "schema-interpretation";
+  input: OnDeviceFieldInput;
+  signal?: AbortSignal;
 }
 
 export interface InferenceProvenance {
-  provider: "firebase-ai-logic";
-  execution: InferenceExecution;
+  provider: "firebase-ai-logic" | "test-harness";
+  requestedMode: RequestedInferenceMode;
+  actualSource: ActualInferenceSource;
+  inferenceSourceReported: boolean;
   model: string;
-  simulated: false;
+  simulated: boolean;
+  schemaValid: boolean;
+  durationMs: number;
+  retries: number;
+  errorCode?: string;
+  resultKind: ResultKind;
 }
 
 export interface InferenceResult {
   text: string;
+  structured?: unknown;
   provenance: InferenceProvenance;
 }
 
-export interface InferenceAdapter {
-  readonly execution: InferenceExecution;
+export interface OnDeviceCapability {
+  chromeVersion: string | null;
+  promptApi: "available" | "missing";
+  languageModelAvailability: string | null;
+  guidance: string;
+}
+
+export interface OnDeviceInferenceAdapter {
+  readonly execution: "on-device";
   status(): InferenceAvailability;
-  generate(request: InferenceRequest): Promise<InferenceResult>;
+  probeCapability(): Promise<OnDeviceCapability>;
+  initialize(onProgress?: (progress: number) => void): Promise<void>;
+  generate(request: OnDeviceInferenceRequest): Promise<InferenceResult>;
+}
+
+export interface CloudInferenceAdapter {
+  readonly execution: "cloud";
+  status(): InferenceAvailability;
+  generateAuthorized(request: AuthorizedCloudRequest): Promise<InferenceResult>;
+}
+
+export interface InferenceServices {
+  onDevice: OnDeviceInferenceAdapter;
+  cloud: CloudInferenceAdapter;
 }
 
 /**
- * Firebase AI Logic JS SDK v13.2.0 surface we will call in Sprint 1.
+ * Firebase AI Logic JS SDK v13.2.0 surface used in Sprint 1.
  * Documented from https://firebase.google.com/docs/ai-logic/hybrid/web/get-started
- * Verified 2026-11-10.
+ * Re-verified 2026-11-10.
  *
  * Do not use InferenceMode.PREFER_ON_DEVICE or PREFER_IN_CLOUD.
- * Automatic cloud fallback is forbidden for this product.
  */
 export const FIREBASE_AI_LOGIC_API = {
   package: "firebase",
@@ -43,6 +90,7 @@ export const FIREBASE_AI_LOGIC_API = {
     "getGenerativeModel",
     "GoogleAIBackend",
     "InferenceMode",
+    "Schema",
     "initializeAppCheck",
   ],
   onDeviceInit: "GenerativeModel.initializeDeviceModel",
@@ -53,3 +101,9 @@ export const FIREBASE_AI_LOGIC_API = {
   pinnedSdk: "13.2.0",
   minChrome: 139,
 } as const;
+
+export const SYNTHETIC_ON_DEVICE_INPUT: OnDeviceFieldInput = {
+  fieldAlias: "lifecycle_status",
+  sampleValues: ["active", "paused", "closed"],
+  hint: "Fictional CRM lifecycle field. Classify semantic meaning. Do not invent private identifiers.",
+};

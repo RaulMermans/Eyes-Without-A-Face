@@ -25,7 +25,7 @@ pnpm build
 pnpm test:e2e
 ```
 
-Or `pnpm test:all`. Do not skip failing tests or stub them empty.
+Or `pnpm test:all`. That suite does **not** run hardware-dependent `pnpm test:live`. Do not skip failing tests or stub them empty.
 
 ## Conventions
 

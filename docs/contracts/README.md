@@ -13,5 +13,6 @@ TypeScript types in `src/domain/contracts/types.ts` are a convenience view. If t
 | Mapping | `mapping.v1.schema.json` | [mapping.md](mapping.md) | `tests/fixtures/valid/mapping-contract.json` |
 | Validation | `validation.v1.schema.json` | [validation.md](validation.md) | `tests/fixtures/valid/validation-report.json` |
 | Export | `export.v1.schema.json` | [export.md](export.md) | `tests/fixtures/valid/export-manifest.json` |
+| Cloud disclosure | `cloud-disclosure.v1.schema.json` | [cloud-disclosure.md](cloud-disclosure.md) | `tests/fixtures/valid/cloud-disclosure.json` |
 
 Invalid examples live in `tests/fixtures/invalid/`.

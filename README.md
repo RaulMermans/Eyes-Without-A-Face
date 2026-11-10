@@ -5,7 +5,7 @@ Privacy-aware AI integration development tool for the Google #BuildHybridAI 2026
 **Technical concept:** Phantom Twin Engine  
 **Tagline:** Build for systems your AI cannot see.
 
-Private reality → On-device interpretation → Approved Phantom Twin → Cloud mapping → Private verification → Portable integration.
+Private reality → On-device interpretation → Approved Cloud Disclosure Payload → Cloud mapping → Private verification → Portable integration.
 
 ## MVP boundaries
 
@@ -24,7 +24,7 @@ Does not include CRM connectors, autonomous agents, production databases, authen
 | App config | Zod |
 | Unit tests | Vitest + fast-check |
 | Browser tests | Playwright |
-| AI (Sprint 1) | Firebase AI Logic (`firebase` 13.2.0) |
+| AI | Firebase AI Logic (`firebase` 13.2.0) |
 | Hosting (prepared) | Firebase Hosting |
 | CI | GitHub Actions |
 | Package manager | pnpm |
@@ -36,9 +36,11 @@ pnpm install
 pnpm dev
 ```
 
-The app starts without Firebase credentials. Live inference stays unavailable.
+The app starts without Firebase credentials. Live inference stays unavailable until `.env.local` is filled and feature flags are enabled.
 
 Copy `.env.example` to `.env.local` only when you have a Firebase web config. Do not commit `.env.local`. `VITE_*` values are exposed to the browser. App Check debug tokens must never be placed in `VITE_*` variables.
+
+Setup guides: [docs/setup/firebase.md](docs/setup/firebase.md), [docs/setup/app-check.md](docs/setup/app-check.md), [docs/setup/browser-compatibility.md](docs/setup/browser-compatibility.md).
 
 ## Commands
 
@@ -50,21 +52,25 @@ pnpm test:unit
 pnpm test:contracts
 pnpm test:privacy
 pnpm test:e2e
+pnpm test:live
 pnpm test:all
 ```
 
-`pnpm test:e2e` starts the Vite dev server and drives Chromium against it.
+`pnpm test:e2e` is deterministic and does not require Firebase.  
+`pnpm test:live` is opt-in (`EYES_LIVE_TESTS=1`) and uses installed Chrome. It is **not** part of `pnpm test:all`.  
+Real on-device calls also need `EYES_LIVE_ON_DEVICE=1`. Real cloud calls need credentials and `EYES_LIVE_CLOUD=1`.
 
-## Implementation status (Sprint 0)
+## Implementation status (Sprint 1)
 
 | Capability | Status |
 | --- | --- |
-| Application shell and five-step workflow | Implemented (navigation only) |
-| Versioned Source / Phantom / Mapping / Validation / Export contracts | Implemented |
-| Contract validation | Implemented |
+| Application shell and five-step workflow | Implemented |
+| Official emblem, favicon, social-preview foundation | Implemented |
+| Versioned Source / Phantom / Mapping / Validation / Export / Cloud Disclosure contracts | Implemented |
+| Allowlist projection + request-scoped disclosure approval | Implemented |
 | Firebase configuration parsing | Implemented |
-| Live on-device inference | Not implemented |
-| Live Gemini mapping | Not implemented |
+| On-device adapter (`ONLY_ON_DEVICE`) | Implemented; live model **BLOCKED** on this machine (`LanguageModel` availability `unavailable`) |
+| Cloud adapter (`ONLY_IN_CLOUD`) | Implemented; live Gemini **BLOCKED** (no Firebase project in this environment) |
 | Mapping interpreter | Not implemented |
 | JSON import / export packaging | Not implemented |
 | Automatic cloud fallback | Forbidden by design; not implemented |
@@ -80,8 +86,8 @@ Index: [docs/README.md](docs/README.md)
 - `CONTRIBUTING.md` — local setup and required checks
 - `SECURITY.md` — how to report issues
 - `docs/architecture/` — layers and data-flow boundaries
-- `docs/contracts/` — five MVP contract families
+- `docs/contracts/` — contract families
 - `docs/security/` — threat model and disclosure policy
 - `docs/testing/` — test strategy
-- `docs/sprints/` — Sprint 0 report and Sprint 1 prerequisites
+- `docs/sprints/` — Sprint 0–1 reports and Sprint 2 readiness
 - `docs/hackathon-requirements.md` — verified vs unresolved official rules
