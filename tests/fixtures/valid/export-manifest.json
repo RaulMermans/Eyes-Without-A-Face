@@ -1,0 +1,18 @@
+{
+  "contractKind": "export",
+  "schemaVersion": "1.0.0",
+  "exportId": "export-helpdesk-contact-map-1",
+  "mappingId": "helpdesk-contact-map",
+  "mappingVersion": "1",
+  "runtime": {
+    "engine": "phantom-twin-mapping",
+    "minAppVersion": "0.1.0"
+  },
+  "syntheticFixtureRefs": ["synthetic-example-syn-001", "synthetic-example-syn-002"],
+  "validationReportRef": "validation-helpdesk-contact-map-1",
+  "includesPrivateSourceFixtures": false,
+  "knownLimitations": [
+    "Mapping interpreter is not implemented in Sprint 0",
+    "Live Firebase inference is not implemented in Sprint 0"
+  ]
+}

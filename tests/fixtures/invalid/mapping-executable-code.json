@@ -1,0 +1,12 @@
+{
+  "contractKind": "mapping",
+  "schemaVersion": "1.0.0",
+  "mappingId": "bad-code",
+  "mappingVersion": "1",
+  "phantomId": "phantom-northwind-contacts-v1",
+  "destinationSchemaId": "helpdesk-contact",
+  "operations": [
+    { "op": "copy", "from": "contact_id", "to": "externalId" }
+  ],
+  "javascript": "function transform(row) { return eval(row.expr); }"
+}

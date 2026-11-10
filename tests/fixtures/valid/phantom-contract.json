@@ -1,0 +1,74 @@
+{
+  "contractKind": "phantom",
+  "schemaVersion": "1.0.0",
+  "phantomId": "phantom-northwind-contacts-v1",
+  "sourceDatasetId": "northwind-contacts-synthetic",
+  "approvedForCloud": true,
+  "entities": [
+    {
+      "id": "contact",
+      "label": "Contact",
+      "description": "Synthetic CRM contact approved for cloud mapping"
+    }
+  ],
+  "fields": [
+    {
+      "alias": "contact_id",
+      "entityId": "contact",
+      "sourceFieldId": "id",
+      "type": "string",
+      "shareable": true,
+      "semanticDescriptor": "opaque contact identifier"
+    },
+    {
+      "alias": "contact_email",
+      "entityId": "contact",
+      "sourceFieldId": "email",
+      "type": "string",
+      "shareable": true,
+      "semanticDescriptor": "work email address"
+    },
+    {
+      "alias": "lifecycle_status",
+      "entityId": "contact",
+      "sourceFieldId": "status",
+      "type": "enum",
+      "shareable": true,
+      "semanticDescriptor": "account lifecycle state",
+      "enumValues": ["active", "paused", "closed"]
+    },
+    {
+      "alias": "opened_on",
+      "entityId": "contact",
+      "sourceFieldId": "created_at",
+      "type": "date",
+      "shareable": true,
+      "semanticDescriptor": "date the contact record was opened"
+    }
+  ],
+  "syntheticExamples": [
+    {
+      "contact_id": "syn-001",
+      "contact_email": "casey.nguyen@example.test",
+      "lifecycle_status": "active",
+      "opened_on": "2024-02-01"
+    },
+    {
+      "contact_id": "syn-002",
+      "contact_email": "riley.okonkwo@example.test",
+      "lifecycle_status": "paused",
+      "opened_on": "2024-05-18"
+    }
+  ],
+  "disclosureConstraints": [
+    "Share only aliases and synthetic examples",
+    "Do not include names, notes, or national identifiers"
+  ],
+  "shareableFieldAliases": [
+    "contact_id",
+    "contact_email",
+    "lifecycle_status",
+    "opened_on"
+  ],
+  "nonShareableSourceFieldIds": ["full_name", "ssn_token", "notes"]
+}

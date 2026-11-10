@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://eyes-without-a-face.dev/schemas/mapping/1.0.0",
+  "title": "Mapping Contract",
+  "description": "Declarative integration mapping. Models must never supply executable JavaScript.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contractKind",
+    "schemaVersion",
+    "mappingId",
+    "mappingVersion",
+    "phantomId",
+    "destinationSchemaId",
+    "operations"
+  ],
+  "properties": {
+    "contractKind": { "const": "mapping" },
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "mappingId": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "mappingVersion": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "phantomId": { "type": "string", "minLength": 1 },
+    "destinationSchemaId": { "type": "string", "minLength": 1 },
+    "destinationSchemaVersion": { "type": "string" },
+    "operations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/operation" }
+    },
+    "notes": { "type": "string", "maxLength": 1024 }
+  },
+  "$defs": {
+    "fieldRef": { "type": "string", "minLength": 1, "maxLength": 256 },
+    "operation": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["op", "from", "to"],
+          "properties": {
+            "op": { "const": "copy" },
+            "from": { "$ref": "#/$defs/fieldRef" },
+            "to": { "$ref": "#/$defs/fieldRef" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["op", "from", "to"],
+          "properties": {
+            "op": { "const": "rename" },
+            "from": { "$ref": "#/$defs/fieldRef" },
+            "to": { "$ref": "#/$defs/fieldRef" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["op", "from", "to"],
+          "properties": {
+            "op": { "const": "trim" },
+            "from": { "$ref": "#/$defs/fieldRef" },
+            "to": { "$ref": "#/$defs/fieldRef" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["op", "from", "to"],
+          "properties": {
+            "op": { "const": "normalize_email" },
+            "from": { "$ref": "#/$defs/fieldRef" },
+            "to": { "$ref": "#/$defs/fieldRef" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["op", "from", "to", "params"],
+          "properties": {
+            "op": { "const": "parse_date" },
+            "from": { "$ref": "#/$defs/fieldRef" },
+            "to": { "$ref": "#/$defs/fieldRef" },
+            "params": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["inputFormat"],
+              "properties": {
+                "inputFormat": {
+                  "type": "string",
+                  "enum": ["ISO-8601", "YYYY-MM-DD", "MM/DD/YYYY", "DD/MM/YYYY"]
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["op", "from", "to", "params"],
+          "properties": {
+            "op": { "const": "map_enum" },
+            "from": { "$ref": "#/$defs/fieldRef" },
+            "to": { "$ref": "#/$defs/fieldRef" },
+            "params": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["map", "unmapped"],
+              "properties": {
+                "map": {
+                  "type": "object",
+                  "minProperties": 1,
+                  "additionalProperties": { "type": "string" }
+                },
+                "unmapped": { "enum": ["fail", "default"] },
+                "default": { "type": ["string", "null"] }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["op", "to", "params"],
+          "properties": {
+            "op": { "const": "default_if_missing" },
+            "from": { "$ref": "#/$defs/fieldRef" },
+            "to": { "$ref": "#/$defs/fieldRef" },
+            "params": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["value"],
+              "properties": {
+                "value": { "type": ["string", "number", "boolean", "null"] }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["op", "from", "to", "params"],
+          "properties": {
+            "op": { "const": "concat" },
+            "from": {
+              "type": "array",
+              "minItems": 2,
+              "items": { "$ref": "#/$defs/fieldRef" }
+            },
+            "to": { "$ref": "#/$defs/fieldRef" },
+            "params": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["separator"],
+              "properties": {
+                "separator": { "type": "string", "maxLength": 16 }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

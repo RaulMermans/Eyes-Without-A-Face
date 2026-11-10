@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://eyes-without-a-face.dev/schemas/source/1.0.0",
+  "title": "Source Contract",
+  "description": "Structure of a locally imported JSON dataset. Canonical schema for source contracts.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contractKind",
+    "schemaVersion",
+    "datasetId",
+    "localOnly",
+    "fields"
+  ],
+  "properties": {
+    "contractKind": { "const": "source" },
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0",
+      "description": "Unsupported versions are rejected by the validator."
+    },
+    "datasetId": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "title": { "type": "string", "maxLength": 256 },
+    "localOnly": {
+      "const": true,
+      "description": "Source contracts are never shareable with cloud inference."
+    },
+    "fields": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/field" }
+    },
+    "constraints": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/datasetConstraint" }
+    }
+  },
+  "$defs": {
+    "field": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "path", "type", "required", "sensitivity"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "path": { "type": "string", "minLength": 1, "maxLength": 256 },
+        "type": {
+          "type": "string",
+          "enum": [
+            "string",
+            "number",
+            "integer",
+            "boolean",
+            "date",
+            "datetime",
+            "enum",
+            "object",
+            "array"
+          ]
+        },
+        "required": { "type": "boolean" },
+        "sensitivity": {
+          "type": "string",
+          "enum": ["private", "internal", "synthetic-ok"]
+        },
+        "description": { "type": "string", "maxLength": 512 },
+        "enumValues": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "constraints": { "$ref": "#/$defs/fieldConstraints" },
+        "localOnlyMetadata": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "originalName": { "type": "string" },
+            "notes": { "type": "string", "maxLength": 512 }
+          }
+        }
+      }
+    },
+    "fieldConstraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "minLength": { "type": "integer", "minimum": 0 },
+        "maxLength": { "type": "integer", "minimum": 0 },
+        "minimum": { "type": "number" },
+        "maximum": { "type": "number" },
+        "pattern": { "type": "string" },
+        "format": {
+          "type": "string",
+          "enum": ["email", "uri", "date", "date-time", "uuid"]
+        }
+      }
+    },
+    "datasetConstraint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": { "enum": ["unique", "required-group"] },
+        "fields": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "contractKind": "export",
+  "schemaVersion": "1.0.0",
+  "exportId": "export-leaky",
+  "mappingId": "helpdesk-contact-map",
+  "mappingVersion": "1",
+  "runtime": {
+    "engine": "phantom-twin-mapping",
+    "minAppVersion": "0.1.0"
+  },
+  "syntheticFixtureRefs": ["source-records"],
+  "validationReportRef": "validation-helpdesk-contact-map-1",
+  "includesPrivateSourceFixtures": true,
+  "knownLimitations": ["invalid on purpose"]
+}

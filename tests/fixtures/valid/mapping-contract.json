@@ -1,0 +1,35 @@
+{
+  "contractKind": "mapping",
+  "schemaVersion": "1.0.0",
+  "mappingId": "helpdesk-contact-map",
+  "mappingVersion": "1",
+  "phantomId": "phantom-northwind-contacts-v1",
+  "destinationSchemaId": "helpdesk-contact",
+  "destinationSchemaVersion": "1.0.0",
+  "operations": [
+    { "op": "copy", "from": "contact_id", "to": "externalId" },
+    { "op": "normalize_email", "from": "contact_email", "to": "email" },
+    {
+      "op": "default_if_missing",
+      "from": "contact_id",
+      "to": "displayName",
+      "params": { "value": "unnamed-contact" }
+    },
+    {
+      "op": "map_enum",
+      "from": "lifecycle_status",
+      "to": "lifecycle",
+      "params": {
+        "map": { "active": "open", "paused": "hold", "closed": "resolved" },
+        "unmapped": "fail"
+      }
+    },
+    {
+      "op": "parse_date",
+      "from": "opened_on",
+      "to": "openedOn",
+      "params": { "inputFormat": "YYYY-MM-DD" }
+    }
+  ],
+  "notes": "Declarative mapping only. No executable transforms."
+}

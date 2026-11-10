@@ -1,0 +1,9 @@
+{
+  "contractKind": "mapping",
+  "schemaVersion": "1.0.0",
+  "mappingId": "bad-op",
+  "mappingVersion": "1",
+  "phantomId": "phantom-northwind-contacts-v1",
+  "destinationSchemaId": "helpdesk-contact",
+  "operations": [{ "op": "eval_js", "from": "contact_id", "to": "externalId" }]
+}

@@ -1,0 +1,34 @@
+{
+  "contractKind": "validation",
+  "schemaVersion": "1.0.0",
+  "reportId": "validation-helpdesk-contact-map-1",
+  "mappingId": "helpdesk-contact-map",
+  "mappingVersion": "1",
+  "generatedAt": "2026-11-10T16:00:00.000Z",
+  "results": [
+    {
+      "testId": "T-001-happy-path",
+      "status": "pass",
+      "expected": {
+        "externalId": "syn-001",
+        "email": "casey.nguyen@example.test",
+        "lifecycle": "open"
+      },
+      "observed": {
+        "externalId": "syn-001",
+        "email": "casey.nguyen@example.test",
+        "lifecycle": "open"
+      },
+      "reproduction": { "fixtureId": "synthetic-example-syn-001", "seed": 1 }
+    },
+    {
+      "testId": "T-002-enum-unmapped",
+      "status": "fail",
+      "expected": { "lifecycle": "open" },
+      "observed": { "lifecycle": null },
+      "failureCode": "ENUM_UNMAPPED",
+      "diagnostic": "lifecycle_status value is not present in map_enum.map",
+      "reproduction": { "fixtureId": "exceptional-unknown-status" }
+    }
+  ]
+}

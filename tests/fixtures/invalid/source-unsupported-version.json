@@ -1,0 +1,15 @@
+{
+  "contractKind": "source",
+  "schemaVersion": "2.0.0",
+  "datasetId": "broken",
+  "localOnly": true,
+  "fields": [
+    {
+      "id": "id",
+      "path": "id",
+      "type": "string",
+      "required": true,
+      "sensitivity": "internal"
+    }
+  ]
+}

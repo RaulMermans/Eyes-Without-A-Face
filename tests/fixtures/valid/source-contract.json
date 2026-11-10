@@ -1,0 +1,66 @@
+{
+  "contractKind": "source",
+  "schemaVersion": "1.0.0",
+  "datasetId": "northwind-contacts-synthetic",
+  "title": "Fictitious Northwind contacts",
+  "localOnly": true,
+  "fields": [
+    {
+      "id": "id",
+      "path": "id",
+      "type": "string",
+      "required": true,
+      "sensitivity": "internal"
+    },
+    {
+      "id": "full_name",
+      "path": "full_name",
+      "type": "string",
+      "required": true,
+      "sensitivity": "private",
+      "constraints": { "maxLength": 120 },
+      "localOnlyMetadata": { "originalName": "Full Name" }
+    },
+    {
+      "id": "email",
+      "path": "email",
+      "type": "string",
+      "required": true,
+      "sensitivity": "synthetic-ok",
+      "constraints": { "format": "email" }
+    },
+    {
+      "id": "status",
+      "path": "status",
+      "type": "enum",
+      "required": true,
+      "sensitivity": "synthetic-ok",
+      "enumValues": ["active", "paused", "closed"]
+    },
+    {
+      "id": "created_at",
+      "path": "created_at",
+      "type": "date",
+      "required": true,
+      "sensitivity": "synthetic-ok"
+    },
+    {
+      "id": "ssn_token",
+      "path": "ssn_token",
+      "type": "string",
+      "required": false,
+      "sensitivity": "private",
+      "localOnlyMetadata": {
+        "notes": "Fictitious canary. Never disclose."
+      }
+    },
+    {
+      "id": "notes",
+      "path": "notes",
+      "type": "string",
+      "required": false,
+      "sensitivity": "private"
+    }
+  ],
+  "constraints": [{ "type": "unique", "fields": ["id"] }]
+}

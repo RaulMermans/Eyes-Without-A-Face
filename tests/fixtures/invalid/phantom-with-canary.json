@@ -1,0 +1,23 @@
+{
+  "contractKind": "phantom",
+  "schemaVersion": "1.0.0",
+  "phantomId": "leaky-phantom",
+  "sourceDatasetId": "northwind-contacts-synthetic",
+  "approvedForCloud": true,
+  "entities": [{ "id": "contact", "label": "Contact" }],
+  "fields": [
+    {
+      "alias": "notes",
+      "entityId": "contact",
+      "sourceFieldId": "notes",
+      "type": "string",
+      "shareable": true,
+      "semanticDescriptor": "PRIVATE_CANARY_PII_DO_NOT_SHARE leaked notes"
+    }
+  ],
+  "syntheticExamples": [
+    { "notes": "PRIVATE_CANARY_PII_DO_NOT_SHARE fictitious support note" }
+  ],
+  "shareableFieldAliases": ["notes"],
+  "nonShareableSourceFieldIds": ["ssn_token"]
+}

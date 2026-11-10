@@ -1,0 +1,15 @@
+{
+  "contractKind": "source",
+  "schemaVersion": "1.0.0",
+  "datasetId": "broken-enum",
+  "localOnly": true,
+  "fields": [
+    {
+      "id": "status",
+      "path": "status",
+      "type": "enum",
+      "required": true,
+      "sensitivity": "synthetic-ok"
+    }
+  ]
+}

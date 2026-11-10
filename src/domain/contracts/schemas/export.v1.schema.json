@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://eyes-without-a-face.dev/schemas/export/1.0.0",
+  "title": "Export Contract",
+  "description": "Manifest for a portable integration package. Private source fixtures are excluded by default.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contractKind",
+    "schemaVersion",
+    "exportId",
+    "mappingId",
+    "mappingVersion",
+    "runtime",
+    "syntheticFixtureRefs",
+    "validationReportRef",
+    "includesPrivateSourceFixtures",
+    "knownLimitations"
+  ],
+  "properties": {
+    "contractKind": { "const": "export" },
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "exportId": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "mappingId": { "type": "string", "minLength": 1 },
+    "mappingVersion": { "type": "string", "minLength": 1 },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["engine", "minAppVersion"],
+      "properties": {
+        "engine": { "const": "phantom-twin-mapping" },
+        "minAppVersion": { "type": "string", "minLength": 1 }
+      }
+    },
+    "syntheticFixtureRefs": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "validationReportRef": { "type": "string", "minLength": 1 },
+    "includesPrivateSourceFixtures": {
+      "const": false,
+      "description": "Private source datasets must not be packed into exports by default."
+    },
+    "knownLimitations": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 512 }
+    }
+  }
+}

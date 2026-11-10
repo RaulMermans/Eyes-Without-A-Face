@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://eyes-without-a-face.dev/examples/destination/helpdesk-contact/1.0.0",
+  "title": "Helpdesk contact destination",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["externalId", "displayName", "email", "lifecycle", "openedOn"],
+  "properties": {
+    "externalId": { "type": "string" },
+    "displayName": { "type": "string" },
+    "email": { "type": "string", "format": "email" },
+    "lifecycle": { "enum": ["open", "hold", "resolved"] },
+    "openedOn": { "type": "string", "format": "date" }
+  }
+}
