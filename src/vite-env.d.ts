@@ -21,6 +21,8 @@ interface Navigator {
 interface EyesTestHarness {
   label: "test-harness";
   onDeviceUnavailable?: boolean;
+  onDeviceAvailable?: boolean;
+  onDeviceRuntimeFailures?: number[];
   onDeviceOutput?: unknown;
   cloudOutput?: unknown;
   deriveProposal?: boolean;
@@ -53,6 +55,7 @@ interface ImportMetaEnv {
   readonly VITE_ENABLE_CLOUD_INFERENCE?: string;
   readonly VITE_APP_CHECK_DEBUG?: string;
   readonly VITE_FIREBASE_APP_CHECK_SITE_KEY?: string;
+  readonly VITE_BUILD_SHA?: string;
 }
 
 interface ImportMeta {

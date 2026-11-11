@@ -3,7 +3,7 @@ import { loadAppConfig } from "../config/firebase.ts";
 import { isLiveInferenceAvailable } from "../config/env.ts";
 import { createInferenceServices } from "../inference/adapters.ts";
 import { Badge } from "../components/ui/badge.tsx";
-import { ErrorBanner } from "../components/ErrorBanner.tsx";
+import { Button } from "../components/ui/button.tsx";
 import { BrandMark } from "../brand/Logo.tsx";
 import { clearLocalPrivateIndex, setLocalPrivateIndex } from "../privacy/leak-scan.ts";
 import { listWorkflowEvents, recordWorkflowEvent } from "../observability/workflow-log.ts";
@@ -18,7 +18,8 @@ import { ReviewPanel } from "./ReviewPanel.tsx";
 import { SourcePanel } from "./SourcePanel.tsx";
 import { VerificationPanel } from "./VerificationPanel.tsx";
 import type { ImportedSource } from "./source-import.ts";
-import { initialWorkspaceState } from "./workspace-state.ts";
+import { withCrmDemo } from "./demo.ts";
+import { initialWorkspaceState, type WorkspaceState } from "./workspace-state.ts";
 import { WORKFLOW_STEPS, type WorkflowStepId } from "./workflow.ts";
 
 const STEP_DETAILS: Record<WorkflowStepId, { body: string }> = {
@@ -35,12 +36,32 @@ const STEP_DETAILS: Record<WorkflowStepId, { body: string }> = {
     body: "AI proposes; deterministic software validates and executes. Proposals are rejected unless they pass the canonical Mapping Contract and alias checks.",
   },
   verification: {
-    body: "The Sprint 2 engine executes the resolved mapping against the private records and reserved hidden cases. Private diagnostics stay local.",
-  },
-  export: {
-    body: "Exports will include the mapping, synthetic fixtures, and verification report. Private source fixtures are excluded by default.",
+    body: "The deterministic mapping engine executes the resolved mapping against the private records and reserved hidden cases. Private diagnostics stay local.",
   },
 };
+
+const PATH_STRIP: ReadonlyArray<{ label: string; where: string; tone: "local" | "cloud" | "approval" }> = [
+  { label: "Private source", where: "This browser", tone: "local" },
+  { label: "Phantom Twin", where: "This browser · Gemini Nano on-device", tone: "local" },
+  { label: "Disclosure review", where: "You approve one exact request", tone: "approval" },
+  { label: "Cloud mapping", where: "Gemini in the cloud · aliases only", tone: "cloud" },
+  { label: "Reality Check", where: "This browser · deterministic", tone: "local" },
+];
+
+function stepDone(id: WorkflowStepId, workspace: WorkspaceState, prepared: PreparedTwin | null): boolean {
+  switch (id) {
+    case "source":
+      return Boolean(workspace.source && prepared);
+    case "phantom":
+      return Boolean(workspace.review);
+    case "review":
+      return workspace.review?.status === "approved" || workspace.review?.status === "sent";
+    case "mapping":
+      return Boolean(workspace.proposal?.result.ok);
+    case "verification":
+      return Boolean(workspace.report);
+  }
+}
 
 interface TwinComputation {
   prepared: PreparedTwin | null;
@@ -124,6 +145,7 @@ export default function App() {
         <ol className="mx-auto flex max-w-6xl gap-1 overflow-x-auto px-2 py-2 sm:px-4">
           {WORKFLOW_STEPS.map((item) => {
             const selected = item.id === step.id;
+            const done = stepDone(item.id, workspace, prepared);
             return (
               <li key={item.id} className="min-w-fit flex-1">
                 <button
@@ -139,7 +161,14 @@ export default function App() {
                   <span className="font-mono text-[11px] opacity-80">
                     {item.number} · {item.processing}
                   </span>
-                  <span className="text-sm font-medium">{item.title}</span>
+                  <span className="text-sm font-medium">
+                    {item.title}
+                    {done ? (
+                      <span className={`ml-1.5 ${selected ? "text-gold" : "text-local"}`} aria-label="completed" data-testid={`step-done-${item.id}`}>
+                        ✓
+                      </span>
+                    ) : null}
+                  </span>
                 </button>
               </li>
             );
@@ -153,18 +182,49 @@ export default function App() {
       >
         <div className="min-w-0 space-y-6">
           {step.id === "source" ? (
-            <section className="border border-rule bg-panel p-5">
-              <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+            <section className="border border-rule bg-panel p-5 sm:p-6" aria-labelledby="intro-heading" data-testid="intro">
+              <div className="flex flex-col items-start gap-5 sm:flex-row">
                 <BrandMark size="hero" />
-                <div>
-                  <p className="font-mono text-xs text-mute">Official emblem</p>
-                  <h2 className="mt-1 text-xl font-semibold">A twin the cloud is allowed to see</h2>
-                  <p className="mt-2 max-w-xl text-sm leading-6 text-mute">
-                    Private CRM JSON stays in this browser. On-device inference may interpret
-                    structure. Only an approved disclosure payload can reach Gemini.
+                <div className="min-w-0">
+                  <h2 id="intro-heading" className="text-2xl font-semibold leading-tight">
+                    Let AI design an integration for data it is never shown
+                  </h2>
+                  <p className="mt-3 max-w-xl text-sm leading-6">
+                    You need to connect a private CRM to a new system, and a cloud model could write the
+                    mapping, but the customer records must not leave your machine. Eyes Without a Face builds
+                    a <span className="font-semibold">Phantom Twin</span>: the same structure with meaningless
+                    field aliases and fictional example values. Gemini reasons over the twin. Your browser
+                    then runs its proposal against the real records and against hidden cases the model never
+                    saw.
                   </p>
+                  <p className="mt-2 max-w-xl text-sm leading-6 text-mute">
+                    AI proposes. Deterministic code validates and executes. A twin reduces what is disclosed,
+                    but it can still reveal structure, so you review the exact request before anything is sent.
+                  </p>
+                  {!workspace.source ? (
+                    <div className="mt-4 flex flex-wrap items-center gap-3">
+                      <Button variant="primary" onClick={() => setWorkspace(withCrmDemo(workspace))} data-testid="start-demo">
+                        Try the fictional CRM demo
+                      </Button>
+                      <span className="text-xs text-mute">3 fictional records · nothing is uploaded</span>
+                    </div>
+                  ) : null}
                 </div>
               </div>
+              <ol className="mt-6 grid gap-2 sm:grid-cols-5" aria-label="Where each step runs" data-testid="path-strip">
+                {PATH_STRIP.map((item, index) => (
+                  <li
+                    key={item.label}
+                    className={`border-t-4 bg-paper p-2 text-xs ${
+                      item.tone === "local" ? "border-local" : item.tone === "cloud" ? "border-cloud" : "border-gold"
+                    }`}
+                  >
+                    <span className="font-mono text-mute">{index + 1}</span>{" "}
+                    <span className="font-semibold">{item.label}</span>
+                    <span className="mt-0.5 block text-mute">{item.where}</span>
+                  </li>
+                ))}
+              </ol>
             </section>
           ) : null}
 
@@ -177,14 +237,6 @@ export default function App() {
             </h2>
             <p className="mt-3 text-sm leading-6">{step.summary}</p>
             <p className="mt-3 text-sm leading-6 text-mute">{details.body}</p>
-            {step.id === "export" ? (
-              <div className="mt-5">
-                <ErrorBanner title={`${step.title} is not implemented yet`}>
-                  Package generation is not implemented. The export schema already forbids
-                  includesPrivateSourceFixtures=true.
-                </ErrorBanner>
-              </div>
-            ) : null}
           </section>
 
           {step.id === "source" ? (
@@ -278,6 +330,13 @@ export default function App() {
           </section>
         </aside>
       </main>
+      <footer className="border-t border-rule">
+        <div className="mx-auto flex max-w-6xl flex-wrap gap-x-4 gap-y-1 px-4 py-4 font-mono text-[11px] text-mute">
+          <span>Eyes Without a Face · Apache-2.0</span>
+          <span>Firebase AI Logic · Gemini Nano on-device · Gemini in the cloud</span>
+          <span data-testid="build-revision">{config.buildSha ? `build ${config.buildSha}` : "development build"}</span>
+        </div>
+      </footer>
     </div>
   );
 }

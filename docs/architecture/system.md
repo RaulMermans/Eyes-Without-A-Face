@@ -89,3 +89,9 @@ Cloud `generateAuthorized` requires an `AuthorizedCloudRequest` reserved by `sub
 | Mapping proposal | Approved CloudDisclosurePayload 1.1.0 | Cloud Gemini via Firebase |
 | Conversion, alias resolution, Reality Check | Proposal + local bindings + private records | None |
 | Export | Mapping, synthetic fixtures, report | None |
+
+## Sprint 5 changes (no new boundaries)
+
+- **On-device failure handling.** `classifyUnknownError` maps Chrome `kError*` failures to `ON_DEVICE_RUNTIME_ERROR`. The live adapter drops its cached `GenerativeModel` after a recoverable failure. `retry-policy.ts` allows exactly one *user-initiated* on-device retry (`ON_DEVICE_USER_RETRY_LIMIT = 1`), which resumes unclassified fields. Cloud retries remain at zero.
+- **Release build.** `scripts/build-release.mjs` and `scripts/verify-release.mjs` sit outside the app. They force App Check debug off, stamp `VITE_BUILD_SHA` (exposed as `AppConfig.buildSha`) and verify `dist/` before any Hosting deploy.
+- **UI.** The workflow shows only implemented steps (five). The Reality Check verdict separates imported-record transformation from hidden-case coverage, while `report.overall` stays strict. When the cloud adapter is unavailable, the send action is disabled so an approval is never spent on a request that cannot be dispatched. The gate and adapter still refuse independently.

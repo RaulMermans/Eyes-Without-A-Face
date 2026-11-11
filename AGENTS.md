@@ -20,6 +20,13 @@ Build a privacy-aware integration tool: private CRM JSON stays local; on-device 
 - Destination schemas reach the cloud only as the reviewed `target` of a cloud-disclosure 1.1.0 payload. Never append text to an approved prompt.
 - Label every proposal by origin (Gemini `IN_CLOUD`, simulated test adapter, manual edit). Never present deterministic or simulated output as Gemini or on-device AI.
 
+## Release rules (Sprint 5)
+
+- Deploy only output of `pnpm build:release` (clean tree, App Check debug forced off, Git SHA stamped, `verify-release` PASS). Never deploy `pnpm build` output: Vite loads `.env.local` in every mode.
+- Deployment, reCAPTCHA domain changes, repository visibility changes, CI billing, and Devpost submission all need explicit owner approval.
+- On-device failures: at most one user-initiated retry (`ON_DEVICE_USER_RETRY_LIMIT`), resuming unclassified fields. Never retry automatically, never fall back to the cloud.
+- Do not offer UI steps that are not implemented.
+
 ## Tool and data permissions
 
 Allowed without extra authorization: local files in this repository, local tests, local Vite server, Playwright against localhost.

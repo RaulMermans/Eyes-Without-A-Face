@@ -134,7 +134,7 @@ test.describe("E2E-024 UI integrity", () => {
     const pageErrors: string[] = [];
     page.on("pageerror", (error) => pageErrors.push(error.message));
     await page.goto("/");
-    for (const name of ["Source System", "Phantom Twin", "Disclosure Review", "Cloud Mapping", "Reality Check", "Export"]) {
+    for (const name of ["Source System", "Phantom Twin", "Disclosure Review", "Cloud Mapping", "Reality Check"]) {
       await page.getByRole("button", { name: new RegExp(name) }).click();
       await expect(page.getByRole("heading", { level: 2, name })).toBeVisible();
     }

@@ -16,6 +16,10 @@ import type {
 export interface TestHarness {
   label: "test-harness";
   onDeviceUnavailable?: boolean;
+  /** Report the on-device path as configured and available (simulated, E2E only). */
+  onDeviceAvailable?: boolean;
+  /** 0-based on-device generate() call indices that fail like a Chrome model-service crash (E2E only). */
+  onDeviceRuntimeFailures?: number[];
   onDeviceOutput?: unknown;
   cloudOutput?: unknown;
   /** Build a labeled simulated proposal from the approved payload (E2E only). */
@@ -36,10 +40,23 @@ export function createTestOnDeviceAdapter(
   harness: TestHarness,
   availability: InferenceAvailability,
 ): OnDeviceInferenceAdapter {
+  let calls = 0;
   return {
     execution: "on-device",
-    status: () => availability,
+    status: () => (harness.onDeviceAvailable ? { state: "configured", reason: "adapters-ready" } : availability),
     probeCapability: async (): Promise<OnDeviceCapability> => {
+      if (harness.onDeviceAvailable) {
+        return {
+          chromeVersion: null,
+          promptApi: "available",
+          languageModelAvailability: "available",
+          guidance: "Test harness: simulated on-device availability. Results are labeled simulated.",
+          userAgent: null,
+          platform: null,
+          hardwareConcurrency: null,
+          deviceMemoryGiB: null,
+        };
+      }
       if (harness.onDeviceUnavailable) {
         return {
           chromeVersion: null,
@@ -68,6 +85,14 @@ export function createTestOnDeviceAdapter(
         throw new InferenceUnavailableError(
           "Test harness: on-device model unavailable. No cloud fallback will run.",
           "MODEL_UNAVAILABLE",
+        );
+      }
+      const call = calls;
+      calls += 1;
+      if (harness.onDeviceRuntimeFailures?.includes(call)) {
+        throw new InferenceError(
+          "ON_DEVICE_RUNTIME_ERROR",
+          "Test harness: simulated Chrome on-device model service failure (kErrorUnknown).",
         );
       }
       const structured = harness.onDeviceOutput ?? {

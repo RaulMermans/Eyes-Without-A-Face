@@ -1,10 +1,10 @@
 import type { ChangeEvent } from "react";
-import sourceRecords from "../examples/crm/source-records.json" with { type: "json" };
 import edgeRecords from "../examples/crm/edge-records.json" with { type: "json" };
 import { Badge } from "../components/ui/badge.tsx";
 import { Button } from "../components/ui/button.tsx";
 import { ErrorBanner } from "../components/ErrorBanner.tsx";
 import type { ProfileIssue, SourceProfile } from "../domain/profile/profile.ts";
+import { withCrmDemo } from "./demo.ts";
 import { parseSourceDataset } from "./source-import.ts";
 import { invalidateDownstream, type WorkspaceState } from "./workspace-state.ts";
 
@@ -57,14 +57,7 @@ export function SourcePanel({
       </p>
       <div className="mt-4 flex flex-wrap gap-2">
         <Button
-          variant="primary"
-          onClick={() =>
-            applyText(
-              JSON.stringify(sourceRecords),
-              "fictional-crm-accounts",
-              edgeRecords.records as Record<string, unknown>[],
-            )
-          }
+          onClick={() => onChange(withCrmDemo(workspace))}
           data-testid="load-crm-sample"
         >
           Load fictional CRM sample

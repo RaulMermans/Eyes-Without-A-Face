@@ -12,6 +12,7 @@ Read, in order:
 6. `docs/contracts/mapping.md` — mapping DSL and interpreter
 7. `docs/contracts/mapping-proposal.md` — proposal conversion and alias resolution
 8. `docs/sprints/sprint-3.md` — Sprint 3 report
-9. `docs/sprints/sprint-4-readiness.md` — blockers before correction, export, and release
+9. `docs/sprints/sprint-5.md` — Sprint 5 release-candidate report and remaining owner approvals
+10. `docs/deployment.md` — release build and approval-gated deployment
 
-Do not duplicate architecture here. Do not start Sprint 4 automatically.
+Do not duplicate architecture here. Do not start Sprint 6 automatically.

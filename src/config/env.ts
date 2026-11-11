@@ -20,6 +20,7 @@ const envSchema = z.object({
   VITE_ENABLE_CLOUD_INFERENCE: booleanFlag,
   VITE_APP_CHECK_DEBUG: booleanFlag,
   VITE_FIREBASE_APP_CHECK_SITE_KEY: z.string().optional().default(""),
+  VITE_BUILD_SHA: z.string().optional().default(""),
 });
 
 export const REQUIRED_FIREBASE_KEYS = [
@@ -61,6 +62,8 @@ export interface AppConfig {
   enableOnDeviceInference: boolean;
   enableCloudInference: boolean;
   productionBuild: boolean;
+  /** Git revision stamped by `pnpm build:release`; empty in dev builds. */
+  buildSha: string;
   appCheckDebug: boolean;
   appCheckSiteKey: string;
   appCheck: AppCheckStatus;
@@ -169,6 +172,7 @@ export function parseAppConfig(env: RawEnv): AppConfig {
     enableOnDeviceInference: Boolean(parsed.VITE_ENABLE_ON_DEVICE_INFERENCE),
     enableCloudInference: Boolean(parsed.VITE_ENABLE_CLOUD_INFERENCE),
     productionBuild,
+    buildSha: /^[0-9a-f]{7,40}(-dirty)?$/.test(parsed.VITE_BUILD_SHA) ? parsed.VITE_BUILD_SHA : "",
     appCheckDebug: appCheck.debugEnabled,
     appCheckSiteKey: parsed.VITE_FIREBASE_APP_CHECK_SITE_KEY,
     appCheck,

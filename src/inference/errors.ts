@@ -13,6 +13,7 @@ export type InferenceErrorCode =
   | "STALE_AUTHORIZATION"
   | "USER_REJECTED"
   | "SDK_INIT_FAILED"
+  | "ON_DEVICE_RUNTIME_ERROR"
   | "PROVENANCE_MISMATCH"
   | "PROVENANCE_UNVERIFIED"
   | "PROVENANCE_UNKNOWN"
@@ -53,6 +54,16 @@ export function classifyUnknownError(error: unknown): InferenceError {
   }
   const message = error instanceof Error ? error.message : String(error);
   const lowered = message.toLowerCase();
+  // Chrome's built-in AI reports model-service failures as kError* codes.
+  // Sprint 5: kErrorUnknown coincided with a native crash of the
+  // on_device_model utility process (SIGILL) while a prompt was running.
+  const chromeCode = /\bkError[A-Za-z]+\b/.exec(message)?.[0];
+  if (chromeCode) {
+    return new InferenceError(
+      "ON_DEVICE_RUNTIME_ERROR",
+      `Chrome's on-device model service failed (${chromeCode}). This is a browser runtime failure, not a problem with the input. ${message}`,
+    );
+  }
   if (
     lowered.includes("app check") ||
     lowered.includes("appcheck") ||
