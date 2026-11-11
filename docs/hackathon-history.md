@@ -1,0 +1,17 @@
+# Development history
+
+For the submission's explanation of work done before and during the submission period (11–30 November 2026). Dates come from Git commit metadata. The Official Rules on pre-existing code are **unverified** (see [hackathon-requirements.md](hackathon-requirements.md)), so check this account against them before submitting.
+
+| Date | Sprint | Work |
+| --- | --- | --- |
+| 2026-11-10 (before the submission period) | 0 | Repository foundation: canonical JSON Schema contracts, test harness, docs |
+| 2026-11-10 (before) | 1, 1.1 | Firebase AI Logic adapters (`ONLY_ON_DEVICE` / `ONLY_IN_CLOUD`), disclosure gate, provenance validation, single-use approval |
+| 2026-11-10 (before) | 2 | Deterministic eight-operation mapping engine |
+| 2026-11-11 (period opens) | 3 | Phantom Twin generation, cloud disclosure 1.1.0, proposal conversion, alias resolution, Reality Check, guided UI |
+| 2026-11-11 | 4 | Firebase CLI/MCP setup. Root cause of the on-device blocker and **first real Gemini Nano inference** through Firebase AI Logic. App Check token preparation. Reality Check stage-status fix. Adversarial privacy tests. Fix for a live-test trace leak. License, demo and release docs |
+
+Sprints 0–2 predate the submission period. Present them as pre-existing work and describe Sprint 3 onward as competition-period work, as far as the Official Rules allow.
+
+## Third-party code
+
+Open-source dependencies installed through pnpm. The production dependency tree is all permissive: Apache-2.0, MIT, BSD-3-Clause, ISC and 0BSD (`pnpm licenses list --prod`). No copied proprietary code. The emblem's provenance is documented in [branding/README.md](branding/README.md).

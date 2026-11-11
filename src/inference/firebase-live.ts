@@ -30,7 +30,12 @@ import { recordDiagnostic } from "./diagnostics.ts";
 import { classifyUnknownError, InferenceError, InferenceUnavailableError } from "./errors.ts";
 import { FIREBASE_AI_LOGIC_API } from "./firebase-api.ts";
 import { probeOnDeviceCapability } from "./on-device-capability.ts";
-import { buildCloudPrompt, buildOnDevicePrompt, MAPPING_PROPOSAL_JSON_SCHEMA } from "./prompts.ts";
+import {
+  buildCloudPrompt,
+  buildOnDevicePrompt,
+  FIELD_INTERPRETATION_JSON_SCHEMA,
+  MAPPING_PROPOSAL_JSON_SCHEMA,
+} from "./prompts.ts";
 import {
   assertLiveProvenance,
   expectedSourceForMode,
@@ -176,6 +181,7 @@ class LiveFirebaseRuntime {
             expectedInputs: [{ type: "text", languages: ["en"] }],
             expectedOutputs: [{ type: "text", languages: ["en"] }],
           },
+          promptOptions: { responseConstraint: FIELD_INTERPRETATION_JSON_SCHEMA },
         },
       });
       await model.initializeDeviceModel((progress) => {

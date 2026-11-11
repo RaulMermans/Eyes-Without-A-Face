@@ -3,10 +3,18 @@ import { Badge } from "../components/ui/badge.tsx";
 import { Button } from "../components/ui/button.tsx";
 import { ErrorBanner } from "../components/ErrorBanner.tsx";
 import { recordWorkflowEvent } from "../observability/workflow-log.ts";
-import { runRealityCheck } from "../verification/reality-check.ts";
+import { runRealityCheck, type RealityCheckStatuses } from "../verification/reality-check.ts";
 import type { PreparedTwin } from "../workflow/pipeline.ts";
 import { ORIGIN_LABELS } from "./result-kind.ts";
 import type { WorkspaceState } from "./workspace-state.ts";
+
+const STATUS_ROWS: ReadonlyArray<readonly [keyof RealityCheckStatuses, string]> = [
+  ["mappingContract", "Mapping contract"],
+  ["targetSchema", "Target schema"],
+  ["execution", "Execution"],
+  ["outputSchema", "Output schema"],
+  ["hiddenCases", "Hidden cases"],
+];
 
 export function VerificationPanel({
   workspace,
@@ -55,7 +63,7 @@ export function VerificationPanel({
     });
     recordWorkflowEvent({
       kind: "reality-check",
-      ok: report.failed === 0 && report.total > 0,
+      ok: report.overall === "pass",
       durationMs: report.durationMs,
       code: report.failureCodes[0]?.code,
       counts: { total: report.total, passed: report.passed, failed: report.failed, reserved: report.reservedTotal },
@@ -133,15 +141,22 @@ export function VerificationPanel({
             {report.passed} passed · {report.failed} failed · {report.total} records ·{" "}
             {report.failed === 0 && report.total > 0 ? "batch ok" : "batch failed"}
           </p>
+          <p
+            className={`text-xs font-medium ${report.overall === "pass" ? "" : "text-danger"}`}
+            data-testid="reality-overall"
+            data-status={report.overall}
+          >
+            Reality Check verdict: {report.overall === "pass" ? "PASS" : "FAIL"}
+          </p>
           <dl className="grid gap-1 text-xs sm:grid-cols-2" data-testid="reality-summary">
-            <div>
-              <dt className="inline text-mute">Mapping contract: </dt>
-              <dd className="inline">{report.mappingValid ? "valid" : "invalid"}</dd>
-            </div>
-            <div>
-              <dt className="inline text-mute">Target schema: </dt>
-              <dd className="inline">{report.targetSchemaValid ? "compiles" : "invalid"}</dd>
-            </div>
+            {STATUS_ROWS.map(([key, label]) => (
+              <div key={key}>
+                <dt className="inline text-mute">{label}: </dt>
+                <dd className="inline font-mono" data-testid={`status-${key}`} data-status={report.statuses[key]}>
+                  {report.statuses[key]}
+                </dd>
+              </div>
+            ))}
             <div>
               <dt className="inline text-mute">Reserved hidden cases: </dt>
               <dd className="inline" data-testid="reserved-summary">

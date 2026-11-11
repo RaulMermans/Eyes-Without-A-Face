@@ -8,8 +8,11 @@ Canonical operating docs for Eyes Without a Face. Root files `README.md`, `AGENT
 | [contracts/](contracts/) | MVP contract families including cloud disclosure |
 | [decisions/](decisions/) | Architecture decision records |
 | [security/](security/) | Threat model, disclosure, secrets |
-| [setup/](setup/) | Firebase, App Check, browser compatibility |
+| [setup/](setup/) | Firebase, Firebase CLI/MCP, App Check, browser compatibility |
+| [demo/](demo/) | 90-second demo storyboard, narration, recording instructions |
+| [deployment.md](deployment.md) | Hosting configuration and deployment status |
+| [hackathon-history.md](hackathon-history.md) | Development timeline for the submission |
 | [branding/](branding/) | Official emblem provenance and assets |
 | [testing/](testing/) | Test strategy and regression matrix |
-| [sprints/](sprints/) | Sprint 0–3 reports and Sprint 4 readiness |
+| [sprints/](sprints/) | Sprint 0–4 reports |
 | [hackathon-requirements.md](hackathon-requirements.md) | Verified vs unresolved Devpost rules |
