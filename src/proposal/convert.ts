@@ -62,7 +62,7 @@ export type ProposalConversion =
   | { ok: true; value: ConvertedProposal }
   | { ok: false; issues: ProposalIssue[] };
 
-const PARAM_KEYS: Record<string, readonly string[]> = {
+export const PARAM_KEYS: Record<string, readonly string[]> = {
   copy: [],
   rename: [],
   trim: [],

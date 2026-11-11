@@ -9,10 +9,10 @@ Product walkthrough for the #BuildHybridAI 2026 submission video. The submission
 | Capability | Status | Evidence |
 | --- | --- | --- |
 | Real on-device Gemini Nano through Firebase AI Logic (`ONLY_ON_DEVICE`) | **Verified** | LIVE-007, LIVE-013: `source=ON_DEVICE`, `simulated=false`, schema-valid, no `generateContent` request |
-| Real cloud Gemini through Firebase AI Logic (`ONLY_IN_CLOUD`) | **Blocked** until the App Check debug token is registered | LIVE-004: `APP_CHECK_REJECTED` HTTP 403 |
+| Real cloud Gemini through Firebase AI Logic (`ONLY_IN_CLOUD`) | **Verified** | LIVE-004: `source=IN_CLOUD`, schema-valid. LIVE-009: valid proposal identical to the canonical mapping, aliases resolved locally, 3 imported records pass, 3 reserved hidden cases fail, no private terms in the request body |
 | Local Phantom Twin, disclosure, alias resolution, Reality Check | Verified (deterministic) | `pnpm test:all` |
 
-Use **Script A** only after LIVE-004 and LIVE-009 pass on the recording machine. Until then, use **Script B**.
+Both passed on 2026-11-11, so use **Script A**. Re-run `pnpm test:live` on the recording day; if cloud access breaks, fall back to **Script B**.
 
 ## Setup before recording
 
@@ -66,4 +66,7 @@ Same flow, but stop after Disclosure Review for the cloud segment:
 
 ## Screenshots
 
-`screenshots/on-device-role-suggestions.png` comes from LIVE-013: real Gemini Nano role suggestions on the fictional CRM twin. It contains only fictional data.
+- `screenshots/on-device-role-suggestions.png` (LIVE-013): real Gemini Nano role suggestions on the fictional CRM twin.
+- `screenshots/reality-check-real-gemini.png` (LIVE-009): Reality Check running the real Gemini `IN_CLOUD` proposal. Imported records pass, and hidden cases fail by alias.
+
+Both contain only fictional data.

@@ -44,6 +44,18 @@ Useful read-only MCP tools: `firebase_get_environment`, `firebase_get_project`, 
 
 Never call these without explicit owner approval: `firebase_init`, `firebase_deploy`, `firebase_create_project`, `firebase_create_app`, or any tool that writes data.
 
+## Verified access (2026-11-11)
+
+After the owner ran `firebase login` in a normal terminal, the CLI listed the project (number `507051460368`), the web app `1:507051460368:web:086c…`, the Hosting site `eyes-without-a-face-b7281`, and the `live` channel.
+
+Inside an agent session the CLI falls back to a copy-the-code flow, even in an emulated terminal. The owner has to run `firebase login` themselves.
+
 ## App Check debug tokens
 
-Neither the CLI nor the MCP server manages App Check debug tokens. Register them in the Firebase Console: App Check → Apps → `eyes-without-a-face-web` → overflow menu → Manage debug tokens. See [app-check.md](app-check.md).
+Neither the CLI nor the MCP server has a debug-token command. Two ways to register one:
+
+- **Console:** App Check → Apps → `eyes-without-a-face-web` → overflow menu → Manage debug tokens.
+- **App Check REST API**, with the CLI's OAuth session. Sprint 4 used this; the token value is read from the private file and never printed:
+  `POST https://firebaseappcheck.googleapis.com/v1/projects/507051460368/apps/1:507051460368:web:086c755a2c003fb30b4795/debugTokens` with body `{"displayName", "token"}`.
+
+Revoke it with `DELETE …/debugTokens/{id}` or in the Console once qualification is done. See [app-check.md](app-check.md).

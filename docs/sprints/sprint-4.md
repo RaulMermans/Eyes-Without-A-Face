@@ -2,23 +2,25 @@
 
 **Date:** 2026-11-11  
 **Branch:** `sprint-4`, from `origin/main` @ `0fef088`. Its tree is identical to Sprint 3 `b8a6d73`.  
-**Classification:** **`LOCAL_PIPELINE_COMPLETE / CLOUD_BLOCKED`**. On-device is **verified**: real Gemini Nano through Firebase AI Logic. Cloud is blocked only by owner-side App Check registration.
+**Classification:** **`HYBRID_QUALIFIED`**. Real on-device (Gemini Nano) and real cloud (Gemini) inference are both verified through Firebase AI Logic. A real Gemini proposal drives alias resolution, local execution and the Reality Check.
 
 ## Headline results
 
 1. **The on-device blocker was the test harness, not the hardware.** Playwright's default Chromium arguments disable component updates and `OptimizationHints`, so Chrome never registered Gemini Nano. In a dedicated persistent profile without those arguments, `availability()` moved from `unavailable` to `downloadable`. The model then downloaded (4.0 GB, about 5 minutes) and became `available`. Firebase AI Logic `ONLY_ON_DEVICE` then returned `inferenceSource = ON_DEVICE`.
 2. **The on-device output is constrained, not repaired.** The first real Nano reply was free text, which was correctly rejected as `INVALID_STRUCTURED_OUTPUT`. The SDK's `onDeviceParams.promptOptions.responseConstraint` now carries a JSON Schema that mirrors `field-interpretation.v1`. The reply is still strictly validated afterwards, and a unit test guards the mirror against drift.
-3. **Cloud stays blocked by App Check (HTTP 403).** A debug token was generated into `~/.config/eyes-without-a-face/appcheck-debug-token` (mode 600, outside Git, never printed). The owner must register it in the Firebase Console. Neither the CLI nor MCP can do this, and the CLI is not logged in.
+3. **App Check resolved and cloud verified.** A debug token was generated into `~/.config/eyes-without-a-face/appcheck-debug-token` (mode 600, outside Git, never printed). After the owner's `firebase login`, it was registered through the App Check REST API. Real `ONLY_IN_CLOUD` calls then returned `inferenceSource = IN_CLOUD`.
 4. **Security defect fixed:** live Playwright traces captured the injected App Check debug token through `addInitScript` arguments. Traces are now off whenever a token is set. The two affected local trace files were deleted. They were never committed or uploaded.
 5. **Reality Check status defect fixed.** `mappingValid` ignored `INVALID_TARGET_SCHEMA` per record, and it counted batch-level refusals as contract failures. The report now carries five independently computed stage statuses (`pass` / `fail` / `not_evaluated`) and an overall verdict.
+6. **Cloud response schema bug found by the first real Gemini call.** `MAPPING_PROPOSAL_JSON_SCHEMA` declared `params` as an object with no properties. Gemini's constrained decoding could therefore only emit `params: {}`, and the converter correctly rejected the proposal (5 × `INVALID_PARAMS`). The schema now declares every param the converter accepts and restricts `op` to the allowlist. A unit test ties it to `PARAM_KEYS`. Gemini's next proposal was valid and identical to the canonical mapping. Validation was not relaxed.
 
 ## Changes
 
 | Area | Change |
 | --- | --- |
-| Firebase CLI | `.firebaserc` sets default `eyes-without-a-face-b7281`. CLI 15.35.0 works. **No authorized account**: `projects:list` / `apps:list` need the owner's `firebase login`. |
+| Firebase CLI | `.firebaserc` sets default `eyes-without-a-face-b7281`. CLI 15.35.0. After the owner logged in, these all succeeded: `projects:list` (project number 507051460368), `apps:list` (`eyes-without-a-face-web`), `hosting:sites:list` (`eyes-without-a-face-b7281`), and `hosting:channel:list` (`live`, last release 2026-11-10 18:20, revision unknown). |
 | Firebase MCP | `.mcp.json` registers `npx -y firebase-tools@latest mcp` for Claude Code. Verified over stdio: server `firebase` 0.3.0, 66 tools. `firebase_get_environment` resolves the project from `.firebaserc` and reports `Authenticated User: <NONE>`, `Billing Enabled: No`. The Cursor plugin config (`.cursor/`, untracked) is left alone, so nothing is registered twice. |
-| App Check | Token prepared (see above). LIVE-004 and LIVE-009 still 403. |
+| App Check | Token prepared and registered through the API (`sprint-4-live-tests (EVO X3, local only)`). Accepted. |
+| Cloud schema | `src/inference/prompts.ts` declares params in `responseJsonSchema`; `PARAM_KEYS` is exported from `convert.ts`. New test `cloud-response-schema.test.ts`. LIVE-009 records the alias-level proposal and any issues. |
 | On-device | `tests/live/fixtures.ts`: an opt-in dedicated Chrome profile (`EYES_CHROME_PROFILE`). Adds `responseConstraint`, LIVE-013 (guided-flow on-device suggestions), and stronger LIVE-007 evidence. |
 | Reality Check | `src/verification/reality-check.ts`: `statuses`, `overall`, and the standalone `mappingContractStatus` / `targetSchemaStatus`. The UI shows all five plus the verdict. Telemetry `ok` now follows the verdict. |
 | Privacy tests | `tests/privacy/adversarial.test.ts` checks that private values in `UNMAPPED_ENUM` / `INVALID_EMAIL` / `INVALID_DATE` messages never reach the safe tiers. It also covers prompt-injection field names (absent from the outbound prompt; aliases only) and prototype-pollution field names (refused at profiling). No new leak was found. |
@@ -33,17 +35,20 @@ No engine semantics changed. No Firebase resources were created. Nothing was dep
 | Check | Result |
 | --- | --- |
 | Baseline (before changes) | `pnpm test:all` PASS: 112 unit, 22 contract, 23 privacy, 41 E2E |
-| After changes | lint, typecheck and build PASS; 121 unit, 22 contract, 28 privacy, 41 E2E (with new status assertions) |
+| After changes | `pnpm test:all` PASS: 123 unit, 22 contract, 28 privacy, 41 E2E |
+| LIVE-010 control plane | PASS: CLI read access to project, app, Hosting site and channels. The MCP server is verified over stdio and uses the same credentials |
 | LIVE-001 | Prompt API available, model `available` (dedicated profile) |
 | LIVE-002 | `eyes-without-a-face-b7281`, app `1:507051460368:web:086c…` |
-| LIVE-004 | **BLOCKED**: `APP_CHECK_REJECTED`, HTTP 403 from App Check token exchange, after 1.4 s. No `generateContent` request |
+| LIVE-004 (LIVE-011, LIVE-012) | **PASS**: `source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false schema=true`, 4.5 s inference |
+| LIVE-007 | **PASS**: `source=ON_DEVICE mode=ONLY_ON_DEVICE simulated=false schema=true`, 4.0 s inference, 0 cloud inference URLs |
+| LIVE-009 (LIVE-014 to LIVE-017) | **PASS**: `IN_CLOUD`, 2.5 s. Proposal `Valid · 5 operations · aliases resolved locally`, identical to `crm/mapping-contract.json`. Reality Check: 3 imported records pass (expected outputs), 3 of 3 reserved hidden cases fail (`UNMAPPED_ENUM`, `TYPE_MISMATCH`, `NULL_VALUE`, shown by alias). One `generateContent` request to `firebasevertexai.googleapis.com`, **0 private terms** in its body, 0 page errors |
+| LIVE-013 | **PASS**: 6 phantom fields classified on-device in the guided flow (18 s), all real, 0 cloud URLs |
 | LIVE-005 / 006 / 008 | PASS |
-| LIVE-007 | **PASS**: `source=ON_DEVICE mode=ONLY_ON_DEVICE simulated=false schema=true`, 3.6 s inference, 0 cloud inference URLs |
-| LIVE-009 | **BLOCKED**: same 403. 0 `generateContent` requests, so the body scan had nothing to inspect |
-| LIVE-013 | **PASS**: 6 phantom fields classified on-device in the guided flow (19 s), all labeled real on-device, 0 cloud URLs, 0 page errors |
-| Token in artifacts | 0 matches after the fix. Traces are disabled |
+| Full live run | **10 / 10 PASS** (44.5 s) |
+| Flakiness | 1 of 5 runs: LIVE-013 hit `SDK_INIT_FAILED: kErrorUnknown` from Chrome's on-device model service. The app showed `ON_DEVICE_BLOCKED` with no cloud fallback. The test now fails fast and records the blocker. |
+| Token in artifacts | 0 matches; tracing disabled |
 
-Evidence JSON is in `test-results/sprint-4-live/` (gitignored, cleared by every Playwright run).
+Evidence JSON is in `test-results/sprint-4-live/` (gitignored, cleared by every Playwright run). Safe screenshots are in `docs/demo/screenshots/`.
 
 ## GitHub / CI
 
@@ -58,15 +63,7 @@ Evidence JSON is in `test-results/sprint-4-live/` (gitignored, cleared by every 
 
 ## Remaining owner actions
 
-1. `npx -y firebase-tools@latest login`. Then `projects:list`, `apps:list`, `hosting:sites:list` (Gate A).
-2. Firebase Console → App Check → Apps → `eyes-without-a-face-web` → Manage debug tokens → add the UUID from `~/.config/eyes-without-a-face/appcheck-debug-token` (Gate B). Then run:
-
-   ```bash
-   EYES_APPCHECK_DEBUG_TOKEN="$(cat ~/.config/eyes-without-a-face/appcheck-debug-token)" \
-   EYES_LIVE_TESTS=1 EYES_LIVE_CLOUD=1 EYES_LIVE_ON_DEVICE=1 \
-   EYES_CHROME_PROFILE="$HOME/.cache/eyes-without-a-face/chrome-nano-profile" pnpm test:live
-   ```
-
-   If LIVE-004 and LIVE-009 pass with `source=IN_CLOUD`, the status becomes **`HYBRID_QUALIFIED`**.
-3. Read the Devpost Official Rules in a browser (automated fetches get HTTP 403).
-4. Decide on publishing the repository, which also likely unblocks CI.
+1. Read the Devpost Official Rules in a browser (automated fetches get HTTP 403).
+2. Decide on publishing the repository, which also likely unblocks CI.
+3. Revoke the debug token after recording, if no further live runs are needed (Console, or `DELETE` through the App Check API).
+4. Approve, or skip, a fresh Hosting deploy from a known commit. The current `live` release has an unknown revision.

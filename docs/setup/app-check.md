@@ -33,7 +33,7 @@ Playwright starts a fresh browser profile on every run, so an SDK-generated toke
    (umask 077; node -e 'process.stdout.write(crypto.randomUUID())' > ~/.config/eyes-without-a-face/appcheck-debug-token)
    ```
 
-   Sprint 4 already created this file on the development machine (mode 600).
+   Sprint 4 already created this file on the development machine (mode 600) and registered it on 2026-11-11 as `sprint-4-live-tests (EVO X3, local only)`.
 2. Firebase Console → App Check → Apps → `eyes-without-a-face-web` → **Manage debug tokens** → **Add debug token** → paste the UUID.
 3. Run with the token in a non-`VITE_` shell variable:
 

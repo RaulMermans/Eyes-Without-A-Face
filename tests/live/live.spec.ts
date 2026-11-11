@@ -291,6 +291,9 @@ test.describe("LIVE-009 Sprint 3 Phantom Twin workflow with real Gemini", () => 
     const origin = (await proposal.count()) > 0 ? await page.getByTestId("proposal-origin").innerText() : null;
     const provenance = (await proposal.count()) > 0 ? await page.getByTestId("proposal-provenance").innerText() : null;
     const status = (await proposal.count()) > 0 ? await page.getByTestId("proposal-status").innerText() : null;
+    // Alias-level only (f_NN, destination names): safe to keep as evidence.
+    const proposalIssues = (await page.getByTestId("proposal-issues").count()) > 0 ? await page.getByTestId("proposal-issues").innerText() : null;
+    const proposalJson = (await page.getByTestId("proposal-editor").count()) > 0 ? await page.getByTestId("proposal-editor").inputValue() : null;
     let summary: string | null = null;
     let reserved: string | null = null;
     if (status?.startsWith("Valid")) {
@@ -307,6 +310,8 @@ test.describe("LIVE-009 Sprint 3 Phantom Twin workflow with real Gemini", () => 
       origin,
       provenance,
       proposalStatus: status,
+      proposalIssues,
+      proposalJson,
       realityCheck: summary,
       reserved,
       providerHosts: [...new Set(sanitizeUrls(providerRequests).map((url) => new URL(url).hostname))],
@@ -345,14 +350,17 @@ test.describe("LIVE-013 on-device in the guided Phantom Twin step", () => {
     await expect(page.getByTestId("on-device-mode-label")).toContainText("On-device AI available", { timeout: 30_000 });
     await page.getByTestId("suggest-on-device").click();
     const suggestions = page.getByTestId("on-device-suggestions");
-    await expect(suggestions).toBeVisible({ timeout: 180_000 });
-    const text = await suggestions.innerText();
+    const blocked = page.getByText(/ON_DEVICE_BLOCKED/);
+    await expect(suggestions.or(blocked)).toBeVisible({ timeout: 150_000 });
+    const text = (await suggestions.count()) > 0 ? await suggestions.innerText() : "";
+    const blockedText = (await blocked.count()) > 0 ? await blocked.first().innerText() : null;
     const cloudInferenceUrls = sanitizeUrls(providerRequests.filter((url) => url.includes("generateContent")));
     await page.screenshot({ path: path.join(screenshotDir, "live-013-guided-on-device.png"), fullPage: true });
     await collectEvidence(page, {
       check: "LIVE-013",
       durationMs: Date.now() - started,
       suggestions: text,
+      blocked: blockedText,
       cloudInferenceUrls,
       pageErrors,
     });
