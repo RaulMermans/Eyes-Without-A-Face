@@ -80,9 +80,16 @@ Cloud inference success rate this sprint: 4 / 4 real requests (1 diagnostic + 3 
 
 See [deployment.md](../deployment.md#verified-current-state-read-only-inspection-2026-11-11). Hosting has no releases. App Check is ENFORCED on `firebaseml.googleapis.com`. The reCAPTCHA Enterprise key allows only `eyes-without-a-face-b7281.web.app` and `.firebaseapp.com`, with `minValidScore 0.5`. There is one debug token. API key restrictions were not readable (API Keys API disabled).
 
-### Release build
+### Release build verification
 
-Recorded in the "Release build verification" section below, after the commit.
+`pnpm build:release` at commit `158dfa62458d2cf34edf59cca4c37f634503ad70` (clean tree), 2026-11-11T22:04:50Z:
+
+- `verify-release: PASS`. Production mode, `VITE_APP_CHECK_DEBUG=false` (even though the local `.env.local` sets `true`), `VITE_BUILD_SHA=158dfa62458d`, expected project and app, site key present, both inference flags on.
+- The local debug token value is absent from `dist/`. No source maps, `.env` files or credential patterns. 12 files, 914 KiB.
+- The pre-Sprint-5 `dist/`, built with plain `pnpm build`, **failed** the same verifier (`VITE_APP_CHECK_DEBUG=true is baked into the bundle`).
+- Build warning (not a failure): the main chunk is 648 kB minified (190 kB gzip). Acceptable for a demo SPA, so it was left unchanged.
+
+A later doc-only commit changes `HEAD`. Rebuild with `pnpm build:release` immediately before any approved deploy, and record that SHA.
 
 ### Security
 
