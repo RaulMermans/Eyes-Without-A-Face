@@ -1,5 +1,33 @@
 /// <reference types="vite/client" />
 
+declare module "*.png" {
+  const src: string;
+  export default src;
+}
+
+declare module "*.webp" {
+  const src: string;
+  export default src;
+}
+
+interface LanguageModelAvailability {
+  availability(): Promise<string>;
+}
+
+interface EyesTestHarness {
+  label: "test-harness";
+  onDeviceUnavailable?: boolean;
+  onDeviceOutput?: unknown;
+  cloudOutput?: unknown;
+  malformedCloudOutput?: unknown;
+}
+
+interface Window {
+  LanguageModel?: LanguageModelAvailability;
+  FIREBASE_APPCHECK_DEBUG_TOKEN?: boolean | string;
+  __EYES_WITHOUT_A_FACE_TEST__?: EyesTestHarness;
+}
+
 interface ImportMetaEnv {
   readonly VITE_FIREBASE_API_KEY?: string;
   readonly VITE_FIREBASE_AUTH_DOMAIN?: string;

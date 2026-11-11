@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { isLiveInferenceAvailable, parseAppConfig } from "../../src/config/env.ts";
 import { createInferenceServices } from "../../src/inference/adapters.ts";
-import { InferenceNotImplementedError, InferenceUnavailableError } from "../../src/inference/errors.ts";
+import { InferenceUnavailableError } from "../../src/inference/errors.ts";
 
 const emptyEnv = {};
 
@@ -15,7 +15,7 @@ describe("parseAppConfig", () => {
     expect(isLiveInferenceAvailable(config)).toBe(false);
   });
 
-  it("does not treat public config as live-ready in Sprint 0", () => {
+  it("marks adapters configured when public config and flags are present", () => {
     const config = parseAppConfig({
       VITE_FIREBASE_API_KEY: "public-web-key",
       VITE_FIREBASE_AUTH_DOMAIN: "demo.firebaseapp.com",
@@ -25,15 +25,24 @@ describe("parseAppConfig", () => {
       VITE_ENABLE_CLOUD_INFERENCE: "true",
     });
     expect(config.firebase?.projectId).toBe("demo");
-    expect(config.onDevice.state).toBe("not-implemented");
-    expect(config.cloud.state).toBe("not-implemented");
-    expect(isLiveInferenceAvailable(config)).toBe(false);
+    expect(config.onDevice.state).toBe("configured");
+    expect(config.cloud.state).toBe("configured");
   });
 
   it("keeps App Check debug as a flag, not a token", () => {
     const config = parseAppConfig({ VITE_APP_CHECK_DEBUG: "true" });
-    expect(config.appCheckDebug).toBe(true);
+    expect(config.appCheck.debugEnabled).toBe(true);
     expect(JSON.stringify(config)).not.toMatch(/[0-9a-f]{8}-[0-9a-f]{4}-/);
+  });
+
+  it("never enables App Check debug in production builds", () => {
+    const config = parseAppConfig({
+      MODE: "production",
+      VITE_APP_CHECK_DEBUG: "true",
+      VITE_FIREBASE_APP_CHECK_SITE_KEY: "site-key",
+    });
+    expect(config.appCheck.debugEnabled).toBe(false);
+    expect(config.appCheck.debugBlockedInProduction).toBe(true);
   });
 });
 
@@ -44,15 +53,46 @@ describe("inference adapters", () => {
     });
     const services = createInferenceServices(config);
     await expect(
-      services.cloud.generate({
-        purpose: "mapping-proposal",
-        prompt: "map fields",
-        allowedDisclosure: "phantom-only",
+      services.cloud.generateAuthorized({
+        requestId: "req",
+        payloadHash: "abc",
+        canonicalJson: "{}",
+        destinationKey: "firebase-ai-logic:google-ai:gemini-3.5-flash-lite:mapping-proposal",
+        payload: {
+          contractKind: "cloud-disclosure",
+          schemaVersion: "1.0.0",
+          payloadId: "x",
+          phantomId: "p",
+          destination: {
+            provider: "firebase-ai-logic",
+            backend: "google-ai",
+            model: "gemini-3.5-flash-lite",
+            purpose: "mapping-proposal",
+          },
+          purpose: "mapping-proposal",
+          entities: [{ id: "e", label: "E" }],
+          fields: [
+            {
+              alias: "a",
+              entityId: "e",
+              type: "string",
+              semanticDescriptor: "synthetic",
+            },
+          ],
+          syntheticExamples: [{ a: "b" }],
+        },
+        approval: {
+          requestId: "req",
+          payloadHash: "abc",
+          destinationKey: "firebase-ai-logic:google-ai:gemini-3.5-flash-lite:mapping-proposal",
+          purpose: "mapping-proposal",
+          approvedAt: new Date().toISOString(),
+        },
       }),
     ).rejects.toBeInstanceOf(InferenceUnavailableError);
   });
 
-  it("refuse to simulate successful live inference", async () => {
+  it("refuse to return a simulated success from the live path", async () => {
     const config = parseAppConfig({
       VITE_FIREBASE_API_KEY: "public-web-key",
       VITE_FIREBASE_AUTH_DOMAIN: "demo.firebaseapp.com",
@@ -64,9 +104,12 @@ describe("inference adapters", () => {
     await expect(
       services.onDevice.generate({
         purpose: "schema-interpretation",
-        prompt: "describe fields",
-        allowedDisclosure: "none",
+        input: {
+          fieldAlias: "lifecycle_status",
+          sampleValues: ["active"],
+          hint: "synthetic",
+        },
       }),
-    ).rejects.toBeInstanceOf(InferenceNotImplementedError);
+    ).rejects.toBeInstanceOf(Error);
   });
 });

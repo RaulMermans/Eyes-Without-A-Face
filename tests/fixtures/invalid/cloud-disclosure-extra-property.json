@@ -1,0 +1,24 @@
+{
+  "contractKind": "cloud-disclosure",
+  "schemaVersion": "1.0.0",
+  "payloadId": "disclosure-extra",
+  "phantomId": "phantom-northwind-contacts-v1",
+  "destination": {
+    "provider": "firebase-ai-logic",
+    "backend": "google-ai",
+    "model": "gemini-3.5-flash-lite",
+    "purpose": "mapping-proposal"
+  },
+  "purpose": "mapping-proposal",
+  "sourceDatasetId": "should-not-be-here",
+  "entities": [{ "id": "contact", "label": "Contact" }],
+  "fields": [
+    {
+      "alias": "contact_email",
+      "entityId": "contact",
+      "type": "string",
+      "semanticDescriptor": "work email address"
+    }
+  ],
+  "syntheticExamples": [{ "contact_email": "casey.nguyen@example.test" }]
+}

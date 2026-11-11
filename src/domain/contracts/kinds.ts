@@ -4,6 +4,7 @@ export const CONTRACT_KINDS = [
   "mapping",
   "validation",
   "export",
+  "cloud-disclosure",
 ] as const;
 
 export type ContractKind = (typeof CONTRACT_KINDS)[number];

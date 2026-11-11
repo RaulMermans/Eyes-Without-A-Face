@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://eyes-without-a-face.dev/schemas/field-interpretation/1.0.0",
+  "title": "On-device field interpretation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["fieldAlias", "semanticRole", "valueKind", "shareabilityHint", "rationale"],
+  "properties": {
+    "fieldAlias": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "semanticRole": {
+      "type": "string",
+      "enum": ["identifier", "email", "lifecycle-state", "timestamp", "free-text", "other"]
+    },
+    "valueKind": {
+      "type": "string",
+      "enum": ["string", "number", "boolean", "enum", "date"]
+    },
+    "shareabilityHint": {
+      "type": "string",
+      "enum": ["synthetic-ok", "keep-local"]
+    },
+    "rationale": { "type": "string", "minLength": 1, "maxLength": 400 }
+  }
+}

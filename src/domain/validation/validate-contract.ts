@@ -1,6 +1,7 @@
 import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
 import type { ErrorObject, ValidateFunction } from "ajv";
+import cloudDisclosureSchema from "../contracts/schemas/cloud-disclosure.v1.schema.json" with { type: "json" };
 import exportSchema from "../contracts/schemas/export.v1.schema.json" with { type: "json" };
 import mappingSchema from "../contracts/schemas/mapping.v1.schema.json" with { type: "json" };
 import phantomSchema from "../contracts/schemas/phantom.v1.schema.json" with { type: "json" };
@@ -39,6 +40,7 @@ const validators: Record<ContractKind, ValidateFunction> = {
   mapping: ajv.compile(mappingSchema),
   validation: ajv.compile(validationSchema),
   export: ajv.compile(exportSchema),
+  "cloud-disclosure": ajv.compile(cloudDisclosureSchema),
 };
 
 function issueFromAjv(error: ErrorObject): ContractIssue {

@@ -1,6 +1,7 @@
 export { CONTRACT_KINDS, CURRENT_CONTRACT_SCHEMA_VERSION, MAPPING_OPERATIONS } from "./contracts/kinds.ts";
 export type {
   AnyContract,
+  CloudDisclosurePayload,
   ExportContract,
   MappingContract,
   PhantomContract,

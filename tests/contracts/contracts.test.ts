@@ -1,9 +1,12 @@
 import { describe, expect, it } from "vitest";
 import { validateContract } from "../../src/domain/validation/validate-contract.ts";
+import cloudDisclosure from "../fixtures/valid/cloud-disclosure.json" with { type: "json" };
 import exportManifest from "../fixtures/valid/export-manifest.json" with { type: "json" };
 import mappingContract from "../fixtures/valid/mapping-contract.json" with { type: "json" };
 import phantomContract from "../fixtures/valid/phantom-contract.json" with { type: "json" };
 import sourceContract from "../fixtures/valid/source-contract.json" with { type: "json" };
+import cloudDisclosureExtra from "../fixtures/invalid/cloud-disclosure-extra-property.json" with { type: "json" };
+import cloudDisclosureInternal from "../fixtures/invalid/cloud-disclosure-internal-field.json" with { type: "json" };
 import validationReport from "../fixtures/valid/validation-report.json" with { type: "json" };
 import executableMapping from "../fixtures/invalid/mapping-executable-code.json" with { type: "json" };
 import exportPrivate from "../fixtures/invalid/export-includes-private.json" with { type: "json" };
@@ -19,6 +22,7 @@ describe("valid contracts", () => {
     ["mapping", mappingContract],
     ["validation", validationReport],
     ["export", exportManifest],
+    ["cloud-disclosure", cloudDisclosure],
   ] as const)("accepts the %s example", (kind, value) => {
     const result = validateContract(value);
     expect(result.kind).toBe(kind);
@@ -69,6 +73,11 @@ describe("invalid contracts", () => {
   it("rejects non-objects", () => {
     expect(validateContract(null).valid).toBe(false);
     expect(validateContract("source").valid).toBe(false);
+  });
+
+  it("rejects unexpected properties and internal source references on cloud disclosure payloads", () => {
+    expect(validateContract(cloudDisclosureExtra).valid).toBe(false);
+    expect(validateContract(cloudDisclosureInternal).valid).toBe(false);
   });
 
   it("rejects unknown contract kinds", () => {

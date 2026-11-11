@@ -5,9 +5,11 @@ Canonical operating docs for Eyes Without a Face. Root files `README.md`, `AGENT
 | Path | Purpose |
 | --- | --- |
 | [architecture/](architecture/) | Layers, data-flow, Firebase boundary |
-| [contracts/](contracts/) | Five MVP contract families |
+| [contracts/](contracts/) | MVP contract families including cloud disclosure |
 | [decisions/](decisions/) | Architecture decision records |
 | [security/](security/) | Threat model, disclosure, secrets |
+| [setup/](setup/) | Firebase, App Check, browser compatibility |
+| [branding/](branding/) | Official emblem provenance and assets |
 | [testing/](testing/) | Test strategy and regression matrix |
-| [sprints/](sprints/) | Sprint 0 report and Sprint 1 prerequisites |
+| [sprints/](sprints/) | Sprint reports and readiness |
 | [hackathon-requirements.md](hackathon-requirements.md) | Verified vs unresolved Devpost rules |

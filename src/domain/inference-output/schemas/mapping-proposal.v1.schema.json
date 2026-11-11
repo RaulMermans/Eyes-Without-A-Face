@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://eyes-without-a-face.dev/schemas/mapping-proposal/1.0.0",
+  "title": "Cloud mapping proposal (Sprint 1 sample)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["operations", "rationale"],
+  "properties": {
+    "operations": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 16,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["op", "to"],
+        "properties": {
+          "op": {
+            "type": "string",
+            "enum": [
+              "copy",
+              "rename",
+              "trim",
+              "normalize_email",
+              "parse_date",
+              "map_enum",
+              "default_if_missing",
+              "concat"
+            ]
+          },
+          "from": {
+            "type": ["string", "array"],
+            "items": { "type": "string", "minLength": 1, "maxLength": 128 }
+          },
+          "to": { "type": "string", "minLength": 1, "maxLength": 128 },
+          "params": {
+            "type": "object",
+            "additionalProperties": {
+              "type": ["string", "number", "boolean", "null", "object"]
+            }
+          }
+        }
+      }
+    },
+    "rationale": { "type": "string", "minLength": 1, "maxLength": 500 }
+  }
+}
