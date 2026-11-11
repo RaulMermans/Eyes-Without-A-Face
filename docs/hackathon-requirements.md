@@ -27,9 +27,9 @@ The Sprint 4 brief lists these requirements, which still need confirming against
 
 | Requirement | Repository state |
 | --- | --- |
-| Real Firebase AI Logic inference at runtime | On-device verified (LIVE-007, LIVE-013). Cloud blocked by App Check registration |
-| On-device **and** cloud inference | On-device verified, cloud pending |
-| Working demo application | Local dev server. Hosting not deployed |
+| Real Firebase AI Logic inference at runtime | Verified on-device (LIVE-007, LIVE-013) and in the cloud (LIVE-004, LIVE-009) |
+| On-device **and** cloud inference | Both verified: `HYBRID_QUALIFIED` |
+| Working demo application | Local dev server. Hosting `live` holds an older release of unknown revision; redeploy needs owner approval |
 | Public GitHub/GitLab repository | Repository is **private**. Publishing needs separate owner confirmation |
 | Visible open-source license | `LICENSE` (Apache-2.0) added in Sprint 4 |
 | Source code and setup instructions | `README.md`, `docs/setup/` |

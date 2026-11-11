@@ -1,12 +1,12 @@
 # Deployment status
 
-**Nothing is deployed.** No Hosting release has been verified. Deploy only with explicit owner approval.
+**Sprint 4 has not deployed anything.** The CLI (verified 2026-11-11) shows the `live` channel already holds a release from **2026-11-10 18:20** at https://eyes-without-a-face-b7281.web.app. That release predates Sprint 4, and its content and Git revision were not recorded. Treat it as unknown until it is redeployed from a known commit. Deploy only with explicit owner approval.
 
 | Item | Value |
 | --- | --- |
 | Firebase project | `eyes-without-a-face-b7281` |
-| Hosting site ID | Unconfirmed. The default site usually matches the project ID; confirm with `hosting:sites:list` after `firebase login`. |
-| Live / preview channels | Unknown until the CLI is authenticated. |
+| Hosting site ID | `eyes-without-a-face-b7281` (confirmed with `hosting:sites:list`) |
+| Live / preview channels | `live` only (last release 2026-11-10 18:20, revision unknown). No preview channels |
 | Build command | `pnpm build` (`tsc -b && vite build`) |
 | Output directory | `dist/` (gitignored) |
 | Hosting config | `firebase.json`: `public: dist`, SPA rewrite `** → /index.html` |

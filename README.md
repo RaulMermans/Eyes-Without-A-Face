@@ -69,7 +69,7 @@ Real on-device calls also need `EYES_LIVE_ON_DEVICE=1`. Real cloud calls need cr
 
 ## Implementation status (Sprint 4)
 
-Current classification: **`LOCAL_PIPELINE_COMPLETE / CLOUD_BLOCKED`**, with **real on-device inference verified**. See [docs/sprints/sprint-4.md](docs/sprints/sprint-4.md).
+Current classification: **`HYBRID_QUALIFIED`**. Real on-device (Gemini Nano) and real cloud (Gemini) inference are both verified through Firebase AI Logic, and a real Gemini proposal drives the full local workflow. See [docs/sprints/sprint-4.md](docs/sprints/sprint-4.md).
 
 | Capability | Status |
 | --- | --- |
@@ -77,9 +77,9 @@ Current classification: **`LOCAL_PIPELINE_COMPLETE / CLOUD_BLOCKED`**, with **re
 | Phantom Twin, cloud disclosure 1.1.0, exact-prompt approval, alias resolution | Implemented |
 | Reality Check: five independent stage statuses plus an overall verdict | Implemented (fixed in Sprint 4) |
 | On-device adapter (`ONLY_ON_DEVICE`, Gemini Nano through Firebase AI Logic) | **Verified live**: `inferenceSource = ON_DEVICE`, schema-valid, no cloud request (LIVE-007, LIVE-013; Chrome 157 Linux) |
-| Cloud adapter (`ONLY_IN_CLOUD`, Gemini Developer API) | Implemented. Live request **BLOCKED** by App Check 403 until the owner registers the prepared debug token ([docs/setup/app-check.md](docs/setup/app-check.md)) |
-| Firebase CLI / MCP | Configured (`.firebaserc`, `.mcp.json`). Authenticated access **BLOCKED** until `firebase login` ([docs/setup/firebase-cli-mcp.md](docs/setup/firebase-cli-mcp.md)) |
-| Hosting | Configured, not deployed ([docs/deployment.md](docs/deployment.md)) |
+| Cloud adapter (`ONLY_IN_CLOUD`, Gemini Developer API) | **Verified live**: App Check debug token accepted, `inferenceSource = IN_CLOUD`. A valid Gemini proposal is resolved and executed locally (LIVE-004, LIVE-009) |
+| Firebase CLI / MCP | Configured (`.firebaserc`, `.mcp.json`). Authenticated read access verified ([docs/setup/firebase-cli-mcp.md](docs/setup/firebase-cli-mcp.md)) |
+| Hosting | Configured. Sprint 4 did not deploy; the `live` channel holds an older release of unknown revision ([docs/deployment.md](docs/deployment.md)) |
 | Export packaging, correction loop | Not implemented |
 | Automatic cloud fallback | Forbidden by design |
 

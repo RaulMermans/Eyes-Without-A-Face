@@ -67,6 +67,13 @@ export function buildCloudPrompt(request: AuthorizedCloudRequest): string {
   return request.outboundPrompt;
 }
 
+/**
+ * Gemini `responseJsonSchema` for mapping proposals. Constrained decoding can
+ * only emit properties declared here, so every param the converter accepts
+ * (`PARAM_KEYS` in src/proposal/convert.ts) must be declared, or the model is
+ * forced to send `params: {}` (Sprint 4 live finding). Declaring params does not
+ * relax validation: `convertProposal` still enforces per-operation rules.
+ */
 export const MAPPING_PROPOSAL_JSON_SCHEMA = {
   type: "object",
   properties: {
@@ -75,10 +82,23 @@ export const MAPPING_PROPOSAL_JSON_SCHEMA = {
       items: {
         type: "object",
         properties: {
-          op: { type: "string" },
+          op: {
+            type: "string",
+            enum: ["copy", "rename", "trim", "normalize_email", "parse_date", "map_enum", "default_if_missing", "concat"],
+          },
           from: {},
           to: { type: "string" },
-          params: { type: "object" },
+          params: {
+            type: "object",
+            properties: {
+              inputFormat: { type: "string", enum: ["ISO-8601", "YYYY-MM-DD", "MM/DD/YYYY", "DD/MM/YYYY"] },
+              map: { type: "object", additionalProperties: { type: "string" } },
+              unmapped: { type: "string", enum: ["fail", "default"] },
+              default: { type: ["string", "null"] },
+              value: { type: ["string", "number", "boolean", "null"] },
+              separator: { type: "string" },
+            },
+          },
         },
         required: ["op", "to"],
       },
