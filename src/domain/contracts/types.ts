@@ -162,9 +162,24 @@ export interface CloudDisclosureField {
   enumValues?: string[];
 }
 
+export interface CloudDisclosureTargetField {
+  name: string;
+  type: "string" | "number" | "integer" | "boolean" | "enum";
+  required: boolean;
+  nullable?: boolean;
+  format?: "email" | "date" | "date-time" | "uri" | "uuid";
+  enumValues?: string[];
+}
+
+export interface CloudDisclosureTarget {
+  fields: CloudDisclosureTargetField[];
+}
+
 export interface CloudDisclosurePayload {
   contractKind: "cloud-disclosure";
-  schemaVersion: "1.0.0";
+  schemaVersion: "1.0.0" | "1.1.0";
+  /** Present (and required) only in schema 1.1.0. */
+  target?: CloudDisclosureTarget;
   payloadId: string;
   phantomId: string;
   destination: CloudDisclosureDestination;

@@ -15,6 +15,10 @@
 - Public judging criteria currently listed: Technological Implementation, Design, Potential Impact, Quality of the Idea.
 - Contact listed on the listing: keshya@devpost.com.
 
+## Re-check on 2026-11-11 (Sprint 3)
+
+The rules URL returned **HTTP 403** to automated fetches on the first day of the submission period, so the Official Rules could not be read from this environment. Everything below stays unverified until a human reads the page. Development provenance: Sprint 0–2 commits are dated 2026-11-10 and Sprint 3 work 2026-11-11. Do not present pre-event work as newly developed after the start.
+
 ## Unresolved (do not guess)
 
 The Official Rules page states: **“The Official Rules for the Hackathon are not yet available.”** They are promised before the submission period. Therefore the following remain **unverified**:

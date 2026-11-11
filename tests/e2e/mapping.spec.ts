@@ -41,7 +41,8 @@ test.describe("E2E-019 mapping execution", () => {
   test("transforms fictional CRM records locally", async ({ page }) => {
     await page.goto("/");
     await page.getByTestId("load-crm-sample").click();
-    await page.getByRole("button", { name: /Verification/ }).click();
+    await page.getByRole("button", { name: /Reality Check/ }).click();
+    await page.getByTestId("include-reserved").uncheck();
     await page.getByTestId("run-mapping").click();
     await expect(page.getByTestId("mapping-summary")).toContainText("3 passed");
     await expect(page.getByTestId("mapping-summary")).toContainText("batch ok");
@@ -53,7 +54,8 @@ test.describe("E2E-020 output correctness", () => {
   test("transformed result matches the expected Alice record", async ({ page }) => {
     await page.goto("/");
     await page.getByTestId("load-crm-sample").click();
-    await page.getByRole("button", { name: /Verification/ }).click();
+    await page.getByRole("button", { name: /Reality Check/ }).click();
+    await page.getByTestId("include-reserved").uncheck();
     await page.getByTestId("run-mapping").click();
     const output = page.getByTestId("mapping-output-0");
     await expect(output).toContainText('"id": "CUST-001"');
@@ -70,10 +72,12 @@ test.describe("E2E-021 invalid mapping", () => {
     await page.goto("/");
     await page.getByTestId("load-crm-sample").click();
     await page.getByRole("button", { name: /Cloud Mapping/ }).click();
+    await page.getByTestId("manual-contract").locator("summary").click();
     await page.getByTestId("load-unsupported-mapping").click();
     await page.getByTestId("validate-mapping-contract").click();
     await expect(page.getByTestId("mapping-contract-error")).toBeVisible();
-    await page.getByRole("button", { name: /Verification/ }).click();
+    await page.getByRole("button", { name: /Reality Check/ }).click();
+    await page.getByTestId("include-reserved").uncheck();
     await page.getByTestId("run-mapping").click();
     await expect(page.getByTestId("mapping-summary")).toContainText("batch failed");
     await expect(page.getByTestId("mapping-record-0")).toContainText("INVALID_MAPPING_CONTRACT");
@@ -85,7 +89,7 @@ test.describe("E2E-022 hidden edge case", () => {
   test("unmapped status produces a real validation failure", async ({ page }) => {
     await page.goto("/");
     await page.getByTestId("load-edge-sample").click();
-    await page.getByRole("button", { name: /Verification/ }).click();
+    await page.getByRole("button", { name: /Reality Check/ }).click();
     await page.getByTestId("run-mapping").click();
     await expect(page.getByTestId("mapping-record-0")).toContainText("UNMAPPED_ENUM");
     await expect(page.getByTestId("mapping-record-0")).toContainText("vip_customer");
@@ -111,7 +115,8 @@ test.describe("E2E-023 no network dependency", () => {
     });
     await page.goto("/");
     await page.getByTestId("load-crm-sample").click();
-    await page.getByRole("button", { name: /Verification/ }).click();
+    await page.getByRole("button", { name: /Reality Check/ }).click();
+    await page.getByTestId("include-reserved").uncheck();
     await page.getByTestId("run-mapping").click();
     await expect(page.getByTestId("mapping-output-0")).toContainText("alice@example.com");
     expect(providerRequests).toEqual([]);
@@ -124,13 +129,14 @@ test.describe("E2E-024 UI integrity", () => {
     const pageErrors: string[] = [];
     page.on("pageerror", (error) => pageErrors.push(error.message));
     await page.goto("/");
-    for (const name of ["Source System", "Phantom Twin", "Cloud Mapping", "Verification", "Export"]) {
+    for (const name of ["Source System", "Phantom Twin", "Disclosure Review", "Cloud Mapping", "Reality Check", "Export"]) {
       await page.getByRole("button", { name: new RegExp(name) }).click();
       await expect(page.getByRole("heading", { level: 2, name })).toBeVisible();
     }
     await page.getByRole("button", { name: /Source System/ }).click();
     await page.getByTestId("load-crm-sample").click();
-    await page.getByRole("button", { name: /Verification/ }).click();
+    await page.getByRole("button", { name: /Reality Check/ }).click();
+    await page.getByTestId("include-reserved").uncheck();
     await page.getByTestId("run-mapping").click();
     await expect(page.getByTestId("mapping-summary")).toContainText("batch ok");
     await page.setViewportSize({ width: 390, height: 844 });

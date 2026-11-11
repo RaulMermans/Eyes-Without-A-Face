@@ -10,7 +10,8 @@ Read, in order:
 4. `docs/architecture/system.md` — boundaries and data flow
 5. `docs/contracts/README.md` — contract families
 6. `docs/contracts/mapping.md` — mapping DSL and interpreter
-7. `docs/sprints/sprint-2.md` — Sprint 2 report
-8. `docs/sprints/sprint-3-readiness.md` — blockers before Phantom Twin generation
+7. `docs/contracts/mapping-proposal.md` — proposal conversion and alias resolution
+8. `docs/sprints/sprint-3.md` — Sprint 3 report
+9. `docs/sprints/sprint-4-readiness.md` — blockers before correction, export, and release
 
-Do not duplicate architecture here. Do not start Sprint 3 automatically.
+Do not duplicate architecture here. Do not start Sprint 4 automatically.

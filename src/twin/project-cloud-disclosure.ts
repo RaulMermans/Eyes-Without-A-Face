@@ -1,6 +1,7 @@
 import type {
   CloudDisclosureDestination,
   CloudDisclosurePayload,
+  CloudDisclosureTarget,
   PhantomContract,
 } from "../domain/contracts/types.ts";
 import { CURRENT_CONTRACT_SCHEMA_VERSION } from "../domain/contracts/kinds.ts";
@@ -15,9 +16,12 @@ const DEFAULT_DESTINATION: CloudDisclosureDestination = {
 /**
  * Explicit allowlist projection. Does not clone the Phantom Contract and strip keys.
  */
+export const MAX_DISCLOSED_EXAMPLES = 8;
+
 export function projectCloudDisclosurePayload(
   phantom: PhantomContract,
   destination: CloudDisclosureDestination = DEFAULT_DESTINATION,
+  target?: CloudDisclosureTarget,
 ): CloudDisclosurePayload {
   const shareableAliases = new Set(
     phantom.fields.filter((field) => field.shareable).map((field) => field.alias),
@@ -49,7 +53,7 @@ export function projectCloudDisclosurePayload(
     return projected;
   });
 
-  const syntheticExamples = phantom.syntheticExamples.map((example) => {
+  const syntheticExamples = phantom.syntheticExamples.slice(0, MAX_DISCLOSED_EXAMPLES).map((example) => {
     const row: Record<string, string | number | boolean | null> = {};
     for (const alias of shareableAliases) {
       if (Object.prototype.hasOwnProperty.call(example, alias)) {
@@ -83,6 +87,24 @@ export function projectCloudDisclosurePayload(
     fields,
     syntheticExamples,
   };
+
+  if (target) {
+    // Schema 1.1.0: explicit field-by-field copy of the reviewed target description.
+    payload.schemaVersion = "1.1.0";
+    payload.target = {
+      fields: target.fields.map((field) => {
+        const projected: CloudDisclosureTarget["fields"][number] = {
+          name: field.name,
+          type: field.type,
+          required: field.required,
+        };
+        if (field.nullable) projected.nullable = true;
+        if (field.format) projected.format = field.format;
+        if (field.enumValues) projected.enumValues = [...field.enumValues];
+        return projected;
+      }),
+    };
+  }
 
   if (phantom.disclosureConstraints && phantom.disclosureConstraints.length > 0) {
     payload.disclosureConstraints = phantom.disclosureConstraints

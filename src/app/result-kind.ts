@@ -1,3 +1,4 @@
+import type { ProposalOrigin } from "../proposal/convert.ts";
 import type { InferenceResult } from "../inference/types.ts";
 
 export function resultKindLabel(result: InferenceResult): string {
@@ -14,3 +15,9 @@ export function resultKindLabel(result: InferenceResult): string {
       return "Failed inference";
   }
 }
+
+export const ORIGIN_LABELS: Record<ProposalOrigin, string> = {
+  "gemini-cloud": "Real Gemini output · IN_CLOUD",
+  "test-adapter": "Simulated test adapter — not Gemini",
+  "manual-edit": "Manually edited locally — not model output",
+};

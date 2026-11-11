@@ -1,7 +1,8 @@
 import type { MappingContract, MappingOperation } from "../contracts/types.ts";
 import { validateContract } from "../validation/validate-contract.ts";
 import type { MappingIssue } from "./codes.ts";
-import { emptyObject, isPlainObject, jsonByteLength } from "./json.ts";
+import { emptyObject, isPlainObject } from "./json.ts";
+import { inspectJsonValue, safeJsonByteLength, type JsonInspectionIssue } from "../json/inspect.ts";
 import { MAPPING_LIMITS } from "./limits.ts";
 import { MAPPING_OPERATIONS } from "../contracts/kinds.ts";
 import {
@@ -45,6 +46,18 @@ function fail(issues: MappingIssue[]): MappingFailure {
   return { ok: false, output: null, issues: issues.slice(0, MAPPING_LIMITS.maxReportedErrorsPerRecord) };
 }
 
+function issueFromInspection(item: JsonInspectionIssue, subject: string): MappingIssue {
+  const code =
+    item.code === "PROTOTYPE_POLLUTION"
+      ? ("PROTOTYPE_POLLUTION" as const)
+      : item.code === "CIRCULAR_REFERENCE"
+        ? ("CIRCULAR_REFERENCE" as const)
+        : item.code === "NESTING_TOO_DEEP"
+          ? ("UNSUPPORTED_NESTED_STRUCTURE" as const)
+          : ("NON_JSON_VALUE" as const);
+  return { code, message: `${subject}: ${item.message}`, path: item.path || "/" };
+}
+
 function withOp(issue: MappingIssue, index: number, op: string): MappingIssue {
   return { ...issue, operationIndex: index, op };
 }
@@ -68,7 +81,15 @@ export function executeMapping(input: ExecuteMappingInput): MappingExecutionResu
     ]);
   }
 
-  const sourceBytes = jsonByteLength(input.sourceRecord);
+  const sourceShape = inspectJsonValue(input.sourceRecord, { maxDepth: MAPPING_LIMITS.maxFieldRefDepth + 4 });
+  if (sourceShape.length > 0) {
+    return fail(sourceShape.map((item) => issueFromInspection(item, "source")));
+  }
+
+  const sourceBytes = safeJsonByteLength(input.sourceRecord);
+  if (sourceBytes === null) {
+    return fail([{ code: "NON_JSON_VALUE", message: "Source record is not JSON-serializable.", path: "/" }]);
+  }
   if (sourceBytes > MAPPING_LIMITS.maxSourceRecordBytes) {
     return fail([
       {
@@ -82,6 +103,15 @@ export function executeMapping(input: ExecuteMappingInput): MappingExecutionResu
   const forbidden = scanForbiddenKeys(input.sourceRecord);
   if (forbidden.length > 0) {
     return fail(forbidden);
+  }
+
+  const contractShape = inspectJsonValue(input.mappingContract);
+  if (contractShape.length > 0) {
+    return fail(contractShape.map((item) => issueFromInspection(item, "mapping contract")));
+  }
+  const targetShape = inspectJsonValue(input.targetSchema);
+  if (targetShape.length > 0) {
+    return fail(targetShape.map((item) => issueFromInspection(item, "target schema")));
   }
 
   const contractResult = validateContract(input.mappingContract);

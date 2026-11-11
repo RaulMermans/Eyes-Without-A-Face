@@ -2,10 +2,10 @@
 
 | Suite | Runner | What it proves |
 | --- | --- | --- |
-| `pnpm test:unit` | Vitest | Config parsing, adapter refusal, SDK symbols, disclosure hashes, structured output, mapping engine |
-| `pnpm test:contracts` | Vitest | Ajv validation of contract families, including cloud disclosure |
-| `pnpm test:privacy` | Vitest | Private vs shareable split, canaries, gate, no executable transforms |
-| `pnpm test:e2e` | Playwright + Vite | Branding, unconfigured Firebase, approval, payload integrity, test adapters |
+| `pnpm test:unit` | Vitest | Config parsing, adapter refusal, SDK symbols, disclosure hashes, structured output, mapping engine, source profiling, Phantom generation, proposal conversion, alias resolution, Reality Check |
+| `pnpm test:contracts` | Vitest | Ajv validation of contract families, including cloud disclosure 1.0.0 and 1.1.0, plus engine input hardening |
+| `pnpm test:privacy` | Vitest | Private vs shareable split, canaries, gate, exact-prompt approval invalidation, replay and concurrency, private-value scan, telemetry sanitization |
+| `pnpm test:e2e` | Playwright + Vite | Branding, unconfigured Firebase, approval, payload integrity, test adapters, the full Phantom Twin journey |
 | `pnpm test:live` | Playwright + installed Chrome | Opt-in capability / real Firebase checks |
 | `pnpm lint` / `typecheck` / `build` | oxlint, tsc, Vite | Static quality |
 
@@ -13,7 +13,19 @@
 
 ## Mock versus live
 
-Test adapters are injected only in Vite `DEV` via `window.__EYES_WITHOUT_A_FACE_TEST__`. The UI labels those results **Simulated test result**. Live adapters never return mock success.
+Test adapters are injected only in Vite `DEV` via `window.__EYES_WITHOUT_A_FACE_TEST__`. The UI labels those results **Simulated test result** or **Simulated test adapter — not Gemini**. Live adapters never return mock success.
+
+Sprint 3 harness options:
+
+- `deriveProposal: true` — a deterministic test proposer reads only the approved payload (`src/inference/test-proposer.ts`).
+- `cloudOutput` — a fixed proposal object.
+- `rawCloudText` — raw response text, used to prove malformed JSON is not repaired.
+
+Property-based tests (fast-check) cover the following:
+
+- profiling never throws on arbitrary JSON;
+- conversion never accepts arbitrary JSON;
+- synthetic examples never reproduce private strings across random datasets and seeds.
 
 ## Playwright
 
@@ -53,6 +65,18 @@ See [playwright-live.md](playwright-live.md). Do not place debug tokens or priva
 | E2E-022 | Unmapped enum edge case |
 | E2E-023 | Mapping with AI network blocked |
 | E2E-024 | UI integrity |
+| E2E-025 | Source profiling (local profile, structured unsafe-input error) |
+| E2E-026 | Phantom generation (aliases, synthetic examples, limitations) |
+| E2E-027 | Same seed and input give the same twin; a seed change alters it; restoring the seed restores it |
+| E2E-028 | Canaries and private names absent from the approved prompt, network bodies, console, telemetry |
+| E2E-029 | Rejection gives zero cloud requests; twin change invalidates approval |
+| E2E-030 | Labeled deterministic test adapter returns a valid proposal; approval is single-use |
+| E2E-031 | Alias resolution to local fields; bindings absent from the prompt |
+| E2E-032 | Resolved mapping produces the expected target JSON |
+| E2E-033 | Reserved unmapped enum fails with a safe summary; value only in local detail |
+| E2E-034 | Unsupported ops, executable content, malformed params, unknown aliases, malformed JSON, manual edits |
+| E2E-035 | Full journey with AI provider hosts blocked |
+| E2E-036 | Keyboard, responsive (1280/390 on every step), no page or console errors |
 | LIVE-001 | Chrome / Prompt API / model availability |
 | LIVE-002 | Firebase project / web app initialization |
 | LIVE-003 | App Check status |
@@ -61,3 +85,4 @@ See [playwright-live.md](playwright-live.md). Do not place debug tokens or priva
 | LIVE-006 | Outbound prompt fingerprint |
 | LIVE-007 | Real on-device inference or recorded blocker |
 | LIVE-008 | Console errors and responsive layout |
+| LIVE-009 | Sprint 3 Phantom Twin journey with real Gemini (`IN_CLOUD` proposal → validation → resolution → Reality Check) |

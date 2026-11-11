@@ -26,15 +26,17 @@ test.describe("E2E-002 workflow navigation", () => {
     await page.getByRole("button", { name: /Source System/ }).click();
     await expect(page.getByRole("heading", { level: 2, name: "Source System" })).toBeVisible();
     await expect(page.getByRole("heading", { name: "Import source JSON" })).toBeVisible();
-    await page.getByRole("button", { name: /Verification/ }).click();
-    await expect(page.getByRole("heading", { level: 2, name: "Verification" })).toBeVisible();
+    await page.getByRole("button", { name: /Reality Check/ }).click();
+    await expect(page.getByRole("heading", { level: 2, name: "Reality Check" })).toBeVisible();
     await expect(page.getByRole("heading", { name: "Local mapping execution" })).toBeVisible();
     await page.getByRole("button", { name: /Export/ }).click();
     await expect(page.getByRole("heading", { level: 2, name: "Export" })).toBeVisible();
     await expect(page.getByText("Export is not implemented yet")).toBeVisible();
     await page.getByRole("button", { name: /Phantom Twin/ }).click();
     await expect(page.getByRole("heading", { level: 2, name: "Phantom Twin" })).toBeVisible();
-    await expect(page.getByRole("heading", { name: "Hybrid AI diagnostic workspace" })).toBeVisible();
+    await expect(page.getByTestId("twin-empty")).toBeVisible();
+    await page.getByRole("button", { name: /Disclosure Review/ }).click();
+    await expect(page.getByRole("heading", { level: 2, name: "Disclosure Review" })).toBeVisible();
     await page.screenshot({
       path: path.join(screenshotDir, "e2e-002-workflow.png"),
       fullPage: true,

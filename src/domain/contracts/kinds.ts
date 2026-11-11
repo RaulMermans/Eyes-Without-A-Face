@@ -11,6 +11,20 @@ export type ContractKind = (typeof CONTRACT_KINDS)[number];
 
 export const CURRENT_CONTRACT_SCHEMA_VERSION = "1.0.0";
 
+/**
+ * Accepted schema versions per contract kind. Cloud disclosure 1.1.0 adds the
+ * reviewed destination `target` description (ADR 0007); 1.0.0 stays valid for
+ * the diagnostic payload.
+ */
+export const SUPPORTED_SCHEMA_VERSIONS = {
+  source: ["1.0.0"],
+  phantom: ["1.0.0"],
+  mapping: ["1.0.0"],
+  validation: ["1.0.0"],
+  export: ["1.0.0"],
+  "cloud-disclosure": ["1.0.0", "1.1.0"],
+} as const satisfies Record<(typeof CONTRACT_KINDS)[number], readonly string[]>;
+
 export const MAPPING_OPERATIONS = [
   "copy",
   "rename",

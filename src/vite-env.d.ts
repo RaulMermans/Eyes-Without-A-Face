@@ -23,6 +23,8 @@ interface EyesTestHarness {
   onDeviceUnavailable?: boolean;
   onDeviceOutput?: unknown;
   cloudOutput?: unknown;
+  deriveProposal?: boolean;
+  rawCloudText?: string;
   malformedCloudOutput?: unknown;
   cloudErrorCode?:
     | "TIMEOUT"

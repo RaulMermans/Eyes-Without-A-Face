@@ -1,4 +1,6 @@
-# Sprint 3 readiness
+# Sprint 3 readiness (historical)
+
+Superseded by [sprint-3.md](sprint-3.md) and [sprint-4-readiness.md](sprint-4-readiness.md). Note: Sprint 3 did require one contract change, cloud-disclosure 1.1.0 for the destination description ([ADR 0007](../decisions/0007-target-disclosure-and-proposal-boundary.md)).
 
 Do not start Sprint 3 automatically.
 

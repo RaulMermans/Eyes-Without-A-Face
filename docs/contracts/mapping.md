@@ -29,7 +29,9 @@ executeMapping({ sourceRecord, mappingContract, targetSchema })
 executeMappingBatch({ sourceRecords, mappingContract, targetSchema })
 ```
 
-Expected validation failures return `{ ok: false, issues }` rather than thrown exceptions.
+Expected validation failures return `{ ok: false, issues }` rather than thrown exceptions. Since Sprint 3, programmatic non-JSON inputs (bigint, functions, `undefined`, non-finite numbers, class instances) return `NON_JSON_VALUE`, and circular records, contracts, or schemas return `CIRCULAR_REFERENCE` instead of throwing (`src/domain/json/inspect.ts`). Operation semantics are unchanged.
+
+Engine issue messages may quote private values (for example `UNMAPPED_ENUM`). The Reality Check (`src/verification/reality-check.ts`) keeps those messages as local detail and shows a fixed per-code explanation with the alias by default. See [mapping-proposal.md](mapping-proposal.md) for how model output reaches this engine.
 
 Batch limits (documented in `src/domain/mapping/limits.ts`): 250 records, 1 MiB total, 64 KiB per record. Failed records are reported individually; a mixed batch is not `ok`.
 

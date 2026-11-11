@@ -1,6 +1,7 @@
 import type { MappingIssue } from "./codes.ts";
 import { executeMapping, type MappingExecutionResult } from "./execute.ts";
-import { isPlainObject, jsonByteLength } from "./json.ts";
+import { isPlainObject } from "./json.ts";
+import { inspectJsonValue, safeJsonByteLength } from "../json/inspect.ts";
 import { MAPPING_LIMITS } from "./limits.ts";
 
 export interface ExecuteMappingBatchInput {
@@ -85,7 +86,36 @@ export function executeMappingBatch(input: ExecuteMappingBatchInput): MappingBat
 
   let totalBytes = 0;
   for (const record of input.sourceRecords) {
-    totalBytes += jsonByteLength(record);
+    // Prototype-pollution keys are reported per record by executeMapping; only
+    // values that cannot be serialized at all stop the batch here.
+    const shape = inspectJsonValue(record, { maxDepth: MAPPING_LIMITS.maxFieldRefDepth + 4 }).filter(
+      (item) => item.code !== "PROTOTYPE_POLLUTION",
+    );
+    const bytes = shape.length === 0 ? safeJsonByteLength(record) : null;
+    if (bytes === null) {
+      const first = shape[0];
+      return {
+        ok: false,
+        results: [],
+        passed: 0,
+        failed: 0,
+        issues: [
+          {
+            code:
+              first?.code === "CIRCULAR_REFERENCE"
+                ? "CIRCULAR_REFERENCE"
+                : first?.code === "PROTOTYPE_POLLUTION"
+                  ? "PROTOTYPE_POLLUTION"
+                  : first?.code === "NESTING_TOO_DEEP"
+                    ? "UNSUPPORTED_NESTED_STRUCTURE"
+                    : "NON_JSON_VALUE",
+            message: first ? `Batch record: ${first.message}` : "Batch record is not JSON-serializable.",
+            path: first?.path || "/",
+          },
+        ],
+      };
+    }
+    totalBytes += bytes;
     if (totalBytes > MAPPING_LIMITS.maxBatchBytes) {
       return {
         ok: false,

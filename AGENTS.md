@@ -15,6 +15,10 @@ Build a privacy-aware integration tool: private CRM JSON stays local; on-device 
 - Do not add authentication or a backend unless a concrete requirement appears.
 - Local development must run without Firebase credentials.
 - Missing configuration must never trigger an unauthorized cloud call.
+- Model mapping proposals reach the engine only through `convertProposal` (`src/proposal/convert.ts`) and `resolveAliases` (`src/proposal/resolve.ts`). Never modify the engine to accept invalid AI output, and never repair model JSON.
+- Phantom aliases (`f_NN`) are the only field identifiers in cloud payloads. Keep alias bindings in `PrivateBindings`; never serialize, log, prompt, or export them.
+- Destination schemas reach the cloud only as the reviewed `target` of a cloud-disclosure 1.1.0 payload. Never append text to an approved prompt.
+- Label every proposal by origin (Gemini `IN_CLOUD`, simulated test adapter, manual edit). Never present deterministic or simulated output as Gemini or on-device AI.
 
 ## Tool and data permissions
 
@@ -55,6 +59,8 @@ Do not skip failing tests, stub them empty, or weaken acceptance criteria to go 
 - Do not claim inference provenance from the requested mode. Missing `inferenceSource` is `PROVENANCE_UNVERIFIED`.
 - Export manifests set `includesPrivateSourceFixtures: false`.
 - Private-data canary: `PRIVATE_CANARY_PII_DO_NOT_SHARE`.
+- Engine messages may quote private values. Show the Reality Check's safe summaries by default, keep raw messages as local detail, and never send failures to Gemini without a separately reviewed and approved payload.
+- Workflow telemetry (`src/observability/workflow-log.ts`) records codes, hashes, counts, and durations only.
 
 ## Sprint completion
 

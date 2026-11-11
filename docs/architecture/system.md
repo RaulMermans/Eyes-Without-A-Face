@@ -1,6 +1,6 @@
 # System architecture
 
-Sprint 2 adds a local deterministic mapping interpreter and a browser import → map → execute workflow. Firebase Hybrid AI remains behind the disclosure gate. Models propose mappings; they do not execute them.
+Sprint 3 connects the Sprint 2 engine to locally generated Phantom Twins and gated Gemini mapping proposals. The guided flow is Source → Phantom Twin → Disclosure Review → Cloud Mapping → Reality Check. AI proposes; deterministic software validates and executes; private data remains local. This is a bounded workflow, not a multi-agent system.
 
 ## Layers
 
@@ -12,7 +12,14 @@ Sprint 2 adds a local deterministic mapping interpreter and a browser import →
 
 Supporting modules:
 
-- `src/privacy` — canaries, forbidden-field scan, SHA-256 fingerprints
+- `src/domain/profile` — deterministic local source profiling (`profileRecords`)
+- `src/domain/json/inspect.ts` — non-JSON, circular, and prototype-key inspection
+- `src/phantom` — role vocabulary, seeded synthetic generator, Phantom Twin generation, `PrivateBindings`
+- `src/proposal` — proposal → alias-level Mapping Contract (`convertProposal`) and local alias resolution (`resolveAliases`)
+- `src/workflow/pipeline.ts` — pure orchestration shared by the UI and tests
+- `src/verification/reality-check.ts` — local execution report with tiered diagnostics
+- `src/observability/workflow-log.ts` — in-memory, allowlisted workflow telemetry
+- `src/privacy` — canaries, forbidden-field scan, SHA-256 fingerprints, private-value index and leak scan
 - `src/twin` — Phantom disclosure checks, allowlist projection, approval gate
 - `src/verification` — validation report summary
 - `src/export` — export manifest builder (always excludes private fixtures)
@@ -21,31 +28,34 @@ Supporting modules:
 ## Data flow
 
 ```text
-JSON source (local memory)
-        │
+JSON source (local memory)            reserved hidden cases (local, never profiled)
+        │                                          │
+        ▼                                          │
+ profileRecords → SourceProfile (local)            │
+        │   optional ONLY_ON_DEVICE role suggestions on synthetic samples
+        ▼                                          │
+ generatePhantomTwin ──► PrivateBindings (local, unserializable)
+        │   Phantom Contract (aliases f_NN, synthetic examples)
+        │   Source Contract (localOnly)            │
+        ▼                                          │
+ describeTargetSchema (destination → minimal target)
+        ▼                                          │
+ CloudDisclosurePayload 1.1.0 (allowlist projection + target)
+        │   exact prompt preview, SHA-256, private-value scan
+        │   explicit Approve / Reject (single-use, request-bound)
+        ▼                                          │
+ submitApprovedCloudInference → Gemini (ONLY_IN_CLOUD)
+        │   structured proposal over aliases       │
+        ▼                                          │
+ convertProposal → alias-level Mapping Contract    │
+        ▼                                          │
+ resolveAliases (local) → executable Mapping Contract
+        ▼                                          ▼
+ executeMappingBatch + destination JSON Schema  ◄──┘
         ▼
- Source Contract (localOnly)
-        │
+ Reality Check (local detail / safe summary / disclosure-shaped summary)
         ▼
- On-device interpretation (ONLY_ON_DEVICE)
-        │
-        ▼
- Phantom Contract (internal; may contain sourceFieldId)
-        │
-        ▼
- CloudDisclosurePayload (allowlist projection)
-        │  user approval of SHA-256(bytes)
-        ▼
- Cloud mapping (ONLY_IN_CLOUD)
-        │  declarative operations, never JS
-        ▼
- Mapping Contract
-        │
-        ▼
- Local verification → Validation Contract
-        │
-        ▼
- Export Contract (no private source fixtures)
+ Export Contract (not implemented; no private source fixtures)
 ```
 
 ## Contract families
@@ -73,8 +83,9 @@ Cloud `generateAuthorized` requires an `AuthorizedCloudRequest` reserved by `sub
 
 | Path | Allowed inputs | Network |
 | --- | --- | --- |
-| Source import | Private JSON | None |
-| Phantom construction | Structure / approved descriptors | On-device only |
-| Mapping proposal | Approved CloudDisclosurePayload | Cloud Gemini via Firebase |
-| Verification | Private fixtures + mapping | None |
+| Source import + profiling | Private JSON | None |
+| Phantom construction | Local profile + user decisions | None (optional on-device suggestions on synthetic samples) |
+| Disclosure review | Projected payload | None |
+| Mapping proposal | Approved CloudDisclosurePayload 1.1.0 | Cloud Gemini via Firebase |
+| Conversion, alias resolution, Reality Check | Proposal + local bindings + private records | None |
 | Export | Mapping, synthetic fixtures, report | None |

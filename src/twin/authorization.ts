@@ -3,6 +3,7 @@ import { assertValidContract, validateContract } from "../domain/validation/vali
 import { findForbiddenCloudSubstrings } from "../privacy/forbidden-cloud-fields.ts";
 import { fingerprintCanonicalPayload } from "../privacy/fingerprint.ts";
 import { PRIVATE_DATA_CANARY } from "../privacy/canaries.ts";
+import { findPrivateValueLeaks } from "../privacy/leak-scan.ts";
 import { FIREBASE_AI_LOGIC_API } from "../inference/firebase-api.ts";
 import { buildCloudPromptText, SDK_TRANSPORT_NOTE } from "../inference/prompts.ts";
 
@@ -67,7 +68,8 @@ export type DisclosureRejectionCode =
   | "OUTBOUND_MISMATCH"
   | "APPROVAL_REUSED"
   | "CONCURRENT_SUBMISSION"
-  | "PRIVATE_CANARY";
+  | "PRIVATE_CANARY"
+  | "PRIVATE_VALUE_PRESENT";
 
 export class DisclosureRejectedError extends Error {
   readonly code = "DISCLOSURE_REJECTED";
@@ -111,7 +113,7 @@ export function buildOutboundApplicationRequest(
     requestId,
     destination: payload.destination,
     purpose: payload.purpose,
-    prompt: buildCloudPromptText(canonicalJson),
+    prompt: buildCloudPromptText(canonicalJson, payload.schemaVersion),
     disclosurePayloadHash: payloadHash,
   };
 }
@@ -153,6 +155,13 @@ export async function inspectDisclosurePayload(
   }
   if (canonicalJson.includes(PRIVATE_DATA_CANARY)) {
     throw new DisclosureRejectedError("PRIVATE_CANARY", ["private-data canary present"]);
+  }
+  const leaks = findPrivateValueLeaks(payload);
+  if (leaks.length > 0) {
+    throw new DisclosureRejectedError(
+      "PRIVATE_VALUE_PRESENT",
+      leaks.map((item) => `private source value reproduced at ${item.location}`),
+    );
   }
 
   const byteLength = new TextEncoder().encode(canonicalJson).byteLength;

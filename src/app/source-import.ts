@@ -1,4 +1,5 @@
 import { isPlainObject } from "../domain/mapping/json.ts";
+import { PROFILE_LIMITS } from "../domain/profile/profile.ts";
 
 export interface ImportedSource {
   label: string;
@@ -9,6 +10,9 @@ export function parseSourceDataset(text: string, label = "imported.json"): { ok:
   const trimmed = text.trim();
   if (!trimmed) {
     return { ok: false, message: "Source JSON is empty." };
+  }
+  if (new TextEncoder().encode(trimmed).length > PROFILE_LIMITS.maxBytes) {
+    return { ok: false, message: `Source JSON exceeds ${PROFILE_LIMITS.maxBytes} bytes. Import a smaller sample.` };
   }
   let parsed: unknown;
   try {
@@ -23,7 +27,7 @@ export function parseSourceDataset(text: string, label = "imported.json"): { ok:
     return { ok: false, message: "Source JSON must be an object or an array of objects." };
   }
   if (Array.isArray(parsed.records)) {
-    return asRecordArray(parsed.records, typeof parsed.datasetId === "string" ? parsed.datasetId : label);
+    return asRecordArray(parsed.records, typeof parsed.datasetId === "string" ? parsed.datasetId.slice(0, 128) : label);
   }
   return asRecordArray([parsed], label);
 }
@@ -34,6 +38,9 @@ function asRecordArray(
 ): { ok: true; value: ImportedSource } | { ok: false; message: string } {
   if (records.length === 0) {
     return { ok: false, message: "Source JSON contains no records." };
+  }
+  if (records.length > PROFILE_LIMITS.maxRecords) {
+    return { ok: false, message: `Source JSON has more than ${PROFILE_LIMITS.maxRecords} records.` };
   }
   const objects: Record<string, unknown>[] = [];
   for (let index = 0; index < records.length; index += 1) {

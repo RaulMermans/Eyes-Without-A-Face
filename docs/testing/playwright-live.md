@@ -28,3 +28,9 @@ Evidence lands in `test-results/sprint-2-live/` (gitignored). Do not store debug
 Playwright request interception cannot see every SDK request. Combine network watchers with the application disclosure gate.
 
 This suite is **not** part of GitHub Actions or `pnpm test:all`.
+
+## Sprint 3 additions
+
+- The diagnostic workspace is collapsed by default. Live specs open it before reading its fields.
+- `LIVE-009` runs the guided Phantom Twin journey against real Gemini: profile, twin, label opt-in, exact-prompt approval, `IN_CLOUD` proposal, conversion, alias resolution, and Reality Check. It records origin, provenance, proposal status, and Reality Check counts in `test-results/sprint-2-live/evidence.json`.
+- `EYES_APPCHECK_DEBUG_TOKEN` (shell only) injects a pre-registered App Check debug token. See [../setup/app-check.md](../setup/app-check.md).

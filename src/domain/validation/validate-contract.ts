@@ -2,6 +2,7 @@ import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
 import type { ErrorObject, ValidateFunction } from "ajv";
 import cloudDisclosureSchema from "../contracts/schemas/cloud-disclosure.v1.schema.json" with { type: "json" };
+import cloudDisclosureSchemaV11 from "../contracts/schemas/cloud-disclosure.v1.1.schema.json" with { type: "json" };
 import exportSchema from "../contracts/schemas/export.v1.schema.json" with { type: "json" };
 import mappingSchema from "../contracts/schemas/mapping.v1.schema.json" with { type: "json" };
 import phantomSchema from "../contracts/schemas/phantom.v1.schema.json" with { type: "json" };
@@ -9,7 +10,7 @@ import sourceSchema from "../contracts/schemas/source.v1.schema.json" with { typ
 import validationSchema from "../contracts/schemas/validation.v1.schema.json" with { type: "json" };
 import {
   CONTRACT_KINDS,
-  CURRENT_CONTRACT_SCHEMA_VERSION,
+  SUPPORTED_SCHEMA_VERSIONS,
   type ContractKind,
 } from "../contracts/kinds.ts";
 import { findExecutableTransformations } from "../mapping/safety.ts";
@@ -34,13 +35,14 @@ const ajv = new Ajv2020({
 });
 addFormats(ajv);
 
-const validators: Record<ContractKind, ValidateFunction> = {
-  source: ajv.compile(sourceSchema),
-  phantom: ajv.compile(phantomSchema),
-  mapping: ajv.compile(mappingSchema),
-  validation: ajv.compile(validationSchema),
-  export: ajv.compile(exportSchema),
-  "cloud-disclosure": ajv.compile(cloudDisclosureSchema),
+const validators: Record<string, ValidateFunction> = {
+  "source@1.0.0": ajv.compile(sourceSchema),
+  "phantom@1.0.0": ajv.compile(phantomSchema),
+  "mapping@1.0.0": ajv.compile(mappingSchema),
+  "validation@1.0.0": ajv.compile(validationSchema),
+  "export@1.0.0": ajv.compile(exportSchema),
+  "cloud-disclosure@1.0.0": ajv.compile(cloudDisclosureSchema),
+  "cloud-disclosure@1.1.0": ajv.compile(cloudDisclosureSchemaV11),
 };
 
 function issueFromAjv(error: ErrorObject): ContractIssue {
@@ -88,21 +90,23 @@ export function validateContract(value: unknown): ContractValidationResult {
   }
 
   const contractKind = kind as ContractKind;
-  if (record.schemaVersion !== CURRENT_CONTRACT_SCHEMA_VERSION) {
+  const supported: readonly string[] = SUPPORTED_SCHEMA_VERSIONS[contractKind];
+  const version = record.schemaVersion;
+  const validate = typeof version === "string" ? validators[`${contractKind}@${version}`] : undefined;
+  if (typeof version !== "string" || !supported.includes(version) || !validate) {
     return {
       valid: false,
       kind: contractKind,
       issues: [
         {
           path: "/schemaVersion",
-          message: `Unsupported schema version ${String(record.schemaVersion)}. Expected ${CURRENT_CONTRACT_SCHEMA_VERSION}.`,
+          message: `Unsupported schema version ${String(version)}. Expected ${supported.join(" or ")}.`,
           code: "VERSION",
         },
       ],
     };
   }
 
-  const validate = validators[contractKind];
   const ok = validate(record);
   const issues: ContractIssue[] = [];
   if (!ok && validate.errors) {

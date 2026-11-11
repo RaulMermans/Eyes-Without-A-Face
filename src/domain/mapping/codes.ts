@@ -22,6 +22,8 @@ export const MAPPING_FAILURE_CODES = [
   "INVALID_TARGET_SCHEMA",
   "OUTPUT_SCHEMA_MISMATCH",
   "INVALID_OPERATION_PARAMS",
+  "NON_JSON_VALUE",
+  "CIRCULAR_REFERENCE",
 ] as const;
 
 export type MappingFailureCode = (typeof MAPPING_FAILURE_CODES)[number];

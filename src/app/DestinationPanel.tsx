@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "../components/ui/button.tsx";
 import { ErrorBanner } from "../components/ErrorBanner.tsx";
 import { assertTargetSchema } from "../domain/mapping/target-schema.ts";
-import type { WorkspaceState } from "./workspace-state.ts";
+import { invalidateDownstream, type WorkspaceState } from "./workspace-state.ts";
 
 export function DestinationPanel({
   workspace,
@@ -42,8 +42,9 @@ export function DestinationPanel({
         Destination JSON Schema
       </h3>
       <p className="mt-2 text-sm leading-6 text-mute">
-        Mapping output is validated against this schema locally. Phantom Twin generation from
-        private structure is not part of this sprint.
+        Mapping output is validated against this schema locally. Only a minimal description of
+        it (field names, types, required flags, formats, enum values) is offered for disclosure
+        review; titles and descriptions are never sent.
       </p>
       <label className="mt-4 block text-sm font-medium" htmlFor="destination-schema">
         Target schema
@@ -56,7 +57,7 @@ export function DestinationPanel({
         onChange={(event) => {
           setSchemaMessage(null);
           setSchemaError(null);
-          onChange({ ...workspace, destinationText: event.target.value, batch: null });
+          onChange(invalidateDownstream({ ...workspace, destinationText: event.target.value }));
         }}
       />
       <div className="mt-3">

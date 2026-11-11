@@ -4,6 +4,7 @@ import { assertAuthorizedEnvelope, type AuthorizedCloudRequest } from "../twin/a
 import { assertReservedAuthorization } from "../twin/authorization-ledger.ts";
 import { InferenceError, InferenceUnavailableError } from "./errors.ts";
 import { probeOnDeviceCapability } from "./on-device-capability.ts";
+import { deriveTestProposal } from "./test-proposer.ts";
 import type {
   CloudInferenceAdapter,
   InferenceResult,
@@ -17,6 +18,10 @@ export interface TestHarness {
   onDeviceUnavailable?: boolean;
   onDeviceOutput?: unknown;
   cloudOutput?: unknown;
+  /** Build a labeled simulated proposal from the approved payload (E2E only). */
+  deriveProposal?: boolean;
+  /** Return this raw text as the model response, bypassing adapter validation (E2E only). */
+  rawCloudText?: string;
   malformedCloudOutput?: unknown;
   cloudErrorCode?:
     | "TIMEOUT"
@@ -121,7 +126,25 @@ export function createTestCloudAdapter(
           validation.issues.join("; ") || "Malformed test output rejected",
         );
       }
-      const structured = harness.cloudOutput ?? {
+      if (harness.rawCloudText !== undefined) {
+        return {
+          text: harness.rawCloudText,
+          structured: undefined,
+          provenance: {
+            provider: "test-harness",
+            requestedMode: "ONLY_IN_CLOUD",
+            actualSource: "TEST",
+            inferenceSourceReported: true,
+            model: "test-adapter",
+            simulated: true,
+            schemaValid: false,
+            durationMs: 1,
+            retries: 0,
+            resultKind: "simulated-test",
+          },
+        };
+      }
+      const structured = harness.deriveProposal ? deriveTestProposal(request.payload) : harness.cloudOutput ?? {
         operations: [
           { op: "copy", from: request.payload.fields[0]?.alias ?? "contact_email", to: "email" },
         ],

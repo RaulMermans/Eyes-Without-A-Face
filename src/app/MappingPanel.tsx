@@ -42,7 +42,7 @@ export function MappingPanel({
       return;
     }
     setError(null);
-    setMessage("Mapping contract is a valid declarative contract. It is not executed until Verification.");
+    setMessage("Mapping contract is a valid declarative contract. It is not executed until the Reality Check.");
   }
 
   return (
@@ -51,9 +51,9 @@ export function MappingPanel({
         Declarative mapping contract
       </h3>
       <p className="mt-2 text-sm leading-6 text-mute">
-        Operations are copy, rename, trim, normalize_email, parse_date, map_enum,
-        default_if_missing, and concat. Executable JavaScript is rejected. Gemini is not used on
-        this step.
+        A hand-written contract over the local source field names. It never leaves this browser
+        and is not AI output. Operations are copy, rename, trim, normalize_email, parse_date,
+        map_enum, default_if_missing, and concat. Executable JavaScript is rejected.
       </p>
       <label className="mt-4 block text-sm font-medium" htmlFor="mapping-json">
         Mapping JSON
@@ -66,7 +66,7 @@ export function MappingPanel({
         onChange={(event) => {
           setMessage(null);
           setError(null);
-          onChange({ ...workspace, mappingText: event.target.value, batch: null });
+          onChange({ ...workspace, mappingText: event.target.value, report: null });
         }}
       />
       <div className="mt-3 flex flex-wrap gap-2">
@@ -77,7 +77,7 @@ export function MappingPanel({
           onClick={() => {
             setMessage(null);
             setError(null);
-            onChange({ ...workspace, mappingText: UNSUPPORTED_SAMPLE, batch: null });
+            onChange({ ...workspace, mappingText: UNSUPPORTED_SAMPLE, mappingChoice: "manual", report: null });
           }}
           data-testid="load-unsupported-mapping"
         >

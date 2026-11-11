@@ -1,6 +1,6 @@
 import { expect, test, type Page } from "@playwright/test";
 import path from "node:path";
-import { attachProviderWatch, screenshotDir } from "./helpers.ts";
+import { attachProviderWatch, openDiagnostics, screenshotDir } from "./helpers.ts";
 
 async function gotoWithHarness(
   page: Page,
@@ -10,12 +10,14 @@ async function gotoWithHarness(
     window.__EYES_WITHOUT_A_FACE_TEST__ = value as Window["__EYES_WITHOUT_A_FACE_TEST__"];
   }, { label: "test-harness", ...harness });
   await page.goto("/");
+  await openDiagnostics(page);
 }
 
 test.describe("E2E-006 unconfigured Firebase", () => {
   test("shows unavailable AI states and no false success", async ({ page }) => {
     const providerRequests = attachProviderWatch(page);
     await page.goto("/");
+    await openDiagnostics(page);
     await expect(page.getByTestId("on-device-status")).toContainText("Unavailable");
     await expect(page.getByTestId("cloud-status")).toContainText("Unavailable");
     await expect(page.getByTestId("on-device-result")).toHaveCount(0);

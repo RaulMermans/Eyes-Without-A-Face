@@ -8,3 +8,4 @@
 | [0004](0004-cloud-disclosure-payload.md) | Separate Cloud Disclosure Payload |
 | [0005](0005-single-use-disclosure-authorization.md) | Single-use disclosure authorization |
 | [0006](0006-mapping-execution-semantics.md) | Deterministic mapping execution semantics |
+| [0007](0007-target-disclosure-and-proposal-boundary.md) | Destination disclosure (cloud-disclosure 1.1.0) and the proposal conversion boundary |

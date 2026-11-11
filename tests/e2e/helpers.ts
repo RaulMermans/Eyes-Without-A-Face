@@ -24,3 +24,11 @@ export function attachProviderWatch(page: Page): string[] {
   });
   return urls;
 }
+
+/** The Sprint 1 diagnostic workspace is collapsed by default since Sprint 3. */
+export async function openDiagnostics(page: Page): Promise<void> {
+  const details = page.getByTestId("diagnostic-details");
+  if ((await details.getAttribute("open")) === null) {
+    await details.locator("summary").first().click();
+  }
+}

@@ -8,4 +8,6 @@
 | 2 | [sprint-2.md](sprint-2.md) — mapping engine, local workflow, live qualification |
 | 2 live | [sprint-2-live-qualification.md](sprint-2-live-qualification.md) |
 | 2 readiness (historical) | [sprint-2-readiness.md](sprint-2-readiness.md) |
-| 3 readiness | [sprint-3-readiness.md](sprint-3-readiness.md) |
+| 3 readiness (historical) | [sprint-3-readiness.md](sprint-3-readiness.md) |
+| 3 | [sprint-3.md](sprint-3.md) — Phantom Twin generation, controlled cloud mapping, private execution, live qualification, CI diagnosis |
+| 4 readiness | [sprint-4-readiness.md](sprint-4-readiness.md) |

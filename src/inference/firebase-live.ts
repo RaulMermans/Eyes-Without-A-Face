@@ -70,7 +70,13 @@ function enableAppCheckDebugToken(config: AppConfig): void {
     return;
   }
   if (config.appCheck.debugEnabled) {
-    self.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
+    // A pre-registered debug token may be injected at runtime (e.g. by the
+    // opt-in live Playwright suite from a non-VITE shell variable). Keep it;
+    // otherwise ask the SDK to generate and print one. Never read from VITE_*.
+    const existing = self.FIREBASE_APPCHECK_DEBUG_TOKEN;
+    if (!(typeof existing === "string" && existing.length > 0)) {
+      self.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
+    }
   }
 }
 

@@ -1,13 +1,34 @@
 import { expect, test, type Page } from "@playwright/test";
 import fs from "node:fs";
 import path from "node:path";
-import { attachProviderWatch } from "../e2e/helpers.ts";
+import { attachProviderWatch, openDiagnostics } from "../e2e/helpers.ts";
 
 const enabled = process.env.EYES_LIVE_TESTS === "1";
 const screenshotDir = "test-results/sprint-2-live";
 const evidencePath = path.join(screenshotDir, "evidence.json");
 
 test.skip(!enabled, "Live Firebase tests are opt-in. Set EYES_LIVE_TESTS=1.");
+
+/**
+ * Optional pre-registered App Check debug token, read from a non-VITE shell
+ * variable and injected at runtime. Playwright starts a fresh browser profile
+ * each run, so the SDK-generated token would otherwise change every time.
+ * The token is never written to evidence, screenshots, or Git.
+ */
+const debugToken = process.env.EYES_APPCHECK_DEBUG_TOKEN ?? "";
+
+test.beforeEach(async ({ page }) => {
+  if (debugToken) {
+    await page.addInitScript((token) => {
+      (self as unknown as { FIREBASE_APPCHECK_DEBUG_TOKEN?: string }).FIREBASE_APPCHECK_DEBUG_TOKEN = token;
+    }, debugToken);
+  }
+});
+
+async function gotoDiagnostics(page: Page): Promise<void> {
+  await page.goto("/");
+  await openDiagnostics(page);
+}
 
 async function collectEvidence(
   page: Page,
@@ -41,7 +62,7 @@ test.describe("LIVE-001 browser compatibility", () => {
     test.skip(browserName !== "chromium", "Live on-device checks require desktop Chrome.");
     const pageErrors: string[] = [];
     page.on("pageerror", (error) => pageErrors.push(error.message));
-    await page.goto("/");
+    await gotoDiagnostics(page);
     await page.getByRole("button", { name: "Check local AI availability" }).click();
     const report = page.getByTestId("capability-report");
     await expect(report).toBeVisible();
@@ -62,7 +83,7 @@ test.describe("LIVE-001 browser compatibility", () => {
 
 test.describe("LIVE-002 Firebase initialization", () => {
   test("shows the registered Firebase project and web app", async ({ page }) => {
-    await page.goto("/");
+    await gotoDiagnostics(page);
     const projectId = (await page.getByTestId("firebase-config-status").innerText()).trim();
     const appId = (await page.getByTestId("firebase-app-id").innerText()).trim();
     await page.screenshot({
@@ -84,7 +105,7 @@ test.describe("LIVE-002 Firebase initialization", () => {
 
 test.describe("LIVE-003 App Check", () => {
   test("records App Check readiness before any cloud generate", async ({ page }) => {
-    await page.goto("/");
+    await gotoDiagnostics(page);
     const status = (await page.getByTestId("app-check-status").innerText()).trim();
     await page.screenshot({
       path: path.join(screenshotDir, "live-003-app-check.png"),
@@ -99,7 +120,7 @@ test.describe("LIVE-004 real Gemini cloud", () => {
   test("executes an approved synthetic mapping request", async ({ page }) => {
     test.skip(process.env.EYES_LIVE_CLOUD !== "1", "Requires Firebase credentials and EYES_LIVE_CLOUD=1.");
     const started = Date.now();
-    await page.goto("/");
+    await gotoDiagnostics(page);
     await page.getByRole("button", { name: "Preview cloud payload" }).click();
     await expect(page.getByTestId("outbound-prompt")).toContainText("Approved disclosure payload:");
     await page.getByRole("button", { name: "Approve payload" }).click();
@@ -146,7 +167,7 @@ test.describe("LIVE-005 rejected disclosure", () => {
 
 test.describe("LIVE-006 payload integrity", () => {
   test("preview fingerprint matches the displayed outbound prompt", async ({ page }) => {
-    await page.goto("/");
+    await gotoDiagnostics(page);
     await page.getByRole("button", { name: "Preview cloud payload" }).click();
     const hash = await page.getByTestId("payload-hash").innerText();
     const prompt = await page.getByTestId("outbound-prompt").innerText();
@@ -167,7 +188,7 @@ test.describe("LIVE-006 payload integrity", () => {
 
 test.describe("LIVE-007 on-device inference", () => {
   test("attempts ONLY_ON_DEVICE and records provenance or the blocker", async ({ page }) => {
-    await page.goto("/");
+    await gotoDiagnostics(page);
     await page.getByRole("button", { name: "Check local AI availability" }).click();
     const capability = await page.getByTestId("capability-report").innerText();
     if (process.env.EYES_LIVE_ON_DEVICE === "1") {
@@ -201,7 +222,7 @@ test.describe("LIVE-008 UI regression", () => {
   test("captures console errors and responsive diagnostic layout", async ({ page }) => {
     const pageErrors: string[] = [];
     page.on("pageerror", (error) => pageErrors.push(error.message));
-    await page.goto("/");
+    await gotoDiagnostics(page);
     await page.setViewportSize({ width: 1280, height: 800 });
     await page.getByRole("button", { name: "Check local AI availability" }).click();
     await page.screenshot({
@@ -216,5 +237,60 @@ test.describe("LIVE-008 UI regression", () => {
     });
     await collectEvidence(page, { check: "LIVE-008", pageErrors });
     expect(pageErrors, pageErrors.join("\n")).toEqual([]);
+  });
+});
+
+test.describe("LIVE-009 Sprint 3 Phantom Twin workflow with real Gemini", () => {
+  test("approved twin → IN_CLOUD proposal → validation → alias resolution → local Reality Check", async ({ page }) => {
+    test.skip(process.env.EYES_LIVE_CLOUD !== "1", "Requires Firebase credentials and EYES_LIVE_CLOUD=1.");
+    const providerRequests = attachProviderWatch(page);
+    const started = Date.now();
+    await page.goto("/");
+    await page.getByTestId("load-crm-sample").click();
+    await page.getByTestId("continue-to-twin").click();
+    await page.locator('[data-testid^="disclose-categories-"]').first().check();
+    await page.getByTestId("continue-to-review").click();
+    await page.getByTestId("build-preview").click();
+    const prompt = await page.getByTestId("review-prompt").innerText();
+    for (const term of ["PRIVATE_CANARY_PII_DO_NOT_SHARE", "customer_id", "email_address", "CUST-001", "alice@example.com", "vip_customer"]) {
+      expect(prompt).not.toContain(term);
+    }
+    await page.getByTestId("approve-disclosure").click();
+    await page.getByTestId("continue-to-mapping").click();
+    await page.getByTestId("send-cloud-request").click();
+    const error = page.getByTestId("cloud-error");
+    const proposal = page.getByTestId("proposal");
+    await expect(error.or(proposal)).toBeVisible({ timeout: 90_000 });
+    const errorText = (await error.count()) > 0 ? await error.innerText() : null;
+    const origin = (await proposal.count()) > 0 ? await page.getByTestId("proposal-origin").innerText() : null;
+    const provenance = (await proposal.count()) > 0 ? await page.getByTestId("proposal-provenance").innerText() : null;
+    const status = (await proposal.count()) > 0 ? await page.getByTestId("proposal-status").innerText() : null;
+    let summary: string | null = null;
+    let reserved: string | null = null;
+    if (status?.startsWith("Valid")) {
+      await page.getByTestId("continue-to-reality").click();
+      await page.getByTestId("run-mapping").click();
+      summary = await page.getByTestId("mapping-summary").innerText();
+      reserved = await page.getByTestId("reserved-summary").innerText();
+    }
+    await page.screenshot({ path: path.join(screenshotDir, "live-009-phantom-flow.png"), fullPage: true });
+    await collectEvidence(page, {
+      check: "LIVE-009",
+      durationMs: Date.now() - started,
+      errorText,
+      origin,
+      provenance,
+      proposalStatus: status,
+      realityCheck: summary,
+      reserved,
+      providerHosts: [...new Set(sanitizeUrls(providerRequests).map((url) => new URL(url).hostname))],
+    });
+    if (errorText) {
+      throw new Error(`Live cloud proposal did not succeed: ${errorText}`);
+    }
+    expect(origin).toBe("Real Gemini output · IN_CLOUD");
+    expect(provenance).toContain("source=IN_CLOUD");
+    expect(provenance).toContain("simulated=false");
+    expect(status).toMatch(/^(Valid|Rejected)/);
   });
 });
