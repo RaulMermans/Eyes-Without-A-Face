@@ -19,6 +19,26 @@
 
 The rules URL returned **HTTP 403** to automated fetches on the first day of the submission period, so the Official Rules could not be read from this environment. Everything below stays unverified until a human reads the page. Development provenance: Sprint 0–2 commits are dated 2026-11-10 and Sprint 3 work 2026-11-11. Do not present pre-event work as newly developed after the start.
 
+## Re-check on 2026-11-11 (Sprint 4)
+
+Both `https://firebasehybridaihackathon.devpost.com/` and `/rules` returned **HTTP 403** to automated fetches. The Official Rules are still unverified from this environment, so a human must read them before submitting.
+
+The Sprint 4 brief lists these requirements, which still need confirming against the rules:
+
+| Requirement | Repository state |
+| --- | --- |
+| Real Firebase AI Logic inference at runtime | On-device verified (LIVE-007, LIVE-013). Cloud blocked by App Check registration |
+| On-device **and** cloud inference | On-device verified, cloud pending |
+| Working demo application | Local dev server. Hosting not deployed |
+| Public GitHub/GitLab repository | Repository is **private**. Publishing needs separate owner confirmation |
+| Visible open-source license | `LICENSE` (Apache-2.0) added in Sprint 4 |
+| Source code and setup instructions | `README.md`, `docs/setup/` |
+| YouTube demo, at most 3 minutes | Storyboard in [demo/README.md](demo/README.md). Not recorded |
+| English materials | Yes |
+| Explanation of pre-existing code | [hackathon-history.md](hackathon-history.md) |
+
+Firebase on-device documentation (re-read 2026-11-11): Chrome desktop 139+, Firebase AI Logic SDK 12.5.0+, the `chrome://flags/#prompt-api-for-gemini-nano-multimodal-input` flag, `initializeDeviceModel()` after a user gesture, and a default in-cloud model of `gemini-3.5-flash-lite`. On-device generation is single-turn, supports structured JSON output, and is capped at 9216 tokens.
+
 ## Unresolved (do not guess)
 
 The Official Rules page states: **“The Official Rules for the Hackathon are not yet available.”** They are promised before the submission period. Therefore the following remain **unverified**:

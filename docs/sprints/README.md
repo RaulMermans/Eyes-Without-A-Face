@@ -10,4 +10,5 @@
 | 2 readiness (historical) | [sprint-2-readiness.md](sprint-2-readiness.md) |
 | 3 readiness (historical) | [sprint-3-readiness.md](sprint-3-readiness.md) |
 | 3 | [sprint-3.md](sprint-3.md) — Phantom Twin generation, controlled cloud mapping, private execution, live qualification, CI diagnosis |
-| 4 readiness | [sprint-4-readiness.md](sprint-4-readiness.md) |
+| 4 readiness (historical) | [sprint-4-readiness.md](sprint-4-readiness.md) |
+| 4 | [sprint-4.md](sprint-4.md) — Firebase CLI/MCP, real on-device qualification, Reality Check and privacy hardening, release docs |

@@ -12,6 +12,11 @@
 import type { MappingIssue, MappingFailureCode } from "../domain/mapping/codes.ts";
 import { executeMappingBatch, type MappingBatchResult } from "../domain/mapping/batch.ts";
 import type { PrivateBindings } from "../phantom/bindings.ts";
+import { inspectJsonValue } from "../domain/json/inspect.ts";
+import { validateContract } from "../domain/validation/validate-contract.ts";
+import { findExecutableTransformations } from "../domain/mapping/safety.ts";
+import { assertTargetSchema } from "../domain/mapping/target-schema.ts";
+import { MAPPING_LIMITS } from "../domain/mapping/limits.ts";
 
 export type RecordSet = "imported" | "reserved";
 
@@ -34,8 +39,39 @@ export interface RealityCheckRow {
   safeIssues: SafeIssue[];
 }
 
+/** Tri-state outcome of one independent Reality Check stage. */
+export type CheckStatus = "pass" | "fail" | "not_evaluated";
+
+/**
+ * Independent stage outcomes. Each answers exactly one question; none is
+ * inferred from another stage's success.
+ *
+ * - mappingContract: the contract validates against the canonical schema,
+ *   uses only allowlisted operations, and contains no executable content.
+ * - targetSchema:    the destination JSON Schema compiles (2020-12).
+ * - execution:       every record (imported and reserved) produced an output.
+ *                    not_evaluated when the contract or schema is invalid, or
+ *                    the batch was refused before any record ran.
+ * - outputSchema:    no produced record violated the destination schema.
+ *                    not_evaluated when no record reached output validation.
+ * - hiddenCases:     every reserved hidden case passed. not_evaluated when no
+ *                    reserved cases ran or the engine could not run.
+ */
+export interface RealityCheckStatuses {
+  mappingContract: CheckStatus;
+  targetSchema: CheckStatus;
+  execution: CheckStatus;
+  outputSchema: CheckStatus;
+  hiddenCases: CheckStatus;
+}
+
 export interface RealityCheckReport {
+  statuses: RealityCheckStatuses;
+  /** pass only when every evaluated stage passed and the engine actually ran. */
+  overall: "pass" | "fail";
+  /** Same as statuses.mappingContract === "pass". */
   mappingValid: boolean;
+  /** Same as statuses.targetSchema === "pass". */
   targetSchemaValid: boolean;
   total: number;
   passed: number;
@@ -112,6 +148,23 @@ const CONTRACT_LEVEL: ReadonlySet<MappingFailureCode> = new Set([
   "INVALID_TARGET_SCHEMA",
 ]);
 
+/** Validates the mapping contract on its own, independent of any record. */
+export function mappingContractStatus(contract: unknown): CheckStatus {
+  if (inspectJsonValue(contract).length > 0) return "fail";
+  const result = validateContract(contract);
+  if (!result.valid || result.kind !== "mapping") return "fail";
+  const operations = (contract as { operations?: unknown }).operations;
+  if (!Array.isArray(operations) || operations.length > MAPPING_LIMITS.maxOperations) return "fail";
+  if (findExecutableTransformations(contract).length > 0) return "fail";
+  return "pass";
+}
+
+/** Compiles the destination schema on its own, independent of any record. */
+export function targetSchemaStatus(schema: unknown): CheckStatus {
+  if (inspectJsonValue(schema).length > 0) return "fail";
+  return assertTargetSchema(schema).ok ? "pass" : "fail";
+}
+
 export function runRealityCheck(input: {
   records: readonly unknown[];
   reservedRecords?: readonly unknown[];
@@ -158,9 +211,18 @@ export function runRealityCheck(input: {
     dedupe.set(`${issue.code}:${issue.operationIndex ?? ""}`, issue);
   }
 
+  const statuses = computeStatuses({
+    mappingContract: input.mappingContract,
+    targetSchema: input.targetSchema,
+    rows,
+    batchRejected: rows.length === 0,
+  });
+
   return {
-    mappingValid: contractLevel.every((issue) => issue.code === "INVALID_TARGET_SCHEMA") && blocking.length === 0,
-    targetSchemaValid: !allIssues.some((issue) => issue.code === "INVALID_TARGET_SCHEMA"),
+    statuses,
+    overall: overallVerdict(statuses),
+    mappingValid: statuses.mappingContract === "pass",
+    targetSchemaValid: statuses.targetSchema === "pass",
     total: rows.length,
     passed: batch.passed,
     failed: batch.failed,
@@ -171,4 +233,37 @@ export function runRealityCheck(input: {
     blockingIssues: [...blocking, ...dedupe.values()],
     durationMs: Math.max(0, Math.round(now() - started)),
   };
+}
+
+function computeStatuses(input: {
+  mappingContract: unknown;
+  targetSchema: unknown;
+  rows: readonly RealityCheckRow[];
+  batchRejected: boolean;
+}): RealityCheckStatuses {
+  const mappingContract = mappingContractStatus(input.mappingContract);
+  const targetSchema = targetSchemaStatus(input.targetSchema);
+  const engineCanRun = mappingContract === "pass" && targetSchema === "pass" && !input.batchRejected;
+  if (!engineCanRun) {
+    return { mappingContract, targetSchema, execution: "not_evaluated", outputSchema: "not_evaluated", hiddenCases: "not_evaluated" };
+  }
+  const execution: CheckStatus = input.rows.every((row) => row.status === "pass") ? "pass" : "fail";
+  const reachedOutput = input.rows.filter(
+    (row) => row.status === "pass" || row.localIssues.some((issue) => issue.code === "OUTPUT_SCHEMA_MISMATCH"),
+  );
+  const outputSchema: CheckStatus =
+    reachedOutput.length === 0
+      ? "not_evaluated"
+      : reachedOutput.some((row) => row.localIssues.some((issue) => issue.code === "OUTPUT_SCHEMA_MISMATCH"))
+        ? "fail"
+        : "pass";
+  const reservedRows = input.rows.filter((row) => row.set === "reserved");
+  const hiddenCases: CheckStatus =
+    reservedRows.length === 0 ? "not_evaluated" : reservedRows.every((row) => row.status === "pass") ? "pass" : "fail";
+  return { mappingContract, targetSchema, execution, outputSchema, hiddenCases };
+}
+
+function overallVerdict(statuses: RealityCheckStatuses): "pass" | "fail" {
+  if (statuses.execution !== "pass") return "fail";
+  return Object.values(statuses).every((status) => status !== "fail") ? "pass" : "fail";
 }

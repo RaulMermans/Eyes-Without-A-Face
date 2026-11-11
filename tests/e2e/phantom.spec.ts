@@ -258,6 +258,10 @@ test.describe("E2E-033 hidden failure", () => {
     await proposeAndRun(page);
     await expect(page.getByTestId("mapping-summary")).toContainText("3 passed · 3 failed · 6 records · batch failed");
     await expect(page.getByTestId("reserved-summary")).toHaveText("3 of 3 failed");
+    await expect(page.getByTestId("status-mappingContract")).toHaveText("pass");
+    await expect(page.getByTestId("status-outputSchema")).toHaveText("pass");
+    await expect(page.getByTestId("status-hiddenCases")).toHaveText("fail");
+    await expect(page.getByTestId("reality-overall")).toHaveAttribute("data-status", "fail");
     const hidden = page.getByTestId("mapping-record-3");
     await expect(hidden).toHaveAttribute("data-set", "reserved");
     const safe = page.getByTestId("safe-issues-3");

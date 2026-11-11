@@ -67,25 +67,41 @@ Real on-device calls also need `EYES_LIVE_ON_DEVICE=1`. Real cloud calls need cr
 
 `pnpm test:mapping` covers the deterministic engine. It is included in the unit, contract, and privacy suites.
 
-## Implementation status (Sprint 3)
+## Implementation status (Sprint 4)
 
-Current classification: **`LOCAL_PIPELINE_COMPLETE / CLOUD_BLOCKED`** (on-device `ON_DEVICE_BLOCKED`). See [docs/sprints/sprint-3.md](docs/sprints/sprint-3.md).
+Current classification: **`LOCAL_PIPELINE_COMPLETE / CLOUD_BLOCKED`**, with **real on-device inference verified**. See [docs/sprints/sprint-4.md](docs/sprints/sprint-4.md).
 
 | Capability | Status |
 | --- | --- |
 | Guided flow: Source → Phantom Twin → Disclosure Review → Cloud Mapping → Reality Check | Implemented |
-| Local source profiling (`profileRecords`) | Implemented |
-| Phantom Twin generation: seeded `f_NN` aliases, synthetic examples, local `PrivateBindings` | Implemented |
-| Cloud disclosure 1.1.0 with a minimal destination description, exact-prompt approval, private-value scan | Implemented |
-| Proposal → Mapping Contract conversion boundary, local alias resolution | Implemented |
-| Reality Check with reserved hidden cases and tiered diagnostics | Implemented |
-| Mapping interpreter (`executeMapping` / `executeMappingBatch`) | Implemented (Sprint 2; input hardening only in Sprint 3) |
-| Cloud adapter (`ONLY_IN_CLOUD`) | Implemented. Live request **BLOCKED** by App Check 403 until a debug token is registered ([docs/setup/app-check.md](docs/setup/app-check.md)) |
-| On-device adapter (`ONLY_ON_DEVICE`) | Implemented. **BLOCKED** on this host (`LanguageModel` `unavailable`). The UI falls back to manual/deterministic mode, never to the cloud |
+| Phantom Twin, cloud disclosure 1.1.0, exact-prompt approval, alias resolution | Implemented |
+| Reality Check: five independent stage statuses plus an overall verdict | Implemented (fixed in Sprint 4) |
+| On-device adapter (`ONLY_ON_DEVICE`, Gemini Nano through Firebase AI Logic) | **Verified live**: `inferenceSource = ON_DEVICE`, schema-valid, no cloud request (LIVE-007, LIVE-013; Chrome 157 Linux) |
+| Cloud adapter (`ONLY_IN_CLOUD`, Gemini Developer API) | Implemented. Live request **BLOCKED** by App Check 403 until the owner registers the prepared debug token ([docs/setup/app-check.md](docs/setup/app-check.md)) |
+| Firebase CLI / MCP | Configured (`.firebaserc`, `.mcp.json`). Authenticated access **BLOCKED** until `firebase login` ([docs/setup/firebase-cli-mcp.md](docs/setup/firebase-cli-mcp.md)) |
+| Hosting | Configured, not deployed ([docs/deployment.md](docs/deployment.md)) |
 | Export packaging, correction loop | Not implemented |
 | Automatic cloud fallback | Forbidden by design |
 
-Do not report `HYBRID_QUALIFIED` unless both cloud and on-device provenance are confirmed. Cloud-only success is `CLOUD_INTEGRATED / ON_DEVICE_BLOCKED`.
+Classifications:
+- `HYBRID_QUALIFIED`: real on-device and real cloud inference both verified.
+- `CLOUD_QUALIFIED / ON_DEVICE_BLOCKED`: cloud only.
+- `LOCAL_PIPELINE_COMPLETE / CLOUD_BLOCKED`: cloud is not yet verified.
+
+### On-device quick start
+
+Playwright's default Chrome flags block the Gemini Nano component. Live on-device tests use a dedicated Chrome profile. See [docs/setup/browser-compatibility.md](docs/setup/browser-compatibility.md).
+
+```bash
+EYES_LIVE_TESTS=1 EYES_LIVE_ON_DEVICE=1 \
+EYES_CHROME_PROFILE="$HOME/.cache/eyes-without-a-face/chrome-nano-profile" pnpm test:live
+```
+
+Demo storyboard: [docs/demo/README.md](docs/demo/README.md).
+
+## License
+
+[Apache-2.0](LICENSE).
 
 Canonical contract source of truth: JSON Schema files in `src/domain/contracts/schemas/`. TypeScript types in `src/domain/contracts/types.ts` must match those schemas.
 
@@ -101,5 +117,8 @@ Index: [docs/README.md](docs/README.md)
 - `docs/contracts/` — contract families
 - `docs/security/` — threat model and disclosure policy
 - `docs/testing/` — test strategy
-- `docs/sprints/` — Sprint 0–3 reports and Sprint 4 readiness
+- `docs/sprints/` — Sprint 0–4 reports
+- `docs/demo/` — 90-second demo storyboard and narration
+- `docs/deployment.md` — Hosting status
+- `docs/hackathon-history.md` — development timeline for the submission
 - `docs/hackathon-requirements.md` — verified vs unresolved official rules

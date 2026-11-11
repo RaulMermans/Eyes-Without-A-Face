@@ -46,6 +46,8 @@ test.describe("E2E-019 mapping execution", () => {
     await page.getByTestId("run-mapping").click();
     await expect(page.getByTestId("mapping-summary")).toContainText("3 passed");
     await expect(page.getByTestId("mapping-summary")).toContainText("batch ok");
+    await expect(page.getByTestId("reality-overall")).toHaveAttribute("data-status", "pass");
+    await expect(page.getByTestId("status-hiddenCases")).toHaveText("not_evaluated");
     await page.screenshot({ path: path.join(screenshotDir, "e2e-019-execution.png"), fullPage: true });
   });
 });
@@ -81,6 +83,9 @@ test.describe("E2E-021 invalid mapping", () => {
     await page.getByTestId("run-mapping").click();
     await expect(page.getByTestId("mapping-summary")).toContainText("batch failed");
     await expect(page.getByTestId("mapping-record-0")).toContainText("INVALID_MAPPING_CONTRACT");
+    await expect(page.getByTestId("status-mappingContract")).toHaveText("fail");
+    await expect(page.getByTestId("status-execution")).toHaveText("not_evaluated");
+    await expect(page.getByTestId("reality-overall")).toHaveAttribute("data-status", "fail");
     await page.screenshot({ path: path.join(screenshotDir, "e2e-021-invalid-mapping.png"), fullPage: true });
   });
 });

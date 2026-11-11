@@ -26,15 +26,23 @@ Official SDK workflow:
 
 Playwright starts a fresh browser profile on every run, so an SDK-generated token changes each time and the token registered from your normal browser does not apply. To qualify the cloud path with `pnpm test:live`:
 
-1. Generate a UUID v4 locally (for example `node -e "console.log(crypto.randomUUID())"`).
+1. Generate a UUID v4 into a private file outside the repository, without printing it:
+
+   ```bash
+   mkdir -p ~/.config/eyes-without-a-face && chmod 700 ~/.config/eyes-without-a-face
+   (umask 077; node -e 'process.stdout.write(crypto.randomUUID())' > ~/.config/eyes-without-a-face/appcheck-debug-token)
+   ```
+
+   Sprint 4 already created this file on the development machine (mode 600).
 2. Firebase Console → App Check → Apps → `eyes-without-a-face-web` → **Manage debug tokens** → **Add debug token** → paste the UUID.
 3. Run with the token in a non-`VITE_` shell variable:
 
    ```bash
-   EYES_APPCHECK_DEBUG_TOKEN=<uuid> EYES_LIVE_TESTS=1 EYES_LIVE_CLOUD=1 pnpm test:live
+   EYES_APPCHECK_DEBUG_TOKEN="$(cat ~/.config/eyes-without-a-face/appcheck-debug-token)" \
+   EYES_LIVE_TESTS=1 EYES_LIVE_CLOUD=1 pnpm test:live
    ```
 
-The live spec injects it as `self.FIREBASE_APPCHECK_DEBUG_TOKEN` before the app loads. `firebase-live.ts` keeps a pre-set string token instead of overwriting it with `true`. The variable is not read by Vite, not written to evidence, and must not be committed. Revoke the token in the console when qualification is done.
+The live spec injects it as `self.FIREBASE_APPCHECK_DEBUG_TOKEN` before the app loads. Playwright traces would record that init-script argument, so `playwright.live.config.ts` turns tracing off whenever the variable is set. `firebase-live.ts` keeps a pre-set string token instead of overwriting it with `true`. The variable is not read by Vite, not written to evidence, and must not be committed. Revoke the token in the console when qualification is done.
 
 The token is a credential:
 

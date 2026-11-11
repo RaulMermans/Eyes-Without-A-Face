@@ -6,13 +6,16 @@ const baseURL = `http://127.0.0.1:${port}`;
 export default defineConfig({
   testDir: "tests/live",
   fullyParallel: false,
+  workers: 1,
   retries: 0,
   reporter: [["list"]],
   timeout: 180_000,
   use: {
     baseURL,
     headless: false,
-    trace: "retain-on-failure",
+    // Traces record addInitScript arguments, which would capture an injected
+    // App Check debug token. Never trace when a token is present.
+    trace: process.env.EYES_APPCHECK_DEBUG_TOKEN ? "off" : "retain-on-failure",
     screenshot: "only-on-failure",
   },
   webServer: {

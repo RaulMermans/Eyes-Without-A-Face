@@ -1,10 +1,11 @@
-import { expect, test, type Page } from "@playwright/test";
+import type { Page } from "@playwright/test";
+import { expect, test, usingDedicatedProfile } from "./fixtures.ts";
 import fs from "node:fs";
 import path from "node:path";
 import { attachProviderWatch, openDiagnostics } from "../e2e/helpers.ts";
 
 const enabled = process.env.EYES_LIVE_TESTS === "1";
-const screenshotDir = "test-results/sprint-2-live";
+const screenshotDir = "test-results/sprint-4-live";
 const evidencePath = path.join(screenshotDir, "evidence.json");
 
 test.skip(!enabled, "Live Firebase tests are opt-in. Set EYES_LIVE_TESTS=1.");
@@ -39,6 +40,7 @@ async function collectEvidence(
   const payload = {
     at: new Date().toISOString(),
     userAgent,
+    browserLaunch: usingDedicatedProfile ? "dedicated-chrome-profile" : "playwright-default-args",
     ...extra,
   };
   const previous = fs.existsSync(evidencePath)
@@ -192,11 +194,24 @@ test.describe("LIVE-007 on-device inference", () => {
     await page.getByRole("button", { name: "Check local AI availability" }).click();
     const capability = await page.getByTestId("capability-report").innerText();
     if (process.env.EYES_LIVE_ON_DEVICE === "1") {
+      const providerRequests = attachProviderWatch(page);
+      const started = Date.now();
       await page.getByRole("button", { name: "Initialize local model" }).click({ timeout: 120_000 });
       await page.getByRole("button", { name: "Run local inference" }).click();
-      await expect(page.getByTestId("on-device-result-kind")).toHaveText("Real on-device result");
+      await expect(page.getByTestId("on-device-result-kind")).toHaveText("Real on-device result", { timeout: 120_000 });
       await expect(page.getByTestId("on-device-result")).toContainText("source=ON_DEVICE");
-      await collectEvidence(page, { check: "LIVE-007", status: "PASS", capability });
+      const resultText = await page.getByTestId("on-device-result").innerText();
+      const cloudInferenceUrls = sanitizeUrls(providerRequests.filter((url) => url.includes("generateContent")));
+      await page.screenshot({ path: path.join(screenshotDir, "live-007-on-device.png"), fullPage: true });
+      await collectEvidence(page, {
+        check: "LIVE-007",
+        status: "PASS",
+        capability,
+        durationMs: Date.now() - started,
+        result: resultText,
+        cloudInferenceUrls,
+      });
+      expect(cloudInferenceUrls).toEqual([]);
       return;
     }
     await page.getByRole("button", { name: "Run local inference" }).click();
@@ -244,6 +259,17 @@ test.describe("LIVE-009 Sprint 3 Phantom Twin workflow with real Gemini", () => 
   test("approved twin → IN_CLOUD proposal → validation → alias resolution → local Reality Check", async ({ page }) => {
     test.skip(process.env.EYES_LIVE_CLOUD !== "1", "Requires Firebase credentials and EYES_LIVE_CLOUD=1.");
     const providerRequests = attachProviderWatch(page);
+    const pageErrors: string[] = [];
+    page.on("pageerror", (error) => pageErrors.push(error.message));
+    // LIVE-015: scan every real generateContent body for private terms. Bodies are never stored.
+    const privateTerms = ["PRIVATE_CANARY_PII_DO_NOT_SHARE", "customer_id", "email_address", "account_state", "CUST-001", "alice@example.com", "ALICE@EXAMPLE.COM", "vip_customer", "Example Studio"];
+    const bodyScan = { requests: 0, leaks: [] as string[] };
+    page.on("request", (request) => {
+      if (!request.url().includes("generateContent")) return;
+      bodyScan.requests += 1;
+      const body = request.postData() ?? "";
+      for (const term of privateTerms) if (body.includes(term)) bodyScan.leaks.push(term);
+    });
     const started = Date.now();
     await page.goto("/");
     await page.getByTestId("load-crm-sample").click();
@@ -284,6 +310,10 @@ test.describe("LIVE-009 Sprint 3 Phantom Twin workflow with real Gemini", () => 
       realityCheck: summary,
       reserved,
       providerHosts: [...new Set(sanitizeUrls(providerRequests).map((url) => new URL(url).hostname))],
+      generateContentRequests: bodyScan.requests,
+      privateTermsInRequestBodies: bodyScan.leaks,
+      overall: status?.startsWith("Valid") ? await page.getByTestId("reality-overall").innerText() : null,
+      pageErrors,
     });
     if (errorText) {
       throw new Error(`Live cloud proposal did not succeed: ${errorText}`);
@@ -292,5 +322,43 @@ test.describe("LIVE-009 Sprint 3 Phantom Twin workflow with real Gemini", () => 
     expect(provenance).toContain("source=IN_CLOUD");
     expect(provenance).toContain("simulated=false");
     expect(status).toMatch(/^(Valid|Rejected)/);
+    expect(bodyScan.requests).toBeGreaterThan(0);
+    expect(bodyScan.leaks).toEqual([]);
+    expect(pageErrors, pageErrors.join("\n")).toEqual([]);
+    if (status?.startsWith("Valid")) {
+      // LIVE-016: reserved hidden cases must surface a real local failure.
+      expect(reserved).toMatch(/[1-9]\d* of \d+ failed/);
+    }
+  });
+});
+
+test.describe("LIVE-013 on-device in the guided Phantom Twin step", () => {
+  test("real ONLY_ON_DEVICE role suggestions on synthetic samples, no cloud request", async ({ page }) => {
+    test.skip(process.env.EYES_LIVE_ON_DEVICE !== "1", "Requires an eligible Chrome profile and EYES_LIVE_ON_DEVICE=1.");
+    const providerRequests = attachProviderWatch(page);
+    const pageErrors: string[] = [];
+    page.on("pageerror", (error) => pageErrors.push(error.message));
+    const started = Date.now();
+    await page.goto("/");
+    await page.getByTestId("load-crm-sample").click();
+    await page.getByTestId("continue-to-twin").click();
+    await expect(page.getByTestId("on-device-mode-label")).toContainText("On-device AI available", { timeout: 30_000 });
+    await page.getByTestId("suggest-on-device").click();
+    const suggestions = page.getByTestId("on-device-suggestions");
+    await expect(suggestions).toBeVisible({ timeout: 180_000 });
+    const text = await suggestions.innerText();
+    const cloudInferenceUrls = sanitizeUrls(providerRequests.filter((url) => url.includes("generateContent")));
+    await page.screenshot({ path: path.join(screenshotDir, "live-013-guided-on-device.png"), fullPage: true });
+    await collectEvidence(page, {
+      check: "LIVE-013",
+      durationMs: Date.now() - started,
+      suggestions: text,
+      cloudInferenceUrls,
+      pageErrors,
+    });
+    expect(text).toContain("(real on-device)");
+    expect(text).not.toContain("simulated");
+    expect(cloudInferenceUrls).toEqual([]);
+    expect(pageErrors, pageErrors.join("\n")).toEqual([]);
   });
 });

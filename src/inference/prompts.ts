@@ -12,6 +12,25 @@ export const CLOUD_PROMPT_INSTRUCTIONS = [
 export const SDK_TRANSPORT_NOTE =
   "Application payload only. Firebase SDK transport may attach App Check tokens, HTTP headers, and connection metadata that this product cannot display or strip.";
 
+/**
+ * Prompt API `responseConstraint` for on-device field interpretation. Mirrors
+ * `field-interpretation.v1.schema.json` (without $id/$schema). Constraining
+ * generation is not repair: the reply is still parsed and validated strictly
+ * against the canonical schema afterwards.
+ */
+export const FIELD_INTERPRETATION_JSON_SCHEMA = {
+  type: "object",
+  additionalProperties: false,
+  required: ["fieldAlias", "semanticRole", "valueKind", "shareabilityHint", "rationale"],
+  properties: {
+    fieldAlias: { type: "string", minLength: 1, maxLength: 128 },
+    semanticRole: { type: "string", enum: ["identifier", "email", "lifecycle-state", "timestamp", "free-text", "other"] },
+    valueKind: { type: "string", enum: ["string", "number", "boolean", "enum", "date"] },
+    shareabilityHint: { type: "string", enum: ["synthetic-ok", "keep-local"] },
+    rationale: { type: "string", minLength: 1, maxLength: 400 },
+  },
+} as const;
+
 export function buildOnDevicePrompt(input: OnDeviceFieldInput): string {
   return [
     "Classify this fictional CRM field.",
@@ -47,24 +66,6 @@ export function buildCloudPromptText(canonicalDisclosureJson: string, schemaVers
 export function buildCloudPrompt(request: AuthorizedCloudRequest): string {
   return request.outboundPrompt;
 }
-
-export const FIELD_INTERPRETATION_JSON_SCHEMA = {
-  type: "object",
-  properties: {
-    fieldAlias: { type: "string" },
-    semanticRole: {
-      type: "string",
-      enum: ["identifier", "email", "lifecycle-state", "timestamp", "free-text", "other"],
-    },
-    valueKind: {
-      type: "string",
-      enum: ["string", "number", "boolean", "enum", "date"],
-    },
-    shareabilityHint: { type: "string", enum: ["synthetic-ok", "keep-local"] },
-    rationale: { type: "string" },
-  },
-  required: ["fieldAlias", "semanticRole", "valueKind", "shareabilityHint", "rationale"],
-} as const;
 
 export const MAPPING_PROPOSAL_JSON_SCHEMA = {
   type: "object",
