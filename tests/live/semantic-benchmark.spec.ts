@@ -31,7 +31,10 @@ import { FIREBASE_AI_LOGIC_API } from "../../src/inference/firebase-api.ts";
  */
 const enabled = process.env.EYES_LIVE_TESTS === "1" && process.env.EYES_LIVE_SEMANTIC_BENCHMARK === "1";
 test.skip(!enabled, "Opt-in: EYES_LIVE_TESTS=1 EYES_LIVE_SEMANTIC_BENCHMARK=1.");
-test.describe.configure({ mode: "serial" });
+// One worker keeps the order; "default" mode means one failed run never skips the remaining trials.
+test.describe.configure({ mode: "default" });
+// Nano (~15 s) + two cloud requests (each up to the app's 45 s timeout) + browser evaluation.
+test.setTimeout(420_000);
 
 const debugToken = process.env.EYES_APPCHECK_DEBUG_TOKEN ?? "";
 const evidencePath = process.env.EYES_LIVE_EVIDENCE ?? "live-evidence/sprint-8/semantic-benchmark.json";
@@ -276,10 +279,13 @@ for (let trial = firstTrial; trial < firstTrial + trials; trial += 1) {
               ok: await attr(page, "revised-status", "data-ok"),
               status: await text(page, "revised-status"),
             };
+            // Read only what exists: a blocked revision (e.g. provider TIMEOUT) renders no revised mapping.
             entry.revisedText =
               (await page.getByTestId("revised-proposal-json").count()) > 0
                 ? await page.getByTestId("revised-proposal-json").textContent()
-                : await page.getByTestId("revised-mapping").locator("pre").first().textContent().catch(() => null);
+                : (await page.getByTestId("revised-mapping").locator("pre").count()) > 0
+                  ? await page.getByTestId("revised-mapping").locator("pre").first().textContent()
+                  : null;
             if ((await page.getByTestId("run-revised-reality-check").count()) > 0) {
               await page.getByTestId("run-revised-reality-check").click();
               entry.revisionComparison = {

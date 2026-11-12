@@ -1,0 +1,3622 @@
+{
+  "reportVersion": "1.0.0",
+  "evidence": {
+    "entries": 30,
+    "sha256": "bcfea68c417ddaec70893636a4ca09fdcb9f62f31e433f0907a45e71a8d5132e"
+  },
+  "totals": {
+    "cloudRequests": 38,
+    "providerFailures": 21,
+    "bodyLeaks": 0,
+    "replayMismatches": 0,
+    "trials": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "cells": [
+    {
+      "scenarioId": "billing-subscriptions",
+      "config": "A",
+      "runs": 1,
+      "providerFailures": 0,
+      "validMappings": 1,
+      "holdoutTotal": 10,
+      "holdoutCorrectTransformations": [
+        0
+      ],
+      "holdoutCorrectlyHandled": [
+        3
+      ],
+      "holdoutIncorrect": [
+        0
+      ],
+      "meanHoldoutCorrectTransformations": 0,
+      "detection": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revisionVerdicts": {},
+      "holdoutDeltas": [],
+      "holdoutRegressions": 0,
+      "operationRegressions": 0,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0
+      },
+      "cloudRequests": 0,
+      "medianLatencyMs": {
+        "cloud": null,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMismatches": 0
+    },
+    {
+      "scenarioId": "billing-subscriptions",
+      "config": "B",
+      "runs": 5,
+      "providerFailures": 1,
+      "validMappings": 4,
+      "holdoutTotal": 10,
+      "holdoutCorrectTransformations": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "holdoutCorrectlyHandled": [
+        9,
+        10,
+        9,
+        9
+      ],
+      "holdoutIncorrect": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "meanHoldoutCorrectTransformations": 6,
+      "detection": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revisionVerdicts": {},
+      "holdoutDeltas": [],
+      "holdoutRegressions": 0,
+      "operationRegressions": 0,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0
+      },
+      "cloudRequests": 5,
+      "medianLatencyMs": {
+        "cloud": 5169,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMismatches": 0
+    },
+    {
+      "scenarioId": "billing-subscriptions",
+      "config": "C",
+      "runs": 5,
+      "providerFailures": 2,
+      "validMappings": 3,
+      "holdoutTotal": 10,
+      "holdoutCorrectTransformations": [
+        6,
+        6,
+        6
+      ],
+      "holdoutCorrectlyHandled": [
+        9,
+        10,
+        9
+      ],
+      "holdoutIncorrect": [
+        0,
+        0,
+        0
+      ],
+      "meanHoldoutCorrectTransformations": 6,
+      "detection": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revisionVerdicts": {},
+      "holdoutDeltas": [],
+      "holdoutRegressions": 0,
+      "operationRegressions": 0,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0
+      },
+      "cloudRequests": 3,
+      "medianLatencyMs": {
+        "cloud": 12980,
+        "nano": 17769,
+        "revision": null
+      },
+      "humanInterventions": 1,
+      "replayMismatches": 0
+    },
+    {
+      "scenarioId": "billing-subscriptions",
+      "config": "D",
+      "runs": 5,
+      "providerFailures": 4,
+      "validMappings": 1,
+      "holdoutTotal": 10,
+      "holdoutCorrectTransformations": [
+        0,
+        6,
+        6
+      ],
+      "holdoutCorrectlyHandled": [
+        4,
+        10,
+        9
+      ],
+      "holdoutIncorrect": [
+        0,
+        0,
+        0
+      ],
+      "meanHoldoutCorrectTransformations": 4,
+      "detection": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revisionVerdicts": {
+        "REGRESSED": 1,
+        "BLOCKED": 2
+      },
+      "holdoutDeltas": [
+        -6,
+        0,
+        0
+      ],
+      "holdoutRegressions": 6,
+      "operationRegressions": 7,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0
+      },
+      "cloudRequests": 8,
+      "medianLatencyMs": {
+        "cloud": 12980,
+        "nano": 17769,
+        "revision": 45340
+      },
+      "humanInterventions": 4,
+      "replayMismatches": 0
+    },
+    {
+      "scenarioId": "billing-subscriptions",
+      "config": "P",
+      "runs": 3,
+      "providerFailures": 0,
+      "validMappings": 3,
+      "holdoutTotal": 10,
+      "holdoutCorrectTransformations": [
+        0,
+        0,
+        0
+      ],
+      "holdoutCorrectlyHandled": [
+        4,
+        4,
+        4
+      ],
+      "holdoutIncorrect": [
+        0,
+        0,
+        0
+      ],
+      "meanHoldoutCorrectTransformations": 0,
+      "detection": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revisionVerdicts": {
+        "REGRESSED": 3
+      },
+      "holdoutDeltas": [
+        -6,
+        -6,
+        -6
+      ],
+      "holdoutRegressions": 18,
+      "operationRegressions": 21,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0
+      },
+      "cloudRequests": 0,
+      "medianLatencyMs": {
+        "cloud": null,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMismatches": 0
+    },
+    {
+      "scenarioId": "crm-eu-accounts",
+      "config": "A",
+      "runs": 1,
+      "providerFailures": 0,
+      "validMappings": 1,
+      "holdoutTotal": 10,
+      "holdoutCorrectTransformations": [
+        0
+      ],
+      "holdoutCorrectlyHandled": [
+        1
+      ],
+      "holdoutIncorrect": [
+        0
+      ],
+      "meanHoldoutCorrectTransformations": 0,
+      "detection": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revisionVerdicts": {},
+      "holdoutDeltas": [],
+      "holdoutRegressions": 0,
+      "operationRegressions": 0,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0
+      },
+      "cloudRequests": 0,
+      "medianLatencyMs": {
+        "cloud": null,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMismatches": 0
+    },
+    {
+      "scenarioId": "crm-eu-accounts",
+      "config": "B",
+      "runs": 5,
+      "providerFailures": 2,
+      "validMappings": 3,
+      "holdoutTotal": 10,
+      "holdoutCorrectTransformations": [
+        1,
+        1,
+        1
+      ],
+      "holdoutCorrectlyHandled": [
+        2,
+        2,
+        2
+      ],
+      "holdoutIncorrect": [
+        4,
+        4,
+        4
+      ],
+      "meanHoldoutCorrectTransformations": 1,
+      "detection": {
+        "incorrect": 12,
+        "detected": 12,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revisionVerdicts": {},
+      "holdoutDeltas": [],
+      "holdoutRegressions": 0,
+      "operationRegressions": 0,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0
+      },
+      "cloudRequests": 5,
+      "medianLatencyMs": {
+        "cloud": 15025,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMismatches": 0
+    },
+    {
+      "scenarioId": "crm-eu-accounts",
+      "config": "C",
+      "runs": 5,
+      "providerFailures": 2,
+      "validMappings": 2,
+      "holdoutTotal": 10,
+      "holdoutCorrectTransformations": [
+        1,
+        1
+      ],
+      "holdoutCorrectlyHandled": [
+        2,
+        2
+      ],
+      "holdoutIncorrect": [
+        4,
+        4
+      ],
+      "meanHoldoutCorrectTransformations": 1,
+      "detection": {
+        "incorrect": 8,
+        "detected": 8,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revisionVerdicts": {},
+      "holdoutDeltas": [],
+      "holdoutRegressions": 0,
+      "operationRegressions": 0,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0
+      },
+      "cloudRequests": 3,
+      "medianLatencyMs": {
+        "cloud": 12956,
+        "nano": 14770,
+        "revision": null
+      },
+      "humanInterventions": 3,
+      "replayMismatches": 0
+    },
+    {
+      "scenarioId": "crm-eu-accounts",
+      "config": "D",
+      "runs": 5,
+      "providerFailures": 3,
+      "validMappings": 1,
+      "holdoutTotal": 10,
+      "holdoutCorrectTransformations": [
+        1,
+        9
+      ],
+      "holdoutCorrectlyHandled": [
+        2,
+        10
+      ],
+      "holdoutIncorrect": [
+        4,
+        0
+      ],
+      "meanHoldoutCorrectTransformations": 5,
+      "detection": {
+        "incorrect": 4,
+        "detected": 4,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revisionVerdicts": {
+        "BLOCKED": 1,
+        "ACCEPTED": 1,
+        "NOT_SENT": 1
+      },
+      "holdoutDeltas": [
+        0,
+        8
+      ],
+      "holdoutRegressions": 0,
+      "operationRegressions": 0,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0
+      },
+      "cloudRequests": 7,
+      "medianLatencyMs": {
+        "cloud": 12956,
+        "nano": 14770,
+        "revision": 31735
+      },
+      "humanInterventions": 7,
+      "replayMismatches": 0
+    },
+    {
+      "scenarioId": "crm-eu-accounts",
+      "config": "P",
+      "runs": 2,
+      "providerFailures": 0,
+      "validMappings": 2,
+      "holdoutTotal": 10,
+      "holdoutCorrectTransformations": [
+        9,
+        9
+      ],
+      "holdoutCorrectlyHandled": [
+        10,
+        10
+      ],
+      "holdoutIncorrect": [
+        0,
+        0
+      ],
+      "meanHoldoutCorrectTransformations": 9,
+      "detection": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revisionVerdicts": {
+        "ACCEPTED": 2
+      },
+      "holdoutDeltas": [
+        8,
+        8
+      ],
+      "holdoutRegressions": 0,
+      "operationRegressions": 0,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0
+      },
+      "cloudRequests": 0,
+      "medianLatencyMs": {
+        "cloud": null,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMismatches": 0
+    },
+    {
+      "scenarioId": "support-tickets",
+      "config": "A",
+      "runs": 1,
+      "providerFailures": 0,
+      "validMappings": 1,
+      "holdoutTotal": 10,
+      "holdoutCorrectTransformations": [
+        0
+      ],
+      "holdoutCorrectlyHandled": [
+        1
+      ],
+      "holdoutIncorrect": [
+        0
+      ],
+      "meanHoldoutCorrectTransformations": 0,
+      "detection": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revisionVerdicts": {},
+      "holdoutDeltas": [],
+      "holdoutRegressions": 0,
+      "operationRegressions": 0,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0
+      },
+      "cloudRequests": 0,
+      "medianLatencyMs": {
+        "cloud": null,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMismatches": 0
+    },
+    {
+      "scenarioId": "support-tickets",
+      "config": "B",
+      "runs": 5,
+      "providerFailures": 1,
+      "validMappings": 4,
+      "holdoutTotal": 10,
+      "holdoutCorrectTransformations": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "holdoutCorrectlyHandled": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "holdoutIncorrect": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "meanHoldoutCorrectTransformations": 0,
+      "detection": {
+        "incorrect": 24,
+        "detected": 24,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revisionVerdicts": {},
+      "holdoutDeltas": [],
+      "holdoutRegressions": 0,
+      "operationRegressions": 0,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0
+      },
+      "cloudRequests": 5,
+      "medianLatencyMs": {
+        "cloud": 8151,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMismatches": 0
+    },
+    {
+      "scenarioId": "support-tickets",
+      "config": "C",
+      "runs": 5,
+      "providerFailures": 2,
+      "validMappings": 3,
+      "holdoutTotal": 10,
+      "holdoutCorrectTransformations": [
+        0,
+        6,
+        0
+      ],
+      "holdoutCorrectlyHandled": [
+        1,
+        7,
+        1
+      ],
+      "holdoutIncorrect": [
+        6,
+        0,
+        6
+      ],
+      "meanHoldoutCorrectTransformations": 2,
+      "detection": {
+        "incorrect": 12,
+        "detected": 12,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revisionVerdicts": {},
+      "holdoutDeltas": [],
+      "holdoutRegressions": 0,
+      "operationRegressions": 0,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0
+      },
+      "cloudRequests": 3,
+      "medianLatencyMs": {
+        "cloud": 22392,
+        "nano": 15275,
+        "revision": null
+      },
+      "humanInterventions": 1,
+      "replayMismatches": 0
+    },
+    {
+      "scenarioId": "support-tickets",
+      "config": "D",
+      "runs": 5,
+      "providerFailures": 4,
+      "validMappings": 1,
+      "holdoutTotal": 10,
+      "holdoutCorrectTransformations": [
+        6,
+        6,
+        0
+      ],
+      "holdoutCorrectlyHandled": [
+        8,
+        7,
+        1
+      ],
+      "holdoutIncorrect": [
+        0,
+        0,
+        6
+      ],
+      "meanHoldoutCorrectTransformations": 4,
+      "detection": {
+        "incorrect": 6,
+        "detected": 6,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revisionVerdicts": {
+        "ACCEPTED": 1,
+        "BLOCKED": 2
+      },
+      "holdoutDeltas": [
+        6,
+        0,
+        0
+      ],
+      "holdoutRegressions": 0,
+      "operationRegressions": 0,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0
+      },
+      "cloudRequests": 8,
+      "medianLatencyMs": {
+        "cloud": 22392,
+        "nano": 15275,
+        "revision": 24899
+      },
+      "humanInterventions": 7,
+      "replayMismatches": 0
+    },
+    {
+      "scenarioId": "support-tickets",
+      "config": "P",
+      "runs": 3,
+      "providerFailures": 0,
+      "validMappings": 3,
+      "holdoutTotal": 10,
+      "holdoutCorrectTransformations": [
+        7,
+        7,
+        7
+      ],
+      "holdoutCorrectlyHandled": [
+        9,
+        9,
+        9
+      ],
+      "holdoutIncorrect": [
+        0,
+        0,
+        0
+      ],
+      "meanHoldoutCorrectTransformations": 7,
+      "detection": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revisionVerdicts": {
+        "ACCEPTED": 3
+      },
+      "holdoutDeltas": [
+        7,
+        1,
+        7
+      ],
+      "holdoutRegressions": 0,
+      "operationRegressions": 0,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0
+      },
+      "cloudRequests": 0,
+      "medianLatencyMs": {
+        "cloud": null,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMismatches": 0
+    }
+  ],
+  "nano": [
+    {
+      "scenarioId": "crm-eu-accounts",
+      "trials": 5,
+      "suggestions": {
+        "rejected": 5,
+        "consistent": 20,
+        "applicable": 5
+      },
+      "applied": 5,
+      "disclosureChanged": 5,
+      "mappingDiffersFromB": 0,
+      "pairedHoldoutDelta": [],
+      "medianNanoMs": 14770,
+      "nanoErrors": 0
+    },
+    {
+      "scenarioId": "support-tickets",
+      "trials": 5,
+      "suggestions": {
+        "applicable": 1,
+        "rejected": 15,
+        "consistent": 14
+      },
+      "applied": 1,
+      "disclosureChanged": 0,
+      "mappingDiffersFromB": 1,
+      "pairedHoldoutDelta": [
+        0,
+        6,
+        0
+      ],
+      "medianNanoMs": 15275,
+      "nanoErrors": 0
+    },
+    {
+      "scenarioId": "billing-subscriptions",
+      "trials": 5,
+      "suggestions": {
+        "consistent": 25,
+        "rejected": 7,
+        "applicable": 3
+      },
+      "applied": 3,
+      "disclosureChanged": 0,
+      "mappingDiffersFromB": 0,
+      "pairedHoldoutDelta": [
+        0,
+        0
+      ],
+      "medianNanoMs": 17769,
+      "nanoErrors": 0
+    }
+  ],
+  "records": [
+    {
+      "runId": "billing-subscriptions-A",
+      "scenarioId": "billing-subscriptions",
+      "config": "A",
+      "trial": 0,
+      "provenance": "deterministic-baseline",
+      "model": null,
+      "promptVersion": "none",
+      "mappingHash": "5fd43ee5e7bcb7a20b0fc86964f695a156801b1f489cffbeb861a022a29c31e7",
+      "mappingValid": true,
+      "providerError": null,
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 0,
+        "correctlyHandled": 1,
+        "incorrect": 0,
+        "quarantined": 1,
+        "unresolved": 8,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 0,
+        "correctlyHandled": 3,
+        "incorrect": 0,
+        "quarantined": 3,
+        "unresolved": 7,
+        "rejectedByPolicy": 0
+      },
+      "semanticOverall": "SEMANTIC_EVIDENCE_MISSING",
+      "detectionFeedbackSet": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 0,
+      "latencyMs": {
+        "cloud": null,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": null
+    },
+    {
+      "scenarioId": "billing-subscriptions",
+      "trial": 1,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "6835c3caad20d68d996954652812924ea36392dac996278f89f2824cf275707a",
+      "mappingValid": true,
+      "providerError": null,
+      "runId": "billing-subscriptions-B-t1",
+      "config": "B",
+      "provenance": "real-gemini",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 7,
+        "correctlyHandled": 9,
+        "incorrect": 0,
+        "quarantined": 2,
+        "unresolved": 0,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 6,
+        "correctlyHandled": 9,
+        "incorrect": 0,
+        "quarantined": 3,
+        "unresolved": 0,
+        "rejectedByPolicy": 1
+      },
+      "semanticOverall": "SEMANTIC_EVIDENCE_MISSING",
+      "detectionFeedbackSet": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 5169,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": true
+    },
+    {
+      "scenarioId": "billing-subscriptions",
+      "trial": 2,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "b3d52f095279a4eb4c103317ccd6ea0d87b57178941005d200f1e429b8aa4346",
+      "mappingValid": true,
+      "providerError": null,
+      "runId": "billing-subscriptions-B-t2",
+      "config": "B",
+      "provenance": "real-gemini",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 7,
+        "correctlyHandled": 9,
+        "incorrect": 0,
+        "quarantined": 2,
+        "unresolved": 0,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 6,
+        "correctlyHandled": 10,
+        "incorrect": 0,
+        "quarantined": 4,
+        "unresolved": 0,
+        "rejectedByPolicy": 0
+      },
+      "semanticOverall": "SEMANTIC_EVIDENCE_MISSING",
+      "detectionFeedbackSet": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 1597,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": true
+    },
+    {
+      "scenarioId": "billing-subscriptions",
+      "trial": 3,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "6835c3caad20d68d996954652812924ea36392dac996278f89f2824cf275707a",
+      "mappingValid": true,
+      "providerError": null,
+      "runId": "billing-subscriptions-B-t3",
+      "config": "B",
+      "provenance": "real-gemini",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 7,
+        "correctlyHandled": 9,
+        "incorrect": 0,
+        "quarantined": 2,
+        "unresolved": 0,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 6,
+        "correctlyHandled": 9,
+        "incorrect": 0,
+        "quarantined": 3,
+        "unresolved": 0,
+        "rejectedByPolicy": 1
+      },
+      "semanticOverall": "SEMANTIC_EVIDENCE_MISSING",
+      "detectionFeedbackSet": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 10157,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": true
+    },
+    {
+      "scenarioId": "billing-subscriptions",
+      "trial": 4,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "6835c3caad20d68d996954652812924ea36392dac996278f89f2824cf275707a",
+      "mappingValid": true,
+      "providerError": null,
+      "runId": "billing-subscriptions-B-t4",
+      "config": "B",
+      "provenance": "real-gemini",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 7,
+        "correctlyHandled": 9,
+        "incorrect": 0,
+        "quarantined": 2,
+        "unresolved": 0,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 6,
+        "correctlyHandled": 9,
+        "incorrect": 0,
+        "quarantined": 3,
+        "unresolved": 0,
+        "rejectedByPolicy": 1
+      },
+      "semanticOverall": "SEMANTIC_EVIDENCE_MISSING",
+      "detectionFeedbackSet": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 2436,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": true
+    },
+    {
+      "scenarioId": "billing-subscriptions",
+      "trial": 5,
+      "model": "gemini-3.5-flash-lite",
+      "runId": "billing-subscriptions-B-t5",
+      "config": "B",
+      "provenance": "provider-failure",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "mappingHash": null,
+      "mappingValid": false,
+      "providerError": "No proposal was produced\n\nNETWORK: AI: Error fetching from https://firebasevertexai.googleapis.com/v1beta/projects/eyes-without-a-face-b7281/models/gemini-3.5-flash-lite:generateContent: [500 ] This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later. (AI/fetch-error) The approval has been consumed; build and approve a new prompt to try again.",
+      "feedbackSet": null,
+      "holdout": null,
+      "semanticOverall": null,
+      "detectionFeedbackSet": null,
+      "detectionHoldout": null,
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": null,
+        "canaryPresent": null
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 18514,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": null
+    },
+    {
+      "scenarioId": "billing-subscriptions",
+      "trial": 1,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "6835c3caad20d68d996954652812924ea36392dac996278f89f2824cf275707a",
+      "mappingValid": true,
+      "providerError": null,
+      "runId": "billing-subscriptions-C-t1",
+      "config": "C",
+      "provenance": "real-gemini",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 7,
+        "correctlyHandled": 9,
+        "incorrect": 0,
+        "quarantined": 2,
+        "unresolved": 0,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 6,
+        "correctlyHandled": 9,
+        "incorrect": 0,
+        "quarantined": 3,
+        "unresolved": 0,
+        "rejectedByPolicy": 1
+      },
+      "semanticOverall": "SEMANTIC_EVIDENCE_MISSING",
+      "detectionFeedbackSet": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 9947,
+        "nano": 17294,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": true
+    },
+    {
+      "scenarioId": "billing-subscriptions",
+      "trial": 2,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "b3d52f095279a4eb4c103317ccd6ea0d87b57178941005d200f1e429b8aa4346",
+      "mappingValid": true,
+      "providerError": null,
+      "runId": "billing-subscriptions-C-t2",
+      "config": "C",
+      "provenance": "real-gemini",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 7,
+        "correctlyHandled": 9,
+        "incorrect": 0,
+        "quarantined": 2,
+        "unresolved": 0,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 6,
+        "correctlyHandled": 10,
+        "incorrect": 0,
+        "quarantined": 4,
+        "unresolved": 0,
+        "rejectedByPolicy": 0
+      },
+      "semanticOverall": "SEMANTIC_EVIDENCE_MISSING",
+      "detectionFeedbackSet": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 8992,
+        "nano": 17789,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": true
+    },
+    {
+      "scenarioId": "billing-subscriptions",
+      "trial": 3,
+      "model": "gemini-3.5-flash-lite",
+      "runId": "billing-subscriptions-C-t3",
+      "config": "C",
+      "provenance": "provider-failure",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "mappingHash": null,
+      "mappingValid": false,
+      "providerError": "No proposal was produced\n\nNETWORK: AI: Error fetching from https://firebasevertexai.googleapis.com/v1beta/projects/eyes-without-a-face-b7281/models/gemini-3.5-flash-lite:generateContent: [500 ] This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later. (AI/fetch-error) The approval has been consumed; build and approve a new prompt to try again.",
+      "feedbackSet": null,
+      "holdout": null,
+      "semanticOverall": null,
+      "detectionFeedbackSet": null,
+      "detectionHoldout": null,
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": null,
+        "canaryPresent": null
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 29185,
+        "nano": 17276,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": null
+    },
+    {
+      "scenarioId": "billing-subscriptions",
+      "trial": 4,
+      "model": "gemini-3.5-flash-lite",
+      "runId": "billing-subscriptions-C-t4",
+      "config": "C",
+      "provenance": "provider-failure",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "mappingHash": null,
+      "mappingValid": false,
+      "providerError": "No proposal was produced\n\nNETWORK: AI: Error fetching from https://firebasevertexai.googleapis.com/v1beta/projects/eyes-without-a-face-b7281/models/gemini-3.5-flash-lite:generateContent: [500 ] This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later. (AI/fetch-error) The approval has been consumed; build and approve a new prompt to try again.",
+      "feedbackSet": null,
+      "holdout": null,
+      "semanticOverall": null,
+      "detectionFeedbackSet": null,
+      "detectionHoldout": null,
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": null,
+        "canaryPresent": null
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 12980,
+        "nano": 17769,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": null
+    },
+    {
+      "scenarioId": "billing-subscriptions",
+      "trial": 5,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "6835c3caad20d68d996954652812924ea36392dac996278f89f2824cf275707a",
+      "mappingValid": true,
+      "providerError": null,
+      "runId": "billing-subscriptions-C-t5",
+      "config": "C",
+      "provenance": "real-gemini",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 7,
+        "correctlyHandled": 9,
+        "incorrect": 0,
+        "quarantined": 2,
+        "unresolved": 0,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 6,
+        "correctlyHandled": 9,
+        "incorrect": 0,
+        "quarantined": 3,
+        "unresolved": 0,
+        "rejectedByPolicy": 1
+      },
+      "semanticOverall": "SEMANTIC_EVIDENCE_MISSING",
+      "detectionFeedbackSet": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 30083,
+        "nano": 17786,
+        "revision": null
+      },
+      "humanInterventions": 1,
+      "replayMatchesBrowser": true
+    },
+    {
+      "scenarioId": "billing-subscriptions",
+      "trial": 1,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "fb3d24860a8f1b16b4cf79155d1e001e552f31134988f861949a140705040962",
+      "mappingValid": true,
+      "providerError": null,
+      "runId": "billing-subscriptions-D-t1",
+      "config": "D",
+      "provenance": "real-gemini-revision",
+      "promptVersion": "revision-2",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 0,
+        "correctlyHandled": 2,
+        "incorrect": 0,
+        "quarantined": 9,
+        "unresolved": 0,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 0,
+        "correctlyHandled": 4,
+        "incorrect": 0,
+        "quarantined": 10,
+        "unresolved": 0,
+        "rejectedByPolicy": 0
+      },
+      "semanticOverall": "SEMANTIC_EVIDENCE_MISSING",
+      "detectionFeedbackSet": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": {
+        "feedbackVersion": "1.0.0",
+        "semanticFindings": 0,
+        "approvedConstraints": 0,
+        "verdict": "REGRESSED",
+        "holdoutImproved": 1,
+        "holdoutRegressed": 6,
+        "operationRegressions": 7,
+        "holdoutCorrectTransformationsDelta": -6
+      },
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 2,
+      "latencyMs": {
+        "cloud": 9947,
+        "nano": 17294,
+        "revision": 8177
+      },
+      "humanInterventions": 1,
+      "replayMatchesBrowser": true
+    },
+    {
+      "scenarioId": "billing-subscriptions",
+      "trial": 2,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "b3d52f095279a4eb4c103317ccd6ea0d87b57178941005d200f1e429b8aa4346",
+      "mappingValid": false,
+      "providerError": "Blind revision stopped · INFERENCE_FAILED\n\nTIMEOUT: Inference timed out after 45000 ms. The Firebase request may still be in flight; this authorization cannot be reused. The revision request has been used and will not be retried.",
+      "runId": "billing-subscriptions-D-t2",
+      "config": "D",
+      "provenance": "provider-failure",
+      "promptVersion": "revision-2",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 7,
+        "correctlyHandled": 9,
+        "incorrect": 0,
+        "quarantined": 2,
+        "unresolved": 0,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 6,
+        "correctlyHandled": 10,
+        "incorrect": 0,
+        "quarantined": 4,
+        "unresolved": 0,
+        "rejectedByPolicy": 0
+      },
+      "semanticOverall": "SEMANTIC_EVIDENCE_MISSING",
+      "detectionFeedbackSet": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": {
+        "feedbackVersion": "1.0.0",
+        "semanticFindings": 0,
+        "approvedConstraints": 0,
+        "verdict": "BLOCKED",
+        "holdoutImproved": 0,
+        "holdoutRegressed": 0,
+        "operationRegressions": 0,
+        "holdoutCorrectTransformationsDelta": 0
+      },
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 2,
+      "latencyMs": {
+        "cloud": 8992,
+        "nano": 17789,
+        "revision": 45340
+      },
+      "humanInterventions": 1,
+      "replayMatchesBrowser": true
+    },
+    {
+      "scenarioId": "billing-subscriptions",
+      "trial": 3,
+      "model": "gemini-3.5-flash-lite",
+      "runId": "billing-subscriptions-D-t3",
+      "config": "D",
+      "provenance": "provider-failure",
+      "promptVersion": "revision-3",
+      "mappingHash": null,
+      "mappingValid": false,
+      "providerError": "No proposal was produced\n\nNETWORK: AI: Error fetching from https://firebasevertexai.googleapis.com/v1beta/projects/eyes-without-a-face-b7281/models/gemini-3.5-flash-lite:generateContent: [500 ] This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later. (AI/fetch-error) The approval has been consumed; build and approve a new prompt to try again.",
+      "feedbackSet": null,
+      "holdout": null,
+      "semanticOverall": null,
+      "detectionFeedbackSet": null,
+      "detectionHoldout": null,
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": null,
+        "canaryPresent": null
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 29185,
+        "nano": 17276,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": null
+    },
+    {
+      "scenarioId": "billing-subscriptions",
+      "trial": 4,
+      "model": "gemini-3.5-flash-lite",
+      "runId": "billing-subscriptions-D-t4",
+      "config": "D",
+      "provenance": "provider-failure",
+      "promptVersion": "revision-3",
+      "mappingHash": null,
+      "mappingValid": false,
+      "providerError": "No proposal was produced\n\nNETWORK: AI: Error fetching from https://firebasevertexai.googleapis.com/v1beta/projects/eyes-without-a-face-b7281/models/gemini-3.5-flash-lite:generateContent: [500 ] This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later. (AI/fetch-error) The approval has been consumed; build and approve a new prompt to try again.",
+      "feedbackSet": null,
+      "holdout": null,
+      "semanticOverall": null,
+      "detectionFeedbackSet": null,
+      "detectionHoldout": null,
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": null,
+        "canaryPresent": null
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 12980,
+        "nano": 17769,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": null
+    },
+    {
+      "scenarioId": "billing-subscriptions",
+      "trial": 5,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "6835c3caad20d68d996954652812924ea36392dac996278f89f2824cf275707a",
+      "mappingValid": false,
+      "providerError": "Blind revision stopped · INFERENCE_FAILED\n\nTIMEOUT: Inference timed out after 45000 ms. The Firebase request may still be in flight; this authorization cannot be reused. The revision request has been used and will not be retried.",
+      "runId": "billing-subscriptions-D-t5",
+      "config": "D",
+      "provenance": "provider-failure",
+      "promptVersion": "revision-2",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 7,
+        "correctlyHandled": 9,
+        "incorrect": 0,
+        "quarantined": 2,
+        "unresolved": 0,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 6,
+        "correctlyHandled": 9,
+        "incorrect": 0,
+        "quarantined": 3,
+        "unresolved": 0,
+        "rejectedByPolicy": 1
+      },
+      "semanticOverall": "SEMANTIC_EVIDENCE_MISSING",
+      "detectionFeedbackSet": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": {
+        "feedbackVersion": "1.0.0",
+        "semanticFindings": 0,
+        "approvedConstraints": 0,
+        "verdict": "BLOCKED",
+        "holdoutImproved": 0,
+        "holdoutRegressed": 0,
+        "operationRegressions": 0,
+        "holdoutCorrectTransformationsDelta": 0
+      },
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 2,
+      "latencyMs": {
+        "cloud": 30083,
+        "nano": 17786,
+        "revision": 45355
+      },
+      "humanInterventions": 2,
+      "replayMatchesBrowser": true
+    },
+    {
+      "runId": "billing-subscriptions-P-t1",
+      "scenarioId": "billing-subscriptions",
+      "config": "P",
+      "trial": 1,
+      "provenance": "deterministic-patch-control",
+      "model": null,
+      "promptVersion": "none",
+      "mappingHash": "6835c3caad20d68d996954652812924ea36392dac996278f89f2824cf275707a",
+      "mappingValid": true,
+      "providerError": null,
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 0,
+        "correctlyHandled": 2,
+        "incorrect": 0,
+        "quarantined": 9,
+        "unresolved": 0,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 0,
+        "correctlyHandled": 4,
+        "incorrect": 0,
+        "quarantined": 10,
+        "unresolved": 0,
+        "rejectedByPolicy": 0
+      },
+      "semanticOverall": "SEMANTIC_EVIDENCE_MISSING",
+      "detectionFeedbackSet": null,
+      "detectionHoldout": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": {
+        "feedbackVersion": "1.0.0",
+        "semanticFindings": 0,
+        "approvedConstraints": 0,
+        "verdict": "REGRESSED",
+        "holdoutImproved": 1,
+        "holdoutRegressed": 6,
+        "operationRegressions": 7,
+        "holdoutCorrectTransformationsDelta": -6
+      },
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": null,
+        "canaryPresent": null
+      },
+      "cloudRequests": 0,
+      "latencyMs": {
+        "cloud": null,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": null
+    },
+    {
+      "runId": "billing-subscriptions-P-t2",
+      "scenarioId": "billing-subscriptions",
+      "config": "P",
+      "trial": 2,
+      "provenance": "deterministic-patch-control",
+      "model": null,
+      "promptVersion": "none",
+      "mappingHash": "b3d52f095279a4eb4c103317ccd6ea0d87b57178941005d200f1e429b8aa4346",
+      "mappingValid": true,
+      "providerError": null,
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 0,
+        "correctlyHandled": 2,
+        "incorrect": 0,
+        "quarantined": 9,
+        "unresolved": 0,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 0,
+        "correctlyHandled": 4,
+        "incorrect": 0,
+        "quarantined": 10,
+        "unresolved": 0,
+        "rejectedByPolicy": 0
+      },
+      "semanticOverall": "SEMANTIC_EVIDENCE_MISSING",
+      "detectionFeedbackSet": null,
+      "detectionHoldout": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": {
+        "feedbackVersion": "1.0.0",
+        "semanticFindings": 0,
+        "approvedConstraints": 0,
+        "verdict": "REGRESSED",
+        "holdoutImproved": 0,
+        "holdoutRegressed": 6,
+        "operationRegressions": 7,
+        "holdoutCorrectTransformationsDelta": -6
+      },
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": null,
+        "canaryPresent": null
+      },
+      "cloudRequests": 0,
+      "latencyMs": {
+        "cloud": null,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": null
+    },
+    {
+      "runId": "billing-subscriptions-P-t5",
+      "scenarioId": "billing-subscriptions",
+      "config": "P",
+      "trial": 5,
+      "provenance": "deterministic-patch-control",
+      "model": null,
+      "promptVersion": "none",
+      "mappingHash": "6835c3caad20d68d996954652812924ea36392dac996278f89f2824cf275707a",
+      "mappingValid": true,
+      "providerError": null,
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 0,
+        "correctlyHandled": 2,
+        "incorrect": 0,
+        "quarantined": 9,
+        "unresolved": 0,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 0,
+        "correctlyHandled": 4,
+        "incorrect": 0,
+        "quarantined": 10,
+        "unresolved": 0,
+        "rejectedByPolicy": 0
+      },
+      "semanticOverall": "SEMANTIC_EVIDENCE_MISSING",
+      "detectionFeedbackSet": null,
+      "detectionHoldout": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": {
+        "feedbackVersion": "1.0.0",
+        "semanticFindings": 0,
+        "approvedConstraints": 0,
+        "verdict": "REGRESSED",
+        "holdoutImproved": 1,
+        "holdoutRegressed": 6,
+        "operationRegressions": 7,
+        "holdoutCorrectTransformationsDelta": -6
+      },
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": null,
+        "canaryPresent": null
+      },
+      "cloudRequests": 0,
+      "latencyMs": {
+        "cloud": null,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": null
+    },
+    {
+      "runId": "crm-eu-accounts-A",
+      "scenarioId": "crm-eu-accounts",
+      "config": "A",
+      "trial": 0,
+      "provenance": "deterministic-baseline",
+      "model": null,
+      "promptVersion": "none",
+      "mappingHash": "eb01e7db6aadd6c218ddfd72632132f064ae1adf0083e1318427c814d65eaabb",
+      "mappingValid": true,
+      "providerError": null,
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 0,
+        "correctlyHandled": 1,
+        "incorrect": 0,
+        "quarantined": 1,
+        "unresolved": 8,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 0,
+        "correctlyHandled": 1,
+        "incorrect": 0,
+        "quarantined": 1,
+        "unresolved": 9,
+        "rejectedByPolicy": 0
+      },
+      "semanticOverall": "SEMANTIC_MISMATCH",
+      "detectionFeedbackSet": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 0,
+      "latencyMs": {
+        "cloud": null,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": null
+    },
+    {
+      "scenarioId": "crm-eu-accounts",
+      "trial": 1,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "403526050fabda190b5e43a8a053b1394d3682832213952e964fc23f7cca647c",
+      "mappingValid": true,
+      "providerError": null,
+      "runId": "crm-eu-accounts-B-t1",
+      "config": "B",
+      "provenance": "real-gemini",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 0,
+        "correctlyHandled": 1,
+        "incorrect": 7,
+        "quarantined": 1,
+        "unresolved": 1,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 1,
+        "correctlyHandled": 2,
+        "incorrect": 4,
+        "quarantined": 1,
+        "unresolved": 4,
+        "rejectedByPolicy": 0
+      },
+      "semanticOverall": "SEMANTIC_MISMATCH",
+      "detectionFeedbackSet": {
+        "incorrect": 7,
+        "detected": 7,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 4,
+        "detected": 4,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 19993,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": true
+    },
+    {
+      "scenarioId": "crm-eu-accounts",
+      "trial": 2,
+      "model": "gemini-3.5-flash-lite",
+      "runId": "crm-eu-accounts-B-t2",
+      "config": "B",
+      "provenance": "provider-failure",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "mappingHash": null,
+      "mappingValid": false,
+      "providerError": "No proposal was produced\n\nNETWORK: AI: Error fetching from https://firebasevertexai.googleapis.com/v1beta/projects/eyes-without-a-face-b7281/models/gemini-3.5-flash-lite:generateContent: [500 ] This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later. (AI/fetch-error) The approval has been consumed; build and approve a new prompt to try again.",
+      "feedbackSet": null,
+      "holdout": null,
+      "semanticOverall": null,
+      "detectionFeedbackSet": null,
+      "detectionHoldout": null,
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": null,
+        "canaryPresent": null
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 15025,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": null
+    },
+    {
+      "scenarioId": "crm-eu-accounts",
+      "trial": 3,
+      "model": "gemini-3.5-flash-lite",
+      "runId": "crm-eu-accounts-B-t3",
+      "config": "B",
+      "provenance": "provider-failure",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "mappingHash": null,
+      "mappingValid": false,
+      "providerError": "No proposal was produced\n\nNETWORK: AI: Error fetching from https://firebasevertexai.googleapis.com/v1beta/projects/eyes-without-a-face-b7281/models/gemini-3.5-flash-lite:generateContent: [500 ] This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later. (AI/fetch-error) The approval has been consumed; build and approve a new prompt to try again.",
+      "feedbackSet": null,
+      "holdout": null,
+      "semanticOverall": null,
+      "detectionFeedbackSet": null,
+      "detectionHoldout": null,
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": null,
+        "canaryPresent": null
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 21067,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": null
+    },
+    {
+      "scenarioId": "crm-eu-accounts",
+      "trial": 4,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "403526050fabda190b5e43a8a053b1394d3682832213952e964fc23f7cca647c",
+      "mappingValid": true,
+      "providerError": null,
+      "runId": "crm-eu-accounts-B-t4",
+      "config": "B",
+      "provenance": "real-gemini",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 0,
+        "correctlyHandled": 1,
+        "incorrect": 7,
+        "quarantined": 1,
+        "unresolved": 1,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 1,
+        "correctlyHandled": 2,
+        "incorrect": 4,
+        "quarantined": 1,
+        "unresolved": 4,
+        "rejectedByPolicy": 0
+      },
+      "semanticOverall": "SEMANTIC_MISMATCH",
+      "detectionFeedbackSet": {
+        "incorrect": 7,
+        "detected": 7,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 4,
+        "detected": 4,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 10272,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": true
+    },
+    {
+      "scenarioId": "crm-eu-accounts",
+      "trial": 5,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "972a4669f792a0bca381acda381755c26efee51f0a1452939ee830e2faf974cb",
+      "mappingValid": true,
+      "providerError": null,
+      "runId": "crm-eu-accounts-B-t5",
+      "config": "B",
+      "provenance": "real-gemini",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 0,
+        "correctlyHandled": 1,
+        "incorrect": 7,
+        "quarantined": 1,
+        "unresolved": 1,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 1,
+        "correctlyHandled": 2,
+        "incorrect": 4,
+        "quarantined": 1,
+        "unresolved": 4,
+        "rejectedByPolicy": 0
+      },
+      "semanticOverall": "SEMANTIC_MISMATCH",
+      "detectionFeedbackSet": {
+        "incorrect": 7,
+        "detected": 7,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 4,
+        "detected": 4,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 2555,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": true
+    },
+    {
+      "scenarioId": "crm-eu-accounts",
+      "trial": 1,
+      "model": "gemini-3.5-flash-lite",
+      "runId": "crm-eu-accounts-C-t1",
+      "config": "C",
+      "provenance": "provider-failure",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "mappingHash": null,
+      "mappingValid": false,
+      "providerError": "No proposal was produced\n\nNETWORK: AI: Error fetching from https://firebasevertexai.googleapis.com/v1beta/projects/eyes-without-a-face-b7281/models/gemini-3.5-flash-lite:generateContent: [500 ] This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later. (AI/fetch-error) The approval has been consumed; build and approve a new prompt to try again.",
+      "feedbackSet": null,
+      "holdout": null,
+      "semanticOverall": null,
+      "detectionFeedbackSet": null,
+      "detectionHoldout": null,
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": null,
+        "canaryPresent": null
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 18076,
+        "nano": 14258,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": null
+    },
+    {
+      "scenarioId": "crm-eu-accounts",
+      "trial": 2,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "972a4669f792a0bca381acda381755c26efee51f0a1452939ee830e2faf974cb",
+      "mappingValid": true,
+      "providerError": null,
+      "runId": "crm-eu-accounts-C-t2",
+      "config": "C",
+      "provenance": "real-gemini",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 0,
+        "correctlyHandled": 1,
+        "incorrect": 7,
+        "quarantined": 1,
+        "unresolved": 1,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 1,
+        "correctlyHandled": 2,
+        "incorrect": 4,
+        "quarantined": 1,
+        "unresolved": 4,
+        "rejectedByPolicy": 0
+      },
+      "semanticOverall": "SEMANTIC_MISMATCH",
+      "detectionFeedbackSet": {
+        "incorrect": 7,
+        "detected": 7,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 4,
+        "detected": 4,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 4342,
+        "nano": 15777,
+        "revision": null
+      },
+      "humanInterventions": 1,
+      "replayMatchesBrowser": true
+    },
+    {
+      "scenarioId": "crm-eu-accounts",
+      "trial": 3,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "972a4669f792a0bca381acda381755c26efee51f0a1452939ee830e2faf974cb",
+      "mappingValid": true,
+      "providerError": null,
+      "runId": "crm-eu-accounts-C-t3",
+      "config": "C",
+      "provenance": "real-gemini",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 0,
+        "correctlyHandled": 1,
+        "incorrect": 7,
+        "quarantined": 1,
+        "unresolved": 1,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 1,
+        "correctlyHandled": 2,
+        "incorrect": 4,
+        "quarantined": 1,
+        "unresolved": 4,
+        "rejectedByPolicy": 0
+      },
+      "semanticOverall": "SEMANTIC_MISMATCH",
+      "detectionFeedbackSet": {
+        "incorrect": 7,
+        "detected": 7,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 4,
+        "detected": 4,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 25017,
+        "nano": 14770,
+        "revision": null
+      },
+      "humanInterventions": 1,
+      "replayMatchesBrowser": true
+    },
+    {
+      "scenarioId": "crm-eu-accounts",
+      "trial": 4,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "6c7b5b45183d4d7cb7ce8502c4d235142c401d80a3f18a191df49a183bb6b68b",
+      "mappingValid": false,
+      "providerError": null,
+      "runId": "crm-eu-accounts-C-t4",
+      "config": "C",
+      "provenance": "real-gemini",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "feedbackSet": null,
+      "holdout": null,
+      "semanticOverall": null,
+      "detectionFeedbackSet": null,
+      "detectionHoldout": null,
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 11400,
+        "nano": 15756,
+        "revision": null
+      },
+      "humanInterventions": 1,
+      "replayMatchesBrowser": null
+    },
+    {
+      "scenarioId": "crm-eu-accounts",
+      "trial": 5,
+      "model": "gemini-3.5-flash-lite",
+      "runId": "crm-eu-accounts-C-t5",
+      "config": "C",
+      "provenance": "provider-failure",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "mappingHash": null,
+      "mappingValid": false,
+      "providerError": "No proposal was produced\n\nNETWORK: AI: Error fetching from https://firebasevertexai.googleapis.com/v1beta/projects/eyes-without-a-face-b7281/models/gemini-3.5-flash-lite:generateContent: [500 ] This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later. (AI/fetch-error) The approval has been consumed; build and approve a new prompt to try again.",
+      "feedbackSet": null,
+      "holdout": null,
+      "semanticOverall": null,
+      "detectionFeedbackSet": null,
+      "detectionHoldout": null,
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": null,
+        "canaryPresent": null
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 12956,
+        "nano": 14260,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": null
+    },
+    {
+      "scenarioId": "crm-eu-accounts",
+      "trial": 1,
+      "model": "gemini-3.5-flash-lite",
+      "runId": "crm-eu-accounts-D-t1",
+      "config": "D",
+      "provenance": "provider-failure",
+      "promptVersion": "revision-3",
+      "mappingHash": null,
+      "mappingValid": false,
+      "providerError": "No proposal was produced\n\nNETWORK: AI: Error fetching from https://firebasevertexai.googleapis.com/v1beta/projects/eyes-without-a-face-b7281/models/gemini-3.5-flash-lite:generateContent: [500 ] This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later. (AI/fetch-error) The approval has been consumed; build and approve a new prompt to try again.",
+      "feedbackSet": null,
+      "holdout": null,
+      "semanticOverall": null,
+      "detectionFeedbackSet": null,
+      "detectionHoldout": null,
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": null,
+        "canaryPresent": null
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 18076,
+        "nano": 14258,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": null
+    },
+    {
+      "scenarioId": "crm-eu-accounts",
+      "trial": 2,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "972a4669f792a0bca381acda381755c26efee51f0a1452939ee830e2faf974cb",
+      "mappingValid": false,
+      "providerError": "Blind revision stopped · INFERENCE_FAILED\n\nTIMEOUT: Inference timed out after 45000 ms. The Firebase request may still be in flight; this authorization cannot be reused. The revision request has been used and will not be retried.",
+      "runId": "crm-eu-accounts-D-t2",
+      "config": "D",
+      "provenance": "provider-failure",
+      "promptVersion": "revision-3",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 0,
+        "correctlyHandled": 1,
+        "incorrect": 7,
+        "quarantined": 1,
+        "unresolved": 1,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 1,
+        "correctlyHandled": 2,
+        "incorrect": 4,
+        "quarantined": 1,
+        "unresolved": 4,
+        "rejectedByPolicy": 0
+      },
+      "semanticOverall": "SEMANTIC_MISMATCH",
+      "detectionFeedbackSet": {
+        "incorrect": 7,
+        "detected": 7,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 4,
+        "detected": 4,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": {
+        "feedbackVersion": "1.1.0",
+        "semanticFindings": 1,
+        "approvedConstraints": 1,
+        "verdict": "BLOCKED",
+        "holdoutImproved": 0,
+        "holdoutRegressed": 0,
+        "operationRegressions": 0,
+        "holdoutCorrectTransformationsDelta": 0
+      },
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 2,
+      "latencyMs": {
+        "cloud": 4342,
+        "nano": 15777,
+        "revision": 45373
+      },
+      "humanInterventions": 3,
+      "replayMatchesBrowser": true
+    },
+    {
+      "scenarioId": "crm-eu-accounts",
+      "trial": 3,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "d5831aadd6d24cc04b0bfd4df9283c834a5e98e8a761c2ce640a291ffc284f65",
+      "mappingValid": true,
+      "providerError": null,
+      "runId": "crm-eu-accounts-D-t3",
+      "config": "D",
+      "provenance": "real-gemini-revision",
+      "promptVersion": "revision-3",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 8,
+        "correctlyHandled": 9,
+        "incorrect": 0,
+        "quarantined": 1,
+        "unresolved": 0,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 9,
+        "correctlyHandled": 10,
+        "incorrect": 0,
+        "quarantined": 1,
+        "unresolved": 0,
+        "rejectedByPolicy": 0
+      },
+      "semanticOverall": "SEMANTIC_PASS",
+      "detectionFeedbackSet": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": {
+        "feedbackVersion": "1.1.0",
+        "semanticFindings": 1,
+        "approvedConstraints": 1,
+        "verdict": "ACCEPTED",
+        "holdoutImproved": 8,
+        "holdoutRegressed": 0,
+        "operationRegressions": 0,
+        "holdoutCorrectTransformationsDelta": 8
+      },
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 2,
+      "latencyMs": {
+        "cloud": 25017,
+        "nano": 14770,
+        "revision": 18096
+      },
+      "humanInterventions": 3,
+      "replayMatchesBrowser": true
+    },
+    {
+      "scenarioId": "crm-eu-accounts",
+      "trial": 4,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "6c7b5b45183d4d7cb7ce8502c4d235142c401d80a3f18a191df49a183bb6b68b",
+      "mappingValid": false,
+      "providerError": null,
+      "runId": "crm-eu-accounts-D-t4",
+      "config": "D",
+      "provenance": "revision-not-sent",
+      "promptVersion": "revision-2",
+      "feedbackSet": null,
+      "holdout": null,
+      "semanticOverall": null,
+      "detectionFeedbackSet": null,
+      "detectionHoldout": null,
+      "revision": {
+        "feedbackVersion": null,
+        "semanticFindings": 0,
+        "approvedConstraints": 0,
+        "verdict": "NOT_SENT",
+        "holdoutImproved": 0,
+        "holdoutRegressed": 0,
+        "operationRegressions": 0,
+        "holdoutCorrectTransformationsDelta": null
+      },
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": null,
+        "canaryPresent": null
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 11400,
+        "nano": 15756,
+        "revision": null
+      },
+      "humanInterventions": 1,
+      "replayMatchesBrowser": null
+    },
+    {
+      "scenarioId": "crm-eu-accounts",
+      "trial": 5,
+      "model": "gemini-3.5-flash-lite",
+      "runId": "crm-eu-accounts-D-t5",
+      "config": "D",
+      "provenance": "provider-failure",
+      "promptVersion": "revision-3",
+      "mappingHash": null,
+      "mappingValid": false,
+      "providerError": "No proposal was produced\n\nNETWORK: AI: Error fetching from https://firebasevertexai.googleapis.com/v1beta/projects/eyes-without-a-face-b7281/models/gemini-3.5-flash-lite:generateContent: [500 ] This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later. (AI/fetch-error) The approval has been consumed; build and approve a new prompt to try again.",
+      "feedbackSet": null,
+      "holdout": null,
+      "semanticOverall": null,
+      "detectionFeedbackSet": null,
+      "detectionHoldout": null,
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": null,
+        "canaryPresent": null
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 12956,
+        "nano": 14260,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": null
+    },
+    {
+      "runId": "crm-eu-accounts-P-t2",
+      "scenarioId": "crm-eu-accounts",
+      "config": "P",
+      "trial": 2,
+      "provenance": "deterministic-patch-control",
+      "model": null,
+      "promptVersion": "none",
+      "mappingHash": "972a4669f792a0bca381acda381755c26efee51f0a1452939ee830e2faf974cb",
+      "mappingValid": true,
+      "providerError": null,
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 8,
+        "correctlyHandled": 9,
+        "incorrect": 0,
+        "quarantined": 1,
+        "unresolved": 0,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 9,
+        "correctlyHandled": 10,
+        "incorrect": 0,
+        "quarantined": 1,
+        "unresolved": 0,
+        "rejectedByPolicy": 0
+      },
+      "semanticOverall": "SEMANTIC_PASS",
+      "detectionFeedbackSet": null,
+      "detectionHoldout": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": {
+        "feedbackVersion": "1.1.0",
+        "semanticFindings": 1,
+        "approvedConstraints": 1,
+        "verdict": "ACCEPTED",
+        "holdoutImproved": 8,
+        "holdoutRegressed": 0,
+        "operationRegressions": 0,
+        "holdoutCorrectTransformationsDelta": 8
+      },
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": null,
+        "canaryPresent": null
+      },
+      "cloudRequests": 0,
+      "latencyMs": {
+        "cloud": null,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": null
+    },
+    {
+      "runId": "crm-eu-accounts-P-t3",
+      "scenarioId": "crm-eu-accounts",
+      "config": "P",
+      "trial": 3,
+      "provenance": "deterministic-patch-control",
+      "model": null,
+      "promptVersion": "none",
+      "mappingHash": "972a4669f792a0bca381acda381755c26efee51f0a1452939ee830e2faf974cb",
+      "mappingValid": true,
+      "providerError": null,
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 8,
+        "correctlyHandled": 9,
+        "incorrect": 0,
+        "quarantined": 1,
+        "unresolved": 0,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 9,
+        "correctlyHandled": 10,
+        "incorrect": 0,
+        "quarantined": 1,
+        "unresolved": 0,
+        "rejectedByPolicy": 0
+      },
+      "semanticOverall": "SEMANTIC_PASS",
+      "detectionFeedbackSet": null,
+      "detectionHoldout": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": {
+        "feedbackVersion": "1.1.0",
+        "semanticFindings": 1,
+        "approvedConstraints": 1,
+        "verdict": "ACCEPTED",
+        "holdoutImproved": 8,
+        "holdoutRegressed": 0,
+        "operationRegressions": 0,
+        "holdoutCorrectTransformationsDelta": 8
+      },
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": null,
+        "canaryPresent": null
+      },
+      "cloudRequests": 0,
+      "latencyMs": {
+        "cloud": null,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": null
+    },
+    {
+      "runId": "support-tickets-A",
+      "scenarioId": "support-tickets",
+      "config": "A",
+      "trial": 0,
+      "provenance": "deterministic-baseline",
+      "model": null,
+      "promptVersion": "none",
+      "mappingHash": "343928bfdce0e86e9d5294a11923261c9b8726239be41911a097050a907d5602",
+      "mappingValid": true,
+      "providerError": null,
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 0,
+        "correctlyHandled": 0,
+        "incorrect": 0,
+        "quarantined": 0,
+        "unresolved": 9,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 0,
+        "correctlyHandled": 1,
+        "incorrect": 0,
+        "quarantined": 1,
+        "unresolved": 9,
+        "rejectedByPolicy": 0
+      },
+      "semanticOverall": "SEMANTIC_PASS",
+      "detectionFeedbackSet": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 0,
+      "latencyMs": {
+        "cloud": null,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": null
+    },
+    {
+      "scenarioId": "support-tickets",
+      "trial": 1,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "e0f92fa7bca071d86b891fc81ca52b71d4d00deec2c8b1a713a90e1dcfd8e460",
+      "mappingValid": true,
+      "providerError": null,
+      "runId": "support-tickets-B-t1",
+      "config": "B",
+      "provenance": "real-gemini",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 0,
+        "correctlyHandled": 0,
+        "incorrect": 7,
+        "quarantined": 0,
+        "unresolved": 1,
+        "rejectedByPolicy": 1
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 0,
+        "correctlyHandled": 1,
+        "incorrect": 6,
+        "quarantined": 1,
+        "unresolved": 1,
+        "rejectedByPolicy": 2
+      },
+      "semanticOverall": "SEMANTIC_MISMATCH",
+      "detectionFeedbackSet": {
+        "incorrect": 7,
+        "detected": 7,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 6,
+        "detected": 6,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 1865,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": true
+    },
+    {
+      "scenarioId": "support-tickets",
+      "trial": 2,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "e0f92fa7bca071d86b891fc81ca52b71d4d00deec2c8b1a713a90e1dcfd8e460",
+      "mappingValid": true,
+      "providerError": null,
+      "runId": "support-tickets-B-t2",
+      "config": "B",
+      "provenance": "real-gemini",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 0,
+        "correctlyHandled": 0,
+        "incorrect": 7,
+        "quarantined": 0,
+        "unresolved": 1,
+        "rejectedByPolicy": 1
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 0,
+        "correctlyHandled": 1,
+        "incorrect": 6,
+        "quarantined": 1,
+        "unresolved": 1,
+        "rejectedByPolicy": 2
+      },
+      "semanticOverall": "SEMANTIC_MISMATCH",
+      "detectionFeedbackSet": {
+        "incorrect": 7,
+        "detected": 7,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 6,
+        "detected": 6,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 2235,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": true
+    },
+    {
+      "scenarioId": "support-tickets",
+      "trial": 3,
+      "model": "gemini-3.5-flash-lite",
+      "runId": "support-tickets-B-t3",
+      "config": "B",
+      "provenance": "provider-failure",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "mappingHash": null,
+      "mappingValid": false,
+      "providerError": "No proposal was produced\n\nNETWORK: AI: Error fetching from https://firebasevertexai.googleapis.com/v1beta/projects/eyes-without-a-face-b7281/models/gemini-3.5-flash-lite:generateContent: [500 ] This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later. (AI/fetch-error) The approval has been consumed; build and approve a new prompt to try again.",
+      "feedbackSet": null,
+      "holdout": null,
+      "semanticOverall": null,
+      "detectionFeedbackSet": null,
+      "detectionHoldout": null,
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": null,
+        "canaryPresent": null
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 19017,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": null
+    },
+    {
+      "scenarioId": "support-tickets",
+      "trial": 4,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "e0f92fa7bca071d86b891fc81ca52b71d4d00deec2c8b1a713a90e1dcfd8e460",
+      "mappingValid": true,
+      "providerError": null,
+      "runId": "support-tickets-B-t4",
+      "config": "B",
+      "provenance": "real-gemini",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 0,
+        "correctlyHandled": 0,
+        "incorrect": 7,
+        "quarantined": 0,
+        "unresolved": 1,
+        "rejectedByPolicy": 1
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 0,
+        "correctlyHandled": 1,
+        "incorrect": 6,
+        "quarantined": 1,
+        "unresolved": 1,
+        "rejectedByPolicy": 2
+      },
+      "semanticOverall": "SEMANTIC_MISMATCH",
+      "detectionFeedbackSet": {
+        "incorrect": 7,
+        "detected": 7,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 6,
+        "detected": 6,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 8151,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": true
+    },
+    {
+      "scenarioId": "support-tickets",
+      "trial": 5,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "e0f92fa7bca071d86b891fc81ca52b71d4d00deec2c8b1a713a90e1dcfd8e460",
+      "mappingValid": true,
+      "providerError": null,
+      "runId": "support-tickets-B-t5",
+      "config": "B",
+      "provenance": "real-gemini",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 0,
+        "correctlyHandled": 0,
+        "incorrect": 7,
+        "quarantined": 0,
+        "unresolved": 1,
+        "rejectedByPolicy": 1
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 0,
+        "correctlyHandled": 1,
+        "incorrect": 6,
+        "quarantined": 1,
+        "unresolved": 1,
+        "rejectedByPolicy": 2
+      },
+      "semanticOverall": "SEMANTIC_MISMATCH",
+      "detectionFeedbackSet": {
+        "incorrect": 7,
+        "detected": 7,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 6,
+        "detected": 6,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 9171,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": true
+    },
+    {
+      "scenarioId": "support-tickets",
+      "trial": 1,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "e0f92fa7bca071d86b891fc81ca52b71d4d00deec2c8b1a713a90e1dcfd8e460",
+      "mappingValid": true,
+      "providerError": null,
+      "runId": "support-tickets-C-t1",
+      "config": "C",
+      "provenance": "real-gemini",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 0,
+        "correctlyHandled": 0,
+        "incorrect": 7,
+        "quarantined": 0,
+        "unresolved": 1,
+        "rejectedByPolicy": 1
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 0,
+        "correctlyHandled": 1,
+        "incorrect": 6,
+        "quarantined": 1,
+        "unresolved": 1,
+        "rejectedByPolicy": 2
+      },
+      "semanticOverall": "SEMANTIC_MISMATCH",
+      "detectionFeedbackSet": {
+        "incorrect": 7,
+        "detected": 7,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 6,
+        "detected": 6,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 2041,
+        "nano": 15754,
+        "revision": null
+      },
+      "humanInterventions": 1,
+      "replayMatchesBrowser": true
+    },
+    {
+      "scenarioId": "support-tickets",
+      "trial": 2,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "a7cf7c0aef009d1368ee68df378ee17be5320ae05531a5b4f16ab3f739485318",
+      "mappingValid": true,
+      "providerError": null,
+      "runId": "support-tickets-C-t2",
+      "config": "C",
+      "provenance": "real-gemini",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 7,
+        "correctlyHandled": 7,
+        "incorrect": 0,
+        "quarantined": 0,
+        "unresolved": 1,
+        "rejectedByPolicy": 1
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 6,
+        "correctlyHandled": 7,
+        "incorrect": 0,
+        "quarantined": 1,
+        "unresolved": 1,
+        "rejectedByPolicy": 2
+      },
+      "semanticOverall": "SEMANTIC_POLICY_CONFLICT",
+      "detectionFeedbackSet": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 3506,
+        "nano": 15275,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": true
+    },
+    {
+      "scenarioId": "support-tickets",
+      "trial": 3,
+      "model": "gemini-3.5-flash-lite",
+      "runId": "support-tickets-C-t3",
+      "config": "C",
+      "provenance": "provider-failure",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "mappingHash": null,
+      "mappingValid": false,
+      "providerError": "No proposal was produced\n\nTIMEOUT: Inference timed out after 45000 ms. The Firebase request may still be in flight; this authorization cannot be reused. The approval has been consumed; build and approve a new prompt to try again.",
+      "feedbackSet": null,
+      "holdout": null,
+      "semanticOverall": null,
+      "detectionFeedbackSet": null,
+      "detectionHoldout": null,
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": null,
+        "canaryPresent": null
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 45290,
+        "nano": 16256,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": null
+    },
+    {
+      "scenarioId": "support-tickets",
+      "trial": 4,
+      "model": "gemini-3.5-flash-lite",
+      "runId": "support-tickets-C-t4",
+      "config": "C",
+      "provenance": "provider-failure",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "mappingHash": null,
+      "mappingValid": false,
+      "providerError": "No proposal was produced\n\nTIMEOUT: Inference timed out after 45000 ms. The Firebase request may still be in flight; this authorization cannot be reused. The approval has been consumed; build and approve a new prompt to try again.",
+      "feedbackSet": null,
+      "holdout": null,
+      "semanticOverall": null,
+      "detectionFeedbackSet": null,
+      "detectionHoldout": null,
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": null,
+        "canaryPresent": null
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 45409,
+        "nano": 15267,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": null
+    },
+    {
+      "scenarioId": "support-tickets",
+      "trial": 5,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "e0f92fa7bca071d86b891fc81ca52b71d4d00deec2c8b1a713a90e1dcfd8e460",
+      "mappingValid": true,
+      "providerError": null,
+      "runId": "support-tickets-C-t5",
+      "config": "C",
+      "provenance": "real-gemini",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 0,
+        "correctlyHandled": 0,
+        "incorrect": 7,
+        "quarantined": 0,
+        "unresolved": 1,
+        "rejectedByPolicy": 1
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 0,
+        "correctlyHandled": 1,
+        "incorrect": 6,
+        "quarantined": 1,
+        "unresolved": 1,
+        "rejectedByPolicy": 2
+      },
+      "semanticOverall": "SEMANTIC_MISMATCH",
+      "detectionFeedbackSet": {
+        "incorrect": 7,
+        "detected": 7,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 6,
+        "detected": 6,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 22392,
+        "nano": 15252,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": true
+    },
+    {
+      "scenarioId": "support-tickets",
+      "trial": 1,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "8d580ae1f4457587e13662c6469c69f416cf49c647aa15a9f17af177b3d61722",
+      "mappingValid": true,
+      "providerError": null,
+      "runId": "support-tickets-D-t1",
+      "config": "D",
+      "provenance": "real-gemini-revision",
+      "promptVersion": "revision-3",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 7,
+        "correctlyHandled": 8,
+        "incorrect": 0,
+        "quarantined": 1,
+        "unresolved": 1,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 6,
+        "correctlyHandled": 8,
+        "incorrect": 0,
+        "quarantined": 2,
+        "unresolved": 1,
+        "rejectedByPolicy": 1
+      },
+      "semanticOverall": "SEMANTIC_PASS",
+      "detectionFeedbackSet": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": {
+        "feedbackVersion": "1.1.0",
+        "semanticFindings": 1,
+        "approvedConstraints": 1,
+        "verdict": "ACCEPTED",
+        "holdoutImproved": 7,
+        "holdoutRegressed": 0,
+        "operationRegressions": 0,
+        "holdoutCorrectTransformationsDelta": 6
+      },
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 2,
+      "latencyMs": {
+        "cloud": 2041,
+        "nano": 15754,
+        "revision": 12389
+      },
+      "humanInterventions": 3,
+      "replayMatchesBrowser": true
+    },
+    {
+      "scenarioId": "support-tickets",
+      "trial": 2,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "a7cf7c0aef009d1368ee68df378ee17be5320ae05531a5b4f16ab3f739485318",
+      "mappingValid": false,
+      "providerError": "Blind revision stopped · INFERENCE_FAILED\n\nTIMEOUT: Inference timed out after 45000 ms. The Firebase request may still be in flight; this authorization cannot be reused. The revision request has been used and will not be retried.",
+      "runId": "support-tickets-D-t2",
+      "config": "D",
+      "provenance": "provider-failure",
+      "promptVersion": "revision-3",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 7,
+        "correctlyHandled": 7,
+        "incorrect": 0,
+        "quarantined": 0,
+        "unresolved": 1,
+        "rejectedByPolicy": 1
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 6,
+        "correctlyHandled": 7,
+        "incorrect": 0,
+        "quarantined": 1,
+        "unresolved": 1,
+        "rejectedByPolicy": 2
+      },
+      "semanticOverall": "SEMANTIC_POLICY_CONFLICT",
+      "detectionFeedbackSet": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": {
+        "feedbackVersion": "1.1.0",
+        "semanticFindings": 1,
+        "approvedConstraints": 1,
+        "verdict": "BLOCKED",
+        "holdoutImproved": 0,
+        "holdoutRegressed": 0,
+        "operationRegressions": 0,
+        "holdoutCorrectTransformationsDelta": 0
+      },
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 2,
+      "latencyMs": {
+        "cloud": 3506,
+        "nano": 15275,
+        "revision": 45390
+      },
+      "humanInterventions": 2,
+      "replayMatchesBrowser": true
+    },
+    {
+      "scenarioId": "support-tickets",
+      "trial": 3,
+      "model": "gemini-3.5-flash-lite",
+      "runId": "support-tickets-D-t3",
+      "config": "D",
+      "provenance": "provider-failure",
+      "promptVersion": "revision-3",
+      "mappingHash": null,
+      "mappingValid": false,
+      "providerError": "No proposal was produced\n\nTIMEOUT: Inference timed out after 45000 ms. The Firebase request may still be in flight; this authorization cannot be reused. The approval has been consumed; build and approve a new prompt to try again.",
+      "feedbackSet": null,
+      "holdout": null,
+      "semanticOverall": null,
+      "detectionFeedbackSet": null,
+      "detectionHoldout": null,
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": null,
+        "canaryPresent": null
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 45290,
+        "nano": 16256,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": null
+    },
+    {
+      "scenarioId": "support-tickets",
+      "trial": 4,
+      "model": "gemini-3.5-flash-lite",
+      "runId": "support-tickets-D-t4",
+      "config": "D",
+      "provenance": "provider-failure",
+      "promptVersion": "revision-3",
+      "mappingHash": null,
+      "mappingValid": false,
+      "providerError": "No proposal was produced\n\nTIMEOUT: Inference timed out after 45000 ms. The Firebase request may still be in flight; this authorization cannot be reused. The approval has been consumed; build and approve a new prompt to try again.",
+      "feedbackSet": null,
+      "holdout": null,
+      "semanticOverall": null,
+      "detectionFeedbackSet": null,
+      "detectionHoldout": null,
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": null,
+        "canaryPresent": null
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 45409,
+        "nano": 15267,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": null
+    },
+    {
+      "scenarioId": "support-tickets",
+      "trial": 5,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "e0f92fa7bca071d86b891fc81ca52b71d4d00deec2c8b1a713a90e1dcfd8e460",
+      "mappingValid": false,
+      "providerError": "Blind revision stopped · INFERENCE_FAILED\n\nNETWORK: AI: Error fetching from https://firebasevertexai.googleapis.com/v1beta/projects/eyes-without-a-face-b7281/models/gemini-3.5-flash-lite:generateContent: [500 ] This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later. (AI/fetch-error) The revision request has been used and will not be retried.",
+      "runId": "support-tickets-D-t5",
+      "config": "D",
+      "provenance": "provider-failure",
+      "promptVersion": "revision-3",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 0,
+        "correctlyHandled": 0,
+        "incorrect": 7,
+        "quarantined": 0,
+        "unresolved": 1,
+        "rejectedByPolicy": 1
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 0,
+        "correctlyHandled": 1,
+        "incorrect": 6,
+        "quarantined": 1,
+        "unresolved": 1,
+        "rejectedByPolicy": 2
+      },
+      "semanticOverall": "SEMANTIC_MISMATCH",
+      "detectionFeedbackSet": {
+        "incorrect": 7,
+        "detected": 7,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 6,
+        "detected": 6,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": {
+        "feedbackVersion": "1.1.0",
+        "semanticFindings": 1,
+        "approvedConstraints": 1,
+        "verdict": "BLOCKED",
+        "holdoutImproved": 0,
+        "holdoutRegressed": 0,
+        "operationRegressions": 0,
+        "holdoutCorrectTransformationsDelta": 0
+      },
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 2,
+      "latencyMs": {
+        "cloud": 22392,
+        "nano": 15252,
+        "revision": 24899
+      },
+      "humanInterventions": 2,
+      "replayMatchesBrowser": true
+    },
+    {
+      "runId": "support-tickets-P-t1",
+      "scenarioId": "support-tickets",
+      "config": "P",
+      "trial": 1,
+      "provenance": "deterministic-patch-control",
+      "model": null,
+      "promptVersion": "none",
+      "mappingHash": "e0f92fa7bca071d86b891fc81ca52b71d4d00deec2c8b1a713a90e1dcfd8e460",
+      "mappingValid": true,
+      "providerError": null,
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 8,
+        "correctlyHandled": 9,
+        "incorrect": 0,
+        "quarantined": 1,
+        "unresolved": 0,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 7,
+        "correctlyHandled": 9,
+        "incorrect": 0,
+        "quarantined": 2,
+        "unresolved": 0,
+        "rejectedByPolicy": 1
+      },
+      "semanticOverall": "SEMANTIC_PASS",
+      "detectionFeedbackSet": null,
+      "detectionHoldout": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": {
+        "feedbackVersion": "1.1.0",
+        "semanticFindings": 1,
+        "approvedConstraints": 1,
+        "verdict": "ACCEPTED",
+        "holdoutImproved": 8,
+        "holdoutRegressed": 0,
+        "operationRegressions": 0,
+        "holdoutCorrectTransformationsDelta": 7
+      },
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": null,
+        "canaryPresent": null
+      },
+      "cloudRequests": 0,
+      "latencyMs": {
+        "cloud": null,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": null
+    },
+    {
+      "runId": "support-tickets-P-t2",
+      "scenarioId": "support-tickets",
+      "config": "P",
+      "trial": 2,
+      "provenance": "deterministic-patch-control",
+      "model": null,
+      "promptVersion": "none",
+      "mappingHash": "a7cf7c0aef009d1368ee68df378ee17be5320ae05531a5b4f16ab3f739485318",
+      "mappingValid": true,
+      "providerError": null,
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 8,
+        "correctlyHandled": 9,
+        "incorrect": 0,
+        "quarantined": 1,
+        "unresolved": 0,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 7,
+        "correctlyHandled": 9,
+        "incorrect": 0,
+        "quarantined": 2,
+        "unresolved": 0,
+        "rejectedByPolicy": 1
+      },
+      "semanticOverall": "SEMANTIC_PASS",
+      "detectionFeedbackSet": null,
+      "detectionHoldout": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": {
+        "feedbackVersion": "1.1.0",
+        "semanticFindings": 1,
+        "approvedConstraints": 1,
+        "verdict": "ACCEPTED",
+        "holdoutImproved": 2,
+        "holdoutRegressed": 0,
+        "operationRegressions": 0,
+        "holdoutCorrectTransformationsDelta": 1
+      },
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": null,
+        "canaryPresent": null
+      },
+      "cloudRequests": 0,
+      "latencyMs": {
+        "cloud": null,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": null
+    },
+    {
+      "runId": "support-tickets-P-t5",
+      "scenarioId": "support-tickets",
+      "config": "P",
+      "trial": 5,
+      "provenance": "deterministic-patch-control",
+      "model": null,
+      "promptVersion": "none",
+      "mappingHash": "e0f92fa7bca071d86b891fc81ca52b71d4d00deec2c8b1a713a90e1dcfd8e460",
+      "mappingValid": true,
+      "providerError": null,
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 8,
+        "correctlyHandled": 9,
+        "incorrect": 0,
+        "quarantined": 1,
+        "unresolved": 0,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 7,
+        "correctlyHandled": 9,
+        "incorrect": 0,
+        "quarantined": 2,
+        "unresolved": 0,
+        "rejectedByPolicy": 1
+      },
+      "semanticOverall": "SEMANTIC_PASS",
+      "detectionFeedbackSet": null,
+      "detectionHoldout": {
+        "incorrect": 0,
+        "detected": 0,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": {
+        "feedbackVersion": "1.1.0",
+        "semanticFindings": 1,
+        "approvedConstraints": 1,
+        "verdict": "ACCEPTED",
+        "holdoutImproved": 8,
+        "holdoutRegressed": 0,
+        "operationRegressions": 0,
+        "holdoutCorrectTransformationsDelta": 7
+      },
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": null,
+        "canaryPresent": null
+      },
+      "cloudRequests": 0,
+      "latencyMs": {
+        "cloud": null,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": null
+    }
+  ]
+}

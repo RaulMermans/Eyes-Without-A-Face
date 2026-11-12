@@ -11,7 +11,7 @@
  */
 import type { CloudDisclosurePayload } from "../domain/contracts/types.ts";
 import { canonicalizeJson } from "../domain/json/canonical.ts";
-import { deriveTestProposal } from "../inference/test-proposer.ts";
+import { deriveTestProposal, deriveTestRevision } from "../inference/test-proposer.ts";
 import { DEFAULT_TWIN_SEED, type TwinFieldOverride } from "../phantom/generate.ts";
 import { isSemanticRole } from "../phantom/roles.ts";
 import { fingerprintCanonicalPayload } from "../privacy/fingerprint.ts";
@@ -48,10 +48,17 @@ export interface LiveEntry {
   requests: { generateContent: number; leaks: string[] };
 }
 
-export type ConfigLabel = "A" | "B" | "C" | "D";
+/**
+ * P is an offline control, not a configuration of the product: the same
+ * initial mapping (C) and the same approved feedback as D, revised by fixed
+ * deterministic rules (the labeled simulated reviser) instead of Gemini.
+ * It answers whether the model adds anything beyond a local rule-based patch.
+ */
+export type ConfigLabel = "A" | "B" | "C" | "D" | "P";
 
 export type RunProvenance =
   | "deterministic-baseline"
+  | "deterministic-patch-control"
   | "real-gemini"
   | "real-gemini-revision"
   | "provider-failure"
@@ -287,7 +294,59 @@ export async function replayLiveEntry(entry: LiveEntry, scenario: EvaluationScen
     humanInterventions: (entry.applied ?? []).length + ((entry.authorizedConstraints ?? []).length > 0 ? 1 : 0) + (sent ? 1 : 0),
     replayMatchesBrowser: matches,
   };
-  return { records: [cRecord, dRecord], run };
+  const pRecord = await patchControl(entry, scenario, initialHash);
+  return { records: pRecord ? [cRecord, dRecord, pRecord] : [cRecord, dRecord], run };
+}
+
+/** Control P: same initial mapping and same approved feedback as D, revised by fixed local rules. */
+async function patchControl(entry: LiveEntry, scenario: EvaluationScenario, initialHash: string | null): Promise<RunRecord | null> {
+  if (!entry.initial?.text) return null;
+  const run = await runScenarioPipeline({
+    scenario,
+    config: "D-nano-cloud-revision",
+    seed: DEFAULT_TWIN_SEED,
+    semanticOverrides: appliedOverridesFromEvidence(entry),
+    propose: () => ({ text: entry.initial!.text, origin: "gemini-cloud" }),
+    revise: (payload) => ({ text: JSON.stringify(deriveTestRevision(payload)), origin: "test-adapter" }),
+    semantic: { authorizeConstraints: (entry.authorizedConstraints ?? []).length > 0 },
+  });
+  if (!run.feedback?.ok) return null;
+  const valid = Boolean(run.revised?.accepted && run.revised.holdout);
+  const holdout = valid ? run.revised!.holdout! : run.initial.holdout;
+  const initialHoldout = run.initial.holdout;
+  const compare = initialHoldout && holdout ? compareEvaluations(initialHoldout.rows, holdout.rows) : null;
+  return {
+    runId: `${scenario.scenarioId}-P-t${entry.trial}`,
+    scenarioId: scenario.scenarioId,
+    config: "P",
+    trial: entry.trial,
+    provenance: "deterministic-patch-control",
+    model: null,
+    promptVersion: "none",
+    mappingHash: initialHash,
+    mappingValid: valid,
+    providerError: null,
+    feedbackSet: score((valid ? run.revised!.evaluation : run.initial.evaluation)?.metrics),
+    holdout: score(holdout?.metrics),
+    semanticOverall: (valid ? run.revised!.semantic : run.initial.semantic)?.overall ?? null,
+    detectionFeedbackSet: null,
+    detectionHoldout: holdout ? semanticDetection(holdout.rows, valid ? run.revised!.holdoutSemantic : run.initial.holdoutSemantic) : null,
+    revision: {
+      feedbackVersion: run.feedbackVersion ?? null,
+      semanticFindings: run.feedbackValue?.semanticFindings?.length ?? 0,
+      approvedConstraints: run.feedbackValue?.approvedConstraints?.length ?? 0,
+      verdict: run.decision?.verdict ?? null,
+      holdoutImproved: compare?.improved ?? 0,
+      holdoutRegressed: compare?.regressed ?? 0,
+      operationRegressions: run.decision?.operationRegressions ?? 0,
+      holdoutCorrectTransformationsDelta: holdout && initialHoldout ? (holdout.metrics.correctTransformations ?? 0) - (initialHoldout.metrics.correctTransformations ?? 0) : null,
+    },
+    privacy: { bodyLeaks: 0, promptPrivateMatches: null, canaryPresent: null },
+    cloudRequests: 0,
+    latencyMs: { cloud: null, nano: null, revision: null },
+    humanInterventions: 0,
+    replayMatchesBrowser: null,
+  };
 }
 
 /** Configuration A: the deterministic test proposer over the same approved disclosure. */
@@ -469,4 +528,43 @@ async function disclosureHash(scenario: EvaluationScenario, extra: Record<string
   const draft = buildDisclosureDraft({ prepared: prepared.value, targetSchema: scenario.destinationSchema });
   if (!draft.ok) return "disclosure-failed";
   return (await fingerprintCanonicalPayload(draft.value.payload)).payloadHash;
+}
+
+export interface BenchmarkReport {
+  reportVersion: typeof BENCHMARK_REPORT_VERSION;
+  evidence: { entries: number; sha256: string };
+  totals: { cloudRequests: number; providerFailures: number; bodyLeaks: number; replayMismatches: number; trials: number[] };
+  cells: CellSummary[];
+  nano: NanoAblation[];
+  records: RunRecord[];
+}
+
+/** The full Sprint 8 report: configuration A offline, B/C/D replayed from recorded real outputs. */
+export async function buildBenchmarkReport(entries: readonly LiveEntry[], scenarios: readonly EvaluationScenario[], evidenceSha256: string): Promise<BenchmarkReport> {
+  const records: RunRecord[] = [];
+  for (const scenario of scenarios) records.push(await deterministicBaseline(scenario));
+  for (const entry of entries) {
+    const scenario = scenarios.find((item) => item.scenarioId === entry.scenarioId);
+    if (!scenario) throw new Error(`Unknown scenario ${entry.scenarioId}`);
+    records.push(...(await replayLiveEntry(entry, scenario)).records);
+  }
+  const order: Record<ConfigLabel, number> = { A: 0, B: 1, C: 2, D: 3, P: 4 };
+  records.sort((a, b) => a.scenarioId.localeCompare(b.scenarioId) || order[a.config] - order[b.config] || a.trial - b.trial);
+  const nano: NanoAblation[] = [];
+  for (const scenario of scenarios) nano.push(await nanoAblation(entries, records, scenario));
+  const cells = summarize(records);
+  return {
+    reportVersion: BENCHMARK_REPORT_VERSION,
+    evidence: { entries: entries.length, sha256: evidenceSha256 },
+    totals: {
+      cloudRequests: entries.reduce((sum, entry) => sum + entry.requests.generateContent, 0),
+      providerFailures: records.filter((record) => record.provenance === "provider-failure").length,
+      bodyLeaks: entries.reduce((sum, entry) => sum + entry.requests.leaks.length, 0),
+      replayMismatches: records.filter((record) => record.replayMatchesBrowser === false).length,
+      trials: [...new Set(entries.map((entry) => entry.trial))].sort((a, b) => a - b),
+    },
+    cells,
+    nano,
+    records,
+  };
 }
