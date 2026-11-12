@@ -1,0 +1,381 @@
+{
+  "scenarioId": "crm-eu-accounts",
+  "scenarioVersion": "1.0.0",
+  "title": "Customer CRM (EU accounts)",
+  "summary": "German field names, translated account states, and slash dates whose day/month order the imported sample cannot prove.",
+  "difficulty": [
+    "Ambiguous DD/MM vs MM/DD dates: imported days are all ≤ 12, so profiling assumes MM/DD/YYYY and silently swaps day and month.",
+    "Account states must be translated (aktiv → active).",
+    "A company-name field whose name the deterministic profiler does not recognise.",
+    "Unknown account states may only use the owner-approved fallback 'other'."
+  ],
+  "fictional": true,
+  "localOnly": true,
+  "canaries": [
+    "PRIVATE_CANARY_PII_DO_NOT_SHARE"
+  ],
+  "datasetLabel": "crm-eu-accounts",
+  "twinOverrides": {
+    "kontostatus": {
+      "discloseCategories": true
+    },
+    "notiz": {
+      "shareable": false
+    }
+  },
+  "destinationSchema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://eyes-without-a-face.dev/examples/scenarios/crm-eu/destination/1.0.0",
+    "title": "Account directory",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "id",
+      "email",
+      "status",
+      "createdAt",
+      "organization"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^KD-[0-9]{5}$"
+      },
+      "email": {
+        "type": "string",
+        "format": "email"
+      },
+      "status": {
+        "enum": [
+          "active",
+          "inactive",
+          "prospect",
+          "other"
+        ]
+      },
+      "createdAt": {
+        "type": "string",
+        "format": "date"
+      },
+      "organization": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "policy": {
+    "policyVersion": "1.0.0",
+    "policyId": "crm-eu-v1",
+    "description": "Unusable contact emails go to manual review. Unknown account states may be filed as 'other'.",
+    "quarantine": [
+      {
+        "code": "INVALID_EMAIL",
+        "to": "email"
+      },
+      {
+        "code": "NULL_VALUE",
+        "to": "email"
+      },
+      {
+        "code": "TYPE_MISMATCH",
+        "to": "email"
+      },
+      {
+        "code": "OUTPUT_SCHEMA_MISMATCH",
+        "to": "email"
+      }
+    ],
+    "approvedFallbacks": [
+      {
+        "to": "status",
+        "value": "other",
+        "appliesTo": "undisclosed-category"
+      }
+    ],
+    "approvedDefaults": [],
+    "maxQuarantineRate": 0.34
+  },
+  "imported": [
+    {
+      "record": {
+        "kundennummer": "KD-10001",
+        "e_post": "ines.brandt@example.de",
+        "kontostatus": "aktiv",
+        "angelegt_am": "03/02/2026",
+        "unternehmen": "Lindenhof Studio",
+        "notiz": "PRIVATE_CANARY_PII_DO_NOT_SHARE fictional dunning note, keep local"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "KD-10001",
+          "email": "ines.brandt@example.de",
+          "status": "active",
+          "createdAt": "2026-02-03",
+          "organization": "Lindenhof Studio"
+        }
+      }
+    },
+    {
+      "record": {
+        "kundennummer": "KD-10002",
+        "e_post": "jonas.weber@example.de",
+        "kontostatus": "inaktiv",
+        "angelegt_am": "11/09/2025",
+        "unternehmen": "Weber & Kraus",
+        "notiz": "Prefers phone contact, fictional"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "KD-10002",
+          "email": "jonas.weber@example.de",
+          "status": "inactive",
+          "createdAt": "2025-09-11",
+          "organization": "Weber & Kraus"
+        }
+      }
+    },
+    {
+      "record": {
+        "kundennummer": "KD-10003",
+        "e_post": "mila.roth@example.at",
+        "kontostatus": "interessent",
+        "angelegt_am": "05/01/2026",
+        "unternehmen": "Alpenblick Verlag",
+        "notiz": "Met at a fictional trade fair"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "KD-10003",
+          "email": "mila.roth@example.at",
+          "status": "prospect",
+          "createdAt": "2026-01-05",
+          "organization": "Alpenblick Verlag"
+        }
+      }
+    },
+    {
+      "record": {
+        "kundennummer": "KD-10004",
+        "e_post": "paul.vogt@example.ch",
+        "kontostatus": "aktiv",
+        "angelegt_am": "10/12/2025",
+        "unternehmen": "Vogt Werkstatt",
+        "notiz": "Fictional renewal pending"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "KD-10004",
+          "email": "paul.vogt@example.ch",
+          "status": "active",
+          "createdAt": "2025-12-10",
+          "organization": "Vogt Werkstatt"
+        }
+      }
+    },
+    {
+      "record": {
+        "kundennummer": "KD-10005",
+        "e_post": "lea.huber@example.de",
+        "kontostatus": "interessent",
+        "angelegt_am": "08/03/2026",
+        "unternehmen": "Huber Design",
+        "notiz": "Fictional demo booked"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "KD-10005",
+          "email": "lea.huber@example.de",
+          "status": "prospect",
+          "createdAt": "2026-03-08",
+          "organization": "Huber Design"
+        }
+      }
+    },
+    {
+      "record": {
+        "kundennummer": "KD-10006",
+        "e_post": "tom.fischer@example.de",
+        "kontostatus": "inaktiv",
+        "angelegt_am": "01/07/2025",
+        "unternehmen": "Fischer Logistik",
+        "notiz": "Fictional churn reason withheld"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "KD-10006",
+          "email": "tom.fischer@example.de",
+          "status": "inactive",
+          "createdAt": "2025-07-01",
+          "organization": "Fischer Logistik"
+        }
+      }
+    }
+  ],
+  "revisionFeedback": [
+    {
+      "record": {
+        "kundennummer": "KD-10031",
+        "e_post": "anna.koch@example.de",
+        "kontostatus": "aktiv",
+        "angelegt_am": "25/03/2026",
+        "unternehmen": "Koch Atelier"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "KD-10031",
+          "email": "anna.koch@example.de",
+          "status": "active",
+          "createdAt": "2026-03-25",
+          "organization": "Koch Atelier"
+        }
+      }
+    },
+    {
+      "record": {
+        "kundennummer": "KD-10032",
+        "e_post": "ben.wolf@example.de",
+        "kontostatus": "gesperrt",
+        "angelegt_am": "04/02/2026",
+        "unternehmen": "Wolf Bau"
+      },
+      "expected": {
+        "kind": "fallback",
+        "output": {
+          "id": "KD-10032",
+          "email": "ben.wolf@example.de",
+          "status": "other",
+          "createdAt": "2026-02-04",
+          "organization": "Wolf Bau"
+        }
+      }
+    },
+    {
+      "record": {
+        "kundennummer": "KD-10033",
+        "e_post": "keine-angabe",
+        "kontostatus": "aktiv",
+        "angelegt_am": "02/02/2026",
+        "unternehmen": "Ohne Mail GmbH"
+      },
+      "expected": {
+        "kind": "quarantine"
+      }
+    }
+  ],
+  "holdout": [
+    {
+      "record": {
+        "kundennummer": "KD-10051",
+        "e_post": "clara.neumann@example.de",
+        "kontostatus": "aktiv",
+        "angelegt_am": "07/11/2025",
+        "unternehmen": "Neumann Praxis"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "KD-10051",
+          "email": "clara.neumann@example.de",
+          "status": "active",
+          "createdAt": "2025-11-07",
+          "organization": "Neumann Praxis"
+        }
+      }
+    },
+    {
+      "record": {
+        "kundennummer": "KD-10052",
+        "e_post": "david.schulz@example.de",
+        "kontostatus": "inaktiv",
+        "angelegt_am": "31/01/2026",
+        "unternehmen": "Schulz Optik"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "KD-10052",
+          "email": "david.schulz@example.de",
+          "status": "inactive",
+          "createdAt": "2026-01-31",
+          "organization": "Schulz Optik"
+        }
+      }
+    },
+    {
+      "record": {
+        "kundennummer": "KD-10053",
+        "e_post": "eva.krause@example.at",
+        "kontostatus": "gekuendigt",
+        "angelegt_am": "06/04/2026",
+        "unternehmen": "Krause Buero"
+      },
+      "expected": {
+        "kind": "fallback",
+        "output": {
+          "id": "KD-10053",
+          "email": "eva.krause@example.at",
+          "status": "other",
+          "createdAt": "2026-04-06",
+          "organization": "Krause Buero"
+        }
+      }
+    },
+    {
+      "record": {
+        "kundennummer": "KD-10054",
+        "e_post": null,
+        "kontostatus": "aktiv",
+        "angelegt_am": "09/05/2026",
+        "unternehmen": "Null Kontakt KG"
+      },
+      "expected": {
+        "kind": "quarantine"
+      }
+    },
+    {
+      "record": {
+        "kundennummer": "KD-10055",
+        "e_post": "felix.lange@example.ch",
+        "kontostatus": "interessent",
+        "angelegt_am": "19/02/2026",
+        "unternehmen": "Lange Media"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "KD-10055",
+          "email": "felix.lange@example.ch",
+          "status": "prospect",
+          "createdAt": "2026-02-19",
+          "organization": "Lange Media"
+        }
+      }
+    },
+    {
+      "record": {
+        "kundennummer": "KD-10056",
+        "e_post": "greta.zimmer@example.de",
+        "kontostatus": "aktiv",
+        "angelegt_am": "12/06/2026",
+        "unternehmen": "Zimmer Holz"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "KD-10056",
+          "email": "greta.zimmer@example.de",
+          "status": "active",
+          "createdAt": "2026-06-12",
+          "organization": "Zimmer Holz"
+        }
+      }
+    }
+  ]
+}

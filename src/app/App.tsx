@@ -233,6 +233,7 @@ export default function App() {
               workspace={workspace}
               onChange={setWorkspace}
               prepared={prepared}
+              inference={inference}
               onInspectOperation={(index) => {
                 setFocusOperation(index);
                 goTo("mapping");

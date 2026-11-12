@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://eyes-without-a-face.dev/schemas/private-field-semantics/1.0.0",
+  "title": "On-device private field semantics (1.0.0)",
+  "description": "Gemini Nano's interpretation of ONE private source field from a bounded local context (original name, a few sampled values, profile facts). Local only: never part of any cloud payload, log or telemetry. Validated against the deterministic profile before it can be applied, and applied only after user review.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["fieldAlias", "semanticRole", "valueKind", "dateFormat", "relationHint", "confidence", "reviewRequired", "rationale"],
+  "properties": {
+    "fieldAlias": { "type": "string", "pattern": "^f_[0-9]{2,3}$" },
+    "semanticRole": {
+      "enum": ["identifier", "email", "organization", "person-name", "status", "date", "timestamp", "free-text", "number", "flag", "text"]
+    },
+    "valueKind": { "enum": ["string", "number", "boolean", "category", "date", "datetime"] },
+    "dateFormat": { "enum": ["none", "YYYY-MM-DD", "ISO-8601", "MM/DD/YYYY", "DD/MM/YYYY"] },
+    "relationHint": { "enum": ["none", "primary-identifier", "reference-to-other-record", "contact-channel", "grouping"] },
+    "confidence": { "enum": ["low", "medium", "high"] },
+    "reviewRequired": { "type": "boolean" },
+    "rationale": { "type": "string", "minLength": 1, "maxLength": 240 }
+  }
+}

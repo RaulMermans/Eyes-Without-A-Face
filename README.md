@@ -75,13 +75,13 @@ To enable real inference:
 
 | Command | Purpose |
 | --- | --- |
-| `pnpm test:all` | Lint, typecheck, unit, contract, privacy, build, deterministic Playwright E2E |
+| `pnpm test:all` | Lint, typecheck, unit, contract, privacy, evaluation, build, deterministic Playwright E2E |
 | `pnpm build:release` | Production build for Hosting: forces App Check debug off, stamps the Git SHA, verifies `dist/` |
 | `pnpm test:live` | Opt-in real Firebase/Gemini suite ([docs/testing/playwright-live.md](docs/testing/playwright-live.md)); never in CI |
 
 ## Status
 
-Release candidate (Sprint 5) with the Sprint 6 Spectral Forensics redesign ([docs/sprints/sprint-6.md](docs/sprints/sprint-6.md), [docs/design/](docs/design/)). Hybrid inference is qualified locally. The hosted deployment and the public release are gated on owner approval ([docs/deployment.md](docs/deployment.md)). Not implemented: export packaging and the correction loop.
+Release candidate (Sprint 5) with the Sprint 6 Spectral Forensics redesign and Sprint 7 **Blind Integration** ([docs/sprints/sprint-7.md](docs/sprints/sprint-7.md)). Gemini Nano can interpret private fields on the device. After the local Reality Check, you can approve exactly one revision request that sends Gemini an allowlisted summary of the failures, never the records. The local evaluator then measures the revised mapping, including on an independent holdout ([docs/evaluation/](docs/evaluation/)). Hybrid inference was requalified on the redesigned app. The hosted deployment and public release are gated on owner approval ([docs/deployment.md](docs/deployment.md)). Not implemented: export packaging.
 
 ## Project
 

@@ -9,7 +9,7 @@ import { validateContract } from "../domain/validation/validate-contract.ts";
 import { PRIVATE_DATA_CANARY } from "../privacy/canaries.ts";
 import { ALIAS_PATTERN, PrivateBindings, validateBindings, type BindingEntry } from "./bindings.ts";
 import { createRng, deriveSeed, fnv1a, hex8, shuffle } from "./prng.ts";
-import { defaultDescriptor, inferRole, type SemanticRole } from "./roles.ts";
+import { dateOrderOverrideAllowed, defaultDescriptor, inferRole, roleCompatible, type SemanticRole } from "./roles.ts";
 import { fallbackSynthetic, syntheticValue, type SyntheticValue } from "./synthetic.ts";
 
 export const DEFAULT_TWIN_SEED = 20261111;
@@ -25,6 +25,10 @@ export interface TwinFieldOverride {
   discloseCategories?: boolean;
   /** User-reviewed descriptor that replaces the generated one. */
   descriptor?: string;
+  /** User-reviewed semantic role (e.g. an applied on-device suggestion). Must be compatible with the profile. */
+  role?: SemanticRole;
+  /** User-reviewed day/month order for an ambiguous slash-date field. */
+  dateFormat?: "MM/DD/YYYY" | "DD/MM/YYYY";
 }
 
 export interface TwinOptions {
@@ -63,7 +67,8 @@ export type TwinIssueCode =
   | "SYNTHETIC_COLLISION"
   | "CONTRACT_INVALID"
   | "BINDINGS_INVALID"
-  | "CANARY_PRESENT";
+  | "CANARY_PRESENT"
+  | "SEMANTICS_INCOMPATIBLE";
 
 export interface TwinIssue {
   code: TwinIssueCode;
@@ -136,10 +141,25 @@ export function generatePhantomTwin(profile: SourceProfile, options: TwinOptions
     profile.fields.flatMap((field) => field.path.split(".")).filter((name) => name.length >= 3).map((name) => name.toLowerCase()),
   );
 
-  sortedSupported.forEach((field, index) => {
-    const alias = aliasByPath.get(field.path) as string;
-    const override = overrides[field.path] ?? {};
-    const role = inferRole(field);
+  sortedSupported.forEach((observed, index) => {
+    const alias = aliasByPath.get(observed.path) as string;
+    const override = overrides[observed.path] ?? {};
+    let field = observed;
+    let role = inferRole(observed);
+    if (override.role !== undefined) {
+      if (roleCompatible(override.role, observed)) {
+        role = override.role;
+      } else {
+        issues.push({ code: "SEMANTICS_INCOMPATIBLE", alias, message: `${alias}: the reviewed role contradicts the observed profile.` });
+      }
+    }
+    if (override.dateFormat !== undefined) {
+      if (dateOrderOverrideAllowed(observed, override.dateFormat)) {
+        field = { ...observed, dateFormat: override.dateFormat, dateFormatAmbiguous: false };
+      } else {
+        issues.push({ code: "SEMANTICS_INCOMPATIBLE", alias, message: `${alias}: the reviewed date order contradicts the observed values.` });
+      }
+    }
     const shareable = override.shareable !== false;
     const categoriesDisclosed = field.type === "enum" && override.discloseCategories === true;
     const labels = categoriesDisclosed ? (field.categories ?? []).map((item) => item.value) : null;

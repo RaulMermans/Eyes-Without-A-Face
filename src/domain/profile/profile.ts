@@ -75,6 +75,8 @@ export interface FieldProfile {
   supported: boolean;
   format?: "email";
   dateFormat?: DateInputFormat;
+  /** True when slash dates never prove day/month order (every part ≤ 12). */
+  dateFormatAmbiguous?: boolean;
   /** Local-only category labels with counts. Not disclosed unless the user opts in. */
   categories?: CategoryObservation[];
   stringLength?: { min: number; max: number };
@@ -398,6 +400,7 @@ function finalize(accumulator: Accumulator, recordCount: number, issues: Profile
     field.type = date.type;
     field.dateFormat = date.format;
     if (date.ambiguous) {
+      field.dateFormatAmbiguous = true;
       issues.push({
         code: "AMBIGUOUS_DATE_FORMAT",
         severity: "warning",

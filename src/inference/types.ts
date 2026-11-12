@@ -1,10 +1,11 @@
 import type { InferenceAvailability } from "../config/env.ts";
 import type { AuthorizedCloudRequest } from "../twin/authorization.ts";
 import { FIREBASE_AI_LOGIC_API } from "./firebase-api.ts";
+import type { PrivateFieldContext } from "../private-semantics/semantics.ts";
 
 export { FIREBASE_AI_LOGIC_API };
 
-export type InferencePurpose = "schema-interpretation" | "mapping-proposal";
+export type InferencePurpose = "schema-interpretation" | "private-semantic-interpretation" | "mapping-proposal";
 export type InferenceExecution = "on-device" | "cloud";
 export type RequestedInferenceMode = "ONLY_ON_DEVICE" | "ONLY_IN_CLOUD";
 export type ActualInferenceSource =
@@ -26,11 +27,18 @@ export interface OnDeviceFieldInput {
   hint: string;
 }
 
-export interface OnDeviceInferenceRequest {
-  purpose: "schema-interpretation";
-  input: OnDeviceFieldInput;
-  signal?: AbortSignal;
-}
+export type OnDeviceInferenceRequest =
+  | {
+      purpose: "schema-interpretation";
+      input: OnDeviceFieldInput;
+      signal?: AbortSignal;
+    }
+  | {
+      /** Sprint 7: bounded PRIVATE context. ONLY_ON_DEVICE; never routed to any cloud path. */
+      purpose: "private-semantic-interpretation";
+      input: PrivateFieldContext;
+      signal?: AbortSignal;
+    };
 
 export interface InferenceProvenance {
   provider: "firebase-ai-logic" | "test-harness";

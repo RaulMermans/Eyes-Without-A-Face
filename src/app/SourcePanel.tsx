@@ -5,7 +5,8 @@ import { ErrorBanner } from "../components/ErrorBanner.tsx";
 import { ArrowRightIcon, LockIcon } from "../components/icons.tsx";
 import { Disclosure, Eyebrow, Panel, PanelHeader } from "../components/spectral.tsx";
 import type { ProfileIssue, SourceProfile } from "../domain/profile/profile.ts";
-import { withCrmDemo } from "./demo.ts";
+import { withCrmDemo, withScenario } from "./demo.ts";
+import { EVALUATION_SCENARIOS } from "../evaluation/scenarios.ts";
 import { parseSourceDataset } from "./source-import.ts";
 import { firstPresent, formatSample } from "./view-model.ts";
 import { invalidateDownstream, type WorkspaceState } from "./workspace-state.ts";
@@ -27,10 +28,10 @@ export function SourcePanel({
     const parsed = parseSourceDataset(text, label);
     const base = invalidateDownstream({ ...workspace, overrides: {} });
     if (!parsed.ok) {
-      onChange({ ...base, source: null, reservedRecords: null, sourceError: parsed.message });
+      onChange({ ...base, source: null, reservedRecords: null, sourceError: parsed.message, scenario: null });
       return;
     }
-    onChange({ ...base, source: parsed.value, reservedRecords: reserved, sourceError: null });
+    onChange({ ...base, source: parsed.value, reservedRecords: reserved, sourceError: null, scenario: null });
   }
 
   function onFile(event: ChangeEvent<HTMLInputElement>): void {
@@ -64,6 +65,32 @@ export function SourcePanel({
           Load reserved edge cases as source
         </Button>
       </div>
+      <Disclosure summary="Blind revision scenarios — fictional, with an independent holdout" className="mt-4" testId="scenario-picker">
+        <p className="text-xs text-mute">
+          Each scenario loads imported records (profiled), revision-feedback cases (reserved hidden cases) and a holdout set that stays out of
+          profiling, disclosure and feedback until the mapping is final. Its acceptance policy is local and versioned. All data is fictional.
+        </p>
+        <ul className="mt-3 grid gap-2 md:grid-cols-3">
+          {EVALUATION_SCENARIOS.map((scenario) => (
+            <li key={scenario.scenarioId} className="flex flex-col justify-between gap-2 border border-rule bg-bone p-3">
+              <div>
+                <p className="font-medium">{scenario.title}</p>
+                <p className="mt-1 text-xs text-mute">{scenario.summary}</p>
+              </div>
+              <Button size="sm" variant="outline" onClick={() => onChange(withScenario(workspace, scenario))} data-testid={`load-scenario-${scenario.scenarioId}`}>
+                Load scenario
+              </Button>
+            </li>
+          ))}
+        </ul>
+      </Disclosure>
+      {workspace.scenario ? (
+        <p className="mt-3 border-l-4 border-l-ink bg-bone px-3 py-2 text-xs" data-testid="scenario-active">
+          Scenario <span className="font-medium">{workspace.scenario.title}</span> · policy{" "}
+          <span className="font-mono">{workspace.scenario.policy.policyId}@{workspace.scenario.policy.policyVersion}</span> ·{" "}
+          {workspace.scenario.holdout.length} holdout cases held back until the mapping is final
+        </p>
+      ) : null}
       <Disclosure summary="Paste JSON instead" className="mt-4">
         <label className="block text-sm" htmlFor="source-json">
           Source JSON (applied when the field loses focus)

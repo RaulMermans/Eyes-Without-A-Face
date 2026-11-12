@@ -1,0 +1,401 @@
+{
+  "scenarioId": "billing-subscriptions",
+  "scenarioVersion": "1.0.0",
+  "title": "Subscription billing",
+  "summary": "Plans, subscription states, renewal dates and monthly amounts, with states and amount formats the imported sample does not show.",
+  "difficulty": [
+    "'trialing' must map to 'trial'.",
+    "Unknown subscription states may only use the approved fallback 'unknown'; unknown plans must not be guessed.",
+    "String amounts and impossible calendar dates cannot be fixed by any of the eight operations."
+  ],
+  "fictional": true,
+  "localOnly": true,
+  "canaries": [
+    "PRIVATE_CANARY_PII_DO_NOT_SHARE"
+  ],
+  "datasetLabel": "billing-subscriptions",
+  "twinOverrides": {
+    "plan": {
+      "discloseCategories": true
+    },
+    "state": {
+      "discloseCategories": true
+    },
+    "internal_memo": {
+      "shareable": false
+    }
+  },
+  "destinationSchema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://eyes-without-a-face.dev/examples/scenarios/billing/destination/1.0.0",
+    "title": "Subscription ledger",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "id",
+      "billingEmail",
+      "plan",
+      "status",
+      "renewsOn",
+      "monthlyAmount"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^SUB-[0-9]{4}$"
+      },
+      "billingEmail": {
+        "type": "string",
+        "format": "email"
+      },
+      "plan": {
+        "enum": [
+          "basic",
+          "pro",
+          "team",
+          "enterprise"
+        ]
+      },
+      "status": {
+        "enum": [
+          "active",
+          "trial",
+          "canceled",
+          "past_due",
+          "unknown"
+        ]
+      },
+      "renewsOn": {
+        "type": "string",
+        "format": "date"
+      },
+      "monthlyAmount": {
+        "type": "number",
+        "minimum": 0
+      }
+    }
+  },
+  "policy": {
+    "policyVersion": "1.0.0",
+    "policyId": "billing-v1",
+    "description": "Unknown subscription states may be filed as 'unknown'. Unknown plans, non-numeric amounts, impossible dates and missing billing emails go to manual review.",
+    "quarantine": [
+      {
+        "code": "UNMAPPED_ENUM",
+        "to": "plan"
+      },
+      {
+        "code": "OUTPUT_SCHEMA_MISMATCH",
+        "to": "monthlyAmount"
+      },
+      {
+        "code": "TYPE_MISMATCH",
+        "to": "monthlyAmount"
+      },
+      {
+        "code": "INVALID_DATE",
+        "to": "renewsOn"
+      },
+      {
+        "code": "NULL_VALUE",
+        "to": "billingEmail"
+      },
+      {
+        "code": "INVALID_EMAIL",
+        "to": "billingEmail"
+      },
+      {
+        "code": "OUTPUT_SCHEMA_MISMATCH",
+        "to": "billingEmail"
+      }
+    ],
+    "approvedFallbacks": [
+      {
+        "to": "status",
+        "value": "unknown",
+        "appliesTo": "undisclosed-category"
+      }
+    ],
+    "approvedDefaults": [],
+    "maxQuarantineRate": 0.34
+  },
+  "imported": [
+    {
+      "record": {
+        "sub_id": "SUB-7001",
+        "billing_contact": "ap@example-co.com",
+        "plan": "basic",
+        "state": "active",
+        "renews_on": "2026-05-31",
+        "mrr": 19,
+        "internal_memo": "PRIVATE_CANARY_PII_DO_NOT_SHARE fictional card ending withheld"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "SUB-7001",
+          "billingEmail": "ap@example-co.com",
+          "plan": "basic",
+          "status": "active",
+          "renewsOn": "2026-05-31",
+          "monthlyAmount": 19
+        }
+      }
+    },
+    {
+      "record": {
+        "sub_id": "SUB-7002",
+        "billing_contact": "finance@example-labs.io",
+        "plan": "pro",
+        "state": "trialing",
+        "renews_on": "2026-04-15",
+        "mrr": 49,
+        "internal_memo": "Fictional trial extension"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "SUB-7002",
+          "billingEmail": "finance@example-labs.io",
+          "plan": "pro",
+          "status": "trial",
+          "renewsOn": "2026-04-15",
+          "monthlyAmount": 49
+        }
+      }
+    },
+    {
+      "record": {
+        "sub_id": "SUB-7003",
+        "billing_contact": "billing@example-studio.net",
+        "plan": "team",
+        "state": "active",
+        "renews_on": "2026-06-01",
+        "mrr": 129,
+        "internal_memo": "Fictional seat increase"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "SUB-7003",
+          "billingEmail": "billing@example-studio.net",
+          "plan": "team",
+          "status": "active",
+          "renewsOn": "2026-06-01",
+          "monthlyAmount": 129
+        }
+      }
+    },
+    {
+      "record": {
+        "sub_id": "SUB-7004",
+        "billing_contact": "owner@example-shop.eu",
+        "plan": "basic",
+        "state": "canceled",
+        "renews_on": "2026-03-20",
+        "mrr": 19,
+        "internal_memo": "Fictional churn"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "SUB-7004",
+          "billingEmail": "owner@example-shop.eu",
+          "plan": "basic",
+          "status": "canceled",
+          "renewsOn": "2026-03-20",
+          "monthlyAmount": 19
+        }
+      }
+    },
+    {
+      "record": {
+        "sub_id": "SUB-7005",
+        "billing_contact": "accounts@example-media.com",
+        "plan": "pro",
+        "state": "active",
+        "renews_on": "2026-07-09",
+        "mrr": 49,
+        "internal_memo": "Fictional annual review"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "SUB-7005",
+          "billingEmail": "accounts@example-media.com",
+          "plan": "pro",
+          "status": "active",
+          "renewsOn": "2026-07-09",
+          "monthlyAmount": 49
+        }
+      }
+    },
+    {
+      "record": {
+        "sub_id": "SUB-7006",
+        "billing_contact": "ops@example-farm.org",
+        "plan": "team",
+        "state": "trialing",
+        "renews_on": "2026-04-30",
+        "mrr": 129,
+        "internal_memo": "Fictional pilot"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "SUB-7006",
+          "billingEmail": "ops@example-farm.org",
+          "plan": "team",
+          "status": "trial",
+          "renewsOn": "2026-04-30",
+          "monthlyAmount": 129
+        }
+      }
+    }
+  ],
+  "revisionFeedback": [
+    {
+      "record": {
+        "sub_id": "SUB-7031",
+        "billing_contact": "pay@example-hub.com",
+        "plan": "pro",
+        "state": "past_due",
+        "renews_on": "2026-05-05",
+        "mrr": 49
+      },
+      "expected": {
+        "kind": "fallback",
+        "output": {
+          "id": "SUB-7031",
+          "billingEmail": "pay@example-hub.com",
+          "plan": "pro",
+          "status": "unknown",
+          "renewsOn": "2026-05-05",
+          "monthlyAmount": 49
+        }
+      }
+    },
+    {
+      "record": {
+        "sub_id": "SUB-7032",
+        "billing_contact": "cfo@example-works.com",
+        "plan": "basic",
+        "state": "active",
+        "renews_on": "2026-05-12",
+        "mrr": "29.00"
+      },
+      "expected": {
+        "kind": "quarantine"
+      }
+    },
+    {
+      "record": {
+        "sub_id": "SUB-7033",
+        "billing_contact": "team@example-dev.io",
+        "plan": "team",
+        "state": "active",
+        "renews_on": "2026-06-31",
+        "mrr": 129
+      },
+      "expected": {
+        "kind": "quarantine"
+      }
+    }
+  ],
+  "holdout": [
+    {
+      "record": {
+        "sub_id": "SUB-7051",
+        "billing_contact": "hello@example-cafe.com",
+        "plan": "basic",
+        "state": "paused",
+        "renews_on": "2026-08-01",
+        "mrr": 19
+      },
+      "expected": {
+        "kind": "fallback",
+        "output": {
+          "id": "SUB-7051",
+          "billingEmail": "hello@example-cafe.com",
+          "plan": "basic",
+          "status": "unknown",
+          "renewsOn": "2026-08-01",
+          "monthlyAmount": 19
+        }
+      }
+    },
+    {
+      "record": {
+        "sub_id": "SUB-7052",
+        "billing_contact": "books@example-firm.com",
+        "plan": "pro",
+        "state": "active",
+        "renews_on": "2026-08-15",
+        "mrr": "15"
+      },
+      "expected": {
+        "kind": "quarantine"
+      }
+    },
+    {
+      "record": {
+        "sub_id": "SUB-7053",
+        "billing_contact": "it@example-school.edu",
+        "plan": "team",
+        "state": "active",
+        "renews_on": "2026-02-30",
+        "mrr": 129
+      },
+      "expected": {
+        "kind": "quarantine"
+      }
+    },
+    {
+      "record": {
+        "sub_id": "SUB-7054",
+        "billing_contact": "admin@example-clinic.org",
+        "plan": "pro",
+        "state": "canceled",
+        "renews_on": "2026-09-09",
+        "mrr": 49
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "SUB-7054",
+          "billingEmail": "admin@example-clinic.org",
+          "plan": "pro",
+          "status": "canceled",
+          "renewsOn": "2026-09-09",
+          "monthlyAmount": 49
+        }
+      }
+    },
+    {
+      "record": {
+        "sub_id": "SUB-7055",
+        "billing_contact": null,
+        "plan": "basic",
+        "state": "active",
+        "renews_on": "2026-09-30",
+        "mrr": 19
+      },
+      "expected": {
+        "kind": "quarantine"
+      }
+    },
+    {
+      "record": {
+        "sub_id": "SUB-7056",
+        "billing_contact": "cto@example-scale.ai",
+        "plan": "enterprise",
+        "state": "active",
+        "renews_on": "2026-10-01",
+        "mrr": 999
+      },
+      "expected": {
+        "kind": "quarantine"
+      }
+    }
+  ]
+}

@@ -35,6 +35,15 @@ Build a privacy-aware integration tool: private CRM JSON stays local; on-device 
 - Operation numbers are 1-based everywhere (`opNumber`).
 - No animation may suggest private data moving toward the cloud. Honour `prefers-reduced-motion`.
 
+## Blind revision rules (Sprint 7)
+
+- Failure feedback reaches the cloud only as Blind Revision Feedback 1.0.0 inside a cloud-disclosure 1.2.0 request built by `projectRevisionFeedback` + `buildRevisionPayload`, previewed, and approved through the existing gate. Never serialize a Reality Check report, engine messages, values, source names, or Nano rationales into any payload.
+- At most one cloud revision per (approved disclosure, initial mapping). No automatic or recursive revision; the evaluator may recommend, only the user approves.
+- Revised proposals go through `convertProposal` against the original 1.1.0 disclosure. Never repair them.
+- Verdicts come only from `src/verification/outcomes.ts` under a versioned local acceptance policy. Quarantine is never a success; an unapproved fallback/default is `REJECTED_BY_POLICY`. Gemini never sets the policy.
+- Gemini Nano may read bounded private context (`ONLY_ON_DEVICE` only). Its output is validated against the deterministic profile and changes the twin only after the user applies it. Never log, persist, or disclose the private prompt or rationale.
+- Holdout cases are never profiled, disclosed, used for feedback, or used to tune prompts.
+
 ## Tool and data permissions
 
 Allowed without extra authorization: local files in this repository, local tests, local Vite server, Playwright against localhost.
@@ -59,6 +68,7 @@ pnpm typecheck
 pnpm test:unit
 pnpm test:contracts
 pnpm test:privacy
+pnpm test:evaluation
 pnpm build
 pnpm test:e2e
 ```

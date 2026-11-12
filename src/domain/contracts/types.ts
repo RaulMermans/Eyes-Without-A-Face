@@ -175,11 +175,72 @@ export interface CloudDisclosureTarget {
   fields: CloudDisclosureTargetField[];
 }
 
+export type RevisionFindingCode =
+  | "UNMAPPED_ENUM"
+  | "MISSING_SOURCE_FIELD"
+  | "NULL_VALUE"
+  | "EMPTY_VALUE"
+  | "TYPE_MISMATCH"
+  | "INVALID_EMAIL"
+  | "INVALID_DATE"
+  | "OUTPUT_SCHEMA_MISMATCH"
+  /** Evaluator-derived: output relied on a fallback/default the local policy did not approve. */
+  | "UNAPPROVED_FALLBACK";
+
+export type RevisionFindingCategory =
+  | "undisclosed-category"
+  | "missing-value"
+  | "null-value"
+  | "empty-value"
+  | "unexpected-type"
+  | "invalid-email"
+  | "date-format-mismatch"
+  | "destination-constraint"
+  | "unapproved-fallback";
+
+export type RevisionObjective =
+  | "preserve-unaffected-operations"
+  | "address-reported-findings"
+  | "use-only-disclosed-aliases-and-labels"
+  | "do-not-guess-undisclosed-values"
+  | "apply-only-listed-fallbacks"
+  | "explain-unresolvable-findings-in-rationale";
+
+export interface RevisionFinding {
+  /** 1-based operation number in `previousMapping.operations`. */
+  operation?: number;
+  op?: MappingOperationName;
+  alias?: string;
+  to?: string;
+  code: RevisionFindingCode;
+  category: RevisionFindingCategory;
+  affectedCases: "1" | "2-4" | "5+";
+}
+
+/** Blind Revision Feedback 1.0.0 (blind-revision-feedback.v1.schema.json). */
+export interface BlindRevisionFeedback {
+  feedbackVersion: "1.0.0";
+  runId: string;
+  baseDisclosureHash: string;
+  previousMapping: {
+    contractHash: string;
+    origin: "gemini-cloud" | "test-adapter" | "manual-edit";
+    operations: Array<{ op: MappingOperationName; from?: string | string[]; to: string; params?: Record<string, unknown> }>;
+  };
+  findings: RevisionFinding[];
+  unaffectedOperations: number[];
+  approvedFallbacks: Array<{ to: string; value: string; appliesTo: "undisclosed-category" }>;
+  objectives: RevisionObjective[];
+  revisionBudget: { maxRevisions: 1; remainingAfterThisRequest: 0 };
+}
+
 export interface CloudDisclosurePayload {
   contractKind: "cloud-disclosure";
-  schemaVersion: "1.0.0" | "1.1.0";
-  /** Present (and required) only in schema 1.1.0. */
+  schemaVersion: "1.0.0" | "1.1.0" | "1.2.0";
+  /** Present (and required) in schema 1.1.0 and 1.2.0. */
   target?: CloudDisclosureTarget;
+  /** Present (and required) only in schema 1.2.0: one blind revision request. */
+  revision?: { feedback: BlindRevisionFeedback };
   payloadId: string;
   phantomId: string;
   destination: CloudDisclosureDestination;

@@ -16,5 +16,7 @@ Canonical operating docs for Eyes Without a Face. Root files `README.md`, `AGENT
 | [branding/](branding/) | Official emblem provenance and assets |
 | [design/](design/) | Spectral Forensics art direction, design system, UX audit, before/after screenshots |
 | [testing/](testing/) | Test strategy and regression matrix |
-| [sprints/](sprints/) | Sprint 0–6 reports |
+| [evaluation/](evaluation/) | Blind Integration evaluation: scenarios, case sets, metric definitions, configurations A–D |
+| [evidence/](evidence/) | Recorded live evidence (Sprint 7: requalification and real blind-revision runs) |
+| [sprints/](sprints/) | Sprint 0–7 reports |
 | [hackathon-requirements.md](hackathon-requirements.md) | Verified vs unresolved Devpost rules |

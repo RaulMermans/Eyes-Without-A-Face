@@ -62,3 +62,14 @@
 - Canary tests are evidence for the bundled fixtures, not proof of anonymity.
 
 See `disclosure-policy.md`, `secret-handling.md`, and ADR 0005.
+
+## Sprint 7: blind revision and private on-device context
+
+| Threat | Mitigation | Residual |
+| --- | --- | --- |
+| Failure feedback leaks private values (error text, rare categories, unique ids) | Allowlisted projection: codes, categories, aliases, operation numbers, approved destination names, count buckets. No messages or values. The gate's private-value scan covers the revision block. Adversarial tests in `tests/privacy/blind-revision-privacy.test.ts` | The feedback still reveals coarse facts: an operation failed, roughly how many cases, and which category of problem |
+| Feedback that becomes revealing when aggregated or repeated | Count buckets (1, 2–4, 5+). One revision per (base disclosure, initial mapping) per browser session. The user reviews the "newly disclosed" list | Browser-local budget: a fresh page can start again. Small datasets make bucket "1" exact |
+| Revision request widens the original disclosure | `assertSameBase` (byte-identical base). Unchanged gate, approval, ledger and destination checks | — |
+| Approval replay or a second weaker path | Same `submitApprovedCloudInference` path; approval bound to exact prompt, payload hash (incl. run id, base hash, contract hash), request id and destination; single use | — |
+| Model invents values to "fix" failures | `REJECTED_BY_POLICY` for unapproved fallbacks or defaults; quarantine is never success; `UNAPPROVED_FALLBACK` feedback | Schema-valid semantic errors are invisible without ground truth |
+| Private context given to Gemini Nano | `ONLY_ON_DEVICE` only, bounded (≤ 5 samples × 48 chars), never logged or persisted; rationale shown locally only; suggestions validated against the profile and applied by the user | The on-device model and its Chrome runtime are outside this app's control |

@@ -12,6 +12,6 @@ export default defineConfig({
   },
   test: {
     environment: "node",
-    include: ["tests/unit/**/*.test.ts", "tests/contracts/**/*.test.ts", "tests/privacy/**/*.test.ts"],
+    include: ["tests/unit/**/*.test.ts", "tests/contracts/**/*.test.ts", "tests/privacy/**/*.test.ts", "tests/evaluation/**/*.test.ts"],
   },
 });
