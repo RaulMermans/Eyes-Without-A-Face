@@ -13,3 +13,4 @@
 | 4 readiness (historical) | [sprint-4-readiness.md](sprint-4-readiness.md) |
 | 4 | [sprint-4.md](sprint-4.md) — Firebase CLI/MCP, real on-device qualification, Reality Check and privacy hardening, release docs |
 | 5 | [sprint-5.md](sprint-5.md) — release candidate: on-device reliability, release build, Hosting/App Check audit, UX, security audit, CI, demo, submission draft |
+| 6 | [sprint-6.md](sprint-6.md) — Spectral Forensics redesign: landing, Phantom transformation, disclosure review, Integration Studio, Reality Check findings |

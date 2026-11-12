@@ -81,7 +81,7 @@ To enable real inference:
 
 ## Status
 
-Release candidate (Sprint 5). Hybrid inference is qualified locally. The hosted deployment and the public release are gated on owner approval ([docs/deployment.md](docs/deployment.md)). Not implemented: export packaging and the correction loop.
+Release candidate (Sprint 5) with the Sprint 6 Spectral Forensics redesign ([docs/sprints/sprint-6.md](docs/sprints/sprint-6.md), [docs/design/](docs/design/)). Hybrid inference is qualified locally. The hosted deployment and the public release are gated on owner approval ([docs/deployment.md](docs/deployment.md)). Not implemented: export packaging and the correction loop.
 
 ## Project
 

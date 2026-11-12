@@ -1,8 +1,9 @@
-import { useState } from "react";
-import { Badge } from "../components/ui/badge.tsx";
+import { useRef, useState } from "react";
 import { Button } from "../components/ui/button.tsx";
 import { ErrorBanner } from "../components/ErrorBanner.tsx";
 import { LoadingState } from "../components/LoadingState.tsx";
+import { ArrowRightIcon, CloudIcon } from "../components/icons.tsx";
+import { Disclosure, Eyebrow, Panel, PanelHeader, StatusMark } from "../components/spectral.tsx";
 import { liveInferenceLabel } from "../config/env.ts";
 import { InferenceError } from "../inference/errors.ts";
 import type { InferenceResult, InferenceServices } from "../inference/types.ts";
@@ -11,10 +12,12 @@ import type { ProposalOrigin } from "../proposal/convert.ts";
 import { DisclosureRejectedError } from "../twin/authorization.ts";
 import { submitApprovedCloudInference } from "../twin/cloud-request-gate.ts";
 import { acceptProposal, type PreparedTwin } from "../workflow/pipeline.ts";
+import { IntegrationStudio, ProposalPipeline } from "./IntegrationStudio.tsx";
+import { buildConnections } from "./mapping-connections.ts";
 import { MappingPanel } from "./MappingPanel.tsx";
 import { ORIGIN_LABELS } from "./result-kind.ts";
+import { TrustLedger } from "./TrustLedger.tsx";
 import type { ProposalState, WorkspaceState } from "./workspace-state.ts";
-
 
 function originFor(result: InferenceResult): ProposalOrigin {
   return result.provenance.resultKind === "real-cloud" && !result.provenance.simulated ? "gemini-cloud" : "test-adapter";
@@ -25,14 +28,20 @@ export function CloudMappingPanel({
   onChange,
   prepared,
   inference,
+  focusOperation,
+  onFocusOperation,
   onContinue,
 }: {
   workspace: WorkspaceState;
   onChange: (next: WorkspaceState) => void;
   prepared: PreparedTwin | null;
   inference: InferenceServices;
+  focusOperation: number | null;
+  onFocusOperation: (index: number) => void;
   onContinue: () => void;
 }) {
+  const [editorOpen, setEditorOpen] = useState(false);
+  const editorRef = useRef<HTMLDetailsElement | null>(null);
   const [busy, setBusy] = useState(false);
   const [editText, setEditText] = useState<string | null>(null);
   const review = workspace.review;
@@ -130,50 +139,62 @@ export function CloudMappingPanel({
   }
 
   const result = proposal?.result;
+  const reportForProposal = result?.ok && workspace.mappingChoice === "proposal" ? workspace.report : null;
+  const connections = proposal && result ? buildConnections({ result, text: proposal.text, report: reportForProposal }) : null;
+  const payload = review?.preview.payload ?? null;
+
+  function openEditor(): void {
+    setEditorOpen(true);
+    requestAnimationFrame(() => editorRef.current?.scrollIntoView({ block: "center", behavior: "instant" }));
+  }
 
   return (
-    <section className="space-y-4" aria-labelledby="cloud-mapping-heading">
-      <div className="border border-rule bg-panel p-5">
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <h3 id="cloud-mapping-heading" className="text-base font-semibold">
-            Cloud mapping proposal
-          </h3>
-          <Badge className="border-cloud/50 text-cloud">Cloud · ONLY_IN_CLOUD · approved payload only</Badge>
-        </div>
-        <p className="mt-2 text-sm leading-6 text-mute">
-          Gemini sees the approved twin and destination description, never the records. It returns
-          declarative operations over aliases. Nothing it returns is executed directly: every
-          proposal passes the canonical Mapping Contract validation and local alias resolution first.
-        </p>
-        <p className="mt-2 text-sm" data-testid="cloud-adapter-label">
-          Cloud adapter:{" "}
-          {harness ? "Test adapter active — results are simulated, not Gemini" : liveInferenceLabel(cloudStatus)}
-        </p>
+    <section className="space-y-5" aria-labelledby="cloud-mapping-heading">
+      <TrustLedger workspace={workspace} prepared={prepared} />
 
-        {!review || review.status === "pending" || review.status === "rejected" ? (
-          <p className="mt-3 text-sm" data-testid="cloud-needs-approval">
-            {review?.status === "rejected"
-              ? "The disclosure was rejected. No cloud request was made."
-              : "Approve the exact prompt on the Disclosure Review step first. Without approval no request is sent."}
-          </p>
-        ) : null}
+      <Panel tone="cloud">
+        <PanelHeader id="cloud-mapping-heading" title="Cloud mapping proposal" eyebrow="Integration Studio" zone="cloud" zoneText="ONLY_IN_CLOUD · approved payload only">
+          Gemini sees the approved twin and destination description, never the records. It returns declarative operations over aliases. Nothing it
+          returns is executed directly: every proposal passes the canonical Mapping Contract validation and local alias resolution first.
+        </PanelHeader>
+
+        <div className="mt-5 grid gap-4 md:grid-cols-[minmax(0,1fr)_auto] md:items-center">
+          <div className="min-w-0 space-y-1 text-sm">
+            <p className="flex flex-wrap items-center gap-2" data-testid="cloud-adapter-label">
+              <CloudIcon size={14} className="text-gold-ink" />
+              <span className="text-mute">Cloud adapter:</span>{" "}
+              {harness ? "Test adapter active — results are simulated, not Gemini" : liveInferenceLabel(cloudStatus)}
+            </p>
+            {!review || review.status === "pending" || review.status === "rejected" ? (
+              <p className="text-sm" data-testid="cloud-needs-approval">
+                {review?.status === "rejected"
+                  ? "The disclosure was rejected. No cloud request was made."
+                  : "Approve the exact prompt on the Disclosure Review step first. Without approval no request is sent."}
+              </p>
+            ) : review.status === "approved" ? (
+              <p className="text-xs text-mute">Approved request {review.preview.requestId.slice(0, 8)}… is ready. It can be sent once.</p>
+            ) : (
+              <p className="text-xs text-mute">The approval for request {review.preview.requestId.slice(0, 8)}… has been used.</p>
+            )}
+          </div>
+          <Button variant="approve" onClick={() => void send()} disabled={!canSend} data-testid="send-cloud-request">
+            <CloudIcon size={14} /> Send approved request to Gemini
+          </Button>
+        </div>
 
         {!cloudAvailable ? (
-          <div className="mt-3 border border-rule p-3 text-sm" data-testid="cloud-unavailable">
+          <div className="mt-4 border-l-4 border-warn bg-warn/5 p-4 text-sm" data-testid="cloud-unavailable">
             <p className="font-medium">Cloud Gemini is not available in this build ({liveInferenceLabel(cloudStatus).replace(/^Unavailable — /, "")}).</p>
             <p className="mt-1 text-mute">
               Your approval stays unused; nothing was sent. You can still finish the walkthrough: open
-              <span className="font-medium"> “No cloud? Use a hand-written contract”</span> below, then run the
-              Reality Check. That path is labeled as manual, never as Gemini output.
+              <span className="font-medium"> “No cloud? Use a hand-written contract”</span> below, then run the Reality Check. That path is labeled as
+              manual, never as Gemini output.
             </p>
           </div>
         ) : null}
 
-        <Button className="mt-4" variant="primary" onClick={() => void send()} disabled={!canSend} data-testid="send-cloud-request">
-          Send approved request to Gemini
-        </Button>
         {busy ? (
-          <div className="mt-3">
+          <div className="mt-4">
             <LoadingState label="Waiting for the cloud proposal (no automatic retry)" />
           </div>
         ) : null}
@@ -184,99 +205,137 @@ export function CloudMappingPanel({
             </ErrorBanner>
           </div>
         ) : null}
+      </Panel>
 
-        {proposal && result ? (
-          <div className="mt-5 space-y-3 text-sm" data-testid="proposal">
-            <p>
-              <span className="font-medium">Origin: </span>
-              <span
-                data-testid="proposal-origin"
-                className={`inline-block border px-2 py-0.5 font-mono text-xs ${
-                  proposal.origin === "gemini-cloud" ? "border-cloud/60 bg-cloud/10 text-cloud" : "border-rule text-mute"
-                }`}
-              >
-                {ORIGIN_LABELS[proposal.origin]}
-              </span>
-              {proposal.provenance ? (
-                <span className="ml-2 font-mono text-xs text-mute" data-testid="proposal-provenance">
-                  source={proposal.provenance.actualSource} mode={proposal.provenance.requestedMode} simulated=
-                  {String(proposal.provenance.simulated)} {proposal.provenance.durationMs}ms
+      {proposal && result ? (
+        <div className="space-y-5 text-sm" data-testid="proposal">
+          <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
+            <div className="min-w-0 space-y-1.5">
+              <Eyebrow>Proposal origin</Eyebrow>
+              <p className="flex flex-wrap items-center gap-2">
+                <span
+                  data-testid="proposal-origin"
+                  className={`inline-block border px-2 py-0.5 font-mono text-xs ${
+                    proposal.origin === "gemini-cloud" ? "border-[3px] border-double border-gold-ink bg-gold/10 text-gold-ink" : "border-dashed border-ink/50 text-ink"
+                  }`}
+                >
+                  {ORIGIN_LABELS[proposal.origin]}
                 </span>
-              ) : null}
-            </p>
-            <p data-testid="proposal-status" className={result.ok ? "text-local" : "text-danger"}>
-              {result.ok
-                ? `Valid · ${result.value.converted.contract.operations.length} operations · aliases resolved locally`
-                : `Rejected at ${result.stage} · ${result.issues.length} issue(s)`}
-            </p>
-            {!result.ok ? (
-              <ul className="list-disc space-y-1 pl-5" data-testid="proposal-issues">
+                {proposal.provenance ? (
+                  <span className="font-mono text-[11px] text-mute" data-testid="proposal-provenance">
+                    source={proposal.provenance.actualSource} mode={proposal.provenance.requestedMode} simulated={String(proposal.provenance.simulated)}{" "}
+                    {proposal.provenance.durationMs}ms
+                  </span>
+                ) : null}
+              </p>
+              <p data-testid="proposal-status" className={`font-medium ${result.ok ? "text-pass" : "text-fail"}`} role="status">
+                {result.ok
+                  ? `Valid · ${result.value.converted.contract.operations.length} operations · aliases resolved locally`
+                  : `Rejected at ${result.stage} · ${result.issues.length} issue(s)`}
+              </p>
+            </div>
+            <div className="min-w-0 lg:w-[34rem]">
+              <ProposalPipeline result={result} executed={reportForProposal ? reportForProposal.overall : null} />
+            </div>
+          </div>
+
+          {!result.ok ? (
+            <div className="border-l-4 border-fail bg-fail/5 p-4">
+              <p className="font-medium">The proposal was refused before anything ran. Each issue below names the rule it broke.</p>
+              <ul className="mt-2 list-disc space-y-1 pl-5" data-testid="proposal-issues">
                 {result.issues.map((issue, index) => (
-                  <li key={index}>
-                    <span className="font-mono">{issue.code}</span>: {issue.message}
+                  <li key={index} className="[overflow-wrap:anywhere]">
+                    <span className="font-mono">{issue.code}</span>
+                    {typeof issue.operationIndex === "number" ? <span className="text-mute"> · operation #{issue.operationIndex + 1}</span> : null}: {issue.message}
                   </li>
                 ))}
               </ul>
-            ) : null}
-            {result.ok && result.value.converted.warnings.length > 0 ? (
-              <ul className="list-disc space-y-1 pl-5 text-cloud" data-testid="proposal-warnings">
-                {result.value.converted.warnings.map((warning, index) => (
-                  <li key={index}>{warning.message}</li>
-                ))}
-              </ul>
-            ) : null}
-            {result.ok ? (
-              <>
-                <p className="text-mute">Rationale: {result.value.converted.rationale}</p>
-                <ol className="list-decimal space-y-1 pl-5 font-mono text-xs" data-testid="proposal-operations">
-                  {result.value.converted.contract.operations.map((operation, index) => (
-                    <li key={index}>
-                      {operation.op} {"from" in operation && operation.from !== undefined ? JSON.stringify(operation.from) : "—"} → {operation.to}
-                      {"params" in operation ? ` ${JSON.stringify(operation.params)}` : ""}
-                    </li>
-                  ))}
-                </ol>
-                <details>
-                  <summary className="cursor-pointer font-medium">Local alias resolution (this browser only)</summary>
-                  <table className="mt-2 text-left font-mono text-xs" data-testid="alias-resolution">
+            </div>
+          ) : null}
+          {result.ok && result.value.converted.warnings.length > 0 ? (
+            <ul className="space-y-1" data-testid="proposal-warnings">
+              {result.value.converted.warnings.map((warning, index) => (
+                <li key={index}>
+                  <StatusMark status="warn">{warning.message}</StatusMark>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+
+          {connections && payload && connections.length > 0 ? (
+            <IntegrationStudio
+              connections={connections}
+              payload={payload}
+              operations={result.ok ? result.value.converted.contract.operations : null}
+              selected={focusOperation ?? connections[0]?.index ?? 0}
+              onSelect={onFocusOperation}
+              resolutions={result.ok ? result.value.resolved.resolutions : null}
+              onOpenEditor={openEditor}
+              reportRan={Boolean(reportForProposal)}
+            />
+          ) : (
+            <p className="border border-dashed border-rule p-4 text-mute" data-testid="studio-unrenderable">
+              The response could not be read as a list of operations, so there is nothing to visualize. It was not repaired.
+            </p>
+          )}
+
+          {result.ok ? (
+            <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
+              <div className="min-w-0 space-y-2">
+                <p className="text-mute">
+                  <span className="font-medium text-ink">Rationale:</span> {result.value.converted.rationale}
+                </p>
+                <Disclosure summary="Local alias resolution (this browser only)">
+                  <table className="text-left font-mono text-xs" data-testid="alias-resolution">
                     <tbody>
                       {result.value.resolved.resolutions.map((item) => (
                         <tr key={item.alias}>
-                          <td className="pr-3">{item.alias}</td>
+                          <td className="pr-3 text-cyan-ink">{item.alias}</td>
                           <td className="pr-3">→</td>
                           <td>{item.localPath}</td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
-                </details>
-                <Button variant="primary" onClick={onContinue} data-testid="continue-to-reality">
-                  Continue to Reality Check
-                </Button>
-              </>
-            ) : null}
-            <details>
-              <summary className="cursor-pointer font-medium">Edit the proposal locally</summary>
-              <p className="mt-2 text-xs text-mute">
-                Edits never go back to Gemini. An edited proposal is labeled as manual and passes the same canonical validation.
-              </p>
-              <textarea
-                aria-label="Proposal JSON"
-                data-testid="proposal-editor"
-                className="mt-2 min-h-48 w-full border border-rule bg-paper p-3 font-mono text-xs"
-                value={editText ?? proposal.text}
-                onChange={(event) => setEditText(event.target.value)}
-              />
-              <Button className="mt-2" onClick={validateEdit} disabled={editText === null} data-testid="validate-edited-proposal">
-                Validate edited proposal
+                </Disclosure>
+              </div>
+              <Button variant="primary" size="lg" onClick={onContinue} data-testid="continue-to-reality">
+                Continue to Reality Check
+                <ArrowRightIcon />
               </Button>
-            </details>
-          </div>
-        ) : null}
-      </div>
+            </div>
+          ) : null}
 
-      <details className="border border-rule bg-panel p-5" data-testid="manual-contract">
-        <summary className="cursor-pointer text-sm font-medium">
+          <details
+            ref={editorRef}
+            open={editorOpen}
+            onToggle={(event) => setEditorOpen((event.currentTarget as HTMLDetailsElement).open)}
+            className="group border border-rule bg-panel p-4"
+          >
+            <summary className="flex cursor-pointer list-none items-center gap-2 font-medium [&::-webkit-details-marker]:hidden">
+              <span aria-hidden="true" className="inline-block w-3 font-mono text-mute transition-transform group-open:rotate-90">›</span>
+              <span>Edit the proposal locally</span>
+            </summary>
+            <p className="mt-2 text-xs text-mute">
+              Edits never go back to Gemini. An edited proposal is labeled as manual and passes the same canonical validation.
+            </p>
+            <textarea
+              aria-label="Proposal JSON"
+              data-testid="proposal-editor"
+              className="mt-2 min-h-48 w-full rounded-[3px] border border-rule bg-bone p-3 font-mono text-xs"
+              value={editText ?? proposal.text}
+              onChange={(event) => setEditText(event.target.value)}
+            />
+            <Button className="mt-2" onClick={validateEdit} disabled={editText === null} data-testid="validate-edited-proposal">
+              Validate edited proposal
+            </Button>
+          </details>
+        </div>
+      ) : null}
+
+      <details className="group border border-dashed border-ink/30 bg-panel/60 p-5" data-testid="manual-contract">
+        <summary className="flex cursor-pointer list-none items-center gap-2 text-sm font-medium [&::-webkit-details-marker]:hidden">
+          <span aria-hidden="true" className="inline-block w-3 font-mono text-mute transition-transform group-open:rotate-90">›</span>
           No cloud? Use a hand-written contract over local field names (not AI)
         </summary>
         <div className="mt-4">
