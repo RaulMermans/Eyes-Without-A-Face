@@ -1,6 +1,6 @@
 {
   "scenarioId": "crm-eu-accounts",
-  "scenarioVersion": "1.0.0",
+  "scenarioVersion": "2.0.0",
   "title": "Customer CRM (EU accounts)",
   "summary": "German field names, translated account states, and slash dates whose day/month order the imported sample cannot prove.",
   "difficulty": [
@@ -269,7 +269,29 @@
       }
     }
   ],
-  "holdout": [
+  "semanticSpec": {
+    "specVersion": "1.0.0",
+    "note": "Fictional owner declarations, made before any Sprint 8 model run. The date order of angelegt_am is NOT declared: the local verifier must establish it from evidence or report it as ambiguous.",
+    "declared": [
+      {
+        "id": "crm-status-meaning",
+        "kind": "enum-meaning",
+        "source": "kontostatus",
+        "target": "status",
+        "meaning": {
+          "aktiv": "active",
+          "inaktiv": "inactive",
+          "interessent": "prospect"
+        },
+        "undeclared": "unconstrained",
+        "trust": "trusted",
+        "evidence": {
+          "kind": "user-declared"
+        }
+      }
+    ]
+  },
+  "development": [
     {
       "record": {
         "kundennummer": "KD-10051",
@@ -374,6 +396,201 @@
           "status": "active",
           "createdAt": "2026-06-12",
           "organization": "Zimmer Holz"
+        }
+      }
+    }
+  ],
+  "holdout": [
+    {
+      "record": {
+        "kundennummer": "KD-10071",
+        "e_post": "marta.klein@example.de",
+        "kontostatus": "aktiv",
+        "angelegt_am": "14/01/2026",
+        "unternehmen": "Klein Keramik",
+        "notiz": "Fictional ceramics studio"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "KD-10071",
+          "email": "marta.klein@example.de",
+          "status": "active",
+          "createdAt": "2026-01-14",
+          "organization": "Klein Keramik"
+        }
+      }
+    },
+    {
+      "record": {
+        "kundennummer": "KD-10072",
+        "e_post": "jan.busch@example.de",
+        "kontostatus": "inaktiv",
+        "angelegt_am": "02/11/2025",
+        "unternehmen": "Busch Elektro",
+        "notiz": "Fictional, contract paused"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "KD-10072",
+          "email": "jan.busch@example.de",
+          "status": "inactive",
+          "createdAt": "2025-11-02",
+          "organization": "Busch Elektro"
+        }
+      }
+    },
+    {
+      "record": {
+        "kundennummer": "KD-10073",
+        "e_post": "olga.peters@example.at",
+        "kontostatus": "interessent",
+        "angelegt_am": "29/04/2026",
+        "unternehmen": "Peters Reisen",
+        "notiz": "Fictional travel agency lead"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "KD-10073",
+          "email": "olga.peters@example.at",
+          "status": "prospect",
+          "createdAt": "2026-04-29",
+          "organization": "Peters Reisen"
+        }
+      }
+    },
+    {
+      "record": {
+        "kundennummer": "KD-10074",
+        "e_post": "rolf.meyer@example.de",
+        "kontostatus": "pausiert",
+        "angelegt_am": "05/05/2026",
+        "unternehmen": "Meyer Garten",
+        "notiz": "Fictional seasonal pause"
+      },
+      "expected": {
+        "kind": "fallback",
+        "output": {
+          "id": "KD-10074",
+          "email": "rolf.meyer@example.de",
+          "status": "other",
+          "createdAt": "2026-05-05",
+          "organization": "Meyer Garten"
+        }
+      }
+    },
+    {
+      "record": {
+        "kundennummer": "KD-10075",
+        "e_post": "sabine.wolff@example.ch",
+        "kontostatus": "aktiv",
+        "angelegt_am": "10/03/2026",
+        "unternehmen": "Wolff Textil",
+        "notiz": "Fictional textile shop"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "KD-10075",
+          "email": "sabine.wolff@example.ch",
+          "status": "active",
+          "createdAt": "2026-03-10",
+          "organization": "Wolff Textil"
+        }
+      }
+    },
+    {
+      "record": {
+        "kundennummer": "KD-10076",
+        "e_post": "kein-kontakt",
+        "kontostatus": "aktiv",
+        "angelegt_am": "21/09/2025",
+        "unternehmen": "Ohne Kontakt AG",
+        "notiz": "Fictional, contact unknown"
+      },
+      "expected": {
+        "kind": "quarantine"
+      }
+    },
+    {
+      "record": {
+        "kundennummer": "KD-10077",
+        "e_post": "uwe.franke@example.de",
+        "kontostatus": "interessent",
+        "angelegt_am": "07/08/2025",
+        "unternehmen": "Franke Druck",
+        "notiz": "Fictional print shop lead"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "KD-10077",
+          "email": "uwe.franke@example.de",
+          "status": "prospect",
+          "createdAt": "2025-08-07",
+          "organization": "Franke Druck"
+        }
+      }
+    },
+    {
+      "record": {
+        "kundennummer": "KD-10078",
+        "e_post": "nina.schmid@example.de",
+        "kontostatus": "inaktiv",
+        "angelegt_am": "30/12/2025",
+        "unternehmen": "Schmid Bau",
+        "notiz": "Fictional, moved abroad"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "KD-10078",
+          "email": "nina.schmid@example.de",
+          "status": "inactive",
+          "createdAt": "2025-12-30",
+          "organization": "Schmid Bau"
+        }
+      }
+    },
+    {
+      "record": {
+        "kundennummer": "KD-10079",
+        "e_post": "theo.bauer@example.at",
+        "kontostatus": "aktiv",
+        "angelegt_am": "01/06/2026",
+        "unternehmen": "Bauer Feinkost",
+        "notiz": "Fictional delicatessen"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "KD-10079",
+          "email": "theo.bauer@example.at",
+          "status": "active",
+          "createdAt": "2026-06-01",
+          "organization": "Bauer Feinkost"
+        }
+      }
+    },
+    {
+      "record": {
+        "kundennummer": "KD-10080",
+        "e_post": "ilse.koenig@example.de",
+        "kontostatus": "gesperrt",
+        "angelegt_am": "16/02/2026",
+        "unternehmen": "Koenig Optik",
+        "notiz": "Fictional, account locked"
+      },
+      "expected": {
+        "kind": "fallback",
+        "output": {
+          "id": "KD-10080",
+          "email": "ilse.koenig@example.de",
+          "status": "other",
+          "createdAt": "2026-02-16",
+          "organization": "Koenig Optik"
         }
       }
     }

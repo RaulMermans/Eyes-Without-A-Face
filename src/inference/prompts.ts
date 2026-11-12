@@ -86,9 +86,35 @@ export const BLIND_REVISION_INSTRUCTIONS = [
   "Approved revision payload:",
 ].join("\n");
 
+/**
+ * Sprint 8 semantic blind revision instructions for disclosure schema 1.3.0
+ * (feedback 1.1.0). Same task and rules as v2, plus how to read semantic
+ * findings and owner-approved constraints, and explicit permission to abstain.
+ * The 1.2.0 text above is unchanged so Sprint 7 evidence still replays.
+ */
+export const SEMANTIC_REVISION_PROMPT_VERSION = "3";
+
+export const SEMANTIC_REVISION_INSTRUCTIONS = [
+  ...BLIND_REVISION_INSTRUCTIONS.split("\n").slice(0, -3),
+  "revision.feedback.semanticFindings come from a local verifier that compared the produced values with trusted semantic constraints the data owner established. The output was schema-valid but its meaning was wrong:",
+  "- date-order-conflict: parse_date read the alias with the wrong day/month interpretation, so valid but wrong dates were produced.",
+  "- ordered-category-inversion: map_enum does not preserve the ranking of the categories (for example the most severe source label went to a low destination value).",
+  "- enum-meaning-conflict: map_enum sends a declared source label to a destination value that contradicts its declared meaning.",
+  "- semantic-policy-violation: a value that must go to review was turned into a successful output (for example an undeclared category was filed under a known value). Use unmapped=fail for it.",
+  "- ambiguous-date-interpretation, insufficient-evidence: the meaning could not be established locally. Do not guess.",
+  "revision.feedback.approvedConstraints are facts the data owner approved for disclosure. Follow them exactly:",
+  "- date-order: use that inputFormat for parse_date on that alias.",
+  "- category-order: sourceOrder and targetOrder both run from highest to lowest rank; map every listed source label so that the ranking is preserved.",
+  "- category-meaning: use exactly that label → value map for that alias and destination.",
+  "If the approved information is not enough to correct an operation, leave it unchanged and say so in the rationale. Never invent a mapping to make a finding disappear.",
+  ...BLIND_REVISION_INSTRUCTIONS.split("\n").slice(-3),
+].join("\n");
+
 export function buildCloudPromptText(canonicalDisclosureJson: string, schemaVersion: string = "1.0.0"): string {
   const instructions =
-    schemaVersion === "1.2.0"
+    schemaVersion === "1.3.0"
+      ? SEMANTIC_REVISION_INSTRUCTIONS
+      : schemaVersion === "1.2.0"
       ? BLIND_REVISION_INSTRUCTIONS
       : schemaVersion === "1.1.0"
         ? MAPPING_PROPOSAL_INSTRUCTIONS

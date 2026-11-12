@@ -1,5 +1,6 @@
 /**
- * Build the cloud-disclosure 1.2.0 blind revision request.
+ * Build the cloud-disclosure 1.2.0 (feedback 1.0.0) or 1.3.0 (feedback 1.1.0,
+ * Sprint 8 semantic feedback) blind revision request.
  *
  * The base portion is an explicit field-by-field copy of the APPROVED 1.1.0
  * payload, and `assertSameBase` proves it is byte-identical after
@@ -27,6 +28,11 @@ export function disclosureBase(payload: CloudDisclosurePayload): unknown {
   };
 }
 
+/** True for blind revision requests (1.2.0 and 1.3.0). */
+export function isRevisionSchemaVersion(version: string): boolean {
+  return version === "1.2.0" || version === "1.3.0";
+}
+
 export function assertSameBase(a: CloudDisclosurePayload, b: CloudDisclosurePayload): boolean {
   return canonicalizeJson(disclosureBase(a)) === canonicalizeJson(disclosureBase(b));
 }
@@ -37,7 +43,7 @@ export function buildRevisionPayload(base: CloudDisclosurePayload, feedback: Bli
   }
   const payload: CloudDisclosurePayload = {
     contractKind: "cloud-disclosure",
-    schemaVersion: "1.2.0",
+    schemaVersion: feedback.feedbackVersion === "1.1.0" ? "1.3.0" : "1.2.0",
     payloadId: `revision-${feedback.runId}`,
     phantomId: base.phantomId,
     destination: { ...base.destination },

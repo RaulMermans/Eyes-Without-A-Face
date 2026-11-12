@@ -12,6 +12,10 @@ import type { ExcludedIssue } from "../revision/feedback.ts";
 import type { RevisionBlockCode, RevisionPhase } from "../revision/run.ts";
 import type { MappingEvaluation } from "../evaluation/evaluate.ts";
 import type { AcceptancePolicy, ExpectedOutcome } from "../verification/outcomes.ts";
+import type { SemanticConstraint } from "../semantics/contract.ts";
+import type { DateInputFormat } from "../domain/profile/profile.ts";
+import type { RevisionDecision } from "../revision/decision.ts";
+import type { SemanticWithheld } from "../revision/semantic-feedback.ts";
 
 export interface ReviewState {
   preview: DisclosurePreview;
@@ -42,6 +46,8 @@ export interface ScenarioContext {
   /** Ground truth aligned with [imported..., revision-feedback...]. */
   expected: ExpectedOutcome[];
   holdout: Array<{ record: Record<string, unknown>; expected: ExpectedOutcome }>;
+  /** Fictional owner declarations (trusted, user-declared). Local only. */
+  semanticDeclared: SemanticConstraint[];
 }
 
 /** One bounded blind revision run (src/revision/run.ts). Active run state only; never persisted. */
@@ -54,13 +60,15 @@ export interface RevisionRunState {
   initialContractHash: string;
   basePayloadHash: string;
   initialEvaluation: MappingEvaluation;
-  feedback: { value: BlindRevisionFeedback; newInformation: string[]; excluded: ExcludedIssue[] } | null;
+  feedback: { value: BlindRevisionFeedback; newInformation: string[]; excluded: ExcludedIssue[]; semanticWithheld: SemanticWithheld[] } | null;
   preview: DisclosurePreview | null;
   revised: ProposalState | null;
   revisedEvaluation: MappingEvaluation | null;
   holdout: { initial: MappingEvaluation; revised: MappingEvaluation | null } | null;
   blocked: { code: RevisionBlockCode; message: string } | null;
   notice: string | null;
+  /** Deterministic recommendation for the revised mapping (src/revision/decision.ts). Never auto-applied. */
+  decision: RevisionDecision | null;
 }
 
 export interface WorkspaceState {
@@ -81,6 +89,13 @@ export interface WorkspaceState {
   mappingRunError: string | null;
   scenario: ScenarioContext | null;
   revision: RevisionRunState | null;
+  /**
+   * Sprint 8: date orders the user confirmed for ambiguous fields, keyed by
+   * local path. Local only; becomes a trusted user-declared constraint.
+   */
+  semanticConfirmations: Record<string, Extract<DateInputFormat, "MM/DD/YYYY" | "DD/MM/YYYY">>;
+  /** Sprint 8: constraint ids the user authorized for disclosure in the revision request. */
+  revisionConstraintIds: string[];
 }
 
 export function initialWorkspaceState(): WorkspaceState {
@@ -100,6 +115,8 @@ export function initialWorkspaceState(): WorkspaceState {
     mappingRunError: null,
     scenario: null,
     revision: null,
+    semanticConfirmations: {},
+    revisionConstraintIds: [],
   };
 }
 
@@ -109,5 +126,5 @@ export function initialWorkspaceState(): WorkspaceState {
  * blind revision run (its approval, feedback and results).
  */
 export function invalidateDownstream(state: WorkspaceState): WorkspaceState {
-  return { ...state, review: null, proposal: null, cloudError: null, report: null, mappingRunError: null, revision: null };
+  return { ...state, review: null, proposal: null, cloudError: null, report: null, mappingRunError: null, revision: null, revisionConstraintIds: [] };
 }

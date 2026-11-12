@@ -23,8 +23,14 @@ import { findPrivateValueLeaks } from "../privacy/leak-scan.ts";
 import type { ProposalOrigin } from "../proposal/convert.ts";
 import { acceptProposal, buildDisclosureDraft, prepareTwin, type AcceptProposalResult } from "../workflow/pipeline.ts";
 import { projectRevisionFeedback, type FeedbackRejectionCode } from "../revision/feedback.ts";
-import { buildRevisionPayload } from "../revision/revision-payload.ts";
-import type { CompletionState, OutcomeMetrics } from "../verification/outcomes.ts";
+import { buildRevisionPayload, isRevisionSchemaVersion } from "../revision/revision-payload.ts";
+import type { ClassifiedRow, CompletionState, OutcomeMetrics } from "../verification/outcomes.ts";
+import type { BlindRevisionFeedback } from "../domain/contracts/types.ts";
+import { canonicalizeJson } from "../domain/json/canonical.ts";
+import { buildSemanticContract } from "../semantics/observe.ts";
+import type { SemanticVerificationContract } from "../semantics/contract.ts";
+import { verifySemantics, type SemanticReport } from "../semantics/verify.ts";
+import { decideRevision, type RevisionDecision } from "../revision/decision.ts";
 import { compareEvaluations, diffContracts, evaluateMapping, type EvaluationComparison, type MappingEvaluation, type OperationChange } from "./evaluate.ts";
 import type { EvaluationScenario } from "./scenarios.ts";
 
@@ -44,6 +50,33 @@ export interface StageResult {
   aliasContract?: MappingContract;
   evaluation?: MappingEvaluation;
   holdout?: MappingEvaluation;
+  /** Sprint 8: local semantic verification of the same rows (imported + revision-feedback). */
+  semantic?: SemanticReport;
+  /** Sprint 8: the same frozen contract applied to the final holdout rows (scoring only). */
+  holdoutSemantic?: SemanticReport;
+}
+
+/**
+ * Detection quality of the semantic verifier against fixture ground truth.
+ * Scoring only: ground truth never reaches the verifier or the decision.
+ */
+export interface SemanticDetection {
+  /** Schema-valid outputs that ground truth says are wrong. */
+  incorrect: number;
+  /** ...of which the verifier flagged. */
+  detected: number;
+  missed: number;
+  /** Flagged rows whose output ground truth says is right. */
+  falseAlarms: number;
+}
+
+export function semanticDetection(rows: readonly ClassifiedRow[], report: SemanticReport | undefined): SemanticDetection | null {
+  if (!report) return null;
+  const flagged = new Set(report.violatingRows);
+  const incorrect = rows.filter((row) => row.outcome === "INCORRECT_TRANSFORMATION");
+  const detected = incorrect.filter((row) => flagged.has(row.index)).length;
+  const falseAlarms = rows.filter((row) => row.correct === true && flagged.has(row.index)).length;
+  return { incorrect: incorrect.length, detected, missed: incorrect.length - detected, falseAlarms };
 }
 
 export interface PromptPrivacyCheck {
@@ -72,6 +105,12 @@ export interface ScenarioRun {
   approvals: number;
   finalState: CompletionState;
   finalHoldout: OutcomeMetrics | null;
+  /** Sprint 8 (semantic runs only). */
+  semanticContract?: SemanticVerificationContract;
+  feedbackVersion?: BlindRevisionFeedback["feedbackVersion"];
+  feedbackValue?: BlindRevisionFeedback;
+  decision?: RevisionDecision;
+  humanInterventions?: { declaredConstraints: number; constraintDisclosureApprovals: number };
 }
 
 /** Every private string in all three case sets plus original field names. */
@@ -104,7 +143,7 @@ export function checkOutboundPrompt(prompt: string, payload: CloudDisclosurePayl
   // Blank out public text: the fixed instruction block (source code) and the
   // approved vocabulary, longest first. Whatever private string still matches
   // the residual came from somewhere it should not have.
-  const marker = payload.schemaVersion === "1.2.0" ? "Approved revision payload:" : "Approved disclosure payload:";
+  const marker = isRevisionSchemaVersion(payload.schemaVersion) ? "Approved revision payload:" : "Approved disclosure payload:";
   const split = prompt.indexOf(marker);
   let residual = (split >= 0 ? prompt.slice(split + marker.length) : prompt).toLowerCase();
   for (const term of [...approved].sort((a, b) => b.length - a.length)) {
@@ -143,9 +182,15 @@ export async function runScenarioPipeline(input: {
   /** Reviewed on-device overrides (configs C, D). Keyed by local path. */
   semanticOverrides?: Record<string, TwinFieldOverride>;
   propose: Proposer;
-  /** Only for config D. Receives the approved 1.2.0 revision payload. */
+  /** Only for config D. Receives the approved 1.2.0 / 1.3.0 revision payload. */
   revise?: Proposer;
   runId?: string;
+  /**
+   * Sprint 8 semantic verification. Off by default so Sprint 7 evidence
+   * replays exactly. `authorizeConstraints` models the user approving the
+   * disclosure of every trusted constraint behind a sendable finding.
+   */
+  semantic?: { authorizeConstraints: boolean };
 }): Promise<ScenarioRun> {
   const { scenario } = input;
   const privateStrings = privateVocabulary(scenario);
@@ -222,6 +267,25 @@ export async function runScenarioPipeline(input: {
   run.initial.evaluation = evaluateFinal(initialExecutable);
   run.finalState = run.initial.evaluation.state;
 
+  // Semantic evidence: declared constraints + observations over imported and
+  // revision-feedback records. Built once, before any holdout row exists here.
+  const verificationRecords = [...imported, ...feedbackCases];
+  const semanticContract = input.semantic
+    ? buildSemanticContract({ contractId: `${scenario.scenarioId}-semantics`, declared: scenario.semanticSpec?.declared ?? [], profile: prepared.value.profile, records: verificationRecords })
+    : undefined;
+  const verify = (executable: MappingContract, evaluation: MappingEvaluation, records: readonly unknown[]) =>
+    semanticContract
+      ? verifySemantics({ contract: semanticContract, executable, report: evaluation.report, records, destinationSchema: scenario.destinationSchema })
+      : undefined;
+  if (semanticContract) {
+    run.semanticContract = semanticContract;
+    run.initial.semantic = verify(initialExecutable, run.initial.evaluation, verificationRecords);
+    run.humanInterventions = {
+      declaredConstraints: semanticContract.constraints.filter((item) => item.evidence.kind === "user-declared").length,
+      constraintDisclosureApprovals: 0,
+    };
+  }
+
   let finalExecutable = initialExecutable;
   if (input.config === "D-nano-cloud-revision" && input.revise) {
     const contractHash = (await fingerprintCanonicalPayload(initialResult.value.converted.contract)).payloadHash;
@@ -235,6 +299,19 @@ export async function runScenarioPipeline(input: {
       report: run.initial.evaluation.report,
       policy: scenario.policy,
       classified: run.initial.evaluation.rows,
+      semantic:
+        semanticContract && run.initial.semantic
+          ? {
+              report: run.initial.semantic,
+              contract: semanticContract,
+              aliasForPath: (path) => twin.bindings.aliasForPath(path),
+              authorizedConstraintIds: input.semantic?.authorizeConstraints
+                ? run.initial.semantic.results.flatMap((result) =>
+                    result.constraintId && (result.status === "SEMANTIC_MISMATCH" || result.status === "SEMANTIC_POLICY_CONFLICT") ? [result.constraintId] : [],
+                  )
+                : [],
+            }
+          : undefined,
     });
     if (!projected.ok) {
       run.feedback = { ok: false, code: projected.code };
@@ -247,7 +324,10 @@ export async function runScenarioPipeline(input: {
         throw new Error(`Scenario ${scenario.scenarioId}: revision payload failed the gate checks`);
       }
       const revisionFingerprint = await fingerprintCanonicalPayload(built.payload);
-      run.feedback = { ok: true, findings: projected.feedback.findings.length, hash: revisionFingerprint.payloadHash };
+      run.feedback = { ok: true, findings: projected.feedback.findings.length + (projected.feedback.semanticFindings?.length ?? 0), hash: revisionFingerprint.payloadHash };
+      run.feedbackVersion = projected.feedback.feedbackVersion;
+      run.feedbackValue = projected.feedback;
+      if (run.humanInterventions && (projected.feedback.approvedConstraints ?? []).length > 0) run.humanInterventions.constraintDisclosureApprovals = 1;
       run.revisionPromptCheck = checkOutboundPrompt(
         buildCloudPromptText(revisionFingerprint.canonicalJson, built.payload.schemaVersion),
         built.payload,
@@ -273,18 +353,36 @@ export async function runScenarioPipeline(input: {
           run.comparison = compareEvaluations(run.initial.evaluation.rows, run.revised.evaluation.rows);
           run.operationChanges = diffContracts(initialResult.value.converted.contract, revisedResult.value.converted.contract);
           run.finalState = run.revised.evaluation.state;
+          run.revised.semantic = verify(finalExecutable, run.revised.evaluation, verificationRecords);
         } else {
           run.finalState = "REVISION_FAILED";
+        }
+        if (semanticContract) {
+          run.decision = decideRevision({
+            revisedValid: revisedResult.ok,
+            contractsEqual:
+              revisedResult.ok && canonicalizeJson(revisedResult.value.converted.contract.operations) === canonicalizeJson(initialResult.value.converted.contract.operations),
+            feedback: projected.feedback,
+            initial: { evaluation: run.initial.evaluation, semantic: run.initial.semantic ?? null, executable: initialExecutable },
+            revised:
+              run.revised.evaluation && revisedResult.ok
+                ? { evaluation: run.revised.evaluation, semantic: run.revised.semantic ?? null, executable: revisedResult.value.resolved.executable }
+                : null,
+          });
         }
       }
     }
   }
   run.approvals = approvals;
 
-  // Holdout: only now that the final mapping is fixed.
+  // Holdout: only now that the final mapping is fixed. The semantic contract
+  // was frozen above; applying it to holdout rows is scoring, not evidence.
+  const holdoutRecords = scenario.holdout.map((item) => item.record);
   run.initial.holdout = evaluateHoldout(initialExecutable);
+  run.initial.holdoutSemantic = verify(initialExecutable, run.initial.holdout, holdoutRecords);
   if (run.revised?.evaluation) {
     run.revised.holdout = evaluateHoldout(finalExecutable);
+    run.revised.holdoutSemantic = verify(finalExecutable, run.revised.holdout, holdoutRecords);
     run.holdoutComparison = compareEvaluations(run.initial.holdout.rows, run.revised.holdout.rows);
     run.finalHoldout = run.revised.holdout.metrics;
   } else {

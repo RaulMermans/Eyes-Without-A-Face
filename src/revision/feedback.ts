@@ -26,6 +26,13 @@ import { validateRevisionFeedbackSchema } from "../domain/validation/validate-co
 import type { ProposalOrigin } from "../proposal/convert.ts";
 import type { RealityCheckReport, RealityCheckRow } from "../verification/reality-check.ts";
 import type { AcceptancePolicy, ClassifiedRow } from "../verification/outcomes.ts";
+import {
+  describeSemanticInformation,
+  projectSemanticFeedback,
+  validateSemanticBlock,
+  type SemanticFeedbackInput,
+  type SemanticWithheld,
+} from "./semantic-feedback.ts";
 
 export const FEEDBACK_CATEGORY: Readonly<Record<Exclude<RevisionFindingCode, "UNAPPROVED_FALLBACK">, RevisionFindingCategory>> = {
   UNMAPPED_ENUM: "undisclosed-category",
@@ -58,7 +65,7 @@ export interface ExcludedIssue {
 }
 
 export type FeedbackProjection =
-  | { ok: true; feedback: BlindRevisionFeedback; excluded: ExcludedIssue[] }
+  | { ok: true; feedback: BlindRevisionFeedback; excluded: ExcludedIssue[]; semanticWithheld: SemanticWithheld[] }
   | { ok: false; code: FeedbackRejectionCode; issues: string[]; excluded: ExcludedIssue[] };
 
 export type FeedbackRejectionCode =
@@ -69,7 +76,8 @@ export type FeedbackRejectionCode =
   | "UNDISCLOSED_ALIAS"
   | "UNDISCLOSED_TARGET"
   | "OPERATION_MISMATCH"
-  | "FALLBACK_NOT_IN_TARGET";
+  | "FALLBACK_NOT_IN_TARGET"
+  | "UNDISCLOSED_LABEL";
 
 /** Destination name from an output-schema instance path like "/id" or "/a/b". */
 function destinationFromPointer(path: string | undefined, targetNames: ReadonlySet<string>): string | undefined {
@@ -131,6 +139,12 @@ export interface FeedbackInput {
    * contribute, as UNAPPROVED_FALLBACK findings (operation numbers only).
    */
   classified?: readonly ClassifiedRow[];
+  /**
+   * Sprint 8: local semantic verification of the same rows. When it yields at
+   * least one sendable finding the output is Feedback 1.1.0; otherwise the
+   * output is exactly the Sprint 7 Feedback 1.0.0.
+   */
+  semantic?: SemanticFeedbackInput;
 }
 
 /**
@@ -240,7 +254,11 @@ export function projectRevisionFeedback(input: FeedbackInput): FeedbackProjectio
     )
     .slice(0, 16);
 
-  if (findings.length === 0) {
+  const semantic = input.semantic ? projectSemanticFeedback(input.semantic, base, input.aliasContract) : null;
+  const semanticFindings = semantic?.findings ?? [];
+  for (const finding of semanticFindings) if (finding.operation !== undefined) affectedOps.add(finding.operation);
+
+  if (findings.length === 0 && semanticFindings.length === 0) {
     return {
       ok: false,
       code: "NO_FINDINGS",
@@ -257,8 +275,11 @@ export function projectRevisionFeedback(input: FeedbackInput): FeedbackProjectio
   const objectives: RevisionObjective[] = [...BASE_OBJECTIVES];
   if (approvedFallbacks.length > 0) objectives.splice(4, 0, "apply-only-listed-fallbacks");
 
+  const withSemantic = semanticFindings.length > 0;
+  if (withSemantic) objectives.push("respect-approved-semantic-constraints");
+
   const feedback: BlindRevisionFeedback = {
-    feedbackVersion: "1.0.0",
+    feedbackVersion: withSemantic ? "1.1.0" : "1.0.0",
     runId: input.runId,
     baseDisclosureHash: input.baseDisclosureHash,
     previousMapping: {
@@ -272,12 +293,16 @@ export function projectRevisionFeedback(input: FeedbackInput): FeedbackProjectio
     objectives,
     revisionBudget: { maxRevisions: 1, remainingAfterThisRequest: 0 },
   };
+  if (withSemantic) {
+    feedback.semanticFindings = semanticFindings;
+    feedback.approvedConstraints = semantic?.constraints ?? [];
+  }
 
   const validation = validateRevisionFeedback(feedback, base, input.aliasContract);
   if (!validation.ok) {
     return { ok: false, code: validation.code, issues: validation.issues, excluded: excluded() };
   }
-  return { ok: true, feedback, excluded: excluded() };
+  return { ok: true, feedback, excluded: excluded(), semanticWithheld: semantic?.withheld ?? [] };
 }
 
 /**
@@ -332,6 +357,10 @@ export function validateRevisionFeedback(
       return { ok: false, code: "OPERATION_MISMATCH", issues: [`Finding references operation #${finding.operation}, which does not match the contract.`] };
     }
   }
+  if (value.feedbackVersion === "1.1.0") {
+    const semantic = validateSemanticBlock(value.semanticFindings ?? [], value.approvedConstraints ?? [], base, aliasContract);
+    if (!semantic.ok) return semantic;
+  }
   return { ok: true };
 }
 
@@ -353,5 +382,6 @@ export function describeNewInformation(feedback: BlindRevisionFeedback): string[
   for (const fallback of feedback.approvedFallbacks) {
     statements.push(`Approved fallback: undisclosed categories for ${fallback.to} may map to "${fallback.value}".`);
   }
+  statements.push(...describeSemanticInformation(feedback.semanticFindings ?? [], feedback.approvedConstraints ?? []));
   return statements;
 }

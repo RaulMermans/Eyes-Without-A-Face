@@ -1,4 +1,4 @@
-import { useState, type CSSProperties } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import { Button } from "../components/ui/button.tsx";
 import { ErrorBanner } from "../components/ErrorBanner.tsx";
 import { GaugeIcon, SearchIcon } from "../components/icons.tsx";
@@ -11,6 +11,10 @@ import { opNumber } from "./view-model.ts";
 import type { WorkspaceState } from "./workspace-state.ts";
 import type { InferenceServices } from "../inference/types.ts";
 import { BlindRevisionPanel } from "./BlindRevisionPanel.tsx";
+import { SemanticPanel } from "./SemanticPanel.tsx";
+import { SEMANTIC_LABEL } from "./semantic-labels.ts";
+import { activeExecutable, computeWorkspaceSemantics } from "./semantic-context.ts";
+import type { SemanticReport } from "../semantics/verify.ts";
 
 const STATUS_ROWS: ReadonlyArray<readonly [keyof RealityCheckStatuses, string, string]> = [
   ["mappingContract", "Mapping contract", "Canonical schema, allowlisted operations, no executable content"],
@@ -95,6 +99,13 @@ export function VerificationPanel({
 
   const report = workspace.report;
   const canInspect = Boolean(report) && useProposal;
+  const executable = activeExecutable(workspace);
+  // Derived from workspace state on every render (tens of records): never stored.
+  const semantics = report && executable ? computeWorkspaceSemantics(workspace, prepared, executable, report) : null;
+  const semanticReport = semantics?.report ?? null;
+  useEffect(() => {
+    if (report && semanticReport && semanticReport.results.length > 0) recordSemanticEventOnce(report, semanticReport);
+  }, [report, semanticReport]);
 
   return (
     <section className="space-y-5" aria-labelledby="verification-heading">
@@ -167,7 +178,7 @@ export function VerificationPanel({
 
       {report ? (
         <div className="space-y-5 text-sm" data-testid="mapping-results">
-          <VerdictCard report={report} />
+          <VerdictCard report={report} semantic={semantics?.report ?? null} />
 
           <div className="grid gap-5 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
             <section aria-labelledby="validation-heading" className="border border-rule bg-panel p-4">
@@ -225,6 +236,24 @@ export function VerificationPanel({
                 {report.blockingIssues.map((issue) => `${issue.code}: ${issue.explanation}`).join(" ")}
               </ErrorBanner>
             </div>
+          ) : null}
+
+          {semantics && executable ? (
+            <SemanticPanel
+              semantics={semantics}
+              realityReport={report}
+              executable={executable}
+              onInspectOperation={canInspect ? onInspectOperation : null}
+              onConfirmDate={(source, format) =>
+                onChange({
+                  ...workspace,
+                  semanticConfirmations: { ...workspace.semanticConfirmations, [source]: format },
+                  // The feedback projection depends on the semantic contract: any prepared request is void.
+                  revision: null,
+                  revisionConstraintIds: [],
+                })
+              }
+            />
           ) : null}
 
           <div className="grid gap-5 lg:grid-cols-2" data-testid="mapping-result-list">
@@ -348,15 +377,38 @@ function RowGroup({
  * reserved hidden cases are covered" so a partial result never reads as full
  * success. The overall verdict is still the strict report.overall.
  */
-function VerdictCard({ report }: { report: RealityCheckReport }) {
+const recordedSemanticRuns = new WeakSet<RealityCheckReport>();
+
+/** One safe telemetry event per Reality Check report: codes and counts only. */
+function recordSemanticEventOnce(report: RealityCheckReport, semantic: SemanticReport): void {
+  if (recordedSemanticRuns.has(report)) return;
+  recordedSemanticRuns.add(report);
+  recordWorkflowEvent({
+    kind: "semantic-verify",
+    ok: semantic.overall === "SEMANTIC_PASS",
+    code: semantic.overall,
+    counts: {
+      constraints: semantic.results.length,
+      mismatched: semantic.coverage.mismatched,
+      verified: semantic.coverage.verified,
+      unknown: semantic.coverage.unknown,
+    },
+  });
+}
+
+function VerdictCard({ report, semantic }: { report: RealityCheckReport; semantic: SemanticReport | null }) {
   const imported = report.rows.filter((row) => row.set !== "reserved");
   const importedPassed = imported.filter((row) => row.status === "pass").length;
   const reservedPassed = report.reservedTotal - report.reservedFailed;
   const ran = report.blockingIssues.length === 0 && report.total > 0;
   let headline: string;
   let detail: string;
-  if (report.overall === "pass") {
-    headline = "PASS · the mapping holds";
+  const meaningFails = semantic?.overall === "SEMANTIC_MISMATCH" || semantic?.overall === "SEMANTIC_POLICY_CONFLICT";
+  if (report.overall === "pass" && meaningFails) {
+    headline = "Structurally valid · meaning is wrong";
+    detail = "Every record produced schema-valid output, but the semantic verifier found outputs that contradict trusted evidence. See Semantic verification below.";
+  } else if (report.overall === "pass") {
+    headline = semantic?.overall === "SEMANTIC_PASS" ? "PASS · structure and checked meaning hold" : "PASS · structure holds";
     detail =
       report.reservedTotal > 0
         ? "Every imported record and every reserved hidden case produced valid destination output."
@@ -387,6 +439,11 @@ function VerdictCard({ report }: { report: RealityCheckReport }) {
             {headline}
           </p>
           <p className="mt-3 max-w-[60ch] leading-6 text-ink-text">{detail}</p>
+          {semantic ? (
+            <p className="mt-2 font-mono text-xs text-ink-text" data-testid="verdict-semantic" data-status={semantic.overall}>
+              Meaning: {SEMANTIC_LABEL[semantic.overall]} · {semantic.coverage.verified}/{semantic.coverage.fields} fields verified
+            </p>
+          ) : null}
         </div>
         <dl className="grid grid-cols-2 border-t border-ink-3 lg:border-l lg:border-t-0">
           <div className="border-r border-ink-3 p-5">

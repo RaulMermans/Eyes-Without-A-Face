@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Button } from "../components/ui/button.tsx";
 import { ErrorBanner } from "../components/ErrorBanner.tsx";
 import { LoadingState } from "../components/LoadingState.tsx";
 import { CloudIcon, GaugeIcon, LockIcon, SealIcon } from "../components/icons.tsx";
 import { Disclosure, Eyebrow, FieldToken, Panel, PanelHeader, StatusMark, ZoneLabel } from "../components/spectral.tsx";
-import type { MappingContract } from "../domain/contracts/types.ts";
+import type { BlindRevisionFeedback, CloudDisclosurePayload, MappingContract } from "../domain/contracts/types.ts";
 import { compareEvaluations, diffContracts, evaluateMapping, type EvaluationComparison, type MappingEvaluation } from "../evaluation/evaluate.ts";
 import { InferenceError } from "../inference/errors.ts";
 import type { InferenceServices } from "../inference/types.ts";
@@ -26,8 +26,15 @@ import {
 import { approveDisclosurePreview, createDisclosurePreview, DisclosureRejectedError } from "../twin/authorization.ts";
 import { submitApprovedCloudInference } from "../twin/cloud-request-gate.ts";
 import { COMPLETION_CRITERIA, STRICT_POLICY, type CompletionState, type OutcomeMetrics } from "../verification/outcomes.ts";
-import { acceptProposal, type PreparedTwin } from "../workflow/pipeline.ts";
+import { acceptProposal, type AcceptedProposal, type PreparedTwin } from "../workflow/pipeline.ts";
 import { ORIGIN_LABELS } from "./result-kind.ts";
+import { computeWorkspaceSemantics, type WorkspaceSemantics } from "./semantic-context.ts";
+import { describeConstraint, evidenceLabel, SEMANTIC_LABEL, SEMANTIC_TONE } from "./semantic-labels.ts";
+import { describeSemanticInformation, projectSemanticFeedback } from "../revision/semantic-feedback.ts";
+import { decideRevision, REVISION_VERDICT_TEXT, type RevisionDecision } from "../revision/decision.ts";
+import { compareSemanticReports, verifySemantics, type SemanticReport } from "../semantics/verify.ts";
+import type { SemanticConstraint } from "../semantics/contract.ts";
+import { canonicalizeJson } from "../domain/json/canonical.ts";
 import { opNumber } from "./view-model.ts";
 import type { ProposalState, RevisionRunState, WorkspaceState } from "./workspace-state.ts";
 
@@ -120,6 +127,15 @@ export function BlindRevisionPanel({
         })
       : null;
 
+  const run0 = workspace.revision;
+  const derived = useMemo(
+    () =>
+      prepared && accepted && initialEvaluation && review
+        ? deriveRevisionSemantics({ workspace, prepared, accepted, initialEvaluation, previewPayload: review.preview.payload, active: run0 && run0.initialProposal === proposal ? run0 : null })
+        : null,
+    [workspace, prepared, accepted, initialEvaluation, review, run0, proposal],
+  );
+
   if (!eligible || !initialEvaluation || !accepted || !proposal || !review || !prepared || !source) {
     return (
       <Panel tone="plain" aria-labelledby="blind-revision-heading" data-testid="blind-revision">
@@ -163,6 +179,7 @@ export function BlindRevisionPanel({
         holdout: null,
         blocked: null,
         notice: null,
+        decision: null,
       };
       next = advance(next, "initial-evaluated");
       if (revisionBudgetUsed(revisionBudgetKey(next.basePayloadHash, contractHash))) {
@@ -170,6 +187,8 @@ export function BlindRevisionPanel({
         onChange({ ...workspace, revision: next });
         return;
       }
+      // Recomputed at click time from the same workspace state (pure), so the projection never depends on a stale render.
+      const semanticsNow = computeWorkspaceSemantics(workspace, prepared, accepted.resolved.executable, initialEvaluation.report);
       const projected = projectRevisionFeedback({
         runId: next.runId,
         baseDisclosureHash: review.preview.payloadHash,
@@ -180,6 +199,14 @@ export function BlindRevisionPanel({
         report: initialEvaluation.report,
         policy,
         classified: initialEvaluation.rows,
+        semantic: semanticsNow
+          ? {
+              report: semanticsNow.report,
+              contract: semanticsNow.contract,
+              aliasForPath: (path) => prepared.twin.bindings.aliasForPath(path),
+              authorizedConstraintIds: workspace.revisionConstraintIds,
+            }
+          : undefined,
       });
       if (!projected.ok) {
         if (projected.code === "NO_FINDINGS") {
@@ -192,7 +219,12 @@ export function BlindRevisionPanel({
         return;
       }
       next = advance(next, "feedback-prepared", {
-        feedback: { value: projected.feedback, newInformation: describeNewInformation(projected.feedback), excluded: projected.excluded },
+        feedback: {
+          value: projected.feedback,
+          newInformation: describeNewInformation(projected.feedback),
+          excluded: projected.excluded,
+          semanticWithheld: projected.semanticWithheld,
+        },
       });
       const built = buildRevisionPayload(review.preview.payload, projected.feedback);
       if (!built.ok) {
@@ -209,6 +241,17 @@ export function BlindRevisionPanel({
           durationMs: performance.now() - started,
           payloadHash: preview.payloadHash,
           counts: { findings: projected.feedback.findings.length, bytes: preview.byteLength },
+        });
+        recordWorkflowEvent({
+          kind: "semantic-feedback",
+          ok: true,
+          code: `FEEDBACK_${projected.feedback.feedbackVersion.replace(/\./g, "_")}`,
+          payloadHash: preview.payloadHash,
+          counts: {
+            semanticFindings: projected.feedback.semanticFindings?.length ?? 0,
+            constraints: projected.feedback.approvedConstraints?.length ?? 0,
+            withheld: projected.semanticWithheld.length,
+          },
         });
       } catch (caught) {
         const reason = caught instanceof DisclosureRejectedError ? caught.reason : "GATE_ERROR";
@@ -297,7 +340,30 @@ export function BlindRevisionPanel({
       expected,
     });
     recordWorkflowEvent({ kind: "revision-evaluate", ok: evaluation.state === "VERIFIED", durationMs: evaluation.report.durationMs, counts: { total: evaluation.metrics.total } });
-    onChange({ ...workspace, revision: advance(active, "revised-evaluated", { revisedEvaluation: evaluation }) });
+    const revisedSemantics = computeWorkspaceSemantics(workspace, prepared, active.revised.result.value.resolved.executable, evaluation.report);
+    const decision =
+      active.feedback && accepted
+        ? decideRevision({
+            revisedValid: true,
+            contractsEqual: canonicalizeJson(active.revised.result.value.converted.contract.operations) === canonicalizeJson(accepted.converted.contract.operations),
+            feedback: active.feedback.value,
+            initial: {
+              evaluation: active.initialEvaluation,
+              semantic: computeWorkspaceSemantics(workspace, prepared, accepted.resolved.executable, active.initialEvaluation.report)?.report ?? null,
+              executable: accepted.resolved.executable,
+            },
+            revised: { evaluation, semantic: revisedSemantics?.report ?? null, executable: active.revised.result.value.resolved.executable },
+          })
+        : null;
+    if (decision) {
+      recordWorkflowEvent({
+        kind: "revision-decision",
+        ok: decision.verdict === "ACCEPTED",
+        code: decision.verdict,
+        counts: { improved: decision.improvedRows, regressed: decision.regressedRows, semanticResolved: decision.semantic?.resolved ?? 0, semanticIntroduced: decision.semantic?.introduced ?? 0 },
+      });
+    }
+    onChange({ ...workspace, revision: advance(active, "revised-evaluated", { revisedEvaluation: evaluation, decision }) });
   }
 
   function runHoldout(): void {
@@ -314,9 +380,18 @@ export function BlindRevisionPanel({
       });
     const initial = evaluate(accepted.resolved.executable);
     const revised = active.revisedEvaluation && active.revised?.result.ok ? evaluate(active.revised.result.value.resolved.executable) : null;
-    recordWorkflowEvent({ kind: "holdout-evaluate", ok: true, counts: { total: initial.metrics.total } });
+    recordWorkflowEvent({ kind: "holdout-evaluate", ok: true, counts: { total: initial.metrics.total, revised: revised ? 1 : 0 } });
     onChange({ ...workspace, revision: { ...active, holdout: { initial, revised } } });
   }
+
+
+  const { initialSemantics, constraintCandidates, semanticFindingCount, revisedSemantics, holdoutSemantics } = derived ?? {
+    initialSemantics: null,
+    constraintCandidates: [],
+    semanticFindingCount: 0,
+    revisedSemantics: null,
+    holdoutSemantics: null,
+  };
 
   const comparison = active?.revisedEvaluation ? compareEvaluations(active.initialEvaluation.rows, active.revisedEvaluation.rows) : null;
   const holdoutComparison = active?.holdout?.revised ? compareEvaluations(active.holdout.initial.rows, active.holdout.revised.rows) : null;
@@ -350,6 +425,22 @@ export function BlindRevisionPanel({
             </p>
           </div>
         </div>
+        {semanticFindingCount > 0 ? (
+          <fieldset className="mt-4 border border-rule bg-bone p-3 text-sm" data-testid="semantic-feedback-options">
+            <legend className="px-1 font-mono text-[11px] uppercase tracking-[0.12em] text-mute">Semantic feedback</legend>
+            <p className="text-xs text-mute">
+              {semanticFindingCount} semantic finding{semanticFindingCount === 1 ? "" : "s"} will be included as fixed codes with operation numbers and coarse counts.
+              A finding alone tells Gemini <em>that</em> the meaning is wrong, not what it should be. You may also disclose the trusted constraint
+              behind a finding. Nothing below is selected unless you select it.
+            </p>
+            <ConstraintAuthorization
+              candidates={constraintCandidates}
+              selected={workspace.revisionConstraintIds}
+              locked={Boolean(active?.history.includes("REVISION_SENT"))}
+              onToggle={(id, checked) => onChange(withConstraintToggled(workspace, id, checked))}
+            />
+          </fieldset>
+        ) : null}
         <div className="mt-4 flex flex-wrap items-center gap-2">
           <Button
             variant="primary"
@@ -400,6 +491,7 @@ export function BlindRevisionPanel({
                   <li key={line} className="border-l-2 border-gold-ink/60 pl-2 [overflow-wrap:anywhere]">{line}</li>
                 ))}
               </ul>
+              <DisclosureLedger base={review.preview.payload} feedback={active.feedback.value} />
               <p className="mt-3 text-xs text-mute" data-testid="revision-cumulative">
                 Cumulative: the approved twin (payload {review.preview.payloadHash.slice(0, 12)}…) is repeated byte-for-byte, with no new fields,
                 examples, or destination details. This would be cloud request 2 of at most 2 for this mapping.
@@ -415,6 +507,7 @@ export function BlindRevisionPanel({
                 <li>Engine messages and local diagnostics</li>
                 <li>Exact failure counts above four (coarse buckets: 1, 2–4, 5+)</li>
                 <li>Any on-device (Nano) rationale</li>
+                <li>Semantic evidence: which records contradicted a constraint, and constraints you did not select</li>
                 {active.feedback.excluded.length > 0 ? (
                   <li data-testid="revision-excluded">
                     Not allowlisted, withheld: {active.feedback.excluded.map((item) => `${item.code} ×${item.rows}`).join(", ")}
@@ -545,8 +638,11 @@ export function BlindRevisionPanel({
           after={active.revisedEvaluation}
           comparison={comparison}
           testId="revision-comparison"
+          semantic={semanticDelta(initialSemantics?.report, revisedSemantics?.report)}
         />
       ) : null}
+
+      {active?.decision ? <DecisionCard decision={active.decision} before={initialSemantics?.report ?? null} after={revisedSemantics?.report ?? null} /> : null}
 
       {active && finalized && scenario ? (
         <Panel tone="private" aria-labelledby="holdout-heading" data-testid="holdout">
@@ -575,6 +671,7 @@ export function BlindRevisionPanel({
           after={active.holdout.revised}
           comparison={holdoutComparison}
           testId="holdout-comparison"
+          semantic={semanticDelta(holdoutSemantics?.before, holdoutSemantics?.after)}
         />
       ) : null}
     </section>
@@ -607,6 +704,7 @@ function ComparisonPanel({
   after,
   comparison,
   testId,
+  semantic,
 }: {
   title: string;
   note: string;
@@ -614,6 +712,7 @@ function ComparisonPanel({
   after: MappingEvaluation;
   comparison: EvaluationComparison;
   testId: string;
+  semantic?: { before: number; after: number; resolved: number; introduced: number } | null;
 }) {
   const rows = METRIC_ROWS.filter(([key]) => before.metrics.groundTruth || (key !== "incorrect" && key !== "correctlyHandled"));
   const verdict = comparison.strictImprovement ? "improved, no regressions" : comparison.improved > 0 ? "mixed: improvements and regressions" : comparison.regressed > 0 ? "regressed" : "no measurable change";
@@ -651,6 +750,19 @@ function ComparisonPanel({
                 </tr>
               );
             })}
+            {semantic ? (
+              <tr className="border-t border-ink-3" data-testid={`${testId}-semantic`}>
+                <th scope="row" className="py-1.5 pr-3 font-normal">
+                  Semantic violations
+                  <span className="block text-[11px] text-ink-text">
+                    Records contradicting a trusted constraint (local verifier) · {semantic.resolved} resolved · {semantic.introduced} new
+                  </span>
+                </th>
+                <td className="py-1.5 pr-3 font-mono" data-testid={`${testId}-semantic-before`}>{semantic.before}</td>
+                <td className="py-1.5 pr-3 font-mono" data-testid={`${testId}-semantic-after`}>{semantic.after}</td>
+                <td className="py-1.5 font-mono">{semantic.after - semantic.before > 0 ? `+${semantic.after - semantic.before}` : String(semantic.after - semantic.before)}</td>
+              </tr>
+            ) : null}
           </tbody>
         </table>
       </div>
@@ -673,4 +785,211 @@ function ComparisonPanel({
       </p>
     </section>
   );
+}
+
+/** Request 1 vs request 2: what the cloud already holds and what this request adds. Counts only. */
+function DisclosureLedger({ base, feedback }: { base: CloudDisclosurePayload; feedback: BlindRevisionFeedback }) {
+  const labels = base.fields.reduce((sum, field) => sum + (field.enumValues?.length ?? 0), 0);
+  const approved = new Set(base.fields.flatMap((field) => field.enumValues ?? []));
+  const targetValues = new Set((base.target?.fields ?? []).flatMap((field) => field.enumValues ?? []));
+  const constraints = feedback.approvedConstraints ?? [];
+  // Every label a constraint repeats must already be approved; count any that is not (must be 0).
+  const newLabels = constraints.flatMap((constraint) =>
+    constraint.kind === "date-order"
+      ? []
+      : [
+          ...(constraint.kind === "category-order" ? constraint.sourceOrder : Object.keys(constraint.map)).filter((label) => !approved.has(label)),
+          ...(constraint.kind === "category-order" ? constraint.targetOrder : Object.values(constraint.map)).filter((value) => !targetValues.has(value)),
+        ],
+  ).length;
+  return (
+    <table className="mt-3 w-full text-left text-xs" data-testid="revision-ledger">
+      <caption className="mb-1 text-left font-mono text-[11px] uppercase tracking-[0.1em] text-mute">Cumulative disclosure</caption>
+      <thead className="text-mute">
+        <tr>
+          <th scope="col" className="py-1 pr-2 font-normal">Item</th>
+          <th scope="col" className="py-1 pr-2 font-normal">Request 1 (sent)</th>
+          <th scope="col" className="py-1 font-normal">Request 2 adds</th>
+        </tr>
+      </thead>
+      <tbody className="font-mono">
+        <tr className="border-t border-rule"><th scope="row" className="py-1 pr-2 font-normal">Twin fields · approved labels</th><td>{base.fields.length} · {labels}</td><td data-testid="ledger-new-labels">0 · {newLabels}</td></tr>
+        <tr className="border-t border-rule"><th scope="row" className="py-1 pr-2 font-normal">Synthetic examples</th><td>{base.syntheticExamples.length}</td><td>0</td></tr>
+        <tr className="border-t border-rule"><th scope="row" className="py-1 pr-2 font-normal">Previous mapping</th><td>—</td><td>{feedback.previousMapping.operations.length} operations</td></tr>
+        <tr className="border-t border-rule"><th scope="row" className="py-1 pr-2 font-normal">Engine / policy findings</th><td>—</td><td data-testid="ledger-findings">{feedback.findings.length}</td></tr>
+        <tr className="border-t border-rule"><th scope="row" className="py-1 pr-2 font-normal">Semantic findings</th><td>—</td><td data-testid="ledger-semantic-findings">{feedback.semanticFindings?.length ?? 0}</td></tr>
+        <tr className="border-t border-rule"><th scope="row" className="py-1 pr-2 font-normal">Semantic constraints (you selected)</th><td>—</td><td data-testid="ledger-constraints">{constraints.length}</td></tr>
+        <tr className="border-t border-rule"><th scope="row" className="py-1 pr-2 font-normal">Feedback version</th><td>—</td><td data-testid="ledger-version">{feedback.feedbackVersion}</td></tr>
+      </tbody>
+    </table>
+  );
+}
+
+/** Deterministic recommendation for the revised mapping. Never adopted automatically. */
+function DecisionCard({ decision, before, after }: { decision: RevisionDecision; before: SemanticReport | null; after: SemanticReport | null }) {
+  const tone = decision.verdict === "ACCEPTED" ? "pass" : decision.verdict === "HUMAN_REVIEW_REQUIRED" || decision.verdict === "UNCHANGED" || decision.verdict === "INSUFFICIENT_INFORMATION" || decision.verdict === "NO_IMPROVEMENT" ? "warn" : "fail";
+  return (
+    <Panel tone="plain" aria-labelledby="decision-heading" data-testid="revision-decision" data-verdict={decision.verdict}>
+      <PanelHeader id="decision-heading" title="Local acceptance check" eyebrow="Deterministic · no ground truth · no model text" zone="verified">
+        Computed from outcome classes and the semantic verifier only, exactly as it would be for your own data. The initial and revised mappings are
+        both kept; nothing is promoted automatically.
+      </PanelHeader>
+      <p className="mt-3">
+        <StatusMark status={tone}>
+          <span data-testid="revision-decision-verdict">{decision.verdict}</span>
+        </StatusMark>
+      </p>
+      <p className="mt-1 text-sm">{REVISION_VERDICT_TEXT[decision.verdict]}</p>
+      <dl className="mt-3 grid grid-cols-[auto_minmax(0,1fr)] gap-x-3 gap-y-1 text-xs">
+        <dt className="text-mute">Records improved / regressed</dt>
+        <dd className="font-mono" data-testid="revision-decision-rows">{decision.improvedRows} / {decision.regressedRows}</dd>
+        <dt className="text-mute">Previously valid operations broken</dt>
+        <dd className="font-mono" data-testid="revision-decision-operation-regressions">{decision.operationRegressions}</dd>
+        <dt className="text-mute">Clean transformations before → after</dt>
+        <dd className="font-mono" data-testid="revision-decision-clean">{decision.cleanTransformations.before} → {decision.cleanTransformations.after}</dd>
+        <dt className="text-mute">Semantic violations resolved / new</dt>
+        <dd className="font-mono" data-testid="revision-decision-semantic">{decision.semantic ? `${decision.semantic.resolved} / ${decision.semantic.introduced}` : "—"}</dd>
+        <dt className="text-mute">Meaning before → after</dt>
+        <dd>
+          {before ? <StatusMark status={SEMANTIC_TONE[before.overall]}>{SEMANTIC_LABEL[before.overall]}</StatusMark> : "—"} →{" "}
+          {after ? <StatusMark status={SEMANTIC_TONE[after.overall]}>{SEMANTIC_LABEL[after.overall]}</StatusMark> : "—"}
+        </dd>
+      </dl>
+    </Panel>
+  );
+}
+
+function semanticDelta(before: SemanticReport | null | undefined, after: SemanticReport | null | undefined) {
+  if (!before || !after) return null;
+  const delta = compareSemanticReports(before, after);
+  return { before: before.violatingRows.length, after: after.violatingRows.length, resolved: delta.resolved, introduced: delta.introduced };
+}
+
+/**
+ * Authorizing or withdrawing a constraint changes the feedback projection, so
+ * a prepared (unsent) request and its approval are discarded. A used run is kept.
+ */
+function withConstraintToggled(workspace: WorkspaceState, id: string, checked: boolean): WorkspaceState {
+  const ids = new Set(workspace.revisionConstraintIds);
+  if (checked) ids.add(id);
+  else ids.delete(id);
+  const run = workspace.revision;
+  const keep = run && run.history.includes("REVISION_SENT") ? run : null;
+  return { ...workspace, revisionConstraintIds: [...ids].sort(), revision: keep };
+}
+
+interface ConstraintCandidate {
+  constraint: SemanticConstraint;
+  line: string | null;
+  withheld: string | null;
+}
+
+/** Explicit, per-constraint opt-in. Nothing is selected by default; a new Prepare is required after any change. */
+function ConstraintAuthorization({
+  candidates,
+  selected,
+  locked,
+  onToggle,
+}: {
+  candidates: readonly ConstraintCandidate[];
+  selected: readonly string[];
+  locked: boolean;
+  onToggle: (id: string, checked: boolean) => void;
+}) {
+  if (candidates.length === 0) {
+    return <p className="mt-2 text-xs" data-testid="semantic-no-constraint">No trusted constraint can be disclosed for these findings.</p>;
+  }
+  return (
+    <ul className="mt-2 space-y-2">
+      {candidates.map(({ constraint, line, withheld }) => (
+        <li key={constraint.id} className="flex items-start gap-2">
+          <input
+            id={`authorize-${constraint.id}`}
+            type="checkbox"
+            className="mt-1 size-4 accent-ink"
+            checked={selected.includes(constraint.id)}
+            disabled={Boolean(withheld) || locked}
+            onChange={(event) => onToggle(constraint.id, event.target.checked)}
+            data-testid={`authorize-constraint-${constraint.id}`}
+          />
+          <label htmlFor={`authorize-${constraint.id}`} className="min-w-0">
+            <span className="font-medium">Also disclose:</span>{" "}
+            <span className="font-mono text-xs [overflow-wrap:anywhere]" data-testid={`authorize-line-${constraint.id}`}>
+              {line ?? `${describeConstraint(constraint)} (cannot be expressed with approved vocabulary: ${withheld ?? "withheld"})`}
+            </span>
+            <span className="block text-[11px] text-mute">{evidenceLabel(constraint)} · uses only aliases, labels and destination values Gemini already received</span>
+          </label>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+/**
+ * All semantic views of the revision journey, derived from workspace state in
+ * one pure call (never stored). Holdout semantics reuse the contract built
+ * from imported + reserved records; holdout rows are scored, never evidence.
+ */
+function deriveRevisionSemantics(input: {
+  workspace: WorkspaceState;
+  prepared: PreparedTwin;
+  accepted: AcceptedProposal;
+  initialEvaluation: MappingEvaluation;
+  previewPayload: CloudDisclosurePayload;
+  active: RevisionRunState | null;
+}): {
+  initialSemantics: WorkspaceSemantics | null;
+  constraintCandidates: ConstraintCandidate[];
+  semanticFindingCount: number;
+  revisedSemantics: WorkspaceSemantics | null;
+  holdoutSemantics: { before: SemanticReport | null; after: SemanticReport | null } | null;
+} {
+  const { workspace, prepared, accepted, initialEvaluation, active } = input;
+  const initialSemantics = computeWorkspaceSemantics(workspace, prepared, accepted.resolved.executable, initialEvaluation.report);
+  const constraintCandidates: ConstraintCandidate[] = initialSemantics
+    ? initialSemantics.contract.constraints.flatMap((constraint) => {
+        if (constraint.trust !== "trusted") return [];
+        const result = initialSemantics.report.results.find((item) => item.constraintId === constraint.id);
+        if (!result || (result.status !== "SEMANTIC_MISMATCH" && result.status !== "SEMANTIC_POLICY_CONFLICT")) return [];
+        const single = projectSemanticFeedback(
+          {
+            report: initialSemantics.report,
+            contract: initialSemantics.contract,
+            aliasForPath: (path) => prepared.twin.bindings.aliasForPath(path),
+            authorizedConstraintIds: [constraint.id],
+          },
+          input.previewPayload,
+          accepted.converted.contract,
+        );
+        const line = describeSemanticInformation([], single.constraints)[0] ?? null;
+        const withheld = single.withheld.find((item) => item.constraintId === constraint.id)?.reason ?? null;
+        return [{ constraint, line, withheld }];
+      })
+    : [];
+  const semanticFindingCount = initialSemantics
+    ? initialSemantics.report.results.filter((result) => result.status === "SEMANTIC_MISMATCH" || result.status === "SEMANTIC_POLICY_CONFLICT" || result.status === "SEMANTIC_AMBIGUOUS").length
+    : 0;
+  const revisedSemantics =
+    active?.revisedEvaluation && active.revised?.result.ok
+      ? computeWorkspaceSemantics(workspace, prepared, active.revised.result.value.resolved.executable, active.revisedEvaluation.report)
+      : null;
+  const scenario = workspace.scenario;
+  const scoreHoldout = (executable: MappingContract, evaluation: MappingEvaluation): SemanticReport | null =>
+    initialSemantics && scenario
+      ? verifySemantics({
+          contract: initialSemantics.contract,
+          executable,
+          report: evaluation.report,
+          records: scenario.holdout.map((item) => item.record),
+          destinationSchema: JSON.parse(workspace.destinationText) as unknown,
+        })
+      : null;
+  const holdoutSemantics =
+    active?.holdout && active.holdout.revised && active.revised?.result.ok
+      ? {
+          before: scoreHoldout(accepted.resolved.executable, active.holdout.initial),
+          after: scoreHoldout(active.revised.result.value.resolved.executable, active.holdout.revised),
+        }
+      : null;
+  return { initialSemantics, constraintCandidates, semanticFindingCount, revisedSemantics, holdoutSemantics };
 }

@@ -114,6 +114,36 @@ export function deriveTestRevision(payload: CloudDisclosurePayload): { operation
         notes.push(`#${number}: ${finding.category} not fixable by rule`);
       }
     }
+    // Sprint 8 (feedback 1.1.0): semantic findings change an operation only
+    // through an owner-approved constraint; a policy violation alone allows
+    // unmapped=fail. Otherwise the operation is left unchanged (abstain).
+    for (const finding of (feedback.semanticFindings ?? []).filter((item) => item.operation === number)) {
+      const alias = typeof next.from === "string" ? next.from : undefined;
+      const constraint = (feedback.approvedConstraints ?? []).find(
+        (item) => item.alias === alias && (item.kind === "date-order" ? next.op === "parse_date" : item.to === operation.to && next.op === "map_enum"),
+      );
+      const params = (next.params ?? {}) as Record<string, unknown>;
+      if (constraint?.kind === "date-order") {
+        next = { ...next, params: { inputFormat: constraint.inputFormat } };
+        notes.push(`#${number}: approved date order`);
+      } else if (constraint?.kind === "category-order") {
+        const map: Record<string, string> = { ...(params.map as Record<string, string>) };
+        constraint.sourceOrder.forEach((label, rank) => {
+          const target = constraint.targetOrder[Math.min(constraint.targetOrder.length - 1, Math.floor((rank * constraint.targetOrder.length) / constraint.sourceOrder.length))];
+          if (target) map[label] = target;
+        });
+        next = { ...next, params: { ...params, map } };
+        notes.push(`#${number}: approved category order`);
+      } else if (constraint?.kind === "category-meaning") {
+        next = { ...next, params: { ...params, map: { ...(params.map as Record<string, string>), ...constraint.map } } };
+        notes.push(`#${number}: approved category meaning`);
+      } else if (finding.category === "semantic-policy-violation" && next.op === "map_enum") {
+        next = { ...next, params: { map: params.map, unmapped: "fail" } };
+        notes.push(`#${number}: undeclared categories held for review`);
+      } else {
+        notes.push(`#${number}: ${finding.category} without an approved constraint, left unchanged`);
+      }
+    }
     return next;
   });
   return {

@@ -42,6 +42,7 @@ import {
   MAPPING_REVISION_JSON_SCHEMA,
   PRIVATE_FIELD_SEMANTICS_JSON_SCHEMA,
 } from "./prompts.ts";
+import { isRevisionSchemaVersion } from "../revision/revision-payload.ts";
 import {
   assertLiveProvenance,
   expectedSourceForMode,
@@ -321,7 +322,7 @@ class LiveFirebaseRuntime {
     const timer = setTimeout(() => controller.abort("timeout"), CLOUD_TIMEOUT_MS);
     try {
       await this.requireAppCheckToken();
-      const revision = request.payload.schemaVersion === "1.2.0";
+      const revision = isRevisionSchemaVersion(request.payload.schemaVersion);
       if (!revision && !this.cloudModel) {
         this.cloudModel = getGenerativeModel(this.ai(), {
           mode: InferenceMode.ONLY_IN_CLOUD,

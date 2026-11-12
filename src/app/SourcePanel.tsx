@@ -26,7 +26,7 @@ export function SourcePanel({
 }) {
   function applyText(text: string, label: string, reserved: Record<string, unknown>[] | null): void {
     const parsed = parseSourceDataset(text, label);
-    const base = invalidateDownstream({ ...workspace, overrides: {} });
+    const base = invalidateDownstream({ ...workspace, overrides: {}, semanticConfirmations: {} });
     if (!parsed.ok) {
       onChange({ ...base, source: null, reservedRecords: null, sourceError: parsed.message, scenario: null });
       return;
