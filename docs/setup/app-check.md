@@ -52,3 +52,24 @@ The token is a credential:
 - Never ship debug mode in a production build.
 
 If App Check rejects a live request, keep the sanitized error (`APP_CHECK_REJECTED`) and fix the token or site key. Do not disable App Check.
+
+## Sprint 5: production attestation and token lifecycle
+
+### Production (hosted) builds
+
+- Build with `pnpm build:release`. It forces `VITE_APP_CHECK_DEBUG=false` even if `.env.local` enables debug, and `scripts/verify-release.mjs` refuses any bundle with debug mode or a debug token.
+- Attestation uses reCAPTCHA Enterprise (score-based, `minValidScore` 0.5). The key's allowed domains are only `eyes-without-a-face-b7281.web.app` and `eyes-without-a-face-b7281.firebaseapp.com`. **Preview channel hosts are not covered.** See [../deployment.md](../deployment.md#production-app-check-and-preview-channels-the-constraint).
+- Automated browsers tend to get low reCAPTCHA scores. Verify hosted App Check in a normal, interactively used Chrome window, not under Playwright.
+- Enforcement for Firebase AI Logic is the App Check service `firebaseml.googleapis.com`, which is **ENFORCED**. Keep it enforced.
+
+### Development debug token lifecycle
+
+| Stage | Action |
+| --- | --- |
+| Stored | `~/.config/eyes-without-a-face/appcheck-debug-token` (mode 600, outside Git). Never in `VITE_*`, never in docs, screenshots, traces, CI logs or videos |
+| Registered | App Check → `eyes-without-a-face-web` → debug token `sprint-4-live-tests (EVO X3, local only)` |
+| Checked | `scripts/verify-release.mjs` confirms the token value is absent from `dist/`. The Sprint 5 history scan confirms it is absent from every commit |
+| Revoke | When no further live runs are planned (after the demo recording and any hosted verification), delete it: Firebase Console → App Check → Apps → Manage debug tokens → delete, or `DELETE https://firebaseappcheck.googleapis.com/v1/projects/507051460368/apps/1:507051460368:web:086c755a2c003fb30b4795/debugTokens/<id>` with the CLI's OAuth session |
+| Recovery | To run the live suite again later, generate a new UUID into the same private file and register it under a new display name. Nothing in the repository changes |
+
+Do not revoke during active qualification without that recovery step ready. The recording and live suite depend on it until a hosted production build is verified.

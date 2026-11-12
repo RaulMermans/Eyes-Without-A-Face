@@ -29,7 +29,7 @@ The Sprint 4 brief lists these requirements, which still need confirming against
 | --- | --- |
 | Real Firebase AI Logic inference at runtime | Verified on-device (LIVE-007, LIVE-013) and in the cloud (LIVE-004, LIVE-009) |
 | On-device **and** cloud inference | Both verified: `HYBRID_QUALIFIED` |
-| Working demo application | Local dev server. Hosting `live` holds an older release of unknown revision; redeploy needs owner approval |
+| Working demo application | Local dev server. Hosting `live` has never served a release (corrected in Sprint 5); deployment needs owner approval |
 | Public GitHub/GitLab repository | Repository is **private**. Publishing needs separate owner confirmation |
 | Visible open-source license | `LICENSE` (Apache-2.0) added in Sprint 4 |
 | Source code and setup instructions | `README.md`, `docs/setup/` |
@@ -38,6 +38,23 @@ The Sprint 4 brief lists these requirements, which still need confirming against
 | Explanation of pre-existing code | [hackathon-history.md](hackathon-history.md) |
 
 Firebase on-device documentation (re-read 2026-11-11): Chrome desktop 139+, Firebase AI Logic SDK 12.5.0+, the `chrome://flags/#prompt-api-for-gemini-nano-multimodal-input` flag, `initializeDeviceModel()` after a user gesture, and a default in-cloud model of `gemini-3.5-flash-lite`. On-device generation is single-turn, supports structured JSON output, and is capped at 9216 tokens.
+
+## Re-check on 2026-11-11 (Sprint 5)
+
+`/`, `/rules`, `/details/dates` and `/resources` on firebasehybridaihackathon.devpost.com all returned **HTTP 403** to automated fetches. Nothing new was verified. The owner must read the Official Rules in a browser before submitting, and in particular confirm: rules on pre-existing work (Sprints 0–2 are dated 2026-11-10, the day before the period opened), the video host and length, repository visibility, license, hosted-demo expectations, and eligibility.
+
+Repository state against the brief's requirements (Sprint 5):
+
+| Requirement | State |
+| --- | --- |
+| Hybrid inference through Firebase AI Logic | Verified locally (on-device + cloud). Hosted cloud path pending deployment approval |
+| Working project | Local: yes. Hosted: **BLOCKED** on owner approval ([deployment.md](deployment.md)) |
+| Public repository | **Private**. Publication needs owner confirmation |
+| Visible open-source license | Apache-2.0, detected by GitHub (`licenseInfo: apache-2.0`) |
+| Setup instructions | README "Run it" + `docs/setup/` |
+| YouTube video ≤ 3:00 | Not recorded. Storyboard ready ([demo/README.md](demo/README.md)) |
+| English materials | Yes. Devpost draft in [submission/devpost-draft.md](submission/devpost-draft.md) |
+| Disclosure of competition-period work | [hackathon-history.md](hackathon-history.md) |
 
 ## Unresolved (do not guess)
 

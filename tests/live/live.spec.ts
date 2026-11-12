@@ -5,7 +5,7 @@ import path from "node:path";
 import { attachProviderWatch, openDiagnostics } from "../e2e/helpers.ts";
 
 const enabled = process.env.EYES_LIVE_TESTS === "1";
-const screenshotDir = "test-results/sprint-4-live";
+const screenshotDir = "test-results/sprint-5-live";
 const evidencePath = path.join(screenshotDir, "evidence.json");
 
 test.skip(!enabled, "Live Firebase tests are opt-in. Set EYES_LIVE_TESTS=1.");
@@ -352,6 +352,8 @@ test.describe("LIVE-013 on-device in the guided Phantom Twin step", () => {
     const suggestions = page.getByTestId("on-device-suggestions");
     const blocked = page.getByText(/ON_DEVICE_BLOCKED/);
     await expect(suggestions.or(blocked)).toBeVisible({ timeout: 150_000 });
+    // Suggestions render per field; wait until the run has finished.
+    await expect(page.getByTestId("on-device-progress")).toHaveCount(0, { timeout: 150_000 });
     const text = (await suggestions.count()) > 0 ? await suggestions.innerText() : "";
     const blockedText = (await blocked.count()) > 0 ? await blocked.first().innerText() : null;
     const cloudInferenceUrls = sanitizeUrls(providerRequests.filter((url) => url.includes("generateContent")));
@@ -364,9 +366,46 @@ test.describe("LIVE-013 on-device in the guided Phantom Twin step", () => {
       cloudInferenceUrls,
       pageErrors,
     });
-    expect(text).toContain("(real on-device)");
+    expect(text.match(/\(real on-device\)/g) ?? []).toHaveLength(6);
     expect(text).not.toContain("simulated");
     expect(cloudInferenceUrls).toEqual([]);
     expect(pageErrors, pageErrors.join("\n")).toEqual([]);
+  });
+});
+
+test.describe("LIVE-018 cloud denied by App Check", () => {
+  test("an unregistered App Check token is refused before any generateContent request", async ({ page }) => {
+    test.skip(
+      process.env.EYES_LIVE_CLOUD_DENIED !== "1" || debugToken.length > 0,
+      "Opt-in: EYES_LIVE_CLOUD_DENIED=1 and no EYES_APPCHECK_DEBUG_TOKEN (the SDK then generates an unregistered token).",
+    );
+    const providerRequests = attachProviderWatch(page);
+    const pageErrors: string[] = [];
+    page.on("pageerror", (error) => pageErrors.push(error.message));
+    await page.goto("/");
+    await page.getByTestId("start-demo").click();
+    await page.getByTestId("continue-to-twin").click();
+    let onDeviceLabel: string | null = null;
+    if (!usingDedicatedProfile) {
+      // Stock Playwright Chrome cannot load Gemini Nano: the guided step must say so, with no hybrid claim.
+      const label = page.getByTestId("on-device-mode-label");
+      await expect(label).toContainText("On-device AI unavailable — manual/deterministic mode", { timeout: 30_000 });
+      onDeviceLabel = await page.getByTestId("on-device-mode").innerText();
+    }
+    await page.locator('[data-testid^="disclose-categories-"]').first().check();
+    await page.getByTestId("continue-to-review").click();
+    await page.getByTestId("build-preview").click();
+    await page.getByTestId("approve-disclosure").click();
+    await page.getByTestId("continue-to-mapping").click();
+    await page.getByTestId("send-cloud-request").click();
+    const error = page.getByTestId("cloud-error");
+    await expect(error).toBeVisible({ timeout: 60_000 });
+    const errorText = (await error.innerText()).slice(0, 400);
+    const generateUrls = sanitizeUrls(providerRequests.filter((url) => url.includes("generateContent")));
+    const appCheckUrls = sanitizeUrls(providerRequests.filter((url) => url.includes("firebaseappcheck")));
+    await collectEvidence(page, { check: "LIVE-018", errorText, generateUrls, appCheckUrls, pageErrors, onDeviceLabel });
+    expect(errorText).toContain("APP_CHECK_REJECTED");
+    expect(generateUrls).toEqual([]);
+    await expect(page.getByTestId("proposal")).toHaveCount(0);
   });
 });

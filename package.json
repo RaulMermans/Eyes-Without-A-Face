@@ -11,6 +11,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:release": "node scripts/build-release.mjs",
+    "verify:release": "node scripts/verify-release.mjs",
     "preview": "vite preview",
     "lint": "oxlint .",
     "typecheck": "tsc -b && tsc -p tsconfig.tests.json --pretty false",

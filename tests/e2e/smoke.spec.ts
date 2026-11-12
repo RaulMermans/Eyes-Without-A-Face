@@ -29,9 +29,10 @@ test.describe("E2E-002 workflow navigation", () => {
     await page.getByRole("button", { name: /Reality Check/ }).click();
     await expect(page.getByRole("heading", { level: 2, name: "Reality Check" })).toBeVisible();
     await expect(page.getByRole("heading", { name: "Local mapping execution" })).toBeVisible();
-    await page.getByRole("button", { name: /Export/ }).click();
-    await expect(page.getByRole("heading", { level: 2, name: "Export" })).toBeVisible();
-    await expect(page.getByText("Export is not implemented yet")).toBeVisible();
+    // Sprint 5: unimplemented steps are not offered in the workflow.
+    const workflow = page.getByRole("navigation", { name: "Workflow" });
+    await expect(workflow.getByRole("button")).toHaveCount(5);
+    await expect(workflow.getByRole("button", { name: /Export/ })).toHaveCount(0);
     await page.getByRole("button", { name: /Phantom Twin/ }).click();
     await expect(page.getByRole("heading", { level: 2, name: "Phantom Twin" })).toBeVisible();
     await expect(page.getByTestId("twin-empty")).toBeVisible();
@@ -59,7 +60,7 @@ test.describe("E2E-003 responsive UI", () => {
 
     await page.setViewportSize({ width: 390, height: 844 });
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-    await expect(page.getByRole("button", { name: /Export/ })).toBeVisible();
+    await expect(page.getByRole("button", { name: /Reality Check/ })).toBeVisible();
     const compactOverflow = await page.evaluate(
       () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
     );

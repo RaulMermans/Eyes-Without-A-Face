@@ -6,6 +6,7 @@ import type { TwinIssue } from "../phantom/generate.ts";
 import { ROLE_LABELS } from "../phantom/roles.ts";
 import type { InferenceServices, OnDeviceCapability } from "../inference/types.ts";
 import { InferenceError } from "../inference/errors.ts";
+import { isRecoverableOnDeviceFailure, ON_DEVICE_USER_RETRY_LIMIT } from "../inference/retry-policy.ts";
 import { recordWorkflowEvent } from "../observability/workflow-log.ts";
 import type { PreparedTwin } from "../workflow/pipeline.ts";
 import { invalidateDownstream, type WorkspaceState } from "./workspace-state.ts";
@@ -40,7 +41,9 @@ export function PhantomPanel({
   const [seedText, setSeedText] = useState(String(workspace.seed));
   const [onDevice, setOnDevice] = useState<OnDeviceMode>({ kind: "checking" });
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
-  const [suggestError, setSuggestError] = useState<string | null>(null);
+  const [suggestError, setSuggestError] = useState<{ message: string; recoverable: boolean } | null>(null);
+  const [busy, setBusy] = useState<{ done: number; total: number; alias: string } | null>(null);
+  const [retriesUsed, setRetriesUsed] = useState(0);
   const [drafts, setDrafts] = useState<Record<string, string>>({});
 
   useEffect(() => {
@@ -96,12 +99,23 @@ export function PhantomPanel({
     onChange(invalidateDownstream({ ...workspace, seed }));
   }
 
-  async function suggestOnDevice(): Promise<void> {
-    if (!prepared) return;
+  /**
+   * Classify each shareable twin field on-device. A retry (resume=true) only
+   * runs the fields that are not classified yet, so successful calls are
+   * never repeated. Never falls back to the cloud.
+   */
+  async function suggestOnDevice(resume: boolean): Promise<void> {
+    if (!prepared || busy) return;
+    const fields = prepared.twin.fields.filter((item) => item.shareable);
+    const next: Suggestion[] = resume ? suggestions.filter((item) => fields.some((field) => field.alias === item.alias)) : [];
+    if (!resume) setRetriesUsed(0);
+    else setRetriesUsed((count) => count + 1);
     setSuggestError(null);
-    const next: Suggestion[] = [];
+    setSuggestions(next);
+    const pending = fields.filter((field) => !next.some((item) => item.alias === field.alias));
     try {
-      for (const field of prepared.twin.fields.filter((item) => item.shareable)) {
+      for (const field of pending) {
+        setBusy({ done: next.length, total: fields.length, alias: field.alias });
         const samples = prepared.twin.phantom.syntheticExamples
           .map((row) => row[field.alias])
           .filter((value) => value !== undefined && value !== null)
@@ -114,12 +128,29 @@ export function PhantomPanel({
         });
         const role = (result.structured as { semanticRole?: string } | undefined)?.semanticRole ?? "other";
         next.push({ alias: field.alias, role, simulated: result.provenance.simulated });
+        setSuggestions([...next]);
       }
-      setSuggestions(next);
+      recordWorkflowEvent({ kind: "on-device-probe", ok: true, code: resume ? "ON_DEVICE_RETRY_RECOVERED" : "ON_DEVICE_SUGGESTED", counts: { fields: next.length } });
     } catch (error) {
-      const message = error instanceof InferenceError ? `${error.code}: ${error.message}` : "On-device suggestion failed.";
-      setSuggestError(message);
-      setOnDevice({ kind: "blocked", reason: error instanceof InferenceError ? error.code : "failed" });
+      const code = error instanceof InferenceError ? error.code : "FAILED";
+      const recoverable =
+        error instanceof InferenceError && isRecoverableOnDeviceFailure(error.code) && (resume ? retriesUsed + 1 : 0) < ON_DEVICE_USER_RETRY_LIMIT;
+      const explanation =
+        code === "ON_DEVICE_RUNTIME_ERROR"
+          ? "Chrome's on-device model service stopped unexpectedly. This is a browser runtime failure, not a problem with the twin."
+          : error instanceof InferenceError
+            ? error.message
+            : "On-device suggestion failed.";
+      setSuggestError({
+        message: `${code}: ${explanation} ${next.length} of ${fields.length} fields were classified before it stopped. Nothing was sent to the cloud.`,
+        recoverable,
+      });
+      recordWorkflowEvent({ kind: "on-device-probe", ok: false, code });
+      if (!recoverable) {
+        setOnDevice({ kind: "blocked", reason: `${code}${resume ? " after one retry; restart Chrome to reset its on-device model service" : ""}` });
+      }
+    } finally {
+      setBusy(null);
     }
   }
 
@@ -164,12 +195,28 @@ export function PhantomPanel({
                 Runs <span className="font-mono">ONLY_ON_DEVICE</span> on synthetic samples.
                 Suggestions never change shareability or contracts automatically.
               </p>
-              <Button className="mt-2" onClick={() => void suggestOnDevice()} data-testid="suggest-on-device">
+              <Button className="mt-2" onClick={() => void suggestOnDevice(false)} disabled={Boolean(busy)} data-testid="suggest-on-device">
                 Suggest field roles on-device
               </Button>
             </>
           )}
-          {suggestError ? <p className="mt-2 text-danger">{suggestError}</p> : null}
+          {busy ? (
+            <p className="mt-2 text-mute" role="status" data-testid="on-device-progress">
+              Gemini Nano is classifying <span className="font-mono">{busy.alias}</span> on this device ({busy.done} of {busy.total} done)…
+            </p>
+          ) : null}
+          {suggestError ? (
+            <div className="mt-2">
+              <p className="text-danger" data-testid="on-device-error">
+                {suggestError.message}
+              </p>
+              {suggestError.recoverable && onDevice.kind === "available" ? (
+                <Button className="mt-2" onClick={() => void suggestOnDevice(true)} disabled={Boolean(busy)} data-testid="retry-on-device">
+                  Retry once on-device (continues with the remaining fields)
+                </Button>
+              ) : null}
+            </div>
+          ) : null}
           {suggestions.length > 0 ? (
             <ul className="mt-2 font-mono text-xs" data-testid="on-device-suggestions">
               {suggestions.map((item) => (

@@ -1,72 +1,86 @@
 # 90-second demo
 
-Product walkthrough for the #BuildHybridAI 2026 submission video. The submission video may run to 3 minutes; the walkthrough targets 90 seconds.
+Canonical walkthrough for the #BuildHybridAI 2026 submission video. The video may run to 3:00; the product walkthrough targets **90 seconds**.
 
-**Rule:** show only what is verified on the recording machine at recording time. Each segment below lists the live check that must pass before it can be shown as real. Never record test-adapter output as Gemini.
+**Rule:** show only what is verified on the recording machine at recording time. Every frame comes from a real run: real UI, real Gemini Nano, real Gemini cloud, real local execution. Never record the simulated test adapter, never patch the UI, and never show a debug token, DevTools with a token, `.env.local`, or a terminal.
 
-## Verified status (2026-11-11)
+**No video has been recorded or uploaded yet.** Do not reference a YouTube URL until one exists.
+
+## Verified status
 
 | Capability | Status | Evidence |
 | --- | --- | --- |
-| Real on-device Gemini Nano through Firebase AI Logic (`ONLY_ON_DEVICE`) | **Verified** | LIVE-007, LIVE-013: `source=ON_DEVICE`, `simulated=false`, schema-valid, no `generateContent` request |
-| Real cloud Gemini through Firebase AI Logic (`ONLY_IN_CLOUD`) | **Verified** | LIVE-004: `source=IN_CLOUD`, schema-valid. LIVE-009: valid proposal identical to the canonical mapping, aliases resolved locally, 3 imported records pass, 3 reserved hidden cases fail, no private terms in the request body |
-| Local Phantom Twin, disclosure, alias resolution, Reality Check | Verified (deterministic) | `pnpm test:all` |
+| Real on-device Gemini Nano (`ONLY_ON_DEVICE`) | Verified, EVO X3 dedicated profile | LIVE-007, LIVE-013; Sprint 5 reliability study ([../sprints/sprint-5.md](../sprints/sprint-5.md)) |
+| Real cloud Gemini (`ONLY_IN_CLOUD`, App Check enforced) | Verified on localhost with the debug provider | LIVE-004, LIVE-009 (Sprint 4 and Sprint 5 re-runs) |
+| Real cloud Gemini from a hosted production build | **Not yet**: needs owner-approved deployment ([../deployment.md](../deployment.md)) | — |
+| Phantom Twin, disclosure, alias resolution, Reality Check | Verified (deterministic) | `pnpm test:all` |
 
-Both passed on 2026-11-11, so use **Script A**. Re-run `pnpm test:live` on the recording day; if cloud access breaks, fall back to **Script B**.
+## Storyboard and narration (Script A — hybrid)
 
-## Setup before recording
-
-1. Use the dedicated Chrome profile where Gemini Nano is downloaded. On the EVO X3 that is `~/.cache/eyes-without-a-face/chrome-nano-profile`. Launch it the same way as `tests/live/fixtures.ts`:
-
-   ```bash
-   google-chrome --user-data-dir="$HOME/.cache/eyes-without-a-face/chrome-nano-profile" \
-     --enable-features=OptimizationGuideOnDeviceModel:BypassPerfRequirement/true,PromptAPIForGeminiNano,PromptAPIForGeminiNanoMultimodalInput \
-     http://127.0.0.1:5173/
-   ```
-
-2. `pnpm dev --host 127.0.0.1 --port 5173` with `.env.local` loaded (cloud and on-device flags `true`).
-3. For Script A: the debug token must be registered, and the recording browser must use it. In DevTools, before the app loads, run `self.FIREBASE_APPCHECK_DEBUG_TOKEN = "<token>"` and reload. **Do not record DevTools while the token is visible.** A simpler option: register the token the SDK prints for this profile once, then record without DevTools open.
-4. Close unrelated tabs and notifications. Use window size 1280×800 and zoom 110%.
-5. Do a dry run once. The first on-device call warms the model.
-
-## Script A — hybrid (only after cloud is verified)
-
-| Time | Screen | Narration |
+| Time | Screen and exact clicks | Narration (English) |
 | --- | --- | --- |
-| 00:00–00:12 | Source System step. Click **Load fictional CRM sample**. The records appear. | "Enterprise teams need integrations against systems they can't share. This CRM export is private, so it can't go to a cloud model." |
-| 00:12–00:30 | Phantom Twin step. Point at the `f_01…f_06` aliases and synthetic examples. Click **Suggest field roles on-device**. Roles appear labeled *real on-device*. | "Everything here runs locally. A deterministic generator replaces every field with a meaningless alias and fictional examples. Gemini Nano, running in Chrome through Firebase AI Logic, classifies each field on the device. Nothing leaves the machine." |
-| 00:30–00:45 | Disclosure Review. Click **Build exact outbound prompt**. Scroll the exact prompt and hash. Click **Approve this exact prompt**. | "Only this exact payload can go to the cloud: aliases, fictional examples and the destination shape. No real field names, no real values. I approve it, and the approval is bound to this SHA-256 hash and can be used once." |
-| 00:45–01:05 | Cloud Mapping. Click **Send approved request to Gemini**. The proposal appears with the origin badge *Real Gemini output · IN_CLOUD*. | "Gemini in the cloud proposes a mapping using eight declarative operations. It never sees the data and can't execute code. The proposal is validated and converted to a mapping contract. Anything outside the allowlist is rejected, never repaired." |
-| 01:05–01:22 | Reality Check. Click **Run Reality Check**. The verdict and stage statuses appear, the imported records pass, and a reserved hidden case fails with `UNMAPPED_ENUM` on an alias. | "Back on the device, aliases resolve to the real fields and the mapping runs deterministically on the private records. Hidden test cases were never profiled or disclosed, and one exposes a status value the mapping doesn't cover. The summary names the alias, not the value." |
-| 01:22–01:30 | Pull back to the step bar. | "Eyes Without a Face: build integrations against private systems without exposing their original records to cloud AI." |
+| 00:00–00:12 | Landing. Point at the five-step strip. Click **Try the fictional CRM demo**. The structure profile and "3 reserved hidden cases" appear. | "A developer needs to integrate a private CRM. A cloud model could write the mapping, but these customer records can't leave the machine." |
+| 00:12–00:30 | Click **Continue to Phantom Twin**. Point at aliases `f_01…f_06` and the fictional examples. Click **Suggest field roles on-device**. The roles appear, each labeled *(real on-device)*. | "So we build a Phantom Twin: meaningless aliases and fictional values. Gemini Nano runs on this device through Firebase AI Logic and classifies each field. Nothing has left the browser." |
+| 00:30–00:45 | Tick **Disclose 3 category labels** on the status field (a deliberate, visible choice). Click **Continue to disclosure review** → **Build exact outbound prompt**. Scroll the prompt briefly, show the SHA-256 line, then click **Approve this exact prompt**. | "This is the exact request the app will send: aliases, fictional examples, a minimal target shape. No real values, no real field names. I approve this one request; any change invalidates it." |
+| 00:45–01:05 | Click **Continue to Cloud Mapping** → **Send approved request to Gemini**. The badge *Real Gemini output · IN_CLOUD* appears, then **Valid · 5 operations · aliases resolved locally**. | "Gemini in the cloud proposes a declarative mapping from eight allowed operations. It can't run code. The SDK reports IN_CLOUD, and our validator accepts the proposal without repairing anything." |
+| 01:05–01:22 | Click **Continue to Reality Check** → **Run Reality Check**. The verdict card shows **3 / 3 imported records transformed** and **0 / 3 reserved hidden cases covered**. Scroll to one transformed record, then to `UNMAPPED_ENUM · f_03`. | "Back on the device, aliases resolve to the real fields and the mapping runs on the private records: all three transform. But three hidden cases the model never saw break it: an unknown status, a malformed email, a missing one. We found that before production, without showing the model the data." |
+| 01:22–01:30 | Scroll to the top; the header and tagline are visible. | "Eyes Without a Face. Build for systems your AI cannot see." |
 
-## Script B — factual alternate (current state)
+### Exact click path (rehearse it)
 
-Same flow, but stop after Disclosure Review for the cloud segment:
+1. `Try the fictional CRM demo`
+2. `Continue to Phantom Twin`
+3. `Suggest field roles on-device` (wait for 6 roles)
+4. `Disclose 3 category labels` (status field, `f_03` at the default seed)
+5. `Continue to disclosure review`
+6. `Build exact outbound prompt`
+7. `Approve this exact prompt`
+8. `Continue to Cloud Mapping`
+9. `Send approved request to Gemini`
+10. `Continue to Reality Check`
+11. `Run Reality Check`
 
-- 00:45–01:05: show the approved payload and hash, then say: *"In the full flow this exact payload goes to Gemini through Firebase AI Logic. In this recording, cloud access is waiting on App Check registration. The local pipeline is unchanged either way."*
-- Run the Reality Check with **Manual local contract** selected. The active-mapping label says it is manual, so say "a manual mapping", never "Gemini's mapping".
-- Do not click **Send approved request to Gemini** and do not use the simulated test adapter on camera.
+## Preparation checklist
 
-## Recording instructions
+- [ ] `git rev-parse --short HEAD` noted. Recording uses a committed revision (the footer shows the build).
+- [ ] **Preferred: record on the hosted production build** once it is approved and verified. No debug token exists in that build.
+- [ ] If recording on localhost: the debug token is registered and injected **before** recording, off camera, then the page is reloaded with DevTools closed. Never record DevTools.
+- [ ] Fresh Chrome on the dedicated Nano profile, started within the last few minutes. One full warm-up run done. Other Chrome windows closed.
+- [ ] `pnpm test:live` (with `EYES_LIVE_CLOUD=1 EYES_LIVE_ON_DEVICE=1`) passed today.
+- [ ] Window 1280×800, zoom 110%, notifications off, bookmarks bar hidden, no personal tabs.
+- [ ] English captions prepared from the narration above.
 
-- Record the browser window only (for example OBS window capture), at 1080p and 30 fps. Do not record the terminal or DevTools.
-- Record narration separately and trim it to the timings above. Keep within 3:00 total including any intro.
-- Upload to YouTube as public or unlisted, according to the Official Rules. Captions must be in English.
-- Do not use fabricated or edited UI states. Every frame must come from a real run.
+## Fallback plan
 
-## Technical proof summary (for the submission text)
+| Situation | Action on camera | Never do |
+| --- | --- | --- |
+| On-device run stops with `ON_DEVICE_RUNTIME_ERROR` | Click **Retry once on-device**. It resumes the remaining fields. If it fails again, stop, restart Chrome and re-record the segment | Switch to the simulated adapter; edit the frame |
+| On-device unavailable on the day | Record **Script B** below. Say "on this machine the on-device model is unavailable; the app switches to deterministic mode and never sends the data to the cloud instead" | Claim on-device inference |
+| Cloud fails (`APP_CHECK_REJECTED`, network) | Stop. The approval is consumed. Fix it off camera and re-record from Disclosure Review | Retry the same approval; show the error as "success" |
+| Proposal rejected by the validator | That is a real result. Either show it ("the validator refuses invalid AI output") or re-record | Hand-edit the proposal and call it Gemini's |
 
-- **On-device:** Firebase AI Logic `InferenceMode.ONLY_ON_DEVICE` with Chrome's Prompt API (Gemini Nano). Output is constrained by a JSON Schema `responseConstraint` and validated with Ajv. Provenance comes from the SDK's `inferenceSource`, never from the requested mode.
-- **Cloud:** Firebase AI Logic `ONLY_IN_CLOUD` with the Gemini Developer API and App Check (reCAPTCHA Enterprise). It receives only an allowlisted `CloudDisclosurePayload` 1.1.0. The exact prompt is approved by SHA-256, and each approval works once.
-- **No automatic fallback** between modes: private data never falls back to the cloud.
-- **Deterministic execution:** an eight-operation mapping DSL interpreter. The model output is data, never code.
-- **Reality Check:** five independent stage statuses (contract, target schema, execution, output schema, hidden cases), with safe alias-level summaries.
-- Tests: unit, contract, privacy and adversarial suites, deterministic Playwright, and an opt-in live suite (`docs/testing/playwright-live.md`).
+## Script B — degraded but honest
+
+For when cloud or on-device is unavailable. On-device unavailable: the twin step shows **On-device AI unavailable — manual/deterministic mode**; narrate it as such. Cloud unavailable: the mapping step shows **Cloud Gemini is not available in this build** and the approval stays unused. Open **No cloud? Use a hand-written contract**, run the Reality Check, and call it "a hand-written mapping", never "Gemini's mapping".
+
+## Recording recommendations
+
+- Capture the browser window only (OBS window capture), 1080p / 30 fps. Record narration separately and fit it to the timings.
+- A 3:00 video could be: 0:00–0:15 title and problem, 0:15–1:45 the walkthrough above, 1:45–2:30 the technical proof (architecture diagram, `IN_CLOUD`/`ON_DEVICE` provenance, privacy test results), 2:30–3:00 limitations and close.
+- Upload to YouTube (public or unlisted, as the rules require) with English captions.
 
 ## Screenshots
 
-- `screenshots/on-device-role-suggestions.png` (LIVE-013): real Gemini Nano role suggestions on the fictional CRM twin.
-- `screenshots/reality-check-real-gemini.png` (LIVE-009): Reality Check running the real Gemini `IN_CLOUD` proposal. Imported records pass, and hidden cases fail by alias.
+`docs/demo/screenshots/` holds only fictional data. Regenerate them from a real run after UI changes; they must never show tokens or DevTools.
 
-Both contain only fictional data.
+- `on-device-role-suggestions.png`: real Gemini Nano role suggestions (LIVE-013).
+- `reality-check-real-gemini.png`: Reality Check on a real `IN_CLOUD` proposal (LIVE-009).
+
+## Technical proof appendix
+
+- **On-device:** Firebase AI Logic `InferenceMode.ONLY_ON_DEVICE` → Chrome Prompt API (Gemini Nano). Output is constrained with a JSON Schema `responseConstraint` and validated with Ajv. Provenance is the SDK's `inferenceSource`.
+- **Cloud:** Firebase AI Logic `ONLY_IN_CLOUD`, Gemini Developer API (`gemini-3.5-flash-lite`). App Check (reCAPTCHA Enterprise) enforced on `firebaseml.googleapis.com`. Receives only an allowlisted `CloudDisclosurePayload` 1.1.0. The exact prompt is approved by SHA-256, one request per approval.
+- **No automatic fallback** between modes. On-device failures allow at most one user-initiated retry.
+- **Deterministic execution:** an eight-operation mapping DSL interpreter. Model output is data, never code.
+- **Reality Check:** five independent stage statuses and a verdict that separates imported-record success from hidden-case coverage.
+- **Tests:** unit, contract, privacy (including adversarial and release-artifact checks), deterministic Playwright, and the opt-in live suite plus reliability study.

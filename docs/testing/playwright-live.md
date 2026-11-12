@@ -69,3 +69,29 @@ EYES_CHROME_PROFILE="$HOME/.cache/eyes-without-a-face/chrome-nano-profile" pnpm 
 | LIVE-015 | Request bodies hold only the approved fictional representation | LIVE-009 body scan |
 | LIVE-016 | Reserved hidden case fails for real | LIVE-009 |
 | LIVE-017 | Guided walkthrough with no page errors | LIVE-009, LIVE-013 |
+
+## Sprint 5 additions
+
+### On-device reliability study (opt-in, never in CI)
+
+```bash
+EYES_LIVE_TESTS=1 EYES_LIVE_RELIABILITY=1 EYES_RELIABILITY_ATTEMPTS=10 \
+EYES_CHROME_PROFILE="$HOME/.cache/eyes-without-a-face/chrome-nano-profile" \
+EYES_RELIABILITY_CHROME_LOG_DIR="$HOME/.cache/eyes-without-a-face/chrome-logs" \
+pnpm test:live tests/live/nano-reliability.spec.ts
+```
+
+Each attempt launches a **fresh Chrome process** on the dedicated profile and runs the guided Phantom Twin on-device step (6 real Nano calls), which is the *cold* run. It then reloads the page in the same process and runs again, the *warm* run. Per run it records the outcome, latency, error text, whether the one user-initiated retry recovered, and the count of cloud `generateContent` requests, which must be 0. Results go to `test-results/sprint-5-reliability/runs.json` (gitignored). The optional Chrome log directory must be outside the repository.
+
+Do not edit `src/` while it runs. The dev server hot-reloads, which disturbs the page under test.
+
+### Deterministic coverage of the new states (`pnpm test:e2e`)
+
+`tests/e2e/release.spec.ts` adds E2E-040 to E2E-043:
+
+- first-use landing and demo entry point;
+- on-device recovery: retry resumes the remaining fields, a second failure blocks, no cloud request;
+- cloud unavailable: the approval stays unused and the walkthrough finishes on the labeled manual path;
+- the Reality Check verdict never reads as success when hidden cases fail.
+
+Test-only harness switches `onDeviceAvailable` and `onDeviceRuntimeFailures` simulate availability and Chrome model-service failures. Their results are labeled *simulated test adapter*.

@@ -11,6 +11,8 @@ import {
   GoogleAIBackend,
   InferenceMode,
   type GenerativeModel,
+  type LanguageModelCreateOptions,
+  type LanguageModelPromptOptions,
 } from "firebase/ai";
 import type { AppConfig } from "../config/env.ts";
 import { assertExpectedFirebaseIdentity, requireFirebaseConfig } from "../config/firebase.ts";
@@ -26,6 +28,7 @@ import {
   type AuthorizedCloudRequest,
 } from "../twin/authorization.ts";
 import { assertReservedAuthorization } from "../twin/authorization-ledger.ts";
+import { raceAbort } from "./abort.ts";
 import { recordDiagnostic } from "./diagnostics.ts";
 import { classifyUnknownError, InferenceError, InferenceUnavailableError } from "./errors.ts";
 import { FIREBASE_AI_LOGIC_API } from "./firebase-api.ts";
@@ -43,6 +46,7 @@ import {
 } from "./provenance.ts";
 import {
   CLOUD_TIMEOUT_MS,
+  isRecoverableOnDeviceFailure,
   ON_DEVICE_TIMEOUT_MS,
   timeoutErrorMessage,
 } from "./retry-policy.ts";
@@ -109,6 +113,15 @@ class LiveFirebaseRuntime {
   private readonly app: FirebaseApp;
   private readonly appCheck: AppCheck | null;
   private onDeviceModel: GenerativeModel | null = null;
+  /**
+   * The SDK keeps these objects by reference and passes them to
+   * LanguageModel.create() / session.prompt(). On-device calls are serialized
+   * (onDeviceBusy), so each request attaches its AbortSignal here; a timeout
+   * then cancels the real Chrome prompt instead of abandoning it (Sprint 5:
+   * an abandoned hung prompt blocked the next session).
+   */
+  private onDeviceCreateOptions: LanguageModelCreateOptions | null = null;
+  private onDevicePromptOptions: (LanguageModelPromptOptions & { signal?: AbortSignal }) | null = null;
   private cloudModel: GenerativeModel | null = null;
   private initializingOnDevice: Promise<void> | null = null;
   private onDeviceBusy = false;
@@ -174,20 +187,23 @@ class LiveFirebaseRuntime {
       if (capability.languageModelAvailability === "unavailable") {
         throw new InferenceUnavailableError(capability.guidance, "MODEL_UNAVAILABLE");
       }
+      const createOptions: LanguageModelCreateOptions = {
+        expectedInputs: [{ type: "text", languages: ["en"] }],
+        expectedOutputs: [{ type: "text", languages: ["en"] }],
+      };
+      const promptOptions: LanguageModelPromptOptions & { signal?: AbortSignal } = {
+        responseConstraint: FIELD_INTERPRETATION_JSON_SCHEMA,
+      };
       const model = getGenerativeModel(this.ai(), {
         mode: InferenceMode.ONLY_ON_DEVICE,
-        onDeviceParams: {
-          createOptions: {
-            expectedInputs: [{ type: "text", languages: ["en"] }],
-            expectedOutputs: [{ type: "text", languages: ["en"] }],
-          },
-          promptOptions: { responseConstraint: FIELD_INTERPRETATION_JSON_SCHEMA },
-        },
+        onDeviceParams: { createOptions, promptOptions },
       });
       await model.initializeDeviceModel((progress) => {
         onProgress?.(progress);
       });
       this.onDeviceModel = model;
+      this.onDeviceCreateOptions = createOptions;
+      this.onDevicePromptOptions = promptOptions;
     })();
     try {
       await this.initializingOnDevice;
@@ -228,7 +244,9 @@ class LiveFirebaseRuntime {
         throw new InferenceUnavailableError("On-device model was not initialized.", "MODEL_UNAVAILABLE");
       }
       const prompt = buildOnDevicePrompt(request.input);
-      const result = await model.generateContent(prompt, { signal: controller.signal });
+      if (this.onDeviceCreateOptions) this.onDeviceCreateOptions.signal = controller.signal;
+      if (this.onDevicePromptOptions) this.onDevicePromptOptions.signal = controller.signal;
+      const result = await raceAbort(model.generateContent(prompt, { signal: controller.signal }), controller.signal);
       return this.finishStructuredResult({
         kind: "field-interpretation",
         text: result.response.text(),
@@ -238,7 +256,15 @@ class LiveFirebaseRuntime {
         model: "chrome-prompt-api",
       });
     } catch (error) {
-      const classified = this.classifyGenerateError(error, controller, ON_DEVICE_TIMEOUT_MS);
+      const classified = this.classifyGenerateError(error, controller, ON_DEVICE_TIMEOUT_MS, "on-device");
+      if (isRecoverableOnDeviceFailure(classified.code)) {
+        // Drop the cached model (and its Chrome session) so a user-initiated
+        // retry starts from a fresh LanguageModel session.
+        this.onDeviceModel = null;
+        this.onDeviceCreateOptions = null;
+        this.onDevicePromptOptions = null;
+        this.initializingOnDevice = null;
+      }
       recordDiagnostic({
         kind: "on-device-inference",
         durationMs: Math.round(performance.now() - started),
@@ -250,6 +276,8 @@ class LiveFirebaseRuntime {
     } finally {
       clearTimeout(timer);
       request.signal?.removeEventListener("abort", onAbort);
+      if (this.onDeviceCreateOptions) delete this.onDeviceCreateOptions.signal;
+      if (this.onDevicePromptOptions) delete this.onDevicePromptOptions.signal;
       this.onDeviceBusy = false;
     }
   }
@@ -295,7 +323,7 @@ class LiveFirebaseRuntime {
       if (prompt !== request.outboundPrompt) {
         throw new InferenceError("DESTINATION_MISMATCH", "Outbound prompt changed after authorization.");
       }
-      const result = await this.cloudModel.generateContent(prompt, { signal: controller.signal });
+      const result = await raceAbort(this.cloudModel.generateContent(prompt, { signal: controller.signal }), controller.signal);
       return this.finishStructuredResult({
         kind: "mapping-proposal",
         text: result.response.text(),
@@ -305,7 +333,7 @@ class LiveFirebaseRuntime {
         model: FIREBASE_AI_LOGIC_API.defaultCloudModel,
       });
     } catch (error) {
-      const classified = this.classifyGenerateError(error, controller, CLOUD_TIMEOUT_MS);
+      const classified = this.classifyGenerateError(error, controller, CLOUD_TIMEOUT_MS, "cloud");
       recordDiagnostic({
         kind: "cloud-inference",
         durationMs: Math.round(performance.now() - started),
@@ -341,9 +369,19 @@ class LiveFirebaseRuntime {
     }
   }
 
-  private classifyGenerateError(error: unknown, controller: AbortController, timeoutMs: number): InferenceError {
+  private classifyGenerateError(
+    error: unknown,
+    controller: AbortController,
+    timeoutMs: number,
+    execution: "on-device" | "cloud",
+  ): InferenceError {
     if (controller.signal.aborted && controller.signal.reason === "timeout") {
-      return new InferenceError("TIMEOUT", timeoutErrorMessage(timeoutMs, false));
+      return new InferenceError(
+        "TIMEOUT",
+        execution === "on-device"
+          ? `The on-device model did not answer within ${Math.round(timeoutMs / 1000)} s. Its result will be discarded. Nothing was sent to the cloud.`
+          : timeoutErrorMessage(timeoutMs, false),
+      );
     }
     return classifyUnknownError(error);
   }

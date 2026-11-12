@@ -3,7 +3,7 @@ import { Badge } from "../components/ui/badge.tsx";
 import { Button } from "../components/ui/button.tsx";
 import { ErrorBanner } from "../components/ErrorBanner.tsx";
 import { recordWorkflowEvent } from "../observability/workflow-log.ts";
-import { runRealityCheck, type RealityCheckStatuses } from "../verification/reality-check.ts";
+import { runRealityCheck, type RealityCheckReport, type RealityCheckStatuses } from "../verification/reality-check.ts";
 import type { PreparedTwin } from "../workflow/pipeline.ts";
 import { ORIGIN_LABELS } from "./result-kind.ts";
 import type { WorkspaceState } from "./workspace-state.ts";
@@ -82,9 +82,10 @@ export function VerificationPanel({
         <Badge className="border-local/50 text-local">Local only · deterministic engine</Badge>
       </div>
       <p className="mt-2 text-sm leading-6 text-mute">
-        Aliases are resolved to the private fields inside this page, then the Sprint 2 engine runs
-        every record and validates it against the destination JSON Schema. Failures are reported,
-        never auto-corrected, and never sent to Gemini.
+        Aliases are resolved to the private fields inside this page. The deterministic mapping
+        engine then runs every record, plus reserved hidden cases that were never profiled or
+        disclosed, and validates each output against the destination JSON Schema. Failures are
+        reported, never auto-corrected, and never sent to Gemini.
       </p>
 
       <fieldset className="mt-4 space-y-1 text-sm" data-testid="mapping-choice">
@@ -106,11 +107,11 @@ export function VerificationPanel({
             checked={!useProposal}
             onChange={() => onChange({ ...workspace, mappingChoice: "manual", report: null })}
           />
-          Manual local contract (Sprint 2 baseline, not AI)
+          Hand-written local contract (not AI)
         </label>
       </fieldset>
       <p className="mt-2 text-xs text-mute" data-testid="active-mapping-origin">
-        Active mapping: {useProposal && proposal ? `${ORIGIN_LABELS[proposal.origin]} · resolved locally` : "Manual local contract"}
+        Active mapping: {useProposal && proposal ? `${ORIGIN_LABELS[proposal.origin]} · resolved locally` : "Hand-written local contract (not AI)"}
       </p>
 
       {reserved ? (
@@ -137,6 +138,7 @@ export function VerificationPanel({
       ) : null}
       {report ? (
         <div className="mt-4 space-y-3 text-sm" data-testid="mapping-results">
+          <VerdictCard report={report} />
           <p data-testid="mapping-summary" className="font-medium">
             {report.passed} passed · {report.failed} failed · {report.total} records ·{" "}
             {report.failed === 0 && report.total > 0 ? "batch ok" : "batch failed"}
@@ -232,5 +234,64 @@ export function VerificationPanel({
         <p className="mt-4 text-sm text-mute">No results yet.</p>
       )}
     </section>
+  );
+}
+
+/**
+ * Headline verdict. Separates "the imported records transformed" from "the
+ * reserved hidden cases are covered" so a partial result never reads as full
+ * success. The overall verdict is still the strict report.overall.
+ */
+function VerdictCard({ report }: { report: RealityCheckReport }) {
+  const imported = report.rows.filter((row) => row.set !== "reserved");
+  const importedPassed = imported.filter((row) => row.status === "pass").length;
+  const reservedPassed = report.reservedTotal - report.reservedFailed;
+  const ran = report.blockingIssues.length === 0 && report.total > 0;
+  let headline: string;
+  let detail: string;
+  if (report.overall === "pass") {
+    headline = "PASS · the mapping holds";
+    detail =
+      report.reservedTotal > 0
+        ? "Every imported record and every reserved hidden case produced valid destination output."
+        : "Every imported record produced valid destination output. No reserved hidden cases were run.";
+  } else if (!ran) {
+    headline = "FAIL · the mapping could not run";
+    detail = "The contract or destination schema was refused before any record was processed.";
+  } else if (importedPassed === imported.length && report.reservedFailed > 0) {
+    headline = "FAIL · gaps found in cases the model never saw";
+    detail = `The mapping transforms all ${imported.length} imported records, but ${report.reservedFailed} of ${report.reservedTotal} reserved hidden cases break it. These records were never profiled or disclosed, so no model could have planned for them. Each failure is a real limitation of this mapping, found locally before production.`;
+  } else {
+    headline = "FAIL · imported records failed";
+    detail = `${imported.length - importedPassed} of ${imported.length} imported records did not produce valid destination output.`;
+  }
+  return (
+    <div
+      className={`border-l-4 p-4 ${report.overall === "pass" ? "border-local bg-local/5" : "border-danger bg-danger/5"}`}
+      data-testid="reality-verdict"
+      data-status={report.overall}
+    >
+      <p className="text-lg font-semibold" role="status">
+        {headline}
+      </p>
+      <p className="mt-1 leading-6 text-mute">{detail}</p>
+      <dl className="mt-3 grid gap-3 sm:grid-cols-2">
+        <div className="border border-rule bg-panel p-3">
+          <dt className="text-xs text-mute">Imported records transformed</dt>
+          <dd className={`mt-1 font-mono text-2xl ${importedPassed === imported.length && ran ? "text-local" : "text-danger"}`} data-testid="verdict-imported">
+            {importedPassed} / {imported.length}
+          </dd>
+        </div>
+        <div className="border border-rule bg-panel p-3">
+          <dt className="text-xs text-mute">Reserved hidden cases covered</dt>
+          <dd
+            className={`mt-1 font-mono text-2xl ${report.reservedTotal === 0 ? "text-mute" : report.reservedFailed === 0 ? "text-local" : "text-danger"}`}
+            data-testid="verdict-reserved"
+          >
+            {report.reservedTotal === 0 ? "not run" : `${reservedPassed} / ${report.reservedTotal}`}
+          </dd>
+        </div>
+      </dl>
+    </div>
   );
 }

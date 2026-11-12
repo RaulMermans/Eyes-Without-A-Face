@@ -2,8 +2,11 @@ name: CI
 
 on:
   push:
-    branches: [main, sprint-0, sprint-1, sprint-1.1, sprint-2, sprint-3, sprint-4]
+    branches: [main, sprint-5]
   pull_request:
+
+permissions:
+  contents: read
 
 jobs:
   quality:
@@ -12,9 +15,9 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+      # Version comes from package.json "packageManager"; also passing `version`
+      # makes pnpm/action-setup@v4 fail with "Multiple versions of pnpm specified".
       - uses: pnpm/action-setup@v4
-        with:
-          version: 10
       - uses: actions/setup-node@v4
         with:
           node-version: 22

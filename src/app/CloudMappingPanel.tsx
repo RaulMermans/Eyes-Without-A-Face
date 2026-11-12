@@ -39,7 +39,10 @@ export function CloudMappingPanel({
   const proposal = workspace.proposal;
   const harness = typeof window !== "undefined" && Boolean(window.__EYES_WITHOUT_A_FACE_TEST__);
   const cloudStatus = inference.cloud.status();
-  const canSend = Boolean(review && review.status === "approved" && review.approval && prepared) && !busy;
+  // Never spend an approval on a request that cannot be dispatched. The gate
+  // and adapter still refuse independently (defense in depth).
+  const cloudAvailable = harness || cloudStatus.state === "configured";
+  const canSend = cloudAvailable && Boolean(review && review.status === "approved" && review.approval && prepared) && !busy;
 
   function evaluate(input: { structured: unknown; text: string; origin: ProposalOrigin; requestId: string; provenance: ProposalState["provenance"] }): ProposalState | null {
     if (!prepared || !review) return null;
@@ -155,6 +158,17 @@ export function CloudMappingPanel({
           </p>
         ) : null}
 
+        {!cloudAvailable ? (
+          <div className="mt-3 border border-rule p-3 text-sm" data-testid="cloud-unavailable">
+            <p className="font-medium">Cloud Gemini is not available in this build ({liveInferenceLabel(cloudStatus).replace(/^Unavailable — /, "")}).</p>
+            <p className="mt-1 text-mute">
+              Your approval stays unused; nothing was sent. You can still finish the walkthrough: open
+              <span className="font-medium"> “No cloud? Use a hand-written contract”</span> below, then run the
+              Reality Check. That path is labeled as manual, never as Gemini output.
+            </p>
+          </div>
+        ) : null}
+
         <Button className="mt-4" variant="primary" onClick={() => void send()} disabled={!canSend} data-testid="send-cloud-request">
           Send approved request to Gemini
         </Button>
@@ -175,7 +189,14 @@ export function CloudMappingPanel({
           <div className="mt-5 space-y-3 text-sm" data-testid="proposal">
             <p>
               <span className="font-medium">Origin: </span>
-              <span data-testid="proposal-origin">{ORIGIN_LABELS[proposal.origin]}</span>
+              <span
+                data-testid="proposal-origin"
+                className={`inline-block border px-2 py-0.5 font-mono text-xs ${
+                  proposal.origin === "gemini-cloud" ? "border-cloud/60 bg-cloud/10 text-cloud" : "border-rule text-mute"
+                }`}
+              >
+                {ORIGIN_LABELS[proposal.origin]}
+              </span>
               {proposal.provenance ? (
                 <span className="ml-2 font-mono text-xs text-mute" data-testid="proposal-provenance">
                   source={proposal.provenance.actualSource} mode={proposal.provenance.requestedMode} simulated=
@@ -256,7 +277,7 @@ export function CloudMappingPanel({
 
       <details className="border border-rule bg-panel p-5" data-testid="manual-contract">
         <summary className="cursor-pointer text-sm font-medium">
-          Advanced: manual local contract over source field names (Sprint 2 baseline, not AI)
+          No cloud? Use a hand-written contract over local field names (not AI)
         </summary>
         <div className="mt-4">
           <MappingPanel workspace={workspace} onChange={onChange} />

@@ -10,7 +10,7 @@ export const WORKFLOW_STEPS = [
     id: "phantom",
     number: 2,
     title: "Phantom Twin",
-    processing: "local",
+    processing: "local · on-device AI",
     summary: "Generate a fictional twin: synthetic aliases and examples that stand in for the private fields.",
   },
   {
@@ -33,13 +33,6 @@ export const WORKFLOW_STEPS = [
     title: "Reality Check",
     processing: "local",
     summary: "Resolve aliases locally and run the mapping against the private records and reserved hidden cases.",
-  },
-  {
-    id: "export",
-    number: 6,
-    title: "Export",
-    processing: "local",
-    summary: "Package the mapping, synthetic fixtures, and verification report.",
   },
 ] as const;
 
