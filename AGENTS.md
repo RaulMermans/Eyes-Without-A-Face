@@ -27,6 +27,14 @@ Build a privacy-aware integration tool: private CRM JSON stays local; on-device 
 - On-device failures: at most one user-initiated retry (`ON_DEVICE_USER_RETRY_LIMIT`), resuming unclassified fields. Never retry automatically, never fall back to the cloud.
 - Do not offer UI steps that are not implemented.
 
+## Interface rules (Sprint 6)
+
+- Use the semantic tokens and primitives in `src/components/spectral.tsx`; see `docs/design/design-system.md`.
+- Never distinguish private / synthetic / cloud-bound by colour alone: pair zone colour with line style, icon, and label.
+- Presentation derives from workspace state; do not add parallel authoritative state. Visualizations must not show "validated" before validation ran.
+- Operation numbers are 1-based everywhere (`opNumber`).
+- No animation may suggest private data moving toward the cloud. Honour `prefers-reduced-motion`.
+
 ## Tool and data permissions
 
 Allowed without extra authorization: local files in this repository, local tests, local Vite server, Playwright against localhost.

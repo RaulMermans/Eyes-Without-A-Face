@@ -1,11 +1,13 @@
-import type { ChangeEvent } from "react";
+import type { ChangeEvent, ReactNode } from "react";
 import edgeRecords from "../examples/crm/edge-records.json" with { type: "json" };
-import { Badge } from "../components/ui/badge.tsx";
 import { Button } from "../components/ui/button.tsx";
 import { ErrorBanner } from "../components/ErrorBanner.tsx";
+import { ArrowRightIcon, LockIcon } from "../components/icons.tsx";
+import { Disclosure, Eyebrow, Panel, PanelHeader } from "../components/spectral.tsx";
 import type { ProfileIssue, SourceProfile } from "../domain/profile/profile.ts";
 import { withCrmDemo } from "./demo.ts";
 import { parseSourceDataset } from "./source-import.ts";
+import { firstPresent, formatSample } from "./view-model.ts";
 import { invalidateDownstream, type WorkspaceState } from "./workspace-state.ts";
 
 export function SourcePanel({
@@ -42,52 +44,34 @@ export function SourcePanel({
 
   const blocking = profileIssues.filter((issue) => issue.severity === "error");
   const notes = profile?.issues ?? [];
+  const source = workspace.source;
 
   return (
-    <section aria-labelledby="source-import-heading" className="border border-rule bg-panel p-5">
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <h3 id="source-import-heading" className="text-base font-semibold">
-          Import source JSON
-        </h3>
-        <Badge className="border-local/50 text-local">Local only · no network</Badge>
-      </div>
-      <p className="mt-2 text-sm leading-6 text-mute">
-        Records stay in this browser tab. Profiling reads the values to infer types, but nothing
-        here is uploaded or stored.
-      </p>
-      <div className="mt-4 flex flex-wrap gap-2">
-        <Button
-          onClick={() => onChange(withCrmDemo(workspace))}
-          data-testid="load-crm-sample"
-        >
+    <Panel tone="private" aria-labelledby="source-import-heading">
+      <PanelHeader id="source-import-heading" title="Import source JSON" eyebrow="Private source" zone="private" zoneText="Local only · no network">
+        Records stay in this browser tab. Profiling reads the values to infer types, but nothing here is uploaded or stored.
+      </PanelHeader>
+
+      <div className="mt-5 flex flex-wrap items-center gap-2">
+        <Button variant={source ? "outline" : "primary"} onClick={() => onChange(withCrmDemo(workspace))} data-testid="load-crm-sample">
           Load fictional CRM sample
         </Button>
-        <Button
-          onClick={() => applyText(JSON.stringify(edgeRecords), "fictional-crm-accounts-edge", null)}
-          data-testid="load-edge-sample"
-        >
+        <label className="inline-flex min-h-10 cursor-pointer items-center rounded-[3px] border border-rule bg-panel px-4 text-sm font-medium hover:border-ink/40 hover:bg-bone focus-within:outline-2 focus-within:outline-signal">
+          Import JSON file
+          <input className="sr-only" type="file" accept="application/json,.json,.txt" data-testid="source-file-input" onChange={onFile} />
+        </label>
+        <Button variant="ghost" onClick={() => applyText(JSON.stringify(edgeRecords), "fictional-crm-accounts-edge", null)} data-testid="load-edge-sample">
           Load reserved edge cases as source
         </Button>
-        <label className="inline-flex min-h-11 cursor-pointer items-center border border-rule bg-paper px-3 text-sm focus-within:outline-2 focus-within:outline-signal">
-          Import JSON file
-          <input
-            className="sr-only"
-            type="file"
-            accept="application/json,.json,.txt"
-            data-testid="source-file-input"
-            onChange={onFile}
-          />
-        </label>
       </div>
-      <details className="mt-4">
-        <summary className="cursor-pointer text-sm font-medium">Paste JSON instead</summary>
-        <label className="mt-2 block text-sm" htmlFor="source-json">
+      <Disclosure summary="Paste JSON instead" className="mt-4">
+        <label className="block text-sm" htmlFor="source-json">
           Source JSON (applied when the field loses focus)
         </label>
         <textarea
           id="source-json"
           data-testid="source-json-editor"
-          className="mt-1 min-h-32 w-full border border-rule bg-paper p-3 font-mono text-xs"
+          className="mt-1 min-h-32 w-full rounded-[3px] border border-rule bg-bone p-3 font-mono text-xs"
           placeholder='{"records":[{ "customer_id": "CUST-001" }]}'
           onBlur={(event) => {
             if (event.target.value.trim()) {
@@ -95,7 +79,8 @@ export function SourcePanel({
             }
           }}
         />
-      </details>
+      </Disclosure>
+
       {workspace.sourceError ? (
         <div className="mt-4" data-testid="source-import-error">
           <ErrorBanner title="Source JSON was rejected">{workspace.sourceError}</ErrorBanner>
@@ -114,45 +99,64 @@ export function SourcePanel({
           </ErrorBanner>
         </div>
       ) : null}
-      {workspace.source ? (
-        <div className="mt-4 space-y-3 text-sm" data-testid="source-inspect">
-          <p>
-            Dataset <span className="font-mono">{workspace.source.label}</span> ·{" "}
-            {workspace.source.records.length} records in memory
-            {workspace.reservedRecords ? (
-              <span data-testid="reserved-count">
-                {" "}
-                · {workspace.reservedRecords.length} reserved hidden cases held back for the Reality Check
-              </span>
-            ) : null}
-          </p>
+
+      {source ? (
+        <div className="mt-6 space-y-5 text-sm" data-testid="source-inspect">
+          <dl className="grid grid-cols-2 gap-px border border-ink/15 bg-ink/15 sm:grid-cols-4">
+            <Stat label="Dataset" value={<span className="font-mono text-sm [overflow-wrap:anywhere]">{source.label}</span>} />
+            <Stat label="Records in memory" value={`${source.records.length} records`} />
+            <Stat label="Fields profiled" value={profile ? String(profile.fields.length) : "—"} />
+            <Stat
+              label="Held back"
+              value={
+                workspace.reservedRecords ? (
+                  <span data-testid="reserved-count">
+                    {workspace.reservedRecords.length} reserved hidden cases held back for the Reality Check
+                  </span>
+                ) : (
+                  "none"
+                )
+              }
+              small
+            />
+          </dl>
+
           {profile ? (
             <div data-testid="source-profile">
-              <h4 className="font-medium">Local structure profile</h4>
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
+                <h4 className="font-semibold">Local structure profile</h4>
+                <p className="flex items-center gap-1.5 font-mono text-[11px] text-mute">
+                  <LockIcon size={12} /> values shown here never leave this browser
+                </p>
+              </div>
               <div className="mt-2 overflow-x-auto">
-                <table className="w-full min-w-[34rem] border-collapse text-left text-xs">
+                <table className="w-full min-w-[40rem] border-collapse text-left text-xs">
                   <thead>
-                    <tr className="border-b border-rule text-mute">
-                      <th className="py-1 pr-3 font-medium">Field (local)</th>
-                      <th className="py-1 pr-3 font-medium">Type</th>
-                      <th className="py-1 pr-3 font-medium">Presence</th>
-                      <th className="py-1 pr-3 font-medium">Notes</th>
+                    <tr className="border-b border-ink/30 font-mono text-[11px] uppercase tracking-[0.08em] text-mute">
+                      <th className="py-2 pr-3 font-medium">Field (local)</th>
+                      <th className="py-2 pr-3 font-medium">Type</th>
+                      <th className="py-2 pr-3 font-medium">Presence</th>
+                      <th className="py-2 pr-3 font-medium">Local value</th>
+                      <th className="py-2 pr-3 font-medium">Notes</th>
                     </tr>
                   </thead>
                   <tbody>
                     {profile.fields.map((field) => (
-                      <tr key={field.path} className="border-b border-rule/60" data-testid={`profile-field-${field.path}`}>
-                        <td className="py-1 pr-3 font-mono">{field.path}</td>
-                        <td className="py-1 pr-3">
+                      <tr key={field.path} className="border-b border-rule align-top" data-testid={`profile-field-${field.path}`}>
+                        <td className="py-2 pr-3 font-mono font-medium [overflow-wrap:anywhere]">{field.path}</td>
+                        <td className="py-2 pr-3">
                           {field.supported ? field.type : "unsupported"}
                           {field.format ? ` (${field.format})` : ""}
                           {field.dateFormat ? ` (${field.dateFormat})` : ""}
                         </td>
-                        <td className="py-1 pr-3">
+                        <td className="py-2 pr-3">
                           {field.required ? "required" : `optional (${field.missingCount} missing)`}
                           {field.nullable ? `, ${field.nullCount} null` : ""}
                         </td>
-                        <td className="py-1 pr-3 text-mute">
+                        <td className="max-w-[16rem] py-2 pr-3 font-mono whitespace-pre-wrap text-ink/80 [overflow-wrap:anywhere]">
+                          {formatSample(firstPresent(source.records, field.path), 34)}
+                        </td>
+                        <td className="py-2 pr-3 text-mute">
                           {[
                             field.type === "enum" ? `${field.categories?.length ?? 0} categories` : null,
                             field.hasPaddedWhitespace ? "surrounding whitespace" : null,
@@ -170,8 +174,8 @@ export function SourcePanel({
               {notes.length > 0 ? (
                 <ul className="mt-3 space-y-1 text-xs" data-testid="profile-issues">
                   {notes.map((issue, index) => (
-                    <li key={`${issue.code}-${index}`}>
-                      <span className="font-mono">{issue.severity.toUpperCase()}</span> {issue.code}
+                    <li key={`${issue.code}-${index}`} className="text-mute">
+                      <span className="font-mono text-ink">{issue.severity.toUpperCase()}</span> {issue.code}
                       {issue.path ? ` · ${issue.path}` : ""}: {issue.message}
                     </li>
                   ))}
@@ -179,24 +183,36 @@ export function SourcePanel({
               ) : null}
             </div>
           ) : null}
-          <details>
-            <summary className="cursor-pointer font-medium">Inspect first record</summary>
-            <pre
-              className="mt-2 max-h-56 overflow-auto border border-rule bg-paper p-3 font-mono text-xs"
-              data-testid="source-first-record"
-            >
-              {JSON.stringify(workspace.source.records[0], null, 2)}
+          <Disclosure summary="Inspect first record">
+            <pre className="max-h-56 overflow-auto rounded-[3px] border border-rule bg-bone p-3 font-mono text-xs" data-testid="source-first-record">
+              {JSON.stringify(source.records[0], null, 2)}
             </pre>
-          </details>
+          </Disclosure>
           {profile ? (
-            <Button variant="primary" onClick={onContinue} data-testid="continue-to-twin">
-              Continue to Phantom Twin
-            </Button>
+            <div className="flex flex-wrap items-center gap-3 border-t border-rule pt-5">
+              <Button variant="primary" onClick={onContinue} data-testid="continue-to-twin">
+                Continue to Phantom Twin
+                <ArrowRightIcon />
+              </Button>
+              <p className="text-xs text-mute">Next: replace every field with an alias and fictional values. Still local.</p>
+            </div>
           ) : null}
         </div>
       ) : (
-        <p className="mt-4 text-sm text-mute">No source dataset loaded.</p>
+        <div className="mt-6 border border-dashed border-rule p-5 text-sm text-mute">
+          <Eyebrow>No source loaded</Eyebrow>
+          <p className="mt-1">Load the fictional CRM sample or import a JSON file (an array of records or {"{ \"records\": [...] }"}).</p>
+        </div>
       )}
-    </section>
+    </Panel>
+  );
+}
+
+function Stat({ label, value, small }: { label: string; value: ReactNode; small?: boolean }) {
+  return (
+    <div className="bg-panel p-3">
+      <dt className="font-mono text-[10px] uppercase tracking-[0.12em] text-mute">{label}</dt>
+      <dd className={small ? "mt-1 text-xs leading-5" : "mt-1 text-base font-medium"}>{value}</dd>
+    </div>
   );
 }

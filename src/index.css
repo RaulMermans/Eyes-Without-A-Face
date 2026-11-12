@@ -1,20 +1,49 @@
 @import "tailwindcss";
 
+/*
+ * Spectral Forensics design tokens (Sprint 6). See docs/design/design-system.md.
+ *
+ * Semantic roles:
+ *   ink    — structure, authority, private space (never leaves the browser)
+ *   bone   — reading surfaces
+ *   gold   — identity, controlled disclosure, approval, cloud-bound content
+ *   cyan   — on-device intelligence and local transformations (synthetic)
+ *   pass / warn / fail — verification outcomes (always paired with text + icon)
+ *
+ * Text-safe variants (*-ink) meet WCAG AA (≥ 4.5:1) on bone; the bright
+ * variants are for ink backgrounds and decorative rules only.
+ */
 @theme {
-  --font-sans: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  --font-mono: "ui-monospace", "SFMono-Regular", "Menlo", monospace;
-  --color-paper: #eef0f4;
-  --color-panel: #f7f8fb;
-  --color-ink: #12151c;
-  --color-navy: #161b27;
-  --color-mute: #5a6170;
-  --color-rule: #c9ced8;
-  --color-violet: #6b4bb0;
-  --color-gold: #c4a35a;
-  --color-local: #2a6b5a;
-  --color-cloud: #8a5a12;
-  --color-danger: #8f2d2d;
-  --color-signal: #6b4bb0;
+  --font-display: "Instrument Serif", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-sans: "IBM Plex Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --color-ink: #101820;
+  --color-ink-2: #18232d;
+  --color-ink-3: #2a3742;
+  --color-ink-text: #c9c4b8;
+  --color-bone: #ede9df;
+  --color-bone-2: #e3ded1;
+  --color-panel: #f8f6f0;
+  --color-gold: #b99a63;
+  --color-gold-ink: #77592a;
+  --color-cyan: #85d6db;
+  --color-cyan-ink: #17636a;
+  --color-pass: #2d6a48;
+  --color-warn: #8a5a12;
+  --color-fail: #a03030;
+  --color-mute: #5b6169;
+  --color-rule: #d3ccbc;
+
+  /* Compatibility aliases used by the diagnostic workspace and shared primitives. */
+  --color-paper: #ede9df;
+  --color-navy: #101820;
+  --color-local: #17636a;
+  --color-cloud: #77592a;
+  --color-danger: #a03030;
+  --color-signal: #17636a;
+
+  --ease-instrument: cubic-bezier(0.2, 0.7, 0.1, 1);
 }
 
 html,
@@ -23,15 +52,178 @@ body,
   min-height: 100%;
 }
 
+
 body {
   margin: 0;
-  background: var(--color-paper);
+  background: var(--color-bone);
   color: var(--color-ink);
   font-family: var(--font-sans);
+  font-feature-settings: "ss01", "ss02";
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 2px;
+}
+
+.on-ink :focus-visible {
+  outline-color: var(--color-cyan);
+}
+
+/* Fine engineering grid for ink surfaces. Decorative only. */
+.spectral-grid {
+  background-image:
+    linear-gradient(to right, rgb(133 214 219 / 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(133 214 219 / 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Boundary treatments: never colour alone — each pairs with a label and a line style. */
+.frame-private {
+  border: 1px solid var(--color-ink);
+  box-shadow: inset 4px 0 0 var(--color-ink);
+}
+.frame-synthetic {
+  border: 1px dashed var(--color-cyan-ink);
+  box-shadow: inset 4px 0 0 var(--color-cyan-ink);
+}
+.frame-cloud {
+  border: 3px double var(--color-gold-ink);
+}
+
+/* Motion: meaningful, short, and fully removed under reduced motion. */
+@keyframes materialize {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes draw-line {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes scan {
+  from {
+    transform: translateY(-100%);
+    opacity: 0.0;
+  }
+  20% {
+    opacity: 0.55;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.animate-materialize {
+  animation: materialize 520ms var(--ease-instrument) both;
+  animation-delay: calc(var(--i, 0) * 60ms);
+}
+.animate-reveal {
+  animation: reveal-up 380ms var(--ease-instrument) both;
+  animation-delay: calc(var(--i, 0) * 50ms);
+}
+.animate-draw {
+  transform-origin: left center;
+  animation: draw-line 480ms var(--ease-instrument) both;
+  animation-delay: calc(var(--i, 0) * 70ms + 120ms);
+}
+.scan-once {
+  position: relative;
+  overflow: hidden;
+}
+.scan-once::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, rgb(133 214 219 / 0.35), transparent);
+  animation: scan 900ms var(--ease-instrument) both;
+}
+
+/* Field transformation grid: private and phantom columns share rows on wide screens. */
+.transform-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  column-gap: 0;
+  row-gap: 0.5rem;
+}
+.transform-grid .cell-private {
+  grid-column: 1;
+  grid-row: var(--row-m-private);
+}
+.transform-grid .cell-link {
+  display: none;
+}
+.transform-grid .cell-twin {
+  grid-column: 1;
+  grid-row: var(--row-m-twin);
+}
+.transform-grid .cell-head-private,
+.transform-grid .cell-head-twin,
+.transform-grid .cell-head-link {
+  display: none;
+}
+@media (min-width: 64rem) {
+  .transform-grid {
+    grid-template-columns: minmax(0, 0.85fr) 3rem minmax(0, 1.15fr);
+    row-gap: 0.75rem;
+  }
+  .transform-grid .cell-private {
+    grid-row: var(--row-d);
+  }
+  .transform-grid .cell-link {
+    display: flex;
+    grid-column: 2;
+    grid-row: var(--row-d);
+  }
+  .transform-grid .cell-twin {
+    grid-column: 3;
+    grid-row: var(--row-d);
+  }
+  .transform-grid .cell-head-private,
+  .transform-grid .cell-head-twin,
+  .transform-grid .cell-head-link {
+    display: block;
+    grid-row: 1;
+  }
+  .transform-grid .cell-head-private {
+    grid-column: 1;
+  }
+  .transform-grid .cell-head-link {
+    grid-column: 2;
+  }
+  .transform-grid .cell-head-twin {
+    grid-column: 3;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *,
+  *::before,
+  *::after {
     animation: none !important;
     transition: none !important;
   }

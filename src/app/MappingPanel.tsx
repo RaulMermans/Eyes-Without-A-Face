@@ -46,7 +46,7 @@ export function MappingPanel({
   }
 
   return (
-    <section aria-labelledby="mapping-editor-heading" className="border border-rule bg-panel p-5">
+    <section aria-labelledby="mapping-editor-heading">
       <h3 id="mapping-editor-heading" className="text-base font-semibold">
         Declarative mapping contract
       </h3>
@@ -61,7 +61,7 @@ export function MappingPanel({
       <textarea
         id="mapping-json"
         data-testid="mapping-json-editor"
-        className="mt-1 min-h-56 w-full border border-rule bg-paper p-3 font-mono text-xs"
+        className="mt-1 min-h-56 w-full rounded-[3px] border border-rule bg-bone p-3 font-mono text-xs"
         value={workspace.mappingText}
         onChange={(event) => {
           setMessage(null);
@@ -85,7 +85,7 @@ export function MappingPanel({
         </Button>
       </div>
       {message ? (
-        <p className="mt-3 text-sm text-local" data-testid="mapping-contract-ok">
+        <p className="mt-3 text-sm text-pass" data-testid="mapping-contract-ok">
           {message}
         </p>
       ) : null}

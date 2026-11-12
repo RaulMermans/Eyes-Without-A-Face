@@ -14,6 +14,7 @@ Canonical operating docs for Eyes Without a Face. Root files `README.md`, `AGENT
 | [submission/](submission/) | Devpost submission draft (not submitted) |
 | [hackathon-history.md](hackathon-history.md) | Development timeline for the submission |
 | [branding/](branding/) | Official emblem provenance and assets |
+| [design/](design/) | Spectral Forensics art direction, design system, UX audit, before/after screenshots |
 | [testing/](testing/) | Test strategy and regression matrix |
-| [sprints/](sprints/) | Sprint 0–5 reports |
+| [sprints/](sprints/) | Sprint 0–6 reports |
 | [hackathon-requirements.md](hackathon-requirements.md) | Verified vs unresolved Devpost rules |

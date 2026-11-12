@@ -22,9 +22,13 @@
     "test:mapping": "vitest run tests/unit/mapping-engine.test.ts tests/unit/mapping-operations.test.ts tests/contracts/mapping-execution.test.ts tests/privacy/mapping-privacy.test.ts",
     "test:e2e": "playwright test",
     "test:live": "playwright test -c playwright.live.config.ts",
+    "test:visual": "playwright test -c playwright.visual.config.ts",
     "test:all": "pnpm lint && pnpm typecheck && pnpm test:unit && pnpm test:contracts && pnpm test:privacy && pnpm build && pnpm test:e2e"
   },
   "dependencies": {
+    "@fontsource/ibm-plex-mono": "5.3.0",
+    "@fontsource/ibm-plex-sans": "5.3.0",
+    "@fontsource/instrument-serif": "5.3.0",
     "ajv": "^8.20.0",
     "ajv-formats": "^3.0.1",
     "class-variance-authority": "^0.7.1",

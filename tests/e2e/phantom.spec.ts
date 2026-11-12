@@ -219,7 +219,10 @@ test.describe("E2E-031 alias resolution", () => {
     await page.getByTestId("send-cloud-request").click();
     await expect(page.getByTestId("proposal-status")).toContainText("aliases resolved locally");
     const operations = await page.getByTestId("proposal-operations").innerText();
-    expect(operations).toMatch(/"f_\d{2}"/);
+    // Sprint 6: operations render as alias tokens in the Integration Studio
+    // rather than JSON-quoted strings. The assertion is unchanged in intent:
+    // every source reference is a Phantom alias, never a local field name.
+    expect(operations).toMatch(/\bf_\d{2}\b/);
     expect(operations).not.toContain("customer_id");
     await page.getByText("Local alias resolution (this browser only)").click();
     const table = page.getByTestId("alias-resolution");
