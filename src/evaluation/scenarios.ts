@@ -1,11 +1,21 @@
 /**
- * Fictional evaluation scenarios (Sprint 7, Workstream G).
+ * Fictional evaluation scenarios (Sprint 7, Workstream G; Sprint 8 v2.0.0).
  *
- * Each scenario has three disjoint case sets:
+ * Each scenario has four disjoint case sets:
  *   imported          profiled, used to build the Phantom Twin and disclosure
- *   revisionFeedback  reserved; run by the local Reality Check to produce feedback
- *   holdout           final independent evaluation; never profiled, disclosed,
- *                     used for feedback, or run before the mapping is final
+ *   revisionFeedback  reserved; run by the local Reality Check (and the semantic
+ *                     verifier) to produce feedback
+ *   development       Sprint 7's holdout. Its results were inspected in Sprint 7,
+ *                     so it is development data now: debugging only, never
+ *                     feedback, never reported as independent
+ *   holdout           Sprint 8 final independent evaluation, written and frozen
+ *                     before any Sprint 8 model run; never profiled, disclosed,
+ *                     used for feedback or semantic evidence, or run before the
+ *                     mapping is final
+ *
+ * `semanticSpec.declared` holds fictional owner declarations (trusted
+ * user-declared constraints). They are written from the scenario's documented
+ * meaning, never from ground truth or model output.
  *
  * Ground truth (`expected`) exists only for these fixtures. All data is fictional.
  */
@@ -13,6 +23,7 @@ import crmEu from "../examples/scenarios/crm-eu-accounts.json" with { type: "jso
 import support from "../examples/scenarios/support-tickets.json" with { type: "json" };
 import billing from "../examples/scenarios/billing-subscriptions.json" with { type: "json" };
 import type { TwinFieldOverride } from "../phantom/generate.ts";
+import type { SemanticConstraint } from "../semantics/contract.ts";
 import { validateAcceptancePolicy, type AcceptancePolicy, type ExpectedOutcome } from "../verification/outcomes.ts";
 
 export interface ScenarioCase {
@@ -33,8 +44,11 @@ export interface EvaluationScenario {
   twinOverrides: Record<string, TwinFieldOverride>;
   destinationSchema: Record<string, unknown>;
   policy: AcceptancePolicy;
+  semanticSpec: { specVersion: "1.0.0"; note: string; declared: SemanticConstraint[] };
   imported: ScenarioCase[];
   revisionFeedback: ScenarioCase[];
+  /** Sprint 7 holdout, inspected; development data only. */
+  development: ScenarioCase[];
   holdout: ScenarioCase[];
 }
 
@@ -56,10 +70,13 @@ export function validateScenario(scenario: EvaluationScenario): string[] {
   if (scenario.revisionFeedback.length === 0) issues.push("At least one revision-feedback case is required.");
   if (scenario.holdout.length === 0) issues.push("At least one holdout case is required.");
   const key = (item: ScenarioCase) => JSON.stringify(item.record);
-  const sets = [scenario.imported, scenario.revisionFeedback, scenario.holdout].map((cases) => new Set(cases.map(key)));
-  const [imported, feedback, holdout] = sets as [Set<string>, Set<string>, Set<string>];
+  const sets = [scenario.imported, scenario.revisionFeedback, scenario.development ?? [], scenario.holdout].map((cases) => new Set(cases.map(key)));
+  const [imported, feedback, development, holdout] = sets as [Set<string>, Set<string>, Set<string>, Set<string>];
   for (const item of holdout) {
-    if (imported.has(item) || feedback.has(item)) issues.push("A holdout case also appears in another set.");
+    if (imported.has(item) || feedback.has(item) || development.has(item)) issues.push("A holdout case also appears in another set.");
+  }
+  for (const item of development) {
+    if (imported.has(item) || feedback.has(item)) issues.push("A development case also appears in the imported or revision-feedback set.");
   }
   for (const item of feedback) {
     if (imported.has(item)) issues.push("A revision-feedback case also appears in the imported set.");

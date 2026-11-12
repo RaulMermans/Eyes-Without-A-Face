@@ -19,5 +19,8 @@ Read, in order:
 13. `docs/decisions/0008-blind-revision.md` — blind revision boundary
 14. `docs/evaluation/README.md` — evaluation sets, metrics, configurations
 15. `docs/sprints/sprint-7.md` — Sprint 7 report and Sprint 8 readiness
+16. `docs/decisions/0009-semantic-verification.md` — semantic verification and semantic blind revision
+17. `docs/contracts/semantic-verification.md` — Semantic Verification Contract 1.0.0
+18. `docs/sprints/sprint-8.md` — Sprint 8 report, benchmark results and Sprint 9 readiness
 
-Do not duplicate architecture here. Do not start Sprint 8 automatically.
+Do not duplicate architecture here. Do not start Sprint 9 automatically.

@@ -1,0 +1,68 @@
+{
+  "manifestVersion": "1.0.0",
+  "frozenAt": "2026-11-12T16:53:57.584Z",
+  "frozenFromCommit": "d7e7cbacf4ed9621bcc1d9423aaa0be2d4d98be8",
+  "statement": "Frozen before any Sprint 8 live model run. The Sprint 8 holdout (10 cases per scenario) was written from each scenario's documented meaning before any Sprint 8 model output existed and is never used for prompts, feedback, semantic evidence or tuning. Sprint 7's inspected holdout is kept as `development`.",
+  "budget": {
+    "model": "gemini-3.5-flash-lite (Firebase AI Logic, ONLY_IN_CLOUD) and Gemini Nano (ONLY_ON_DEVICE)",
+    "trials": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "scenarios": [
+      "crm-eu-accounts",
+      "support-tickets",
+      "billing-subscriptions"
+    ],
+    "cloudRequestsPerScenarioTrial": {
+      "B": 1,
+      "C/D": 2
+    },
+    "maxCloudRequests": 60,
+    "retries": "none: a provider failure is recorded as a failure and is not repeated or replaced",
+    "stopRule": "Stop when trials 1–5 are complete or the request cap is reached, whichever comes first. No trial is discarded.",
+    "authorization": "Each request goes through the in-app approval gate; the live spec approves exactly what it previews."
+  },
+  "configurations": {
+    "A": "Deterministic test proposer over the approved disclosure. No model. Computed offline.",
+    "B": "Real Gemini proposal from the approved disclosure. No Nano, no revision.",
+    "C": "Real Gemini Nano private interpretation (validated suggestions applied by the user) + real Gemini proposal.",
+    "D": "C + one approved real Gemini revision with Blind Revision Feedback; every trusted constraint behind a semantic finding is authorized (recorded as a human intervention)."
+  },
+  "hypotheses": {
+    "H1": "The semantic verifier flags the schema-valid-but-wrong holdout outputs of real Gemini mappings caused by date order and priority inversion, with no false alarms.",
+    "H2": "With approved semantic constraints, one real Gemini revision increases holdout correct transformations over C with zero holdout regressions in CRM and support.",
+    "H3": "Nano (C vs B) does not change holdout correctness on these fixtures (expected null result).",
+    "H4": "Codes-only semantic feedback (no constraint) is insufficient for a correction (tested offline with the simulated reviser only; not a live claim)."
+  },
+  "primaryMetric": "Holdout correct transformations (ground-truth equal output, transformed or approved rule). Quarantine never counts.",
+  "files": {
+    "src/inference/prompts.ts": "bd0bccee2fcb1866d72b68fecf76e5037e88fd193ea7502c8b84ad0ccc6095a8",
+    "src/inference/firebase-api.ts": "6721a4d32f629e0f82f1e515ffa675f7009838f7e0ce2695ba49a27c3f08de6f",
+    "src/proposal/convert.ts": "a34e00c8a2cf5c332d2a97d05243af613c54c2c27e33a6c11b8b09fd4974a7ea",
+    "src/proposal/resolve.ts": "73094edeb9a3be46c623e1ddb2ded2cb11a70a7f5f783a2ca23667920e3c425d",
+    "src/semantics/contract.ts": "da9efb11a4956a090c9d683eb0d5d806797a0c095b3ab8501d76af24d13f327e",
+    "src/semantics/observe.ts": "adec6ccf95c576909034c64a3aca3a2bd6cda95c4f6962e62430fc072e5e9c3f",
+    "src/semantics/verify.ts": "9fed4af27699b535b903d926aa2eb916dd6ffe9cc83e4115d569c69760cb54fd",
+    "src/revision/feedback.ts": "d4f6dc4e51dfab0f5bd5f7b9d0cd02844246578baf89028832357922a102ef78",
+    "src/revision/semantic-feedback.ts": "4ba0b60fc987c382d3dbb8426fac8394261eb888dbffc727b8261c475cdb0789",
+    "src/revision/revision-payload.ts": "517b83a4425a9eea41291544a383a5e060f9c03646521962662ff4d580f68684",
+    "src/revision/decision.ts": "7b776daad305b814c63b56d0d9f3197dbc7bcfef8c148d94cb22d67654b363c3",
+    "src/verification/outcomes.ts": "1d00072787df2b8bc273001e401734a3757328da59199b5af0c075649b2e8e48",
+    "src/evaluation/evaluate.ts": "a464b4679fbe9f31939304e927abd649b4408dc463c182611d8e40456526a5b8",
+    "src/evaluation/benchmark.ts": "2c31b81ff7783c6993a208219730da21003b9d64f05890fbaed5300dc15b81a0",
+    "src/domain/contracts/schemas/blind-revision-feedback.v1.schema.json": "060fb1377c6bc1308c89a2be61da6a964abe876669df7b1219d78e264bbb8b23",
+    "src/domain/contracts/schemas/blind-revision-feedback.v1.1.schema.json": "997348ef3383b166650d2868ceed7dd8b6745950809a8d1a179e9f0b31578f0e",
+    "src/domain/contracts/schemas/cloud-disclosure.v1.1.schema.json": "7d1e4c36719968f9359ff8618713d644977d3ac255fedc325a61d17a14b2c9c9",
+    "src/domain/contracts/schemas/cloud-disclosure.v1.2.schema.json": "515a61e0db612bef1883cb392c18c92aeb4a7bf49a0dbe98b71ad0f008ebb13f",
+    "src/domain/contracts/schemas/cloud-disclosure.v1.3.schema.json": "de7b142872d67cff1130cb94d24a4835a270e1400219c7b35f6332a329a2ecd6",
+    "src/domain/contracts/schemas/semantic-verification.v1.schema.json": "492d873283b5e9e4e6f6c299cf248585f3a913ac9ce3ea291531104e2c3ee58d",
+    "src/examples/scenarios/crm-eu-accounts.json": "e23f7a2bead46d7ba30292e64a5cd609dafe6c1cbd41aa7fe5029f6d29e03871",
+    "src/examples/scenarios/support-tickets.json": "ee374b3e624b6a1c5aa4659cc1bd39aeb9d27c45a0a0974a77ab8c0c8ca51ba6",
+    "src/examples/scenarios/billing-subscriptions.json": "3080e42f43ef2f9ef40792f42e50a9a0793bb0961357029675eb7b6fa2812dd5"
+  },
+  "amendments": []
+}

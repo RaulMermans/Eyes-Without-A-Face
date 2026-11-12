@@ -40,6 +40,18 @@ Canonical walkthrough for the #BuildHybridAI 2026 submission video. The video ma
 10. `Continue to Reality Check`
 11. `Run Reality Check`
 
+## Script C — semantic blind revision (Sprint 8)
+
+This is the hero narrative for the support-tickets scenario. Record it only from a real run (real Nano, real Gemini). The numbers on screen come from the local evaluator, so narrate what appears and do not script a result. If Gemini's revision does not improve the holdout on the recording run, show that. The local acceptance check exists for exactly that case.
+
+| Step | Screen | Narration |
+| --- | --- | --- |
+| 1 | Source → **Blind revision scenarios** → *Support tickets* → Phantom → **Interpret private fields on-device** (apply a validated suggestion if one appears) → review → approve → **Send approved request to Gemini** | "Gemini proposes a mapping from the twin. It never sees a ticket." |
+| 2 | Reality Check → **Run Reality Check**. The verdict card says *Structurally valid · meaning is wrong*. Scroll to **Semantic verification**: layers 1–2 are green, layer 3 is *Incorrect meaning*, and `#3 map_enum priority` shows `SEMANTIC_ORDER_INVERSION`. Open *Local detail* briefly (this device only) | "Every record passes the contract and the schema. Without this layer it would ship. But the owner declared that p1 is the most urgent, and Gemini reversed the scale. That is a silent error, found locally." |
+| 3 | Blind revision → tick **Also disclose: f_01 → priority ranks …** → **Prepare Safe Revision**. Show *Newly disclosed*, the **Cumulative disclosure** ledger (new labels 0) and *Stays private* | "I decide what Gemini may learn: the finding, and the ranking of labels it already knows. Not one ticket, not one field name." |
+| 4 | Tick **I reviewed exactly…** → **Approve & Request Revision**. The *Revised mapping* shows `priority CHANGED`, labeled *Real Gemini output · IN_CLOUD* | "One approved request. Gemini revises the mapping blind." |
+| 5 | **Run Revised Reality Check** → **Local acceptance check** verdict → **Run final holdout evaluation** → *Before / after · independent holdout* | "Then the local evaluator decides, not the model. On ten tickets nobody tuned against, this is the measured change." |
+
 ## Preparation checklist
 
 - [ ] `git rev-parse --short HEAD` noted. Recording uses a committed revision (the footer shows the build).

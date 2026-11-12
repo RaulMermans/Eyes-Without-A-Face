@@ -1,0 +1,503 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://eyes-without-a-face.dev/schemas/blind-revision-feedback/1.1.0",
+  "title": "Blind Revision Feedback (1.1.0, semantic verification)",
+  "description": "Feedback 1.0.0 plus the local semantic verifier's findings and, only where the user authorized each one, trusted semantic constraints expressed with already-disclosed aliases, labels and destination values plus fixed vocabulary. Never record values, source field names, messages, rationales or free text. Built by projection (src/revision/feedback.ts + src/revision/semantic-feedback.ts).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "feedbackVersion",
+    "runId",
+    "baseDisclosureHash",
+    "previousMapping",
+    "findings",
+    "unaffectedOperations",
+    "approvedFallbacks",
+    "objectives",
+    "revisionBudget",
+    "semanticFindings",
+    "approvedConstraints"
+  ],
+  "properties": {
+    "feedbackVersion": {
+      "const": "1.1.0"
+    },
+    "runId": {
+      "type": "string",
+      "pattern": "^run-[a-f0-9]{16}$"
+    },
+    "baseDisclosureHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "previousMapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contractHash",
+        "origin",
+        "operations"
+      ],
+      "properties": {
+        "contractHash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "origin": {
+          "enum": [
+            "gemini-cloud",
+            "test-adapter",
+            "manual-edit"
+          ]
+        },
+        "operations": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 16,
+          "items": {
+            "$ref": "#/$defs/aliasOperation"
+          }
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 16,
+      "items": {
+        "$ref": "#/$defs/finding"
+      }
+    },
+    "unaffectedOperations": {
+      "type": "array",
+      "maxItems": 16,
+      "uniqueItems": true,
+      "items": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 16
+      }
+    },
+    "approvedFallbacks": {
+      "type": "array",
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "to",
+          "value",
+          "appliesTo"
+        ],
+        "properties": {
+          "to": {
+            "$ref": "#/$defs/targetName"
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "pattern": "^[A-Za-z0-9_-]+$"
+          },
+          "appliesTo": {
+            "const": "undisclosed-category"
+          }
+        }
+      }
+    },
+    "objectives": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 7,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "preserve-unaffected-operations",
+          "address-reported-findings",
+          "use-only-disclosed-aliases-and-labels",
+          "do-not-guess-undisclosed-values",
+          "apply-only-listed-fallbacks",
+          "explain-unresolvable-findings-in-rationale",
+          "respect-approved-semantic-constraints"
+        ]
+      }
+    },
+    "revisionBudget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "maxRevisions",
+        "remainingAfterThisRequest"
+      ],
+      "properties": {
+        "maxRevisions": {
+          "const": 1
+        },
+        "remainingAfterThisRequest": {
+          "const": 0
+        }
+      }
+    },
+    "semanticFindings": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "items": {
+        "$ref": "#/$defs/semanticFinding"
+      }
+    },
+    "approvedConstraints": {
+      "type": "array",
+      "maxItems": 4,
+      "items": {
+        "$ref": "#/$defs/approvedConstraint"
+      }
+    }
+  },
+  "$defs": {
+    "alias": {
+      "type": "string",
+      "pattern": "^f_[0-9]{2,3}$"
+    },
+    "targetName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z_][A-Za-z0-9_]*(\\.[A-Za-z_][A-Za-z0-9_]*){0,3}$"
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "aliasOperation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "op",
+        "to"
+      ],
+      "properties": {
+        "op": {
+          "enum": [
+            "copy",
+            "rename",
+            "trim",
+            "normalize_email",
+            "parse_date",
+            "map_enum",
+            "default_if_missing",
+            "concat"
+          ]
+        },
+        "from": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/alias"
+            },
+            {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 8,
+              "items": {
+                "$ref": "#/$defs/alias"
+              }
+            }
+          ]
+        },
+        "to": {
+          "$ref": "#/$defs/targetName"
+        },
+        "params": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "inputFormat": {
+              "enum": [
+                "ISO-8601",
+                "YYYY-MM-DD",
+                "MM/DD/YYYY",
+                "DD/MM/YYYY"
+              ]
+            },
+            "map": {
+              "type": "object",
+              "maxProperties": 32,
+              "propertyNames": {
+                "maxLength": 64
+              },
+              "additionalProperties": {
+                "$ref": "#/$defs/label"
+              }
+            },
+            "unmapped": {
+              "enum": [
+                "fail",
+                "default"
+              ]
+            },
+            "default": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/label"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "value": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 64
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "separator": {
+              "type": "string",
+              "maxLength": 8
+            }
+          }
+        }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code",
+        "category",
+        "affectedCases"
+      ],
+      "properties": {
+        "operation": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 16
+        },
+        "op": {
+          "enum": [
+            "copy",
+            "rename",
+            "trim",
+            "normalize_email",
+            "parse_date",
+            "map_enum",
+            "default_if_missing",
+            "concat"
+          ]
+        },
+        "alias": {
+          "$ref": "#/$defs/alias"
+        },
+        "to": {
+          "$ref": "#/$defs/targetName"
+        },
+        "code": {
+          "enum": [
+            "UNMAPPED_ENUM",
+            "MISSING_SOURCE_FIELD",
+            "NULL_VALUE",
+            "EMPTY_VALUE",
+            "TYPE_MISMATCH",
+            "INVALID_EMAIL",
+            "INVALID_DATE",
+            "OUTPUT_SCHEMA_MISMATCH",
+            "UNAPPROVED_FALLBACK"
+          ]
+        },
+        "category": {
+          "enum": [
+            "undisclosed-category",
+            "missing-value",
+            "null-value",
+            "empty-value",
+            "unexpected-type",
+            "invalid-email",
+            "date-format-mismatch",
+            "destination-constraint",
+            "unapproved-fallback"
+          ]
+        },
+        "affectedCases": {
+          "enum": [
+            "1",
+            "2-4",
+            "5+"
+          ]
+        }
+      }
+    },
+    "semanticFinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code",
+        "category"
+      ],
+      "properties": {
+        "operation": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 16
+        },
+        "op": {
+          "enum": [
+            "copy",
+            "rename",
+            "trim",
+            "normalize_email",
+            "parse_date",
+            "map_enum",
+            "default_if_missing",
+            "concat"
+          ]
+        },
+        "alias": {
+          "$ref": "#/$defs/alias"
+        },
+        "to": {
+          "$ref": "#/$defs/targetName"
+        },
+        "code": {
+          "enum": [
+            "SEMANTIC_DATE_ORDER_CONFLICT",
+            "SEMANTIC_AMBIGUOUS_DATE",
+            "SEMANTIC_ORDER_INVERSION",
+            "SEMANTIC_ENUM_MEANING_CONFLICT",
+            "SEMANTIC_EVIDENCE_MISSING",
+            "SEMANTIC_POLICY_VIOLATION"
+          ]
+        },
+        "category": {
+          "enum": [
+            "date-order-conflict",
+            "ambiguous-date-interpretation",
+            "ordered-category-inversion",
+            "enum-meaning-conflict",
+            "insufficient-evidence",
+            "semantic-policy-violation"
+          ]
+        },
+        "affectedCases": {
+          "enum": [
+            "1",
+            "2-4",
+            "5+"
+          ]
+        }
+      }
+    },
+    "approvedConstraint": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "alias",
+            "inputFormat"
+          ],
+          "properties": {
+            "kind": {
+              "const": "date-order"
+            },
+            "alias": {
+              "$ref": "#/$defs/alias"
+            },
+            "inputFormat": {
+              "enum": [
+                "ISO-8601",
+                "YYYY-MM-DD",
+                "MM/DD/YYYY",
+                "DD/MM/YYYY"
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "alias",
+            "to",
+            "sourceOrder",
+            "targetOrder"
+          ],
+          "properties": {
+            "kind": {
+              "const": "category-order"
+            },
+            "alias": {
+              "$ref": "#/$defs/alias"
+            },
+            "to": {
+              "$ref": "#/$defs/targetName"
+            },
+            "sourceOrder": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 16,
+              "uniqueItems": true,
+              "items": {
+                "$ref": "#/$defs/label"
+              }
+            },
+            "targetOrder": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 16,
+              "uniqueItems": true,
+              "items": {
+                "$ref": "#/$defs/label"
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "alias",
+            "to",
+            "map"
+          ],
+          "properties": {
+            "kind": {
+              "const": "category-meaning"
+            },
+            "alias": {
+              "$ref": "#/$defs/alias"
+            },
+            "to": {
+              "$ref": "#/$defs/targetName"
+            },
+            "map": {
+              "type": "object",
+              "minProperties": 1,
+              "maxProperties": 16,
+              "propertyNames": {
+                "maxLength": 64
+              },
+              "additionalProperties": {
+                "$ref": "#/$defs/label"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

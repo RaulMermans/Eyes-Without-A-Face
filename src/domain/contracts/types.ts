@@ -204,7 +204,48 @@ export type RevisionObjective =
   | "use-only-disclosed-aliases-and-labels"
   | "do-not-guess-undisclosed-values"
   | "apply-only-listed-fallbacks"
-  | "explain-unresolvable-findings-in-rationale";
+  | "explain-unresolvable-findings-in-rationale"
+  /** Feedback 1.1.0 only: follow approvedConstraints exactly; abstain when they are insufficient. */
+  | "respect-approved-semantic-constraints";
+
+/** Feedback 1.1.0: findings of the local semantic verifier (src/semantics/verify.ts). */
+export type SemanticFindingCode =
+  | "SEMANTIC_DATE_ORDER_CONFLICT"
+  | "SEMANTIC_AMBIGUOUS_DATE"
+  | "SEMANTIC_ORDER_INVERSION"
+  | "SEMANTIC_ENUM_MEANING_CONFLICT"
+  | "SEMANTIC_EVIDENCE_MISSING"
+  | "SEMANTIC_POLICY_VIOLATION";
+
+export type SemanticFindingCategory =
+  | "date-order-conflict"
+  | "ambiguous-date-interpretation"
+  | "ordered-category-inversion"
+  | "enum-meaning-conflict"
+  | "insufficient-evidence"
+  | "semantic-policy-violation";
+
+export interface SemanticRevisionFinding {
+  /** 1-based operation number in `previousMapping.operations`. */
+  operation?: number;
+  op?: MappingOperationName;
+  alias?: string;
+  to?: string;
+  code: SemanticFindingCode;
+  category: SemanticFindingCategory;
+  /** Coarse bucket; absent when the finding is static (no record had to fail). */
+  affectedCases?: "1" | "2-4" | "5+";
+}
+
+/**
+ * A trusted semantic constraint the user explicitly authorized for disclosure.
+ * Built only from aliases, labels and destination values the cloud already
+ * received, plus fixed vocabulary (date formats). Never a private string.
+ */
+export type ApprovedSemanticConstraint =
+  | { kind: "date-order"; alias: string; inputFormat: "ISO-8601" | "YYYY-MM-DD" | "MM/DD/YYYY" | "DD/MM/YYYY" }
+  | { kind: "category-order"; alias: string; to: string; sourceOrder: string[]; targetOrder: string[] }
+  | { kind: "category-meaning"; alias: string; to: string; map: Record<string, string> };
 
 export interface RevisionFinding {
   /** 1-based operation number in `previousMapping.operations`. */
@@ -217,9 +258,13 @@ export interface RevisionFinding {
   affectedCases: "1" | "2-4" | "5+";
 }
 
-/** Blind Revision Feedback 1.0.0 (blind-revision-feedback.v1.schema.json). */
+/**
+ * Blind Revision Feedback 1.0.0 (blind-revision-feedback.v1.schema.json) or
+ * 1.1.0 (blind-revision-feedback.v1.1.schema.json, adds the semantic block).
+ * The schema of each version is exact; the optional fields exist only in 1.1.0.
+ */
 export interface BlindRevisionFeedback {
-  feedbackVersion: "1.0.0";
+  feedbackVersion: "1.0.0" | "1.1.0";
   runId: string;
   baseDisclosureHash: string;
   previousMapping: {
@@ -232,14 +277,18 @@ export interface BlindRevisionFeedback {
   approvedFallbacks: Array<{ to: string; value: string; appliesTo: "undisclosed-category" }>;
   objectives: RevisionObjective[];
   revisionBudget: { maxRevisions: 1; remainingAfterThisRequest: 0 };
+  /** 1.1.0 only. */
+  semanticFindings?: SemanticRevisionFinding[];
+  /** 1.1.0 only. Empty unless the user authorized each constraint. */
+  approvedConstraints?: ApprovedSemanticConstraint[];
 }
 
 export interface CloudDisclosurePayload {
   contractKind: "cloud-disclosure";
-  schemaVersion: "1.0.0" | "1.1.0" | "1.2.0";
+  schemaVersion: "1.0.0" | "1.1.0" | "1.2.0" | "1.3.0";
   /** Present (and required) in schema 1.1.0 and 1.2.0. */
   target?: CloudDisclosureTarget;
-  /** Present (and required) only in schema 1.2.0: one blind revision request. */
+  /** Present (and required) only in schema 1.2.0 (feedback 1.0.0) and 1.3.0 (feedback 1.1.0): one blind revision request. */
   revision?: { feedback: BlindRevisionFeedback };
   payloadId: string;
   phantomId: string;

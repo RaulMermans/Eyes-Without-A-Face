@@ -6,6 +6,10 @@
  * browser displayed must be reproduced exactly: the evaluator, not the model,
  * owns every number in the report. Runs 1 and 2 used earlier prompt/validator
  * versions and are kept as historical evidence only.
+ *
+ * Sprint 8: the Sprint 7 holdout was inspected, so scenario v2.0.0 keeps it as
+ * `development` and adds a fresh holdout. This replay evaluates the Sprint 7
+ * holdout under its original role (`development`), without semantic feedback.
  */
 import { describe, expect, it } from "vitest";
 import run3 from "../../docs/evidence/sprint-7/live-blind-revision-run3.json" with { type: "json" };
@@ -64,7 +68,8 @@ describe("EVAL-010 live run 3 replays deterministically", () => {
   });
 
   it.each(entries.map((entry) => [`${entry.check} ${entry.scenarioId}`, entry] as const))("%s", async (_label, entry) => {
-    const scenario = scenarioById(entry.scenarioId)!;
+    const current = scenarioById(entry.scenarioId)!;
+    const scenario = { ...current, holdout: current.development };
     const revise = entry.revisedText ? () => ({ text: entry.revisedText as string, origin: "gemini-cloud" as const }) : undefined;
     const run = await runScenarioPipeline({
       scenario,

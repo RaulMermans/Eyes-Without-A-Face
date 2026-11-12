@@ -5,6 +5,7 @@ import { assertReservedAuthorization } from "../twin/authorization-ledger.ts";
 import { InferenceError, InferenceUnavailableError } from "./errors.ts";
 import { probeOnDeviceCapability } from "./on-device-capability.ts";
 import { deriveTestProposal, deriveTestRevision } from "./test-proposer.ts";
+import { isRevisionSchemaVersion } from "../revision/revision-payload.ts";
 import type {
   CloudInferenceAdapter,
   InferenceResult,
@@ -175,7 +176,7 @@ export function createTestCloudAdapter(
       assertAuthorizedEnvelope(request);
       assertReservedAuthorization(request);
       harness.cloudCalls = (harness.cloudCalls ?? 0) + 1;
-      const revision = request.payload.schemaVersion === "1.2.0";
+      const revision = isRevisionSchemaVersion(request.payload.schemaVersion);
       if (revision && harness.revisionRawText !== undefined) {
         return {
           text: harness.revisionRawText,

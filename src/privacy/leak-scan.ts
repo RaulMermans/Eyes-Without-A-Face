@@ -104,6 +104,24 @@ export function findPrivateValueLeaks(
         findings.push({ location: `/revision/feedback/approvedFallbacks/${index}` });
       }
     });
+    // Sprint 8 semantic block (feedback 1.1.0). A constraint may only repeat
+    // labels already approved for ITS alias and values of ITS destination.
+    (revision.approvedConstraints ?? []).forEach((constraint, index) => {
+      if (constraint.kind === "date-order") return;
+      const labels = approved.get(constraint.alias);
+      const sourceLabels = constraint.kind === "category-order" ? constraint.sourceOrder : Object.keys(constraint.map);
+      const targetLabels = constraint.kind === "category-order" ? constraint.targetOrder : Object.values(constraint.map);
+      for (const label of sourceLabels) {
+        if (!labels?.has(label.trim().toLowerCase()) && (isPrivate(label) || containsPrivate(label))) {
+          findings.push({ location: `/revision/feedback/approvedConstraints/${index}` });
+        }
+      }
+      for (const value of targetLabels) {
+        if (!isTargetValue(constraint.to, value) && (isPrivate(value) || containsPrivate(value))) {
+          findings.push({ location: `/revision/feedback/approvedConstraints/${index}` });
+        }
+      }
+    });
   }
   payload.syntheticExamples.forEach((example, row) => {
     for (const [alias, value] of Object.entries(example)) {

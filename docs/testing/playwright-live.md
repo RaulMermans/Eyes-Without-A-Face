@@ -113,3 +113,22 @@ pnpm test:live tests/live/blind-revision.spec.ts
 ```
 
 About 9 cloud requests per full run. Nothing is retried automatically. Playwright empties `test-results/` on every run, so copy the evidence file before running anything else. Archived runs: [../evidence/sprint-7/](../evidence/sprint-7/).
+
+## Sprint 8 semantic benchmark
+
+`tests/live/semantic-benchmark.spec.ts` is opt-in and uses quota. Per trial and scenario it runs:
+
+- **B:** a real Gemini proposal, semantic verification, the revision declined, then the holdout.
+- **C/D:** real Nano with validated suggestions applied, a real Gemini proposal, semantic verification. Then the spec authorizes every trusted constraint behind a semantic finding, approves one real Gemini revision, and runs the re-evaluation, the local acceptance check and the holdout.
+
+The predeclared budget is in `docs/evidence/sprint-8/freeze-manifest.json`: trials 1–5, at most 60 cloud requests, no retries. Evidence is written outside `test-results/` (Playwright empties that directory), to `EYES_LIVE_EVIDENCE` (default `live-evidence/sprint-8/semantic-benchmark.json`, git-ignored). It is archived to `docs/evidence/sprint-8/live-semantic-benchmark.json`.
+
+```bash
+EYES_APPCHECK_DEBUG_TOKEN="$(cat ~/.config/eyes-without-a-face/appcheck-debug-token)" \
+EYES_LIVE_TESTS=1 EYES_LIVE_SEMANTIC_BENCHMARK=1 EYES_LIVE_CLOUD=1 EYES_LIVE_ON_DEVICE=1 \
+EYES_CHROME_PROFILE="$HOME/.cache/eyes-without-a-face/chrome-nano-profile" \
+EYES_LIVE_TRIALS=1 EYES_LIVE_FIRST_TRIAL=1 \
+pnpm test:live tests/live/semantic-benchmark.spec.ts
+```
+
+`EYES_LIVE_SCENARIO=<id>` restricts a run to one scenario.

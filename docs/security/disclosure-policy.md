@@ -27,3 +27,22 @@ The only cloud entry point is `submitApprovedCloudInference`.
 ## Sprint 7: second disclosure (blind revision)
 
 A blind revision request (cloud-disclosure 1.2.0) may add only Blind Revision Feedback 1.0.0 to the already-approved twin. It requires its own review and approval, and the UI lists exactly what is newly disclosed. Engine messages, values, source names, bindings, Nano rationales and exact counts above four are never included. See [../contracts/blind-revision-feedback.md](../contracts/blind-revision-feedback.md).
+
+## Sprint 8: semantic findings and approved constraints
+
+A semantic revision request (cloud-disclosure 1.3.0) may add only Blind Revision Feedback 1.1.0 to the approved twin. Every 1.2.0 rule still applies, plus these:
+
+1. **Codes are sent by default.** Semantic findings are fixed codes with operation numbers, disclosed aliases, approved destinations and coarse buckets. They are listed under "Newly disclosed" and need the same explicit approval as every other request.
+2. **Constraints need their own opt-in.** A semantic *constraint* is sent only when the user ticks it. Nothing is ticked by default. It may repeat only labels already approved for its alias, destination enum values and fixed date formats. It discloses meaning (an order or a correspondence), never a new label or value.
+3. **Never sent, regardless of selection:**
+   - the local Semantic Verification Contract;
+   - source paths;
+   - which records violated a constraint;
+   - local-only detail;
+   - Nano rationales;
+   - unselected constraints;
+   - `allowed-values` constraints;
+   - "no constraint covers this operation" notes.
+4. **Changing the selection invalidates the request.** Ticking or unticking a constraint, or confirming a date order, discards any prepared request and its pending approval. The new request has a new hash.
+5. **Ambiguous evidence is never sent as a fact.** It may be sent only as the code `ambiguous-date-interpretation`. A model suggestion is never trusted and never becomes a constraint.
+6. **The cumulative ledger.** The review shows request 1 against what request 2 adds: findings, semantic findings, selected constraints, and new labels (always 0).

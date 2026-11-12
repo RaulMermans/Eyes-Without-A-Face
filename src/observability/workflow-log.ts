@@ -17,7 +17,11 @@ export type WorkflowEventKind =
   | "revision-feedback"
   | "revision-request"
   | "revision-evaluate"
-  | "holdout-evaluate";
+  | "holdout-evaluate"
+  | "semantic-verify"
+  | "semantic-feedback"
+  | "revision-decision"
+  | "outcome-compare";
 
 export interface WorkflowEvent {
   at: string;

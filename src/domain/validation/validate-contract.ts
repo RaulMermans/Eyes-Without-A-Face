@@ -4,7 +4,10 @@ import type { ErrorObject, ValidateFunction } from "ajv";
 import cloudDisclosureSchema from "../contracts/schemas/cloud-disclosure.v1.schema.json" with { type: "json" };
 import cloudDisclosureSchemaV11 from "../contracts/schemas/cloud-disclosure.v1.1.schema.json" with { type: "json" };
 import cloudDisclosureSchemaV12 from "../contracts/schemas/cloud-disclosure.v1.2.schema.json" with { type: "json" };
+import cloudDisclosureSchemaV13 from "../contracts/schemas/cloud-disclosure.v1.3.schema.json" with { type: "json" };
 import blindRevisionFeedbackSchema from "../contracts/schemas/blind-revision-feedback.v1.schema.json" with { type: "json" };
+import blindRevisionFeedbackSchemaV11 from "../contracts/schemas/blind-revision-feedback.v1.1.schema.json" with { type: "json" };
+import semanticVerificationSchema from "../contracts/schemas/semantic-verification.v1.schema.json" with { type: "json" };
 import exportSchema from "../contracts/schemas/export.v1.schema.json" with { type: "json" };
 import mappingSchema from "../contracts/schemas/mapping.v1.schema.json" with { type: "json" };
 import phantomSchema from "../contracts/schemas/phantom.v1.schema.json" with { type: "json" };
@@ -37,6 +40,8 @@ const ajv = new Ajv2020({
 });
 addFormats(ajv);
 ajv.addSchema(blindRevisionFeedbackSchema);
+ajv.addSchema(blindRevisionFeedbackSchemaV11);
+ajv.addSchema(semanticVerificationSchema);
 
 const validators: Record<string, ValidateFunction> = {
   "source@1.0.0": ajv.compile(sourceSchema),
@@ -47,6 +52,7 @@ const validators: Record<string, ValidateFunction> = {
   "cloud-disclosure@1.0.0": ajv.compile(cloudDisclosureSchema),
   "cloud-disclosure@1.1.0": ajv.compile(cloudDisclosureSchemaV11),
   "cloud-disclosure@1.2.0": ajv.compile(cloudDisclosureSchemaV12),
+  "cloud-disclosure@1.3.0": ajv.compile(cloudDisclosureSchemaV13),
 };
 
 function issueFromAjv(error: ErrorObject): ContractIssue {
@@ -189,10 +195,27 @@ export function assertValidContract<T>(value: unknown): T {
   return value as T;
 }
 
-const feedbackValidator = ajv.getSchema(blindRevisionFeedbackSchema.$id) as ValidateFunction;
+const feedbackValidators: Readonly<Record<string, ValidateFunction>> = {
+  "1.0.0": ajv.getSchema(blindRevisionFeedbackSchema.$id) as ValidateFunction,
+  "1.1.0": ajv.getSchema(blindRevisionFeedbackSchemaV11.$id) as ValidateFunction,
+};
 
-/** Strict schema validation of a standalone Blind Revision Feedback 1.0.0 object. */
+/**
+ * Strict schema validation of a standalone Blind Revision Feedback object.
+ * The version is read from `feedbackVersion`; an unknown version fails closed.
+ */
 export function validateRevisionFeedbackSchema(value: unknown): ContractIssue[] {
-  if (feedbackValidator(value)) return [];
-  return (feedbackValidator.errors ?? []).map(issueFromAjv);
+  const version = asRecord(value)?.feedbackVersion;
+  const validator = typeof version === "string" && Object.hasOwn(feedbackValidators, version) ? feedbackValidators[version] : undefined;
+  if (!validator) return [{ path: "/feedbackVersion", message: "Unsupported feedback version", code: "VERSION" }];
+  if (validator(value)) return [];
+  return (validator.errors ?? []).map(issueFromAjv);
+}
+
+const semanticValidator = ajv.getSchema(semanticVerificationSchema.$id) as ValidateFunction;
+
+/** Strict schema validation of a local Semantic Verification Contract 1.0.0. */
+export function validateSemanticContractSchema(value: unknown): ContractIssue[] {
+  if (semanticValidator(value)) return [];
+  return (semanticValidator.errors ?? []).map(issueFromAjv);
 }

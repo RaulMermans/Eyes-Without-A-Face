@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://eyes-without-a-face.dev/schemas/semantic-verification/1.0.0",
+  "title": "Semantic Verification Contract (1.0.0)",
+  "description": "LOCAL ONLY. Explicit, independently grounded expectations about what an integration means: date interpretation, ordered categories, declared category meaning and destination invariants. Constraints reference local source paths and are never sent anywhere; only an allowlisted projection of an authorized constraint may reach the cloud (Blind Revision Feedback 1.1.0). A model suggestion can never be trusted. Never derived from evaluation ground truth or holdout cases.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contractKind", "semanticContractVersion", "contractId", "localOnly", "constraints"],
+  "properties": {
+    "contractKind": { "const": "semantic-verification" },
+    "semanticContractVersion": { "const": "1.0.0" },
+    "contractId": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$" },
+    "localOnly": { "const": true },
+    "constraints": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {
+        "oneOf": [
+          { "$ref": "#/$defs/dateInterpretation" },
+          { "$ref": "#/$defs/orderedCategories" },
+          { "$ref": "#/$defs/enumMeaning" },
+          { "$ref": "#/$defs/allowedValues" }
+        ]
+      }
+    }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$" },
+    "localPath": { "type": "string", "minLength": 1, "maxLength": 256 },
+    "targetName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z_][A-Za-z0-9_]*(\\.[A-Za-z_][A-Za-z0-9_]*){0,3}$"
+    },
+    "label": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "dateFormat": { "enum": ["ISO-8601", "YYYY-MM-DD", "MM/DD/YYYY", "DD/MM/YYYY"] },
+    "trust": {
+      "description": "trusted: may verify. proposed: a suggestion (never verifies). ambiguous: legitimate evidence could not decide; confirmation required.",
+      "enum": ["trusted", "proposed", "ambiguous"]
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind"],
+      "properties": {
+        "kind": {
+          "enum": ["user-declared", "source-contract", "local-rule", "deterministic-observation", "model-suggestion"]
+        },
+        "observation": {
+          "description": "Counts from a deterministic local observation over imported and revision-feedback records only (never holdout).",
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["checkedValues", "disambiguating", "conflicting"],
+          "properties": {
+            "checkedValues": { "type": "integer", "minimum": 0 },
+            "disambiguating": { "type": "integer", "minimum": 0 },
+            "conflicting": { "type": "integer", "minimum": 0 }
+          }
+        }
+      }
+    },
+    "undeclared": {
+      "description": "review: a source category outside the declared set must not become successful output. unconstrained: no expectation.",
+      "enum": ["review", "unconstrained"]
+    },
+    "dateInterpretation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "source", "format", "trust", "evidence"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "kind": { "const": "date-interpretation" },
+        "source": { "$ref": "#/$defs/localPath" },
+        "format": { "anyOf": [{ "$ref": "#/$defs/dateFormat" }, { "type": "null" }] },
+        "candidates": { "type": "array", "minItems": 2, "maxItems": 4, "uniqueItems": true, "items": { "$ref": "#/$defs/dateFormat" } },
+        "trust": { "$ref": "#/$defs/trust" },
+        "evidence": { "$ref": "#/$defs/evidence" }
+      }
+    },
+    "orderedCategories": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "source", "target", "sourceOrder", "targetOrder", "undeclared", "trust", "evidence"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "kind": { "const": "ordered-categories" },
+        "source": { "$ref": "#/$defs/localPath" },
+        "target": { "$ref": "#/$defs/targetName" },
+        "sourceOrder": {
+          "description": "Source labels from highest to lowest rank.",
+          "type": "array", "minItems": 2, "maxItems": 16, "uniqueItems": true, "items": { "$ref": "#/$defs/label" }
+        },
+        "targetOrder": {
+          "description": "Destination values from highest to lowest rank.",
+          "type": "array", "minItems": 2, "maxItems": 16, "uniqueItems": true, "items": { "$ref": "#/$defs/label" }
+        },
+        "undeclared": { "$ref": "#/$defs/undeclared" },
+        "trust": { "$ref": "#/$defs/trust" },
+        "evidence": { "$ref": "#/$defs/evidence" }
+      }
+    },
+    "enumMeaning": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "source", "target", "meaning", "undeclared", "trust", "evidence"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "kind": { "const": "enum-meaning" },
+        "source": { "$ref": "#/$defs/localPath" },
+        "target": { "$ref": "#/$defs/targetName" },
+        "meaning": {
+          "type": "object", "minProperties": 1, "maxProperties": 32,
+          "propertyNames": { "maxLength": 64 },
+          "additionalProperties": { "$ref": "#/$defs/label" }
+        },
+        "undeclared": { "$ref": "#/$defs/undeclared" },
+        "trust": { "$ref": "#/$defs/trust" },
+        "evidence": { "$ref": "#/$defs/evidence" }
+      }
+    },
+    "allowedValues": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "target", "values", "trust", "evidence"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "kind": { "const": "allowed-values" },
+        "target": { "$ref": "#/$defs/targetName" },
+        "values": { "type": "array", "minItems": 1, "maxItems": 32, "uniqueItems": true, "items": { "$ref": "#/$defs/label" } },
+        "trust": { "$ref": "#/$defs/trust" },
+        "evidence": { "$ref": "#/$defs/evidence" }
+      }
+    }
+  }
+}

@@ -11,7 +11,7 @@ export const CRM_DEMO_LABEL = "fictional-crm-accounts";
  * cases. Everything is synthetic; the reserved cases are never profiled or disclosed.
  */
 export function withCrmDemo(workspace: WorkspaceState): WorkspaceState {
-  const base = invalidateDownstream({ ...workspace, overrides: {} });
+  const base = invalidateDownstream({ ...workspace, overrides: {}, semanticConfirmations: {} });
   const parsed = parseSourceDataset(JSON.stringify(sourceRecords), CRM_DEMO_LABEL);
   if (!parsed.ok) {
     return { ...base, source: null, reservedRecords: null, sourceError: parsed.message };
@@ -27,7 +27,7 @@ export function withCrmDemo(workspace: WorkspaceState): WorkspaceState {
  * applied as if the user had made them.
  */
 export function withScenario(workspace: WorkspaceState, scenario: EvaluationScenario): WorkspaceState {
-  const base = invalidateDownstream({ ...workspace, overrides: { ...scenario.twinOverrides } });
+  const base = invalidateDownstream({ ...workspace, overrides: { ...scenario.twinOverrides }, semanticConfirmations: {} });
   const parsed = parseSourceDataset(JSON.stringify(scenario.imported.map((item) => item.record)), scenario.datasetLabel);
   if (!parsed.ok) {
     return { ...base, source: null, reservedRecords: null, sourceError: parsed.message, scenario: null };
@@ -44,6 +44,7 @@ export function withScenario(workspace: WorkspaceState, scenario: EvaluationScen
       policy: scenario.policy,
       expected: [...scenario.imported, ...scenario.revisionFeedback].map((item) => item.expected),
       holdout: scenario.holdout.map((item) => ({ record: item.record, expected: item.expected })),
+      semanticDeclared: structuredClone(scenario.semanticSpec.declared),
     },
   };
 }
