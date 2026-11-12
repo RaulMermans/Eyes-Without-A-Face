@@ -95,3 +95,35 @@ Cloud `generateAuthorized` requires an `AuthorizedCloudRequest` reserved by `sub
 - **On-device failure handling.** `classifyUnknownError` maps Chrome `kError*` failures to `ON_DEVICE_RUNTIME_ERROR`. The live adapter drops its cached `GenerativeModel` after a recoverable failure. `retry-policy.ts` allows exactly one *user-initiated* on-device retry (`ON_DEVICE_USER_RETRY_LIMIT = 1`), which resumes unclassified fields. Cloud retries remain at zero.
 - **Release build.** `scripts/build-release.mjs` and `scripts/verify-release.mjs` sit outside the app. They force App Check debug off, stamp `VITE_BUILD_SHA` (exposed as `AppConfig.buildSha`) and verify `dist/` before any Hosting deploy.
 - **UI.** The workflow shows only implemented steps (five). The Reality Check verdict separates imported-record transformation from hidden-case coverage, while `report.overall` stays strict. When the cloud adapter is unavailable, the send action is disabled so an approval is never spent on a request that cannot be dispatched. The gate and adapter still refuse independently.
+
+## Sprint 8 changes: semantic verification (no new boundary)
+
+The pipeline gains a deterministic semantic stage after the Reality Check. It adds no network path and no agent infrastructure. See [ADR 0009](../decisions/0009-semantic-verification.md).
+
+```text
+Reality Check rows (imported + revision-feedback)
+        ▼
+ buildSemanticContract (LOCAL): owner declarations + user confirmations
+        + sufficient observations over imported/feedback records (never holdout)
+        ▼
+ verifySemantics (LOCAL, generic): PASS / MISMATCH / POLICY_CONFLICT /
+        AMBIGUOUS / EVIDENCE_MISSING / UNVERIFIED, per operation and destination
+        ▼
+ projectRevisionFeedback (+ projectSemanticFeedback): codes, buckets, and
+        only user-authorized constraints in already-approved vocabulary
+        ▼
+ Feedback 1.1.0 ── cloud-disclosure 1.3.0 ── same gate (preview, SHA-256, approve, single use, budget 1)
+        ▼
+ Gemini revision ── convertProposal (unchanged) ── re-evaluation + semantic re-verification
+        ▼
+ decideRevision (LOCAL, ground-truth blind): verdict; both mappings kept; never auto-promoted
+        ▼
+ final holdout (scoring only, after the final mapping is fixed)
+```
+
+Ownership is unchanged:
+
+- Gemini Nano interprets bounded private context locally.
+- Gemini Cloud proposes and revises declarative mappings.
+- Deterministic code owns constraints, evidence validation, projection, approval, execution, grading and stopping.
+- The user declares or confirms meaning and approves every disclosure.

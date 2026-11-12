@@ -44,6 +44,17 @@ Build a privacy-aware integration tool: private CRM JSON stays local; on-device 
 - Gemini Nano may read bounded private context (`ONLY_ON_DEVICE` only). Its output is validated against the deterministic profile and changes the twin only after the user applies it. Never log, persist, or disclose the private prompt or rationale.
 - Holdout cases are never profiled, disclosed, used for feedback, or used to tune prompts.
 
+## Semantic verification rules (Sprint 8)
+
+- Semantic constraints live in a local Semantic Verification Contract 1.0.0 (`src/semantics/`). Only `user-declared`, `source-contract`, `local-rule` or a *sufficient* `deterministic-observation` may be `trusted`. A model suggestion (Nano or Gemini) is never trusted.
+- Never derive a constraint from ground truth (`expected`) or from holdout records. Observations read imported plus revision-feedback records only. `src/semantics/` must not import fixtures or evaluation code.
+- Unknown is never a pass. Report `SEMANTIC_AMBIGUOUS`, `SEMANTIC_EVIDENCE_MISSING` and `SEMANTIC_UNVERIFIED` as such. Never present schema validity as correctness.
+- Semantic feedback reaches the cloud only as Feedback 1.1.0 inside disclosure 1.3.0, through the same gate.
+  - A constraint is sent only after an explicit per-constraint opt-in, and only with labels already approved for its alias.
+  - Without a sendable semantic finding, the output must stay Feedback 1.0.0 / 1.2.0, byte-identical to Sprint 7.
+- Revised mappings are judged by `src/revision/decision.ts`: ground-truth blind, with operation-level regressions. Never promote a revision automatically; a gain made only by holding records back is not `ACCEPTED`.
+- Benchmark inputs are frozen in `docs/evidence/sprint-8/freeze-manifest.json`. Change a frozen file only with `node scripts/freeze-benchmark.mjs --amend "reason"`, and report the amendment. If you inspect a holdout and then change anything, create a fresh holdout.
+
 ## Tool and data permissions
 
 Allowed without extra authorization: local files in this repository, local tests, local Vite server, Playwright against localhost.

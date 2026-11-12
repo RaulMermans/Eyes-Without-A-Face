@@ -71,6 +71,11 @@ async function toReality(page: Page, scenario: string, includeReserved = true): 
 test.describe("E2E-080 hero: silent error → safe semantic feedback → one blind revision → holdout", () => {
   test("detects the reversed scale, discloses an approved constraint, and measures the result", async ({ page }) => {
     const providerRequests = attachProviderWatch(page);
+    const consoleErrors: string[] = [];
+    page.on("console", (message) => {
+      if (message.type() === "error") consoleErrors.push(message.text());
+    });
+    page.on("pageerror", (error) => consoleErrors.push(error.message));
     await boot(page, { cloudOutput: SUPPORT_REVERSED });
     await toReality(page, "support-tickets");
 
@@ -134,6 +139,7 @@ test.describe("E2E-080 hero: silent error → safe semantic feedback → one bli
     expect(after).toBeGreaterThan(before);
     expect(await cloudCalls(page)).toBe(2);
     expect(providerRequests).toEqual([]);
+    expect(consoleErrors).toEqual([]);
     await page.screenshot({ path: path.join(shots, "e2e-080-holdout.png"), fullPage: true });
   });
 });

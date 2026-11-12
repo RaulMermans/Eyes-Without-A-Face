@@ -1,4 +1,4 @@
-# Blind Integration evaluation (Sprint 7 foundation)
+# Blind Integration evaluation (Sprint 7 foundation, Sprint 8 benchmark)
 
 Code:
 
@@ -13,7 +13,8 @@ Fixtures: `src/examples/scenarios/*.json`. All data is fictional, and each scena
 | --- | --- | --- |
 | Imported | Profiling, Phantom Twin, disclosure, Reality Check, feedback | — |
 | Revision-feedback | Reality Check (reserved hidden cases), feedback projection | Profiling, disclosure |
-| Holdout | Final evaluation of both mapping versions, only after the final mapping exists | Profiling, disclosure, feedback, prompt design |
+| Development (Sprint 8) | Sprint 7's holdout. Its results were inspected in Sprint 7, so it is now debugging data only | Feedback, semantic evidence, any reported "independent" result |
+| Holdout | Final evaluation of both mapping versions, only after the final mapping exists. Sprint 8: 10 fresh cases per scenario, frozen before any Sprint 8 model run | Profiling, disclosure, feedback, semantic evidence, prompt design |
 
 `validateScenario` rejects overlapping sets. The UI enables the holdout only in a terminal revision state (or when there was nothing to revise).
 
@@ -62,7 +63,49 @@ Improvement compares each case's outcome before and after. Correct handling rank
 
 Live evidence: [`docs/evidence/sprint-7/`](../evidence/sprint-7/). `tests/evaluation/live-replay.test.ts` re-evaluates run 3's recorded real outputs and must reproduce the browser's counts exactly.
 
+## Sprint 8 additions
+
+**Semantic verification.** See [contracts/semantic-verification.md](../contracts/semantic-verification.md). Each scenario carries `semanticSpec.declared`: fictional owner declarations, written from the scenario's documented meaning, never from ground truth.
+
+| Scenario | Declared (user) | Observed (local) |
+| --- | --- | --- |
+| `crm-eu-accounts` | status meaning (`aktiv → active`, …) | date order of `angelegt_am`. Ambiguous on imported records alone; proven day-first once the revision-feedback cases are included |
+| `support-tickets` | priority order `p1 > p2 > p3 > p4` ↔ `urgent > high > normal > low`, undeclared → review; channel meaning | — |
+| `billing-subscriptions` | plan meaning, undeclared → review | — |
+
+**Additional metrics**
+
+| Metric | Definition |
+| --- | --- |
+| correct transformations | `transformed + handled` records whose output equals ground truth. **Primary metric.** Quarantine never counts |
+| semantic detection | Among schema-valid outputs that ground truth says are wrong: detected / missed by the verifier; false alarms = flagged rows that are correct. Scoring only; ground truth never reaches the verifier |
+| revision verdict | `src/revision/decision.ts`: `ACCEPTED`, `REJECTED`, `UNCHANGED`, `INSUFFICIENT_INFORMATION`, `NO_IMPROVEMENT`, `REGRESSED`, `HUMAN_REVIEW_REQUIRED`. Ground-truth blind |
+| operation regressions | (destination, record) failures that appear only after the revision, excluding records the engine refused before |
+| holdout Δ | Holdout correct transformations, revised minus initial, for the same run |
+| human interventions | Applied Nano suggestions, the constraint-disclosure decision, the revision approval |
+
+**What each configuration receives**
+
+| Config | Disclosure | Nano | Semantic constraint | Revision |
+| --- | --- | --- | --- | --- |
+| A | Approved 1.1.0 (to the deterministic proposer) | — | — | — |
+| B | Approved 1.1.0 | — | — | — |
+| C | Approved 1.1.0, including applied Nano refinements | Real, validated, user-applied | — | — |
+| D | As C, plus one 1.3.0 (or 1.2.0) request | As C | Every trusted constraint behind a semantic finding, authorized by the user | One |
+
+The semantic verifier runs locally for **every** configuration. Only D sends anything about it.
+
+**Reproduce**
+
+- Offline: `pnpm test:evaluation`. `EVAL-081` regenerates `docs/evidence/sprint-8/benchmark-summary.json` from `live-semantic-benchmark.json` and fails on any difference. To rewrite it after archiving new evidence:
+
+  ```bash
+  EYES_WRITE_BENCHMARK=1 pnpm vitest run tests/evaluation/sprint8-benchmark.test.ts
+  ```
+- Live (opt-in; uses quota): [testing/playwright-live.md](../testing/playwright-live.md#sprint-8-semantic-benchmark).
+- Freeze: `docs/evidence/sprint-8/freeze-manifest.json`, checked by `EVAL-080`.
+
 ## Limits
 
-- Three small scenarios with one live run each: preliminary, not statistically meaningful. Sprint 8 is the benchmark.
+- Three small scenarios. Sprint 7 had one live run each. Sprint 8 has at most five per scenario and configuration. This is an engineering benchmark, not a statistical study.
 - Ground truth exists only for fixtures. For user data the UI reports schema-valid output, which is not proven correct.

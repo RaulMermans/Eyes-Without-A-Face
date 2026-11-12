@@ -81,7 +81,20 @@ To enable real inference:
 
 ## Status
 
-Release candidate (Sprint 5) with the Sprint 6 Spectral Forensics redesign and Sprint 7 **Blind Integration** ([docs/sprints/sprint-7.md](docs/sprints/sprint-7.md)). Gemini Nano can interpret private fields on the device. After the local Reality Check, you can approve exactly one revision request that sends Gemini an allowlisted summary of the failures, never the records. The local evaluator then measures the revised mapping, including on an independent holdout ([docs/evaluation/](docs/evaluation/)). Hybrid inference was requalified on the redesigned app. The hosted deployment and public release are gated on owner approval ([docs/deployment.md](docs/deployment.md)). Not implemented: export packaging.
+Release candidate (Sprint 5) with the Sprint 6 Spectral Forensics redesign, Sprint 7 **Blind Integration**, and Sprint 8 **Semantic Verification** ([docs/sprints/sprint-8.md](docs/sprints/sprint-8.md)).
+
+A local verifier checks what a mapping *means*, not only its structure, against constraints the owner declared or that local records prove. You can then approve one revision request that tells Gemini what is wrong, and optionally the approved constraint, never the records.
+
+Sprint 8 real-model benchmark (preliminary, 5 trials, frozen fresh holdout, every number replayed offline):
+
+- **Detection.** The verifier flagged every schema-valid but wrong holdout output of real Gemini mappings: CRM 20/20, support 36/36, 0 false alarms.
+- **Correction.** Two real blind revisions corrected the meaning on the independent holdout with 0 regressions: support 0 → 6 and CRM 1 → 9 correct transformations, of 10.
+- **What was not shown.**
+  - A deterministic local patch using the same approved constraint did as well (9) or better (7), so the model's advantage over simpler alternatives is unproven.
+  - Gemini Nano added no measurable value.
+  - 5 of 8 revision requests timed out at the provider.
+
+The hosted deployment and public release are gated on owner approval ([docs/deployment.md](docs/deployment.md)). Not implemented: export packaging.
 
 ## Project
 

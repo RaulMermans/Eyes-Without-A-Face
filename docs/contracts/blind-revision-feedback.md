@@ -1,11 +1,14 @@
-# Blind Revision Feedback 1.0.0 and cloud disclosure 1.2.0
+# Blind Revision Feedback 1.0.0 / 1.1.0 and cloud disclosure 1.2.0 / 1.3.0
 
 Schemas:
 
 - `src/domain/contracts/schemas/blind-revision-feedback.v1.schema.json`
 - `src/domain/contracts/schemas/cloud-disclosure.v1.2.schema.json`
 
-Decision: [ADR 0008](../decisions/0008-blind-revision.md).
+- `src/domain/contracts/schemas/blind-revision-feedback.v1.1.schema.json` (Sprint 8)
+- `src/domain/contracts/schemas/cloud-disclosure.v1.3.schema.json` (Sprint 8)
+
+Decisions: [ADR 0008](../decisions/0008-blind-revision.md), [ADR 0009](../decisions/0009-semantic-verification.md).
 
 ## Purpose
 
@@ -73,3 +76,53 @@ The disclosure gate then runs the 1.2.0 schema, forbidden keys, the canary and t
 - `tests/unit/blind-revision.test.ts`
 - `tests/contracts/blind-revision-contracts.test.ts`
 - `tests/privacy/blind-revision-privacy.test.ts` (adversarial: canary, rare categories, long and unicode values, nested objects, prompt injection, smuggled values, aggregation buckets, approval binding and replay)
+
+## Feedback 1.1.0 and cloud disclosure 1.3.0 (Sprint 8)
+
+**When it is used.** It is used only when the local semantic verifier ([semantic-verification.md](semantic-verification.md)) yields at least one sendable finding. Otherwise the projector emits **exactly** Feedback 1.0.0 inside a 1.2.0 request, byte-identical to Sprint 7. `tests/contracts/semantic-contracts.test.ts` proves this.
+
+**What 1.1.0 adds to 1.0.0.** It keeps every 1.0.0 field, with these changes:
+
+- `findings` may be empty when there are semantic findings;
+- the objective `respect-approved-semantic-constraints` is added;
+- two new arrays, below.
+
+| Field | Content |
+| --- | --- |
+| `semanticFindings[]` | `operation` (1-based), `op`, `alias` (disclosed only), `to` (approved target only), `code`, `category`, `affectedCases` (bucket; absent when the finding is static) |
+| `approvedConstraints[]` | Only constraints the user ticked. `date-order {alias, inputFormat}`, `category-order {alias, to, sourceOrder, targetOrder}`, `category-meaning {alias, to, map}` |
+
+| Semantic code | Category | Sent? |
+| --- | --- | --- |
+| `SEMANTIC_DATE_ORDER_CONFLICT` | `date-order-conflict` | yes (mismatch) |
+| `SEMANTIC_ORDER_INVERSION` | `ordered-category-inversion` | yes (mismatch) |
+| `SEMANTIC_ENUM_MEANING_CONFLICT` | `enum-meaning-conflict` | yes (mismatch) |
+| `SEMANTIC_POLICY_VIOLATION` | `semantic-policy-violation` | yes (policy conflict) |
+| `SEMANTIC_AMBIGUOUS_DATE` | `ambiguous-date-interpretation` | yes (ambiguous) |
+| `SEMANTIC_EVIDENCE_MISSING` | `insufficient-evidence` | only for an ambiguous or untrusted category constraint; "no constraint covers this operation" is withheld |
+
+**Constraint projection** (`src/revision/semantic-feedback.ts`). A constraint is projected only when all of these hold:
+
+1. the user authorized it;
+2. it is `trusted`;
+3. it backs a finding that is sent;
+4. its source is a disclosed alias;
+5. every source label is **already** in that alias's approved `enumValues`;
+6. every destination value is in that destination's enum.
+
+Otherwise it is withheld, with one of these reasons, and counted locally:
+
+- `NOT_TRUSTED`
+- `NO_SENT_FINDING`
+- `SOURCE_NOT_DISCLOSED`
+- `LABEL_NOT_DISCLOSED`
+- `VALUE_NOT_IN_TARGET`
+- `NOT_PROJECTABLE`
+
+A constraint therefore adds **no new label**. It adds meaning: the order or the correspondence. The review panel shows this as *new semantic information* and counts new labels in the cumulative disclosure ledger; the count must be 0.
+
+**Validation.** `validateRevisionFeedback` checks the 1.1.0 schema plus `validateSemanticBlock`: aliases disclosed, destinations approved, operations matching, labels approved. The gate's private-value scan also covers `approvedConstraints`.
+
+**Prompt.** A 1.3.0 request uses `SEMANTIC_REVISION_INSTRUCTIONS` (prompt v3): v2 plus how to read semantic findings and approved constraints, and an explicit instruction to abstain rather than invent. 1.2.0 keeps prompt v2 unchanged.
+
+**Migration.** Both versions stay supported. Nothing about 1.0.0 / 1.2.0 changed meaning. A 1.3.0 payload cannot carry 1.0.0 feedback and vice versa; tests cover both directions.

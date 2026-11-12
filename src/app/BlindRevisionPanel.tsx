@@ -915,7 +915,7 @@ function ConstraintAuthorization({
           <label htmlFor={`authorize-${constraint.id}`} className="min-w-0">
             <span className="font-medium">Also disclose:</span>{" "}
             <span className="font-mono text-xs [overflow-wrap:anywhere]" data-testid={`authorize-line-${constraint.id}`}>
-              {line ?? `${describeConstraint(constraint)} (cannot be expressed with approved vocabulary: ${withheld ?? "withheld"})`}
+              {line?.replace(/^Approved semantic constraint · /, "") ?? `${describeConstraint(constraint)} (cannot be expressed with approved vocabulary: ${withheld ?? "withheld"})`}
             </span>
             <span className="block text-[11px] text-mute">{evidenceLabel(constraint)} · uses only aliases, labels and destination values Gemini already received</span>
           </label>

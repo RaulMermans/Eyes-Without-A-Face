@@ -205,11 +205,11 @@ export function SemanticPanel({
         })}
       </ol>
       {report.fields.some((field) => field.status === "SEMANTIC_UNVERIFIED") ? (
-        <p className="mt-3 text-xs text-mute" data-testid="semantic-structural-only">
+        <div className="mt-3 text-xs text-mute" data-testid="semantic-structural-only">
           <Eyebrow className="inline">Structure only</Eyebrow>{" "}
           {report.fields.filter((field) => field.status === "SEMANTIC_UNVERIFIED").map((field) => field.target).join(", ")}: copied, trimmed or
           normalized values. Their meaning is not checked here.
-        </p>
+        </div>
       ) : null}
       {failing ? (
         <p className="mt-3 text-sm">
