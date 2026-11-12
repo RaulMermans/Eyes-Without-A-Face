@@ -6,6 +6,7 @@ import { ErrorBanner } from "../components/ErrorBanner.tsx";
 import type { TwinIssue } from "../phantom/generate.ts";
 import { ROLE_LABELS } from "../phantom/roles.ts";
 import type { InferenceServices, OnDeviceCapability } from "../inference/types.ts";
+import { PrivateUnderstanding } from "./PrivateUnderstanding.tsx";
 import { InferenceError } from "../inference/errors.ts";
 import { isRecoverableOnDeviceFailure, ON_DEVICE_USER_RETRY_LIMIT } from "../inference/retry-policy.ts";
 import { recordWorkflowEvent } from "../observability/workflow-log.ts";
@@ -176,6 +177,14 @@ export function PhantomPanel({
           suggestions={suggestions}
           onSuggest={() => void suggestOnDevice(false)}
           onRetry={() => void suggestOnDevice(true)}
+        />
+        <PrivateUnderstanding
+          available={onDevice.kind === "available"}
+          otherBusy={Boolean(busy)}
+          workspace={workspace}
+          prepared={prepared}
+          inference={inference}
+          onApply={(path, override) => setOverride(path, { ...override })}
         />
 
         <div className="mt-5 flex flex-wrap items-end gap-x-4 gap-y-3 border-y border-rule py-4">

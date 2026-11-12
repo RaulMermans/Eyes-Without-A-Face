@@ -41,3 +41,7 @@ Phantom `approvedForCloud: true` is not sufficient to send data.
 ## Honest limitation
 
 Approval of a synthetic payload is not anonymization. Aliases, constraints, rare values, and error text can still reveal information about a private system.
+
+## 1.2.0 — blind revision request (Sprint 7)
+
+The approved 1.1.0 payload, repeated byte-for-byte, plus a required `revision.feedback` (Blind Revision Feedback 1.0.0). It uses the same gate, approval, ledger and destination checks as 1.1.0. See [blind-revision-feedback.md](blind-revision-feedback.md) and [ADR 0008](../decisions/0008-blind-revision.md).

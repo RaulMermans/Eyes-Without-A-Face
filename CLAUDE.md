@@ -15,6 +15,9 @@ Read, in order:
 9. `docs/sprints/sprint-5.md` — Sprint 5 release-candidate report and remaining owner approvals
 10. `docs/deployment.md` — release build and approval-gated deployment
 11. `docs/design/design-system.md` — Spectral Forensics tokens, zones, components
-12. `docs/sprints/sprint-6.md` — Sprint 6 report and Sprint 7 readiness
+12. `docs/sprints/sprint-6.md` — Sprint 6 report
+13. `docs/decisions/0008-blind-revision.md` — blind revision boundary
+14. `docs/evaluation/README.md` — evaluation sets, metrics, configurations
+15. `docs/sprints/sprint-7.md` — Sprint 7 report and Sprint 8 readiness
 
-Do not duplicate architecture here. Do not start Sprint 7 automatically.
+Do not duplicate architecture here. Do not start Sprint 8 automatically.

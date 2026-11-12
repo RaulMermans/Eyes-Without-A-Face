@@ -41,16 +41,20 @@ export function findPrivateValueLeaks(
   }
   const findings: PrivateLeakFinding[] = [];
   const isPrivate = (text: string) => values.has(text.trim().toLowerCase());
-  const containsPrivate = (text: string) => {
-    const lowered = text.toLowerCase();
-    for (const value of values) {
-      if (value.length >= 4 && lowered.includes(value)) return true;
-    }
-    return false;
-  };
   const approved = new Map(
     payload.fields.map((field) => [field.alias, new Set((field.enumValues ?? []).map((label) => label.trim().toLowerCase()))]),
   );
+  // Category labels the user explicitly approved are already in this payload
+  // (fields[].enumValues), so finding one inside generated text is not a new
+  // disclosure (Sprint 7: "email" as a channel label matched "Email address").
+  const approvedLabels = new Set([...approved.values()].flatMap((labels) => [...labels]));
+  const containsPrivate = (text: string) => {
+    const lowered = text.toLowerCase();
+    for (const value of values) {
+      if (value.length >= 4 && !approvedLabels.has(value) && lowered.includes(value)) return true;
+    }
+    return false;
+  };
 
   payload.fields.forEach((field, index) => {
     if (containsPrivate(field.semanticDescriptor)) findings.push({ location: `/fields/${index}/semanticDescriptor` });
@@ -63,6 +67,44 @@ export function findPrivateValueLeaks(
   (payload.disclosureConstraints ?? []).forEach((constraint, index) => {
     if (containsPrivate(constraint)) findings.push({ location: `/disclosureConstraints/${index}` });
   });
+  const revision = payload.revision?.feedback;
+  if (revision) {
+    // Blind revision block (1.2.0). Every string is checked; the only exceptions
+    // are labels already approved for disclosure: source category labels used
+    // as map keys for their own alias, and destination enum values (the target
+    // is reviewed separately and is not source-derived).
+    const targetValues = new Map(
+      (payload.target?.fields ?? []).map((field) => [field.name, new Set((field.enumValues ?? []).map((v) => v.trim().toLowerCase()))]),
+    );
+    const isTargetValue = (to: string, value: string) => targetValues.get(to)?.has(value.trim().toLowerCase()) ?? false;
+    revision.previousMapping.operations.forEach((operation, index) => {
+      const params = (operation.params ?? {}) as Record<string, unknown>;
+      const fromAlias = typeof operation.from === "string" ? operation.from : null;
+      const map = params.map;
+      if (map && typeof map === "object") {
+        for (const [label, value] of Object.entries(map as Record<string, unknown>)) {
+          const approvedLabel = fromAlias ? approved.get(fromAlias)?.has(label.trim().toLowerCase()) : false;
+          if (!approvedLabel && (isPrivate(label) || containsPrivate(label))) {
+            findings.push({ location: `/revision/feedback/previousMapping/operations/${index}/params/map` });
+          }
+          if (typeof value === "string" && !isTargetValue(operation.to, value) && (isPrivate(value) || containsPrivate(value))) {
+            findings.push({ location: `/revision/feedback/previousMapping/operations/${index}/params/map` });
+          }
+        }
+      }
+      for (const key of ["default", "value", "separator"] as const) {
+        const value = params[key];
+        if (typeof value === "string" && !isTargetValue(operation.to, value) && (isPrivate(value) || containsPrivate(value))) {
+          findings.push({ location: `/revision/feedback/previousMapping/operations/${index}/params/${key}` });
+        }
+      }
+    });
+    revision.approvedFallbacks.forEach((fallback, index) => {
+      if (!isTargetValue(fallback.to, fallback.value) && (isPrivate(fallback.value) || containsPrivate(fallback.value))) {
+        findings.push({ location: `/revision/feedback/approvedFallbacks/${index}` });
+      }
+    });
+  }
   payload.syntheticExamples.forEach((example, row) => {
     for (const [alias, value] of Object.entries(example)) {
       if (typeof value !== "string") continue;

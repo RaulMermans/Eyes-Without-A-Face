@@ -23,7 +23,8 @@
     "test:e2e": "playwright test",
     "test:live": "playwright test -c playwright.live.config.ts",
     "test:visual": "playwright test -c playwright.visual.config.ts",
-    "test:all": "pnpm lint && pnpm typecheck && pnpm test:unit && pnpm test:contracts && pnpm test:privacy && pnpm build && pnpm test:e2e"
+    "test:all": "pnpm lint && pnpm typecheck && pnpm test:unit && pnpm test:contracts && pnpm test:privacy && pnpm test:evaluation && pnpm build && pnpm test:e2e",
+    "test:evaluation": "vitest run tests/evaluation"
   },
   "dependencies": {
     "@fontsource/ibm-plex-mono": "5.3.0",

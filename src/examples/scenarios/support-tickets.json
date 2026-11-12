@@ -1,0 +1,367 @@
+{
+  "scenarioId": "support-tickets",
+  "scenarioVersion": "1.0.0",
+  "title": "Support tickets",
+  "summary": "Priority codes, requester emails and ticket references that are clean in the imported sample but padded or mixed-case in hidden cases.",
+  "difficulty": [
+    "Ticket references and emails with surrounding whitespace only appear in hidden cases.",
+    "Priorities p1–p4 must be interpreted (p1 → urgent); an unknown priority must never be guessed.",
+    "Date-only timestamps cannot become valid date-times without inventing a time."
+  ],
+  "fictional": true,
+  "localOnly": true,
+  "canaries": [
+    "PRIVATE_CANARY_PII_DO_NOT_SHARE"
+  ],
+  "datasetLabel": "support-tickets",
+  "twinOverrides": {
+    "prio": {
+      "discloseCategories": true
+    },
+    "channel": {
+      "discloseCategories": true
+    },
+    "body": {
+      "shareable": false
+    }
+  },
+  "destinationSchema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://eyes-without-a-face.dev/examples/scenarios/support/destination/1.0.0",
+    "title": "Helpdesk ticket",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "id",
+      "requesterEmail",
+      "priority",
+      "openedAt",
+      "channel"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^TCK-[0-9]{4}$"
+      },
+      "requesterEmail": {
+        "type": "string",
+        "format": "email"
+      },
+      "priority": {
+        "enum": [
+          "urgent",
+          "high",
+          "normal",
+          "low"
+        ]
+      },
+      "openedAt": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "channel": {
+        "enum": [
+          "email",
+          "phone",
+          "web",
+          "chat"
+        ]
+      }
+    }
+  },
+  "policy": {
+    "policyVersion": "1.0.0",
+    "policyId": "support-v1",
+    "description": "Never guess urgency or channel: unknown priorities and channels go to manual review, as do tickets without a usable timestamp or requester email.",
+    "quarantine": [
+      {
+        "code": "UNMAPPED_ENUM",
+        "to": "priority"
+      },
+      {
+        "code": "UNMAPPED_ENUM",
+        "to": "channel"
+      },
+      {
+        "code": "OUTPUT_SCHEMA_MISMATCH",
+        "to": "openedAt"
+      },
+      {
+        "code": "INVALID_EMAIL",
+        "to": "requesterEmail"
+      }
+    ],
+    "approvedFallbacks": [],
+    "approvedDefaults": [],
+    "maxQuarantineRate": 0.34
+  },
+  "imported": [
+    {
+      "record": {
+        "ticket_ref": "TCK-2041",
+        "requester": "hana.ito@example.com",
+        "prio": "p1",
+        "opened": "2026-02-03T09:15:00Z",
+        "channel": "phone",
+        "body": "PRIVATE_CANARY_PII_DO_NOT_SHARE fictional caller left account PIN in voicemail"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "TCK-2041",
+          "requesterEmail": "hana.ito@example.com",
+          "priority": "urgent",
+          "openedAt": "2026-02-03T09:15:00.000Z",
+          "channel": "phone"
+        }
+      }
+    },
+    {
+      "record": {
+        "ticket_ref": "TCK-2042",
+        "requester": "omar.haddad@example.com",
+        "prio": "p3",
+        "opened": "2026-02-03T11:40:00Z",
+        "channel": "email",
+        "body": "Fictional invoice question"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "TCK-2042",
+          "requesterEmail": "omar.haddad@example.com",
+          "priority": "normal",
+          "openedAt": "2026-02-03T11:40:00.000Z",
+          "channel": "email"
+        }
+      }
+    },
+    {
+      "record": {
+        "ticket_ref": "TCK-2043",
+        "requester": "lucia.mendez@example.org",
+        "prio": "p2",
+        "opened": "2026-02-04T08:05:00Z",
+        "channel": "web",
+        "body": "Fictional login loop"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "TCK-2043",
+          "requesterEmail": "lucia.mendez@example.org",
+          "priority": "high",
+          "openedAt": "2026-02-04T08:05:00.000Z",
+          "channel": "web"
+        }
+      }
+    },
+    {
+      "record": {
+        "ticket_ref": "TCK-2044",
+        "requester": "kwame.mensah@example.net",
+        "prio": "p4",
+        "opened": "2026-02-04T16:20:00Z",
+        "channel": "email",
+        "body": "Fictional feature idea"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "TCK-2044",
+          "requesterEmail": "kwame.mensah@example.net",
+          "priority": "low",
+          "openedAt": "2026-02-04T16:20:00.000Z",
+          "channel": "email"
+        }
+      }
+    },
+    {
+      "record": {
+        "ticket_ref": "TCK-2045",
+        "requester": "sofia.rossi@example.it",
+        "prio": "p3",
+        "opened": "2026-02-05T10:00:00Z",
+        "channel": "web",
+        "body": "Fictional export timeout"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "TCK-2045",
+          "requesterEmail": "sofia.rossi@example.it",
+          "priority": "normal",
+          "openedAt": "2026-02-05T10:00:00.000Z",
+          "channel": "web"
+        }
+      }
+    },
+    {
+      "record": {
+        "ticket_ref": "TCK-2046",
+        "requester": "arjun.rao@example.in",
+        "prio": "p2",
+        "opened": "2026-02-05T13:30:00Z",
+        "channel": "phone",
+        "body": "Fictional billing dispute"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "TCK-2046",
+          "requesterEmail": "arjun.rao@example.in",
+          "priority": "high",
+          "openedAt": "2026-02-05T13:30:00.000Z",
+          "channel": "phone"
+        }
+      }
+    }
+  ],
+  "revisionFeedback": [
+    {
+      "record": {
+        "ticket_ref": "  TCK-2077 ",
+        "requester": "nina.berg@example.com",
+        "prio": "p2",
+        "opened": "2026-02-09T07:45:00Z",
+        "channel": "email"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "TCK-2077",
+          "requesterEmail": "nina.berg@example.com",
+          "priority": "high",
+          "openedAt": "2026-02-09T07:45:00.000Z",
+          "channel": "email"
+        }
+      }
+    },
+    {
+      "record": {
+        "ticket_ref": "TCK-2078",
+        "requester": "li.wei@example.com",
+        "prio": "p0",
+        "opened": "2026-02-09T08:00:00Z",
+        "channel": "phone"
+      },
+      "expected": {
+        "kind": "quarantine"
+      }
+    },
+    {
+      "record": {
+        "ticket_ref": "TCK-2079",
+        "requester": " Dana.Okafor@Example.COM ",
+        "prio": "p4",
+        "opened": "2026-02-09T09:10:00Z",
+        "channel": "web"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "TCK-2079",
+          "requesterEmail": "dana.okafor@example.com",
+          "priority": "low",
+          "openedAt": "2026-02-09T09:10:00.000Z",
+          "channel": "web"
+        }
+      }
+    }
+  ],
+  "holdout": [
+    {
+      "record": {
+        "ticket_ref": "TCK-2101 ",
+        "requester": "erik.lund@example.se",
+        "prio": "p3",
+        "opened": "2026-02-12T10:00:00Z",
+        "channel": "web"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "TCK-2101",
+          "requesterEmail": "erik.lund@example.se",
+          "priority": "normal",
+          "openedAt": "2026-02-12T10:00:00.000Z",
+          "channel": "web"
+        }
+      }
+    },
+    {
+      "record": {
+        "ticket_ref": "TCK-2102",
+        "requester": "maya.cohen@example.com",
+        "prio": "p5",
+        "opened": "2026-02-12T10:30:00Z",
+        "channel": "email"
+      },
+      "expected": {
+        "kind": "quarantine"
+      }
+    },
+    {
+      "record": {
+        "ticket_ref": "TCK-2103",
+        "requester": " ERIK.Nyberg@Example.org",
+        "prio": "p1",
+        "opened": "2026-02-12T11:00:00Z",
+        "channel": "phone"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "TCK-2103",
+          "requesterEmail": "erik.nyberg@example.org",
+          "priority": "urgent",
+          "openedAt": "2026-02-12T11:00:00.000Z",
+          "channel": "phone"
+        }
+      }
+    },
+    {
+      "record": {
+        "ticket_ref": "TCK-2104",
+        "requester": "ana.silva@example.br",
+        "prio": "p2",
+        "opened": "2026-02-12T12:00:00Z",
+        "channel": "sms"
+      },
+      "expected": {
+        "kind": "quarantine"
+      }
+    },
+    {
+      "record": {
+        "ticket_ref": "TCK-2105",
+        "requester": "jon.park@example.com",
+        "prio": "p4",
+        "opened": "2026-02-12T13:00:00Z",
+        "channel": "email"
+      },
+      "expected": {
+        "kind": "transform",
+        "output": {
+          "id": "TCK-2105",
+          "requesterEmail": "jon.park@example.com",
+          "priority": "low",
+          "openedAt": "2026-02-12T13:00:00.000Z",
+          "channel": "email"
+        }
+      }
+    },
+    {
+      "record": {
+        "ticket_ref": "TCK-2106",
+        "requester": "ida.holm@example.dk",
+        "prio": "p3",
+        "opened": "2026-03-01",
+        "channel": "web"
+      },
+      "expected": {
+        "kind": "quarantine"
+      }
+    }
+  ]
+}

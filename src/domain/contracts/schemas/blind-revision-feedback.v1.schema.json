@@ -1,0 +1,324 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://eyes-without-a-face.dev/schemas/blind-revision-feedback/1.0.0",
+  "title": "Blind Revision Feedback (1.0.0)",
+  "description": "Allowlisted, cloud-reviewable projection of a local Reality Check. Contains aliases, operation references, allowlisted codes and categories, coarse count buckets, destination-side approved fallbacks and fixed objectives only. Never record values, source field names, messages, stack traces or free text. Built by projection (src/revision/feedback.ts), never by serializing a report.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "feedbackVersion",
+    "runId",
+    "baseDisclosureHash",
+    "previousMapping",
+    "findings",
+    "unaffectedOperations",
+    "approvedFallbacks",
+    "objectives",
+    "revisionBudget"
+  ],
+  "properties": {
+    "feedbackVersion": {
+      "const": "1.0.0"
+    },
+    "runId": {
+      "type": "string",
+      "pattern": "^run-[a-f0-9]{16}$"
+    },
+    "baseDisclosureHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "previousMapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contractHash",
+        "origin",
+        "operations"
+      ],
+      "properties": {
+        "contractHash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "origin": {
+          "enum": [
+            "gemini-cloud",
+            "test-adapter",
+            "manual-edit"
+          ]
+        },
+        "operations": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 16,
+          "items": {
+            "$ref": "#/$defs/aliasOperation"
+          }
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 16,
+      "items": {
+        "$ref": "#/$defs/finding"
+      }
+    },
+    "unaffectedOperations": {
+      "type": "array",
+      "maxItems": 16,
+      "uniqueItems": true,
+      "items": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 16
+      }
+    },
+    "approvedFallbacks": {
+      "type": "array",
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "to",
+          "value",
+          "appliesTo"
+        ],
+        "properties": {
+          "to": {
+            "$ref": "#/$defs/targetName"
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "pattern": "^[A-Za-z0-9_-]+$"
+          },
+          "appliesTo": {
+            "const": "undisclosed-category"
+          }
+        }
+      }
+    },
+    "objectives": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "preserve-unaffected-operations",
+          "address-reported-findings",
+          "use-only-disclosed-aliases-and-labels",
+          "do-not-guess-undisclosed-values",
+          "apply-only-listed-fallbacks",
+          "explain-unresolvable-findings-in-rationale"
+        ]
+      }
+    },
+    "revisionBudget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "maxRevisions",
+        "remainingAfterThisRequest"
+      ],
+      "properties": {
+        "maxRevisions": {
+          "const": 1
+        },
+        "remainingAfterThisRequest": {
+          "const": 0
+        }
+      }
+    }
+  },
+  "$defs": {
+    "alias": {
+      "type": "string",
+      "pattern": "^f_[0-9]{2,3}$"
+    },
+    "targetName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z_][A-Za-z0-9_]*(\\.[A-Za-z_][A-Za-z0-9_]*){0,3}$"
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "aliasOperation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "op",
+        "to"
+      ],
+      "properties": {
+        "op": {
+          "enum": [
+            "copy",
+            "rename",
+            "trim",
+            "normalize_email",
+            "parse_date",
+            "map_enum",
+            "default_if_missing",
+            "concat"
+          ]
+        },
+        "from": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/alias"
+            },
+            {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 8,
+              "items": {
+                "$ref": "#/$defs/alias"
+              }
+            }
+          ]
+        },
+        "to": {
+          "$ref": "#/$defs/targetName"
+        },
+        "params": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "inputFormat": {
+              "enum": [
+                "ISO-8601",
+                "YYYY-MM-DD",
+                "MM/DD/YYYY",
+                "DD/MM/YYYY"
+              ]
+            },
+            "map": {
+              "type": "object",
+              "maxProperties": 32,
+              "propertyNames": {
+                "maxLength": 64
+              },
+              "additionalProperties": {
+                "$ref": "#/$defs/label"
+              }
+            },
+            "unmapped": {
+              "enum": [
+                "fail",
+                "default"
+              ]
+            },
+            "default": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/label"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "value": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 64
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "separator": {
+              "type": "string",
+              "maxLength": 8
+            }
+          }
+        }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code",
+        "category",
+        "affectedCases"
+      ],
+      "properties": {
+        "operation": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 16
+        },
+        "op": {
+          "enum": [
+            "copy",
+            "rename",
+            "trim",
+            "normalize_email",
+            "parse_date",
+            "map_enum",
+            "default_if_missing",
+            "concat"
+          ]
+        },
+        "alias": {
+          "$ref": "#/$defs/alias"
+        },
+        "to": {
+          "$ref": "#/$defs/targetName"
+        },
+        "code": {
+          "enum": [
+            "UNMAPPED_ENUM",
+            "MISSING_SOURCE_FIELD",
+            "NULL_VALUE",
+            "EMPTY_VALUE",
+            "TYPE_MISMATCH",
+            "INVALID_EMAIL",
+            "INVALID_DATE",
+            "OUTPUT_SCHEMA_MISMATCH",
+            "UNAPPROVED_FALLBACK"
+          ]
+        },
+        "category": {
+          "enum": [
+            "undisclosed-category",
+            "missing-value",
+            "null-value",
+            "empty-value",
+            "unexpected-type",
+            "invalid-email",
+            "date-format-mismatch",
+            "destination-constraint",
+            "unapproved-fallback"
+          ]
+        },
+        "affectedCases": {
+          "enum": [
+            "1",
+            "2-4",
+            "5+"
+          ]
+        }
+      }
+    }
+  }
+}

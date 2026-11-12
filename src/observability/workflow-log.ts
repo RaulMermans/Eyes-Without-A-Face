@@ -13,7 +13,11 @@ export type WorkflowEventKind =
   | "proposal-validate"
   | "alias-resolve"
   | "reality-check"
-  | "on-device-probe";
+  | "on-device-probe"
+  | "revision-feedback"
+  | "revision-request"
+  | "revision-evaluate"
+  | "holdout-evaluate";
 
 export interface WorkflowEvent {
   at: string;

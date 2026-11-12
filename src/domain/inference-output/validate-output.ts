@@ -2,6 +2,7 @@ import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
 import fieldInterpretationSchema from "./schemas/field-interpretation.v1.schema.json" with { type: "json" };
 import mappingProposalSchema from "./schemas/mapping-proposal.v1.schema.json" with { type: "json" };
+import privateFieldSemanticsSchema from "./schemas/private-field-semantics.v1.schema.json" with { type: "json" };
 import { findExecutableTransformations } from "../mapping/safety.ts";
 
 const ajv = new Ajv2020({
@@ -13,8 +14,9 @@ addFormats(ajv);
 
 const fieldInterpretation = ajv.compile(fieldInterpretationSchema);
 const mappingProposal = ajv.compile(mappingProposalSchema);
+const privateFieldSemantics = ajv.compile(privateFieldSemanticsSchema);
 
-export type StructuredOutputKind = "field-interpretation" | "mapping-proposal";
+export type StructuredOutputKind = "field-interpretation" | "mapping-proposal" | "private-field-semantics";
 
 export interface StructuredOutputValidation {
   valid: boolean;
@@ -33,7 +35,8 @@ export function validateStructuredOutput(
   kind: StructuredOutputKind,
   value: unknown,
 ): StructuredOutputValidation {
-  const validate = kind === "field-interpretation" ? fieldInterpretation : mappingProposal;
+  const validate =
+    kind === "field-interpretation" ? fieldInterpretation : kind === "private-field-semantics" ? privateFieldSemantics : mappingProposal;
   const ok = validate(value);
   const issues: string[] = [];
   if (!ok && validate.errors) {

@@ -101,3 +101,44 @@ export const ROLE_LABELS: Record<SemanticRole, string> = {
   flag: "Flag",
   text: "Text",
 };
+
+/**
+ * Whether a reviewed semantic role is consistent with deterministic, observed
+ * facts. The profile is authoritative: a model suggestion can refine meaning,
+ * never contradict an observed type or format.
+ */
+export function roleCompatible(role: SemanticRole, field: FieldProfile): boolean {
+  // A proven format is a validated fact: values that all parse as emails stay "email"
+  // (Sprint 7 live run 2: Nano relabelled an email field as "identifier").
+  if (field.format === "email" && role !== "email") return false;
+  switch (role) {
+    case "email":
+      return field.format === "email";
+    case "date":
+      return field.type === "date";
+    case "timestamp":
+      return field.type === "datetime";
+    case "status":
+      return field.type === "enum";
+    case "number":
+      return field.type === "number" || field.type === "integer";
+    case "flag":
+      return field.type === "boolean";
+    case "identifier":
+      return field.allValuesUnique && ["string", "number", "integer", "enum"].includes(field.type);
+    case "organization":
+    case "person-name":
+    case "free-text":
+    case "text":
+      return field.type === "string" || field.type === "enum";
+    default:
+      return false;
+  }
+}
+
+/** A reviewed day/month order may only resolve an ambiguity, never override proven order. */
+export function dateOrderOverrideAllowed(field: FieldProfile, format: "MM/DD/YYYY" | "DD/MM/YYYY"): boolean {
+  if (field.type !== "date") return false;
+  if (field.dateFormat !== "MM/DD/YYYY" && field.dateFormat !== "DD/MM/YYYY") return false;
+  return field.dateFormatAmbiguous === true || field.dateFormat === format;
+}

@@ -4,7 +4,7 @@ import { assertAuthorizedEnvelope, type AuthorizedCloudRequest } from "../twin/a
 import { assertReservedAuthorization } from "../twin/authorization-ledger.ts";
 import { InferenceError, InferenceUnavailableError } from "./errors.ts";
 import { probeOnDeviceCapability } from "./on-device-capability.ts";
-import { deriveTestProposal } from "./test-proposer.ts";
+import { deriveTestProposal, deriveTestRevision } from "./test-proposer.ts";
 import type {
   CloudInferenceAdapter,
   InferenceResult,
@@ -21,9 +21,15 @@ export interface TestHarness {
   /** 0-based on-device generate() call indices that fail like a Chrome model-service crash (E2E only). */
   onDeviceRuntimeFailures?: number[];
   onDeviceOutput?: unknown;
+  /** Simulated private-semantics replies keyed by field alias (E2E only). Missing aliases get a low-confidence "text" reply. */
+  onDeviceSemantics?: Record<string, unknown>;
   cloudOutput?: unknown;
   /** Build a labeled simulated proposal from the approved payload (E2E only). */
   deriveProposal?: boolean;
+  /** Raw text returned for a 1.2.0 blind revision request instead of the deterministic reviser (E2E only). */
+  revisionRawText?: string;
+  /** Count of authorized cloud calls the test adapter served (read by E2E). */
+  cloudCalls?: number;
   /** Return this raw text as the model response, bypassing adapter validation (E2E only). */
   rawCloudText?: string;
   malformedCloudOutput?: unknown;
@@ -95,6 +101,38 @@ export function createTestOnDeviceAdapter(
           "Test harness: simulated Chrome on-device model service failure (kErrorUnknown).",
         );
       }
+      if (request.purpose === "private-semantic-interpretation") {
+        const semantic = harness.onDeviceSemantics?.[request.input.fieldAlias] ?? {
+          fieldAlias: request.input.fieldAlias,
+          semanticRole: "text",
+          valueKind: "string",
+          dateFormat: "none",
+          relationHint: "none",
+          confidence: "low",
+          reviewRequired: true,
+          rationale: "Simulated test adapter reply; not a live model.",
+        };
+        const checked = validateStructuredOutput("private-field-semantics", semantic);
+        if (!checked.valid) {
+          throw new InferenceError("INVALID_STRUCTURED_OUTPUT", checked.issues.join("; "));
+        }
+        return {
+          text: JSON.stringify(semantic),
+          structured: semantic,
+          provenance: {
+            provider: "test-harness",
+            requestedMode: "ONLY_ON_DEVICE",
+            actualSource: "TEST",
+            inferenceSourceReported: true,
+            model: "test-adapter",
+            simulated: true,
+            schemaValid: true,
+            durationMs: 1,
+            retries: 0,
+            resultKind: "simulated-test",
+          },
+        };
+      }
       const structured = harness.onDeviceOutput ?? {
         fieldAlias: request.input.fieldAlias,
         semanticRole: "lifecycle-state",
@@ -136,6 +174,26 @@ export function createTestCloudAdapter(
     generateAuthorized: async (request: AuthorizedCloudRequest): Promise<InferenceResult> => {
       assertAuthorizedEnvelope(request);
       assertReservedAuthorization(request);
+      harness.cloudCalls = (harness.cloudCalls ?? 0) + 1;
+      const revision = request.payload.schemaVersion === "1.2.0";
+      if (revision && harness.revisionRawText !== undefined) {
+        return {
+          text: harness.revisionRawText,
+          structured: undefined,
+          provenance: {
+            provider: "test-harness",
+            requestedMode: "ONLY_IN_CLOUD",
+            actualSource: "TEST",
+            inferenceSourceReported: true,
+            model: "test-adapter",
+            simulated: true,
+            schemaValid: false,
+            durationMs: 1,
+            retries: 0,
+            resultKind: "simulated-test",
+          },
+        };
+      }
       if (harness.cloudErrorCode) {
         throw new InferenceError(
           harness.cloudErrorCode,
@@ -169,7 +227,11 @@ export function createTestCloudAdapter(
           },
         };
       }
-      const structured = harness.deriveProposal ? deriveTestProposal(request.payload) : harness.cloudOutput ?? {
+      const structured = revision
+        ? deriveTestRevision(request.payload)
+        : harness.deriveProposal
+          ? deriveTestProposal(request.payload)
+          : harness.cloudOutput ?? {
         operations: [
           { op: "copy", from: request.payload.fields[0]?.alias ?? "contact_email", to: "email" },
         ],

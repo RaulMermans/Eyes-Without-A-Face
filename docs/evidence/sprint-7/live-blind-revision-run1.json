@@ -1,0 +1,144 @@
+{
+  "run": 1,
+  "configuration": "prompt v1, shared response schema",
+  "note": "Real Gemini Nano (ONLY_ON_DEVICE) and Gemini IN_CLOUD via Firebase AI Logic. Alias-level proposal text, fictional scenario field names, counts and timings only. Nano rationales and request bodies are not recorded.",
+  "entries": [
+    {
+      "at": "2026-11-12T15:50:07.737Z",
+      "browserLaunch": "dedicated-chrome-profile",
+      "check": "BENCH-B",
+      "scenarioId": "crm-eu-accounts",
+      "config": "B-cloud",
+      "initial": {
+        "text": "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_01\",\n      \"to\": \"id\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_02\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_05\",\n      \"to\": \"status\",\n      \"params\": {\n        \"map\": {\n          \"aktiv\": \"active\",\n          \"inaktiv\": \"inactive\",\n          \"interessent\": \"prospect\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"other\"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_03\",\n      \"to\": \"createdAt\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_06\",\n      \"to\": \"organization\"\n    }\n  ],\n  \"rationale\": \"Mapped source field f_01 to destination id using copy, f_02 to email using normalize_email, f_05 to status using map_enum with appropriate mappings and default value, f_03 to createdAt using parse_date with MM/DD/YYYY format, and f_06 to organization using copy.\"\n}",
+        "origin": "Real Gemini output · IN_CLOUD",
+        "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 12870ms",
+        "status": "Valid · 5 operations · aliases resolved locally",
+        "ms": 13006
+      },
+      "initialState": "PARTIALLY_VERIFIED",
+      "initialCounts": "0 transformed · 0 by approved rule · 1 quarantined · 1 unresolved · 0 rejected by policy · 7 incorrect · 1/9 correctly handled",
+      "holdoutState": "PARTIALLY_VERIFIED",
+      "holdoutCounts": "0 transformed · 0 by approved rule · 1 quarantined · 2 unresolved · 0 rejected by policy · 3 incorrect · 1/6 correctly handled",
+      "requests": {
+        "generateContent": 1,
+        "leaks": [],
+        "otherProviderRequests": 0
+      }
+    },
+    {
+      "at": "2026-11-12T15:50:45.246Z",
+      "browserLaunch": "dedicated-chrome-profile",
+      "check": "BENCH-CD",
+      "scenarioId": "crm-eu-accounts",
+      "config": "C/D",
+      "nanoMs": 15261,
+      "nanoError": null,
+      "nano": [
+        {
+          "alias": "f_03",
+          "localPath": "angelegt_am",
+          "status": "consistent",
+          "check": "agrees with profile\n agrees with the deterministic profile",
+          "real": true
+        },
+        {
+          "alias": "f_02",
+          "localPath": "e_post",
+          "status": "consistent",
+          "check": "agrees with profile\n agrees with the deterministic profile",
+          "real": true
+        },
+        {
+          "alias": "f_05",
+          "localPath": "kontostatus",
+          "status": "consistent",
+          "check": "agrees with profile\n agrees with the deterministic profile",
+          "real": true
+        },
+        {
+          "alias": "f_01",
+          "localPath": "kundennummer",
+          "status": "consistent",
+          "check": "agrees with profile\n agrees with the deterministic profile",
+          "real": true
+        },
+        {
+          "alias": "f_04",
+          "localPath": "notiz",
+          "status": "consistent",
+          "check": "agrees with profile\n agrees with the deterministic profile",
+          "real": true
+        },
+        {
+          "alias": "f_06",
+          "localPath": "unternehmen",
+          "status": "applicable",
+          "check": "refines profile\n role text → organization",
+          "real": true
+        }
+      ],
+      "applied": [
+        "f_06"
+      ],
+      "initial": {
+        "text": "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_01\",\n      \"to\": \"id\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_02\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_03\",\n      \"to\": \"createdAt\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_05\",\n      \"to\": \"status\",\n      \"params\": {\n        \"map\": {\n          \"aktiv\": \"active\",\n          \"inaktiv\": \"inactive\",\n          \"interessent\": \"prospect\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"other\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_06\",\n      \"to\": \"organization\"\n    }\n  ],\n  \"rationale\": \"Mapping source fields to target fields: f_01 copied to id, f_02 normalized into email, f_03 parsed from MM/DD/YYYY to createdAt, f_05 mapped using map_enum to status, and f_06 copied to organization.\"\n}",
+        "origin": "Real Gemini output · IN_CLOUD",
+        "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2353ms",
+        "status": "Valid · 5 operations · aliases resolved locally",
+        "ms": 2868
+      },
+      "initialState": "PARTIALLY_VERIFIED",
+      "initialCounts": "0 transformed · 0 by approved rule · 1 quarantined · 1 unresolved · 0 rejected by policy · 7 incorrect · 1/9 correctly handled",
+      "preparePhase": "REVISION_REVIEW_REQUIRED",
+      "newInformation": "The previous mapping (5 operations), which Gemini produced from the same disclosure.\nOperation #2 (normalize_email on f_02 → email): invalid-email (INVALID_EMAIL) in 1 private case.\nOperation #3 (parse_date on f_03 → createdAt): date-format-mismatch (INVALID_DATE) in 1 private case.\nOperations #1, #4, #5 ran without findings.\nApproved fallback: undisclosed categories for status may map to \"other\".",
+      "revisionHash": "72a01092f3c728b3c8140b5a5b1ebdebaae1263e78e49dffc7dc18224aa1ea19",
+      "revisionMs": 14622,
+      "revisionRequests": 1,
+      "revisionBlocked": null,
+      "revised": {
+        "origin": "Real Gemini output · IN_CLOUD",
+        "provenance": "· source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 14513ms",
+        "ok": "false",
+        "status": "Rejected at convert: INVALID_PARAMS, INVALID_PARAMS, INVALID_PARAMS, INVALID_PARAMS, INVALID_PARAMS — not repaired, not executed",
+        "operations": null
+      },
+      "revisedText": "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_01\",\n      \"to\": \"id\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_02\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_03\",\n      \"to\": \"createdAt\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_05\",\n      \"to\": \"status\",\n      \"params\": {\n        \"default\": \"other\",\n        \"value\": null,\n        \"separator\": \"\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_06\",\n      \"to\": \"organization\"\n    }\n  ],\n  \"rationale\": \"Kept unaffected operations 1, 4, and 5 unchanged. Operation 2 (normalize_email on f_02) and operation 3 (parse_date on f_03) were reported with invalid-email and date-format-mismatch findings on specific records, but since no safer alternative inputFormat or operation exists for these fields under the constraints, the operations are retained as configured with standard parsing/normalization parameters.\"\n}",
+      "holdoutInitial": "0 transformed · 0 by approved rule · 1 quarantined · 2 unresolved · 0 rejected by policy · 3 incorrect · 1/6 correctly handled",
+      "holdoutComparison": {
+        "verdict": null,
+        "cases": null,
+        "metrics": null
+      },
+      "budget": "0 of 1 remaining (used)",
+      "requests": {
+        "generateContent": 2,
+        "leaks": [],
+        "otherProviderRequests": 0
+      }
+    },
+    {
+      "at": "2026-11-12T15:50:54.004Z",
+      "browserLaunch": "dedicated-chrome-profile",
+      "check": "BENCH-B",
+      "scenarioId": "support-tickets",
+      "config": "B-cloud",
+      "initial": {
+        "text": "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_06\",\n      \"to\": \"id\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_04\",\n      \"to\": \"requesterEmail\"\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_01\",\n      \"to\": \"priority\",\n      \"params\": {\n        \"map\": {\n          \"p1\": \"low\",\n          \"p2\": \"normal\",\n          \"p3\": \"high\",\n          \"p4\": \"urgent\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"normal\"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_05\",\n      \"to\": \"openedAt\",\n      \"params\": {\n        \"inputFormat\": \"ISO-8601\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_02\",\n      \"to\": \"channel\",\n      \"params\": {\n        \"map\": {\n          \"email\": \"email\",\n          \"phone\": \"phone\",\n          \"web\": \"web\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"web\"\n      }\n    }\n  ],\n  \"rationale\": \"Mapped source fields to target schema by copying the opaque identifier to id, normalizing the email field to requesterEmail, translating the priority enum values, parsing the ISO-8601 date to openedAt, and mapping the communication channel enum with a safe default.\"\n}",
+        "origin": "Real Gemini output · IN_CLOUD",
+        "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 7106ms",
+        "status": "Valid · 5 operations · aliases resolved locally",
+        "ms": 7430
+      },
+      "initialState": "PARTIALLY_VERIFIED",
+      "initialCounts": "0 transformed · 0 by approved rule · 0 quarantined · 1 unresolved · 1 rejected by policy · 7 incorrect · 0/9 correctly handled",
+      "holdoutState": "PARTIALLY_VERIFIED",
+      "holdoutCounts": "0 transformed · 0 by approved rule · 1 quarantined · 1 unresolved · 2 rejected by policy · 2 incorrect · 1/6 correctly handled",
+      "requests": {
+        "generateContent": 1,
+        "leaks": [],
+        "otherProviderRequests": 0
+      }
+    }
+  ]
+}

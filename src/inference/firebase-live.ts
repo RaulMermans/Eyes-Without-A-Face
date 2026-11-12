@@ -36,8 +36,11 @@ import { probeOnDeviceCapability } from "./on-device-capability.ts";
 import {
   buildCloudPrompt,
   buildOnDevicePrompt,
+  buildPrivateSemanticsPrompt,
   FIELD_INTERPRETATION_JSON_SCHEMA,
   MAPPING_PROPOSAL_JSON_SCHEMA,
+  MAPPING_REVISION_JSON_SCHEMA,
+  PRIVATE_FIELD_SEMANTICS_JSON_SCHEMA,
 } from "./prompts.ts";
 import {
   assertLiveProvenance,
@@ -123,6 +126,8 @@ class LiveFirebaseRuntime {
   private onDeviceCreateOptions: LanguageModelCreateOptions | null = null;
   private onDevicePromptOptions: (LanguageModelPromptOptions & { signal?: AbortSignal }) | null = null;
   private cloudModel: GenerativeModel | null = null;
+  /** Same model and ONLY_IN_CLOUD mode; per-operation response schema for 1.2.0 revision requests. */
+  private cloudRevisionModel: GenerativeModel | null = null;
   private initializingOnDevice: Promise<void> | null = null;
   private onDeviceBusy = false;
   private cloudBusy = false;
@@ -243,12 +248,21 @@ class LiveFirebaseRuntime {
       if (!model) {
         throw new InferenceUnavailableError("On-device model was not initialized.", "MODEL_UNAVAILABLE");
       }
-      const prompt = buildOnDevicePrompt(request.input);
+      // Same ONLY_ON_DEVICE model and serialized session; only the prompt and
+      // its responseConstraint differ per purpose. The private prompt is a
+      // local variable: never logged, stored, or passed to the cloud runtime.
+      const privateSemantics = request.purpose === "private-semantic-interpretation";
+      const prompt = privateSemantics ? buildPrivateSemanticsPrompt(request.input) : buildOnDevicePrompt(request.input);
       if (this.onDeviceCreateOptions) this.onDeviceCreateOptions.signal = controller.signal;
-      if (this.onDevicePromptOptions) this.onDevicePromptOptions.signal = controller.signal;
+      if (this.onDevicePromptOptions) {
+        this.onDevicePromptOptions.signal = controller.signal;
+        this.onDevicePromptOptions.responseConstraint = privateSemantics
+          ? PRIVATE_FIELD_SEMANTICS_JSON_SCHEMA
+          : FIELD_INTERPRETATION_JSON_SCHEMA;
+      }
       const result = await raceAbort(model.generateContent(prompt, { signal: controller.signal }), controller.signal);
       return this.finishStructuredResult({
-        kind: "field-interpretation",
+        kind: privateSemantics ? "private-field-semantics" : "field-interpretation",
         text: result.response.text(),
         requestedMode: "ONLY_ON_DEVICE",
         reportedSource: result.response.inferenceSource,
@@ -307,7 +321,8 @@ class LiveFirebaseRuntime {
     const timer = setTimeout(() => controller.abort("timeout"), CLOUD_TIMEOUT_MS);
     try {
       await this.requireAppCheckToken();
-      if (!this.cloudModel) {
+      const revision = request.payload.schemaVersion === "1.2.0";
+      if (!revision && !this.cloudModel) {
         this.cloudModel = getGenerativeModel(this.ai(), {
           mode: InferenceMode.ONLY_IN_CLOUD,
           inCloudParams: {
@@ -319,11 +334,27 @@ class LiveFirebaseRuntime {
           },
         });
       }
+      if (revision && !this.cloudRevisionModel) {
+        this.cloudRevisionModel = getGenerativeModel(this.ai(), {
+          mode: InferenceMode.ONLY_IN_CLOUD,
+          inCloudParams: {
+            model: FIREBASE_AI_LOGIC_API.defaultCloudModel,
+            generationConfig: {
+              responseMimeType: "application/json",
+              responseJsonSchema: MAPPING_REVISION_JSON_SCHEMA,
+            },
+          },
+        });
+      }
+      const cloudModel = revision ? this.cloudRevisionModel : this.cloudModel;
+      if (!cloudModel) {
+        throw new InferenceUnavailableError("Cloud model was not initialized.", "MODEL_UNAVAILABLE");
+      }
       const prompt = buildCloudPrompt(request);
       if (prompt !== request.outboundPrompt) {
         throw new InferenceError("DESTINATION_MISMATCH", "Outbound prompt changed after authorization.");
       }
-      const result = await raceAbort(this.cloudModel.generateContent(prompt, { signal: controller.signal }), controller.signal);
+      const result = await raceAbort(cloudModel.generateContent(prompt, { signal: controller.signal }), controller.signal);
       return this.finishStructuredResult({
         kind: "mapping-proposal",
         text: result.response.text(),
@@ -422,7 +453,7 @@ class LiveFirebaseRuntime {
       resultKind: resolved.actualSource === "ON_DEVICE" ? ("real-on-device" as const) : ("real-cloud" as const),
     };
     recordDiagnostic({
-      kind: input.kind === "field-interpretation" ? "on-device-inference" : "cloud-inference",
+      kind: input.kind === "mapping-proposal" ? "cloud-inference" : "on-device-inference",
       durationMs: provenance.durationMs,
       requestedMode: input.requestedMode,
       actualSource: provenance.actualSource,

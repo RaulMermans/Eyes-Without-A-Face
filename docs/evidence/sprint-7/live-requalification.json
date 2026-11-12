@@ -1,0 +1,42 @@
+{
+  "note": "Sprint 7 Step 2 hybrid requalification on the Sprint 6 UI (main @ fe5aeb1). LIVE-009 entry 1 failed with provider 500 high demand; entry 2 is the single manual re-run. Playwright cleans its output folder per run, so per-check evidence of the first pass (LIVE-001..008, 013) was not preserved; their PASS lines are listed in firstPassResults.",
+  "entries": [
+    {
+      "at": "2026-11-12T15:25:11.886Z",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
+      "browserLaunch": "dedicated-chrome-profile",
+      "check": "LIVE-009",
+      "durationMs": 7782,
+      "errorText": null,
+      "origin": "Real Gemini output · IN_CLOUD",
+      "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 6665ms",
+      "proposalStatus": "Valid · 5 operations · aliases resolved locally",
+      "proposalIssues": null,
+      "proposalJson": "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"id\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_01\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_03\",\n      \"to\": \"status\",\n      \"params\": {\n        \"map\": {\n          \"active_customer\": \"active\",\n          \"inactive_customer\": \"inactive\",\n          \"prospect\": \"prospect\"\n        },\n        \"unmapped\": \"fail\"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_06\",\n      \"to\": \"createdAt\",\n      \"params\": {\n        \"inputFormat\": \"YYYY-MM-DD\"\n      }\n    },\n    {\n      \"op\": \"trim\",\n      \"from\": \"f_02\",\n      \"to\": \"organization\"\n    }\n  ],\n  \"rationale\": \"Map f_05 to id using copy, f_01 to email using normalize_email, f_03 to status using map_enum with exact enum value mapping, f_06 to createdAt using parse_date with YYYY-MM-DD format, and f_02 to organization using trim.\"\n}",
+      "realityCheck": "3 passed · 3 failed · 6 records · batch failed",
+      "reserved": "3 of 3 failed",
+      "providerHosts": [
+        "firebasevertexai.googleapis.com"
+      ],
+      "generateContentRequests": 1,
+      "privateTermsInRequestBodies": [],
+      "overall": "Reality Check verdict: FAIL",
+      "pageErrors": []
+    }
+  ],
+  "firstPassResults": [
+    "✓ 1 [live-chrome] › tests/live/live.spec.ts:63:3 › LIVE-001 browser compatibility › identifies Chrome, Prompt API, and model readiness (2.9s)",
+    "✓ 2 [live-chrome] › tests/live/live.spec.ts:87:3 › LIVE-002 Firebase initialization › shows the registered Firebase project and web app (918ms)",
+    "✓ 3 [live-chrome] › tests/live/live.spec.ts:109:3 › LIVE-003 App Check › records App Check readiness before any cloud generate (829ms)",
+    "✓ 4 [live-chrome] › tests/live/live.spec.ts:122:3 › LIVE-004 real Gemini cloud › executes an approved synthetic mapping request (6.0s)",
+    "✓ 5 [live-chrome] › tests/live/live.spec.ts:155:3 › LIVE-005 rejected disclosure › does not dispatch cloud inference without approval (1.3s)",
+    "✓ 6 [live-chrome] › tests/live/live.spec.ts:171:3 › LIVE-006 payload integrity › preview fingerprint matches the displayed outbound prompt (859ms)",
+    "✓ 7 [live-chrome] › tests/live/live.spec.ts:192:3 › LIVE-007 on-device inference › attempts ONLY_ON_DEVICE and records provenance or the blocker (6.7s)",
+    "✓ 8 [live-chrome] › tests/live/live.spec.ts:237:3 › LIVE-008 UI regression › captures console errors and responsive diagnostic layout (1.0s)",
+    "✘ 9 [live-chrome] › tests/live/live.spec.ts:259:3 › LIVE-009 Sprint 3 Phantom Twin workflow with real Gemini › approved twin → IN_CLOUD proposal → validation → alias resolution → local Reality Check (7.7s)",
+    "✓ 10 [live-chrome] › tests/live/live.spec.ts:341:3 › LIVE-013 on-device in the guided Phantom Twin step › real ONLY_ON_DEVICE role suggestions on synthetic samples, no cloud request (19.1s)",
+    "- 11 [live-chrome] › tests/live/live.spec.ts:377:3 › LIVE-018 cloud denied by App Check › an unregistered App Check token is refused before any generateContent request",
+    "- 12 [live-chrome] › tests/live/nano-reliability.spec.ts:126:1 › on-device startup and inference reliability (cold + warm)"
+  ],
+  "firstPassSummary": "9 passed, 1 failed (LIVE-009: provider 500 high demand, approval consumed, not retried), 2 skipped (LIVE-018 opt-in, nano-reliability opt-in)"
+}

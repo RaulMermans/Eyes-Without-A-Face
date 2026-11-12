@@ -9,6 +9,8 @@ import type { PreparedTwin } from "../workflow/pipeline.ts";
 import { ORIGIN_LABELS } from "./result-kind.ts";
 import { opNumber } from "./view-model.ts";
 import type { WorkspaceState } from "./workspace-state.ts";
+import type { InferenceServices } from "../inference/types.ts";
+import { BlindRevisionPanel } from "./BlindRevisionPanel.tsx";
 
 const STATUS_ROWS: ReadonlyArray<readonly [keyof RealityCheckStatuses, string, string]> = [
   ["mappingContract", "Mapping contract", "Canonical schema, allowlisted operations, no executable content"],
@@ -36,11 +38,13 @@ export function VerificationPanel({
   onChange,
   prepared,
   onInspectOperation,
+  inference,
 }: {
   workspace: WorkspaceState;
   onChange: (next: WorkspaceState) => void;
   prepared: PreparedTwin | null;
   onInspectOperation: (index: number) => void;
+  inference: InferenceServices;
 }) {
   const [includeReserved, setIncludeReserved] = useState(true);
   const proposal = workspace.proposal;
@@ -246,6 +250,7 @@ export function VerificationPanel({
           <p className="mt-1">Run the Reality Check to execute the active mapping locally against the records and hidden cases.</p>
         </div>
       )}
+      <BlindRevisionPanel workspace={workspace} onChange={onChange} prepared={prepared} inference={inference} />
     </section>
   );
 }

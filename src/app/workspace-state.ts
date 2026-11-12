@@ -7,6 +7,11 @@ import type { ProposalOrigin } from "../proposal/convert.ts";
 import type { AcceptProposalResult } from "../workflow/pipeline.ts";
 import type { RealityCheckReport } from "../verification/reality-check.ts";
 import type { ImportedSource } from "./source-import.ts";
+import type { BlindRevisionFeedback } from "../domain/contracts/types.ts";
+import type { ExcludedIssue } from "../revision/feedback.ts";
+import type { RevisionBlockCode, RevisionPhase } from "../revision/run.ts";
+import type { MappingEvaluation } from "../evaluation/evaluate.ts";
+import type { AcceptancePolicy, ExpectedOutcome } from "../verification/outcomes.ts";
 
 export interface ReviewState {
   preview: DisclosurePreview;
@@ -25,6 +30,39 @@ export interface ProposalState {
 
 export type MappingChoice = "proposal" | "manual";
 
+/**
+ * Local-only evaluation context of a loaded fictional scenario: its acceptance
+ * policy, ground truth for imported + revision-feedback cases, and the final
+ * holdout cases. Never profiled, disclosed, or used to build feedback.
+ */
+export interface ScenarioContext {
+  id: string;
+  title: string;
+  policy: AcceptancePolicy;
+  /** Ground truth aligned with [imported..., revision-feedback...]. */
+  expected: ExpectedOutcome[];
+  holdout: Array<{ record: Record<string, unknown>; expected: ExpectedOutcome }>;
+}
+
+/** One bounded blind revision run (src/revision/run.ts). Active run state only; never persisted. */
+export interface RevisionRunState {
+  runId: string;
+  phase: RevisionPhase;
+  history: RevisionPhase[];
+  /** The proposal this run started from. A different workspace.proposal makes the run stale. */
+  initialProposal: ProposalState;
+  initialContractHash: string;
+  basePayloadHash: string;
+  initialEvaluation: MappingEvaluation;
+  feedback: { value: BlindRevisionFeedback; newInformation: string[]; excluded: ExcludedIssue[] } | null;
+  preview: DisclosurePreview | null;
+  revised: ProposalState | null;
+  revisedEvaluation: MappingEvaluation | null;
+  holdout: { initial: MappingEvaluation; revised: MappingEvaluation | null } | null;
+  blocked: { code: RevisionBlockCode; message: string } | null;
+  notice: string | null;
+}
+
 export interface WorkspaceState {
   source: ImportedSource | null;
   sourceError: string | null;
@@ -41,6 +79,8 @@ export interface WorkspaceState {
   mappingChoice: MappingChoice;
   report: RealityCheckReport | null;
   mappingRunError: string | null;
+  scenario: ScenarioContext | null;
+  revision: RevisionRunState | null;
 }
 
 export function initialWorkspaceState(): WorkspaceState {
@@ -58,13 +98,16 @@ export function initialWorkspaceState(): WorkspaceState {
     mappingChoice: "proposal",
     report: null,
     mappingRunError: null,
+    scenario: null,
+    revision: null,
   };
 }
 
 /**
  * Any change to the source, seed, field decisions, or destination invalidates
- * the disclosure review, the approval, the proposal, and the last run.
+ * the disclosure review, the approval, the proposal, the last run, and any
+ * blind revision run (its approval, feedback and results).
  */
 export function invalidateDownstream(state: WorkspaceState): WorkspaceState {
-  return { ...state, review: null, proposal: null, cloudError: null, report: null, mappingRunError: null };
+  return { ...state, review: null, proposal: null, cloudError: null, report: null, mappingRunError: null, revision: null };
 }

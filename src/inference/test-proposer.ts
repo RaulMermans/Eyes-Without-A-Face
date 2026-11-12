@@ -64,3 +64,60 @@ export function deriveTestProposal(payload: CloudDisclosurePayload): { operation
     rationale: "Deterministic test proposer derived from the approved disclosure payload. Not a live Gemini response.",
   };
 }
+
+/**
+ * Deterministic TEST reviser for blind revision requests (schema 1.2.0). Reads
+ * nothing but the approved revision payload, applies fixed rules to the
+ * reported finding categories, and is always labeled "simulated-test". It is
+ * not AI and exists so CI can exercise the full journey without quota.
+ */
+export function deriveTestRevision(payload: CloudDisclosurePayload): { operations: Array<Record<string, unknown>>; rationale: string } {
+  const feedback = payload.revision?.feedback;
+  if (!feedback) {
+    return deriveTestProposal(payload);
+  }
+  const targets = new Map((payload.target?.fields ?? []).map((field) => [field.name, field]));
+  const notes: string[] = [];
+  const operations = feedback.previousMapping.operations.map((operation, index) => {
+    const number = index + 1;
+    const findings = feedback.findings.filter((finding) => finding.operation === number || (finding.operation === undefined && finding.to === operation.to));
+    let next: Record<string, unknown> = { ...operation, ...(operation.params ? { params: { ...operation.params } } : {}) };
+    for (const finding of findings) {
+      if (finding.category === "date-format-mismatch" && next.op === "parse_date") {
+        const params = next.params as Record<string, unknown>;
+        const swap: Record<string, string> = { "MM/DD/YYYY": "DD/MM/YYYY", "DD/MM/YYYY": "MM/DD/YYYY" };
+        const format = typeof params.inputFormat === "string" ? swap[params.inputFormat] : undefined;
+        if (format) {
+          next = { ...next, params: { inputFormat: format } };
+          notes.push(`#${number}: switched date order`);
+        } else {
+          notes.push(`#${number}: date finding left unresolved`);
+        }
+      } else if (finding.category === "undisclosed-category" && next.op === "map_enum") {
+        const fallback = feedback.approvedFallbacks.find((item) => item.to === operation.to);
+        const params = next.params as Record<string, unknown>;
+        if (fallback) {
+          next = { ...next, params: { map: params.map, unmapped: "default", default: fallback.value } };
+          notes.push(`#${number}: approved fallback`);
+        } else {
+          notes.push(`#${number}: undisclosed category left for local review`);
+        }
+      } else if (finding.category === "unapproved-fallback" && next.op === "map_enum") {
+        const params = next.params as Record<string, unknown>;
+        next = { ...next, params: { map: params.map, unmapped: "fail" } };
+        notes.push(`#${number}: removed unapproved fallback`);
+      } else if (finding.category === "destination-constraint" && (next.op === "copy" || next.op === "rename")) {
+        const email = targets.get(operation.to)?.format === "email";
+        next = { op: email ? "normalize_email" : "trim", from: next.from, to: next.to };
+        notes.push(`#${number}: ${email ? "normalize_email" : "trim"}`);
+      } else {
+        notes.push(`#${number}: ${finding.category} not fixable by rule`);
+      }
+    }
+    return next;
+  });
+  return {
+    operations,
+    rationale: `Deterministic test reviser applied fixed rules to the approved feedback (${notes.join("; ") || "no change"}). Not a live Gemini response.`,
+  };
+}

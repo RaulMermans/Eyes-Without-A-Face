@@ -15,3 +15,19 @@ describe("cloud responseJsonSchema", () => {
     expect([...item.properties.op.enum].sort()).toEqual(Object.keys(PARAM_KEYS).sort());
   });
 });
+
+describe("Sprint 7 revision response schema", () => {
+  it("constrains params per operation and declares exactly the converter's param keys", async () => {
+    const { MAPPING_REVISION_JSON_SCHEMA } = await import("../../src/inference/prompts.ts");
+    const { PARAM_KEYS } = await import("../../src/proposal/convert.ts");
+    const branches = MAPPING_REVISION_JSON_SCHEMA.properties.operations.items.anyOf;
+    const covered = new Map<string, string[]>();
+    for (const branch of branches) {
+      const props = branch.properties as Record<string, { enum?: readonly string[]; properties?: Record<string, unknown> }>;
+      for (const op of props.op?.enum ?? []) covered.set(op, Object.keys(props.params?.properties ?? {}).sort());
+    }
+    for (const [op, keys] of Object.entries(PARAM_KEYS)) {
+      expect(covered.get(op), op).toEqual([...keys].sort());
+    }
+  });
+});

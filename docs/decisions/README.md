@@ -9,3 +9,4 @@
 | [0005](0005-single-use-disclosure-authorization.md) | Single-use disclosure authorization |
 | [0006](0006-mapping-execution-semantics.md) | Deterministic mapping execution semantics |
 | [0007](0007-target-disclosure-and-proposal-boundary.md) | Destination disclosure (cloud-disclosure 1.1.0) and the proposal conversion boundary |
+| [0008](0008-blind-revision.md) | Blind revision: Blind Revision Feedback 1.0.0, cloud-disclosure 1.2.0, one approved revision, outcome classes |

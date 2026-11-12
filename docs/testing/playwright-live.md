@@ -95,3 +95,21 @@ Do not edit `src/` while it runs. The dev server hot-reloads, which disturbs the
 - the Reality Check verdict never reads as success when hidden cases fail.
 
 Test-only harness switches `onDeviceAvailable` and `onDeviceRuntimeFailures` simulate availability and Chrome model-service failures. Their results are labeled *simulated test adapter*.
+
+## Sprint 7 blind revision benchmark
+
+`tests/live/blind-revision.spec.ts` is opt-in, uses quota, and runs each fictional scenario twice:
+
+- **B:** a real Gemini proposal; the revision is declined; then the holdout.
+- **C/D:** real Gemini Nano private interpretation with the validated suggestions applied, a real Gemini proposal, one approved real Gemini revision, then the holdout.
+
+It scans every real `generateContent` body for private strings. It records alias-level proposal text, counts and timings to `test-results/sprint-7-live/blind-revision-evidence.json`. Nano rationales and request bodies are never stored.
+
+```bash
+EYES_APPCHECK_DEBUG_TOKEN="$(cat ~/.config/eyes-without-a-face/appcheck-debug-token)" \
+EYES_LIVE_TESTS=1 EYES_LIVE_BLIND_REVISION=1 EYES_LIVE_CLOUD=1 EYES_LIVE_ON_DEVICE=1 \
+EYES_CHROME_PROFILE="$HOME/.cache/eyes-without-a-face/chrome-nano-profile" \
+pnpm test:live tests/live/blind-revision.spec.ts
+```
+
+About 9 cloud requests per full run. Nothing is retried automatically. Playwright empties `test-results/` on every run, so copy the evidence file before running anything else. Archived runs: [../evidence/sprint-7/](../evidence/sprint-7/).

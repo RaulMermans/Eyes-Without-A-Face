@@ -23,3 +23,7 @@
 SDK transport (App Check tokens, HTTP headers) is not part of the approved application payload and cannot be displayed. That limitation is stated in the UI.
 
 The only cloud entry point is `submitApprovedCloudInference`.
+
+## Sprint 7: second disclosure (blind revision)
+
+A blind revision request (cloud-disclosure 1.2.0) may add only Blind Revision Feedback 1.0.0 to the already-approved twin. It requires its own review and approval, and the UI lists exactly what is newly disclosed. Engine messages, values, source names, bindings, Nano rationales and exact counts above four are never included. See [../contracts/blind-revision-feedback.md](../contracts/blind-revision-feedback.md).
