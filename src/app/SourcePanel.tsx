@@ -6,7 +6,7 @@ import { ArrowRightIcon, LockIcon } from "../components/icons.tsx";
 import { Disclosure, Eyebrow, Panel, PanelHeader } from "../components/spectral.tsx";
 import type { ProfileIssue, SourceProfile } from "../domain/profile/profile.ts";
 import { withCrmDemo, withScenario } from "./demo.ts";
-import { EVALUATION_SCENARIOS } from "../evaluation/scenarios.ts";
+import { PICKER_SCENARIOS } from "../evaluation/scenarios.ts";
 import { parseSourceDataset } from "./source-import.ts";
 import { firstPresent, formatSample } from "./view-model.ts";
 import { invalidateDownstream, type WorkspaceState } from "./workspace-state.ts";
@@ -78,7 +78,7 @@ export function SourcePanel({
           profiling, disclosure and feedback until the mapping is final. Its acceptance policy is local and versioned. All data is fictional.
         </p>
         <ul className="mt-3 grid gap-2 md:grid-cols-3">
-          {EVALUATION_SCENARIOS.map((scenario) => (
+          {PICKER_SCENARIOS.map((scenario) => (
             <li key={scenario.scenarioId} className="flex flex-col justify-between gap-2 border border-rule bg-bone p-3">
               <div>
                 <p className="font-medium">{scenario.title}</p>

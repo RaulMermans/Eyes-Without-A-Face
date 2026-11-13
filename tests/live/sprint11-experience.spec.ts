@@ -25,6 +25,13 @@ test.setTimeout(420_000);
 
 const debugToken = process.env.EYES_APPCHECK_DEBUG_TOKEN ?? "";
 const evidencePath = process.env.EYES_LIVE_EVIDENCE ?? "live-evidence/sprint-11/experience.json";
+/** Sprint 12: optional real-run screenshots (viewport only) for judge-facing material. */
+const shotDir = process.env.EYES_LIVE_SCREENSHOTS ?? "";
+async function shot(page: Page, name: string): Promise<void> {
+  if (!shotDir) return;
+  fs.mkdirSync(shotDir, { recursive: true });
+  await page.screenshot({ path: path.join(shotDir, `${name}.png`) });
+}
 
 type Scenario = { destinationSchema: { properties: Record<string, { enum?: string[] }> }; twinOverrides: Record<string, { discloseCategories?: boolean }>; imported: Array<{ record: Record<string, unknown> }>; revisionFeedback: Array<{ record: Record<string, unknown> }>; development: Array<{ record: Record<string, unknown> }>; holdout: Array<{ record: Record<string, unknown> }> };
 
@@ -103,6 +110,7 @@ test("S11-HERO crm-eu-accounts: Nano in CONNECT, then Build, approve, revise, ex
     entry.nano = { rows: await rows.count(), realOnDevice: real, applied };
     expect(scan.generateContent, "no cloud request during on-device interpretation").toBe(0);
     entry.runKind = await attr(page, "run-kind", "data-kind");
+    await shot(page, "01-connect-nano-on-device");
 
     // CONNECT → Build Integration: local only, stops at the approval. Nothing to invalidate.
     await page.getByTestId("build-integration").click();
@@ -110,16 +118,19 @@ test("S11-HERO crm-eu-accounts: Nano in CONNECT, then Build, approve, revise, ex
     entry.runtimeAtApproval = await runtimeStatuses(page);
     entry.focusAtApproval = { stage: await attr(page, "runtime-focus", "data-stage"), next: await attr(page, "runtime-next-action", "data-stage"), gate: await attr(page, "privacy-boundary", "data-gate") };
     entry.invalidationNotices = await page.getByTestId("invalidation-notice").count();
+    await shot(page, "02-observe-awaiting-approval");
     expect(scan.generateContent, "Build Integration sends nothing").toBe(0);
 
     // OBSERVE → approve → one real Gemini request.
     await page.getByTestId("runtime-next-action").click();
+    await shot(page, "03-disclosure-review");
     await page.getByTestId("approve-disclosure").click();
     await page.getByTestId("continue-to-mapping").click();
     const started = Date.now();
     await page.getByTestId("send-cloud-request").click();
     await expect(page.getByTestId("cloud-error").or(page.getByTestId("proposal"))).toBeVisible({ timeout: 90_000 });
     entry.initial = { ms: Date.now() - started, failureCode: await attr(page, "cloud-error", "data-code"), status: (await page.getByTestId("proposal-status").count()) ? await page.getByTestId("proposal-status").innerText() : null };
+    await shot(page, "04-real-gemini-mapping");
     entry.cloudStage = { status: await attr(page, "runtime-stage-cloud-inference", "data-status"), text: await page.getByTestId("runtime-stage-cloud-inference").innerText() };
     if (!String((entry.initial as { status: string | null }).status ?? "").startsWith("Valid")) return;
 
@@ -127,6 +138,7 @@ test("S11-HERO crm-eu-accounts: Nano in CONNECT, then Build, approve, revise, ex
     await page.getByTestId("run-mapping").click();
     await expect(page.getByTestId("initial-outcomes")).toBeVisible();
     entry.runtimeAfterReality = await runtimeStatuses(page);
+    await shot(page, "05-reality-check-semantic-failure");
 
     const boxes = page.locator('[data-testid^="authorize-constraint-"]');
     for (let i = 0; i < (await boxes.count()); i += 1) if (await boxes.nth(i).isEnabled()) await boxes.nth(i).check();
@@ -139,6 +151,7 @@ test("S11-HERO crm-eu-accounts: Nano in CONNECT, then Build, approve, revise, ex
       if ((await page.getByTestId("run-revised-reality-check").count()) > 0) await page.getByTestId("run-revised-reality-check").click();
     }
     entry.runtimeFinal = await runtimeStatuses(page);
+    await shot(page, "06-blind-revision-result");
     entry.boundaryFinal = { gate: await attr(page, "privacy-boundary", "data-gate"), cloud: await attr(page, "ledger-transmitted", "data-state"), outcome: await attr(page, "ledger-outcome", "data-state") };
 
     // OUTCOME → export the revised mapping when one exists.
@@ -151,6 +164,7 @@ test("S11-HERO crm-eu-accounts: Nano in CONNECT, then Build, approve, revise, ex
       requests: await page.getByTestId("privacy-requests").innerText(),
       models: await page.getByTestId("privacy-models").innerText(),
     };
+    await shot(page, "07-outcome-verdict");
     if ((await page.getByTestId("export-candidate-revised").count()) > 0) await page.getByTestId("export-candidate-revised").check();
     const decision = await attr(page, "export-panel", "data-decision");
     if (decision === "BLOCKED") return;
@@ -167,6 +181,8 @@ test("S11-HERO crm-eu-accounts: Nano in CONNECT, then Build, approve, revise, ex
       const manifest = JSON.parse(fs.readFileSync(path.join(root, "manifest.json"), "utf8")) as Record<string, any>;
       const verify = spawnSync(process.execPath, ["run.mjs", "verify"], { cwd: root, encoding: "utf8", env: { PATH: process.env.PATH ?? "" } });
       const handoff = await page.getByTestId("export-handoff").innerText();
+      await page.getByTestId("export-handoff").scrollIntoViewIfNeeded();
+      await shot(page, "08-export-handoff");
       entry.export = { handoffHasVerify: handoff.includes("node run.mjs verify"), status: manifest.status, variant: manifest.mapping.variant, origin: manifest.mapping.origin, inference: manifest.mapping.inference, revisionVerdict: manifest.mapping.revisionVerdict, verifyExit: verify.status };
     } finally {
       fs.rmSync(work, { recursive: true, force: true });

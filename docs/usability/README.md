@@ -1,6 +1,6 @@
 # Usability — protocol and internal audit (Sprints 9–10)
 
-> **Independent usability testing: NOT PERFORMED (Sprints 9, 10 and 11).** No developer unfamiliar with Eyes Without a Face has used the product yet. Everything below is either a protocol ready to run, or an internal heuristic audit by the team that built it. Do not cite it as user evidence.
+> **Independent usability testing: NOT PERFORMED (Sprints 9, 10, 11 and 12).** No developer unfamiliar with Eyes Without a Face has used the product yet. Everything below is either a protocol ready to run, or an internal heuristic audit by the team that built it. Do not cite it as user evidence.
 
 ## 1. Unassisted task protocol (ready to run, ≥ 3 participants)
 
@@ -123,3 +123,14 @@ Open internal findings (team judgment, not user evidence):
 3. Do the phase toggles announce expanded / collapsed?
 4. Is each Privacy Boundary station's state read in words?
 5. Can the OUTCOME verdict and the export hand-off be followed without sight?
+
+## 6. Sprint 12 — status
+
+**Independent sessions: NOT PERFORMED.** The coding agent that ran Sprint 12 cannot recruit, schedule or observe people, and no human facilitator ran a session during the sprint. Gate B stays **OPEN**. Nothing in this repository comes from a participant.
+
+What changed for the next facilitator:
+
+- The product is now public at <https://eyes-without-a-face-b7281.web.app>, so sessions need no install, no keys and no localhost setup ([sprint-11-session-kit.md](sprint-11-session-kit.md) §9: remote sessions, timing measures, recruitment note).
+- The hosted journey itself was verified on real models (2 / 2 automated runs). That proves the path works, **not** that people can follow it.
+
+Release targets (unchanged, still targets): 3 / 3 participants complete the core tasks without critical assistance, 0 critical privacy misconceptions, correct reading of the final result, successful `node run.mjs verify`.

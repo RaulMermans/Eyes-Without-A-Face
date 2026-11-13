@@ -4,7 +4,9 @@
 
 A privacy-aware integration studio for the Google #BuildHybridAI 2026 hackathon. It lets a cloud model design a data integration for a private system **without being shown that system's records**, proves the result locally, and exports it as a package that runs outside the app.
 
-![Reality Check after a real Gemini proposal](docs/demo/screenshots/reality-check-real-gemini.png)
+**Try it:** <https://eyes-without-a-face-b7281.web.app> (desktop Chrome; Gemini Nano is optional, the app says when it is unavailable). All data in the app is fictional.
+
+![OUTCOME after a real hosted run: Verified, with managed exceptions](docs/demo/screenshots/sprint-12-hosted/07-outcome-verdict.png)
 
 ## The problem
 
@@ -60,7 +62,9 @@ Real inference through Firebase AI Logic on Chrome 157 (Linux, AMD Strix Halo) w
 | On-device reliability, 10 cold + 10 warm browser runs | 19 / 20 first try, 20 / 20 after one user retry, 0 cloud fallbacks |
 | Sprint 10 live requalification of the new CONNECT / OBSERVE / OUTCOME journey, 1 run | Nano 6 / 6 on-device; Build Integration sent 0 requests; Gemini proposal valid; revision `ACCEPTED`; export `VERIFIED_WITH_EXCEPTIONS`, `node run.mjs verify` exit 0; 0 private terms in 2 request bodies |
 | Sprint 11 live requalification of the CONNECT-first sequence, 1 run | Nano 6 / 6 on-device in CONNECT before any request existed; 0 invalidated approvals; Gemini proposal valid in 2.4 s; revision `ACCEPTED`; export `VERIFIED_WITH_EXCEPTIONS`, `node run.mjs verify` exit 0; 0 private terms in 2 request bodies |
-| Deterministic suites (Sprint 11 head) | 251 unit · 43 contract · 69 privacy · 62 evaluation · 113 Playwright E2E |
+| **Sprint 12 hosted acceptance** on the public URL, production App Check, no debug token, 2 runs | 2 / 2: Nano 6 / 6 on-device, 0 requests before approval, Gemini valid, semantic failure caught, revision `ACCEPTED` (transformed 0 → 7), `node run.mjs verify` exit 0; 0 private terms in 4 request bodies |
+| Sprint 12 Nano-value experiment (pre-registered, 3 paired trials) | Nano understood private field names the rules could not (8 / 8 applied suggestions correct, 5 wrong ones blocked), but Gemini's mapping was identical with and without it: **neutral** ([docs/evaluation/sprint-12-nano-value.md](docs/evaluation/sprint-12-nano-value.md)) |
+| Deterministic suites (Sprint 12 head) | see [docs/sprints/sprint-12.md](docs/sprints/sprint-12.md) |
 
 ## Run it
 
@@ -96,7 +100,9 @@ The package status is computed, never asserted: `VERIFIED`, `VERIFIED_WITH_EXCEP
 
 ## Status
 
-Sprint 11 is an acceptance sprint. OBSERVE now leads with the current stage, the last completed stage and the one next action, and groups the 17 stages into five phases that collapse on phones. On-device interpretation moved into CONNECT, before the cloud request is prepared. A change after preparation explains why the request was cleared. OUTCOME leads with one verdict that never says "verified" for meaning it did not check. Export ends with the five real runner steps. The **Privacy Boundary** band shows source → twin → your approval → cloud → verified outcome from state alone. See [docs/sprints/sprint-11.md](docs/sprints/sprint-11.md). Independent usability testing, a manual screen-reader pass and the hosted deployment are still **open** (owner action).
+**Sprint 12 (release and evidence): EYES is live** at <https://eyes-without-a-face-b7281.web.app> (build `b93e3edbb997`, owner-approved). The full journey passed on the public URL with real Gemini Nano and Gemini Cloud through production App Check. A pre-registered experiment answered what Nano adds (correct private understanding, no measured accuracy gain). The submission materials, business-impact narrative and demo script are ready. Still open: independent usability sessions, the recorded video and the Devpost submission (owner actions). See [docs/sprints/sprint-12.md](docs/sprints/sprint-12.md).
+
+Sprint 11 is an acceptance sprint. OBSERVE now leads with the current stage, the last completed stage and the one next action, and groups the 17 stages into five phases that collapse on phones. On-device interpretation moved into CONNECT, before the cloud request is prepared. A change after preparation explains why the request was cleared. OUTCOME leads with one verdict that never says "verified" for meaning it did not check. Export ends with the five real runner steps. The **Privacy Boundary** band shows source → twin → your approval → cloud → verified outcome from state alone. See [docs/sprints/sprint-11.md](docs/sprints/sprint-11.md). (Sprint 11.)
 
 Sprint 10 reorganizes the product around three moments:
 
@@ -119,11 +125,11 @@ Sprint 8 real-model benchmark (preliminary, 5 trials, frozen fresh holdout, ever
   - Gemini Nano added no measurable value.
   - 5 of 8 revision requests timed out at the provider.
 
-The hosted deployment and public release are gated on owner approval ([docs/deployment.md](docs/deployment.md)); nothing is deployed yet. No independent usability test has been run ([docs/usability/README.md](docs/usability/README.md)).
+Deployment record and rollback: [docs/deployment.md](docs/deployment.md). No independent usability test has been run yet ([docs/usability/README.md](docs/usability/README.md)).
 
 ## Project
 
 - Architecture: [docs/architecture/system.md](docs/architecture/system.md) · Security model: [docs/security/README.md](docs/security/README.md) · All docs: [docs/README.md](docs/README.md)
-- Built during the hackathon period. See [docs/hackathon-history.md](docs/hackathon-history.md).
+- Started before the #BuildHybridAI submission period (Sprints 0–4) and substantially extended during it (Sprints 5–12). Commit-level disclosure: [docs/hackathon-history.md](docs/hackathon-history.md).
 - Contributing: [CONTRIBUTING.md](CONTRIBUTING.md) · Security reports: [SECURITY.md](SECURITY.md)
 - License: [Apache-2.0](LICENSE). The emblem artwork is owner-supplied; see [docs/branding/README.md](docs/branding/README.md).

@@ -1,0 +1,475 @@
+{
+  "experiment": "sprint-12-nano-value",
+  "evidence": {
+    "entries": 6,
+    "sha256": "2da90d06b27365a15c4d5603dbe23160aa09fa7d5d874af6dcc96de0cc1d5d60"
+  },
+  "totals": {
+    "cloudRequests": 6,
+    "providerFailures": 0,
+    "bodyLeaks": 3,
+    "replayMismatches": 0,
+    "trials": [
+      1,
+      2,
+      3
+    ]
+  },
+  "nano": [
+    {
+      "scenarioId": "crm-nl-relations",
+      "trials": 3,
+      "suggestions": {
+        "applicable": 8,
+        "rejected": 5,
+        "consistent": 8
+      },
+      "applied": 8,
+      "disclosureChanged": 3,
+      "mappingDiffersFromB": 0,
+      "pairedHoldoutDelta": [
+        0,
+        0,
+        0
+      ],
+      "medianNanoMs": 17855,
+      "nanoErrors": 0
+    }
+  ],
+  "nanoMatches": [
+    {
+      "trial": 1,
+      "applicable": [
+        "bedrijf",
+        "contactpersoon",
+        "opmerking"
+      ],
+      "applicableMatchingGroundTruth": [
+        "bedrijf",
+        "contactpersoon",
+        "opmerking"
+      ],
+      "resolvedDateOrder": false
+    },
+    {
+      "trial": 2,
+      "applicable": [
+        "bedrijf",
+        "contactpersoon"
+      ],
+      "applicableMatchingGroundTruth": [
+        "bedrijf",
+        "contactpersoon"
+      ],
+      "resolvedDateOrder": false
+    },
+    {
+      "trial": 3,
+      "applicable": [
+        "bedrijf",
+        "contactpersoon",
+        "opmerking"
+      ],
+      "applicableMatchingGroundTruth": [
+        "bedrijf",
+        "contactpersoon",
+        "opmerking"
+      ],
+      "resolvedDateOrder": false
+    }
+  ],
+  "fieldChoices": [
+    {
+      "config": "C (deterministic twin)",
+      "trial": 1,
+      "organizationFromBedrijf": true,
+      "contactNameFromContactpersoon": true,
+      "customerSinceInputFormat": "MM/DD/YYYY",
+      "customerSinceCorrectOrder": false
+    },
+    {
+      "config": "D (Nano-enriched twin)",
+      "trial": 1,
+      "organizationFromBedrijf": true,
+      "contactNameFromContactpersoon": true,
+      "customerSinceInputFormat": "MM/DD/YYYY",
+      "customerSinceCorrectOrder": false
+    },
+    {
+      "config": "C (deterministic twin)",
+      "trial": 2,
+      "organizationFromBedrijf": true,
+      "contactNameFromContactpersoon": true,
+      "customerSinceInputFormat": "MM/DD/YYYY",
+      "customerSinceCorrectOrder": false
+    },
+    {
+      "config": "D (Nano-enriched twin)",
+      "trial": 2,
+      "organizationFromBedrijf": true,
+      "contactNameFromContactpersoon": true,
+      "customerSinceInputFormat": "MM/DD/YYYY",
+      "customerSinceCorrectOrder": false
+    },
+    {
+      "config": "C (deterministic twin)",
+      "trial": 3,
+      "organizationFromBedrijf": true,
+      "contactNameFromContactpersoon": true,
+      "customerSinceInputFormat": "MM/DD/YYYY",
+      "customerSinceCorrectOrder": false
+    },
+    {
+      "config": "D (Nano-enriched twin)",
+      "trial": 3,
+      "organizationFromBedrijf": true,
+      "contactNameFromContactpersoon": true,
+      "customerSinceInputFormat": "MM/DD/YYYY",
+      "customerSinceCorrectOrder": false
+    }
+  ],
+  "records": [
+    {
+      "scenarioId": "crm-nl-relations",
+      "trial": 1,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "cd2ff5b6335e3133fe687153aada535bfe6081cedfd9280c27a79e616c1cc6d2",
+      "mappingValid": true,
+      "providerError": null,
+      "runId": "crm-nl-relations-B-t1",
+      "config": "B",
+      "provenance": "real-gemini",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 0,
+        "correctlyHandled": 1,
+        "incorrect": 7,
+        "quarantined": 1,
+        "unresolved": 1,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 0,
+        "correctlyHandled": 1,
+        "incorrect": 3,
+        "quarantined": 1,
+        "unresolved": 6,
+        "rejectedByPolicy": 0
+      },
+      "semanticOverall": "SEMANTIC_MISMATCH",
+      "detectionFeedbackSet": {
+        "incorrect": 7,
+        "detected": 7,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 3,
+        "detected": 3,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 2442,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": true
+    },
+    {
+      "scenarioId": "crm-nl-relations",
+      "trial": 2,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "cd2ff5b6335e3133fe687153aada535bfe6081cedfd9280c27a79e616c1cc6d2",
+      "mappingValid": true,
+      "providerError": null,
+      "runId": "crm-nl-relations-B-t2",
+      "config": "B",
+      "provenance": "real-gemini",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 0,
+        "correctlyHandled": 1,
+        "incorrect": 7,
+        "quarantined": 1,
+        "unresolved": 1,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 0,
+        "correctlyHandled": 1,
+        "incorrect": 3,
+        "quarantined": 1,
+        "unresolved": 6,
+        "rejectedByPolicy": 0
+      },
+      "semanticOverall": "SEMANTIC_MISMATCH",
+      "detectionFeedbackSet": {
+        "incorrect": 7,
+        "detected": 7,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 3,
+        "detected": 3,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 1605,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": true
+    },
+    {
+      "scenarioId": "crm-nl-relations",
+      "trial": 3,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "cd2ff5b6335e3133fe687153aada535bfe6081cedfd9280c27a79e616c1cc6d2",
+      "mappingValid": true,
+      "providerError": null,
+      "runId": "crm-nl-relations-B-t3",
+      "config": "B",
+      "provenance": "real-gemini",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 0,
+        "correctlyHandled": 1,
+        "incorrect": 7,
+        "quarantined": 1,
+        "unresolved": 1,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 0,
+        "correctlyHandled": 1,
+        "incorrect": 3,
+        "quarantined": 1,
+        "unresolved": 6,
+        "rejectedByPolicy": 0
+      },
+      "semanticOverall": "SEMANTIC_MISMATCH",
+      "detectionFeedbackSet": {
+        "incorrect": 7,
+        "detected": 7,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 3,
+        "detected": 3,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 0,
+        "promptPrivateMatches": 0,
+        "canaryPresent": false
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 1781,
+        "nano": null,
+        "revision": null
+      },
+      "humanInterventions": 0,
+      "replayMatchesBrowser": true
+    },
+    {
+      "scenarioId": "crm-nl-relations",
+      "trial": 1,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "cd2ff5b6335e3133fe687153aada535bfe6081cedfd9280c27a79e616c1cc6d2",
+      "mappingValid": true,
+      "providerError": null,
+      "runId": "crm-nl-relations-C-t1",
+      "config": "C",
+      "provenance": "real-gemini",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 0,
+        "correctlyHandled": 1,
+        "incorrect": 7,
+        "quarantined": 1,
+        "unresolved": 1,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 0,
+        "correctlyHandled": 1,
+        "incorrect": 3,
+        "quarantined": 1,
+        "unresolved": 6,
+        "rejectedByPolicy": 0
+      },
+      "semanticOverall": "SEMANTIC_MISMATCH",
+      "detectionFeedbackSet": {
+        "incorrect": 7,
+        "detected": 7,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 3,
+        "detected": 3,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 1,
+        "promptPrivateMatches": 1,
+        "canaryPresent": false
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 1996,
+        "nano": 17886,
+        "revision": null
+      },
+      "humanInterventions": 3,
+      "replayMatchesBrowser": true
+    },
+    {
+      "scenarioId": "crm-nl-relations",
+      "trial": 2,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "cd2ff5b6335e3133fe687153aada535bfe6081cedfd9280c27a79e616c1cc6d2",
+      "mappingValid": true,
+      "providerError": null,
+      "runId": "crm-nl-relations-C-t2",
+      "config": "C",
+      "provenance": "real-gemini",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 0,
+        "correctlyHandled": 1,
+        "incorrect": 7,
+        "quarantined": 1,
+        "unresolved": 1,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 0,
+        "correctlyHandled": 1,
+        "incorrect": 3,
+        "quarantined": 1,
+        "unresolved": 6,
+        "rejectedByPolicy": 0
+      },
+      "semanticOverall": "SEMANTIC_MISMATCH",
+      "detectionFeedbackSet": {
+        "incorrect": 7,
+        "detected": 7,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 3,
+        "detected": 3,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 1,
+        "promptPrivateMatches": 1,
+        "canaryPresent": false
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 1976,
+        "nano": 17393,
+        "revision": null
+      },
+      "humanInterventions": 2,
+      "replayMatchesBrowser": true
+    },
+    {
+      "scenarioId": "crm-nl-relations",
+      "trial": 3,
+      "model": "gemini-3.5-flash-lite",
+      "mappingHash": "cd2ff5b6335e3133fe687153aada535bfe6081cedfd9280c27a79e616c1cc6d2",
+      "mappingValid": true,
+      "providerError": null,
+      "runId": "crm-nl-relations-C-t3",
+      "config": "C",
+      "provenance": "real-gemini",
+      "promptVersion": "mapping-proposal-1.1.0",
+      "feedbackSet": {
+        "total": 9,
+        "correctTransformations": 0,
+        "correctlyHandled": 1,
+        "incorrect": 7,
+        "quarantined": 1,
+        "unresolved": 1,
+        "rejectedByPolicy": 0
+      },
+      "holdout": {
+        "total": 10,
+        "correctTransformations": 0,
+        "correctlyHandled": 1,
+        "incorrect": 3,
+        "quarantined": 1,
+        "unresolved": 6,
+        "rejectedByPolicy": 0
+      },
+      "semanticOverall": "SEMANTIC_MISMATCH",
+      "detectionFeedbackSet": {
+        "incorrect": 7,
+        "detected": 7,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "detectionHoldout": {
+        "incorrect": 3,
+        "detected": 3,
+        "missed": 0,
+        "falseAlarms": 0
+      },
+      "revision": null,
+      "privacy": {
+        "bodyLeaks": 1,
+        "promptPrivateMatches": 1,
+        "canaryPresent": false
+      },
+      "cloudRequests": 1,
+      "latencyMs": {
+        "cloud": 1626,
+        "nano": 17855,
+        "revision": null
+      },
+      "humanInterventions": 3,
+      "replayMatchesBrowser": true
+    }
+  ]
+}

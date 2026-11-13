@@ -1,0 +1,95 @@
+{
+  "scenarioId": "crm-nl-relations",
+  "scenarioVersion": "1.0.0",
+  "title": "Dutch CRM relations → helpdesk requesters",
+  "summary": "Dutch field names that English profiling rules cannot read: which text field is the company and which the contact person, and whether customer-since dates are day-first.",
+  "difficulty": [
+    "Non-English field names: 'bedrijf' (company) and 'contactpersoon' (contact person) both look like plain text to the deterministic role rules, so the twin cannot tell the cloud which alias is the organization and which the person.",
+    "Ambiguous DD/MM vs MM/DD dates: every imported 'sinds' value has day and month ≤ 12, so profiling cannot prove the order. The source is a Dutch CRM; the true order is day-first.",
+    "Lifecycle stage 'fase' uses Dutch labels; the owner declares their meaning. An unseen stage may be filed as 'other'."
+  ],
+  "fictional": true,
+  "localOnly": true,
+  "canaries": ["PRIVATE_CANARY_PII_DO_NOT_SHARE"],
+  "datasetLabel": "crm-nl-relations",
+  "twinOverrides": {
+    "fase": { "discloseCategories": true },
+    "opmerking": { "shareable": false }
+  },
+  "destinationSchema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://eyes-without-a-face.dev/examples/scenarios/crm-nl/destination/1.0.0",
+    "title": "Helpdesk requester directory",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["id", "email", "status", "customerSince", "organization", "contactName"],
+    "properties": {
+      "id": { "type": "string", "pattern": "^RL-[0-9]{5}$" },
+      "email": { "type": "string", "format": "email" },
+      "status": { "enum": ["customer", "former", "lead", "other"] },
+      "customerSince": { "type": "string", "format": "date" },
+      "organization": { "type": "string", "minLength": 1 },
+      "contactName": { "type": "string", "minLength": 1 }
+    }
+  },
+  "policy": {
+    "policyVersion": "1.0.0",
+    "policyId": "crm-nl-v1",
+    "description": "Unusable contact emails go to manual review. Unknown relation stages may be filed as 'other'.",
+    "quarantine": [
+      { "code": "INVALID_EMAIL", "to": "email" },
+      { "code": "NULL_VALUE", "to": "email" },
+      { "code": "TYPE_MISMATCH", "to": "email" },
+      { "code": "OUTPUT_SCHEMA_MISMATCH", "to": "email" }
+    ],
+    "approvedFallbacks": [{ "to": "status", "value": "other", "appliesTo": "undisclosed-category" }],
+    "approvedDefaults": [],
+    "maxQuarantineRate": 0.34
+  },
+  "imported": [
+    { "record": { "relatienr": "RL-20001", "mailadres": "sanne.devries@example.nl", "fase": "klant", "sinds": "04/03/2024", "bedrijf": "Bakkerij De Vries", "contactpersoon": "Sanne de Vries", "opmerking": "PRIVATE_CANARY_PII_DO_NOT_SHARE fictional payment arrangement, keep local" }, "expected": { "kind": "transform", "output": { "id": "RL-20001", "email": "sanne.devries@example.nl", "status": "customer", "customerSince": "2024-03-04", "organization": "Bakkerij De Vries", "contactName": "Sanne de Vries" } } },
+    { "record": { "relatienr": "RL-20002", "mailadres": "pieter.bakker@example.nl", "fase": "klant", "sinds": "11/01/2023", "bedrijf": "Bakker Installatietechniek", "contactpersoon": "Pieter Bakker", "opmerking": "Fictional, prefers phone" }, "expected": { "kind": "transform", "output": { "id": "RL-20002", "email": "pieter.bakker@example.nl", "status": "customer", "customerSince": "2023-01-11", "organization": "Bakker Installatietechniek", "contactName": "Pieter Bakker" } } },
+    { "record": { "relatienr": "RL-20003", "mailadres": "fatima.elamrani@example.nl", "fase": "lead", "sinds": "07/09/2025", "bedrijf": "Studio Noord", "contactpersoon": "Fatima El Amrani", "opmerking": "Fictional trade-fair lead" }, "expected": { "kind": "transform", "output": { "id": "RL-20003", "email": "fatima.elamrani@example.nl", "status": "lead", "customerSince": "2025-09-07", "organization": "Studio Noord", "contactName": "Fatima El Amrani" } } },
+    { "record": { "relatienr": "RL-20004", "mailadres": "joost.visser@example.be", "fase": "oud-klant", "sinds": "02/12/2021", "bedrijf": "Visser & Zonen Transport", "contactpersoon": "Joost Visser", "opmerking": "Fictional, contract ended" }, "expected": { "kind": "transform", "output": { "id": "RL-20004", "email": "joost.visser@example.be", "status": "former", "customerSince": "2021-12-02", "organization": "Visser & Zonen Transport", "contactName": "Joost Visser" } } },
+    { "record": { "relatienr": "RL-20005", "mailadres": "lotte.meijer@example.nl", "fase": "klant", "sinds": "10/06/2022", "bedrijf": "Tandartspraktijk Meijer", "contactpersoon": "Lotte Meijer", "opmerking": "Fictional dental practice" }, "expected": { "kind": "transform", "output": { "id": "RL-20005", "email": "lotte.meijer@example.nl", "status": "customer", "customerSince": "2022-06-10", "organization": "Tandartspraktijk Meijer", "contactName": "Lotte Meijer" } } },
+    { "record": { "relatienr": "RL-20006", "mailadres": "daan.smit@example.nl", "fase": "lead", "sinds": "05/08/2025", "bedrijf": "Smit Hoveniers", "contactpersoon": "Daan Smit", "opmerking": "Fictional garden company lead" }, "expected": { "kind": "transform", "output": { "id": "RL-20006", "email": "daan.smit@example.nl", "status": "lead", "customerSince": "2025-08-05", "organization": "Smit Hoveniers", "contactName": "Daan Smit" } } }
+  ],
+  "revisionFeedback": [
+    { "record": { "relatienr": "RL-20031", "mailadres": "eva.mulder@example.nl", "fase": "klant", "sinds": "23/02/2024", "bedrijf": "Mulder Fietsen", "contactpersoon": "Eva Mulder" }, "expected": { "kind": "transform", "output": { "id": "RL-20031", "email": "eva.mulder@example.nl", "status": "customer", "customerSince": "2024-02-23", "organization": "Mulder Fietsen", "contactName": "Eva Mulder" } } },
+    { "record": { "relatienr": "RL-20032", "mailadres": "ruben.bos@example.nl", "fase": "partner", "sinds": "09/03/2023", "bedrijf": "Bos ICT", "contactpersoon": "Ruben Bos" }, "expected": { "kind": "fallback", "output": { "id": "RL-20032", "email": "ruben.bos@example.nl", "status": "other", "customerSince": "2023-03-09", "organization": "Bos ICT", "contactName": "Ruben Bos" } } },
+    { "record": { "relatienr": "RL-20033", "mailadres": "onbekend", "fase": "klant", "sinds": "01/04/2024", "bedrijf": "Zonder Mail BV", "contactpersoon": "Kees Jansen" }, "expected": { "kind": "quarantine" } }
+  ],
+  "semanticSpec": {
+    "specVersion": "1.0.0",
+    "note": "Fictional owner declarations, made before any Sprint 12 model run. Neither the date order of 'sinds' nor which text field is the company is declared: that is what the Sprint 12 Nano-value experiment asks.",
+    "declared": [
+      {
+        "id": "crm-nl-stage-meaning",
+        "kind": "enum-meaning",
+        "source": "fase",
+        "target": "status",
+        "meaning": { "klant": "customer", "oud-klant": "former", "lead": "lead" },
+        "undeclared": "unconstrained",
+        "trust": "trusted",
+        "evidence": { "kind": "user-declared" }
+      }
+    ]
+  },
+  "development": [
+    { "record": { "relatienr": "RL-20051", "mailadres": "sophie.dekker@example.nl", "fase": "klant", "sinds": "17/10/2024", "bedrijf": "Dekker Vastgoed", "contactpersoon": "Sophie Dekker" }, "expected": { "kind": "transform", "output": { "id": "RL-20051", "email": "sophie.dekker@example.nl", "status": "customer", "customerSince": "2024-10-17", "organization": "Dekker Vastgoed", "contactName": "Sophie Dekker" } } },
+    { "record": { "relatienr": "RL-20052", "mailadres": "thijs.vandam@example.nl", "fase": "lead", "sinds": "06/05/2025", "bedrijf": "Van Dam Architecten", "contactpersoon": "Thijs van Dam" }, "expected": { "kind": "transform", "output": { "id": "RL-20052", "email": "thijs.vandam@example.nl", "status": "lead", "customerSince": "2025-05-06", "organization": "Van Dam Architecten", "contactName": "Thijs van Dam" } } },
+    { "record": { "relatienr": "RL-20053", "mailadres": "noor.hendriks@example.be", "fase": "oud-klant", "sinds": "28/11/2020", "bedrijf": "Hendriks Catering", "contactpersoon": "Noor Hendriks" }, "expected": { "kind": "transform", "output": { "id": "RL-20053", "email": "noor.hendriks@example.be", "status": "former", "customerSince": "2020-11-28", "organization": "Hendriks Catering", "contactName": "Noor Hendriks" } } }
+  ],
+  "holdout": [
+    { "record": { "relatienr": "RL-20071", "mailadres": "anouk.peters@example.nl", "fase": "klant", "sinds": "15/01/2024", "bedrijf": "Peters Optiek", "contactpersoon": "Anouk Peters", "opmerking": "Fictional optician" }, "expected": { "kind": "transform", "output": { "id": "RL-20071", "email": "anouk.peters@example.nl", "status": "customer", "customerSince": "2024-01-15", "organization": "Peters Optiek", "contactName": "Anouk Peters" } } },
+    { "record": { "relatienr": "RL-20072", "mailadres": "bram.vanleeuwen@example.nl", "fase": "oud-klant", "sinds": "03/10/2019", "bedrijf": "Van Leeuwen Logistiek", "contactpersoon": "Bram van Leeuwen", "opmerking": "Fictional, moved to competitor" }, "expected": { "kind": "transform", "output": { "id": "RL-20072", "email": "bram.vanleeuwen@example.nl", "status": "former", "customerSince": "2019-10-03", "organization": "Van Leeuwen Logistiek", "contactName": "Bram van Leeuwen" } } },
+    { "record": { "relatienr": "RL-20073", "mailadres": "iris.kok@example.nl", "fase": "lead", "sinds": "26/06/2025", "bedrijf": "Kok Kinderopvang", "contactpersoon": "Iris Kok", "opmerking": "Fictional childcare lead" }, "expected": { "kind": "transform", "output": { "id": "RL-20073", "email": "iris.kok@example.nl", "status": "lead", "customerSince": "2025-06-26", "organization": "Kok Kinderopvang", "contactName": "Iris Kok" } } },
+    { "record": { "relatienr": "RL-20074", "mailadres": "milan.jacobs@example.be", "fase": "partner", "sinds": "14/02/2022", "bedrijf": "Jacobs Drukwerk", "contactpersoon": "Milan Jacobs", "opmerking": "Fictional reseller" }, "expected": { "kind": "fallback", "output": { "id": "RL-20074", "email": "milan.jacobs@example.be", "status": "other", "customerSince": "2022-02-14", "organization": "Jacobs Drukwerk", "contactName": "Milan Jacobs" } } },
+    { "record": { "relatienr": "RL-20075", "mailadres": "geen-adres", "fase": "klant", "sinds": "19/07/2023", "bedrijf": "Zonder Contact VOF", "contactpersoon": "Wim de Graaf", "opmerking": "Fictional, email missing" }, "expected": { "kind": "quarantine" } },
+    { "record": { "relatienr": "RL-20076", "mailadres": "yara.willems@example.nl", "fase": "klant", "sinds": "08/04/2021", "bedrijf": "Willems Bouw", "contactpersoon": "Yara Willems", "opmerking": "Fictional construction firm" }, "expected": { "kind": "transform", "output": { "id": "RL-20076", "email": "yara.willems@example.nl", "status": "customer", "customerSince": "2021-04-08", "organization": "Willems Bouw", "contactName": "Yara Willems" } } },
+    { "record": { "relatienr": "RL-20077", "mailadres": "koen.vos@example.nl", "fase": "klant", "sinds": "31/03/2022", "bedrijf": "Vos Fysiotherapie", "contactpersoon": "Koen Vos", "opmerking": "Fictional physiotherapy practice" }, "expected": { "kind": "transform", "output": { "id": "RL-20077", "email": "koen.vos@example.nl", "status": "customer", "customerSince": "2022-03-31", "organization": "Vos Fysiotherapie", "contactName": "Koen Vos" } } },
+    { "record": { "relatienr": "RL-20078", "mailadres": "lisa.vanderberg@example.nl", "fase": "lead", "sinds": "12/11/2025", "bedrijf": "Berg Advies", "contactpersoon": "Lisa van der Berg", "opmerking": "Fictional consultancy lead" }, "expected": { "kind": "transform", "output": { "id": "RL-20078", "email": "lisa.vanderberg@example.nl", "status": "lead", "customerSince": "2025-11-12", "organization": "Berg Advies", "contactName": "Lisa van der Berg" } } },
+    { "record": { "relatienr": "RL-20079", "mailadres": "stijn.maes@example.be", "fase": "oud-klant", "sinds": "22/09/2020", "bedrijf": "Maes Brouwerij", "contactpersoon": "Stijn Maes", "opmerking": "Fictional brewery, ended 2025" }, "expected": { "kind": "transform", "output": { "id": "RL-20079", "email": "stijn.maes@example.be", "status": "former", "customerSince": "2020-09-22", "organization": "Maes Brouwerij", "contactName": "Stijn Maes" } } },
+    { "record": { "relatienr": "RL-20080", "mailadres": "emma.dejong@example.nl", "fase": "klant", "sinds": "27/05/2024", "bedrijf": "De Jong Webdesign", "contactpersoon": "Emma de Jong", "opmerking": "Fictional web agency" }, "expected": { "kind": "transform", "output": { "id": "RL-20080", "email": "emma.dejong@example.nl", "status": "customer", "customerSince": "2024-05-27", "organization": "De Jong Webdesign", "contactName": "Emma de Jong" } } }
+  ]
+}

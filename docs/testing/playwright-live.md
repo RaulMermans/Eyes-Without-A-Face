@@ -132,3 +132,25 @@ pnpm test:live tests/live/semantic-benchmark.spec.ts
 ```
 
 `EYES_LIVE_SCENARIO=<id>` restricts a run to one scenario.
+
+## Sprint 12 additions: hosted acceptance and the Nano-value experiment
+
+**Hosted acceptance** (`playwright.hosted.config.ts`) runs the opt-in live specs against a **deployed** build: no web server, and no App Check debug token (the config throws if one is set), so attestation is production reCAPTCHA Enterprise on an allowed domain.
+
+```bash
+# Real hybrid journey on the public URL (uses quota: ≤ 2 cloud requests per run)
+EYES_HOSTED_URL=https://eyes-without-a-face-b7281.web.app \
+EYES_LIVE_TESTS=1 EYES_LIVE_SPRINT11=1 EYES_LIVE_CLOUD=1 EYES_LIVE_ON_DEVICE=1 \
+EYES_CHROME_PROFILE="$HOME/.cache/eyes-without-a-face/chrome-nano-profile" \
+EYES_LIVE_EVIDENCE=live-evidence/sprint-12/hosted.json \
+EYES_LIVE_SCREENSHOTS=docs/demo/screenshots/sprint-12-hosted \
+pnpm exec playwright test -c playwright.hosted.config.ts --project=hosted-chrome tests/live/sprint11-experience.spec.ts
+
+# Browsers without Nano: honest deterministic path, nothing sent (no quota)
+EYES_LIVE_TESTS=1 EYES_LIVE_HOSTED=1 pnpm exec playwright test -c playwright.hosted.config.ts \
+  --project=hosted-chromium-no-nano --project=hosted-firefox
+```
+
+Use `--project=name` (with `=`): a bare `--project name path` treats the path as another project name. Headed Firefox crashed at launch on the Sprint 12 machine, so the Firefox project is headless.
+
+**Nano-value experiment:** `tests/live/semantic-benchmark.spec.ts` with `EYES_LIVE_SCENARIO=crm-nl-relations EYES_LIVE_NO_REVISION=1` (the experiment scenario runs only when selected; without a selection the Sprint 8 set is unchanged). Protocol, budget and results: [../evaluation/sprint-12-nano-value.md](../evaluation/sprint-12-nano-value.md).

@@ -1,0 +1,32 @@
+[
+  {
+    "check": "HOSTED-DEG",
+    "at": "2026-11-13T13:03:21.609Z",
+    "baseURL": "https://eyes-without-a-face-b7281.web.app",
+    "browserName": "chromium",
+    "version": "158.0.8127.18",
+    "gitSha": "b93e3edbb997d6518e208c553a07d5b328e9fbbe",
+    "footerHasBuild": true,
+    "unavailableCard": true,
+    "interpretOffered": 0,
+    "onDeviceStage": "skipped",
+    "gate": "awaiting",
+    "generateContent": 0,
+    "pageErrors": []
+  },
+  {
+    "check": "HOSTED-DEG",
+    "at": "2026-11-13T13:03:38.882Z",
+    "baseURL": "https://eyes-without-a-face-b7281.web.app",
+    "browserName": "firefox",
+    "version": "159.0",
+    "gitSha": "b93e3edbb997d6518e208c553a07d5b328e9fbbe",
+    "footerHasBuild": true,
+    "unavailableCard": true,
+    "interpretOffered": 0,
+    "onDeviceStage": "skipped",
+    "gate": "awaiting",
+    "generateContent": 0,
+    "pageErrors": []
+  }
+]

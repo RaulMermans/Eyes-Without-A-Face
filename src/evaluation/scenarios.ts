@@ -22,6 +22,7 @@
 import crmEu from "../examples/scenarios/crm-eu-accounts.json" with { type: "json" };
 import support from "../examples/scenarios/support-tickets.json" with { type: "json" };
 import billing from "../examples/scenarios/billing-subscriptions.json" with { type: "json" };
+import crmNl from "../examples/scenarios/crm-nl-relations.json" with { type: "json" };
 import type { TwinFieldOverride } from "../phantom/generate.ts";
 import type { SemanticConstraint } from "../semantics/contract.ts";
 import { validateAcceptancePolicy, type AcceptancePolicy, type ExpectedOutcome } from "../verification/outcomes.ts";
@@ -58,8 +59,19 @@ export const EVALUATION_SCENARIOS: readonly EvaluationScenario[] = [
   billing as unknown as EvaluationScenario,
 ];
 
+/**
+ * Sprint 12 Nano-value experiment scenario(s). Kept out of
+ * EVALUATION_SCENARIOS so the frozen Sprint 8 benchmark set and its replay
+ * (EVAL-081) stay exactly as recorded. Frozen separately in
+ * docs/evidence/sprint-12/nano-value-freeze.json.
+ */
+export const EXPERIMENT_SCENARIOS: readonly EvaluationScenario[] = [crmNl as unknown as EvaluationScenario];
+
+/** Every fictional scenario the Source step offers. */
+export const PICKER_SCENARIOS: readonly EvaluationScenario[] = [...EVALUATION_SCENARIOS, ...EXPERIMENT_SCENARIOS];
+
 export function scenarioById(id: string): EvaluationScenario | undefined {
-  return EVALUATION_SCENARIOS.find((scenario) => scenario.scenarioId === id);
+  return PICKER_SCENARIOS.find((scenario) => scenario.scenarioId === id);
 }
 
 /** Structural checks a scenario must pass before it can be evaluated. */

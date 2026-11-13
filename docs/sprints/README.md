@@ -15,3 +15,8 @@
 | 5 | [sprint-5.md](sprint-5.md) — release candidate: on-device reliability, release build, Hosting/App Check audit, UX, security audit, CI, demo, submission draft |
 | 6 | [sprint-6.md](sprint-6.md) — Spectral Forensics redesign: landing, Phantom transformation, disclosure review, Integration Studio, Reality Check findings |
 | 7 | [sprint-7.md](sprint-7.md) — Blind Integration Intelligence: private on-device understanding, safe feedback, one approved blind revision, outcome policy, before/after and holdout evaluation |
+| 8 | [sprint-8.md](sprint-8.md) — semantic verification, safe semantic feedback, deterministic revision decision, frozen real-model benchmark |
+| 9 | [sprint-9.md](sprint-9.md) — portable integration export, provider-failure guidance, live hero-journey qualification |
+| 10 | [sprint-10.md](sprint-10.md) — CONNECT / OBSERVE / OUTCOME, Live Intelligence Runtime, Black Halo |
+| 11 | [sprint-11.md](sprint-11.md) — compact OBSERVE, Nano before the request, outcome verdict, export hand-off, Privacy Boundary |
+| 12 | [sprint-12.md](sprint-12.md) — first public deployment and hosted acceptance on real models, Nano-value experiment (neutral), business impact, demo script, Official Rules compliance |

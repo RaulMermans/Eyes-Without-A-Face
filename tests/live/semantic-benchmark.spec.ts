@@ -5,6 +5,7 @@ import { expect, test, usingDedicatedProfile } from "./fixtures.ts";
 import crmEu from "../../src/examples/scenarios/crm-eu-accounts.json" with { type: "json" };
 import support from "../../src/examples/scenarios/support-tickets.json" with { type: "json" };
 import billing from "../../src/examples/scenarios/billing-subscriptions.json" with { type: "json" };
+import crmNl from "../../src/examples/scenarios/crm-nl-relations.json" with { type: "json" };
 import { BLIND_REVISION_PROMPT_VERSION, SEMANTIC_REVISION_PROMPT_VERSION } from "../../src/inference/prompts.ts";
 import { FIREBASE_AI_LOGIC_API } from "../../src/inference/firebase-api.ts";
 
@@ -51,7 +52,16 @@ interface ScenarioJson {
   development: Array<{ record: Record<string, unknown> }>;
   holdout: Array<{ record: Record<string, unknown> }>;
 }
-const SCENARIOS = ([crmEu, support, billing] as unknown as ScenarioJson[]).filter((item) => !onlyScenario || item.scenarioId === onlyScenario);
+/**
+ * Sprint 12 Nano-value experiment (docs/evaluation/sprint-12-nano-value.md): the
+ * experiment scenario runs only when selected by EYES_LIVE_SCENARIO, so the default
+ * set stays the Sprint 8 three. EYES_LIVE_NO_REVISION=1 stops C/D after the initial
+ * mapping (no revision request): it isolates the effect of Nano on Gemini's mapping.
+ */
+const noRevision = process.env.EYES_LIVE_NO_REVISION === "1";
+const SPRINT8 = [crmEu, support, billing] as unknown as ScenarioJson[];
+const EXPERIMENT = [crmNl] as unknown as ScenarioJson[];
+const SCENARIOS = onlyScenario ? [...SPRINT8, ...EXPERIMENT].filter((item) => item.scenarioId === onlyScenario) : SPRINT8;
 
 /** Private strings that must never appear in a request body (approved vocabulary excluded). */
 function privateTerms(scenario: ScenarioJson): string[] {
@@ -241,6 +251,15 @@ for (let trial = firstTrial; trial < firstTrial + trials; trial += 1) {
           entry.initialState = await attr(page, "initial-outcomes", "data-state");
           entry.initialCounts = await text(page, "initial-outcomes-counts");
           entry.semantic = await semanticSnapshot(page);
+          if (noRevision) {
+            // Sprint 12: no revision. Decline it and read the holdout of the initial mapping.
+            entry.revision = "not-requested (EYES_LIVE_NO_REVISION)";
+            await page.getByTestId("prepare-safe-revision").click();
+            if ((await page.getByTestId("decline-revision").count()) > 0) await page.getByTestId("decline-revision").click();
+            await page.getByTestId("run-holdout").click();
+            entry.holdoutState = await attr(page, "holdout-initial", "data-state");
+            entry.holdoutCounts = await text(page, "holdout-initial-counts");
+          } else {
           // The user authorizes every trusted constraint behind a semantic finding (recorded as a human intervention).
           const boxes = page.locator('[data-testid^="authorize-constraint-"]');
           const authorized: string[] = [];
@@ -312,6 +331,7 @@ for (let trial = firstTrial; trial < firstTrial + trials; trial += 1) {
             };
           }
           entry.budget = await text(page, "revision-budget");
+          }
         }
       } finally {
         entry.requests = scan;
