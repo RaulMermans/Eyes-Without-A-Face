@@ -69,6 +69,18 @@ function download(bytes: Uint8Array, fileName: string): void {
   setTimeout(() => URL.revokeObjectURL(url), 30_000);
 }
 
+/** The real runner commands of Export 1.1.0 (src/export/package/run.mjs and the package README). */
+function handoffSteps(fileName: string): ReadonlyArray<readonly [string, string, string]> {
+  const dir = fileName.replace(/\.zip$/, "");
+  return [
+    ["Extract", `unzip ${fileName} && cd ${dir}`, "Anywhere outside this app; the folder is self-contained."],
+    ["Verify the archive", "node run.mjs verify", "Checks every SHA-256 in manifest.json, the Mapping Contract, and replays the fictional fixtures. Exit 0 = intact."],
+    ["Configure local bindings", "node run.mjs bindings-template --out ../bindings.local.json", "Map each alias to your field path in that file. Keep it out of shared repositories: field names are sensitive."],
+    ["Run the integration", "node run.mjs run --input ../records.json --bindings ../bindings.local.json --out ../results.json", "Your records never come from or go to this app."],
+    ["Inspect outputs and exceptions", "cat ../results.json", "Every record with its outcome. Quarantined records are listed for review, never dropped; exit code 3 means some need review."],
+  ];
+}
+
 function formatBytes(bytes: number): string {
   return bytes >= 1024 * 1024 ? `${(bytes / 1024 / 1024).toFixed(1)} MB` : `${Math.round(bytes / 1024)} KB`;
 }
@@ -133,6 +145,17 @@ export function ExportPanel({ workspace, prepared, buildSha }: { workspace: Work
         Download the verified mapping as a package that runs outside this app with Node 22 and nothing else. It is built in this browser from the
         evidence above. It never contains your records.
       </PanelHeader>
+
+      <ul className="mt-4 grid gap-x-6 gap-y-1.5 text-sm leading-6 md:grid-cols-2" data-testid="export-what-you-get" aria-label="What you receive">
+        <li><span className="font-medium">An executable mapping</span> over Phantom aliases, with this app&apos;s engine and a Node 22 runner.</li>
+        <li><span className="font-medium">Fictional fixtures only.</span> No records, no field names, no alias bindings.</li>
+        <li><span className="font-medium">Real data needs local bindings:</span> you map each alias to your own field names, in your environment.</li>
+        <li><span className="font-medium">Not deployed.</span> It is a ZIP download; nothing is installed or started anywhere.</li>
+        <li className="md:col-span-2" data-testid="export-status-explained">
+          <span className="font-medium">Labeled by its evidence:</span> VERIFIED, VERIFIED_WITH_EXCEPTIONS or DRAFT in its manifest. This one would be{" "}
+          <span className="font-mono">{eligibility.status ?? "not exportable"}</span>.
+        </li>
+      </ul>
 
       {candidates.length > 1 ? (
         <fieldset className="mt-4 space-y-2 text-sm" data-testid="export-candidates">
@@ -285,7 +308,22 @@ node run.mjs run --input ../records.json \\
             <dt className="text-mute">Privacy scan</dt>
             <dd data-testid="export-privacy-scan">{result.manifest.privacyScan.findings} findings in {result.manifest.privacyScan.scannedFiles} files</dd>
           </dl>
-          <p className="mt-2 text-xs text-mute">Next: unzip it anywhere and run <span className="font-mono">node run.mjs verify</span>.</p>
+          <div className="mt-3 border-t border-rule pt-3" data-testid="export-handoff">
+            <p className="font-semibold">Hand-off: use it outside this app (Node 22, no install)</p>
+            <ol className="mt-2 space-y-2 text-xs">
+              {handoffSteps(result.fileName).map(([title, command, note], index) => (
+                <li key={title} className="grid gap-1 sm:grid-cols-[11rem_minmax(0,1fr)] sm:gap-3">
+                  <span className="font-medium">
+                    {index + 1}. {title}
+                  </span>
+                  <span className="min-w-0">
+                    <code className="block overflow-x-auto whitespace-pre rounded-[2px] border border-ink-3 bg-void px-2 py-1 font-mono text-[11px] text-ink">{command}</code>
+                    <span className="mt-0.5 block text-mute">{note}</span>
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
       ) : result && !result.ok ? (
         <div className="mt-4">

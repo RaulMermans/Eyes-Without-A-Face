@@ -165,3 +165,50 @@ No progress percentage exists, because there is no measured progress to show. No
 - The visible focus ring is 2 px `violet-soft`.
 - Status is always shape or icon plus a word. Long identifiers wrap. The scrollable timeline is focusable (`tabIndex=0`).
 - No horizontal page overflow at 1440 / 1280 / 768 / 390 px in any mode (E2E-105). The landing CTA stays above the fold at 390 × 844.
+
+## Sprint 11 — focus card, phase groups, Privacy Boundary
+
+No token changed. The new components reuse the Black Halo tokens and the runtime node shapes.
+
+**Focus card (`rt-focus`).** This card leads OBSERVE. It shows *Now* (stage, status in words, where it runs, summary, and the blocker or review reason), *Last completed* and *Next* with the one primary action. The left rule encodes the status twice: by line style (gold **double** rule when awaiting approval) and by colour (fail, warn or violet), and the status is always written in words.
+
+**Phase groups (`rt-group`).** The 17 stages sit in five phases:
+
+1. Understand locally
+2. Cross the boundary
+3. Verify locally
+4. Blind revision · optional
+5. Outcome and export
+
+At ≥ 1024 px every phase is open, with a static heading and a status tally. Below 1024 px each heading is a button (`aria-expanded`, `aria-controls`). Only the phase holding the current stage opens by default. Collapsed stages stay in the DOM (`hidden`).
+
+**Privacy Boundary (`pb`, the Sprint 11 signature).** The band reads *Private source → Phantom Twin ‖ Your approval ‖ Approved cloud reasoning → Verified local outcome*.
+
+- **Zone pairing.** Colour is never the only cue. Each zone pairs a colour with a line style, an icon and a label:
+
+  | Zone | Rule | Icon |
+  | --- | --- | --- |
+  | Private | Solid ink | Lock |
+  | Synthetic | Dashed cyan | Phantom |
+  | Cloud | Gold hatch | Cloud |
+  | Outcome | Pass-green rule | Lock |
+
+- **The gate is the halo.** It is a dashed ring with a closed bar when nothing is approved, a gold double ring while waiting for you, and a solid ring with an open aperture once one request is approved.
+- **Motion.** The only motion is a 650 ms CSS transition on the ring and aperture, plus a 500 ms node scale. It runs when `data-state` actually changes, never on first paint and never in a loop. The global reduced-motion rule removes it (E2E-115).
+- **No private line crosses.** The private source's connector ends at the twin. Nothing private is drawn crossing the boundary.
+
+**Measured contrast (Sprint 11 pairs, WCAG 2.x):**
+
+| Pair | Ratio |
+| --- | --- |
+| Gold on panel | 10.84 : 1 |
+| Soft violet on panel | 7.25 : 1 |
+| Mute on panel | 6.79 : 1 |
+| Ink-text on panel | 9.42 : 1 |
+| Warn on panel | 8.80 : 1 |
+| Ink on group heading | 16.48 : 1 |
+| Mute on group heading | 7.05 : 1 |
+| White on violet button | 5.17 : 1 |
+| Obsidian on gold button | 11.40 : 1 |
+
+Automated checks do not establish WCAG conformance. The manual screen-reader pass is **UNVERIFIED**.

@@ -1,6 +1,6 @@
 # Usability — protocol and internal audit (Sprints 9–10)
 
-> **Independent usability testing: NOT PERFORMED (Sprint 9 and Sprint 10).** No developer unfamiliar with Eyes Without a Face has used the product yet. Everything below is either a protocol ready to run, or an internal heuristic audit by the team that built it. Do not cite it as user evidence.
+> **Independent usability testing: NOT PERFORMED (Sprints 9, 10 and 11).** No developer unfamiliar with Eyes Without a Face has used the product yet. Everything below is either a protocol ready to run, or an internal heuristic audit by the team that built it. Do not cite it as user evidence.
 
 ## 1. Unassisted task protocol (ready to run, ≥ 3 participants)
 
@@ -94,3 +94,32 @@ Open internal findings (team judgment, not user evidence):
 - At 390 px the OBSERVE page is long because all 17 stages are listed.
 - Applying a Nano suggestion after Build Integration clears the prepared request (correct by the rules, surprising in flow).
 - The revision panel remains text-dense.
+
+## 5. Sprint 11 — session kit, internal findings resolved, results (empty)
+
+**Independent sessions: NOT PERFORMED.** The coding agent that ran Sprint 11 cannot recruit or observe people, and no facilitator ran a session during the sprint. Gate A stays **OPEN**. The kit for a human facilitator is in [sprint-11-session-kit.md](sprint-11-session-kit.md). It covers consent, setup, the verbatim briefing, the 12 tasks with success and critical-failure criteria, a coded observation sheet, severity rules and the release targets.
+
+**Internal findings from Sprint 10, now resolved (team judgment, not user evidence):**
+
+| Sprint 10 finding | Sprint 11 change | Evidence |
+| --- | --- | --- |
+| OBSERVE at 390 px was 5,638 px long, and the current stage sat at y = 1,067 | A focus card shows the current stage, the last completed stage, the next action and any blocker at y = 266. Phases that do not hold the current stage collapse. Page height 4,958 px, most of it the decision panel itself | E2E-110; [../evidence/sprint-11/](../evidence/sprint-11/) before/after metrics |
+| Applying a Nano suggestion after Build Integration cleared the request without saying why | On-device interpretation is offered in CONNECT, before the request exists. A later change shows why the request was cleared and offers **Prepare a new review** (a new approval is still required) | E2E-112, E2E-113; live S11-HERO: 0 invalidations |
+| The OUTCOME headline could read "Verified locally." while meaning was partly unknown | `outcomeVerdict` names any partial meaning in the headline | OV-001, E2E-114 |
+| After export, the only guidance was one line | Five real runner steps: extract, verify, bindings, run, inspect | E2E-114 |
+
+**Results table (fill in after real sessions; counts and codes only):**
+
+| Participant | Primary journey | Privacy misunderstandings (critical) | Outcome explained | Export verified | CRITICAL / HIGH issues |
+| --- | --- | --- | --- | --- | --- |
+| P1 | not run | — | — | — | — |
+| P2 | not run | — | — | — | — |
+| P3 | not run | — | — | — | — |
+
+**Manual screen-reader pass: UNVERIFIED.** No NVDA, JAWS or VoiceOver was available in this environment, and Orca was not exercised. Automated structural checks only: roles, names, `aria-expanded` on phase toggles, `aria-pressed` on stages, the polite live region for the headline, words for every state. A human pass should cover:
+
+1. Can the headline and the focus card be reached and read in order?
+2. Is the live region announced when the run stops at an approval?
+3. Do the phase toggles announce expanded / collapsed?
+4. Is each Privacy Boundary station's state read in words?
+5. Can the OUTCOME verdict and the export hand-off be followed without sight?

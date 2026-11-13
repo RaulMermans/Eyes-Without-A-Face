@@ -1,0 +1,90 @@
+{
+  "observe-390": {
+    "pageHeight": 4958,
+    "overflow": 0,
+    "header": {
+      "top": 145,
+      "height": 97
+    },
+    "nextAction": {
+      "top": 528,
+      "height": 40
+    },
+    "focus": {
+      "top": 266,
+      "height": 367
+    },
+    "boundary": {
+      "top": 657,
+      "height": 347
+    },
+    "ledger": {
+      "top": 706,
+      "height": 297
+    },
+    "lanes": {
+      "top": 1028,
+      "height": 577
+    },
+    "currentRow": {
+      "top": 1245,
+      "height": 85
+    },
+    "inspector": {
+      "top": 1629,
+      "height": 322
+    },
+    "timeline": {
+      "top": 1975,
+      "height": 62
+    },
+    "workbench": {
+      "top": 2061,
+      "height": 2189
+    }
+  },
+  "observe-1440": {
+    "pageHeight": 3654,
+    "overflow": 0,
+    "header": {
+      "top": 97,
+      "height": 59
+    },
+    "nextAction": {
+      "top": 321,
+      "height": 40
+    },
+    "focus": {
+      "top": 180,
+      "height": 201
+    },
+    "boundary": {
+      "top": 405,
+      "height": 154
+    },
+    "ledger": {
+      "top": 440,
+      "height": 118
+    },
+    "lanes": {
+      "top": 582,
+      "height": 1451
+    },
+    "currentRow": {
+      "top": 1115,
+      "height": 85
+    },
+    "inspector": {
+      "top": 582,
+      "height": 481
+    },
+    "timeline": {
+      "top": 1087,
+      "height": 295
+    },
+    "workbench": {
+      "top": 2057,
+      "height": 1167
+    }
+  }
+}

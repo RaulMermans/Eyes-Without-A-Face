@@ -1,6 +1,6 @@
 # Devpost submission draft — Eyes Without a Face
 
-**Status: DRAFT. Not submitted.** Before submitting: read the Official Rules in a browser, publish the repository (owner decision), deploy and verify the hosted build (owner approval, [../deployment.md](../deployment.md)), record and upload the video, and replace every `TODO`. Do not invent URLs. Every number below is backed by [evidence.md](evidence.md).
+**Status: DRAFT (updated Sprint 11, 2026-11-13). Not submitted.** The current competition rules were **not** re-read this sprint. Before submitting: read the Official Rules in a browser, publish the repository (owner decision), deploy and verify the hosted build (owner approval, [../deployment.md](../deployment.md)), record and upload the video, and replace every `TODO`. Do not invent URLs. Every number below is backed by [evidence.md](evidence.md).
 
 - **Tagline:** Build integrations for systems your AI cannot see.
 - **Repository:** TODO, once public: `https://github.com/RaulMermans/Eyes-Without-A-Face`
@@ -26,6 +26,14 @@ Eyes Without a Face is a privacy-aware integration studio. Gemini designs a data
 7. **Blind revision.** If the meaning is wrong, you approve one feedback request with the finding and, optionally, the constraint, but never the records. Gemini revises; a local, ground-truth-blind decision says whether it improved.
 8. **Export.** Download a ZIP that runs with plain Node 22: the alias-level mapping, destination schema, fictional fixtures, a value-free report, the acceptance policy and the app's own engine, all hash-pinned. No records, no field names, no bindings.
 
+## The experience
+
+Three moments, one run:
+
+- **CONNECT.** Choose a source and a destination. Optionally let Gemini Nano refine the twin on this device, before anything is prepared for the cloud. **Build Integration** runs locally and stops at your approval.
+- **OBSERVE.** A focus card says where the run is, what just finished and the one thing you can do next. The **Privacy Boundary** band shows private source → Phantom Twin → your approval → approved cloud reasoning → verified local outcome, and each station changes only when the real state changes. All 17 stages stay inspectable, grouped into five phases.
+- **OUTCOME.** One verdict that never says "verified" for meaning it did not check, before/after evidence, what crossed the boundary, and **Export** with the exact commands to run it elsewhere.
+
 ## The hybrid design
 
 **Local intelligence for private understanding. Cloud intelligence for integration design. Deterministic verification for correctness and safety.**
@@ -43,7 +51,8 @@ No `PREFER_*` modes: an automatic fallback would quietly move a private-data ste
 - **Silent errors exist and are caught locally.** Real Gemini mappings that passed every structural check read dates month-first or inverted a priority scale. The local verifier flagged every such output in the Sprint 8 benchmark (CRM 20/20, support 36/36, 0 false alarms).
 - **Blind correction works, sometimes.** Sprint 8: two real revisions fixed the meaning on a pre-frozen holdout (support 0 → 6, CRM 1 → 9 correct of 10). Sprint 9 live end-to-end: 3 of 5 runs ended `ACCEPTED` and exported (clean transformations 0 → 8, 0 → 8, 7 → 8). One initial proposal was invalid and rejected unrepaired. One revision was labeled `HUMAN_REVIEW_REQUIRED` and exported only as a `DRAFT`.
 - **The export runs outside the app.** All 4 live-exported packages passed `node run.mjs verify` in a fresh directory with no install. Deterministic tests prove that the packaged runner reproduces the app's engine output exactly.
-- **Privacy:** 0 private terms in 47 real request bodies (38 in Sprint 8, 9 in Sprint 9). A blocking privacy scan runs on every export.
+- **The new journey runs on real models.** Sprint 10 and Sprint 11 each requalified the full journey once with real Nano and real Gemini. Both runs ended with the revision `ACCEPTED`, a `VERIFIED_WITH_EXCEPTIONS` export, and `node run.mjs verify` exit 0. In Sprint 11, Nano interpreted 6 / 6 fields in CONNECT before the request was prepared, and no approval had to be redone.
+- **Privacy:** 0 private terms in 51 real request bodies (38 in Sprint 8, 9 in Sprint 9, 2 in Sprint 10, 2 in Sprint 11). A blocking privacy scan runs on every export.
 - **Honest limits:** a deterministic patch using the same approved constraint matched or beat Gemini's revisions. Gemini Nano added no measurable accuracy on our fixtures. Provider failures (500 high demand, timeouts) hit a third of Sprint 8 requests; Sprint 9 saw none in 9 requests.
 
 ## Technical architecture
@@ -71,7 +80,7 @@ Hybrid AI is most useful when each side does what it is trusted to do. The on-de
 
 ## What's next
 
-Independent usability testing (protocol ready), a hosted production verification, more connectors and semantic rule families.
+Independent usability testing (facilitator kit ready, no sessions yet), a manual screen-reader pass, a hosted production verification, more connectors and semantic rule families.
 
 ## Development history (competition period)
 

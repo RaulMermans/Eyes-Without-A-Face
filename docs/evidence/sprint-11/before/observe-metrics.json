@@ -1,0 +1,78 @@
+{
+  "observe-390": {
+    "pageHeight": 5638,
+    "overflow": 0,
+    "header": {
+      "top": 145,
+      "height": 222
+    },
+    "nextAction": {
+      "top": 258,
+      "height": 40
+    },
+    "focus": null,
+    "boundary": null,
+    "ledger": {
+      "top": 391,
+      "height": 233
+    },
+    "lanes": {
+      "top": 648,
+      "height": 1294
+    },
+    "currentRow": {
+      "top": 1067,
+      "height": 85
+    },
+    "inspector": {
+      "top": 1966,
+      "height": 485
+    },
+    "timeline": {
+      "top": 2475,
+      "height": 242
+    },
+    "workbench": {
+      "top": 2740,
+      "height": 2189
+    }
+  },
+  "observe-1440": {
+    "pageHeight": 3142,
+    "overflow": 0,
+    "header": {
+      "top": 97,
+      "height": 80
+    },
+    "nextAction": {
+      "top": 116,
+      "height": 40
+    },
+    "focus": null,
+    "boundary": null,
+    "ledger": {
+      "top": 201,
+      "height": 59
+    },
+    "lanes": {
+      "top": 284,
+      "height": 1239
+    },
+    "currentRow": {
+      "top": 709,
+      "height": 85
+    },
+    "inspector": {
+      "top": 284,
+      "height": 444
+    },
+    "timeline": {
+      "top": 752,
+      "height": 225
+    },
+    "workbench": {
+      "top": 1546,
+      "height": 1167
+    }
+  }
+}

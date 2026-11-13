@@ -1,0 +1,119 @@
+[
+  {
+    "check": "S11-HERO",
+    "at": "2026-11-13T12:20:30.544Z",
+    "model": "gemini-3.5-flash-lite",
+    "browserLaunch": "dedicated-chrome-profile",
+    "nanoMs": 15247,
+    "nano": {
+      "rows": 6,
+      "realOnDevice": 6,
+      "applied": [
+        "f_06"
+      ]
+    },
+    "runKind": "hybrid",
+    "runtimeAtApproval": {
+      "source-imported": "completed",
+      "source-profiled": "completed",
+      "on-device": "completed",
+      "twin": "completed",
+      "disclosure-prepared": "completed",
+      "authorization": "awaiting-approval",
+      "cloud-inference": "not-started",
+      "mapping-proposed": "not-started",
+      "contract-validated": "not-started",
+      "reality-check": "not-started",
+      "semantic": "not-started",
+      "revision-prepared": "not-started",
+      "revision-authorization": "not-started",
+      "revision-inference": "not-started",
+      "revision-evaluated": "not-started",
+      "outcome": "not-started",
+      "export": "not-started"
+    },
+    "focusAtApproval": {
+      "stage": "authorization",
+      "next": "authorization",
+      "gate": "awaiting"
+    },
+    "invalidationNotices": 0,
+    "initial": {
+      "ms": 2388,
+      "failureCode": null,
+      "status": "Valid \u00b7 5 operations \u00b7 aliases resolved locally"
+    },
+    "cloudStage": {
+      "status": "completed",
+      "text": "07\nGemini Cloud inference\nCLOUD\nCOMPLETED\nreal Gemini output \u00b7 IN_CLOUD"
+    },
+    "runtimeAfterReality": {
+      "source-imported": "completed",
+      "source-profiled": "completed",
+      "on-device": "completed",
+      "twin": "completed",
+      "disclosure-prepared": "completed",
+      "authorization": "completed",
+      "cloud-inference": "completed",
+      "mapping-proposed": "completed",
+      "contract-validated": "completed",
+      "reality-check": "requires-review",
+      "semantic": "failed",
+      "revision-prepared": "not-started",
+      "revision-authorization": "not-started",
+      "revision-inference": "not-started",
+      "revision-evaluated": "not-started",
+      "outcome": "requires-review",
+      "export": "not-started"
+    },
+    "revisionGate": "awaiting-approval",
+    "runtimeFinal": {
+      "source-imported": "completed",
+      "source-profiled": "completed",
+      "on-device": "completed",
+      "twin": "completed",
+      "disclosure-prepared": "completed",
+      "authorization": "completed",
+      "cloud-inference": "completed",
+      "mapping-proposed": "completed",
+      "contract-validated": "completed",
+      "reality-check": "requires-review",
+      "semantic": "failed",
+      "revision-prepared": "completed",
+      "revision-authorization": "completed",
+      "revision-inference": "completed",
+      "revision-evaluated": "completed",
+      "outcome": "completed",
+      "export": "not-started"
+    },
+    "boundaryFinal": {
+      "gate": "open",
+      "cloud": "reached",
+      "outcome": "reached"
+    },
+    "outcome": {
+      "headlineState": "VERIFIED_WITH_EXCEPTIONS",
+      "headline": "Verified, with managed exceptions.",
+      "meaning": "partial",
+      "verdict": "ACCEPTED",
+      "requests": "CLOUD REQUESTS\n2 authorized by you \u00b7 2 sent. Each approval was single-use and bound to one prompt hash.",
+      "models": "MODEL CALLS\nMapping proposal \u00b7 Real Gemini output \u00b7 IN_CLOUD \u00b7 gemini-3.5-flash-lite\nRevision \u00b7 Real Gemini output \u00b7 IN_CLOUD \u00b7 gemini-3.5-flash-lite\nOn-device interpretation \u00b7 1 run \u00b7 nothing left the device"
+    },
+    "export": {
+      "handoffHasVerify": true,
+      "status": "VERIFIED_WITH_EXCEPTIONS",
+      "variant": "revised",
+      "origin": "gemini-cloud",
+      "inference": {
+        "actualSource": "IN_CLOUD",
+        "model": "gemini-3.5-flash-lite",
+        "simulated": false,
+        "resultKind": "real-cloud"
+      },
+      "revisionVerdict": "ACCEPTED",
+      "verifyExit": 0
+    },
+    "cloudRequests": 2,
+    "privateTermsInRequestBodies": []
+  }
+]

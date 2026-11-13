@@ -72,6 +72,15 @@ Build a privacy-aware integration tool: private CRM JSON stays local; on-device 
 - Runtime text, inspector and timeline carry codes, counts, durations, labels and short hashes only (PRV-RT-*). Never send runtime events anywhere.
 - Black Halo tokens keep the Sprint 6 token names and roles. Measure contrast (≥ 4.5 : 1) before changing a colour.
 
+## Acceptance rules (Sprint 11)
+
+- OBSERVE presentation helpers (`RUNTIME_GROUPS`, `nextStep`, `lastCompletedStage`, `actionLabel`, `boundaryState`) are pure readings of `deriveRuntime`. Never add a stage, status or event to make the UI simpler. Collapsed phases hide stages; they never remove them.
+- The on-device capability probe runs once per loaded source (`src/app/use-on-device.ts`). It is a local check, never inference. On-device interpretation still starts only on a user click.
+- Twin changes go through `applyTwinOverride`, which always invalidates downstream. `InvalidationNotice` explains a cleared request; it never restores or reuses an approval.
+- The OUTCOME headline comes from `outcomeVerdict`. Never headline "Verified locally." unless meaning was verified for every destination field.
+- The Privacy Boundary may animate only through CSS transitions on real state changes. No loops, no animation on first paint, and nothing drawn from the private source across the boundary.
+- Never record participant data, recordings or quotes in the repository. Never mark usability or screen-reader acceptance as passed without a real session.
+
 ## Tool and data permissions
 
 Allowed without extra authorization: local files in this repository, local tests, local Vite server, Playwright against localhost.

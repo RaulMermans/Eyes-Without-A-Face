@@ -103,7 +103,9 @@ test.describe("E2E-100 CONNECT → OBSERVE → OUTCOME journey", () => {
 
 test.describe("E2E-101 runtime agrees with canonical state", () => {
   test("statuses, inspector, timeline and keyboard selection", async ({ page }) => {
-    await boot(page);
+    // Sprint 11: the on-device capability check runs when the source loads. Simulate an
+    // AVAILABLE Nano that nobody starts, so the optional stage must read skipped / not run.
+    await boot(page, { deriveProposal: true, onDeviceAvailable: true });
     await page.getByTestId("mode-observe").click();
     // Before any source, nothing is completed.
     const statuses = await page.locator('[data-testid^="runtime-stage-"]').evaluateAll((nodes) => nodes.map((node) => node.getAttribute("data-status")));
