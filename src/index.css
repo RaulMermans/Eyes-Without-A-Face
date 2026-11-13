@@ -964,3 +964,43 @@ body {
     transition: none !important;
   }
 }
+
+/* Sprint 13: guided flow. The busy status icon breathes only while a real
+   operation is in flight; nothing moves on first paint or with reduced motion. */
+@keyframes status-breathe {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+.status-pulse {
+  animation: status-breathe 1.6s var(--ease-instrument) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .status-pulse { animation: none; }
+}
+.guided-steps {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--color-ink-3);
+  border-radius: 999px;
+  background: rgb(5 6 11 / 0.6);
+}
+.guided-steps button {
+  min-height: 2.25rem;
+  padding: 0 0.85rem;
+  border-radius: 999px;
+  font-size: 13px;
+  color: var(--color-ink-text);
+  transition: background-color 160ms var(--ease-instrument), color 160ms var(--ease-instrument);
+}
+.guided-steps button:hover:not(:disabled) { color: var(--color-ink); }
+.guided-steps button:disabled { opacity: 0.45; cursor: not-allowed; }
+.guided-steps button[aria-current="step"] {
+  background: var(--color-ink);
+  color: var(--color-obsidian);
+}
+.guided-steps .step-number { font-family: var(--font-mono); margin-right: 0.35rem; opacity: 0.7; }
+@media (max-width: 30rem) {
+  .guided-steps button { padding: 0 0.55rem; font-size: 12px; }
+  .guided-steps .step-label-long { display: none; }
+}

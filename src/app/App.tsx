@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { loadAppConfig } from "../config/firebase.ts";
 import { isLiveInferenceAvailable } from "../config/env.ts";
 import { createInferenceServices } from "../inference/adapters.ts";
@@ -17,8 +17,15 @@ import { ReviewPanel } from "./ReviewPanel.tsx";
 import { SourcePanel } from "./SourcePanel.tsx";
 import { VerificationPanel } from "./VerificationPanel.tsx";
 import type { ImportedSource } from "./source-import.ts";
-import { withCrmDemo } from "./demo.ts";
-import { initialWorkspaceState, type WorkspaceState } from "./workspace-state.ts";
+import { crmReservedRecords, withCrmDemo, withImportedSource } from "./demo.ts";
+import { DataStep, type LoadedSource } from "./guided/DataStep.tsx";
+import { DestinationStep } from "./guided/DestinationStep.tsx";
+import { ResultStep } from "./guided/ResultStep.tsx";
+import { guidedStatus, type InFlight } from "./guided/guided-status.ts";
+import { summarizeDestination } from "./guided/destinations.ts";
+import { approveReview, cancelWaiting, prepareFreshReview, rejectReview, runLocalVerification, sendApprovedRequest, spendApproval } from "./run-actions.ts";
+import { GUIDED_STEPS, initialView, viewHash, type GuidedStep, type View } from "./experience.ts";
+import { initialWorkspaceState, invalidateDownstream, type WorkspaceState } from "./workspace-state.ts";
 import { WORKFLOW_STEPS, type WorkflowStepId } from "./workflow.ts";
 import { HowItWorks, ProductHero } from "./Landing.tsx";
 import { WorkflowProgress } from "./WorkflowProgress.tsx";
@@ -37,6 +44,7 @@ import { InvalidationNotice } from "./InvalidationNotice.tsx";
 import { invalidationCause, type Invalidation } from "./invalidation.ts";
 import { applyTwinOverride } from "./workspace-state.ts";
 import { Disclosure, Eyebrow, ZoneLabel, type Zone } from "../components/spectral.tsx";
+import { Button } from "../components/ui/button.tsx";
 
 const STEP_ZONE: Record<WorkflowStepId, Zone> = {
   source: "private",
@@ -118,6 +126,13 @@ export default function App() {
   const inference = useMemo(() => createInferenceServices(config), [config]);
   /** Sprint 10: experience mode (UI state only). The workflow itself is unchanged. */
   const [mode, setMode] = useState<ExperienceMode>("connect");
+  /** Sprint 13: the guided flow is the default; the Sprint 10 experience is the technical view. UI state only. */
+  const [view, setView] = useState<View>(() => initialView(typeof window !== "undefined" ? window.location.hash : ""));
+  const [guidedStep, setGuidedStep] = useState<GuidedStep>("data");
+  const [loaded, setLoaded] = useState<{ source: WorkspaceState["source"]; value: LoadedSource } | null>(null);
+  const [inFlight, setInFlight] = useState<InFlight>(null);
+  const [sending, setSending] = useState(false);
+  const [guidedBlocker, setGuidedBlocker] = useState<string | null>(null);
   const [stepId, setStepId] = useState<WorkflowStepId>("source");
   const [workspace, setWorkspace] = useState(initialWorkspaceState);
   const [building, setBuilding] = useState(false);
@@ -145,22 +160,23 @@ export default function App() {
   const [understandingRows, setUnderstandingRows] = useState<UnderstandingRow[]>([]);
   /** Sprint 11 (C4): why a prepared request was just cleared. UI explanation only; never workflow state. */
   const [invalidation, setInvalidation] = useState<Invalidation | null>(null);
+  /** The latest workspace, for async steps that resume after an await (Sprint 13). */
+  const workspaceRef = useRef(workspace);
   /** Every workspace change goes through here; a new source object starts a new run. */
-  const updateWorkspace = useCallback(
-    (next: WorkspaceState) => {
-      if (next.source !== workspace.source) {
-        setRunStartedAt(next.source ? new Date().toISOString() : "");
-        setUnderstandingRows([]);
-        setInvalidation(null);
-      } else if (next.review) {
-        setInvalidation(null);
-      } else if (workspace.review) {
-        setInvalidation(invalidationCause(workspace, next));
-      }
-      setWorkspace(next);
-    },
-    [workspace],
-  );
+  const updateWorkspace = useCallback((next: WorkspaceState) => {
+    const current = workspaceRef.current;
+    if (next.source !== current.source) {
+      setRunStartedAt(next.source ? new Date().toISOString() : "");
+      setUnderstandingRows([]);
+      setInvalidation(null);
+    } else if (next.review) {
+      setInvalidation(null);
+    } else if (current.review) {
+      setInvalidation(invalidationCause(current, next));
+    }
+    workspaceRef.current = next;
+    setWorkspace(next);
+  }, []);
   const onDeviceProbe = useOnDeviceProbe(inference, workspace.source);
   const eventsVersion = useSyncExternalStore(subscribeWorkflowEvents, workflowEventsVersion);
   const runEvents = useMemo(() => {
@@ -245,6 +261,107 @@ export default function App() {
     setMode("observe");
     requestAnimationFrame(scrollToTop);
   }
+
+  /* ---------------- Sprint 13: guided flow (ADR 0012) ---------------- */
+
+  const switchView = useCallback((next: View, technicalMode?: ExperienceMode) => {
+    setView(next);
+    if (technicalMode) setMode(technicalMode);
+    const hash = viewHash(next);
+    window.history.replaceState(null, "", hash || `${window.location.pathname}${window.location.search}`);
+    requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "instant" }));
+  }, []);
+
+  const goGuided = useCallback((step: GuidedStep) => {
+    setGuidedStep(step);
+    setGuidedBlocker(null);
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: "instant" });
+      // Move focus to the new step's heading so keyboard and screen-reader users land on it.
+      document.getElementById(step === "data" ? "data-heading" : step === "destination" ? "destination-step-heading" : "result-heading")?.focus({ preventScroll: true });
+    });
+  }, []);
+
+  /** The one reason "Build integration" cannot run yet (A4), or null. Local checks only. */
+  function buildBlocker(current: WorkspaceState): string | null {
+    if (!current.source) return "Add your data first.";
+    if (twinState.profileIssues.length > 0) return `Your data can't be used yet: ${twinState.profileIssues[0]!.message}`;
+    if (!prepared) return twinState.twinIssues[0]?.message ?? "Your data could not be prepared. Open technical details for the reason.";
+    const destination = summarizeDestination(current.destinationText);
+    if (!destination.ok) return `The destination can't be used: ${destination.message}`;
+    return null;
+  }
+
+  /** Build: local steps only, then stop at the approval. Never approves or sends. */
+  async function guidedBuild(): Promise<void> {
+    const current = workspaceRef.current;
+    const blocker = buildBlocker(current);
+    if (blocker || !prepared) {
+      setGuidedBlocker(blocker);
+      return;
+    }
+    setGuidedBlocker(null);
+    if (!current.review || current.review.status === "rejected") {
+      setInFlight("preparing");
+      goGuided("result");
+      const result = await prepareDisclosureReview(current, prepared);
+      setInFlight(null);
+      if (!result.ok) {
+        setGuidedStep("destination");
+        setGuidedBlocker(result.message);
+        return;
+      }
+      updateWorkspace(result.workspace);
+      return;
+    }
+    goGuided("result");
+  }
+
+  /** The user's approval click: approve THIS preview and send it, once. Then check locally. */
+  async function guidedApproveAndSend(): Promise<void> {
+    const current = workspaceRef.current;
+    if (!current.review || !prepared || sending) return;
+    if (current.review.status !== "pending" && current.review.status !== "approved") return;
+    const approvedWorkspace = current.review.status === "approved" ? current : approveReview(current);
+    const approved = approvedWorkspace.review!;
+    const requestId = approved.preview.requestId;
+    const spent = spendApproval(approvedWorkspace);
+    setSending(true);
+    updateWorkspace(spent);
+    const isCurrent = () => {
+      const latest = workspaceRef.current;
+      return latest.review?.preview.requestId === requestId && latest.review.status === "sent" && !latest.cloudError && !latest.proposal;
+    };
+    const next = await sendApprovedRequest(spent, approved, prepared, inference, isCurrent);
+    setSending(false);
+    if (!next) return;
+    updateWorkspace(next);
+    if (!next.proposal?.result.ok) return;
+    // Local, deterministic verification. Shown as "Checking the result" while it runs.
+    setInFlight("checking");
+    await new Promise((resolve) => requestAnimationFrame(() => resolve(null)));
+    if (workspaceRef.current !== next) {
+      setInFlight(null);
+      return;
+    }
+    updateWorkspace(runLocalVerification(next, prepared, true));
+    setInFlight(null);
+  }
+
+  async function guidedPrepareFresh(): Promise<void> {
+    const current = workspaceRef.current;
+    if (!prepared) return;
+    setInFlight("preparing");
+    const result = await prepareFreshReview(current, prepared);
+    setInFlight(null);
+    if (result.ok) updateWorkspace(result.workspace);
+  }
+
+  const guidedCandidates = candidates;
+  const status = guidedStatus(stages, workspace.report ? candidates.map((candidate) => ({ id: candidate.id, label: candidate.label, eligibility: candidate.eligibility })) : [], inFlight);
+  const cloudAvailable = harness || inference.cloud.status().state === "configured";
+  const loadedValue = loaded && loaded.source === workspace.source ? loaded.value : null;
+  const stepReachable = (id: GuidedStep) => (id === "data" ? true : id === "destination" ? Boolean(workspace.source && prepared) : Boolean(workspace.review || workspace.report));
 
   const understandingStore = useMemo(() => ({ rows: understandingRows, setRows: setUnderstandingRows }), [understandingRows]);
   const notice = invalidation && !workspace.review ? (
@@ -370,130 +487,224 @@ export default function App() {
             <div className="min-w-0">
               <h1 className="text-[15px] font-semibold uppercase leading-none tracking-[0.12em] sm:text-base">Eyes Without a Face</h1>
               <p className="mt-1 hidden truncate font-mono text-[10px] uppercase tracking-[0.16em] text-gold sm:block sm:text-[11px]">
-                {landing ? "Phantom Twin Engine" : "Build integrations for systems your AI cannot see."}
+                {view === "guided" ? "Connect your data. Choose where it goes. Get a working integration." : landing ? "Phantom Twin Engine" : "Build integrations for systems your AI cannot see."}
               </p>
             </div>
           </div>
-          <nav aria-label="Experience" className="mode-switch" data-testid="mode-switch">
-            {EXPERIENCE_MODES.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                aria-current={mode === item.id ? "page" : undefined}
-                onClick={() => switchMode(item.id)}
-                data-testid={`mode-${item.id}`}
-                title={item.caption}
-              >
-                {item.label}
-              </button>
-            ))}
-          </nav>
+          {view === "technical" ? (
+            <div className="flex flex-wrap items-center gap-2">
+            <nav aria-label="Experience" className="mode-switch" data-testid="mode-switch">
+              {EXPERIENCE_MODES.map((item) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  aria-current={mode === item.id ? "page" : undefined}
+                  onClick={() => switchMode(item.id)}
+                  data-testid={`mode-${item.id}`}
+                  title={item.caption}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </nav>
+              <Button variant="outline-ink" size="sm" onClick={() => switchView("guided")} data-testid="view-guided">
+                Simple view
+              </Button>
+            </div>
+          ) : (
+            <div className="flex flex-wrap items-center gap-2">
+              <nav aria-label="Steps" className="guided-steps" data-testid="guided-steps">
+                {GUIDED_STEPS.map((item) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    aria-current={guidedStep === item.id ? "step" : undefined}
+                    disabled={!stepReachable(item.id)}
+                    onClick={() => goGuided(item.id)}
+                    data-testid={`step-${item.id}`}
+                  >
+                    <span className="step-number">{item.number}</span>
+                    {item.label}
+                  </button>
+                ))}
+              </nav>
+              <Button variant="ghost" size="sm" className="text-ink-text" onClick={() => switchView("technical", workspace.review || workspace.report ? "observe" : "connect")} data-testid="view-technical">
+                Technical details
+              </Button>
+            </div>
+          )}
         </div>
       </header>
 
-      {landing ? (
+      {view === "guided" ? (
+        <main id="workspace" className="mx-auto max-w-6xl scroll-mt-16 px-4 pb-16 pt-8 sm:px-6 sm:pt-12" data-testid="guided">
+          {guidedStep === "data" ? (
+            <DataStep
+              source={workspace.source}
+              loaded={loadedValue}
+              onLoaded={(value, imported) => {
+                setLoaded({ source: imported, value });
+                updateWorkspace(withImportedSource(workspaceRef.current, imported, value.demo ? crmReservedRecords() : null));
+              }}
+              onClear={() => {
+                setLoaded(null);
+                updateWorkspace(withImportedSource(workspaceRef.current, null, null));
+              }}
+              profileIssues={twinState.profileIssues}
+              ready={Boolean(workspace.source && prepared)}
+              onDevice={onDeviceProbe.mode}
+              understanding={localUnderstanding}
+              onContinue={() => goGuided("destination")}
+            />
+          ) : null}
+          {guidedStep === "destination" ? (
+            <DestinationStep
+              destinationText={workspace.destinationText}
+              onDestination={(text) => {
+                setGuidedBlocker(null);
+                if (text !== workspaceRef.current.destinationText) updateWorkspace(invalidateDownstream({ ...workspaceRef.current, destinationText: text }));
+              }}
+              sourceLabel={workspace.source?.label ?? null}
+              buildBlocker={guidedBlocker}
+              building={inFlight === "preparing"}
+              onBuild={() => void guidedBuild()}
+              onBack={() => goGuided("data")}
+            />
+          ) : null}
+          {guidedStep === "result" ? (
+            <>
+              {notice}
+              <ResultStep
+                workspace={workspace}
+                prepared={prepared}
+                candidates={guidedCandidates}
+                status={status}
+                cloudAvailable={cloudAvailable}
+                inference={inference}
+                buildSha={config.buildSha || null}
+                sending={sending}
+                onApproveAndSend={() => void guidedApproveAndSend()}
+                onReject={() => updateWorkspace(rejectReview(workspaceRef.current))}
+                onStopWaiting={() => {
+                  setSending(false);
+                  updateWorkspace(cancelWaiting(workspaceRef.current));
+                }}
+                onPrepareFresh={() => void guidedPrepareFresh()}
+                onChange={updateWorkspace}
+                onTechnical={() => switchView("technical", "observe")}
+                onEditData={() => goGuided("data")}
+                onEditDestination={() => goGuided("destination")}
+              />
+            </>
+          ) : null}
+        </main>
+      ) : (
         <>
-          <ProductHero
-            onStart={() => {
-              updateWorkspace(withCrmDemo(workspace));
-              requestAnimationFrame(() => document.getElementById("workspace")?.scrollIntoView({ block: "start", behavior: "instant" }));
-            }}
-          />
-          <HowItWorks />
+        {landing ? (
+          <>
+            <ProductHero
+              onStart={() => {
+                updateWorkspace(withCrmDemo(workspace));
+                requestAnimationFrame(() => document.getElementById("workspace")?.scrollIntoView({ block: "start", behavior: "instant" }));
+              }}
+            />
+            <HowItWorks />
+          </>
+        ) : null}
+
+        <main id="workspace" className="mx-auto max-w-7xl scroll-mt-16 px-4 pb-16 pt-8 sm:px-6">
+          {mode === "connect" ? (
+            <ConnectView
+              workspace={workspace}
+              onChange={(next) => {
+                setBuildError(null);
+                updateWorkspace(next);
+              }}
+              profile={prepared?.profile ?? null}
+              profileIssues={twinState.profileIssues}
+              canBuild={Boolean(workspace.source && prepared)}
+              building={building}
+              buildError={buildError}
+              onBuild={() => void buildIntegration()}
+              onStepThrough={() => goTo("phantom", true)}
+              preflight={preflight}
+              onDevice={onDeviceProbe.mode}
+              understanding={localUnderstanding}
+              nanoRuns={stages.find((item) => item.id === "on-device")?.status === "completed"}
+              notice={notice}
+            />
+          ) : null}
+          {mode === "observe" ? (
+            <RuntimeView
+              stages={stages}
+              timeline={timeline}
+              route={route}
+              ledger={<PrivacyBoundary workspace={workspace} prepared={prepared} stages={stages} />}
+              onOpen={(target) => (target === "outcome" ? switchMode("outcome") : goTo(target, true))}
+              notice={notice}
+              workbench={workbench}
+            />
+          ) : null}
+          {mode === "outcome" ? (
+            <OutcomeView
+              workspace={workspace}
+              prepared={prepared}
+              buildSha={config.buildSha || null}
+              events={runEvents}
+              onObserve={() => switchMode("observe")}
+              onConnect={() => switchMode("connect")}
+            />
+          ) : null}
+
+          <section aria-labelledby="engineering-heading" className="mt-14 border-t border-rule pt-8">
+            <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
+              <div className="min-w-0">
+                <Eyebrow>For engineers</Eyebrow>
+                <h2 id="engineering-heading" className="mt-1 text-xl font-medium">
+                  Processing path
+                </h2>
+                <ol className="mt-3 space-y-1.5 text-sm leading-6 text-ink-text">
+                  <li><span className="font-medium text-ink">Local</span> — import, profile, twin, alias bindings.</li>
+                  <li><span className="font-medium text-gold">Approval</span> — you read and approve the exact prompt.</li>
+                  <li><span className="font-medium text-gold">Cloud</span> — Gemini proposes operations over aliases.</li>
+                  <li><span className="font-medium text-ink">Local</span> — validation, alias resolution, execution, Reality Check.</li>
+                </ol>
+                <p className="mt-3 text-xs text-mute">AI proposes. Deterministic software validates and executes. Private data remains local.</p>
+                <p className="mt-4 hidden" data-testid="live-configured">
+                  {live ? "configured" : "none"}
+                </p>
+              </div>
+              <div className="min-w-0 space-y-4 rounded-[3px] border border-rule bg-panel p-5">
+                <Disclosure summary="Workflow telemetry (in memory, safe fields only)">
+                  <pre className="max-h-64 overflow-auto border border-rule bg-bone p-2 font-mono text-[11px]" data-testid="workflow-telemetry">
+                    {JSON.stringify(listWorkflowEvents(), null, 1)}
+                  </pre>
+                </Disclosure>
+                <Disclosure summary="Contract families">
+                  <ul className="list-disc space-y-1 pl-5 text-sm text-mute">
+                    <li>Source Contract — local dataset structure</li>
+                    <li>Phantom Contract — synthetic shareable twin</li>
+                    <li>Cloud Disclosure Payload — allowlisted outbound request</li>
+                    <li>Mapping Contract — declarative operations</li>
+                    <li>Validation Contract — local pass/fail report</li>
+                    <li>Export Contract — portable manifest</li>
+                  </ul>
+                </Disclosure>
+                <details data-testid="diagnostic-details" className="group">
+                  <summary className="flex cursor-pointer list-none items-center gap-2 text-sm font-medium [&::-webkit-details-marker]:hidden">
+                    <span aria-hidden="true" className="inline-block w-3 font-mono text-mute transition-transform group-open:rotate-90">›</span>
+                    Advanced engineering: Hybrid AI diagnostic workspace (static fictional payload)
+                  </summary>
+                  <div className="mt-4">
+                    <DiagnosticWorkspace config={config} inference={inference} />
+                  </div>
+                </details>
+              </div>
+            </div>
+          </section>
+        </main>
         </>
-      ) : null}
-
-      <main id="workspace" className="mx-auto max-w-7xl scroll-mt-16 px-4 pb-16 pt-8 sm:px-6">
-        {mode === "connect" ? (
-          <ConnectView
-            workspace={workspace}
-            onChange={(next) => {
-              setBuildError(null);
-              updateWorkspace(next);
-            }}
-            profile={prepared?.profile ?? null}
-            profileIssues={twinState.profileIssues}
-            canBuild={Boolean(workspace.source && prepared)}
-            building={building}
-            buildError={buildError}
-            onBuild={() => void buildIntegration()}
-            onStepThrough={() => goTo("phantom", true)}
-            preflight={preflight}
-            onDevice={onDeviceProbe.mode}
-            understanding={localUnderstanding}
-            nanoRuns={stages.find((item) => item.id === "on-device")?.status === "completed"}
-            notice={notice}
-          />
-        ) : null}
-        {mode === "observe" ? (
-          <RuntimeView
-            stages={stages}
-            timeline={timeline}
-            route={route}
-            ledger={<PrivacyBoundary workspace={workspace} prepared={prepared} stages={stages} />}
-            onOpen={(target) => (target === "outcome" ? switchMode("outcome") : goTo(target, true))}
-            notice={notice}
-            workbench={workbench}
-          />
-        ) : null}
-        {mode === "outcome" ? (
-          <OutcomeView
-            workspace={workspace}
-            prepared={prepared}
-            buildSha={config.buildSha || null}
-            events={runEvents}
-            onObserve={() => switchMode("observe")}
-            onConnect={() => switchMode("connect")}
-          />
-        ) : null}
-
-        <section aria-labelledby="engineering-heading" className="mt-14 border-t border-rule pt-8">
-          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
-            <div className="min-w-0">
-              <Eyebrow>For engineers</Eyebrow>
-              <h2 id="engineering-heading" className="mt-1 text-xl font-medium">
-                Processing path
-              </h2>
-              <ol className="mt-3 space-y-1.5 text-sm leading-6 text-ink-text">
-                <li><span className="font-medium text-ink">Local</span> — import, profile, twin, alias bindings.</li>
-                <li><span className="font-medium text-gold">Approval</span> — you read and approve the exact prompt.</li>
-                <li><span className="font-medium text-gold">Cloud</span> — Gemini proposes operations over aliases.</li>
-                <li><span className="font-medium text-ink">Local</span> — validation, alias resolution, execution, Reality Check.</li>
-              </ol>
-              <p className="mt-3 text-xs text-mute">AI proposes. Deterministic software validates and executes. Private data remains local.</p>
-              <p className="mt-4 hidden" data-testid="live-configured">
-                {live ? "configured" : "none"}
-              </p>
-            </div>
-            <div className="min-w-0 space-y-4 rounded-[3px] border border-rule bg-panel p-5">
-              <Disclosure summary="Workflow telemetry (in memory, safe fields only)">
-                <pre className="max-h-64 overflow-auto border border-rule bg-bone p-2 font-mono text-[11px]" data-testid="workflow-telemetry">
-                  {JSON.stringify(listWorkflowEvents(), null, 1)}
-                </pre>
-              </Disclosure>
-              <Disclosure summary="Contract families">
-                <ul className="list-disc space-y-1 pl-5 text-sm text-mute">
-                  <li>Source Contract — local dataset structure</li>
-                  <li>Phantom Contract — synthetic shareable twin</li>
-                  <li>Cloud Disclosure Payload — allowlisted outbound request</li>
-                  <li>Mapping Contract — declarative operations</li>
-                  <li>Validation Contract — local pass/fail report</li>
-                  <li>Export Contract — portable manifest</li>
-                </ul>
-              </Disclosure>
-              <details data-testid="diagnostic-details" className="group">
-                <summary className="flex cursor-pointer list-none items-center gap-2 text-sm font-medium [&::-webkit-details-marker]:hidden">
-                  <span aria-hidden="true" className="inline-block w-3 font-mono text-mute transition-transform group-open:rotate-90">›</span>
-                  Advanced engineering: Hybrid AI diagnostic workspace (static fictional payload)
-                </summary>
-                <div className="mt-4">
-                  <DiagnosticWorkspace config={config} inference={inference} />
-                </div>
-              </details>
-            </div>
-          </div>
-        </section>
-      </main>
+      )}
       <footer className="on-ink border-t border-ink-3 bg-void text-ink-text">
         <div className="mx-auto flex max-w-7xl flex-wrap gap-x-6 gap-y-1 px-4 py-5 font-mono text-[11px] sm:px-6">
           <span>Eyes Without a Face · Apache-2.0</span>

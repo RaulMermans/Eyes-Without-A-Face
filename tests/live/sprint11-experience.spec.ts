@@ -83,7 +83,7 @@ test("S11-HERO crm-eu-accounts: Nano in CONNECT, then Build, approve, revise, ex
         (self as unknown as { FIREBASE_APPCHECK_DEBUG_TOKEN?: string }).FIREBASE_APPCHECK_DEBUG_TOKEN = token;
       }, debugToken);
     }
-    await page.goto("/");
+    await page.goto("/#technical");
     await page.getByTestId("scenario-picker").locator("summary").click();
     await page.getByTestId("load-scenario-crm-eu-accounts").click();
 

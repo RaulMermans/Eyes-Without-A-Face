@@ -33,7 +33,7 @@ async function boot(page: Page, harness: Record<string, unknown>): Promise<void>
   await page.addInitScript((value) => {
     window.__EYES_WITHOUT_A_FACE_TEST__ = value as Window["__EYES_WITHOUT_A_FACE_TEST__"];
   }, { label: "test-harness", ...harness });
-  await page.goto("/");
+  await page.goto("/#technical");
 }
 
 async function toReality(page: Page, scenario: string): Promise<void> {
@@ -132,7 +132,7 @@ test.describe("E2E-090 export → download → run outside the app", () => {
 
 test.describe("E2E-091 no-cloud path: hand-written contract exports as aliases", () => {
   test("degraded mode: the scan blocks unapproved labels; after approving them the package exports, labeled hand-written", async ({ page }) => {
-    await page.goto("/");
+    await page.goto("/#technical");
     await page.getByTestId("load-crm-sample").click();
     await openStage(page, /Reality Check/);
     await page.getByTestId("run-mapping").click();
@@ -184,7 +184,7 @@ test.describe("E2E-091 no-cloud path: hand-written contract exports as aliases",
   });
 
   test("without a Reality Check nothing can be exported", async ({ page }) => {
-    await page.goto("/");
+    await page.goto("/#technical");
     await page.getByTestId("load-crm-sample").click();
     await openStage(page, /Reality Check/);
     await openOutcome(page);
@@ -197,7 +197,7 @@ test.describe("E2E-091 no-cloud path: hand-written contract exports as aliases",
 test.describe("E2E-092 export panel on a phone", () => {
   test("no horizontal overflow at 390 px and the action stays reachable", async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
-    await page.goto("/");
+    await page.goto("/#technical");
     await page.getByTestId("load-crm-sample").click();
     await openStage(page, /Reality Check/);
     await page.getByTestId("run-mapping").click();

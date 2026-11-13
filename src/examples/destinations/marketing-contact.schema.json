@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://eyes-without-a-face.dev/examples/destination/marketing-contact/1.0.0",
+  "title": "Marketing contact destination",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["email", "lifecycleStage", "organization"],
+  "properties": {
+    "email": { "type": "string", "format": "email" },
+    "lifecycleStage": { "enum": ["customer", "former-customer", "lead"] },
+    "organization": { "type": "string", "minLength": 1 }
+  }
+}

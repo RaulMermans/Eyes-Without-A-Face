@@ -27,7 +27,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 async function gotoDiagnostics(page: Page): Promise<void> {
-  await page.goto("/");
+  await page.goto("/#technical");
   await openDiagnostics(page);
 }
 
@@ -154,7 +154,7 @@ test.describe("LIVE-004 real Gemini cloud", () => {
 test.describe("LIVE-005 rejected disclosure", () => {
   test("does not dispatch cloud inference without approval", async ({ page }) => {
     const providerRequests = attachProviderWatch(page);
-    await page.goto("/");
+    await page.goto("/#technical");
     await expect(page.getByTestId("run-cloud-inference")).toBeDisabled();
     await page.waitForTimeout(500);
     const inferenceUrls = sanitizeUrls(
@@ -271,7 +271,7 @@ test.describe("LIVE-009 Sprint 3 Phantom Twin workflow with real Gemini", () => 
       for (const term of privateTerms) if (body.includes(term)) bodyScan.leaks.push(term);
     });
     const started = Date.now();
-    await page.goto("/");
+    await page.goto("/#technical");
     await page.getByTestId("load-crm-sample").click();
     await page.getByTestId("continue-to-twin").click();
     await page.locator('[data-testid^="disclose-categories-"]').first().check();
@@ -344,7 +344,7 @@ test.describe("LIVE-013 on-device in the guided Phantom Twin step", () => {
     const pageErrors: string[] = [];
     page.on("pageerror", (error) => pageErrors.push(error.message));
     const started = Date.now();
-    await page.goto("/");
+    await page.goto("/#technical");
     await page.getByTestId("load-crm-sample").click();
     await page.getByTestId("continue-to-twin").click();
     await expect(page.getByTestId("on-device-mode-label")).toContainText("On-device AI available", { timeout: 30_000 });
@@ -382,7 +382,7 @@ test.describe("LIVE-018 cloud denied by App Check", () => {
     const providerRequests = attachProviderWatch(page);
     const pageErrors: string[] = [];
     page.on("pageerror", (error) => pageErrors.push(error.message));
-    await page.goto("/");
+    await page.goto("/#technical");
     await page.getByTestId("start-demo").click();
     await page.getByTestId("continue-to-twin").click();
     let onDeviceLabel: string | null = null;

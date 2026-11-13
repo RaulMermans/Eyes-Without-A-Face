@@ -1,6 +1,6 @@
 import sourceRecords from "../examples/crm/source-records.json" with { type: "json" };
 import edgeRecords from "../examples/crm/edge-records.json" with { type: "json" };
-import { parseSourceDataset } from "./source-import.ts";
+import { parseSourceDataset, type ImportedSource } from "./source-import.ts";
 import { invalidateDownstream, type WorkspaceState } from "./workspace-state.ts";
 import type { EvaluationScenario } from "../evaluation/scenarios.ts";
 
@@ -47,4 +47,20 @@ export function withScenario(workspace: WorkspaceState, scenario: EvaluationScen
       semanticDeclared: structuredClone(scenario.semanticSpec.declared),
     },
   };
+}
+
+/**
+ * Sprint 13: load any normalized source (file, connector or demo file) as the
+ * new source. Like the demos above, this starts a new run: every decision,
+ * approval and result that depended on the previous source is cleared.
+ * `reserved` attaches the fictional CRM hidden test cases for demo files only.
+ */
+export function withImportedSource(workspace: WorkspaceState, source: ImportedSource | null, reserved: Record<string, unknown>[] | null): WorkspaceState {
+  const base = invalidateDownstream({ ...workspace, overrides: {}, semanticConfirmations: {} });
+  return { ...base, source, reservedRecords: reserved, sourceError: null, scenario: null };
+}
+
+/** The fictional CRM hidden test cases (never profiled, never disclosed). */
+export function crmReservedRecords(): Record<string, unknown>[] {
+  return structuredClone(edgeRecords.records as Record<string, unknown>[]);
 }

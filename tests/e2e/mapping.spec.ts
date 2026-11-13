@@ -7,7 +7,7 @@ const invalidSource = path.join(process.cwd(), "src/examples/crm/invalid-source.
 
 test.describe("E2E-016 JSON import", () => {
   test("imports valid source JSON and inspects it", async ({ page }) => {
-    await page.goto("/");
+    await page.goto("/#technical");
     await page.getByTestId("source-file-input").setInputFiles(crmSource);
     await expect(page.getByTestId("source-inspect")).toContainText("fictional-crm-accounts");
     await expect(page.getByTestId("source-inspect")).toContainText("3 records");
@@ -19,7 +19,7 @@ test.describe("E2E-016 JSON import", () => {
 
 test.describe("E2E-017 invalid source", () => {
   test("malformed input produces a useful error", async ({ page }) => {
-    await page.goto("/");
+    await page.goto("/#technical");
     await page.getByTestId("source-file-input").setInputFiles(invalidSource);
     await expect(page.getByTestId("source-import-error")).toContainText(/malformed/i);
     await page.screenshot({ path: path.join(screenshotDir, "e2e-017-invalid-source.png"), fullPage: true });
@@ -28,7 +28,7 @@ test.describe("E2E-017 invalid source", () => {
 
 test.describe("E2E-018 target schema", () => {
   test("loads and validates the destination JSON Schema", async ({ page }) => {
-    await page.goto("/");
+    await page.goto("/#technical");
     await openStage(page, /Phantom Twin/);
     await page.getByTestId("validate-destination-schema").click();
     await expect(page.getByTestId("destination-schema-ok")).toContainText("valid JSON Schema 2020-12");
@@ -39,7 +39,7 @@ test.describe("E2E-018 target schema", () => {
 
 test.describe("E2E-019 mapping execution", () => {
   test("transforms fictional CRM records locally", async ({ page }) => {
-    await page.goto("/");
+    await page.goto("/#technical");
     await page.getByTestId("load-crm-sample").click();
     await openStage(page, /Reality Check/);
     await page.getByTestId("include-reserved").uncheck();
@@ -54,7 +54,7 @@ test.describe("E2E-019 mapping execution", () => {
 
 test.describe("E2E-020 output correctness", () => {
   test("transformed result matches the expected Alice record", async ({ page }) => {
-    await page.goto("/");
+    await page.goto("/#technical");
     await page.getByTestId("load-crm-sample").click();
     await openStage(page, /Reality Check/);
     await page.getByTestId("include-reserved").uncheck();
@@ -71,7 +71,7 @@ test.describe("E2E-020 output correctness", () => {
 
 test.describe("E2E-021 invalid mapping", () => {
   test("unsupported transformation is rejected", async ({ page }) => {
-    await page.goto("/");
+    await page.goto("/#technical");
     await page.getByTestId("load-crm-sample").click();
     await openStage(page, /Cloud Mapping/);
     await page.getByTestId("manual-contract").locator("summary").click();
@@ -92,7 +92,7 @@ test.describe("E2E-021 invalid mapping", () => {
 
 test.describe("E2E-022 hidden edge case", () => {
   test("unmapped status produces a real validation failure", async ({ page }) => {
-    await page.goto("/");
+    await page.goto("/#technical");
     await page.getByTestId("scenario-picker").locator("summary").click();
     await page.getByTestId("load-edge-sample").click();
     await openStage(page, /Reality Check/);
@@ -119,7 +119,7 @@ test.describe("E2E-023 no network dependency", () => {
       }
       await route.continue();
     });
-    await page.goto("/");
+    await page.goto("/#technical");
     await page.getByTestId("load-crm-sample").click();
     await openStage(page, /Reality Check/);
     await page.getByTestId("include-reserved").uncheck();
@@ -134,7 +134,7 @@ test.describe("E2E-024 UI integrity", () => {
   test("keeps navigation, layout, and error-free mapping workflow", async ({ page }) => {
     const pageErrors: string[] = [];
     page.on("pageerror", (error) => pageErrors.push(error.message));
-    await page.goto("/");
+    await page.goto("/#technical");
     for (const name of ["Source System", "Phantom Twin", "Disclosure Review", "Cloud Mapping", "Reality Check"]) {
       await openStage(page, new RegExp(name));
       await expect(page.getByRole("heading", { level: 2, name })).toBeVisible();

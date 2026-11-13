@@ -17,7 +17,7 @@ test("measure journey", async ({ page }) => {
   });
   for (const vp of [ { w: 1440, h: 900 }, { w: 390, h: 844 } ]) {
     await page.setViewportSize({ width: vp.w, height: vp.h });
-    await page.goto("/");
+    await page.goto("/#technical");
     const cta = await page.getByTestId("start-demo").boundingBox();
     metrics[`landing-${vp.w}`] = {
       ctaBottom: cta ? Math.round(cta.y + cta.height) : null,
@@ -27,7 +27,7 @@ test("measure journey", async ({ page }) => {
     };
   }
   await page.setViewportSize({ width: 1440, height: 900 });
-  await page.goto("/");
+  await page.goto("/#technical");
   clicks = 0;
   await click("load-crm-sample");
   await click("continue-to-twin");

@@ -1,0 +1,19 @@
+{
+  "test": "LIVE-130",
+  "at": "2026-11-13T19:59:58.897Z",
+  "host": "jsonplaceholder.typicode.com",
+  "mocked": false,
+  "methods": [
+    "GET"
+  ],
+  "anyRequestBody": false,
+  "anyAuthorizationHeader": false,
+  "responseStatuses": [
+    200
+  ],
+  "records": 10,
+  "fields": 8,
+  "elapsedMs": 323,
+  "stoppedAt": "approval (nothing approved, nothing sent to Gemini)",
+  "promptContainsSourceValues": false
+}

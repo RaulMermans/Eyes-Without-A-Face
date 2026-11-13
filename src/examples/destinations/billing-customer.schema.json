@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://eyes-without-a-face.dev/examples/destination/billing-customer/1.0.0",
+  "title": "Billing customer destination",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["customerRef", "billingEmail", "companyName", "customerSince"],
+  "properties": {
+    "customerRef": { "type": "string", "minLength": 1 },
+    "billingEmail": { "type": "string", "format": "email" },
+    "companyName": { "type": "string", "minLength": 1 },
+    "customerSince": { "type": "string", "format": "date" }
+  }
+}

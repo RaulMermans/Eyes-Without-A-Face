@@ -3,19 +3,14 @@ import { Guidance } from "../components/Guidance.tsx";
 import { PendingOperation } from "../components/PendingOperation.tsx";
 import { guidanceForFailure } from "../inference/failure-guidance.ts";
 import { CLOUD_TIMEOUT_MS } from "../inference/retry-policy.ts";
-import { createDisclosurePreview } from "../twin/authorization.ts";
-import { buildDisclosureDraft } from "../workflow/pipeline.ts";
 import { Button } from "../components/ui/button.tsx";
 import { ArrowRightIcon, CloudIcon } from "../components/icons.tsx";
 import { Disclosure, Eyebrow, Panel, PanelHeader, StatusMark } from "../components/spectral.tsx";
 import { liveInferenceLabel } from "../config/env.ts";
-import { InferenceError } from "../inference/errors.ts";
-import type { InferenceResult, InferenceServices } from "../inference/types.ts";
-import { recordWorkflowEvent } from "../observability/workflow-log.ts";
+import type { InferenceServices } from "../inference/types.ts";
 import type { ProposalOrigin } from "../proposal/convert.ts";
-import { DisclosureRejectedError } from "../twin/authorization.ts";
-import { submitApprovedCloudInference } from "../twin/cloud-request-gate.ts";
-import { acceptProposal, type PreparedTwin } from "../workflow/pipeline.ts";
+import type { PreparedTwin } from "../workflow/pipeline.ts";
+import { cancelWaiting, evaluateProposal, prepareFreshReview, sendApprovedRequest, spendApproval } from "./run-actions.ts";
 import { ErrorBanner } from "../components/ErrorBanner.tsx";
 import { IntegrationStudio, ProposalPipeline } from "./IntegrationStudio.tsx";
 import { buildConnections } from "./mapping-connections.ts";
@@ -23,9 +18,6 @@ import { MappingPanel } from "./MappingPanel.tsx";
 import { ORIGIN_LABELS } from "./result-kind.ts";
 import type { ProposalState, WorkspaceState } from "./workspace-state.ts";
 
-function originFor(result: InferenceResult): ProposalOrigin {
-  return result.provenance.resultKind === "real-cloud" && !result.provenance.simulated ? "gemini-cloud" : "test-adapter";
-}
 
 export function CloudMappingPanel({
   workspace,
@@ -65,79 +57,22 @@ export function CloudMappingPanel({
   const canSend = cloudAvailable && Boolean(review && review.status === "approved" && review.approval && prepared) && !busy;
 
   function evaluate(input: { structured: unknown; text: string; origin: ProposalOrigin; requestId: string; provenance: ProposalState["provenance"] }): ProposalState | null {
-    if (!prepared || !review) return null;
-    const started = performance.now();
-    const result = acceptProposal({
-      proposal: input.structured,
-      proposalText: input.text,
-      disclosure: review.preview.payload,
-      twin: prepared.twin,
-      origin: input.origin,
-      mappingId: `proposal-${input.requestId.slice(0, 8)}`,
-    });
-    recordWorkflowEvent({
-      kind: "proposal-validate",
-      ok: result.ok || result.stage === "resolve",
-      durationMs: performance.now() - started,
-      code: result.ok ? undefined : result.issues[0]?.code,
-    });
-    if (result.ok || result.stage === "resolve") {
-      recordWorkflowEvent({ kind: "alias-resolve", ok: result.ok, code: result.ok ? undefined : result.issues[0]?.code });
-    }
-    return { origin: input.origin, text: input.text, provenance: input.provenance, requestId: input.requestId, result };
+    if (!prepared) return null;
+    return evaluateProposal(workspace, prepared, input);
   }
 
   async function send(): Promise<void> {
     if (!review || !review.approval || !prepared) return;
     setBusy(true);
     const token = ++waitToken.current;
-    const started = performance.now();
-    const preview = review.preview;
-    const approval = review.approval;
     // The approval is single-use: mark it spent before the request resolves.
-    let next: WorkspaceState = { ...workspace, review: { ...review, approval: null, status: "sent" }, cloudError: null, proposal: null, report: null };
+    const spent = spendApproval(workspace);
+    onChange(spent);
+    const next = await sendApprovedRequest(spent, review, prepared, inference, () => token === waitToken.current);
+    if (next === null || token !== waitToken.current) return;
+    if (next.proposal) setEditText(null);
+    setBusy(false);
     onChange(next);
-    try {
-      const result = await submitApprovedCloudInference(inference.cloud, preview, approval, {
-        requestId: preview.requestId,
-        destinationKey: preview.destinationKey,
-        purpose: "mapping-proposal",
-      });
-      if (token !== waitToken.current) return;
-      recordWorkflowEvent({
-        kind: "cloud-proposal",
-        ok: true,
-        durationMs: performance.now() - started,
-        payloadHash: preview.payloadHash,
-        inferenceSource: result.provenance.actualSource,
-      });
-      const evaluated = evaluate({
-        structured: result.structured,
-        text: result.structured !== undefined ? JSON.stringify(result.structured, null, 2) : result.text,
-        origin: originFor(result),
-        requestId: preview.requestId,
-        provenance: result.provenance,
-      });
-      next = { ...next, proposal: evaluated, mappingChoice: "proposal" };
-      setEditText(null);
-    } catch (caught) {
-      if (token !== waitToken.current) return;
-      const code = caught instanceof DisclosureRejectedError ? "DISCLOSURE_REJECTED" : caught instanceof InferenceError ? caught.code : "CLOUD_FAILED";
-      // Raw provider text stays local and collapsed; the default view shows guidance only.
-      const detail =
-        caught instanceof DisclosureRejectedError
-          ? `${caught.reason}: ${caught.details.join("; ")}`
-          : caught instanceof Error
-            ? caught.message
-            : String(caught);
-      recordWorkflowEvent({ kind: "cloud-proposal", ok: false, durationMs: performance.now() - started, payloadHash: preview.payloadHash, code: caught instanceof DisclosureRejectedError ? caught.reason : code });
-      next = { ...next, cloudError: { code, detail } };
-    } finally {
-      if (token === waitToken.current) {
-        setBusy(false);
-        onChange(next);
-      }
-    }
   }
 
   /** Stop waiting: the approval stays consumed; a late answer is discarded (B5). */
@@ -145,14 +80,7 @@ export function CloudMappingPanel({
     if (!review) return;
     waitToken.current += 1;
     setBusy(false);
-    recordWorkflowEvent({ kind: "cloud-proposal", ok: false, payloadHash: review.preview.payloadHash, code: "CANCELLED" });
-    onChange({
-      ...workspace,
-      review: { ...review, approval: null, status: "sent" },
-      proposal: null,
-      report: null,
-      cloudError: { code: "CANCELLED", detail: "Stopped by the user while waiting for the provider." },
-    });
+    onChange(cancelWaiting(workspace));
   }
 
   /**
@@ -163,17 +91,13 @@ export function CloudMappingPanel({
   async function prepareFreshRequest(): Promise<void> {
     if (!prepared) return;
     setRecoveryError(null);
-    try {
-      const draft = buildDisclosureDraft({ prepared, targetSchema: JSON.parse(workspace.destinationText) as unknown });
-      if (!draft.ok) throw new Error(draft.issues.join("; "));
-      const preview = await createDisclosurePreview(draft.value.payload);
-      recordWorkflowEvent({ kind: "cloud-recovery", ok: true, payloadHash: preview.payloadHash, code: "FRESH_REQUEST" });
-      onChange({ ...workspace, review: { preview, approval: null, status: "pending" }, proposal: null, cloudError: null, report: null, revision: null });
-      onReviewFresh?.();
-    } catch (caught) {
-      recordWorkflowEvent({ kind: "cloud-recovery", ok: false, code: "FRESH_REQUEST_FAILED" });
-      setRecoveryError(caught instanceof Error ? caught.message : String(caught));
+    const result = await prepareFreshReview(workspace, prepared);
+    if (!result.ok) {
+      setRecoveryError(result.message);
+      return;
     }
+    onChange(result.workspace);
+    onReviewFresh?.();
   }
 
   function openManual(): void {

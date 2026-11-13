@@ -8,7 +8,7 @@ test.describe("E2E-001 application boot", () => {
     page.on("pageerror", (error) => {
       pageErrors.push(error.message);
     });
-    await page.goto("/");
+    await page.goto("/#technical");
     await expect(page.getByRole("heading", { level: 1, name: "Eyes Without a Face" })).toBeVisible();
     await expect(page.getByText("Build integrations for systems your AI cannot see.")).toBeVisible();
     // Sprint 10: the shell is organized by three experience modes; the five stages live in OBSERVE.
@@ -23,7 +23,7 @@ test.describe("E2E-001 application boot", () => {
 
 test.describe("E2E-002 workflow navigation", () => {
   test("moves between shell sections", async ({ page }) => {
-    await page.goto("/");
+    await page.goto("/#technical");
     await openStage(page, /Source System/);
     await expect(page.getByRole("heading", { level: 2, name: "Source System" })).toBeVisible();
     await expect(page.getByRole("heading", { name: "Import source JSON" })).toBeVisible();
@@ -48,7 +48,7 @@ test.describe("E2E-002 workflow navigation", () => {
 
 test.describe("E2E-003 responsive UI", () => {
   test("desktop and compact viewports remain usable", async ({ page }) => {
-    await page.goto("/");
+    await page.goto("/#technical");
     await page.setViewportSize({ width: 1280, height: 800 });
     const desktopOverflow = await page.evaluate(
       () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
@@ -80,7 +80,7 @@ test.describe("E2E-003 responsive UI", () => {
 test.describe("E2E-004 configuration safety", () => {
   test("loads without Firebase credentials and does not call AI providers", async ({ page }) => {
     const providerRequests = attachProviderWatch(page);
-    await page.goto("/");
+    await page.goto("/#technical");
     await expect(page.getByTestId("on-device-status")).toContainText("Unavailable");
     await expect(page.getByTestId("cloud-status")).toContainText("Unavailable");
     await expect(page.getByTestId("live-inference")).toHaveText("none");
