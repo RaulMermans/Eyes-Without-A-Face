@@ -132,3 +132,13 @@ export function initialWorkspaceState(): WorkspaceState {
 export function invalidateDownstream(state: WorkspaceState): WorkspaceState {
   return { ...state, review: null, proposal: null, cloudError: null, report: null, mappingRunError: null, revision: null, revisionConstraintIds: [] };
 }
+
+/**
+ * Change one field decision of the twin (role, descriptor, date order, …).
+ * Always invalidates downstream: an approval prepared for the old twin must
+ * never be reused (Sprint 11, C4).
+ */
+export function applyTwinOverride(state: WorkspaceState, path: string, patch: Record<string, unknown>): WorkspaceState {
+  const current = state.overrides[path] ?? {};
+  return invalidateDownstream({ ...state, overrides: { ...state.overrides, [path]: { ...current, ...patch } } });
+}

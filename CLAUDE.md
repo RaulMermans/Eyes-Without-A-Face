@@ -26,5 +26,6 @@ Read, in order:
 20. `docs/sprints/sprint-9.md` — Sprint 9 report, release readiness and submission blockers
 21. `docs/decisions/0011-experience-architecture-black-halo.md` — CONNECT / OBSERVE / OUTCOME, derived runtime, Black Halo
 22. `docs/sprints/sprint-10.md` — Sprint 10 report
+23. `docs/sprints/sprint-11.md` — Sprint 11 report: acceptance status, open owner gates
 
-Do not duplicate architecture here. Do not start Sprint 11 automatically.
+Do not duplicate architecture here. Do not start Sprint 12 automatically.

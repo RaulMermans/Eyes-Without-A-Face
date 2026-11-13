@@ -25,12 +25,17 @@ import { WorkflowProgress } from "./WorkflowProgress.tsx";
 import { ConnectView } from "./ConnectView.tsx";
 import { OutcomeView } from "./OutcomeView.tsx";
 import { RuntimeView } from "./RuntimeView.tsx";
-import { TrustLedger } from "./TrustLedger.tsx";
+import { PrivacyBoundary } from "./PrivacyBoundary.tsx";
 import { EXPERIENCE_MODES, type ExperienceMode } from "./experience.ts";
 import { deriveRuntime, timelineEntries } from "./runtime-model.ts";
 import { exportCandidates } from "./export-context.ts";
 import { prepareDisclosureReview } from "./disclosure-actions.ts";
 import { RuntimePreflight } from "./RuntimePreflight.tsx";
+import { useOnDeviceProbe } from "./use-on-device.ts";
+import { PrivateUnderstanding, type UnderstandingRow } from "./PrivateUnderstanding.tsx";
+import { InvalidationNotice } from "./InvalidationNotice.tsx";
+import { invalidationCause, type Invalidation } from "./invalidation.ts";
+import { applyTwinOverride } from "./workspace-state.ts";
 import { Disclosure, Eyebrow, ZoneLabel, type Zone } from "../components/spectral.tsx";
 
 const STEP_ZONE: Record<WorkflowStepId, Zone> = {
@@ -136,14 +141,27 @@ export default function App() {
 
   // A "run" starts when a source is loaded. The timeline shows only this run's safe events.
   const [runStartedAt, setRunStartedAt] = useState("");
+  /** Sprint 11: on-device interpretation results of this run, shared by CONNECT and the twin stage. */
+  const [understandingRows, setUnderstandingRows] = useState<UnderstandingRow[]>([]);
+  /** Sprint 11 (C4): why a prepared request was just cleared. UI explanation only; never workflow state. */
+  const [invalidation, setInvalidation] = useState<Invalidation | null>(null);
   /** Every workspace change goes through here; a new source object starts a new run. */
   const updateWorkspace = useCallback(
     (next: WorkspaceState) => {
-      if (next.source !== workspace.source) setRunStartedAt(next.source ? new Date().toISOString() : "");
+      if (next.source !== workspace.source) {
+        setRunStartedAt(next.source ? new Date().toISOString() : "");
+        setUnderstandingRows([]);
+        setInvalidation(null);
+      } else if (next.review) {
+        setInvalidation(null);
+      } else if (workspace.review) {
+        setInvalidation(invalidationCause(workspace, next));
+      }
       setWorkspace(next);
     },
-    [workspace.source],
+    [workspace],
   );
+  const onDeviceProbe = useOnDeviceProbe(inference, workspace.source);
   const eventsVersion = useSyncExternalStore(subscribeWorkflowEvents, workflowEventsVersion);
   const runEvents = useMemo(() => {
     void eventsVersion;
@@ -228,6 +246,23 @@ export default function App() {
     requestAnimationFrame(scrollToTop);
   }
 
+  const understandingStore = useMemo(() => ({ rows: understandingRows, setRows: setUnderstandingRows }), [understandingRows]);
+  const notice = invalidation && !workspace.review ? (
+    <InvalidationNotice invalidation={invalidation} building={building} onPrepare={() => void buildIntegration()} onDismiss={() => setInvalidation(null)} />
+  ) : null;
+  const localUnderstanding =
+    workspace.source && prepared && onDeviceProbe.mode.kind === "available" ? (
+      <PrivateUnderstanding
+        available
+        otherBusy={false}
+        store={understandingStore}
+        workspace={workspace}
+        prepared={prepared}
+        inference={inference}
+        onApply={(path, override) => updateWorkspace(applyTwinOverride(workspace, path, { ...override }))}
+      />
+    ) : null;
+
   const step = WORKFLOW_STEPS.find((item) => item.id === stepId) ?? WORKFLOW_STEPS[0];
   const details = STEP_DETAILS[step.id];
   const live = isLiveInferenceAvailable(config);
@@ -280,6 +315,9 @@ export default function App() {
               prepared={prepared}
               twinIssues={twinState.twinIssues}
               inference={inference}
+              onDevice={onDeviceProbe.mode}
+              onDeviceBlocked={onDeviceProbe.markBlocked}
+              understanding={understandingStore}
               onContinue={() => goTo("review")}
             />
             <DestinationPanel workspace={workspace} onChange={updateWorkspace} />
@@ -381,6 +419,10 @@ export default function App() {
             onBuild={() => void buildIntegration()}
             onStepThrough={() => goTo("phantom", true)}
             preflight={preflight}
+            onDevice={onDeviceProbe.mode}
+            understanding={localUnderstanding}
+            nanoRuns={stages.find((item) => item.id === "on-device")?.status === "completed"}
+            notice={notice}
           />
         ) : null}
         {mode === "observe" ? (
@@ -388,8 +430,9 @@ export default function App() {
             stages={stages}
             timeline={timeline}
             route={route}
-            ledger={<TrustLedger workspace={workspace} prepared={prepared} />}
+            ledger={<PrivacyBoundary workspace={workspace} prepared={prepared} stages={stages} />}
             onOpen={(target) => (target === "outcome" ? switchMode("outcome") : goTo(target, true))}
+            notice={notice}
             workbench={workbench}
           />
         ) : null}

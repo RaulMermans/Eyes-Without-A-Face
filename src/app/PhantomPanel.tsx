@@ -1,4 +1,4 @@
-import { useEffect, useState, type CSSProperties } from "react";
+import { useState, type CSSProperties } from "react";
 import { Button } from "../components/ui/button.tsx";
 import { guidanceForFailure } from "../inference/failure-guidance.ts";
 import { AlertIcon, ArrowRightIcon, ChipIcon, LockIcon } from "../components/icons.tsx";
@@ -6,19 +6,16 @@ import { Disclosure, EmptyState, FieldToken, Panel, PanelHeader, StatusMark, Zon
 import { ErrorBanner } from "../components/ErrorBanner.tsx";
 import type { TwinIssue } from "../phantom/generate.ts";
 import { ROLE_LABELS } from "../phantom/roles.ts";
-import type { InferenceServices, OnDeviceCapability } from "../inference/types.ts";
-import { PrivateUnderstanding } from "./PrivateUnderstanding.tsx";
+import type { InferenceServices } from "../inference/types.ts";
+import { PrivateUnderstanding, type UnderstandingStore } from "./PrivateUnderstanding.tsx";
+import type { OnDeviceMode } from "./use-on-device.ts";
 import { InferenceError } from "../inference/errors.ts";
 import { isRecoverableOnDeviceFailure, ON_DEVICE_USER_RETRY_LIMIT } from "../inference/retry-policy.ts";
 import { recordWorkflowEvent } from "../observability/workflow-log.ts";
 import type { PreparedTwin } from "../workflow/pipeline.ts";
 import { firstPresent, formatSample } from "./view-model.ts";
-import { invalidateDownstream, type WorkspaceState } from "./workspace-state.ts";
+import { applyTwinOverride, invalidateDownstream, type WorkspaceState } from "./workspace-state.ts";
 
-type OnDeviceMode =
-  | { kind: "checking" }
-  | { kind: "blocked"; reason: string }
-  | { kind: "available"; availability: string };
 
 interface Suggestion {
   alias: string;
@@ -32,6 +29,9 @@ export function PhantomPanel({
   prepared,
   twinIssues,
   inference,
+  onDevice,
+  onDeviceBlocked,
+  understanding,
   onContinue,
 }: {
   workspace: WorkspaceState;
@@ -39,42 +39,20 @@ export function PhantomPanel({
   prepared: PreparedTwin | null;
   twinIssues: TwinIssue[];
   inference: InferenceServices;
+  /** Sprint 11: probed once per run by the app (use-on-device.ts). */
+  onDevice: OnDeviceMode;
+  onDeviceBlocked: (reason: string) => void;
+  /** Sprint 11: on-device interpretation results, shared with CONNECT. */
+  understanding: UnderstandingStore;
   onContinue: () => void;
 }) {
   const [showLocalNames, setShowLocalNames] = useState(false);
   const [seedText, setSeedText] = useState(String(workspace.seed));
-  const [onDevice, setOnDevice] = useState<OnDeviceMode>({ kind: "checking" });
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
   const [suggestError, setSuggestError] = useState<{ message: string; recoverable: boolean; code?: string } | null>(null);
   const [busy, setBusy] = useState<{ done: number; total: number; alias: string } | null>(null);
   const [retriesUsed, setRetriesUsed] = useState(0);
   const [drafts, setDrafts] = useState<Record<string, string>>({});
-
-  useEffect(() => {
-    let cancelled = false;
-    const status = inference.onDevice.status();
-    void inference.onDevice
-      .probeCapability()
-      .then((capability: OnDeviceCapability) => {
-        if (cancelled) return;
-        const availability = capability.languageModelAvailability ?? "unknown";
-        const usable = capability.promptApi === "available" && (availability === "available" || availability === "downloadable");
-        const next: OnDeviceMode =
-          status.state !== "configured"
-            ? { kind: "blocked", reason: status.state === "disabled" ? "feature flag off" : "Firebase config missing" }
-            : usable
-              ? { kind: "available", availability }
-              : { kind: "blocked", reason: `Prompt API ${capability.promptApi}, model ${availability}` };
-        setOnDevice(next);
-        recordWorkflowEvent({ kind: "on-device-probe", ok: next.kind === "available", code: next.kind === "available" ? "ON_DEVICE_AVAILABLE" : "ON_DEVICE_BLOCKED" });
-      })
-      .catch(() => {
-        if (!cancelled) setOnDevice({ kind: "blocked", reason: "capability probe failed" });
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, [inference]);
 
   if (!workspace.source) {
     return (
@@ -85,8 +63,7 @@ export function PhantomPanel({
   }
 
   function setOverride(path: string, patch: Record<string, unknown>): void {
-    const current = workspace.overrides[path] ?? {};
-    onChange(invalidateDownstream({ ...workspace, overrides: { ...workspace.overrides, [path]: { ...current, ...patch } } }));
+    onChange(applyTwinOverride(workspace, path, patch));
   }
 
   function applySeed(): void {
@@ -147,7 +124,7 @@ export function PhantomPanel({
       });
       recordWorkflowEvent({ kind: "on-device-probe", ok: false, code });
       if (!recoverable) {
-        setOnDevice({ kind: "blocked", reason: `${code}${resume ? " after one retry; restart Chrome to reset its on-device model service" : ""}` });
+        onDeviceBlocked(`${code}${resume ? " after one retry; restart Chrome to reset its on-device model service" : ""}`);
       }
     } finally {
       setBusy(null);
@@ -181,6 +158,7 @@ export function PhantomPanel({
         <PrivateUnderstanding
           available={onDevice.kind === "available"}
           otherBusy={Boolean(busy)}
+          store={understanding}
           workspace={workspace}
           prepared={prepared}
           inference={inference}
@@ -520,7 +498,7 @@ function InferencePanel({
         <p className="flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.12em] text-cyan-ink">
           <ChipIcon size={12} /> On-device intelligence · Gemini Nano · ONLY_ON_DEVICE
         </p>
-        {onDevice.kind === "checking" ? (
+        {onDevice.kind === "checking" || onDevice.kind === "idle" ? (
           <p className="mt-2 text-mute">Checking on-device AI…</p>
         ) : onDevice.kind === "blocked" ? (
           <>

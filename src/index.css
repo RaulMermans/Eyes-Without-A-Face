@@ -636,6 +636,326 @@ body {
   }
 }
 
+/* ------------------------------------------------------------------ */
+/* Sprint 11 — focus card: the current stage leads OBSERVE.            */
+/* ------------------------------------------------------------------ */
+.rt-focus {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--color-rule);
+  border-left: 4px solid var(--color-violet-soft);
+  border-radius: 3px;
+  background: var(--color-panel);
+  box-shadow: inset 0 1px 0 rgb(184 138 255 / 0.2);
+}
+.rt-focus[data-status="awaiting-approval"] {
+  border-left: 4px double var(--color-gold);
+  border-left-width: 6px;
+}
+.rt-focus[data-status="failed"],
+.rt-focus[data-status="blocked"] {
+  border-left-color: var(--color-fail);
+}
+.rt-focus[data-status="requires-review"] {
+  border-left-color: var(--color-warn);
+}
+.rt-focus__label {
+  font: 10px/1.4 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-mute);
+}
+.rt-focus__side {
+  display: grid;
+  gap: 0.9rem;
+  align-content: start;
+}
+@media (min-width: 48rem) {
+  .rt-focus {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: 1.5rem;
+    padding: 1.15rem 1.35rem;
+  }
+  .rt-focus__side {
+    border-left: 1px solid var(--color-rule);
+    padding-left: 1.5rem;
+  }
+}
+
+/* Phase groups: five phases, each a heading and its stages. */
+.rt-group + .rt-group {
+  border-top: 1px solid var(--color-rule);
+}
+.rt-group__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 0.75rem;
+  margin: 0;
+  padding: 0.55rem 0.85rem;
+  background: rgb(5 6 11 / 0.45);
+}
+.rt-group__toggle {
+  width: 100%;
+  min-height: 3rem;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.75rem;
+  text-align: left;
+  color: inherit;
+  border: 0;
+  cursor: pointer;
+}
+.rt-group__toggle:focus-visible {
+  outline-offset: -2px;
+}
+.rt-group__chevron {
+  display: inline-block;
+  width: 0.75rem;
+  font: 14px/1 var(--font-mono);
+  color: var(--color-mute);
+  transition: transform 160ms var(--ease-instrument);
+}
+.rt-group__chevron--open {
+  transform: rotate(90deg);
+}
+.rt-group__title {
+  display: block;
+  font: 11px/1.5 var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+.rt-group__here {
+  margin-left: 0.5rem;
+  padding: 0 0.35rem;
+  border: 1px solid var(--color-violet-soft);
+  border-radius: 2px;
+  color: var(--color-violet-soft);
+  letter-spacing: 0.08em;
+}
+.rt-group__tally {
+  display: block;
+  font: 11px/1.5 var(--font-mono);
+  color: var(--color-mute);
+}
+.rt-group > .rt-lanes__list {
+  border-top: 1px solid rgb(39 41 56 / 0.7);
+}
+
+/* ------------------------------------------------------------------ */
+/* Sprint 11 signature — the Privacy Boundary Transformation.          */
+/* Private source → Phantom Twin ‖ approval ‖ cloud → verified local.  */
+/* States change only when real state changes; transitions only then.  */
+/* ------------------------------------------------------------------ */
+.pb {
+  border: 1px solid var(--color-rule);
+  border-radius: 3px;
+  background: var(--color-panel);
+}
+.pb__title {
+  margin: 0;
+  padding: 0.6rem 0.9rem;
+  border-bottom: 1px solid var(--color-rule);
+  font: 10px/1.4 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-mute);
+}
+.pb__track {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.pb-station,
+.pb-gate {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.6rem minmax(0, 1fr);
+  gap: 0.6rem;
+  align-items: start;
+  padding: 0.65rem 0.9rem;
+  min-width: 0;
+}
+.pb-station + .pb-station {
+  border-top: 1px solid rgb(39 41 56 / 0.7);
+}
+.pb-station__node {
+  display: flex;
+  justify-content: center;
+  padding-top: 3px;
+}
+.pb-station__node .rt-node {
+  transition: transform 500ms var(--ease-instrument), box-shadow 500ms var(--ease-instrument);
+}
+.pb-station[data-state="reached"] .rt-node {
+  transform: scale(1.08);
+}
+.pb-station__label {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  font: 10px/1.5 var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-mute);
+}
+.pb-station__fact {
+  display: block;
+  margin-top: 0.1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+.pb-station__extra {
+  display: block;
+  margin-top: 0.1rem;
+  font: 11px/1.5 var(--font-mono);
+  color: var(--color-violet-soft);
+}
+/* Zone pairing (never colour alone): private = solid ink rule + lock;   */
+/* synthetic = dashed cyan rule + phantom; cloud = gold hatch + cloud.    */
+.pb-station--private {
+  box-shadow: inset 3px 0 0 var(--color-ink);
+}
+.pb-station--twin {
+  background-image: linear-gradient(var(--color-cyan-ink), var(--color-cyan-ink));
+  background-size: 3px 6px;
+  background-repeat: repeat-y;
+}
+.pb-station--cloud {
+  background-image: repeating-linear-gradient(135deg, rgb(232 191 114 / 0.06) 0 6px, transparent 6px 12px);
+  box-shadow: inset 3px 0 0 rgb(232 191 114 / 0.6);
+}
+.pb-station--outcome {
+  box-shadow: inset 3px 0 0 var(--color-pass);
+}
+
+/* The gate: a gold halo on the boundary line. Closed = dashed ring, a bar  */
+/* across the aperture. Awaiting = double ring. Open (one request) = solid  */
+/* ring with the aperture opened. The change animates once, on the event.  */
+.pb-gate {
+  border-block: 3px double rgb(232 191 114 / 0.55);
+  background: rgb(232 191 114 / 0.04);
+}
+.pb-gate__label {
+  color: var(--color-gold);
+}
+.pb-gate__word {
+  letter-spacing: 0.06em;
+  text-transform: none;
+}
+.pb-gate__halo {
+  position: relative;
+  display: block;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+.pb-gate__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  border: 1.5px dashed rgb(232 191 114 / 0.7);
+  transform: scale(0.82);
+  transition: transform 650ms var(--ease-instrument), box-shadow 650ms var(--ease-instrument), border-color 650ms var(--ease-instrument);
+}
+.pb-gate__aperture {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0.85rem;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--color-gold);
+  transform: translate(-50%, -50%);
+  transition: width 650ms var(--ease-instrument), height 650ms var(--ease-instrument), border-radius 650ms var(--ease-instrument), background-color 650ms var(--ease-instrument);
+}
+.pb-gate[data-state="awaiting"] .pb-gate__ring {
+  border: 4px double var(--color-gold);
+  transform: scale(1);
+  box-shadow: 0 0 0 5px rgb(232 191 114 / 0.12);
+}
+.pb-gate[data-state="open"] .pb-gate__ring {
+  border: 2px solid var(--color-gold);
+  transform: scale(1);
+  box-shadow: 0 0 0 6px rgb(232 191 114 / 0.16);
+}
+.pb-gate[data-state="open"] .pb-gate__aperture {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: var(--color-ink);
+}
+
+@media (min-width: 64rem) {
+  .pb__track {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 0.95fr) minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .pb-station + .pb-station {
+    border-top: 0;
+  }
+  .pb-station,
+  .pb-gate {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.4rem;
+    padding: 0.8rem 0.9rem 0.9rem;
+  }
+  .pb-station__node {
+    justify-content: flex-start;
+  }
+  /* Connectors: the private source's line ends at the twin; nothing     */
+  /* private is drawn crossing the boundary. Cloud → outcome returns.    */
+  .pb-station--private::after,
+  .pb-station--cloud::after {
+    content: "";
+    position: absolute;
+    top: 1.15rem;
+    left: 2.4rem;
+    right: 0.5rem;
+    height: 0;
+    border-top: 1.5px dotted rgb(156 153 176 / 0.6);
+    transition: border-color 650ms var(--ease-instrument);
+  }
+  .pb-station--private[data-state="reached"]::after {
+    border-top: 1.5px solid var(--color-ink);
+  }
+  .pb-station--cloud[data-state="reached"]::after {
+    border-top: 1.5px solid var(--color-gold);
+  }
+  .pb-station--twin,
+  .pb-station--cloud,
+  .pb-station--outcome {
+    box-shadow: none;
+    background-size: 100% 3px;
+    background-repeat: no-repeat;
+  }
+  .pb-station--private {
+    box-shadow: inset 0 3px 0 var(--color-ink);
+  }
+  .pb-station--twin {
+    background-image: repeating-linear-gradient(90deg, var(--color-cyan-ink) 0 6px, transparent 6px 10px);
+  }
+  .pb-station--cloud {
+    background-image: repeating-linear-gradient(135deg, rgb(232 191 114 / 0.06) 0 6px, transparent 6px 12px);
+    background-size: auto;
+    box-shadow: inset 0 3px 0 rgb(232 191 114 / 0.6);
+  }
+  .pb-station--outcome {
+    box-shadow: inset 0 3px 0 var(--color-pass);
+  }
+  .pb-gate {
+    border-block: 0;
+    border-inline: 3px double rgb(232 191 114 / 0.55);
+    justify-items: start;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

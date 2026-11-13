@@ -769,14 +769,152 @@ export function timelineEntries(events: readonly WorkflowEvent[]): TimelineEntry
     }
     if (event.payloadHash) parts.push(`sha ${shortHash(event.payloadHash)}`);
     const approvalLabel = event.kind === "disclosure-approve" && event.code === "REVISION" ? "You approved one revision request" : label;
+    // Sprint 11: a capability check that finds no on-device model is a fact about this browser, not a failed step.
+    const unavailable = event.kind === "on-device-probe" && event.code === "ON_DEVICE_BLOCKED";
     return {
       key: `${event.at}-${index}`,
       at: event.at,
       zone,
-      label: event.ok ? approvalLabel : `${approvalLabel} — did not succeed`,
-      ok: event.ok,
+      label: unavailable ? "On-device AI unavailable in this browser" : event.ok ? approvalLabel : `${approvalLabel} — did not succeed`,
+      ok: event.ok || unavailable,
       summary: parts.join(" · "),
       durationMs: typeof event.durationMs === "number" ? event.durationMs : null,
     };
   });
+}
+
+/* ------------------------------------------------------------------ */
+/* Sprint 11 — compact presentation helpers. Pure functions of the     */
+/* stages above: they group, pick and label; they never add a stage,   */
+/* a status or an event.                                               */
+/* ------------------------------------------------------------------ */
+
+export type RuntimeGroupId = "understand" | "boundary" | "verify" | "revise" | "deliver";
+
+export interface RuntimeGroup {
+  id: RuntimeGroupId;
+  label: string;
+  /** Where the group's stages run, in words. */
+  where: string;
+  stageIds: readonly RuntimeStageId[];
+}
+
+/** The 17 stages in five phases. Every stage belongs to exactly one group. */
+export const RUNTIME_GROUPS: readonly RuntimeGroup[] = [
+  { id: "understand", label: "Understand locally", where: "This browser", stageIds: ["source-imported", "source-profiled", "on-device", "twin"] },
+  { id: "boundary", label: "Cross the boundary", where: "Your approval · Gemini Cloud", stageIds: ["disclosure-prepared", "authorization", "cloud-inference", "mapping-proposed"] },
+  { id: "verify", label: "Verify locally", where: "This browser", stageIds: ["contract-validated", "reality-check", "semantic"] },
+  { id: "revise", label: "Blind revision · optional", where: "Your approval · Gemini Cloud · this browser", stageIds: ["revision-prepared", "revision-authorization", "revision-inference", "revision-evaluated"] },
+  { id: "deliver", label: "Outcome and export", where: "This browser", stageIds: ["outcome", "export"] },
+];
+
+export function groupOf(id: RuntimeStageId): RuntimeGroup {
+  return RUNTIME_GROUPS.find((group) => group.stageIds.includes(id)) ?? RUNTIME_GROUPS[0]!;
+}
+
+/** Counts per status, in a fixed order, for a group header ("3 completed · 1 skipped"). */
+export function groupTally(stages: readonly RuntimeStage[], group: RuntimeGroup): string {
+  const members = stages.filter((stage) => group.stageIds.includes(stage.id));
+  const order: RuntimeStatus[] = ["failed", "blocked", "awaiting-approval", "running", "requires-review", "completed", "skipped", "not-started"];
+  return order
+    .map((status) => [status, members.filter((stage) => stage.status === status).length] as const)
+    .filter(([, count]) => count > 0)
+    .map(([status, count]) => `${count} ${STATUS_TEXT[status].toLowerCase()}`)
+    .join(" · ");
+}
+
+/** The most recent stage (by order, before the current one) that is `completed`. */
+export function lastCompletedStage(stages: readonly RuntimeStage[]): RuntimeStage | null {
+  const current = currentStage(stages);
+  let last: RuntimeStage | null = null;
+  for (const stage of stages) {
+    if (stage.status === "completed" && stage.id !== current.id) last = stage;
+  }
+  return last;
+}
+
+/**
+ * The next thing the user can do: the current stage's own `next`, otherwise
+ * the first later stage that names one. Null when nothing is required.
+ */
+export function nextStep(stages: readonly RuntimeStage[]): RuntimeStage | null {
+  const current = currentStage(stages);
+  if (current.next) return current;
+  return stages.find((stage) => stage.number > current.number && stage.next !== null && stage.status !== "skipped") ?? null;
+}
+
+/** A short verb phrase for the primary action button of a stage's `next`. */
+export function actionLabel(stage: RuntimeStage): string {
+  switch (stage.id) {
+    case "source-imported":
+      return "Choose a source";
+    case "on-device":
+      return "Interpret on-device";
+    case "disclosure-prepared":
+      return "Prepare the request";
+    case "authorization":
+      return "Review what crosses the boundary";
+    case "cloud-inference":
+      return stage.status === "failed" ? "Prepare a fresh request" : "Send the approved request";
+    case "contract-validated":
+      return "Inspect the rejected proposal";
+    case "reality-check":
+      return "Run the Reality Check";
+    case "semantic":
+      return "Review the finding";
+    case "revision-prepared":
+      return "Prepare a safe revision";
+    case "revision-authorization":
+      return "Review the revision request";
+    case "revision-evaluated":
+      return "Run the revised Reality Check";
+    case "outcome":
+      return "See the outcome";
+    case "export":
+      return "Export the integration";
+    default:
+      return "Open the controls";
+  }
+}
+
+/**
+ * The Privacy Boundary Transformation (Sprint 11 signature): four stations
+ * and the approval gate between them, each read from stage statuses only.
+ *   private source → phantom twin → | approval | → approved cloud reasoning → verified local outcome
+ */
+export type BoundaryStationState = "pending" | "reached" | "attention" | "failed";
+export type BoundaryGateState = "closed" | "awaiting" | "open";
+
+export interface BoundaryState {
+  source: BoundaryStationState;
+  twin: BoundaryStationState;
+  gate: BoundaryGateState;
+  cloud: BoundaryStationState;
+  outcome: BoundaryStationState;
+  /** True when the twin was refined by on-device AI in this run. */
+  onDevice: boolean;
+}
+
+function station(stage: RuntimeStage | undefined): BoundaryStationState {
+  if (!stage) return "pending";
+  if (stage.status === "completed") return "reached";
+  if (stage.status === "failed" || stage.status === "blocked") return "failed";
+  if (stage.status === "requires-review" || stage.status === "running" || stage.status === "awaiting-approval") return "attention";
+  return "pending";
+}
+
+export function boundaryState(stages: readonly RuntimeStage[]): BoundaryState {
+  const byId = (id: RuntimeStageId) => stages.find((stage) => stage.id === id);
+  const auth = byId("authorization");
+  const revisionAuth = byId("revision-authorization");
+  const awaiting = auth?.status === "awaiting-approval" || revisionAuth?.status === "awaiting-approval";
+  const cloud = byId("cloud-inference");
+  return {
+    source: station(byId("source-imported")),
+    twin: station(byId("twin")),
+    gate: awaiting ? "awaiting" : auth?.status === "completed" ? "open" : "closed",
+    cloud: cloud?.status === "running" ? "attention" : station(cloud),
+    outcome: station(byId("outcome")),
+    onDevice: byId("on-device")?.status === "completed",
+  };
 }

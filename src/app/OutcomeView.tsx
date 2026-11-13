@@ -11,6 +11,7 @@ import { exportCandidates, type ExportCandidate } from "./export-context.ts";
 import { ExportPanel } from "./ExportPanel.tsx";
 import { ORIGIN_LABELS } from "./result-kind.ts";
 import { bestCandidate } from "./runtime-model.ts";
+import { outcomeVerdict } from "./outcome-verdict.ts";
 import type { WorkspaceState } from "./workspace-state.ts";
 
 /**
@@ -21,13 +22,6 @@ import type { WorkspaceState } from "./workspace-state.ts";
  * unknown meaning is never presented as verified.
  */
 
-const HEADLINE: Record<CompletionState, string> = {
-  VERIFIED: "Verified locally.",
-  VERIFIED_WITH_EXCEPTIONS: "Verified, with managed exceptions.",
-  PARTIALLY_VERIFIED: "Partially verified. Draft only.",
-  REVISION_FAILED: "The revision failed. Not exportable.",
-  BLOCKED: "Blocked. Not exportable.",
-};
 
 const STATE_STATUS: Record<CompletionState, Status> = {
   VERIFIED: "pass",
@@ -149,24 +143,51 @@ export function OutcomeView({
   const revisedContract = revision?.revised?.result.ok ? revision.revised.result.value.converted.contract : null;
   const changes = initialContract && revisedContract ? diffContracts(initialContract, revisedContract) : [];
   const decision = revision?.decision ?? null;
+  const verdict = bestFull && report ? outcomeVerdict(bestFull.eligibility, bestFull.semantic, bestFull.rows) : null;
 
   return (
     <section aria-labelledby="outcome-heading" data-testid="outcome" className="space-y-6">
       <header className="grid gap-4 border-b border-rule pb-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
         <div className="min-w-0">
           <Eyebrow className="[overflow-wrap:anywhere]">Outcome · {route}</Eyebrow>
-          <h2 id="outcome-heading" className="mt-2 font-display text-4xl leading-[1.02] tracking-[-0.01em] sm:text-5xl" data-testid="outcome-headline" data-state={bestFull && report ? bestFull.eligibility.state : "NONE"}>
-            {bestFull && report ? HEADLINE[bestFull.eligibility.state] : "No verified evidence yet."}
+          <h2 id="outcome-heading" className="mt-2 font-display text-4xl leading-[1.02] tracking-[-0.01em] sm:text-5xl" data-testid="outcome-headline" data-state={verdict ? bestFull!.eligibility.state : "NONE"} data-meaning={verdict ? (verdict.meaningComplete ? "complete" : "partial") : "none"}>
+            {verdict ? verdict.headline : "No verified evidence yet."}
           </h2>
-          <p className="mt-3 max-w-[70ch] text-sm leading-6 text-ink-text">
-            {report
-              ? `${candidates.length > 1 && bestFull ? `Strongest candidate: ${bestFull.label}. ` : ""}Structure, meaning and record outcomes are judged separately by local, deterministic checks. Nothing here claims production readiness.`
-              : "The mapping has not run against your records yet. Open Observe to approve the request, receive a mapping and run the Reality Check."}
-          </p>
+          {verdict ? (
+            <>
+              <p className="mt-3 max-w-[70ch] text-base leading-7" data-testid="outcome-verdict-detail">
+                {verdict.detail}
+              </p>
+              <p className="mt-2 max-w-[70ch] text-sm leading-6 text-ink-text" data-testid="outcome-verdict-next">
+                <span className="font-medium text-ink">Next: </span>
+                {verdict.next}
+              </p>
+              <p className="mt-2 max-w-[70ch] text-xs leading-5 text-mute">
+                {candidates.length > 1 && bestFull ? `Strongest candidate: ${bestFull.label}. ` : ""}Structure, meaning and record outcomes are judged separately by local,
+                deterministic checks. Nothing here claims production readiness.
+              </p>
+            </>
+          ) : (
+            <p className="mt-3 max-w-[70ch] text-sm leading-6 text-ink-text">
+              The mapping has not run against your records yet. Open Observe to approve the request, receive a mapping and run the Reality Check.
+            </p>
+          )}
         </div>
+        <div className="flex flex-wrap gap-2">
+          {verdict && bestFull!.eligibility.decision !== "BLOCKED" ? (
+            <Button
+              variant="primary"
+              onClick={() => document.getElementById("export")?.scrollIntoView({ block: "start", behavior: "instant" })}
+              data-testid="outcome-to-export"
+            >
+              {bestFull!.eligibility.decision === "DRAFT_ONLY" ? "Go to draft export" : "Go to export"}
+              <ArrowRightIcon />
+            </Button>
+          ) : null}
         <Button variant="outline" onClick={onObserve} data-testid="outcome-to-observe">
           Back to Observe
         </Button>
+        </div>
       </header>
 
       {!report || !bestFull ? null : (

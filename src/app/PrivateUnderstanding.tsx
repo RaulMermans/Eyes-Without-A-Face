@@ -18,11 +18,21 @@ import { describeTargetSchema } from "../twin/target-disclosure.ts";
 import type { PreparedTwin } from "../workflow/pipeline.ts";
 import type { WorkspaceState } from "./workspace-state.ts";
 
-interface Row {
+export interface UnderstandingRow {
   path: string;
   evaluated: EvaluatedSuggestion;
   simulated: boolean;
   durationMs: number;
+}
+
+/**
+ * Results of on-device interpretation for the current run. Owned by the app
+ * (reset when the source changes) so CONNECT and the Phantom Twin stage show
+ * the same suggestions (Sprint 11). Local only: never persisted or sent.
+ */
+export interface UnderstandingStore {
+  rows: UnderstandingRow[];
+  setRows: (rows: UnderstandingRow[]) => void;
 }
 
 /**
@@ -35,6 +45,7 @@ interface Row {
 export function PrivateUnderstanding({
   available,
   otherBusy,
+  store,
   workspace,
   prepared,
   inference,
@@ -42,12 +53,13 @@ export function PrivateUnderstanding({
 }: {
   available: boolean;
   otherBusy: boolean;
+  store: UnderstandingStore;
   workspace: WorkspaceState;
   prepared: PreparedTwin | null;
   inference: InferenceServices;
   onApply: (path: string, override: Pick<TwinFieldOverride, "role" | "dateFormat">) => void;
 }) {
-  const [rows, setRows] = useState<Row[]>([]);
+  const { rows, setRows } = store;
   const [busy, setBusy] = useState<{ done: number; total: number } | null>(null);
   const [error, setError] = useState<{ message: string; recoverable: boolean } | null>(null);
   const [retriesUsed, setRetriesUsed] = useState(0);
@@ -66,7 +78,7 @@ export function PrivateUnderstanding({
     const aliasByPath = new Map(prepared.twin.fields.map((field) => [field.localPath, field.alias]));
     const fields = prepared.profile.fields.filter((field) => field.supported && aliasByPath.has(field.path));
     const contexts = buildPrivateFieldContexts({ records: workspace.source.records, fields, aliasByPath, targetFields });
-    const done: Row[] = resume ? rows.filter((row) => contexts.some((context) => context.fieldName === row.path)) : [];
+    const done: UnderstandingRow[] = resume ? rows.filter((row) => contexts.some((context) => context.fieldName === row.path)) : [];
     if (resume) setRetriesUsed((count) => count + 1);
     else setRetriesUsed(0);
     setError(null);
