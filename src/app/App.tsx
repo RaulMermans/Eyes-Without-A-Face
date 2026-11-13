@@ -234,6 +234,7 @@ export default function App() {
               onChange={setWorkspace}
               prepared={prepared}
               inference={inference}
+              buildSha={config.buildSha || null}
               onInspectOperation={(index) => {
                 setFocusOperation(index);
                 goTo("mapping");

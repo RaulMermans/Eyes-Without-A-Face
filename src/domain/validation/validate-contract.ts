@@ -9,6 +9,7 @@ import blindRevisionFeedbackSchema from "../contracts/schemas/blind-revision-fee
 import blindRevisionFeedbackSchemaV11 from "../contracts/schemas/blind-revision-feedback.v1.1.schema.json" with { type: "json" };
 import semanticVerificationSchema from "../contracts/schemas/semantic-verification.v1.schema.json" with { type: "json" };
 import exportSchema from "../contracts/schemas/export.v1.schema.json" with { type: "json" };
+import exportSchemaV11 from "../contracts/schemas/export.v1.1.schema.json" with { type: "json" };
 import mappingSchema from "../contracts/schemas/mapping.v1.schema.json" with { type: "json" };
 import phantomSchema from "../contracts/schemas/phantom.v1.schema.json" with { type: "json" };
 import sourceSchema from "../contracts/schemas/source.v1.schema.json" with { type: "json" };
@@ -49,6 +50,7 @@ const validators: Record<string, ValidateFunction> = {
   "mapping@1.0.0": ajv.compile(mappingSchema),
   "validation@1.0.0": ajv.compile(validationSchema),
   "export@1.0.0": ajv.compile(exportSchema),
+  "export@1.1.0": ajv.compile(exportSchemaV11),
   "cloud-disclosure@1.0.0": ajv.compile(cloudDisclosureSchema),
   "cloud-disclosure@1.1.0": ajv.compile(cloudDisclosureSchemaV11),
   "cloud-disclosure@1.2.0": ajv.compile(cloudDisclosureSchemaV12),

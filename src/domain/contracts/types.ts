@@ -147,6 +147,71 @@ export interface ExportContract {
   knownLimitations: string[];
 }
 
+export type ExportPackageStatus = "VERIFIED" | "VERIFIED_WITH_EXCEPTIONS" | "DRAFT";
+
+/** Export Contract 1.1.0: manifest of a portable integration package (Sprint 9). */
+export interface ExportContractV11 {
+  contractKind: "export";
+  schemaVersion: "1.1.0";
+  exportId: string;
+  mappingId: string;
+  mappingVersion: string;
+  status: ExportPackageStatus;
+  draftConfirmed: boolean;
+  packageFormat: { name: "eyes-integration-package"; version: "1.0.0" };
+  runtime: {
+    engine: "phantom-twin-mapping";
+    minAppVersion: string;
+    runtimeName: "eyes-mapping-runtime";
+    runtimeVersion: string;
+    runtimePath: "runtime/eyes-mapping-runtime.mjs";
+    runtimeSha256: string;
+    runnerPath: "run.mjs";
+    runnerSha256: string;
+    node: ">=22";
+    npmDependencies: [];
+  };
+  mapping: {
+    variant: "initial" | "revised";
+    origin: "gemini-cloud" | "test-adapter" | "manual-edit" | "hand-written";
+    contractSha256: string;
+    inference: { actualSource: string; model: string; simulated: boolean; resultKind: string } | null;
+    revisionVerdict: string | null;
+    approvedDisclosureSha256: string | null;
+  };
+  verification: {
+    state: "VERIFIED" | "VERIFIED_WITH_EXCEPTIONS" | "PARTIALLY_VERIFIED";
+    importedRecords: number;
+    hiddenCasesRun: number;
+    hiddenCasesAvailable: number;
+    outcomes: { transformedValid: number; handledByApprovedRule: number; quarantined: number; unresolved: number; rejectedByPolicy: number };
+    quarantineRate: number;
+    semanticOverall: string;
+    policyId: string;
+    policyVersion: string;
+    reasons: string[];
+  };
+  paths: {
+    mapping: "mapping/mapping.alias.json";
+    destinationSchema: "schemas/destination.schema.json";
+    syntheticFixtures: "fixtures/synthetic-records.json";
+    expectedOutputs: "fixtures/expected-outputs.json";
+    validationReport: "reports/validation-report.json";
+    acceptancePolicy: "policy/acceptance-policy.json";
+    semanticDeclarations: "policy/semantic-declarations.json";
+    bindingsTemplate: "bindings/bindings.template.json";
+    readme: "README.md";
+  };
+  syntheticFixtureRefs: string[];
+  validationReportRef: string;
+  includesPrivateSourceFixtures: false;
+  includesSourceBindings: false;
+  privacyScan: { method: string; scannedFiles: number; findings: 0 };
+  files: Array<{ path: string; sha256: string; bytes: number }>;
+  knownLimitations: string[];
+  app: { version: string; buildSha: string | null };
+}
+
 export interface CloudDisclosureDestination {
   provider: "firebase-ai-logic";
   backend: "google-ai";
@@ -306,6 +371,7 @@ export type AnyContract =
   | MappingContract
   | ValidationContract
   | ExportContract
+  | ExportContractV11
   | CloudDisclosurePayload;
 
 export type { MappingOperationName };

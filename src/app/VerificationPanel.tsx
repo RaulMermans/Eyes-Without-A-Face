@@ -11,6 +11,7 @@ import { opNumber } from "./view-model.ts";
 import type { WorkspaceState } from "./workspace-state.ts";
 import type { InferenceServices } from "../inference/types.ts";
 import { BlindRevisionPanel } from "./BlindRevisionPanel.tsx";
+import { ExportPanel } from "./ExportPanel.tsx";
 import { SemanticPanel } from "./SemanticPanel.tsx";
 import { SEMANTIC_LABEL } from "./semantic-labels.ts";
 import { activeExecutable, computeWorkspaceSemantics } from "./semantic-context.ts";
@@ -43,12 +44,14 @@ export function VerificationPanel({
   prepared,
   onInspectOperation,
   inference,
+  buildSha = null,
 }: {
   workspace: WorkspaceState;
   onChange: (next: WorkspaceState) => void;
   prepared: PreparedTwin | null;
   onInspectOperation: (index: number) => void;
   inference: InferenceServices;
+  buildSha?: string | null;
 }) {
   const [includeReserved, setIncludeReserved] = useState(true);
   const proposal = workspace.proposal;
@@ -280,6 +283,7 @@ export function VerificationPanel({
         </div>
       )}
       <BlindRevisionPanel workspace={workspace} onChange={onChange} prepared={prepared} inference={inference} />
+      <ExportPanel workspace={workspace} prepared={prepared} buildSha={buildSha} />
     </section>
   );
 }

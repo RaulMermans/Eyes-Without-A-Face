@@ -21,7 +21,9 @@ export type WorkflowEventKind =
   | "semantic-verify"
   | "semantic-feedback"
   | "revision-decision"
-  | "outcome-compare";
+  | "outcome-compare"
+  | "export-package"
+  | "cloud-recovery";
 
 export interface WorkflowEvent {
   at: string;
