@@ -29,5 +29,8 @@ Read, in order:
 23. `docs/sprints/sprint-11.md` — Sprint 11 report: acceptance status, open owner gates
 24. `docs/sprints/sprint-12.md` — Sprint 12 report: live deployment, hosted acceptance, Nano-value experiment, submission readiness
 25. `docs/hackathon-requirements.md` and `docs/hackathon-history.md` — Official Rules, compliance, pre-existing work disclosure
+26. `docs/decisions/0012-guided-flow-and-source-adapters.md` — guided flow, technical view, Source Adapter Layer
+27. `docs/contracts/source-adapter.md` — Source Adapter contract 1.0.0, limits, REST connector safety
+28. `docs/sprints/sprint-13.md` — Sprint 13 report: tests, connector evidence, release plan, readiness
 
-Do not duplicate architecture here. Do not start Sprint 13 automatically.
+Do not duplicate architecture here. Do not start Sprint 14 automatically.
