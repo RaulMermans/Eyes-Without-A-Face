@@ -21,6 +21,7 @@ import { initialWorkspaceState, type WorkspaceState } from "./workspace-state.ts
 import { WORKFLOW_STEPS, type WorkflowStepId } from "./workflow.ts";
 import { HowItWorks, ProductHero } from "./Landing.tsx";
 import { WorkflowProgress } from "./WorkflowProgress.tsx";
+import { RuntimePreflight } from "./RuntimePreflight.tsx";
 import { Disclosure, Eyebrow, ZoneLabel, type Zone } from "../components/spectral.tsx";
 
 const STEP_ZONE: Record<WorkflowStepId, Zone> = {
@@ -45,7 +46,7 @@ const STEP_DETAILS: Record<WorkflowStepId, { body: string }> = {
     body: "AI proposes; deterministic software validates and executes. Proposals are rejected unless they pass the canonical Mapping Contract and alias checks.",
   },
   verification: {
-    body: "The deterministic mapping engine executes the resolved mapping against the private records and reserved hidden cases. Private diagnostics stay local.",
+    body: "The deterministic mapping engine executes the resolved mapping against the private records and reserved hidden cases. Private diagnostics stay local. The final action exports a package that runs outside this app.",
   },
 };
 
@@ -140,7 +141,7 @@ export default function App() {
             <div className="min-w-0">
               <h1 className="font-display text-2xl leading-none tracking-[0.005em] sm:text-[1.7rem]">Eyes Without a Face</h1>
               <p className="mt-1 truncate font-mono text-[10px] uppercase tracking-[0.16em] text-gold sm:text-[11px]">
-                {landing ? "Phantom Twin Engine" : "Build for systems your AI cannot see."}
+                {landing ? "Phantom Twin Engine" : "Build integrations for systems your AI cannot see."}
               </p>
             </div>
           </div>
@@ -201,6 +202,7 @@ export default function App() {
               onContinue={() => goTo("phantom")}
             />
           ) : null}
+          {step.id === "source" ? <RuntimePreflight config={config} inference={inference} refreshKey={workspace.proposal} /> : null}
           {step.id === "phantom" ? (
             <>
               <PhantomPanel
@@ -226,6 +228,7 @@ export default function App() {
               focusOperation={focusOperation}
               onFocusOperation={setFocusOperation}
               onContinue={() => goTo("verification")}
+              onReviewFresh={() => goTo("review")}
             />
           ) : null}
           {step.id === "verification" ? (
@@ -234,6 +237,7 @@ export default function App() {
               onChange={setWorkspace}
               prepared={prepared}
               inference={inference}
+              buildSha={config.buildSha || null}
               onInspectOperation={(index) => {
                 setFocusOperation(index);
                 goTo("mapping");

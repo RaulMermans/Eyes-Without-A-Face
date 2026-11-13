@@ -11,6 +11,7 @@ import { opNumber } from "./view-model.ts";
 import type { WorkspaceState } from "./workspace-state.ts";
 import type { InferenceServices } from "../inference/types.ts";
 import { BlindRevisionPanel } from "./BlindRevisionPanel.tsx";
+import { ExportPanel } from "./ExportPanel.tsx";
 import { SemanticPanel } from "./SemanticPanel.tsx";
 import { SEMANTIC_LABEL } from "./semantic-labels.ts";
 import { activeExecutable, computeWorkspaceSemantics } from "./semantic-context.ts";
@@ -43,12 +44,14 @@ export function VerificationPanel({
   prepared,
   onInspectOperation,
   inference,
+  buildSha = null,
 }: {
   workspace: WorkspaceState;
   onChange: (next: WorkspaceState) => void;
   prepared: PreparedTwin | null;
   onInspectOperation: (index: number) => void;
   inference: InferenceServices;
+  buildSha?: string | null;
 }) {
   const [includeReserved, setIncludeReserved] = useState(true);
   const proposal = workspace.proposal;
@@ -179,6 +182,14 @@ export function VerificationPanel({
       {report ? (
         <div className="space-y-5 text-sm" data-testid="mapping-results">
           <VerdictCard report={report} semantic={semantics?.report ?? null} />
+          <nav aria-label="Next steps" className="flex flex-wrap items-center gap-x-3 gap-y-1 border-l-2 border-ink/40 pl-3 text-xs text-mute" data-testid="verification-next-steps">
+            <span className="font-mono uppercase tracking-[0.1em]">Next</span>
+            <span>1 · read the meaning check below</span>
+            <span>2 · optionally request one blind revision</span>
+            <a href="#export-heading" className="font-medium text-ink underline underline-offset-2" data-testid="jump-to-export">
+              3 · Export Integration ↓
+            </a>
+          </nav>
 
           <div className="grid gap-5 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
             <section aria-labelledby="validation-heading" className="border border-rule bg-panel p-4">
@@ -280,6 +291,7 @@ export function VerificationPanel({
         </div>
       )}
       <BlindRevisionPanel workspace={workspace} onChange={onChange} prepared={prepared} inference={inference} />
+      <ExportPanel workspace={workspace} prepared={prepared} buildSha={buildSha} />
     </section>
   );
 }

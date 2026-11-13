@@ -12,7 +12,7 @@ const PATH = [
   { label: "Phantom Twin", where: "This browser · Gemini Nano on-device", detail: "Fields become aliases with fictional values.", Icon: PhantomIcon, zone: "local" },
   { label: "Your approval", where: "You approve one exact request", detail: "Read exactly what would be sent. Or reject it.", Icon: SealIcon, zone: "local" },
   { label: "AI mapping", where: "Gemini in the cloud · aliases only", detail: "Gemini proposes declarative operations.", Icon: CloudIcon, zone: "cloud" },
-  { label: "Verified integration", where: "This browser · deterministic", detail: "Run on real records and hidden cases.", Icon: GaugeIcon, zone: "local" },
+  { label: "Verified integration", where: "This browser · deterministic", detail: "Run on real records and hidden cases. Export a runnable package.", Icon: GaugeIcon, zone: "local" },
 ] as const;
 
 export function ProductHero({ onStart }: { onStart: () => void }) {
@@ -28,13 +28,13 @@ export function ProductHero({ onStart }: { onStart: () => void }) {
             <span className="inline-block h-px w-8 bg-gold" aria-hidden="true" />
             Phantom Twin Engine · client-only
           </p>
-          <h2 id="hero-heading" className="mt-5 max-w-[14ch] font-display text-[2.6rem] leading-[1.02] tracking-[-0.01em] text-bone sm:text-6xl lg:text-[4.6rem]">
-            Build for systems your AI <em className="text-cyan">cannot see.</em>
+          <h2 id="hero-heading" className="mt-5 max-w-[17ch] font-display text-[2.6rem] leading-[1.02] tracking-[-0.01em] text-bone sm:text-6xl lg:text-[4.6rem]">
+            Build integrations for systems your AI <em className="text-cyan">cannot see.</em>
           </h2>
           <p className="mt-5 max-w-[52ch] text-base leading-7 text-ink-text sm:text-lg">
             Let a cloud model design an integration for private data it is never shown. Your records stay in this
             browser. Gemini sees only a fictional <span className="text-bone">Phantom Twin</span> that you approve. Your
-            browser then verifies its mapping against the real records.
+            browser then verifies its mapping against the real records, and you export it as a package that runs anywhere with Node.
           </p>
           <div className="mt-7 flex flex-wrap items-center gap-3">
             <Button variant="spectral" size="lg" onClick={onStart} data-testid="start-demo">
@@ -120,7 +120,7 @@ const STAGES = [
   {
     Icon: GaugeIcon,
     title: "Your browser verifies.",
-    body: "The proposal is validated, aliases resolve locally, and the mapping runs on the real records plus hidden cases the model never saw.",
+    body: "The proposal is validated, aliases resolve locally, and the mapping runs on the real records plus hidden cases the model never saw. Export it as a package that runs outside this app, without your records.",
     tone: "text-ink",
   },
 ] as const;

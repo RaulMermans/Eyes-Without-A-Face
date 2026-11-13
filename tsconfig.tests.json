@@ -19,5 +19,5 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["tests/unit", "tests/contracts", "tests/privacy", "tests/evaluation", "tests/json.d.ts", "src"]
+  "include": ["tests/unit", "tests/contracts", "tests/privacy", "tests/evaluation", "tests/helpers", "tests/json.d.ts", "src"]
 }

@@ -65,7 +65,8 @@ export interface RevisionRunState {
   revised: ProposalState | null;
   revisedEvaluation: MappingEvaluation | null;
   holdout: { initial: MappingEvaluation; revised: MappingEvaluation | null } | null;
-  blocked: { code: RevisionBlockCode; message: string } | null;
+  /** failureCode/detail: the classified provider failure and its raw local-only text (Sprint 9). */
+  blocked: { code: RevisionBlockCode; message: string; failureCode?: string; detail?: string } | null;
   notice: string | null;
   /** Deterministic recommendation for the revised mapping (src/revision/decision.ts). Never auto-applied. */
   decision: RevisionDecision | null;
@@ -81,7 +82,8 @@ export interface WorkspaceState {
   destinationText: string;
   review: ReviewState | null;
   proposal: ProposalState | null;
-  cloudError: string | null;
+  /** Last cloud mapping failure: a classified code and the raw detail (local only, shown collapsed). */
+  cloudError: { code: string; detail: string } | null;
   /** Sprint 2 manual contract over local source field names. Never sent anywhere. */
   mappingText: string;
   mappingChoice: MappingChoice;

@@ -1,5 +1,6 @@
 import { useEffect, useState, type CSSProperties } from "react";
 import { Button } from "../components/ui/button.tsx";
+import { guidanceForFailure } from "../inference/failure-guidance.ts";
 import { AlertIcon, ArrowRightIcon, ChipIcon, LockIcon } from "../components/icons.tsx";
 import { Disclosure, EmptyState, FieldToken, Panel, PanelHeader, StatusMark, ZoneLabel } from "../components/spectral.tsx";
 import { ErrorBanner } from "../components/ErrorBanner.tsx";
@@ -45,7 +46,7 @@ export function PhantomPanel({
   const [seedText, setSeedText] = useState(String(workspace.seed));
   const [onDevice, setOnDevice] = useState<OnDeviceMode>({ kind: "checking" });
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
-  const [suggestError, setSuggestError] = useState<{ message: string; recoverable: boolean } | null>(null);
+  const [suggestError, setSuggestError] = useState<{ message: string; recoverable: boolean; code?: string } | null>(null);
   const [busy, setBusy] = useState<{ done: number; total: number; alias: string } | null>(null);
   const [retriesUsed, setRetriesUsed] = useState(0);
   const [drafts, setDrafts] = useState<Record<string, string>>({});
@@ -143,6 +144,7 @@ export function PhantomPanel({
       setSuggestError({
         message: `${code}: ${explanation} ${next.length} of ${fields.length} fields were classified before it stopped. Nothing was sent to the cloud.`,
         recoverable,
+        code,
       });
       recordWorkflowEvent({ kind: "on-device-probe", ok: false, code });
       if (!recoverable) {
@@ -509,7 +511,7 @@ function InferencePanel({
 }: {
   onDevice: OnDeviceMode;
   busy: { done: number; total: number; alias: string } | null;
-  suggestError: { message: string; recoverable: boolean } | null;
+  suggestError: { message: string; recoverable: boolean; code?: string } | null;
   suggestions: Suggestion[];
   onSuggest: () => void;
   onRetry: () => void;
@@ -561,6 +563,18 @@ function InferencePanel({
             <p className="text-fail" data-testid="on-device-error">
               {suggestError.message}
             </p>
+            {suggestError.code ? (
+              <div className="mt-1.5 text-xs text-mute" data-testid="on-device-guidance">
+                <p>{guidanceForFailure({ code: suggestError.code, stage: "on-device" }).why}</p>
+                <ul className="mt-1 list-disc pl-4">
+                  {guidanceForFailure({ code: suggestError.code, stage: "on-device" })
+                    .next.filter((line) => suggestError.recoverable || !line.startsWith("Retry once"))
+                    .map((line) => (
+                      <li key={line}>{line}</li>
+                    ))}
+                </ul>
+              </div>
+            ) : null}
             {suggestError.recoverable && onDevice.kind === "available" ? (
               <Button className="mt-2" onClick={onRetry} disabled={Boolean(busy)} data-testid="retry-on-device">
                 Retry once on-device (continues with the remaining fields)

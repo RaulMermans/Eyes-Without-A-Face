@@ -65,7 +65,7 @@ export function SourcePanel({
           Load reserved edge cases as source
         </Button>
       </div>
-      <Disclosure summary="Blind revision scenarios — fictional, with an independent holdout" className="mt-4" testId="scenario-picker">
+      <Disclosure summary="Blind revision scenarios — fictional, with a holdout set (inspected in Sprint 8; development data)" className="mt-4" testId="scenario-picker">
         <p className="text-xs text-mute">
           Each scenario loads imported records (profiled), revision-feedback cases (reserved hidden cases) and a holdout set that stays out of
           profiling, disclosure and feedback until the mapping is final. Its acceptance policy is local and versioned. All data is fictional.

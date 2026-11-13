@@ -2,7 +2,7 @@ import type { InferenceAvailability } from "../config/env.ts";
 import { validateStructuredOutput } from "../domain/inference-output/validate-output.ts";
 import { assertAuthorizedEnvelope, type AuthorizedCloudRequest } from "../twin/authorization.ts";
 import { assertReservedAuthorization } from "../twin/authorization-ledger.ts";
-import { InferenceError, InferenceUnavailableError } from "./errors.ts";
+import { classifyUnknownError, InferenceError, InferenceUnavailableError } from "./errors.ts";
 import { probeOnDeviceCapability } from "./on-device-capability.ts";
 import { deriveTestProposal, deriveTestRevision } from "./test-proposer.ts";
 import { isRevisionSchemaVersion } from "../revision/revision-payload.ts";
@@ -40,7 +40,18 @@ export interface TestHarness {
     | "PROVENANCE_UNKNOWN"
     | "PROVENANCE_MISMATCH"
     | "SIMULATED_RESULT"
-    | "IN_FLIGHT";
+    | "IN_FLIGHT"
+    | "PROVIDER_OVERLOADED"
+    | "RATE_LIMITED"
+    | "APP_CHECK_REJECTED"
+    | "MODEL_UNAVAILABLE"
+    | "NETWORK";
+  /** Throw this provider message as a plain Error, so the real classifier runs on it (E2E only). */
+  cloudRawError?: string;
+  /** 0-based cloud call indices that fail (with cloudErrorCode / cloudRawError). Without it every call fails. */
+  cloudFailCalls?: number[];
+  /** Delay before the simulated cloud answer, in ms (E2E only: pending state and Stop waiting). */
+  cloudDelayMs?: number;
 }
 
 export function createTestOnDeviceAdapter(
@@ -175,8 +186,12 @@ export function createTestCloudAdapter(
     generateAuthorized: async (request: AuthorizedCloudRequest): Promise<InferenceResult> => {
       assertAuthorizedEnvelope(request);
       assertReservedAuthorization(request);
-      harness.cloudCalls = (harness.cloudCalls ?? 0) + 1;
+      const callIndex = harness.cloudCalls ?? 0;
+      harness.cloudCalls = callIndex + 1;
       const revision = isRevisionSchemaVersion(request.payload.schemaVersion);
+      if (harness.cloudDelayMs) await new Promise((resolve) => setTimeout(resolve, harness.cloudDelayMs));
+      const failThisCall = !harness.cloudFailCalls || harness.cloudFailCalls.includes(callIndex);
+      if (harness.cloudRawError && failThisCall) throw classifyUnknownError(new Error(harness.cloudRawError));
       if (revision && harness.revisionRawText !== undefined) {
         return {
           text: harness.revisionRawText,
@@ -195,7 +210,7 @@ export function createTestCloudAdapter(
           },
         };
       }
-      if (harness.cloudErrorCode) {
+      if (harness.cloudErrorCode && failThisCall) {
         throw new InferenceError(
           harness.cloudErrorCode,
           harness.cloudErrorCode === "TIMEOUT"

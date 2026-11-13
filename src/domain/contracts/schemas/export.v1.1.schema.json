@@ -1,0 +1,209 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://eyes-without-a-face.dev/schemas/export/1.1.0",
+  "title": "Export Contract 1.1.0",
+  "description": "Manifest of a portable integration package: alias-level mapping, destination schema, synthetic fixtures, safe validation report, policy declarations and a hashed, dependency-free runtime. Never contains private source records or source-field bindings.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contractKind",
+    "schemaVersion",
+    "exportId",
+    "mappingId",
+    "mappingVersion",
+    "status",
+    "draftConfirmed",
+    "packageFormat",
+    "runtime",
+    "mapping",
+    "verification",
+    "paths",
+    "syntheticFixtureRefs",
+    "validationReportRef",
+    "includesPrivateSourceFixtures",
+    "includesSourceBindings",
+    "privacyScan",
+    "files",
+    "knownLimitations",
+    "app"
+  ],
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "path": { "type": "string", "pattern": "^[A-Za-z0-9._-]+(/[A-Za-z0-9._-]+)*$", "maxLength": 200, "not": { "pattern": "(^|/)\\.\\.?(/|$)" } },
+    "count": { "type": "integer", "minimum": 0 }
+  },
+  "properties": {
+    "contractKind": { "const": "export" },
+    "schemaVersion": { "const": "1.1.0" },
+    "exportId": { "type": "string", "pattern": "^[a-z0-9-]{1,128}$" },
+    "mappingId": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "mappingVersion": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "status": {
+      "enum": ["VERIFIED", "VERIFIED_WITH_EXCEPTIONS", "DRAFT"],
+      "description": "DRAFT: exported with unresolved findings after explicit confirmation. Never production-ready."
+    },
+    "draftConfirmed": { "type": "boolean" },
+    "packageFormat": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version"],
+      "properties": {
+        "name": { "const": "eyes-integration-package" },
+        "version": { "const": "1.0.0" }
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["engine", "minAppVersion", "runtimeName", "runtimeVersion", "runtimePath", "runtimeSha256", "runnerPath", "runnerSha256", "node", "npmDependencies"],
+      "properties": {
+        "engine": { "const": "phantom-twin-mapping" },
+        "minAppVersion": { "type": "string", "minLength": 1 },
+        "runtimeName": { "const": "eyes-mapping-runtime" },
+        "runtimeVersion": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "runtimePath": { "const": "runtime/eyes-mapping-runtime.mjs" },
+        "runtimeSha256": { "$ref": "#/$defs/sha256" },
+        "runnerPath": { "const": "run.mjs" },
+        "runnerSha256": { "$ref": "#/$defs/sha256" },
+        "node": { "const": ">=22" },
+        "npmDependencies": { "type": "array", "maxItems": 0 }
+      }
+    },
+    "mapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["variant", "origin", "contractSha256", "inference", "revisionVerdict", "approvedDisclosureSha256"],
+      "properties": {
+        "variant": { "enum": ["initial", "revised"] },
+        "origin": { "enum": ["gemini-cloud", "test-adapter", "manual-edit", "hand-written"] },
+        "contractSha256": { "$ref": "#/$defs/sha256" },
+        "inference": {
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["actualSource", "model", "simulated", "resultKind"],
+              "properties": {
+                "actualSource": { "enum": ["ON_DEVICE", "IN_CLOUD", "TEST", "UNAVAILABLE", "FAILED"] },
+                "model": { "type": "string", "maxLength": 128 },
+                "simulated": { "type": "boolean" },
+                "resultKind": { "enum": ["real-on-device", "real-cloud", "simulated-test", "unavailable", "failed"] }
+              }
+            }
+          ]
+        },
+        "revisionVerdict": { "type": ["string", "null"], "maxLength": 64 },
+        "approvedDisclosureSha256": { "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/sha256" }] }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "importedRecords", "hiddenCasesRun", "hiddenCasesAvailable", "outcomes", "quarantineRate", "semanticOverall", "policyId", "policyVersion", "reasons"],
+      "properties": {
+        "state": { "enum": ["VERIFIED", "VERIFIED_WITH_EXCEPTIONS", "PARTIALLY_VERIFIED"] },
+        "importedRecords": { "$ref": "#/$defs/count" },
+        "hiddenCasesRun": { "$ref": "#/$defs/count" },
+        "hiddenCasesAvailable": { "$ref": "#/$defs/count" },
+        "outcomes": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["transformedValid", "handledByApprovedRule", "quarantined", "unresolved", "rejectedByPolicy"],
+          "properties": {
+            "transformedValid": { "$ref": "#/$defs/count" },
+            "handledByApprovedRule": { "$ref": "#/$defs/count" },
+            "quarantined": { "$ref": "#/$defs/count" },
+            "unresolved": { "$ref": "#/$defs/count" },
+            "rejectedByPolicy": { "$ref": "#/$defs/count" }
+          }
+        },
+        "quarantineRate": { "type": "number", "minimum": 0, "maximum": 1 },
+        "semanticOverall": {
+          "enum": ["SEMANTIC_PASS", "SEMANTIC_MISMATCH", "SEMANTIC_POLICY_CONFLICT", "SEMANTIC_AMBIGUOUS", "SEMANTIC_EVIDENCE_MISSING", "SEMANTIC_UNVERIFIED", "NOT_RUN"]
+        },
+        "policyId": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "policyVersion": { "type": "string", "minLength": 1 },
+        "reasons": { "type": "array", "items": { "type": "string", "minLength": 1, "maxLength": 512 } }
+      }
+    },
+    "paths": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mapping", "destinationSchema", "syntheticFixtures", "expectedOutputs", "validationReport", "acceptancePolicy", "semanticDeclarations", "bindingsTemplate", "readme"],
+      "properties": {
+        "mapping": { "const": "mapping/mapping.alias.json" },
+        "destinationSchema": { "const": "schemas/destination.schema.json" },
+        "syntheticFixtures": { "const": "fixtures/synthetic-records.json" },
+        "expectedOutputs": { "const": "fixtures/expected-outputs.json" },
+        "validationReport": { "const": "reports/validation-report.json" },
+        "acceptancePolicy": { "const": "policy/acceptance-policy.json" },
+        "semanticDeclarations": { "const": "policy/semantic-declarations.json" },
+        "bindingsTemplate": { "const": "bindings/bindings.template.json" },
+        "readme": { "const": "README.md" }
+      }
+    },
+    "syntheticFixtureRefs": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/path" } },
+    "validationReportRef": { "$ref": "#/$defs/path" },
+    "includesPrivateSourceFixtures": {
+      "const": false,
+      "description": "Private source datasets are never packed into exports."
+    },
+    "includesSourceBindings": {
+      "const": false,
+      "description": "The alias → source-field binding map stays in the source environment. Only an empty template is packed."
+    },
+    "privacyScan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["method", "scannedFiles", "findings"],
+      "properties": {
+        "method": { "type": "string", "minLength": 1, "maxLength": 512 },
+        "scannedFiles": { "$ref": "#/$defs/count" },
+        "findings": { "const": 0 }
+      }
+    },
+    "files": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256", "bytes"],
+        "properties": {
+          "path": { "$ref": "#/$defs/path" },
+          "sha256": { "$ref": "#/$defs/sha256" },
+          "bytes": { "$ref": "#/$defs/count" }
+        }
+      }
+    },
+    "knownLimitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1, "maxLength": 512 }
+    },
+    "app": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["version", "buildSha"],
+      "properties": {
+        "version": { "type": "string", "minLength": 1 },
+        "buildSha": { "type": ["string", "null"], "maxLength": 64 }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "DRAFT" } } },
+      "then": { "properties": { "draftConfirmed": { "const": true }, "verification": { "type": "object", "properties": { "state": { "const": "PARTIALLY_VERIFIED" } } } } }
+    },
+    {
+      "if": { "properties": { "status": { "const": "VERIFIED" } } },
+      "then": { "properties": { "verification": { "type": "object", "properties": { "state": { "const": "VERIFIED" } } } } }
+    },
+    {
+      "if": { "properties": { "status": { "const": "VERIFIED_WITH_EXCEPTIONS" } } },
+      "then": { "properties": { "verification": { "type": "object", "properties": { "state": { "const": "VERIFIED_WITH_EXCEPTIONS" } } } } }
+    }
+  ]
+}

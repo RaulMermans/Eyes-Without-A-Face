@@ -7,6 +7,10 @@ import { Disclosure, Eyebrow, FieldToken, Panel, PanelHeader, StatusMark, ZoneLa
 import type { BlindRevisionFeedback, CloudDisclosurePayload, MappingContract } from "../domain/contracts/types.ts";
 import { compareEvaluations, diffContracts, evaluateMapping, type EvaluationComparison, type MappingEvaluation } from "../evaluation/evaluate.ts";
 import { InferenceError } from "../inference/errors.ts";
+import { guidanceForFailure } from "../inference/failure-guidance.ts";
+import { Guidance } from "../components/Guidance.tsx";
+import { PendingOperation } from "../components/PendingOperation.tsx";
+import { CLOUD_TIMEOUT_MS } from "../inference/retry-policy.ts";
 import type { InferenceServices } from "../inference/types.ts";
 import { recordWorkflowEvent } from "../observability/workflow-log.ts";
 import { fingerprintCanonicalPayload } from "../privacy/fingerprint.ts";
@@ -311,11 +315,13 @@ export function BlindRevisionPanel({
       });
     } catch (caught) {
       const code = caught instanceof DisclosureRejectedError ? caught.reason : caught instanceof InferenceError ? caught.code : "CLOUD_FAILED";
-      const message =
-        caught instanceof InferenceError || caught instanceof DisclosureRejectedError
-          ? `${code}: ${caught.message} The revision request has been used and will not be retried.`
-          : `${code}: the revision request failed and will not be retried.`;
+      const failureCode = caught instanceof DisclosureRejectedError ? "DISCLOSURE_REJECTED" : code;
+      const guidance = guidanceForFailure({ code: failureCode, stage: "cloud-revision" });
+      // The default text is guidance; the raw provider message stays local and collapsed.
+      const message = `${code}: ${guidance.what} The revision request has been used and will not be retried.`;
+      const detail = caught instanceof Error ? caught.message : String(caught);
       next = block(next, caught instanceof InferenceError && caught.code === "MISSING_CONFIG" ? "INFERENCE_UNAVAILABLE" : "INFERENCE_FAILED", message);
+      next = { ...next, blocked: next.blocked ? { ...next.blocked, failureCode, detail } : null };
       recordWorkflowEvent({ kind: "revision-request", ok: false, durationMs: performance.now() - started, payloadHash: preview.payloadHash, code });
     } finally {
       setBusy(null);
@@ -464,8 +470,12 @@ export function BlindRevisionPanel({
           </p>
         ) : null}
         {active?.blocked ? (
-          <div className="mt-3" data-testid="revision-blocked" data-code={active.blocked.code}>
-            <ErrorBanner title={`Blind revision stopped · ${active.blocked.code}`}>{active.blocked.message}</ErrorBanner>
+          <div className="mt-3" data-testid="revision-blocked" data-code={active.blocked.code} data-failure={active.blocked.failureCode}>
+            {active.blocked.failureCode ? (
+              <RevisionFailure failureCode={active.blocked.failureCode} code={active.blocked.code} detail={active.blocked.detail ?? null} />
+            ) : (
+              <ErrorBanner title={`Blind revision stopped · ${active.blocked.code}`}>{active.blocked.message}</ErrorBanner>
+            )}
           </div>
         ) : null}
         {active ? (
@@ -555,7 +565,11 @@ export function BlindRevisionPanel({
               {active.history.includes("REVISION_SENT") ? "Approved and used. This approval cannot authorize another request." : "Not sent."}
             </p>
           )}
-          {busy === "send" ? <LoadingState label="Waiting for the single revision response…" /> : null}
+          {busy === "send" ? (
+            <div className="mt-3">
+              <PendingOperation step="Waiting for the single revision response (no automatic retry)" where="cloud" limitSeconds={Math.round(CLOUD_TIMEOUT_MS / 1000)} testId="revision-pending" />
+            </div>
+          ) : null}
         </Panel>
       ) : null}
 
@@ -665,7 +679,7 @@ export function BlindRevisionPanel({
 
       {active?.holdout?.revised && holdoutComparison ? (
         <ComparisonPanel
-          title="Before / after · independent holdout"
+          title="Before / after · holdout (inspected since Sprint 8)"
           note="Cases the revision never saw. This is the measure of whether the integration genuinely improved."
           before={active.holdout.initial}
           after={active.holdout.revised}
@@ -822,6 +836,22 @@ function DisclosureLedger({ base, feedback }: { base: CloudDisclosurePayload; fe
         <tr className="border-t border-rule"><th scope="row" className="py-1 pr-2 font-normal">Feedback version</th><td>—</td><td data-testid="ledger-version">{feedback.feedbackVersion}</td></tr>
       </tbody>
     </table>
+  );
+}
+
+/** A failed revision request, explained as what happened / why / what next (Sprint 9, C4). */
+function RevisionFailure({ failureCode, code, detail }: { failureCode: string; code: string; detail: string | null }) {
+  const guidance = guidanceForFailure({ code: failureCode, stage: "cloud-revision" });
+  return (
+    <Guidance
+      code={`${code} · ${failureCode}`}
+      title={`Blind revision stopped · ${guidance.title}`}
+      what={guidance.what}
+      why={guidance.why}
+      next={guidance.next}
+      detail={detail}
+      testId="revision-failure"
+    />
   );
 }
 

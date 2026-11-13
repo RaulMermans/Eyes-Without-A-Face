@@ -1,8 +1,8 @@
 # Eyes Without a Face
 
-**Build for systems your AI cannot see.**
+**Build integrations for systems your AI cannot see.**
 
-A privacy-aware developer tool for the Google #BuildHybridAI 2026 hackathon. It lets a cloud model design a data integration for a private system **without being shown that system's records**, and then proves the result locally.
+A privacy-aware integration studio for the Google #BuildHybridAI 2026 hackathon. It lets a cloud model design a data integration for a private system **without being shown that system's records**, proves the result locally, and exports it as a package that runs outside the app.
 
 ![Reality Check after a real Gemini proposal](docs/demo/screenshots/reality-check-real-gemini.png)
 
@@ -23,7 +23,8 @@ Private JSON ──▶ Phantom Twin ──▶ Disclosure Review ──▶ Gemini
 2. **Phantom Twin (local, on-device AI).** Every field becomes a meaningless alias (`f_01`…) with fictional example values. Gemini Nano, running on-device through Firebase AI Logic (`ONLY_ON_DEVICE`), may suggest field roles from the *synthetic* samples. The alias-to-field bindings never leave the page.
 3. **Disclosure Review (you).** The app shows the exact application prompt it would send, with its SHA-256. Approval is bound to that prompt, the destination model and one request id. One approval authorizes one request.
 4. **Cloud Mapping (Gemini in the cloud).** Firebase AI Logic (`ONLY_IN_CLOUD`, App Check enforced) sends only the approved payload. Gemini returns a declarative mapping over aliases using an eight-operation allowlist. It cannot execute code.
-5. **Reality Check (local, deterministic).** The proposal is validated against the canonical Mapping Contract, aliases are resolved locally, and the engine runs it against the private records **and against reserved hidden cases that were never profiled or disclosed**.
+5. **Reality Check (local, deterministic).** The proposal is validated against the canonical Mapping Contract, aliases are resolved locally, and the engine runs it against the private records **and against reserved hidden cases that were never profiled or disclosed**. A semantic verifier then checks what the mapping *means*, and you may approve one blind revision.
+6. **Export Integration (local).** Download a ZIP that runs with plain Node 22: the alias-level mapping, destination schema, fictional fixtures, a value-free report, the acceptance policy and the app's own engine, all SHA-256 pinned. No records, field names or alias bindings. You bind aliases to your fields in your own environment ([docs/contracts/export.md](docs/contracts/export.md)).
 
 **AI proposes. Deterministic code validates and executes.** There is no automatic fallback between on-device and cloud. If a model is unavailable, the app says so and offers a manual path, labeled as manual.
 
@@ -55,8 +56,9 @@ Real inference through Firebase AI Logic on Chrome 157 (Linux, AMD Strix Halo) w
 | On-device Gemini Nano (`ONLY_ON_DEVICE`), guided twin step | `ON_DEVICE`, 6 / 6 fields, schema-valid, 0 cloud requests (3 / 3 runs) |
 | Cloud Gemini (`ONLY_IN_CLOUD`, App Check enforced), guided mapping | `IN_CLOUD` in about 2 s, proposal valid unchanged (3 / 3 runs) |
 | Private terms in the real `generateContent` request body | 0 |
+| Sprint 9 live hero journey (Nano → Gemini → one revision → export → `node run.mjs verify`), 5 runs | 3 `ACCEPTED`, 1 `HUMAN_REVIEW_REQUIRED` (exported as DRAFT), 1 invalid initial proposal rejected; 4 / 4 exports verified; 0 private terms in 9 request bodies |
 | On-device reliability, 10 cold + 10 warm browser runs | 19 / 20 first try, 20 / 20 after one user retry, 0 cloud fallbacks |
-| Deterministic suites | 134 unit · 22 contract · 33 privacy · 47 Playwright E2E |
+| Deterministic suites (Sprint 9 head) | 217 unit · 43 contract · 66 privacy · 62 evaluation · 89 Playwright E2E |
 
 ## Run it
 
@@ -65,7 +67,7 @@ pnpm install
 pnpm dev          # http://localhost:5173
 ```
 
-The app runs **without any Firebase configuration**. You can complete the whole walkthrough with deterministic profiling, the Phantom Twin, the disclosure review and a hand-written mapping contract. On-device and cloud AI stay visibly unavailable, never simulated.
+The app runs **without any Firebase configuration**. You can complete the whole walkthrough, including export, with deterministic profiling, the Phantom Twin, the disclosure review and a hand-written mapping contract. On-device and cloud AI stay visibly unavailable, never simulated.
 
 To enable real inference:
 
@@ -79,9 +81,20 @@ To enable real inference:
 | `pnpm build:release` | Production build for Hosting: forces App Check debug off, stamps the Git SHA, verifies `dist/` |
 | `pnpm test:live` | Opt-in real Firebase/Gemini suite ([docs/testing/playwright-live.md](docs/testing/playwright-live.md)); never in CI |
 
+## Exported package
+
+```bash
+unzip eyes-integration-*.zip && cd eyes-integration-*/
+node run.mjs verify                       # hashes, canonical contract, fixture replay
+node run.mjs bindings-template --out ../bindings.local.json   # then fill f_NN → your field path
+node run.mjs run --input ../records.json --bindings ../bindings.local.json --out ../results.json
+```
+
+The package status is computed, never asserted: `VERIFIED`, `VERIFIED_WITH_EXCEPTIONS` (quarantine within policy, listed), or a confirmed `DRAFT`, which is not production-ready.
+
 ## Status
 
-Release candidate (Sprint 5) with the Sprint 6 Spectral Forensics redesign, Sprint 7 **Blind Integration**, and Sprint 8 **Semantic Verification** ([docs/sprints/sprint-8.md](docs/sprints/sprint-8.md)).
+Sprint 9 adds **portable export**, provider-failure guidance with explicit fresh-approval recovery, and a runtime preflight ([docs/sprints/sprint-9.md](docs/sprints/sprint-9.md)), on top of Sprint 7 **Blind Integration** and Sprint 8 **Semantic Verification**. Sprint 9 live: 3 of 5 real hero runs ended `ACCEPTED` and exported, and 4 of 4 exported packages verified with plain `node`. Judge summary: [docs/submission/evidence.md](docs/submission/evidence.md).
 
 A local verifier checks what a mapping *means*, not only its structure, against constraints the owner declared or that local records prove. You can then approve one revision request that tells Gemini what is wrong, and optionally the approved constraint, never the records.
 
@@ -94,7 +107,7 @@ Sprint 8 real-model benchmark (preliminary, 5 trials, frozen fresh holdout, ever
   - Gemini Nano added no measurable value.
   - 5 of 8 revision requests timed out at the provider.
 
-The hosted deployment and public release are gated on owner approval ([docs/deployment.md](docs/deployment.md)). Not implemented: export packaging.
+The hosted deployment and public release are gated on owner approval ([docs/deployment.md](docs/deployment.md)); nothing is deployed yet. No independent usability test has been run ([docs/usability/README.md](docs/usability/README.md)).
 
 ## Project
 

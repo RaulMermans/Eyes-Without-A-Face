@@ -1,6 +1,48 @@
 # Deployment
 
-**Status (Sprint 5, 2026-11-11): nothing has been deployed.** Every deployment step below is an external side effect and requires explicit owner approval.
+**Status (Sprint 9, 2026-11-13): still nothing deployed.** Every deployment step below is an external side effect and requires explicit owner approval.
+
+## Sprint 9 read-only re-audit (2026-11-13)
+
+| Item | Result | How |
+| --- | --- | --- |
+| Project | `eyes-without-a-face-b7281` (507051460368), ACTIVE | Firebase MCP `get_project` |
+| Web app | `eyes-without-a-face-web`, `1:507051460368:web:086c755a2c003fb30b4795`, ACTIVE | Firebase MCP `list_apps` |
+| Hosting site / channels | one site; channel `live` only; **no preview channels** | CLI `hosting:sites:list`, `hosting:channel:list` (firebase-tools 15.35.0) |
+| Served content | `https://eyes-without-a-face-b7281.web.app/` → **404 "Site Not Found"**; `/build-info.json` → 404 | HTTP GET |
+| App Check enforcement, reCAPTCHA domains, debug tokens | **Not re-read this sprint** (no gcloud on this machine; the CLI credential store was deliberately not used to mint tokens). Last verified 2026-11-11 (table below) | — |
+| API key restrictions | Not inspected (API Keys API disabled, unchanged) | — |
+
+The channel table's "Last Release Time" (2026-11-10 18:20 local) is the channel creation time recorded below; the URL still serves Firebase's 404, so no release exists.
+
+## Sprint 9 release candidate
+
+`pnpm build:release` + `pnpm verify:release` **PASS** on a clean tree (29 files, 1.9 MB, `mode: production`, `appCheckDebug: false`, debug token absent, build SHA stamped). The exact SHA to deploy is the commit the owner approves (normally the merge of the Sprint 9 PR); rebuild from it, never deploy a build of another commit. The export runtime is a separate lazy chunk (`eyes-mapping-runtime-*.js`, about 400 kB) loaded only when the user exports.
+
+### Owner approval checklist (each line is a separate approval)
+
+- [ ] Approve the exact commit SHA to deploy.
+- [ ] Re-read App Check enforcement for `firebaseml.googleapis.com` (must be ENFORCED) and the reCAPTCHA key domains (must be exactly the two Hosting domains, no wildcard) in the console.
+- [ ] Approve option C (7-day preview channel, expected to fail closed for cloud) — optional.
+- [ ] Approve option B (first release to `live`).
+- [ ] Do **not** add preview hosts to reCAPTCHA unless separately approved; never a wildcard; never disable enforcement.
+- [ ] Decide whether to revoke the local debug token `sprint-4-live-tests` after recording (it does not affect production).
+
+### Post-deployment verification (run on the deployed build; nothing is claimed before)
+
+1. `GET /build-info.json` → `gitSha` equals the approved SHA; footer shows `build <sha12>`.
+2. Normal Chrome window, approved domain: Runtime check shows Firebase CONFIGURED, App Check CONFIGURED; `self.FIREBASE_APPCHECK_DEBUG_TOKEN` undefined.
+3. Hero journey (docs/demo/hero-demo.md) on `crm-eu-accounts`: approve → `Real Gemini output · IN_CLOUD`; exactly one `generateContent` request with an `X-Firebase-AppCheck` header; Runtime check turns cloud VERIFIED.
+4. Network tab: request bodies contain aliases and fictional examples only (search for a record value, e.g. a customer email: 0 hits).
+5. Nano on the qualifying profile: `ON_DEVICE` suggestions, no `generateContent` during them. In a Chrome without Nano: on-device UNAVAILABLE, deterministic path works, no hybrid claim.
+6. Unsupported browser (e.g. Firefox): app loads, on-device UNAVAILABLE, no error loop.
+7. Export Integration → unzip on another machine/directory → `node run.mjs verify` exit 0.
+8. Console: no errors, no record values, no tokens.
+9. Record URL, SHA, `build-info.json`, deploy time and Hosting version in `docs/sprints/sprint-9.md` (or the Sprint 10 report).
+
+### Rollback
+
+Unchanged (below): disable or roll back the `live` release; `live` was empty before, so `hosting:disable` restores the pre-deployment state. The export feature has no server side and nothing to roll back beyond the static release.
 
 ## Verified current state (read-only inspection, 2026-11-11)
 

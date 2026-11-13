@@ -22,5 +22,7 @@ Read, in order:
 16. `docs/decisions/0009-semantic-verification.md` — semantic verification and semantic blind revision
 17. `docs/contracts/semantic-verification.md` — Semantic Verification Contract 1.0.0
 18. `docs/sprints/sprint-8.md` — Sprint 8 report, benchmark results and Sprint 9 readiness
+19. `docs/contracts/export.md` and `docs/decisions/0010-portable-integration-export.md` — portable integration package
+20. `docs/sprints/sprint-9.md` — Sprint 9 report, release readiness and submission blockers
 
-Do not duplicate architecture here. Do not start Sprint 9 automatically.
+Do not duplicate architecture here. Do not start Sprint 10 automatically.

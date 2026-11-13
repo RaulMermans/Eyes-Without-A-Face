@@ -14,6 +14,7 @@ For the submission's explanation of work done before and during the submission p
 | 2026-11-12 | 6 | Spectral Forensics redesign: landing, Phantom transformation, Integration Studio |
 | 2026-11-12 | 7 | Blind Integration: private on-device understanding, Blind Revision Feedback 1.0.0, one approved blind revision, outcome classes, three evaluation scenarios, real-model runs |
 | 2026-11-12 | 8 | Semantic verification (trusted local constraints), Feedback 1.1.0 / disclosure 1.3.0, deterministic revision decision, frozen fresh holdout, replayable real-model benchmark (A/B/C/D + deterministic patch control), Nano ablation |
+| 2026-11-13 | 9 | Portable integration export (Export Contract 1.1.0, bundled engine, Node runner, local bindings, blocking privacy scan), provider-failure classification and guidance, fresh-approval recovery, runtime preflight, per-operation initial schema, live hero-journey qualification with export, demo runbook, release candidate re-verified |
 
 Sprints 0–2 predate the submission period. Present them as pre-existing work and describe Sprint 3 onward as competition-period work, as far as the Official Rules allow.
 

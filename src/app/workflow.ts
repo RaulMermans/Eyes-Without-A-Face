@@ -32,7 +32,7 @@ export const WORKFLOW_STEPS = [
     number: 5,
     title: "Reality Check",
     processing: "local",
-    summary: "Resolve aliases locally and run the mapping against the private records and reserved hidden cases.",
+    summary: "Resolve aliases locally, run the mapping against the private records and reserved hidden cases, then export the verified integration.",
   },
 ] as const;
 

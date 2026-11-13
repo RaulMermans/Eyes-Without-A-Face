@@ -17,13 +17,14 @@ export const CURRENT_CONTRACT_SCHEMA_VERSION = "1.0.0";
  * the diagnostic payload. 1.2.0 is a blind revision request: 1.1.0 plus one
  * reviewed `revision.feedback` block (ADR 0008). 1.3.0 is the same request
  * carrying Blind Revision Feedback 1.1.0 with semantic findings (ADR 0009).
+ * Export 1.1.0 is the portable integration package manifest (Sprint 9).
  */
 export const SUPPORTED_SCHEMA_VERSIONS = {
   source: ["1.0.0"],
   phantom: ["1.0.0"],
   mapping: ["1.0.0"],
   validation: ["1.0.0"],
-  export: ["1.0.0"],
+  export: ["1.0.0", "1.1.0"],
   "cloud-disclosure": ["1.0.0", "1.1.0", "1.2.0", "1.3.0"],
 } as const satisfies Record<(typeof CONTRACT_KINDS)[number], readonly string[]>;
 
