@@ -112,7 +112,15 @@ There are fewer clicks, not fewer permissions:
 - E2E connector tests use Playwright routes. Because `fulfill()` skips the browser's CORS check, CORS refusal there is modelled as a failed fetch. Real CORS is LIVE-131.
 - All guided E2E cloud steps use the labeled simulated test adapter, never presented as Gemini.
 
-**Not run this sprint:** real Gemini / Nano requalification of the guided flow (no hosted or credentialed model run was performed), and `build:release` on the final merge SHA (to run before any deployment approval).
+**Release verification:** `pnpm build:release` + `pnpm verify:release` **PASS** on `556e346` with a clean tree:
+
+- `mode: production`, `appCheckDebug: false`;
+- local debug token absent from `dist`;
+- 31 files, 2,579 KiB.
+
+A smoke run on that production bundle (`vite preview`) loaded the Excel demo through the lazy xlsx chunk, uploaded a CSV and reached the approval card, with 0 page errors. Nothing was approved or sent. Later commits on this branch change documentation only.
+
+**Not run this sprint:** real Gemini / Nano requalification of the guided flow (no hosted or credentialed model run was performed), and `build:release` on the final *merge* SHA (to run before any deployment approval).
 
 ## F — Usability validation
 
