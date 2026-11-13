@@ -27,5 +27,7 @@ Read, in order:
 21. `docs/decisions/0011-experience-architecture-black-halo.md` — CONNECT / OBSERVE / OUTCOME, derived runtime, Black Halo
 22. `docs/sprints/sprint-10.md` — Sprint 10 report
 23. `docs/sprints/sprint-11.md` — Sprint 11 report: acceptance status, open owner gates
+24. `docs/sprints/sprint-12.md` — Sprint 12 report: live deployment, hosted acceptance, Nano-value experiment, submission readiness
+25. `docs/hackathon-requirements.md` and `docs/hackathon-history.md` — Official Rules, compliance, pre-existing work disclosure
 
-Do not duplicate architecture here. Do not start Sprint 12 automatically.
+Do not duplicate architecture here. Do not start Sprint 13 automatically.

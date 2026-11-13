@@ -1,6 +1,59 @@
 # Deployment
 
-**Status (Sprint 11, 2026-11-13): still nothing deployed. No owner approval was given during Sprint 11.** Every deployment step below is an external side effect and requires explicit owner approval.
+**Status (Sprint 12, 2026-11-13): LIVE.** <https://eyes-without-a-face-b7281.web.app> serves build `b93e3edbb997d6518e208c553a07d5b328e9fbbe` (the Sprint 11 merge on `main`), deployed with the owner's explicit approval of that exact SHA. Hosted acceptance passed on real models. Every further deployment is a separate external side effect and needs a fresh owner approval of its exact SHA.
+
+## Sprint 12 deployment record
+
+### Read-only preflight (2026-11-13, before approval)
+
+| Item | Result | How |
+| --- | --- | --- |
+| Project | `eyes-without-a-face-b7281` (507051460368), ACTIVE; **billing not enabled** (Spark) | Firebase MCP `get_project`, `get_environment` |
+| Web app | `eyes-without-a-face-web`, `1:507051460368:web:086c755a2c003fb30b4795`, ACTIVE | Firebase MCP `list_apps` |
+| Hosting | site `eyes-without-a-face-b7281`, channel `live` only, never released (`/` and `/build-info.json` → 404) | `firebase-tools@15.35.0 hosting:channel:list`; HTTP GET |
+| App Check enforcement for Firebase AI Logic | **ENFORCED.** `POST …/models/gemini-3.5-flash-lite:generateContent` with the public API key and no App Check token → `401 UNAUTHENTICATED "Firebase App Check token is invalid."` The prompt carried no data | HTTP probe (no inference ran) |
+| reCAPTCHA allowed domains | **Not re-read** (no gcloud; CLI credential store not used to mint tokens). Last read 2026-11-11: exactly the two Hosting domains. Indirect evidence after deployment: attestation succeeds on `web.app` | — |
+| Firebase AI Logic | Real `IN_CLOUD` answers (debug token on localhost; production reCAPTCHA on the hosted build) | live runs |
+
+### Release artifact
+
+`pnpm install --frozen-lockfile`, full regression (lint, typecheck, 251 unit, 43 contract, 69 privacy, 62 evaluation, 113 E2E: **538 pass**), then `pnpm build:release` + `pnpm verify:release` **PASS** on `b93e3ed` with a clean tree: `mode: production`, `appCheckDebug: false`, 29 files, 1,985 KiB, local debug token absent (also checked independently; also absent from every commit in history). The bundle's canary string is the privacy guard's detection constant; the `FIREBASE_APPCHECK_DEBUG_TOKEN` code is the SDK's debug path, which the production build refuses at runtime.
+
+### Approval and deployment
+
+- Approval package presented to the owner: target URL, exact SHA, project, App Check status, no configuration changes, impact, rollback.
+- **Owner approved** "Approve live deploy" for `b93e3ed` → `live`.
+- `npx -y firebase-tools@15.35.0 deploy --only hosting --project eyes-without-a-face-b7281 -m "sprint-12 b93e3edbb997 (owner-approved)"` → release complete (2026-11-13, ~13:00 UTC). 29 files.
+- No App Check, reCAPTCHA, billing, permission or domain change was made.
+
+### Hosted acceptance (2026-11-13)
+
+| # | Check | Result | Status |
+| --- | --- | --- | --- |
+| 1 | `build-info.json` SHA = approved SHA; footer shows it | `b93e3edbb997…`, footer `build b93e3edbb997` | **VERIFIED** |
+| 2 | HTTPS | HTTP/2 200, HSTS `max-age=31556926; includeSubDomains; preload`; `http://` → 301 to `https://`; `firebaseapp.com` also serves | **VERIFIED** |
+| 3 | App Check enforced, no debug token | 401 without a token (above); production reCAPTCHA attestation succeeded in both hosted runs with no debug token; token absent from hosted JS | **VERIFIED** |
+| 4 | No cloud inference before approval | 0 `generateContent` before **Send approved request** (both runs) | **VERIFIED** |
+| 5 | Real Gemini Cloud after approval | `real Gemini output · IN_CLOUD`, valid, 2.5 s and 2.4 s; 2 requests per run, each approved | **VERIFIED** |
+| 6 | Gemini Nano on the supported Chrome | 6 / 6 fields `real on-device` in CONNECT (Chrome 157, dedicated Nano profile) | **VERIFIED** |
+| 7 | Unsupported environments degrade honestly | Chromium 158 without Nano and Firefox 159: *Deterministic, not hybrid*, stage `skipped`, 0 requests, 0 page errors | **VERIFIED** |
+| 8 | Full journey CONNECT → OBSERVE → OUTCOME → EXPORT | 2 / 2 runs: semantic failure detected, revision `ACCEPTED`, *Verified, with managed exceptions.* | **VERIFIED** |
+| 9 | Export executes outside the app | `node run.mjs verify` exit 0 in a fresh temp directory with only `PATH` set (2 / 2) | **VERIFIED** |
+| 10 | Request bodies | 4 bodies, 0 private terms | **VERIFIED** |
+
+Evidence: [evidence/sprint-12/hosted-acceptance.json](evidence/sprint-12/hosted-acceptance.json), [hosted-degradation.json](evidence/sprint-12/hosted-degradation.json), [screenshots](demo/screenshots/sprint-12-hosted/). Specs: `playwright.hosted.config.ts`, `tests/live/sprint11-experience.spec.ts`, `tests/live/hosted-degradation.spec.ts`.
+
+**Limits of this acceptance.** The runs were driven by Playwright from one machine (Linux, Chrome 157 with a dedicated profile). reCAPTCHA scored that session high enough; a different network or automation setup may score lower. A human run in a normal Chrome window is still the recording path ([demo/hero-demo.md](demo/hero-demo.md)). Two runs are a requalification, not a reliability measure.
+
+### What a new deployment would change
+
+Sprint 12 changes the app in one place: the Source step's scenario picker now also lists the fictional experiment scenario `crm-nl-relations` (`src/evaluation/scenarios.ts`, `src/app/SourcePanel.tsx`). Everything else is docs, tests and evidence. The deployed `b93e3ed` is the product to demo. **Redeploying is optional**; if wanted, approve the exact merge SHA of the Sprint 12 PR and repeat the procedure below.
+
+### Rollback
+
+- To the pre-Sprint-12 state (never released): `npx -y firebase-tools@15.35.0 hosting:disable --project eyes-without-a-face-b7281`.
+- After a later release: Firebase Console → Hosting → release history → **Rollback** to the version deployed from `b93e3ed` (deployed 2026-11-13).
+- Keep the site, the Firebase project and the free-tier quota available until judging ends (2026-12-16).
 
 ## Sprint 11 read-only preflight (2026-11-13)
 

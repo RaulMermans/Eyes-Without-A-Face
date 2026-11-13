@@ -1,6 +1,6 @@
 # Sprint 11 usability session kit (facilitator)
 
-> **Status: NOT PERFORMED.** No participant has used Eyes Without a Face. This kit is ready for a human facilitator. Nothing in this repository is participant evidence. Do not cite the targets below as results.
+> **Status (Sprint 12, 2026-11-13): NOT PERFORMED.** No participant has used Eyes Without a Face. This kit is ready for a human facilitator. Nothing in this repository is participant evidence. Do not cite the targets below as results.
 
 Everything a facilitator needs to run 3 or more unassisted sessions of about 45 minutes each, on the Sprint 11 build. It extends the protocol in [README.md](README.md) §1 and §3.
 
@@ -20,7 +20,7 @@ Record the two answers as `screen: yes/no`, `audio: yes/no` on the session sheet
 
 | Item | Setting |
 | --- | --- |
-| Build | Hosted URL after owner-approved deployment, otherwise `pnpm dev` on localhost. Note the build SHA from the footer |
+| Build | **Hosted: <https://eyes-without-a-face-b7281.web.app>** (live since Sprint 12, build `b93e3edbb997`; no install, no keys). Note the build SHA from the footer. `pnpm dev` only as a fallback |
 | Browser | Fresh Chrome profile. For the hybrid path, use the Nano profile ([../setup/browser-compatibility.md](../setup/browser-compatibility.md)). Note in the sheet whether on-device AI was **available** |
 | Data | Fictional only: the bundled **fictional CRM demo** (landing button) and the scenario **crm-eu-accounts** (Connect → Advanced sources). The destination schema loads with each one. Never use real data |
 | Terminal | Node 22+, `unzip`, an empty folder such as `~/eyes-session` |
@@ -97,3 +97,17 @@ Report observed behaviour, not taste.
 2. Fix the CRITICAL and HIGH issues first. Re-test the fixed flow with at least one new participant.
 3. Store the raw sheets and recordings outside the repository; delete the recordings within 30 days.
 4. Update the Sprint report gate **A** from OPEN to PASS or FAIL, with the numbers.
+
+## 9. Sprint 12 additions: remote sessions on the public build
+
+The public URL makes remote, moderated sessions possible: the participant shares their screen in a video call, and the facilitator stays silent as in §4.
+
+- **Participant machine:** desktop Chrome (any version for the deterministic path; Chrome 139+ with Gemini Nano downloaded for the hybrid path — most participants will not have Nano, which is fine: record "on-device AI available: no"), Node 22 and `unzip` for T12.
+- **Cloud requests in a session:** at most 2 (one mapping, one revision), each approved by the participant in the app. They run through production App Check on the free tier; if the provider is overloaded the app says so, and the participant may continue with a fresh approval. Log it as a provider event, not a usability failure.
+- **Timing measures** (add to the sheet): time to first mapping (start → `proposal-status` "Valid"), time to verified result (start → OUTCOME headline read aloud and explained).
+
+**Recruitment note (send as is; no personal data goes into the repository):**
+
+> "I'm testing a browser tool for building data integrations from private sources. It takes about 45 minutes over a video call: you share your screen, try to complete a task with fictional data, and think aloud. You'll need desktop Chrome and Node 22. You don't need to prepare anything, and I'm testing the tool, not you. Interested?"
+
+Eligibility screen: has written or debugged at least one data integration, API client or JSON transformation; has never seen this project, its repository, demo or video; is not part of the team.

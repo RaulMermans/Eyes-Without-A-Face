@@ -37,7 +37,7 @@ GitHub private-vulnerability reports: see root [SECURITY.md](../../SECURITY.md).
 | Private-key blocks, service-account JSON, GitHub/Slack/AWS/OpenAI tokens, Google OAuth tokens | 0 matches in history |
 | The registered App Check debug token value | 0 matches in history (compared against the private file; the value was never printed) |
 | UUID-shaped strings at `HEAD` | 0 |
-| Firebase web API key | Present in `docs/setup/firebase.md` since `45971db`. A public browser identifier, protected by App Check enforcement. Key restrictions could not be inspected (API Keys API disabled). Owner to review them in Cloud Console before publishing |
+| Firebase web API key | Was present as a literal in `docs/setup/firebase.md` from `45971db` to Sprint 12; replaced by a placeholder in Sprint 12 (Official Rules: no production API keys in the repository). Still in Git history and, by design, in the deployed bundle. A public browser identifier, protected by App Check enforcement (re-verified 2026-11-13: tokenless request → 401). Key restrictions not inspected (API Keys API disabled). Owner: decide on Cloud Console key restrictions or rotation; rewriting history needs a force push and separate approval |
 | Fictional data only | Bundled CRM, edge cases and screenshots are synthetic (`example.com`, `PRIVATE_CANARY_PII_DO_NOT_SHARE` canary) |
 | Largest blobs | Emblem PNG (642 KB) and two demo screenshots |
 | Commit author metadata | All commits carry the owner's personal email address. It becomes public with the repository (owner decision) |

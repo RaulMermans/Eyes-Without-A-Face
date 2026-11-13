@@ -81,6 +81,15 @@ Build a privacy-aware integration tool: private CRM JSON stays local; on-device 
 - The Privacy Boundary may animate only through CSS transitions on real state changes. No loops, no animation on first paint, and nothing drawn from the private source across the boundary.
 - Never record participant data, recordings or quotes in the repository. Never mark usability or screen-reader acceptance as passed without a real session.
 
+## Release and evidence rules (Sprint 12)
+
+- The public build is <https://eyes-without-a-face-b7281.web.app>. A new deployment needs the owner's approval of its **exact** SHA, even when an earlier deployment was approved. Hosted acceptance runs through `playwright.hosted.config.ts`, never with an App Check debug token.
+- The Submission Period opened 2026-11-11 21:30 UTC. Sprints 0–4 are pre-existing work; never describe them as built during the period, and never rewrite commit dates ([docs/hackathon-history.md](docs/hackathon-history.md)).
+- Do not commit literal API keys or site keys, even public web identifiers (Official Rules). Use placeholders.
+- Experiment scenarios live in `EXPERIMENT_SCENARIOS`, never in the frozen `EVALUATION_SCENARIOS`. Freeze an experiment (`scripts/freeze-nano-value.mjs` pattern) and commit the freeze before any model run.
+- A body-scan match is investigated and traced before any conclusion; never delete a failing run, never widen an allowlist to make it pass.
+- Video upload, Devpost submission, repository settings, API-key restriction or rotation, and any Firebase configuration change need explicit owner approval.
+
 ## Tool and data permissions
 
 Allowed without extra authorization: local files in this repository, local tests, local Vite server, Playwright against localhost.
