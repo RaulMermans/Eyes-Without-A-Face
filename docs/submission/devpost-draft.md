@@ -1,85 +1,84 @@
 # Devpost submission draft — Eyes Without a Face
 
-**Status: DRAFT. Not submitted.** Before submitting: read the Official Rules in a browser, publish the repository (owner decision), record and upload the video, and replace every `TODO` below. Do not invent URLs.
+**Status: DRAFT. Not submitted.** Before submitting: read the Official Rules in a browser, publish the repository (owner decision), deploy and verify the hosted build (owner approval, [../deployment.md](../deployment.md)), record and upload the video, and replace every `TODO`. Do not invent URLs. Every number below is backed by [evidence.md](evidence.md).
 
-- **Tagline:** Build for systems your AI cannot see.
+- **Tagline:** Build integrations for systems your AI cannot see.
 - **Repository:** TODO, once public: `https://github.com/RaulMermans/Eyes-Without-A-Face`
 - **Hosted demo:** TODO, only after an approved and verified Hosting deployment
-- **Video (YouTube, ≤ 3:00):** TODO, only after it exists
+- **Video (YouTube, ≤ 3:00):** TODO, only after it exists ([../demo/hero-demo.md](../demo/hero-demo.md))
 
 ---
 
 ## Inspiration / the problem
 
-Developers integrating enterprise systems constantly hit the same wall: a cloud model could write the integration in seconds, but the data it would need to see (customer records, internal notes, account states) is exactly the data that must not leave the company. So the AI either gets the data anyway ("just paste a few rows") or doesn't get used at all.
+A cloud model could write the integration between your CRM and your helpdesk in seconds. But the data it would need to see (customers, emails, internal notes) is exactly the data that must not leave the company. So the AI either gets the data anyway ("just paste a few rows") or it is not used at all.
 
 ## What it does
 
-Eyes Without a Face lets Gemini design a data mapping for a private system **without being shown that system's records**, and then proves the mapping locally.
+Eyes Without a Face is a privacy-aware integration studio. Gemini designs a data integration for a private system **without being shown its records**. Your browser proves the result, and you take away a package that runs anywhere.
 
-1. You load a private JSON export. It is profiled by deterministic code in the browser.
-2. The app builds a **Phantom Twin**: every field becomes a meaningless alias (`f_01`…) with fictional example values. **Gemini Nano runs on-device** through Firebase AI Logic and classifies the twin's fields.
-3. You see the **exact application prompt** that would go to the cloud, with its SHA-256, and approve that one request.
-4. **Gemini in the cloud** proposes a declarative mapping over aliases, from an eight-operation allowlist. It cannot execute code.
-5. Back in the browser, a **Reality Check** validates the proposal, resolves aliases to the real fields, and runs it against the real records **and against reserved hidden cases the model never saw**.
+1. **Import locally.** A private JSON export is profiled by deterministic code in the browser.
+2. **Understand privately.** Gemini Nano runs **on-device** (Firebase AI Logic, `ONLY_ON_DEVICE`) and may interpret private fields; its output is validated and applied only by you.
+3. **Phantom Twin.** Every field becomes an alias (`f_01`…) with fictional examples.
+4. **Approve exactly what leaves.** You read the exact prompt with its SHA-256 and approve one request.
+5. **Cloud mapping.** Gemini (`ONLY_IN_CLOUD`, App Check enforced) proposes a declarative mapping over aliases from an eight-operation allowlist. It cannot run code.
+6. **Reality Check and meaning.** The browser runs the mapping on the real records and hidden cases, then checks what it *means* against constraints you declared or that local records prove.
+7. **Blind revision.** If the meaning is wrong, you approve one feedback request with the finding and, optionally, the constraint, but never the records. Gemini revises; a local, ground-truth-blind decision says whether it improved.
+8. **Export.** Download a ZIP that runs with plain Node 22: the alias-level mapping, destination schema, fictional fixtures, a value-free report, the acceptance policy and the app's own engine, all hash-pinned. No records, no field names, no bindings.
 
-In the demo, Gemini's mapping transforms all 3 imported records correctly, and 0 of 3 hidden cases are covered: an unseen status value, a non-string email and a null email. That gap is found before production, without showing the model the data.
+## The hybrid design
 
-## Who it is for
+**Local intelligence for private understanding. Cloud intelligence for integration design. Deterministic verification for correctness and safety.**
 
-Developers and technical teams building integrations, migrations and ETL against private enterprise systems (CRMs, helpdesks, billing), especially in regulated settings where raw records cannot be sent to a third-party model.
-
-## How we built it: the hybrid AI
-
-| Where | What runs | Firebase AI Logic |
+| Where | What runs | Mode |
 | --- | --- | --- |
-| On-device | Gemini Nano classifies the twin's fields from synthetic samples. Output is constrained by a JSON Schema `responseConstraint` and validated | `InferenceMode.ONLY_ON_DEVICE` (Chrome Prompt API) |
-| Cloud | Gemini (`gemini-3.5-flash-lite`, Gemini Developer API) proposes the mapping from the approved payload, with structured JSON output | `InferenceMode.ONLY_IN_CLOUD`, App Check (reCAPTCHA Enterprise) enforced |
-| Local, deterministic | Profiling, twin generation, approval binding, contract validation, alias resolution, mapping execution, Reality Check | — |
+| On-device | Gemini Nano: optional private field interpretation, validated against the deterministic profile | `ONLY_ON_DEVICE` |
+| Cloud | Gemini `gemini-3.5-flash-lite`: initial mapping and one blind revision, from approved payloads only | `ONLY_IN_CLOUD`, App Check (reCAPTCHA Enterprise) |
+| Local, deterministic | Profiling, twin, approval binding, contract validation, alias resolution, execution, semantic verification, revision decision, export | — |
 
-We deliberately do **not** use `PREFER_ON_DEVICE` / `PREFER_IN_CLOUD`. An automatic fallback would quietly move a private-data step to the cloud, so each step runs in exactly one mode, and an unavailable model is shown as unavailable. Provenance comes from the SDK's reported `inferenceSource`, never from the mode we asked for.
+No `PREFER_*` modes: an automatic fallback would quietly move a private-data step to the cloud. Provenance comes from the SDK's reported `inferenceSource`, never from the mode requested. We do not claim every step needs an LLM: once a correction is known, deterministic code can apply it (and we measured that it does as well as Gemini). The model's job is designing an integration for a structure it has never seen, from a representation you approved.
 
-## Technical architecture: why deterministic code executes the model's proposal
+## Results (real models, measured)
 
-The model proposes **data**, not code: a mapping contract in a small DSL (`copy`, `rename`, `trim`, `normalize_email`, `parse_date`, `map_enum`, `default_if_missing`, `concat`). Every proposal must pass the canonical JSON Schema 2020-12 Mapping Contract and alias checks. Invalid output is rejected, never repaired. A deterministic interpreter then executes it. The result is reproducible and auditable, and a prompt-injected or hallucinated proposal can at worst be *refused*.
+- **Silent errors exist and are caught locally.** Real Gemini mappings that passed every structural check read dates month-first or inverted a priority scale. The local verifier flagged every such output in the Sprint 8 benchmark (CRM 20/20, support 36/36, 0 false alarms).
+- **Blind correction works, sometimes.** Sprint 8: two real revisions fixed the meaning on a pre-frozen holdout (support 0 → 6, CRM 1 → 9 correct of 10). Sprint 9 live end-to-end: 3 of 5 runs ended `ACCEPTED` and exported (clean transformations 0 → 8, 0 → 8, 7 → 8). One initial proposal was invalid and rejected unrepaired. One revision was labeled `HUMAN_REVIEW_REQUIRED` and exported only as a `DRAFT`.
+- **The export runs outside the app.** All 4 live-exported packages passed `node run.mjs verify` in a fresh directory with no install. Deterministic tests prove that the packaged runner reproduces the app's engine output exactly.
+- **Privacy:** 0 private terms in 47 real request bodies (38 in Sprint 8, 9 in Sprint 9). A blocking privacy scan runs on every export.
+- **Honest limits:** a deterministic patch using the same approved constraint matched or beat Gemini's revisions. Gemini Nano added no measurable accuracy on our fixtures. Provider failures (500 high demand, timeouts) hit a third of Sprint 8 requests; Sprint 9 saw none in 9 requests.
 
-Stack: TypeScript (strict), React + Vite, Ajv, Zod, Firebase JS SDK 13.2 (`firebase/ai`, App Check), Firebase Hosting, Vitest + fast-check, Playwright.
+## Technical architecture
+
+The model proposes **data**, not code: a mapping contract in a small DSL. Every proposal passes a canonical JSON Schema 2020-12 contract and alias checks. Invalid output is rejected, never repaired. A deterministic interpreter executes it, and that same interpreter is bundled into the exported package.
+
+Stack: TypeScript (strict), React + Vite, Ajv, Zod, Firebase JS SDK (`firebase/ai`, App Check), Firebase Hosting, Vitest + fast-check, Playwright.
 
 ## Privacy model
 
-- **Stays local:** source records, original field names, alias bindings, dataset name, reserved hidden cases, failure values.
-- **Disclosed after approval:** aliases, generated descriptors, fictional example values, category labels you explicitly choose to disclose, a minimal destination description.
-- **Approval:** bound to the SHA-256 of the exact outbound prompt, the destination model and one request id. One approval authorizes one request.
-- **Limitations, stated plainly:** a Phantom Twin reduces disclosure; it is **not anonymization**. Structure, formats, field counts and disclosed labels can still reveal information. We control the application payload; the Firebase SDK still adds App Check tokens and normal transport metadata.
-
-## Results and evidence
-
-- Real on-device inference: `inferenceSource = ON_DEVICE`, schema-valid, with zero cloud requests during the on-device step.
-- Real cloud inference: `inferenceSource = IN_CLOUD`. Gemini's proposal passed strict validation unchanged and matched the reference mapping.
-- Privacy: a live scan of the real `generateContent` request body found **0** private terms. Deterministic privacy suites include canaries, prompt-injection field names and adversarial failure messages.
-- Reliability: we found that Chrome's on-device model service occasionally crashes on our Linux/AMD test machine (SIGILL in the model-service process). The app classifies it honestly, offers one user-initiated retry that resumes where it stopped, and never falls back to the cloud. Measured results: TODO, copy from `docs/sprints/sprint-5.md`.
-- Tests: TODO, final counts from `pnpm test:all` (unit, contract, privacy, Playwright E2E), plus the opt-in live suite.
+- **Stays local:** records, field names, alias bindings, hidden cases, failure values, Nano prompts and rationales.
+- **Disclosed after approval:** aliases, generated descriptors, fictional examples, labels you choose to disclose, a minimal destination description; for a revision, finding codes and constraints you tick.
+- **Approval:** bound to the SHA-256 of the exact prompt, the model and one request id; single use; consumed approvals are never reused, and recovery after a provider failure needs a fresh approval.
+- **Not anonymization.** A twin reduces disclosure; structure and approved labels still reveal something, so you review every request. The Firebase SDK adds App Check tokens and transport metadata.
 
 ## Challenges
 
-- Playwright's default Chrome flags silently disable the Gemini Nano component. Finding that turned "on-device unavailable" into real on-device inference.
-- The first real Gemini call exposed a bug in our own response schema: Gemini could only emit empty params. We fixed the schema, not the validator.
-- A live-test trace captured an App Check debug token, which we found and closed. A production build on a developer machine would also have shipped App Check debug mode, so `build:release` now makes that impossible.
+- Playwright's default Chrome flags silently disable the Gemini Nano component.
+- Real Gemini mappings were *schema-valid but wrong*. Structural validation alone would have shipped them, so we built a local semantic verifier.
+- The provider was the bottleneck: we classify failures (high demand, rate limit, timeout, App Check) and give the user a safe next action instead of retrying behind their back.
 
 ## What we learned
 
-Hybrid AI is most useful when each side does what it is trusted to do: the on-device model may look at things the cloud must not, the cloud model reasons over what you approved, and deterministic code keeps the final say.
+Hybrid AI is most useful when each side does what it is trusted to do. The on-device model may look at what the cloud must not. The cloud model reasons over what you approved. Deterministic code keeps the final say, including whether the AI was right.
 
 ## What's next
 
-A bounded correction cycle (a safe failure summary, approved like any other disclosure), portable export of the mapping and synthetic fixtures, and more reserved hidden cases per field type.
+Independent usability testing (protocol ready), a hosted production verification, more connectors and semantic rule families.
 
 ## Development history (competition period)
 
-Sprints 0–2 (contracts, Firebase adapters, mapping engine) are dated 2026-11-10, before the submission period opened. The Phantom Twin workflow, real on-device and cloud qualification, and the Sprint 5 release work were done from 2026-11-11 onward. Details: [../hackathon-history.md](../hackathon-history.md). TODO: confirm against the Official Rules how pre-existing work must be declared.
+Sprints 0–2 are dated 2026-11-10, before the submission period opened. The Phantom Twin workflow, real on-device and cloud qualification, blind revision, semantic verification and portable export were built from 2026-11-11 onward. Details: [../hackathon-history.md](../hackathon-history.md). TODO: confirm against the Official Rules how pre-existing work must be declared.
 
 ## Try it
 
-- `pnpm install && pnpm dev`. The full walkthrough works without any Firebase configuration, with AI steps shown as unavailable, never simulated.
-- Full hybrid reproduction (Chrome with Gemini Nano, Firebase config, App Check): see the README and `docs/setup/browser-compatibility.md`.
+- `pnpm install && pnpm dev`. The full walkthrough, including export, works without Firebase configuration; AI steps are shown as unavailable, never simulated.
+- Full hybrid reproduction: README, `docs/setup/browser-compatibility.md`, `docs/demo/hero-demo.md`.
 - Hosted: TODO.

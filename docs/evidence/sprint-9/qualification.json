@@ -1,0 +1,480 @@
+[
+  {
+    "at": "2026-11-13T07:29:38.008Z",
+    "browserLaunch": "dedicated-chrome-profile",
+    "model": "gemini-3.5-flash-lite",
+    "initialResponseSchema": "mapping-response-per-operation-1",
+    "check": "S9-HERO",
+    "run": 1,
+    "scenarioId": "crm-eu-accounts",
+    "preflight": {
+      "browser": "UNVERIFIED",
+      "on-device": "UNAVAILABLE",
+      "firebase": "CONFIGURED",
+      "app-check": "CONFIGURED",
+      "cloud": "CONFIGURED"
+    },
+    "nanoMs": 15267,
+    "nanoError": null,
+    "nano": [
+      {
+        "alias": "f_03",
+        "status": "consistent",
+        "real": true
+      },
+      {
+        "alias": "f_02",
+        "status": "consistent",
+        "real": true
+      },
+      {
+        "alias": "f_05",
+        "status": "consistent",
+        "real": true
+      },
+      {
+        "alias": "f_01",
+        "status": "consistent",
+        "real": true
+      },
+      {
+        "alias": "f_04",
+        "status": "consistent",
+        "real": true
+      },
+      {
+        "alias": "f_06",
+        "status": "applicable",
+        "real": true
+      }
+    ],
+    "applied": [
+      "f_06"
+    ],
+    "initial": {
+      "failureCode": null,
+      "text": "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_01\",\n      \"to\": \"id\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_02\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_03\",\n      \"to\": \"createdAt\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_05\",\n      \"to\": \"status\",\n      \"params\": {\n        \"map\": {\n          \"aktiv\": \"active\",\n          \"inaktiv\": \"inactive\",\n          \"interessent\": \"prospect\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"other\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_06\",\n      \"to\": \"organization\"\n    }\n  ],\n  \"rationale\": \"Mapped source fields to target schema fields appropriately, including identifier copy, email normalization, date parsing for MM/DD/YYYY format, enum mapping for the status field with a default fallback, and organization copying.\"\n}",
+      "origin": "Real Gemini output · IN_CLOUD",
+      "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 1962ms",
+      "status": "Valid · 5 operations · aliases resolved locally",
+      "ms": 2354
+    },
+    "initialState": "PARTIALLY_VERIFIED",
+    "initialCounts": "0 transformed · 0 by approved rule · 1 quarantined · 1 unresolved · 0 rejected by policy · 7 incorrect · 1/9 correctly handled",
+    "semanticBefore": "SEMANTIC_MISMATCH",
+    "exportBefore": {
+      "state": "PARTIALLY_VERIFIED",
+      "decision": "DRAFT_ONLY"
+    },
+    "authorizedConstraints": [
+      "observed-date-1"
+    ],
+    "preparePhase": "REVISION_REVIEW_REQUIRED",
+    "revision": {
+      "ms": 2441,
+      "requests": 1,
+      "blockedCode": null,
+      "failureCode": null,
+      "origin": "Real Gemini output · IN_CLOUD",
+      "provenance": "· source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 1873ms",
+      "ok": "true"
+    },
+    "decision": {
+      "verdict": "ACCEPTED",
+      "rows": "8 / 0",
+      "clean": "0 → 8",
+      "semantic": "7 / 0"
+    },
+    "exportCandidate": {
+      "state": "VERIFIED_WITH_EXCEPTIONS",
+      "decision": "EXPORTABLE"
+    },
+    "export": {
+      "status": "VERIFIED_WITH_EXCEPTIONS",
+      "variant": "revised",
+      "origin": "gemini-cloud",
+      "inference": {
+        "actualSource": "IN_CLOUD",
+        "model": "gemini-3.5-flash-lite",
+        "simulated": false,
+        "resultKind": "real-cloud"
+      },
+      "revisionVerdict": "ACCEPTED",
+      "contractSha256": "72dc1f63b1b72ce4d10c7c984eac4a7980f81404022851f5f8bd4309208139c9",
+      "verifyExit": 0,
+      "verifyPassLines": 4,
+      "packageLeaks": []
+    },
+    "requests": {
+      "generateContent": 2,
+      "leaks": []
+    }
+  },
+  {
+    "at": "2026-11-13T07:31:03.578Z",
+    "browserLaunch": "dedicated-chrome-profile",
+    "model": "gemini-3.5-flash-lite",
+    "initialResponseSchema": "mapping-response-per-operation-1",
+    "check": "S9-HERO",
+    "run": 2,
+    "scenarioId": "crm-eu-accounts",
+    "preflight": {
+      "browser": "UNVERIFIED",
+      "on-device": "UNAVAILABLE",
+      "firebase": "CONFIGURED",
+      "app-check": "CONFIGURED",
+      "cloud": "CONFIGURED"
+    },
+    "nanoMs": 13287,
+    "nanoError": null,
+    "nano": [],
+    "applied": [],
+    "initial": {
+      "failureCode": null,
+      "text": "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"id\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_01\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_03\",\n      \"to\": \"status\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"active\",\n          \"category_b\": \"inactive\",\n          \"category_c\": \"prospect\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"prospect\"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_06\",\n      \"to\": \"createdAt\",\n      \"params\": {\n        \"inputFormat\": \"YYYY-MM-DD\"\n      }\n    },\n    {\n      \"op\": \"trim\",\n      \"from\": \"f_02\",\n      \"to\": \"organization\"\n    }\n  ],\n  \"rationale\": \"Mapped all required target fields using appropriate operations: f_05 to id via copy, f_01 to email via normalize_email, f_03 to status via map_enum matching category labels to target enum values, f_06 to createdAt via parse_date with YYYY-MM-DD input format, and f_02 to organization via trim.\"\n}",
+      "origin": "Real Gemini output · IN_CLOUD",
+      "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2656ms",
+      "status": "Rejected at convert · 1 issue(s)",
+      "ms": 3227
+    },
+    "requests": {
+      "generateContent": 1,
+      "leaks": []
+    }
+  },
+  {
+    "at": "2026-11-13T07:31:28.587Z",
+    "browserLaunch": "dedicated-chrome-profile",
+    "model": "gemini-3.5-flash-lite",
+    "initialResponseSchema": "mapping-response-per-operation-1",
+    "check": "S9-HERO",
+    "run": 3,
+    "scenarioId": "crm-eu-accounts",
+    "preflight": {
+      "browser": "UNVERIFIED",
+      "on-device": "UNAVAILABLE",
+      "firebase": "CONFIGURED",
+      "app-check": "CONFIGURED",
+      "cloud": "CONFIGURED"
+    },
+    "nanoMs": 14777,
+    "nanoError": null,
+    "nano": [
+      {
+        "alias": "f_03",
+        "status": "consistent",
+        "real": true
+      },
+      {
+        "alias": "f_02",
+        "status": "consistent",
+        "real": true
+      },
+      {
+        "alias": "f_05",
+        "status": "consistent",
+        "real": true
+      },
+      {
+        "alias": "f_01",
+        "status": "consistent",
+        "real": true
+      },
+      {
+        "alias": "f_04",
+        "status": "consistent",
+        "real": true
+      },
+      {
+        "alias": "f_06",
+        "status": "applicable",
+        "real": true
+      }
+    ],
+    "applied": [
+      "f_06"
+    ],
+    "initial": {
+      "failureCode": null,
+      "text": "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_01\",\n      \"to\": \"id\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_02\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_03\",\n      \"to\": \"createdAt\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_05\",\n      \"to\": \"status\",\n      \"params\": {\n        \"map\": {\n          \"aktiv\": \"active\",\n          \"inaktiv\": \"inactive\",\n          \"interessent\": \"prospect\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"other\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_06\",\n      \"to\": \"organization\"\n    }\n  ],\n  \"rationale\": \"Map record identifier directly, normalize the email field, parse the date from MM/DD/YYYY to string, map the German status enum values to English target values with a fallback default, and copy the organization name.\"\n}",
+      "origin": "Real Gemini output · IN_CLOUD",
+      "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 1874ms",
+      "status": "Valid · 5 operations · aliases resolved locally",
+      "ms": 2370
+    },
+    "initialState": "PARTIALLY_VERIFIED",
+    "initialCounts": "0 transformed · 0 by approved rule · 1 quarantined · 1 unresolved · 0 rejected by policy · 7 incorrect · 1/9 correctly handled",
+    "semanticBefore": "SEMANTIC_MISMATCH",
+    "exportBefore": {
+      "state": "PARTIALLY_VERIFIED",
+      "decision": "DRAFT_ONLY"
+    },
+    "authorizedConstraints": [
+      "observed-date-1"
+    ],
+    "preparePhase": "REVISION_REVIEW_REQUIRED",
+    "revision": {
+      "ms": 2958,
+      "requests": 1,
+      "blockedCode": null,
+      "failureCode": null,
+      "origin": "Real Gemini output · IN_CLOUD",
+      "provenance": "· source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2669ms",
+      "ok": "true"
+    },
+    "decision": {
+      "verdict": "ACCEPTED",
+      "rows": "8 / 0",
+      "clean": "0 → 8",
+      "semantic": "7 / 0"
+    },
+    "exportCandidate": {
+      "state": "VERIFIED_WITH_EXCEPTIONS",
+      "decision": "EXPORTABLE"
+    },
+    "export": {
+      "status": "VERIFIED_WITH_EXCEPTIONS",
+      "variant": "revised",
+      "origin": "gemini-cloud",
+      "inference": {
+        "actualSource": "IN_CLOUD",
+        "model": "gemini-3.5-flash-lite",
+        "simulated": false,
+        "resultKind": "real-cloud"
+      },
+      "revisionVerdict": "ACCEPTED",
+      "contractSha256": "c41855204e198d2b077e02b4a1ba271786167328555d4e436676ca0586d84b05",
+      "verifyExit": 0,
+      "verifyPassLines": 4,
+      "packageLeaks": []
+    },
+    "requests": {
+      "generateContent": 2,
+      "leaks": []
+    }
+  },
+  {
+    "at": "2026-11-13T07:31:53.839Z",
+    "browserLaunch": "dedicated-chrome-profile",
+    "model": "gemini-3.5-flash-lite",
+    "initialResponseSchema": "mapping-response-per-operation-1",
+    "check": "S9-HERO",
+    "run": 4,
+    "scenarioId": "support-tickets",
+    "preflight": {
+      "browser": "UNVERIFIED",
+      "on-device": "UNAVAILABLE",
+      "firebase": "CONFIGURED",
+      "app-check": "CONFIGURED",
+      "cloud": "CONFIGURED"
+    },
+    "nanoMs": 15261,
+    "nanoError": null,
+    "nano": [
+      {
+        "alias": "f_03",
+        "status": "consistent",
+        "real": true
+      },
+      {
+        "alias": "f_02",
+        "status": "rejected",
+        "real": true
+      },
+      {
+        "alias": "f_05",
+        "status": "consistent",
+        "real": true
+      },
+      {
+        "alias": "f_01",
+        "status": "rejected",
+        "real": true
+      },
+      {
+        "alias": "f_04",
+        "status": "rejected",
+        "real": true
+      },
+      {
+        "alias": "f_06",
+        "status": "consistent",
+        "real": true
+      }
+    ],
+    "applied": [],
+    "initial": {
+      "failureCode": null,
+      "text": "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_06\",\n      \"to\": \"id\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_04\",\n      \"to\": \"requesterEmail\"\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_01\",\n      \"to\": \"priority\",\n      \"params\": {\n        \"map\": {\n          \"p1\": \"urgent\",\n          \"p2\": \"high\",\n          \"p3\": \"normal\",\n          \"p4\": \"low\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"normal\"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_05\",\n      \"to\": \"openedAt\",\n      \"params\": {\n        \"inputFormat\": \"ISO-8601\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_02\",\n      \"to\": \"channel\",\n      \"params\": {\n        \"map\": {\n          \"email\": \"email\",\n          \"phone\": \"phone\",\n          \"web\": \"web\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"chat\"\n      }\n    }\n  ],\n  \"rationale\": \"Mapped source fields to target schema using copy for the identifier, normalize_email for requester email, map_enum for priority and channel with safe fallbacks, and parse_date for openedAt.\"\n}",
+      "origin": "Real Gemini output · IN_CLOUD",
+      "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2022ms",
+      "status": "Valid · 5 operations · aliases resolved locally",
+      "ms": 2358
+    },
+    "initialState": "PARTIALLY_VERIFIED",
+    "initialCounts": "7 transformed · 0 by approved rule · 0 quarantined · 1 unresolved · 1 rejected by policy · 0 incorrect · 7/9 correctly handled",
+    "semanticBefore": "SEMANTIC_POLICY_CONFLICT",
+    "exportBefore": {
+      "state": "PARTIALLY_VERIFIED",
+      "decision": "DRAFT_ONLY"
+    },
+    "authorizedConstraints": [
+      "support-priority-order"
+    ],
+    "preparePhase": "REVISION_REVIEW_REQUIRED",
+    "revision": {
+      "ms": 2956,
+      "requests": 1,
+      "blockedCode": null,
+      "failureCode": null,
+      "origin": "Real Gemini output · IN_CLOUD",
+      "provenance": "· source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2581ms",
+      "ok": "true"
+    },
+    "decision": {
+      "verdict": "ACCEPTED",
+      "rows": "2 / 0",
+      "clean": "7 → 8",
+      "semantic": "1 / 0"
+    },
+    "exportCandidate": {
+      "state": "VERIFIED_WITH_EXCEPTIONS",
+      "decision": "EXPORTABLE"
+    },
+    "export": {
+      "status": "VERIFIED_WITH_EXCEPTIONS",
+      "variant": "revised",
+      "origin": "gemini-cloud",
+      "inference": {
+        "actualSource": "IN_CLOUD",
+        "model": "gemini-3.5-flash-lite",
+        "simulated": false,
+        "resultKind": "real-cloud"
+      },
+      "revisionVerdict": "ACCEPTED",
+      "contractSha256": "0cb3649290a1dd07475f822707033a94dedf5f765527449de62bd4c1b33ea015",
+      "verifyExit": 0,
+      "verifyPassLines": 4,
+      "packageLeaks": [
+        "body"
+      ]
+    },
+    "requests": {
+      "generateContent": 2,
+      "leaks": []
+    }
+  },
+  {
+    "at": "2026-11-13T07:32:18.660Z",
+    "browserLaunch": "dedicated-chrome-profile",
+    "model": "gemini-3.5-flash-lite",
+    "initialResponseSchema": "mapping-response-per-operation-1",
+    "check": "S9-HERO",
+    "run": 5,
+    "scenarioId": "support-tickets",
+    "preflight": {
+      "browser": "UNVERIFIED",
+      "on-device": "UNAVAILABLE",
+      "firebase": "CONFIGURED",
+      "app-check": "CONFIGURED",
+      "cloud": "CONFIGURED"
+    },
+    "nanoMs": 15281,
+    "nanoError": null,
+    "nano": [
+      {
+        "alias": "f_03",
+        "status": "applicable",
+        "real": true
+      },
+      {
+        "alias": "f_02",
+        "status": "rejected",
+        "real": true
+      },
+      {
+        "alias": "f_05",
+        "status": "consistent",
+        "real": true
+      },
+      {
+        "alias": "f_01",
+        "status": "rejected",
+        "real": true
+      },
+      {
+        "alias": "f_04",
+        "status": "rejected",
+        "real": true
+      },
+      {
+        "alias": "f_06",
+        "status": "consistent",
+        "real": true
+      }
+    ],
+    "applied": [
+      "f_03"
+    ],
+    "initial": {
+      "failureCode": null,
+      "text": "{\n  \"operations\": [\n    {\n      \"op\": \"rename\",\n      \"from\": \"f_06\",\n      \"to\": \"id\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_04\",\n      \"to\": \"requesterEmail\"\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_01\",\n      \"to\": \"priority\",\n      \"params\": {\n        \"map\": {\n          \"p1\": \"urgent\",\n          \"p2\": \"high\",\n          \"p3\": \"normal\",\n          \"p4\": \"low\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"normal\"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_05\",\n      \"to\": \"openedAt\",\n      \"params\": {\n        \"inputFormat\": \"ISO-8601\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_02\",\n      \"to\": \"channel\",\n      \"params\": {\n        \"map\": {\n          \"email\": \"email\",\n          \"phone\": \"phone\",\n          \"web\": \"web\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"chat\"\n      }\n    }\n  ],\n  \"rationale\": \"Mapped source fields to target schema fields using appropriate rename, normalization, enum mapping, and date parsing operations based on the provided schemas and semantic descriptors.\"\n}",
+      "origin": "Real Gemini output · IN_CLOUD",
+      "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 1704ms",
+      "status": "Valid · 5 operations · aliases resolved locally",
+      "ms": 1868
+    },
+    "initialState": "PARTIALLY_VERIFIED",
+    "initialCounts": "7 transformed · 0 by approved rule · 0 quarantined · 1 unresolved · 1 rejected by policy · 0 incorrect · 7/9 correctly handled",
+    "semanticBefore": "SEMANTIC_POLICY_CONFLICT",
+    "exportBefore": {
+      "state": "PARTIALLY_VERIFIED",
+      "decision": "DRAFT_ONLY"
+    },
+    "authorizedConstraints": [
+      "support-priority-order"
+    ],
+    "preparePhase": "REVISION_REVIEW_REQUIRED",
+    "revision": {
+      "ms": 2452,
+      "requests": 1,
+      "blockedCode": null,
+      "failureCode": null,
+      "origin": "Real Gemini output · IN_CLOUD",
+      "provenance": "· source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2160ms",
+      "ok": "true"
+    },
+    "decision": {
+      "verdict": "HUMAN_REVIEW_REQUIRED",
+      "rows": "1 / 0",
+      "clean": "7 → 7",
+      "semantic": "1 / 0"
+    },
+    "exportCandidate": {
+      "state": "PARTIALLY_VERIFIED",
+      "decision": "DRAFT_ONLY"
+    },
+    "export": {
+      "status": "DRAFT",
+      "variant": "revised",
+      "origin": "gemini-cloud",
+      "inference": {
+        "actualSource": "IN_CLOUD",
+        "model": "gemini-3.5-flash-lite",
+        "simulated": false,
+        "resultKind": "real-cloud"
+      },
+      "revisionVerdict": "HUMAN_REVIEW_REQUIRED",
+      "contractSha256": "d1b3c38c044d07286855f337f67a9dfe6160d8ee77a18ca349690ed40e55c177",
+      "verifyExit": 0,
+      "verifyPassLines": 4,
+      "packageLeaks": [
+        "body"
+      ]
+    },
+    "requests": {
+      "generateContent": 2,
+      "leaks": []
+    }
+  }
+]

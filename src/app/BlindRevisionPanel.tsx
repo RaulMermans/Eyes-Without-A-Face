@@ -679,7 +679,7 @@ export function BlindRevisionPanel({
 
       {active?.holdout?.revised && holdoutComparison ? (
         <ComparisonPanel
-          title="Before / after · independent holdout"
+          title="Before / after · holdout (inspected since Sprint 8)"
           note="Cases the revision never saw. This is the measure of whether the integration genuinely improved."
           before={active.holdout.initial}
           after={active.holdout.revised}

@@ -235,7 +235,17 @@ plan.forEach((scenarioId, index) => {
         const root = path.join(work, fs.readdirSync(work).find((name) => !name.endsWith(".zip")) as string);
         const manifest = JSON.parse(fs.readFileSync(path.join(root, "manifest.json"), "utf8")) as Record<string, any>;
         const verify = spawnSync(process.execPath, ["run.mjs", "verify"], { cwd: root, encoding: "utf8", env: { PATH: process.env.PATH ?? "" } });
-        const all = fs.readdirSync(root, { recursive: true }).map(String).filter((rel) => fs.statSync(path.join(root, rel)).isFile()).map((rel) => fs.readFileSync(path.join(root, rel), "utf8")).join("\n").toLowerCase();
+        // App-owned static code must be byte-identical to the committed files (so it cannot carry data);
+        // only the data-bearing files are scanned for private terms. Run 4/5 (2026-11-13) scanned the bundled
+        // runtime too and matched "body" inside ajv's code generator (thenBody/elseBody): a false positive.
+        const STATIC: Record<string, string> = {
+          "run.mjs": "src/export/package/run.mjs",
+          "runtime/eyes-mapping-runtime.mjs": "src/export/runtime/generated/eyes-mapping-runtime.mjs",
+          "runtime/THIRD_PARTY_NOTICES.md": "src/export/runtime/generated/THIRD_PARTY_NOTICES.md",
+        };
+        const files = fs.readdirSync(root, { recursive: true }).map(String).filter((rel) => fs.statSync(path.join(root, rel)).isFile());
+        const staticIdentical = Object.entries(STATIC).every(([rel, source]) => fs.readFileSync(path.join(root, rel), "utf8") === fs.readFileSync(source, "utf8"));
+        const all = files.filter((rel) => !(rel in STATIC)).map((rel) => fs.readFileSync(path.join(root, rel), "utf8")).join("\n").toLowerCase();
         entry.export = {
           status: manifest.status,
           variant: manifest.mapping.variant,
@@ -245,6 +255,7 @@ plan.forEach((scenarioId, index) => {
           contractSha256: manifest.mapping.contractSha256,
           verifyExit: verify.status,
           verifyPassLines: verify.stderr.split("\n").filter((line) => line.startsWith("PASS")).length,
+          staticIdentical,
           packageLeaks: terms.filter((term) => all.includes(term.toLowerCase())),
         };
       } finally {
@@ -256,9 +267,10 @@ plan.forEach((scenarioId, index) => {
     }
     expect(scan.leaks).toEqual([]);
     expect(scan.generateContent).toBeLessThanOrEqual(2);
-    const exported = entry.export as { verifyExit: number; packageLeaks: string[] } | undefined;
+    const exported = entry.export as { verifyExit: number; packageLeaks: string[]; staticIdentical: boolean } | undefined;
     if (exported) {
       expect(exported.verifyExit).toBe(0);
+      expect(exported.staticIdentical).toBe(true);
       expect(exported.packageLeaks).toEqual([]);
     }
   });

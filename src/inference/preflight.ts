@@ -68,13 +68,15 @@ export function runtimePreflight(input: PreflightInput): PreflightRow[] {
     rows.push({ id: "on-device", label: "On-device model (Gemini Nano)", status: "UNAVAILABLE", detail: "Disabled in this build. Profiling and the twin stay deterministic." });
   } else if (observed(diagnostics, "on-device-inference", "ON_DEVICE")) {
     rows.push({ id: "on-device", label: "On-device model (Gemini Nano)", status: "VERIFIED", detail: "A real ON_DEVICE result was received in this session." });
+  } else if (capability === null) {
+    rows.push({ id: "on-device", label: "On-device model (Gemini Nano)", status: "UNVERIFIED", detail: "Probing the local runtime…" });
   } else {
-    const availability = capability?.languageModelAvailability ?? null;
+    const availability = capability.languageModelAvailability;
     rows.push({
       id: "on-device",
       label: "On-device model (Gemini Nano)",
       status: availability === "available" ? "AVAILABLE" : availability === "downloadable" || availability === "downloading" ? "UNVERIFIED" : "UNAVAILABLE",
-      detail: capability?.guidance ?? "Not probed yet.",
+      detail: capability.guidance,
     });
   }
 

@@ -74,6 +74,15 @@ describe("REL-012 local runtime states", () => {
   });
 });
 
+describe("REL-014 an unfinished probe is not a verdict", () => {
+  it("before the local probe returns, browser and on-device are UNVERIFIED, not UNAVAILABLE", () => {
+    // Sprint 9 live run: the Runtime check was read before the probe returned and showed on-device UNAVAILABLE on a Nano-capable profile.
+    const rows = runtimePreflight({ config: configured, capability: null, harness: false, diagnostics: [] });
+    expect(status(rows, "browser")).toBe("UNVERIFIED");
+    expect(status(rows, "on-device")).toBe("UNVERIFIED");
+  });
+});
+
 describe("REL-013 the test harness is labeled, never verified", () => {
   it("reports UNVERIFIED with a simulated label even after simulated results", () => {
     const rows = runtimePreflight({ config: configured, capability: chrome("available"), harness: true, diagnostics: [event("cloud-inference", "IN_CLOUD")] });
