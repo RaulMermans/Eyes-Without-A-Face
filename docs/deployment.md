@@ -1,6 +1,56 @@
 # Deployment
 
-**Status (Sprint 9, 2026-11-13): still nothing deployed.** Every deployment step below is an external side effect and requires explicit owner approval.
+**Status (Sprint 11, 2026-11-13): still nothing deployed. No owner approval was given during Sprint 11.** Every deployment step below is an external side effect and requires explicit owner approval.
+
+## Sprint 11 read-only preflight (2026-11-13)
+
+| Item | Result | How |
+| --- | --- | --- |
+| Project | `eyes-without-a-face-b7281` (507051460368), ACTIVE; billing **not enabled** | Firebase MCP `get_project`, `get_environment` |
+| Web app | `eyes-without-a-face-web`, `1:507051460368:web:086c755a2c003fb30b4795`, ACTIVE | Firebase MCP `list_apps` |
+| Hosting channels | `live` only; expires never; **no preview channels** | `firebase-tools@15.35.0 hosting:channel:list` |
+| Served content | `/` → 404 "Site Not Found"; `/build-info.json` → 404. No release has ever been made | HTTP GET |
+| Firebase AI Logic | Works from localhost with the registered debug token: real `IN_CLOUD` answer in the Sprint 11 live run | [evidence/sprint-11/live-experience.json](evidence/sprint-11/live-experience.json) |
+| App Check enforcement, reCAPTCHA allowed domains | **Not re-read** (no gcloud on this machine; the CLI credential store was not used to mint tokens). Last verified 2026-11-11: ENFORCED; exactly the two Hosting domains | — |
+
+## Sprint 11 release candidate and owner approval package
+
+**Release candidate verified:** `pnpm build:release` + `pnpm verify:release` **PASS** on `a9cf261f9adda9ddd977c1cbcfb879ac447a9ed3` (clean tree; `mode: production`; `appCheckDebug: false`; the local debug token absent from `dist` (also checked independently); 29 files, 1,985 KiB; the >500 kB chunk warning predates Sprint 11). The fictional demo datasets intentionally contain the privacy canary; this is expected and accepted by `verify-release`.
+
+**What to approve (each line separately):**
+
+| Decision | Exact value |
+| --- | --- |
+| Target | Firebase project `eyes-without-a-face-b7281`, Hosting site `eyes-without-a-face-b7281`, channel `live` → <https://eyes-without-a-face-b7281.web.app> |
+| Git SHA | The **merge commit of the Sprint 11 PR** into `main`. Rebuild from it with `pnpm build:release`; `dist/build-info.json` `gitSha` must equal it. Do not deploy the `a9cf261` build unless you approve that SHA explicitly |
+| External configuration changes | **None required** for option B: `web.app` is already an allowed reCAPTCHA domain. Before deploying, re-read in the console that App Check is ENFORCED for Firebase AI Logic and that the key lists exactly the two Hosting domains (no wildcard, no localhost). No billing change |
+| Expected impact | First public release: a static site. No backend, no database, no logging sink. Cloud inference runs only after a user approval in the page, through App Check |
+| Optional | Option C first (7-day preview channel): verifies assets and on-device only; cloud is expected to fail closed (`APP_CHECK_REJECTED`) because the preview host is not an allowed domain. Do **not** add the preview host or a wildcard |
+
+**Commands after approval** (from a clean checkout of the approved SHA):
+
+```bash
+git checkout <approved-merge-sha> && git status --porcelain --untracked-files=no   # must be empty
+pnpm install --frozen-lockfile && pnpm test:all && pnpm build:release
+jq -r .gitSha dist/build-info.json                                                  # must equal <approved-merge-sha>
+npx -y firebase-tools@15.35.0 deploy --only hosting --project eyes-without-a-face-b7281 -m "sprint-11 $(git rev-parse --short HEAD)"
+```
+
+**Hosted acceptance (nothing is claimed before it runs):** follow the 9-step post-deployment checklist below. In short:
+
+1. `build-info.json` SHA equals the approved SHA.
+2. App Check is enforced and there is no debug token.
+3. A real `IN_CLOUD` mapping is produced, with one `generateContent` per approval.
+4. Request bodies contain no private terms.
+5. Nano runs on the qualifying profile, and a non-Nano Chrome says "deterministic, not hybrid".
+6. Firefox loads the app.
+7. Export, then `node run.mjs verify` on a clean machine.
+8. Console clean.
+9. Record the URL, SHA, deploy time and Hosting version in `docs/sprints/sprint-11.md` (or the next report).
+
+**Failure policy:** record the evidence and classify the failure. Never bypass App Check and never change Firebase configuration silently. Roll back (below) or prepare a narrow fix, and ask again before any further external change.
+
+**Rollback:** `live` has never served a release, so `npx -y firebase-tools@15.35.0 hosting:disable --project eyes-without-a-face-b7281` restores the exact pre-deployment state. After later releases, use Console → Hosting → release history → **Rollback** to the previous version.
 
 ## Sprint 9 read-only re-audit (2026-11-13)
 
