@@ -1,6 +1,6 @@
 import { expect, test, type Page } from "@playwright/test";
 import path from "node:path";
-import { attachProviderWatch } from "./helpers.ts";
+import { attachProviderWatch, openStage } from "./helpers.ts";
 
 /**
  * Sprint 6 UX acceptance (Spectral Forensics redesign). These prove observable
@@ -21,7 +21,7 @@ async function boot(page: Page, harness: Record<string, unknown> | null = { deri
 }
 
 async function step(page: Page, name: RegExp): Promise<void> {
-  await page.getByRole("navigation", { name: "Workflow" }).getByRole("button", { name }).click();
+  await openStage(page, name);
 }
 
 async function toTwin(page: Page): Promise<void> {
@@ -269,6 +269,9 @@ test.describe("E2E-057 error states explain what happened", () => {
 test.describe("E2E-058 keyboard navigation of all five stages", () => {
   test("workflow rail is reachable and operable by keyboard", async ({ page }) => {
     await boot(page);
+    // Sprint 10: reach OBSERVE by keyboard, then operate the workbench rail.
+    await page.getByTestId("mode-observe").focus();
+    await page.keyboard.press("Enter");
     const nav = page.getByRole("navigation", { name: "Workflow" });
     const buttons = nav.getByRole("button");
     await expect(buttons).toHaveCount(5);
@@ -276,7 +279,7 @@ test.describe("E2E-058 keyboard navigation of all five stages", () => {
       await buttons.nth(index).focus();
       await page.keyboard.press("Enter");
       await expect(buttons.nth(index)).toHaveAttribute("aria-current", "step");
-      await expect(page.getByRole("heading", { level: 2, name })).toBeVisible();
+      await expect(page.getByRole("heading", { level: 2, name, exact: true })).toBeVisible();
     }
     // Focus is visible: the focused control draws an outline.
     await buttons.nth(0).focus();

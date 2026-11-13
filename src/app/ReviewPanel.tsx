@@ -3,10 +3,10 @@ import { Button } from "../components/ui/button.tsx";
 import { ErrorBanner } from "../components/ErrorBanner.tsx";
 import { ArrowRightIcon, CloudIcon, LockIcon, SealIcon } from "../components/icons.tsx";
 import { EmptyState, Eyebrow, FieldToken, Panel, PanelHeader, StatusMark, ZoneLabel } from "../components/spectral.tsx";
-import { approveDisclosurePreview, createDisclosurePreview, DisclosureRejectedError } from "../twin/authorization.ts";
+import { approveDisclosurePreview } from "../twin/authorization.ts";
 import { recordWorkflowEvent } from "../observability/workflow-log.ts";
-import { buildDisclosureDraft, type PreparedTwin } from "../workflow/pipeline.ts";
-import { TrustLedger } from "./TrustLedger.tsx";
+import type { PreparedTwin } from "../workflow/pipeline.ts";
+import { prepareDisclosureReview } from "./disclosure-actions.ts";
 import type { WorkspaceState } from "./workspace-state.ts";
 
 /**
@@ -29,9 +29,9 @@ export function ReviewPanel({
 }) {
   const [advanced, setAdvanced] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [notes, setNotes] = useState<string[]>([]);
   const [busy, setBusy] = useState(false);
   const review = workspace.review;
+  const notes = review?.targetNotes ?? [];
 
   if (!prepared) {
     return (
@@ -45,27 +45,10 @@ export function ReviewPanel({
     if (!prepared) return;
     setBusy(true);
     setError(null);
-    const started = performance.now();
     try {
-      let targetSchema: unknown;
-      try {
-        targetSchema = JSON.parse(workspace.destinationText) as unknown;
-      } catch {
-        throw new Error("Destination schema is not valid JSON. Fix it on the Phantom Twin step.");
-      }
-      const draft = buildDisclosureDraft({ prepared, targetSchema });
-      if (!draft.ok) {
-        throw new Error(draft.issues.join("; "));
-      }
-      const preview = await createDisclosurePreview(draft.value.payload);
-      setNotes(draft.value.targetNotes);
-      onChange({ ...workspace, review: { preview, approval: null, status: "pending" }, proposal: null, cloudError: null, report: null });
-      recordWorkflowEvent({ kind: "disclosure-preview", ok: true, durationMs: performance.now() - started, payloadHash: preview.payloadHash });
-    } catch (caught) {
-      const message =
-        caught instanceof DisclosureRejectedError ? `${caught.reason}: ${caught.details.join("; ")}` : caught instanceof Error ? caught.message : String(caught);
-      setError(message);
-      recordWorkflowEvent({ kind: "disclosure-preview", ok: false, code: caught instanceof DisclosureRejectedError ? caught.reason : "DRAFT_INVALID" });
+      const result = await prepareDisclosureReview(workspace, prepared);
+      if (result.ok) onChange(result.workspace);
+      else setError(result.message);
     } finally {
       setBusy(false);
     }
@@ -92,7 +75,6 @@ export function ReviewPanel({
 
   return (
     <section className="space-y-5" aria-labelledby="review-heading">
-      <TrustLedger workspace={workspace} prepared={prepared} />
       <Panel tone="cloud">
         <PanelHeader id="review-heading" title="Disclosure review" eyebrow="Controlled disclosure" zone="approval" zoneText="Nothing is sent from this step">
           A synthetic twin is not automatically anonymous. Aliases, descriptors, category labels and destination field names can still reveal

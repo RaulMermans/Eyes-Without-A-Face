@@ -11,7 +11,6 @@ import { opNumber } from "./view-model.ts";
 import type { WorkspaceState } from "./workspace-state.ts";
 import type { InferenceServices } from "../inference/types.ts";
 import { BlindRevisionPanel } from "./BlindRevisionPanel.tsx";
-import { ExportPanel } from "./ExportPanel.tsx";
 import { SemanticPanel } from "./SemanticPanel.tsx";
 import { SEMANTIC_LABEL } from "./semantic-labels.ts";
 import { activeExecutable, computeWorkspaceSemantics } from "./semantic-context.ts";
@@ -44,14 +43,15 @@ export function VerificationPanel({
   prepared,
   onInspectOperation,
   inference,
-  buildSha = null,
+  onOpenOutcome,
 }: {
   workspace: WorkspaceState;
   onChange: (next: WorkspaceState) => void;
   prepared: PreparedTwin | null;
   onInspectOperation: (index: number) => void;
   inference: InferenceServices;
-  buildSha?: string | null;
+  /** Sprint 10: export lives in OUTCOME; this opens it. */
+  onOpenOutcome?: () => void;
 }) {
   const [includeReserved, setIncludeReserved] = useState(true);
   const proposal = workspace.proposal;
@@ -122,22 +122,22 @@ export function VerificationPanel({
         <div className="mt-5 grid gap-5 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
           <fieldset className="space-y-2 text-sm" data-testid="mapping-choice">
             <legend className="font-mono text-[11px] uppercase tracking-[0.12em] text-mute">Mapping to run</legend>
-            <label className={`flex min-h-10 items-center gap-2 border px-3 ${useProposal ? "border-ink bg-bone" : "border-rule"} ${accepted ? "" : "opacity-60"}`}>
+            <label className={`flex min-h-10 items-center gap-2 border px-3 ${useProposal ? "border-violet-soft bg-violet/10" : "border-rule"} ${accepted ? "" : "opacity-60"}`}>
               <input
                 type="radio"
                 name="mapping-choice"
-                className="accent-ink"
+                className="accent-violet"
                 checked={useProposal}
                 disabled={!accepted}
                 onChange={() => onChange({ ...workspace, mappingChoice: "proposal", report: null })}
               />
               Validated proposal{proposal ? ` (${ORIGIN_LABELS[proposal.origin]})` : " — none yet"}
             </label>
-            <label className={`flex min-h-10 items-center gap-2 border px-3 ${!useProposal ? "border-ink bg-bone" : "border-rule"}`}>
+            <label className={`flex min-h-10 items-center gap-2 border px-3 ${!useProposal ? "border-violet-soft bg-violet/10" : "border-rule"}`}>
               <input
                 type="radio"
                 name="mapping-choice"
-                className="accent-ink"
+                className="accent-violet"
                 checked={!useProposal}
                 onChange={() => onChange({ ...workspace, mappingChoice: "manual", report: null })}
               />
@@ -152,7 +152,7 @@ export function VerificationPanel({
               <label className="flex min-h-10 items-start gap-2 text-sm">
                 <input
                   type="checkbox"
-                  className="mt-1 size-4 accent-ink"
+                  className="mt-1 size-4 accent-violet"
                   checked={includeReserved}
                   onChange={(event) => setIncludeReserved(event.target.checked)}
                   data-testid="include-reserved"
@@ -186,9 +186,11 @@ export function VerificationPanel({
             <span className="font-mono uppercase tracking-[0.1em]">Next</span>
             <span>1 · read the meaning check below</span>
             <span>2 · optionally request one blind revision</span>
-            <a href="#export-heading" className="font-medium text-ink underline underline-offset-2" data-testid="jump-to-export">
-              3 · Export Integration ↓
-            </a>
+            {onOpenOutcome ? (
+              <button type="button" onClick={onOpenOutcome} className="font-medium text-violet-soft underline underline-offset-2" data-testid="jump-to-export">
+                3 · See the outcome and export →
+              </button>
+            ) : null}
           </nav>
 
           <div className="grid gap-5 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
@@ -267,7 +269,7 @@ export function VerificationPanel({
             />
           ) : null}
 
-          <div className="grid gap-5 lg:grid-cols-2" data-testid="mapping-result-list">
+          <div className="grid gap-5 lg:grid-cols-2 lg:items-start" data-testid="mapping-result-list">
             <RowGroup
               title="Imported records"
               note="Profiled locally; represented to the model only through the twin."
@@ -291,7 +293,14 @@ export function VerificationPanel({
         </div>
       )}
       <BlindRevisionPanel workspace={workspace} onChange={onChange} prepared={prepared} inference={inference} />
-      <ExportPanel workspace={workspace} prepared={prepared} buildSha={buildSha} />
+      {report && onOpenOutcome ? (
+        <div className="flex flex-wrap items-center gap-3 border-t border-rule pt-5" data-testid="verification-to-outcome">
+          <Button variant="primary" onClick={onOpenOutcome} data-testid="open-outcome">
+            See the outcome and export
+          </Button>
+          <p className="text-xs text-mute">The Outcome separates structure from meaning, summarizes privacy, and holds Export Integration.</p>
+        </div>
+      ) : null}
     </section>
   );
 }
@@ -439,7 +448,7 @@ function VerdictCard({ report, semantic }: { report: RealityCheckReport; semanti
   const reservedTone = report.reservedTotal === 0 ? "text-mute" : report.reservedFailed === 0 ? "text-pass" : "text-fail";
   return (
     <section
-      className={`on-ink animate-reveal overflow-hidden border bg-ink text-bone ${report.overall === "pass" ? "border-pass" : "border-ink"}`}
+      className={`on-ink animate-reveal overflow-hidden border bg-void text-ink ${report.overall === "pass" ? "border-pass" : "border-ink-3"}`}
       data-testid="reality-verdict"
       data-status={report.overall}
       aria-label="Reality Check verdict"
@@ -460,7 +469,7 @@ function VerdictCard({ report, semantic }: { report: RealityCheckReport; semanti
         <dl className="grid grid-cols-2 border-t border-ink-3 lg:border-l lg:border-t-0">
           <div className="border-r border-ink-3 p-5">
             <dt className="text-xs text-ink-text">Imported records transformed</dt>
-            <dd className={`mt-2 font-mono text-4xl ${importedOk ? "text-cyan" : "text-[#e48a8a]"}`} data-testid="verdict-imported">
+            <dd className={`mt-2 font-mono text-4xl ${importedOk ? "text-cyan" : "text-fail"}`} data-testid="verdict-imported">
               {importedPassed} / {imported.length}
             </dd>
             <p className="mt-1 text-[11px] text-ink-text">{importedOk ? "all transformed" : "some failed"}</p>
@@ -468,7 +477,7 @@ function VerdictCard({ report, semantic }: { report: RealityCheckReport; semanti
           <div className="p-5">
             <dt className="text-xs text-ink-text">Reserved hidden cases covered</dt>
             <dd
-              className={`mt-2 font-mono text-4xl ${reservedTone === "text-mute" ? "text-ink-text" : reservedTone === "text-pass" ? "text-cyan" : "text-[#e48a8a]"}`}
+              className={`mt-2 font-mono text-4xl ${reservedTone === "text-mute" ? "text-ink-text" : reservedTone === "text-pass" ? "text-cyan" : "text-fail"}`}
               data-testid="verdict-reserved"
             >
               {report.reservedTotal === 0 ? "not run" : `${reservedPassed} / ${report.reservedTotal}`}

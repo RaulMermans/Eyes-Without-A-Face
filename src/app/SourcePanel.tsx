@@ -17,12 +17,19 @@ export function SourcePanel({
   profile,
   profileIssues,
   onContinue,
+  continueLabel = "Continue to Phantom Twin",
+  continueHint = "Next: replace every field with an alias and fictional values. Still local.",
+  continueVariant = "primary",
 }: {
   workspace: WorkspaceState;
   onChange: (next: WorkspaceState) => void;
   profile: SourceProfile | null;
   profileIssues: ProfileIssue[];
   onContinue: () => void;
+  /** CONNECT shows the stage-by-stage path as a secondary action (Sprint 10). */
+  continueLabel?: string;
+  continueHint?: string;
+  continueVariant?: "primary" | "outline";
 }) {
   function applyText(text: string, label: string, reserved: Record<string, unknown>[] | null): void {
     const parsed = parseSourceDataset(text, label);
@@ -55,17 +62,17 @@ export function SourcePanel({
 
       <div className="mt-5 flex flex-wrap items-center gap-2">
         <Button variant={source ? "outline" : "primary"} onClick={() => onChange(withCrmDemo(workspace))} data-testid="load-crm-sample">
-          Load fictional CRM sample
+          Use the fictional CRM demo
         </Button>
         <label className="inline-flex min-h-10 cursor-pointer items-center rounded-[3px] border border-rule bg-panel px-4 text-sm font-medium hover:border-ink/40 hover:bg-bone focus-within:outline-2 focus-within:outline-signal">
           Import JSON file
           <input className="sr-only" type="file" accept="application/json,.json,.txt" data-testid="source-file-input" onChange={onFile} />
         </label>
-        <Button variant="ghost" onClick={() => applyText(JSON.stringify(edgeRecords), "fictional-crm-accounts-edge", null)} data-testid="load-edge-sample">
-          Load reserved edge cases as source
-        </Button>
       </div>
-      <Disclosure summary="Blind revision scenarios — fictional, with a holdout set (inspected in Sprint 8; development data)" className="mt-4" testId="scenario-picker">
+      <Disclosure summary="Advanced sources — evaluation scenarios with a holdout set, edge cases" className="mt-4" testId="scenario-picker">
+        <Button size="sm" variant="ghost" className="mb-3 px-0" onClick={() => applyText(JSON.stringify(edgeRecords), "fictional-crm-accounts-edge", null)} data-testid="load-edge-sample">
+          Load the reserved edge cases as the source
+        </Button>
         <p className="text-xs text-mute">
           Each scenario loads imported records (profiled), revision-feedback cases (reserved hidden cases) and a holdout set that stays out of
           profiling, disclosure and feedback until the mapping is final. Its acceptance policy is local and versioned. All data is fictional.
@@ -217,11 +224,11 @@ export function SourcePanel({
           </Disclosure>
           {profile ? (
             <div className="flex flex-wrap items-center gap-3 border-t border-rule pt-5">
-              <Button variant="primary" onClick={onContinue} data-testid="continue-to-twin">
-                Continue to Phantom Twin
+              <Button variant={continueVariant} onClick={onContinue} data-testid="continue-to-twin">
+                {continueLabel}
                 <ArrowRightIcon />
               </Button>
-              <p className="text-xs text-mute">Next: replace every field with an alias and fictional values. Still local.</p>
+              <p className="text-xs text-mute">{continueHint}</p>
             </div>
           ) : null}
         </div>

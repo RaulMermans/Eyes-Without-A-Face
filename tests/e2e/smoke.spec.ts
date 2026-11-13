@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 import path from "node:path";
-import { attachProviderWatch, screenshotDir } from "./helpers.ts";
+import { attachProviderWatch, screenshotDir, openStage } from "./helpers.ts";
 
 test.describe("E2E-001 application boot", () => {
   test("renders identity without uncaught errors", async ({ page }) => {
@@ -11,7 +11,8 @@ test.describe("E2E-001 application boot", () => {
     await page.goto("/");
     await expect(page.getByRole("heading", { level: 1, name: "Eyes Without a Face" })).toBeVisible();
     await expect(page.getByText("Build integrations for systems your AI cannot see.")).toBeVisible();
-    await expect(page.getByRole("navigation", { name: "Workflow" })).toBeVisible();
+    // Sprint 10: the shell is organized by three experience modes; the five stages live in OBSERVE.
+    await expect(page.getByRole("navigation", { name: "Experience" })).toBeVisible();
     await page.screenshot({
       path: path.join(screenshotDir, "e2e-001-boot.png"),
       fullPage: true,
@@ -23,20 +24,20 @@ test.describe("E2E-001 application boot", () => {
 test.describe("E2E-002 workflow navigation", () => {
   test("moves between shell sections", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /Source System/ }).click();
+    await openStage(page, /Source System/);
     await expect(page.getByRole("heading", { level: 2, name: "Source System" })).toBeVisible();
     await expect(page.getByRole("heading", { name: "Import source JSON" })).toBeVisible();
-    await page.getByRole("button", { name: /Reality Check/ }).click();
+    await openStage(page, /Reality Check/);
     await expect(page.getByRole("heading", { level: 2, name: "Reality Check" })).toBeVisible();
     await expect(page.getByRole("heading", { name: "Local mapping execution" })).toBeVisible();
     // Sprint 5: unimplemented steps are not offered in the workflow.
     const workflow = page.getByRole("navigation", { name: "Workflow" });
     await expect(workflow.getByRole("button")).toHaveCount(5);
     await expect(workflow.getByRole("button", { name: /Export/ })).toHaveCount(0);
-    await page.getByRole("button", { name: /Phantom Twin/ }).click();
+    await openStage(page, /Phantom Twin/);
     await expect(page.getByRole("heading", { level: 2, name: "Phantom Twin" })).toBeVisible();
     await expect(page.getByTestId("twin-empty")).toBeVisible();
-    await page.getByRole("button", { name: /Disclosure Review/ }).click();
+    await openStage(page, /Disclosure Review/);
     await expect(page.getByRole("heading", { level: 2, name: "Disclosure Review" })).toBeVisible();
     await page.screenshot({
       path: path.join(screenshotDir, "e2e-002-workflow.png"),
@@ -60,7 +61,11 @@ test.describe("E2E-003 responsive UI", () => {
 
     await page.setViewportSize({ width: 390, height: 844 });
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-    await expect(page.getByRole("button", { name: /Reality Check/ })).toBeVisible();
+    for (const mode of ["Connect", "Observe", "Outcome"]) {
+      await expect(page.getByRole("navigation", { name: "Experience" }).getByRole("button", { name: mode })).toBeVisible();
+    }
+    await page.getByTestId("mode-observe").click();
+    await expect(page.getByRole("navigation", { name: "Workflow" }).getByRole("button", { name: /Reality Check/ })).toBeVisible();
     const compactOverflow = await page.evaluate(
       () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
     );

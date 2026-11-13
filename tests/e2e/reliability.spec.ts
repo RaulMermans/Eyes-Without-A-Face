@@ -1,6 +1,6 @@
 import { expect, test, type Page } from "@playwright/test";
 import path from "node:path";
-import { attachProviderWatch } from "./helpers.ts";
+import { attachProviderWatch, openOutcome } from "./helpers.ts";
 
 /**
  * Sprint 9 Workstream B — provider failures produce safe, understandable,
@@ -141,7 +141,8 @@ test.describe("E2E-096 a failed revision keeps the initial mapping and its expor
     await expect(page.getByTestId("revision-budget")).toHaveText("0 of 1 remaining (used)");
     await expect(page.getByTestId("prepare-safe-revision")).toBeDisabled();
     expect(await cloudCalls(page)).toBe(2);
-    // The initial mapping is still a candidate; no revised candidate exists.
+    // The initial mapping is still a candidate; no revised candidate exists. Export lives in OUTCOME (Sprint 10).
+    await openOutcome(page);
     await expect(page.getByTestId("export-panel")).toBeVisible();
     await expect(page.getByTestId("export-candidates")).toHaveCount(0);
     await expect(page.getByTestId("export-state")).not.toHaveText(/Blocked/);

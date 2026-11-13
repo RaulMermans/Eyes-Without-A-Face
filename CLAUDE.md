@@ -24,5 +24,7 @@ Read, in order:
 18. `docs/sprints/sprint-8.md` — Sprint 8 report, benchmark results and Sprint 9 readiness
 19. `docs/contracts/export.md` and `docs/decisions/0010-portable-integration-export.md` — portable integration package
 20. `docs/sprints/sprint-9.md` — Sprint 9 report, release readiness and submission blockers
+21. `docs/decisions/0011-experience-architecture-black-halo.md` — CONNECT / OBSERVE / OUTCOME, derived runtime, Black Halo
+22. `docs/sprints/sprint-10.md` — Sprint 10 report
 
-Do not duplicate architecture here. Do not start Sprint 10 automatically.
+Do not duplicate architecture here. Do not start Sprint 11 automatically.

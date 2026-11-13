@@ -18,7 +18,7 @@ const PATH = [
 export function ProductHero({ onStart }: { onStart: () => void }) {
   return (
     <section
-      className="on-ink spectral-grid relative overflow-hidden border-b border-ink-3 bg-ink text-bone"
+      className="on-ink spectral-grid relative overflow-hidden border-b border-ink-3 text-ink"
       aria-labelledby="hero-heading"
       data-testid="intro"
     >
@@ -28,12 +28,12 @@ export function ProductHero({ onStart }: { onStart: () => void }) {
             <span className="inline-block h-px w-8 bg-gold" aria-hidden="true" />
             Phantom Twin Engine · client-only
           </p>
-          <h2 id="hero-heading" className="mt-5 max-w-[17ch] font-display text-[2.6rem] leading-[1.02] tracking-[-0.01em] text-bone sm:text-6xl lg:text-[4.6rem]">
-            Build integrations for systems your AI <em className="text-cyan">cannot see.</em>
+          <h2 id="hero-heading" className="mt-5 max-w-[17ch] font-display text-[2.6rem] leading-[1.02] tracking-[-0.01em] text-ink sm:text-6xl lg:text-[4.6rem]">
+            Build integrations for systems your AI <em className="text-violet-soft">cannot see.</em>
           </h2>
           <p className="mt-5 max-w-[52ch] text-base leading-7 text-ink-text sm:text-lg">
             Let a cloud model design an integration for private data it is never shown. Your records stay in this
-            browser. Gemini sees only a fictional <span className="text-bone">Phantom Twin</span> that you approve. Your
+            browser. Gemini sees only a fictional <span className="text-ink">Phantom Twin</span> that you approve. Your
             browser then verifies its mapping against the real records, and you export it as a package that runs anywhere with Node.
           </p>
           <div className="mt-7 flex flex-wrap items-center gap-3">
@@ -43,7 +43,7 @@ export function ProductHero({ onStart }: { onStart: () => void }) {
             </Button>
             <a
               href="#how-it-works"
-              className="inline-flex min-h-12 items-center rounded-[3px] border border-ink-3 px-5 text-base font-medium text-bone transition-colors hover:border-cyan/60 hover:text-cyan"
+              className="inline-flex min-h-12 items-center rounded-[3px] border border-ink-3 px-5 text-base font-medium text-ink transition-colors hover:border-violet-soft/60 hover:text-violet-soft"
             >
               How it works
             </a>
@@ -57,7 +57,7 @@ export function ProductHero({ onStart }: { onStart: () => void }) {
           <div className="pointer-events-none absolute -right-10 -top-10 hidden opacity-90 lg:block" aria-hidden="true">
             <BrandMark size="hero" decorative />
           </div>
-          <div className="relative border border-ink-3 bg-ink-2/80 p-4 backdrop-blur-[2px] sm:p-5 lg:mt-24">
+          <div className="relative border border-ink-3 bg-panel/85 p-4 backdrop-blur-[2px] sm:p-5 lg:mt-24">
             <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-text">What crosses the boundary</p>
             <ol className="mt-4 space-y-0" aria-label="Where each step runs" data-testid="path-strip">
               {PATH.map((item, index) => {
@@ -70,15 +70,15 @@ export function ProductHero({ onStart }: { onStart: () => void }) {
                       </div>
                     ) : null}
                     <div className={`flex gap-3 py-2.5 ${cloud ? "border-x-[3px] border-double border-gold/70 bg-gold/10 px-3" : ""}`}>
-                      <span className={`mt-0.5 flex size-7 shrink-0 items-center justify-center border ${cloud ? "border-gold text-gold" : "border-cyan/50 text-cyan"}`}>
+                      <span className={`mt-0.5 flex size-7 shrink-0 items-center justify-center border ${cloud ? "border-gold text-gold" : "border-violet-soft/50 text-violet-soft"}`}>
                         <item.Icon size={14} />
                       </span>
                       <div className="min-w-0">
-                        <p className="text-sm font-medium text-bone">
+                        <p className="text-sm font-medium text-ink">
                           <span className="mr-1.5 font-mono text-[11px] text-ink-text">{String(index + 1).padStart(2, "0")}</span>
                           {item.label}
                         </p>
-                        <p className={`font-mono text-[11px] ${cloud ? "text-gold" : "text-cyan"}`}>{item.where}</p>
+                        <p className={`font-mono text-[11px] ${cloud ? "text-gold" : "text-violet-soft"}`}>{item.where}</p>
                         <p className="mt-0.5 text-xs text-ink-text">{item.detail}</p>
                       </div>
                     </div>
@@ -109,13 +109,13 @@ const STAGES = [
     Icon: PhantomIcon,
     title: "A Phantom Twin stands in.",
     body: "Every field becomes a meaningless alias like f_03 with fictional example values. Gemini Nano can suggest field roles on-device from the synthetic samples.",
-    tone: "text-cyan-ink",
+    tone: "text-cyan",
   },
   {
     Icon: SealIcon,
     title: "You approve one exact request.",
     body: "You read what Gemini would receive and what it will not. Gemini in the cloud proposes a mapping over aliases only.",
-    tone: "text-gold-ink",
+    tone: "text-gold",
   },
   {
     Icon: GaugeIcon,
@@ -127,7 +127,7 @@ const STAGES = [
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" aria-labelledby="how-heading" className="scroll-mt-20 border-b border-rule bg-bone">
+    <section id="how-it-works" aria-labelledby="how-heading" className="scroll-mt-20 border-b border-rule">
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <h2 id="how-heading" className="font-display text-3xl leading-tight sm:text-4xl">
@@ -145,7 +145,7 @@ export function HowItWorks() {
                 <span className="font-mono text-xs text-mute">{String(index + 1).padStart(2, "0")}</span>
                 <stage.Icon size={18} className={stage.tone} />
               </div>
-              <h3 className="mt-6 font-display text-2xl leading-tight">{stage.title}</h3>
+              <h3 className="mt-6 text-lg font-semibold leading-tight">{stage.title}</h3>
               <p className="mt-2 text-sm leading-6 text-mute">{stage.body}</p>
             </li>
           ))}

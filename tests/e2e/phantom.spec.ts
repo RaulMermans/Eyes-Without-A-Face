@@ -1,6 +1,6 @@
 import { expect, test, type Page } from "@playwright/test";
 import path from "node:path";
-import { attachProviderWatch, screenshotDir } from "./helpers.ts";
+import { attachProviderWatch, screenshotDir, openStage } from "./helpers.ts";
 
 const sprint3Shots = path.join(screenshotDir, "..", "sprint-3-screenshots");
 const PRIVATE_TERMS = [
@@ -30,7 +30,7 @@ async function boot(page: Page, harness: Record<string, unknown> | null = { deri
 }
 
 async function step(page: Page, name: RegExp): Promise<void> {
-  await page.getByRole("navigation", { name: "Workflow" }).getByRole("button", { name }).click();
+  await openStage(page, name);
 }
 
 async function loadSampleAndTwin(page: Page, discloseCategories = true): Promise<void> {
@@ -365,7 +365,7 @@ test.describe("E2E-036 UX regression", () => {
     await expect(page.getByTestId("source-profile")).toBeVisible();
     await page.getByTestId("continue-to-twin").focus();
     await page.keyboard.press("Enter");
-    await expect(page.getByRole("heading", { level: 2, name: "Phantom Twin" })).toBeVisible();
+    await expect(page.getByRole("heading", { level: 2, name: "Phantom Twin", exact: true })).toBeVisible();
     await page.locator('[data-testid^="disclose-categories-"]').first().focus();
     await page.keyboard.press("Space");
     await expect(page.locator('[data-testid^="disclose-categories-"]').first()).toBeChecked();

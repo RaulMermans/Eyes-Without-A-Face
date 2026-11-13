@@ -1,6 +1,6 @@
-# Usability — protocol and internal audit (Sprint 9)
+# Usability — protocol and internal audit (Sprints 9–10)
 
-> **Independent usability testing: NOT PERFORMED.** No developer unfamiliar with Eyes Without a Face has used the product yet. Everything below is either a protocol ready to run, or an internal heuristic audit by the team that built it. Do not cite it as user evidence.
+> **Independent usability testing: NOT PERFORMED (Sprint 9 and Sprint 10).** No developer unfamiliar with Eyes Without a Face has used the product yet. Everything below is either a protocol ready to run, or an internal heuristic audit by the team that built it. Do not cite it as user evidence.
 
 ## 1. Unassisted task protocol (ready to run, ≥ 3 participants)
 
@@ -51,3 +51,46 @@ Walkthrough of the hero journey on 2026-11-13 against Nielsen's heuristics and t
 | H10 | Mobile: the Integration Studio becomes a long single column | Low | **Accepted.** No horizontal overflow at 390 px (E2E-092, existing UX tests); usable, not optimized |
 
 Keyboard and reduced motion: the export confirmation and button work with Space/Enter (E2E-091); all new animation is the existing indicator, disabled under `prefers-reduced-motion` by the global rule.
+
+## 3. Sprint 10 protocol adaptation (CONNECT / OBSERVE / OUTCOME)
+
+The protocol in §1 still applies. Tasks and measures now follow the three moments. Run it on the Sprint 10 build with the **fictional CRM demo** first, then `crm-eu-accounts` for the revision task.
+
+| # | Task (read verbatim, no hints) | Success criterion | Measure |
+| --- | --- | --- | --- |
+| T1 | "Start an integration from the fictional CRM into the helpdesk." | Reaches OBSERVE at the approval (CONNECT → Build Integration) | time to first meaningful result: start → `runtime-headline` "Waiting for your approval…" |
+| T2 | "Where are the customer records right now? What could the cloud see?" | Names "this browser"; describes aliases and fictional rows; does not say Gemini saw records | wrong privacy assumptions (count) |
+| T3 | "Decide whether to let the request go." | Opens the review, reads Will / Will not receive, approves or rejects deliberately | hesitation > 30 s, navigation errors |
+| T4 | "Show me what the mapping does with the status field." | Opens the Integration Studio from OBSERVE and selects the operation | unaided / hint / not done |
+| T5 | "Is the output correct?" | Separates structure from meaning; names the finding (CRM: hidden-case failures; scenario: date order) | score 0–2 |
+| T6 | "If something is wrong, try to fix it without sending records." | Prepares and reviews one blind revision; approves only after reading it | approval without reading (critical) |
+| T7 | "What did you end up with?" | Explains the OUTCOME headline, exceptions/quarantine, and draft vs verified | score 0–2 |
+| T8 | "Take it with you and run it." | Exports, then `node run.mjs verify` exit 0 in a terminal | export execution success |
+
+**Critical safety misunderstandings** fail the release target for that participant. These include believing Gemini received records, believing Build Integration sent something, believing an export deploys anything, and believing "unknown meaning" means correct.
+
+**Release target (not an observed result):** 3 / 3 participants complete T1–T8 with no critical safety misunderstanding.
+
+**Status:** NOT PERFORMED. No external developer was available to the team during Sprint 10. No interview, observation or quote in this repository comes from a participant.
+
+## 4. Sprint 10 internal heuristic audit and automated checks
+
+The audit with screenshots and measurements is [../design/sprint-10-experience-audit.md](../design/sprint-10-experience-audit.md). Automated usability-related checks:
+
+| Check | Test |
+| --- | --- |
+| Two clicks from the demo to the first decision; nothing sent before approval | E2E-100 |
+| Runtime explains why it is waiting, and where each stage runs | E2E-101, RT-003 |
+| On-device unavailability stated honestly | E2E-107, RT-002 |
+| Upstream change clears approvals and results visibly | E2E-102, RT-006 |
+| Outcome separates structure / meaning / records; quarantine ≠ success | E2E-103 |
+| No horizontal overflow, CTA above the fold, mobile build bar | E2E-105 (1440 / 1280 / 768 / 390) |
+| Keyboard-only workbench and runtime selection | E2E-058, E2E-101 |
+| Reduced motion removes every animation | E2E-106 |
+| Screen-reader pass | **UNVERIFIED** (structural checks only) |
+
+Open internal findings (team judgment, not user evidence):
+
+- At 390 px the OBSERVE page is long because all 17 stages are listed.
+- Applying a Nano suggestion after Build Integration clears the prepared request (correct by the rules, surprising in flow).
+- The revision panel remains text-dense.

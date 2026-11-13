@@ -1,0 +1,48 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Direction A — Black Halo Instrument</title>
+<style>
+:root{--obs:#090A12;--deep:#11121D;--rule:#262838;--violet:#823DFF;--sv:#B88AFF;--gold:#E8BF72;--white:#EEEAF7;--mute:#9A97AD;--cyan:#7DD3DA;--pass:#5CC48A;--warn:#F0A050}
+*{box-sizing:border-box}body{margin:0;background:var(--obs);color:var(--white);font:14px/1.5 "IBM Plex Sans",system-ui,sans-serif}
+.mono{font-family:"IBM Plex Mono",monospace}.eb{font:11px "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+header{display:flex;align-items:center;justify-content:space-between;padding:12px 32px;border-bottom:1px solid var(--rule)}
+.brand{display:flex;gap:10px;align-items:center}.brand img{width:34px}.brand b{font:600 15px "IBM Plex Sans";letter-spacing:.02em}
+nav.modes{display:flex;gap:4px;border:1px solid var(--rule);padding:3px;border-radius:999px}nav.modes span{padding:6px 16px;border-radius:999px;font:12px "IBM Plex Mono";letter-spacing:.12em}
+nav.modes .on{background:var(--white);color:var(--obs)}
+.wrap{padding:28px 32px;display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:24px}
+.state{grid-column:1/-1;display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid var(--rule);padding-bottom:18px}
+.state h1{margin:6px 0 0;font:500 30px "IBM Plex Sans";letter-spacing:-.02em}.state .cta{background:var(--gold);color:var(--obs);padding:10px 18px;border-radius:3px;font-weight:600}
+.lanes{border:1px solid var(--rule);background:var(--deep)}
+.lh,.row{display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr;align-items:center}
+.lh{border-bottom:1px solid var(--rule)}.lh div{padding:10px 14px}.lh .halo{border-inline:3px double var(--gold);color:var(--gold)}
+.row{border-bottom:1px solid #1b1c2a}.row .lab{padding:9px 14px;display:flex;gap:10px;align-items:center}.row .c{height:100%;display:flex;justify-content:center;align-items:center}
+.row .h{border-inline:3px double rgba(232,191,114,.45);background:rgba(232,191,114,.04)}
+.node{width:14px;height:14px;border-radius:50%;border:2px solid var(--white)}.node.done{background:var(--white)}.node.wait{border:3px double var(--gold);width:18px;height:18px;box-shadow:0 0 0 6px rgba(232,191,114,.12)}
+.node.idle{border:1.5px dashed var(--mute)}.node.od{border-color:var(--sv);background:var(--violet)}.row.sel{background:rgba(130,61,255,.12);box-shadow:inset 3px 0 0 var(--violet)}
+.st{margin-left:auto;font:11px "IBM Plex Mono";color:var(--mute)}
+aside{border:1px solid var(--rule);background:var(--deep);padding:18px}aside h2{font:600 17px "IBM Plex Sans";margin:6px 0 12px}
+dl{display:grid;grid-template-columns:120px 1fr;gap:6px 10px;margin:0}dt{color:var(--mute);font:11px "IBM Plex Mono";text-transform:uppercase;letter-spacing:.08em}dd{margin:0}
+.tl{margin-top:18px;border-top:1px solid var(--rule);padding-top:12px}.tl p{margin:4px 0;font:12px "IBM Plex Mono";color:var(--mute)}.tl b{color:var(--white);font-weight:500}
+.eye{position:relative;display:flex;justify-content:center;margin:-6px 0 6px}.eye img{width:84px;opacity:.95}
+@media(max-width:700px){.wrap{grid-template-columns:1fr;padding:16px}.lh{display:none}.row{grid-template-columns:1fr}.row .c{display:none}header{padding:10px 16px}nav.modes span{padding:5px 9px}.state{flex-direction:column;align-items:start;gap:12px}}
+</style></head><body>
+<header><div class="brand"><img src="eyes-emblem.webp" alt=""><b>EYES WITHOUT A FACE</b></div>
+<nav class="modes"><span>CONNECT</span><span class="on">OBSERVE</span><span>OUTCOME</span></nav></header>
+<div class="wrap">
+<div class="state"><div><p class="eb">fictional-crm-accounts → Helpdesk contact · run 01</p><h1>Waiting for your approval of one cloud request.</h1></div><span class="cta">Review disclosure</span></div>
+<section class="lanes">
+<div class="lh eb"><div>Stage</div><div>This browser</div><div class="halo">Your approval</div><div>Gemini Cloud</div></div>
+<div class="row"><div class="lab"><span class="mono eb">01</span>Source imported<span class="st">completed · 3 records</span></div><div class="c"><i class="node done"></i></div><div class="c h"></div><div class="c"></div></div>
+<div class="row"><div class="lab"><span class="mono eb">02</span>Source profiled<span class="st">completed · 2 ms</span></div><div class="c"><i class="node done"></i></div><div class="c h"></div><div class="c"></div></div>
+<div class="row"><div class="lab"><span class="mono eb">03</span>On-device interpretation<span class="st">skipped · unavailable</span></div><div class="c"><i class="node idle"></i></div><div class="c h"></div><div class="c"></div></div>
+<div class="row"><div class="lab"><span class="mono eb">04</span>Phantom Twin generated<span class="st">completed · 6 aliases</span></div><div class="c"><i class="node done"></i></div><div class="c h"></div><div class="c"></div></div>
+<div class="row"><div class="lab"><span class="mono eb">05</span>Cloud disclosure prepared<span class="st">completed · sha 44993c…</span></div><div class="c"><i class="node done"></i></div><div class="c h"></div><div class="c"></div></div>
+<div class="row sel"><div class="lab"><span class="mono eb">06</span>Awaiting your authorization<span class="st" style="color:var(--gold)">awaiting approval</span></div><div class="c"></div><div class="c h"><i class="node wait"></i></div><div class="c"></div></div>
+<div class="row"><div class="lab"><span class="mono eb">07</span>Gemini Cloud inference<span class="st">not started</span></div><div class="c"></div><div class="c h"></div><div class="c"><i class="node idle"></i></div></div>
+<div class="row"><div class="lab"><span class="mono eb">08</span>Mapping proposed<span class="st">not started</span></div><div class="c"><i class="node idle"></i></div><div class="c h"></div><div class="c"></div></div>
+<div class="row"><div class="lab"><span class="mono eb">10</span>Local Reality Check<span class="st">not started</span></div><div class="c"><i class="node idle"></i></div><div class="c h"></div><div class="c"></div></div>
+<div class="row"><div class="lab"><span class="mono eb">11</span>Semantic verification<span class="st">not started</span></div><div class="c"><i class="node idle"></i></div><div class="c h"></div><div class="c"></div></div>
+</section>
+<aside><div class="eye"><img src="eyes-emblem.webp" alt=""></div><p class="eb" style="color:var(--gold)">Stage 06 · awaiting approval</p><h2>Awaiting your authorization</h2>
+<dl><dt>Where</dt><dd>You · nothing is sent yet</dd><dt>Responsible</dt><dd>Disclosure gate (SHA-256, single use)</dd><dt>Input</dt><dd>6 aliases · 6 synthetic rows · 5 destination fields</dd><dt>Output</dt><dd>One approval bound to one prompt hash</dd><dt>Next</dt><dd>Read what Gemini will and will not receive, then approve or reject.</dd></dl>
+<div class="tl"><p class="eb">Activity · this session</p><p>14:02:11 <b>local</b> profile · 3 records · 2 ms</p><p>14:02:11 <b>local</b> twin · 6 aliases · 1 ms</p><p>14:02:12 <b>local</b> disclosure preview · hash 44993c…</p></div></aside>
+</div></body></html>

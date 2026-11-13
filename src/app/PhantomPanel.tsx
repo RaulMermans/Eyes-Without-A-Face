@@ -12,7 +12,6 @@ import { InferenceError } from "../inference/errors.ts";
 import { isRecoverableOnDeviceFailure, ON_DEVICE_USER_RETRY_LIMIT } from "../inference/retry-policy.ts";
 import { recordWorkflowEvent } from "../observability/workflow-log.ts";
 import type { PreparedTwin } from "../workflow/pipeline.ts";
-import { TrustLedger } from "./TrustLedger.tsx";
 import { firstPresent, formatSample } from "./view-model.ts";
 import { invalidateDownstream, type WorkspaceState } from "./workspace-state.ts";
 
@@ -163,7 +162,6 @@ export function PhantomPanel({
 
   return (
     <section className="space-y-5" aria-labelledby="twin-heading">
-      <TrustLedger workspace={workspace} prepared={prepared} />
 
       <Panel aria-label="Phantom Twin transformation">
         <PanelHeader id="twin-heading" title="Phantom Twin" eyebrow="Signature transformation" zone="synthetic" zoneText="Generated locally · deterministic">
@@ -210,7 +208,7 @@ export function PhantomPanel({
           <label className="flex min-h-10 items-center gap-2 rounded-[3px] border border-ink/30 bg-panel px-3 text-sm sm:ml-auto">
             <input
               type="checkbox"
-              className="size-4 accent-ink"
+              className="size-4 accent-violet"
               checked={showLocalNames}
               onChange={(event) => setShowLocalNames(event.target.checked)}
               data-testid="show-local-names"

@@ -21,6 +21,8 @@ export interface ReviewState {
   preview: DisclosurePreview;
   approval: DisclosureApproval | null;
   status: "pending" | "approved" | "rejected" | "sent";
+  /** Display notes about the destination description (e.g. dropped keywords). Local only. */
+  targetNotes?: string[];
 }
 
 export interface ProposalState {

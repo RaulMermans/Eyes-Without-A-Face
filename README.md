@@ -58,7 +58,8 @@ Real inference through Firebase AI Logic on Chrome 157 (Linux, AMD Strix Halo) w
 | Private terms in the real `generateContent` request body | 0 |
 | Sprint 9 live hero journey (Nano → Gemini → one revision → export → `node run.mjs verify`), 5 runs | 3 `ACCEPTED`, 1 `HUMAN_REVIEW_REQUIRED` (exported as DRAFT), 1 invalid initial proposal rejected; 4 / 4 exports verified; 0 private terms in 9 request bodies |
 | On-device reliability, 10 cold + 10 warm browser runs | 19 / 20 first try, 20 / 20 after one user retry, 0 cloud fallbacks |
-| Deterministic suites (Sprint 9 head) | 217 unit · 43 contract · 66 privacy · 62 evaluation · 89 Playwright E2E |
+| Sprint 10 live requalification of the new CONNECT / OBSERVE / OUTCOME journey, 1 run | Nano 6 / 6 on-device; Build Integration sent 0 requests; Gemini proposal valid; revision `ACCEPTED`; export `VERIFIED_WITH_EXCEPTIONS`, `node run.mjs verify` exit 0; 0 private terms in 2 request bodies |
+| Deterministic suites (Sprint 10 head) | 231 unit · 43 contract · 69 privacy · 62 evaluation · 102 Playwright E2E |
 
 ## Run it
 
@@ -93,6 +94,14 @@ node run.mjs run --input ../records.json --bindings ../bindings.local.json --out
 The package status is computed, never asserted: `VERIFIED`, `VERIFIED_WITH_EXCEPTIONS` (quarantine within policy, listed), or a confirmed `DRAFT`, which is not production-ready.
 
 ## Status
+
+Sprint 10 reorganizes the product around three moments:
+
+- **CONNECT** — choose a source and a destination; **Build Integration** runs locally and stops at your approval.
+- **OBSERVE** — a Live Intelligence Runtime shows each of 17 stages where it actually ran: this browser, your approval (the halo), or Gemini Cloud. Every status is derived from real state.
+- **OUTCOME** — the verdict with structure and meaning kept apart, before/after, the privacy outcome, and Export.
+
+The new **Black Halo** art direction is derived from the emblem. No gate, contract or engine changed. See [docs/sprints/sprint-10.md](docs/sprints/sprint-10.md) and [ADR 0011](docs/decisions/0011-experience-architecture-black-halo.md).
 
 Sprint 9 adds **portable export**, provider-failure guidance with explicit fresh-approval recovery, and a runtime preflight ([docs/sprints/sprint-9.md](docs/sprints/sprint-9.md)), on top of Sprint 7 **Blind Integration** and Sprint 8 **Semantic Verification**. Sprint 9 live: 3 of 5 real hero runs ended `ACCEPTED` and exported, and 4 of 4 exported packages verified with plain `node`. Judge summary: [docs/submission/evidence.md](docs/submission/evidence.md).
 
