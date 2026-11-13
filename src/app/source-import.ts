@@ -1,9 +1,28 @@
 import { isPlainObject } from "../domain/mapping/json.ts";
 import { PROFILE_LIMITS } from "../domain/profile/profile.ts";
+import type { NormalizedSource } from "../sources/types.ts";
+
+/**
+ * Sprint 13: where the records came from and how they were normalized
+ * (Source Adapter Layer, `src/sources/`). Non-sensitive provenance only;
+ * optional so every pre-Sprint-13 caller keeps working unchanged.
+ */
+export interface SourceOrigin {
+  adapter: NormalizedSource["adapter"];
+  format: NormalizedSource["format"];
+  provenance: NormalizedSource["provenance"];
+  warnings: NormalizedSource["warnings"];
+  fields: NormalizedSource["fields"];
+  typeCandidates: NormalizedSource["typeCandidates"];
+  textKept: NormalizedSource["textKept"];
+  /** Columns the user chose to read as numbers / booleans. */
+  typeChoices: string[];
+}
 
 export interface ImportedSource {
   label: string;
   records: Record<string, unknown>[];
+  origin?: SourceOrigin;
 }
 
 export function parseSourceDataset(text: string, label = "imported.json"): { ok: true; value: ImportedSource } | { ok: false; message: string } {
