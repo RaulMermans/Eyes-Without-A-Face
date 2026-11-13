@@ -90,6 +90,20 @@ Build a privacy-aware integration tool: private CRM JSON stays local; on-device 
 - A body-scan match is investigated and traced before any conclusion; never delete a failing run, never widen an allowlist to make it pass.
 - Video upload, Devpost submission, repository settings, API-key restriction or rotation, and any Firebase configuration change need explicit owner approval.
 
+## Guided flow and source rules (Sprint 13)
+
+- The default page is the guided flow: Your data → Destination → Result ([ADR 0012](docs/decisions/0012-guided-flow-and-source-adapters.md)). The Sprint 10/11 experience is the technical view (`/#technical`). Both views share one `WorkspaceState`; switching changes no workflow state.
+- Approve, reject, send, cancel, fresh request and local verification live in `src/app/run-actions.ts`. Do not reimplement them in a component.
+- "Build integration" stops at the approval. "Approve and send" approves and sends exactly the previewed request, once. Never auto-approve, never pre-authorize, never combine the revision approval with the first one.
+- The guided status comes only from `guidedStatus` (a reading of `deriveRuntime` and export eligibility). No percentages, no invented steps.
+- Every input goes through the Source Adapter Layer (`src/sources/`) into one `NormalizedSource`, then `toImportedSource`. No per-format pipeline.
+  - Never coerce CSV values automatically. Conversions are lossless and opt-in.
+  - Never evaluate Excel formulas, run macros or fetch external links.
+  - Messages carry row and column positions and names, never values.
+- The REST connector is read-only: one GET after an explicit click, HTTPS public hosts only, no redirects, no proxy, browser CORS. A token lives only in the connect form's memory for one request. Never store, log, export or disclose it.
+- Transformed-record downloads are explicit, local and separate from the portable package. Never add records to the ZIP.
+- Do not label a destination as "connected": EYES does not write to destinations.
+
 ## Tool and data permissions
 
 Allowed without extra authorization: local files in this repository, local tests, local Vite server, Playwright against localhost.

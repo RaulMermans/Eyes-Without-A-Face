@@ -4,9 +4,10 @@ import { ErrorBanner } from "../components/ErrorBanner.tsx";
 import { GaugeIcon, SearchIcon } from "../components/icons.tsx";
 import { Disclosure, Eyebrow, FieldToken, Panel, PanelHeader, StatusMark, StatusIcon, type Status } from "../components/spectral.tsx";
 import { recordWorkflowEvent } from "../observability/workflow-log.ts";
-import { runRealityCheck, type RealityCheckReport, type RealityCheckRow, type RealityCheckStatuses } from "../verification/reality-check.ts";
+import { type RealityCheckReport, type RealityCheckRow, type RealityCheckStatuses } from "../verification/reality-check.ts";
 import type { PreparedTwin } from "../workflow/pipeline.ts";
 import { ORIGIN_LABELS } from "./result-kind.ts";
+import { runLocalVerification } from "./run-actions.ts";
 import { opNumber } from "./view-model.ts";
 import type { WorkspaceState } from "./workspace-state.ts";
 import type { InferenceServices } from "../inference/types.ts";
@@ -60,44 +61,9 @@ export function VerificationPanel({
   const reserved = workspace.reservedRecords;
 
   function run(): void {
-    if (!workspace.source) {
-      onChange({ ...workspace, mappingRunError: "Import a source dataset before running the local mapping engine.", report: null });
-      return;
-    }
-    let mapping: unknown;
-    let targetSchema: unknown;
-    if (useProposal && accepted) {
-      mapping = accepted.resolved.executable;
-    } else {
-      try {
-        mapping = JSON.parse(workspace.mappingText) as unknown;
-      } catch {
-        onChange({ ...workspace, mappingRunError: "Mapping contract is not valid JSON.", report: null });
-        return;
-      }
-    }
-    try {
-      targetSchema = JSON.parse(workspace.destinationText) as unknown;
-    } catch {
-      onChange({ ...workspace, mappingRunError: "Destination schema is not valid JSON.", report: null });
-      return;
-    }
-    const report = runRealityCheck({
-      records: workspace.source.records,
-      reservedRecords: includeReserved && reserved ? reserved : [],
-      mappingContract: mapping,
-      targetSchema,
-      bindings: useProposal ? (prepared?.twin.bindings ?? null) : null,
-    });
-    recordWorkflowEvent({
-      kind: "reality-check",
-      ok: report.overall === "pass",
-      durationMs: report.durationMs,
-      code: report.failureCodes[0]?.code,
-      counts: { total: report.total, passed: report.passed, failed: report.failed, reserved: report.reservedTotal },
-    });
-    onChange({ ...workspace, report, mappingRunError: null });
+    onChange(runLocalVerification(workspace, prepared, includeReserved));
   }
+
 
 
   const report = workspace.report;

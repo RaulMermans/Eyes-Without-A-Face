@@ -91,7 +91,12 @@
     "src/evaluation/evaluate.ts": "a464b4679fbe9f31939304e927abd649b4408dc463c182611d8e40456526a5b8",
     "src/evaluation/benchmark.ts": "2c31b81ff7783c6993a208219730da21003b9d64f05890fbaed5300dc15b81a0",
     "src/evaluation/aggregate.ts": "74ef965cdfb261901f986b276a564d34b4de50534696c6f68db2cf8e010deb11",
-    "tests/live/semantic-benchmark.spec.ts": "f85b9a0aad9d2bb99a51bf63d53bf1a8e9bf63acd3b3c063fa657f11f325f264"
+    "tests/live/semantic-benchmark.spec.ts": "4f87ceb7273a4112304581dae81b6710cc9ac20c74fb49c84ca65514b664a7d8"
   },
-  "amendments": []
+  "amendments": [
+    {
+      "at": "2026-11-13T19:58:13.375Z",
+      "reason": "Sprint 13 (ADR 0012): the default page became the guided flow; the live harness now opens the unchanged technical view via /#technical. One line (entry URL) changed; scenarios, inputs, prompts and assertions are unchanged."
+    }
+  ]
 }

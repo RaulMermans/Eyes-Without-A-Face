@@ -3,10 +3,9 @@ import { Button } from "../components/ui/button.tsx";
 import { ErrorBanner } from "../components/ErrorBanner.tsx";
 import { ArrowRightIcon, CloudIcon, LockIcon, SealIcon } from "../components/icons.tsx";
 import { EmptyState, Eyebrow, FieldToken, Panel, PanelHeader, StatusMark, ZoneLabel } from "../components/spectral.tsx";
-import { approveDisclosurePreview } from "../twin/authorization.ts";
-import { recordWorkflowEvent } from "../observability/workflow-log.ts";
 import type { PreparedTwin } from "../workflow/pipeline.ts";
 import { prepareDisclosureReview } from "./disclosure-actions.ts";
+import { approveReview, rejectReview } from "./run-actions.ts";
 import type { WorkspaceState } from "./workspace-state.ts";
 
 /**
@@ -55,17 +54,14 @@ export function ReviewPanel({
   }
 
   function approve(): void {
-    if (!review) return;
-    const approval = approveDisclosurePreview(review.preview);
-    onChange({ ...workspace, review: { ...review, approval, status: "approved" } });
-    recordWorkflowEvent({ kind: "disclosure-approve", ok: true, payloadHash: review.preview.payloadHash });
+    onChange(approveReview(workspace));
   }
 
+
   function reject(): void {
-    if (!review) return;
-    onChange({ ...workspace, review: { ...review, approval: null, status: "rejected" } });
-    recordWorkflowEvent({ kind: "disclosure-reject", ok: true, payloadHash: review.preview.payloadHash });
+    onChange(rejectReview(workspace));
   }
+
 
 
   const payload = review?.preview.payload;

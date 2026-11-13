@@ -16,7 +16,7 @@ async function boot(page: Page, harness: Record<string, unknown>): Promise<void>
   await page.addInitScript((value) => {
     window.__EYES_WITHOUT_A_FACE_TEST__ = value as Window["__EYES_WITHOUT_A_FACE_TEST__"];
   }, { label: "test-harness", deriveProposal: true, ...harness });
-  await page.goto("/");
+  await page.goto("/#technical");
 }
 
 async function cloudCalls(page: Page): Promise<number> {
@@ -153,7 +153,7 @@ test.describe("E2E-096 a failed revision keeps the initial mapping and its expor
 test.describe("E2E-097 runtime preflight", () => {
   test("reports unconfigured AI honestly and sends no request", async ({ page }) => {
     const providerRequests = attachProviderWatch(page);
-    await page.goto("/");
+    await page.goto("/#technical");
     const preflight = page.getByTestId("runtime-preflight");
     await preflight.locator("summary").click();
     await expect(page.getByTestId("preflight-firebase")).toHaveAttribute("data-status", "UNAVAILABLE");

@@ -28,7 +28,7 @@ test("HOSTED-DEG without on-device AI: honest deterministic path, nothing sent",
   try {
     const info = (await (await page.request.get("/build-info.json")).json()) as { gitSha: string };
     entry.gitSha = info.gitSha;
-    await page.goto("/");
+    await page.goto("/#technical");
     entry.footerHasBuild = (await page.locator("footer").innerText()).includes(info.gitSha.slice(0, 12));
     await page.getByTestId("start-demo").click();
     const card = page.getByTestId("connect-on-device-unavailable");

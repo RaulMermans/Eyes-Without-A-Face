@@ -1,0 +1,4 @@
+"customer_id","email_address","account_state","joined_at","company_name","internal_note"
+"CUST-001"," ALICE@EXAMPLE.COM ","active_customer","2026-01-15","Example Studio","PRIVATE_CANARY_PII_DO_NOT_SHARE fictional billing note"
+"CUST-002","bob@example.com","inactive_customer","2025-11-02","  North Bridge Co  ",""
+"CUST-003","cara@example.org","prospect","2026-03-08","Cedar & Pine",""

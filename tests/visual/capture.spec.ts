@@ -39,7 +39,7 @@ for (const viewport of VIEWPORTS) {
     await page.addInitScript(() => {
       window.__EYES_WITHOUT_A_FACE_TEST__ = { label: "test-harness", deriveProposal: true };
     });
-    await page.goto("/");
+    await page.goto("/#technical");
     await shot(page, viewport.name, "01-landing");
     await shot(page, viewport.name, "01-landing-fold", false);
 
@@ -78,7 +78,7 @@ for (const viewport of [VIEWPORTS[0], VIEWPORTS[3]]) {
     await page.addInitScript((value) => {
       window.__EYES_WITHOUT_A_FACE_TEST__ = value as Window["__EYES_WITHOUT_A_FACE_TEST__"];
     }, { label: "test-harness", cloudOutput: CRM_INITIAL });
-    await page.goto("/");
+    await page.goto("/#technical");
     await page.getByTestId("scenario-picker").locator("summary").click();
     await page.getByTestId("load-scenario-crm-eu-accounts").click();
     await page.getByTestId("build-integration").click();

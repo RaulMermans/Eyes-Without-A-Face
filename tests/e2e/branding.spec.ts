@@ -11,7 +11,7 @@ test.describe("E2E-005 official branding", () => {
       }
     });
 
-    await page.goto("/");
+    await page.goto("/#technical");
     const headerLogo = page.getByRole("img", { name: "Eyes Without a Face emblem" }).first();
     await expect(headerLogo).toBeVisible();
     const box = await headerLogo.boundingBox();

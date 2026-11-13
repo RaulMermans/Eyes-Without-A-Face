@@ -142,7 +142,7 @@ async function boot(page: Page): Promise<void> {
       (self as unknown as { FIREBASE_APPCHECK_DEBUG_TOKEN?: string }).FIREBASE_APPCHECK_DEBUG_TOKEN = token;
     }, debugToken);
   }
-  await page.goto("/");
+  await page.goto("/#technical");
 }
 
 async function loadScenario(page: Page, id: string): Promise<void> {

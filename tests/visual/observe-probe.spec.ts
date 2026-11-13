@@ -18,7 +18,7 @@ test("measure OBSERVE", async ({ page }) => {
   });
   for (const vp of [{ w: 390, h: 844 }, { w: 1440, h: 900 }]) {
     await page.setViewportSize({ width: vp.w, height: vp.h });
-    await page.goto("/");
+    await page.goto("/#technical");
     await page.getByTestId("start-demo").click();
     await page.getByTestId("build-integration").click();
     await expect(page.getByTestId("runtime-stage-authorization")).toHaveAttribute("data-status", "awaiting-approval");

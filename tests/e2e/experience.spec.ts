@@ -25,7 +25,7 @@ async function boot(page: Page, harness: Record<string, unknown> = { derivePropo
   await page.addInitScript((value) => {
     window.__EYES_WITHOUT_A_FACE_TEST__ = value as Window["__EYES_WITHOUT_A_FACE_TEST__"];
   }, { label: "test-harness", ...harness });
-  await page.goto("/");
+  await page.goto("/#technical");
 }
 
 async function cloudCalls(page: Page): Promise<number> {

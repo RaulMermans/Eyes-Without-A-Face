@@ -9,14 +9,14 @@ async function gotoWithHarness(
   await page.addInitScript((value) => {
     window.__EYES_WITHOUT_A_FACE_TEST__ = value as Window["__EYES_WITHOUT_A_FACE_TEST__"];
   }, { label: "test-harness", ...harness });
-  await page.goto("/");
+  await page.goto("/#technical");
   await openDiagnostics(page);
 }
 
 test.describe("E2E-006 unconfigured Firebase", () => {
   test("shows unavailable AI states and no false success", async ({ page }) => {
     const providerRequests = attachProviderWatch(page);
-    await page.goto("/");
+    await page.goto("/#technical");
     await openDiagnostics(page);
     await expect(page.getByTestId("on-device-status")).toContainText("Unavailable");
     await expect(page.getByTestId("cloud-status")).toContainText("Unavailable");
@@ -133,7 +133,7 @@ test.describe("E2E-014 unknown inference provenance", () => {
 
 test.describe("E2E-015 app check unconfigured", () => {
   test("reports App Check as not ready without credentials", async ({ page }) => {
-    await page.goto("/");
+    await page.goto("/#technical");
     await expect(page.getByTestId("app-check-status")).toContainText(
       /Not configured|Unavailable|placeholder/i,
     );

@@ -49,3 +49,11 @@ export async function openOutcome(page: Page): Promise<void> {
   await page.getByTestId("mode-outcome").click();
   await page.getByTestId("outcome").waitFor();
 }
+
+/**
+ * Sprint 13 (ADR 0012): the default page is the guided flow. The Sprint 10/11
+ * CONNECT / OBSERVE / OUTCOME experience these suites exercise is unchanged
+ * and lives in the technical view, opened directly with this URL. Assertions
+ * are unchanged; only the entry URL moved.
+ */
+export const TECHNICAL_VIEW = "/#technical";

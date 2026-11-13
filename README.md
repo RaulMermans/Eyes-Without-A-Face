@@ -8,6 +8,14 @@ A privacy-aware integration studio for the Google #BuildHybridAI 2026 hackathon.
 
 ![OUTCOME after a real hosted run: Verified, with managed exceptions](docs/demo/screenshots/sprint-12-hosted/07-outcome-verdict.png)
 
+## Using it (Sprint 13)
+
+1. **Your data.** Upload a JSON, CSV or Excel (.xlsx) file, or connect a read-only, CORS-enabled HTTPS JSON API. Fictional demo data is one click away. Everything is parsed in the browser.
+2. **Destination.** Pick a fictional example schema, or bring your own JSON Schema (import, paste, or draft one from a sample record). EYES builds a transformation; it does not connect to the destination.
+3. **Result.** **Build integration** prepares everything locally and stops for your approval of one exact Gemini request. **Approve and send** sends it once. The mapping is then checked locally, and you download a portable integration (and, if you choose, your transformed records as JSON or CSV).
+
+Everything technical — the Phantom Twin, the 17-stage runtime, the workbench — is one click away under **Technical details** (`/#technical`). The public URL above still serves the Sprint 11 build until an owner-approved redeploy ([docs/sprints/sprint-13.md](docs/sprints/sprint-13.md)).
+
 ## The problem
 
 You need to move customer records from a private CRM into a new system. Gemini could write the field mapping in seconds, but the records (names, emails, internal notes) are not allowed to leave your machine. Pasting "just a few rows" into a chat is exactly the leak you are trying to avoid.
@@ -64,7 +72,8 @@ Real inference through Firebase AI Logic on Chrome 157 (Linux, AMD Strix Halo) w
 | Sprint 11 live requalification of the CONNECT-first sequence, 1 run | Nano 6 / 6 on-device in CONNECT before any request existed; 0 invalidated approvals; Gemini proposal valid in 2.4 s; revision `ACCEPTED`; export `VERIFIED_WITH_EXCEPTIONS`, `node run.mjs verify` exit 0; 0 private terms in 2 request bodies |
 | **Sprint 12 hosted acceptance** on the public URL, production App Check, no debug token, 2 runs | 2 / 2: Nano 6 / 6 on-device, 0 requests before approval, Gemini valid, semantic failure caught, revision `ACCEPTED` (transformed 0 → 7), `node run.mjs verify` exit 0; 0 private terms in 4 request bodies |
 | Sprint 12 Nano-value experiment (pre-registered, 3 paired trials) | Nano understood private field names the rules could not (8 / 8 applied suggestions correct, 5 wrong ones blocked), but Gemini's mapping was identical with and without it: **neutral** ([docs/evaluation/sprint-12-nano-value.md](docs/evaluation/sprint-12-nano-value.md)) |
-| Deterministic suites (Sprint 12 head) | see [docs/sprints/sprint-12.md](docs/sprints/sprint-12.md) |
+| Deterministic suites (Sprint 13 head) | 654 pass: 320 unit, 43 contract, 78 privacy, 84 evaluation, 129 E2E ([docs/sprints/sprint-13.md](docs/sprints/sprint-13.md)) |
+| Sprint 13 read-only connector, real network, no mocks | 1 GET to a public CORS-enabled API, 10 fictional records into the same engine, 0 source values in the prepared prompt; a real CORS refusal reported, not bypassed |
 
 ## Run it
 

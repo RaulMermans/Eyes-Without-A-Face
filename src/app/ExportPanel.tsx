@@ -90,7 +90,18 @@ function formatBytes(bytes: number): string {
  * step. Eligibility, contents, privacy status and limitations are derived from
  * workspace state on every render; nothing here sets verification state.
  */
-export function ExportPanel({ workspace, prepared, buildSha }: { workspace: WorkspaceState; prepared: PreparedTwin | null; buildSha: string | null }) {
+export function ExportPanel({
+  workspace,
+  prepared,
+  buildSha,
+  compact = false,
+}: {
+  workspace: WorkspaceState;
+  prepared: PreparedTwin | null;
+  buildSha: string | null;
+  /** Sprint 13 guided result: same package, same checks; the explanations are collapsed. */
+  compact?: boolean;
+}) {
   const candidates = useMemo(() => exportCandidates(workspace, prepared), [workspace, prepared]);
   const [selectedId, setSelectedId] = useState<ExportCandidate["id"]>("active");
   const [draftConfirmed, setDraftConfirmed] = useState(false);
@@ -139,13 +150,8 @@ export function ExportPanel({ workspace, prepared, buildSha }: { workspace: Work
   const draft = eligibility.decision === "DRAFT_ONLY";
   const canExport = !blocked && (!draft || draftConfirmed) && !busy;
 
-  return (
-    <Panel tone="plain" aria-labelledby="export-heading" data-testid="export-panel" data-state={eligibility.state} data-decision={eligibility.decision}>
-      <PanelHeader id="export-heading" title="Export Integration" eyebrow="Final step · portable package" zone="verified" zoneText="Local · nothing is uploaded">
-        Download the verified mapping as a package that runs outside this app with Node 22 and nothing else. It is built in this browser from the
-        evidence above. It never contains your records.
-      </PanelHeader>
-
+  const exportExplained = (
+    <>
       <ul className="mt-4 grid gap-x-6 gap-y-1.5 text-sm leading-6 md:grid-cols-2" data-testid="export-what-you-get" aria-label="What you receive">
         <li><span className="font-medium">An executable mapping</span> over Phantom aliases, with this app&apos;s engine and a Node 22 runner.</li>
         <li><span className="font-medium">Fictional fixtures only.</span> No records, no field names, no alias bindings.</li>
@@ -157,33 +163,10 @@ export function ExportPanel({ workspace, prepared, buildSha }: { workspace: Work
         </li>
       </ul>
 
-      {candidates.length > 1 ? (
-        <fieldset className="mt-4 space-y-2 text-sm" data-testid="export-candidates">
-          <legend className="font-mono text-[11px] uppercase tracking-[0.12em] text-mute">Mapping to export</legend>
-          {candidates.map((item) => (
-            <label key={item.id} className={`flex min-h-10 flex-wrap items-center gap-2 border px-3 py-1.5 ${candidate.id === item.id ? "border-violet-soft bg-violet/10" : "border-rule"}`}>
-              <input
-                type="radio"
-                name="export-candidate"
-                className="accent-violet"
-                checked={candidate.id === item.id}
-                onChange={() => {
-                  setSelectedId(item.id);
-                  setDraftConfirmed(false);
-                }}
-                data-testid={`export-candidate-${item.id}`}
-              />
-              <span className="font-medium">{item.label}</span>
-              <StatusMark status={STATE_STATUS[item.eligibility.state]} className="text-xs">
-                {STATE_TEXT[item.eligibility.state]}
-              </StatusMark>
-              {item.revisionVerdict ? <span className="font-mono text-[11px] text-mute">local decision {item.revisionVerdict}</span> : null}
-            </label>
-          ))}
-          <p className="text-xs text-mute">Nothing is promoted automatically: you choose which mapping leaves this page.</p>
-        </fieldset>
-      ) : null}
+    </>
+  );
 
+  const evidenceGrid = (
       <div className="mt-4 grid gap-5 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
         <section aria-labelledby="export-eligibility-heading" className="min-w-0 space-y-2">
           <Eyebrow>Eligibility</Eyebrow>
@@ -225,8 +208,64 @@ export function ExportPanel({ workspace, prepared, buildSha }: { workspace: Work
           </p>
         </section>
       </div>
+  );
 
-      <Disclosure summary="What the package contains and how to run it" className="mt-4 border-t border-rule pt-3" testId="export-contents">
+  return (
+    <Panel tone="plain" aria-labelledby="export-heading" data-testid="export-panel" data-state={eligibility.state} data-decision={eligibility.decision}>
+      {compact ? (
+        <PanelHeader id="export-heading" title="Download integration" eyebrow="Portable package · runs with Node 22" zone="verified" zoneText="Built here · nothing is uploaded">
+          A ZIP with the mapping, the engine and a runner. It never contains your records.
+        </PanelHeader>
+      ) : (
+        <PanelHeader id="export-heading" title="Export Integration" eyebrow="Final step · portable package" zone="verified" zoneText="Local · nothing is uploaded">
+          Download the verified mapping as a package that runs outside this app with Node 22 and nothing else. It is built in this browser from the
+          evidence above. It never contains your records.
+        </PanelHeader>
+      )}
+
+      {compact ? (
+        <Disclosure summary="What is in the package" className="mt-4" testId="export-explained">
+          {exportExplained}
+        </Disclosure>
+      ) : (
+        exportExplained
+      )}
+      {candidates.length > 1 ? (
+        <fieldset className="mt-4 space-y-2 text-sm" data-testid="export-candidates">
+          <legend className="font-mono text-[11px] uppercase tracking-[0.12em] text-mute">Mapping to export</legend>
+          {candidates.map((item) => (
+            <label key={item.id} className={`flex min-h-10 flex-wrap items-center gap-2 border px-3 py-1.5 ${candidate.id === item.id ? "border-violet-soft bg-violet/10" : "border-rule"}`}>
+              <input
+                type="radio"
+                name="export-candidate"
+                className="accent-violet"
+                checked={candidate.id === item.id}
+                onChange={() => {
+                  setSelectedId(item.id);
+                  setDraftConfirmed(false);
+                }}
+                data-testid={`export-candidate-${item.id}`}
+              />
+              <span className="font-medium">{item.label}</span>
+              <StatusMark status={STATE_STATUS[item.eligibility.state]} className="text-xs">
+                {STATE_TEXT[item.eligibility.state]}
+              </StatusMark>
+              {item.revisionVerdict ? <span className="font-mono text-[11px] text-mute">local decision {item.revisionVerdict}</span> : null}
+            </label>
+          ))}
+          <p className="text-xs text-mute">Nothing is promoted automatically: you choose which mapping leaves this page.</p>
+        </fieldset>
+      ) : null}
+
+      {compact ? (
+        <Disclosure summary={<>Package status: <span className="font-mono">{eligibility.status ?? "not exportable"}</span> · what is never included</>} className="mt-3" testId="export-evidence">
+          {evidenceGrid}
+        </Disclosure>
+      ) : (
+        evidenceGrid
+      )}
+
+      <Disclosure summary={compact ? "How to run it" : "What the package contains and how to run it"} className="mt-4 border-t border-rule pt-3" testId="export-contents">
         <div className="grid gap-4 lg:grid-cols-2">
           <table className="w-full text-left text-xs">
             <tbody>
@@ -285,7 +324,7 @@ node run.mjs run --input ../records.json \\
 
       <div className="mt-4 flex flex-wrap items-center gap-3">
         <Button variant="primary" size="lg" onClick={() => void exportNow()} disabled={!canExport} data-testid="export-integration">
-          <SealIcon size={14} /> {draft ? "Export Draft Integration" : "Export Integration"}
+          <SealIcon size={14} /> {compact ? (draft ? "Download draft integration" : "Download integration") : draft ? "Export Draft Integration" : "Export Integration"}
         </Button>
         <span className="text-xs text-mute">Builds a ZIP in this browser. No network request.</span>
       </div>

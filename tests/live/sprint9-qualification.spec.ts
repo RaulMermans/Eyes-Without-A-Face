@@ -116,7 +116,7 @@ plan.forEach((scenarioId, index) => {
           (self as unknown as { FIREBASE_APPCHECK_DEBUG_TOKEN?: string }).FIREBASE_APPCHECK_DEBUG_TOKEN = token;
         }, debugToken);
       }
-      await page.goto("/");
+      await page.goto("/#technical");
       await page.getByTestId("runtime-preflight").locator("summary").click();
       entry.preflight = Object.fromEntries(
         await Promise.all(["browser", "on-device", "firebase", "app-check", "cloud"].map(async (id) => [id, await attr(page, `preflight-${id}`, "data-status")] as const)),

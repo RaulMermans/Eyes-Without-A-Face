@@ -78,7 +78,7 @@ async function guidedOnDeviceRun(page: Page, attempt: number, phase: "cold" | "w
     pageErrors += 1;
   });
   const started = Date.now();
-  await page.goto("/");
+  await page.goto("/#technical");
   await page.getByTestId("load-crm-sample").click();
   await page.getByTestId("continue-to-twin").click();
   await expect(page.getByTestId("on-device-mode-label")).toContainText("On-device AI available", { timeout: 30_000 });
