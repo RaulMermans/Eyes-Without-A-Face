@@ -227,7 +227,7 @@ export function ReviewPanel({
                 <dl className="grid gap-2 font-mono text-[11px] sm:grid-cols-2">
                   <div>
                     <dt className="text-mute">Request id</dt>
-                    <dd className="break-all">{review.preview.requestId}</dd>
+                    <dd className="break-all" data-testid="review-request-id">{review.preview.requestId}</dd>
                   </div>
                   <div>
                     <dt className="text-mute">Schema version</dt>

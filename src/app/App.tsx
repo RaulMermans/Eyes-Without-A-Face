@@ -21,6 +21,7 @@ import { initialWorkspaceState, type WorkspaceState } from "./workspace-state.ts
 import { WORKFLOW_STEPS, type WorkflowStepId } from "./workflow.ts";
 import { HowItWorks, ProductHero } from "./Landing.tsx";
 import { WorkflowProgress } from "./WorkflowProgress.tsx";
+import { RuntimePreflight } from "./RuntimePreflight.tsx";
 import { Disclosure, Eyebrow, ZoneLabel, type Zone } from "../components/spectral.tsx";
 
 const STEP_ZONE: Record<WorkflowStepId, Zone> = {
@@ -201,6 +202,7 @@ export default function App() {
               onContinue={() => goTo("phantom")}
             />
           ) : null}
+          {step.id === "source" ? <RuntimePreflight config={config} inference={inference} refreshKey={workspace.proposal} /> : null}
           {step.id === "phantom" ? (
             <>
               <PhantomPanel
@@ -226,6 +228,7 @@ export default function App() {
               focusOperation={focusOperation}
               onFocusOperation={setFocusOperation}
               onContinue={() => goTo("verification")}
+              onReviewFresh={() => goTo("review")}
             />
           ) : null}
           {step.id === "verification" ? (

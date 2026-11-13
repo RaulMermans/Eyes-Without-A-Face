@@ -31,6 +31,7 @@ import { assertReservedAuthorization } from "../twin/authorization-ledger.ts";
 import { raceAbort } from "./abort.ts";
 import { recordDiagnostic } from "./diagnostics.ts";
 import { classifyUnknownError, InferenceError, InferenceUnavailableError } from "./errors.ts";
+import { INITIAL_MAPPING_RESPONSE_SCHEMA, REVISION_MAPPING_RESPONSE_SCHEMA } from "./response-schemas.ts";
 import { FIREBASE_AI_LOGIC_API } from "./firebase-api.ts";
 import { probeOnDeviceCapability } from "./on-device-capability.ts";
 import {
@@ -38,8 +39,6 @@ import {
   buildOnDevicePrompt,
   buildPrivateSemanticsPrompt,
   FIELD_INTERPRETATION_JSON_SCHEMA,
-  MAPPING_PROPOSAL_JSON_SCHEMA,
-  MAPPING_REVISION_JSON_SCHEMA,
   PRIVATE_FIELD_SEMANTICS_JSON_SCHEMA,
 } from "./prompts.ts";
 import { isRevisionSchemaVersion } from "../revision/revision-payload.ts";
@@ -330,7 +329,7 @@ class LiveFirebaseRuntime {
             model: FIREBASE_AI_LOGIC_API.defaultCloudModel,
             generationConfig: {
               responseMimeType: "application/json",
-              responseJsonSchema: MAPPING_PROPOSAL_JSON_SCHEMA,
+              responseJsonSchema: INITIAL_MAPPING_RESPONSE_SCHEMA,
             },
           },
         });
@@ -342,7 +341,7 @@ class LiveFirebaseRuntime {
             model: FIREBASE_AI_LOGIC_API.defaultCloudModel,
             generationConfig: {
               responseMimeType: "application/json",
-              responseJsonSchema: MAPPING_REVISION_JSON_SCHEMA,
+              responseJsonSchema: REVISION_MAPPING_RESPONSE_SCHEMA,
             },
           },
         });

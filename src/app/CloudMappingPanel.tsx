@@ -1,7 +1,11 @@
 import { useRef, useState } from "react";
+import { Guidance } from "../components/Guidance.tsx";
+import { PendingOperation } from "../components/PendingOperation.tsx";
+import { guidanceForFailure } from "../inference/failure-guidance.ts";
+import { CLOUD_TIMEOUT_MS } from "../inference/retry-policy.ts";
+import { createDisclosurePreview } from "../twin/authorization.ts";
+import { buildDisclosureDraft } from "../workflow/pipeline.ts";
 import { Button } from "../components/ui/button.tsx";
-import { ErrorBanner } from "../components/ErrorBanner.tsx";
-import { LoadingState } from "../components/LoadingState.tsx";
 import { ArrowRightIcon, CloudIcon } from "../components/icons.tsx";
 import { Disclosure, Eyebrow, Panel, PanelHeader, StatusMark } from "../components/spectral.tsx";
 import { liveInferenceLabel } from "../config/env.ts";
@@ -12,6 +16,7 @@ import type { ProposalOrigin } from "../proposal/convert.ts";
 import { DisclosureRejectedError } from "../twin/authorization.ts";
 import { submitApprovedCloudInference } from "../twin/cloud-request-gate.ts";
 import { acceptProposal, type PreparedTwin } from "../workflow/pipeline.ts";
+import { ErrorBanner } from "../components/ErrorBanner.tsx";
 import { IntegrationStudio, ProposalPipeline } from "./IntegrationStudio.tsx";
 import { buildConnections } from "./mapping-connections.ts";
 import { MappingPanel } from "./MappingPanel.tsx";
@@ -31,6 +36,7 @@ export function CloudMappingPanel({
   focusOperation,
   onFocusOperation,
   onContinue,
+  onReviewFresh,
 }: {
   workspace: WorkspaceState;
   onChange: (next: WorkspaceState) => void;
@@ -39,8 +45,14 @@ export function CloudMappingPanel({
   focusOperation: number | null;
   onFocusOperation: (index: number) => void;
   onContinue: () => void;
+  /** Navigate to Disclosure Review after a fresh request was prepared. */
+  onReviewFresh?: () => void;
 }) {
   const [editorOpen, setEditorOpen] = useState(false);
+  const [manualOpen, setManualOpen] = useState(false);
+  const [recoveryError, setRecoveryError] = useState<string | null>(null);
+  /** Identifies the request the UI is waiting for; a stopped or superseded request's answer is discarded. */
+  const waitToken = useRef(0);
   const editorRef = useRef<HTMLDetailsElement | null>(null);
   const [busy, setBusy] = useState(false);
   const [editText, setEditText] = useState<string | null>(null);
@@ -79,6 +91,7 @@ export function CloudMappingPanel({
   async function send(): Promise<void> {
     if (!review || !review.approval || !prepared) return;
     setBusy(true);
+    const token = ++waitToken.current;
     const started = performance.now();
     const preview = review.preview;
     const approval = review.approval;
@@ -91,6 +104,7 @@ export function CloudMappingPanel({
         destinationKey: preview.destinationKey,
         purpose: "mapping-proposal",
       });
+      if (token !== waitToken.current) return;
       recordWorkflowEvent({
         kind: "cloud-proposal",
         ok: true,
@@ -108,22 +122,67 @@ export function CloudMappingPanel({
       next = { ...next, proposal: evaluated, mappingChoice: "proposal" };
       setEditText(null);
     } catch (caught) {
-      const code = caught instanceof DisclosureRejectedError ? caught.reason : caught instanceof InferenceError ? caught.code : "CLOUD_FAILED";
-      const message =
+      if (token !== waitToken.current) return;
+      const code = caught instanceof DisclosureRejectedError ? "DISCLOSURE_REJECTED" : caught instanceof InferenceError ? caught.code : "CLOUD_FAILED";
+      // Raw provider text stays local and collapsed; the default view shows guidance only.
+      const detail =
         caught instanceof DisclosureRejectedError
           ? `${caught.reason}: ${caught.details.join("; ")}`
-          : caught instanceof InferenceError
-            ? `${caught.code}: ${caught.message}`
-            : caught instanceof Error
-              ? caught.message
-              : String(caught);
-      recordWorkflowEvent({ kind: "cloud-proposal", ok: false, durationMs: performance.now() - started, payloadHash: preview.payloadHash, code });
-      next = { ...next, cloudError: message };
+          : caught instanceof Error
+            ? caught.message
+            : String(caught);
+      recordWorkflowEvent({ kind: "cloud-proposal", ok: false, durationMs: performance.now() - started, payloadHash: preview.payloadHash, code: caught instanceof DisclosureRejectedError ? caught.reason : code });
+      next = { ...next, cloudError: { code, detail } };
     } finally {
-      setBusy(false);
-      onChange(next);
+      if (token === waitToken.current) {
+        setBusy(false);
+        onChange(next);
+      }
     }
   }
+
+  /** Stop waiting: the approval stays consumed; a late answer is discarded (B5). */
+  function stopWaiting(): void {
+    if (!review) return;
+    waitToken.current += 1;
+    setBusy(false);
+    recordWorkflowEvent({ kind: "cloud-proposal", ok: false, payloadHash: review.preview.payloadHash, code: "CANCELLED" });
+    onChange({
+      ...workspace,
+      review: { ...review, approval: null, status: "sent" },
+      proposal: null,
+      report: null,
+      cloudError: { code: "CANCELLED", detail: "Stopped by the user while waiting for the provider." },
+    });
+  }
+
+  /**
+   * Explicit recovery (B3): rebuild the same reviewed disclosure as a NEW
+   * preview with a new request id. It must be approved again on the review
+   * step. The consumed approval is never reused; nothing is sent here.
+   */
+  async function prepareFreshRequest(): Promise<void> {
+    if (!prepared) return;
+    setRecoveryError(null);
+    try {
+      const draft = buildDisclosureDraft({ prepared, targetSchema: JSON.parse(workspace.destinationText) as unknown });
+      if (!draft.ok) throw new Error(draft.issues.join("; "));
+      const preview = await createDisclosurePreview(draft.value.payload);
+      recordWorkflowEvent({ kind: "cloud-recovery", ok: true, payloadHash: preview.payloadHash, code: "FRESH_REQUEST" });
+      onChange({ ...workspace, review: { preview, approval: null, status: "pending" }, proposal: null, cloudError: null, report: null, revision: null });
+      onReviewFresh?.();
+    } catch (caught) {
+      recordWorkflowEvent({ kind: "cloud-recovery", ok: false, code: "FRESH_REQUEST_FAILED" });
+      setRecoveryError(caught instanceof Error ? caught.message : String(caught));
+    }
+  }
+
+  function openManual(): void {
+    setManualOpen(true);
+    requestAnimationFrame(() => document.querySelector('[data-testid="manual-contract"]')?.scrollIntoView({ block: "start", behavior: "instant" }));
+  }
+
+  const failure = workspace.cloudError ? guidanceForFailure({ code: workspace.cloudError.code, stage: "cloud-mapping" }) : null;
 
   function validateEdit(): void {
     if (!proposal || editText === null) return;
@@ -195,14 +254,46 @@ export function CloudMappingPanel({
 
         {busy ? (
           <div className="mt-4">
-            <LoadingState label="Waiting for the cloud proposal (no automatic retry)" />
+            <PendingOperation
+              step="Waiting for Gemini's mapping proposal (one request, no automatic retry)"
+              where="cloud"
+              limitSeconds={Math.round(CLOUD_TIMEOUT_MS / 1000)}
+              onStop={stopWaiting}
+              testId="cloud-pending"
+            />
           </div>
         ) : null}
-        {workspace.cloudError ? (
-          <div className="mt-4" data-testid="cloud-error">
-            <ErrorBanner title="No proposal was produced">
-              {workspace.cloudError} The approval has been consumed; build and approve a new prompt to try again.
-            </ErrorBanner>
+        {failure && workspace.cloudError ? (
+          <div className="mt-4">
+            <Guidance
+              testId="cloud-error"
+              code={failure.code}
+              tone={failure.category === "CANCELLED" ? "warn" : "fail"}
+              title={`No proposal was produced · ${failure.title}`}
+              what={failure.what}
+              why={failure.why}
+              next={failure.next}
+              detail={workspace.cloudError.detail}
+              actions={
+                <>
+                  {failure.actions.includes("FRESH_CLOUD_REQUEST") ? (
+                    <Button variant="approve" size="sm" onClick={() => void prepareFreshRequest()} disabled={!prepared} data-testid="prepare-fresh-request">
+                      Prepare a fresh request
+                    </Button>
+                  ) : null}
+                  {failure.actions.includes("MANUAL_CONTRACT") ? (
+                    <Button size="sm" variant="outline" onClick={openManual} data-testid="use-manual-contract">
+                      Use a hand-written contract
+                    </Button>
+                  ) : null}
+                </>
+              }
+            />
+            {recoveryError ? (
+              <div className="mt-2">
+                <ErrorBanner title="The fresh request could not be prepared">{recoveryError}</ErrorBanner>
+              </div>
+            ) : null}
           </div>
         ) : null}
       </Panel>
@@ -333,7 +424,12 @@ export function CloudMappingPanel({
         </div>
       ) : null}
 
-      <details className="group border border-dashed border-ink/30 bg-panel/60 p-5" data-testid="manual-contract">
+      <details
+        className="group border border-dashed border-ink/30 bg-panel/60 p-5"
+        data-testid="manual-contract"
+        open={manualOpen}
+        onToggle={(event) => setManualOpen((event.currentTarget as HTMLDetailsElement).open)}
+      >
         <summary className="flex cursor-pointer list-none items-center gap-2 text-sm font-medium [&::-webkit-details-marker]:hidden">
           <span aria-hidden="true" className="inline-block w-3 font-mono text-mute transition-transform group-open:rotate-90">›</span>
           No cloud? Use a hand-written contract over local field names (not AI)

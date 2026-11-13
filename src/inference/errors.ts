@@ -22,7 +22,9 @@ export type InferenceErrorCode =
   | "EXECUTABLE_OUTPUT"
   | "CANCELLED"
   | "IN_FLIGHT"
-  | "DESTINATION_MISMATCH";
+  | "DESTINATION_MISMATCH"
+  | "PROVIDER_OVERLOADED"
+  | "RATE_LIMITED";
 
 export class InferenceError extends Error {
   readonly code: InferenceErrorCode;
@@ -63,6 +65,15 @@ export function classifyUnknownError(error: unknown): InferenceError {
       "ON_DEVICE_RUNTIME_ERROR",
       `Chrome's on-device model service failed (${chromeCode}). This is a browser runtime failure, not a problem with the input. ${message}`,
     );
+  }
+  // Sprint 9: provider status codes first. Sprint 8 recorded "[500 ] This model is
+  // currently experiencing high demand" inside an "Error fetching from …" message,
+  // which the network rule below misread as NETWORK.
+  if (/\[(429)\b|\b429\b.*(too many|rate|quota)|resource[_ ]exhausted|quota exceeded|rate limit/i.test(message)) {
+    return new InferenceError("RATE_LIMITED", message);
+  }
+  if (/\[(500|502|503|504)\b|high demand|overloaded|service unavailable|internal error/i.test(message)) {
+    return new InferenceError("PROVIDER_OVERLOADED", message);
   }
   if (
     lowered.includes("app check") ||

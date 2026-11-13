@@ -34,7 +34,15 @@ interface EyesTestHarness {
     | "PROVENANCE_UNKNOWN"
     | "PROVENANCE_MISMATCH"
     | "SIMULATED_RESULT"
-    | "IN_FLIGHT";
+    | "IN_FLIGHT"
+    | "PROVIDER_OVERLOADED"
+    | "RATE_LIMITED"
+    | "APP_CHECK_REJECTED"
+    | "MODEL_UNAVAILABLE"
+    | "NETWORK";
+  cloudRawError?: string;
+  cloudFailCalls?: number[];
+  cloudDelayMs?: number;
 }
 
 interface Window {
