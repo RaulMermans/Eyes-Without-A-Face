@@ -1,0 +1,466 @@
+[
+  {
+    "at": "2026-11-13T13:11:13.127Z",
+    "browserLaunch": "dedicated-chrome-profile",
+    "model": "gemini-3.5-flash-lite",
+    "promptVersions": {
+      "initial": "mapping-proposal-1.1.0",
+      "revision12": "2",
+      "revision13": "3"
+    },
+    "check": "S8-B",
+    "trial": 1,
+    "scenarioId": "crm-nl-relations",
+    "config": "B-cloud",
+    "initial": {
+      "error": null,
+      "text": "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"id\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_01\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_07\",\n      \"to\": \"status\",\n      \"params\": {\n        \"map\": {\n          \"klant\": \"customer\",\n          \"lead\": \"lead\",\n          \"oud-klant\": \"former\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"other\"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_02\",\n      \"to\": \"customerSince\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_03\",\n      \"to\": \"organization\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_06\",\n      \"to\": \"contactName\"\n    }\n  ],\n  \"rationale\": \"Mapping source fields to target schema fields using copy, normalize_email, map_enum for status categories, and parse_date for the MM/DD/YYYY date format.\"\n}",
+      "origin": "Real Gemini output · IN_CLOUD",
+      "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2442ms",
+      "status": "Valid · 6 operations · aliases resolved locally",
+      "ms": 2926
+    },
+    "initialState": "PARTIALLY_VERIFIED",
+    "initialCounts": "0 transformed · 0 by approved rule · 1 quarantined · 1 unresolved · 0 rejected by policy · 7 incorrect · 1/9 correctly handled",
+    "semantic": {
+      "overall": "SEMANTIC_MISMATCH",
+      "coverage": "4 · Coverage\n1 of 6 destination fields verified · 1 with a semantic conflict · 4 not verified",
+      "results": [
+        {
+          "key": "status",
+          "status": "SEMANTIC_PASS",
+          "code": ""
+        },
+        {
+          "key": "customerSince",
+          "status": "SEMANTIC_MISMATCH",
+          "code": "SEMANTIC_DATE_ORDER_CONFLICT"
+        }
+      ]
+    },
+    "holdoutState": "PARTIALLY_VERIFIED",
+    "holdoutCounts": "0 transformed · 0 by approved rule · 1 quarantined · 6 unresolved · 0 rejected by policy · 3 incorrect · 1/10 correctly handled",
+    "requests": {
+      "generateContent": 1,
+      "leaks": [],
+      "otherProviderRequests": 0
+    }
+  },
+  {
+    "at": "2026-11-13T13:11:38.151Z",
+    "browserLaunch": "dedicated-chrome-profile",
+    "model": "gemini-3.5-flash-lite",
+    "promptVersions": {
+      "initial": "mapping-proposal-1.1.0",
+      "revision12": "2",
+      "revision13": "3"
+    },
+    "check": "S8-CD",
+    "trial": 1,
+    "scenarioId": "crm-nl-relations",
+    "config": "C/D",
+    "nanoMs": 17886,
+    "nanoError": null,
+    "nano": [
+      {
+        "alias": "f_03",
+        "localPath": "bedrijf",
+        "status": "applicable",
+        "check": "refines profile\n role text → organization",
+        "real": true
+      },
+      {
+        "alias": "f_06",
+        "localPath": "contactpersoon",
+        "status": "applicable",
+        "check": "refines profile\n role text → person-name",
+        "real": true
+      },
+      {
+        "alias": "f_07",
+        "localPath": "fase",
+        "status": "rejected",
+        "check": "rejected\n role identifier contradicts the observed profile",
+        "real": true
+      },
+      {
+        "alias": "f_01",
+        "localPath": "mailadres",
+        "status": "rejected",
+        "check": "rejected\n role identifier contradicts the observed profile",
+        "real": true
+      },
+      {
+        "alias": "f_04",
+        "localPath": "opmerking",
+        "status": "applicable",
+        "check": "refines profile\n role text → free-text",
+        "real": true
+      },
+      {
+        "alias": "f_05",
+        "localPath": "relatienr",
+        "status": "consistent",
+        "check": "agrees with profile\n agrees with the deterministic profile",
+        "real": true
+      },
+      {
+        "alias": "f_02",
+        "localPath": "sinds",
+        "status": "consistent",
+        "check": "agrees with profile\n agrees with the deterministic profile",
+        "real": true
+      }
+    ],
+    "applied": [
+      "f_03",
+      "f_06",
+      "f_04"
+    ],
+    "initial": {
+      "error": null,
+      "text": "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"id\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_01\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_07\",\n      \"to\": \"status\",\n      \"params\": {\n        \"map\": {\n          \"klant\": \"customer\",\n          \"lead\": \"lead\",\n          \"oud-klant\": \"former\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"other\"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_02\",\n      \"to\": \"customerSince\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_03\",\n      \"to\": \"organization\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_06\",\n      \"to\": \"contactName\"\n    }\n  ],\n  \"rationale\": \"Mapping source fields to target schema using appropriate transformations such as normalizing email addresses, parsing MM/DD/YYYY dates, and mapping lifecycle status enums to target values.\"\n}",
+      "origin": "Real Gemini output · IN_CLOUD",
+      "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 1996ms",
+      "status": "Valid · 6 operations · aliases resolved locally",
+      "ms": 2398
+    },
+    "initialState": "PARTIALLY_VERIFIED",
+    "initialCounts": "0 transformed · 0 by approved rule · 1 quarantined · 1 unresolved · 0 rejected by policy · 7 incorrect · 1/9 correctly handled",
+    "semantic": {
+      "overall": "SEMANTIC_MISMATCH",
+      "coverage": "4 · Coverage\n1 of 6 destination fields verified · 1 with a semantic conflict · 4 not verified",
+      "results": [
+        {
+          "key": "status",
+          "status": "SEMANTIC_PASS",
+          "code": ""
+        },
+        {
+          "key": "customerSince",
+          "status": "SEMANTIC_MISMATCH",
+          "code": "SEMANTIC_DATE_ORDER_CONFLICT"
+        }
+      ]
+    },
+    "revision": "not-requested (EYES_LIVE_NO_REVISION)",
+    "holdoutState": "PARTIALLY_VERIFIED",
+    "holdoutCounts": "0 transformed · 0 by approved rule · 1 quarantined · 6 unresolved · 0 rejected by policy · 3 incorrect · 1/10 correctly handled",
+    "requests": {
+      "generateContent": 1,
+      "leaks": [
+        "partner"
+      ],
+      "otherProviderRequests": 0
+    }
+  },
+  {
+    "at": "2026-11-13T13:11:42.052Z",
+    "browserLaunch": "dedicated-chrome-profile",
+    "model": "gemini-3.5-flash-lite",
+    "promptVersions": {
+      "initial": "mapping-proposal-1.1.0",
+      "revision12": "2",
+      "revision13": "3"
+    },
+    "check": "S8-B",
+    "trial": 2,
+    "scenarioId": "crm-nl-relations",
+    "config": "B-cloud",
+    "initial": {
+      "error": null,
+      "text": "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"id\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_01\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_07\",\n      \"to\": \"status\",\n      \"params\": {\n        \"map\": {\n          \"klant\": \"customer\",\n          \"lead\": \"lead\",\n          \"oud-klant\": \"former\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"other\"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_02\",\n      \"to\": \"customerSince\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_03\",\n      \"to\": \"organization\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_06\",\n      \"to\": \"contactName\"\n    }\n  ],\n  \"rationale\": \"Mapping source fields to target schema using copy for identifiers and strings, normalize_email for email, parse_date for MM/DD/YYYY dates, and map_enum with a default fallback for lifecycle status.\"\n}",
+      "origin": "Real Gemini output · IN_CLOUD",
+      "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 1605ms",
+      "status": "Valid · 6 operations · aliases resolved locally",
+      "ms": 1905
+    },
+    "initialState": "PARTIALLY_VERIFIED",
+    "initialCounts": "0 transformed · 0 by approved rule · 1 quarantined · 1 unresolved · 0 rejected by policy · 7 incorrect · 1/9 correctly handled",
+    "semantic": {
+      "overall": "SEMANTIC_MISMATCH",
+      "coverage": "4 · Coverage\n1 of 6 destination fields verified · 1 with a semantic conflict · 4 not verified",
+      "results": [
+        {
+          "key": "status",
+          "status": "SEMANTIC_PASS",
+          "code": ""
+        },
+        {
+          "key": "customerSince",
+          "status": "SEMANTIC_MISMATCH",
+          "code": "SEMANTIC_DATE_ORDER_CONFLICT"
+        }
+      ]
+    },
+    "holdoutState": "PARTIALLY_VERIFIED",
+    "holdoutCounts": "0 transformed · 0 by approved rule · 1 quarantined · 6 unresolved · 0 rejected by policy · 3 incorrect · 1/10 correctly handled",
+    "requests": {
+      "generateContent": 1,
+      "leaks": [],
+      "otherProviderRequests": 0
+    }
+  },
+  {
+    "at": "2026-11-13T13:12:06.479Z",
+    "browserLaunch": "dedicated-chrome-profile",
+    "model": "gemini-3.5-flash-lite",
+    "promptVersions": {
+      "initial": "mapping-proposal-1.1.0",
+      "revision12": "2",
+      "revision13": "3"
+    },
+    "check": "S8-CD",
+    "trial": 2,
+    "scenarioId": "crm-nl-relations",
+    "config": "C/D",
+    "nanoMs": 17393,
+    "nanoError": null,
+    "nano": [
+      {
+        "alias": "f_03",
+        "localPath": "bedrijf",
+        "status": "applicable",
+        "check": "refines profile\n role text → organization",
+        "real": true
+      },
+      {
+        "alias": "f_06",
+        "localPath": "contactpersoon",
+        "status": "applicable",
+        "check": "refines profile\n role text → person-name",
+        "real": true
+      },
+      {
+        "alias": "f_07",
+        "localPath": "fase",
+        "status": "rejected",
+        "check": "rejected\n role identifier contradicts the observed profile",
+        "real": true
+      },
+      {
+        "alias": "f_01",
+        "localPath": "mailadres",
+        "status": "rejected",
+        "check": "rejected\n role identifier contradicts the observed profile",
+        "real": true
+      },
+      {
+        "alias": "f_04",
+        "localPath": "opmerking",
+        "status": "consistent",
+        "check": "agrees with profile\n agrees with the deterministic profile",
+        "real": true
+      },
+      {
+        "alias": "f_05",
+        "localPath": "relatienr",
+        "status": "consistent",
+        "check": "agrees with profile\n agrees with the deterministic profile",
+        "real": true
+      },
+      {
+        "alias": "f_02",
+        "localPath": "sinds",
+        "status": "consistent",
+        "check": "agrees with profile\n agrees with the deterministic profile",
+        "real": true
+      }
+    ],
+    "applied": [
+      "f_03",
+      "f_06"
+    ],
+    "initial": {
+      "error": null,
+      "text": "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"id\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_01\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_07\",\n      \"to\": \"status\",\n      \"params\": {\n        \"map\": {\n          \"klant\": \"customer\",\n          \"lead\": \"lead\",\n          \"oud-klant\": \"former\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"other\"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_02\",\n      \"to\": \"customerSince\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_03\",\n      \"to\": \"organization\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_06\",\n      \"to\": \"contactName\"\n    }\n  ],\n  \"rationale\": \"Mapping source fields to target schema by copying identifiers and names, normalizing emails, mapping lifecycle statuses with fallback to other, and parsing dates from MM/DD/YYYY format.\"\n}",
+      "origin": "Real Gemini output · IN_CLOUD",
+      "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 1976ms",
+      "status": "Valid · 6 operations · aliases resolved locally",
+      "ms": 2413
+    },
+    "initialState": "PARTIALLY_VERIFIED",
+    "initialCounts": "0 transformed · 0 by approved rule · 1 quarantined · 1 unresolved · 0 rejected by policy · 7 incorrect · 1/9 correctly handled",
+    "semantic": {
+      "overall": "SEMANTIC_MISMATCH",
+      "coverage": "4 · Coverage\n1 of 6 destination fields verified · 1 with a semantic conflict · 4 not verified",
+      "results": [
+        {
+          "key": "status",
+          "status": "SEMANTIC_PASS",
+          "code": ""
+        },
+        {
+          "key": "customerSince",
+          "status": "SEMANTIC_MISMATCH",
+          "code": "SEMANTIC_DATE_ORDER_CONFLICT"
+        }
+      ]
+    },
+    "revision": "not-requested (EYES_LIVE_NO_REVISION)",
+    "holdoutState": "PARTIALLY_VERIFIED",
+    "holdoutCounts": "0 transformed · 0 by approved rule · 1 quarantined · 6 unresolved · 0 rejected by policy · 3 incorrect · 1/10 correctly handled",
+    "requests": {
+      "generateContent": 1,
+      "leaks": [
+        "partner"
+      ],
+      "otherProviderRequests": 0
+    }
+  },
+  {
+    "at": "2026-11-13T13:12:10.505Z",
+    "browserLaunch": "dedicated-chrome-profile",
+    "model": "gemini-3.5-flash-lite",
+    "promptVersions": {
+      "initial": "mapping-proposal-1.1.0",
+      "revision12": "2",
+      "revision13": "3"
+    },
+    "check": "S8-B",
+    "trial": 3,
+    "scenarioId": "crm-nl-relations",
+    "config": "B-cloud",
+    "initial": {
+      "error": null,
+      "text": "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"id\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_01\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_07\",\n      \"to\": \"status\",\n      \"params\": {\n        \"map\": {\n          \"klant\": \"customer\",\n          \"lead\": \"lead\",\n          \"oud-klant\": \"former\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"other\"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_02\",\n      \"to\": \"customerSince\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_03\",\n      \"to\": \"organization\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_06\",\n      \"to\": \"contactName\"\n    }\n  ],\n  \"rationale\": \"Mapping source fields to target schema using appropriate transformations for email, date, enum mapping, and direct field copies.\"\n}",
+      "origin": "Real Gemini output · IN_CLOUD",
+      "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 1781ms",
+      "status": "Valid · 6 operations · aliases resolved locally",
+      "ms": 1927
+    },
+    "initialState": "PARTIALLY_VERIFIED",
+    "initialCounts": "0 transformed · 0 by approved rule · 1 quarantined · 1 unresolved · 0 rejected by policy · 7 incorrect · 1/9 correctly handled",
+    "semantic": {
+      "overall": "SEMANTIC_MISMATCH",
+      "coverage": "4 · Coverage\n1 of 6 destination fields verified · 1 with a semantic conflict · 4 not verified",
+      "results": [
+        {
+          "key": "status",
+          "status": "SEMANTIC_PASS",
+          "code": ""
+        },
+        {
+          "key": "customerSince",
+          "status": "SEMANTIC_MISMATCH",
+          "code": "SEMANTIC_DATE_ORDER_CONFLICT"
+        }
+      ]
+    },
+    "holdoutState": "PARTIALLY_VERIFIED",
+    "holdoutCounts": "0 transformed · 0 by approved rule · 1 quarantined · 6 unresolved · 0 rejected by policy · 3 incorrect · 1/10 correctly handled",
+    "requests": {
+      "generateContent": 1,
+      "leaks": [],
+      "otherProviderRequests": 0
+    }
+  },
+  {
+    "at": "2026-11-13T13:12:34.980Z",
+    "browserLaunch": "dedicated-chrome-profile",
+    "model": "gemini-3.5-flash-lite",
+    "promptVersions": {
+      "initial": "mapping-proposal-1.1.0",
+      "revision12": "2",
+      "revision13": "3"
+    },
+    "check": "S8-CD",
+    "trial": 3,
+    "scenarioId": "crm-nl-relations",
+    "config": "C/D",
+    "nanoMs": 17855,
+    "nanoError": null,
+    "nano": [
+      {
+        "alias": "f_03",
+        "localPath": "bedrijf",
+        "status": "applicable",
+        "check": "refines profile\n role text → organization",
+        "real": true
+      },
+      {
+        "alias": "f_06",
+        "localPath": "contactpersoon",
+        "status": "applicable",
+        "check": "refines profile\n role text → person-name",
+        "real": true
+      },
+      {
+        "alias": "f_07",
+        "localPath": "fase",
+        "status": "rejected",
+        "check": "rejected\n role identifier contradicts the observed profile",
+        "real": true
+      },
+      {
+        "alias": "f_01",
+        "localPath": "mailadres",
+        "status": "consistent",
+        "check": "agrees with profile\n agrees with the deterministic profile",
+        "real": true
+      },
+      {
+        "alias": "f_04",
+        "localPath": "opmerking",
+        "status": "applicable",
+        "check": "refines profile\n role text → free-text",
+        "real": true
+      },
+      {
+        "alias": "f_05",
+        "localPath": "relatienr",
+        "status": "consistent",
+        "check": "agrees with profile\n agrees with the deterministic profile",
+        "real": true
+      },
+      {
+        "alias": "f_02",
+        "localPath": "sinds",
+        "status": "consistent",
+        "check": "agrees with profile\n agrees with the deterministic profile",
+        "real": true
+      }
+    ],
+    "applied": [
+      "f_03",
+      "f_06",
+      "f_04"
+    ],
+    "initial": {
+      "error": null,
+      "text": "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"id\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_01\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_07\",\n      \"to\": \"status\",\n      \"params\": {\n        \"map\": {\n          \"klant\": \"customer\",\n          \"lead\": \"lead\",\n          \"oud-klant\": \"former\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"other\"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_02\",\n      \"to\": \"customerSince\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_03\",\n      \"to\": \"organization\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_06\",\n      \"to\": \"contactName\"\n    }\n  ],\n  \"rationale\": \"Mapping source fields to target schema using appropriate transformations for email normalization, enum mapping, date parsing, and direct copying.\"\n}",
+      "origin": "Real Gemini output · IN_CLOUD",
+      "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 1626ms",
+      "status": "Valid · 6 operations · aliases resolved locally",
+      "ms": 1895
+    },
+    "initialState": "PARTIALLY_VERIFIED",
+    "initialCounts": "0 transformed · 0 by approved rule · 1 quarantined · 1 unresolved · 0 rejected by policy · 7 incorrect · 1/9 correctly handled",
+    "semantic": {
+      "overall": "SEMANTIC_MISMATCH",
+      "coverage": "4 · Coverage\n1 of 6 destination fields verified · 1 with a semantic conflict · 4 not verified",
+      "results": [
+        {
+          "key": "status",
+          "status": "SEMANTIC_PASS",
+          "code": ""
+        },
+        {
+          "key": "customerSince",
+          "status": "SEMANTIC_MISMATCH",
+          "code": "SEMANTIC_DATE_ORDER_CONFLICT"
+        }
+      ]
+    },
+    "revision": "not-requested (EYES_LIVE_NO_REVISION)",
+    "holdoutState": "PARTIALLY_VERIFIED",
+    "holdoutCounts": "0 transformed · 0 by approved rule · 1 quarantined · 6 unresolved · 0 rejected by policy · 3 incorrect · 1/10 correctly handled",
+    "requests": {
+      "generateContent": 1,
+      "leaks": [
+        "partner"
+      ],
+      "otherProviderRequests": 0
+    }
+  }
+]

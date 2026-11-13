@@ -32,3 +32,6 @@ coverage
 
 # Sprint 8 live benchmark scratch evidence (archived copies live in docs/evidence/sprint-8)
 live-evidence
+
+# Firebase CLI deploy cache
+.firebase/
