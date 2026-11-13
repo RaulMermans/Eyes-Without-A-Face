@@ -8,15 +8,15 @@ const buttonVariants = cva(
     variants: {
       variant: {
         /** The one action that advances the workflow. */
-        primary: "border-ink bg-ink text-bone hover:bg-ink-2 hover:shadow-[inset_0_-2px_0_var(--color-cyan)]",
+        primary: "border-violet bg-violet text-white hover:bg-[#7431f0] hover:shadow-[0_0_0_3px_rgb(130_61_255_/_0.3)]",
         /** Approval / disclosure — the only gold-filled control. */
-        approve: "border-gold-ink bg-gold text-ink hover:bg-[#c7aa76]",
+        approve: "border-gold bg-gold text-obsidian hover:bg-[#f0cd8a] hover:shadow-[0_0_0_3px_rgb(232_191_114_/_0.22)]",
         /** Primary action on ink surfaces. */
-        spectral: "border-gold bg-gold text-ink hover:bg-[#c7aa76]",
+        spectral: "border-gold bg-gold text-obsidian hover:bg-[#f0cd8a]",
         ghost: "border-transparent bg-transparent text-ink hover:bg-bone-2",
-        outline: "border-rule bg-panel text-ink hover:border-ink/40 hover:bg-bone",
+        outline: "border-ink-3 bg-panel text-ink hover:border-violet-soft/60 hover:bg-bone-2",
         /** Secondary action on ink surfaces. */
-        "outline-ink": "border-ink-3 bg-transparent text-bone hover:border-cyan/60 hover:text-cyan",
+        "outline-ink": "border-ink-3 bg-transparent text-ink hover:border-violet-soft/60 hover:text-violet-soft",
       },
       size: {
         md: "",

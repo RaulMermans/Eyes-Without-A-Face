@@ -1,8 +1,13 @@
-# Hero demo — three minutes, real inference only (Sprint 9)
+# Hero demo — three minutes, real inference only (Sprint 10: CONNECT / OBSERVE / OUTCOME)
 
 **Story.** A confidential CRM cannot be handed to Gemini. Gemini Nano runs locally, and a Phantom Twin lets Gemini in the cloud design the integration from approved synthetic information. The mapping passes every structural check but reads dates the wrong way. Local verification catches it, the user approves one controlled feedback request, Gemini fixes it without seeing a single record, and the developer exports an integration that runs outside the app.
 
-**Rehearsed live:** this exact journey ran with real Nano and real Gemini on 2026-11-13 (CRM runs 1 and 3: `ACCEPTED`, clean transformations 0 → 8, export verified). See [../evaluation/sprint-9-reliability.md](../evaluation/sprint-9-reliability.md). One of the three CRM attempts produced an invalid first proposal. The provider can also fail. Record until a genuine success, and never edit results.
+**Rehearsed live:**
+
+- **Sprint 10 UI.** The journey below ran once with real Nano and real Gemini on 2026-11-13 ([../evidence/sprint-10/live-experience.json](../evidence/sprint-10/live-experience.json)). Result: `ACCEPTED`, OUTCOME `VERIFIED_WITH_EXCEPTIONS`, `node run.mjs verify` exit 0, 2 cloud requests, 0 private terms in request bodies.
+- **Sprint 9 UI.** The same flow ran as CRM runs 1 and 3, both `ACCEPTED` ([../evaluation/sprint-9-reliability.md](../evaluation/sprint-9-reliability.md)).
+
+One of three Sprint 9 CRM attempts produced an invalid first proposal, and the provider can also fail. Record until you get a genuine success, and never edit results.
 
 ## Rules for the recording
 
@@ -21,19 +26,22 @@
 | Terminal | Node 22+, `unzip`, an empty directory such as `/tmp/demo` |
 | Screen | 1440×900, browser zoom 100 %, notifications off |
 
-**Preflight (before recording).** On step 1, open **Runtime check**: Firebase `CONFIGURED`, App Check `CONFIGURED`, cloud `CONFIGURED`, on-device `AVAILABLE`. If on-device is not `AVAILABLE`, do not record the hybrid story.
+**Preflight (before recording).** In CONNECT, open **Runtime check**: Firebase `CONFIGURED`, App Check `CONFIGURED`, cloud `CONFIGURED`, on-device `AVAILABLE`. If on-device is not `AVAILABLE`, do not record the hybrid story.
 
 ## Timeline and actions
 
-| Time | Screen action | Narration (suggested) |
-| --- | --- | --- |
-| 0:00–0:25 | Landing hero. Scroll the "What crosses the boundary" strip | "You need to integrate a confidential CRM with a helpdesk. Gemini could design the mapping in seconds, but these records are not allowed to leave the machine." |
-| 0:25–0:55 | Source → **Blind revision scenarios → crm-eu-accounts** → Continue. Twin step: **Interpret private fields on-device** → apply the applicable suggestion. Point at aliases `f_01…` and fictional examples | "Records stay in this tab. Gemini Nano reads them on-device; nothing goes to the cloud. What Gemini Cloud will see is a Phantom Twin: aliases and fictional values." |
-| 0:55–1:20 | Disclosure Review: **Build exact outbound prompt** → show "Will be sent / Never sent" → **Approve this exact prompt** → Cloud mapping: **Send approved request**. Show `Real Gemini output · IN_CLOUD` and the Integration Studio | "I approve one exact request, bound to its hash. Gemini proposes a declarative mapping over aliases. It cannot run code." |
-| 1:20–1:45 | **Continue to Reality Check → Run Reality Check**. Verdict: *Structurally valid · meaning is wrong*. Semantic panel: `createdAt` date-order conflict, evidence *observed locally* | "Every record passes schema validation. But my browser checks meaning: one hidden case, 25/03/2026, proves the dates are day-first. Gemini read them month-first. Nothing structural would catch this." |
-| 1:45–2:20 | Blind revision: tick **Also disclose: f_03 dates are DD/MM/YYYY** → **Prepare Safe Revision** → show *Newly disclosed / Stays private* → tick reviewed → **Approve & Request Revision** → **Run Revised Reality Check** → decision `ACCEPTED` | "I approve one more request: the finding and one constraint, no records, no values. Gemini revises blind. The local check shows 8 records fixed and 0 regressed." |
-| 2:20–2:45 | **Export Integration ↓** → select *Gemini mapping (revised)* → **Export Integration**. Terminal: `unzip … && cd eyes-integration-*/ && node run.mjs verify` | "I export it. Outside the app, plain Node verifies every hash and replays the fixtures. No records, no field names, no bindings are inside." |
-| 2:45–3:00 | Back to the app: Runtime check now shows cloud `VERIFIED`, on-device `VERIFIED`. End card | "Local intelligence for private understanding, cloud intelligence for integration design, deterministic verification for correctness. Eyes Without a Face." |
+| Time | Mode | Screen action | Narration (suggested) |
+| --- | --- | --- | --- |
+| 0:00–0:20 | Landing | Hero: *Build integrations for systems your AI cannot see.* Point at "What crosses the boundary" | "You need to integrate a confidential CRM with a helpdesk. Gemini could design the mapping in seconds, but these records are not allowed to leave the machine." |
+| 0:20–0:40 | **CONNECT** | **Advanced sources → crm-eu-accounts → Load**. Show the source (records stay local) and the destination fields. Click **Step through each stage instead** to interpret on-device | "I connect the private source and the destination I need. Nothing has left this browser." |
+| 0:40–1:05 | OBSERVE · workbench | Phantom Twin stage: **Interpret private fields on-device** → apply the applicable suggestion. Back to **Connect → Build Integration**. OBSERVE opens: the run stops in the gold **Your approval** band, and the headline reads *Waiting for your approval of one cloud request.* | "Gemini Nano reads the records on this device. EYES builds a Phantom Twin and prepares exactly what the cloud may receive, then it stops and waits for me." |
+| 1:05–1:25 | OBSERVE | **Review what crosses the boundary** → show *Gemini will receive / will not receive* → **Approve this exact prompt** → **Send approved request**. Stage 07 reads `real Gemini output · IN_CLOUD`; the timeline shows the request | "I approve one exact request, bound to its hash. That is the only thing that crosses." |
+| 1:25–1:45 | OBSERVE | **Run Reality Check**. Stage 10 *requires review*, stage 11 *failed*: `createdAt` date order. Select stage 11 in the runtime to show the inspector | "Every record passes schema validation, but my browser checks meaning. The dates are day-first; Gemini read them month-first." |
+| 1:45–2:20 | OBSERVE | Tick the date constraint → **Prepare Safe Revision**. The runtime shows a second gold checkpoint. Review → **Approve & Request Revision** → **Run Revised Reality Check**. Stages 13–15 complete; decision `ACCEPTED` | "One more approved request: the finding and one constraint, with no records and no values. Gemini revises blind; my browser re-checks it." |
+| 2:20–2:45 | **OUTCOME** | Verdict *Verified, with managed exceptions.* Show Before / After (read the real numbers; the Sprint 9 rehearsals showed clean transformations 0 → 8) and the privacy outcome (2 authorized · 2 sent). Select the revised mapping → **Export Integration**. Terminal: `unzip … && cd eyes-integration-*/ && node run.mjs verify` | "Here is what I built, what is still uncertain, and what crossed the boundary. I export it, and plain Node verifies every hash and replays the fixtures." |
+| 2:45–3:00 | OBSERVE | Show the full runtime: every stage placed where it ran. End card | "Local intelligence for private understanding, cloud intelligence for design, deterministic verification for correctness. Eyes Without a Face." |
+
+You can show a shorter path without on-device AI: CONNECT → **Build Integration** → OBSERVE. The runtime then shows stage 03 as *skipped · optional · not run*, so do not claim the run was hybrid.
 
 The status is `VERIFIED_WITH_EXCEPTIONS`, not `VERIFIED`: the scenario policy quarantines malformed records for manual review. Say so if asked; do not crop it.
 

@@ -1,6 +1,6 @@
 import { expect, test, type Page } from "@playwright/test";
 import path from "node:path";
-import { attachProviderWatch } from "./helpers.ts";
+import { attachProviderWatch, openStage } from "./helpers.ts";
 
 const shots = "test-results/sprint-5-screenshots";
 
@@ -34,6 +34,10 @@ test.describe("E2E-040 first-use experience", () => {
     await expect(page.getByTestId("source-profile")).toBeVisible();
     await expect(page.getByTestId("reserved-count")).toContainText("3 reserved hidden cases");
     await expect(page.getByTestId("start-demo")).toHaveCount(0);
+    // Sprint 10: the demo lands in CONNECT; the runtime and workbench show the source as done.
+    await expect(page.getByTestId("build-integration")).toBeEnabled();
+    await page.getByTestId("mode-observe").click();
+    await expect(page.getByTestId("runtime-stage-source-imported")).toHaveAttribute("data-status", "completed");
     await expect(page.getByTestId("step-done-source")).toBeVisible();
     expect(providerRequests).toEqual([]);
     expect(pageErrors).toEqual([]);
@@ -98,9 +102,9 @@ test.describe("E2E-042 cloud unavailable", () => {
     await expect(page.getByTestId("cloud-unavailable")).toContainText("Cloud Gemini is not available in this build");
     await expect(page.getByTestId("send-cloud-request")).toBeDisabled();
     await expect(page.getByTestId("cloud-error")).toHaveCount(0);
-    await page.getByRole("navigation", { name: "Workflow" }).getByRole("button", { name: /Disclosure Review/ }).click();
+    await openStage(page, /Disclosure Review/);
     await expect(page.getByTestId("review-status")).toContainText("Approved for one cloud request");
-    await page.getByRole("navigation", { name: "Workflow" }).getByRole("button", { name: /Reality Check/ }).click();
+    await openStage(page, /Reality Check/);
     await expect(page.getByTestId("active-mapping-origin")).toContainText("Hand-written local contract (not AI)");
     await page.getByTestId("run-mapping").click();
     const verdict = page.getByTestId("reality-verdict");

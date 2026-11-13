@@ -1,0 +1,22 @@
+{
+  "landing-1440": {
+    "ctaBottom": 650,
+    "pageHeight": 2406,
+    "overflow": 0,
+    "visibleButtons": 8
+  },
+  "landing-390": {
+    "ctaBottom": 564,
+    "pageHeight": 4128,
+    "overflow": 0,
+    "visibleButtons": 8
+  },
+  "reviewPageHeight": 1743,
+  "clicksToApprovalDecision": 6,
+  "mappingPageHeight": 2138,
+  "clicksToVerdict": 10,
+  "realityPageHeight": 3988,
+  "exportPanelTop": 2941,
+  "realityVisibleButtons": 12,
+  "realityDetailsCount": 8
+}

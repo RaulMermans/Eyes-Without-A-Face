@@ -63,6 +63,15 @@ Build a privacy-aware integration tool: private CRM JSON stays local; on-device 
 - Provider failures go through `classifyUnknownError` and `guidanceForFailure`. Show raw provider text only as collapsed local detail. Recovery from a cloud failure is a NEW preview that the user approves again; a failed revision never resets the revision budget.
 - Preflight sends nothing. CONFIGURED never means available; VERIFIED needs a real, unsimulated result in this session.
 
+## Experience rules (Sprint 10)
+
+- The product is organized as CONNECT / OBSERVE / OUTCOME (`src/app/experience.ts`). Modes are UI navigation only: switching modes never changes workflow state and never grants approval. Do not add a second workflow engine.
+- "Build Integration" runs local steps only and stops at the disclosure approval. Never approve, send, retry or start on-device inference on the user's behalf.
+- Build the disclosure preview only through `prepareDisclosureReview` (`src/app/disclosure-actions.ts`).
+- The runtime is `deriveRuntime` (`src/app/runtime-model.ts`): a pure function of workspace state, the prepared twin, this run's safe workflow events and the local evaluators. Never record runtime state separately, and never mark a stage `completed` without the state that proves it. Optional stages that did not run are `skipped`. Unknown meaning is never a pass. No progress percentages and no invented steps.
+- Runtime text, inspector and timeline carry codes, counts, durations, labels and short hashes only (PRV-RT-*). Never send runtime events anywhere.
+- Black Halo tokens keep the Sprint 6 token names and roles. Measure contrast (≥ 4.5 : 1) before changing a colour.
+
 ## Tool and data permissions
 
 Allowed without extra authorization: local files in this repository, local tests, local Vite server, Playwright against localhost.

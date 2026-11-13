@@ -549,7 +549,7 @@ export function BlindRevisionPanel({
           {active.phase === "REVISION_REVIEW_REQUIRED" ? (
             <div className="mt-4 flex flex-wrap items-center gap-3 border-t border-rule pt-4">
               <label className="flex min-h-10 items-center gap-2 text-sm">
-                <input type="checkbox" className="size-4 accent-ink" checked={reviewed} onChange={(event) => setReviewed(event.target.checked)} data-testid="revision-reviewed" />
+                <input type="checkbox" className="size-4 accent-violet" checked={reviewed} onChange={(event) => setReviewed(event.target.checked)} data-testid="revision-reviewed" />
                 I reviewed exactly what this request discloses
               </label>
               <Button variant="approve" onClick={() => void approveAndRequest()} disabled={!reviewed || Boolean(busy) || !cloudAvailable} data-testid="approve-request-revision">
@@ -731,7 +731,7 @@ function ComparisonPanel({
   const rows = METRIC_ROWS.filter(([key]) => before.metrics.groundTruth || (key !== "incorrect" && key !== "correctlyHandled"));
   const verdict = comparison.strictImprovement ? "improved, no regressions" : comparison.improved > 0 ? "mixed: improvements and regressions" : comparison.regressed > 0 ? "regressed" : "no measurable change";
   return (
-    <section className="on-ink border border-ink bg-ink p-5 text-bone" aria-label={title} data-testid={testId} data-verdict={verdict}>
+    <section className="on-ink border border-ink-3 bg-void p-5 text-ink" aria-label={title} data-testid={testId} data-verdict={verdict}>
       <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-text">{title} · deterministic</p>
       <p className="mt-2 font-display text-3xl leading-tight" role="status" data-testid={`${testId}-verdict`}>
         {verdict}
@@ -788,7 +788,7 @@ function ComparisonPanel({
           {comparison.cases
             .filter((item) => item.change !== "unchanged")
             .map((item) => (
-              <li key={item.index} className={item.change === "improved" ? "text-cyan" : "text-[#e48a8a]"}>
+              <li key={item.index} className={item.change === "improved" ? "text-cyan" : "text-fail"}>
                 {item.set === "reserved" ? `Feedback case ${item.setIndex}` : `Case ${item.setIndex}`}: {item.before} → {item.after} ({item.change})
               </li>
             ))}
@@ -936,7 +936,7 @@ function ConstraintAuthorization({
           <input
             id={`authorize-${constraint.id}`}
             type="checkbox"
-            className="mt-1 size-4 accent-ink"
+            className="mt-1 size-4 accent-violet"
             checked={selected.includes(constraint.id)}
             disabled={Boolean(withheld) || locked}
             onChange={(event) => onToggle(constraint.id, event.target.checked)}

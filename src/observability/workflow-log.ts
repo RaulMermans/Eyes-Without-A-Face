@@ -39,6 +39,26 @@ export interface WorkflowEvent {
 
 const MAX_EVENTS = 60;
 const events: WorkflowEvent[] = [];
+const listeners = new Set<() => void>();
+let version = 0;
+
+function notify(): void {
+  version += 1;
+  for (const listener of listeners) listener();
+}
+
+/** Presentation subscription (Sprint 10 runtime timeline). In-memory only; no sink. */
+export function subscribeWorkflowEvents(listener: () => void): () => void {
+  listeners.add(listener);
+  return () => {
+    listeners.delete(listener);
+  };
+}
+
+/** Monotonic counter that changes whenever an event is recorded or the log is cleared. */
+export function workflowEventsVersion(): number {
+  return version;
+}
 const SAFE_CODE = /^[A-Z0-9_]{1,48}$/;
 const SAFE_HASH = /^[a-f0-9]{64}$/;
 
@@ -56,6 +76,7 @@ export function recordWorkflowEvent(event: Omit<WorkflowEvent, "at">): WorkflowE
   }
   events.push(recorded);
   if (events.length > MAX_EVENTS) events.shift();
+  notify();
   return recorded;
 }
 
@@ -65,4 +86,5 @@ export function listWorkflowEvents(): readonly WorkflowEvent[] {
 
 export function clearWorkflowEvents(): void {
   events.length = 0;
+  notify();
 }

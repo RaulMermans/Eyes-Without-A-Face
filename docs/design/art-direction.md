@@ -1,5 +1,7 @@
 # Art direction — Spectral Forensics
 
+> **Superseded in Sprint 10 by Black Halo (Spectral Forensics 2.0).** See [ADR 0011](../decisions/0011-experience-architecture-black-halo.md), [design-system.md](design-system.md) and the [exploration](exploration/). The concept, zone grammar and the triptych decision below still apply; the palette and the page composition changed.
+
 > **An instrument for revealing the structure of systems that cannot be seen.**
 > Reveal what matters. Conceal what must remain private.
 

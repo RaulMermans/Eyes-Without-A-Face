@@ -21,7 +21,6 @@ import { IntegrationStudio, ProposalPipeline } from "./IntegrationStudio.tsx";
 import { buildConnections } from "./mapping-connections.ts";
 import { MappingPanel } from "./MappingPanel.tsx";
 import { ORIGIN_LABELS } from "./result-kind.ts";
-import { TrustLedger } from "./TrustLedger.tsx";
 import type { ProposalState, WorkspaceState } from "./workspace-state.ts";
 
 function originFor(result: InferenceResult): ProposalOrigin {
@@ -209,7 +208,6 @@ export function CloudMappingPanel({
 
   return (
     <section className="space-y-5" aria-labelledby="cloud-mapping-heading">
-      <TrustLedger workspace={workspace} prepared={prepared} />
 
       <Panel tone="cloud">
         <PanelHeader id="cloud-mapping-heading" title="Cloud mapping proposal" eyebrow="Integration Studio" zone="cloud" zoneText="ONLY_IN_CLOUD · approved payload only">

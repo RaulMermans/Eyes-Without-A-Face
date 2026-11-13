@@ -3,7 +3,7 @@ import { execFileSync, spawnSync } from "node:child_process";
 import { mkdtempSync, readdirSync, readFileSync, rmSync, statSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { attachProviderWatch } from "./helpers.ts";
+import { attachProviderWatch, openOutcome, openStage } from "./helpers.ts";
 
 /**
  * Sprint 9 Workstream A/C — Export Integration through the real UI.
@@ -82,13 +82,15 @@ test.describe("E2E-090 export → download → run outside the app", () => {
     await boot(page, { cloudOutput: SUPPORT_REVERSED });
     await toReality(page, "support-tickets");
 
-    // Before revision: one candidate, a draft at best (meaning is wrong).
+    // Before revision: one candidate, a draft at best (meaning is wrong). Export lives in OUTCOME (Sprint 10).
+    await openOutcome(page);
     const panel = page.getByTestId("export-panel");
     await expect(panel).toHaveAttribute("data-decision", "DRAFT_ONLY");
     await expect(page.getByTestId("export-reasons")).toContainText("means something wrong");
     await expect(page.getByTestId("export-integration")).toBeDisabled();
 
-    // One approved blind revision (simulated adapter), re-evaluated locally.
+    // One approved blind revision (simulated adapter), re-evaluated locally, in OBSERVE.
+    await page.getByTestId("mode-observe").click();
     await page.getByTestId("authorize-constraint-support-priority-order").check();
     await page.getByTestId("prepare-safe-revision").click();
     await page.getByTestId("revision-reviewed").check();
@@ -97,6 +99,7 @@ test.describe("E2E-090 export → download → run outside the app", () => {
     await expect(page.getByTestId("revision-decision")).toHaveAttribute("data-verdict", "ACCEPTED");
 
     // Two candidates; nothing promoted automatically.
+    await openOutcome(page);
     await expect(page.getByTestId("export-candidates")).toBeVisible();
     await expect(page.getByTestId("export-candidate-active")).toBeChecked();
     await page.getByTestId("export-candidate-revised").check();
@@ -131,11 +134,12 @@ test.describe("E2E-091 no-cloud path: hand-written contract exports as aliases",
   test("degraded mode: the scan blocks unapproved labels; after approving them the package exports, labeled hand-written", async ({ page }) => {
     await page.goto("/");
     await page.getByTestId("load-crm-sample").click();
-    await page.getByRole("button", { name: /Reality Check/ }).click();
+    await openStage(page, /Reality Check/);
     await page.getByTestId("run-mapping").click();
     await expect(page.getByTestId("reality-verdict")).toBeVisible();
 
     // Hidden cases fail → draft only; the button stays disabled until confirmed.
+    await openOutcome(page);
     await expect(page.getByTestId("export-panel")).toHaveAttribute("data-decision", "DRAFT_ONLY");
     await expect(page.getByTestId("export-state")).toHaveText("Partially verified · draft export only");
     await expect(page.getByTestId("export-integration")).toBeDisabled();
@@ -151,10 +155,11 @@ test.describe("E2E-091 no-cloud path: hand-written contract exports as aliases",
     expect(downloads).toBe(0);
 
     // Remedy: approve those labels for disclosure on the twin step, run again, export with the keyboard.
-    await page.getByRole("button", { name: /Phantom Twin/ }).click();
+    await openStage(page, /Phantom Twin/);
     await page.locator('[data-testid^="disclose-categories-"]').first().check();
-    await page.getByRole("button", { name: /Reality Check/ }).click();
+    await openStage(page, /Reality Check/);
     await page.getByTestId("run-mapping").click();
+    await openOutcome(page);
     await page.getByTestId("export-draft-confirm").focus();
     await page.keyboard.press("Space");
     await expect(page.getByTestId("export-integration")).toBeEnabled();
@@ -181,7 +186,8 @@ test.describe("E2E-091 no-cloud path: hand-written contract exports as aliases",
   test("without a Reality Check nothing can be exported", async ({ page }) => {
     await page.goto("/");
     await page.getByTestId("load-crm-sample").click();
-    await page.getByRole("button", { name: /Reality Check/ }).click();
+    await openStage(page, /Reality Check/);
+    await openOutcome(page);
     await expect(page.getByTestId("export-blocked")).toBeVisible();
     await expect(page.getByTestId("export-blocked")).toContainText("Run the Reality Check");
     await expect(page.getByTestId("export-integration")).toBeDisabled();
@@ -193,8 +199,9 @@ test.describe("E2E-092 export panel on a phone", () => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/");
     await page.getByTestId("load-crm-sample").click();
-    await page.getByRole("button", { name: /Reality Check/ }).click();
+    await openStage(page, /Reality Check/);
     await page.getByTestId("run-mapping").click();
+    await openOutcome(page);
     await page.getByTestId("export-panel").scrollIntoViewIfNeeded();
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
     expect(overflow).toBeLessThanOrEqual(0);

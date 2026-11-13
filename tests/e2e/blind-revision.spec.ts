@@ -1,6 +1,6 @@
 import { expect, test, type Page } from "@playwright/test";
 import path from "node:path";
-import { attachProviderWatch } from "./helpers.ts";
+import { attachProviderWatch, openStage } from "./helpers.ts";
 
 /**
  * Sprint 7 Blind Integration acceptance. The cloud adapter is the labeled
@@ -151,10 +151,10 @@ test.describe("E2E-073 upstream changes invalidate the revision", () => {
     await toInitialReality(page);
     await page.getByTestId("prepare-safe-revision").click();
     await expect(page.getByTestId("revision-review")).toBeVisible();
-    await page.getByRole("navigation", { name: "Workflow" }).getByRole("button", { name: /Phantom/ }).click();
+    await openStage(page, /Phantom/);
     await page.getByTestId("twin-seed").fill("7");
     await page.getByTestId("apply-seed").click();
-    await page.getByRole("navigation", { name: "Workflow" }).getByRole("button", { name: /Reality/ }).click();
+    await openStage(page, /Reality/);
     await expect(page.getByTestId("blind-revision-unavailable")).toBeVisible();
     await expect(page.getByTestId("revision-review")).toHaveCount(0);
     expect(await cloudCalls(page)).toBe(1);

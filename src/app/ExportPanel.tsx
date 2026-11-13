@@ -138,11 +138,11 @@ export function ExportPanel({ workspace, prepared, buildSha }: { workspace: Work
         <fieldset className="mt-4 space-y-2 text-sm" data-testid="export-candidates">
           <legend className="font-mono text-[11px] uppercase tracking-[0.12em] text-mute">Mapping to export</legend>
           {candidates.map((item) => (
-            <label key={item.id} className={`flex min-h-10 flex-wrap items-center gap-2 border px-3 py-1.5 ${candidate.id === item.id ? "border-ink bg-bone" : "border-rule"}`}>
+            <label key={item.id} className={`flex min-h-10 flex-wrap items-center gap-2 border px-3 py-1.5 ${candidate.id === item.id ? "border-violet-soft bg-violet/10" : "border-rule"}`}>
               <input
                 type="radio"
                 name="export-candidate"
-                className="accent-ink"
+                className="accent-violet"
                 checked={candidate.id === item.id}
                 onChange={() => {
                   setSelectedId(item.id);
@@ -216,7 +216,7 @@ export function ExportPanel({ workspace, prepared, buildSha }: { workspace: Work
             </tbody>
           </table>
           <div className="min-w-0 text-xs">
-            <pre className="overflow-auto rounded-[3px] bg-ink p-3 font-mono text-[11px] leading-5 text-bone" data-testid="export-run-instructions">
+            <pre className="overflow-auto rounded-[3px] border border-ink-3 bg-void p-3 font-mono text-[11px] leading-5 text-ink" data-testid="export-run-instructions">
               {`unzip eyes-integration-*.zip && cd eyes-integration-*/
 node run.mjs verify        # hashes, contract, fixture replay
 node run.mjs fixtures      # run on the fictional fixtures
@@ -252,7 +252,7 @@ node run.mjs run --input ../records.json \\
 
       {draft ? (
         <label className="mt-4 flex items-start gap-2 border border-warn/40 bg-warn/5 p-3 text-sm">
-          <input type="checkbox" className="mt-1 size-4 accent-ink" checked={draftConfirmed} onChange={(event) => setDraftConfirmed(event.target.checked)} data-testid="export-draft-confirm" />
+          <input type="checkbox" className="mt-1 size-4 accent-violet" checked={draftConfirmed} onChange={(event) => setDraftConfirmed(event.target.checked)} data-testid="export-draft-confirm" />
           <span>
             Export as a <strong>DRAFT</strong>. I understand it has the unresolved findings listed above, is labeled DRAFT in its manifest and README, and is
             not production-ready.

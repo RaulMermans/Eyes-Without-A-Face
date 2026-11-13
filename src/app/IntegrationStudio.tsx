@@ -126,7 +126,7 @@ export function IntegrationStudio({
                   onClick={() => onSelect(connection.index)}
                   className={cn(
                     "animate-reveal w-full rounded-[3px] border p-3 text-left transition-colors",
-                    isSelected ? "border-ink bg-bone shadow-[inset_3px_0_0_var(--color-ink)]" : "border-rule hover:border-ink/40",
+                    isSelected ? "border-violet-soft bg-violet/10 shadow-[inset_3px_0_0_var(--color-violet)]" : "border-rule hover:border-ink/40",
                     connection.state === "rejected" && "border-fail/50 bg-fail/5",
                   )}
                   style={{ "--i": position } as CSSProperties}

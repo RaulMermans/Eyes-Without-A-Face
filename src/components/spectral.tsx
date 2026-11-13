@@ -86,7 +86,7 @@ const PANEL_TONE: Record<PanelTone, string> = {
   private: "frame-private bg-panel",
   synthetic: "frame-synthetic bg-panel",
   cloud: "frame-cloud bg-panel",
-  ink: "on-ink border border-ink-3 bg-ink text-bone",
+  ink: "on-ink border border-ink-3 bg-void text-ink",
 };
 
 export function Panel({

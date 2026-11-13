@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 import path from "node:path";
-import { attachProviderWatch, screenshotDir } from "./helpers.ts";
+import { attachProviderWatch, screenshotDir, openStage } from "./helpers.ts";
 
 const crmSource = path.join(process.cwd(), "src/examples/crm/source-records.json");
 const invalidSource = path.join(process.cwd(), "src/examples/crm/invalid-source.txt");
@@ -29,7 +29,7 @@ test.describe("E2E-017 invalid source", () => {
 test.describe("E2E-018 target schema", () => {
   test("loads and validates the destination JSON Schema", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /Phantom Twin/ }).click();
+    await openStage(page, /Phantom Twin/);
     await page.getByTestId("validate-destination-schema").click();
     await expect(page.getByTestId("destination-schema-ok")).toContainText("valid JSON Schema 2020-12");
     await expect(page.getByTestId("destination-schema-editor")).toContainText("helpdesk-account");
@@ -41,7 +41,7 @@ test.describe("E2E-019 mapping execution", () => {
   test("transforms fictional CRM records locally", async ({ page }) => {
     await page.goto("/");
     await page.getByTestId("load-crm-sample").click();
-    await page.getByRole("button", { name: /Reality Check/ }).click();
+    await openStage(page, /Reality Check/);
     await page.getByTestId("include-reserved").uncheck();
     await page.getByTestId("run-mapping").click();
     await expect(page.getByTestId("mapping-summary")).toContainText("3 passed");
@@ -56,7 +56,7 @@ test.describe("E2E-020 output correctness", () => {
   test("transformed result matches the expected Alice record", async ({ page }) => {
     await page.goto("/");
     await page.getByTestId("load-crm-sample").click();
-    await page.getByRole("button", { name: /Reality Check/ }).click();
+    await openStage(page, /Reality Check/);
     await page.getByTestId("include-reserved").uncheck();
     await page.getByTestId("run-mapping").click();
     const output = page.getByTestId("mapping-output-0");
@@ -73,12 +73,12 @@ test.describe("E2E-021 invalid mapping", () => {
   test("unsupported transformation is rejected", async ({ page }) => {
     await page.goto("/");
     await page.getByTestId("load-crm-sample").click();
-    await page.getByRole("button", { name: /Cloud Mapping/ }).click();
+    await openStage(page, /Cloud Mapping/);
     await page.getByTestId("manual-contract").locator("summary").click();
     await page.getByTestId("load-unsupported-mapping").click();
     await page.getByTestId("validate-mapping-contract").click();
     await expect(page.getByTestId("mapping-contract-error")).toBeVisible();
-    await page.getByRole("button", { name: /Reality Check/ }).click();
+    await openStage(page, /Reality Check/);
     await page.getByTestId("include-reserved").uncheck();
     await page.getByTestId("run-mapping").click();
     await expect(page.getByTestId("mapping-summary")).toContainText("batch failed");
@@ -93,8 +93,9 @@ test.describe("E2E-021 invalid mapping", () => {
 test.describe("E2E-022 hidden edge case", () => {
   test("unmapped status produces a real validation failure", async ({ page }) => {
     await page.goto("/");
+    await page.getByTestId("scenario-picker").locator("summary").click();
     await page.getByTestId("load-edge-sample").click();
-    await page.getByRole("button", { name: /Reality Check/ }).click();
+    await openStage(page, /Reality Check/);
     await page.getByTestId("run-mapping").click();
     await expect(page.getByTestId("mapping-record-0")).toContainText("UNMAPPED_ENUM");
     await expect(page.getByTestId("mapping-record-0")).toContainText("vip_customer");
@@ -120,7 +121,7 @@ test.describe("E2E-023 no network dependency", () => {
     });
     await page.goto("/");
     await page.getByTestId("load-crm-sample").click();
-    await page.getByRole("button", { name: /Reality Check/ }).click();
+    await openStage(page, /Reality Check/);
     await page.getByTestId("include-reserved").uncheck();
     await page.getByTestId("run-mapping").click();
     await expect(page.getByTestId("mapping-output-0")).toContainText("alice@example.com");
@@ -135,12 +136,12 @@ test.describe("E2E-024 UI integrity", () => {
     page.on("pageerror", (error) => pageErrors.push(error.message));
     await page.goto("/");
     for (const name of ["Source System", "Phantom Twin", "Disclosure Review", "Cloud Mapping", "Reality Check"]) {
-      await page.getByRole("button", { name: new RegExp(name) }).click();
+      await openStage(page, new RegExp(name));
       await expect(page.getByRole("heading", { level: 2, name })).toBeVisible();
     }
-    await page.getByRole("button", { name: /Source System/ }).click();
+    await openStage(page, /Source System/);
     await page.getByTestId("load-crm-sample").click();
-    await page.getByRole("button", { name: /Reality Check/ }).click();
+    await openStage(page, /Reality Check/);
     await page.getByTestId("include-reserved").uncheck();
     await page.getByTestId("run-mapping").click();
     await expect(page.getByTestId("mapping-summary")).toContainText("batch ok");
