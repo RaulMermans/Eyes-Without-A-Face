@@ -102,7 +102,7 @@ Before / after (full set in `design/screenshots/sprint-10-before/` and `sprint-1
 | privacy | 66 | **69** (+ PRV-RT-001/002) |
 | evaluation | 62 | 62 |
 | E2E | 89 | **102** (+ E2E-100…107) |
-| `build:release` + `verify:release` | PASS | see the release section in the PR (run on the committed tree) |
+| `build:release` + `verify:release` | PASS | **PASS** on `ce8a5d9` (clean tree, production, App Check debug token absent from dist, SHA stamped; the >500 kB chunk warning predates Sprint 10) |
 
 **Changed tests.** Existing E2E tests were changed only in how they navigate:
 
