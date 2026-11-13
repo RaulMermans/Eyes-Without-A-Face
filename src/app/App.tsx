@@ -46,7 +46,7 @@ const STEP_DETAILS: Record<WorkflowStepId, { body: string }> = {
     body: "AI proposes; deterministic software validates and executes. Proposals are rejected unless they pass the canonical Mapping Contract and alias checks.",
   },
   verification: {
-    body: "The deterministic mapping engine executes the resolved mapping against the private records and reserved hidden cases. Private diagnostics stay local.",
+    body: "The deterministic mapping engine executes the resolved mapping against the private records and reserved hidden cases. Private diagnostics stay local. The final action exports a package that runs outside this app.",
   },
 };
 
@@ -141,7 +141,7 @@ export default function App() {
             <div className="min-w-0">
               <h1 className="font-display text-2xl leading-none tracking-[0.005em] sm:text-[1.7rem]">Eyes Without a Face</h1>
               <p className="mt-1 truncate font-mono text-[10px] uppercase tracking-[0.16em] text-gold sm:text-[11px]">
-                {landing ? "Phantom Twin Engine" : "Build for systems your AI cannot see."}
+                {landing ? "Phantom Twin Engine" : "Build integrations for systems your AI cannot see."}
               </p>
             </div>
           </div>

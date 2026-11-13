@@ -55,6 +55,14 @@ Build a privacy-aware integration tool: private CRM JSON stays local; on-device 
 - Revised mappings are judged by `src/revision/decision.ts`: ground-truth blind, with operation-level regressions. Never promote a revision automatically; a gain made only by holding records back is not `ACCEPTED`.
 - Benchmark inputs are frozen in `docs/evidence/sprint-8/freeze-manifest.json`. Change a frozen file only with `node scripts/freeze-benchmark.mjs --amend "reason"`, and report the amendment. If you inspect a holdout and then change anything, create a fresh holdout.
 
+## Export and reliability rules (Sprint 9)
+
+- Portable packages are built only by `buildIntegrationPackage` (`src/export/package.ts`) from `exportCandidates` (workspace state). Status comes only from `exportEligibility`; never mark a draft or partially verified mapping as VERIFIED or production-ready.
+- The package runtime is the app's engine, bundled by `scripts/build-runtime.mjs`. After changing anything it imports, run `node scripts/build-runtime.mjs` and commit the regenerated bundle (EXP-007 fails otherwise). Never add a second interpreter or generate code from a mapping.
+- Packages contain alias-level mappings only. Never pack records, outputs of private records, source field names, alias bindings, prompts, rationales, engine messages, tokens or config. The privacy scan blocks; never weaken it to make an export pass.
+- Provider failures go through `classifyUnknownError` and `guidanceForFailure`. Show raw provider text only as collapsed local detail. Recovery from a cloud failure is a NEW preview that the user approves again; a failed revision never resets the revision budget.
+- Preflight sends nothing. CONFIGURED never means available; VERIFIED needs a real, unsimulated result in this session.
+
 ## Tool and data permissions
 
 Allowed without extra authorization: local files in this repository, local tests, local Vite server, Playwright against localhost.

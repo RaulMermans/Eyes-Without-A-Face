@@ -10,7 +10,7 @@ test.describe("E2E-001 application boot", () => {
     });
     await page.goto("/");
     await expect(page.getByRole("heading", { level: 1, name: "Eyes Without a Face" })).toBeVisible();
-    await expect(page.getByText("Build for systems your AI cannot see.")).toBeVisible();
+    await expect(page.getByText("Build integrations for systems your AI cannot see.")).toBeVisible();
     await expect(page.getByRole("navigation", { name: "Workflow" })).toBeVisible();
     await page.screenshot({
       path: path.join(screenshotDir, "e2e-001-boot.png"),

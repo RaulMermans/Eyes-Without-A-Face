@@ -127,3 +127,23 @@ Ownership is unchanged:
 - Gemini Cloud proposes and revises declarative mappings.
 - Deterministic code owns constraints, evidence validation, projection, approval, execution, grading and stopping.
 - The user declares or confirms meaning and approves every disclosure.
+
+## Sprint 9 changes: portable export and reliability (no new boundary)
+
+Export adds a local download, not a network path. See [ADR 0010](../decisions/0010-portable-integration-export.md) and [contracts/export.md](../contracts/export.md).
+
+```text
+workspace state ── exportCandidates (active mapping, or the revised one; never auto-promoted)
+        ▼
+ exportEligibility (LOCAL, ground-truth blind): VERIFIED / WITH_EXCEPTIONS / DRAFT / blocked
+        ▼
+ buildIntegrationPackage: alias contract + destination schema + reviewed twin fixtures
+        + engine results on fixtures + value-free report + policy + alias-level semantics
+        + hash-pinned bundled runtime (src/export/runtime → generated .mjs) + run.mjs
+        ▼
+ scanPackageFiles (blocking) ── manifest (Export 1.1.0) ── deterministic ZIP ── download
+        ▼
+ destination environment: node run.mjs verify | run --bindings bindings.local.json (local only)
+```
+
+Reliability changes stay inside the existing gate: provider errors are classified (`PROVIDER_OVERLOADED`, `RATE_LIMITED`, …) and explained by `guidanceForFailure`; recovery prepares a new preview that needs a new approval; initial proposals use the per-operation response schema (`src/inference/response-schemas.ts`); the preflight (`src/inference/preflight.ts`) sends nothing.
