@@ -1,0 +1,97 @@
+{
+  "manifestVersion": "1.0.0",
+  "experiment": "sprint-12-nano-value",
+  "frozenAt": "2026-11-13T13:10:12.203Z",
+  "frozenFromCommit": "b93e3edbb997d6518e208c553a07d5b328e9fbbe",
+  "statement": "Frozen before any model run on crm-nl-relations. Ground truth (`expected`) was written from the scenario's documented business meaning (a Dutch CRM; 'bedrijf' = company, 'contactpersoon' = contact person, 'sinds' = customer-since date, day-first) before any Nano or Gemini output on this scenario existed. The holdout is never profiled, disclosed, used for feedback or used to change a prompt.",
+  "scenario": "crm-nl-relations@1.0.0",
+  "configurations": {
+    "A": "Deterministic profiling only (no model). Roles and date order from the deterministic profile. Computed offline.",
+    "B": "A + real Gemini Nano (ONLY_ON_DEVICE) reading bounded private context; only validated suggestions, applied by the user, change the twin.",
+    "C": "Real Gemini Cloud initial mapping from the deterministic twin (harness check S8-B). No Nano, no revision.",
+    "D": "Real Gemini Cloud initial mapping from the twin with B's applied suggestions (harness check S8-CD with EYES_LIVE_NO_REVISION=1). No revision."
+  },
+  "comparisons": {
+    "local": "B vs A",
+    "downstream": "D vs C, paired by trial"
+  },
+  "groundTruthSemantics": {
+    "relatienr": {
+      "role": "identifier"
+    },
+    "mailadres": {
+      "role": "email"
+    },
+    "fase": {
+      "role": "status"
+    },
+    "sinds": {
+      "role": "date",
+      "dateOrder": "DD/MM/YYYY"
+    },
+    "bedrijf": {
+      "role": "organization"
+    },
+    "contactpersoon": {
+      "role": "person-name"
+    },
+    "opmerking": {
+      "role": "free-text",
+      "note": "withheld from the cloud (shareable: false)"
+    }
+  },
+  "hypotheses": {
+    "H1": "A (deterministic) cannot establish the meaning of 'bedrijf' and 'contactpersoon' (generic role) nor the day/month order of 'sinds' (unproven).",
+    "H2": "B: Nano yields at least one validated, applicable suggestion that matches the ground-truth semantics of 'bedrijf', 'contactpersoon' or 'sinds' in at least 2 of 3 trials, with no applicable suggestion that contradicts the ground truth.",
+    "H3": "D beats C on holdout correct transformations (paired by trial) in at least 2 of the valid pairs, with no pair where D is worse.",
+    "outcomes": "Positive (H2 and H3 hold), neutral (H2 holds, H3 does not), negative (Nano adds wrong applicable suggestions, or D is worse than C). All three are reportable."
+  },
+  "budget": {
+    "model": "gemini-3.5-flash-lite (Firebase AI Logic, ONLY_IN_CLOUD) and Gemini Nano (ONLY_ON_DEVICE)",
+    "trials": [
+      1,
+      2,
+      3
+    ],
+    "cloudRequestsPerTrial": {
+      "C": 1,
+      "D": 1
+    },
+    "maxCloudRequests": 6,
+    "nanoRunsPerTrial": 1,
+    "revisions": "none (EYES_LIVE_NO_REVISION=1)",
+    "retries": "none: a provider failure is recorded as a failure and is not repeated or replaced",
+    "stopRule": "Stop when trials 1–3 are complete or 6 cloud requests were sent, whichever comes first. No trial is discarded.",
+    "authorization": "Each request goes through the in-app approval gate; the live spec approves exactly what it previews.",
+    "environment": "Local dev server with the registered App Check debug token and the dedicated Nano Chrome profile."
+  },
+  "metrics": [
+    "Nano suggestions: consistent / applicable / rejected; applied; matches ground-truth semantics",
+    "Disclosure changed by applied suggestions",
+    "Initial mapping differs between C and D",
+    "Holdout and feedback-set correct transformations, incorrect, quarantined (replayed by src/evaluation/aggregate.ts)",
+    "Field-level holdout errors: organization/contactName swapped, customerSince day/month swapped",
+    "Schema-valid semantic errors (semantic verifier)",
+    "Latency: Nano ms, cloud ms",
+    "Cloud request count, human interventions, private terms in request bodies, model/provider failures"
+  ],
+  "files": {
+    "src/examples/scenarios/crm-nl-relations.json": "c924865c901a3b733335fb9c07dffed43b3044190215e411f143c3b48fccc4ab",
+    "src/inference/prompts.ts": "bd0bccee2fcb1866d72b68fecf76e5037e88fd193ea7502c8b84ad0ccc6095a8",
+    "src/inference/firebase-api.ts": "6721a4d32f629e0f82f1e515ffa675f7009838f7e0ce2695ba49a27c3f08de6f",
+    "src/private-semantics/semantics.ts": "0e303be6f6896993d4776021d898388aeadde18ffa3c021fefdebaaf16db897b",
+    "src/phantom/roles.ts": "93fdeca2bc00645ccc62f36ca34c8f651df15c4a489db8b5f962f5d530bf4d26",
+    "src/phantom/generate.ts": "4539fc8dee35c6540f8cbb824ef4baeedda483abe98812102eb85433f5ab51ce",
+    "src/proposal/convert.ts": "a34e00c8a2cf5c332d2a97d05243af613c54c2c27e33a6c11b8b09fd4974a7ea",
+    "src/proposal/resolve.ts": "73094edeb9a3be46c623e1ddb2ded2cb11a70a7f5f783a2ca23667920e3c425d",
+    "src/semantics/contract.ts": "da9efb11a4956a090c9d683eb0d5d806797a0c095b3ab8501d76af24d13f327e",
+    "src/semantics/observe.ts": "adec6ccf95c576909034c64a3aca3a2bd6cda95c4f6962e62430fc072e5e9c3f",
+    "src/semantics/verify.ts": "9fed4af27699b535b903d926aa2eb916dd6ffe9cc83e4115d569c69760cb54fd",
+    "src/verification/outcomes.ts": "1d00072787df2b8bc273001e401734a3757328da59199b5af0c075649b2e8e48",
+    "src/evaluation/evaluate.ts": "a464b4679fbe9f31939304e927abd649b4408dc463c182611d8e40456526a5b8",
+    "src/evaluation/benchmark.ts": "2c31b81ff7783c6993a208219730da21003b9d64f05890fbaed5300dc15b81a0",
+    "src/evaluation/aggregate.ts": "74ef965cdfb261901f986b276a564d34b4de50534696c6f68db2cf8e010deb11",
+    "tests/live/semantic-benchmark.spec.ts": "f85b9a0aad9d2bb99a51bf63d53bf1a8e9bf63acd3b3c063fa657f11f325f264"
+  },
+  "amendments": []
+}
