@@ -111,11 +111,12 @@ The package status is computed, never asserted: `VERIFIED`, `VERIFIED_WITH_EXCEP
 
 ## Status
 
-**Sprint 14 (guided reliability, production acceptance): `DEPLOYMENT_PENDING`.**
+**Sprint 14 (guided reliability, production acceptance): `DEPLOYED_UNVERIFIED`.**
 
-- **The incident.** The deployed Sprint 13 build (`a548d7f`) could not build the default Helpdesk integration. The guided flow never offered the category-name choice that destination needs. Reproduced with real Gemini, fixed, and verified with real Gemini Nano and Gemini Cloud on the Sprint 14 code.
+- **The incident.** The Sprint 13 build (`a548d7f`) could not build the default Helpdesk integration. The guided flow never offered the category-name choice that destination needs.
+- **The fix.** Reproduced with real Gemini, fixed, and verified with real Gemini Nano and Gemini Cloud on the same code. Live as `95a9564` (owner-approved).
+- **Production checks.** 17 / 17 deterministic checks and real Nano pass on the public URL. The real cloud run still needs one human session: automated sessions are refused by App Check.
 - **New standard.** A permanent production acceptance standard (`pnpm test:production`, `pnpm test:production:real`) now gates every release.
-- **Not yet live.** The fix is not deployed until the owner approves its exact SHA.
 
 See [docs/sprints/sprint-14.md](docs/sprints/sprint-14.md) and [docs/deployment.md](docs/deployment.md).
 
