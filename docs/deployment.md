@@ -1,6 +1,122 @@
 # Deployment
 
-**Status (Sprint 12, 2026-11-13): LIVE.** <https://eyes-without-a-face-b7281.web.app> serves build `b93e3edbb997d6518e208c553a07d5b328e9fbbe` (the Sprint 11 merge on `main`), deployed with the owner's explicit approval of that exact SHA. Hosted acceptance passed on real models. Every further deployment is a separate external side effect and needs a fresh owner approval of its exact SHA.
+**Status (2026-11-14, Sprint 14).** <https://eyes-without-a-face-b7281.web.app> serves `a548d7fbd7b8aad84e7167e999c1a7c4d3d5d989` (the Sprint 13 merge, production build, `appCheckDebug: false`). It was deployed after the Sprint 13 report; no production acceptance was recorded for it. Under the standard below it is **RELEASE_FAILED**: the default guided journey cannot produce an integration ([evidence/production/a548d7fbd7b8/failures.md](evidence/production/a548d7fbd7b8/failures.md)). The fix is Sprint 14 and needs an approved deployment of its exact SHA ([sprints/sprint-14.md](sprints/sprint-14.md)).
+
+## Production acceptance standard (permanent)
+
+This applies to every release from Sprint 14 on. Rules: [AGENTS.md](../AGENTS.md) "Release lifecycle and production acceptance". **Tests passing does not mean the product works in production.**
+
+### Release statuses
+
+| Status | Means | Evidence needed |
+| --- | --- | --- |
+| `CODE_READY` | Implementation done; full regression, lint, typecheck and build pass | test totals in the sprint report |
+| `DEPLOYMENT_PENDING` | Release artifact built from the exact SHA and verified; waiting for the owner | `build:release` + `verify:release` PASS on that SHA, approval package presented |
+| `DEPLOYED_UNVERIFIED` | The approved deployment finished; acceptance not yet passed | deploy time, Hosting version, served `build-info.json` |
+| `PRODUCTION_ACCEPTED` | The served SHA passed every required check below on the public URL | `docs/evidence/production/<sha12>/` complete, no open critical failure |
+| `RELEASE_FAILED` | A critical production check failed | `failures.md`; fix forward or roll back (approval needed) |
+
+### 1 · Before asking for approval (build verification)
+
+From a clean checkout of the exact SHA:
+
+```bash
+git status --porcelain                         # empty
+pnpm install --frozen-lockfile
+pnpm test:all                                  # lint, typecheck, unit, contracts, privacy, evaluation, build, e2e
+pnpm build:release                             # refuses a dirty tree, forces App Check debug off, stamps the SHA, runs verify-release
+jq -r .gitSha dist/build-info.json             # must equal the SHA to approve
+```
+
+`verify-release` also checks the Firebase project and app, absence of debug tokens and credential patterns, source maps and `.env` files. Do not ask for approval if any of this fails.
+
+### 2 · Approval package (owner decides)
+
+Present, in one message: target project (`eyes-without-a-face-b7281`), domain (`eyes-without-a-face-b7281.web.app`), **exact SHA**, artifact identity (`dist/build-info.json`, file count, size), security or configuration changes (normally none), expected impact, and rollback. Deploy only after an explicit "yes" to that SHA. A sprint brief, PR approval or merge is not a deployment approval, and a different SHA needs a new one.
+
+```bash
+npx -y firebase-tools@15.35.0 deploy --only hosting --project eyes-without-a-face-b7281 -m "<sprint> <sha12>"
+```
+
+Status is then `DEPLOYED_UNVERIFIED` until step 3 passes.
+
+### 3 · Production acceptance (on the public URL)
+
+**Deterministic checks — no inference, no cost:**
+
+```bash
+EYES_EXPECTED_SHA=<approved sha> pnpm test:production
+```
+
+`tests/production/production.spec.ts` (Chromium, with Firefox for the `@cross-browser` subset):
+
+| ID | Check |
+| --- | --- |
+| P-001 | `build-info.json` SHA = approved SHA, production mode, no debug, clean; footer shows it; every referenced asset is HTTP 200 |
+| P-002 | No debug token in the page; the model endpoint refuses a request without App Check (HTTP 401) |
+| P-010…P-012 | JSON, CSV and XLSX demo imports normalize to 3 records × 6 fields, locally |
+| P-013 | The read-only REST connector reads a public CORS API with one GET, as a snapshot (`EYES_PRODUCTION_REST=0` skips it) |
+| P-014 | An invalid file explains itself and loads nothing |
+| P-020 | Build stops at the exact request, with no private terms in it; declining sends nothing |
+| P-021 | A destination that needs category names warns before anything is sent |
+| P-022 | An invalid destination blocks Build with a reason |
+| P-023 | Guided ↔ technical navigation keeps the prepared request |
+| P-030, P-031 | No horizontal scroll at 390 px on any step; the keyboard reaches the file control |
+
+Every check counts page errors and asserts **zero** `generateContent` requests. It writes `browser-results.json`, `release-manifest.json` and `screenshots/`.
+
+**Real models — fixed inference budget:**
+
+```bash
+EYES_LIVE_TESTS=1 EYES_LIVE_GUIDED_RECOVERY=1 EYES_LIVE_CLOUD=1 EYES_LIVE_ON_DEVICE=1 EYES_RECOVERY_ONLY=3 \
+EYES_CHROME_PROFILE="$HOME/.cache/eyes-without-a-face/chrome-nano-profile" \
+EYES_LIVE_EVIDENCE=docs/evidence/production/<sha12>/inference-results.json pnpm test:production:real
+```
+
+`S14-REC-3` runs one hybrid happy path:
+
+- real Gemini Nano on the device, with zero cloud requests while it runs;
+- the user's explicit category-name choice;
+- **one** approved Gemini request, through production reCAPTCHA App Check;
+- local verification;
+- `node run.mjs verify` on the exported package in a clean directory.
+
+It asserts zero private terms in the request body and `nano-used` on the result. The config refuses a debug token and localhost.
+
+| Budget per release | Requests |
+| --- | --- |
+| Real hybrid happy path | 1 cloud request (+ on-device, free) |
+| Verifying a critical fix found during acceptance | at most 2 more, declared in `failures.md` before they are sent |
+| Never | loops until a run passes; provoking provider failures in production |
+
+Reuse earlier real evidence only for an unchanged build and path. A changed release needs its own run.
+
+**Failure paths** are proven by deterministic fault injection in `pnpm test:e2e`:
+
+- invalid file and invalid destination;
+- declined disclosure;
+- invalid model proposals of every diagnosis kind (E2E-140…142);
+- provider unavailable;
+- failing recovery preparation (E2E-142);
+- stale destination (E2E-145);
+- export (E2E-130).
+
+Production repeats only the deterministic subset above.
+
+**Record:** `acceptance-results.json` (status and each area as REAL / DETERMINISTIC / SIMULATED, with evidence links) and `failures.md` (every failed or unrun check). Layout: [evidence/production/README.md](evidence/production/README.md).
+
+### 4 · Rollback criteria
+
+Stop the release, and roll back or fix forward (owner approval either way) when any of these happens:
+
+- the primary hosted journey is unusable;
+- private data is exposed unexpectedly;
+- App Check is broken or disabled;
+- a stale approval is accepted;
+- mapping validation can be bypassed;
+- critical exports are corrupted.
+
+Rollback: Firebase Console → Hosting → release history → **Rollback** to the last `PRODUCTION_ACCEPTED` release. Today that is `b93e3ed` (Sprint 12 hosted acceptance). Never change Firebase or App Check configuration silently.
 
 ## Sprint 12 deployment record
 

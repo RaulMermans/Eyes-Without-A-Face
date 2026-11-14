@@ -60,10 +60,12 @@ export function evaluateProposal(
     kind: "proposal-validate",
     ok: result.ok || result.stage === "resolve",
     durationMs: performance.now() - started,
+    // Sprint 14: lets the guided view count rejected answers per identical request (a hash, never content).
+    payloadHash: review.preview.payloadHash,
     code: result.ok ? undefined : result.issues[0]?.code,
   });
   if (result.ok || result.stage === "resolve") {
-    recordWorkflowEvent({ kind: "alias-resolve", ok: result.ok, code: result.ok ? undefined : result.issues[0]?.code });
+    recordWorkflowEvent({ kind: "alias-resolve", ok: result.ok, code: result.ok ? undefined : result.issues[0]?.code, payloadHash: review.preview.payloadHash });
   }
   return { origin: input.origin, text: input.text, provenance: input.provenance, requestId: input.requestId, result };
 }

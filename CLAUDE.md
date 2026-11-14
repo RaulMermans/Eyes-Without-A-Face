@@ -33,4 +33,8 @@ Read, in order:
 27. `docs/contracts/source-adapter.md` — Source Adapter contract 1.0.0, limits, REST connector safety
 28. `docs/sprints/sprint-13.md` — Sprint 13 report: tests, connector evidence, release plan, readiness
 
-Do not duplicate architecture here. Do not start Sprint 14 automatically.
+29. `docs/decisions/0013-guided-recovery-and-production-acceptance.md` — rejected-proposal diagnosis, category-name readiness, production acceptance standard
+30. `docs/sprints/sprint-14.md` — Sprint 14 report: incident root cause, recovery, release status
+31. `docs/deployment.md` § Production acceptance standard — **permanent**: release statuses, deployment approval, `pnpm test:production`, evidence
+
+Every sprint ends with an evidence-backed release status (`CODE_READY`, `DEPLOYMENT_PENDING`, `DEPLOYED_UNVERIFIED`, `PRODUCTION_ACCEPTED`, `RELEASE_FAILED`); rules in `AGENTS.md`. Do not duplicate architecture here. Do not start Sprint 15 automatically.

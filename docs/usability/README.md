@@ -1,6 +1,6 @@
 # Usability — protocol and internal audit (Sprints 9–10)
 
-> **Independent usability testing: NOT PERFORMED (Sprints 9, 10, 11 and 12).** No developer unfamiliar with Eyes Without a Face has used the product yet. Everything below is either a protocol ready to run, or an internal heuristic audit by the team that built it. Do not cite it as user evidence.
+> **Independent usability testing: NOT PERFORMED (Sprints 9 to 14).** No developer unfamiliar with Eyes Without a Face has used the product yet. Everything below is either a protocol ready to run, or an internal heuristic audit by the team that built it. Do not cite it as user evidence.
 
 ## 1. Unassisted task protocol (ready to run, ≥ 3 participants)
 
@@ -134,3 +134,28 @@ What changed for the next facilitator:
 - The hosted journey itself was verified on real models (2 / 2 automated runs). That proves the path works, **not** that people can follow it.
 
 Release targets (unchanged, still targets): 3 / 3 participants complete the core tasks without critical assistance, 0 critical privacy misconceptions, correct reading of the final result, successful `node run.mjs verify`.
+
+## 7. Sprint 14 — status and kit addendum
+
+**Independent sessions: NOT PERFORMED.** No participants were available to the agent, and no human facilitator ran a session. Nothing here comes from a participant. Manual screen-reader testing: **NOT PERFORMED**.
+
+The Sprint 11 kit applies to the guided flow, with this scenario and these extra observations:
+
+- **Scenario (verbatim):** "Import this fictional customer dataset, choose the intended helpdesk destination and create a reusable integration without exposing the original records to cloud AI."
+- **Measure:**
+  - first action within 30 s;
+  - task success;
+  - time to a valid integration and to export;
+  - whether the participant notices and understands the category-name choice ("Share the 3 category names…");
+  - recovery success after a refused answer (facilitator: send once without sharing, if the participant does not choose to share);
+  - misreading of "Draft" or "Meaning · not verified" as a failure or a success;
+  - which download they choose and why;
+  - visits to Technical details;
+  - every time they need help.
+- **Critical failures:**
+  - the participant believes their records were sent;
+  - they share category names without realising it;
+  - they export a Draft believing it is verified;
+  - they cannot recover from the refusal without help.
+
+Automated checks (not usability evidence): E2E-140…148 cover the explanations, the recovery path, destination integrity, downloads, the Nano label and the reload warning.

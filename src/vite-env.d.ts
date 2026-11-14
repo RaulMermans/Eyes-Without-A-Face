@@ -25,6 +25,7 @@ interface EyesTestHarness {
   onDeviceRuntimeFailures?: number[];
   onDeviceOutput?: unknown;
   cloudOutput?: unknown;
+  cloudOutputs?: unknown[];
   deriveProposal?: boolean;
   rawCloudText?: string;
   malformedCloudOutput?: unknown;

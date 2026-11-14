@@ -48,6 +48,7 @@ export function DataStep({
   ready,
   onDevice,
   understanding,
+  understandingBusy = false,
   onContinue,
 }: {
   source: ImportedSource | null;
@@ -60,6 +61,8 @@ export function DataStep({
   ready: boolean;
   onDevice: OnDeviceMode;
   understanding: ReactNode;
+  /** Sprint 14: on-device analysis is still running. */
+  understandingBusy?: boolean;
   onContinue: () => void;
 }) {
   const [tab, setTab] = useState<Tab>("file");
@@ -127,6 +130,7 @@ export function DataStep({
           Where is your data?
         </h2>
         <p className="mt-3 text-base leading-7 text-ink-text">Your records are read in this browser. Nothing is uploaded.</p>
+        <p className="mt-1 text-xs text-mute" data-testid="guided-session-note">Nothing is saved: reloading or closing this tab clears your work.</p>
       </header>
 
       {!source ? (
@@ -229,6 +233,7 @@ export function DataStep({
           }}
           onDevice={onDevice}
           understanding={understanding}
+          understandingBusy={understandingBusy}
           onContinue={onContinue}
         />
       )}
@@ -296,7 +301,7 @@ function ApiConnect({ onLoaded }: { onLoaded: (normalized: NormalizedSource) => 
         <p id="api-url-hint" className="mt-1 text-xs text-mute" data-testid="api-target">
           {check?.ok ? (
             <>
-              Will read once from <span className="font-mono text-ink">{check.host}</span>. Read-only: one GET request, nothing is written.
+              Will read once from <span className="font-mono text-ink">{check.host}</span>. Read-only: one GET request, nothing is written. This is a snapshot, not a live sync: later changes in the API are not picked up.
             </>
           ) : check && !check.ok ? (
             check.problem.message
@@ -355,6 +360,7 @@ function LoadedSummary({
   onClear,
   onDevice,
   understanding,
+  understandingBusy,
   onContinue,
 }: {
   source: ImportedSource;
@@ -367,6 +373,7 @@ function LoadedSummary({
   onClear: () => void;
   onDevice: OnDeviceMode;
   understanding: ReactNode;
+  understandingBusy: boolean;
   onContinue: () => void;
 }) {
   const origin = source.origin;
@@ -410,7 +417,7 @@ function LoadedSummary({
             <dt className="text-xs text-mute">Where</dt>
             <dd className="mt-1 flex items-center gap-1.5 text-sm" data-testid="source-locality">
               <LockIcon size={13} className="shrink-0" />
-              {connector ? <>Read from {new URL(connector.origin).host} · kept in this browser</> : "In this browser only"}
+              {connector ? <>Read from {new URL(connector.origin).host} · a one-time snapshot, kept in this browser</> : "In this browser only"}
             </dd>
           </div>
         </dl>
@@ -513,7 +520,7 @@ function LoadedSummary({
       {ready ? (
         <div className="space-y-3" data-testid="data-on-device">
           {onDevice.kind === "available" ? (
-            <Disclosure summary={<span className="inline-flex items-center gap-1.5"><ChipIcon size={14} /> Optional: improve field understanding with on-device AI</span>} testId="guided-understanding">
+            <Disclosure summary={<span className="inline-flex items-center gap-1.5"><ChipIcon size={14} /> On-device AI is available · optional: let Gemini Nano improve field understanding</span>} testId="guided-understanding">
               <p className="mb-3 text-sm text-ink-text">Gemini Nano reads field names and a few samples on this device. Nothing is sent. Skip it and EYES uses its own analysis.</p>
               {understanding}
             </Disclosure>
@@ -521,7 +528,11 @@ function LoadedSummary({
             <p className="flex items-center gap-1.5 text-xs text-mute" data-testid="guided-on-device-unavailable">
               <ChipIcon size={13} /> On-device AI isn't available in this browser. EYES uses its deterministic analysis; nothing is simulated.
             </p>
-          ) : null}
+          ) : (
+            <p className="flex items-center gap-1.5 text-xs text-mute" data-testid="guided-on-device-checking">
+              <ChipIcon size={13} /> Checking whether on-device AI is available in this browser…
+            </p>
+          )}
         </div>
       ) : null}
 
@@ -544,10 +555,15 @@ function LoadedSummary({
       ) : null}
 
       <div className="flex flex-wrap items-center gap-3">
-        <Button variant="primary" size="lg" onClick={onContinue} disabled={!ready} data-testid="data-continue">
+        <Button variant="primary" size="lg" onClick={onContinue} disabled={!ready || understandingBusy} data-testid="data-continue">
           Next: choose the destination
           <ArrowRightIcon />
         </Button>
+        {understandingBusy ? (
+          <p className="text-xs text-mute" role="status" data-testid="data-continue-wait">
+            On-device AI is still reading your fields. Next is available when it finishes.
+          </p>
+        ) : null}
       </div>
     </div>
   );

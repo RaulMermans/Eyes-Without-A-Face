@@ -21,7 +21,9 @@ import { crmReservedRecords, withCrmDemo, withImportedSource } from "./demo.ts";
 import { DataStep, type LoadedSource } from "./guided/DataStep.tsx";
 import { DestinationStep } from "./guided/DestinationStep.tsx";
 import { ResultStep } from "./guided/ResultStep.tsx";
-import { guidedStatus, type InFlight } from "./guided/guided-status.ts";
+import { fieldUnderstanding, guidedStatus, type InFlight } from "./guided/guided-status.ts";
+import { ASK_AGAIN_LIMIT, categoryNeed, diagnoseRejectedProposal } from "./guided/recovery.ts";
+import { guidanceForFailure } from "../inference/failure-guidance.ts";
 import { summarizeDestination } from "./guided/destinations.ts";
 import { approveReview, cancelWaiting, prepareFreshReview, rejectReview, runLocalVerification, sendApprovedRequest, spendApproval } from "./run-actions.ts";
 import { GUIDED_STEPS, initialView, viewHash, type GuidedStep, type View } from "./experience.ts";
@@ -133,6 +135,10 @@ export default function App() {
   const [inFlight, setInFlight] = useState<InFlight>(null);
   const [sending, setSending] = useState(false);
   const [guidedBlocker, setGuidedBlocker] = useState<string | null>(null);
+  /** Sprint 14 (B6): why the last recovery step failed. UI explanation only; cleared by the next workspace change. */
+  const [recoveryError, setRecoveryError] = useState<string | null>(null);
+  /** Sprint 14 (C3): on-device analysis is running in the guided data step (UI state only). */
+  const [nanoBusy, setNanoBusy] = useState(false);
   const [stepId, setStepId] = useState<WorkflowStepId>("source");
   const [workspace, setWorkspace] = useState(initialWorkspaceState);
   const [building, setBuilding] = useState(false);
@@ -175,8 +181,25 @@ export default function App() {
       setInvalidation(invalidationCause(current, next));
     }
     workspaceRef.current = next;
+    setRecoveryError(null);
     setWorkspace(next);
   }, []);
+
+  /*
+   * Sprint 14 (C7): nothing is persisted, so a reload or closing the tab loses
+   * the loaded records. Ask the browser to confirm while a source is loaded.
+   * Records are never written to storage to make recovery easier.
+   */
+  const hasWork = Boolean(workspace.source);
+  useEffect(() => {
+    if (!hasWork) return;
+    const warn = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+      event.returnValue = "";
+    };
+    window.addEventListener("beforeunload", warn);
+    return () => window.removeEventListener("beforeunload", warn);
+  }, [hasWork]);
   const onDeviceProbe = useOnDeviceProbe(inference, workspace.source);
   const eventsVersion = useSyncExternalStore(subscribeWorkflowEvents, workflowEventsVersion);
   const runEvents = useMemo(() => {
@@ -350,15 +373,59 @@ export default function App() {
 
   async function guidedPrepareFresh(): Promise<void> {
     const current = workspaceRef.current;
-    if (!prepared) return;
+    if (!prepared) {
+      setRecoveryError("Your data could not be prepared, so a new request cannot be built. Go back to your data to check it.");
+      return;
+    }
     setInFlight("preparing");
     const result = await prepareFreshReview(current, prepared);
     setInFlight(null);
     if (result.ok) updateWorkspace(result.workspace);
+    // Sprint 14 (B6): never a button that silently does nothing.
+    else setRecoveryError(`A new request could not be prepared: ${result.message}`);
+  }
+
+  /**
+   * Sprint 14 (B4): the user chose to share the category names of these fields.
+   * Applies the existing twin decision (`applyTwinOverride`, which clears every
+   * approval and result that depended on the old twin) and, when asked, builds
+   * a NEW request for review. Nothing is approved or sent here.
+   */
+  async function guidedShareCategories(paths: readonly string[], share: boolean, prepareRequest: boolean): Promise<void> {
+    let next = workspaceRef.current;
+    for (const path of paths) next = applyTwinOverride(next, path, { discloseCategories: share });
+    updateWorkspace(next);
+    if (!prepareRequest) return;
+    const nextTwin = computeTwin(next.source, next.seed, next.overrides);
+    if (!nextTwin.prepared) {
+      setRecoveryError(nextTwin.twinIssues[0]?.message ?? "Your data could not be prepared with the category names shared.");
+      return;
+    }
+    setInFlight("preparing");
+    const result = await prepareDisclosureReview(next, nextTwin.prepared);
+    setInFlight(null);
+    if (workspaceRef.current !== next) return;
+    if (result.ok) updateWorkspace(result.workspace);
+    else setRecoveryError(`A new request could not be prepared: ${result.message}`);
   }
 
   const guidedCandidates = candidates;
-  const status = guidedStatus(stages, workspace.report ? candidates.map((candidate) => ({ id: candidate.id, label: candidate.label, eligibility: candidate.eligibility })) : [], inFlight);
+  /* Sprint 14: plain-language readings of canonical state for the guided view. */
+  const rejectedResult = workspace.proposal && !workspace.proposal.result.ok ? workspace.proposal.result : null;
+  const diagnosis = rejectedResult && workspace.review ? diagnoseRejectedProposal(rejectedResult, workspace.review.preview.payload, prepared) : null;
+  const cloudFailure = workspace.cloudError ? guidanceForFailure({ code: workspace.cloudError.code, stage: "cloud-mapping" }) : null;
+  const need = categoryNeed(prepared, workspace.destinationText);
+  // Rejected answers to this exact request content, read from this run's safe events (hashes only).
+  const currentPayload = workspace.review?.preview.payloadHash ?? null;
+  const rejectedAnswers = currentPayload ? runEvents.filter((event) => (event.kind === "proposal-validate" || event.kind === "alias-resolve") && !event.ok && event.payloadHash === currentPayload).length : 0;
+  const askAgainAllowed = rejectedAnswers <= ASK_AGAIN_LIMIT;
+  const understanding = fieldUnderstanding(stages, onDeviceProbe.mode.kind);
+  const status = guidedStatus(
+    stages,
+    workspace.report ? candidates.map((candidate) => ({ id: candidate.id, label: candidate.label, eligibility: candidate.eligibility })) : [],
+    inFlight,
+    { rejection: diagnosis, cloudFailureTitle: cloudFailure?.title ?? null },
+  );
   const cloudAvailable = harness || inference.cloud.status().state === "configured";
   const loadedValue = loaded && loaded.source === workspace.source ? loaded.value : null;
   const stepReachable = (id: GuidedStep) => (id === "data" ? true : id === "destination" ? Boolean(workspace.source && prepared) : Boolean(workspace.review || workspace.report));
@@ -377,6 +444,7 @@ export default function App() {
         prepared={prepared}
         inference={inference}
         onApply={(path, override) => updateWorkspace(applyTwinOverride(workspace, path, { ...override }))}
+        onBusyChange={setNanoBusy}
       />
     ) : null;
 
@@ -554,6 +622,7 @@ export default function App() {
               ready={Boolean(workspace.source && prepared)}
               onDevice={onDeviceProbe.mode}
               understanding={localUnderstanding}
+              understandingBusy={nanoBusy}
               onContinue={() => goGuided("destination")}
             />
           ) : null}
@@ -565,6 +634,8 @@ export default function App() {
                 if (text !== workspaceRef.current.destinationText) updateWorkspace(invalidateDownstream({ ...workspaceRef.current, destinationText: text }));
               }}
               sourceLabel={workspace.source?.label ?? null}
+              categoryNeed={need}
+              onShareCategories={(paths, share) => void guidedShareCategories(paths, share, false)}
               buildBlocker={guidedBlocker}
               building={inFlight === "preparing"}
               onBuild={() => void guidedBuild()}
@@ -590,6 +661,12 @@ export default function App() {
                   updateWorkspace(cancelWaiting(workspaceRef.current));
                 }}
                 onPrepareFresh={() => void guidedPrepareFresh()}
+                diagnosis={diagnosis}
+                categoryNeed={need}
+                askAgainAllowed={askAgainAllowed}
+                recoveryError={recoveryError}
+                understanding={understanding}
+                onShareCategories={(paths) => void guidedShareCategories(paths, true, true)}
                 onChange={updateWorkspace}
                 onTechnical={() => switchView("technical", "observe")}
                 onEditData={() => goGuided("data")}

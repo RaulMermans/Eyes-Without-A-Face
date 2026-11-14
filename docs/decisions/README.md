@@ -13,3 +13,5 @@
 | [0009](0009-semantic-verification.md) | Semantic verification and semantic blind revision |
 | [0010](0010-portable-integration-export.md) | Portable integration export (Export Contract 1.1.0) |
 | [0011](0011-experience-architecture-black-halo.md) | Experience modes CONNECT / OBSERVE / OUTCOME, derived runtime, Black Halo art direction |
+| [0012](0012-guided-flow-and-source-adapters.md) | Guided flow (Your data → Destination → Result) and the Source Adapter Layer |
+| [0013](0013-guided-recovery-and-production-acceptance.md) | Rejected-proposal diagnosis, category-name readiness, bounded recovery, permanent production acceptance standard |
