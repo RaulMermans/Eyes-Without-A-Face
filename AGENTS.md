@@ -104,6 +104,27 @@ Build a privacy-aware integration tool: private CRM JSON stays local; on-device 
 - Transformed-record downloads are explicit, local and separate from the portable package. Never add records to the ZIP.
 - Do not label a destination as "connected": EYES does not write to destinations.
 
+## Guided recovery rules (Sprint 14)
+
+- A rejected proposal is explained by `diagnoseRejectedProposal` (`src/app/guided/recovery.ts`): existing issue codes only, plain words, no values, no raw model text. The validator stays the only judge; diagnosis never changes, repairs or promotes a proposal.
+- No deterministic correction of model output exists. Add one only with a recorded failure, a proof that it preserves meaning and is unambiguous, an allowlist entry, tests and an ADR. Never translate placeholder category labels into real ones.
+- Category names leave the device only after the user's explicit, per-field choice (`applyTwinOverride` → `discloseCategories`), shown with the names and the rare-label warning. Sharing prepares a NEW request for review; it never approves or sends.
+- Recovery never offers the identical request when the cause is in the inputs (`sameRequestWillFail`). An identical re-ask needs a fresh approval and is offered at most `ASK_AGAIN_LIMIT` times per request content (counted from hashed telemetry).
+- A recovery step that fails is shown (`guided-recovery-error`). No button may appear to do nothing.
+- The guided destination is the one on screen: Build validates and applies the visible schema, or refuses with a reason.
+- Never call a simulated on-device run "Gemini Nano" (`fieldUnderstanding`), and never claim Nano ran unless the on-device stage completed.
+
+## Release lifecycle and production acceptance (Sprint 14 — permanent, every sprint)
+
+**Tests passing does not mean the product works in production.** Procedure, commands, budget and evidence layout: [docs/deployment.md](docs/deployment.md#production-acceptance-standard-permanent).
+
+- Every change ends in exactly one evidence-backed status: `CODE_READY` → `DEPLOYMENT_PENDING` → `DEPLOYED_UNVERIFIED` → `PRODUCTION_ACCEPTED`, or `RELEASE_FAILED`. Report it in every sprint report. Never write `PRODUCTION_ACCEPTED` without passing checks run against the deployed URL and the served SHA.
+- Deploying is an external side effect. It needs the owner's explicit approval of the exact SHA, after the approval package (target, domain, SHA, artifact, configuration changes, impact, rollback). A sprint brief, PR approval or merge is not deployment approval. A different SHA needs a fresh approval.
+- Only `pnpm build:release` output from a clean tree is deployed, after the full regression and `verify:release`.
+- After deployment: `pnpm test:production` (deterministic, no inference) and `pnpm test:production:real` (one hybrid happy path within the declared inference budget) against the public URL — never localhost, never a debug token. Store evidence in `docs/evidence/production/<sha12>/`.
+- Failure paths are verified by deterministic fault injection locally (E2E), not by provoking provider failures in production. Never loop real requests until one passes; report failures as failures.
+- Roll back or stop on: broken core journey, unexpected private-data exposure, App Check disabled or broken, an accepted stale approval, a validation bypass, corrupted exports. Rollback is also approval-gated.
+
 ## Tool and data permissions
 
 Allowed without extra authorization: local files in this repository, local tests, local Vite server, Playwright against localhost.
@@ -132,6 +153,8 @@ pnpm test:evaluation
 pnpm build
 pnpm test:e2e
 ```
+
+A release additionally needs `pnpm build:release`, the owner's deployment approval and production acceptance (see "Release lifecycle" above). Report the release status even when nothing was deployed (`CODE_READY` or `DEPLOYMENT_PENDING`).
 
 Do not skip failing tests, stub them empty, or weaken acceptance criteria to go green.
 

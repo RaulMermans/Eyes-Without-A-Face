@@ -8,13 +8,15 @@ A privacy-aware integration studio for the Google #BuildHybridAI 2026 hackathon.
 
 ![OUTCOME after a real hosted run: Verified, with managed exceptions](docs/demo/screenshots/sprint-12-hosted/07-outcome-verdict.png)
 
-## Using it (Sprint 13)
+## Using it
 
-1. **Your data.** Upload a JSON, CSV or Excel (.xlsx) file, or connect a read-only, CORS-enabled HTTPS JSON API. Fictional demo data is one click away. Everything is parsed in the browser.
-2. **Destination.** Pick a fictional example schema, or bring your own JSON Schema (import, paste, or draft one from a sample record). EYES builds a transformation; it does not connect to the destination.
-3. **Result.** **Build integration** prepares everything locally and stops for your approval of one exact Gemini request. **Approve and send** sends it once. The mapping is then checked locally, and you download a portable integration (and, if you choose, your transformed records as JSON or CSV).
+1. **Your data.** Upload a JSON, CSV or Excel (.xlsx) file, or take a one-time snapshot from a read-only, CORS-enabled HTTPS JSON API. Fictional demo data is one click away. Everything is parsed in the browser; nothing is saved, so a reload clears your work (the browser asks first).
+2. **Destination.** Pick a fictional example schema, or bring your own JSON Schema (import, paste, or draft one from a sample record). If the destination needs a value from a fixed list (for example a status), EYES shows which of your category names Gemini would need and lets you share them per field. Nothing is shared by default.
+3. **Result.** **Build integration** prepares everything locally and stops for your approval of one exact Gemini request. **Approve and send** sends it once. The mapping is checked locally. You then download your **transformed data** (JSON / CSV, your records, local only) or the **reusable integration** (.zip, the mapping and a runner, no records).
 
-Everything technical — the Phantom Twin, the 17-stage runtime, the workbench — is one click away under **Technical details** (`/#technical`). The public URL above still serves the Sprint 11 build until an owner-approved redeploy ([docs/sprints/sprint-13.md](docs/sprints/sprint-13.md)).
+If Gemini's answer cannot be used, EYES says why in plain words, keeps your data and destination, and offers the next step that can actually work. It never repairs the answer, and never re-sends without a new approval.
+
+Everything technical (the Phantom Twin, the 17-stage runtime, the workbench) is one click away under **Technical details** (`/#technical`).
 
 ## The problem
 
@@ -108,6 +110,14 @@ node run.mjs run --input ../records.json --bindings ../bindings.local.json --out
 The package status is computed, never asserted: `VERIFIED`, `VERIFIED_WITH_EXCEPTIONS` (quarantine within policy, listed), or a confirmed `DRAFT`, which is not production-ready.
 
 ## Status
+
+**Sprint 14 (guided reliability, production acceptance): `DEPLOYMENT_PENDING`.**
+
+- **The incident.** The deployed Sprint 13 build (`a548d7f`) could not build the default Helpdesk integration. The guided flow never offered the category-name choice that destination needs. Reproduced with real Gemini, fixed, and verified with real Gemini Nano and Gemini Cloud on the Sprint 14 code.
+- **New standard.** A permanent production acceptance standard (`pnpm test:production`, `pnpm test:production:real`) now gates every release.
+- **Not yet live.** The fix is not deployed until the owner approves its exact SHA.
+
+See [docs/sprints/sprint-14.md](docs/sprints/sprint-14.md) and [docs/deployment.md](docs/deployment.md).
 
 **Sprint 12 (release and evidence): EYES is live** at <https://eyes-without-a-face-b7281.web.app> (build `b93e3edbb997`, owner-approved). The full journey passed on the public URL with real Gemini Nano and Gemini Cloud through production App Check. A pre-registered experiment answered what Nano adds (correct private understanding, no measured accuracy gain). The submission materials, business-impact narrative and demo script are ready. Still open: independent usability sessions, the recorded video and the Devpost submission (owner actions). See [docs/sprints/sprint-12.md](docs/sprints/sprint-12.md).
 

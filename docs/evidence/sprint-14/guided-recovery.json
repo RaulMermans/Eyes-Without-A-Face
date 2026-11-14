@@ -1,0 +1,89 @@
+[
+  {
+    "check": "S14-REC-1",
+    "destination": "helpdesk",
+    "at": "2026-11-14T06:35:51.794Z",
+    "model": "gemini-3.5-flash-lite",
+    "baseURL": "http://127.0.0.1:5174",
+    "first": {
+      "status": "not-built",
+      "requests": 1,
+      "diagnosis": "withheld-categories",
+      "label": "One field couldn't be matched",
+      "retryOffered": false
+    },
+    "second": {
+      "status": "draft",
+      "requests": 2,
+      "outcomeState": "PARTIALLY_VERIFIED",
+      "origin": "· MAPPING: REAL GEMINI OUTPUT · IN_CLOUD",
+      "transformed": "3",
+      "attention": "0",
+      "structure": "true",
+      "meaning": "unknown",
+      "understanding": "nano-unavailable",
+      "exportVerify": "exit 0"
+    },
+    "requests": 2,
+    "leaks": [],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"id\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_01\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_03\",\n      \"to\": \"status\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"active\",\n          \"category_b\": \"inactive\",\n          \"category_c\": \"prospect\"\n        },\n        \"unmapped\": \"fail\"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_06\",\n      \"to\": \"createdAt\",\n      \"params\": {\n        \"inputFormat\": \"YYYY-MM-DD\"\n      }\n    },\n    {\n      \"op\": \"trim\",\n      \"from\": \"f_02\",\n      \"to\": \"organization\"\n    }\n  ],\n  \"rationale\": \"Mapped source fields to target schema using copy for ID, normalize_email for email, map_enum for status based on category examples, parse_date for createdAt with YYYY-MM-DD format, and trim for organization name whitespace cleanup.\"\n}",
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"id\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_01\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_03\",\n      \"to\": \"status\",\n      \"params\": {\n        \"map\": {\n          \"active_customer\": \"active\",\n          \"inactive_customer\": \"inactive\",\n          \"prospect\": \"prospect\"\n        },\n        \"unmapped\": \"fail\"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_06\",\n      \"to\": \"createdAt\",\n      \"params\": {\n        \"inputFormat\": \"YYYY-MM-DD\"\n      }\n    },\n    {\n      \"op\": \"trim\",\n      \"from\": \"f_02\",\n      \"to\": \"organization\"\n    }\n  ],\n  \"rationale\": \"Mapped all target fields using appropriate transformation operations: unique identifier copied directly, email normalized, enum values cleanly mapped, date parsed from YYYY-MM-DD, and organization name trimmed of surrounding whitespace.\"\n}"
+    ]
+  },
+  {
+    "check": "S14-REC-2",
+    "destination": "marketing",
+    "at": "2026-11-14T06:35:58.439Z",
+    "model": "gemini-3.5-flash-lite",
+    "baseURL": "http://127.0.0.1:5174",
+    "status": "draft",
+    "outcomeState": "PARTIALLY_VERIFIED",
+    "origin": "· MAPPING: REAL GEMINI OUTPUT · IN_CLOUD",
+    "transformed": "3",
+    "attention": "0",
+    "structure": "true",
+    "meaning": "unknown",
+    "understanding": "nano-unavailable",
+    "requests": 1,
+    "leaks": [],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_01\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_03\",\n      \"to\": \"lifecycleStage\",\n      \"params\": {\n        \"map\": {\n          \"active_customer\": \"customer\",\n          \"inactive_customer\": \"former-customer\",\n          \"prospect\": \"lead\"\n        },\n        \"unmapped\": \"fail\"\n      }\n    },\n    {\n      \"op\": \"trim\",\n      \"from\": \"f_02\",\n      \"to\": \"organization\"\n    }\n  ],\n  \"rationale\": \"Mapped f_01 to email using normalize_email to handle case and whitespace, f_03 to lifecycleStage using map_enum to translate source statuses to target enum values, and f_02 to organization using trim to clean surrounding whitespace.\"\n}"
+    ]
+  },
+  {
+    "check": "S14-REC-3",
+    "destination": "helpdesk",
+    "at": "2026-11-14T06:37:42.696Z",
+    "model": "gemini-3.5-flash-lite",
+    "baseURL": "http://127.0.0.1:5174",
+    "nanoMs": 3872,
+    "nanoRows": 1,
+    "requestsAfterNano": 0,
+    "status": "draft",
+    "outcomeState": "PARTIALLY_VERIFIED",
+    "origin": "· MAPPING: REAL GEMINI OUTPUT · IN_CLOUD",
+    "transformed": "3",
+    "attention": "0",
+    "structure": "true",
+    "meaning": "unknown",
+    "understanding": "nano-available",
+    "exportVerify": "exit 0",
+    "requests": 1,
+    "leaks": [],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"id\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_01\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_03\",\n      \"to\": \"status\",\n      \"params\": {\n        \"map\": {\n          \"active_customer\": \"active\",\n          \"inactive_customer\": \"inactive\",\n          \"prospect\": \"prospect\"\n        },\n        \"unmapped\": \"fail\"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_06\",\n      \"to\": \"createdAt\",\n      \"params\": {\n        \"inputFormat\": \"YYYY-MM-DD\"\n      }\n    },\n    {\n      \"op\": \"trim\",\n      \"from\": \"f_02\",\n      \"to\": \"organization\"\n    }\n  ],\n  \"rationale\": \"Mapped all required source fields to the target schema using appropriate transformations: f_05 copied to id, f_01 normalized for email, f_03 mapped using map_enum for status, f_06 parsed as YYYY-MM-DD for createdAt, and f_02 trimmed for organization.\"\n}"
+    ]
+  },
+  {
+    "check": "S14-NANO",
+    "at": "2026-11-14T06:39:24.129Z",
+    "baseURL": "http://127.0.0.1:5174",
+    "nextHeldWhileRunning": true,
+    "nanoMs": 15498,
+    "nanoRows": 6,
+    "runtimeOnDevice": "completed",
+    "runtimeSummary": "03 | On-device interpretationOPTIONAL | ON-DEVICE AI",
+    "requests": 0
+  }
+]

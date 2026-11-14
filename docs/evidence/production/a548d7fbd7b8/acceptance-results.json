@@ -1,0 +1,17 @@
+{
+  "releaseSha": "a548d7fbd7b8aad84e7167e999c1a7c4d3d5d989",
+  "testedUrl": "https://eyes-without-a-face-b7281.web.app",
+  "testedAt": "2026-11-14",
+  "status": "RELEASE_FAILED",
+  "statusReason": "Critical: the default guided journey (Helpdesk destination) cannot produce an integration (F-1, failures.md).",
+  "checks": [
+    { "area": "identity", "result": "PASS", "kind": "DETERMINISTIC", "evidence": "browser-results.json P-001" },
+    { "area": "app-check", "result": "PASS", "kind": "REAL", "evidence": "browser-results.json P-002 (401 without App Check)" },
+    { "area": "imports (json, csv, xlsx, rest)", "result": "PASS", "kind": "DETERMINISTIC", "evidence": "browser-results.json P-010…P-014" },
+    { "area": "approval gate", "result": "PASS", "kind": "DETERMINISTIC", "evidence": "browser-results.json P-020" },
+    { "area": "category readiness", "result": "FAIL", "kind": "DETERMINISTIC", "evidence": "browser-results.json P-021" },
+    { "area": "real cloud journey", "result": "FAIL", "kind": "REAL", "evidence": "user observation in production; reproduced on identical code: ../../sprint-14/guided-diagnosis.json" },
+    { "area": "real Nano", "result": "NOT RUN", "kind": "REAL", "evidence": "—" },
+    { "area": "export execution", "result": "NOT RUN", "kind": "REAL", "evidence": "—" }
+  ]
+}
