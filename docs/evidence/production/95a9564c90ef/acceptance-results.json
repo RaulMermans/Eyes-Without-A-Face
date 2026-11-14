@@ -1,0 +1,26 @@
+{
+  "releaseSha": "95a9564c90efd97085dea420b5dca3d62ff265cf",
+  "testedUrl": "https://eyes-without-a-face-b7281.web.app",
+  "deployedAt": "2026-11-14T06:47Z (owner-approved exact SHA)",
+  "testedAt": "2026-11-14T06:47–06:49Z",
+  "status": "DEPLOYED_UNVERIFIED",
+  "statusReason": "All deterministic production checks pass; the real cloud happy path could not be verified from an automated session (App Check exchange 403, failed closed). A human run is required (failures.md PF-1).",
+  "inferenceBudget": { "cloudRequestsAllowed": 1, "cloudRequestsUsed": 0, "declaredExtra": 2, "extraUsed": 0 },
+  "checks": [
+    { "area": "identity (served SHA, assets, footer)", "result": "PASS", "kind": "DETERMINISTIC", "evidence": "browser-results.json P-001, release-manifest.json" },
+    { "area": "App Check enforced, no debug token", "result": "PASS", "kind": "REAL", "evidence": "browser-results.json P-002 (HTTP 401 without a token)" },
+    { "area": "imports JSON / CSV / XLSX", "result": "PASS", "kind": "DETERMINISTIC", "evidence": "browser-results.json P-010…P-012 (Chromium and Firefox)" },
+    { "area": "read-only REST snapshot", "result": "PASS", "kind": "REAL", "evidence": "browser-results.json P-013 (one GET to a public CORS API)" },
+    { "area": "invalid file / invalid destination", "result": "PASS", "kind": "DETERMINISTIC", "evidence": "browser-results.json P-014, P-022" },
+    { "area": "approval gate, no send before approval, decline sends nothing", "result": "PASS", "kind": "DETERMINISTIC", "evidence": "browser-results.json P-020" },
+    { "area": "category-name readiness (incident fix)", "result": "PASS", "kind": "DETERMINISTIC", "evidence": "browser-results.json P-021" },
+    { "area": "guided/technical navigation", "result": "PASS", "kind": "DETERMINISTIC", "evidence": "browser-results.json P-023" },
+    { "area": "mobile 390 px, keyboard", "result": "PASS", "kind": "DETERMINISTIC", "evidence": "browser-results.json P-030, P-031" },
+    { "area": "unsupported-browser degradation (Firefox)", "result": "PASS", "kind": "DETERMINISTIC", "evidence": "browser-results.json production-firefox" },
+    { "area": "genuine Gemini Nano on the hosted build", "result": "PASS", "kind": "REAL", "evidence": "inference-results.json: 6/6 fields, 15.2 s and 14.7 s, 0 cloud requests" },
+    { "area": "genuine Gemini Cloud on the hosted build", "result": "NOT VERIFIED", "kind": "REAL", "evidence": "inference-results.json: App Check exchange 403 for the automated session; 0 requests sent" },
+    { "area": "production failure path (App Check refused)", "result": "PASS", "kind": "REAL", "evidence": "screenshots/real-app-check-refused.png: classified title, protection stated, fresh request offered, no send" },
+    { "area": "exported package runs independently", "result": "NOT RUN on hosted", "kind": "REAL", "evidence": "requires a cloud mapping; verified on the same code locally: ../../sprint-14/guided-recovery.json (exit 0)" },
+    { "area": "human usability", "result": "NOT PERFORMED", "kind": "—", "evidence": "docs/usability/README.md §7" }
+  ]
+}

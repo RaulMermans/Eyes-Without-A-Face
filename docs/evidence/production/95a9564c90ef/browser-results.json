@@ -1,0 +1,211 @@
+[
+  {
+    "id": "P-001",
+    "title": "P-001 served build is the approved SHA, production mode, no debug",
+    "project": "production-chromium",
+    "status": "PASS",
+    "durationMs": 1454,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/",
+      "servedSha": "95a9564c90efd97085dea420b5dca3d62ff265cf",
+      "assets": 2
+    }
+  },
+  {
+    "id": "P-002",
+    "title": "P-002 App Check: no debug token in the page; the model endpoint refuses a request without App Check",
+    "project": "production-chromium",
+    "status": "PASS",
+    "durationMs": 1308,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/",
+      "probeStatus": 401,
+      "appCheckRefusal": true
+    }
+  },
+  {
+    "id": "P-010",
+    "title": "P-010 JSON demo imports and normalizes to 3 records × 6 fields @cross-browser",
+    "project": "production-chromium",
+    "status": "PASS",
+    "durationMs": 532,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/",
+      "pageErrors": 0,
+      "generateContent": 0
+    }
+  },
+  {
+    "id": "P-011",
+    "title": "P-011 CSV demo imports and normalizes to 3 records × 6 fields @cross-browser",
+    "project": "production-chromium",
+    "status": "PASS",
+    "durationMs": 505,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/",
+      "pageErrors": 0,
+      "generateContent": 0
+    }
+  },
+  {
+    "id": "P-012",
+    "title": "P-012 XLSX demo imports and normalizes to 3 records × 6 fields @cross-browser",
+    "project": "production-chromium",
+    "status": "PASS",
+    "durationMs": 684,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/",
+      "pageErrors": 0,
+      "generateContent": 0
+    }
+  },
+  {
+    "id": "P-013",
+    "title": "P-013 read-only REST connector reads a public CORS API once, as a snapshot",
+    "project": "production-chromium",
+    "status": "PASS",
+    "durationMs": 479,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/",
+      "gets": 1,
+      "locality": "Read from jsonplaceholder.typicode.com · a one-time snapshot, kept in this browser"
+    }
+  },
+  {
+    "id": "P-014",
+    "title": "P-014 an invalid file explains itself and loads nothing",
+    "project": "production-chromium",
+    "status": "PASS",
+    "durationMs": 252,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/"
+    }
+  },
+  {
+    "id": "P-020",
+    "title": "P-020 Build stops at the exact request; declining sends nothing @cross-browser",
+    "project": "production-chromium",
+    "status": "PASS",
+    "durationMs": 510,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/",
+      "generateContent": 0,
+      "payloadHash": 0
+    }
+  },
+  {
+    "id": "P-021",
+    "title": "P-021 a destination that needs category names says so before anything is sent",
+    "project": "production-chromium",
+    "status": "PASS",
+    "durationMs": 710,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/"
+    }
+  },
+  {
+    "id": "P-022",
+    "title": "P-022 an invalid destination blocks Build with a reason",
+    "project": "production-chromium",
+    "status": "PASS",
+    "durationMs": 454,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/"
+    }
+  },
+  {
+    "id": "P-023",
+    "title": "P-023 guided ↔ technical navigation keeps the work",
+    "project": "production-chromium",
+    "status": "PASS",
+    "durationMs": 524,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/"
+    }
+  },
+  {
+    "id": "P-030",
+    "title": "P-030 mobile 390 px: no horizontal scroll on any step",
+    "project": "production-chromium",
+    "status": "PASS",
+    "durationMs": 639,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/"
+    }
+  },
+  {
+    "id": "P-031",
+    "title": "P-031 keyboard reaches the file control",
+    "project": "production-chromium",
+    "status": "PASS",
+    "durationMs": 256,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/"
+    }
+  },
+  {
+    "id": "P-010",
+    "title": "P-010 JSON demo imports and normalizes to 3 records × 6 fields @cross-browser",
+    "project": "production-firefox",
+    "status": "PASS",
+    "durationMs": 1151,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/",
+      "pageErrors": 0,
+      "generateContent": 0
+    }
+  },
+  {
+    "id": "P-011",
+    "title": "P-011 CSV demo imports and normalizes to 3 records × 6 fields @cross-browser",
+    "project": "production-firefox",
+    "status": "PASS",
+    "durationMs": 682,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/",
+      "pageErrors": 0,
+      "generateContent": 0
+    }
+  },
+  {
+    "id": "P-012",
+    "title": "P-012 XLSX demo imports and normalizes to 3 records × 6 fields @cross-browser",
+    "project": "production-firefox",
+    "status": "PASS",
+    "durationMs": 889,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/",
+      "pageErrors": 0,
+      "generateContent": 0
+    }
+  },
+  {
+    "id": "P-020",
+    "title": "P-020 Build stops at the exact request; declining sends nothing @cross-browser",
+    "project": "production-firefox",
+    "status": "PASS",
+    "durationMs": 897,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/",
+      "generateContent": 0,
+      "payloadHash": 0
+    }
+  }
+]

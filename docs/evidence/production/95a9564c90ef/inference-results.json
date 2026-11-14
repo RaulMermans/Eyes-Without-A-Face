@@ -1,0 +1,40 @@
+[
+  {
+    "check": "S14-REC-3",
+    "destination": "helpdesk",
+    "at": "2026-11-14T06:47:56.904Z",
+    "model": "gemini-3.5-flash-lite",
+    "baseURL": "https://eyes-without-a-face-b7281.web.app",
+    "nanoMs": 15224,
+    "nanoRows": 6,
+    "requestsAfterNano": 0,
+    "status": "attention",
+    "outcomeState": null,
+    "origin": null,
+    "requests": 0,
+    "leaks": [],
+    "answers": []
+  },
+  {
+    "check": "S14-REC-3",
+    "destination": "helpdesk",
+    "at": "2026-11-14T06:48:53.996Z",
+    "model": "gemini-3.5-flash-lite",
+    "baseURL": "https://eyes-without-a-face-b7281.web.app",
+    "nanoMs": 14743,
+    "nanoRows": 6,
+    "requestsAfterNano": 0,
+    "status": "attention",
+    "outcomeState": null,
+    "origin": null,
+    "requests": 0,
+    "leaks": [],
+    "answers": [],
+    "attestation": [
+      "www.google.com/recaptcha/enterprise/reload 200",
+      "www.google.com/recaptcha/enterprise/clr 200",
+      "content-firebaseappcheck.googleapis.com/v1/projects/…/apps/…:507051460368:web:086c755a2c003fb30b4795:exchangeRecaptchaEnterpriseToken 403"
+    ],
+    "cloudFailure": "APP_CHECK_REJECTED"
+  }
+]

@@ -1,6 +1,14 @@
 # Deployment
 
-**Status (2026-11-14, Sprint 14).** <https://eyes-without-a-face-b7281.web.app> serves `a548d7fbd7b8aad84e7167e999c1a7c4d3d5d989` (the Sprint 13 merge, production build, `appCheckDebug: false`). It was deployed after the Sprint 13 report; no production acceptance was recorded for it. Under the standard below it is **RELEASE_FAILED**: the default guided journey cannot produce an integration ([evidence/production/a548d7fbd7b8/failures.md](evidence/production/a548d7fbd7b8/failures.md)). The fix is Sprint 14 and needs an approved deployment of its exact SHA ([sprints/sprint-14.md](sprints/sprint-14.md)).
+**Status (2026-11-14, Sprint 14): `DEPLOYED_UNVERIFIED`.**
+
+<https://eyes-without-a-face-b7281.web.app> serves `95a9564c90efd97085dea420b5dca3d62ff265cf`, deployed about 06:47 UTC with the owner's explicit approval of that exact SHA. No configuration change was made.
+
+- **Passed:** every deterministic production check (17 / 17) and real Gemini Nano on the hosted build.
+- **Not verified:** the real Gemini Cloud happy path. Two automated sessions were refused at the App Check exchange (HTTP 403). The app failed closed and sent nothing.
+- **To finish:** one human run in a normal Chrome window ([evidence/production/95a9564c90ef/failures.md](evidence/production/95a9564c90ef/failures.md)).
+- **Previous release** `a548d7f` was RELEASE_FAILED ([failures](evidence/production/a548d7fbd7b8/failures.md)).
+- **Rollback target:** `b93e3ed`, the last PRODUCTION_ACCEPTED release.
 
 ## Production acceptance standard (permanent)
 

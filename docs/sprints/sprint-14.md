@@ -6,7 +6,11 @@
 
 Decision: [ADR 0013](../decisions/0013-guided-recovery-and-production-acceptance.md). Standard: [deployment.md § Production acceptance standard](../deployment.md#production-acceptance-standard-permanent).
 
-**Release status: `DEPLOYMENT_PENDING`.** The code is ready and its release artifact is verified. Nothing was deployed: deployment needs the owner's approval of the exact SHA. The public URL still serves `a548d7f`, now classified **RELEASE_FAILED**.
+**Release status: `DEPLOYED_UNVERIFIED`.**
+
+- **Deployed:** `95a9564c90efd97085dea420b5dca3d62ff265cf`, with the owner's explicit approval of that exact SHA (2026-11-14, about 06:47 UTC).
+- **Passed:** every deterministic production check (17 / 17) and real Gemini Nano on the hosted build.
+- **Not verified:** the real cloud happy path on the hosted build. Automated sessions were refused at the App Check exchange (HTTP 403); the app failed closed and sent nothing. One human run completes acceptance.
 
 ## Starting state (verified)
 
@@ -135,6 +139,34 @@ Provider failures keep the Sprint 9 `guidanceForFailure` categories: timeout, ov
   - *Today:* `a548d7f` is live and RELEASE_FAILED. The last `PRODUCTION_ACCEPTED` release is `b93e3ed`, available as Console → Hosting → release history → Rollback (approval needed).
   - *After a Sprint 14 deployment:* roll back to `b93e3ed` likewise if acceptance fails.
 
-## Release verification
+## Release, deployment and production acceptance
 
-Recorded after the code commits; see the PR description and the final handoff for the exact SHA, `build:release` / `verify:release` output, and the approval package.
+| Step | Result | Kind |
+| --- | --- | --- |
+| Full regression on `95a9564` | 688 / 688 pass, lint and typecheck clean | DETERMINISTIC |
+| `pnpm build:release` + `verify:release` on `95a9564` (clean tree) | **PASS**: production, `appCheckDebug: false`, local debug token absent, 31 files, 2,599 KiB | DETERMINISTIC |
+| Owner approval | Explicit approval of `95a9564…` for `live` (approval package: target, domain, SHA, artifact, no config change, impact, rollback) | — |
+| Deploy | `firebase-tools@15.35.0 deploy --only hosting`: 31 files, release complete | — |
+| Served build | `build-info.json` = `95a9564c90ef…`, footer `build 95a9564c90ef` | REAL |
+| `pnpm test:production` | **17 / 17 PASS** (Chromium and Firefox): identity, assets, App Check enforced (401), JSON / CSV / XLSX / REST, invalid inputs, approval gate with 0 requests, category readiness (P-021, failed on `a548d7f`), navigation, mobile, keyboard | DETERMINISTIC (P-002, P-013 REAL network) |
+| Real Gemini Nano on the hosted build | **PASS**: 6 / 6 fields, 15.2 s and 14.7 s, 0 cloud requests | REAL |
+| Real Gemini Cloud on the hosted build | **NOT VERIFIED**: 2 automated attempts, both `exchangeRecaptchaEnterpriseToken` **403** → `APP_CHECK_REJECTED`, **0 requests sent**. The second was a diagnostic attempt declared before it ran. No further attempts | REAL |
+| Production failure path | **PASS (real):** "App Check refused this app", nothing run, data kept, fresh request offered | REAL |
+| Export run on the hosted build | NOT RUN (needs a cloud mapping); verified on the same code locally (exit 0) | REAL (local) |
+
+Evidence: [evidence/production/95a9564c90ef/](../evidence/production/95a9564c90ef/) (`release-manifest.json`, `browser-results.json`, `inference-results.json`, `acceptance-results.json`, `failures.md`, `screenshots/`).
+
+**Why not `PRODUCTION_ACCEPTED`:** the genuine cloud journey was not observed on the deployed build.
+
+**Why not `RELEASE_FAILED`:**
+
+- App Check is enforced and fails closed, which is correct.
+- No configuration changed, and the same key served a human session on the previous build.
+- The deterministic journey passes.
+- The previous release is worse.
+
+The most likely cause is a low reCAPTCHA score for automated sessions; this is inferred, not proven.
+
+**To reach `PRODUCTION_ACCEPTED`:** one human run in a normal Chrome window, 1 cloud request ([failures.md, "Remaining check"](../evidence/production/95a9564c90ef/failures.md)).
+
+**After this deployment:** the commits that record it change documentation and the live test spec only (attestation status codes in evidence). The deployed application code is `95a9564`. If PR #15 is merged, its merge SHA differs from `95a9564`. Deploying the merge SHA needs its own approval; the deployed content would be equivalent.
