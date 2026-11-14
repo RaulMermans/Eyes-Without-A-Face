@@ -23,6 +23,8 @@
     "test:e2e": "playwright test",
     "test:live": "playwright test -c playwright.live.config.ts",
     "test:visual": "playwright test -c playwright.visual.config.ts",
+    "test:production": "playwright test -c playwright.production.config.ts",
+    "test:production:real": "playwright test -c playwright.production-real.config.ts",
     "test:all": "pnpm lint && pnpm typecheck && pnpm test:unit && pnpm test:contracts && pnpm test:privacy && pnpm test:evaluation && pnpm build && pnpm test:e2e",
     "test:evaluation": "vitest run tests/evaluation"
   },
