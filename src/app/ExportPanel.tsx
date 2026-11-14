@@ -213,8 +213,8 @@ export function ExportPanel({
   return (
     <Panel tone="plain" aria-labelledby="export-heading" data-testid="export-panel" data-state={eligibility.state} data-decision={eligibility.decision}>
       {compact ? (
-        <PanelHeader id="export-heading" title="Download integration" eyebrow="Portable package · runs with Node 22" zone="verified" zoneText="Built here · nothing is uploaded">
-          A ZIP with the mapping, the engine and a runner. It never contains your records.
+        <PanelHeader id="export-heading" title="Reusable integration (.zip)" eyebrow="Portable package · runs with Node 22" zone="verified" zoneText="Built here · nothing is uploaded">
+          The mapping plus the engine and a runner, to transform new data the same way outside this app. It does not contain your records.
         </PanelHeader>
       ) : (
         <PanelHeader id="export-heading" title="Export Integration" eyebrow="Final step · portable package" zone="verified" zoneText="Local · nothing is uploaded">
@@ -324,7 +324,7 @@ node run.mjs run --input ../records.json \\
 
       <div className="mt-4 flex flex-wrap items-center gap-3">
         <Button variant="primary" size="lg" onClick={() => void exportNow()} disabled={!canExport} data-testid="export-integration">
-          <SealIcon size={14} /> {compact ? (draft ? "Download draft integration" : "Download integration") : draft ? "Export Draft Integration" : "Export Integration"}
+          <SealIcon size={14} /> {compact ? (draft ? "Download draft integration (.zip)" : "Download integration (.zip)") : draft ? "Export Draft Integration" : "Export Integration"}
         </Button>
         <span className="text-xs text-mute">Builds a ZIP in this browser. No network request.</span>
       </div>

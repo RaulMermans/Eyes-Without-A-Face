@@ -3,6 +3,7 @@ import { Button } from "../../components/ui/button.tsx";
 import { AlertIcon, ArrowRightIcon } from "../../components/icons.tsx";
 import { Disclosure } from "../../components/spectral.tsx";
 import { draftSchemaFromSample, EXAMPLE_DESTINATIONS, exampleFor, summarizeDestination } from "./destinations.ts";
+import type { CategoryNeed } from "./recovery.ts";
 
 /**
  * Guided step 2 — "Where should it go?" (Sprint 13, A3 / A4).
@@ -11,11 +12,18 @@ import { draftSchemaFromSample, EXAMPLE_DESTINATIONS, exampleFor, summarizeDesti
  * never connects to or writes to any system. "Build integration" validates
  * everything locally first and shows ONE actionable message if something is
  * missing.
+ *
+ * Sprint 14 (C2): the destination that Build uses is always the one on screen.
+ * In "Your own" mode, an empty, unapplied or invalid editor blocks Build with a
+ * reason instead of silently building against the previously active schema,
+ * and the field summary is shown only for the schema actually in use.
  */
 export function DestinationStep({
   destinationText,
   onDestination,
   sourceLabel,
+  categoryNeed = null,
+  onShareCategories = () => {},
   buildBlocker,
   building,
   onBuild,
@@ -24,6 +32,10 @@ export function DestinationStep({
   destinationText: string;
   onDestination: (text: string) => void;
   sourceLabel: string | null;
+  /** Sprint 14: the destination takes values from a fixed list that come from the user's categories. */
+  categoryNeed?: CategoryNeed | null;
+  /** Sprint 14: the user's explicit choice to share (or stop sharing) a field's category names. */
+  onShareCategories?: (paths: string[], share: boolean) => void;
   /** The one reason Build cannot run yet, or null. */
   buildBlocker: string | null;
   building: boolean;
@@ -36,6 +48,31 @@ export function DestinationStep({
   const [sampleText, setSampleText] = useState("");
   const [customProblem, setCustomProblem] = useState<string | null>(null);
   const summary = useMemo(() => summarizeDestination(destinationText), [destinationText]);
+  /** The editor shows something other than the schema in use (typed, not yet applied). */
+  const unapplied = custom && draftText.trim() !== "" && draftText !== destinationText;
+  /** "Your own" is selected but no schema of the user's is in use yet. */
+  const customEmpty = custom && draftText.trim() === "";
+  const showSummary = summary.ok && !unapplied && !customEmpty;
+
+  /** Build only against the destination on screen (C2). */
+  function build(): void {
+    if (custom) {
+      if (customEmpty) {
+        setCustomProblem("Add your schema first: import a file, paste it, or draft one from a sample record.");
+        return;
+      }
+      if (unapplied) {
+        const result = summarizeDestination(draftText);
+        if (!result.ok) {
+          setCustomProblem(`Your schema can't be used yet: ${result.message} Fix it or choose an example destination; nothing was built.`);
+          return;
+        }
+        setCustomProblem(null);
+        onDestination(draftText);
+      }
+    }
+    onBuild();
+  }
 
   function applyCustomText(text: string): void {
     setDraftText(text);
@@ -148,8 +185,12 @@ export function DestinationStep({
           <textarea
             id="destination-text"
             value={draftText}
-            onChange={(event) => setDraftText(event.target.value)}
-            onBlur={() => draftText.trim() && applyCustomText(draftText)}
+            aria-invalid={customProblem ? true : undefined}
+            aria-describedby={customProblem ? "destination-problem" : undefined}
+            onChange={(event) => {
+              setDraftText(event.target.value);
+              setCustomProblem(null);
+            }}
             rows={8}
             spellCheck={false}
             className="block w-full rounded-[3px] border border-ink-3 bg-void p-3 font-mono text-xs text-ink focus:border-violet-soft focus:outline-none"
@@ -176,15 +217,20 @@ export function DestinationStep({
               Draft schema
             </Button>
           </Disclosure>
+          {unapplied && !customProblem ? (
+            <p className="text-xs text-warn" data-testid="destination-unapplied">
+              These edits are not in use yet. “Build integration” will check and use them, or click “Use this schema”.
+            </p>
+          ) : null}
           {customProblem ? (
-            <p role="alert" className="flex items-start gap-2 text-sm text-fail" data-testid="destination-problem">
+            <p role="alert" id="destination-problem" className="flex items-start gap-2 text-sm text-fail" data-testid="destination-problem">
               <AlertIcon size={15} className="mt-0.5 shrink-0" /> {customProblem}
             </p>
           ) : null}
         </div>
       ) : null}
 
-      {summary.ok ? (
+      {showSummary && summary.ok ? (
         <div className="rounded-[3px] border border-rule bg-panel p-5" data-testid="destination-summary">
           <h3 className="text-sm font-medium">
             Each record becomes a <span className="text-ink">{summary.title}</span> with {summary.fields.length} field{summary.fields.length === 1 ? "" : "s"}
@@ -206,16 +252,54 @@ export function DestinationStep({
         </div>
       ) : null}
 
+      {showSummary && categoryNeed ? (
+        <fieldset className="space-y-3 rounded-[3px] border border-warn/50 border-l-4 border-l-warn bg-panel p-5 text-sm" data-testid="destination-categories" data-blocking={String(categoryNeed.blocking)}>
+          <legend className="sr-only">Category names</legend>
+          <p className="font-medium">
+            {categoryNeed.targets.map((target) => `“${target.name}”`).join(" and ")} must be one of a fixed list. Gemini can only fill {categoryNeed.targets.length === 1 ? "it" : "them"} if it sees
+            the names of your categories.
+          </p>
+          <p className="text-ink-text">
+            By default EYES hides these names and shows Gemini placeholders.
+            {categoryNeed.blocking ? " Without them this integration can't be built." : ""} Your records are never sent either way. Decide per field:
+          </p>
+          <ul className="space-y-2">
+            {categoryNeed.fields.map((field) => (
+              <li key={field.path}>
+                <label className="flex items-start gap-2">
+                  <input
+                    type="checkbox"
+                    className="mt-1 accent-violet"
+                    checked={field.shared}
+                    onChange={(event) => onShareCategories([field.path], event.target.checked)}
+                    data-testid={`share-categories-${field.path}`}
+                  />
+                  <span>
+                    Share the {field.labels.length} category name{field.labels.length === 1 ? "" : "s"} of <span className="font-mono text-ink">{field.path}</span>:{" "}
+                    <span className="font-mono text-xs">{field.labels.join(", ")}</span>
+                    {field.rare > 0 ? (
+                      <span className="block text-xs text-warn">
+                        {field.rare === field.labels.length ? "All of these are" : `${field.rare} of these ${field.rare === 1 ? "is" : "are"}`} used by only a few records, so sharing could hint at which records they are.
+                      </span>
+                    ) : null}
+                  </span>
+                </label>
+              </li>
+            ))}
+          </ul>
+        </fieldset>
+      ) : null}
+
       <div className="flex flex-col gap-3 border-t border-rule pt-5 sm:flex-row sm:items-center sm:justify-between">
         <Button variant="ghost" onClick={onBack} data-testid="destination-back">
           Back to your data
         </Button>
         <div className="flex flex-col items-stretch gap-2 sm:items-end">
-          <Button variant="primary" size="lg" onClick={onBuild} disabled={building} data-testid="guided-build">
+          <Button variant="primary" size="lg" onClick={build} disabled={building} data-testid="guided-build">
             {building ? "Preparing…" : "Build integration"}
             <ArrowRightIcon />
           </Button>
-          <p className="text-xs text-mute sm:text-right">{sourceLabel ? `${sourceLabel} → ${summary.ok ? summary.title : "destination"}. ` : ""}Nothing is sent without your approval.</p>
+          <p className="text-xs text-mute sm:text-right">{sourceLabel ? `${sourceLabel} → ${showSummary && summary.ok ? summary.title : custom ? "your schema" : "destination"}. ` : ""}Nothing is sent without your approval.</p>
         </div>
       </div>
       {buildBlocker ? (

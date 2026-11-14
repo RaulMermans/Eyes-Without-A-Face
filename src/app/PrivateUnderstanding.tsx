@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Button } from "../components/ui/button.tsx";
 import { ChipIcon, LockIcon } from "../components/icons.tsx";
 import { Disclosure, FieldToken, StatusMark, ZoneLabel } from "../components/spectral.tsx";
@@ -50,6 +50,7 @@ export function PrivateUnderstanding({
   prepared,
   inference,
   onApply,
+  onBusyChange,
 }: {
   available: boolean;
   otherBusy: boolean;
@@ -58,11 +59,18 @@ export function PrivateUnderstanding({
   prepared: PreparedTwin | null;
   inference: InferenceServices;
   onApply: (path: string, override: Pick<TwinFieldOverride, "role" | "dateFormat">) => void;
+  /** Sprint 14: lets the guided flow hold "Next" while on-device analysis is still running. */
+  onBusyChange?: (busy: boolean) => void;
 }) {
   const { rows, setRows } = store;
   const [busy, setBusy] = useState<{ done: number; total: number } | null>(null);
   const [error, setError] = useState<{ message: string; recoverable: boolean } | null>(null);
   const [retriesUsed, setRetriesUsed] = useState(0);
+  useEffect(() => {
+    onBusyChange?.(busy !== null);
+  }, [busy, onBusyChange]);
+  // An unmounted panel cannot be busy.
+  useEffect(() => () => onBusyChange?.(false), [onBusyChange]);
 
   const targetFields = useMemo(() => {
     try {

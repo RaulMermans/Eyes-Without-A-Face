@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Button } from "../../components/ui/button.tsx";
-import { AlertIcon, ArrowRightIcon, CheckIcon, CloudIcon, CrossIcon, DashIcon, LockIcon, SealIcon } from "../../components/icons.tsx";
+import { AlertIcon, ArrowRightIcon, CheckIcon, ChipIcon, CloudIcon, CrossIcon, DashIcon, LockIcon, SealIcon } from "../../components/icons.tsx";
 import { Disclosure } from "../../components/spectral.tsx";
 import type { MappingOperation } from "../../domain/contracts/types.ts";
 import { guidanceForFailure } from "../../inference/failure-guidance.ts";
@@ -14,7 +14,8 @@ import { meaningSentence } from "../outcome-verdict.ts";
 import { ORIGIN_LABELS } from "../result-kind.ts";
 import { bestCandidate } from "../runtime-model.ts";
 import type { WorkspaceState } from "../workspace-state.ts";
-import type { GuidedStatus } from "./guided-status.ts";
+import type { FieldUnderstanding, GuidedStatus } from "./guided-status.ts";
+import type { CategoryField, CategoryNeed, ProposalDiagnosis } from "./recovery.ts";
 import { transformedCsv, transformedJson, transformedRecords } from "./transformed-output.ts";
 
 /**
@@ -42,6 +43,12 @@ export function ResultStep({
   onTechnical,
   onEditData,
   onEditDestination,
+  diagnosis = null,
+  categoryNeed = null,
+  askAgainAllowed = true,
+  recoveryError = null,
+  understanding = null,
+  onShareCategories = () => {},
 }: {
   workspace: WorkspaceState;
   prepared: PreparedTwin | null;
@@ -59,6 +66,18 @@ export function ResultStep({
   onTechnical: () => void;
   onEditData: () => void;
   onEditDestination: () => void;
+  /** Sprint 14: plain-language reading of a rejected proposal (recovery.ts). */
+  diagnosis?: ProposalDiagnosis | null;
+  /** Sprint 14: the destination needs category names that are not shared. */
+  categoryNeed?: CategoryNeed | null;
+  /** Sprint 14: false once the identical request was already re-asked (ASK_AGAIN_LIMIT). */
+  askAgainAllowed?: boolean;
+  /** Sprint 14 (B6): why the last recovery step failed. */
+  recoveryError?: string | null;
+  /** Sprint 14 (C3): how the fields were understood. */
+  understanding?: FieldUnderstanding | null;
+  /** Share these fields' category names and prepare a NEW request for review. */
+  onShareCategories?: (paths: string[]) => void;
 }) {
   const review = workspace.review;
   const best = bestCandidate(candidates.map((candidate) => ({ id: candidate.id, label: candidate.label, eligibility: candidate.eligibility })));
@@ -87,8 +106,25 @@ export function ResultStep({
         <StatusHeadline status={status} />
       </header>
 
+      {recoveryError ? (
+        <p role="alert" className="flex items-start gap-2 border border-fail/40 border-l-4 border-l-fail bg-panel p-3 text-sm" data-testid="guided-recovery-error">
+          <AlertIcon size={16} className="mt-0.5 shrink-0 text-fail" />
+          <span>
+            {recoveryError} Your data and destination are kept. You can{" "}
+            <button type="button" className="underline" onClick={onEditData}>check your data</button>,{" "}
+            <button type="button" className="underline" onClick={onEditDestination}>change the destination</button> or{" "}
+            <button type="button" className="underline" onClick={onTechnical}>open technical details</button>.
+          </span>
+        </p>
+      ) : null}
+
       {status.id === "approval" && review && (review.status === "pending" || review.status === "approved") ? (
-        <ApprovalCard workspace={workspace} cloudAvailable={cloudAvailable} sending={sending} onApproveAndSend={onApproveAndSend} onReject={onReject} onTechnical={onTechnical} />
+        <>
+          {categoryNeed?.blocking && review.status === "pending" ? (
+            <CategoryNotice need={categoryNeed} onShare={onShareCategories} onEditDestination={onEditDestination} context="before" />
+          ) : null}
+          <ApprovalCard workspace={workspace} cloudAvailable={cloudAvailable} sending={sending} onApproveAndSend={onApproveAndSend} onReject={onReject} onTechnical={onTechnical} />
+        </>
       ) : null}
 
       {status.id === "generating" ? (
@@ -113,7 +149,8 @@ export function ResultStep({
         <div className="space-y-3 border border-fail/40 border-l-4 border-l-fail bg-panel p-4 text-sm" data-testid="guided-cloud-failure" data-code={workspace.cloudError?.code}>
           <p className="font-medium">{failure.title}</p>
           <p className="text-ink-text">{failure.what}</p>
-          <p className="text-xs text-mute">The approval was used and is not reused. Trying again prepares a new request for you to approve.</p>
+          <Protected records={workspace.source.records.length} />
+          <p className="text-xs text-mute">The approval was used and is never reused. Trying again prepares a new request for you to approve; nothing is sent until you do.</p>
           <div className="flex flex-wrap gap-2">
             <Button variant="primary" size="sm" onClick={onPrepareFresh} data-testid="guided-fresh-request">
               Prepare a new request
@@ -126,18 +163,18 @@ export function ResultStep({
       ) : null}
 
       {proposalRejected && !showOutcome ? (
-        <div className="space-y-3 border border-fail/40 border-l-4 border-l-fail bg-panel p-4 text-sm" data-testid="guided-proposal-rejected">
-          <p className="font-medium">Gemini's answer was not a usable mapping.</p>
-          <p className="text-ink-text">EYES checked it locally and refused it. Nothing was run on your records.</p>
-          <div className="flex flex-wrap gap-2">
-            <Button variant="primary" size="sm" onClick={onPrepareFresh} data-testid="guided-retry-proposal">
-              Prepare a new request
-            </Button>
-            <Button variant="ghost" size="sm" onClick={onTechnical}>
-              See why in technical details
-            </Button>
-          </div>
-        </div>
+        <RejectedProposal
+          diagnosis={diagnosis}
+          records={workspace.source.records.length}
+          destination={summaryTitle(workspace.destinationText)}
+          categoryNeed={categoryNeed}
+          askAgainAllowed={askAgainAllowed}
+          onShareCategories={onShareCategories}
+          onPrepareFresh={onPrepareFresh}
+          onEditDestination={onEditDestination}
+          onEditData={onEditData}
+          onTechnical={onTechnical}
+        />
       ) : null}
 
       {showOutcome && candidate ? (
@@ -147,6 +184,7 @@ export function ResultStep({
           candidate={candidate}
           inference={inference}
           buildSha={buildSha}
+          understanding={understanding}
           onChange={onChange}
         />
       ) : null}
@@ -317,6 +355,7 @@ function Outcome({
   candidate,
   inference,
   buildSha,
+  understanding,
   onChange,
 }: {
   workspace: WorkspaceState;
@@ -324,6 +363,7 @@ function Outcome({
   candidate: ExportCandidate;
   inference: InferenceServices;
   buildSha: string | null;
+  understanding: FieldUnderstanding | null;
   onChange: (next: WorkspaceState) => void;
 }) {
   const report = workspace.report!;
@@ -369,7 +409,10 @@ function Outcome({
           <dd className={`font-mono text-3xl ${needsReview > 0 ? "text-fail" : ""}`} data-testid="guided-count-attention">{needsReview}</dd>
         </div>
       </dl>
-      <p className="-mt-3 text-xs text-mute">Of your {imported.length} record{imported.length === 1 ? "" : "s"}. Records set aside are not counted as transformed.</p>
+      <p className="-mt-3 text-xs text-mute">
+        Of your {imported.length} record{imported.length === 1 ? "" : "s"}. Transformed means the record produced a valid destination record; whether its meaning is right is the
+        separate “Meaning” check below. Records set aside are not counted as transformed.
+      </p>
 
       <ul className="space-y-2 text-sm" data-testid="guided-checks">
         <CheckRow
@@ -388,6 +431,15 @@ function Outcome({
           />
         ) : null}
       </ul>
+      {understanding ? (
+        <p className="flex items-start gap-2 text-xs text-mute" data-testid="guided-understanding-summary" data-kind={understanding.kind}>
+          <ChipIcon size={13} className="mt-0.5 shrink-0" />
+          <span>
+            <span className="text-ink-text">How your fields were understood: </span>
+            {understanding.text}
+          </span>
+        </p>
+      ) : null}
       {candidate.eligibility.reasons.length > 0 && !verified ? (
         <div className="text-sm text-ink-text" data-testid="guided-reason">
           <p className="font-medium text-ink">Why it is not ready</p>
@@ -399,7 +451,30 @@ function Outcome({
         </div>
       ) : null}
 
-      <ExportPanel workspace={workspace} prepared={prepared} buildSha={buildSha} compact />
+      <section aria-labelledby="downloads-heading" className="space-y-3 border-t border-rule pt-5" data-testid="guided-downloads">
+        <h3 id="downloads-heading" className="text-lg font-semibold">Downloads</h3>
+        <p className="text-sm text-ink-text">Two different files. Pick by what you need:</p>
+        <div className="rounded-[3px] border border-rule bg-panel p-4 text-sm" data-testid="download-transformed">
+          <p className="font-medium">Transformed data — your records, converted</p>
+          <p className="mt-1 text-ink-text">
+            A JSON or CSV file with the {output.records.length} record{output.records.length === 1 ? "" : "s"} that passed, in the destination's shape. It contains your real data and is saved
+            to this computer only.{output.excluded > 0 ? ` ${output.excluded} record(s) that did not pass are left out.` : ""}
+          </p>
+          {output.records.length > 0 ? (
+            <div className="mt-3 flex flex-wrap items-center gap-2">
+              <Button size="sm" onClick={() => download(transformedJson(output), "transformed-records.json", "application/json")} data-testid="download-transformed-json">
+                Download JSON
+              </Button>
+              <Button size="sm" onClick={() => download(transformedCsv(output), "transformed-records.csv", "text/csv")} data-testid="download-transformed-csv">
+                Download CSV
+              </Button>
+            </div>
+          ) : (
+            <p className="mt-2 text-xs text-mute">No record passed, so there is nothing to download.</p>
+          )}
+        </div>
+        <ExportPanel workspace={workspace} prepared={prepared} buildSha={buildSha} compact />
+      </section>
 
       <div className="space-y-3 border-t border-rule pt-4">
         <Disclosure summary={`Preview transformed data (${output.records.length})`} testId="guided-preview">
@@ -425,15 +500,7 @@ function Outcome({
                   </tbody>
                 </table>
               </div>
-              <div className="mt-3 flex flex-wrap items-center gap-2">
-                <Button size="sm" onClick={() => download(transformedJson(output), "transformed-records.json", "application/json")} data-testid="download-transformed-json">
-                  Download JSON
-                </Button>
-                <Button size="sm" onClick={() => download(transformedCsv(output), "transformed-records.csv", "text/csv")} data-testid="download-transformed-csv">
-                  Download CSV
-                </Button>
-              </div>
-              <p className="mt-2 text-xs text-mute">These files contain your real records after the mapping. They are saved to your computer only and are never part of the integration package.{output.excluded > 0 ? ` ${output.excluded} record(s) that did not pass are left out.` : ""}</p>
+              <p className="mt-2 text-xs text-mute">The first 10 records. Use “Download JSON / CSV” above for all of them. They are never part of the integration package.</p>
             </>
           ) : (
             <p className="text-sm text-mute">No record passed, so there is nothing to preview.</p>
@@ -498,4 +565,169 @@ function summaryTitle(text: string): string {
   } catch {
     return "destination";
   }
+}
+
+/** What the safety gate protected. Always true when this is shown: nothing ran on the records. */
+function Protected({ records }: { records: number }) {
+  return (
+    <p className="flex items-start gap-2 text-ink-text" data-testid="guided-protected">
+      <LockIcon size={14} className="mt-1 shrink-0 text-ink" />
+      <span>
+        Nothing was run on your {records} record{records === 1 ? "" : "s"}, and they never left this browser. Your data and destination are kept — you don't have to start over.
+      </span>
+    </p>
+  );
+}
+
+function CategoryList({ field }: { field: CategoryField }) {
+  return (
+    <li data-testid={`category-field-${field.path}`}>
+      <span className="font-mono text-ink">{field.path}</span>
+      <span className="text-mute"> · {field.labels.length} name{field.labels.length === 1 ? "" : "s"}: </span>
+      <span className="font-mono text-xs">{field.labels.join(", ")}</span>
+      {field.rare > 0 ? (
+        <span className="block text-xs text-warn">
+          {field.rare === field.labels.length ? "All of these are" : `${field.rare} of these ${field.rare === 1 ? "is" : "are"}`} used by only a few of your records, so sharing could hint at which
+          records they are.
+        </span>
+      ) : null}
+    </li>
+  );
+}
+
+/**
+ * Sprint 14 (A3/B4): the destination needs values from a fixed list that only
+ * category fields can provide, and their names are not shared. Sharing is the
+ * user's explicit choice; it prepares a NEW request that is shown for approval.
+ */
+function CategoryNotice({
+  need,
+  onShare,
+  onEditDestination,
+  context,
+}: {
+  need: CategoryNeed;
+  onShare: (paths: string[]) => void;
+  onEditDestination: () => void;
+  context: "before" | "after";
+}) {
+  const withheld = need.fields.filter((field) => !field.shared);
+  const targets = need.targets.filter((target) => target.required);
+  return (
+    <div className="space-y-3 border border-warn/50 border-l-4 border-l-warn bg-panel p-4 text-sm" data-testid="guided-category-notice" data-context={context}>
+      <p className="font-medium">
+        {context === "before" ? "This request can't produce a usable integration yet" : "To fix this, Gemini needs the names of your categories"}
+      </p>
+      <p className="text-ink-text">
+        Your destination needs {targets.map((target) => `"${target.name}" (one of ${target.values.join(", ")})`).join(" and ")}. That value comes from your categories, and
+        Gemini only sees placeholders for them, so it cannot translate them. Sharing the names below lets it write that rule. Your records still stay here.
+      </p>
+      <ul className="space-y-1.5">
+        {withheld.map((field) => (
+          <CategoryList key={field.path} field={field} />
+        ))}
+      </ul>
+      <div className="flex flex-wrap gap-2">
+        <Button variant="primary" size="sm" onClick={() => onShare(withheld.map((field) => field.path))} data-testid="guided-share-categories">
+          Share these names and prepare a new request
+        </Button>
+        <Button variant="ghost" size="sm" onClick={onEditDestination}>
+          Choose another destination
+        </Button>
+      </div>
+      <p className="text-xs text-mute">Nothing is sent when you click: you will see the new request and approve it first. The names are part of the request you review.</p>
+    </div>
+  );
+}
+
+/** Sprint 14 (B1/B2/B5): a rejected proposal, explained, with the safest next step first. */
+function RejectedProposal({
+  diagnosis,
+  records,
+  destination,
+  categoryNeed,
+  askAgainAllowed,
+  onShareCategories,
+  onPrepareFresh,
+  onEditDestination,
+  onEditData,
+  onTechnical,
+}: {
+  diagnosis: ProposalDiagnosis | null;
+  records: number;
+  destination: string;
+  categoryNeed: CategoryNeed | null;
+  askAgainAllowed: boolean;
+  onShareCategories: (paths: string[]) => void;
+  onPrepareFresh: () => void;
+  onEditDestination: () => void;
+  onEditData: () => void;
+  onTechnical: () => void;
+}) {
+  const share = diagnosis?.options.includes("share-categories") && categoryNeed && categoryNeed.fields.some((field) => !field.shared);
+  const askAgain = diagnosis ? diagnosis.options.includes("ask-again") && !diagnosis.sameRequestWillFail && askAgainAllowed : askAgainAllowed;
+  return (
+    <div className="space-y-4" data-testid="guided-proposal-rejected">
+      <div className="space-y-3 border border-fail/40 border-l-4 border-l-fail bg-panel p-4 text-sm" data-testid="guided-diagnosis" data-kind={diagnosis?.kind ?? "unknown"}>
+        <div>
+          <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-mute">What happened</p>
+          <p className="mt-1 text-ink-text" data-testid="guided-diagnosis-what">
+            {diagnosis?.what ?? "Gemini's answer was not a mapping EYES can safely run. EYES stopped before applying it."}
+          </p>
+        </div>
+        {diagnosis && diagnosis.issues.length > 0 ? (
+          <div>
+            <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-mute">Why it was refused</p>
+            <ul className="mt-1 list-disc space-y-0.5 pl-5 text-ink-text" data-testid="guided-diagnosis-issues">
+              {diagnosis.issues.map((line) => (
+                <li key={line}>{line}</li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+        <div>
+          <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-mute">What was protected</p>
+          <Protected records={records} />
+        </div>
+      </div>
+
+      {share && categoryNeed ? <CategoryNotice need={categoryNeed} onShare={onShareCategories} onEditDestination={onEditDestination} context="after" /> : null}
+
+      <div className="space-y-2 text-sm" data-testid="guided-next-steps">
+        <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-mute">What you can do</p>
+        <div className="flex flex-wrap gap-2">
+          {askAgain ? (
+            <Button variant={share ? "ghost" : "primary"} size="sm" onClick={onPrepareFresh} data-testid="guided-retry-proposal">
+              Ask Gemini again (new approval)
+            </Button>
+          ) : null}
+          {!share ? (
+            <Button variant={askAgain ? "ghost" : "primary"} size="sm" onClick={onEditDestination} data-testid="guided-recover-destination">
+              Change the destination ({destination})
+            </Button>
+          ) : null}
+          <Button variant="ghost" size="sm" onClick={onEditData}>
+            Change your data
+          </Button>
+        </div>
+        {askAgain ? (
+          <p className="text-xs text-mute">Asking again shows you the same request to approve once more. Gemini may answer differently; EYES checks the new answer the same way.</p>
+        ) : diagnosis?.sameRequestWillFail ? (
+          <p className="text-xs text-mute" data-testid="guided-same-request-note">Sending the same request again would fail the same way, so EYES does not offer it.</p>
+        ) : (
+          <p className="text-xs text-mute" data-testid="guided-ask-limit">Gemini already answered this exact request unusably more than once. Change an input, or write the mapping yourself in technical details.</p>
+        )}
+      </div>
+
+      <Disclosure summary="Technical details of the refusal" testId="guided-diagnosis-technical">
+        <p className="text-xs text-mute">
+          Issue codes: <span className="font-mono text-ink" data-testid="guided-diagnosis-codes">{diagnosis?.codes.join(", ") ?? "—"}</span>. The answer was not repaired and not run.{" "}
+          <button type="button" className="underline" onClick={onTechnical}>
+            Open the full technical view
+          </button>{" "}
+          to inspect the rejected proposal or write a mapping by hand.
+        </p>
+      </Disclosure>
+    </div>
+  );
 }

@@ -25,6 +25,8 @@ export interface TestHarness {
   /** Simulated private-semantics replies keyed by field alias (E2E only). Missing aliases get a low-confidence "text" reply. */
   onDeviceSemantics?: Record<string, unknown>;
   cloudOutput?: unknown;
+  /** Sprint 14: per-call outputs by 0-based call index; falls back to cloudOutput (E2E only). */
+  cloudOutputs?: unknown[];
   /** Build a labeled simulated proposal from the approved payload (E2E only). */
   deriveProposal?: boolean;
   /** Raw text returned for a 1.2.0 blind revision request instead of the deterministic reviser (E2E only). */
@@ -247,7 +249,7 @@ export function createTestCloudAdapter(
         ? deriveTestRevision(request.payload)
         : harness.deriveProposal
           ? deriveTestProposal(request.payload)
-          : harness.cloudOutput ?? {
+          : harness.cloudOutputs?.[callIndex] ?? harness.cloudOutput ?? {
         operations: [
           { op: "copy", from: request.payload.fields[0]?.alias ?? "contact_email", to: "email" },
         ],
