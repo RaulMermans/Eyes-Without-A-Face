@@ -1,0 +1,25 @@
+{
+  "manifestVersion": "1.0.0",
+  "experiment": "sprint-18a-ai-value",
+  "frozenAt": "2026-11-16T20:34:33.123Z",
+  "frozenFromCommit": "82400ddb7b72ecfdf9e3c30382e793b382236c2a",
+  "statement": "Frozen before the Sprint 18A concept lexicon was tuned and before any model saw this evaluation set. The set was written by an independent author without access to the implementation. The holdout is never opened by the engineer; scripts/eval-ai-value.mjs prints aggregates only.",
+  "preregistration": {
+    "path": "docs/evaluation/sprint-18a-ai-value.md",
+    "sha256AboveResults": "b0e38381466dd79a6c648dbe19f9fcfea51753e5ff956dcc2f3472dbd3dab0a8"
+  },
+  "files": {
+    "tests/fixtures/ai-value-18a/README.md": "4ed2ebb956d49fe799a4996d6e25c6406b1d10dbef92febfe06c4d8dc77bfcb3",
+    "tests/fixtures/ai-value-18a/dev/b2b-saas-invoices-to-billing-customer.json": "abb609b9c05485504304bc4f8b48ae53158b095e03b79cd789f38901313fae8c",
+    "tests/fixtures/ai-value-18a/dev/clinic-appointments-to-patient-portal.json": "bf236fecf6616ef136d9d530d58e520703d9704864853b67c1b91b0584e8353a",
+    "tests/fixtures/ai-value-18a/dev/hotel-bookings-to-marketing-list.json": "2bdbc0536a63e610818d118aee36e41fd620f3f1a7a0ad619327d3bfb2aedea1",
+    "tests/fixtures/ai-value-18a/dev/parcel-shipments-to-support-requester.json": "ba4261748869369facc1f381783e8676f27424fe810e82decc1d87cbe5f51537",
+    "tests/fixtures/ai-value-18a/dev/payroll-run-to-hr-directory.json": "0701c09a6e4c0d6787b3343a9007b4e3907b53221b084eac60ac82ec73e53706",
+    "tests/fixtures/ai-value-18a/dev/retail-ecommerce-orders-to-crm-contact.json": "a1e73c39614ff724513a9a6320409fd750121575dfbed458a887876e5db62e9e"
+  },
+  "holdout": {
+    "count": 10,
+    "sha256": "d5d2e08494d89215414e6a6f38f147017ee4e962cb30a7e5ab2512b37d55232b"
+  },
+  "amendments": []
+}

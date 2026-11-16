@@ -196,6 +196,29 @@ Report: [docs/qa/sprint-17a-hybrid-recovery.md](docs/qa/sprint-17a-hybrid-recove
   - The validator, contracts and export eligibility are unchanged.
 - **An unambiguous date format never establishes meaning.** Say which field was read and that EYES can't tell whether it means the destination field.
 
+## AI integration program and concept-bearing twin (Sprint 18A)
+
+Decisions: [ADR 0015](docs/decisions/0015-ai-integration-engineer-program.md), [ADR 0016](docs/decisions/0016-concept-bearing-phantom-twin.md). Assessment: [docs/program/master-transformation-assessment.md](docs/program/master-transformation-assessment.md).
+
+- **Stages 18A–18E are gated by evidence.**
+  - Gate A passed live on 2026-11-16 ([evaluation](docs/evaluation/sprint-18a-ai-value.md)). 18B starts only on the owner's go.
+  - Do not start 18C+ (connectors, backend, writes, scheduling) before its ADR and owner approval.
+  - Never describe a later stage as shipped.
+- **A concept is a claim, never evidence** (`src/phantom/concepts.ts`).
+  - Only fixed wordings from `CONCEPT_SPECS` and `QUALIFIER_PHRASES` may reach a descriptor.
+  - A name-derived concept is disclosed as `[inferred, unconfirmed]`.
+  - `src/semantics` and `src/verification` never read concepts.
+  - A bare `name`, `id`, `status` or `date` gets no concept: never add a guess to raise coverage.
+- **A meaning wording must not contain a private value or a local field-name segment (≥ 4 characters).**
+  - Add alternative wordings instead.
+  - Never widen a scan or checker.
+- **`TwinOptions.concepts: false` exists only for the evaluation baseline and historical replays.**
+  - Never expose it in the product.
+- **The Sprint 18A evaluation set is frozen** (`docs/evidence/sprint-18a/ai-value-freeze.json`).
+  - Never open `tests/fixtures/ai-value-18a/holdout/`. Score it only with `node scripts/eval-ai-value.mjs`, which writes aggregates only.
+  - Tune the lexicon on `dev/` only.
+  - The holdout was scored offline and live on 2026-11-16; treat it as **inspected**. Any new claim needs a fresh holdout written by an independent author before the change.
+
 ## Release lifecycle and production acceptance (Sprint 14 — permanent, every sprint)
 
 **Tests passing does not mean the product works in production.** Procedure, commands, budget and evidence layout: [docs/deployment.md](docs/deployment.md#production-acceptance-standard-permanent).

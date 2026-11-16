@@ -37,6 +37,8 @@ export function prepareTwin(input: {
   seed: number;
   overrides?: Record<string, TwinFieldOverride>;
   now?: () => number;
+  /** Sprint 18A: false reproduces the pre-18A twin (evaluation baseline only). */
+  concepts?: boolean;
 }): PrepareTwinResult {
   const now = input.now ?? (() => performance.now());
   const t0 = now();
@@ -51,6 +53,7 @@ export function prepareTwin(input: {
     datasetLabel: input.datasetLabel,
     overrides: input.overrides,
     privateStrings,
+    concepts: input.concepts,
   });
   const t2 = now();
   if (!generated.ok) {

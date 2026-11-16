@@ -1,0 +1,890 @@
+{
+  "scenarioId": "purchase-orders-to-erp-supplier",
+  "split": "holdout",
+  "industry": "manufacturing suppliers",
+  "sourceLanguage": "en",
+  "description": "Heavily abbreviated PascalCase purchase-order export from a fictional manufacturer's legacy purchasing tool, to be loaded as ERP suppliers.",
+  "fictional": true,
+  "records": [
+    {
+      "PONo": "2826167",
+      "CntctNm": "Elliot Marlow",
+      "LstModDt": "12/09/2021",
+      "VndrStat": "INAC",
+      "UnitPrc": 66.2,
+      "RemitTo": {
+        "Email": "ar@zephra.example.com",
+        "Ctry": "CA"
+      },
+      "PhNo": "+1 555 0492",
+      "VndrNo": "5639086",
+      "PODt": "06/06/2025",
+      "ExtAmt": 198401.4,
+      "TaxId": "32-0620280",
+      "VndrNm": "Zephra Components Group",
+      "POStat": "CNCL",
+      "Contact": {
+        "Email": "elliot.marlow@zephra.example.com"
+      },
+      "OnbrdDt": "02/12/2016",
+      "FaxNo": null,
+      "CurrCd": "USD",
+      "PmtTrms": "NET60",
+      "LeadTmDays": 14
+    },
+    {
+      "PONo": "7663391",
+      "CntctNm": "Maya Ashdown",
+      "LstModDt": "05/10/2026",
+      "VndrStat": "PEND",
+      "UnitPrc": 31.82,
+      "RemitTo": {
+        "Email": "ar@zephra.example.com",
+        "Ctry": "US"
+      },
+      "PhNo": "+1 555 0470",
+      "VndrNo": "8944036",
+      "PODt": "06/12/2026",
+      "ExtAmt": 45820.8,
+      "TaxId": "27-6110037",
+      "VndrNm": "Zephra Castings Holdings",
+      "POStat": "OPEN",
+      "Contact": {
+        "Email": "maya.ashdown@zephra.example.com"
+      },
+      "OnbrdDt": "10/01/2025",
+      "FaxNo": null,
+      "CurrCd": "USD",
+      "PmtTrms": "NET45",
+      "LeadTmDays": 45
+    },
+    {
+      "PONo": "3117694",
+      "CntctNm": "Daniel Dunmore",
+      "LstModDt": "02/03/2026",
+      "VndrStat": "APPR",
+      "UnitPrc": 79.62,
+      "RemitTo": {
+        "Email": "ar@zephra.example.com",
+        "Ctry": "CA"
+      },
+      "PhNo": "+1 555 0456",
+      "VndrNo": "8649900",
+      "PODt": "12/02/2025",
+      "ExtAmt": 332811.6,
+      "TaxId": "40-2244638",
+      "VndrNm": "Zephra Components Group",
+      "POStat": "OPEN",
+      "Contact": {
+        "Email": "daniel.dunmore@zephra.example.com"
+      },
+      "OnbrdDt": "02/07/2023",
+      "FaxNo": null,
+      "CurrCd": "USD",
+      "PmtTrms": "NET30",
+      "LeadTmDays": 21
+    },
+    {
+      "PONo": "4944236",
+      "CntctNm": "Naomi Pembury",
+      "LstModDt": "11/02/2026",
+      "VndrStat": "PEND",
+      "UnitPrc": 48.97,
+      "RemitTo": {
+        "Email": "ar@ostrin.example.com",
+        "Ctry": "MX"
+      },
+      "PhNo": "+1 555 0480",
+      "VndrNo": "8206598",
+      "PODt": "12/03/2025",
+      "ExtAmt": 83395.91,
+      "TaxId": "69-7427239",
+      "VndrNm": "Ostrin Components Holdings",
+      "POStat": "OPEN",
+      "Contact": {
+        "Email": "naomi.pembury@ostrin.example.com"
+      },
+      "OnbrdDt": "10/08/2022",
+      "FaxNo": "+1 555 0562",
+      "CurrCd": "CAD",
+      "PmtTrms": "NET60",
+      "LeadTmDays": 30
+    },
+    {
+      "PONo": "3779522",
+      "CntctNm": "Grace Jessop",
+      "LstModDt": "03/04/2025",
+      "VndrStat": "PEND",
+      "UnitPrc": 3.84,
+      "RemitTo": {
+        "Email": "ar@kaldera.example.com",
+        "Ctry": "MX"
+      },
+      "PhNo": "+1 555 0443",
+      "VndrNo": "7968475",
+      "PODt": "11/12/2026",
+      "ExtAmt": 522.24,
+      "TaxId": "52-0417206",
+      "VndrNm": "Kaldera Components Inc.",
+      "POStat": "OPEN",
+      "Contact": {
+        "Email": "grace.jessop@kaldera.example.com"
+      },
+      "OnbrdDt": "05/08/2018",
+      "FaxNo": "+1 555 0503",
+      "CurrCd": "MXN",
+      "PmtTrms": "NET60",
+      "LeadTmDays": 21
+    },
+    {
+      "PONo": "9344082",
+      "CntctNm": "Grace Gresham",
+      "LstModDt": "08/08/2023",
+      "VndrStat": "APPR",
+      "UnitPrc": 77.13,
+      "RemitTo": {
+        "Email": "ar@brasko.example.com",
+        "Ctry": "US"
+      },
+      "PhNo": "+1 555 0473",
+      "VndrNo": "0819474",
+      "PODt": "12/01/2025",
+      "ExtAmt": 22753.35,
+      "TaxId": "34-9353812",
+      "VndrNm": "Brasko Fasteners Group",
+      "POStat": "RCVD",
+      "Contact": {
+        "Email": "grace.gresham@brasko.example.com"
+      },
+      "OnbrdDt": "11/06/2019",
+      "FaxNo": "+1 555 0540",
+      "CurrCd": "MXN",
+      "PmtTrms": "NET30",
+      "LeadTmDays": 21
+    },
+    {
+      "PONo": "7656865",
+      "CntctNm": "Ruby Calloway",
+      "LstModDt": "03/12/2026",
+      "VndrStat": "PEND",
+      "UnitPrc": 71.33,
+      "RemitTo": {
+        "Email": "ar@strathon.example.com",
+        "Ctry": "US"
+      },
+      "PhNo": "+1 555 0448",
+      "VndrNo": "9124713",
+      "PODt": "08/05/2026",
+      "ExtAmt": 320414.36,
+      "TaxId": "16-3995983",
+      "VndrNm": "Strathon Components Inc.",
+      "POStat": "CLSD",
+      "Contact": {
+        "Email": "ruby.calloway@strathon.example.com"
+      },
+      "OnbrdDt": "02/09/2024",
+      "FaxNo": "+1 555 0525",
+      "CurrCd": "MXN",
+      "PmtTrms": "NET60",
+      "LeadTmDays": 14
+    },
+    {
+      "PONo": "6681935",
+      "CntctNm": "Naomi Lindqvist",
+      "LstModDt": "07/12/2023",
+      "VndrStat": "APPR",
+      "UnitPrc": 74.25,
+      "RemitTo": {
+        "Email": "ar@velmora.example.com",
+        "Ctry": "MX"
+      },
+      "PhNo": "+1 555 0469",
+      "VndrNo": "7839169",
+      "PODt": "01/05/2026",
+      "ExtAmt": 55910.25,
+      "TaxId": "30-4469988",
+      "VndrNm": "Velmora Components Inc.",
+      "POStat": "CNCL",
+      "Contact": {
+        "Email": "naomi.lindqvist@velmora.example.com"
+      },
+      "OnbrdDt": "08/12/2020",
+      "FaxNo": null,
+      "CurrCd": "MXN",
+      "PmtTrms": "NET60",
+      "LeadTmDays": 7
+    },
+    {
+      "PONo": "7321544",
+      "CntctNm": "Daniel Gresham",
+      "LstModDt": "11/02/2024",
+      "VndrStat": "APPR",
+      "UnitPrc": 94.47,
+      "RemitTo": {
+        "Email": "ar@ombrex.example.com",
+        "Ctry": "CA"
+      },
+      "PhNo": "+1 555 0487",
+      "VndrNo": "8559569",
+      "PODt": "06/02/2025",
+      "ExtAmt": 60082.92,
+      "TaxId": "90-1121446",
+      "VndrNm": "Ombrex Fasteners Ltd",
+      "POStat": "CLSD",
+      "Contact": {
+        "Email": "daniel.gresham@ombrex.example.com"
+      },
+      "OnbrdDt": "08/02/2021",
+      "FaxNo": "+1 555 0532",
+      "CurrCd": "CAD",
+      "PmtTrms": "NET60",
+      "LeadTmDays": 30
+    },
+    {
+      "PONo": "5952770",
+      "CntctNm": "Grace Marlow",
+      "LstModDt": "05/12/2026",
+      "VndrStat": "APPR",
+      "UnitPrc": 21.78,
+      "RemitTo": {
+        "Email": "ar@quintara.example.com",
+        "Ctry": "US"
+      },
+      "PhNo": "+1 555 0413",
+      "VndrNo": "5970424",
+      "PODt": "08/08/2025",
+      "ExtAmt": 27529.92,
+      "TaxId": "08-2456056",
+      "VndrNm": "Quintara Castings Holdings",
+      "POStat": "RCVD",
+      "Contact": {
+        "Email": "grace.marlow@quintara.example.com"
+      },
+      "OnbrdDt": "06/11/2015",
+      "FaxNo": "+1 555 0538",
+      "CurrCd": "USD",
+      "PmtTrms": "NET60",
+      "LeadTmDays": 30
+    },
+    {
+      "PONo": "1748805",
+      "CntctNm": "Grace Ingram",
+      "LstModDt": "07/05/2026",
+      "VndrStat": "APPR",
+      "UnitPrc": 95.82,
+      "RemitTo": {
+        "Email": "ar@tavrin.example.com",
+        "Ctry": "CA"
+      },
+      "PhNo": "+1 555 0472",
+      "VndrNo": "7421269",
+      "PODt": "08/01/2025",
+      "ExtAmt": 174392.4,
+      "TaxId": "26-5489594",
+      "VndrNm": "Tavrin Components Inc.",
+      "POStat": "RCVD",
+      "Contact": {
+        "Email": "grace.ingram@tavrin.example.com"
+      },
+      "OnbrdDt": "10/11/2024",
+      "FaxNo": null,
+      "CurrCd": "CAD",
+      "PmtTrms": "NET60",
+      "LeadTmDays": 14
+    },
+    {
+      "PONo": "6227864",
+      "CntctNm": "Elliot Fairbank",
+      "LstModDt": "03/10/2026",
+      "VndrStat": "APPR",
+      "UnitPrc": 102.21,
+      "RemitTo": {
+        "Email": "ar@halvik.example.com",
+        "Ctry": "US"
+      },
+      "PhNo": "+1 555 0434",
+      "VndrNo": "3857852",
+      "PODt": "07/06/2026",
+      "ExtAmt": 20748.63,
+      "TaxId": "98-7665312",
+      "VndrNm": "Halvik Fasteners Ltd",
+      "POStat": "OPEN",
+      "Contact": {
+        "Email": "elliot.fairbank@halvik.example.com"
+      },
+      "OnbrdDt": "03/08/2025",
+      "FaxNo": null,
+      "CurrCd": "USD",
+      "PmtTrms": "NET45",
+      "LeadTmDays": 14
+    },
+    {
+      "PONo": "6222596",
+      "CntctNm": "Maya Kettering",
+      "LstModDt": "09/11/2023",
+      "VndrStat": "PEND",
+      "UnitPrc": 43.94,
+      "RemitTo": {
+        "Email": "ar@pellucid.example.com",
+        "Ctry": "US"
+      },
+      "PhNo": "+1 555 0438",
+      "VndrNo": "6311958",
+      "PODt": "10/06/2025",
+      "ExtAmt": 110201.52,
+      "TaxId": "69-1365802",
+      "VndrNm": "Pellucid Fasteners Ltd",
+      "POStat": "OPEN",
+      "Contact": {
+        "Email": "maya.kettering@pellucid.example.com"
+      },
+      "OnbrdDt": "07/06/2019",
+      "FaxNo": null,
+      "CurrCd": "USD",
+      "PmtTrms": "NET30",
+      "LeadTmDays": 21
+    },
+    {
+      "PONo": "8318703",
+      "CntctNm": "Daniel Ashdown",
+      "LstModDt": "05/02/2019",
+      "VndrStat": "BLKD",
+      "UnitPrc": 107.87,
+      "RemitTo": {
+        "Email": "ar@kaldera.example.com",
+        "Ctry": "CA"
+      },
+      "PhNo": "+1 555 0429",
+      "VndrNo": "7444183",
+      "PODt": "12/12/2025",
+      "ExtAmt": 20818.91,
+      "TaxId": "29-8399645",
+      "VndrNm": "Kaldera Castings Inc.",
+      "POStat": "CNCL",
+      "Contact": {
+        "Email": "daniel.ashdown@kaldera.example.com"
+      },
+      "OnbrdDt": "12/05/2015",
+      "FaxNo": null,
+      "CurrCd": "MXN",
+      "PmtTrms": "NET30",
+      "LeadTmDays": 14
+    },
+    {
+      "PONo": "8221205",
+      "CntctNm": "Tobias Calloway",
+      "LstModDt": "04/09/2023",
+      "VndrStat": "APPR",
+      "UnitPrc": 82.85,
+      "RemitTo": {
+        "Email": "ar@zephra.example.com",
+        "Ctry": "US"
+      },
+      "PhNo": "+1 555 0444",
+      "VndrNo": "4957941",
+      "PODt": "12/01/2026",
+      "ExtAmt": 47307.35,
+      "TaxId": "16-8541663",
+      "VndrNm": "Zephra Fasteners Ltd",
+      "POStat": "CNCL",
+      "Contact": {
+        "Email": "tobias.calloway@zephra.example.com"
+      },
+      "OnbrdDt": "05/10/2016",
+      "FaxNo": "+1 555 0577",
+      "CurrCd": "MXN",
+      "PmtTrms": "NET45",
+      "LeadTmDays": 7
+    },
+    {
+      "PONo": "4372047",
+      "CntctNm": "Marcus Pembury",
+      "LstModDt": "12/01/2026",
+      "VndrStat": "APPR",
+      "UnitPrc": 23.86,
+      "RemitTo": {
+        "Email": "ar@lumeno.example.com",
+        "Ctry": "MX"
+      },
+      "PhNo": "+1 555 0447",
+      "VndrNo": "9923107",
+      "PODt": "12/06/2026",
+      "ExtAmt": 80694.52,
+      "TaxId": "62-5693266",
+      "VndrNm": "Lumeno Castings Inc.",
+      "POStat": "CNCL",
+      "Contact": {
+        "Email": "marcus.pembury@lumeno.example.com"
+      },
+      "OnbrdDt": "01/04/2023",
+      "FaxNo": null,
+      "CurrCd": "CAD",
+      "PmtTrms": "NET30",
+      "LeadTmDays": 21
+    },
+    {
+      "PONo": "1709949",
+      "CntctNm": "Grace Dunmore",
+      "LstModDt": "10/09/2026",
+      "VndrStat": "APPR",
+      "UnitPrc": 92.18,
+      "RemitTo": {
+        "Email": "ar@strathon.example.com",
+        "Ctry": "US"
+      },
+      "PhNo": "+1 555 0433",
+      "VndrNo": "0285577",
+      "PODt": "10/04/2026",
+      "ExtAmt": 75679.78,
+      "TaxId": "68-0674871",
+      "VndrNm": "Strathon Castings Ltd",
+      "POStat": "CLSD",
+      "Contact": {
+        "Email": "grace.dunmore@strathon.example.com"
+      },
+      "OnbrdDt": "01/09/2023",
+      "FaxNo": null,
+      "CurrCd": "MXN",
+      "PmtTrms": "NET60",
+      "LeadTmDays": 45
+    },
+    {
+      "PONo": "3330004",
+      "CntctNm": "Owen Pembury",
+      "LstModDt": "04/01/2026",
+      "VndrStat": "APPR",
+      "UnitPrc": 77.6,
+      "RemitTo": {
+        "Email": "ar@corvant.example.com",
+        "Ctry": "MX"
+      },
+      "PhNo": "+1 555 0436",
+      "VndrNo": "3486008",
+      "PODt": "05/07/2025",
+      "ExtAmt": 69374.4,
+      "TaxId": "00-1855625",
+      "VndrNm": "Corvant Castings Holdings",
+      "POStat": "RCVD",
+      "Contact": {
+        "Email": "owen.pembury@corvant.example.com"
+      },
+      "OnbrdDt": "11/04/2024",
+      "FaxNo": null,
+      "CurrCd": "CAD",
+      "PmtTrms": "NET45",
+      "LeadTmDays": 21
+    },
+    {
+      "PONo": "7571950",
+      "CntctNm": "Iris Lindqvist",
+      "LstModDt": "07/06/2024",
+      "VndrStat": "PEND",
+      "UnitPrc": 118.16,
+      "RemitTo": {
+        "Email": "ar@quintara.example.com",
+        "Ctry": "CA"
+      },
+      "PhNo": "+1 555 0439",
+      "VndrNo": "3512015",
+      "PODt": "12/06/2026",
+      "ExtAmt": 505134.0,
+      "TaxId": "11-0611435",
+      "VndrNm": "Quintara Fasteners Inc.",
+      "POStat": "CLSD",
+      "Contact": {
+        "Email": "iris.lindqvist@quintara.example.com"
+      },
+      "OnbrdDt": "03/02/2018",
+      "FaxNo": "+1 555 0541",
+      "CurrCd": "USD",
+      "PmtTrms": "NET60",
+      "LeadTmDays": 7
+    },
+    {
+      "PONo": "1778448",
+      "CntctNm": "Marcus Fairbank",
+      "LstModDt": "11/07/2026",
+      "VndrStat": "APPR",
+      "UnitPrc": 5.54,
+      "RemitTo": {
+        "Email": "ar@pellucid.example.com",
+        "Ctry": "CA"
+      },
+      "PhNo": "+1 555 0432",
+      "VndrNo": "1714387",
+      "PODt": "03/11/2025",
+      "ExtAmt": 24902.3,
+      "TaxId": "39-9676148",
+      "VndrNm": "Pellucid Components Ltd",
+      "POStat": "OPEN",
+      "Contact": {
+        "Email": "marcus.fairbank@pellucid.example.com"
+      },
+      "OnbrdDt": "04/07/2020",
+      "FaxNo": null,
+      "CurrCd": "CAD",
+      "PmtTrms": "NET45",
+      "LeadTmDays": 21
+    },
+    {
+      "PONo": "5430508",
+      "CntctNm": "Priya Calloway",
+      "LstModDt": "11/05/2026",
+      "VndrStat": "APPR",
+      "UnitPrc": 36.78,
+      "RemitTo": {
+        "Email": "ar@brasko.example.com",
+        "Ctry": "MX"
+      },
+      "PhNo": "+1 555 0488",
+      "VndrNo": "5472142",
+      "PODt": "06/05/2026",
+      "ExtAmt": 147524.58,
+      "TaxId": "66-2674503",
+      "VndrNm": "Brasko Polymers Holdings",
+      "POStat": "OPEN",
+      "Contact": {
+        "Email": "priya.calloway@brasko.example.com"
+      },
+      "OnbrdDt": "03/02/2020",
+      "FaxNo": null,
+      "CurrCd": "CAD",
+      "PmtTrms": "NET45",
+      "LeadTmDays": 7
+    },
+    {
+      "PONo": "7535678",
+      "CntctNm": "Grace Ellery",
+      "LstModDt": "02/03/2024",
+      "VndrStat": "APPR",
+      "UnitPrc": 23.53,
+      "RemitTo": {
+        "Email": "ar@zephra.example.com",
+        "Ctry": "MX"
+      },
+      "PhNo": "+1 555 0459",
+      "VndrNo": "8378740",
+      "PODt": "10/12/2026",
+      "ExtAmt": 78307.84,
+      "TaxId": "09-8046531",
+      "VndrNm": "Zephra Castings Ltd",
+      "POStat": "CLSD",
+      "Contact": {
+        "Email": "grace.ellery@zephra.example.com"
+      },
+      "OnbrdDt": "09/02/2020",
+      "FaxNo": "+1 555 0573",
+      "CurrCd": "USD",
+      "PmtTrms": "NET60",
+      "LeadTmDays": 14
+    },
+    {
+      "PONo": "0981733",
+      "CntctNm": "Owen Ashdown",
+      "LstModDt": "04/04/2023",
+      "VndrStat": "APPR",
+      "UnitPrc": 82.87,
+      "RemitTo": {
+        "Email": "ar@brasko.example.com",
+        "Ctry": "CA"
+      },
+      "PhNo": "+1 555 0436",
+      "VndrNo": "4510043",
+      "PODt": "04/04/2025",
+      "ExtAmt": 166485.83,
+      "TaxId": "91-1885186",
+      "VndrNm": "Brasko Fasteners Ltd",
+      "POStat": "OPEN",
+      "Contact": {
+        "Email": "owen.ashdown@brasko.example.com"
+      },
+      "OnbrdDt": "04/04/2017",
+      "FaxNo": "+1 555 0533",
+      "CurrCd": "USD",
+      "PmtTrms": "NET45",
+      "LeadTmDays": 21
+    },
+    {
+      "PONo": "7387086",
+      "CntctNm": "Hannah Dunmore",
+      "LstModDt": "02/11/2024",
+      "VndrStat": "APPR",
+      "UnitPrc": 79.96,
+      "RemitTo": {
+        "Email": "ar@corvant.example.com",
+        "Ctry": "CA"
+      },
+      "PhNo": "+1 555 0463",
+      "VndrNo": "7897573",
+      "PODt": "06/01/2025",
+      "ExtAmt": 355262.28,
+      "TaxId": "69-5164629",
+      "VndrNm": "Corvant Castings Ltd",
+      "POStat": "OPEN",
+      "Contact": {
+        "Email": "hannah.dunmore@corvant.example.com"
+      },
+      "OnbrdDt": "05/09/2020",
+      "FaxNo": null,
+      "CurrCd": "MXN",
+      "PmtTrms": "NET45",
+      "LeadTmDays": 21
+    },
+    {
+      "PONo": "0699397",
+      "CntctNm": "Felix Calloway",
+      "LstModDt": "02/11/2026",
+      "VndrStat": "APPR",
+      "UnitPrc": 56.09,
+      "RemitTo": {
+        "Email": "ar@pellucid.example.com",
+        "Ctry": "MX"
+      },
+      "PhNo": "+1 555 0484",
+      "VndrNo": "9436474",
+      "PODt": "10/01/2026",
+      "ExtAmt": 123622.36,
+      "TaxId": "83-8547892",
+      "VndrNm": "Pellucid Components Inc.",
+      "POStat": "RCVD",
+      "Contact": {
+        "Email": "felix.calloway@pellucid.example.com"
+      },
+      "OnbrdDt": "01/05/2025",
+      "FaxNo": "+1 555 0576",
+      "CurrCd": "USD",
+      "PmtTrms": "NET45",
+      "LeadTmDays": 7
+    },
+    {
+      "PONo": "9494482",
+      "CntctNm": "Iris Pembury",
+      "LstModDt": "12/04/2026",
+      "VndrStat": "APPR",
+      "UnitPrc": 115.58,
+      "RemitTo": {
+        "Email": "ar@zephra.example.com",
+        "Ctry": "CA"
+      },
+      "PhNo": "+1 555 0463",
+      "VndrNo": "6939372",
+      "PODt": "11/04/2026",
+      "ExtAmt": 576050.72,
+      "TaxId": "26-0840059",
+      "VndrNm": "Zephra Fasteners Ltd",
+      "POStat": "CLSD",
+      "Contact": {
+        "Email": "iris.pembury@zephra.example.com"
+      },
+      "OnbrdDt": "01/05/2024",
+      "FaxNo": "+1 555 0526",
+      "CurrCd": "CAD",
+      "PmtTrms": "NET45",
+      "LeadTmDays": 14
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "supplier_number": {
+        "type": "string"
+      },
+      "legal_name": {
+        "type": "string"
+      },
+      "primary_contact": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "phone": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "email"
+        ]
+      },
+      "remittance_email": {
+        "type": "string",
+        "format": "email"
+      },
+      "approval_status": {
+        "type": "string",
+        "enum": [
+          "approved",
+          "pending",
+          "blocked",
+          "inactive"
+        ]
+      },
+      "payment_terms": {
+        "type": "string",
+        "enum": [
+          "net_30",
+          "net_45",
+          "net_60"
+        ]
+      },
+      "onboarded_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "tax_id": {
+        "type": "string"
+      },
+      "duns_number": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "supplier_number",
+      "legal_name"
+    ]
+  },
+  "groundTruth": {
+    "supplier_number": {
+      "source": "VndrNo",
+      "why": "vendor number; PONo is the purchase order"
+    },
+    "legal_name": {
+      "source": "VndrNm",
+      "why": "vendor name; CntctNm is a person"
+    },
+    "primary_contact.name": {
+      "source": "CntctNm",
+      "why": "contact name"
+    },
+    "primary_contact.email": {
+      "source": "Contact.Email",
+      "why": "contact block email"
+    },
+    "primary_contact.phone": {
+      "source": "PhNo",
+      "why": "phone; FaxNo is fax"
+    },
+    "remittance_email": {
+      "source": "RemitTo.Email",
+      "why": "remit-to block email"
+    },
+    "approval_status": {
+      "source": "VndrStat",
+      "why": "vendor state; POStat is the PO state"
+    },
+    "payment_terms": {
+      "source": "PmtTrms",
+      "why": "NET30 -> net_30"
+    },
+    "onboarded_date": {
+      "source": "OnbrdDt",
+      "dateFormat": "MM/DD/YYYY",
+      "why": "onboarding date; LstModDt is last modification"
+    },
+    "tax_id": {
+      "source": "TaxId",
+      "why": "tax id"
+    },
+    "duns_number": {
+      "source": null,
+      "why": "not in export"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "VndrNo",
+        "PONo"
+      ],
+      "correctFor": "supplier_number"
+    },
+    {
+      "kind": "organization-name-vs-person-name",
+      "fields": [
+        "VndrNm",
+        "CntctNm"
+      ],
+      "correctFor": "legal_name"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "OnbrdDt",
+        "LstModDt"
+      ],
+      "correctFor": "onboarded_date"
+    },
+    {
+      "kind": "account-status-vs-transaction-status",
+      "fields": [
+        "VndrStat",
+        "POStat"
+      ],
+      "correctFor": "approval_status"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "RemitTo.Email",
+        "Contact.Email"
+      ],
+      "correctFor": "remittance_email"
+    },
+    {
+      "kind": "phone-or-code-confusion",
+      "fields": [
+        "PhNo",
+        "FaxNo"
+      ],
+      "correctFor": "primary_contact.phone"
+    }
+  ],
+  "sourceConcepts": {
+    "PONo": "transaction-id",
+    "CntctNm": "person-name",
+    "LstModDt": "modified-date",
+    "VndrStat": "account-status",
+    "UnitPrc": "amount",
+    "RemitTo.Email": "email",
+    "RemitTo.Ctry": "country",
+    "PhNo": "phone",
+    "VndrNo": "customer-id",
+    "PODt": "transaction-date",
+    "ExtAmt": "amount",
+    "TaxId": "other-identifier",
+    "VndrNm": "organization-name",
+    "POStat": "order-status",
+    "Contact.Email": "email",
+    "OnbrdDt": "created-date",
+    "FaxNo": "phone",
+    "CurrCd": "currency-code",
+    "PmtTrms": "category",
+    "LeadTmDays": "quantity"
+  },
+  "destinationConcepts": {
+    "supplier_number": "customer-id",
+    "legal_name": "organization-name",
+    "primary_contact.name": "person-name",
+    "primary_contact.email": "email",
+    "primary_contact.phone": "phone",
+    "remittance_email": "email",
+    "approval_status": "account-status",
+    "payment_terms": "category",
+    "onboarded_date": "created-date",
+    "tax_id": "other-identifier",
+    "duns_number": "other-identifier"
+  }
+}

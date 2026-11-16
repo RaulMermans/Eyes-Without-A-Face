@@ -1,0 +1,668 @@
+{
+  "scenarioId": "workshop-orders-to-dealer-crm",
+  "split": "holdout",
+  "industry": "automotive service",
+  "sourceLanguage": "nl",
+  "description": "Work-order export from a fictional Dutch car workshop, to be loaded as service customers in a dealer CRM.",
+  "fictional": true,
+  "records": [
+    {
+      "Kilometerstand": 103358,
+      "WerkorderNummer": 922851,
+      "Klant": {
+        "Email": "maaike.smit@example.com"
+      },
+      "LaatstGewijzigd": "16/11/2024",
+      "OrderStatus": "gereed",
+      "KlantNaam": "Maaike Smit",
+      "Lease": {
+        "Naam": null,
+        "Email": null
+      },
+      "Kenteken": "PX-551-G",
+      "Arbeidsloon": 159.49,
+      "KlantNummer": 535985,
+      "TelefoonMobiel": "+31 6 69298422",
+      "AanmaakDatum": "02/03/2021",
+      "KlantStatus": "actief",
+      "Onderdelenkosten": 782.34,
+      "VolgendeApk": "25/02/2027"
+    },
+    {
+      "Kilometerstand": 167914,
+      "WerkorderNummer": 410951,
+      "Klant": {
+        "Email": "noor.vanleeuwen@example.com"
+      },
+      "LaatstGewijzigd": "09/11/2021",
+      "OrderStatus": "gepland",
+      "KlantNaam": "Noor van Leeuwen",
+      "Lease": {
+        "Naam": null,
+        "Email": null
+      },
+      "Kenteken": "XK-985-J",
+      "Arbeidsloon": 158.04,
+      "KlantNummer": 319833,
+      "TelefoonMobiel": "+31 6 65474378",
+      "AanmaakDatum": "27/07/2014",
+      "KlantStatus": "geblokkeerd",
+      "Onderdelenkosten": 225.9,
+      "VolgendeApk": "26/10/2026"
+    },
+    {
+      "Kilometerstand": 196387,
+      "WerkorderNummer": 336978,
+      "Klant": {
+        "Email": "wouter.deboer@example.com"
+      },
+      "LaatstGewijzigd": "06/09/2024",
+      "OrderStatus": "gefactureerd",
+      "KlantNaam": "Wouter de Boer",
+      "Lease": {
+        "Naam": "Tavrin Lease B.V.",
+        "Email": "fleet@tavrin.example.net"
+      },
+      "Kenteken": "LJ-973-D",
+      "Arbeidsloon": 659.47,
+      "KlantNummer": 792367,
+      "TelefoonMobiel": "+31 6 48563260",
+      "AanmaakDatum": "09/01/2016",
+      "KlantStatus": "actief",
+      "Onderdelenkosten": 1204.11,
+      "VolgendeApk": "21/07/2027"
+    },
+    {
+      "Kilometerstand": 108099,
+      "WerkorderNummer": 406488,
+      "Klant": {
+        "Email": "noor.mulder@example.com"
+      },
+      "LaatstGewijzigd": "04/01/2026",
+      "OrderStatus": "gefactureerd",
+      "KlantNaam": "Noor Mulder",
+      "Lease": {
+        "Naam": "Corvant Lease B.V.",
+        "Email": "fleet@corvant.example.net"
+      },
+      "Kenteken": "JJ-013-F",
+      "Arbeidsloon": 732.43,
+      "KlantNummer": 693255,
+      "TelefoonMobiel": "+31 6 82731281",
+      "AanmaakDatum": "15/11/2023",
+      "KlantStatus": "actief",
+      "Onderdelenkosten": 94.17,
+      "VolgendeApk": "04/04/2027"
+    },
+    {
+      "Kilometerstand": 202084,
+      "WerkorderNummer": 679159,
+      "Klant": {
+        "Email": "wouter.visser@example.com"
+      },
+      "LaatstGewijzigd": "24/09/2026",
+      "OrderStatus": "in_behandeling",
+      "KlantNaam": "Wouter Visser",
+      "Lease": {
+        "Naam": "Ombrex Lease B.V.",
+        "Email": "fleet@ombrex.example.net"
+      },
+      "Kenteken": "JN-556-B",
+      "Arbeidsloon": 40.67,
+      "KlantNummer": 571499,
+      "TelefoonMobiel": "+31 6 81632742",
+      "AanmaakDatum": "26/08/2022",
+      "KlantStatus": "inactief",
+      "Onderdelenkosten": 64.38,
+      "VolgendeApk": "21/03/2027"
+    },
+    {
+      "Kilometerstand": 174773,
+      "WerkorderNummer": 594388,
+      "Klant": {
+        "Email": "maaike.vermeulen@example.com"
+      },
+      "LaatstGewijzigd": "20/09/2021",
+      "OrderStatus": "gereed",
+      "KlantNaam": "Maaike Vermeulen",
+      "Lease": {
+        "Naam": null,
+        "Email": null
+      },
+      "Kenteken": "GS-360-H",
+      "Arbeidsloon": 615.94,
+      "KlantNummer": 557583,
+      "TelefoonMobiel": "+31 6 15242085",
+      "AanmaakDatum": "24/04/2020",
+      "KlantStatus": "actief",
+      "Onderdelenkosten": 78.25,
+      "VolgendeApk": "24/01/2026"
+    },
+    {
+      "Kilometerstand": 5177,
+      "WerkorderNummer": 199495,
+      "Klant": {
+        "Email": "thijs.visser@example.com"
+      },
+      "LaatstGewijzigd": "02/11/2024",
+      "OrderStatus": "gereed",
+      "KlantNaam": "Thijs Visser",
+      "Lease": {
+        "Naam": "Corvant Lease B.V.",
+        "Email": "fleet@corvant.example.net"
+      },
+      "Kenteken": "SG-331-H",
+      "Arbeidsloon": 97.16,
+      "KlantNummer": 766699,
+      "TelefoonMobiel": "+31 6 28427934",
+      "AanmaakDatum": "24/03/2017",
+      "KlantStatus": "actief",
+      "Onderdelenkosten": 585.24,
+      "VolgendeApk": "05/04/2026"
+    },
+    {
+      "Kilometerstand": 243591,
+      "WerkorderNummer": 102538,
+      "Klant": {
+        "Email": "ilse.kuiper@example.com"
+      },
+      "LaatstGewijzigd": "25/04/2026",
+      "OrderStatus": "gefactureerd",
+      "KlantNaam": "Ilse Kuiper",
+      "Lease": {
+        "Naam": null,
+        "Email": null
+      },
+      "Kenteken": "GJ-419-B",
+      "Arbeidsloon": 518.34,
+      "KlantNummer": 146413,
+      "TelefoonMobiel": "+31 6 50630143",
+      "AanmaakDatum": "15/11/2019",
+      "KlantStatus": "inactief",
+      "Onderdelenkosten": 71.46,
+      "VolgendeApk": "19/07/2027"
+    },
+    {
+      "Kilometerstand": 11556,
+      "WerkorderNummer": 297956,
+      "Klant": {
+        "Email": "femke.hendriks@example.com"
+      },
+      "LaatstGewijzigd": "06/09/2023",
+      "OrderStatus": "gepland",
+      "KlantNaam": "Femke Hendriks",
+      "Lease": {
+        "Naam": "Ostrin B.V.",
+        "Email": "fleet@ostrin.example.net"
+      },
+      "Kenteken": "HZ-120-F",
+      "Arbeidsloon": 160.19,
+      "KlantNummer": 175930,
+      "TelefoonMobiel": "+31 6 20125660",
+      "AanmaakDatum": "19/04/2019",
+      "KlantStatus": "actief",
+      "Onderdelenkosten": 235.35,
+      "VolgendeApk": "08/04/2027"
+    },
+    {
+      "Kilometerstand": 206004,
+      "WerkorderNummer": 510623,
+      "Klant": {
+        "Email": "thijs.deboer@example.com"
+      },
+      "LaatstGewijzigd": "17/11/2026",
+      "OrderStatus": "gepland",
+      "KlantNaam": "Thijs de Boer",
+      "Lease": {
+        "Naam": null,
+        "Email": null
+      },
+      "Kenteken": "RX-812-J",
+      "Arbeidsloon": 826.31,
+      "KlantNummer": 747072,
+      "TelefoonMobiel": "+31 6 89301315",
+      "AanmaakDatum": "02/02/2016",
+      "KlantStatus": "actief",
+      "Onderdelenkosten": 222.87,
+      "VolgendeApk": "03/05/2027"
+    },
+    {
+      "Kilometerstand": 59325,
+      "WerkorderNummer": 936993,
+      "Klant": {
+        "Email": "eline.bos@example.com"
+      },
+      "LaatstGewijzigd": "08/09/2025",
+      "OrderStatus": "gereed",
+      "KlantNaam": "Eline Bos",
+      "Lease": {
+        "Naam": "Kaldera B.V.",
+        "Email": "fleet@kaldera.example.net"
+      },
+      "Kenteken": "TT-430-G",
+      "Arbeidsloon": 135.94,
+      "KlantNummer": 880278,
+      "TelefoonMobiel": "+31 6 26745196",
+      "AanmaakDatum": "26/07/2024",
+      "KlantStatus": "actief",
+      "Onderdelenkosten": 1227.68,
+      "VolgendeApk": "22/08/2027"
+    },
+    {
+      "Kilometerstand": 83640,
+      "WerkorderNummer": 395088,
+      "Klant": {
+        "Email": "eline.vermeulen@example.com"
+      },
+      "LaatstGewijzigd": "09/10/2015",
+      "OrderStatus": "in_behandeling",
+      "KlantNaam": "Eline Vermeulen",
+      "Lease": {
+        "Naam": "Lumeno B.V.",
+        "Email": "fleet@lumeno.example.net"
+      },
+      "Kenteken": "HZ-528-D",
+      "Arbeidsloon": 220.72,
+      "KlantNummer": 460299,
+      "TelefoonMobiel": "+31 6 50050038",
+      "AanmaakDatum": "23/07/2014",
+      "KlantStatus": "geblokkeerd",
+      "Onderdelenkosten": 13.94,
+      "VolgendeApk": "01/11/2026"
+    },
+    {
+      "Kilometerstand": 50940,
+      "WerkorderNummer": 807820,
+      "Klant": {
+        "Email": "noor.brouwer@example.com"
+      },
+      "LaatstGewijzigd": "01/08/2023",
+      "OrderStatus": "gepland",
+      "KlantNaam": "Noor Brouwer",
+      "Lease": {
+        "Naam": null,
+        "Email": null
+      },
+      "Kenteken": "NJ-507-J",
+      "Arbeidsloon": 492.73,
+      "KlantNummer": 575004,
+      "TelefoonMobiel": "+31 6 33164285",
+      "AanmaakDatum": "05/12/2022",
+      "KlantStatus": "actief",
+      "Onderdelenkosten": 660.46,
+      "VolgendeApk": "20/03/2027"
+    },
+    {
+      "Kilometerstand": 38072,
+      "WerkorderNummer": 823564,
+      "Klant": {
+        "Email": "daan.smit@example.com"
+      },
+      "LaatstGewijzigd": "13/02/2025",
+      "OrderStatus": "in_behandeling",
+      "KlantNaam": "Daan Smit",
+      "Lease": {
+        "Naam": null,
+        "Email": null
+      },
+      "Kenteken": "PH-174-D",
+      "Arbeidsloon": 380.55,
+      "KlantNummer": 824078,
+      "TelefoonMobiel": "+31 6 05052394",
+      "AanmaakDatum": "17/09/2018",
+      "KlantStatus": "actief",
+      "Onderdelenkosten": 828.65,
+      "VolgendeApk": "11/09/2027"
+    },
+    {
+      "Kilometerstand": 124587,
+      "WerkorderNummer": 707936,
+      "Klant": {
+        "Email": "wouter.vermeulen@example.com"
+      },
+      "LaatstGewijzigd": "03/04/2024",
+      "OrderStatus": "gereed",
+      "KlantNaam": "Wouter Vermeulen",
+      "Lease": {
+        "Naam": null,
+        "Email": null
+      },
+      "Kenteken": "HX-359-F",
+      "Arbeidsloon": 756.58,
+      "KlantNummer": 964058,
+      "TelefoonMobiel": "+31 6 13114967",
+      "AanmaakDatum": "20/06/2022",
+      "KlantStatus": "actief",
+      "Onderdelenkosten": 84.13,
+      "VolgendeApk": "27/10/2026"
+    },
+    {
+      "Kilometerstand": 168696,
+      "WerkorderNummer": 228260,
+      "Klant": {
+        "Email": "sanne.vanleeuwen@example.com"
+      },
+      "LaatstGewijzigd": "19/12/2020",
+      "OrderStatus": "gepland",
+      "KlantNaam": "Sanne van Leeuwen",
+      "Lease": {
+        "Naam": null,
+        "Email": null
+      },
+      "Kenteken": "TN-363-B",
+      "Arbeidsloon": 329.9,
+      "KlantNummer": 547293,
+      "TelefoonMobiel": "+31 6 89434257",
+      "AanmaakDatum": "24/02/2017",
+      "KlantStatus": "actief",
+      "Onderdelenkosten": 85.33,
+      "VolgendeApk": "03/01/2027"
+    },
+    {
+      "Kilometerstand": 109230,
+      "WerkorderNummer": 275565,
+      "Klant": {
+        "Email": "eline.hendriks@example.com"
+      },
+      "LaatstGewijzigd": "02/12/2025",
+      "OrderStatus": "gereed",
+      "KlantNaam": "Eline Hendriks",
+      "Lease": {
+        "Naam": "Kaldera Lease B.V.",
+        "Email": "fleet@kaldera.example.net"
+      },
+      "Kenteken": "XJ-867-G",
+      "Arbeidsloon": 288.48,
+      "KlantNummer": 177504,
+      "TelefoonMobiel": "+31 6 99643366",
+      "AanmaakDatum": "07/04/2016",
+      "KlantStatus": "inactief",
+      "Onderdelenkosten": 139.47,
+      "VolgendeApk": "28/03/2027"
+    },
+    {
+      "Kilometerstand": 249341,
+      "WerkorderNummer": 774283,
+      "Klant": {
+        "Email": "wouter.vandijk@example.com"
+      },
+      "LaatstGewijzigd": "04/04/2021",
+      "OrderStatus": "gefactureerd",
+      "KlantNaam": "Wouter van Dijk",
+      "Lease": {
+        "Naam": null,
+        "Email": null
+      },
+      "Kenteken": "PH-158-B",
+      "Arbeidsloon": 846.68,
+      "KlantNummer": 739614,
+      "TelefoonMobiel": "+31 6 58797729",
+      "AanmaakDatum": "05/12/2016",
+      "KlantStatus": "inactief",
+      "Onderdelenkosten": 746.33,
+      "VolgendeApk": "22/08/2027"
+    },
+    {
+      "Kilometerstand": 21038,
+      "WerkorderNummer": 361523,
+      "Klant": {
+        "Email": "anouk.deboer@example.com"
+      },
+      "LaatstGewijzigd": "24/05/2017",
+      "OrderStatus": "gefactureerd",
+      "KlantNaam": "Anouk de Boer",
+      "Lease": {
+        "Naam": "Quintara Lease B.V.",
+        "Email": "fleet@quintara.example.net"
+      },
+      "Kenteken": "LJ-035-F",
+      "Arbeidsloon": 402.8,
+      "KlantNummer": 862822,
+      "TelefoonMobiel": "+31 6 06321255",
+      "AanmaakDatum": "24/10/2015",
+      "KlantStatus": "actief",
+      "Onderdelenkosten": 819.86,
+      "VolgendeApk": "23/09/2027"
+    },
+    {
+      "Kilometerstand": 70589,
+      "WerkorderNummer": 908036,
+      "Klant": {
+        "Email": "daan.smit@example.com"
+      },
+      "LaatstGewijzigd": "20/12/2022",
+      "OrderStatus": "gefactureerd",
+      "KlantNaam": "Daan Smit",
+      "Lease": {
+        "Naam": null,
+        "Email": null
+      },
+      "Kenteken": "SH-787-J",
+      "Arbeidsloon": 152.38,
+      "KlantNummer": 526768,
+      "TelefoonMobiel": "+31 6 31402466",
+      "AanmaakDatum": "20/06/2020",
+      "KlantStatus": "actief",
+      "Onderdelenkosten": 79.62,
+      "VolgendeApk": "17/01/2027"
+    },
+    {
+      "Kilometerstand": 174183,
+      "WerkorderNummer": 667582,
+      "Klant": {
+        "Email": "thijs.dekker@example.com"
+      },
+      "LaatstGewijzigd": "04/04/2024",
+      "OrderStatus": "in_behandeling",
+      "KlantNaam": "Thijs Dekker",
+      "Lease": {
+        "Naam": "Kaldera Lease B.V.",
+        "Email": "fleet@kaldera.example.net"
+      },
+      "Kenteken": "RX-157-H",
+      "Arbeidsloon": 134.22,
+      "KlantNummer": 374889,
+      "TelefoonMobiel": "+31 6 75214188",
+      "AanmaakDatum": "28/08/2023",
+      "KlantStatus": "actief",
+      "Onderdelenkosten": 1031.63,
+      "VolgendeApk": "27/08/2026"
+    },
+    {
+      "Kilometerstand": 139311,
+      "WerkorderNummer": 600744,
+      "Klant": {
+        "Email": "anouk.brouwer@example.com"
+      },
+      "LaatstGewijzigd": "01/02/2019",
+      "OrderStatus": "gefactureerd",
+      "KlantNaam": "Anouk Brouwer",
+      "Lease": {
+        "Naam": "Strathon Lease B.V.",
+        "Email": "fleet@strathon.example.net"
+      },
+      "Kenteken": "TS-667-G",
+      "Arbeidsloon": 607.38,
+      "KlantNummer": 577006,
+      "TelefoonMobiel": "+31 6 01773258",
+      "AanmaakDatum": "05/11/2014",
+      "KlantStatus": "geblokkeerd",
+      "Onderdelenkosten": 425.1,
+      "VolgendeApk": "06/01/2027"
+    },
+    {
+      "Kilometerstand": 222598,
+      "WerkorderNummer": 585345,
+      "Klant": {
+        "Email": "daan.devries@example.com"
+      },
+      "LaatstGewijzigd": "03/01/2023",
+      "OrderStatus": "gefactureerd",
+      "KlantNaam": "Daan de Vries",
+      "Lease": {
+        "Naam": null,
+        "Email": null
+      },
+      "Kenteken": "GR-459-J",
+      "Arbeidsloon": 323.49,
+      "KlantNummer": 987741,
+      "TelefoonMobiel": "+31 6 35884945",
+      "AanmaakDatum": "04/03/2021",
+      "KlantStatus": "actief",
+      "Onderdelenkosten": 355.47,
+      "VolgendeApk": "16/03/2026"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "customer_number": {
+        "type": "integer"
+      },
+      "name": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string",
+        "format": "email"
+      },
+      "customer_since": {
+        "type": "string",
+        "format": "date"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "inactive",
+          "blocked"
+        ]
+      },
+      "license_plate": {
+        "type": "string"
+      },
+      "phone": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "preferred_workshop": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "customer_number",
+      "name"
+    ]
+  },
+  "groundTruth": {
+    "customer_number": {
+      "source": "KlantNummer",
+      "why": "customer number; WerkorderNummer is the work order"
+    },
+    "name": {
+      "source": "KlantNaam",
+      "why": "driver/customer; Lease.Naam is the lease company"
+    },
+    "email": {
+      "source": "Klant.Email",
+      "why": "customer's email, not the lease company's"
+    },
+    "customer_since": {
+      "source": "AanmaakDatum",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "aanmaakdatum = created; LaatstGewijzigd = last changed"
+    },
+    "status": {
+      "source": "KlantStatus",
+      "why": "customer state; OrderStatus is the work order"
+    },
+    "license_plate": {
+      "source": "Kenteken",
+      "why": "kenteken = plate"
+    },
+    "phone": {
+      "source": "TelefoonMobiel",
+      "why": "only phone"
+    },
+    "preferred_workshop": {
+      "source": null,
+      "why": "not in export"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "KlantNummer",
+        "WerkorderNummer"
+      ],
+      "correctFor": "customer_number"
+    },
+    {
+      "kind": "organization-name-vs-person-name",
+      "fields": [
+        "KlantNaam",
+        "Lease.Naam"
+      ],
+      "correctFor": "name"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "AanmaakDatum",
+        "LaatstGewijzigd"
+      ],
+      "correctFor": "customer_since"
+    },
+    {
+      "kind": "account-status-vs-transaction-status",
+      "fields": [
+        "KlantStatus",
+        "OrderStatus"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "Klant.Email",
+        "Lease.Email"
+      ],
+      "correctFor": "email"
+    }
+  ],
+  "sourceConcepts": {
+    "Kilometerstand": "quantity",
+    "WerkorderNummer": "transaction-id",
+    "Klant.Email": "email",
+    "LaatstGewijzigd": "modified-date",
+    "OrderStatus": "order-status",
+    "KlantNaam": "person-name",
+    "Lease.Naam": "organization-name",
+    "Lease.Email": "email",
+    "Kenteken": "other-identifier",
+    "Arbeidsloon": "amount",
+    "KlantNummer": "customer-id",
+    "TelefoonMobiel": "phone",
+    "AanmaakDatum": "created-date",
+    "KlantStatus": "account-status",
+    "Onderdelenkosten": "amount",
+    "VolgendeApk": "due-date"
+  },
+  "destinationConcepts": {
+    "customer_number": "customer-id",
+    "name": "person-name",
+    "email": "email",
+    "customer_since": "created-date",
+    "status": "account-status",
+    "license_plate": "other-identifier",
+    "phone": "phone",
+    "preferred_workshop": "other"
+  }
+}

@@ -11,6 +11,7 @@ import { ALIAS_PATTERN, PrivateBindings, validateBindings, type BindingEntry } f
 import { createRng, deriveSeed, fnv1a, hex8, shuffle } from "./prng.ts";
 import { dateOrderOverrideAllowed, defaultDescriptor, inferRole, roleCompatible, type SemanticRole } from "./roles.ts";
 import { fallbackSynthetic, syntheticValue, type SyntheticValue } from "./synthetic.ts";
+import { conceptPhrases, inferConcept, isConcept, isPersonalConcept, reviewedConcept, type Concept, type ConceptClaim } from "./concepts.ts";
 
 export const DEFAULT_TWIN_SEED = 20261111;
 export const SYNTHETIC_EXAMPLE_COUNT = 6;
@@ -29,6 +30,14 @@ export interface TwinFieldOverride {
   role?: SemanticRole;
   /** User-reviewed day/month order for an ambiguous slash-date field. */
   dateFormat?: "MM/DD/YYYY" | "DD/MM/YYYY";
+  /**
+   * Sprint 18A: reviewed business meaning (ADR 0016). `null` = the reviewer
+   * says no specific meaning (suppresses the inferred one). Must be compatible
+   * with the profile.
+   */
+  concept?: Concept | null;
+  /** Who set `concept`: the data owner (default) or an applied on-device suggestion. */
+  conceptBy?: "user" | "on-device-model";
 }
 
 export interface TwinOptions {
@@ -37,6 +46,11 @@ export interface TwinOptions {
   overrides?: Record<string, TwinFieldOverride>;
   /** Local-only private value index, used to reject synthetic collisions and descriptor leaks. */
   privateStrings?: ReadonlySet<string>;
+  /**
+   * Sprint 18A: add each field's business meaning to its descriptor (ADR 0016).
+   * Default true. `false` reproduces the pre-18A twin (evaluation baseline T0).
+   */
+  concepts?: boolean;
 }
 
 /** Local view of one twin field. Includes the private path for the local UI only. */
@@ -51,6 +65,10 @@ export interface TwinFieldView {
   categoryCount: number;
   categoriesDisclosed: boolean;
   rareCategoryCount: number;
+  /** Sprint 18A: the field's business meaning and its provenance, or null when none is known or it was withheld. */
+  concept: ConceptClaim | null;
+  /** The meaning describes personal data about a person (local caution only). */
+  personal: boolean;
 }
 
 export interface ExcludedField {
@@ -137,6 +155,12 @@ export function generatePhantomTwin(profile: SourceProfile, options: TwinOptions
   const sortedSupported = [...supported].sort((a, b) =>
     (aliasByPath.get(a.path) ?? "").localeCompare(aliasByPath.get(b.path) ?? ""),
   );
+  const siblingPaths = supported.map((field) => field.path);
+  // Local field-name segments a meaning phrase must never contain (≥ 4 characters, like the private-value scans).
+  const conceptGuardNames = new Set(
+    profile.fields.flatMap((field) => field.path.split(".")).filter((name) => name.length >= 4).map((name) => name.toLowerCase()),
+  );
+  let meaningWithheld = 0;
   const localNames = new Set(
     profile.fields.flatMap((field) => field.path.split(".")).filter((name) => name.length >= 3).map((name) => name.toLowerCase()),
   );
@@ -160,12 +184,35 @@ export function generatePhantomTwin(profile: SourceProfile, options: TwinOptions
         issues.push({ code: "SEMANTICS_INCOMPATIBLE", alias, message: `${alias}: the reviewed date order contradicts the observed values.` });
       }
     }
+    let concept: ConceptClaim | null = null;
+    if (options.concepts !== false) {
+      if (override.concept === null) {
+        concept = null;
+      } else if (override.concept !== undefined) {
+        concept = isConcept(override.concept) ? reviewedConcept(override.concept, observed, override.conceptBy ?? "user") : null;
+        if (!concept) {
+          issues.push({ code: "SEMANTICS_INCOMPATIBLE", alias, message: `${alias}: the reviewed meaning contradicts the observed profile.` });
+        }
+      } else {
+        concept = inferConcept(observed, siblingPaths.filter((path) => path !== observed.path));
+      }
+    }
     const shareable = override.shareable !== false;
     const categoriesDisclosed = field.type === "enum" && override.discloseCategories === true;
     const labels = categoriesDisclosed ? (field.categories ?? []).map((item) => item.value) : null;
     const threshold = rareThreshold(profile.recordCount);
 
     let descriptor = defaultDescriptor(role, field, { categoriesDisclosed });
+    if (concept) {
+      const withMeaning = withConcept(descriptor, concept, privateStrings, conceptGuardNames, labels);
+      if (withMeaning) {
+        descriptor = withMeaning;
+      } else {
+        // Fail closed: a fixed phrase that happens to contain a private value is not disclosed.
+        concept = null;
+        meaningWithheld += 1;
+      }
+    }
     let descriptorSource: TwinFieldView["descriptorSource"] = "generated";
     if (typeof override.descriptor === "string" && override.descriptor.trim().length > 0) {
       const candidate = override.descriptor.trim();
@@ -223,6 +270,8 @@ export function generatePhantomTwin(profile: SourceProfile, options: TwinOptions
       categoryCount: field.categories?.length ?? 0,
       categoriesDisclosed,
       rareCategoryCount: (field.categories ?? []).filter((item) => item.count < threshold).length,
+      concept: descriptorSource === "user" ? null : concept,
+      personal: concept !== null && isPersonalConcept(concept.concept),
     });
   });
 
@@ -261,6 +310,14 @@ export function generatePhantomTwin(profile: SourceProfile, options: TwinOptions
   const keptLocal = views.filter((view) => !view.shareable).length;
   if (keptLocal > 0) {
     limitations.push(`${keptLocal} field(s) are kept local and will not be described to Gemini.`);
+  }
+
+  if (meaningWithheld > 0) {
+    limitations.push(`The meaning of ${meaningWithheld} field(s) was withheld because its wording matched a private value or a local field name.`);
+  }
+  const inferred = views.filter((view) => view.shareable && view.concept?.status === "hypothesis").length;
+  if (inferred > 0) {
+    limitations.push(`${inferred} field meaning(s) are unconfirmed hypotheses read from local field names.`);
   }
 
   const disclosureConstraints = [
@@ -326,6 +383,36 @@ function descriptorProblem(
     if (value.length >= 4 && lowered.includes(value)) {
       return { code: "DESCRIPTOR_LEAK", message: "descriptor contains a value observed in the private source." };
     }
+  }
+  return null;
+}
+
+/** Longest generated descriptor (the disclosure schemas allow 280). */
+const MAX_GENERATED_DESCRIPTOR = 280;
+
+/**
+ * Append the first fixed meaning wording whose added words contain no private
+ * value and no local field-name segment of four or more characters. Returns
+ * null (the meaning is withheld, the disclosure is not blocked) when every
+ * wording collides: a fixed phrase that
+ * happens to spell a field name ("priority" for a field "prio") would still
+ * reveal it. Approved category labels are the only exception, as in the
+ * disclosure leak scan.
+ */
+function withConcept(
+  base: string,
+  claim: ConceptClaim,
+  privateStrings: ReadonlySet<string>,
+  localNames: ReadonlySet<string>,
+  labels: string[] | null,
+): string | null {
+  const approved = new Set((labels ?? []).map((label) => label.trim().toLowerCase()));
+  const guarded = [...privateStrings, ...localNames].filter((value) => value.length >= SCAN_MIN_LENGTH && !approved.has(value));
+  for (const phrase of conceptPhrases(claim)) {
+    const text = `${base}; ${phrase}`;
+    if (text.length > MAX_GENERATED_DESCRIPTOR) continue;
+    const added = text.slice(base.length).toLowerCase();
+    if (!guarded.some((value) => added.includes(value))) return text;
   }
   return null;
 }

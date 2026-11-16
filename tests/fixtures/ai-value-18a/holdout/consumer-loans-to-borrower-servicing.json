@@ -1,0 +1,658 @@
+{
+  "scenarioId": "consumer-loans-to-borrower-servicing",
+  "split": "holdout",
+  "industry": "banking/loans",
+  "sourceLanguage": "fr",
+  "description": "Loan-book export from a fictional French consumer lender, to be loaded as borrower records in a loan-servicing system.",
+  "fictional": true,
+  "records": [
+    {
+      "numeroPret": "019747339",
+      "telFixe": null,
+      "statutEcheance": "reportee",
+      "dateNaissance": "04/11/1967",
+      "codeAgence": "65238",
+      "raisonSociale": "Zephra SARL",
+      "courriel": "lea.mercier@example.org",
+      "capitalRestantDu": 146365.7,
+      "adresse": {
+        "ville": "Lussan-les-Prés",
+        "codePostal": "35481"
+      },
+      "numeroClient": "130560225",
+      "tauxInteret": 3.18,
+      "nomEmprunteur": "Léa Mercier",
+      "dateOuverture": "07/12/2018",
+      "montantEmprunte": 275000.0,
+      "statutClient": "actif",
+      "telPortable": "+33 6 45707515",
+      "dateMaj": "10/09/2025"
+    },
+    {
+      "numeroPret": "663081134",
+      "telFixe": "+33 1 67416634",
+      "statutEcheance": "payee",
+      "dateNaissance": "04/10/1978",
+      "codeAgence": "14111",
+      "raisonSociale": "Kaldera SARL",
+      "courriel": "agathe.blanchard@example.org",
+      "capitalRestantDu": 159048.61,
+      "adresse": {
+        "ville": "Lussan-les-Prés",
+        "codePostal": "73691"
+      },
+      "numeroClient": "455421014",
+      "tauxInteret": 4.02,
+      "nomEmprunteur": "Agathe Blanchard",
+      "dateOuverture": "12/04/2016",
+      "montantEmprunte": 272000.0,
+      "statutClient": "actif",
+      "telPortable": "+33 6 40714151",
+      "dateMaj": "08/09/2025"
+    },
+    {
+      "numeroPret": "842968199",
+      "telFixe": null,
+      "statutEcheance": "en_retard",
+      "dateNaissance": "03/05/1992",
+      "codeAgence": "76347",
+      "raisonSociale": "Pellucid SAS",
+      "courriel": "mathis.fontaine@example.org",
+      "capitalRestantDu": 222703.94,
+      "adresse": {
+        "ville": "Beauregard-sur-Vire",
+        "codePostal": "24442"
+      },
+      "numeroClient": "565052217",
+      "tauxInteret": 4.01,
+      "nomEmprunteur": "Mathis Fontaine",
+      "dateOuverture": "08/09/2012",
+      "montantEmprunte": 244000.0,
+      "statutClient": "actif",
+      "telPortable": "+33 6 53215294",
+      "dateMaj": "05/07/2025"
+    },
+    {
+      "numeroPret": "488764385",
+      "telFixe": null,
+      "statutEcheance": "en_retard",
+      "dateNaissance": "12/08/1990",
+      "codeAgence": "54901",
+      "raisonSociale": null,
+      "courriel": "camille.perrin@example.org",
+      "capitalRestantDu": 202852.24,
+      "adresse": {
+        "ville": "Rivecourt",
+        "codePostal": "90718"
+      },
+      "numeroClient": "771171848",
+      "tauxInteret": 5.91,
+      "nomEmprunteur": "Camille Perrin",
+      "dateOuverture": "02/02/2020",
+      "montantEmprunte": 272000.0,
+      "statutClient": "actif",
+      "telPortable": "+33 6 34323865",
+      "dateMaj": "07/08/2026"
+    },
+    {
+      "numeroPret": "621405179",
+      "telFixe": "+33 1 35749957",
+      "statutEcheance": "impayee",
+      "dateNaissance": "01/04/1960",
+      "codeAgence": "89035",
+      "raisonSociale": "Strathon SAS",
+      "courriel": "agathe.dufour@example.org",
+      "capitalRestantDu": 124493.07,
+      "adresse": {
+        "ville": "Lussan-les-Prés",
+        "codePostal": "56966"
+      },
+      "numeroClient": "792320580",
+      "tauxInteret": 1.15,
+      "nomEmprunteur": "Agathe Dufour",
+      "dateOuverture": "07/08/2023",
+      "montantEmprunte": 146000.0,
+      "statutClient": "actif",
+      "telPortable": "+33 6 34219682",
+      "dateMaj": "12/04/2025"
+    },
+    {
+      "numeroPret": "669466561",
+      "telFixe": "+33 1 34477916",
+      "statutEcheance": "impayee",
+      "dateNaissance": "07/10/1966",
+      "codeAgence": "80581",
+      "raisonSociale": null,
+      "courriel": "chloe.marchand@example.org",
+      "capitalRestantDu": 22030.68,
+      "adresse": {
+        "ville": "Montaubrac",
+        "codePostal": "75235"
+      },
+      "numeroClient": "558838057",
+      "tauxInteret": 5.53,
+      "nomEmprunteur": "Chloé Marchand",
+      "dateOuverture": "10/09/2013",
+      "montantEmprunte": 220000.0,
+      "statutClient": "actif",
+      "telPortable": "+33 6 36879494",
+      "dateMaj": "04/04/2026"
+    },
+    {
+      "numeroPret": "099691148",
+      "telFixe": "+33 1 82403791",
+      "statutEcheance": "impayee",
+      "dateNaissance": "10/10/1970",
+      "codeAgence": "33853",
+      "raisonSociale": "Velmora SAS",
+      "courriel": "hugo.mercier@example.org",
+      "capitalRestantDu": 23482.99,
+      "adresse": {
+        "ville": "Rivecourt",
+        "codePostal": "69623"
+      },
+      "numeroClient": "489693181",
+      "tauxInteret": 3.92,
+      "nomEmprunteur": "Hugo Mercier",
+      "dateOuverture": "05/06/2012",
+      "montantEmprunte": 145000.0,
+      "statutClient": "cloture",
+      "telPortable": "+33 6 29070438",
+      "dateMaj": "11/02/2026"
+    },
+    {
+      "numeroPret": "370831830",
+      "telFixe": "+33 1 26290227",
+      "statutEcheance": "impayee",
+      "dateNaissance": "12/09/1979",
+      "codeAgence": "65252",
+      "raisonSociale": "Pellucid SARL",
+      "courriel": "theo.moreau@example.org",
+      "capitalRestantDu": 49772.64,
+      "adresse": {
+        "ville": "Montaubrac",
+        "codePostal": "81225"
+      },
+      "numeroClient": "920622614",
+      "tauxInteret": 5.8,
+      "nomEmprunteur": "Théo Moreau",
+      "dateOuverture": "12/06/2019",
+      "montantEmprunte": 56000.0,
+      "statutClient": "actif",
+      "telPortable": "+33 6 08816766",
+      "dateMaj": "12/05/2026"
+    },
+    {
+      "numeroPret": "298637628",
+      "telFixe": null,
+      "statutEcheance": "payee",
+      "dateNaissance": "05/08/1967",
+      "codeAgence": "39837",
+      "raisonSociale": "Brasko SAS",
+      "courriel": "elise.fontaine@example.org",
+      "capitalRestantDu": 65762.99,
+      "adresse": {
+        "ville": "Saint-Florent-du-Lac",
+        "codePostal": "35743"
+      },
+      "numeroClient": "826276674",
+      "tauxInteret": 5.14,
+      "nomEmprunteur": "Élise Fontaine",
+      "dateOuverture": "12/09/2022",
+      "montantEmprunte": 102000.0,
+      "statutClient": "actif",
+      "telPortable": "+33 6 17043522",
+      "dateMaj": "04/02/2025"
+    },
+    {
+      "numeroPret": "464648171",
+      "telFixe": "+33 1 31387259",
+      "statutEcheance": "payee",
+      "dateNaissance": "09/06/1995",
+      "codeAgence": "53261",
+      "raisonSociale": "Ostrin SAS",
+      "courriel": "elise.mercier@example.org",
+      "capitalRestantDu": 166399.96,
+      "adresse": {
+        "ville": "Rivecourt",
+        "codePostal": "37029"
+      },
+      "numeroClient": "218543418",
+      "tauxInteret": 3.38,
+      "nomEmprunteur": "Élise Mercier",
+      "dateOuverture": "12/12/2011",
+      "montantEmprunte": 222000.0,
+      "statutClient": "actif",
+      "telPortable": "+33 6 69521842",
+      "dateMaj": "05/03/2026"
+    },
+    {
+      "numeroPret": "131174929",
+      "telFixe": null,
+      "statutEcheance": "payee",
+      "dateNaissance": "02/07/1995",
+      "codeAgence": "17161",
+      "raisonSociale": "Norvel SAS",
+      "courriel": "ines.dufour@example.org",
+      "capitalRestantDu": 180081.32,
+      "adresse": {
+        "ville": "Lussan-les-Prés",
+        "codePostal": "41267"
+      },
+      "numeroClient": "543464505",
+      "tauxInteret": 5.73,
+      "nomEmprunteur": "Inès Dufour",
+      "dateOuverture": "11/06/2014",
+      "montantEmprunte": 208000.0,
+      "statutClient": "actif",
+      "telPortable": "+33 6 08756529",
+      "dateMaj": "06/03/2025"
+    },
+    {
+      "numeroPret": "573304265",
+      "telFixe": null,
+      "statutEcheance": "payee",
+      "dateNaissance": "10/04/1954",
+      "codeAgence": "24616",
+      "raisonSociale": "Halvik SAS",
+      "courriel": "lea.guerin@example.org",
+      "capitalRestantDu": 86180.1,
+      "adresse": {
+        "ville": "Montaubrac",
+        "codePostal": "82763"
+      },
+      "numeroClient": "908638609",
+      "tauxInteret": 1.51,
+      "nomEmprunteur": "Léa Guérin",
+      "dateOuverture": "12/10/2012",
+      "montantEmprunte": 88000.0,
+      "statutClient": "actif",
+      "telPortable": "+33 6 75854739",
+      "dateMaj": "05/04/2025"
+    },
+    {
+      "numeroPret": "459013063",
+      "telFixe": "+33 1 71708652",
+      "statutEcheance": "impayee",
+      "dateNaissance": "08/04/1994",
+      "codeAgence": "23605",
+      "raisonSociale": "Halvik SAS",
+      "courriel": "elise.girard@example.org",
+      "capitalRestantDu": 33119.94,
+      "adresse": {
+        "ville": "Rivecourt",
+        "codePostal": "29329"
+      },
+      "numeroClient": "696804869",
+      "tauxInteret": 6.36,
+      "nomEmprunteur": "Élise Girard",
+      "dateOuverture": "02/06/2021",
+      "montantEmprunte": 41000.0,
+      "statutClient": "actif",
+      "telPortable": "+33 6 33628929",
+      "dateMaj": "11/03/2026"
+    },
+    {
+      "numeroPret": "431902115",
+      "telFixe": "+33 1 54193423",
+      "statutEcheance": "en_retard",
+      "dateNaissance": "02/03/1995",
+      "codeAgence": "22542",
+      "raisonSociale": "Ombrex SARL",
+      "courriel": "camille.mercier@example.org",
+      "capitalRestantDu": 52778.33,
+      "adresse": {
+        "ville": "Rivecourt",
+        "codePostal": "49879"
+      },
+      "numeroClient": "652086613",
+      "tauxInteret": 5.89,
+      "nomEmprunteur": "Camille Mercier",
+      "dateOuverture": "11/12/2014",
+      "montantEmprunte": 108000.0,
+      "statutClient": "actif",
+      "telPortable": "+33 6 67399541",
+      "dateMaj": "02/01/2026"
+    },
+    {
+      "numeroPret": "292020007",
+      "telFixe": "+33 1 73263464",
+      "statutEcheance": "impayee",
+      "dateNaissance": "12/08/1952",
+      "codeAgence": "45919",
+      "raisonSociale": "Strathon SAS",
+      "courriel": "chloe.garnier@example.org",
+      "capitalRestantDu": 360946.55,
+      "adresse": {
+        "ville": "Montaubrac",
+        "codePostal": "27256"
+      },
+      "numeroClient": "743931448",
+      "tauxInteret": 6.43,
+      "nomEmprunteur": "Chloé Garnier",
+      "dateOuverture": "07/06/2021",
+      "montantEmprunte": 381000.0,
+      "statutClient": "contentieux",
+      "telPortable": "+33 6 93472457",
+      "dateMaj": "07/01/2025"
+    },
+    {
+      "numeroPret": "691706039",
+      "telFixe": null,
+      "statutEcheance": "reportee",
+      "dateNaissance": "02/03/1951",
+      "codeAgence": "36259",
+      "raisonSociale": "Norvel SAS",
+      "courriel": "ines.chevalier@example.org",
+      "capitalRestantDu": 134288.32,
+      "adresse": {
+        "ville": "Beauregard-sur-Vire",
+        "codePostal": "45586"
+      },
+      "numeroClient": "510211266",
+      "tauxInteret": 2.29,
+      "nomEmprunteur": "Inès Chevalier",
+      "dateOuverture": "08/05/2023",
+      "montantEmprunte": 213000.0,
+      "statutClient": "contentieux",
+      "telPortable": "+33 6 84138957",
+      "dateMaj": "06/05/2025"
+    },
+    {
+      "numeroPret": "236700559",
+      "telFixe": null,
+      "statutEcheance": "reportee",
+      "dateNaissance": "08/02/1995",
+      "codeAgence": "21115",
+      "raisonSociale": "Brasko SAS",
+      "courriel": "camille.dufour@example.org",
+      "capitalRestantDu": 205424.0,
+      "adresse": {
+        "ville": "Lussan-les-Prés",
+        "codePostal": "89763"
+      },
+      "numeroClient": "992093293",
+      "tauxInteret": 4.82,
+      "nomEmprunteur": "Camille Dufour",
+      "dateOuverture": "10/09/2025",
+      "montantEmprunte": 250000.0,
+      "statutClient": "actif",
+      "telPortable": "+33 6 09559050",
+      "dateMaj": "10/07/2026"
+    },
+    {
+      "numeroPret": "763598148",
+      "telFixe": "+33 1 78847263",
+      "statutEcheance": "impayee",
+      "dateNaissance": "02/08/1972",
+      "codeAgence": "73152",
+      "raisonSociale": null,
+      "courriel": "mathis.guerin@example.org",
+      "capitalRestantDu": 129935.49,
+      "adresse": {
+        "ville": "Saint-Florent-du-Lac",
+        "codePostal": "37937"
+      },
+      "numeroClient": "591495935",
+      "tauxInteret": 1.76,
+      "nomEmprunteur": "Mathis Guérin",
+      "dateOuverture": "01/05/2024",
+      "montantEmprunte": 222000.0,
+      "statutClient": "actif",
+      "telPortable": "+33 6 89755085",
+      "dateMaj": "04/12/2026"
+    },
+    {
+      "numeroPret": "424961810",
+      "telFixe": null,
+      "statutEcheance": "payee",
+      "dateNaissance": "09/02/1973",
+      "codeAgence": "72896",
+      "raisonSociale": "Brasko SAS",
+      "courriel": "lea.perrin@example.org",
+      "capitalRestantDu": 47213.31,
+      "adresse": {
+        "ville": "Saint-Florent-du-Lac",
+        "codePostal": "91039"
+      },
+      "numeroClient": "484315107",
+      "tauxInteret": 1.63,
+      "nomEmprunteur": "Léa Perrin",
+      "dateOuverture": "07/11/2024",
+      "montantEmprunte": 254000.0,
+      "statutClient": "cloture",
+      "telPortable": "+33 6 56726464",
+      "dateMaj": "10/02/2026"
+    },
+    {
+      "numeroPret": "509667803",
+      "telFixe": null,
+      "statutEcheance": "impayee",
+      "dateNaissance": "01/01/1968",
+      "codeAgence": "80173",
+      "raisonSociale": "Quintara SAS",
+      "courriel": "ines.chevalier@example.org",
+      "capitalRestantDu": 31384.93,
+      "adresse": {
+        "ville": "Beauregard-sur-Vire",
+        "codePostal": "35816"
+      },
+      "numeroClient": "458108245",
+      "tauxInteret": 1.38,
+      "nomEmprunteur": "Inès Chevalier",
+      "dateOuverture": "10/12/2025",
+      "montantEmprunte": 137000.0,
+      "statutClient": "cloture",
+      "telPortable": "+33 6 54166352",
+      "dateMaj": "02/06/2025"
+    },
+    {
+      "numeroPret": "398990875",
+      "telFixe": "+33 1 81898094",
+      "statutEcheance": "impayee",
+      "dateNaissance": "07/05/1950",
+      "codeAgence": "60112",
+      "raisonSociale": null,
+      "courriel": "agathe.faure@example.org",
+      "capitalRestantDu": 63907.65,
+      "adresse": {
+        "ville": "Beauregard-sur-Vire",
+        "codePostal": "00104"
+      },
+      "numeroClient": "066531620",
+      "tauxInteret": 3.63,
+      "nomEmprunteur": "Agathe Faure",
+      "dateOuverture": "01/08/2014",
+      "montantEmprunte": 66000.0,
+      "statutClient": "actif",
+      "telPortable": "+33 6 48980914",
+      "dateMaj": "06/09/2025"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "client_number": {
+        "type": "string"
+      },
+      "borrower_name": {
+        "type": "string"
+      },
+      "employer_name": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "date_of_birth": {
+        "type": "string",
+        "format": "date"
+      },
+      "email": {
+        "type": "string",
+        "format": "email"
+      },
+      "mobile_phone": {
+        "type": "string"
+      },
+      "postal_code": {
+        "type": "string"
+      },
+      "customer_status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "closed",
+          "litigation"
+        ]
+      },
+      "outstanding_balance": {
+        "type": "number"
+      },
+      "credit_score": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "client_number",
+      "borrower_name"
+    ]
+  },
+  "groundTruth": {
+    "client_number": {
+      "source": "numeroClient",
+      "why": "client number; numeroPret is the loan number"
+    },
+    "borrower_name": {
+      "source": "nomEmprunteur",
+      "why": "borrower"
+    },
+    "employer_name": {
+      "source": "raisonSociale",
+      "why": "raison sociale of the employer"
+    },
+    "date_of_birth": {
+      "source": "dateNaissance",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "birth date; dateOuverture is loan opening"
+    },
+    "email": {
+      "source": "courriel",
+      "why": "only email"
+    },
+    "mobile_phone": {
+      "source": "telPortable",
+      "why": "portable = mobile; fixe = landline"
+    },
+    "postal_code": {
+      "source": "adresse.codePostal",
+      "why": "postal code; codeAgence is branch code"
+    },
+    "customer_status": {
+      "source": "statutClient",
+      "why": "client state; statutEcheance is instalment state"
+    },
+    "outstanding_balance": {
+      "source": "capitalRestantDu",
+      "why": "remaining principal; montantEmprunte is original amount"
+    },
+    "credit_score": {
+      "source": null,
+      "why": "not in export"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "numeroClient",
+        "numeroPret"
+      ],
+      "correctFor": "client_number"
+    },
+    {
+      "kind": "birth-date-vs-signup-or-start-date",
+      "fields": [
+        "dateNaissance",
+        "dateOuverture"
+      ],
+      "correctFor": "date_of_birth"
+    },
+    {
+      "kind": "organization-name-vs-person-name",
+      "fields": [
+        "raisonSociale",
+        "nomEmprunteur"
+      ],
+      "correctFor": "employer_name"
+    },
+    {
+      "kind": "account-status-vs-transaction-status",
+      "fields": [
+        "statutClient",
+        "statutEcheance"
+      ],
+      "correctFor": "customer_status"
+    },
+    {
+      "kind": "currency-or-amount-confusion",
+      "fields": [
+        "capitalRestantDu",
+        "montantEmprunte"
+      ],
+      "correctFor": "outstanding_balance"
+    },
+    {
+      "kind": "phone-or-code-confusion",
+      "fields": [
+        "adresse.codePostal",
+        "codeAgence"
+      ],
+      "correctFor": "postal_code"
+    },
+    {
+      "kind": "phone-or-code-confusion",
+      "fields": [
+        "telPortable",
+        "telFixe"
+      ],
+      "correctFor": "mobile_phone"
+    }
+  ],
+  "sourceConcepts": {
+    "numeroPret": "transaction-id",
+    "telFixe": "phone",
+    "statutEcheance": "payment-status",
+    "dateNaissance": "birth-date",
+    "codeAgence": "other-identifier",
+    "raisonSociale": "organization-name",
+    "courriel": "email",
+    "capitalRestantDu": "amount",
+    "adresse.ville": "city",
+    "adresse.codePostal": "postal-code",
+    "numeroClient": "customer-id",
+    "tauxInteret": "other",
+    "nomEmprunteur": "person-name",
+    "dateOuverture": "start-date",
+    "montantEmprunte": "amount",
+    "statutClient": "account-status",
+    "telPortable": "phone",
+    "dateMaj": "modified-date"
+  },
+  "destinationConcepts": {
+    "client_number": "customer-id",
+    "borrower_name": "person-name",
+    "employer_name": "organization-name",
+    "date_of_birth": "birth-date",
+    "email": "email",
+    "mobile_phone": "phone",
+    "postal_code": "postal-code",
+    "customer_status": "account-status",
+    "outstanding_balance": "amount",
+    "credit_score": "other"
+  }
+}

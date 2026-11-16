@@ -1,0 +1,855 @@
+{
+  "scenarioId": "donations-to-supporter-crm",
+  "split": "holdout",
+  "industry": "nonprofit donors",
+  "sourceLanguage": "es",
+  "description": "Donation export with c_-prefixed fields from a fictional Spanish charity's fundraising tool, to be loaded as supporter CRM records.",
+  "fictional": true,
+  "records": [
+    {
+      "c_canal": "evento",
+      "c_id_donacion": 683706,
+      "c_email_empresa": null,
+      "c_importe": 15.0,
+      "c_nombre": "Noelia Medina",
+      "c_direccion": {
+        "ciudad": "Aldeanueva",
+        "cp": "39702"
+      },
+      "c_estado_cobro": "cobrado",
+      "c_f_primera_donacion": "08/04/2015",
+      "c_id_donante": 136119,
+      "c_frecuencia": "anual",
+      "c_empresa": null,
+      "c_f_nacimiento": "24/04/1996",
+      "c_importe_acumulado": 960.0,
+      "c_email": "noelia.medina@example.org",
+      "c_estado_socio": "activo",
+      "c_acepta_comunicaciones": true,
+      "c_f_modificacion": "14/10/2026"
+    },
+    {
+      "c_canal": "evento",
+      "c_id_donacion": 542561,
+      "c_email_empresa": null,
+      "c_importe": 50.0,
+      "c_nombre": "Noelia Castillo",
+      "c_direccion": {
+        "ciudad": "Puertoclaro",
+        "cp": "51184"
+      },
+      "c_estado_cobro": "cobrado",
+      "c_f_primera_donacion": "13/08/2023",
+      "c_id_donante": 298622,
+      "c_frecuencia": "anual",
+      "c_empresa": "Tavrin S.L.",
+      "c_f_nacimiento": "01/07/1990",
+      "c_importe_acumulado": 1650.0,
+      "c_email": "noelia.castillo@example.org",
+      "c_estado_socio": "activo",
+      "c_acepta_comunicaciones": false,
+      "c_f_modificacion": "06/03/2025"
+    },
+    {
+      "c_canal": "web",
+      "c_id_donacion": 918109,
+      "c_email_empresa": null,
+      "c_importe": 20.0,
+      "c_nombre": "Javier Romero",
+      "c_direccion": {
+        "ciudad": "Puertoclaro",
+        "cp": "15980"
+      },
+      "c_estado_cobro": "devuelto",
+      "c_f_primera_donacion": "28/02/2016",
+      "c_id_donante": 228249,
+      "c_frecuencia": "anual",
+      "c_empresa": null,
+      "c_f_nacimiento": "22/01/1982",
+      "c_importe_acumulado": 340.0,
+      "c_email": "javier.romero@example.org",
+      "c_estado_socio": "activo",
+      "c_acepta_comunicaciones": false,
+      "c_f_modificacion": "05/06/2025"
+    },
+    {
+      "c_canal": "web",
+      "c_id_donacion": 662022,
+      "c_email_empresa": "sofia@empresa.example.net",
+      "c_importe": 10.0,
+      "c_nombre": "Sofía Ibáñez",
+      "c_direccion": {
+        "ciudad": "Villarreal del Monte",
+        "cp": "11120"
+      },
+      "c_estado_cobro": "pendiente",
+      "c_f_primera_donacion": "18/09/2024",
+      "c_id_donante": 931529,
+      "c_frecuencia": "puntual",
+      "c_empresa": "Strathon S.L.",
+      "c_f_nacimiento": "16/11/1943",
+      "c_importe_acumulado": 480.0,
+      "c_email": "sofia.ibanez@example.org",
+      "c_estado_socio": "inactivo",
+      "c_acepta_comunicaciones": true,
+      "c_f_modificacion": "27/11/2026"
+    },
+    {
+      "c_canal": "web",
+      "c_id_donacion": 837321,
+      "c_email_empresa": null,
+      "c_importe": 20.0,
+      "c_nombre": "Paula Ibáñez",
+      "c_direccion": {
+        "ciudad": "Aldeanueva",
+        "cp": "72910"
+      },
+      "c_estado_cobro": "cobrado",
+      "c_f_primera_donacion": "18/03/2022",
+      "c_id_donante": 680040,
+      "c_frecuencia": "anual",
+      "c_empresa": null,
+      "c_f_nacimiento": "14/08/1943",
+      "c_importe_acumulado": 260.0,
+      "c_email": "paula.ibanez@example.org",
+      "c_estado_socio": "activo",
+      "c_acepta_comunicaciones": true,
+      "c_f_modificacion": "08/01/2025"
+    },
+    {
+      "c_canal": "web",
+      "c_id_donacion": 952517,
+      "c_email_empresa": null,
+      "c_importe": 15.0,
+      "c_nombre": "Héctor Cabrera",
+      "c_direccion": {
+        "ciudad": "Robledal",
+        "cp": "80324"
+      },
+      "c_estado_cobro": "devuelto",
+      "c_f_primera_donacion": "14/02/2020",
+      "c_id_donante": 830289,
+      "c_frecuencia": "mensual",
+      "c_empresa": null,
+      "c_f_nacimiento": "24/03/1945",
+      "c_importe_acumulado": 510.0,
+      "c_email": "hector.cabrera@example.org",
+      "c_estado_socio": "inactivo",
+      "c_acepta_comunicaciones": true,
+      "c_f_modificacion": "24/05/2026"
+    },
+    {
+      "c_canal": "telefono",
+      "c_id_donacion": 781795,
+      "c_email_empresa": "ines@empresa.example.net",
+      "c_importe": 10.0,
+      "c_nombre": "Inés Cabrera",
+      "c_direccion": {
+        "ciudad": "Aldeanueva",
+        "cp": "50265"
+      },
+      "c_estado_cobro": "pendiente",
+      "c_f_primera_donacion": "04/11/2021",
+      "c_id_donante": 800824,
+      "c_frecuencia": "mensual",
+      "c_empresa": null,
+      "c_f_nacimiento": "25/01/1946",
+      "c_importe_acumulado": 710.0,
+      "c_email": "ines.cabrera@example.org",
+      "c_estado_socio": "activo",
+      "c_acepta_comunicaciones": true,
+      "c_f_modificacion": "16/09/2026"
+    },
+    {
+      "c_canal": "evento",
+      "c_id_donacion": 895183,
+      "c_email_empresa": null,
+      "c_importe": 10.0,
+      "c_nombre": "Lucía Romero",
+      "c_direccion": {
+        "ciudad": "San Quirico",
+        "cp": "09313"
+      },
+      "c_estado_cobro": "pendiente",
+      "c_f_primera_donacion": "16/04/2014",
+      "c_id_donante": 347269,
+      "c_frecuencia": "mensual",
+      "c_empresa": null,
+      "c_f_nacimiento": "18/04/1954",
+      "c_importe_acumulado": 460.0,
+      "c_email": "lucia.romero@example.org",
+      "c_estado_socio": "activo",
+      "c_acepta_comunicaciones": true,
+      "c_f_modificacion": "28/12/2025"
+    },
+    {
+      "c_canal": "correo",
+      "c_id_donacion": 764312,
+      "c_email_empresa": null,
+      "c_importe": 50.0,
+      "c_nombre": "Mateo Ibáñez",
+      "c_direccion": {
+        "ciudad": "Aldeanueva",
+        "cp": "45751"
+      },
+      "c_estado_cobro": "devuelto",
+      "c_f_primera_donacion": "10/07/2023",
+      "c_id_donante": 395642,
+      "c_frecuencia": "trimestral",
+      "c_empresa": "Quintara S.L.",
+      "c_f_nacimiento": "26/03/1991",
+      "c_importe_acumulado": 200.0,
+      "c_email": "mateo.ibanez@example.org",
+      "c_estado_socio": "activo",
+      "c_acepta_comunicaciones": false,
+      "c_f_modificacion": "26/07/2025"
+    },
+    {
+      "c_canal": "evento",
+      "c_id_donacion": 755142,
+      "c_email_empresa": "hector@empresa.example.net",
+      "c_importe": 15.0,
+      "c_nombre": "Héctor Ibáñez",
+      "c_direccion": {
+        "ciudad": "San Quirico",
+        "cp": "17641"
+      },
+      "c_estado_cobro": "cobrado",
+      "c_f_primera_donacion": "16/07/2014",
+      "c_id_donante": 465015,
+      "c_frecuencia": "anual",
+      "c_empresa": "Strathon S.L.",
+      "c_f_nacimiento": "23/09/1978",
+      "c_importe_acumulado": 975.0,
+      "c_email": "hector.ibanez@example.org",
+      "c_estado_socio": "activo",
+      "c_acepta_comunicaciones": true,
+      "c_f_modificacion": "04/10/2025"
+    },
+    {
+      "c_canal": "evento",
+      "c_id_donacion": 736445,
+      "c_email_empresa": null,
+      "c_importe": 15.0,
+      "c_nombre": "Lucía Vidal",
+      "c_direccion": {
+        "ciudad": "Aldeanueva",
+        "cp": "49726"
+      },
+      "c_estado_cobro": "cobrado",
+      "c_f_primera_donacion": "13/05/2019",
+      "c_id_donante": 656073,
+      "c_frecuencia": "anual",
+      "c_empresa": "Ostrin S.L.",
+      "c_f_nacimiento": "21/02/1969",
+      "c_importe_acumulado": 180.0,
+      "c_email": "lucia.vidal@example.org",
+      "c_estado_socio": "activo",
+      "c_acepta_comunicaciones": true,
+      "c_f_modificacion": "26/03/2026"
+    },
+    {
+      "c_canal": "correo",
+      "c_id_donacion": 360784,
+      "c_email_empresa": null,
+      "c_importe": 15.0,
+      "c_nombre": "Lucía Ibáñez",
+      "c_direccion": {
+        "ciudad": "San Quirico",
+        "cp": "37532"
+      },
+      "c_estado_cobro": "cobrado",
+      "c_f_primera_donacion": "28/03/2018",
+      "c_id_donante": 691618,
+      "c_frecuencia": "puntual",
+      "c_empresa": "Tavrin S.L.",
+      "c_f_nacimiento": "18/05/1978",
+      "c_importe_acumulado": 75.0,
+      "c_email": "lucia.ibanez@example.org",
+      "c_estado_socio": "activo",
+      "c_acepta_comunicaciones": true,
+      "c_f_modificacion": "05/11/2026"
+    },
+    {
+      "c_canal": "web",
+      "c_id_donacion": 245872,
+      "c_email_empresa": null,
+      "c_importe": 25.0,
+      "c_nombre": "Lucía Vidal",
+      "c_direccion": {
+        "ciudad": "San Quirico",
+        "cp": "25515"
+      },
+      "c_estado_cobro": "cobrado",
+      "c_f_primera_donacion": "25/03/2022",
+      "c_id_donante": 795531,
+      "c_frecuencia": "anual",
+      "c_empresa": null,
+      "c_f_nacimiento": "02/12/1965",
+      "c_importe_acumulado": 1500.0,
+      "c_email": "lucia.vidal@example.org",
+      "c_estado_socio": "activo",
+      "c_acepta_comunicaciones": true,
+      "c_f_modificacion": "13/12/2025"
+    },
+    {
+      "c_canal": "web",
+      "c_id_donacion": 975263,
+      "c_email_empresa": "hector@empresa.example.net",
+      "c_importe": 100.0,
+      "c_nombre": "Héctor Cabrera",
+      "c_direccion": {
+        "ciudad": "San Quirico",
+        "cp": "81764"
+      },
+      "c_estado_cobro": "cobrado",
+      "c_f_primera_donacion": "10/08/2023",
+      "c_id_donante": 639401,
+      "c_frecuencia": "mensual",
+      "c_empresa": null,
+      "c_f_nacimiento": "11/03/1965",
+      "c_importe_acumulado": 3800.0,
+      "c_email": "hector.cabrera@example.org",
+      "c_estado_socio": "inactivo",
+      "c_acepta_comunicaciones": true,
+      "c_f_modificacion": "03/05/2026"
+    },
+    {
+      "c_canal": "evento",
+      "c_id_donacion": 496747,
+      "c_email_empresa": null,
+      "c_importe": 20.0,
+      "c_nombre": "Marta Castillo",
+      "c_direccion": {
+        "ciudad": "Aldeanueva",
+        "cp": "86963"
+      },
+      "c_estado_cobro": "pendiente",
+      "c_f_primera_donacion": "02/06/2024",
+      "c_id_donante": 240260,
+      "c_frecuencia": "puntual",
+      "c_empresa": null,
+      "c_f_nacimiento": "20/01/1952",
+      "c_importe_acumulado": 360.0,
+      "c_email": "marta.castillo@example.org",
+      "c_estado_socio": "inactivo",
+      "c_acepta_comunicaciones": true,
+      "c_f_modificacion": "05/06/2025"
+    },
+    {
+      "c_canal": "web",
+      "c_id_donacion": 708413,
+      "c_email_empresa": null,
+      "c_importe": 10.0,
+      "c_nombre": "Pablo Peña",
+      "c_direccion": {
+        "ciudad": "Robledal",
+        "cp": "71816"
+      },
+      "c_estado_cobro": "cobrado",
+      "c_f_primera_donacion": "13/04/2022",
+      "c_id_donante": 916133,
+      "c_frecuencia": "anual",
+      "c_empresa": null,
+      "c_f_nacimiento": "03/06/1982",
+      "c_importe_acumulado": 590.0,
+      "c_email": "pablo.pena@example.org",
+      "c_estado_socio": "activo",
+      "c_acepta_comunicaciones": true,
+      "c_f_modificacion": "18/05/2026"
+    },
+    {
+      "c_canal": "correo",
+      "c_id_donacion": 665561,
+      "c_email_empresa": null,
+      "c_importe": 50.0,
+      "c_nombre": "Carmen Vidal",
+      "c_direccion": {
+        "ciudad": "San Quirico",
+        "cp": "81181"
+      },
+      "c_estado_cobro": "devuelto",
+      "c_f_primera_donacion": "03/08/2017",
+      "c_id_donante": 947021,
+      "c_frecuencia": "puntual",
+      "c_empresa": "Quintara S.A.",
+      "c_f_nacimiento": "01/08/1963",
+      "c_importe_acumulado": 750.0,
+      "c_email": "carmen.vidal@example.org",
+      "c_estado_socio": "inactivo",
+      "c_acepta_comunicaciones": false,
+      "c_f_modificacion": "25/04/2025"
+    },
+    {
+      "c_canal": "evento",
+      "c_id_donacion": 376892,
+      "c_email_empresa": null,
+      "c_importe": 100.0,
+      "c_nombre": "Álvaro Castillo",
+      "c_direccion": {
+        "ciudad": "Aldeanueva",
+        "cp": "96364"
+      },
+      "c_estado_cobro": "devuelto",
+      "c_f_primera_donacion": "18/11/2019",
+      "c_id_donante": 675935,
+      "c_frecuencia": "anual",
+      "c_empresa": "Pellucid S.L.",
+      "c_f_nacimiento": "09/07/1996",
+      "c_importe_acumulado": 2100.0,
+      "c_email": "alvaro.castillo@example.org",
+      "c_estado_socio": "baja",
+      "c_acepta_comunicaciones": false,
+      "c_f_modificacion": "15/11/2026"
+    },
+    {
+      "c_canal": "web",
+      "c_id_donacion": 625076,
+      "c_email_empresa": "alvaro@empresa.example.net",
+      "c_importe": 50.0,
+      "c_nombre": "Álvaro Ortiz",
+      "c_direccion": {
+        "ciudad": "Puertoclaro",
+        "cp": "37045"
+      },
+      "c_estado_cobro": "cobrado",
+      "c_f_primera_donacion": "09/03/2014",
+      "c_id_donante": 968666,
+      "c_frecuencia": "mensual",
+      "c_empresa": null,
+      "c_f_nacimiento": "19/10/1949",
+      "c_importe_acumulado": 2550.0,
+      "c_email": "alvaro.ortiz@example.org",
+      "c_estado_socio": "activo",
+      "c_acepta_comunicaciones": true,
+      "c_f_modificacion": "21/07/2025"
+    },
+    {
+      "c_canal": "web",
+      "c_id_donacion": 840221,
+      "c_email_empresa": null,
+      "c_importe": 100.0,
+      "c_nombre": "Inés Soler",
+      "c_direccion": {
+        "ciudad": "Villarreal del Monte",
+        "cp": "25095"
+      },
+      "c_estado_cobro": "cobrado",
+      "c_f_primera_donacion": "13/05/2024",
+      "c_id_donante": 670558,
+      "c_frecuencia": "trimestral",
+      "c_empresa": null,
+      "c_f_nacimiento": "02/08/1945",
+      "c_importe_acumulado": 4100.0,
+      "c_email": "ines.soler@example.org",
+      "c_estado_socio": "activo",
+      "c_acepta_comunicaciones": false,
+      "c_f_modificacion": "17/01/2026"
+    },
+    {
+      "c_canal": "web",
+      "c_id_donacion": 770412,
+      "c_email_empresa": null,
+      "c_importe": 50.0,
+      "c_nombre": "Raúl Vidal",
+      "c_direccion": {
+        "ciudad": "Robledal",
+        "cp": "12299"
+      },
+      "c_estado_cobro": "devuelto",
+      "c_f_primera_donacion": "04/03/2017",
+      "c_id_donante": 193788,
+      "c_frecuencia": "puntual",
+      "c_empresa": null,
+      "c_f_nacimiento": "25/10/1979",
+      "c_importe_acumulado": 500.0,
+      "c_email": "raul.vidal@example.org",
+      "c_estado_socio": "inactivo",
+      "c_acepta_comunicaciones": false,
+      "c_f_modificacion": "14/09/2026"
+    },
+    {
+      "c_canal": "web",
+      "c_id_donacion": 417162,
+      "c_email_empresa": null,
+      "c_importe": 50.0,
+      "c_nombre": "Álvaro Molina",
+      "c_direccion": {
+        "ciudad": "Villarreal del Monte",
+        "cp": "46662"
+      },
+      "c_estado_cobro": "devuelto",
+      "c_f_primera_donacion": "28/02/2019",
+      "c_id_donante": 651537,
+      "c_frecuencia": "anual",
+      "c_empresa": "Zephra S.A.",
+      "c_f_nacimiento": "04/05/1984",
+      "c_importe_acumulado": 2650.0,
+      "c_email": "alvaro.molina@example.org",
+      "c_estado_socio": "activo",
+      "c_acepta_comunicaciones": true,
+      "c_f_modificacion": "13/08/2025"
+    },
+    {
+      "c_canal": "correo",
+      "c_id_donacion": 673829,
+      "c_email_empresa": null,
+      "c_importe": 25.0,
+      "c_nombre": "Mateo Lozano",
+      "c_direccion": {
+        "ciudad": "San Quirico",
+        "cp": "12170"
+      },
+      "c_estado_cobro": "pendiente",
+      "c_f_primera_donacion": "22/09/2020",
+      "c_id_donante": 904531,
+      "c_frecuencia": "anual",
+      "c_empresa": "Quintara S.A.",
+      "c_f_nacimiento": "01/05/1954",
+      "c_importe_acumulado": 600.0,
+      "c_email": "mateo.lozano@example.org",
+      "c_estado_socio": "activo",
+      "c_acepta_comunicaciones": true,
+      "c_f_modificacion": "23/06/2026"
+    },
+    {
+      "c_canal": "telefono",
+      "c_id_donacion": 530661,
+      "c_email_empresa": null,
+      "c_importe": 25.0,
+      "c_nombre": "Mateo Ortiz",
+      "c_direccion": {
+        "ciudad": "Puertoclaro",
+        "cp": "83843"
+      },
+      "c_estado_cobro": "cobrado",
+      "c_f_primera_donacion": "20/05/2020",
+      "c_id_donante": 748121,
+      "c_frecuencia": "puntual",
+      "c_empresa": null,
+      "c_f_nacimiento": "09/12/1960",
+      "c_importe_acumulado": 825.0,
+      "c_email": "mateo.ortiz@example.org",
+      "c_estado_socio": "activo",
+      "c_acepta_comunicaciones": true,
+      "c_f_modificacion": "21/04/2025"
+    },
+    {
+      "c_canal": "web",
+      "c_id_donacion": 716553,
+      "c_email_empresa": null,
+      "c_importe": 10.0,
+      "c_nombre": "Mateo Soler",
+      "c_direccion": {
+        "ciudad": "San Quirico",
+        "cp": "83147"
+      },
+      "c_estado_cobro": "pendiente",
+      "c_f_primera_donacion": "02/07/2017",
+      "c_id_donante": 638171,
+      "c_frecuencia": "mensual",
+      "c_empresa": null,
+      "c_f_nacimiento": "04/07/1987",
+      "c_importe_acumulado": 660.0,
+      "c_email": "mateo.soler@example.org",
+      "c_estado_socio": "activo",
+      "c_acepta_comunicaciones": false,
+      "c_f_modificacion": "07/09/2025"
+    },
+    {
+      "c_canal": "evento",
+      "c_id_donacion": 798811,
+      "c_email_empresa": null,
+      "c_importe": 10.0,
+      "c_nombre": "Diego Cabrera",
+      "c_direccion": {
+        "ciudad": "Robledal",
+        "cp": "74246"
+      },
+      "c_estado_cobro": "pendiente",
+      "c_f_primera_donacion": "20/03/2017",
+      "c_id_donante": 633438,
+      "c_frecuencia": "puntual",
+      "c_empresa": "Lumeno S.A.",
+      "c_f_nacimiento": "26/10/1989",
+      "c_importe_acumulado": 780.0,
+      "c_email": "diego.cabrera@example.org",
+      "c_estado_socio": "activo",
+      "c_acepta_comunicaciones": true,
+      "c_f_modificacion": "13/02/2026"
+    },
+    {
+      "c_canal": "correo",
+      "c_id_donacion": 263492,
+      "c_email_empresa": "noelia@empresa.example.net",
+      "c_importe": 25.0,
+      "c_nombre": "Noelia Soler",
+      "c_direccion": {
+        "ciudad": "Villarreal del Monte",
+        "cp": "03139"
+      },
+      "c_estado_cobro": "pendiente",
+      "c_f_primera_donacion": "08/01/2024",
+      "c_id_donante": 221391,
+      "c_frecuencia": "puntual",
+      "c_empresa": null,
+      "c_f_nacimiento": "07/07/1975",
+      "c_importe_acumulado": 1025.0,
+      "c_email": "noelia.soler@example.org",
+      "c_estado_socio": "activo",
+      "c_acepta_comunicaciones": true,
+      "c_f_modificacion": "07/08/2026"
+    },
+    {
+      "c_canal": "correo",
+      "c_id_donacion": 733771,
+      "c_email_empresa": null,
+      "c_importe": 15.0,
+      "c_nombre": "Sofía Soler",
+      "c_direccion": {
+        "ciudad": "San Quirico",
+        "cp": "43369"
+      },
+      "c_estado_cobro": "devuelto",
+      "c_f_primera_donacion": "04/07/2015",
+      "c_id_donante": 899869,
+      "c_frecuencia": "puntual",
+      "c_empresa": "Corvant S.L.",
+      "c_f_nacimiento": "19/03/1998",
+      "c_importe_acumulado": 405.0,
+      "c_email": "sofia.soler@example.org",
+      "c_estado_socio": "inactivo",
+      "c_acepta_comunicaciones": false,
+      "c_f_modificacion": "13/08/2025"
+    },
+    {
+      "c_canal": "web",
+      "c_id_donacion": 132649,
+      "c_email_empresa": null,
+      "c_importe": 25.0,
+      "c_nombre": "Héctor Fernández",
+      "c_direccion": {
+        "ciudad": "Robledal",
+        "cp": "29432"
+      },
+      "c_estado_cobro": "cobrado",
+      "c_f_primera_donacion": "13/07/2015",
+      "c_id_donante": 609014,
+      "c_frecuencia": "puntual",
+      "c_empresa": null,
+      "c_f_nacimiento": "14/09/1946",
+      "c_importe_acumulado": 275.0,
+      "c_email": "hector.fernandez@example.org",
+      "c_estado_socio": "activo",
+      "c_acepta_comunicaciones": true,
+      "c_f_modificacion": "25/07/2026"
+    },
+    {
+      "c_canal": "telefono",
+      "c_id_donacion": 536659,
+      "c_email_empresa": null,
+      "c_importe": 50.0,
+      "c_nombre": "Mateo Cabrera",
+      "c_direccion": {
+        "ciudad": "Villarreal del Monte",
+        "cp": "49519"
+      },
+      "c_estado_cobro": "pendiente",
+      "c_f_primera_donacion": "10/03/2012",
+      "c_id_donante": 794263,
+      "c_frecuencia": "mensual",
+      "c_empresa": "Quintara S.L.",
+      "c_f_nacimiento": "05/04/1969",
+      "c_importe_acumulado": 3550.0,
+      "c_email": "mateo.cabrera@example.org",
+      "c_estado_socio": "inactivo",
+      "c_acepta_comunicaciones": true,
+      "c_f_modificacion": "20/05/2026"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "supporter_id": {
+        "type": "integer"
+      },
+      "name": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string",
+        "format": "email"
+      },
+      "first_gift_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "giving_frequency": {
+        "type": "string",
+        "enum": [
+          "monthly",
+          "quarterly",
+          "annual",
+          "one_off"
+        ]
+      },
+      "membership_status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "lapsed",
+          "cancelled"
+        ]
+      },
+      "lifetime_giving": {
+        "type": "number"
+      },
+      "email_opt_in": {
+        "type": "boolean"
+      },
+      "gift_aid_eligible": {
+        "type": [
+          "boolean",
+          "null"
+        ]
+      },
+      "postal_code": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "supporter_id",
+      "name",
+      "email"
+    ]
+  },
+  "groundTruth": {
+    "supporter_id": {
+      "source": "c_id_donante",
+      "why": "donor id; c_id_donacion identifies one gift"
+    },
+    "name": {
+      "source": "c_nombre",
+      "why": "donor's name; c_empresa is the employer"
+    },
+    "email": {
+      "source": "c_email",
+      "why": "personal email; c_email_empresa is work"
+    },
+    "first_gift_date": {
+      "source": "c_f_primera_donacion",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "fecha primera donación; c_f_nacimiento is birth date"
+    },
+    "giving_frequency": {
+      "source": "c_frecuencia",
+      "why": "mensual/trimestral/anual/puntual"
+    },
+    "membership_status": {
+      "source": "c_estado_socio",
+      "why": "membership state; c_estado_cobro is the charge state"
+    },
+    "lifetime_giving": {
+      "source": "c_importe_acumulado",
+      "why": "accumulated total; c_importe is the latest gift"
+    },
+    "email_opt_in": {
+      "source": "c_acepta_comunicaciones",
+      "why": "accepts communications"
+    },
+    "gift_aid_eligible": {
+      "source": null,
+      "why": "not applicable/not in export"
+    },
+    "postal_code": {
+      "source": "c_direccion.cp",
+      "why": "código postal"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "c_id_donante",
+        "c_id_donacion"
+      ],
+      "correctFor": "supporter_id"
+    },
+    {
+      "kind": "birth-date-vs-signup-or-start-date",
+      "fields": [
+        "c_f_primera_donacion",
+        "c_f_nacimiento"
+      ],
+      "correctFor": "first_gift_date"
+    },
+    {
+      "kind": "organization-name-vs-person-name",
+      "fields": [
+        "c_nombre",
+        "c_empresa"
+      ],
+      "correctFor": "name"
+    },
+    {
+      "kind": "account-status-vs-transaction-status",
+      "fields": [
+        "c_estado_socio",
+        "c_estado_cobro"
+      ],
+      "correctFor": "membership_status"
+    },
+    {
+      "kind": "currency-or-amount-confusion",
+      "fields": [
+        "c_importe_acumulado",
+        "c_importe"
+      ],
+      "correctFor": "lifetime_giving"
+    },
+    {
+      "kind": "two-email-fields",
+      "fields": [
+        "c_email",
+        "c_email_empresa"
+      ],
+      "correctFor": "email"
+    }
+  ],
+  "sourceConcepts": {
+    "c_canal": "category",
+    "c_id_donacion": "transaction-id",
+    "c_email_empresa": "email",
+    "c_importe": "amount",
+    "c_nombre": "person-name",
+    "c_direccion.ciudad": "city",
+    "c_direccion.cp": "postal-code",
+    "c_estado_cobro": "payment-status",
+    "c_f_primera_donacion": "start-date",
+    "c_id_donante": "customer-id",
+    "c_frecuencia": "category",
+    "c_empresa": "organization-name",
+    "c_f_nacimiento": "birth-date",
+    "c_importe_acumulado": "amount",
+    "c_email": "email",
+    "c_estado_socio": "account-status",
+    "c_acepta_comunicaciones": "consent-flag",
+    "c_f_modificacion": "modified-date"
+  },
+  "destinationConcepts": {
+    "supporter_id": "customer-id",
+    "name": "person-name",
+    "email": "email",
+    "first_gift_date": "start-date",
+    "giving_frequency": "category",
+    "membership_status": "account-status",
+    "lifetime_giving": "amount",
+    "email_opt_in": "consent-flag",
+    "gift_aid_eligible": "consent-flag",
+    "postal_code": "postal-code"
+  }
+}

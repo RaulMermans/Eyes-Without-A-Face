@@ -19,6 +19,7 @@ Canonical operating docs for Eyes Without a Face. Root files `README.md`, `AGENT
 | [testing/](testing/) | Test strategy and regression matrix |
 | [evaluation/](evaluation/) | Blind Integration evaluation: scenarios, case sets (incl. Sprint 8 development + fresh holdout), metrics, semantic verification, configurations A–D; Sprint 12 Nano-value experiment ([evaluation/sprint-12-nano-value.md](evaluation/sprint-12-nano-value.md)) |
 | [evidence/](evidence/) | Recorded live evidence (Sprint 7: requalification and real blind-revision runs; Sprint 8: freeze manifest, semantic benchmark runs, replayed summary; Sprint 9: hero-journey qualification with export; Sprint 10: live requalification of the new journey; Sprint 11: OBSERVE measurements and live requalification of the CONNECT-first sequence; Sprint 12: hosted acceptance, Nano-value freeze, runs and replayed summary; Sprint 13: real read-only connector run; Sprint 14: real reproduction of the production incident and its recovery; `production/<sha12>/`: per-release production acceptance) |
+| [program/](program/) | Sprint 18 Master Transformation Assessment: verified capability inventory, gap analysis, target architecture, gated 18A–18E plan |
 | [qa/](qa/) | Sprint 16A real-world production challenge (held-out datasets, production matrix, independent correctness); Sprint 16B mapping integrity (fixes, before/after, release candidate) |
 | [sprints/](sprints/) | Sprint 0–14 reports |
 | [hackathon-requirements.md](hackathon-requirements.md) | Official Rules (read 2026-11-13) and compliance status |

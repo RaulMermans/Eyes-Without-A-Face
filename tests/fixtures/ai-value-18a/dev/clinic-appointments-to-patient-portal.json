@@ -1,0 +1,687 @@
+{
+  "scenarioId": "clinic-appointments-to-patient-portal",
+  "split": "dev",
+  "industry": "healthcare clinic admin",
+  "sourceLanguage": "es",
+  "description": "Appointment export from a fictional Spanish outpatient clinic, to be loaded as patient-portal contacts (all patients invented).",
+  "fictional": true,
+  "records": [
+    {
+      "num_cita": 165440,
+      "telefono_fijo": "+34 912420557",
+      "estado_cita": "cancelada",
+      "correo": "lucia.molina@example.org",
+      "codigo_centro": "60768",
+      "nombre_completo": "Lucía Molina Molina",
+      "fecha_alta": "26/04/2018",
+      "contacto_emergencia": {
+        "nombre": "Pablo Rubio",
+        "telefono": "+34 677845654"
+      },
+      "id_paciente": 163416,
+      "aseguradora": "Salud Velmora",
+      "fecha_nacimiento": "03/06/1968",
+      "estado_paciente": "activo",
+      "telefono_movil": "+34 683424139",
+      "codigo_postal": "29795",
+      "importe_copago": 0,
+      "fecha_ultima_modificacion": "23/04/2025"
+    },
+    {
+      "num_cita": 847860,
+      "telefono_fijo": "+34 913689437",
+      "estado_cita": "cancelada",
+      "correo": "javier.ortiz@example.org",
+      "codigo_centro": "94690",
+      "nombre_completo": "Javier Ortiz Navarro",
+      "fecha_alta": "28/12/2018",
+      "contacto_emergencia": {
+        "nombre": "Pablo Cabrera",
+        "telefono": "+34 620969430"
+      },
+      "id_paciente": 957680,
+      "aseguradora": "Salud Velmora",
+      "fecha_nacimiento": "16/07/1967",
+      "estado_paciente": "activo",
+      "telefono_movil": "+34 630437296",
+      "codigo_postal": "08528",
+      "importe_copago": 5.0,
+      "fecha_ultima_modificacion": "10/08/2025"
+    },
+    {
+      "num_cita": 308224,
+      "telefono_fijo": "+34 914457719",
+      "estado_cita": "confirmada",
+      "correo": "elena.rubio@example.org",
+      "codigo_centro": "26836",
+      "nombre_completo": "Elena Rubio Molina",
+      "fecha_alta": "02/04/2022",
+      "contacto_emergencia": {
+        "nombre": "Inés Rubio",
+        "telefono": "+34 657247215"
+      },
+      "id_paciente": 941439,
+      "aseguradora": "Privada",
+      "fecha_nacimiento": "28/06/1983",
+      "estado_paciente": "activo",
+      "telefono_movil": "+34 627313026",
+      "codigo_postal": "28138",
+      "importe_copago": 5.0,
+      "fecha_ultima_modificacion": "11/01/2025"
+    },
+    {
+      "num_cita": 370408,
+      "telefono_fijo": "+34 919702101",
+      "estado_cita": "programada",
+      "correo": "hector.rubio@example.org",
+      "codigo_centro": "51716",
+      "nombre_completo": "Héctor Rubio Peña",
+      "fecha_alta": "03/11/2021",
+      "contacto_emergencia": {
+        "nombre": "Pablo Rubio",
+        "telefono": "+34 639779411"
+      },
+      "id_paciente": 153409,
+      "aseguradora": "Mutua Ostrin",
+      "fecha_nacimiento": "16/08/1961",
+      "estado_paciente": "inactivo",
+      "telefono_movil": "+34 690795193",
+      "codigo_postal": "28032",
+      "importe_copago": 15.5,
+      "fecha_ultima_modificacion": "10/09/2025"
+    },
+    {
+      "num_cita": 246409,
+      "telefono_fijo": "+34 919910619",
+      "estado_cita": "cancelada",
+      "correo": "alvaro.medina@example.org",
+      "codigo_centro": "62910",
+      "nombre_completo": "Álvaro Medina Cabrera",
+      "fecha_alta": "22/08/2017",
+      "contacto_emergencia": {
+        "nombre": "Lucía Serrano",
+        "telefono": "+34 637946141"
+      },
+      "id_paciente": 223696,
+      "aseguradora": "Mutua Ostrin",
+      "fecha_nacimiento": "05/07/1951",
+      "estado_paciente": "activo",
+      "telefono_movil": "+34 648777398",
+      "codigo_postal": "41073",
+      "importe_copago": 15.5,
+      "fecha_ultima_modificacion": "16/06/2025"
+    },
+    {
+      "num_cita": 510684,
+      "telefono_fijo": "+34 911828273",
+      "estado_cita": "programada",
+      "correo": "elena.ibanez@example.org",
+      "codigo_centro": "02390",
+      "nombre_completo": "Elena Ibáñez Fernández",
+      "fecha_alta": "28/01/2017",
+      "contacto_emergencia": {
+        "nombre": "Pablo Castillo",
+        "telefono": "+34 658727720"
+      },
+      "id_paciente": 795374,
+      "aseguradora": "Privada",
+      "fecha_nacimiento": "13/06/1969",
+      "estado_paciente": "activo",
+      "telefono_movil": "+34 611468436",
+      "codigo_postal": "28339",
+      "importe_copago": 10.0,
+      "fecha_ultima_modificacion": "07/09/2025"
+    },
+    {
+      "num_cita": 381497,
+      "telefono_fijo": "+34 916246686",
+      "estado_cita": "programada",
+      "correo": "alvaro.medina@example.org",
+      "codigo_centro": "79830",
+      "nombre_completo": "Álvaro Medina Vidal",
+      "fecha_alta": "16/02/2024",
+      "contacto_emergencia": {
+        "nombre": "Inés Ortiz",
+        "telefono": "+34 669279813"
+      },
+      "id_paciente": 263773,
+      "aseguradora": "Salud Velmora",
+      "fecha_nacimiento": "13/02/2003",
+      "estado_paciente": "activo",
+      "telefono_movil": "+34 635334085",
+      "codigo_postal": "29785",
+      "importe_copago": 5.0,
+      "fecha_ultima_modificacion": "21/02/2025"
+    },
+    {
+      "num_cita": 533255,
+      "telefono_fijo": null,
+      "estado_cita": "no_presentado",
+      "correo": "ines.lozano@example.org",
+      "codigo_centro": "48091",
+      "nombre_completo": "Inés Lozano Cabrera",
+      "fecha_alta": "10/07/2021",
+      "contacto_emergencia": {
+        "nombre": "Mateo Molina",
+        "telefono": "+34 668351223"
+      },
+      "id_paciente": 729373,
+      "aseguradora": "Salud Velmora",
+      "fecha_nacimiento": "28/12/1978",
+      "estado_paciente": "activo",
+      "telefono_movil": "+34 603101880",
+      "codigo_postal": "28513",
+      "importe_copago": 0,
+      "fecha_ultima_modificacion": "19/10/2026"
+    },
+    {
+      "num_cita": 664197,
+      "telefono_fijo": null,
+      "estado_cita": "cancelada",
+      "correo": "sofia.serrano@example.org",
+      "codigo_centro": "03722",
+      "nombre_completo": "Sofía Serrano Romero",
+      "fecha_alta": "21/03/2016",
+      "contacto_emergencia": {
+        "nombre": "Marta Fernández",
+        "telefono": "+34 664417617"
+      },
+      "id_paciente": 384289,
+      "aseguradora": "Mutua Ostrin",
+      "fecha_nacimiento": "02/03/1996",
+      "estado_paciente": "activo",
+      "telefono_movil": "+34 670228594",
+      "codigo_postal": "08016",
+      "importe_copago": 0,
+      "fecha_ultima_modificacion": "11/09/2025"
+    },
+    {
+      "num_cita": 107843,
+      "telefono_fijo": "+34 914331131",
+      "estado_cita": "atendida",
+      "correo": "noelia.castillo@example.org",
+      "codigo_centro": "73766",
+      "nombre_completo": "Noelia Castillo Ortiz",
+      "fecha_alta": "04/03/2016",
+      "contacto_emergencia": {
+        "nombre": "Marta Castillo",
+        "telefono": "+34 615736142"
+      },
+      "id_paciente": 229393,
+      "aseguradora": "Seguro Kaldera",
+      "fecha_nacimiento": "04/07/1981",
+      "estado_paciente": "activo",
+      "telefono_movil": "+34 601811333",
+      "codigo_postal": "29481",
+      "importe_copago": 10.0,
+      "fecha_ultima_modificacion": "20/07/2026"
+    },
+    {
+      "num_cita": 594557,
+      "telefono_fijo": "+34 917917952",
+      "estado_cita": "no_presentado",
+      "correo": "mateo.lozano@example.org",
+      "codigo_centro": "07552",
+      "nombre_completo": "Mateo Lozano Fernández",
+      "fecha_alta": "10/12/2021",
+      "contacto_emergencia": {
+        "nombre": "Raúl Rubio",
+        "telefono": "+34 667591426"
+      },
+      "id_paciente": 313165,
+      "aseguradora": "Salud Velmora",
+      "fecha_nacimiento": "19/05/2009",
+      "estado_paciente": "activo",
+      "telefono_movil": "+34 601842461",
+      "codigo_postal": "41295",
+      "importe_copago": 0,
+      "fecha_ultima_modificacion": "23/04/2025"
+    },
+    {
+      "num_cita": 728693,
+      "telefono_fijo": null,
+      "estado_cita": "no_presentado",
+      "correo": "paula.cabrera@example.org",
+      "codigo_centro": "08519",
+      "nombre_completo": "Paula Cabrera Ortiz",
+      "fecha_alta": "20/10/2024",
+      "contacto_emergencia": {
+        "nombre": "Noelia Navarro",
+        "telefono": "+34 647045663"
+      },
+      "id_paciente": 853403,
+      "aseguradora": "Privada",
+      "fecha_nacimiento": "22/06/1952",
+      "estado_paciente": "activo",
+      "telefono_movil": "+34 620781087",
+      "codigo_postal": "29186",
+      "importe_copago": 10.0,
+      "fecha_ultima_modificacion": "16/12/2025"
+    },
+    {
+      "num_cita": 772057,
+      "telefono_fijo": "+34 915350793",
+      "estado_cita": "atendida",
+      "correo": "carmen.medina@example.org",
+      "codigo_centro": "55149",
+      "nombre_completo": "Carmen Medina Rubio",
+      "fecha_alta": "08/05/2017",
+      "contacto_emergencia": {
+        "nombre": "Diego Lozano",
+        "telefono": "+34 640150112"
+      },
+      "id_paciente": 572101,
+      "aseguradora": "Privada",
+      "fecha_nacimiento": "12/03/1974",
+      "estado_paciente": "inactivo",
+      "telefono_movil": "+34 640751219",
+      "codigo_postal": "08549",
+      "importe_copago": 10.0,
+      "fecha_ultima_modificacion": "19/05/2025"
+    },
+    {
+      "num_cita": 254839,
+      "telefono_fijo": null,
+      "estado_cita": "programada",
+      "correo": "pablo.navarro@example.org",
+      "codigo_centro": "15993",
+      "nombre_completo": "Pablo Navarro Lozano",
+      "fecha_alta": "15/09/2019",
+      "contacto_emergencia": {
+        "nombre": "Carmen Soler",
+        "telefono": "+34 678159617"
+      },
+      "id_paciente": 967285,
+      "aseguradora": "Privada",
+      "fecha_nacimiento": "20/07/1959",
+      "estado_paciente": "baja",
+      "telefono_movil": "+34 644099554",
+      "codigo_postal": "08959",
+      "importe_copago": 5.0,
+      "fecha_ultima_modificacion": "02/09/2025"
+    },
+    {
+      "num_cita": 748953,
+      "telefono_fijo": "+34 916623984",
+      "estado_cita": "cancelada",
+      "correo": "noelia.romero@example.org",
+      "codigo_centro": "04038",
+      "nombre_completo": "Noelia Romero Fernández",
+      "fecha_alta": "25/12/2019",
+      "contacto_emergencia": {
+        "nombre": "Héctor Peña",
+        "telefono": "+34 644529176"
+      },
+      "id_paciente": 661895,
+      "aseguradora": "Mutua Ostrin",
+      "fecha_nacimiento": "20/01/1969",
+      "estado_paciente": "activo",
+      "telefono_movil": "+34 695821672",
+      "codigo_postal": "46427",
+      "importe_copago": 15.5,
+      "fecha_ultima_modificacion": "27/12/2026"
+    },
+    {
+      "num_cita": 376334,
+      "telefono_fijo": "+34 910922864",
+      "estado_cita": "cancelada",
+      "correo": "hector.soler@example.org",
+      "codigo_centro": "61520",
+      "nombre_completo": "Héctor Soler Serrano",
+      "fecha_alta": "07/05/2018",
+      "contacto_emergencia": {
+        "nombre": "Héctor Rubio",
+        "telefono": "+34 606973947"
+      },
+      "id_paciente": 266851,
+      "aseguradora": "Mutua Ostrin",
+      "fecha_nacimiento": "08/01/1990",
+      "estado_paciente": "baja",
+      "telefono_movil": "+34 608335559",
+      "codigo_postal": "29657",
+      "importe_copago": 0,
+      "fecha_ultima_modificacion": "01/07/2025"
+    },
+    {
+      "num_cita": 992216,
+      "telefono_fijo": "+34 914085740",
+      "estado_cita": "programada",
+      "correo": "paula.pena@example.org",
+      "codigo_centro": "60617",
+      "nombre_completo": "Paula Peña Vidal",
+      "fecha_alta": "08/06/2016",
+      "contacto_emergencia": {
+        "nombre": "Raúl Peña",
+        "telefono": "+34 641423783"
+      },
+      "id_paciente": 674403,
+      "aseguradora": "Salud Velmora",
+      "fecha_nacimiento": "22/10/1996",
+      "estado_paciente": "baja",
+      "telefono_movil": "+34 655149557",
+      "codigo_postal": "29164",
+      "importe_copago": 10.0,
+      "fecha_ultima_modificacion": "21/10/2025"
+    },
+    {
+      "num_cita": 100925,
+      "telefono_fijo": "+34 913727609",
+      "estado_cita": "programada",
+      "correo": "diego.castillo@example.org",
+      "codigo_centro": "23137",
+      "nombre_completo": "Diego Castillo Ibáñez",
+      "fecha_alta": "18/05/2017",
+      "contacto_emergencia": {
+        "nombre": "Álvaro Ibáñez",
+        "telefono": "+34 655324793"
+      },
+      "id_paciente": 139554,
+      "aseguradora": "Salud Velmora",
+      "fecha_nacimiento": "19/06/1953",
+      "estado_paciente": "activo",
+      "telefono_movil": "+34 647906510",
+      "codigo_postal": "29239",
+      "importe_copago": 15.5,
+      "fecha_ultima_modificacion": "19/05/2026"
+    },
+    {
+      "num_cita": 466077,
+      "telefono_fijo": "+34 917796774",
+      "estado_cita": "atendida",
+      "correo": "javier.ortiz@example.org",
+      "codigo_centro": "47709",
+      "nombre_completo": "Javier Ortiz Vidal",
+      "fecha_alta": "14/02/2019",
+      "contacto_emergencia": {
+        "nombre": "Noelia Fernández",
+        "telefono": "+34 611482009"
+      },
+      "id_paciente": 288162,
+      "aseguradora": "Mutua Ostrin",
+      "fecha_nacimiento": "09/09/2007",
+      "estado_paciente": "activo",
+      "telefono_movil": "+34 663306454",
+      "codigo_postal": "46537",
+      "importe_copago": 5.0,
+      "fecha_ultima_modificacion": "13/06/2026"
+    },
+    {
+      "num_cita": 427093,
+      "telefono_fijo": "+34 918457199",
+      "estado_cita": "atendida",
+      "correo": "noelia.fernandez@example.org",
+      "codigo_centro": "94049",
+      "nombre_completo": "Noelia Fernández Lozano",
+      "fecha_alta": "27/03/2017",
+      "contacto_emergencia": {
+        "nombre": "Elena Navarro",
+        "telefono": "+34 639869942"
+      },
+      "id_paciente": 493773,
+      "aseguradora": "Mutua Ostrin",
+      "fecha_nacimiento": "17/03/1959",
+      "estado_paciente": "activo",
+      "telefono_movil": "+34 694954382",
+      "codigo_postal": "41381",
+      "importe_copago": 10.0,
+      "fecha_ultima_modificacion": "02/10/2025"
+    },
+    {
+      "num_cita": 757305,
+      "telefono_fijo": null,
+      "estado_cita": "cancelada",
+      "correo": "diego.ibanez@example.org",
+      "codigo_centro": "66337",
+      "nombre_completo": "Diego Ibáñez Ibáñez",
+      "fecha_alta": "26/10/2023",
+      "contacto_emergencia": {
+        "nombre": "Elena Serrano",
+        "telefono": "+34 669155783"
+      },
+      "id_paciente": 410559,
+      "aseguradora": "Privada",
+      "fecha_nacimiento": "22/01/1942",
+      "estado_paciente": "inactivo",
+      "telefono_movil": "+34 662912385",
+      "codigo_postal": "41658",
+      "importe_copago": 10.0,
+      "fecha_ultima_modificacion": "23/01/2026"
+    },
+    {
+      "num_cita": 215095,
+      "telefono_fijo": "+34 913643778",
+      "estado_cita": "atendida",
+      "correo": "mateo.navarro@example.org",
+      "codigo_centro": "81965",
+      "nombre_completo": "Mateo Navarro Soler",
+      "fecha_alta": "14/04/2020",
+      "contacto_emergencia": {
+        "nombre": "Elena Romero",
+        "telefono": "+34 657507849"
+      },
+      "id_paciente": 926242,
+      "aseguradora": "Mutua Ostrin",
+      "fecha_nacimiento": "09/04/1946",
+      "estado_paciente": "inactivo",
+      "telefono_movil": "+34 683329100",
+      "codigo_postal": "28237",
+      "importe_copago": 0,
+      "fecha_ultima_modificacion": "22/06/2026"
+    },
+    {
+      "num_cita": 328236,
+      "telefono_fijo": "+34 917041400",
+      "estado_cita": "confirmada",
+      "correo": "lucia.ortiz@example.org",
+      "codigo_centro": "67732",
+      "nombre_completo": "Lucía Ortiz Soler",
+      "fecha_alta": "13/04/2024",
+      "contacto_emergencia": {
+        "nombre": "Mateo Cabrera",
+        "telefono": "+34 604781358"
+      },
+      "id_paciente": 986618,
+      "aseguradora": "Privada",
+      "fecha_nacimiento": "20/03/1999",
+      "estado_paciente": "activo",
+      "telefono_movil": "+34 634048433",
+      "codigo_postal": "28930",
+      "importe_copago": 10.0,
+      "fecha_ultima_modificacion": "22/02/2025"
+    },
+    {
+      "num_cita": 903327,
+      "telefono_fijo": "+34 919441615",
+      "estado_cita": "atendida",
+      "correo": "alvaro.soler@example.org",
+      "codigo_centro": "57110",
+      "nombre_completo": "Álvaro Soler Ortiz",
+      "fecha_alta": "07/05/2017",
+      "contacto_emergencia": {
+        "nombre": "Paula Ortiz",
+        "telefono": "+34 645246431"
+      },
+      "id_paciente": 640866,
+      "aseguradora": "Salud Velmora",
+      "fecha_nacimiento": "12/06/1972",
+      "estado_paciente": "activo",
+      "telefono_movil": "+34 666078681",
+      "codigo_postal": "46387",
+      "importe_copago": 0,
+      "fecha_ultima_modificacion": "11/09/2026"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "patient_id": {
+        "type": "integer"
+      },
+      "full_name": {
+        "type": "string"
+      },
+      "date_of_birth": {
+        "type": "string",
+        "format": "date"
+      },
+      "mobile_phone": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "email": {
+        "type": "string",
+        "format": "email"
+      },
+      "postal_code": {
+        "type": "string"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "inactive",
+          "discharged"
+        ]
+      },
+      "emergency_contact_name": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "preferred_language": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "patient_id",
+      "full_name",
+      "date_of_birth"
+    ]
+  },
+  "groundTruth": {
+    "patient_id": {
+      "source": "id_paciente",
+      "why": "patient identifier; num_cita is the appointment number"
+    },
+    "full_name": {
+      "source": "nombre_completo",
+      "why": "patient's own name, not the emergency contact"
+    },
+    "date_of_birth": {
+      "source": "fecha_nacimiento",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "fecha de nacimiento = birth date; fecha_alta is registration"
+    },
+    "mobile_phone": {
+      "source": "telefono_movil",
+      "why": "móvil = mobile; fijo is landline; emergency phone belongs to someone else"
+    },
+    "email": {
+      "source": "correo",
+      "why": "only email"
+    },
+    "postal_code": {
+      "source": "codigo_postal",
+      "why": "postal code; codigo_centro is internal clinic code"
+    },
+    "status": {
+      "source": "estado_paciente",
+      "why": "patient state; estado_cita is the appointment state"
+    },
+    "emergency_contact_name": {
+      "source": "contacto_emergencia.nombre",
+      "why": "emergency contact block name"
+    },
+    "preferred_language": {
+      "source": null,
+      "why": "no language field"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "id_paciente",
+        "num_cita"
+      ],
+      "correctFor": "patient_id"
+    },
+    {
+      "kind": "birth-date-vs-signup-or-start-date",
+      "fields": [
+        "fecha_nacimiento",
+        "fecha_alta"
+      ],
+      "correctFor": "date_of_birth"
+    },
+    {
+      "kind": "account-status-vs-transaction-status",
+      "fields": [
+        "estado_paciente",
+        "estado_cita"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "phone-or-code-confusion",
+      "fields": [
+        "telefono_movil",
+        "telefono_fijo"
+      ],
+      "correctFor": "mobile_phone"
+    },
+    {
+      "kind": "phone-or-code-confusion",
+      "fields": [
+        "codigo_postal",
+        "codigo_centro"
+      ],
+      "correctFor": "postal_code"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "contacto_emergencia.nombre",
+        "nombre_completo"
+      ],
+      "correctFor": "emergency_contact_name"
+    }
+  ],
+  "sourceConcepts": {
+    "num_cita": "transaction-id",
+    "telefono_fijo": "phone",
+    "estado_cita": "order-status",
+    "correo": "email",
+    "codigo_centro": "other-identifier",
+    "nombre_completo": "person-name",
+    "fecha_alta": "created-date",
+    "contacto_emergencia.nombre": "person-name",
+    "contacto_emergencia.telefono": "phone",
+    "id_paciente": "customer-id",
+    "aseguradora": "organization-name",
+    "fecha_nacimiento": "birth-date",
+    "estado_paciente": "account-status",
+    "telefono_movil": "phone",
+    "codigo_postal": "postal-code",
+    "importe_copago": "amount",
+    "fecha_ultima_modificacion": "modified-date"
+  },
+  "destinationConcepts": {
+    "patient_id": "customer-id",
+    "full_name": "person-name",
+    "date_of_birth": "birth-date",
+    "mobile_phone": "phone",
+    "email": "email",
+    "postal_code": "postal-code",
+    "status": "account-status",
+    "emergency_contact_name": "person-name",
+    "preferred_language": "language-code"
+  }
+}
