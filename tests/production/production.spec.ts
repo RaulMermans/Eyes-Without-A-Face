@@ -209,6 +209,33 @@ test.describe("guided journey up to the approval gate (no request is sent)", () 
     expect(state.generateContent).toBe(0);
   });
 
+  test("P-024 Sprint 15: Helpdesk asks one target-first question; a local translation builds on the device with zero model requests @cross-browser", async ({ page }, info) => {
+    const state = guard(page);
+    await loadDemo(page, "json");
+    await page.getByTestId("data-continue").click();
+    await page.getByTestId("destination-helpdesk").check();
+    await expect(page.getByTestId("question-status")).toBeVisible();
+    await expect(page.locator('[data-testid^="share-categories-"]')).toHaveCount(1);
+    await expect(page.getByTestId("share-categories-account_state")).not.toBeChecked();
+    await page.getByTestId("translate-open-status").click();
+    await page.getByTestId("translate-status-active_customer").selectOption("active");
+    await page.getByTestId("translate-status-inactive_customer").selectOption("inactive");
+    await page.getByTestId("translate-status-prospect").selectOption("prospect");
+    await page.getByTestId("guided-build-local").click();
+    await expect(page.getByTestId("guided-outcome")).toBeVisible();
+    await expect(page.getByTestId("guided-origin")).toHaveAttribute("data-origin", "local");
+    await expect(page.getByTestId("guided-count-transformed")).toHaveText("3");
+    await expect(page.getByTestId("meaning-status")).toHaveAttribute("data-tone", "pass");
+    await expect(page.getByTestId("guided-before-after")).toBeVisible();
+    await shot(page, "local-result", info.project.name);
+    const [download] = await Promise.all([page.waitForEvent("download"), page.getByTestId("download-transformed-json").click()]);
+    const records = JSON.parse(fs.readFileSync(await download.path(), "utf8")) as unknown[];
+    note(info.title, { generateContent: state.generateContent, transformed: records.length, state: await page.getByTestId("guided-outcome").getAttribute("data-state") });
+    expect(records).toHaveLength(3);
+    expect(state.generateContent).toBe(0);
+    expect(state.pageErrors).toEqual([]);
+  });
+
   test("P-022 an invalid destination blocks Build with a reason", async ({ page }) => {
     const state = guard(page);
     await loadDemo(page, "json");

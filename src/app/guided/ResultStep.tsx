@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "../../components/ui/button.tsx";
 import { AlertIcon, ArrowRightIcon, CheckIcon, ChipIcon, CloudIcon, CrossIcon, DashIcon, LockIcon, SealIcon } from "../../components/icons.tsx";
 import { Disclosure } from "../../components/spectral.tsx";
@@ -16,7 +16,10 @@ import { bestCandidate } from "../runtime-model.ts";
 import type { WorkspaceState } from "../workspace-state.ts";
 import type { FieldUnderstanding, GuidedStatus } from "./guided-status.ts";
 import type { CategoryField, CategoryNeed, ProposalDiagnosis } from "./recovery.ts";
-import { transformedCsv, transformedJson, transformedRecords } from "./transformed-output.ts";
+import { beforeAfter, transformedCsv, transformedJson, transformedRecords, type BeforeAfterExample } from "./transformed-output.ts";
+import { isLocalMapping, type CategoryMeaning, type FieldPlan } from "./field-plan.ts";
+import { CategoryTranslation, DateOrderQuestion, type FieldQuestionHandlers, type SlashOrder } from "./FieldQuestions.tsx";
+import { bindingsTemplate } from "../../export/runtime/runtime.ts";
 
 /**
  * Guided step 3 — the run and its result (Sprint 13, A5 / A6 / D / E).
@@ -49,6 +52,14 @@ export function ResultStep({
   recoveryError = null,
   understanding = null,
   onShareCategories = () => {},
+  plan = null,
+  meanings = {},
+  confirmations = {},
+  dateExamples = () => [],
+  onMeaning = () => {},
+  onDateOrder = () => {},
+  onBuildLocal = () => {},
+  onIncludeLabels = () => {},
 }: {
   workspace: WorkspaceState;
   prepared: PreparedTwin | null;
@@ -78,6 +89,17 @@ export function ResultStep({
   understanding?: FieldUnderstanding | null;
   /** Share these fields' category names and prepare a NEW request for review. */
   onShareCategories?: (paths: string[]) => void;
+  /** Sprint 15: the field plan and the user's decisions (field-plan.ts). */
+  plan?: FieldPlan | null;
+  meanings?: Readonly<Record<string, CategoryMeaning>>;
+  confirmations?: Readonly<Record<string, SlashOrder>>;
+  dateExamples?: (path: string) => string[];
+  onMeaning?: FieldQuestionHandlers["onMeaning"];
+  onDateOrder?: FieldQuestionHandlers["onDateOrder"];
+  /** Sprint 15 (B3): build from the user's own choices on this device. */
+  onBuildLocal?: () => void;
+  /** Sprint 15 (D4): allow (or stop allowing) these fields' category names inside the downloaded package. */
+  onIncludeLabels?: (paths: string[], include: boolean) => void;
 }) {
   const review = workspace.review;
   const best = bestCandidate(candidates.map((candidate) => ({ id: candidate.id, label: candidate.label, eligibility: candidate.eligibility })));
@@ -121,7 +143,10 @@ export function ResultStep({
       {status.id === "approval" && review && (review.status === "pending" || review.status === "approved") ? (
         <>
           {categoryNeed?.blocking && review.status === "pending" ? (
-            <CategoryNotice need={categoryNeed} onShare={onShareCategories} onEditDestination={onEditDestination} context="before" />
+            <>
+              <CategoryNotice need={categoryNeed} onShare={onShareCategories} onEditDestination={onEditDestination} context="before" />
+              <LocalAlternative plan={plan} onBuildLocal={onBuildLocal} onEditDestination={onEditDestination} context="before" />
+            </>
           ) : null}
           <ApprovalCard workspace={workspace} cloudAvailable={cloudAvailable} sending={sending} onApproveAndSend={onApproveAndSend} onReject={onReject} onTechnical={onTechnical} />
         </>
@@ -137,11 +162,14 @@ export function ResultStep({
       ) : null}
 
       {status.id === "rejected" ? (
-        <div className="flex flex-wrap gap-3">
-          <Button variant="primary" onClick={onPrepareFresh} data-testid="guided-prepare-again">
-            Review the request again
-          </Button>
-          <Button variant="ghost" onClick={onEditDestination}>Change the destination</Button>
+        <div className="space-y-3">
+          <LocalAlternative plan={plan} onBuildLocal={onBuildLocal} onEditDestination={onEditDestination} context="declined" />
+          <div className="flex flex-wrap gap-3">
+            <Button variant={plan?.localReady ? "ghost" : "primary"} onClick={onPrepareFresh} data-testid="guided-prepare-again">
+              Review the request again
+            </Button>
+            <Button variant="ghost" onClick={onEditDestination}>Change the destination</Button>
+          </div>
         </div>
       ) : null}
 
@@ -151,6 +179,7 @@ export function ResultStep({
           <p className="text-ink-text">{failure.what}</p>
           <Protected records={workspace.source.records.length} />
           <p className="text-xs text-mute">The approval was used and is never reused. Trying again prepares a new request for you to approve; nothing is sent until you do.</p>
+          <LocalAlternative plan={plan} onBuildLocal={onBuildLocal} onEditDestination={onEditDestination} context="failed" />
           <div className="flex flex-wrap gap-2">
             <Button variant="primary" size="sm" onClick={onPrepareFresh} data-testid="guided-fresh-request">
               Prepare a new request
@@ -169,6 +198,8 @@ export function ResultStep({
           destination={summaryTitle(workspace.destinationText)}
           categoryNeed={categoryNeed}
           askAgainAllowed={askAgainAllowed}
+          plan={plan}
+          onBuildLocal={onBuildLocal}
           onShareCategories={onShareCategories}
           onPrepareFresh={onPrepareFresh}
           onEditDestination={onEditDestination}
@@ -185,6 +216,14 @@ export function ResultStep({
           inference={inference}
           buildSha={buildSha}
           understanding={understanding}
+          plan={plan}
+          meanings={meanings}
+          confirmations={confirmations}
+          dateExamples={dateExamples}
+          onMeaning={onMeaning}
+          onDateOrder={onDateOrder}
+          onBuildLocal={onBuildLocal}
+          onIncludeLabels={onIncludeLabels}
           onChange={onChange}
         />
       ) : null}
@@ -349,6 +388,225 @@ function download(text: string, fileName: string, type: string): void {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
+/** What the user should do now, from the canonical state only (D5). */
+function nextStepText(state: ExportCandidate["eligibility"]["state"], meaningComplete: boolean, openQuestions: number, transformed: number, mismatch: boolean): string {
+  if (mismatch) return "Don't use this result yet: some outputs contradict what you declared. Fix the translation below, or build on this device with your own translation.";
+  if (state === "BLOCKED" || state === "REVISION_FAILED") return "Nothing usable yet. Check the issues below, change an input, or build on this device from your own choices.";
+  if (state === "PARTIALLY_VERIFIED")
+    return transformed > 0
+      ? `Draft. You can download the ${transformed} transformed record${transformed === 1 ? "" : "s"}, but review the issues below before relying on them.`
+      : "Draft. No record was transformed: review the issues below.";
+  if (meaningComplete) return "Done. Download the transformed data now, or the reusable integration to run the same mapping again later.";
+  return openQuestions > 0
+    ? `Usable. Download the transformed data now. Answer the ${openQuestions === 1 ? "question" : `${openQuestions} questions`} under “Meaning” to verify more of it.`
+    : "Usable. Download the transformed data now. Some meaning can't be checked by EYES; see “Meaning” below.";
+}
+
+interface MeaningLine {
+  target: string;
+  source: string | null;
+  tone: "pass" | "fail" | "open" | "info";
+  text: string;
+  action: "translate" | "date-order" | null;
+}
+
+/**
+ * C1/C2: per destination field, what EYES knows about its meaning, what it
+ * cannot establish, and the one answer that would resolve it. A pure reading
+ * of the canonical semantic report and the executed mapping.
+ */
+function meaningLines(candidate: ExportCandidate, meanings: Readonly<Record<string, CategoryMeaning>>): MeaningLine[] {
+  const semantic = candidate.semantic;
+  const operations = candidate.executable?.operations ?? [];
+  return operations.map((operation) => {
+    const status = semantic?.fields.find((field) => field.target === operation.to)?.status ?? "SEMANTIC_UNVERIFIED";
+    const source = "from" in operation && typeof operation.from === "string" ? operation.from : null;
+    const results = semantic?.results.filter((result) => result.target === operation.to) ?? [];
+    const violating = new Set(results.flatMap((result) => result.violatingRows)).size;
+    if (operation.op === "map_enum") {
+      if (status === "SEMANTIC_PASS") return { target: operation.to, source, tone: "pass", text: `Checked: every value of ${source} became what you declared it means.`, action: null };
+      if (status === "SEMANTIC_MISMATCH")
+        return { target: operation.to, source, tone: "fail", text: `Contradicts what you declared${violating ? ` for ${violating} record${violating === 1 ? "" : "s"}` : ""}: the mapping translates ${source} differently. Change your answer or build on this device with it.`, action: "translate" };
+      if (status === "SEMANTIC_POLICY_CONFLICT") return { target: operation.to, source, tone: "fail", text: `A value you chose to set aside, or did not translate, still became output.`, action: "translate" };
+      const declared = meanings[operation.to];
+      return {
+        target: operation.to,
+        source,
+        tone: "open",
+        text: declared && declared.source !== source
+          ? `Not verified: you translated ${declared.source}, but this mapping reads ${source}. Translate ${source} too, or build on this device with your choice.`
+          : `Not verified: EYES doesn't know what the values of ${source} mean in your system, so it can't tell whether this translation is right. Say what each value means.`,
+        action: "translate",
+      };
+    }
+    if (operation.op === "parse_date" && (operation.params.inputFormat === "MM/DD/YYYY" || operation.params.inputFormat === "DD/MM/YYYY")) {
+      if (status === "SEMANTIC_PASS") return { target: operation.to, source, tone: "pass", text: `Checked: dates were read in the order you confirmed.`, action: null };
+      if (status === "SEMANTIC_MISMATCH") return { target: operation.to, source, tone: "fail", text: `Contradicts your answer: the mapping reads these dates as ${operation.params.inputFormat}.`, action: "date-order" };
+      return { target: operation.to, source, tone: "open", text: `Not verified: dates like 03/04/2026 could mean 3 April or 4 March. Tell EYES which order your data uses.`, action: "date-order" };
+    }
+    if (operation.op === "parse_date") return { target: operation.to, source, tone: "info", text: `${source}, read as ${operation.params.inputFormat}: an unambiguous date format, so there is nothing more to confirm.`, action: null };
+    const how = operation.op === "normalize_email" ? "as a lower-case email" : operation.op === "trim" ? "with spaces trimmed" : operation.op === "copy" || operation.op === "rename" ? "unchanged" : "by a fixed rule";
+    return {
+      target: operation.to,
+      source,
+      tone: "info",
+      text: `${source ? `Copied from ${source} ${how}` : "Filled by a fixed rule"}. EYES checked its format; it has no way to check what it means. Look at the preview to be sure it's the right field.`,
+      action: null,
+    };
+  });
+}
+
+function MeaningSection({
+  candidate,
+  plan,
+  meanings,
+  confirmations,
+  dateExamples,
+  onMeaning,
+  onDateOrder,
+}: {
+  candidate: ExportCandidate;
+  plan: FieldPlan | null;
+  meanings: Readonly<Record<string, CategoryMeaning>>;
+  confirmations: Readonly<Record<string, SlashOrder>>;
+  dateExamples: (path: string) => string[];
+  onMeaning: FieldQuestionHandlers["onMeaning"];
+  onDateOrder: FieldQuestionHandlers["onDateOrder"];
+}) {
+  const lines = meaningLines(candidate, meanings);
+  const [open, setOpen] = useState<string | null>(null);
+  // C4: say what changed after the user's answer, from the canonical report only.
+  const coverage = candidate.semantic?.coverage ?? null;
+  const previous = useRef(coverage);
+  const [change, setChange] = useState<string | null>(null);
+  useEffect(() => {
+    const before = previous.current;
+    if (before && coverage && (before.verified !== coverage.verified || before.mismatched !== coverage.mismatched)) {
+      setChange(
+        `Checked again: meaning is now verified for ${coverage.verified} of ${coverage.fields} field${coverage.fields === 1 ? "" : "s"} (was ${before.verified})${coverage.mismatched > 0 ? `; ${coverage.mismatched} contradict${coverage.mismatched === 1 ? "s" : ""} your answers` : ""}.`,
+      );
+    }
+    previous.current = coverage;
+  }, [coverage]);
+  if (lines.length === 0) return null;
+  const Icon = { pass: CheckIcon, fail: CrossIcon, open: AlertIcon, info: DashIcon } as const;
+  const color = { pass: "text-pass", fail: "text-fail", open: "text-warn", info: "text-mute" } as const;
+  return (
+    <section aria-labelledby="meaning-heading" className="space-y-3 rounded-[3px] border border-rule bg-panel p-4" data-testid="guided-meaning">
+      <h3 id="meaning-heading" className="text-base font-semibold">Meaning, field by field</h3>
+      <p className="text-xs text-mute">A valid record can still mean the wrong thing. EYES verifies meaning only from your own answers — never from Gemini's or Nano's suggestions.</p>
+      {change ? (
+        <p role="status" className="text-sm text-ink" data-testid="guided-meaning-change">
+          {change}
+        </p>
+      ) : null}
+      <ul className="space-y-3 text-sm">
+        {lines.map((line) => {
+          const LineIcon = Icon[line.tone];
+          const target = plan?.targets.find((item) => item.target.name === line.target);
+          const candidateFor = target?.candidates.find((item) => item.path === line.source);
+          return (
+            <li key={line.target} data-testid={`meaning-${line.target}`} data-tone={line.tone}>
+              <div className="flex items-start gap-2">
+                <LineIcon size={15} className={`mt-0.5 shrink-0 ${color[line.tone]}`} />
+                <span>
+                  <span className="font-mono text-ink">{line.target}</span> <span className="text-ink-text">— {line.text}</span>
+                  {line.action && open !== line.target ? (
+                    <button type="button" className="ml-2 text-xs underline" onClick={() => setOpen(line.target)} data-testid={`meaning-answer-${line.target}`}>
+                      {line.action === "translate" ? "Say what each value means" : "Answer"}
+                    </button>
+                  ) : null}
+                </span>
+              </div>
+              {open === line.target && line.action === "translate" && target && candidateFor ? (
+                <div className="mt-2 pl-6">
+                  <CategoryTranslation plan={target} candidate={candidateFor} meaning={meanings[line.target]} onMeaning={onMeaning} />
+                </div>
+              ) : null}
+              {open === line.target && line.action === "translate" && !(target && candidateFor) ? (
+                <p className="mt-2 pl-6 text-xs text-mute">This field's values can't be listed here. Change the destination step instead.</p>
+              ) : null}
+              {open === line.target && line.action === "date-order" && line.source ? (
+                <div className="mt-2 pl-6">
+                  <DateOrderQuestion path={line.source} target={line.target} examples={dateExamples(line.source)} current={confirmations[line.source] ?? null} onDateOrder={onDateOrder} />
+                </div>
+              ) : null}
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  );
+}
+
+function shortValue(value: unknown): string {
+  if (value === undefined) return "—";
+  const text = typeof value === "string" ? value : JSON.stringify(value);
+  return text.length > 40 ? `${text.slice(0, 39)}…` : text;
+}
+
+/** D2: input → output for a few of the user's records. Local only. */
+function BeforeAfter({ examples }: { examples: BeforeAfterExample[] }) {
+  if (examples.length === 0) return null;
+  return (
+    <section aria-labelledby="before-after-heading" className="space-y-3" data-testid="guided-before-after">
+      <h3 id="before-after-heading" className="text-base font-semibold">
+        Your data → destination
+      </h3>
+      <p className="flex items-center gap-1.5 text-xs text-mute">
+        <LockIcon size={12} className="shrink-0" /> {examples.length} of your records, as the mapping actually transformed them. Shown only on this screen; may contain sensitive values.
+      </p>
+      <div className="space-y-2">
+        {examples.map((example) => (
+          <div key={example.record} className="grid gap-2 border border-rule bg-panel p-3 text-xs md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]" data-testid={`before-after-${example.record}`} data-transformed={String(Boolean(example.output))}>
+            <dl className="grid grid-cols-[auto_minmax(0,1fr)] gap-x-3 gap-y-0.5">
+              <dt className="col-span-2 mb-1 font-mono text-[10px] uppercase tracking-[0.14em] text-mute">Record {example.record}</dt>
+              {example.input.map((item) => (
+                <div key={item.path} className="contents">
+                  <dt className="font-mono text-mute">{item.path}</dt>
+                  <dd className="truncate font-mono text-ink">{shortValue(item.value)}</dd>
+                </div>
+              ))}
+            </dl>
+            <span aria-hidden="true" className="self-center text-center font-mono text-mute">→</span>
+            {example.output ? (
+              <dl className="grid grid-cols-[auto_minmax(0,1fr)] gap-x-3 gap-y-0.5">
+                <dt className="col-span-2 mb-1 font-mono text-[10px] uppercase tracking-[0.14em] text-pass">Transformed</dt>
+                {Object.entries(example.output).map(([key, value]) => (
+                  <div key={key} className="contents">
+                    <dt className="font-mono text-mute">{key}</dt>
+                    <dd className="truncate font-mono text-ink">{shortValue(value)}</dd>
+                  </div>
+                ))}
+              </dl>
+            ) : (
+              <div>
+                <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.14em] text-warn">Not transformed</p>
+                <p className="text-ink-text">{example.issue}</p>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/** D4: the alias → field file the reusable integration needs to run on your data. Built here; never in the ZIP. */
+function bindingsFile(candidate: ExportCandidate, prepared: PreparedTwin): string | null {
+  const contract = candidate.aliasContract;
+  if (!contract) return null;
+  const template = bindingsTemplate(contract);
+  const byAlias = new Map<string, string>();
+  for (const field of prepared.profile.fields) {
+    const alias = prepared.twin.bindings.aliasForPath(field.path);
+    if (alias) byAlias.set(alias, field.path);
+  }
+  const aliases = Object.fromEntries(Object.keys(template.aliases).map((alias) => [alias, byAlias.get(alias) ?? ""]));
+  if (Object.values(aliases).some((path) => path === "")) return null;
+  return `${JSON.stringify({ ...template, aliases }, null, 2)}\n`;
+}
+
 function Outcome({
   workspace,
   prepared,
@@ -356,6 +614,14 @@ function Outcome({
   inference,
   buildSha,
   understanding,
+  plan,
+  meanings,
+  confirmations,
+  dateExamples,
+  onMeaning,
+  onDateOrder,
+  onBuildLocal,
+  onIncludeLabels,
   onChange,
 }: {
   workspace: WorkspaceState;
@@ -364,6 +630,14 @@ function Outcome({
   inference: InferenceServices;
   buildSha: string | null;
   understanding: FieldUnderstanding | null;
+  plan: FieldPlan | null;
+  meanings: Readonly<Record<string, CategoryMeaning>>;
+  confirmations: Readonly<Record<string, SlashOrder>>;
+  dateExamples: (path: string) => string[];
+  onMeaning: FieldQuestionHandlers["onMeaning"];
+  onDateOrder: FieldQuestionHandlers["onDateOrder"];
+  onBuildLocal: () => void;
+  onIncludeLabels: (paths: string[], include: boolean) => void;
   onChange: (next: WorkspaceState) => void;
 }) {
   const report = workspace.report!;
@@ -373,6 +647,7 @@ function Outcome({
   const reservedPassed = reservedRows.filter((row) => row.outcome === "TRANSFORMED_VALID" || row.outcome === "HANDLED_BY_APPROVED_RULE").length;
   const meaning = meaningSentence(candidate.semantic);
   const output = useMemo(() => transformedRecords(report), [report]);
+  const examples = useMemo(() => beforeAfter(report, workspace.source?.records ?? [], candidate.executable), [report, workspace.source, candidate.executable]);
   const needsReview = metrics.unresolved + metrics.rejectedByPolicy + metrics.incorrect;
   const transformed = metrics.transformedValid + metrics.handledByApprovedRule;
   // Structure is judged on YOUR records here; the reserved test cases have their own line below.
@@ -383,16 +658,46 @@ function Outcome({
   const verified = candidate.eligibility.state === "VERIFIED" || candidate.eligibility.state === "VERIFIED_WITH_EXCEPTIONS";
   const sourceLabel = workspace.source?.label ?? "source";
   const operations = candidate.executable?.operations ?? [];
+  const local = candidate.origin === "hand-written" && isLocalMapping(workspace.mappingText) && workspace.mappingChoice === "manual";
+  const lines = meaningLines(candidate, meanings);
+  const openQuestions = lines.filter((line) => line.tone === "open").length;
+  const mismatch = candidate.semantic?.overall === "SEMANTIC_MISMATCH";
+  const next = nextStepText(candidate.eligibility.state, meaning.complete, openQuestions, output.records.length, mismatch);
+  // B4/D4: category names inside the package of a mapping built here need the user's explicit approval.
+  const approvedForCloud = new Set((workspace.review?.preview.payload.fields ?? []).flatMap((field) => (field.enumValues?.length ? [field.alias] : [])));
+  const labelSources = local
+    ? operations.flatMap((operation) => {
+        if (operation.op !== "map_enum") return [];
+        const alias = prepared?.twin.bindings.aliasForPath(operation.from);
+        return alias && !approvedForCloud.has(alias) ? [{ path: operation.from, labels: Object.keys(operation.params.map) }] : [];
+      })
+    : [];
+  const labelsIncluded = labelSources.every((item) => workspace.packageLabelSources.includes(item.path));
+  const bindings = prepared ? bindingsFile(candidate, prepared) : null;
+  // The draft comes only from the reserved test cases when every one of the user's records was transformed.
+  const reservedRefused = reservedRows.filter((row) => row.outcome === "UNRESOLVED" || row.outcome === "REJECTED_BY_POLICY").length;
+  const reservedAside = reservedRows.filter((row) => row.outcome === "QUARANTINED").length;
+  const onlyTestCases = imported.length > 0 && transformed === imported.length && reservedRows.length > 0;
+  const testCaseCauses = [
+    ...new Set(
+      report.rows
+        .filter((row) => row.set === "reserved" && row.status === "fail")
+        .flatMap((row) => row.safeIssues.map((issue) => issue.explanation.replace(/\.$/, "").toLowerCase())),
+    ),
+  ].slice(0, 3);
 
   return (
     <div className="space-y-6" data-testid="guided-outcome" data-state={candidate.eligibility.state}>
       <p className="text-sm text-ink-text" data-testid="guided-route">
         <span className="font-mono text-ink">{sourceLabel}</span> → <span className="font-mono text-ink">{summaryTitle(workspace.destinationText)}</span>
-        {candidate.provenance || workspace.proposal ? (
-          <span className="ml-2 font-mono text-[11px] uppercase tracking-[0.1em] text-mute" data-testid="guided-origin">
-            · mapping: {workspace.proposal ? ORIGIN_LABELS[workspace.proposal.origin] : "hand-written"}
-          </span>
-        ) : null}
+        <span className="ml-2 font-mono text-[11px] uppercase tracking-[0.1em] text-mute" data-testid="guided-origin" data-origin={local ? "local" : (workspace.proposal?.origin ?? "hand-written")}>
+          · mapping: {workspace.proposal && workspace.mappingChoice === "proposal" ? ORIGIN_LABELS[workspace.proposal.origin] : local ? "built on this device from your answers — no AI" : "hand-written"}
+        </span>
+      </p>
+
+      <p className="border-l-4 border-l-violet-soft bg-panel p-3 text-sm text-ink" data-testid="guided-next">
+        <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-mute">Next · </span>
+        {next}
       </p>
 
       <dl className="grid grid-cols-3 gap-px border border-rule bg-rule" data-testid="guided-counts">
@@ -411,7 +716,7 @@ function Outcome({
       </dl>
       <p className="-mt-3 text-xs text-mute">
         Of your {imported.length} record{imported.length === 1 ? "" : "s"}. Transformed means the record produced a valid destination record; whether its meaning is right is the
-        separate “Meaning” check below. Records set aside are not counted as transformed.
+        separate “Meaning” check. Records set aside are not counted as transformed.
       </p>
 
       <ul className="space-y-2 text-sm" data-testid="guided-checks">
@@ -421,12 +726,12 @@ function Outcome({
           detail={structureOk ? "Every one of your records produced a valid destination record." : `${importedValid} of ${importedRows.length} of your records produced a valid destination record.`}
           testId="check-structure"
         />
-        <CheckRow ok={meaning.complete ? true : candidate.semantic?.overall === "SEMANTIC_MISMATCH" ? false : null} label="Meaning" detail={meaning.text} testId="check-meaning" />
+        <CheckRow ok={meaning.complete ? true : mismatch ? false : null} label="Meaning" detail={meaning.text} testId="check-meaning" />
         {reservedRows.length > 0 ? (
           <CheckRow
             ok={reservedPassed === reservedRows.length ? true : report.statuses.hiddenCases === "fail" ? false : null}
             label="Test cases"
-            detail={`${reservedPassed} of ${reservedRows.length} reserved test cases handled. Gemini never saw them.`}
+            detail={`${reservedPassed} of ${reservedRows.length} reserved test cases handled.${local ? "" : " Gemini never saw them."}`}
             testId="check-hidden"
           />
         ) : null}
@@ -443,6 +748,14 @@ function Outcome({
       {candidate.eligibility.reasons.length > 0 && !verified ? (
         <div className="text-sm text-ink-text" data-testid="guided-reason">
           <p className="font-medium text-ink">Why it is not ready</p>
+          {onlyTestCases ? (
+            <p className="mt-1" data-testid="guided-reason-test-cases">
+              All of your {imported.length} records were transformed. The draft label comes from EYES's {reservedRows.length} built-in test cases — unusual records it adds to check the
+              mapping: {reservedRefused} {reservedRefused === 1 ? "was" : "were"} refused ({testCaseCauses.join("; ")})
+              {reservedAside > 0 ? ` and ${reservedAside} set aside for review` : ""}. Refusing them is the safe behaviour, but EYES can only call the result fully verified when every case is
+              handled by a rule you approved.
+            </p>
+          ) : null}
           <ul className="mt-1 list-disc space-y-0.5 pl-5">
             {candidate.eligibility.reasons.slice(0, 3).map((reason) => (
               <li key={reason}>{reason}</li>
@@ -451,33 +764,86 @@ function Outcome({
         </div>
       ) : null}
 
+      <MeaningSection candidate={candidate} plan={plan} meanings={meanings} confirmations={confirmations} dateExamples={dateExamples} onMeaning={onMeaning} onDateOrder={onDateOrder} />
+      {mismatch && plan?.localReady && !local ? (
+        <div className="flex flex-wrap items-center gap-3 text-sm" data-testid="guided-mismatch-local">
+          <Button size="sm" variant="primary" onClick={onBuildLocal} data-testid="guided-local-from-mismatch">
+            Build on this device with your answers
+          </Button>
+          <span className="text-xs text-mute">Uses your translation instead of Gemini's. Nothing is sent.</span>
+        </div>
+      ) : null}
+
+      <BeforeAfter examples={examples} />
+
       <section aria-labelledby="downloads-heading" className="space-y-3 border-t border-rule pt-5" data-testid="guided-downloads">
         <h3 id="downloads-heading" className="text-lg font-semibold">Downloads</h3>
-        <p className="text-sm text-ink-text">Two different files. Pick by what you need:</p>
-        <div className="rounded-[3px] border border-rule bg-panel p-4 text-sm" data-testid="download-transformed">
+        <p className="text-sm text-ink-text">
+          <strong>Transformed data</strong> is your records, converted, to use right now. The <strong>reusable integration</strong> is the mapping without any records, to run again later on new files.
+        </p>
+        <div className="rounded-[3px] border border-violet-soft/60 bg-panel p-4 text-sm" data-testid="download-transformed">
           <p className="font-medium">Transformed data — your records, converted</p>
           <p className="mt-1 text-ink-text">
-            A JSON or CSV file with the {output.records.length} record{output.records.length === 1 ? "" : "s"} that passed, in the destination's shape. It contains your real data and is saved
-            to this computer only.{output.excluded > 0 ? ` ${output.excluded} record(s) that did not pass are left out.` : ""}
+            {output.records.length} record{output.records.length === 1 ? "" : "s"} in the destination's shape. It contains your real data and is saved to this computer only.
+            {output.excluded > 0 ? ` ${output.excluded} record(s) that were not transformed are left out.` : ""}
           </p>
           {output.records.length > 0 ? (
             <div className="mt-3 flex flex-wrap items-center gap-2">
-              <Button size="sm" onClick={() => download(transformedJson(output), "transformed-records.json", "application/json")} data-testid="download-transformed-json">
-                Download JSON
+              <Button variant="primary" onClick={() => download(transformedJson(output), "transformed-records.json", "application/json")} data-testid="download-transformed-json">
+                Download transformed data (JSON)
               </Button>
-              <Button size="sm" onClick={() => download(transformedCsv(output), "transformed-records.csv", "text/csv")} data-testid="download-transformed-csv">
-                Download CSV
+              <Button variant="outline" onClick={() => download(transformedCsv(output), "transformed-records.csv", "text/csv")} data-testid="download-transformed-csv">
+                CSV
               </Button>
             </div>
           ) : (
-            <p className="mt-2 text-xs text-mute">No record passed, so there is nothing to download.</p>
+            <p className="mt-2 text-xs text-mute">No record was transformed, so there is nothing to download.</p>
           )}
         </div>
+        {labelSources.length > 0 ? (
+          <label className="flex items-start gap-2 border border-warn/40 bg-panel p-3 text-sm" data-testid="package-labels">
+            <input
+              type="checkbox"
+              className="mt-1 accent-violet"
+              checked={labelsIncluded}
+              onChange={(event) => onIncludeLabels(labelSources.map((item) => item.path), event.target.checked)}
+              data-testid="package-labels-include"
+            />
+            <span>
+              Put my category names in the reusable integration. It needs them to translate{" "}
+              {labelSources.map((item) => (
+                <span key={item.path}>
+                  <span className="font-mono text-ink">{item.path}</span> (<span className="font-mono text-xs">{item.labels.join(", ")}</span>)
+                </span>
+              ))}
+              . They were never sent anywhere; they will be inside the .zip you download, so share it only where these names may go. Off by default — without them the package is
+              blocked.
+            </span>
+          </label>
+        ) : null}
         <ExportPanel workspace={workspace} prepared={prepared} buildSha={buildSha} compact />
+        {bindings ? (
+          <div className="rounded-[3px] border border-rule bg-panel p-4 text-sm" data-testid="download-bindings">
+            <p className="font-medium">Run the integration on your own files (optional)</p>
+            <p className="mt-1 text-ink-text">
+              The .zip refers to your fields only as placeholders (f_01…). To run it on a records file, it needs a small bindings file that names your fields. EYES can write it for this
+              data. It contains your field names, so keep it next to your data — it is never inside the .zip.
+            </p>
+            <Button size="sm" variant="outline" className="mt-2" onClick={() => download(bindings, "bindings.local.json", "application/json")} data-testid="download-bindings-file">
+              Download bindings.local.json
+            </Button>
+            <pre className="mt-2 overflow-auto rounded-[3px] border border-ink-3 bg-void p-2 font-mono text-[11px] leading-5 text-ink">
+              {`unzip eyes-integration-*.zip -d integration && cd integration/eyes-integration-*/
+node run.mjs verify
+node run.mjs run --input ../../records.json --bindings ../../bindings.local.json --out ../../results.json`}
+            </pre>
+            <p className="mt-1 text-xs text-mute">Needs Node.js 22 or later. records.json is a JSON list of records shaped like your data (the runner does not read CSV or Excel).</p>
+          </div>
+        ) : null}
       </section>
 
       <div className="space-y-3 border-t border-rule pt-4">
-        <Disclosure summary={`Preview transformed data (${output.records.length})`} testId="guided-preview">
+        <Disclosure summary={`Preview all transformed data (${output.records.length})`} testId="guided-preview">
           {output.records.length > 0 ? (
             <>
               <div className="overflow-x-auto">
@@ -500,7 +866,7 @@ function Outcome({
                   </tbody>
                 </table>
               </div>
-              <p className="mt-2 text-xs text-mute">The first 10 records. Use “Download JSON / CSV” above for all of them. They are never part of the integration package.</p>
+              <p className="mt-2 text-xs text-mute">The first 10 records. Use “Download transformed data” above for all of them. They are never part of the integration package.</p>
             </>
           ) : (
             <p className="text-sm text-mute">No record passed, so there is nothing to preview.</p>
@@ -533,12 +899,11 @@ function Outcome({
           </Disclosure>
         ) : null}
 
-        {!verified && workspace.proposal?.result.ok ? (
+        {!verified && workspace.proposal?.result.ok && workspace.mappingChoice === "proposal" ? (
           <Disclosure summary="Ask Gemini for one revision (needs a separate approval)" testId="guided-revision">
             <BlindRevisionPanel workspace={workspace} onChange={onChange} prepared={prepared} inference={inference} />
           </Disclosure>
         ) : null}
-
       </div>
     </div>
   );
@@ -647,12 +1012,16 @@ function RejectedProposal({
   destination,
   categoryNeed,
   askAgainAllowed,
+  plan,
+  onBuildLocal,
   onShareCategories,
   onPrepareFresh,
   onEditDestination,
   onEditData,
   onTechnical,
 }: {
+  plan: FieldPlan | null;
+  onBuildLocal: () => void;
   diagnosis: ProposalDiagnosis | null;
   records: number;
   destination: string;
@@ -692,6 +1061,7 @@ function RejectedProposal({
       </div>
 
       {share && categoryNeed ? <CategoryNotice need={categoryNeed} onShare={onShareCategories} onEditDestination={onEditDestination} context="after" /> : null}
+      <LocalAlternative plan={plan} onBuildLocal={onBuildLocal} onEditDestination={onEditDestination} context="rejected" />
 
       <div className="space-y-2 text-sm" data-testid="guided-next-steps">
         <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-mute">What you can do</p>
@@ -729,5 +1099,47 @@ function RejectedProposal({
         </p>
       </Disclosure>
     </div>
+  );
+}
+
+/**
+ * Sprint 15 (B3, Scenario C): the on-device path, offered wherever a Gemini
+ * request was declined, failed, was refused or cannot help. Honest about what
+ * it is: built from the user's own answers, no AI, nothing sent.
+ */
+function LocalAlternative({
+  plan,
+  onBuildLocal,
+  onEditDestination,
+  context,
+}: {
+  plan: FieldPlan | null;
+  onBuildLocal: () => void;
+  onEditDestination: () => void;
+  context: "before" | "declined" | "failed" | "rejected";
+}) {
+  if (!plan) return null;
+  if (plan.localReady) {
+    return (
+      <div className="flex flex-wrap items-center gap-3 border border-ink/40 bg-panel p-3 text-sm" data-testid="guided-local-alternative" data-context={context} data-ready="true">
+        <LockIcon size={15} className="shrink-0" />
+        <span className="flex-1 text-ink-text">
+          {context === "before" ? "Or skip Gemini: " : ""}Your answers are enough to build this integration on this device, with no AI and nothing sent.
+        </span>
+        <Button size="sm" variant={context === "before" ? "outline" : "primary"} onClick={onBuildLocal} data-testid="guided-local-fallback">
+          Build on this device
+        </Button>
+      </div>
+    );
+  }
+  if (context === "before") return null;
+  return (
+    <p className="flex flex-wrap items-center gap-2 text-sm text-ink-text" data-testid="guided-local-alternative" data-context={context} data-ready="false">
+      <LockIcon size={15} className="shrink-0" />
+      You can also build it on this device, with nothing sent, by answering a few questions about your fields.{" "}
+      <button type="button" className="underline" onClick={onEditDestination} data-testid="guided-local-questions">
+        Answer them ({plan.localBlocker ?? "field matches"})
+      </button>
+    </p>
   );
 }

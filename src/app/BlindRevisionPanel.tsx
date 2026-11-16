@@ -1,3 +1,4 @@
+import { activePolicy } from "./export-context.ts";
 import { useMemo, useState } from "react";
 import { Button } from "../components/ui/button.tsx";
 import { ErrorBanner } from "../components/ErrorBanner.tsx";
@@ -29,7 +30,7 @@ import {
 } from "../revision/run.ts";
 import { approveDisclosurePreview, createDisclosurePreview, DisclosureRejectedError } from "../twin/authorization.ts";
 import { submitApprovedCloudInference } from "../twin/cloud-request-gate.ts";
-import { COMPLETION_CRITERIA, STRICT_POLICY, type CompletionState, type OutcomeMetrics } from "../verification/outcomes.ts";
+import { COMPLETION_CRITERIA, type CompletionState, type OutcomeMetrics } from "../verification/outcomes.ts";
 import { acceptProposal, type AcceptedProposal, type PreparedTwin } from "../workflow/pipeline.ts";
 import { ORIGIN_LABELS } from "./result-kind.ts";
 import { computeWorkspaceSemantics, type WorkspaceSemantics } from "./semantic-context.ts";
@@ -104,7 +105,7 @@ export function BlindRevisionPanel({
   const report = workspace.report;
   const review = workspace.review;
   const source = workspace.source;
-  const policy = workspace.scenario?.policy ?? STRICT_POLICY;
+  const policy = activePolicy(workspace);
   const harness = typeof window !== "undefined" && Boolean(window.__EYES_WITHOUT_A_FACE_TEST__);
   const cloudAvailable = harness || inference.cloud.status().state === "configured";
 

@@ -1,7 +1,7 @@
 import sourceRecords from "../examples/crm/source-records.json" with { type: "json" };
 import edgeRecords from "../examples/crm/edge-records.json" with { type: "json" };
 import { parseSourceDataset, type ImportedSource } from "./source-import.ts";
-import { invalidateDownstream, type WorkspaceState } from "./workspace-state.ts";
+import { freshSourceDecisions, invalidateDownstream, type WorkspaceState } from "./workspace-state.ts";
 import type { EvaluationScenario } from "../evaluation/scenarios.ts";
 
 export const CRM_DEMO_LABEL = "fictional-crm-accounts";
@@ -11,7 +11,7 @@ export const CRM_DEMO_LABEL = "fictional-crm-accounts";
  * cases. Everything is synthetic; the reserved cases are never profiled or disclosed.
  */
 export function withCrmDemo(workspace: WorkspaceState): WorkspaceState {
-  const base = invalidateDownstream({ ...workspace, overrides: {}, semanticConfirmations: {} });
+  const base = invalidateDownstream({ ...workspace, ...freshSourceDecisions() });
   const parsed = parseSourceDataset(JSON.stringify(sourceRecords), CRM_DEMO_LABEL);
   if (!parsed.ok) {
     return { ...base, source: null, reservedRecords: null, sourceError: parsed.message };
@@ -56,7 +56,7 @@ export function withScenario(workspace: WorkspaceState, scenario: EvaluationScen
  * `reserved` attaches the fictional CRM hidden test cases for demo files only.
  */
 export function withImportedSource(workspace: WorkspaceState, source: ImportedSource | null, reserved: Record<string, unknown>[] | null): WorkspaceState {
-  const base = invalidateDownstream({ ...workspace, overrides: {}, semanticConfirmations: {} });
+  const base = invalidateDownstream({ ...workspace, ...freshSourceDecisions() });
   return { ...base, source, reservedRecords: reserved, sourceError: null, scenario: null };
 }
 

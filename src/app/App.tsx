@@ -27,7 +27,9 @@ import { guidanceForFailure } from "../inference/failure-guidance.ts";
 import { summarizeDestination } from "./guided/destinations.ts";
 import { approveReview, cancelWaiting, prepareFreshReview, rejectReview, runLocalVerification, sendApprovedRequest, spendApproval } from "./run-actions.ts";
 import { GUIDED_STEPS, initialView, viewHash, type GuidedStep, type View } from "./experience.ts";
-import { initialWorkspaceState, invalidateDownstream, type WorkspaceState } from "./workspace-state.ts";
+import { applyFieldDecision, initialWorkspaceState, invalidateDownstream, type WorkspaceState } from "./workspace-state.ts";
+import { localContract, isLocalMapping, planFields, type CategoryMeaning } from "./guided/field-plan.ts";
+import type { SlashOrder } from "./guided/FieldQuestions.tsx";
 import { WORKFLOW_STEPS, type WorkflowStepId } from "./workflow.ts";
 import { HowItWorks, ProductHero } from "./Landing.tsx";
 import { WorkflowProgress } from "./WorkflowProgress.tsx";
@@ -409,12 +411,90 @@ export default function App() {
     else setRecoveryError(`A new request could not be prepared: ${result.message}`);
   }
 
+  /**
+   * Sprint 15 (B3): build from the user's own choices on this device. The
+   * contract goes through the existing hand-written route and the canonical
+   * engine; it is labeled as built here, never as Gemini's. Nothing is sent,
+   * and a pending cloud request is dropped (never sent, never reused).
+   */
+  async function guidedBuildLocal(from: WorkspaceState = workspaceRef.current): Promise<void> {
+    const blocker = buildBlocker(from);
+    if (blocker || !prepared) {
+      setGuidedBlocker(blocker);
+      return;
+    }
+    const current = planFields(prepared, from.source?.records ?? [], from.destinationText, { fieldMatches: from.fieldMatches, categoryMeanings: from.categoryMeanings }, from.semanticConfirmations);
+    const contract = current ? localContract(current, prepared, from.destinationText) : null;
+    if (!contract) {
+      setGuidedBlocker(current?.localBlocker ?? "Some destination fields have no match yet.");
+      return;
+    }
+    setGuidedBlocker(null);
+    const base: WorkspaceState = { ...invalidateDownstream(from), mappingText: JSON.stringify(contract, null, 2), mappingChoice: "manual" };
+    setInFlight("checking");
+    if (guidedStep !== "result") goGuided("result");
+    updateWorkspace(base);
+    setInvalidation(null);
+    await new Promise((resolve) => requestAnimationFrame(() => resolve(null)));
+    if (workspaceRef.current !== base) {
+      setInFlight(null);
+      return;
+    }
+    updateWorkspace(runLocalVerification(base, prepared, true));
+    setInFlight(null);
+  }
+
+  /** A mapping built on this device is the active result. */
+  const localActive = (state: WorkspaceState) => state.mappingChoice === "manual" && isLocalMapping(state.mappingText);
+
+  /** Sprint 15 (B5/C4): apply one field decision; a local result is rebuilt from it at once (deterministic, nothing sent). */
+  function guidedDecision(patch: Parameters<typeof applyFieldDecision>[1]): void {
+    const current = workspaceRef.current;
+    const next = applyFieldDecision(current, patch);
+    updateWorkspace(next);
+    if (localActive(current) && current.report) void guidedBuildLocal(next);
+  }
+
+  function guidedMatch(target: string, source: string | null): void {
+    const fieldMatches = { ...workspaceRef.current.fieldMatches };
+    if (source) fieldMatches[target] = source;
+    else delete fieldMatches[target];
+    guidedDecision({ fieldMatches });
+  }
+
+  function guidedMeaning(target: string, meaning: CategoryMeaning | null): void {
+    const categoryMeanings = { ...workspaceRef.current.categoryMeanings };
+    if (meaning) categoryMeanings[target] = meaning;
+    else delete categoryMeanings[target];
+    guidedDecision({ categoryMeanings });
+  }
+
+  function guidedDateOrder(path: string, order: SlashOrder): void {
+    guidedDecision({ semanticConfirmations: { ...workspaceRef.current.semanticConfirmations, [path]: order } });
+  }
+
   const guidedCandidates = candidates;
   /* Sprint 14: plain-language readings of canonical state for the guided view. */
   const rejectedResult = workspace.proposal && !workspace.proposal.result.ok ? workspace.proposal.result : null;
   const diagnosis = rejectedResult && workspace.review ? diagnoseRejectedProposal(rejectedResult, workspace.review.preview.payload, prepared) : null;
   const cloudFailure = workspace.cloudError ? guidanceForFailure({ code: workspace.cloudError.code, stage: "cloud-mapping" }) : null;
-  const need = categoryNeed(prepared, workspace.destinationText);
+  const decisions = useMemo(() => ({ fieldMatches: workspace.fieldMatches, categoryMeanings: workspace.categoryMeanings }), [workspace.fieldMatches, workspace.categoryMeanings]);
+  const sourceRecords = workspace.source?.records;
+  /** Sprint 15: the target-first field plan (A/B). A pure reading of the source, destination and the user's decisions. */
+  const plan = useMemo(
+    () => planFields(prepared, sourceRecords ?? [], workspace.destinationText, decisions, workspace.semanticConfirmations),
+    [prepared, sourceRecords, workspace.destinationText, decisions, workspace.semanticConfirmations],
+  );
+  const need = categoryNeed(prepared, workspace.destinationText, decisions, sourceRecords ?? []);
+  const dateExamples = (path: string): string[] => {
+    const values: string[] = [];
+    for (const record of sourceRecords ?? []) {
+      const value = (record as Record<string, unknown>)?.[path];
+      if (typeof value === "string" && !values.includes(value)) values.push(value);
+      if (values.length >= 3) break;
+    }
+    return values;
+  };
   // Rejected answers to this exact request content, read from this run's safe events (hashes only).
   const currentPayload = workspace.review?.preview.payloadHash ?? null;
   const rejectedAnswers = currentPayload ? runEvents.filter((event) => (event.kind === "proposal-validate" || event.kind === "alias-resolve") && !event.ok && event.payloadHash === currentPayload).length : 0;
@@ -636,6 +716,14 @@ export default function App() {
               sourceLabel={workspace.source?.label ?? null}
               categoryNeed={need}
               onShareCategories={(paths, share) => void guidedShareCategories(paths, share, false)}
+              plan={plan}
+              meanings={workspace.categoryMeanings}
+              confirmations={workspace.semanticConfirmations}
+              dateExamples={dateExamples}
+              onMatch={guidedMatch}
+              onMeaning={guidedMeaning}
+              onDateOrder={guidedDateOrder}
+              onBuildLocal={() => void guidedBuildLocal()}
               buildBlocker={guidedBlocker}
               building={inFlight === "preparing"}
               onBuild={() => void guidedBuild()}
@@ -667,6 +755,18 @@ export default function App() {
                 recoveryError={recoveryError}
                 understanding={understanding}
                 onShareCategories={(paths) => void guidedShareCategories(paths, true, true)}
+                plan={plan}
+                meanings={workspace.categoryMeanings}
+                confirmations={workspace.semanticConfirmations}
+                dateExamples={dateExamples}
+                onMeaning={guidedMeaning}
+                onDateOrder={guidedDateOrder}
+                onBuildLocal={() => void guidedBuildLocal()}
+                onIncludeLabels={(paths, include) => {
+                  const current = workspaceRef.current;
+                  const kept = current.packageLabelSources.filter((path) => !paths.includes(path));
+                  updateWorkspace({ ...current, packageLabelSources: include ? [...kept, ...paths] : kept });
+                }}
                 onChange={updateWorkspace}
                 onTechnical={() => switchView("technical", "observe")}
                 onEditData={() => goGuided("data")}
