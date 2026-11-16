@@ -1,0 +1,1001 @@
+{
+  "scenarioId": "alquileres-cartera-mixed",
+  "split": "holdout",
+  "industry": "property management",
+  "sourceLanguage": "mixed",
+  "description": "Property management lease portfolio with mixed English/Spanish keys and nested tenant/owner objects mapped to a lease record.",
+  "fictional": true,
+  "records": [
+    {
+      "renta_mensual": 1225.0,
+      "estado_pago": "al_dia",
+      "owner": {
+        "nombre": "Jorge Utrera",
+        "empresa": null,
+        "email": "propietario.utrera@example.net"
+      },
+      "lease_no": "ARR-2026-0101",
+      "fecha_alta": "01/10/2024",
+      "tipo_unidad": "atico",
+      "unit_code": "U22-D8",
+      "tenant_id": "T4242",
+      "updated_at": "2026-10-15T19:46:00Z",
+      "fecha_fin": "09/02/2030",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Ignacio Aranda",
+        "email": "ignacio.aranda@example.com",
+        "movil": "+34 632280109"
+      },
+      "fianza": 1225.0,
+      "estado_contrato": "vigente",
+      "fecha_inicio": "12/05/2023"
+    },
+    {
+      "renta_mensual": 975.0,
+      "estado_pago": "al_dia",
+      "owner": {
+        "nombre": "Fernando Gil",
+        "empresa": null,
+        "email": "propietario.gil@example.net"
+      },
+      "lease_no": "ARR-2026-0102",
+      "fecha_alta": "05/08/2024",
+      "tipo_unidad": "atico",
+      "unit_code": "U01-B4",
+      "tenant_id": "T4149",
+      "updated_at": "2026-10-26T09:00:00Z",
+      "fecha_fin": "01/06/2028",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Héctor Aranda",
+        "email": "hector.aranda@example.com",
+        "movil": null
+      },
+      "fianza": 1950.0,
+      "estado_contrato": "vencido",
+      "fecha_inicio": "11/05/2026"
+    },
+    {
+      "renta_mensual": 2100.0,
+      "estado_pago": "atrasado",
+      "owner": {
+        "nombre": "Jorge Utrera",
+        "empresa": null,
+        "email": "propietario.utrera@example.net"
+      },
+      "lease_no": "ARR-2026-0103",
+      "fecha_alta": "01/04/2023",
+      "tipo_unidad": "adosado",
+      "unit_code": "U29-A1",
+      "tenant_id": "T4116",
+      "updated_at": "2026-07-17T12:35:00Z",
+      "fecha_fin": "04/06/2030",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Ainhoa Castañeda",
+        "email": "ainhoa.castaneda@example.com",
+        "movil": null
+      },
+      "fianza": 4200.0,
+      "estado_contrato": "vigente",
+      "fecha_inicio": "10/08/2025"
+    },
+    {
+      "renta_mensual": 975.0,
+      "estado_pago": "al_dia",
+      "owner": {
+        "nombre": "Jorge Utrera",
+        "empresa": null,
+        "email": "propietario.utrera@example.net"
+      },
+      "lease_no": "ARR-2026-0104",
+      "fecha_alta": "03/10/2022",
+      "tipo_unidad": "piso",
+      "unit_code": "U21-C8",
+      "tenant_id": "T4583",
+      "updated_at": "2026-03-24T16:26:00Z",
+      "fecha_fin": "01/06/2027",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Ignacio Barrientos",
+        "email": "ignacio.barrientos@example.com",
+        "movil": "+34 677944434"
+      },
+      "fianza": 1950.0,
+      "estado_contrato": "vigente",
+      "fecha_inicio": "05/05/2025"
+    },
+    {
+      "renta_mensual": 1625.0,
+      "estado_pago": "impago",
+      "owner": {
+        "nombre": "Elena Prats",
+        "empresa": "Gestiones Patrimoniales Alameda",
+        "email": "propietario.prats@example.net"
+      },
+      "lease_no": "ARR-2026-0105",
+      "fecha_alta": "02/04/2024",
+      "tipo_unidad": "adosado",
+      "unit_code": "U01-A7",
+      "tenant_id": "T4147",
+      "updated_at": "2026-09-14T17:49:00Z",
+      "fecha_fin": "11/03/2030",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Emilio Ortuño",
+        "email": "emilio.ortuno@example.com",
+        "movil": "+34 697540386"
+      },
+      "fianza": 1625.0,
+      "estado_contrato": "rescindido",
+      "fecha_inicio": "12/01/2023"
+    },
+    {
+      "renta_mensual": 2250.0,
+      "estado_pago": "impago",
+      "owner": {
+        "nombre": "Fernando Gil",
+        "empresa": null,
+        "email": "propietario.gil@example.net"
+      },
+      "lease_no": "ARR-2026-0106",
+      "fecha_alta": "01/10/2026",
+      "tipo_unidad": "adosado",
+      "unit_code": "U04-B5",
+      "tenant_id": "T4991",
+      "updated_at": "2026-12-23T11:15:00Z",
+      "fecha_fin": "01/11/2030",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Emilio Villalobos",
+        "email": "emilio.villalobos@example.com",
+        "movil": null
+      },
+      "fianza": 4500.0,
+      "estado_contrato": "vencido",
+      "fecha_inicio": "11/09/2023"
+    },
+    {
+      "renta_mensual": 1325.0,
+      "estado_pago": "impago",
+      "owner": {
+        "nombre": "Fernando Gil",
+        "empresa": null,
+        "email": "propietario.gil@example.net"
+      },
+      "lease_no": "ARR-2026-0107",
+      "fecha_alta": "04/09/2024",
+      "tipo_unidad": "atico",
+      "unit_code": "U20-B2",
+      "tenant_id": "T4013",
+      "updated_at": "2026-03-09T09:00:00Z",
+      "fecha_fin": "06/10/2029",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Valeria Barrientos",
+        "email": "valeria.barrientos@example.com",
+        "movil": null
+      },
+      "fianza": 1325.0,
+      "estado_contrato": "rescindido",
+      "fecha_inicio": "10/06/2025"
+    },
+    {
+      "renta_mensual": 2150.0,
+      "estado_pago": "atrasado",
+      "owner": {
+        "nombre": "Patricia Lozano",
+        "empresa": "Inmuebles Costa Brava Norte SL",
+        "email": "propietario.lozano@example.net"
+      },
+      "lease_no": "ARR-2026-0108",
+      "fecha_alta": "02/12/2022",
+      "tipo_unidad": "estudio",
+      "unit_code": "U09-B8",
+      "tenant_id": "T4420",
+      "updated_at": "2026-12-13T17:25:00Z",
+      "fecha_fin": "07/02/2030",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Rubén Villalobos",
+        "email": "ruben.villalobos@example.com",
+        "movil": "+34 657344939"
+      },
+      "fianza": 2150.0,
+      "estado_contrato": "rescindido",
+      "fecha_inicio": "04/08/2026"
+    },
+    {
+      "renta_mensual": 675.0,
+      "estado_pago": "al_dia",
+      "owner": {
+        "nombre": "Patricia Lozano",
+        "empresa": "Inmuebles Costa Brava Norte SL",
+        "email": "propietario.lozano@example.net"
+      },
+      "lease_no": "ARR-2026-0109",
+      "fecha_alta": "01/03/2023",
+      "tipo_unidad": "piso",
+      "unit_code": "U02-B6",
+      "tenant_id": "T4991",
+      "updated_at": "2026-02-10T10:28:00Z",
+      "fecha_fin": "09/09/2027",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Héctor Salcedo",
+        "email": "hector.salcedo@example.com",
+        "movil": "+34 642324351"
+      },
+      "fianza": 1350.0,
+      "estado_contrato": "vigente",
+      "fecha_inicio": "10/07/2022"
+    },
+    {
+      "renta_mensual": 950.0,
+      "estado_pago": "al_dia",
+      "owner": {
+        "nombre": "Patricia Lozano",
+        "empresa": "Inmuebles Costa Brava Norte SL",
+        "email": "propietario.lozano@example.net"
+      },
+      "lease_no": "ARR-2026-0110",
+      "fecha_alta": "07/10/2026",
+      "tipo_unidad": "atico",
+      "unit_code": "U18-A1",
+      "tenant_id": "T4285",
+      "updated_at": "2026-06-09T16:53:00Z",
+      "fecha_fin": "06/01/2028",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Rubén Aranda",
+        "email": "ruben.aranda@example.com",
+        "movil": "+34 669973461"
+      },
+      "fianza": 950.0,
+      "estado_contrato": "rescindido",
+      "fecha_inicio": "10/12/2026"
+    },
+    {
+      "renta_mensual": 875.0,
+      "estado_pago": "atrasado",
+      "owner": {
+        "nombre": "Fernando Gil",
+        "empresa": null,
+        "email": "propietario.gil@example.net"
+      },
+      "lease_no": "ARR-2026-0111",
+      "fecha_alta": "06/10/2022",
+      "tipo_unidad": "adosado",
+      "unit_code": "U01-D7",
+      "tenant_id": "T4449",
+      "updated_at": "2026-06-13T10:39:00Z",
+      "fecha_fin": "07/06/2027",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Emilio Salcedo",
+        "email": "emilio.salcedo@example.com",
+        "movil": "+34 638038172"
+      },
+      "fianza": 875.0,
+      "estado_contrato": "en_renovacion",
+      "fecha_inicio": "09/03/2024"
+    },
+    {
+      "renta_mensual": 1400.0,
+      "estado_pago": "al_dia",
+      "owner": {
+        "nombre": "Fernando Gil",
+        "empresa": null,
+        "email": "propietario.gil@example.net"
+      },
+      "lease_no": "ARR-2026-0112",
+      "fecha_alta": "04/04/2026",
+      "tipo_unidad": "piso",
+      "unit_code": "U03-D4",
+      "tenant_id": "T4102",
+      "updated_at": "2026-06-25T09:54:00Z",
+      "fecha_fin": "10/12/2028",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Ainhoa Aranda",
+        "email": "ainhoa.aranda@example.com",
+        "movil": "+34 658679703"
+      },
+      "fianza": 2800.0,
+      "estado_contrato": "vigente",
+      "fecha_inicio": "12/05/2024"
+    },
+    {
+      "renta_mensual": 1400.0,
+      "estado_pago": "al_dia",
+      "owner": {
+        "nombre": "Jorge Utrera",
+        "empresa": null,
+        "email": "propietario.utrera@example.net"
+      },
+      "lease_no": "ARR-2026-0113",
+      "fecha_alta": "02/10/2023",
+      "tipo_unidad": "local",
+      "unit_code": "U14-B5",
+      "tenant_id": "T4855",
+      "updated_at": "2026-02-02T12:49:00Z",
+      "fecha_fin": "07/10/2030",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Héctor Castañeda",
+        "email": "hector.castaneda@example.com",
+        "movil": null
+      },
+      "fianza": 1400.0,
+      "estado_contrato": "vencido",
+      "fecha_inicio": "04/11/2026"
+    },
+    {
+      "renta_mensual": 550.0,
+      "estado_pago": "impago",
+      "owner": {
+        "nombre": "Fernando Gil",
+        "empresa": null,
+        "email": "propietario.gil@example.net"
+      },
+      "lease_no": "ARR-2026-0114",
+      "fecha_alta": "10/09/2025",
+      "tipo_unidad": "adosado",
+      "unit_code": "U06-D8",
+      "tenant_id": "T4398",
+      "updated_at": "2026-06-21T14:01:00Z",
+      "fecha_fin": "04/09/2027",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Ignacio Ortuño",
+        "email": "ignacio.ortuno@example.com",
+        "movil": "+34 656575425"
+      },
+      "fianza": 1100.0,
+      "estado_contrato": "rescindido",
+      "fecha_inicio": "09/06/2026"
+    },
+    {
+      "renta_mensual": 1675.0,
+      "estado_pago": "atrasado",
+      "owner": {
+        "nombre": "Patricia Lozano",
+        "empresa": "Inmuebles Costa Brava Norte SL",
+        "email": "propietario.lozano@example.net"
+      },
+      "lease_no": "ARR-2026-0115",
+      "fecha_alta": "12/01/2025",
+      "tipo_unidad": "piso",
+      "unit_code": "U08-C2",
+      "tenant_id": "T4591",
+      "updated_at": "2026-02-16T17:20:00Z",
+      "fecha_fin": "11/09/2027",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Ignacio Ortuño",
+        "email": "ignacio.ortuno@example.com",
+        "movil": "+34 669742396"
+      },
+      "fianza": 1675.0,
+      "estado_contrato": "vencido",
+      "fecha_inicio": "09/03/2023"
+    },
+    {
+      "renta_mensual": 2025.0,
+      "estado_pago": "al_dia",
+      "owner": {
+        "nombre": "Elena Prats",
+        "empresa": "Gestiones Patrimoniales Alameda",
+        "email": "propietario.prats@example.net"
+      },
+      "lease_no": "ARR-2026-0116",
+      "fecha_alta": "09/08/2025",
+      "tipo_unidad": "atico",
+      "unit_code": "U12-A4",
+      "tenant_id": "T4427",
+      "updated_at": "2026-10-25T07:22:00Z",
+      "fecha_fin": "01/05/2028",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Emilio Ortuño",
+        "email": "emilio.ortuno@example.com",
+        "movil": "+34 657462001"
+      },
+      "fianza": 2025.0,
+      "estado_contrato": "vencido",
+      "fecha_inicio": "10/11/2025"
+    },
+    {
+      "renta_mensual": 2200.0,
+      "estado_pago": "atrasado",
+      "owner": {
+        "nombre": "Jorge Utrera",
+        "empresa": null,
+        "email": "propietario.utrera@example.net"
+      },
+      "lease_no": "ARR-2026-0117",
+      "fecha_alta": "08/04/2022",
+      "tipo_unidad": "piso",
+      "unit_code": "U16-A3",
+      "tenant_id": "T4188",
+      "updated_at": "2026-10-12T11:49:00Z",
+      "fecha_fin": "03/09/2029",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Marisol Barrientos",
+        "email": "marisol.barrientos@example.com",
+        "movil": "+34 603006569"
+      },
+      "fianza": 2200.0,
+      "estado_contrato": "vencido",
+      "fecha_inicio": "01/01/2025"
+    },
+    {
+      "renta_mensual": 1050.0,
+      "estado_pago": "al_dia",
+      "owner": {
+        "nombre": "Elena Prats",
+        "empresa": "Gestiones Patrimoniales Alameda",
+        "email": "propietario.prats@example.net"
+      },
+      "lease_no": "ARR-2026-0118",
+      "fecha_alta": "09/06/2023",
+      "tipo_unidad": "local",
+      "unit_code": "U24-C2",
+      "tenant_id": "T4104",
+      "updated_at": "2026-02-14T11:56:00Z",
+      "fecha_fin": "06/12/2029",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Ainhoa Salcedo",
+        "email": "ainhoa.salcedo@example.com",
+        "movil": null
+      },
+      "fianza": 2100.0,
+      "estado_contrato": "en_renovacion",
+      "fecha_inicio": "09/01/2023"
+    },
+    {
+      "renta_mensual": 1400.0,
+      "estado_pago": "atrasado",
+      "owner": {
+        "nombre": "Patricia Lozano",
+        "empresa": "Inmuebles Costa Brava Norte SL",
+        "email": "propietario.lozano@example.net"
+      },
+      "lease_no": "ARR-2026-0119",
+      "fecha_alta": "07/04/2023",
+      "tipo_unidad": "adosado",
+      "unit_code": "U30-C6",
+      "tenant_id": "T4403",
+      "updated_at": "2026-09-17T14:46:00Z",
+      "fecha_fin": "09/09/2028",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Valeria Villalobos",
+        "email": "valeria.villalobos@example.com",
+        "movil": "+34 655897036"
+      },
+      "fianza": 1400.0,
+      "estado_contrato": "en_renovacion",
+      "fecha_inicio": "10/03/2022"
+    },
+    {
+      "renta_mensual": 1075.0,
+      "estado_pago": "al_dia",
+      "owner": {
+        "nombre": "Jorge Utrera",
+        "empresa": null,
+        "email": "propietario.utrera@example.net"
+      },
+      "lease_no": "ARR-2026-0120",
+      "fecha_alta": "06/04/2026",
+      "tipo_unidad": "local",
+      "unit_code": "U09-B6",
+      "tenant_id": "T4310",
+      "updated_at": "2026-07-12T09:46:00Z",
+      "fecha_fin": "05/05/2029",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Ignacio Villalobos",
+        "email": "ignacio.villalobos@example.com",
+        "movil": null
+      },
+      "fianza": 1075.0,
+      "estado_contrato": "vencido",
+      "fecha_inicio": "04/01/2022"
+    },
+    {
+      "renta_mensual": 2350.0,
+      "estado_pago": "al_dia",
+      "owner": {
+        "nombre": "Patricia Lozano",
+        "empresa": "Inmuebles Costa Brava Norte SL",
+        "email": "propietario.lozano@example.net"
+      },
+      "lease_no": "ARR-2026-0121",
+      "fecha_alta": "08/11/2026",
+      "tipo_unidad": "piso",
+      "unit_code": "U30-C6",
+      "tenant_id": "T4030",
+      "updated_at": "2026-05-03T19:14:00Z",
+      "fecha_fin": "08/05/2028",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Marisol Ortuño",
+        "email": "marisol.ortuno@example.com",
+        "movil": "+34 648676107"
+      },
+      "fianza": 4700.0,
+      "estado_contrato": "rescindido",
+      "fecha_inicio": "03/09/2024"
+    },
+    {
+      "renta_mensual": 1775.0,
+      "estado_pago": "al_dia",
+      "owner": {
+        "nombre": "Patricia Lozano",
+        "empresa": "Inmuebles Costa Brava Norte SL",
+        "email": "propietario.lozano@example.net"
+      },
+      "lease_no": "ARR-2026-0122",
+      "fecha_alta": "07/12/2024",
+      "tipo_unidad": "piso",
+      "unit_code": "U26-C8",
+      "tenant_id": "T4532",
+      "updated_at": "2026-06-05T15:52:00Z",
+      "fecha_fin": "04/04/2028",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Daniela Aranda",
+        "email": "daniela.aranda@example.com",
+        "movil": "+34 666701574"
+      },
+      "fianza": 3550.0,
+      "estado_contrato": "rescindido",
+      "fecha_inicio": "07/12/2025"
+    },
+    {
+      "renta_mensual": 775.0,
+      "estado_pago": "impago",
+      "owner": {
+        "nombre": "Fernando Gil",
+        "empresa": null,
+        "email": "propietario.gil@example.net"
+      },
+      "lease_no": "ARR-2026-0123",
+      "fecha_alta": "02/10/2023",
+      "tipo_unidad": "local",
+      "unit_code": "U10-B6",
+      "tenant_id": "T4094",
+      "updated_at": "2026-09-25T07:04:00Z",
+      "fecha_fin": "12/01/2029",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Emilio Villalobos",
+        "email": "emilio.villalobos@example.com",
+        "movil": "+34 644821531"
+      },
+      "fianza": 1550.0,
+      "estado_contrato": "vigente",
+      "fecha_inicio": "02/08/2026"
+    },
+    {
+      "renta_mensual": 1950.0,
+      "estado_pago": "impago",
+      "owner": {
+        "nombre": "Patricia Lozano",
+        "empresa": "Inmuebles Costa Brava Norte SL",
+        "email": "propietario.lozano@example.net"
+      },
+      "lease_no": "ARR-2026-0124",
+      "fecha_alta": "10/05/2023",
+      "tipo_unidad": "adosado",
+      "unit_code": "U21-D7",
+      "tenant_id": "T4753",
+      "updated_at": "2026-11-11T12:35:00Z",
+      "fecha_fin": "04/06/2027",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Emilio Aranda",
+        "email": "emilio.aranda@example.com",
+        "movil": "+34 696467688"
+      },
+      "fianza": 3900.0,
+      "estado_contrato": "vencido",
+      "fecha_inicio": "03/08/2022"
+    },
+    {
+      "renta_mensual": 875.0,
+      "estado_pago": "al_dia",
+      "owner": {
+        "nombre": "Jorge Utrera",
+        "empresa": null,
+        "email": "propietario.utrera@example.net"
+      },
+      "lease_no": "ARR-2026-0125",
+      "fecha_alta": "10/03/2026",
+      "tipo_unidad": "atico",
+      "unit_code": "U30-D4",
+      "tenant_id": "T4056",
+      "updated_at": "2026-10-20T07:19:00Z",
+      "fecha_fin": "03/05/2030",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Valeria Barrientos",
+        "email": "valeria.barrientos@example.com",
+        "movil": "+34 692412418"
+      },
+      "fianza": 875.0,
+      "estado_contrato": "vigente",
+      "fecha_inicio": "01/07/2026"
+    },
+    {
+      "renta_mensual": 1725.0,
+      "estado_pago": "al_dia",
+      "owner": {
+        "nombre": "Elena Prats",
+        "empresa": "Gestiones Patrimoniales Alameda",
+        "email": "propietario.prats@example.net"
+      },
+      "lease_no": "ARR-2026-0126",
+      "fecha_alta": "04/03/2025",
+      "tipo_unidad": "estudio",
+      "unit_code": "U30-A3",
+      "tenant_id": "T4966",
+      "updated_at": "2026-03-25T09:16:00Z",
+      "fecha_fin": "07/07/2029",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Héctor Villalobos",
+        "email": "hector.villalobos@example.com",
+        "movil": "+34 641634097"
+      },
+      "fianza": 3450.0,
+      "estado_contrato": "vigente",
+      "fecha_inicio": "08/10/2024"
+    },
+    {
+      "renta_mensual": 650.0,
+      "estado_pago": "al_dia",
+      "owner": {
+        "nombre": "Jorge Utrera",
+        "empresa": null,
+        "email": "propietario.utrera@example.net"
+      },
+      "lease_no": "ARR-2026-0127",
+      "fecha_alta": "09/09/2022",
+      "tipo_unidad": "piso",
+      "unit_code": "U02-A6",
+      "tenant_id": "T4493",
+      "updated_at": "2026-02-27T13:34:00Z",
+      "fecha_fin": "06/01/2027",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Héctor Villalobos",
+        "email": "hector.villalobos@example.com",
+        "movil": "+34 696954563"
+      },
+      "fianza": 650.0,
+      "estado_contrato": "vigente",
+      "fecha_inicio": "06/06/2026"
+    },
+    {
+      "renta_mensual": 675.0,
+      "estado_pago": "atrasado",
+      "owner": {
+        "nombre": "Jorge Utrera",
+        "empresa": null,
+        "email": "propietario.utrera@example.net"
+      },
+      "lease_no": "ARR-2026-0128",
+      "fecha_alta": "07/06/2026",
+      "tipo_unidad": "atico",
+      "unit_code": "U20-D2",
+      "tenant_id": "T4768",
+      "updated_at": "2026-03-01T12:28:00Z",
+      "fecha_fin": "03/08/2028",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Emilio Villalobos",
+        "email": "emilio.villalobos@example.com",
+        "movil": null
+      },
+      "fianza": 675.0,
+      "estado_contrato": "en_renovacion",
+      "fecha_inicio": "04/11/2025"
+    },
+    {
+      "renta_mensual": 2025.0,
+      "estado_pago": "al_dia",
+      "owner": {
+        "nombre": "Jorge Utrera",
+        "empresa": null,
+        "email": "propietario.utrera@example.net"
+      },
+      "lease_no": "ARR-2026-0129",
+      "fecha_alta": "04/07/2023",
+      "tipo_unidad": "atico",
+      "unit_code": "U16-D2",
+      "tenant_id": "T4888",
+      "updated_at": "2026-12-25T13:48:00Z",
+      "fecha_fin": "03/10/2030",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Ignacio Barrientos",
+        "email": "ignacio.barrientos@example.com",
+        "movil": null
+      },
+      "fianza": 2025.0,
+      "estado_contrato": "rescindido",
+      "fecha_inicio": "01/06/2022"
+    },
+    {
+      "renta_mensual": 2075.0,
+      "estado_pago": "impago",
+      "owner": {
+        "nombre": "Fernando Gil",
+        "empresa": null,
+        "email": "propietario.gil@example.net"
+      },
+      "lease_no": "ARR-2026-0130",
+      "fecha_alta": "12/08/2022",
+      "tipo_unidad": "piso",
+      "unit_code": "U24-A8",
+      "tenant_id": "T4200",
+      "updated_at": "2026-12-12T13:10:00Z",
+      "fecha_fin": "10/09/2028",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Rubén Villalobos",
+        "email": "ruben.villalobos@example.com",
+        "movil": "+34 644085580"
+      },
+      "fianza": 2075.0,
+      "estado_contrato": "vencido",
+      "fecha_inicio": "07/02/2026"
+    },
+    {
+      "renta_mensual": 850.0,
+      "estado_pago": "al_dia",
+      "owner": {
+        "nombre": "Fernando Gil",
+        "empresa": null,
+        "email": "propietario.gil@example.net"
+      },
+      "lease_no": "ARR-2026-0131",
+      "fecha_alta": "07/01/2022",
+      "tipo_unidad": "local",
+      "unit_code": "U03-C1",
+      "tenant_id": "T4191",
+      "updated_at": "2026-04-19T17:20:00Z",
+      "fecha_fin": "08/06/2027",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Ignacio Salcedo",
+        "email": "ignacio.salcedo@example.com",
+        "movil": "+34 638158728"
+      },
+      "fianza": 850.0,
+      "estado_contrato": "vencido",
+      "fecha_inicio": "10/01/2025"
+    },
+    {
+      "renta_mensual": 925.0,
+      "estado_pago": "al_dia",
+      "owner": {
+        "nombre": "Elena Prats",
+        "empresa": "Gestiones Patrimoniales Alameda",
+        "email": "propietario.prats@example.net"
+      },
+      "lease_no": "ARR-2026-0132",
+      "fecha_alta": "10/05/2026",
+      "tipo_unidad": "piso",
+      "unit_code": "U03-C4",
+      "tenant_id": "T4566",
+      "updated_at": "2026-11-04T18:47:00Z",
+      "fecha_fin": "11/08/2028",
+      "moneda": "EUR",
+      "tenant": {
+        "nombre": "Marisol Aranda",
+        "email": "marisol.aranda@example.com",
+        "movil": null
+      },
+      "fianza": 1850.0,
+      "estado_contrato": "rescindido",
+      "fecha_inicio": "08/04/2026"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Lease",
+    "type": "object",
+    "properties": {
+      "lease_id": {
+        "type": "string"
+      },
+      "tenant_id": {
+        "type": "string"
+      },
+      "tenant_name": {
+        "type": "string"
+      },
+      "tenant_email": {
+        "type": "string",
+        "format": "email"
+      },
+      "lease_start_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "monthly_rent": {
+        "type": "number"
+      },
+      "lease_status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "expired",
+          "terminated",
+          "renewal_pending"
+        ]
+      },
+      "unit_type": {
+        "type": "string",
+        "enum": [
+          "apartment",
+          "studio",
+          "retail",
+          "penthouse",
+          "townhouse"
+        ]
+      },
+      "pet_policy": {
+        "type": "string",
+        "enum": [
+          "allowed",
+          "not_allowed"
+        ]
+      },
+      "parking_spaces": {
+        "type": "integer"
+      }
+    },
+    "required": [
+      "lease_id",
+      "tenant_id",
+      "tenant_email",
+      "lease_start_date",
+      "monthly_rent",
+      "lease_status",
+      "pet_policy"
+    ]
+  },
+  "groundTruth": {
+    "lease_id": {
+      "source": "lease_no",
+      "why": "lease number"
+    },
+    "tenant_id": {
+      "source": "tenant_id",
+      "why": "tenant identifier"
+    },
+    "tenant_name": {
+      "source": "tenant.nombre",
+      "why": "tenant, not owner"
+    },
+    "tenant_email": {
+      "source": "tenant.email",
+      "why": "tenant email, not owner email"
+    },
+    "lease_start_date": {
+      "source": "fecha_inicio",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "lease start, Spanish day-first"
+    },
+    "monthly_rent": {
+      "source": "renta_mensual",
+      "why": "monthly rent, not deposit (fianza)"
+    },
+    "lease_status": {
+      "source": "estado_contrato",
+      "why": "contract state, not payment state"
+    },
+    "unit_type": {
+      "source": "tipo_unidad",
+      "why": "Spanish unit type labels translate to the enum"
+    },
+    "pet_policy": {
+      "source": null,
+      "why": "no pet policy in the source"
+    },
+    "parking_spaces": {
+      "source": null,
+      "why": "no parking data in the source"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "tenant_id",
+        "lease_no"
+      ],
+      "correctFor": "lease_id"
+    },
+    {
+      "kind": "start-vs-created-date",
+      "fields": [
+        "fecha_inicio",
+        "fecha_alta"
+      ],
+      "correctFor": "lease_start_date"
+    },
+    {
+      "kind": "nested-relationship",
+      "fields": [
+        "tenant.email",
+        "owner.email"
+      ],
+      "correctFor": "tenant_email"
+    },
+    {
+      "kind": "nested-relationship",
+      "fields": [
+        "tenant.nombre",
+        "owner.nombre"
+      ],
+      "correctFor": "tenant_name"
+    },
+    {
+      "kind": "account-vs-payment-status",
+      "fields": [
+        "estado_contrato",
+        "estado_pago"
+      ],
+      "correctFor": "lease_status"
+    },
+    {
+      "kind": "two-amounts",
+      "fields": [
+        "renta_mensual",
+        "fianza"
+      ],
+      "correctFor": "monthly_rent"
+    }
+  ],
+  "sourceConcepts": {
+    "tenant_id": "customer-id",
+    "lease_no": "transaction-id",
+    "unit_code": "other-identifier",
+    "fecha_inicio": "start-date",
+    "fecha_fin": "end-date",
+    "fecha_alta": "created-date",
+    "updated_at": "modified-date",
+    "tenant.nombre": "person-name",
+    "tenant.email": "email",
+    "tenant.movil": "phone",
+    "owner.nombre": "person-name",
+    "owner.empresa": "organization-name",
+    "owner.email": "email",
+    "renta_mensual": "amount",
+    "fianza": "amount",
+    "estado_contrato": "account-status",
+    "estado_pago": "payment-status",
+    "tipo_unidad": "category",
+    "moneda": "currency-code"
+  },
+  "destinationConcepts": {
+    "lease_id": "transaction-id",
+    "tenant_id": "customer-id",
+    "tenant_name": "person-name",
+    "tenant_email": "email",
+    "lease_start_date": "start-date",
+    "monthly_rent": "amount",
+    "lease_status": "account-status",
+    "unit_type": "category",
+    "pet_policy": "category",
+    "parking_spaces": "quantity"
+  }
+}

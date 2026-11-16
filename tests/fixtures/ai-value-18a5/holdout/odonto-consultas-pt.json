@@ -1,0 +1,716 @@
+{
+  "scenarioId": "odonto-consultas-pt",
+  "split": "holdout",
+  "industry": "dental practice",
+  "sourceLanguage": "pt",
+  "description": "Portuguese dental practice system export with vendor-prefixed columns mapped to an appointment record.",
+  "fictional": true,
+  "records": [
+    {
+      "fld_sit_cadastro": "inativo",
+      "fld_valor_convenio": 0.0,
+      "fld_dt_consulta": "11/12/2026",
+      "fld_cel": "(11) 94885-0696",
+      "fld_cod_paciente": "PAC87797",
+      "fld_procedimento": "clareamento",
+      "fld_obs": "Paciente ansioso",
+      "fld_nome_pac": "Letícia Moreira Lins",
+      "fld_dt_cadastro": "15/04/2016",
+      "fld_sit_pagto": "pago",
+      "fld_tel": "(11) 3442-3168",
+      "fld_valor": 337.32,
+      "fld_convenio": "Particular",
+      "fld_cod_consulta": "CS-700000",
+      "fld_email": "paciente840@example.com",
+      "fld_dt_nasc": "13/05/1987"
+    },
+    {
+      "fld_sit_cadastro": "ativo",
+      "fld_valor_convenio": 0.0,
+      "fld_dt_consulta": "12/03/2025",
+      "fld_cel": "(11) 96966-5402",
+      "fld_cod_paciente": "PAC32373",
+      "fld_procedimento": "clareamento",
+      "fld_obs": null,
+      "fld_nome_pac": "João Moreira Lins",
+      "fld_dt_cadastro": "28/10/2020",
+      "fld_sit_pagto": "glosado",
+      "fld_tel": null,
+      "fld_valor": 1494.36,
+      "fld_convenio": "Particular",
+      "fld_cod_consulta": "CS-700013",
+      "fld_email": "paciente558@example.com",
+      "fld_dt_nasc": "21/11/1999"
+    },
+    {
+      "fld_sit_cadastro": "ativo",
+      "fld_valor_convenio": 0.0,
+      "fld_dt_consulta": "18/09/2025",
+      "fld_cel": "(11) 97814-8602",
+      "fld_cod_paciente": "PAC53941",
+      "fld_procedimento": "extracao",
+      "fld_obs": null,
+      "fld_nome_pac": "Beatriz Albuquerque",
+      "fld_dt_cadastro": "15/08/2018",
+      "fld_sit_pagto": "pago",
+      "fld_tel": null,
+      "fld_valor": 663.32,
+      "fld_convenio": null,
+      "fld_cod_consulta": "CS-700026",
+      "fld_email": "paciente593@example.com",
+      "fld_dt_nasc": "27/08/1966"
+    },
+    {
+      "fld_sit_cadastro": "bloqueado",
+      "fld_valor_convenio": 153.81,
+      "fld_dt_consulta": "07/11/2026",
+      "fld_cel": "(11) 91873-1226",
+      "fld_cod_paciente": "PAC81369",
+      "fld_procedimento": "extracao",
+      "fld_obs": "Retorno em 6 meses",
+      "fld_nome_pac": "Bruna Tavares",
+      "fld_dt_cadastro": "02/03/2023",
+      "fld_sit_pagto": "parcelado",
+      "fld_tel": "(11) 3720-0702",
+      "fld_valor": 219.73,
+      "fld_convenio": "Saúde Integral Vale Verde",
+      "fld_cod_consulta": "CS-700039",
+      "fld_email": "paciente636@example.com",
+      "fld_dt_nasc": "10/06/2001"
+    },
+    {
+      "fld_sit_cadastro": "ativo",
+      "fld_valor_convenio": 0.0,
+      "fld_dt_consulta": "23/06/2025",
+      "fld_cel": "(11) 97524-6146",
+      "fld_cod_paciente": "PAC13186",
+      "fld_procedimento": "ortodontia",
+      "fld_obs": null,
+      "fld_nome_pac": "Bruna Cordeiro",
+      "fld_dt_cadastro": "03/09/2018",
+      "fld_sit_pagto": "pago",
+      "fld_tel": null,
+      "fld_valor": 997.63,
+      "fld_convenio": "Saúde Integral Vale Verde",
+      "fld_cod_consulta": "CS-700052",
+      "fld_email": null,
+      "fld_dt_nasc": "11/09/1983"
+    },
+    {
+      "fld_sit_cadastro": "ativo",
+      "fld_valor_convenio": 0.0,
+      "fld_dt_consulta": "06/07/2026",
+      "fld_cel": "(11) 97288-8954",
+      "fld_cod_paciente": "PAC54989",
+      "fld_procedimento": "ortodontia",
+      "fld_obs": null,
+      "fld_nome_pac": "Beatriz Damasceno",
+      "fld_dt_cadastro": "08/06/2019",
+      "fld_sit_pagto": "pago",
+      "fld_tel": null,
+      "fld_valor": 520.58,
+      "fld_convenio": "Saúde Integral Vale Verde",
+      "fld_cod_consulta": "CS-700065",
+      "fld_email": "paciente365@example.com",
+      "fld_dt_nasc": "26/11/1961"
+    },
+    {
+      "fld_sit_cadastro": "ativo",
+      "fld_valor_convenio": 0.0,
+      "fld_dt_consulta": "08/02/2026",
+      "fld_cel": "(11) 99298-2453",
+      "fld_cod_paciente": "PAC10623",
+      "fld_procedimento": "ortodontia",
+      "fld_obs": "Sensibilidade",
+      "fld_nome_pac": "Bruna Tavares",
+      "fld_dt_cadastro": "16/10/2020",
+      "fld_sit_pagto": "pago",
+      "fld_tel": "(11) 3569-6119",
+      "fld_valor": 1499.68,
+      "fld_convenio": "Particular",
+      "fld_cod_consulta": "CS-700078",
+      "fld_email": "paciente363@example.com",
+      "fld_dt_nasc": "20/08/2018"
+    },
+    {
+      "fld_sit_cadastro": "inativo",
+      "fld_valor_convenio": 0.0,
+      "fld_dt_consulta": "22/07/2025",
+      "fld_cel": "(11) 94674-8101",
+      "fld_cod_paciente": "PAC69896",
+      "fld_procedimento": "restauracao",
+      "fld_obs": null,
+      "fld_nome_pac": "Caio Tavares",
+      "fld_dt_cadastro": "07/04/2016",
+      "fld_sit_pagto": "pendente",
+      "fld_tel": null,
+      "fld_valor": 378.99,
+      "fld_convenio": "Particular",
+      "fld_cod_consulta": "CS-700091",
+      "fld_email": "paciente694@example.com",
+      "fld_dt_nasc": "18/09/1996"
+    },
+    {
+      "fld_sit_cadastro": "inativo",
+      "fld_valor_convenio": 680.07,
+      "fld_dt_consulta": "12/06/2026",
+      "fld_cel": "(11) 97823-1187",
+      "fld_cod_paciente": "PAC60000",
+      "fld_procedimento": "clareamento",
+      "fld_obs": null,
+      "fld_nome_pac": "Otávio Albuquerque",
+      "fld_dt_cadastro": "13/11/2019",
+      "fld_sit_pagto": "pendente",
+      "fld_tel": null,
+      "fld_valor": 1360.13,
+      "fld_convenio": "Saúde Integral Vale Verde",
+      "fld_cod_consulta": "CS-700104",
+      "fld_email": null,
+      "fld_dt_nasc": "18/04/1978"
+    },
+    {
+      "fld_sit_cadastro": "ativo",
+      "fld_valor_convenio": 0.0,
+      "fld_dt_consulta": "17/12/2026",
+      "fld_cel": "(11) 97921-1848",
+      "fld_cod_paciente": "PAC47954",
+      "fld_procedimento": "clareamento",
+      "fld_obs": "Retorno em 6 meses",
+      "fld_nome_pac": "Thiago Tavares",
+      "fld_dt_cadastro": "22/08/2018",
+      "fld_sit_pagto": "pago",
+      "fld_tel": "(11) 3929-4394",
+      "fld_valor": 1207.41,
+      "fld_convenio": "Particular",
+      "fld_cod_consulta": "CS-700117",
+      "fld_email": "paciente118@example.com",
+      "fld_dt_nasc": "18/06/1990"
+    },
+    {
+      "fld_sit_cadastro": "bloqueado",
+      "fld_valor_convenio": 54.92,
+      "fld_dt_consulta": "24/09/2025",
+      "fld_cel": "(11) 96889-9275",
+      "fld_cod_paciente": "PAC80250",
+      "fld_procedimento": "limpeza",
+      "fld_obs": null,
+      "fld_nome_pac": "Bruna Cordeiro",
+      "fld_dt_cadastro": "17/03/2025",
+      "fld_sit_pagto": "pendente",
+      "fld_tel": "(11) 3357-8337",
+      "fld_valor": 109.84,
+      "fld_convenio": "Saúde Integral Vale Verde",
+      "fld_cod_consulta": "CS-700130",
+      "fld_email": "paciente459@example.com",
+      "fld_dt_nasc": "10/02/2010"
+    },
+    {
+      "fld_sit_cadastro": "ativo",
+      "fld_valor_convenio": 145.7,
+      "fld_dt_consulta": "04/04/2025",
+      "fld_cel": "(11) 92007-5588",
+      "fld_cod_paciente": "PAC86742",
+      "fld_procedimento": "clareamento",
+      "fld_obs": null,
+      "fld_nome_pac": "Beatriz Damasceno",
+      "fld_dt_cadastro": "01/05/2017",
+      "fld_sit_pagto": "pago",
+      "fld_tel": "(11) 3217-5337",
+      "fld_valor": 208.15,
+      "fld_convenio": "Saúde Integral Vale Verde",
+      "fld_cod_consulta": "CS-700143",
+      "fld_email": "paciente785@example.com",
+      "fld_dt_nasc": "01/07/1987"
+    },
+    {
+      "fld_sit_cadastro": "ativo",
+      "fld_valor_convenio": 0.0,
+      "fld_dt_consulta": "06/10/2025",
+      "fld_cel": "(11) 98831-1005",
+      "fld_cod_paciente": "PAC44683",
+      "fld_procedimento": "canal",
+      "fld_obs": "Retorno em 6 meses",
+      "fld_nome_pac": "Rafael Tavares",
+      "fld_dt_cadastro": "01/12/2018",
+      "fld_sit_pagto": "pago",
+      "fld_tel": "(11) 3360-6930",
+      "fld_valor": 1072.03,
+      "fld_convenio": null,
+      "fld_cod_consulta": "CS-700156",
+      "fld_email": "paciente647@example.com",
+      "fld_dt_nasc": "11/06/1994"
+    },
+    {
+      "fld_sit_cadastro": "bloqueado",
+      "fld_valor_convenio": 315.97,
+      "fld_dt_consulta": "27/05/2025",
+      "fld_cel": "(11) 97831-7321",
+      "fld_cod_paciente": "PAC97680",
+      "fld_procedimento": "limpeza",
+      "fld_obs": "Paciente ansioso",
+      "fld_nome_pac": "Caio Tavares",
+      "fld_dt_cadastro": "28/11/2025",
+      "fld_sit_pagto": "parcelado",
+      "fld_tel": "(11) 3966-2710",
+      "fld_valor": 451.38,
+      "fld_convenio": "Saúde Integral Vale Verde",
+      "fld_cod_consulta": "CS-700169",
+      "fld_email": "paciente207@example.com",
+      "fld_dt_nasc": "17/02/1989"
+    },
+    {
+      "fld_sit_cadastro": "bloqueado",
+      "fld_valor_convenio": 0.0,
+      "fld_dt_consulta": "05/03/2025",
+      "fld_cel": "(11) 91657-0037",
+      "fld_cod_paciente": "PAC60143",
+      "fld_procedimento": "limpeza",
+      "fld_obs": null,
+      "fld_nome_pac": "Thiago Albuquerque",
+      "fld_dt_cadastro": "16/07/2019",
+      "fld_sit_pagto": "pago",
+      "fld_tel": "(11) 3582-0639",
+      "fld_valor": 672.58,
+      "fld_convenio": "Saúde Integral Vale Verde",
+      "fld_cod_consulta": "CS-700182",
+      "fld_email": "paciente816@example.com",
+      "fld_dt_nasc": "08/11/1955"
+    },
+    {
+      "fld_sit_cadastro": "ativo",
+      "fld_valor_convenio": 0.0,
+      "fld_dt_consulta": "07/09/2025",
+      "fld_cel": "(11) 97807-2244",
+      "fld_cod_paciente": "PAC15988",
+      "fld_procedimento": "limpeza",
+      "fld_obs": null,
+      "fld_nome_pac": "Otávio Valadares",
+      "fld_dt_cadastro": "14/04/2024",
+      "fld_sit_pagto": "pendente",
+      "fld_tel": "(11) 3500-3129",
+      "fld_valor": 1289.2,
+      "fld_convenio": "Saúde Integral Vale Verde",
+      "fld_cod_consulta": "CS-700195",
+      "fld_email": "paciente131@example.com",
+      "fld_dt_nasc": "05/03/1969"
+    },
+    {
+      "fld_sit_cadastro": "bloqueado",
+      "fld_valor_convenio": 0.0,
+      "fld_dt_consulta": "24/04/2026",
+      "fld_cel": "(11) 91422-2077",
+      "fld_cod_paciente": "PAC53188",
+      "fld_procedimento": "restauracao",
+      "fld_obs": "Paciente ansioso",
+      "fld_nome_pac": "Bruna Valadares",
+      "fld_dt_cadastro": "07/09/2020",
+      "fld_sit_pagto": "pago",
+      "fld_tel": "(11) 3015-5962",
+      "fld_valor": 1485.45,
+      "fld_convenio": "Particular",
+      "fld_cod_consulta": "CS-700208",
+      "fld_email": null,
+      "fld_dt_nasc": "22/09/1970"
+    },
+    {
+      "fld_sit_cadastro": "ativo",
+      "fld_valor_convenio": 0.0,
+      "fld_dt_consulta": "01/04/2026",
+      "fld_cel": "(11) 93731-8007",
+      "fld_cod_paciente": "PAC40932",
+      "fld_procedimento": "clareamento",
+      "fld_obs": "Paciente ansioso",
+      "fld_nome_pac": "Caio Cordeiro",
+      "fld_dt_cadastro": "24/04/2015",
+      "fld_sit_pagto": "pago",
+      "fld_tel": null,
+      "fld_valor": 1163.48,
+      "fld_convenio": "Particular",
+      "fld_cod_consulta": "CS-700221",
+      "fld_email": "paciente776@example.com",
+      "fld_dt_nasc": "14/12/1973"
+    },
+    {
+      "fld_sit_cadastro": "inativo",
+      "fld_valor_convenio": 0.0,
+      "fld_dt_consulta": "15/08/2026",
+      "fld_cel": "(11) 95271-1203",
+      "fld_cod_paciente": "PAC12824",
+      "fld_procedimento": "clareamento",
+      "fld_obs": "Sensibilidade",
+      "fld_nome_pac": "Otávio Tavares",
+      "fld_dt_cadastro": "25/10/2020",
+      "fld_sit_pagto": "pendente",
+      "fld_tel": null,
+      "fld_valor": 923.7,
+      "fld_convenio": "Particular",
+      "fld_cod_consulta": "CS-700234",
+      "fld_email": "paciente138@example.com",
+      "fld_dt_nasc": "09/01/1999"
+    },
+    {
+      "fld_sit_cadastro": "bloqueado",
+      "fld_valor_convenio": 0.0,
+      "fld_dt_consulta": "16/05/2025",
+      "fld_cel": "(11) 91787-7912",
+      "fld_cod_paciente": "PAC69731",
+      "fld_procedimento": "clareamento",
+      "fld_obs": null,
+      "fld_nome_pac": "Rafael Tavares",
+      "fld_dt_cadastro": "17/09/2019",
+      "fld_sit_pagto": "parcelado",
+      "fld_tel": "(11) 3980-2633",
+      "fld_valor": 918.64,
+      "fld_convenio": "Particular",
+      "fld_cod_consulta": "CS-700247",
+      "fld_email": "paciente758@example.com",
+      "fld_dt_nasc": "28/03/1999"
+    },
+    {
+      "fld_sit_cadastro": "ativo",
+      "fld_valor_convenio": 0.0,
+      "fld_dt_consulta": "17/04/2026",
+      "fld_cel": "(11) 90568-3225",
+      "fld_cod_paciente": "PAC74731",
+      "fld_procedimento": "ortodontia",
+      "fld_obs": "Retorno em 6 meses",
+      "fld_nome_pac": "Caio Albuquerque",
+      "fld_dt_cadastro": "10/01/2025",
+      "fld_sit_pagto": "pago",
+      "fld_tel": "(11) 3973-8559",
+      "fld_valor": 1494.88,
+      "fld_convenio": null,
+      "fld_cod_consulta": "CS-700260",
+      "fld_email": "paciente460@example.com",
+      "fld_dt_nasc": "09/04/1982"
+    },
+    {
+      "fld_sit_cadastro": "ativo",
+      "fld_valor_convenio": 0.0,
+      "fld_dt_consulta": "25/11/2026",
+      "fld_cel": "(11) 98430-2017",
+      "fld_cod_paciente": "PAC92955",
+      "fld_procedimento": "restauracao",
+      "fld_obs": null,
+      "fld_nome_pac": "João Valadares",
+      "fld_dt_cadastro": "24/04/2025",
+      "fld_sit_pagto": "pago",
+      "fld_tel": null,
+      "fld_valor": 1659.0,
+      "fld_convenio": null,
+      "fld_cod_consulta": "CS-700273",
+      "fld_email": null,
+      "fld_dt_nasc": "09/05/1995"
+    },
+    {
+      "fld_sit_cadastro": "inativo",
+      "fld_valor_convenio": 782.78,
+      "fld_dt_consulta": "03/03/2026",
+      "fld_cel": "(11) 92291-0912",
+      "fld_cod_paciente": "PAC85156",
+      "fld_procedimento": "limpeza",
+      "fld_obs": null,
+      "fld_nome_pac": "Bruna Tavares",
+      "fld_dt_cadastro": "09/04/2022",
+      "fld_sit_pagto": "glosado",
+      "fld_tel": "(11) 3145-5452",
+      "fld_valor": 1118.26,
+      "fld_convenio": "Saúde Integral Vale Verde",
+      "fld_cod_consulta": "CS-700286",
+      "fld_email": "paciente826@example.com",
+      "fld_dt_nasc": "28/01/1996"
+    },
+    {
+      "fld_sit_cadastro": "ativo",
+      "fld_valor_convenio": 0.0,
+      "fld_dt_consulta": "07/08/2025",
+      "fld_cel": "(11) 94301-7192",
+      "fld_cod_paciente": "PAC71488",
+      "fld_procedimento": "canal",
+      "fld_obs": "Retorno em 6 meses",
+      "fld_nome_pac": "Bruna Tavares",
+      "fld_dt_cadastro": "25/11/2016",
+      "fld_sit_pagto": "parcelado",
+      "fld_tel": null,
+      "fld_valor": 1573.85,
+      "fld_convenio": null,
+      "fld_cod_consulta": "CS-700299",
+      "fld_email": "paciente450@example.com",
+      "fld_dt_nasc": "22/09/1950"
+    },
+    {
+      "fld_sit_cadastro": "ativo",
+      "fld_valor_convenio": 0.0,
+      "fld_dt_consulta": "23/07/2025",
+      "fld_cel": "(11) 95995-3117",
+      "fld_cod_paciente": "PAC14128",
+      "fld_procedimento": "limpeza",
+      "fld_obs": "Sensibilidade",
+      "fld_nome_pac": "Otávio Valadares",
+      "fld_dt_cadastro": "19/06/2021",
+      "fld_sit_pagto": "pendente",
+      "fld_tel": "(11) 3818-9297",
+      "fld_valor": 993.56,
+      "fld_convenio": "Odonto Plano Serra Azul",
+      "fld_cod_consulta": "CS-700312",
+      "fld_email": "paciente782@example.com",
+      "fld_dt_nasc": "15/10/1954"
+    },
+    {
+      "fld_sit_cadastro": "inativo",
+      "fld_valor_convenio": 0.0,
+      "fld_dt_consulta": "04/10/2026",
+      "fld_cel": "(11) 95958-0386",
+      "fld_cod_paciente": "PAC72066",
+      "fld_procedimento": "canal",
+      "fld_obs": "Paciente ansioso",
+      "fld_nome_pac": "Beatriz Albuquerque",
+      "fld_dt_cadastro": "14/05/2020",
+      "fld_sit_pagto": "pendente",
+      "fld_tel": "(11) 3528-2331",
+      "fld_valor": 1424.15,
+      "fld_convenio": "Particular",
+      "fld_cod_consulta": "CS-700325",
+      "fld_email": "paciente258@example.com",
+      "fld_dt_nasc": "12/05/1976"
+    },
+    {
+      "fld_sit_cadastro": "inativo",
+      "fld_valor_convenio": 0.0,
+      "fld_dt_consulta": "03/08/2026",
+      "fld_cel": "(11) 98603-8758",
+      "fld_cod_paciente": "PAC98058",
+      "fld_procedimento": "limpeza",
+      "fld_obs": "Retorno em 6 meses",
+      "fld_nome_pac": "Beatriz Seixas",
+      "fld_dt_cadastro": "18/11/2020",
+      "fld_sit_pagto": "pendente",
+      "fld_tel": null,
+      "fld_valor": 133.62,
+      "fld_convenio": null,
+      "fld_cod_consulta": "CS-700338",
+      "fld_email": "paciente858@example.com",
+      "fld_dt_nasc": "17/06/2015"
+    },
+    {
+      "fld_sit_cadastro": "ativo",
+      "fld_valor_convenio": 110.44,
+      "fld_dt_consulta": "01/09/2025",
+      "fld_cel": "(11) 99020-6758",
+      "fld_cod_paciente": "PAC65482",
+      "fld_procedimento": "canal",
+      "fld_obs": null,
+      "fld_nome_pac": "João Damasceno",
+      "fld_dt_cadastro": "11/09/2018",
+      "fld_sit_pagto": "pago",
+      "fld_tel": "(11) 3553-5834",
+      "fld_valor": 220.87,
+      "fld_convenio": "Saúde Integral Vale Verde",
+      "fld_cod_consulta": "CS-700351",
+      "fld_email": "paciente417@example.com",
+      "fld_dt_nasc": "26/09/1984"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "DentalAppointment",
+    "type": "object",
+    "properties": {
+      "appointment_id": {
+        "type": "string"
+      },
+      "patient_id": {
+        "type": "string"
+      },
+      "patient_name": {
+        "type": "string"
+      },
+      "date_of_birth": {
+        "type": "string",
+        "format": "date"
+      },
+      "appointment_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "procedure": {
+        "type": "string",
+        "enum": [
+          "cleaning",
+          "filling",
+          "extraction",
+          "root_canal",
+          "whitening",
+          "orthodontics"
+        ]
+      },
+      "payment_status": {
+        "type": "string",
+        "enum": [
+          "paid",
+          "pending",
+          "installments",
+          "denied"
+        ]
+      },
+      "patient_charge": {
+        "type": "number"
+      },
+      "mobile_phone": {
+        "type": "string"
+      },
+      "dentist_name": {
+        "type": "string"
+      },
+      "tooth_number": {
+        "type": "integer"
+      }
+    },
+    "required": [
+      "appointment_id",
+      "patient_id",
+      "patient_name",
+      "appointment_date",
+      "procedure",
+      "payment_status",
+      "dentist_name"
+    ]
+  },
+  "groundTruth": {
+    "appointment_id": {
+      "source": "fld_cod_consulta",
+      "why": "consulta = appointment"
+    },
+    "patient_id": {
+      "source": "fld_cod_paciente",
+      "why": "paciente = patient"
+    },
+    "patient_name": {
+      "source": "fld_nome_pac",
+      "why": "patient's name, not the insurer"
+    },
+    "date_of_birth": {
+      "source": "fld_dt_nasc",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "data de nascimento, day-first"
+    },
+    "appointment_date": {
+      "source": "fld_dt_consulta",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "appointment date, day-first"
+    },
+    "procedure": {
+      "source": "fld_procedimento",
+      "why": "Portuguese procedure labels translate to the enum"
+    },
+    "payment_status": {
+      "source": "fld_sit_pagto",
+      "why": "situação do pagamento, not registration status"
+    },
+    "patient_charge": {
+      "source": "fld_valor",
+      "why": "total charge; valor_convenio is the insurer share"
+    },
+    "mobile_phone": {
+      "source": "fld_cel",
+      "why": "celular = mobile"
+    },
+    "dentist_name": {
+      "source": null,
+      "why": "no dentist column in the source"
+    },
+    "tooth_number": {
+      "source": null,
+      "why": "no tooth number in the source"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "fld_cod_paciente",
+        "fld_cod_consulta"
+      ],
+      "correctFor": "appointment_id"
+    },
+    {
+      "kind": "birth-vs-created-date",
+      "fields": [
+        "fld_dt_nasc",
+        "fld_dt_cadastro"
+      ],
+      "correctFor": "date_of_birth"
+    },
+    {
+      "kind": "event-vs-created-date",
+      "fields": [
+        "fld_dt_consulta",
+        "fld_dt_cadastro"
+      ],
+      "correctFor": "appointment_date"
+    },
+    {
+      "kind": "organization-vs-person-name",
+      "fields": [
+        "fld_convenio",
+        "fld_nome_pac"
+      ],
+      "correctFor": "patient_name"
+    },
+    {
+      "kind": "account-vs-payment-status",
+      "fields": [
+        "fld_sit_cadastro",
+        "fld_sit_pagto"
+      ],
+      "correctFor": "payment_status"
+    },
+    {
+      "kind": "two-amounts",
+      "fields": [
+        "fld_valor",
+        "fld_valor_convenio"
+      ],
+      "correctFor": "patient_charge"
+    },
+    {
+      "kind": "phone-vs-mobile",
+      "fields": [
+        "fld_tel",
+        "fld_cel"
+      ],
+      "correctFor": "mobile_phone"
+    }
+  ],
+  "sourceConcepts": {
+    "fld_cod_paciente": "customer-id",
+    "fld_cod_consulta": "transaction-id",
+    "fld_dt_nasc": "birth-date",
+    "fld_dt_cadastro": "created-date",
+    "fld_dt_consulta": "transaction-date",
+    "fld_nome_pac": "person-name",
+    "fld_convenio": "organization-name",
+    "fld_procedimento": "category",
+    "fld_sit_pagto": "payment-status",
+    "fld_sit_cadastro": "account-status",
+    "fld_valor": "amount",
+    "fld_valor_convenio": "amount",
+    "fld_tel": "phone",
+    "fld_cel": "phone",
+    "fld_email": "email",
+    "fld_obs": "note"
+  },
+  "destinationConcepts": {
+    "appointment_id": "transaction-id",
+    "patient_id": "customer-id",
+    "patient_name": "person-name",
+    "date_of_birth": "birth-date",
+    "appointment_date": "transaction-date",
+    "procedure": "category",
+    "payment_status": "payment-status",
+    "patient_charge": "amount",
+    "mobile_phone": "phone",
+    "dentist_name": "person-name",
+    "tooth_number": "other"
+  }
+}

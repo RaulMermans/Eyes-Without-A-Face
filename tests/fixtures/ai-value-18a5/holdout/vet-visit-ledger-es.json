@@ -1,0 +1,739 @@
+{
+  "scenarioId": "vet-visit-ledger-es",
+  "split": "holdout",
+  "industry": "veterinary clinic",
+  "sourceLanguage": "es",
+  "description": "Spanish veterinary clinic export of pet visits mapped to a visit record.",
+  "fictional": true,
+  "records": [
+    {
+      "tel_fijo": "985708393",
+      "fec_visita": "16/12/2025",
+      "num_cli": "C-10536",
+      "especie": "huron",
+      "obs": null,
+      "estado_cuenta": "activa",
+      "nom_prop": "Gonzalo Montesinos",
+      "importe": 56.55,
+      "fec_nac_masc": "25/09/2017",
+      "num_visita": "V-55006",
+      "moneda": "EUR",
+      "tel_movil": "653663167",
+      "clinica": "Centro Veterinario Lomas Altas",
+      "correo_prop": "gonzalo.montesinos28@example.com",
+      "estado_pago": "pagado"
+    },
+    {
+      "tel_fijo": null,
+      "fec_visita": "15/04/2025",
+      "num_cli": "C-10553",
+      "especie": "perro",
+      "obs": "Cojera pata trasera",
+      "estado_cuenta": "activa",
+      "nom_prop": "Gonzalo Calvache",
+      "importe": 118.03,
+      "fec_nac_masc": "27/03/2012",
+      "num_visita": "V-55009",
+      "moneda": "EUR",
+      "tel_movil": "612659727",
+      "clinica": "Hospital Veterinario Ribera Sur",
+      "correo_prop": "gonzalo.calvache40@example.com",
+      "estado_pago": "pagado"
+    },
+    {
+      "tel_fijo": "911095871",
+      "fec_visita": "20/10/2026",
+      "num_cli": "C-10852",
+      "especie": "gato",
+      "obs": "Revisión dental",
+      "estado_cuenta": "activa",
+      "nom_prop": "Paloma Ferrándiz",
+      "importe": 287.07,
+      "fec_nac_masc": null,
+      "num_visita": "V-55015",
+      "moneda": "EUR",
+      "tel_movil": "645610885",
+      "clinica": "Centro Veterinario Lomas Altas",
+      "correo_prop": "paloma.ferrandiz8@example.com",
+      "estado_pago": "pagado"
+    },
+    {
+      "tel_fijo": "914247361",
+      "fec_visita": "26/06/2025",
+      "num_cli": "C-10297",
+      "especie": "conejo",
+      "obs": null,
+      "estado_cuenta": "baja",
+      "nom_prop": "Rocío Calvache",
+      "importe": 329.13,
+      "fec_nac_masc": null,
+      "num_visita": "V-55023",
+      "moneda": "EUR",
+      "tel_movil": "634738985",
+      "clinica": "Centro Veterinario Lomas Altas",
+      "correo_prop": "rocio.calvache3@example.com",
+      "estado_pago": "pagado"
+    },
+    {
+      "tel_fijo": null,
+      "fec_visita": "04/03/2026",
+      "num_cli": "C-10324",
+      "especie": "conejo",
+      "obs": "Vacuna anual",
+      "estado_cuenta": "activa",
+      "nom_prop": "Rocío Calvache",
+      "importe": 265.23,
+      "fec_nac_masc": "22/06/2020",
+      "num_visita": "V-55032",
+      "moneda": "EUR",
+      "tel_movil": "632788544",
+      "clinica": "Hospital Veterinario Ribera Sur",
+      "correo_prop": "rocio.calvache33@example.com",
+      "estado_pago": "pagado"
+    },
+    {
+      "tel_fijo": "974030957",
+      "fec_visita": "02/05/2025",
+      "num_cli": "C-10234",
+      "especie": "huron",
+      "obs": "Desparasitación",
+      "estado_cuenta": "activa",
+      "nom_prop": "Nerea Montesinos",
+      "importe": 29.7,
+      "fec_nac_masc": "15/11/2016",
+      "num_visita": "V-55036",
+      "moneda": "EUR",
+      "tel_movil": "670049119",
+      "clinica": "Centro Veterinario Lomas Altas",
+      "correo_prop": "nerea.montesinos44@example.com",
+      "estado_pago": "pagado"
+    },
+    {
+      "tel_fijo": null,
+      "fec_visita": "08/12/2025",
+      "num_cli": "C-10866",
+      "especie": "gato",
+      "obs": "Revisión dental",
+      "estado_cuenta": "activa",
+      "nom_prop": "Carmen Escartín",
+      "importe": 184.3,
+      "fec_nac_masc": "02/04/2020",
+      "num_visita": "V-55048",
+      "moneda": "EUR",
+      "tel_movil": "683198058",
+      "clinica": "Clínica Veterinaria Arroyo Claro",
+      "correo_prop": "carmen.escartin74@example.com",
+      "estado_pago": "anulado"
+    },
+    {
+      "tel_fijo": "910799991",
+      "fec_visita": "13/03/2025",
+      "num_cli": "C-10319",
+      "especie": "conejo",
+      "obs": null,
+      "estado_cuenta": "activa",
+      "nom_prop": "Carmen Quiroga",
+      "importe": 130.52,
+      "fec_nac_masc": "08/03/2023",
+      "num_visita": "V-55054",
+      "moneda": "EUR",
+      "tel_movil": "686250346",
+      "clinica": "Clínica Veterinaria Arroyo Claro",
+      "correo_prop": "carmen.quiroga61@example.com",
+      "estado_pago": "pagado"
+    },
+    {
+      "tel_fijo": "929277734",
+      "fec_visita": "25/04/2026",
+      "num_cli": "C-10996",
+      "especie": "perro",
+      "obs": "Revisión dental",
+      "estado_cuenta": "morosa",
+      "nom_prop": "Iñigo Robledo",
+      "importe": 36.89,
+      "fec_nac_masc": "13/03/2016",
+      "num_visita": "V-55061",
+      "moneda": "EUR",
+      "tel_movil": "695794074",
+      "clinica": "Clínica Veterinaria Arroyo Claro",
+      "correo_prop": "inigo.robledo23@example.com",
+      "estado_pago": "pagado"
+    },
+    {
+      "tel_fijo": null,
+      "fec_visita": "13/02/2025",
+      "num_cli": "C-10630",
+      "especie": "huron",
+      "obs": "Cojera pata trasera",
+      "estado_cuenta": "activa",
+      "nom_prop": "Álvaro Escartín",
+      "importe": 267.94,
+      "fec_nac_masc": "10/07/2014",
+      "num_visita": "V-55067",
+      "moneda": "EUR",
+      "tel_movil": "674368008",
+      "clinica": "Clínica Veterinaria Arroyo Claro",
+      "correo_prop": "alvaro.escartin92@example.com",
+      "estado_pago": "pagado"
+    },
+    {
+      "tel_fijo": "975942573",
+      "fec_visita": "25/08/2025",
+      "num_cli": "C-10597",
+      "especie": "perro",
+      "obs": "Desparasitación",
+      "estado_cuenta": "activa",
+      "nom_prop": "Tomás Iturbe",
+      "importe": 379.11,
+      "fec_nac_masc": "02/11/2019",
+      "num_visita": "V-55072",
+      "moneda": "EUR",
+      "tel_movil": "662183886",
+      "clinica": "Hospital Veterinario Ribera Sur",
+      "correo_prop": "tomas.iturbe54@example.com",
+      "estado_pago": "pagado"
+    },
+    {
+      "tel_fijo": "991024282",
+      "fec_visita": "10/09/2025",
+      "num_cli": "C-10765",
+      "especie": "ave",
+      "obs": null,
+      "estado_cuenta": "activa",
+      "nom_prop": "Lucía Calvache",
+      "importe": 223.6,
+      "fec_nac_masc": "27/08/2013",
+      "num_visita": "V-55080",
+      "moneda": "EUR",
+      "tel_movil": "674222276",
+      "clinica": "Centro Veterinario Lomas Altas",
+      "correo_prop": "lucia.calvache8@example.com",
+      "estado_pago": "pagado"
+    },
+    {
+      "tel_fijo": null,
+      "fec_visita": "21/03/2026",
+      "num_cli": "C-10451",
+      "especie": "gato",
+      "obs": null,
+      "estado_cuenta": "morosa",
+      "nom_prop": "Álvaro Quiroga",
+      "importe": 149.41,
+      "fec_nac_masc": "28/12/2018",
+      "num_visita": "V-55088",
+      "moneda": "EUR",
+      "tel_movil": "644486220",
+      "clinica": "Centro Veterinario Lomas Altas",
+      "correo_prop": "alvaro.quiroga14@example.com",
+      "estado_pago": "anulado"
+    },
+    {
+      "tel_fijo": "937793211",
+      "fec_visita": "22/07/2025",
+      "num_cli": "C-10510",
+      "especie": "gato",
+      "obs": null,
+      "estado_cuenta": "baja",
+      "nom_prop": "Carmen Iturbe",
+      "importe": 46.65,
+      "fec_nac_masc": "23/10/2017",
+      "num_visita": "V-55096",
+      "moneda": "EUR",
+      "tel_movil": "623840206",
+      "clinica": "Centro Veterinario Lomas Altas",
+      "correo_prop": "carmen.iturbe92@example.com",
+      "estado_pago": "pagado"
+    },
+    {
+      "tel_fijo": "923520773",
+      "fec_visita": "15/06/2025",
+      "num_cli": "C-10630",
+      "especie": "huron",
+      "obs": "Cojera pata trasera",
+      "estado_cuenta": "activa",
+      "nom_prop": "Paloma Escartín",
+      "importe": 272.0,
+      "fec_nac_masc": "12/08/2012",
+      "num_visita": "V-55100",
+      "moneda": "EUR",
+      "tel_movil": "659510176",
+      "clinica": "Centro Veterinario Lomas Altas",
+      "correo_prop": "paloma.escartin29@example.com",
+      "estado_pago": "pendiente"
+    },
+    {
+      "tel_fijo": null,
+      "fec_visita": "23/03/2026",
+      "num_cli": "C-10908",
+      "especie": "ave",
+      "obs": "Vacuna anual",
+      "estado_cuenta": "baja",
+      "nom_prop": "Iñigo Albarrán",
+      "importe": 262.66,
+      "fec_nac_masc": "20/05/2017",
+      "num_visita": "V-55110",
+      "moneda": "EUR",
+      "tel_movil": "626883600",
+      "clinica": "Centro Veterinario Lomas Altas",
+      "correo_prop": "inigo.albarran48@example.com",
+      "estado_pago": "pagado"
+    },
+    {
+      "tel_fijo": "921414842",
+      "fec_visita": "24/04/2025",
+      "num_cli": "C-10919",
+      "especie": "perro",
+      "obs": null,
+      "estado_cuenta": "baja",
+      "nom_prop": "Iñigo Calvache",
+      "importe": 54.29,
+      "fec_nac_masc": "11/02/2018",
+      "num_visita": "V-55115",
+      "moneda": "EUR",
+      "tel_movil": "665619144",
+      "clinica": "Hospital Veterinario Ribera Sur",
+      "correo_prop": "inigo.calvache61@example.com",
+      "estado_pago": "pagado"
+    },
+    {
+      "tel_fijo": "920372118",
+      "fec_visita": "17/10/2026",
+      "num_cli": "C-10393",
+      "especie": "huron",
+      "obs": null,
+      "estado_cuenta": "activa",
+      "nom_prop": "Nerea Montesinos",
+      "importe": 330.94,
+      "fec_nac_masc": null,
+      "num_visita": "V-55120",
+      "moneda": "EUR",
+      "tel_movil": "694025906",
+      "clinica": "Clínica Veterinaria Arroyo Claro",
+      "correo_prop": "nerea.montesinos86@example.com",
+      "estado_pago": "pagado"
+    },
+    {
+      "tel_fijo": "983237162",
+      "fec_visita": "13/09/2026",
+      "num_cli": "C-10712",
+      "especie": "perro",
+      "obs": "Vacuna anual",
+      "estado_cuenta": "baja",
+      "nom_prop": "Nerea Ferrándiz",
+      "importe": 77.95,
+      "fec_nac_masc": "21/08/2022",
+      "num_visita": "V-55132",
+      "moneda": "EUR",
+      "tel_movil": "624898712",
+      "clinica": "Clínica Veterinaria Arroyo Claro",
+      "correo_prop": "nerea.ferrandiz86@example.com",
+      "estado_pago": "anulado"
+    },
+    {
+      "tel_fijo": "930890243",
+      "fec_visita": "16/02/2025",
+      "num_cli": "C-10249",
+      "especie": "gato",
+      "obs": "Desparasitación",
+      "estado_cuenta": "activa",
+      "nom_prop": "Carmen Montesinos",
+      "importe": 200.5,
+      "fec_nac_masc": "18/08/2013",
+      "num_visita": "V-55139",
+      "moneda": "EUR",
+      "tel_movil": "651354209",
+      "clinica": "Centro Veterinario Lomas Altas",
+      "correo_prop": "carmen.montesinos24@example.com",
+      "estado_pago": "pendiente"
+    },
+    {
+      "tel_fijo": "900111296",
+      "fec_visita": "27/05/2025",
+      "num_cli": "C-10841",
+      "especie": "perro",
+      "obs": "Revisión dental",
+      "estado_cuenta": "activa",
+      "nom_prop": "Gonzalo Quiroga",
+      "importe": 201.28,
+      "fec_nac_masc": "21/05/2024",
+      "num_visita": "V-55146",
+      "moneda": "EUR",
+      "tel_movil": "675257993",
+      "clinica": "Centro Veterinario Lomas Altas",
+      "correo_prop": "gonzalo.quiroga73@example.com",
+      "estado_pago": "pagado"
+    },
+    {
+      "tel_fijo": "964083302",
+      "fec_visita": "11/09/2026",
+      "num_cli": "C-10314",
+      "especie": "huron",
+      "obs": "Cojera pata trasera",
+      "estado_cuenta": "morosa",
+      "nom_prop": "Carmen Escartín",
+      "importe": 174.6,
+      "fec_nac_masc": "14/06/2015",
+      "num_visita": "V-55149",
+      "moneda": "EUR",
+      "tel_movil": "608253169",
+      "clinica": "Hospital Veterinario Ribera Sur",
+      "correo_prop": "carmen.escartin89@example.com",
+      "estado_pago": "anulado"
+    },
+    {
+      "tel_fijo": "943800536",
+      "fec_visita": "04/05/2025",
+      "num_cli": "C-10673",
+      "especie": "perro",
+      "obs": null,
+      "estado_cuenta": "baja",
+      "nom_prop": "Carmen Calvache",
+      "importe": 311.56,
+      "fec_nac_masc": null,
+      "num_visita": "V-55154",
+      "moneda": "EUR",
+      "tel_movil": "642980271",
+      "clinica": "Clínica Veterinaria Arroyo Claro",
+      "correo_prop": "carmen.calvache3@example.com",
+      "estado_pago": "pendiente"
+    },
+    {
+      "tel_fijo": "971377623",
+      "fec_visita": "09/09/2026",
+      "num_cli": "C-10854",
+      "especie": "ave",
+      "obs": "Desparasitación",
+      "estado_cuenta": "activa",
+      "nom_prop": "Rocío Iturbe",
+      "importe": 170.7,
+      "fec_nac_masc": "16/11/2013",
+      "num_visita": "V-55163",
+      "moneda": "EUR",
+      "tel_movil": "668710467",
+      "clinica": "Centro Veterinario Lomas Altas",
+      "correo_prop": "rocio.iturbe48@example.com",
+      "estado_pago": "anulado"
+    },
+    {
+      "tel_fijo": "929142988",
+      "fec_visita": "28/09/2026",
+      "num_cli": "C-10964",
+      "especie": "huron",
+      "obs": "Cojera pata trasera",
+      "estado_cuenta": "activa",
+      "nom_prop": "Carmen Calvache",
+      "importe": 218.08,
+      "fec_nac_masc": "16/01/2015",
+      "num_visita": "V-55172",
+      "moneda": "EUR",
+      "tel_movil": "637445758",
+      "clinica": "Centro Veterinario Lomas Altas",
+      "correo_prop": "carmen.calvache8@example.com",
+      "estado_pago": "pendiente"
+    },
+    {
+      "tel_fijo": "926452986",
+      "fec_visita": "16/09/2026",
+      "num_cli": "C-10280",
+      "especie": "perro",
+      "obs": null,
+      "estado_cuenta": "activa",
+      "nom_prop": "Paloma Robledo",
+      "importe": 104.53,
+      "fec_nac_masc": "08/06/2024",
+      "num_visita": "V-55175",
+      "moneda": "EUR",
+      "tel_movil": "630347494",
+      "clinica": "Centro Veterinario Lomas Altas",
+      "correo_prop": "paloma.robledo10@example.com",
+      "estado_pago": "pendiente"
+    },
+    {
+      "tel_fijo": "998072167",
+      "fec_visita": "25/03/2025",
+      "num_cli": "C-10967",
+      "especie": "gato",
+      "obs": null,
+      "estado_cuenta": "activa",
+      "nom_prop": "Lucía Albarrán",
+      "importe": 216.54,
+      "fec_nac_masc": "10/09/2020",
+      "num_visita": "V-55188",
+      "moneda": "EUR",
+      "tel_movil": "646321639",
+      "clinica": "Centro Veterinario Lomas Altas",
+      "correo_prop": "lucia.albarran78@example.com",
+      "estado_pago": "pagado"
+    },
+    {
+      "tel_fijo": "955482454",
+      "fec_visita": "17/05/2025",
+      "num_cli": "C-10975",
+      "especie": "ave",
+      "obs": null,
+      "estado_cuenta": "activa",
+      "nom_prop": "Tomás Escartín",
+      "importe": 170.63,
+      "fec_nac_masc": null,
+      "num_visita": "V-55191",
+      "moneda": "EUR",
+      "tel_movil": "675634043",
+      "clinica": "Clínica Veterinaria Arroyo Claro",
+      "correo_prop": "tomas.escartin79@example.com",
+      "estado_pago": "pendiente"
+    },
+    {
+      "tel_fijo": "979938914",
+      "fec_visita": "16/12/2025",
+      "num_cli": "C-10873",
+      "especie": "ave",
+      "obs": null,
+      "estado_cuenta": "activa",
+      "nom_prop": "Iñigo Montesinos",
+      "importe": 154.31,
+      "fec_nac_masc": "02/09/2017",
+      "num_visita": "V-55202",
+      "moneda": "EUR",
+      "tel_movil": "611259238",
+      "clinica": "Hospital Veterinario Ribera Sur",
+      "correo_prop": "inigo.montesinos24@example.com",
+      "estado_pago": "anulado"
+    },
+    {
+      "tel_fijo": "917045688",
+      "fec_visita": "20/07/2026",
+      "num_cli": "C-10408",
+      "especie": "huron",
+      "obs": "Control de peso",
+      "estado_cuenta": "activa",
+      "nom_prop": "Nerea Ferrándiz",
+      "importe": 58.6,
+      "fec_nac_masc": "06/08/2023",
+      "num_visita": "V-55205",
+      "moneda": "EUR",
+      "tel_movil": "602951764",
+      "clinica": "Hospital Veterinario Ribera Sur",
+      "correo_prop": "nerea.ferrandiz92@example.com",
+      "estado_pago": "pagado"
+    },
+    {
+      "tel_fijo": "912661311",
+      "fec_visita": "08/07/2025",
+      "num_cli": "C-10308",
+      "especie": "conejo",
+      "obs": "Desparasitación",
+      "estado_cuenta": "morosa",
+      "nom_prop": "Lucía Ferrándiz",
+      "importe": 287.07,
+      "fec_nac_masc": "06/02/2015",
+      "num_visita": "V-55210",
+      "moneda": "EUR",
+      "tel_movil": "680826083",
+      "clinica": "Centro Veterinario Lomas Altas",
+      "correo_prop": "lucia.ferrandiz37@example.com",
+      "estado_pago": "pendiente"
+    },
+    {
+      "tel_fijo": null,
+      "fec_visita": "03/09/2026",
+      "num_cli": "C-10214",
+      "especie": "ave",
+      "obs": "Control de peso",
+      "estado_cuenta": "activa",
+      "nom_prop": "Mateo Montesinos",
+      "importe": 265.85,
+      "fec_nac_masc": "09/04/2022",
+      "num_visita": "V-55223",
+      "moneda": "EUR",
+      "tel_movil": "617557496",
+      "clinica": "Hospital Veterinario Ribera Sur",
+      "correo_prop": "mateo.montesinos94@example.com",
+      "estado_pago": "pendiente"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "VetVisitRecord",
+    "type": "object",
+    "properties": {
+      "visit_id": {
+        "type": "string"
+      },
+      "client_number": {
+        "type": "string"
+      },
+      "owner_name": {
+        "type": "string"
+      },
+      "visit_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "species": {
+        "type": "string",
+        "enum": [
+          "dog",
+          "cat",
+          "rabbit",
+          "ferret",
+          "bird"
+        ]
+      },
+      "payment_status": {
+        "type": "string",
+        "enum": [
+          "paid",
+          "pending",
+          "voided"
+        ]
+      },
+      "mobile_phone": {
+        "type": "string"
+      },
+      "amount_eur": {
+        "type": "number"
+      },
+      "insurance_provider": {
+        "type": "string"
+      },
+      "referral_source": {
+        "type": "string",
+        "enum": [
+          "web",
+          "walk_in",
+          "referral"
+        ]
+      }
+    },
+    "required": [
+      "visit_id",
+      "client_number",
+      "visit_date",
+      "species",
+      "payment_status",
+      "insurance_provider"
+    ]
+  },
+  "groundTruth": {
+    "visit_id": {
+      "source": "num_visita",
+      "why": "visit number identifies the visit"
+    },
+    "client_number": {
+      "source": "num_cli",
+      "why": "client number identifies the owner account"
+    },
+    "owner_name": {
+      "source": "nom_prop",
+      "why": "owner (propietario) full name"
+    },
+    "visit_date": {
+      "source": "fec_visita",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "date of the visit, day first"
+    },
+    "species": {
+      "source": "especie",
+      "why": "Spanish species labels translate to the enum"
+    },
+    "payment_status": {
+      "source": "estado_pago",
+      "why": "payment state of the visit"
+    },
+    "mobile_phone": {
+      "source": "tel_movil",
+      "why": "mobile, not landline"
+    },
+    "amount_eur": {
+      "source": "importe",
+      "why": "amount charged, currency is EUR"
+    },
+    "insurance_provider": {
+      "source": null,
+      "why": "no pet insurer in the source; clinic is not an insurer"
+    },
+    "referral_source": {
+      "source": null,
+      "why": "no acquisition channel in the source"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "num_cli",
+        "num_visita"
+      ],
+      "correctFor": "visit_id"
+    },
+    {
+      "kind": "birth-vs-event-date",
+      "fields": [
+        "fec_nac_masc",
+        "fec_visita"
+      ],
+      "correctFor": "visit_date"
+    },
+    {
+      "kind": "account-vs-payment-status",
+      "fields": [
+        "estado_cuenta",
+        "estado_pago"
+      ],
+      "correctFor": "payment_status"
+    },
+    {
+      "kind": "phone-vs-mobile",
+      "fields": [
+        "tel_fijo",
+        "tel_movil"
+      ],
+      "correctFor": "mobile_phone"
+    },
+    {
+      "kind": "organization-vs-person-name",
+      "fields": [
+        "clinica",
+        "nom_prop"
+      ],
+      "correctFor": "owner_name"
+    },
+    {
+      "kind": "currency-vs-amount",
+      "fields": [
+        "moneda",
+        "importe"
+      ],
+      "correctFor": "amount_eur"
+    }
+  ],
+  "sourceConcepts": {
+    "num_cli": "customer-id",
+    "num_visita": "transaction-id",
+    "nom_prop": "person-name",
+    "fec_visita": "transaction-date",
+    "fec_nac_masc": "birth-date",
+    "especie": "category",
+    "estado_pago": "payment-status",
+    "estado_cuenta": "account-status",
+    "tel_movil": "phone",
+    "tel_fijo": "phone",
+    "importe": "amount",
+    "moneda": "currency-code",
+    "correo_prop": "email",
+    "obs": "note",
+    "clinica": "organization-name"
+  },
+  "destinationConcepts": {
+    "visit_id": "transaction-id",
+    "client_number": "customer-id",
+    "owner_name": "person-name",
+    "visit_date": "transaction-date",
+    "species": "category",
+    "payment_status": "payment-status",
+    "mobile_phone": "phone",
+    "amount_eur": "amount",
+    "insurance_provider": "organization-name",
+    "referral_source": "category"
+  }
+}

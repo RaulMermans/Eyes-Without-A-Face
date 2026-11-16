@@ -34,10 +34,12 @@ const config = process.env.EYES_AI_VALUE_CONFIG ?? "";
 const trial = Number(process.env.EYES_AI_VALUE_TRIAL ?? "0");
 const baseURL = process.env.EYES_AI_VALUE_BASE_URL ?? "";
 const debugToken = process.env.EYES_APPCHECK_DEBUG_TOKEN ?? "";
-const evidencePath = process.env.EYES_LIVE_EVIDENCE ?? "docs/evidence/sprint-18a/ai-value-live.json";
+// Sets: 18a (G0/G1, Sprint 18A) and a5 (P0/P1, Sprint 18A.5 planner; docs/evaluation/sprint-18a5-planner.md).
+const set = process.env.EYES_AI_VALUE_SET === "a5" ? "a5" : "18a";
+const evidencePath = process.env.EYES_LIVE_EVIDENCE ?? (set === "a5" ? "docs/evidence/sprint-18a5/planner-live.json" : "docs/evidence/sprint-18a/ai-value-live.json");
 // Rehearsals may use the dev split (EYES_AI_VALUE_SPLIT=dev); the real run is always the holdout.
 const split = process.env.EYES_AI_VALUE_DRY === "1" && process.env.EYES_AI_VALUE_SPLIT === "dev" ? "dev" : "holdout";
-const root = `tests/fixtures/ai-value-18a/${split}`;
+const root = split === "dev" ? "tests/fixtures/ai-value-18a/dev" : set === "a5" ? "tests/fixtures/ai-value-18a5/holdout" : "tests/fixtures/ai-value-18a/holdout";
 /** Rehearsal: run everything up to an enabled Send button, send nothing, write no evidence. */
 const dryRun = process.env.EYES_AI_VALUE_DRY === "1";
 
@@ -87,7 +89,7 @@ function privateTerms(scenario: HoldoutScenario): string[] {
 
 test.describe("S18A-LIVE G0/G1 holdout run", () => {
   test.beforeAll(() => {
-    expect(["G0", "G1"]).toContain(config);
+    expect(set === "a5" ? ["P0", "P1"] : ["G0", "G1"]).toContain(config);
     expect([1, 2]).toContain(trial);
     expect(baseURL).toMatch(/^http:\/\/127\.0\.0\.1:\d+$/);
     expect(files.length).toBe(split === "dev" ? 6 : 10);

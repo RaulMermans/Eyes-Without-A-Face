@@ -156,3 +156,18 @@ describe.runIf(fs.existsSync(livePath))("EVAL-184 live holdout scoring (G0 vs G1
     expect(verdict.promptsProven).toBe(true);
   });
 });
+
+describe("EVAL-185 the Sprint 18A.5 planner holdout is frozen", () => {
+  const a5 = JSON.parse(fs.readFileSync("docs/evidence/sprint-18a5/planner-freeze.json", "utf8")) as typeof freeze;
+  const dir = "tests/fixtures/ai-value-18a5/holdout";
+  it("README and holdout digest match (no holdout name or content is read here)", () => {
+    for (const [file, hash] of Object.entries(a5.files)) expect(sha(fs.readFileSync(file))).toBe(hash);
+    const files = fs.readdirSync(dir).filter((name) => name.endsWith(".json")).sort().map((name) => path.join(dir, name));
+    expect(files.length).toBe(a5.holdout.count);
+    expect(sha(files.map((file) => sha(fs.readFileSync(file))).join("\n"))).toBe(a5.holdout.sha256);
+  });
+  it("the pre-registration text above § Results is unchanged", () => {
+    const text = fs.readFileSync(a5.preregistration.path, "utf8");
+    expect(sha(text.slice(0, text.indexOf("\n## Results")))).toBe(a5.preregistration.sha256AboveResults);
+  });
+});

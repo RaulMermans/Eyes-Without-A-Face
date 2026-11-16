@@ -1,0 +1,756 @@
+{
+  "scenarioId": "autovermietung-vertraege-de",
+  "split": "holdout",
+  "industry": "car rental",
+  "sourceLanguage": "de",
+  "description": "German car rental contracts with abbreviated column names mapped to a rental agreement.",
+  "fictional": true,
+  "records": [
+    {
+      "FzKl": "klein",
+      "MailRg": "rechnung28@example.net",
+      "KdNr": "K007520",
+      "Betrag": 703.21,
+      "GebDat": "09/06/1967",
+      "VtrStat": "abgeholt",
+      "Fahrer": "Lennart Ahlers",
+      "Whrg": "EUR",
+      "AbhDat": "07/04/2026",
+      "KdStat": "inaktiv",
+      "MietvNr": "MV202600001",
+      "Kaution": 500.0,
+      "Firma": null,
+      "RueckDat": "12/04/2026",
+      "MailKd": "lennart.ahlers@example.org",
+      "FS_Nr": "B572X67083"
+    },
+    {
+      "FzKl": "klein",
+      "MailRg": "rechnung3@example.net",
+      "KdNr": "K003903",
+      "Betrag": 104.82,
+      "GebDat": "04/04/1962",
+      "VtrStat": "zurueck",
+      "Fahrer": "Bastian Ahlers",
+      "Whrg": "EUR",
+      "AbhDat": "08/08/2026",
+      "KdStat": "aktiv",
+      "MietvNr": "MV202600002",
+      "Kaution": 500.0,
+      "Firma": null,
+      "RueckDat": "08/08/2026",
+      "MailKd": "bastian.ahlers@example.org",
+      "FS_Nr": "B363X45344"
+    },
+    {
+      "FzKl": "ober",
+      "MailRg": "rechnung34@example.net",
+      "KdNr": "K007290",
+      "Betrag": 560.16,
+      "GebDat": "07/03/1970",
+      "VtrStat": "storniert",
+      "Fahrer": "Wiebke Ahlers",
+      "Whrg": "EUR",
+      "AbhDat": "04/06/2026",
+      "KdStat": "gesperrt",
+      "MietvNr": "MV202600003",
+      "Kaution": 750.0,
+      "Firma": "Nordwind Messebau GmbH",
+      "RueckDat": "07/06/2026",
+      "MailKd": "wiebke.ahlers@example.org",
+      "FS_Nr": "B395X01869"
+    },
+    {
+      "FzKl": "mittel",
+      "MailRg": "rechnung42@example.net",
+      "KdNr": "K009182",
+      "Betrag": 1297.62,
+      "GebDat": "09/03/1997",
+      "VtrStat": "storniert",
+      "Fahrer": "Wiebke Wendlandt",
+      "Whrg": "EUR",
+      "AbhDat": "05/12/2026",
+      "KdStat": "inaktiv",
+      "MietvNr": "MV202600004",
+      "Kaution": 500.0,
+      "Firma": null,
+      "RueckDat": "09/12/2026",
+      "MailKd": "wiebke.wendlandt@example.org",
+      "FS_Nr": "B002X57792"
+    },
+    {
+      "FzKl": "klein",
+      "MailRg": "rechnung42@example.net",
+      "KdNr": "K001210",
+      "Betrag": 208.06,
+      "GebDat": "07/01/1978",
+      "VtrStat": "abgeholt",
+      "Fahrer": "Jonas Ahlers",
+      "Whrg": "EUR",
+      "AbhDat": "02/04/2026",
+      "KdStat": "aktiv",
+      "MietvNr": "MV202600005",
+      "Kaution": 500.0,
+      "Firma": null,
+      "RueckDat": "12/04/2026",
+      "MailKd": "jonas.ahlers@example.org",
+      "FS_Nr": "B708X46733"
+    },
+    {
+      "FzKl": "klein",
+      "MailRg": "rechnung36@example.net",
+      "KdNr": "K004836",
+      "Betrag": 146.63,
+      "GebDat": "01/11/1975",
+      "VtrStat": "storniert",
+      "Fahrer": "Swantje Hollerbach",
+      "Whrg": "EUR",
+      "AbhDat": "02/04/2026",
+      "KdStat": "inaktiv",
+      "MietvNr": "MV202600006",
+      "Kaution": 1000.0,
+      "Firma": null,
+      "RueckDat": "09/04/2026",
+      "MailKd": "swantje.hollerbach@example.org",
+      "FS_Nr": "B754X23319"
+    },
+    {
+      "FzKl": "mittel",
+      "MailRg": "rechnung43@example.net",
+      "KdNr": "K005024",
+      "Betrag": 1233.29,
+      "GebDat": "10/12/1972",
+      "VtrStat": "abgeholt",
+      "Fahrer": "Ole Ahlers",
+      "Whrg": "EUR",
+      "AbhDat": "08/07/2026",
+      "KdStat": "gesperrt",
+      "MietvNr": "MV202600007",
+      "Kaution": 1000.0,
+      "Firma": null,
+      "RueckDat": "10/07/2026",
+      "MailKd": "ole.ahlers@example.org",
+      "FS_Nr": "B720X98375"
+    },
+    {
+      "FzKl": "mittel",
+      "MailRg": "rechnung44@example.net",
+      "KdNr": "K002352",
+      "Betrag": 1322.34,
+      "GebDat": "04/05/1967",
+      "VtrStat": "abgeholt",
+      "Fahrer": "Wiebke Steinfeld",
+      "Whrg": "EUR",
+      "AbhDat": "12/10/2026",
+      "KdStat": "inaktiv",
+      "MietvNr": "MV202600008",
+      "Kaution": 300.0,
+      "Firma": null,
+      "RueckDat": "12/10/2026",
+      "MailKd": "wiebke.steinfeld@example.org",
+      "FS_Nr": "B054X53226"
+    },
+    {
+      "FzKl": "transporter",
+      "MailRg": "rechnung5@example.net",
+      "KdNr": "K003285",
+      "Betrag": 985.7,
+      "GebDat": "08/06/1998",
+      "VtrStat": "abgeholt",
+      "Fahrer": "Jonas Kröger",
+      "Whrg": "EUR",
+      "AbhDat": "01/05/2026",
+      "KdStat": "gesperrt",
+      "MietvNr": "MV202600009",
+      "Kaution": 750.0,
+      "Firma": null,
+      "RueckDat": "06/05/2026",
+      "MailKd": "jonas.kroger@example.org",
+      "FS_Nr": "B652X34365"
+    },
+    {
+      "FzKl": "kompakt",
+      "MailRg": null,
+      "KdNr": "K004534",
+      "Betrag": 547.29,
+      "GebDat": "04/02/1988",
+      "VtrStat": "storniert",
+      "Fahrer": "Swantje Steinfeld",
+      "Whrg": "EUR",
+      "AbhDat": "05/04/2026",
+      "KdStat": "aktiv",
+      "MietvNr": "MV202600010",
+      "Kaution": 750.0,
+      "Firma": "Haselmeier Planung GmbH",
+      "RueckDat": "12/04/2026",
+      "MailKd": "swantje.steinfeld@example.org",
+      "FS_Nr": "B359X42796"
+    },
+    {
+      "FzKl": "kompakt",
+      "MailRg": "rechnung5@example.net",
+      "KdNr": "K009754",
+      "Betrag": 590.34,
+      "GebDat": "12/12/1969",
+      "VtrStat": "abgeholt",
+      "Fahrer": "Wiebke Rieckhoff",
+      "Whrg": "EUR",
+      "AbhDat": "07/10/2026",
+      "KdStat": "aktiv",
+      "MietvNr": "MV202600011",
+      "Kaution": 500.0,
+      "Firma": null,
+      "RueckDat": "11/10/2026",
+      "MailKd": "wiebke.rieckhoff@example.org",
+      "FS_Nr": "B947X30117"
+    },
+    {
+      "FzKl": "mittel",
+      "MailRg": "rechnung14@example.net",
+      "KdNr": "K009496",
+      "Betrag": 1164.04,
+      "GebDat": "12/06/2000",
+      "VtrStat": "abgeholt",
+      "Fahrer": "Friederike Kröger",
+      "Whrg": "EUR",
+      "AbhDat": "12/06/2026",
+      "KdStat": "aktiv",
+      "MietvNr": "MV202600012",
+      "Kaution": 500.0,
+      "Firma": "Haselmeier Planung GmbH",
+      "RueckDat": "12/06/2026",
+      "MailKd": "friederike.kroger@example.org",
+      "FS_Nr": "B868X38523"
+    },
+    {
+      "FzKl": "kompakt",
+      "MailRg": "rechnung40@example.net",
+      "KdNr": "K002936",
+      "Betrag": 409.35,
+      "GebDat": "07/08/1990",
+      "VtrStat": "storniert",
+      "Fahrer": "Wiebke Ahlers",
+      "Whrg": "EUR",
+      "AbhDat": "01/09/2026",
+      "KdStat": "gesperrt",
+      "MietvNr": "MV202600013",
+      "Kaution": 750.0,
+      "Firma": "Haselmeier Planung GmbH",
+      "RueckDat": "01/09/2026",
+      "MailKd": "wiebke.ahlers@example.org",
+      "FS_Nr": "B742X05593"
+    },
+    {
+      "FzKl": "ober",
+      "MailRg": "rechnung31@example.net",
+      "KdNr": "K009589",
+      "Betrag": 940.88,
+      "GebDat": "03/07/1972",
+      "VtrStat": "abgeholt",
+      "Fahrer": "Wiebke Ahlers",
+      "Whrg": "EUR",
+      "AbhDat": "01/08/2026",
+      "KdStat": "gesperrt",
+      "MietvNr": "MV202600014",
+      "Kaution": 300.0,
+      "Firma": null,
+      "RueckDat": "09/08/2026",
+      "MailKd": "wiebke.ahlers@example.org",
+      "FS_Nr": "B146X15223"
+    },
+    {
+      "FzKl": "transporter",
+      "MailRg": "rechnung17@example.net",
+      "KdNr": "K002191",
+      "Betrag": 1383.94,
+      "GebDat": "05/07/1987",
+      "VtrStat": "abgeholt",
+      "Fahrer": "Ole Wendlandt",
+      "Whrg": "EUR",
+      "AbhDat": "02/06/2026",
+      "KdStat": "aktiv",
+      "MietvNr": "MV202600015",
+      "Kaution": 1000.0,
+      "Firma": null,
+      "RueckDat": "03/06/2026",
+      "MailKd": "ole.wendlandt@example.org",
+      "FS_Nr": "B400X86363"
+    },
+    {
+      "FzKl": "klein",
+      "MailRg": "rechnung22@example.net",
+      "KdNr": "K003764",
+      "Betrag": 842.51,
+      "GebDat": "04/10/1977",
+      "VtrStat": "zurueck",
+      "Fahrer": "Friederike Hollerbach",
+      "Whrg": "EUR",
+      "AbhDat": "01/09/2026",
+      "KdStat": "aktiv",
+      "MietvNr": "MV202600016",
+      "Kaution": 750.0,
+      "Firma": null,
+      "RueckDat": "07/09/2026",
+      "MailKd": "friederike.hollerbach@example.org",
+      "FS_Nr": "B024X81395"
+    },
+    {
+      "FzKl": "ober",
+      "MailRg": "rechnung36@example.net",
+      "KdNr": "K002517",
+      "Betrag": 1255.54,
+      "GebDat": "08/09/1973",
+      "VtrStat": "abgeholt",
+      "Fahrer": "Insa Rieckhoff",
+      "Whrg": "EUR",
+      "AbhDat": "04/02/2026",
+      "KdStat": "aktiv",
+      "MietvNr": "MV202600017",
+      "Kaution": 750.0,
+      "Firma": null,
+      "RueckDat": "06/02/2026",
+      "MailKd": "insa.rieckhoff@example.org",
+      "FS_Nr": "B000X96924"
+    },
+    {
+      "FzKl": "klein",
+      "MailRg": "rechnung33@example.net",
+      "KdNr": "K009957",
+      "Betrag": 663.39,
+      "GebDat": "03/05/1965",
+      "VtrStat": "zurueck",
+      "Fahrer": "Swantje Brockmöller",
+      "Whrg": "EUR",
+      "AbhDat": "05/10/2026",
+      "KdStat": "inaktiv",
+      "MietvNr": "MV202600018",
+      "Kaution": 1000.0,
+      "Firma": null,
+      "RueckDat": "11/10/2026",
+      "MailKd": "swantje.brockmoller@example.org",
+      "FS_Nr": "B595X26052"
+    },
+    {
+      "FzKl": "kompakt",
+      "MailRg": null,
+      "KdNr": "K008941",
+      "Betrag": 1244.31,
+      "GebDat": "11/04/1977",
+      "VtrStat": "zurueck",
+      "Fahrer": "Lennart Wendlandt",
+      "Whrg": "EUR",
+      "AbhDat": "11/10/2026",
+      "KdStat": "aktiv",
+      "MietvNr": "MV202600019",
+      "Kaution": 1000.0,
+      "Firma": "Nordwind Messebau GmbH",
+      "RueckDat": "12/10/2026",
+      "MailKd": "lennart.wendlandt@example.org",
+      "FS_Nr": "B229X43892"
+    },
+    {
+      "FzKl": "kompakt",
+      "MailRg": "rechnung48@example.net",
+      "KdNr": "K007423",
+      "Betrag": 439.91,
+      "GebDat": "08/11/1990",
+      "VtrStat": "zurueck",
+      "Fahrer": "Insa Ahlers",
+      "Whrg": "EUR",
+      "AbhDat": "07/03/2026",
+      "KdStat": "aktiv",
+      "MietvNr": "MV202600020",
+      "Kaution": 1000.0,
+      "Firma": null,
+      "RueckDat": "10/03/2026",
+      "MailKd": "insa.ahlers@example.org",
+      "FS_Nr": "B416X01989"
+    },
+    {
+      "FzKl": "klein",
+      "MailRg": "rechnung42@example.net",
+      "KdNr": "K008319",
+      "Betrag": 1338.66,
+      "GebDat": "07/01/1970",
+      "VtrStat": "zurueck",
+      "Fahrer": "Lennart Hollerbach",
+      "Whrg": "EUR",
+      "AbhDat": "01/08/2026",
+      "KdStat": "gesperrt",
+      "MietvNr": "MV202600021",
+      "Kaution": 750.0,
+      "Firma": null,
+      "RueckDat": "03/08/2026",
+      "MailKd": "lennart.hollerbach@example.org",
+      "FS_Nr": "B534X93433"
+    },
+    {
+      "FzKl": "transporter",
+      "MailRg": "rechnung11@example.net",
+      "KdNr": "K002208",
+      "Betrag": 186.3,
+      "GebDat": "07/06/1969",
+      "VtrStat": "zurueck",
+      "Fahrer": "Wiebke Hollerbach",
+      "Whrg": "EUR",
+      "AbhDat": "07/07/2026",
+      "KdStat": "aktiv",
+      "MietvNr": "MV202600022",
+      "Kaution": 300.0,
+      "Firma": "Haselmeier Planung GmbH",
+      "RueckDat": "12/07/2026",
+      "MailKd": "wiebke.hollerbach@example.org",
+      "FS_Nr": "B542X83249"
+    },
+    {
+      "FzKl": "kompakt",
+      "MailRg": null,
+      "KdNr": "K009418",
+      "Betrag": 353.73,
+      "GebDat": "07/01/1974",
+      "VtrStat": "zurueck",
+      "Fahrer": "Insa Steinfeld",
+      "Whrg": "EUR",
+      "AbhDat": "10/05/2026",
+      "KdStat": "aktiv",
+      "MietvNr": "MV202600023",
+      "Kaution": 1000.0,
+      "Firma": null,
+      "RueckDat": "11/05/2026",
+      "MailKd": "insa.steinfeld@example.org",
+      "FS_Nr": "B780X06849"
+    },
+    {
+      "FzKl": "transporter",
+      "MailRg": "rechnung47@example.net",
+      "KdNr": "K001911",
+      "Betrag": 1139.85,
+      "GebDat": "09/11/1974",
+      "VtrStat": "abgeholt",
+      "Fahrer": "Insa Hollerbach",
+      "Whrg": "EUR",
+      "AbhDat": "10/08/2026",
+      "KdStat": "inaktiv",
+      "MietvNr": "MV202600024",
+      "Kaution": 750.0,
+      "Firma": "Elbtal Gerüsttechnik KG",
+      "RueckDat": "11/08/2026",
+      "MailKd": "insa.hollerbach@example.org",
+      "FS_Nr": "B880X01119"
+    },
+    {
+      "FzKl": "klein",
+      "MailRg": "rechnung47@example.net",
+      "KdNr": "K008110",
+      "Betrag": 396.98,
+      "GebDat": "12/04/1995",
+      "VtrStat": "abgeholt",
+      "Fahrer": "Jonas Ahlers",
+      "Whrg": "EUR",
+      "AbhDat": "05/04/2026",
+      "KdStat": "inaktiv",
+      "MietvNr": "MV202600025",
+      "Kaution": 500.0,
+      "Firma": null,
+      "RueckDat": "08/04/2026",
+      "MailKd": "jonas.ahlers@example.org",
+      "FS_Nr": "B720X51336"
+    },
+    {
+      "FzKl": "mittel",
+      "MailRg": "rechnung36@example.net",
+      "KdNr": "K002282",
+      "Betrag": 775.94,
+      "GebDat": "07/07/1964",
+      "VtrStat": "storniert",
+      "Fahrer": "Insa Steinfeld",
+      "Whrg": "EUR",
+      "AbhDat": "04/05/2026",
+      "KdStat": "aktiv",
+      "MietvNr": "MV202600026",
+      "Kaution": 1000.0,
+      "Firma": null,
+      "RueckDat": "04/05/2026",
+      "MailKd": "insa.steinfeld@example.org",
+      "FS_Nr": "B840X75510"
+    },
+    {
+      "FzKl": "transporter",
+      "MailRg": "rechnung3@example.net",
+      "KdNr": "K006051",
+      "Betrag": 749.6,
+      "GebDat": "01/08/2003",
+      "VtrStat": "reserviert",
+      "Fahrer": "Malte Kröger",
+      "Whrg": "EUR",
+      "AbhDat": "09/06/2026",
+      "KdStat": "aktiv",
+      "MietvNr": "MV202600027",
+      "Kaution": 500.0,
+      "Firma": null,
+      "RueckDat": "09/06/2026",
+      "MailKd": "malte.kroger@example.org",
+      "FS_Nr": "B031X64477"
+    },
+    {
+      "FzKl": "mittel",
+      "MailRg": "rechnung27@example.net",
+      "KdNr": "K008815",
+      "Betrag": 1218.66,
+      "GebDat": "08/10/1963",
+      "VtrStat": "zurueck",
+      "Fahrer": "Bastian Brockmöller",
+      "Whrg": "EUR",
+      "AbhDat": "07/08/2026",
+      "KdStat": "aktiv",
+      "MietvNr": "MV202600028",
+      "Kaution": 750.0,
+      "Firma": "Elbtal Gerüsttechnik KG",
+      "RueckDat": "10/08/2026",
+      "MailKd": "bastian.brockmoller@example.org",
+      "FS_Nr": "B985X11559"
+    },
+    {
+      "FzKl": "mittel",
+      "MailRg": "rechnung3@example.net",
+      "KdNr": "K008346",
+      "Betrag": 961.48,
+      "GebDat": "10/11/1988",
+      "VtrStat": "zurueck",
+      "Fahrer": "Ole Hollerbach",
+      "Whrg": "EUR",
+      "AbhDat": "10/10/2026",
+      "KdStat": "aktiv",
+      "MietvNr": "MV202600029",
+      "Kaution": 300.0,
+      "Firma": null,
+      "RueckDat": "10/10/2026",
+      "MailKd": "ole.hollerbach@example.org",
+      "FS_Nr": "B183X98234"
+    },
+    {
+      "FzKl": "mittel",
+      "MailRg": "rechnung43@example.net",
+      "KdNr": "K004044",
+      "Betrag": 172.45,
+      "GebDat": "06/09/1957",
+      "VtrStat": "zurueck",
+      "Fahrer": "Friederike Rieckhoff",
+      "Whrg": "EUR",
+      "AbhDat": "08/08/2026",
+      "KdStat": "aktiv",
+      "MietvNr": "MV202600030",
+      "Kaution": 1000.0,
+      "Firma": "Elbtal Gerüsttechnik KG",
+      "RueckDat": "12/08/2026",
+      "MailKd": "friederike.rieckhoff@example.org",
+      "FS_Nr": "B752X51309"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "RentalAgreement",
+    "type": "object",
+    "properties": {
+      "rental_id": {
+        "type": "string"
+      },
+      "customer_number": {
+        "type": "string"
+      },
+      "driver_name": {
+        "type": "string"
+      },
+      "driver_birth_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "pickup_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "vehicle_class": {
+        "type": "string",
+        "enum": [
+          "economy",
+          "compact",
+          "midsize",
+          "premium",
+          "van"
+        ]
+      },
+      "rental_status": {
+        "type": "string",
+        "enum": [
+          "reserved",
+          "picked_up",
+          "returned",
+          "cancelled"
+        ]
+      },
+      "rental_amount": {
+        "type": "number"
+      },
+      "contact_email": {
+        "type": "string",
+        "format": "email"
+      },
+      "loyalty_tier": {
+        "type": "string",
+        "enum": [
+          "bronze",
+          "silver",
+          "gold"
+        ]
+      },
+      "dropoff_location": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "rental_id",
+      "customer_number",
+      "pickup_date",
+      "vehicle_class",
+      "rental_status",
+      "loyalty_tier"
+    ]
+  },
+  "groundTruth": {
+    "rental_id": {
+      "source": "MietvNr",
+      "why": "Mietvertragsnummer = rental contract number"
+    },
+    "customer_number": {
+      "source": "KdNr",
+      "why": "Kundennummer = customer number"
+    },
+    "driver_name": {
+      "source": "Fahrer",
+      "why": "driver is a person; Firma is the company"
+    },
+    "driver_birth_date": {
+      "source": "GebDat",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "Geburtsdatum, German day-first"
+    },
+    "pickup_date": {
+      "source": "AbhDat",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "Abholdatum = pickup date, German day-first"
+    },
+    "vehicle_class": {
+      "source": "FzKl",
+      "why": "Fahrzeugklasse labels translate to the enum"
+    },
+    "rental_status": {
+      "source": "VtrStat",
+      "why": "contract status, not customer status"
+    },
+    "rental_amount": {
+      "source": "Betrag",
+      "why": "rental price, not the deposit"
+    },
+    "contact_email": {
+      "source": "MailKd",
+      "why": "customer email, not the invoice mailbox"
+    },
+    "loyalty_tier": {
+      "source": null,
+      "why": "no loyalty programme data in the source"
+    },
+    "dropoff_location": {
+      "source": null,
+      "why": "no station/location in the source"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "KdNr",
+        "MietvNr"
+      ],
+      "correctFor": "rental_id"
+    },
+    {
+      "kind": "birth-vs-event-date",
+      "fields": [
+        "GebDat",
+        "AbhDat"
+      ],
+      "correctFor": "pickup_date"
+    },
+    {
+      "kind": "start-vs-end-date",
+      "fields": [
+        "AbhDat",
+        "RueckDat"
+      ],
+      "correctFor": "pickup_date"
+    },
+    {
+      "kind": "account-vs-order-status",
+      "fields": [
+        "KdStat",
+        "VtrStat"
+      ],
+      "correctFor": "rental_status"
+    },
+    {
+      "kind": "organization-vs-person-name",
+      "fields": [
+        "Firma",
+        "Fahrer"
+      ],
+      "correctFor": "driver_name"
+    },
+    {
+      "kind": "two-amounts",
+      "fields": [
+        "Betrag",
+        "Kaution"
+      ],
+      "correctFor": "rental_amount"
+    },
+    {
+      "kind": "two-emails",
+      "fields": [
+        "MailRg",
+        "MailKd"
+      ],
+      "correctFor": "contact_email"
+    }
+  ],
+  "sourceConcepts": {
+    "KdNr": "customer-id",
+    "MietvNr": "transaction-id",
+    "GebDat": "birth-date",
+    "AbhDat": "transaction-date",
+    "RueckDat": "end-date",
+    "FzKl": "category",
+    "VtrStat": "order-status",
+    "KdStat": "account-status",
+    "Firma": "organization-name",
+    "Fahrer": "person-name",
+    "Betrag": "amount",
+    "Kaution": "amount",
+    "Whrg": "currency-code",
+    "MailRg": "email",
+    "MailKd": "email",
+    "FS_Nr": "other-identifier"
+  },
+  "destinationConcepts": {
+    "rental_id": "transaction-id",
+    "customer_number": "customer-id",
+    "driver_name": "person-name",
+    "driver_birth_date": "birth-date",
+    "pickup_date": "transaction-date",
+    "vehicle_class": "category",
+    "rental_status": "order-status",
+    "rental_amount": "amount",
+    "contact_email": "email",
+    "loyalty_tier": "category",
+    "dropoff_location": "city"
+  }
+}
