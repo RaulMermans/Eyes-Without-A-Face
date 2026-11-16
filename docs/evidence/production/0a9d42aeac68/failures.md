@@ -74,3 +74,9 @@ The answers used by the test (business choices made for the test only):
   - Regression test: PRV-S15-005, with a fictional Meridian-like fixture. All three new tests fail on the previous code.
 - **Freeze amendment.** `src/phantom/generate.ts` is pinned by the Sprint 12 Nano-value freeze, so the freeze was amended with `node scripts/freeze-nano-value.mjs --amend "…"` and the reason recorded. The change is proven output-neutral: synthetic examples are byte-identical before and after for every picker scenario (with and without twin overrides) and for the CRM demo. EVAL 84 / 84.
 - **Offline check on the Meridian file (unchanged scan).** The package builds.
+- **Retest on the release candidate `8c45d6b`.** Run locally (`vite preview` of the `build:release` output; not production), with Playwright and the Meridian file, using the same answers. 0 model requests, no page errors.
+  - Email is suggested ("117 of 119 values look like email addresses").
+  - Draft: 102 transformed, 15 set aside, 3 need attention.
+  - Transformed data, the .zip and `bindings.local.json` all download.
+  - The package contains no record values or source field names.
+  - `node run.mjs verify` exits 0. `node run.mjs run` on the original file gives 102 / 15 / 3 (exit 0), and its 102 outputs are identical to the app's transformed-data download.
