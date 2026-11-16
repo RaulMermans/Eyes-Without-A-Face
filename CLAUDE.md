@@ -43,5 +43,8 @@ Read, in order:
 36. `docs/qa/sprint-16b-mapping-integrity.md` — Sprint 16B: explicit field decisions, honest verdicts, provenance-aware export scan, release candidate
 37. `docs/qa/sprint-16c-production-acceptance.md` — Sprint 16C: release 489c6ba (PRODUCTION_ACCEPTED), usability and accessibility kits, submission readiness
 38. `docs/qa/sprint-17a-hybrid-recovery.md` — Sprint 17A: blocked unusable requests, incomplete-mapping recovery, date meaning copy
+39. `docs/program/master-transformation-assessment.md` — Sprint 18 program: capability inventory, gaps, target architecture, 18A–18E increments
+40. `docs/decisions/0015-ai-integration-engineer-program.md` and `docs/decisions/0016-concept-bearing-phantom-twin.md` — gated program; concept-bearing twin
+41. `docs/evaluation/sprint-18a-ai-value.md` — pre-registered AI-value experiment and results (Gate A)
 
 Every sprint ends with an evidence-backed release status (`CODE_READY`, `DEPLOYMENT_PENDING`, `DEPLOYED_UNVERIFIED`, `PRODUCTION_ACCEPTED`, `RELEASE_FAILED`); rules in `AGENTS.md`. Do not duplicate architecture here. Do not start Sprint 16 automatically.
