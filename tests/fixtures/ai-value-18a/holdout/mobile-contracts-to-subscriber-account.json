@@ -1,0 +1,935 @@
+{
+  "scenarioId": "mobile-contracts-to-subscriber-account",
+  "split": "holdout",
+  "industry": "telecom subscriptions",
+  "sourceLanguage": "de",
+  "description": "Heavily abbreviated contract export from a fictional German mobile provider, to be loaded as subscriber accounts.",
+  "fictional": true,
+  "records": [
+    {
+      "VNR": "98572228",
+      "Anr": "Herr",
+      "MtlGeb": 9.99,
+      "RAdr": {
+        "PLZ": "10975"
+      },
+      "GebDat": "10/07/1999",
+      "ZhlStat": "bezahlt",
+      "NName": "Bauerfeind",
+      "FestnNr": "+49 89 9335458",
+      "KNR": "15306993",
+      "Tarif": "XL",
+      "LAdr": {
+        "PLZ": "10975"
+      },
+      "EMl": "sabine.bauerfeind@example.net",
+      "AktDat": "10/04/2023",
+      "VName": "Sabine",
+      "FaNm": null,
+      "VtrStat": "gekündigt",
+      "EinmGeb": 0.0,
+      "MobNr": "+49 15888103945",
+      "LtzAend": "09/11/2025"
+    },
+    {
+      "VNR": "76809788",
+      "Anr": "Divers",
+      "MtlGeb": 19.99,
+      "RAdr": {
+        "PLZ": "17534"
+      },
+      "GebDat": "04/07/1991",
+      "ZhlStat": "bezahlt",
+      "NName": "Brückner",
+      "FestnNr": null,
+      "KNR": "17850051",
+      "Tarif": "L",
+      "LAdr": {
+        "PLZ": "17534"
+      },
+      "EMl": "katrin.bruckner@example.net",
+      "AktDat": "03/01/2017",
+      "VName": "Katrin",
+      "FaNm": "Corvant GmbH",
+      "VtrStat": "aktiv",
+      "EinmGeb": 29.99,
+      "MobNr": "+49 15821478368",
+      "LtzAend": "05/10/2026"
+    },
+    {
+      "VNR": "56540698",
+      "Anr": "Frau",
+      "MtlGeb": 9.99,
+      "RAdr": {
+        "PLZ": "59918"
+      },
+      "GebDat": "05/08/1999",
+      "ZhlStat": "bezahlt",
+      "NName": "Ostwald",
+      "FestnNr": "+49 89 9548001",
+      "KNR": "74889633",
+      "Tarif": "L",
+      "LAdr": {
+        "PLZ": "59918"
+      },
+      "EMl": "ute.ostwald@example.net",
+      "AktDat": "04/03/2018",
+      "VName": "Ute",
+      "FaNm": null,
+      "VtrStat": "ruhend",
+      "EinmGeb": 49.99,
+      "MobNr": "+49 15541132694",
+      "LtzAend": "06/09/2025"
+    },
+    {
+      "VNR": "89668391",
+      "Anr": "Frau",
+      "MtlGeb": 19.99,
+      "RAdr": {
+        "PLZ": "95053"
+      },
+      "GebDat": "06/12/1979",
+      "ZhlStat": "bezahlt",
+      "NName": "Möller",
+      "FestnNr": null,
+      "KNR": "15113649",
+      "Tarif": "S",
+      "LAdr": {
+        "PLZ": "95053"
+      },
+      "EMl": "lukas.moller@example.net",
+      "AktDat": "09/09/2020",
+      "VName": "Lukas",
+      "FaNm": null,
+      "VtrStat": "gesperrt",
+      "EinmGeb": 49.99,
+      "MobNr": "+49 15870610530",
+      "LtzAend": "07/09/2026"
+    },
+    {
+      "VNR": "40358793",
+      "Anr": "Herr",
+      "MtlGeb": 9.99,
+      "RAdr": {
+        "PLZ": "16735"
+      },
+      "GebDat": "11/04/1966",
+      "ZhlStat": "offen",
+      "NName": "Kranz",
+      "FestnNr": null,
+      "KNR": "93366944",
+      "Tarif": "S",
+      "LAdr": {
+        "PLZ": "16735"
+      },
+      "EMl": "jana.kranz@example.net",
+      "AktDat": "01/05/2020",
+      "VName": "Jana",
+      "FaNm": "Pellucid GmbH",
+      "VtrStat": "aktiv",
+      "EinmGeb": 29.99,
+      "MobNr": "+49 15648545092",
+      "LtzAend": "06/06/2026"
+    },
+    {
+      "VNR": "98153750",
+      "Anr": "Frau",
+      "MtlGeb": 9.99,
+      "RAdr": {
+        "PLZ": "33578"
+      },
+      "GebDat": "05/08/1963",
+      "ZhlStat": "Mahnung",
+      "NName": "Lindemann",
+      "FestnNr": null,
+      "KNR": "21805623",
+      "Tarif": "M",
+      "LAdr": {
+        "PLZ": "50396"
+      },
+      "EMl": "jonas.lindemann@example.net",
+      "AktDat": "07/05/2022",
+      "VName": "Jonas",
+      "FaNm": null,
+      "VtrStat": "ruhend",
+      "EinmGeb": 29.99,
+      "MobNr": "+49 15529181388",
+      "LtzAend": "07/10/2025"
+    },
+    {
+      "VNR": "78217711",
+      "Anr": "Herr",
+      "MtlGeb": 29.99,
+      "RAdr": {
+        "PLZ": "42667"
+      },
+      "GebDat": "12/02/1970",
+      "ZhlStat": "offen",
+      "NName": "Lindemann",
+      "FestnNr": null,
+      "KNR": "24410006",
+      "Tarif": "L",
+      "LAdr": {
+        "PLZ": "42667"
+      },
+      "EMl": "stefan.lindemann@example.net",
+      "AktDat": "10/05/2025",
+      "VName": "Stefan",
+      "FaNm": null,
+      "VtrStat": "aktiv",
+      "EinmGeb": 29.99,
+      "MobNr": "+49 15390393482",
+      "LtzAend": "02/09/2026"
+    },
+    {
+      "VNR": "96280130",
+      "Anr": "Herr",
+      "MtlGeb": 29.99,
+      "RAdr": {
+        "PLZ": "99651"
+      },
+      "GebDat": "02/06/1982",
+      "ZhlStat": "offen",
+      "NName": "Kranz",
+      "FestnNr": null,
+      "KNR": "12906030",
+      "Tarif": "XL",
+      "LAdr": {
+        "PLZ": "99651"
+      },
+      "EMl": "henrik.kranz@example.net",
+      "AktDat": "11/06/2017",
+      "VName": "Henrik",
+      "FaNm": null,
+      "VtrStat": "aktiv",
+      "EinmGeb": 29.99,
+      "MobNr": "+49 15988640154",
+      "LtzAend": "11/05/2026"
+    },
+    {
+      "VNR": "90515315",
+      "Anr": "Herr",
+      "MtlGeb": 19.99,
+      "RAdr": {
+        "PLZ": "59216"
+      },
+      "GebDat": "12/08/1993",
+      "ZhlStat": "bezahlt",
+      "NName": "Dörflinger",
+      "FestnNr": null,
+      "KNR": "40049513",
+      "Tarif": "L",
+      "LAdr": {
+        "PLZ": "59216"
+      },
+      "EMl": "katrin.dorflinger@example.net",
+      "AktDat": "02/07/2026",
+      "VName": "Katrin",
+      "FaNm": null,
+      "VtrStat": "aktiv",
+      "EinmGeb": 49.99,
+      "MobNr": "+49 15850194695",
+      "LtzAend": "03/12/2026"
+    },
+    {
+      "VNR": "92910518",
+      "Anr": "Herr",
+      "MtlGeb": 19.99,
+      "RAdr": {
+        "PLZ": "54902"
+      },
+      "GebDat": "10/09/2006",
+      "ZhlStat": "bezahlt",
+      "NName": "Weidmann",
+      "FestnNr": "+49 89 5218381",
+      "KNR": "91924394",
+      "Tarif": "S",
+      "LAdr": {
+        "PLZ": "54902"
+      },
+      "EMl": "jana.weidmann@example.net",
+      "AktDat": "01/02/2019",
+      "VName": "Jana",
+      "FaNm": null,
+      "VtrStat": "gesperrt",
+      "EinmGeb": 49.99,
+      "MobNr": "+49 15378460746",
+      "LtzAend": "09/04/2025"
+    },
+    {
+      "VNR": "26457056",
+      "Anr": "Herr",
+      "MtlGeb": 29.99,
+      "RAdr": {
+        "PLZ": "62600"
+      },
+      "GebDat": "10/07/1962",
+      "ZhlStat": "bezahlt",
+      "NName": "Ostwald",
+      "FestnNr": "+49 89 3402840",
+      "KNR": "71589295",
+      "Tarif": "S",
+      "LAdr": {
+        "PLZ": "62600"
+      },
+      "EMl": "annika.ostwald@example.net",
+      "AktDat": "09/09/2017",
+      "VName": "Annika",
+      "FaNm": null,
+      "VtrStat": "aktiv",
+      "EinmGeb": 0.0,
+      "MobNr": "+49 15079296314",
+      "LtzAend": "10/12/2025"
+    },
+    {
+      "VNR": "76981109",
+      "Anr": "Divers",
+      "MtlGeb": 19.99,
+      "RAdr": {
+        "PLZ": "62219"
+      },
+      "GebDat": "05/10/1987",
+      "ZhlStat": "offen",
+      "NName": "Reinholt",
+      "FestnNr": "+49 89 3347027",
+      "KNR": "96147759",
+      "Tarif": "M",
+      "LAdr": {
+        "PLZ": "98289"
+      },
+      "EMl": "lukas.reinholt@example.net",
+      "AktDat": "09/11/2016",
+      "VName": "Lukas",
+      "FaNm": null,
+      "VtrStat": "aktiv",
+      "EinmGeb": 49.99,
+      "MobNr": "+49 15151938516",
+      "LtzAend": "03/06/2026"
+    },
+    {
+      "VNR": "71438820",
+      "Anr": "Frau",
+      "MtlGeb": 29.99,
+      "RAdr": {
+        "PLZ": "24614"
+      },
+      "GebDat": "06/12/1994",
+      "ZhlStat": "Mahnung",
+      "NName": "Hoffmeister",
+      "FestnNr": null,
+      "KNR": "93307263",
+      "Tarif": "M",
+      "LAdr": {
+        "PLZ": "24614"
+      },
+      "EMl": "matthias.hoffmeister@example.net",
+      "AktDat": "03/03/2024",
+      "VName": "Matthias",
+      "FaNm": null,
+      "VtrStat": "aktiv",
+      "EinmGeb": 0.0,
+      "MobNr": "+49 15181012937",
+      "LtzAend": "01/02/2025"
+    },
+    {
+      "VNR": "84546526",
+      "Anr": "Frau",
+      "MtlGeb": 29.99,
+      "RAdr": {
+        "PLZ": "50684"
+      },
+      "GebDat": "07/06/1981",
+      "ZhlStat": "bezahlt",
+      "NName": "Schäfer",
+      "FestnNr": null,
+      "KNR": "49309298",
+      "Tarif": "S",
+      "LAdr": {
+        "PLZ": "50684"
+      },
+      "EMl": "leonie.schafer@example.net",
+      "AktDat": "05/03/2021",
+      "VName": "Leonie",
+      "FaNm": "Norvel AG",
+      "VtrStat": "aktiv",
+      "EinmGeb": 0.0,
+      "MobNr": "+49 15736187630",
+      "LtzAend": "09/07/2026"
+    },
+    {
+      "VNR": "08828915",
+      "Anr": "Herr",
+      "MtlGeb": 29.99,
+      "RAdr": {
+        "PLZ": "06758"
+      },
+      "GebDat": "06/11/1977",
+      "ZhlStat": "offen",
+      "NName": "Bauerfeind",
+      "FestnNr": "+49 89 0861730",
+      "KNR": "54556545",
+      "Tarif": "M",
+      "LAdr": {
+        "PLZ": "06758"
+      },
+      "EMl": "ute.bauerfeind@example.net",
+      "AktDat": "02/10/2023",
+      "VName": "Ute",
+      "FaNm": null,
+      "VtrStat": "aktiv",
+      "EinmGeb": 0.0,
+      "MobNr": "+49 15410276322",
+      "LtzAend": "08/05/2026"
+    },
+    {
+      "VNR": "58190670",
+      "Anr": "Frau",
+      "MtlGeb": 44.99,
+      "RAdr": {
+        "PLZ": "50461"
+      },
+      "GebDat": "11/06/1989",
+      "ZhlStat": "bezahlt",
+      "NName": "Hoffmeister",
+      "FestnNr": "+49 89 0277976",
+      "KNR": "00960789",
+      "Tarif": "XL",
+      "LAdr": {
+        "PLZ": "44366"
+      },
+      "EMl": "jana.hoffmeister@example.net",
+      "AktDat": "10/03/2016",
+      "VName": "Jana",
+      "FaNm": "Kaldera KG",
+      "VtrStat": "aktiv",
+      "EinmGeb": 29.99,
+      "MobNr": "+49 15147203721",
+      "LtzAend": "08/03/2026"
+    },
+    {
+      "VNR": "62030891",
+      "Anr": "Herr",
+      "MtlGeb": 29.99,
+      "RAdr": {
+        "PLZ": "18750"
+      },
+      "GebDat": "06/11/1967",
+      "ZhlStat": "bezahlt",
+      "NName": "Hoffmeister",
+      "FestnNr": null,
+      "KNR": "01861665",
+      "Tarif": "M",
+      "LAdr": {
+        "PLZ": "18750"
+      },
+      "EMl": "matthias.hoffmeister@example.net",
+      "AktDat": "04/05/2023",
+      "VName": "Matthias",
+      "FaNm": "Norvel GmbH",
+      "VtrStat": "aktiv",
+      "EinmGeb": 0.0,
+      "MobNr": "+49 15640217259",
+      "LtzAend": "11/10/2025"
+    },
+    {
+      "VNR": "99034526",
+      "Anr": "Herr",
+      "MtlGeb": 19.99,
+      "RAdr": {
+        "PLZ": "11451"
+      },
+      "GebDat": "02/03/1958",
+      "ZhlStat": "bezahlt",
+      "NName": "Ahrend",
+      "FestnNr": null,
+      "KNR": "39559139",
+      "Tarif": "L",
+      "LAdr": {
+        "PLZ": "45898"
+      },
+      "EMl": "ute.ahrend@example.net",
+      "AktDat": "09/01/2024",
+      "VName": "Ute",
+      "FaNm": null,
+      "VtrStat": "aktiv",
+      "EinmGeb": 0.0,
+      "MobNr": "+49 15986194468",
+      "LtzAend": "08/08/2025"
+    },
+    {
+      "VNR": "06388631",
+      "Anr": "Divers",
+      "MtlGeb": 19.99,
+      "RAdr": {
+        "PLZ": "94237"
+      },
+      "GebDat": "01/04/1999",
+      "ZhlStat": "Mahnung",
+      "NName": "Kranz",
+      "FestnNr": null,
+      "KNR": "59024960",
+      "Tarif": "L",
+      "LAdr": {
+        "PLZ": "94237"
+      },
+      "EMl": "jonas.kranz@example.net",
+      "AktDat": "07/04/2026",
+      "VName": "Jonas",
+      "FaNm": null,
+      "VtrStat": "aktiv",
+      "EinmGeb": 0.0,
+      "MobNr": "+49 15883664101",
+      "LtzAend": "07/04/2025"
+    },
+    {
+      "VNR": "76538915",
+      "Anr": "Herr",
+      "MtlGeb": 29.99,
+      "RAdr": {
+        "PLZ": "91089"
+      },
+      "GebDat": "06/03/2000",
+      "ZhlStat": "offen",
+      "NName": "Vogler",
+      "FestnNr": null,
+      "KNR": "65262491",
+      "Tarif": "L",
+      "LAdr": {
+        "PLZ": "91089"
+      },
+      "EMl": "annika.vogler@example.net",
+      "AktDat": "03/05/2021",
+      "VName": "Annika",
+      "FaNm": null,
+      "VtrStat": "aktiv",
+      "EinmGeb": 0.0,
+      "MobNr": "+49 15704212056",
+      "LtzAend": "10/11/2025"
+    },
+    {
+      "VNR": "40512750",
+      "Anr": "Herr",
+      "MtlGeb": 29.99,
+      "RAdr": {
+        "PLZ": "25282"
+      },
+      "GebDat": "02/09/1998",
+      "ZhlStat": "bezahlt",
+      "NName": "Dörflinger",
+      "FestnNr": null,
+      "KNR": "86872550",
+      "Tarif": "M",
+      "LAdr": {
+        "PLZ": "25282"
+      },
+      "EMl": "annika.dorflinger@example.net",
+      "AktDat": "09/02/2021",
+      "VName": "Annika",
+      "FaNm": null,
+      "VtrStat": "gekündigt",
+      "EinmGeb": 49.99,
+      "MobNr": "+49 15133273689",
+      "LtzAend": "07/11/2025"
+    },
+    {
+      "VNR": "44590760",
+      "Anr": "Herr",
+      "MtlGeb": 44.99,
+      "RAdr": {
+        "PLZ": "86710"
+      },
+      "GebDat": "05/10/1993",
+      "ZhlStat": "offen",
+      "NName": "Zeller",
+      "FestnNr": "+49 89 0997077",
+      "KNR": "70228184",
+      "Tarif": "S",
+      "LAdr": {
+        "PLZ": "53076"
+      },
+      "EMl": "jonas.zeller@example.net",
+      "AktDat": "02/07/2018",
+      "VName": "Jonas",
+      "FaNm": null,
+      "VtrStat": "aktiv",
+      "EinmGeb": 0.0,
+      "MobNr": "+49 15107823160",
+      "LtzAend": "03/07/2025"
+    },
+    {
+      "VNR": "47685279",
+      "Anr": "Herr",
+      "MtlGeb": 44.99,
+      "RAdr": {
+        "PLZ": "89973"
+      },
+      "GebDat": "07/01/2000",
+      "ZhlStat": "bezahlt",
+      "NName": "Reinholt",
+      "FestnNr": "+49 89 4915690",
+      "KNR": "27440261",
+      "Tarif": "L",
+      "LAdr": {
+        "PLZ": "89973"
+      },
+      "EMl": "tobias.reinholt@example.net",
+      "AktDat": "12/02/2023",
+      "VName": "Tobias",
+      "FaNm": null,
+      "VtrStat": "gekündigt",
+      "EinmGeb": 0.0,
+      "MobNr": "+49 15845498852",
+      "LtzAend": "03/02/2025"
+    },
+    {
+      "VNR": "49085857",
+      "Anr": "Divers",
+      "MtlGeb": 44.99,
+      "RAdr": {
+        "PLZ": "96163"
+      },
+      "GebDat": "03/12/1971",
+      "ZhlStat": "Mahnung",
+      "NName": "Reinholt",
+      "FestnNr": null,
+      "KNR": "42665359",
+      "Tarif": "S",
+      "LAdr": {
+        "PLZ": "43371"
+      },
+      "EMl": "ute.reinholt@example.net",
+      "AktDat": "01/11/2022",
+      "VName": "Ute",
+      "FaNm": "Ombrex GmbH",
+      "VtrStat": "aktiv",
+      "EinmGeb": 29.99,
+      "MobNr": "+49 15552306927",
+      "LtzAend": "10/04/2025"
+    },
+    {
+      "VNR": "17488223",
+      "Anr": "Frau",
+      "MtlGeb": 29.99,
+      "RAdr": {
+        "PLZ": "48176"
+      },
+      "GebDat": "09/10/1970",
+      "ZhlStat": "offen",
+      "NName": "Lindemann",
+      "FestnNr": "+49 89 9693754",
+      "KNR": "04861186",
+      "Tarif": "S",
+      "LAdr": {
+        "PLZ": "48176"
+      },
+      "EMl": "leonie.lindemann@example.net",
+      "AktDat": "08/09/2023",
+      "VName": "Leonie",
+      "FaNm": null,
+      "VtrStat": "gesperrt",
+      "EinmGeb": 0.0,
+      "MobNr": "+49 15919824616",
+      "LtzAend": "01/07/2026"
+    },
+    {
+      "VNR": "25751542",
+      "Anr": "Herr",
+      "MtlGeb": 9.99,
+      "RAdr": {
+        "PLZ": "23470"
+      },
+      "GebDat": "02/02/1967",
+      "ZhlStat": "Mahnung",
+      "NName": "Reinholt",
+      "FestnNr": null,
+      "KNR": "32049439",
+      "Tarif": "M",
+      "LAdr": {
+        "PLZ": "23470"
+      },
+      "EMl": "jana.reinholt@example.net",
+      "AktDat": "07/08/2023",
+      "VName": "Jana",
+      "FaNm": "Norvel AG",
+      "VtrStat": "ruhend",
+      "EinmGeb": 0.0,
+      "MobNr": "+49 15421651450",
+      "LtzAend": "12/03/2026"
+    },
+    {
+      "VNR": "85882627",
+      "Anr": "Frau",
+      "MtlGeb": 19.99,
+      "RAdr": {
+        "PLZ": "19335"
+      },
+      "GebDat": "03/03/1998",
+      "ZhlStat": "offen",
+      "NName": "Ostwald",
+      "FestnNr": null,
+      "KNR": "82225791",
+      "Tarif": "S",
+      "LAdr": {
+        "PLZ": "19335"
+      },
+      "EMl": "leonie.ostwald@example.net",
+      "AktDat": "04/03/2018",
+      "VName": "Leonie",
+      "FaNm": null,
+      "VtrStat": "aktiv",
+      "EinmGeb": 49.99,
+      "MobNr": "+49 15317548103",
+      "LtzAend": "08/09/2026"
+    },
+    {
+      "VNR": "03967547",
+      "Anr": "Herr",
+      "MtlGeb": 44.99,
+      "RAdr": {
+        "PLZ": "25069"
+      },
+      "GebDat": "02/12/2003",
+      "ZhlStat": "bezahlt",
+      "NName": "Reinholt",
+      "FestnNr": null,
+      "KNR": "42669824",
+      "Tarif": "S",
+      "LAdr": {
+        "PLZ": "62342"
+      },
+      "EMl": "matthias.reinholt@example.net",
+      "AktDat": "06/12/2016",
+      "VName": "Matthias",
+      "FaNm": null,
+      "VtrStat": "aktiv",
+      "EinmGeb": 0.0,
+      "MobNr": "+49 15285374462",
+      "LtzAend": "07/02/2025"
+    },
+    {
+      "VNR": "77437081",
+      "Anr": "Herr",
+      "MtlGeb": 19.99,
+      "RAdr": {
+        "PLZ": "48381"
+      },
+      "GebDat": "07/06/2006",
+      "ZhlStat": "offen",
+      "NName": "Reinholt",
+      "FestnNr": "+49 89 0814484",
+      "KNR": "72139806",
+      "Tarif": "L",
+      "LAdr": {
+        "PLZ": "48381"
+      },
+      "EMl": "sabine.reinholt@example.net",
+      "AktDat": "01/12/2023",
+      "VName": "Sabine",
+      "FaNm": null,
+      "VtrStat": "ruhend",
+      "EinmGeb": 29.99,
+      "MobNr": "+49 15695471238",
+      "LtzAend": "08/06/2026"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "customer_number": {
+        "type": "string"
+      },
+      "first_name": {
+        "type": "string"
+      },
+      "last_name": {
+        "type": "string"
+      },
+      "date_of_birth": {
+        "type": "string",
+        "format": "date"
+      },
+      "mobile_number": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string",
+        "format": "email"
+      },
+      "contract_status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "cancelled",
+          "blocked",
+          "dormant"
+        ]
+      },
+      "plan": {
+        "type": "string",
+        "enum": [
+          "S",
+          "M",
+          "L",
+          "XL"
+        ]
+      },
+      "billing_postal_code": {
+        "type": "string"
+      },
+      "monthly_fee": {
+        "type": "number"
+      },
+      "port_in_requested": {
+        "type": [
+          "boolean",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "customer_number",
+      "last_name",
+      "email"
+    ]
+  },
+  "groundTruth": {
+    "customer_number": {
+      "source": "KNR",
+      "why": "Kundennummer; VNR is the contract number"
+    },
+    "first_name": {
+      "source": "VName",
+      "why": "Vorname"
+    },
+    "last_name": {
+      "source": "NName",
+      "why": "Nachname; FaNm is company"
+    },
+    "date_of_birth": {
+      "source": "GebDat",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "Geburtsdatum; AktDat is activation"
+    },
+    "mobile_number": {
+      "source": "MobNr",
+      "why": "mobile; FestnNr is landline"
+    },
+    "email": {
+      "source": "EMl",
+      "why": "only email"
+    },
+    "contract_status": {
+      "source": "VtrStat",
+      "why": "Vertragsstatus; ZhlStat is payment"
+    },
+    "plan": {
+      "source": "Tarif",
+      "why": "tariff size"
+    },
+    "billing_postal_code": {
+      "source": "RAdr.PLZ",
+      "why": "Rechnungsadresse; LAdr is delivery address"
+    },
+    "monthly_fee": {
+      "source": "MtlGeb",
+      "why": "monatliche Gebühr; EinmGeb is one-off"
+    },
+    "port_in_requested": {
+      "source": null,
+      "why": "no number-porting data"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "KNR",
+        "VNR"
+      ],
+      "correctFor": "customer_number"
+    },
+    {
+      "kind": "birth-date-vs-signup-or-start-date",
+      "fields": [
+        "GebDat",
+        "AktDat"
+      ],
+      "correctFor": "date_of_birth"
+    },
+    {
+      "kind": "account-status-vs-transaction-status",
+      "fields": [
+        "VtrStat",
+        "ZhlStat"
+      ],
+      "correctFor": "contract_status"
+    },
+    {
+      "kind": "currency-or-amount-confusion",
+      "fields": [
+        "MtlGeb",
+        "EinmGeb"
+      ],
+      "correctFor": "monthly_fee"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "RAdr.PLZ",
+        "LAdr.PLZ"
+      ],
+      "correctFor": "billing_postal_code"
+    },
+    {
+      "kind": "phone-or-code-confusion",
+      "fields": [
+        "MobNr",
+        "FestnNr"
+      ],
+      "correctFor": "mobile_number"
+    },
+    {
+      "kind": "organization-name-vs-person-name",
+      "fields": [
+        "NName",
+        "FaNm"
+      ],
+      "correctFor": "last_name"
+    }
+  ],
+  "sourceConcepts": {
+    "VNR": "transaction-id",
+    "Anr": "category",
+    "MtlGeb": "amount",
+    "RAdr.PLZ": "postal-code",
+    "GebDat": "birth-date",
+    "ZhlStat": "payment-status",
+    "NName": "family-name",
+    "FestnNr": "phone",
+    "KNR": "customer-id",
+    "Tarif": "category",
+    "LAdr.PLZ": "postal-code",
+    "EMl": "email",
+    "AktDat": "start-date",
+    "VName": "given-name",
+    "FaNm": "organization-name",
+    "VtrStat": "account-status",
+    "EinmGeb": "amount",
+    "MobNr": "phone",
+    "LtzAend": "modified-date"
+  },
+  "destinationConcepts": {
+    "customer_number": "customer-id",
+    "first_name": "given-name",
+    "last_name": "family-name",
+    "date_of_birth": "birth-date",
+    "mobile_number": "phone",
+    "email": "email",
+    "contract_status": "account-status",
+    "plan": "category",
+    "billing_postal_code": "postal-code",
+    "monthly_fee": "amount",
+    "port_in_requested": "consent-flag"
+  }
+}

@@ -1,0 +1,841 @@
+{
+  "scenarioId": "retail-ecommerce-orders-to-crm-contact",
+  "split": "dev",
+  "industry": "retail e-commerce",
+  "sourceLanguage": "en",
+  "description": "Order-line export from a fictional online shop's storefront, to be loaded as CRM contacts (one per shopper).",
+  "fictional": true,
+  "records": [
+    {
+      "order_ref": "354808",
+      "shipping": {
+        "city": "Port Linden",
+        "postcode": "62037"
+      },
+      "account_state": "active",
+      "birth_date": "04/20/1977",
+      "customer_no": "346388",
+      "items_subtotal": 244.91,
+      "email": "tobias.ashdown@example.com",
+      "placed_on": "2026-10-21",
+      "billing": {
+        "city": "Harrowgate",
+        "postcode": "94769"
+      },
+      "full_name": "Tobias Ashdown",
+      "order_status": "delivered",
+      "registered_on": "10/07/2025",
+      "phone": "+1 555 0151",
+      "order_total": 249.9
+    },
+    {
+      "order_ref": "213360",
+      "shipping": {
+        "city": "Redhill Cross",
+        "postcode": "61495"
+      },
+      "account_state": "active",
+      "birth_date": "07/02/1971",
+      "customer_no": "800357",
+      "items_subtotal": 62.01,
+      "email": "grace.calloway@example.com",
+      "placed_on": "2026-08-09",
+      "billing": {
+        "city": "Redhill Cross",
+        "postcode": "02999"
+      },
+      "full_name": "Grace Calloway",
+      "order_status": "pending",
+      "registered_on": "08/27/2019",
+      "phone": null,
+      "order_total": 67.0
+    },
+    {
+      "order_ref": "860498",
+      "shipping": {
+        "city": "Millbrook",
+        "postcode": "10239"
+      },
+      "account_state": "active",
+      "birth_date": "04/05/1987",
+      "customer_no": "920180",
+      "items_subtotal": 395.28,
+      "email": "iris.ashdown@example.com",
+      "placed_on": "2025-12-18",
+      "billing": {
+        "city": "Harrowgate",
+        "postcode": "56251"
+      },
+      "full_name": "Iris Ashdown",
+      "order_status": "shipped",
+      "registered_on": "01/12/2024",
+      "phone": null,
+      "order_total": 395.28
+    },
+    {
+      "order_ref": "577151",
+      "shipping": {
+        "city": "Redhill Cross",
+        "postcode": "47935"
+      },
+      "account_state": "active",
+      "birth_date": "01/24/2001",
+      "customer_no": "436949",
+      "items_subtotal": 287.38,
+      "email": "daniel.brenner@example.com",
+      "placed_on": "2025-01-21",
+      "billing": {
+        "city": "Redhill Cross",
+        "postcode": "27475"
+      },
+      "full_name": "Daniel Brenner",
+      "order_status": "delivered",
+      "registered_on": "04/16/2020",
+      "phone": null,
+      "order_total": 294.88
+    },
+    {
+      "order_ref": "910919",
+      "shipping": {
+        "city": "Kingsmere",
+        "postcode": "09320"
+      },
+      "account_state": "closed",
+      "birth_date": "05/23/1978",
+      "customer_no": "251862",
+      "items_subtotal": 479.73,
+      "email": "naomi.kettering@example.com",
+      "placed_on": "2026-12-16",
+      "billing": {
+        "city": "Kingsmere",
+        "postcode": "87313"
+      },
+      "full_name": "Naomi Kettering",
+      "order_status": "cancelled",
+      "registered_on": "02/05/2022",
+      "phone": "+1 555 0108",
+      "order_total": 487.23
+    },
+    {
+      "order_ref": "791456",
+      "shipping": {
+        "city": "Port Linden",
+        "postcode": "88945"
+      },
+      "account_state": "active",
+      "birth_date": "02/14/1960",
+      "customer_no": "760383",
+      "items_subtotal": 231.16,
+      "email": "tobias.gresham@example.com",
+      "placed_on": "2025-04-08",
+      "billing": {
+        "city": "Port Linden",
+        "postcode": "41277"
+      },
+      "full_name": "Tobias Gresham",
+      "order_status": "shipped",
+      "registered_on": "07/25/2018",
+      "phone": "+1 555 0181",
+      "order_total": 231.16
+    },
+    {
+      "order_ref": "961241",
+      "shipping": {
+        "city": "Redhill Cross",
+        "postcode": "94889"
+      },
+      "account_state": "active",
+      "birth_date": "05/04/1993",
+      "customer_no": "202184",
+      "items_subtotal": 294.51,
+      "email": "daniel.ingram@example.com",
+      "placed_on": "2026-06-24",
+      "billing": {
+        "city": "Redhill Cross",
+        "postcode": "74774"
+      },
+      "full_name": "Daniel Ingram",
+      "order_status": "delivered",
+      "registered_on": "02/21/2019",
+      "phone": "+1 555 0107",
+      "order_total": 294.51
+    },
+    {
+      "order_ref": "481618",
+      "shipping": {
+        "city": "Redhill Cross",
+        "postcode": "43450"
+      },
+      "account_state": "active",
+      "birth_date": "01/10/1950",
+      "customer_no": "146295",
+      "items_subtotal": 190.72,
+      "email": "ruby.northcott@example.com",
+      "placed_on": "2025-03-21",
+      "billing": {
+        "city": "Redhill Cross",
+        "postcode": "48164"
+      },
+      "full_name": "Ruby Northcott",
+      "order_status": "cancelled",
+      "registered_on": "08/08/2024",
+      "phone": "+1 555 0178",
+      "order_total": 202.72
+    },
+    {
+      "order_ref": "462684",
+      "shipping": {
+        "city": "Ashby Vale",
+        "postcode": "66629"
+      },
+      "account_state": "active",
+      "birth_date": "10/18/1953",
+      "customer_no": "246143",
+      "items_subtotal": 416.67,
+      "email": "hannah.jessop@example.com",
+      "placed_on": "2026-02-19",
+      "billing": {
+        "city": "Eastford",
+        "postcode": "65391"
+      },
+      "full_name": "Hannah Jessop",
+      "order_status": "paid",
+      "registered_on": "07/05/2020",
+      "phone": null,
+      "order_total": 424.17
+    },
+    {
+      "order_ref": "316990",
+      "shipping": {
+        "city": "Port Linden",
+        "postcode": "56408"
+      },
+      "account_state": "active",
+      "birth_date": "05/09/1950",
+      "customer_no": "766717",
+      "items_subtotal": 279.21,
+      "email": "maya.gresham@example.com",
+      "placed_on": "2026-12-15",
+      "billing": {
+        "city": "Harrowgate",
+        "postcode": "42099"
+      },
+      "full_name": "Maya Gresham",
+      "order_status": "delivered",
+      "registered_on": "05/19/2022",
+      "phone": "+1 555 0143",
+      "order_total": 284.2
+    },
+    {
+      "order_ref": "754353",
+      "shipping": {
+        "city": "Port Linden",
+        "postcode": "22699"
+      },
+      "account_state": "active",
+      "birth_date": "05/16/1954",
+      "customer_no": "180925",
+      "items_subtotal": 48.69,
+      "email": "owen.fairbank@example.com",
+      "placed_on": "2026-01-04",
+      "billing": {
+        "city": "Port Linden",
+        "postcode": "35489"
+      },
+      "full_name": "Owen Fairbank",
+      "order_status": "paid",
+      "registered_on": "12/18/2024",
+      "phone": "+1 555 0199",
+      "order_total": 53.68
+    },
+    {
+      "order_ref": "870974",
+      "shipping": {
+        "city": "Port Linden",
+        "postcode": "99957"
+      },
+      "account_state": "active",
+      "birth_date": "06/10/1956",
+      "customer_no": "175242",
+      "items_subtotal": 326.32,
+      "email": "hannah.kettering@example.com",
+      "placed_on": "2026-11-27",
+      "billing": {
+        "city": "Westcombe",
+        "postcode": "16853"
+      },
+      "full_name": "Hannah Kettering",
+      "order_status": "returned",
+      "registered_on": "10/02/2025",
+      "phone": "+1 555 0149",
+      "order_total": 326.32
+    },
+    {
+      "order_ref": "576323",
+      "shipping": {
+        "city": "Port Linden",
+        "postcode": "54402"
+      },
+      "account_state": "active",
+      "birth_date": "12/28/1971",
+      "customer_no": "722853",
+      "items_subtotal": 440.23,
+      "email": "naomi.kettering@example.com",
+      "placed_on": "2025-04-21",
+      "billing": {
+        "city": "Millbrook",
+        "postcode": "37117"
+      },
+      "full_name": "Naomi Kettering",
+      "order_status": "pending",
+      "registered_on": "06/05/2019",
+      "phone": "+1 555 0108",
+      "order_total": 447.73
+    },
+    {
+      "order_ref": "217980",
+      "shipping": {
+        "city": "Millbrook",
+        "postcode": "88456"
+      },
+      "account_state": "active",
+      "birth_date": "09/20/1957",
+      "customer_no": "547563",
+      "items_subtotal": 371.57,
+      "email": "caleb.northcott@example.com",
+      "placed_on": "2026-03-15",
+      "billing": {
+        "city": "Kingsmere",
+        "postcode": "46347"
+      },
+      "full_name": "Caleb Northcott",
+      "order_status": "shipped",
+      "registered_on": "01/23/2025",
+      "phone": "+1 555 0104",
+      "order_total": 379.07
+    },
+    {
+      "order_ref": "605903",
+      "shipping": {
+        "city": "Westcombe",
+        "postcode": "88681"
+      },
+      "account_state": "closed",
+      "birth_date": "05/04/1953",
+      "customer_no": "507128",
+      "items_subtotal": 223.7,
+      "email": "tobias.fairbank@example.com",
+      "placed_on": "2025-01-16",
+      "billing": {
+        "city": "Westcombe",
+        "postcode": "94908"
+      },
+      "full_name": "Tobias Fairbank",
+      "order_status": "returned",
+      "registered_on": "04/22/2023",
+      "phone": "+1 555 0151",
+      "order_total": 223.7
+    },
+    {
+      "order_ref": "416076",
+      "shipping": {
+        "city": "Eastford",
+        "postcode": "32895"
+      },
+      "account_state": "active",
+      "birth_date": "11/03/1984",
+      "customer_no": "897610",
+      "items_subtotal": 364.65,
+      "email": "maya.ingram@example.com",
+      "placed_on": "2026-01-03",
+      "billing": {
+        "city": "Eastford",
+        "postcode": "97422"
+      },
+      "full_name": "Maya Ingram",
+      "order_status": "shipped",
+      "registered_on": "07/02/2025",
+      "phone": "+1 555 0110",
+      "order_total": 376.65
+    },
+    {
+      "order_ref": "746802",
+      "shipping": {
+        "city": "Port Linden",
+        "postcode": "77603"
+      },
+      "account_state": "active",
+      "birth_date": "12/17/1989",
+      "customer_no": "322659",
+      "items_subtotal": 427.22,
+      "email": "daniel.brenner@example.com",
+      "placed_on": "2026-12-04",
+      "billing": {
+        "city": "Millbrook",
+        "postcode": "70095"
+      },
+      "full_name": "Daniel Brenner",
+      "order_status": "shipped",
+      "registered_on": "01/28/2020",
+      "phone": "+1 555 0160",
+      "order_total": 432.21
+    },
+    {
+      "order_ref": "864274",
+      "shipping": {
+        "city": "Eastford",
+        "postcode": "96298"
+      },
+      "account_state": "active",
+      "birth_date": "11/08/1972",
+      "customer_no": "991771",
+      "items_subtotal": 258.08,
+      "email": "iris.brenner@example.com",
+      "placed_on": "2025-03-22",
+      "billing": {
+        "city": "Harrowgate",
+        "postcode": "78176"
+      },
+      "full_name": "Iris Brenner",
+      "order_status": "returned",
+      "registered_on": "07/26/2019",
+      "phone": "+1 555 0125",
+      "order_total": 270.08
+    },
+    {
+      "order_ref": "361116",
+      "shipping": {
+        "city": "Millbrook",
+        "postcode": "97535"
+      },
+      "account_state": "active",
+      "birth_date": "08/21/1973",
+      "customer_no": "809572",
+      "items_subtotal": 367.52,
+      "email": "owen.fairbank@example.com",
+      "placed_on": "2026-07-12",
+      "billing": {
+        "city": "Port Linden",
+        "postcode": "71233"
+      },
+      "full_name": "Owen Fairbank",
+      "order_status": "delivered",
+      "registered_on": "10/26/2025",
+      "phone": null,
+      "order_total": 372.51
+    },
+    {
+      "order_ref": "222190",
+      "shipping": {
+        "city": "Port Linden",
+        "postcode": "45342"
+      },
+      "account_state": "active",
+      "birth_date": "11/04/1998",
+      "customer_no": "557620",
+      "items_subtotal": 424.46,
+      "email": "elliot.calloway@example.com",
+      "placed_on": "2025-01-08",
+      "billing": {
+        "city": "Harrowgate",
+        "postcode": "32926"
+      },
+      "full_name": "Elliot Calloway",
+      "order_status": "shipped",
+      "registered_on": "07/18/2018",
+      "phone": "+1 555 0104",
+      "order_total": 431.96
+    },
+    {
+      "order_ref": "468675",
+      "shipping": {
+        "city": "Ashby Vale",
+        "postcode": "77261"
+      },
+      "account_state": "active",
+      "birth_date": "12/22/1990",
+      "customer_no": "482480",
+      "items_subtotal": 61.45,
+      "email": "elliot.kettering@example.com",
+      "placed_on": "2026-09-01",
+      "billing": {
+        "city": "Redhill Cross",
+        "postcode": "30603"
+      },
+      "full_name": "Elliot Kettering",
+      "order_status": "pending",
+      "registered_on": "06/02/2024",
+      "phone": "+1 555 0171",
+      "order_total": 73.45
+    },
+    {
+      "order_ref": "559136",
+      "shipping": {
+        "city": "Kingsmere",
+        "postcode": "74281"
+      },
+      "account_state": "active",
+      "birth_date": "03/24/1994",
+      "customer_no": "331168",
+      "items_subtotal": 333.36,
+      "email": "hannah.kettering@example.com",
+      "placed_on": "2026-07-09",
+      "billing": {
+        "city": "Port Linden",
+        "postcode": "23038"
+      },
+      "full_name": "Hannah Kettering",
+      "order_status": "pending",
+      "registered_on": "07/12/2022",
+      "phone": "+1 555 0103",
+      "order_total": 333.36
+    },
+    {
+      "order_ref": "826307",
+      "shipping": {
+        "city": "Westcombe",
+        "postcode": "26302"
+      },
+      "account_state": "active",
+      "birth_date": "07/11/1978",
+      "customer_no": "782658",
+      "items_subtotal": 12.35,
+      "email": "grace.fairbank@example.com",
+      "placed_on": "2026-12-12",
+      "billing": {
+        "city": "Westcombe",
+        "postcode": "06972"
+      },
+      "full_name": "Grace Fairbank",
+      "order_status": "paid",
+      "registered_on": "08/25/2023",
+      "phone": null,
+      "order_total": 19.85
+    },
+    {
+      "order_ref": "896440",
+      "shipping": {
+        "city": "Eastford",
+        "postcode": "94160"
+      },
+      "account_state": "active",
+      "birth_date": "12/27/1977",
+      "customer_no": "141678",
+      "items_subtotal": 329.54,
+      "email": "marcus.lindqvist@example.com",
+      "placed_on": "2025-12-25",
+      "billing": {
+        "city": "Eastford",
+        "postcode": "77673"
+      },
+      "full_name": "Marcus Lindqvist",
+      "order_status": "returned",
+      "registered_on": "06/14/2025",
+      "phone": null,
+      "order_total": 334.53
+    },
+    {
+      "order_ref": "602722",
+      "shipping": {
+        "city": "Ashby Vale",
+        "postcode": "88823"
+      },
+      "account_state": "active",
+      "birth_date": "11/20/1951",
+      "customer_no": "568601",
+      "items_subtotal": 161.01,
+      "email": "naomi.ellery@example.com",
+      "placed_on": "2026-06-14",
+      "billing": {
+        "city": "Port Linden",
+        "postcode": "88135"
+      },
+      "full_name": "Naomi Ellery",
+      "order_status": "delivered",
+      "registered_on": "09/09/2023",
+      "phone": "+1 555 0179",
+      "order_total": 168.51
+    },
+    {
+      "order_ref": "372427",
+      "shipping": {
+        "city": "Millbrook",
+        "postcode": "12181"
+      },
+      "account_state": "active",
+      "birth_date": "04/01/1997",
+      "customer_no": "264583",
+      "items_subtotal": 221.22,
+      "email": "grace.gresham@example.com",
+      "placed_on": "2025-10-15",
+      "billing": {
+        "city": "Port Linden",
+        "postcode": "41057"
+      },
+      "full_name": "Grace Gresham",
+      "order_status": "cancelled",
+      "registered_on": "04/14/2025",
+      "phone": "+1 555 0187",
+      "order_total": 221.22
+    },
+    {
+      "order_ref": "711475",
+      "shipping": {
+        "city": "Kingsmere",
+        "postcode": "60842"
+      },
+      "account_state": "active",
+      "birth_date": "12/28/1953",
+      "customer_no": "698873",
+      "items_subtotal": 86.85,
+      "email": "grace.northcott@example.com",
+      "placed_on": "2025-03-03",
+      "billing": {
+        "city": "Ashby Vale",
+        "postcode": "59540"
+      },
+      "full_name": "Grace Northcott",
+      "order_status": "shipped",
+      "registered_on": "01/09/2018",
+      "phone": "+1 555 0161",
+      "order_total": 98.85
+    },
+    {
+      "order_ref": "638582",
+      "shipping": {
+        "city": "Harrowgate",
+        "postcode": "34090"
+      },
+      "account_state": "active",
+      "birth_date": "06/27/1981",
+      "customer_no": "234491",
+      "items_subtotal": 366.62,
+      "email": "owen.dunmore@example.com",
+      "placed_on": "2026-10-25",
+      "billing": {
+        "city": "Harrowgate",
+        "postcode": "24738"
+      },
+      "full_name": "Owen Dunmore",
+      "order_status": "cancelled",
+      "registered_on": "02/15/2024",
+      "phone": "+1 555 0162",
+      "order_total": 366.62
+    },
+    {
+      "order_ref": "757440",
+      "shipping": {
+        "city": "Westcombe",
+        "postcode": "82426"
+      },
+      "account_state": "active",
+      "birth_date": "07/17/1979",
+      "customer_no": "964665",
+      "items_subtotal": 424.52,
+      "email": "grace.ellery@example.com",
+      "placed_on": "2026-11-28",
+      "billing": {
+        "city": "Redhill Cross",
+        "postcode": "07114"
+      },
+      "full_name": "Grace Ellery",
+      "order_status": "paid",
+      "registered_on": "05/25/2022",
+      "phone": "+1 555 0132",
+      "order_total": 429.51
+    },
+    {
+      "order_ref": "478379",
+      "shipping": {
+        "city": "Eastford",
+        "postcode": "37520"
+      },
+      "account_state": "active",
+      "birth_date": "11/10/1960",
+      "customer_no": "854719",
+      "items_subtotal": 348.28,
+      "email": "elliot.fairbank@example.com",
+      "placed_on": "2026-03-27",
+      "billing": {
+        "city": "Eastford",
+        "postcode": "02194"
+      },
+      "full_name": "Elliot Fairbank",
+      "order_status": "pending",
+      "registered_on": "09/19/2023",
+      "phone": "+1 555 0165",
+      "order_total": 348.28
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "customer_id": {
+        "type": "string"
+      },
+      "full_name": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string",
+        "format": "email"
+      },
+      "date_of_birth": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "format": "date"
+      },
+      "signup_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "account_status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "suspended",
+          "closed"
+        ]
+      },
+      "billing_address": {
+        "type": "object",
+        "properties": {
+          "city": {
+            "type": "string"
+          },
+          "postal_code": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "city"
+        ]
+      },
+      "marketing_opt_in": {
+        "type": [
+          "boolean",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "customer_id",
+      "full_name",
+      "email"
+    ]
+  },
+  "groundTruth": {
+    "customer_id": {
+      "source": "customer_no",
+      "why": "customer number identifies the shopper; order_ref identifies one order"
+    },
+    "full_name": {
+      "source": "full_name",
+      "why": "shopper's name"
+    },
+    "email": {
+      "source": "email",
+      "why": "only email field"
+    },
+    "date_of_birth": {
+      "source": "birth_date",
+      "dateFormat": "MM/DD/YYYY",
+      "why": "birth date, not the registration date"
+    },
+    "signup_date": {
+      "source": "registered_on",
+      "dateFormat": "MM/DD/YYYY",
+      "why": "date the shopper registered an account"
+    },
+    "account_status": {
+      "source": "account_state",
+      "why": "state of the customer account, not of the order"
+    },
+    "billing_address.city": {
+      "source": "billing.city",
+      "why": "billing city, not shipping city"
+    },
+    "billing_address.postal_code": {
+      "source": "billing.postcode",
+      "why": "billing postcode, not shipping postcode"
+    },
+    "marketing_opt_in": {
+      "source": null,
+      "why": "export has no consent information"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "customer_no",
+        "order_ref"
+      ],
+      "correctFor": "customer_id"
+    },
+    {
+      "kind": "birth-date-vs-signup-or-start-date",
+      "fields": [
+        "birth_date",
+        "registered_on"
+      ],
+      "correctFor": "date_of_birth"
+    },
+    {
+      "kind": "account-status-vs-transaction-status",
+      "fields": [
+        "account_state",
+        "order_status"
+      ],
+      "correctFor": "account_status"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "billing.city",
+        "shipping.city"
+      ],
+      "correctFor": "billing_address.city"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "billing.postcode",
+        "shipping.postcode"
+      ],
+      "correctFor": "billing_address.postal_code"
+    }
+  ],
+  "sourceConcepts": {
+    "order_ref": "transaction-id",
+    "shipping.city": "city",
+    "shipping.postcode": "postal-code",
+    "account_state": "account-status",
+    "birth_date": "birth-date",
+    "customer_no": "customer-id",
+    "items_subtotal": "amount",
+    "email": "email",
+    "placed_on": "transaction-date",
+    "billing.city": "city",
+    "billing.postcode": "postal-code",
+    "full_name": "person-name",
+    "order_status": "order-status",
+    "registered_on": "created-date",
+    "phone": "phone",
+    "order_total": "amount"
+  },
+  "destinationConcepts": {
+    "customer_id": "customer-id",
+    "full_name": "person-name",
+    "email": "email",
+    "date_of_birth": "birth-date",
+    "signup_date": "created-date",
+    "account_status": "account-status",
+    "billing_address.city": "city",
+    "billing_address.postal_code": "postal-code",
+    "marketing_opt_in": "consent-flag"
+  }
+}

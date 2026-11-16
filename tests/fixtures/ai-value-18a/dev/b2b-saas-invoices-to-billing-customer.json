@@ -1,0 +1,796 @@
+{
+  "scenarioId": "b2b-saas-invoices-to-billing-customer",
+  "split": "dev",
+  "industry": "B2B SaaS billing",
+  "sourceLanguage": "de",
+  "description": "Invoice export from a fictional German SaaS vendor's accounting tool, to be loaded as billing customers.",
+  "fictional": true,
+  "records": [
+    {
+      "Rechnungsstatus": "überfällig",
+      "Firma": "Ostrin Logistik KG",
+      "Kontakt": {
+        "Email": "moritz.reinholt@example.com",
+        "Telefon": "+49 30 2460574"
+      },
+      "KdNr": 23966,
+      "Vertragsbeginn": "05/10/2020",
+      "NettoBetrag": 4637.53,
+      "Tarif": "Basic",
+      "Ansprechpartner": "Jonas Reinholt",
+      "Rechnungsdatum": "03/05/2026",
+      "UStIdNr": "DE921032482",
+      "Rechnungsadresse": {
+        "Email": "buchhaltung3@example.com",
+        "Ort": "Sonnhausen",
+        "PLZ": "34016"
+      },
+      "BruttoBetrag": 5518.66,
+      "RechnungsNr": 69617,
+      "Kontostatus": "aktiv",
+      "Waehrung": "EUR"
+    },
+    {
+      "Rechnungsstatus": "überfällig",
+      "Firma": "Brasko Logistik AG",
+      "Kontakt": {
+        "Email": "annika.bruckner@example.org",
+        "Telefon": "+49 30 0256530"
+      },
+      "KdNr": 56555,
+      "Vertragsbeginn": "08/01/2022",
+      "NettoBetrag": 2192.4,
+      "Tarif": "Business",
+      "Ansprechpartner": "Lukas Zeller",
+      "Rechnungsdatum": "07/12/2025",
+      "UStIdNr": "DE299006504",
+      "Rechnungsadresse": {
+        "Email": "buchhaltung7@example.org",
+        "Ort": "Sonnhausen",
+        "PLZ": "30414"
+      },
+      "BruttoBetrag": 2608.96,
+      "RechnungsNr": 53306,
+      "Kontostatus": "gesperrt",
+      "Waehrung": "EUR"
+    },
+    {
+      "Rechnungsstatus": "offen",
+      "Firma": "Ombrex AG",
+      "Kontakt": {
+        "Email": "matthias.dorflinger@example.net",
+        "Telefon": "+49 30 1611968"
+      },
+      "KdNr": 11500,
+      "Vertragsbeginn": "10/07/2025",
+      "NettoBetrag": 750.81,
+      "Tarif": "Enterprise",
+      "Ansprechpartner": "Moritz Weidmann",
+      "Rechnungsdatum": "02/07/2025",
+      "UStIdNr": "DE922549896",
+      "Rechnungsadresse": {
+        "Email": "buchhaltung2@example.net",
+        "Ort": "Sonnhausen",
+        "PLZ": "11827"
+      },
+      "BruttoBetrag": 893.46,
+      "RechnungsNr": 45479,
+      "Kontostatus": "Testphase",
+      "Waehrung": "CHF"
+    },
+    {
+      "Rechnungsstatus": "überfällig",
+      "Firma": "Kaldera AG",
+      "Kontakt": {
+        "Email": "annika.zeller@example.org",
+        "Telefon": "+49 30 5171542"
+      },
+      "KdNr": 83937,
+      "Vertragsbeginn": "11/07/2022",
+      "NettoBetrag": 2768.92,
+      "Tarif": "Business",
+      "Ansprechpartner": "Annika Vogler",
+      "Rechnungsdatum": "06/04/2025",
+      "UStIdNr": "DE974814928",
+      "Rechnungsadresse": {
+        "Email": "buchhaltung3@example.org",
+        "Ort": "Sonnhausen",
+        "PLZ": "04598"
+      },
+      "BruttoBetrag": 3295.01,
+      "RechnungsNr": 43588,
+      "Kontostatus": "aktiv",
+      "Waehrung": "CHF"
+    },
+    {
+      "Rechnungsstatus": "offen",
+      "Firma": "Strathon AG",
+      "Kontakt": {
+        "Email": "lukas.bauerfeind@example.com",
+        "Telefon": "+49 30 0504274"
+      },
+      "KdNr": 79113,
+      "Vertragsbeginn": "05/05/2023",
+      "NettoBetrag": 598.28,
+      "Tarif": "Basic",
+      "Ansprechpartner": "Jonas Bauerfeind",
+      "Rechnungsdatum": "04/07/2026",
+      "UStIdNr": "DE544104454",
+      "Rechnungsadresse": {
+        "Email": "buchhaltung8@example.com",
+        "Ort": "Lindenstedt",
+        "PLZ": "97520"
+      },
+      "BruttoBetrag": 711.95,
+      "RechnungsNr": 61849,
+      "Kontostatus": "Testphase",
+      "Waehrung": "EUR"
+    },
+    {
+      "Rechnungsstatus": "storniert",
+      "Firma": "Norvel Medien AG",
+      "Kontakt": {
+        "Email": "moritz.reinholt@example.net",
+        "Telefon": "+49 30 5374284"
+      },
+      "KdNr": 11456,
+      "Vertragsbeginn": "05/11/2021",
+      "NettoBetrag": 1999.0,
+      "Tarif": "Basic",
+      "Ansprechpartner": "Matthias Vogler",
+      "Rechnungsdatum": "05/08/2025",
+      "UStIdNr": "DE284370402",
+      "Rechnungsadresse": {
+        "Email": "buchhaltung5@example.net",
+        "Ort": "Rabenfeld",
+        "PLZ": "26930"
+      },
+      "BruttoBetrag": 2378.81,
+      "RechnungsNr": 36557,
+      "Kontostatus": "gesperrt",
+      "Waehrung": "EUR"
+    },
+    {
+      "Rechnungsstatus": "überfällig",
+      "Firma": "Corvant Software KG",
+      "Kontakt": {
+        "Email": "jana.moller@example.net",
+        "Telefon": "+49 30 7067027"
+      },
+      "KdNr": 15314,
+      "Vertragsbeginn": "04/10/2024",
+      "NettoBetrag": 563.15,
+      "Tarif": "Team",
+      "Ansprechpartner": "Matthias Hoffmeister",
+      "Rechnungsdatum": "10/03/2025",
+      "UStIdNr": "DE599877271",
+      "Rechnungsadresse": {
+        "Email": "buchhaltung5@example.net",
+        "Ort": "Rabenfeld",
+        "PLZ": "14164"
+      },
+      "BruttoBetrag": 670.15,
+      "RechnungsNr": 36404,
+      "Kontostatus": "aktiv",
+      "Waehrung": "EUR"
+    },
+    {
+      "Rechnungsstatus": "überfällig",
+      "Firma": "Halvik Consulting GmbH",
+      "Kontakt": {
+        "Email": "sabine.reinholt@example.net",
+        "Telefon": "+49 30 9198925"
+      },
+      "KdNr": 89876,
+      "Vertragsbeginn": "11/10/2023",
+      "NettoBetrag": 556.44,
+      "Tarif": "Basic",
+      "Ansprechpartner": "Jana Weidmann",
+      "Rechnungsdatum": "07/03/2026",
+      "UStIdNr": "DE473397387",
+      "Rechnungsadresse": {
+        "Email": "buchhaltung7@example.net",
+        "Ort": "Altmühlhofen",
+        "PLZ": "43289"
+      },
+      "BruttoBetrag": 662.16,
+      "RechnungsNr": 73940,
+      "Kontostatus": "aktiv",
+      "Waehrung": "EUR"
+    },
+    {
+      "Rechnungsstatus": "bezahlt",
+      "Firma": "Corvant Logistik GmbH",
+      "Kontakt": {
+        "Email": "miriam.dorflinger@example.com",
+        "Telefon": "+49 30 9486420"
+      },
+      "KdNr": 11641,
+      "Vertragsbeginn": "08/03/2024",
+      "NettoBetrag": 3823.99,
+      "Tarif": "Enterprise",
+      "Ansprechpartner": "Lukas Ahrend",
+      "Rechnungsdatum": "05/07/2025",
+      "UStIdNr": "DE976098018",
+      "Rechnungsadresse": {
+        "Email": "buchhaltung2@example.com",
+        "Ort": "Kesselbrunn",
+        "PLZ": "11286"
+      },
+      "BruttoBetrag": 4550.55,
+      "RechnungsNr": 96275,
+      "Kontostatus": "aktiv",
+      "Waehrung": "EUR"
+    },
+    {
+      "Rechnungsstatus": "offen",
+      "Firma": "Zephra Logistik GmbH",
+      "Kontakt": {
+        "Email": "florian.weidmann@example.org",
+        "Telefon": "+49 30 1733251"
+      },
+      "KdNr": 79782,
+      "Vertragsbeginn": "06/05/2025",
+      "NettoBetrag": 3471.26,
+      "Tarif": "Business",
+      "Ansprechpartner": "Jana Schäfer",
+      "Rechnungsdatum": "11/08/2026",
+      "UStIdNr": "DE941328434",
+      "Rechnungsadresse": {
+        "Email": "buchhaltung2@example.org",
+        "Ort": "Kesselbrunn",
+        "PLZ": "30660"
+      },
+      "BruttoBetrag": 4130.8,
+      "RechnungsNr": 83691,
+      "Kontostatus": "Testphase",
+      "Waehrung": "CHF"
+    },
+    {
+      "Rechnungsstatus": "offen",
+      "Firma": "Brasko Medien AG",
+      "Kontakt": {
+        "Email": "annika.reinholt@example.org",
+        "Telefon": "+49 30 3490720"
+      },
+      "KdNr": 78568,
+      "Vertragsbeginn": "05/07/2020",
+      "NettoBetrag": 57.6,
+      "Tarif": "Enterprise",
+      "Ansprechpartner": "Sabine Dörflinger",
+      "Rechnungsdatum": "05/04/2025",
+      "UStIdNr": "DE139165841",
+      "Rechnungsadresse": {
+        "Email": "buchhaltung9@example.org",
+        "Ort": "Grünwaldau",
+        "PLZ": "95581"
+      },
+      "BruttoBetrag": 68.54,
+      "RechnungsNr": 41852,
+      "Kontostatus": "Testphase",
+      "Waehrung": "EUR"
+    },
+    {
+      "Rechnungsstatus": "offen",
+      "Firma": "Norvel Consulting KG",
+      "Kontakt": {
+        "Email": "matthias.bruckner@example.org",
+        "Telefon": "+49 30 4454915"
+      },
+      "KdNr": 71751,
+      "Vertragsbeginn": "07/09/2021",
+      "NettoBetrag": 3887.0,
+      "Tarif": "Enterprise",
+      "Ansprechpartner": "Lukas Pfeiffer",
+      "Rechnungsdatum": "08/09/2026",
+      "UStIdNr": "DE997187640",
+      "Rechnungsadresse": {
+        "Email": "buchhaltung3@example.org",
+        "Ort": "Kesselbrunn",
+        "PLZ": "81382"
+      },
+      "BruttoBetrag": 4625.53,
+      "RechnungsNr": 20209,
+      "Kontostatus": "Testphase",
+      "Waehrung": "CHF"
+    },
+    {
+      "Rechnungsstatus": "offen",
+      "Firma": "Pellucid Medien GmbH",
+      "Kontakt": {
+        "Email": "jonas.zeller@example.org",
+        "Telefon": "+49 30 7034564"
+      },
+      "KdNr": 36176,
+      "Vertragsbeginn": "01/05/2022",
+      "NettoBetrag": 4802.38,
+      "Tarif": "Business",
+      "Ansprechpartner": "Jana Lindemann",
+      "Rechnungsdatum": "08/07/2026",
+      "UStIdNr": "DE923673418",
+      "Rechnungsadresse": {
+        "Email": "buchhaltung3@example.org",
+        "Ort": "Rabenfeld",
+        "PLZ": "96737"
+      },
+      "BruttoBetrag": 5714.83,
+      "RechnungsNr": 97999,
+      "Kontostatus": "aktiv",
+      "Waehrung": "EUR"
+    },
+    {
+      "Rechnungsstatus": "storniert",
+      "Firma": "Ombrex AG",
+      "Kontakt": {
+        "Email": "lukas.bruckner@example.com",
+        "Telefon": "+49 30 5930402"
+      },
+      "KdNr": 94658,
+      "Vertragsbeginn": "08/03/2023",
+      "NettoBetrag": 3557.67,
+      "Tarif": "Team",
+      "Ansprechpartner": "Miriam Dörflinger",
+      "Rechnungsdatum": "03/08/2026",
+      "UStIdNr": "DE829004630",
+      "Rechnungsadresse": {
+        "Email": "buchhaltung3@example.com",
+        "Ort": "Sonnhausen",
+        "PLZ": "18271"
+      },
+      "BruttoBetrag": 4233.63,
+      "RechnungsNr": 63299,
+      "Kontostatus": "aktiv",
+      "Waehrung": "EUR"
+    },
+    {
+      "Rechnungsstatus": "storniert",
+      "Firma": "Zephra Logistik AG",
+      "Kontakt": {
+        "Email": "jonas.bauerfeind@example.com",
+        "Telefon": "+49 30 4748423"
+      },
+      "KdNr": 80493,
+      "Vertragsbeginn": "12/02/2024",
+      "NettoBetrag": 2487.76,
+      "Tarif": "Business",
+      "Ansprechpartner": "Miriam Hoffmeister",
+      "Rechnungsdatum": "04/06/2026",
+      "UStIdNr": "DE250927538",
+      "Rechnungsadresse": {
+        "Email": "buchhaltung5@example.com",
+        "Ort": "Altmühlhofen",
+        "PLZ": "62975"
+      },
+      "BruttoBetrag": 2960.43,
+      "RechnungsNr": 57490,
+      "Kontostatus": "gesperrt",
+      "Waehrung": "CHF"
+    },
+    {
+      "Rechnungsstatus": "storniert",
+      "Firma": "Halvik Logistik AG",
+      "Kontakt": {
+        "Email": "leonie.schafer@example.com",
+        "Telefon": "+49 30 9354879"
+      },
+      "KdNr": 36127,
+      "Vertragsbeginn": "11/11/2020",
+      "NettoBetrag": 2774.91,
+      "Tarif": "Basic",
+      "Ansprechpartner": "Stefan Schäfer",
+      "Rechnungsdatum": "10/04/2025",
+      "UStIdNr": "DE045446385",
+      "Rechnungsadresse": {
+        "Email": "buchhaltung3@example.com",
+        "Ort": "Kesselbrunn",
+        "PLZ": "26140"
+      },
+      "BruttoBetrag": 3302.14,
+      "RechnungsNr": 88275,
+      "Kontostatus": "aktiv",
+      "Waehrung": "EUR"
+    },
+    {
+      "Rechnungsstatus": "bezahlt",
+      "Firma": "Norvel Logistik AG",
+      "Kontakt": {
+        "Email": "jana.weidmann@example.com",
+        "Telefon": "+49 30 3912535"
+      },
+      "KdNr": 62064,
+      "Vertragsbeginn": "11/01/2020",
+      "NettoBetrag": 4799.25,
+      "Tarif": "Basic",
+      "Ansprechpartner": "Tobias Pfeiffer",
+      "Rechnungsdatum": "03/09/2025",
+      "UStIdNr": "DE156940298",
+      "Rechnungsadresse": {
+        "Email": "buchhaltung4@example.com",
+        "Ort": "Altmühlhofen",
+        "PLZ": "89478"
+      },
+      "BruttoBetrag": 5711.11,
+      "RechnungsNr": 83171,
+      "Kontostatus": "aktiv",
+      "Waehrung": "EUR"
+    },
+    {
+      "Rechnungsstatus": "überfällig",
+      "Firma": "Norvel Consulting GmbH",
+      "Kontakt": {
+        "Email": "moritz.dorflinger@example.org",
+        "Telefon": "+49 30 1543235"
+      },
+      "KdNr": 64973,
+      "Vertragsbeginn": "03/06/2024",
+      "NettoBetrag": 3322.45,
+      "Tarif": "Team",
+      "Ansprechpartner": "Miriam Brückner",
+      "Rechnungsdatum": "05/05/2026",
+      "UStIdNr": "DE064035087",
+      "Rechnungsadresse": {
+        "Email": "buchhaltung7@example.org",
+        "Ort": "Sonnhausen",
+        "PLZ": "46880"
+      },
+      "BruttoBetrag": 3953.72,
+      "RechnungsNr": 37380,
+      "Kontostatus": "aktiv",
+      "Waehrung": "EUR"
+    },
+    {
+      "Rechnungsstatus": "bezahlt",
+      "Firma": "Velmora Medien KG",
+      "Kontakt": {
+        "Email": "henrik.reinholt@example.org",
+        "Telefon": "+49 30 3343552"
+      },
+      "KdNr": 39462,
+      "Vertragsbeginn": "09/12/2023",
+      "NettoBetrag": 201.21,
+      "Tarif": "Business",
+      "Ansprechpartner": "Miriam Hoffmeister",
+      "Rechnungsdatum": "01/02/2026",
+      "UStIdNr": "DE278646328",
+      "Rechnungsadresse": {
+        "Email": "buchhaltung6@example.org",
+        "Ort": "Rabenfeld",
+        "PLZ": "21476"
+      },
+      "BruttoBetrag": 239.44,
+      "RechnungsNr": 26176,
+      "Kontostatus": "aktiv",
+      "Waehrung": "CHF"
+    },
+    {
+      "Rechnungsstatus": "bezahlt",
+      "Firma": "Ostrin Software GmbH",
+      "Kontakt": {
+        "Email": "tobias.hoffmeister@example.org",
+        "Telefon": "+49 30 2869506"
+      },
+      "KdNr": 14239,
+      "Vertragsbeginn": "08/01/2022",
+      "NettoBetrag": 3505.46,
+      "Tarif": "Enterprise",
+      "Ansprechpartner": "Sabine Vogler",
+      "Rechnungsdatum": "04/01/2026",
+      "UStIdNr": "DE356460278",
+      "Rechnungsadresse": {
+        "Email": "buchhaltung9@example.org",
+        "Ort": "Sonnhausen",
+        "PLZ": "85638"
+      },
+      "BruttoBetrag": 4171.5,
+      "RechnungsNr": 43313,
+      "Kontostatus": "aktiv",
+      "Waehrung": "CHF"
+    },
+    {
+      "Rechnungsstatus": "bezahlt",
+      "Firma": "Lumeno GmbH",
+      "Kontakt": {
+        "Email": "jonas.schafer@example.org",
+        "Telefon": "+49 30 9260288"
+      },
+      "KdNr": 45878,
+      "Vertragsbeginn": "08/06/2025",
+      "NettoBetrag": 423.28,
+      "Tarif": "Business",
+      "Ansprechpartner": "Florian Weidmann",
+      "Rechnungsdatum": "12/04/2025",
+      "UStIdNr": "DE339035892",
+      "Rechnungsadresse": {
+        "Email": "buchhaltung4@example.org",
+        "Ort": "Rabenfeld",
+        "PLZ": "33714"
+      },
+      "BruttoBetrag": 503.7,
+      "RechnungsNr": 92876,
+      "Kontostatus": "aktiv",
+      "Waehrung": "EUR"
+    },
+    {
+      "Rechnungsstatus": "überfällig",
+      "Firma": "Corvant Logistik AG",
+      "Kontakt": {
+        "Email": "leonie.dorflinger@example.net",
+        "Telefon": "+49 30 2270528"
+      },
+      "KdNr": 24870,
+      "Vertragsbeginn": "09/09/2020",
+      "NettoBetrag": 2414.54,
+      "Tarif": "Business",
+      "Ansprechpartner": "Stefan Ostwald",
+      "Rechnungsdatum": "10/12/2025",
+      "UStIdNr": "DE349043242",
+      "Rechnungsadresse": {
+        "Email": "buchhaltung7@example.net",
+        "Ort": "Altmühlhofen",
+        "PLZ": "61312"
+      },
+      "BruttoBetrag": 2873.3,
+      "RechnungsNr": 21026,
+      "Kontostatus": "Testphase",
+      "Waehrung": "EUR"
+    },
+    {
+      "Rechnungsstatus": "überfällig",
+      "Firma": "Strathon KG",
+      "Kontakt": {
+        "Email": "henrik.schafer@example.net",
+        "Telefon": "+49 30 0796130"
+      },
+      "KdNr": 88781,
+      "Vertragsbeginn": "05/04/2019",
+      "NettoBetrag": 3980.87,
+      "Tarif": "Enterprise",
+      "Ansprechpartner": "Florian Lindemann",
+      "Rechnungsdatum": "02/11/2025",
+      "UStIdNr": "DE101230139",
+      "Rechnungsadresse": {
+        "Email": "buchhaltung5@example.net",
+        "Ort": "Altmühlhofen",
+        "PLZ": "98885"
+      },
+      "BruttoBetrag": 4737.24,
+      "RechnungsNr": 78246,
+      "Kontostatus": "aktiv",
+      "Waehrung": "EUR"
+    },
+    {
+      "Rechnungsstatus": "bezahlt",
+      "Firma": "Norvel Logistik GmbH",
+      "Kontakt": {
+        "Email": "stefan.weidmann@example.net",
+        "Telefon": "+49 30 0256951"
+      },
+      "KdNr": 11670,
+      "Vertragsbeginn": "10/04/2023",
+      "NettoBetrag": 4081.34,
+      "Tarif": "Enterprise",
+      "Ansprechpartner": "Moritz Schäfer",
+      "Rechnungsdatum": "03/07/2026",
+      "UStIdNr": "DE105907587",
+      "Rechnungsadresse": {
+        "Email": "buchhaltung4@example.net",
+        "Ort": "Rabenfeld",
+        "PLZ": "43319"
+      },
+      "BruttoBetrag": 4856.79,
+      "RechnungsNr": 43094,
+      "Kontostatus": "Testphase",
+      "Waehrung": "EUR"
+    },
+    {
+      "Rechnungsstatus": "storniert",
+      "Firma": "Mirandel Consulting GmbH",
+      "Kontakt": {
+        "Email": "moritz.hoffmeister@example.com",
+        "Telefon": "+49 30 1651666"
+      },
+      "KdNr": 64394,
+      "Vertragsbeginn": "12/09/2021",
+      "NettoBetrag": 4610.95,
+      "Tarif": "Basic",
+      "Ansprechpartner": "Sabine Bauerfeind",
+      "Rechnungsdatum": "07/07/2026",
+      "UStIdNr": "DE204727249",
+      "Rechnungsadresse": {
+        "Email": "buchhaltung4@example.com",
+        "Ort": "Sonnhausen",
+        "PLZ": "57413"
+      },
+      "BruttoBetrag": 5487.03,
+      "RechnungsNr": 79093,
+      "Kontostatus": "aktiv",
+      "Waehrung": "CHF"
+    },
+    {
+      "Rechnungsstatus": "storniert",
+      "Firma": "Lumeno Logistik GmbH",
+      "Kontakt": {
+        "Email": "stefan.zeller@example.org",
+        "Telefon": "+49 30 7395675"
+      },
+      "KdNr": 88228,
+      "Vertragsbeginn": "04/11/2023",
+      "NettoBetrag": 2496.89,
+      "Tarif": "Basic",
+      "Ansprechpartner": "Annika Brückner",
+      "Rechnungsdatum": "10/09/2025",
+      "UStIdNr": "DE195585603",
+      "Rechnungsadresse": {
+        "Email": "buchhaltung2@example.org",
+        "Ort": "Rabenfeld",
+        "PLZ": "27262"
+      },
+      "BruttoBetrag": 2971.3,
+      "RechnungsNr": 43364,
+      "Kontostatus": "Testphase",
+      "Waehrung": "EUR"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "customer_id": {
+        "type": "integer"
+      },
+      "company_name": {
+        "type": "string"
+      },
+      "billing_contact_name": {
+        "type": "string"
+      },
+      "billing_email": {
+        "type": "string",
+        "format": "email"
+      },
+      "contract_start_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "plan": {
+        "type": "string",
+        "enum": [
+          "basic",
+          "team",
+          "business",
+          "enterprise"
+        ]
+      },
+      "account_status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "trial",
+          "cancelled",
+          "suspended"
+        ]
+      },
+      "vat_id": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "payment_terms_days": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "customer_id",
+      "company_name",
+      "billing_email"
+    ]
+  },
+  "groundTruth": {
+    "customer_id": {
+      "source": "KdNr",
+      "why": "Kundennummer = customer number; RechnungsNr is the invoice number"
+    },
+    "company_name": {
+      "source": "Firma",
+      "why": "Firma = company; Ansprechpartner is a person"
+    },
+    "billing_contact_name": {
+      "source": "Ansprechpartner",
+      "why": "Ansprechpartner = contact person"
+    },
+    "billing_email": {
+      "source": "Rechnungsadresse.Email",
+      "why": "email of the billing address block, not the general contact"
+    },
+    "contract_start_date": {
+      "source": "Vertragsbeginn",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "Vertragsbeginn = contract start; Rechnungsdatum is the invoice date"
+    },
+    "plan": {
+      "source": "Tarif",
+      "why": "Tarif = subscription plan"
+    },
+    "account_status": {
+      "source": "Kontostatus",
+      "why": "Kontostatus = account state; Rechnungsstatus is invoice payment state"
+    },
+    "vat_id": {
+      "source": "UStIdNr",
+      "why": "Umsatzsteuer-ID = VAT id"
+    },
+    "payment_terms_days": {
+      "source": null,
+      "why": "no payment-terms field in the export"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "KdNr",
+        "RechnungsNr"
+      ],
+      "correctFor": "customer_id"
+    },
+    {
+      "kind": "organization-name-vs-person-name",
+      "fields": [
+        "Firma",
+        "Ansprechpartner"
+      ],
+      "correctFor": "company_name"
+    },
+    {
+      "kind": "account-status-vs-transaction-status",
+      "fields": [
+        "Kontostatus",
+        "Rechnungsstatus"
+      ],
+      "correctFor": "account_status"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "Rechnungsadresse.Email",
+        "Kontakt.Email"
+      ],
+      "correctFor": "billing_email"
+    }
+  ],
+  "sourceConcepts": {
+    "Rechnungsstatus": "payment-status",
+    "Firma": "organization-name",
+    "Kontakt.Email": "email",
+    "Kontakt.Telefon": "phone",
+    "KdNr": "customer-id",
+    "Vertragsbeginn": "start-date",
+    "NettoBetrag": "amount",
+    "Tarif": "category",
+    "Ansprechpartner": "person-name",
+    "Rechnungsdatum": "transaction-date",
+    "UStIdNr": "other-identifier",
+    "Rechnungsadresse.Email": "email",
+    "Rechnungsadresse.Ort": "city",
+    "Rechnungsadresse.PLZ": "postal-code",
+    "BruttoBetrag": "amount",
+    "RechnungsNr": "transaction-id",
+    "Kontostatus": "account-status",
+    "Waehrung": "currency-code"
+  },
+  "destinationConcepts": {
+    "customer_id": "customer-id",
+    "company_name": "organization-name",
+    "billing_contact_name": "person-name",
+    "billing_email": "email",
+    "contract_start_date": "start-date",
+    "plan": "category",
+    "account_status": "account-status",
+    "vat_id": "other-identifier",
+    "payment_terms_days": "other"
+  }
+}

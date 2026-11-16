@@ -1,0 +1,892 @@
+{
+  "scenarioId": "property-enquiries-to-crm-lead",
+  "split": "holdout",
+  "industry": "real estate leads",
+  "sourceLanguage": "pt",
+  "description": "Enquiry export from a fictional Brazilian property portal, to be loaded as CRM leads.",
+  "fictional": true,
+  "records": [
+    {
+      "status_imovel": "reservado",
+      "email_corretor": "vinicius.magalhaes@example.org",
+      "imovel": {
+        "cidade": "Ribeirão Claro",
+        "cep": "30504-096"
+      },
+      "id_lead": 741423,
+      "nome_contato": "Mariana Teixeira",
+      "telefone_fixo": null,
+      "data_atualizacao": "03/03/2025",
+      "orcamento_max": 1100000.0,
+      "imobiliaria": "Strathon Imóveis Ltda.",
+      "origem": "portal",
+      "contato": {
+        "cidade": "Vale do Sereno"
+      },
+      "preco_pedido": 825000.0,
+      "telefone_celular": "+55 11 944997091",
+      "id_imovel": 385289,
+      "valor_condominio": 1800.0,
+      "data_criacao": "12/02/2024",
+      "email_contato": "mariana.teixeira@example.com",
+      "status_lead": "perdido"
+    },
+    {
+      "status_imovel": "disponivel",
+      "email_corretor": "felipe.teixeira@example.org",
+      "imovel": {
+        "cidade": "São Benedito do Leste",
+        "cep": "95719-906"
+      },
+      "id_lead": 985970,
+      "nome_contato": "Thiago Lacerda",
+      "telefone_fixo": "+55 11 34917278",
+      "data_atualizacao": "04/07/2026",
+      "orcamento_max": 1530000.0,
+      "imobiliaria": "Velmora Imóveis S.A.",
+      "origem": "redes_sociais",
+      "contato": {
+        "cidade": "São Benedito do Leste"
+      },
+      "preco_pedido": 1545000.0,
+      "telefone_celular": "+55 11 946523465",
+      "id_imovel": 513946,
+      "valor_condominio": 1650.0,
+      "data_criacao": "10/04/2023",
+      "email_contato": "thiago.lacerda@example.com",
+      "status_lead": "convertido"
+    },
+    {
+      "status_imovel": "reservado",
+      "email_corretor": "bruno.magalhaes@example.org",
+      "imovel": {
+        "cidade": "São Benedito do Leste",
+        "cep": "28677-521"
+      },
+      "id_lead": 487226,
+      "nome_contato": "Bruno Sampaio",
+      "telefone_fixo": null,
+      "data_atualizacao": "05/01/2026",
+      "orcamento_max": 1870000.0,
+      "imobiliaria": "Velmora Imóveis Ltda.",
+      "origem": "portal",
+      "contato": {
+        "cidade": "Campo Belo da Serra"
+      },
+      "preco_pedido": 370000.0,
+      "telefone_celular": "+55 11 932267327",
+      "id_imovel": 669400,
+      "valor_condominio": 1200.0,
+      "data_criacao": "04/06/2025",
+      "email_contato": "bruno.sampaio@example.com",
+      "status_lead": "convertido"
+    },
+    {
+      "status_imovel": "disponivel",
+      "email_corretor": "joao.rezende@example.org",
+      "imovel": {
+        "cidade": "Vale do Sereno",
+        "cep": "04072-040"
+      },
+      "id_lead": 765377,
+      "nome_contato": "Letícia Lacerda",
+      "telefone_fixo": "+55 11 38998316",
+      "data_atualizacao": "12/07/2026",
+      "orcamento_max": 1470000.0,
+      "imobiliaria": "Norvel Imóveis S.A.",
+      "origem": "site",
+      "contato": {
+        "cidade": "Campo Belo da Serra"
+      },
+      "preco_pedido": 1365000.0,
+      "telefone_celular": "+55 11 920608112",
+      "id_imovel": 322746,
+      "valor_condominio": 800.0,
+      "data_criacao": "03/03/2025",
+      "email_contato": "leticia.lacerda@example.com",
+      "status_lead": "novo"
+    },
+    {
+      "status_imovel": "disponivel",
+      "email_corretor": "camila.duarte@example.org",
+      "imovel": {
+        "cidade": "Porto Alvorada",
+        "cep": "37181-441"
+      },
+      "id_lead": 704574,
+      "nome_contato": "Letícia Esteves",
+      "telefone_fixo": "+55 11 35070709",
+      "data_atualizacao": "01/05/2026",
+      "orcamento_max": 1150000.0,
+      "imobiliaria": "Lumeno Imóveis Ltda.",
+      "origem": "portal",
+      "contato": {
+        "cidade": "Porto Alvorada"
+      },
+      "preco_pedido": 290000.0,
+      "telefone_celular": "+55 11 957110383",
+      "id_imovel": 552973,
+      "valor_condominio": 600.0,
+      "data_criacao": "03/07/2025",
+      "email_contato": "leticia.esteves@example.com",
+      "status_lead": "perdido"
+    },
+    {
+      "status_imovel": "disponivel",
+      "email_corretor": "bruno.goncalves@example.org",
+      "imovel": {
+        "cidade": "São Benedito do Leste",
+        "cep": "72558-599"
+      },
+      "id_lead": 241515,
+      "nome_contato": "Felipe Teixeira",
+      "telefone_fixo": "+55 11 33215068",
+      "data_atualizacao": "05/09/2025",
+      "orcamento_max": 1210000.0,
+      "imobiliaria": "Mirandel Imóveis S.A.",
+      "origem": "portal",
+      "contato": {
+        "cidade": "São Benedito do Leste"
+      },
+      "preco_pedido": 735000.0,
+      "telefone_celular": "+55 11 955737714",
+      "id_imovel": 507490,
+      "valor_condominio": 2450.0,
+      "data_criacao": "03/06/2024",
+      "email_contato": "felipe.teixeira@example.com",
+      "status_lead": "convertido"
+    },
+    {
+      "status_imovel": "vendido",
+      "email_corretor": "felipe.sampaio@example.org",
+      "imovel": {
+        "cidade": "Porto Alvorada",
+        "cep": "15632-658"
+      },
+      "id_lead": 298434,
+      "nome_contato": "Aline Queiroz",
+      "telefone_fixo": "+55 11 37579439",
+      "data_atualizacao": "03/09/2023",
+      "orcamento_max": 1500000.0,
+      "imobiliaria": "Zephra Imóveis Ltda.",
+      "origem": "portal",
+      "contato": {
+        "cidade": "Porto Alvorada"
+      },
+      "preco_pedido": 965000.0,
+      "telefone_celular": "+55 11 913090828",
+      "id_imovel": 620701,
+      "valor_condominio": 900.0,
+      "data_criacao": "01/06/2022",
+      "email_contato": "aline.queiroz@example.com",
+      "status_lead": "visita_agendada"
+    },
+    {
+      "status_imovel": "reservado",
+      "email_corretor": "camila.nogueira@example.org",
+      "imovel": {
+        "cidade": "Campo Belo da Serra",
+        "cep": "60119-656"
+      },
+      "id_lead": 773338,
+      "nome_contato": "Renata Magalhães",
+      "telefone_fixo": null,
+      "data_atualizacao": "06/11/2026",
+      "orcamento_max": 1800000.0,
+      "imobiliaria": "Tavrin Imóveis Ltda.",
+      "origem": "portal",
+      "contato": {
+        "cidade": "Porto Alvorada"
+      },
+      "preco_pedido": 1610000.0,
+      "telefone_celular": "+55 11 937257434",
+      "id_imovel": 936764,
+      "valor_condominio": 2350.0,
+      "data_criacao": "05/02/2024",
+      "email_contato": "renata.magalhaes@example.com",
+      "status_lead": "novo"
+    },
+    {
+      "status_imovel": "reservado",
+      "email_corretor": "felipe.albuquerque@example.org",
+      "imovel": {
+        "cidade": "São Benedito do Leste",
+        "cep": "39282-688"
+      },
+      "id_lead": 312833,
+      "nome_contato": "Beatriz Queiroz",
+      "telefone_fixo": null,
+      "data_atualizacao": "04/08/2025",
+      "orcamento_max": 1570000.0,
+      "imobiliaria": "Kaldera Imóveis Ltda.",
+      "origem": "indicacao",
+      "contato": {
+        "cidade": "Ribeirão Claro"
+      },
+      "preco_pedido": 1190000.0,
+      "telefone_celular": "+55 11 930280923",
+      "id_imovel": 238884,
+      "valor_condominio": 1300.0,
+      "data_criacao": "06/08/2024",
+      "email_contato": "beatriz.queiroz@example.com",
+      "status_lead": "perdido"
+    },
+    {
+      "status_imovel": "reservado",
+      "email_corretor": "aline.magalhaes@example.org",
+      "imovel": {
+        "cidade": "São Benedito do Leste",
+        "cep": "69992-804"
+      },
+      "id_lead": 779068,
+      "nome_contato": "Beatriz Rezende",
+      "telefone_fixo": null,
+      "data_atualizacao": "10/10/2026",
+      "orcamento_max": 1510000.0,
+      "imobiliaria": "Halvik Imóveis Ltda.",
+      "origem": "redes_sociais",
+      "contato": {
+        "cidade": "São Benedito do Leste"
+      },
+      "preco_pedido": 1620000.0,
+      "telefone_celular": "+55 11 997229656",
+      "id_imovel": 238359,
+      "valor_condominio": 1250.0,
+      "data_criacao": "06/07/2024",
+      "email_contato": "beatriz.rezende@example.com",
+      "status_lead": "qualificado"
+    },
+    {
+      "status_imovel": "reservado",
+      "email_corretor": "bruno.albuquerque@example.org",
+      "imovel": {
+        "cidade": "Itaquara",
+        "cep": "60627-583"
+      },
+      "id_lead": 296679,
+      "nome_contato": "Mariana Gonçalves",
+      "telefone_fixo": "+55 11 36346476",
+      "data_atualizacao": "04/12/2023",
+      "orcamento_max": 840000.0,
+      "imobiliaria": "Ostrin Imóveis Ltda.",
+      "origem": "site",
+      "contato": {
+        "cidade": "Campo Belo da Serra"
+      },
+      "preco_pedido": 595000.0,
+      "telefone_celular": "+55 11 954324127",
+      "id_imovel": 203979,
+      "valor_condominio": 1400.0,
+      "data_criacao": "01/05/2022",
+      "email_contato": "mariana.goncalves@example.com",
+      "status_lead": "convertido"
+    },
+    {
+      "status_imovel": "disponivel",
+      "email_corretor": "joao.albuquerque@example.org",
+      "imovel": {
+        "cidade": "Ribeirão Claro",
+        "cep": "39190-803"
+      },
+      "id_lead": 954261,
+      "nome_contato": "Felipe Teixeira",
+      "telefone_fixo": null,
+      "data_atualizacao": "08/05/2026",
+      "orcamento_max": 660000.0,
+      "imobiliaria": "Norvel Imóveis S.A.",
+      "origem": "indicacao",
+      "contato": {
+        "cidade": "Ribeirão Claro"
+      },
+      "preco_pedido": 1205000.0,
+      "telefone_celular": "+55 11 912494379",
+      "id_imovel": 641961,
+      "valor_condominio": 2250.0,
+      "data_criacao": "08/02/2024",
+      "email_contato": "felipe.teixeira@example.com",
+      "status_lead": "perdido"
+    },
+    {
+      "status_imovel": "reservado",
+      "email_corretor": "larissa.sampaio@example.org",
+      "imovel": {
+        "cidade": "Itaquara",
+        "cep": "22544-857"
+      },
+      "id_lead": 483560,
+      "nome_contato": "João Teixeira",
+      "telefone_fixo": null,
+      "data_atualizacao": "01/01/2024",
+      "orcamento_max": 740000.0,
+      "imobiliaria": "Mirandel Imóveis S.A.",
+      "origem": "site",
+      "contato": {
+        "cidade": "Vale do Sereno"
+      },
+      "preco_pedido": 1645000.0,
+      "telefone_celular": "+55 11 996346883",
+      "id_imovel": 664100,
+      "valor_condominio": 1100.0,
+      "data_criacao": "12/12/2022",
+      "email_contato": "joao.teixeira@example.com",
+      "status_lead": "perdido"
+    },
+    {
+      "status_imovel": "vendido",
+      "email_corretor": "mariana.pacheco@example.org",
+      "imovel": {
+        "cidade": "São Benedito do Leste",
+        "cep": "29593-721"
+      },
+      "id_lead": 201383,
+      "nome_contato": "Thiago Figueiredo",
+      "telefone_fixo": null,
+      "data_atualizacao": "12/05/2026",
+      "orcamento_max": 280000.0,
+      "imobiliaria": "Halvik Imóveis Ltda.",
+      "origem": "redes_sociais",
+      "contato": {
+        "cidade": "Porto Alvorada"
+      },
+      "preco_pedido": 425000.0,
+      "telefone_celular": "+55 11 972845092",
+      "id_imovel": 154317,
+      "valor_condominio": 2000.0,
+      "data_criacao": "12/03/2023",
+      "email_contato": "thiago.figueiredo@example.com",
+      "status_lead": "convertido"
+    },
+    {
+      "status_imovel": "reservado",
+      "email_corretor": "aline.esteves@example.org",
+      "imovel": {
+        "cidade": "Itaquara",
+        "cep": "44908-520"
+      },
+      "id_lead": 974760,
+      "nome_contato": "Gustavo Barbosa",
+      "telefone_fixo": "+55 11 39295775",
+      "data_atualizacao": "04/04/2026",
+      "orcamento_max": 1400000.0,
+      "imobiliaria": "Mirandel Imóveis S.A.",
+      "origem": "site",
+      "contato": {
+        "cidade": "São Benedito do Leste"
+      },
+      "preco_pedido": 250000.0,
+      "telefone_celular": "+55 11 997558531",
+      "id_imovel": 435235,
+      "valor_condominio": 1600.0,
+      "data_criacao": "06/08/2024",
+      "email_contato": "gustavo.barbosa@example.com",
+      "status_lead": "perdido"
+    },
+    {
+      "status_imovel": "disponivel",
+      "email_corretor": "beatriz.sampaio@example.org",
+      "imovel": {
+        "cidade": "Itaquara",
+        "cep": "46442-911"
+      },
+      "id_lead": 608586,
+      "nome_contato": "Larissa Rezende",
+      "telefone_fixo": null,
+      "data_atualizacao": "12/10/2025",
+      "orcamento_max": 1990000.0,
+      "imobiliaria": "Zephra Imóveis S.A.",
+      "origem": "site",
+      "contato": {
+        "cidade": "Vale do Sereno"
+      },
+      "preco_pedido": 1405000.0,
+      "telefone_celular": "+55 11 943844820",
+      "id_imovel": 836245,
+      "valor_condominio": 1350.0,
+      "data_criacao": "05/07/2024",
+      "email_contato": "larissa.rezende@example.com",
+      "status_lead": "qualificado"
+    },
+    {
+      "status_imovel": "vendido",
+      "email_corretor": "leticia.teixeira@example.org",
+      "imovel": {
+        "cidade": "Porto Alvorada",
+        "cep": "52619-931"
+      },
+      "id_lead": 594722,
+      "nome_contato": "Gustavo Albuquerque",
+      "telefone_fixo": "+55 11 35140856",
+      "data_atualizacao": "06/05/2026",
+      "orcamento_max": 570000.0,
+      "imobiliaria": "Corvant Imóveis S.A.",
+      "origem": "portal",
+      "contato": {
+        "cidade": "Campo Belo da Serra"
+      },
+      "preco_pedido": 585000.0,
+      "telefone_celular": "+55 11 944493516",
+      "id_imovel": 714965,
+      "valor_condominio": 1300.0,
+      "data_criacao": "01/01/2025",
+      "email_contato": "gustavo.albuquerque@example.com",
+      "status_lead": "perdido"
+    },
+    {
+      "status_imovel": "disponivel",
+      "email_corretor": "thiago.cardoso@example.org",
+      "imovel": {
+        "cidade": "Campo Belo da Serra",
+        "cep": "90573-909"
+      },
+      "id_lead": 130077,
+      "nome_contato": "Gustavo Rezende",
+      "telefone_fixo": "+55 11 30362473",
+      "data_atualizacao": "03/01/2026",
+      "orcamento_max": 1530000.0,
+      "imobiliaria": "Ostrin Imóveis S.A.",
+      "origem": "redes_sociais",
+      "contato": {
+        "cidade": "Itaquara"
+      },
+      "preco_pedido": 1810000.0,
+      "telefone_celular": "+55 11 905032311",
+      "id_imovel": 573808,
+      "valor_condominio": 600.0,
+      "data_criacao": "08/01/2024",
+      "email_contato": "gustavo.rezende@example.com",
+      "status_lead": "visita_agendada"
+    },
+    {
+      "status_imovel": "reservado",
+      "email_corretor": "bruno.nogueira@example.org",
+      "imovel": {
+        "cidade": "Porto Alvorada",
+        "cep": "32751-625"
+      },
+      "id_lead": 243438,
+      "nome_contato": "Renata Barbosa",
+      "telefone_fixo": null,
+      "data_atualizacao": "10/01/2026",
+      "orcamento_max": 1920000.0,
+      "imobiliaria": "Ostrin Imóveis Ltda.",
+      "origem": "portal",
+      "contato": {
+        "cidade": "Vale do Sereno"
+      },
+      "preco_pedido": 675000.0,
+      "telefone_celular": "+55 11 972200509",
+      "id_imovel": 364068,
+      "valor_condominio": 2350.0,
+      "data_criacao": "12/11/2022",
+      "email_contato": "renata.barbosa@example.com",
+      "status_lead": "novo"
+    },
+    {
+      "status_imovel": "disponivel",
+      "email_corretor": "mariana.lacerda@example.org",
+      "imovel": {
+        "cidade": "Itaquara",
+        "cep": "92734-588"
+      },
+      "id_lead": 597939,
+      "nome_contato": "Aline Teixeira",
+      "telefone_fixo": "+55 11 34012310",
+      "data_atualizacao": "02/07/2025",
+      "orcamento_max": 570000.0,
+      "imobiliaria": "Tavrin Imóveis Ltda.",
+      "origem": "indicacao",
+      "contato": {
+        "cidade": "Ribeirão Claro"
+      },
+      "preco_pedido": 1395000.0,
+      "telefone_celular": "+55 11 944770771",
+      "id_imovel": 762277,
+      "valor_condominio": 400.0,
+      "data_criacao": "05/07/2022",
+      "email_contato": "aline.teixeira@example.com",
+      "status_lead": "visita_agendada"
+    },
+    {
+      "status_imovel": "reservado",
+      "email_corretor": "thiago.albuquerque@example.org",
+      "imovel": {
+        "cidade": "Ribeirão Claro",
+        "cep": "77134-618"
+      },
+      "id_lead": 115880,
+      "nome_contato": "Aline Barbosa",
+      "telefone_fixo": null,
+      "data_atualizacao": "07/01/2025",
+      "orcamento_max": 1270000.0,
+      "imobiliaria": "Tavrin Imóveis Ltda.",
+      "origem": "redes_sociais",
+      "contato": {
+        "cidade": "São Benedito do Leste"
+      },
+      "preco_pedido": 665000.0,
+      "telefone_celular": "+55 11 906118201",
+      "id_imovel": 162499,
+      "valor_condominio": 900.0,
+      "data_criacao": "03/08/2022",
+      "email_contato": "aline.barbosa@example.com",
+      "status_lead": "perdido"
+    },
+    {
+      "status_imovel": "vendido",
+      "email_corretor": "leticia.albuquerque@example.org",
+      "imovel": {
+        "cidade": "São Benedito do Leste",
+        "cep": "67902-670"
+      },
+      "id_lead": 762201,
+      "nome_contato": "Beatriz Lacerda",
+      "telefone_fixo": null,
+      "data_atualizacao": "03/12/2026",
+      "orcamento_max": 680000.0,
+      "imobiliaria": "Pellucid Imóveis S.A.",
+      "origem": "redes_sociais",
+      "contato": {
+        "cidade": "Porto Alvorada"
+      },
+      "preco_pedido": 380000.0,
+      "telefone_celular": "+55 11 986820365",
+      "id_imovel": 839088,
+      "valor_condominio": 1050.0,
+      "data_criacao": "08/11/2025",
+      "email_contato": "beatriz.lacerda@example.com",
+      "status_lead": "novo"
+    },
+    {
+      "status_imovel": "vendido",
+      "email_corretor": "vinicius.cardoso@example.org",
+      "imovel": {
+        "cidade": "Vale do Sereno",
+        "cep": "43223-972"
+      },
+      "id_lead": 779346,
+      "nome_contato": "Rafael Barbosa",
+      "telefone_fixo": "+55 11 31507649",
+      "data_atualizacao": "11/10/2026",
+      "orcamento_max": 1470000.0,
+      "imobiliaria": "Strathon Imóveis S.A.",
+      "origem": "redes_sociais",
+      "contato": {
+        "cidade": "Porto Alvorada"
+      },
+      "preco_pedido": 785000.0,
+      "telefone_celular": "+55 11 906686610",
+      "id_imovel": 584316,
+      "valor_condominio": 500.0,
+      "data_criacao": "11/10/2025",
+      "email_contato": "rafael.barbosa@example.com",
+      "status_lead": "novo"
+    },
+    {
+      "status_imovel": "vendido",
+      "email_corretor": "bruno.pacheco@example.org",
+      "imovel": {
+        "cidade": "São Benedito do Leste",
+        "cep": "16770-436"
+      },
+      "id_lead": 121648,
+      "nome_contato": "Letícia Cardoso",
+      "telefone_fixo": null,
+      "data_atualizacao": "04/02/2026",
+      "orcamento_max": 1430000.0,
+      "imobiliaria": "Lumeno Imóveis S.A.",
+      "origem": "portal",
+      "contato": {
+        "cidade": "Vale do Sereno"
+      },
+      "preco_pedido": 1750000.0,
+      "telefone_celular": "+55 11 958625940",
+      "id_imovel": 132066,
+      "valor_condominio": 1500.0,
+      "data_criacao": "01/02/2024",
+      "email_contato": "leticia.cardoso@example.com",
+      "status_lead": "perdido"
+    },
+    {
+      "status_imovel": "disponivel",
+      "email_corretor": "larissa.cardoso@example.org",
+      "imovel": {
+        "cidade": "São Benedito do Leste",
+        "cep": "79941-226"
+      },
+      "id_lead": 814546,
+      "nome_contato": "Vinícius Magalhães",
+      "telefone_fixo": "+55 11 37542471",
+      "data_atualizacao": "08/09/2026",
+      "orcamento_max": 950000.0,
+      "imobiliaria": "Strathon Imóveis Ltda.",
+      "origem": "site",
+      "contato": {
+        "cidade": "Ribeirão Claro"
+      },
+      "preco_pedido": 1145000.0,
+      "telefone_celular": "+55 11 908407376",
+      "id_imovel": 663069,
+      "valor_condominio": 800.0,
+      "data_criacao": "03/02/2024",
+      "email_contato": "vinicius.magalhaes@example.com",
+      "status_lead": "novo"
+    },
+    {
+      "status_imovel": "reservado",
+      "email_corretor": "beatriz.albuquerque@example.org",
+      "imovel": {
+        "cidade": "Itaquara",
+        "cep": "78636-832"
+      },
+      "id_lead": 921355,
+      "nome_contato": "Bruno Barbosa",
+      "telefone_fixo": null,
+      "data_atualizacao": "04/11/2025",
+      "orcamento_max": 1260000.0,
+      "imobiliaria": "Ombrex Imóveis Ltda.",
+      "origem": "indicacao",
+      "contato": {
+        "cidade": "Itaquara"
+      },
+      "preco_pedido": 1890000.0,
+      "telefone_celular": "+55 11 960445694",
+      "id_imovel": 615668,
+      "valor_condominio": 1000.0,
+      "data_criacao": "07/07/2023",
+      "email_contato": "bruno.barbosa@example.com",
+      "status_lead": "novo"
+    },
+    {
+      "status_imovel": "reservado",
+      "email_corretor": "bruno.queiroz@example.org",
+      "imovel": {
+        "cidade": "São Benedito do Leste",
+        "cep": "37014-366"
+      },
+      "id_lead": 204453,
+      "nome_contato": "Larissa Pacheco",
+      "telefone_fixo": null,
+      "data_atualizacao": "11/02/2026",
+      "orcamento_max": 1530000.0,
+      "imobiliaria": "Mirandel Imóveis S.A.",
+      "origem": "site",
+      "contato": {
+        "cidade": "Vale do Sereno"
+      },
+      "preco_pedido": 1425000.0,
+      "telefone_celular": "+55 11 987623011",
+      "id_imovel": 513951,
+      "valor_condominio": 1600.0,
+      "data_criacao": "12/12/2023",
+      "email_contato": "larissa.pacheco@example.com",
+      "status_lead": "novo"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "lead_id": {
+        "type": "integer"
+      },
+      "contact_name": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string",
+        "format": "email"
+      },
+      "mobile": {
+        "type": "string"
+      },
+      "created_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "stage": {
+        "type": "string",
+        "enum": [
+          "new",
+          "qualified",
+          "visit_scheduled",
+          "lost",
+          "won"
+        ]
+      },
+      "lead_source": {
+        "type": "string",
+        "enum": [
+          "portal",
+          "referral",
+          "website",
+          "social"
+        ]
+      },
+      "city": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "max_budget": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "company": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "lead_id",
+      "contact_name",
+      "email"
+    ]
+  },
+  "groundTruth": {
+    "lead_id": {
+      "source": "id_lead",
+      "why": "lead identifier; id_imovel identifies the property"
+    },
+    "contact_name": {
+      "source": "nome_contato",
+      "why": "the prospect"
+    },
+    "email": {
+      "source": "email_contato",
+      "why": "prospect email; email_corretor is the agent"
+    },
+    "mobile": {
+      "source": "telefone_celular",
+      "why": "celular = mobile; fixo is landline"
+    },
+    "created_date": {
+      "source": "data_criacao",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "creation date; data_atualizacao is last update"
+    },
+    "stage": {
+      "source": "status_lead",
+      "why": "lead pipeline state; status_imovel is the property's state"
+    },
+    "lead_source": {
+      "source": "origem",
+      "why": "origem = lead source (indicacao=referral)"
+    },
+    "city": {
+      "source": "contato.cidade",
+      "why": "prospect's city, not the property's city"
+    },
+    "max_budget": {
+      "source": "orcamento_max",
+      "why": "orçamento máximo = buyer's budget; preco_pedido is the asking price"
+    },
+    "company": {
+      "source": null,
+      "why": "leads are private buyers; imobiliaria is the listing agency"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "id_lead",
+        "id_imovel"
+      ],
+      "correctFor": "lead_id"
+    },
+    {
+      "kind": "organization-name-vs-person-name",
+      "fields": [
+        "nome_contato",
+        "imobiliaria"
+      ],
+      "correctFor": "contact_name"
+    },
+    {
+      "kind": "two-email-fields",
+      "fields": [
+        "email_contato",
+        "email_corretor"
+      ],
+      "correctFor": "email"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "data_criacao",
+        "data_atualizacao"
+      ],
+      "correctFor": "created_date"
+    },
+    {
+      "kind": "account-status-vs-transaction-status",
+      "fields": [
+        "status_lead",
+        "status_imovel"
+      ],
+      "correctFor": "stage"
+    },
+    {
+      "kind": "currency-or-amount-confusion",
+      "fields": [
+        "orcamento_max",
+        "preco_pedido"
+      ],
+      "correctFor": "max_budget"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "contato.cidade",
+        "imovel.cidade"
+      ],
+      "correctFor": "city"
+    },
+    {
+      "kind": "phone-or-code-confusion",
+      "fields": [
+        "telefone_celular",
+        "telefone_fixo"
+      ],
+      "correctFor": "mobile"
+    }
+  ],
+  "sourceConcepts": {
+    "status_imovel": "order-status",
+    "email_corretor": "email",
+    "imovel.cidade": "city",
+    "imovel.cep": "postal-code",
+    "id_lead": "customer-id",
+    "nome_contato": "person-name",
+    "telefone_fixo": "phone",
+    "data_atualizacao": "modified-date",
+    "orcamento_max": "amount",
+    "imobiliaria": "organization-name",
+    "origem": "category",
+    "contato.cidade": "city",
+    "preco_pedido": "amount",
+    "telefone_celular": "phone",
+    "id_imovel": "product-id",
+    "valor_condominio": "amount",
+    "data_criacao": "created-date",
+    "email_contato": "email",
+    "status_lead": "account-status"
+  },
+  "destinationConcepts": {
+    "lead_id": "customer-id",
+    "contact_name": "person-name",
+    "email": "email",
+    "mobile": "phone",
+    "created_date": "created-date",
+    "stage": "account-status",
+    "lead_source": "category",
+    "city": "city",
+    "max_budget": "amount",
+    "company": "organization-name"
+  }
+}

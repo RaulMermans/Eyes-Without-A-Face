@@ -1,0 +1,938 @@
+{
+  "scenarioId": "course-enrolments-to-student-record",
+  "split": "holdout",
+  "industry": "education enrolments",
+  "sourceLanguage": "en",
+  "description": "Enrolment export from a fictional community college's admissions tool, to be loaded as student-information-system records.",
+  "fictional": true,
+  "records": [
+    {
+      "feeStatus": "waived",
+      "guardianEmail": "owen.calloway@example.net",
+      "enrolmentId": 4968046,
+      "homeAddress": {
+        "city": "Whitlow",
+        "postcode": "39040"
+      },
+      "studentName": "Ruby Calloway",
+      "dateOfBirth": "12/02/2009",
+      "employerSponsor": null,
+      "campus": "North",
+      "tuitionFee": 6550.0,
+      "updatedAt": "2025-08-01T14:21:00Z",
+      "studentId": 4889698,
+      "enrolledOn": "08/03/2023",
+      "guardianName": null,
+      "courseCode": "MAT383",
+      "depositPaid": 0.0,
+      "studentEmail": "ruby.calloway56@student.example.org",
+      "enrolmentStatus": "completed"
+    },
+    {
+      "feeStatus": "waived",
+      "guardianEmail": "priya.northcott@example.net",
+      "enrolmentId": 6044281,
+      "homeAddress": {
+        "city": "Whitlow",
+        "postcode": "19210"
+      },
+      "studentName": "Elliot Northcott",
+      "dateOfBirth": "11/03/2004",
+      "employerSponsor": "Pellucid Ltd",
+      "campus": "South",
+      "tuitionFee": 4000.0,
+      "updatedAt": "2025-12-16T15:28:00Z",
+      "studentId": 9091200,
+      "enrolledOn": "04/03/2024",
+      "guardianName": "Priya Northcott",
+      "courseCode": "ART331",
+      "depositPaid": 0.0,
+      "studentEmail": "elliot.northcott83@student.example.org",
+      "enrolmentStatus": "withdrawn"
+    },
+    {
+      "feeStatus": "waived",
+      "guardianEmail": "maya.ellery@example.net",
+      "enrolmentId": 3469874,
+      "homeAddress": {
+        "city": "Ellisport",
+        "postcode": "27261"
+      },
+      "studentName": "Felix Ellery",
+      "dateOfBirth": "06/12/2005",
+      "employerSponsor": null,
+      "campus": "South",
+      "tuitionFee": 7200.0,
+      "updatedAt": "2025-09-03T17:10:00Z",
+      "studentId": 6756059,
+      "enrolledOn": "02/07/2026",
+      "guardianName": null,
+      "courseCode": "CS266",
+      "depositPaid": 250.0,
+      "studentEmail": "felix.ellery85@student.example.org",
+      "enrolmentStatus": "completed"
+    },
+    {
+      "feeStatus": "waived",
+      "guardianEmail": "owen.ashdown@example.net",
+      "enrolmentId": 9705719,
+      "homeAddress": {
+        "city": "Ellisport",
+        "postcode": "33106"
+      },
+      "studentName": "Grace Ashdown",
+      "dateOfBirth": "06/02/2005",
+      "employerSponsor": null,
+      "campus": "North",
+      "tuitionFee": 6950.0,
+      "updatedAt": "2025-09-01T07:41:00Z",
+      "studentId": 3547506,
+      "enrolledOn": "06/06/2024",
+      "guardianName": "Owen Ashdown",
+      "courseCode": "ART411",
+      "depositPaid": 0.0,
+      "studentEmail": "grace.ashdown94@student.example.org",
+      "enrolmentStatus": "waitlisted"
+    },
+    {
+      "feeStatus": "unpaid",
+      "guardianEmail": "maya.dunmore@example.net",
+      "enrolmentId": 3934941,
+      "homeAddress": {
+        "city": "Thornbury Green",
+        "postcode": "98493"
+      },
+      "studentName": "Marcus Dunmore",
+      "dateOfBirth": "01/08/2011",
+      "employerSponsor": null,
+      "campus": "North",
+      "tuitionFee": 7050.0,
+      "updatedAt": "2026-01-20T09:12:00Z",
+      "studentId": 3397821,
+      "enrolledOn": "02/12/2023",
+      "guardianName": null,
+      "courseCode": "BIO139",
+      "depositPaid": 250.0,
+      "studentEmail": "marcus.dunmore29@student.example.org",
+      "enrolmentStatus": "enrolled"
+    },
+    {
+      "feeStatus": "partial",
+      "guardianEmail": "iris.ellery@example.net",
+      "enrolmentId": 5825891,
+      "homeAddress": {
+        "city": "Thornbury Green",
+        "postcode": "23488"
+      },
+      "studentName": "Owen Ellery",
+      "dateOfBirth": "07/05/2010",
+      "employerSponsor": "Zephra Group",
+      "campus": "Online",
+      "tuitionFee": 5950.0,
+      "updatedAt": "2025-02-10T10:15:00Z",
+      "studentId": 2758299,
+      "enrolledOn": "01/12/2026",
+      "guardianName": "Iris Ellery",
+      "courseCode": "MAT200",
+      "depositPaid": 0.0,
+      "studentEmail": "owen.ellery46@student.example.org",
+      "enrolmentStatus": "waitlisted"
+    },
+    {
+      "feeStatus": "unpaid",
+      "guardianEmail": null,
+      "enrolmentId": 4861585,
+      "homeAddress": {
+        "city": "Calder Rise",
+        "postcode": "37531"
+      },
+      "studentName": "Naomi Ashdown",
+      "dateOfBirth": "08/10/2006",
+      "employerSponsor": null,
+      "campus": "North",
+      "tuitionFee": 2100.0,
+      "updatedAt": "2025-04-16T07:56:00Z",
+      "studentId": 1814004,
+      "enrolledOn": "08/12/2023",
+      "guardianName": "Marcus Ashdown",
+      "courseCode": "ENG325",
+      "depositPaid": 0.0,
+      "studentEmail": "naomi.ashdown36@student.example.org",
+      "enrolmentStatus": "waitlisted"
+    },
+    {
+      "feeStatus": "waived",
+      "guardianEmail": "maya.ellery@example.net",
+      "enrolmentId": 5486006,
+      "homeAddress": {
+        "city": "Brackenford",
+        "postcode": "60563"
+      },
+      "studentName": "Felix Ellery",
+      "dateOfBirth": "04/09/2007",
+      "employerSponsor": "Strathon Ltd",
+      "campus": "North",
+      "tuitionFee": 8450.0,
+      "updatedAt": "2025-07-15T17:46:00Z",
+      "studentId": 6994328,
+      "enrolledOn": "10/07/2023",
+      "guardianName": "Maya Ellery",
+      "courseCode": "MAT296",
+      "depositPaid": 0.0,
+      "studentEmail": "felix.ellery14@student.example.org",
+      "enrolmentStatus": "completed"
+    },
+    {
+      "feeStatus": "paid",
+      "guardianEmail": "naomi.fairbank@example.net",
+      "enrolmentId": 2544127,
+      "homeAddress": {
+        "city": "Whitlow",
+        "postcode": "47528"
+      },
+      "studentName": "Tobias Fairbank",
+      "dateOfBirth": "08/12/2005",
+      "employerSponsor": null,
+      "campus": "North",
+      "tuitionFee": 8200.0,
+      "updatedAt": "2025-09-04T07:28:00Z",
+      "studentId": 9563032,
+      "enrolledOn": "12/05/2023",
+      "guardianName": null,
+      "courseCode": "ART301",
+      "depositPaid": 500.0,
+      "studentEmail": "tobias.fairbank32@student.example.org",
+      "enrolmentStatus": "withdrawn"
+    },
+    {
+      "feeStatus": "partial",
+      "guardianEmail": "owen.brenner@example.net",
+      "enrolmentId": 1947649,
+      "homeAddress": {
+        "city": "Ellisport",
+        "postcode": "57904"
+      },
+      "studentName": "Olivia Brenner",
+      "dateOfBirth": "05/07/2005",
+      "employerSponsor": null,
+      "campus": "Online",
+      "tuitionFee": 7450.0,
+      "updatedAt": "2025-03-18T09:44:00Z",
+      "studentId": 6419717,
+      "enrolledOn": "09/01/2024",
+      "guardianName": null,
+      "courseCode": "ART219",
+      "depositPaid": 250.0,
+      "studentEmail": "olivia.brenner33@student.example.org",
+      "enrolmentStatus": "completed"
+    },
+    {
+      "feeStatus": "partial",
+      "guardianEmail": "maya.pembury@example.net",
+      "enrolmentId": 2404680,
+      "homeAddress": {
+        "city": "Whitlow",
+        "postcode": "54413"
+      },
+      "studentName": "Tobias Pembury",
+      "dateOfBirth": "08/05/2007",
+      "employerSponsor": "Pellucid Ltd",
+      "campus": "North",
+      "tuitionFee": 7200.0,
+      "updatedAt": "2025-10-10T20:41:00Z",
+      "studentId": 5770789,
+      "enrolledOn": "10/07/2026",
+      "guardianName": "Maya Pembury",
+      "courseCode": "MAT265",
+      "depositPaid": 250.0,
+      "studentEmail": "tobias.pembury94@student.example.org",
+      "enrolmentStatus": "withdrawn"
+    },
+    {
+      "feeStatus": "paid",
+      "guardianEmail": "elliot.northcott@example.net",
+      "enrolmentId": 8318535,
+      "homeAddress": {
+        "city": "Brackenford",
+        "postcode": "65405"
+      },
+      "studentName": "Ruby Northcott",
+      "dateOfBirth": "05/10/2004",
+      "employerSponsor": null,
+      "campus": "Online",
+      "tuitionFee": 6750.0,
+      "updatedAt": "2025-05-07T20:13:00Z",
+      "studentId": 1262674,
+      "enrolledOn": "01/05/2023",
+      "guardianName": "Elliot Northcott",
+      "courseCode": "BIO154",
+      "depositPaid": 0.0,
+      "studentEmail": "ruby.northcott93@student.example.org",
+      "enrolmentStatus": "withdrawn"
+    },
+    {
+      "feeStatus": "paid",
+      "guardianEmail": "priya.kettering@example.net",
+      "enrolmentId": 9775490,
+      "homeAddress": {
+        "city": "Calder Rise",
+        "postcode": "60753"
+      },
+      "studentName": "Grace Kettering",
+      "dateOfBirth": "06/11/2007",
+      "employerSponsor": null,
+      "campus": "Online",
+      "tuitionFee": 2750.0,
+      "updatedAt": "2025-07-18T19:54:00Z",
+      "studentId": 6666222,
+      "enrolledOn": "06/07/2024",
+      "guardianName": "Priya Kettering",
+      "courseCode": "ART427",
+      "depositPaid": 500.0,
+      "studentEmail": "grace.kettering31@student.example.org",
+      "enrolmentStatus": "completed"
+    },
+    {
+      "feeStatus": "partial",
+      "guardianEmail": null,
+      "enrolmentId": 5112537,
+      "homeAddress": {
+        "city": "Brackenford",
+        "postcode": "84601"
+      },
+      "studentName": "Hannah Lindqvist",
+      "dateOfBirth": "01/04/2012",
+      "employerSponsor": null,
+      "campus": "Online",
+      "tuitionFee": 5050.0,
+      "updatedAt": "2026-08-10T19:37:00Z",
+      "studentId": 1421552,
+      "enrolledOn": "10/12/2023",
+      "guardianName": "Daniel Lindqvist",
+      "courseCode": "CS131",
+      "depositPaid": 500.0,
+      "studentEmail": "hannah.lindqvist56@student.example.org",
+      "enrolmentStatus": "waitlisted"
+    },
+    {
+      "feeStatus": "partial",
+      "guardianEmail": "maya.holloway@example.net",
+      "enrolmentId": 8031048,
+      "homeAddress": {
+        "city": "Ellisport",
+        "postcode": "83245"
+      },
+      "studentName": "Marcus Holloway",
+      "dateOfBirth": "08/02/2007",
+      "employerSponsor": null,
+      "campus": "North",
+      "tuitionFee": 7000.0,
+      "updatedAt": "2025-07-13T13:09:00Z",
+      "studentId": 2091156,
+      "enrolledOn": "04/07/2024",
+      "guardianName": "Maya Holloway",
+      "courseCode": "ENG111",
+      "depositPaid": 0.0,
+      "studentEmail": "marcus.holloway40@student.example.org",
+      "enrolmentStatus": "completed"
+    },
+    {
+      "feeStatus": "unpaid",
+      "guardianEmail": "tobias.gresham@example.net",
+      "enrolmentId": 4335295,
+      "homeAddress": {
+        "city": "Calder Rise",
+        "postcode": "93939"
+      },
+      "studentName": "Priya Gresham",
+      "dateOfBirth": "02/11/2011",
+      "employerSponsor": "Kaldera Holdings",
+      "campus": "North",
+      "tuitionFee": 6300.0,
+      "updatedAt": "2026-05-20T12:33:00Z",
+      "studentId": 4655702,
+      "enrolledOn": "04/09/2026",
+      "guardianName": "Tobias Gresham",
+      "courseCode": "ENG469",
+      "depositPaid": 500.0,
+      "studentEmail": "priya.gresham19@student.example.org",
+      "enrolmentStatus": "enrolled"
+    },
+    {
+      "feeStatus": "paid",
+      "guardianEmail": "daniel.fairbank@example.net",
+      "enrolmentId": 4062188,
+      "homeAddress": {
+        "city": "Ellisport",
+        "postcode": "33621"
+      },
+      "studentName": "Naomi Fairbank",
+      "dateOfBirth": "03/03/2007",
+      "employerSponsor": null,
+      "campus": "North",
+      "tuitionFee": 9700.0,
+      "updatedAt": "2026-03-25T12:34:00Z",
+      "studentId": 3430366,
+      "enrolledOn": "12/03/2026",
+      "guardianName": "Daniel Fairbank",
+      "courseCode": "CS153",
+      "depositPaid": 0.0,
+      "studentEmail": "naomi.fairbank52@student.example.org",
+      "enrolmentStatus": "completed"
+    },
+    {
+      "feeStatus": "paid",
+      "guardianEmail": "hannah.jessop@example.net",
+      "enrolmentId": 3483188,
+      "homeAddress": {
+        "city": "Calder Rise",
+        "postcode": "57167"
+      },
+      "studentName": "Tobias Jessop",
+      "dateOfBirth": "07/01/2004",
+      "employerSponsor": null,
+      "campus": "Online",
+      "tuitionFee": 7500.0,
+      "updatedAt": "2025-10-17T19:58:00Z",
+      "studentId": 6626957,
+      "enrolledOn": "04/01/2024",
+      "guardianName": "Hannah Jessop",
+      "courseCode": "CS106",
+      "depositPaid": 500.0,
+      "studentEmail": "tobias.jessop46@student.example.org",
+      "enrolmentStatus": "completed"
+    },
+    {
+      "feeStatus": "waived",
+      "guardianEmail": "felix.pembury@example.net",
+      "enrolmentId": 3149636,
+      "homeAddress": {
+        "city": "Brackenford",
+        "postcode": "17413"
+      },
+      "studentName": "Elliot Pembury",
+      "dateOfBirth": "10/03/2007",
+      "employerSponsor": null,
+      "campus": "South",
+      "tuitionFee": 6000.0,
+      "updatedAt": "2026-08-25T10:54:00Z",
+      "studentId": 7805564,
+      "enrolledOn": "07/03/2023",
+      "guardianName": "Felix Pembury",
+      "courseCode": "MAT169",
+      "depositPaid": 500.0,
+      "studentEmail": "elliot.pembury8@student.example.org",
+      "enrolmentStatus": "completed"
+    },
+    {
+      "feeStatus": "paid",
+      "guardianEmail": "caleb.ellery@example.net",
+      "enrolmentId": 3344081,
+      "homeAddress": {
+        "city": "Whitlow",
+        "postcode": "46583"
+      },
+      "studentName": "Elliot Ellery",
+      "dateOfBirth": "12/09/2012",
+      "employerSponsor": null,
+      "campus": "North",
+      "tuitionFee": 7800.0,
+      "updatedAt": "2025-04-20T07:29:00Z",
+      "studentId": 8971855,
+      "enrolledOn": "03/07/2024",
+      "guardianName": "Caleb Ellery",
+      "courseCode": "ENG119",
+      "depositPaid": 0.0,
+      "studentEmail": "elliot.ellery5@student.example.org",
+      "enrolmentStatus": "withdrawn"
+    },
+    {
+      "feeStatus": "unpaid",
+      "guardianEmail": "olivia.pembury@example.net",
+      "enrolmentId": 9756089,
+      "homeAddress": {
+        "city": "Calder Rise",
+        "postcode": "70216"
+      },
+      "studentName": "Ruby Pembury",
+      "dateOfBirth": "08/05/2005",
+      "employerSponsor": null,
+      "campus": "Online",
+      "tuitionFee": 5500.0,
+      "updatedAt": "2026-05-08T20:26:00Z",
+      "studentId": 5795125,
+      "enrolledOn": "07/10/2024",
+      "guardianName": "Olivia Pembury",
+      "courseCode": "BIO331",
+      "depositPaid": 250.0,
+      "studentEmail": "ruby.pembury10@student.example.org",
+      "enrolmentStatus": "enrolled"
+    },
+    {
+      "feeStatus": "waived",
+      "guardianEmail": null,
+      "enrolmentId": 2191287,
+      "homeAddress": {
+        "city": "Calder Rise",
+        "postcode": "99628"
+      },
+      "studentName": "Tobias Northcott",
+      "dateOfBirth": "10/01/2012",
+      "employerSponsor": null,
+      "campus": "South",
+      "tuitionFee": 7900.0,
+      "updatedAt": "2025-03-16T10:54:00Z",
+      "studentId": 2021474,
+      "enrolledOn": "09/10/2026",
+      "guardianName": null,
+      "courseCode": "BIO115",
+      "depositPaid": 250.0,
+      "studentEmail": "tobias.northcott79@student.example.org",
+      "enrolmentStatus": "enrolled"
+    },
+    {
+      "feeStatus": "unpaid",
+      "guardianEmail": null,
+      "enrolmentId": 8346693,
+      "homeAddress": {
+        "city": "Brackenford",
+        "postcode": "51085"
+      },
+      "studentName": "Iris Pembury",
+      "dateOfBirth": "06/11/2007",
+      "employerSponsor": null,
+      "campus": "South",
+      "tuitionFee": 2050.0,
+      "updatedAt": "2026-07-20T15:21:00Z",
+      "studentId": 5316421,
+      "enrolledOn": "03/09/2023",
+      "guardianName": "Olivia Pembury",
+      "courseCode": "ENG376",
+      "depositPaid": 500.0,
+      "studentEmail": "iris.pembury17@student.example.org",
+      "enrolmentStatus": "enrolled"
+    },
+    {
+      "feeStatus": "waived",
+      "guardianEmail": "priya.gresham@example.net",
+      "enrolmentId": 4889982,
+      "homeAddress": {
+        "city": "Thornbury Green",
+        "postcode": "83508"
+      },
+      "studentName": "Marcus Gresham",
+      "dateOfBirth": "10/06/2010",
+      "employerSponsor": null,
+      "campus": "South",
+      "tuitionFee": 3600.0,
+      "updatedAt": "2026-10-13T17:48:00Z",
+      "studentId": 7754144,
+      "enrolledOn": "05/11/2025",
+      "guardianName": "Priya Gresham",
+      "courseCode": "ART205",
+      "depositPaid": 250.0,
+      "studentEmail": "marcus.gresham67@student.example.org",
+      "enrolmentStatus": "waitlisted"
+    },
+    {
+      "feeStatus": "unpaid",
+      "guardianEmail": "tobias.ellery@example.net",
+      "enrolmentId": 7159276,
+      "homeAddress": {
+        "city": "Brackenford",
+        "postcode": "25623"
+      },
+      "studentName": "Caleb Ellery",
+      "dateOfBirth": "11/12/2010",
+      "employerSponsor": null,
+      "campus": "South",
+      "tuitionFee": 6300.0,
+      "updatedAt": "2025-03-01T20:00:00Z",
+      "studentId": 4247675,
+      "enrolledOn": "11/09/2025",
+      "guardianName": "Tobias Ellery",
+      "courseCode": "CS199",
+      "depositPaid": 500.0,
+      "studentEmail": "caleb.ellery38@student.example.org",
+      "enrolmentStatus": "waitlisted"
+    },
+    {
+      "feeStatus": "unpaid",
+      "guardianEmail": null,
+      "enrolmentId": 2675483,
+      "homeAddress": {
+        "city": "Whitlow",
+        "postcode": "73329"
+      },
+      "studentName": "Ruby Holloway",
+      "dateOfBirth": "02/03/2006",
+      "employerSponsor": "Tavrin Holdings",
+      "campus": "North",
+      "tuitionFee": 7150.0,
+      "updatedAt": "2026-12-16T12:35:00Z",
+      "studentId": 5016839,
+      "enrolledOn": "10/01/2023",
+      "guardianName": "Ruby Holloway",
+      "courseCode": "BIO131",
+      "depositPaid": 0.0,
+      "studentEmail": "ruby.holloway96@student.example.org",
+      "enrolmentStatus": "withdrawn"
+    },
+    {
+      "feeStatus": "waived",
+      "guardianEmail": null,
+      "enrolmentId": 4653584,
+      "homeAddress": {
+        "city": "Brackenford",
+        "postcode": "00878"
+      },
+      "studentName": "Elliot Pembury",
+      "dateOfBirth": "01/04/2005",
+      "employerSponsor": null,
+      "campus": "Online",
+      "tuitionFee": 5450.0,
+      "updatedAt": "2026-12-16T17:22:00Z",
+      "studentId": 5977563,
+      "enrolledOn": "09/11/2026",
+      "guardianName": "Caleb Pembury",
+      "courseCode": "BIO369",
+      "depositPaid": 250.0,
+      "studentEmail": "elliot.pembury39@student.example.org",
+      "enrolmentStatus": "withdrawn"
+    },
+    {
+      "feeStatus": "waived",
+      "guardianEmail": "hannah.kettering@example.net",
+      "enrolmentId": 8657166,
+      "homeAddress": {
+        "city": "Thornbury Green",
+        "postcode": "70660"
+      },
+      "studentName": "Grace Kettering",
+      "dateOfBirth": "12/08/2006",
+      "employerSponsor": null,
+      "campus": "South",
+      "tuitionFee": 4200.0,
+      "updatedAt": "2026-09-01T16:01:00Z",
+      "studentId": 1263391,
+      "enrolledOn": "01/10/2025",
+      "guardianName": "Hannah Kettering",
+      "courseCode": "CS339",
+      "depositPaid": 250.0,
+      "studentEmail": "grace.kettering78@student.example.org",
+      "enrolmentStatus": "waitlisted"
+    },
+    {
+      "feeStatus": "partial",
+      "guardianEmail": "grace.marlow@example.net",
+      "enrolmentId": 2067737,
+      "homeAddress": {
+        "city": "Calder Rise",
+        "postcode": "22172"
+      },
+      "studentName": "Grace Marlow",
+      "dateOfBirth": "05/06/2012",
+      "employerSponsor": null,
+      "campus": "South",
+      "tuitionFee": 9600.0,
+      "updatedAt": "2026-06-16T17:09:00Z",
+      "studentId": 5884989,
+      "enrolledOn": "12/12/2023",
+      "guardianName": "Grace Marlow",
+      "courseCode": "CS351",
+      "depositPaid": 250.0,
+      "studentEmail": "grace.marlow32@student.example.org",
+      "enrolmentStatus": "enrolled"
+    },
+    {
+      "feeStatus": "waived",
+      "guardianEmail": "iris.lindqvist@example.net",
+      "enrolmentId": 7359774,
+      "homeAddress": {
+        "city": "Ellisport",
+        "postcode": "62870"
+      },
+      "studentName": "Priya Lindqvist",
+      "dateOfBirth": "08/09/2005",
+      "employerSponsor": "Ostrin Ltd",
+      "campus": "Online",
+      "tuitionFee": 2500.0,
+      "updatedAt": "2026-07-22T08:12:00Z",
+      "studentId": 8023379,
+      "enrolledOn": "02/12/2025",
+      "guardianName": "Iris Lindqvist",
+      "courseCode": "BIO256",
+      "depositPaid": 250.0,
+      "studentEmail": "priya.lindqvist4@student.example.org",
+      "enrolmentStatus": "waitlisted"
+    },
+    {
+      "feeStatus": "partial",
+      "guardianEmail": "elliot.ellery@example.net",
+      "enrolmentId": 2271211,
+      "homeAddress": {
+        "city": "Whitlow",
+        "postcode": "59275"
+      },
+      "studentName": "Owen Ellery",
+      "dateOfBirth": "10/08/2005",
+      "employerSponsor": null,
+      "campus": "South",
+      "tuitionFee": 3550.0,
+      "updatedAt": "2026-02-27T07:59:00Z",
+      "studentId": 1979888,
+      "enrolledOn": "06/03/2026",
+      "guardianName": "Elliot Ellery",
+      "courseCode": "ART228",
+      "depositPaid": 500.0,
+      "studentEmail": "owen.ellery43@student.example.org",
+      "enrolmentStatus": "waitlisted"
+    },
+    {
+      "feeStatus": "partial",
+      "guardianEmail": "grace.pembury@example.net",
+      "enrolmentId": 9756903,
+      "homeAddress": {
+        "city": "Ellisport",
+        "postcode": "70998"
+      },
+      "studentName": "Marcus Pembury",
+      "dateOfBirth": "06/06/2004",
+      "employerSponsor": null,
+      "campus": "South",
+      "tuitionFee": 5800.0,
+      "updatedAt": "2025-12-09T10:35:00Z",
+      "studentId": 5726877,
+      "enrolledOn": "03/06/2025",
+      "guardianName": "Grace Pembury",
+      "courseCode": "ENG314",
+      "depositPaid": 0.0,
+      "studentEmail": "marcus.pembury50@student.example.org",
+      "enrolmentStatus": "withdrawn"
+    },
+    {
+      "feeStatus": "waived",
+      "guardianEmail": "tobias.ashdown@example.net",
+      "enrolmentId": 1061684,
+      "homeAddress": {
+        "city": "Thornbury Green",
+        "postcode": "17763"
+      },
+      "studentName": "Marcus Ashdown",
+      "dateOfBirth": "05/02/2004",
+      "employerSponsor": "Quintara Inc.",
+      "campus": "Online",
+      "tuitionFee": 9050.0,
+      "updatedAt": "2025-07-16T10:02:00Z",
+      "studentId": 8040958,
+      "enrolledOn": "10/01/2023",
+      "guardianName": "Tobias Ashdown",
+      "courseCode": "MAT488",
+      "depositPaid": 0.0,
+      "studentEmail": "marcus.ashdown83@student.example.org",
+      "enrolmentStatus": "enrolled"
+    },
+    {
+      "feeStatus": "partial",
+      "guardianEmail": "ruby.dunmore@example.net",
+      "enrolmentId": 7868302,
+      "homeAddress": {
+        "city": "Calder Rise",
+        "postcode": "79039"
+      },
+      "studentName": "Tobias Dunmore",
+      "dateOfBirth": "09/11/2004",
+      "employerSponsor": null,
+      "campus": "South",
+      "tuitionFee": 7750.0,
+      "updatedAt": "2026-01-26T15:11:00Z",
+      "studentId": 5368590,
+      "enrolledOn": "01/11/2023",
+      "guardianName": "Ruby Dunmore",
+      "courseCode": "BIO356",
+      "depositPaid": 0.0,
+      "studentEmail": "tobias.dunmore56@student.example.org",
+      "enrolmentStatus": "waitlisted"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "student_id": {
+        "type": "integer"
+      },
+      "full_name": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string",
+        "format": "email"
+      },
+      "date_of_birth": {
+        "type": "string",
+        "format": "date"
+      },
+      "enrollment_status": {
+        "type": "string",
+        "enum": [
+          "enrolled",
+          "waitlisted",
+          "withdrawn",
+          "completed"
+        ]
+      },
+      "campus": {
+        "type": "string",
+        "enum": [
+          "north",
+          "south",
+          "online"
+        ]
+      },
+      "city": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "guardian_name": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "national_student_number": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "student_id",
+      "full_name",
+      "email"
+    ]
+  },
+  "groundTruth": {
+    "student_id": {
+      "source": "studentId",
+      "why": "student identifier; enrolmentId identifies one enrolment"
+    },
+    "full_name": {
+      "source": "studentName",
+      "why": "student's name"
+    },
+    "email": {
+      "source": "studentEmail",
+      "why": "student email; guardianEmail is the parent's"
+    },
+    "date_of_birth": {
+      "source": "dateOfBirth",
+      "dateFormat": "MM/DD/YYYY",
+      "why": "birth date; enrolledOn is the enrolment date"
+    },
+    "enrollment_status": {
+      "source": "enrolmentStatus",
+      "why": "enrolment state; feeStatus is the fee payment state"
+    },
+    "campus": {
+      "source": "campus",
+      "why": "campus"
+    },
+    "city": {
+      "source": "homeAddress.city",
+      "why": "home city"
+    },
+    "guardian_name": {
+      "source": "guardianName",
+      "why": "guardian's name, not the student's"
+    },
+    "national_student_number": {
+      "source": null,
+      "why": "not in export"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "studentId",
+        "enrolmentId"
+      ],
+      "correctFor": "student_id"
+    },
+    {
+      "kind": "birth-date-vs-signup-or-start-date",
+      "fields": [
+        "dateOfBirth",
+        "enrolledOn"
+      ],
+      "correctFor": "date_of_birth"
+    },
+    {
+      "kind": "two-email-fields",
+      "fields": [
+        "studentEmail",
+        "guardianEmail"
+      ],
+      "correctFor": "email"
+    },
+    {
+      "kind": "account-status-vs-transaction-status",
+      "fields": [
+        "enrolmentStatus",
+        "feeStatus"
+      ],
+      "correctFor": "enrollment_status"
+    },
+    {
+      "kind": "organization-name-vs-person-name",
+      "fields": [
+        "studentName",
+        "employerSponsor"
+      ],
+      "correctFor": "full_name"
+    },
+    {
+      "kind": "two-person-names",
+      "fields": [
+        "guardianName",
+        "studentName"
+      ],
+      "correctFor": "guardian_name"
+    }
+  ],
+  "sourceConcepts": {
+    "feeStatus": "payment-status",
+    "guardianEmail": "email",
+    "enrolmentId": "transaction-id",
+    "homeAddress.city": "city",
+    "homeAddress.postcode": "postal-code",
+    "studentName": "person-name",
+    "dateOfBirth": "birth-date",
+    "employerSponsor": "organization-name",
+    "campus": "category",
+    "tuitionFee": "amount",
+    "updatedAt": "modified-date",
+    "studentId": "customer-id",
+    "enrolledOn": "transaction-date",
+    "guardianName": "person-name",
+    "courseCode": "product-id",
+    "depositPaid": "amount",
+    "studentEmail": "email",
+    "enrolmentStatus": "order-status"
+  },
+  "destinationConcepts": {
+    "student_id": "customer-id",
+    "full_name": "person-name",
+    "email": "email",
+    "date_of_birth": "birth-date",
+    "enrollment_status": "order-status",
+    "campus": "category",
+    "city": "city",
+    "guardian_name": "person-name",
+    "national_student_number": "other-identifier"
+  }
+}

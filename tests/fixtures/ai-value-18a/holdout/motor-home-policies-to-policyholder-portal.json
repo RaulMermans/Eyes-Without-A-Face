@@ -1,0 +1,729 @@
+{
+  "scenarioId": "motor-home-policies-to-policyholder-portal",
+  "split": "holdout",
+  "industry": "insurance policies",
+  "sourceLanguage": "it",
+  "description": "Heavily abbreviated policy export from a fictional Italian insurance agency system, to be loaded as policyholder portal accounts.",
+  "fictional": true,
+  "records": [
+    {
+      "num_pol": "69252838",
+      "eml_agt": "ilaria.valentini@agenzia.example.net",
+      "st_pag": "insoluto",
+      "dt_dec": "18/03/2020",
+      "tel_cell": "+39 3770188434",
+      "cap": "39774",
+      "nom_cont": "Francesca Vitale",
+      "prm_lrd": 716.38,
+      "tp_pol": "salute",
+      "cod_cli": "70711038",
+      "rag_soc": "Lumeno S.r.l.",
+      "dt_nasc": "09/12/1983",
+      "fax": null,
+      "st_cli": "attivo",
+      "cod_fisc": "TSTFSC83A93Z975X",
+      "eml_pers": "francesca.vitale@example.com",
+      "prm_nt": 584.8,
+      "cod_ag": "19042",
+      "dt_scad": "02/11/2028"
+    },
+    {
+      "num_pol": "55301485",
+      "eml_agt": "francesca.ferraro@agenzia.example.net",
+      "st_pag": "pagato",
+      "dt_dec": "03/05/2015",
+      "tel_cell": "+39 3435237674",
+      "cap": "83593",
+      "nom_cont": "Tommaso Lombardi",
+      "prm_lrd": 1086.37,
+      "tp_pol": "casa",
+      "cod_cli": "46332832",
+      "rag_soc": null,
+      "dt_nasc": "12/05/1971",
+      "fax": null,
+      "st_cli": "attivo",
+      "cod_fisc": "TSTFSC71A59Z995X",
+      "eml_pers": "tommaso.lombardi@example.com",
+      "prm_nt": 886.83,
+      "cod_ag": "57488",
+      "dt_scad": "28/05/2028"
+    },
+    {
+      "num_pol": "53967556",
+      "eml_agt": "simone.zanetti@agenzia.example.net",
+      "st_pag": "insoluto",
+      "dt_dec": "18/11/2021",
+      "tel_cell": "+39 3920276462",
+      "cap": "82924",
+      "nom_cont": "Simone Moretti",
+      "prm_lrd": 1500.36,
+      "tp_pol": "casa",
+      "cod_cli": "35576386",
+      "rag_soc": "Quintara S.p.A.",
+      "dt_nasc": "27/03/1996",
+      "fax": null,
+      "st_cli": "attivo",
+      "cod_fisc": "TSTFSC52A02Z000X",
+      "eml_pers": "simone.moretti@example.com",
+      "prm_nt": 1224.78,
+      "cod_ag": "59254",
+      "dt_scad": "06/06/2026"
+    },
+    {
+      "num_pol": "47046593",
+      "eml_agt": "matteo.colombo@agenzia.example.net",
+      "st_pag": "insoluto",
+      "dt_dec": "24/12/2025",
+      "tel_cell": "+39 3843927472",
+      "cap": "05408",
+      "nom_cont": "Chiara Caruso",
+      "prm_lrd": 2062.48,
+      "tp_pol": "salute",
+      "cod_cli": "55026389",
+      "rag_soc": "Ostrin S.p.A.",
+      "dt_nasc": "27/02/1962",
+      "fax": "+39 0710089051",
+      "st_cli": "attivo",
+      "cod_fisc": "TSTFSC03A18Z090X",
+      "eml_pers": "chiara.caruso@example.com",
+      "prm_nt": 1683.66,
+      "cod_ag": "04253",
+      "dt_scad": "28/02/2026"
+    },
+    {
+      "num_pol": "61866172",
+      "eml_agt": "tommaso.valentini@agenzia.example.net",
+      "st_pag": "insoluto",
+      "dt_dec": "22/08/2018",
+      "tel_cell": "+39 3204158401",
+      "cap": "40391",
+      "nom_cont": "Alessandro Bianchi",
+      "prm_lrd": 634.45,
+      "tp_pol": "casa",
+      "cod_cli": "75018173",
+      "rag_soc": null,
+      "dt_nasc": "07/05/1980",
+      "fax": null,
+      "st_cli": "attivo",
+      "cod_fisc": "TSTFSC61A84Z201X",
+      "eml_pers": "alessandro.bianchi@example.com",
+      "prm_nt": 517.92,
+      "cod_ag": "69256",
+      "dt_scad": "04/12/2027"
+    },
+    {
+      "num_pol": "79449697",
+      "eml_agt": "francesca.galli@agenzia.example.net",
+      "st_pag": "pagato",
+      "dt_dec": "11/08/2017",
+      "tel_cell": "+39 3268007813",
+      "cap": "60171",
+      "nom_cont": "Tommaso Lombardi",
+      "prm_lrd": 1252.83,
+      "tp_pol": "auto",
+      "cod_cli": "91344912",
+      "rag_soc": "Mirandel S.r.l.",
+      "dt_nasc": "13/07/1962",
+      "fax": null,
+      "st_cli": "sospeso",
+      "cod_fisc": "TSTFSC08A56Z038X",
+      "eml_pers": "tommaso.lombardi@example.com",
+      "prm_nt": 1022.72,
+      "cod_ag": "77708",
+      "dt_scad": "26/12/2028"
+    },
+    {
+      "num_pol": "03819834",
+      "eml_agt": "lorenzo.caruso@agenzia.example.net",
+      "st_pag": "in_attesa",
+      "dt_dec": "11/08/2018",
+      "tel_cell": "+39 3267713711",
+      "cap": "66656",
+      "nom_cont": "Tommaso Testa",
+      "prm_lrd": 1990.02,
+      "tp_pol": "vita",
+      "cod_cli": "85168336",
+      "rag_soc": null,
+      "dt_nasc": "06/05/1951",
+      "fax": null,
+      "st_cli": "attivo",
+      "cod_fisc": "TSTFSC28A08Z410X",
+      "eml_pers": "tommaso.testa@example.com",
+      "prm_nt": 1624.51,
+      "cod_ag": "62618",
+      "dt_scad": "15/04/2028"
+    },
+    {
+      "num_pol": "85997220",
+      "eml_agt": "tommaso.santoro@agenzia.example.net",
+      "st_pag": "in_attesa",
+      "dt_dec": "21/01/2022",
+      "tel_cell": "+39 3420741218",
+      "cap": "03179",
+      "nom_cont": "Lorenzo Caruso",
+      "prm_lrd": 2408.97,
+      "tp_pol": "casa",
+      "cod_cli": "06882758",
+      "rag_soc": "Zephra S.r.l.",
+      "dt_nasc": "14/01/1986",
+      "fax": null,
+      "st_cli": "cessato",
+      "cod_fisc": "TSTFSC65A84Z591X",
+      "eml_pers": "lorenzo.caruso@example.com",
+      "prm_nt": 1966.51,
+      "cod_ag": "08093",
+      "dt_scad": "23/12/2027"
+    },
+    {
+      "num_pol": "08969024",
+      "eml_agt": "davide.rinaldi@agenzia.example.net",
+      "st_pag": "pagato",
+      "dt_dec": "02/10/2019",
+      "tel_cell": "+39 3385718401",
+      "cap": "85969",
+      "nom_cont": "Giulia Zanetti",
+      "prm_lrd": 1949.5,
+      "tp_pol": "casa",
+      "cod_cli": "17277822",
+      "rag_soc": null,
+      "dt_nasc": "18/07/1986",
+      "fax": null,
+      "st_cli": "cessato",
+      "cod_fisc": "TSTFSC45A78Z935X",
+      "eml_pers": "giulia.zanetti@example.com",
+      "prm_nt": 1591.43,
+      "cod_ag": "14867",
+      "dt_scad": "04/08/2026"
+    },
+    {
+      "num_pol": "58203606",
+      "eml_agt": "lorenzo.marchetti@agenzia.example.net",
+      "st_pag": "in_attesa",
+      "dt_dec": "04/09/2026",
+      "tel_cell": "+39 3432619434",
+      "cap": "16967",
+      "nom_cont": "Giulia Vitale",
+      "prm_lrd": 1148.41,
+      "tp_pol": "auto",
+      "cod_cli": "66434988",
+      "rag_soc": "Norvel S.r.l.",
+      "dt_nasc": "15/07/2005",
+      "fax": "+39 0274040943",
+      "st_cli": "attivo",
+      "cod_fisc": "TSTFSC62A72Z020X",
+      "eml_pers": "giulia.vitale@example.com",
+      "prm_nt": 937.48,
+      "cod_ag": "37529",
+      "dt_scad": "10/05/2026"
+    },
+    {
+      "num_pol": "85307435",
+      "eml_agt": "federica.zanetti@agenzia.example.net",
+      "st_pag": "pagato",
+      "dt_dec": "26/03/2016",
+      "tel_cell": "+39 3230157731",
+      "cap": "38450",
+      "nom_cont": "Tommaso Marchetti",
+      "prm_lrd": 1929.22,
+      "tp_pol": "vita",
+      "cod_cli": "61211240",
+      "rag_soc": null,
+      "dt_nasc": "15/01/1978",
+      "fax": null,
+      "st_cli": "attivo",
+      "cod_fisc": "TSTFSC21A62Z253X",
+      "eml_pers": "tommaso.marchetti@example.com",
+      "prm_nt": 1574.87,
+      "cod_ag": "29179",
+      "dt_scad": "07/03/2028"
+    },
+    {
+      "num_pol": "70695828",
+      "eml_agt": "francesca.bianchi@agenzia.example.net",
+      "st_pag": "pagato",
+      "dt_dec": "28/06/2017",
+      "tel_cell": "+39 3801104329",
+      "cap": "29181",
+      "nom_cont": "Riccardo Rinaldi",
+      "prm_lrd": 1934.34,
+      "tp_pol": "salute",
+      "cod_cli": "97830954",
+      "rag_soc": null,
+      "dt_nasc": "02/12/1945",
+      "fax": null,
+      "st_cli": "attivo",
+      "cod_fisc": "TSTFSC60A21Z332X",
+      "eml_pers": "riccardo.rinaldi@example.com",
+      "prm_nt": 1579.05,
+      "cod_ag": "03158",
+      "dt_scad": "09/06/2027"
+    },
+    {
+      "num_pol": "23665430",
+      "eml_agt": "riccardo.zanetti@agenzia.example.net",
+      "st_pag": "insoluto",
+      "dt_dec": "17/11/2022",
+      "tel_cell": "+39 3929942160",
+      "cap": "65801",
+      "nom_cont": "Elisa Valentini",
+      "prm_lrd": 1530.32,
+      "tp_pol": "casa",
+      "cod_cli": "70734344",
+      "rag_soc": null,
+      "dt_nasc": "02/10/1968",
+      "fax": null,
+      "st_cli": "attivo",
+      "cod_fisc": "TSTFSC28A98Z002X",
+      "eml_pers": "elisa.valentini@example.com",
+      "prm_nt": 1249.24,
+      "cod_ag": "92615",
+      "dt_scad": "02/01/2026"
+    },
+    {
+      "num_pol": "44520998",
+      "eml_agt": "martina.pellegrini@agenzia.example.net",
+      "st_pag": "pagato",
+      "dt_dec": "06/03/2023",
+      "tel_cell": "+39 3794887130",
+      "cap": "17896",
+      "nom_cont": "Elisa Zanetti",
+      "prm_lrd": 1081.8,
+      "tp_pol": "salute",
+      "cod_cli": "58471083",
+      "rag_soc": "Norvel S.p.A.",
+      "dt_nasc": "14/11/1987",
+      "fax": "+39 0052459156",
+      "st_cli": "attivo",
+      "cod_fisc": "TSTFSC14A07Z611X",
+      "eml_pers": "elisa.zanetti@example.com",
+      "prm_nt": 883.1,
+      "cod_ag": "42621",
+      "dt_scad": "07/10/2027"
+    },
+    {
+      "num_pol": "62202597",
+      "eml_agt": "elisa.bianchi@agenzia.example.net",
+      "st_pag": "insoluto",
+      "dt_dec": "16/04/2018",
+      "tel_cell": "+39 3849794618",
+      "cap": "78030",
+      "nom_cont": "Matteo Valentini",
+      "prm_lrd": 972.36,
+      "tp_pol": "casa",
+      "cod_cli": "01114890",
+      "rag_soc": null,
+      "dt_nasc": "20/01/1957",
+      "fax": null,
+      "st_cli": "attivo",
+      "cod_fisc": "TSTFSC37A43Z304X",
+      "eml_pers": "matteo.valentini@example.com",
+      "prm_nt": 793.76,
+      "cod_ag": "39007",
+      "dt_scad": "07/11/2027"
+    },
+    {
+      "num_pol": "71598520",
+      "eml_agt": "francesca.vitale@agenzia.example.net",
+      "st_pag": "insoluto",
+      "dt_dec": "20/12/2016",
+      "tel_cell": "+39 3884329527",
+      "cap": "90518",
+      "nom_cont": "Giulia Pellegrini",
+      "prm_lrd": 777.27,
+      "tp_pol": "salute",
+      "cod_cli": "76499333",
+      "rag_soc": null,
+      "dt_nasc": "27/07/1988",
+      "fax": null,
+      "st_cli": "attivo",
+      "cod_fisc": "TSTFSC92A03Z951X",
+      "eml_pers": "giulia.pellegrini@example.com",
+      "prm_nt": 634.51,
+      "cod_ag": "11791",
+      "dt_scad": "04/06/2027"
+    },
+    {
+      "num_pol": "30246508",
+      "eml_agt": "davide.bianchi@agenzia.example.net",
+      "st_pag": "insoluto",
+      "dt_dec": "08/08/2015",
+      "tel_cell": "+39 3564345891",
+      "cap": "09029",
+      "nom_cont": "Ilaria Colombo",
+      "prm_lrd": 2586.33,
+      "tp_pol": "vita",
+      "cod_cli": "86762630",
+      "rag_soc": "Strathon S.p.A.",
+      "dt_nasc": "11/04/1955",
+      "fax": "+39 0101433977",
+      "st_cli": "attivo",
+      "cod_fisc": "TSTFSC04A15Z399X",
+      "eml_pers": "ilaria.colombo@example.com",
+      "prm_nt": 2111.29,
+      "cod_ag": "67153",
+      "dt_scad": "10/01/2028"
+    },
+    {
+      "num_pol": "40885570",
+      "eml_agt": "chiara.vitale@agenzia.example.net",
+      "st_pag": "pagato",
+      "dt_dec": "18/05/2020",
+      "tel_cell": "+39 3482036061",
+      "cap": "44475",
+      "nom_cont": "Matteo Marchetti",
+      "prm_lrd": 1485.46,
+      "tp_pol": "casa",
+      "cod_cli": "60106796",
+      "rag_soc": null,
+      "dt_nasc": "24/04/1984",
+      "fax": null,
+      "st_cli": "attivo",
+      "cod_fisc": "TSTFSC85A55Z482X",
+      "eml_pers": "matteo.marchetti@example.com",
+      "prm_nt": 1212.62,
+      "cod_ag": "80032",
+      "dt_scad": "15/09/2026"
+    },
+    {
+      "num_pol": "54057744",
+      "eml_agt": "lorenzo.galli@agenzia.example.net",
+      "st_pag": "in_attesa",
+      "dt_dec": "05/07/2025",
+      "tel_cell": "+39 3209598858",
+      "cap": "27477",
+      "nom_cont": "Elisa Galli",
+      "prm_lrd": 1226.89,
+      "tp_pol": "auto",
+      "cod_cli": "28066599",
+      "rag_soc": null,
+      "dt_nasc": "15/01/1972",
+      "fax": "+39 0317914010",
+      "st_cli": "attivo",
+      "cod_fisc": "TSTFSC63A65Z841X",
+      "eml_pers": "elisa.galli@example.com",
+      "prm_nt": 1001.54,
+      "cod_ag": "08510",
+      "dt_scad": "09/10/2028"
+    },
+    {
+      "num_pol": "91697775",
+      "eml_agt": "ilaria.rinaldi@agenzia.example.net",
+      "st_pag": "pagato",
+      "dt_dec": "07/08/2025",
+      "tel_cell": "+39 3122279141",
+      "cap": "91484",
+      "nom_cont": "Federica Caruso",
+      "prm_lrd": 2108.52,
+      "tp_pol": "casa",
+      "cod_cli": "62233504",
+      "rag_soc": "Halvik S.r.l.",
+      "dt_nasc": "21/08/1999",
+      "fax": null,
+      "st_cli": "sospeso",
+      "cod_fisc": "TSTFSC53A09Z135X",
+      "eml_pers": "federica.caruso@example.com",
+      "prm_nt": 1721.24,
+      "cod_ag": "90174",
+      "dt_scad": "08/05/2027"
+    },
+    {
+      "num_pol": "34367388",
+      "eml_agt": "federica.pellegrini@agenzia.example.net",
+      "st_pag": "insoluto",
+      "dt_dec": "06/07/2018",
+      "tel_cell": "+39 3970216787",
+      "cap": "64550",
+      "nom_cont": "Davide Bianchi",
+      "prm_lrd": 2434.1,
+      "tp_pol": "salute",
+      "cod_cli": "27164757",
+      "rag_soc": "Quintara S.r.l.",
+      "dt_nasc": "11/10/1975",
+      "fax": "+39 0156144347",
+      "st_cli": "cessato",
+      "cod_fisc": "TSTFSC63A75Z610X",
+      "eml_pers": "davide.bianchi@example.com",
+      "prm_nt": 1987.02,
+      "cod_ag": "17270",
+      "dt_scad": "28/06/2028"
+    },
+    {
+      "num_pol": "28562703",
+      "eml_agt": "riccardo.bianchi@agenzia.example.net",
+      "st_pag": "in_attesa",
+      "dt_dec": "02/10/2016",
+      "tel_cell": "+39 3121487410",
+      "cap": "59479",
+      "nom_cont": "Simone Zanetti",
+      "prm_lrd": 839.38,
+      "tp_pol": "vita",
+      "cod_cli": "74694063",
+      "rag_soc": "Tavrin S.r.l.",
+      "dt_nasc": "22/01/1955",
+      "fax": null,
+      "st_cli": "sospeso",
+      "cod_fisc": "TSTFSC68A77Z177X",
+      "eml_pers": "simone.zanetti@example.com",
+      "prm_nt": 685.21,
+      "cod_ag": "99065",
+      "dt_scad": "14/02/2026"
+    },
+    {
+      "num_pol": "29604808",
+      "eml_agt": "lorenzo.santoro@agenzia.example.net",
+      "st_pag": "in_attesa",
+      "dt_dec": "22/06/2016",
+      "tel_cell": "+39 3971015344",
+      "cap": "59240",
+      "nom_cont": "Alessandro Zanetti",
+      "prm_lrd": 1897.07,
+      "tp_pol": "vita",
+      "cod_cli": "52463919",
+      "rag_soc": null,
+      "dt_nasc": "26/11/1963",
+      "fax": null,
+      "st_cli": "attivo",
+      "cod_fisc": "TSTFSC66A07Z816X",
+      "eml_pers": "alessandro.zanetti@example.com",
+      "prm_nt": 1548.63,
+      "cod_ag": "89952",
+      "dt_scad": "09/01/2028"
+    },
+    {
+      "num_pol": "54622072",
+      "eml_agt": "francesca.zanetti@agenzia.example.net",
+      "st_pag": "in_attesa",
+      "dt_dec": "04/04/2016",
+      "tel_cell": "+39 3774009193",
+      "cap": "75836",
+      "nom_cont": "Riccardo Moretti",
+      "prm_lrd": 1196.98,
+      "tp_pol": "auto",
+      "cod_cli": "23687484",
+      "rag_soc": null,
+      "dt_nasc": "23/01/1977",
+      "fax": null,
+      "st_cli": "attivo",
+      "cod_fisc": "TSTFSC20A95Z512X",
+      "eml_pers": "riccardo.moretti@example.com",
+      "prm_nt": 977.13,
+      "cod_ag": "80600",
+      "dt_scad": "14/11/2026"
+    },
+    {
+      "num_pol": "75375895",
+      "eml_agt": "matteo.ferraro@agenzia.example.net",
+      "st_pag": "insoluto",
+      "dt_dec": "03/01/2024",
+      "tel_cell": "+39 3084143272",
+      "cap": "80705",
+      "nom_cont": "Martina Colombo",
+      "prm_lrd": 2474.49,
+      "tp_pol": "casa",
+      "cod_cli": "54720114",
+      "rag_soc": null,
+      "dt_nasc": "18/07/1986",
+      "fax": "+39 0778203245",
+      "st_cli": "attivo",
+      "cod_fisc": "TSTFSC06A43Z817X",
+      "eml_pers": "martina.colombo@example.com",
+      "prm_nt": 2019.99,
+      "cod_ag": "08320",
+      "dt_scad": "06/07/2026"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "customer_code": {
+        "type": "string"
+      },
+      "full_name": {
+        "type": "string"
+      },
+      "date_of_birth": {
+        "type": "string",
+        "format": "date"
+      },
+      "email": {
+        "type": "string",
+        "format": "email"
+      },
+      "mobile_phone": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "postal_code": {
+        "type": "string"
+      },
+      "customer_status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "suspended",
+          "terminated"
+        ]
+      },
+      "primary_policy_type": {
+        "type": "string",
+        "enum": [
+          "auto",
+          "home",
+          "life",
+          "health"
+        ]
+      },
+      "tax_id": {
+        "type": "string"
+      },
+      "preferred_contact_time": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "customer_code",
+      "full_name",
+      "email"
+    ]
+  },
+  "groundTruth": {
+    "customer_code": {
+      "source": "cod_cli",
+      "why": "codice cliente; num_pol is the policy number"
+    },
+    "full_name": {
+      "source": "nom_cont",
+      "why": "contraente (policyholder) name; rag_soc is a company name"
+    },
+    "date_of_birth": {
+      "source": "dt_nasc",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "data di nascita; dt_dec is policy start (decorrenza)"
+    },
+    "email": {
+      "source": "eml_pers",
+      "why": "personal email; eml_agt is the agent"
+    },
+    "mobile_phone": {
+      "source": "tel_cell",
+      "why": "cellulare; fax is fax"
+    },
+    "postal_code": {
+      "source": "cap",
+      "why": "CAP = postal code; cod_ag is the agency code"
+    },
+    "customer_status": {
+      "source": "st_cli",
+      "why": "customer state; st_pag is premium payment state"
+    },
+    "primary_policy_type": {
+      "source": "tp_pol",
+      "why": "tipo polizza (casa=home, vita=life, salute=health)"
+    },
+    "tax_id": {
+      "source": "cod_fisc",
+      "why": "codice fiscale"
+    },
+    "preferred_contact_time": {
+      "source": null,
+      "why": "not in export"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "cod_cli",
+        "num_pol"
+      ],
+      "correctFor": "customer_code"
+    },
+    {
+      "kind": "birth-date-vs-signup-or-start-date",
+      "fields": [
+        "dt_nasc",
+        "dt_dec"
+      ],
+      "correctFor": "date_of_birth"
+    },
+    {
+      "kind": "organization-name-vs-person-name",
+      "fields": [
+        "nom_cont",
+        "rag_soc"
+      ],
+      "correctFor": "full_name"
+    },
+    {
+      "kind": "account-status-vs-transaction-status",
+      "fields": [
+        "st_cli",
+        "st_pag"
+      ],
+      "correctFor": "customer_status"
+    },
+    {
+      "kind": "two-email-fields",
+      "fields": [
+        "eml_pers",
+        "eml_agt"
+      ],
+      "correctFor": "email"
+    },
+    {
+      "kind": "phone-or-code-confusion",
+      "fields": [
+        "tel_cell",
+        "fax"
+      ],
+      "correctFor": "mobile_phone"
+    },
+    {
+      "kind": "phone-or-code-confusion",
+      "fields": [
+        "cap",
+        "cod_ag"
+      ],
+      "correctFor": "postal_code"
+    }
+  ],
+  "sourceConcepts": {
+    "num_pol": "transaction-id",
+    "eml_agt": "email",
+    "st_pag": "payment-status",
+    "dt_dec": "start-date",
+    "tel_cell": "phone",
+    "cap": "postal-code",
+    "nom_cont": "person-name",
+    "prm_lrd": "amount",
+    "tp_pol": "category",
+    "cod_cli": "customer-id",
+    "rag_soc": "organization-name",
+    "dt_nasc": "birth-date",
+    "fax": "phone",
+    "st_cli": "account-status",
+    "cod_fisc": "other-identifier",
+    "eml_pers": "email",
+    "prm_nt": "amount",
+    "cod_ag": "other-identifier",
+    "dt_scad": "end-date"
+  },
+  "destinationConcepts": {
+    "customer_code": "customer-id",
+    "full_name": "person-name",
+    "date_of_birth": "birth-date",
+    "email": "email",
+    "mobile_phone": "phone",
+    "postal_code": "postal-code",
+    "customer_status": "account-status",
+    "primary_policy_type": "category",
+    "tax_id": "other-identifier",
+    "preferred_contact_time": "other"
+  }
+}

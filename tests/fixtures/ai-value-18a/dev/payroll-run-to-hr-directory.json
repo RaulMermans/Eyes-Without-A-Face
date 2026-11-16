@@ -1,0 +1,668 @@
+{
+  "scenarioId": "payroll-run-to-hr-directory",
+  "split": "dev",
+  "industry": "HR/payroll",
+  "sourceLanguage": "nl",
+  "description": "Payroll-run export from a fictional Dutch payroll bureau, to be loaded into an HR employee directory.",
+  "fictional": true,
+  "records": [
+    {
+      "loonstrookNummer": 207306,
+      "afdeling": "Financiën",
+      "priveEmail": "anouk.vermeulen@example.net",
+      "adres": {
+        "postcode": "9383 ET",
+        "woonplaats": "Heerewaarde"
+      },
+      "volledigeNaam": "Anouk Vermeulen",
+      "betalingStatus": "geweigerd",
+      "geboorteDatum": "10/06/1971",
+      "brutoLoon": 2639.46,
+      "werkEmail": "anouk.vermeulen@corp.example.com",
+      "leidinggevende": "Sven van Dijk",
+      "personeelsNummer": 650510,
+      "dienstverbandStatus": "actief",
+      "nettoLoon": 1794.83,
+      "inDienstDatum": "05/05/2011",
+      "iban": "NL00TEST0875101985",
+      "telefoonMobiel": null,
+      "laatstGewijzigd": "08/08/2025"
+    },
+    {
+      "loonstrookNummer": 698145,
+      "afdeling": "Financiën",
+      "priveEmail": "ruben.bos@example.net",
+      "adres": {
+        "postcode": "1401 RA",
+        "woonplaats": "Heerewaarde"
+      },
+      "volledigeNaam": "Ruben Bos",
+      "betalingStatus": "betaald",
+      "geboorteDatum": "06/04/1981",
+      "brutoLoon": 3436.59,
+      "werkEmail": "ruben.bos@corp.example.com",
+      "leidinggevende": "Anouk Hendriks",
+      "personeelsNummer": 859085,
+      "dienstverbandStatus": "actief",
+      "nettoLoon": 2336.88,
+      "inDienstDatum": "09/12/2011",
+      "iban": "NL00TEST0107491685",
+      "telefoonMobiel": "+31 6 65594613",
+      "laatstGewijzigd": "06/04/2026"
+    },
+    {
+      "loonstrookNummer": 413553,
+      "afdeling": "Financiën",
+      "priveEmail": "eline.bakker@example.net",
+      "adres": {
+        "postcode": "3486 LC",
+        "woonplaats": "Lisseloo"
+      },
+      "volledigeNaam": "Eline Bakker",
+      "betalingStatus": "betaald",
+      "geboorteDatum": "09/04/1990",
+      "brutoLoon": 5128.94,
+      "werkEmail": "eline.bakker@corp.example.com",
+      "leidinggevende": "Anouk Bos",
+      "personeelsNummer": 685355,
+      "dienstverbandStatus": "actief",
+      "nettoLoon": 3487.68,
+      "inDienstDatum": "12/03/2010",
+      "iban": "NL00TEST0366921031",
+      "telefoonMobiel": "+31 6 14047588",
+      "laatstGewijzigd": "06/03/2026"
+    },
+    {
+      "loonstrookNummer": 646503,
+      "afdeling": "Financiën",
+      "priveEmail": "anouk.vanleeuwen@example.net",
+      "adres": {
+        "postcode": "3925 NG",
+        "woonplaats": "Zandwijk"
+      },
+      "volledigeNaam": "Anouk van Leeuwen",
+      "betalingStatus": "in_behandeling",
+      "geboorteDatum": "11/02/1994",
+      "brutoLoon": 4903.43,
+      "werkEmail": "anouk.vanleeuwen@corp.example.com",
+      "leidinggevende": "Maaike Bos",
+      "personeelsNummer": 121950,
+      "dienstverbandStatus": "actief",
+      "nettoLoon": 3334.33,
+      "inDienstDatum": "01/07/2015",
+      "iban": "NL00TEST0852634287",
+      "telefoonMobiel": "+31 6 26129187",
+      "laatstGewijzigd": "04/02/2025"
+    },
+    {
+      "loonstrookNummer": 544815,
+      "afdeling": "Verkoop",
+      "priveEmail": "maaike.jansen@example.net",
+      "adres": {
+        "postcode": "3529 GE",
+        "woonplaats": "Lisseloo"
+      },
+      "volledigeNaam": "Maaike Jansen",
+      "betalingStatus": "betaald",
+      "geboorteDatum": "09/08/1960",
+      "brutoLoon": 3988.68,
+      "werkEmail": "maaike.jansen@corp.example.com",
+      "leidinggevende": "Daan van Dijk",
+      "personeelsNummer": 344142,
+      "dienstverbandStatus": "actief",
+      "nettoLoon": 2712.3,
+      "inDienstDatum": "06/06/2020",
+      "iban": "NL00TEST0016958429",
+      "telefoonMobiel": "+31 6 26488709",
+      "laatstGewijzigd": "05/04/2026"
+    },
+    {
+      "loonstrookNummer": 170750,
+      "afdeling": "ICT",
+      "priveEmail": "femke.visser@example.net",
+      "adres": {
+        "postcode": "5309 DM",
+        "woonplaats": "Ommerdam"
+      },
+      "volledigeNaam": "Femke Visser",
+      "betalingStatus": "geweigerd",
+      "geboorteDatum": "06/02/1968",
+      "brutoLoon": 4810.84,
+      "werkEmail": "femke.visser@corp.example.com",
+      "leidinggevende": "Anouk van Dijk",
+      "personeelsNummer": 176735,
+      "dienstverbandStatus": "proeftijd",
+      "nettoLoon": 3271.37,
+      "inDienstDatum": "10/09/2020",
+      "iban": "NL00TEST0342425445",
+      "telefoonMobiel": "+31 6 43413648",
+      "laatstGewijzigd": "07/10/2026"
+    },
+    {
+      "loonstrookNummer": 197755,
+      "afdeling": "ICT",
+      "priveEmail": "daan.bakker@example.net",
+      "adres": {
+        "postcode": "5681 RD",
+        "woonplaats": "Zandwijk"
+      },
+      "volledigeNaam": "Daan Bakker",
+      "betalingStatus": "in_behandeling",
+      "geboorteDatum": "06/04/2000",
+      "brutoLoon": 4921.68,
+      "werkEmail": "daan.bakker@corp.example.com",
+      "leidinggevende": "Anouk Bakker",
+      "personeelsNummer": 275732,
+      "dienstverbandStatus": "uit_dienst",
+      "nettoLoon": 3346.74,
+      "inDienstDatum": "07/02/2021",
+      "iban": "NL00TEST0391387388",
+      "telefoonMobiel": "+31 6 56360409",
+      "laatstGewijzigd": "07/12/2026"
+    },
+    {
+      "loonstrookNummer": 996837,
+      "afdeling": "Verkoop",
+      "priveEmail": "maaike.mulder@example.net",
+      "adres": {
+        "postcode": "7448 RM",
+        "woonplaats": "Lisseloo"
+      },
+      "volledigeNaam": "Maaike Mulder",
+      "betalingStatus": "geweigerd",
+      "geboorteDatum": "09/10/1992",
+      "brutoLoon": 4189.16,
+      "werkEmail": "maaike.mulder@corp.example.com",
+      "leidinggevende": "Wouter de Boer",
+      "personeelsNummer": 913435,
+      "dienstverbandStatus": "actief",
+      "nettoLoon": 2848.63,
+      "inDienstDatum": "06/12/2013",
+      "iban": "NL00TEST0197511420",
+      "telefoonMobiel": "+31 6 52047436",
+      "laatstGewijzigd": "07/10/2026"
+    },
+    {
+      "loonstrookNummer": 881936,
+      "afdeling": "ICT",
+      "priveEmail": "sven.jansen@example.net",
+      "adres": {
+        "postcode": "7522 BK",
+        "woonplaats": "Brakkenburg"
+      },
+      "volledigeNaam": "Sven Jansen",
+      "betalingStatus": "betaald",
+      "geboorteDatum": "10/03/1968",
+      "brutoLoon": 3464.63,
+      "werkEmail": "sven.jansen@corp.example.com",
+      "leidinggevende": "Noor van Dijk",
+      "personeelsNummer": 349932,
+      "dienstverbandStatus": "actief",
+      "nettoLoon": 2355.95,
+      "inDienstDatum": "09/12/2018",
+      "iban": "NL00TEST0339527231",
+      "telefoonMobiel": "+31 6 54691677",
+      "laatstGewijzigd": "09/09/2026"
+    },
+    {
+      "loonstrookNummer": 217958,
+      "afdeling": "ICT",
+      "priveEmail": "anouk.dekker@example.net",
+      "adres": {
+        "postcode": "3859 LK",
+        "woonplaats": "Heerewaarde"
+      },
+      "volledigeNaam": "Anouk Dekker",
+      "betalingStatus": "geweigerd",
+      "geboorteDatum": "06/11/1999",
+      "brutoLoon": 4602.58,
+      "werkEmail": "anouk.dekker@corp.example.com",
+      "leidinggevende": "Eline de Boer",
+      "personeelsNummer": 848983,
+      "dienstverbandStatus": "actief",
+      "nettoLoon": 3129.75,
+      "inDienstDatum": "04/09/2017",
+      "iban": "NL00TEST0093343602",
+      "telefoonMobiel": "+31 6 02469264",
+      "laatstGewijzigd": "03/09/2025"
+    },
+    {
+      "loonstrookNummer": 259023,
+      "afdeling": "ICT",
+      "priveEmail": "noor.mulder@example.net",
+      "adres": {
+        "postcode": "8647 HE",
+        "woonplaats": "Heerewaarde"
+      },
+      "volledigeNaam": "Noor Mulder",
+      "betalingStatus": "in_behandeling",
+      "geboorteDatum": "10/05/1974",
+      "brutoLoon": 3704.98,
+      "werkEmail": "noor.mulder@corp.example.com",
+      "leidinggevende": "Daan Hendriks",
+      "personeelsNummer": 549021,
+      "dienstverbandStatus": "actief",
+      "nettoLoon": 2519.39,
+      "inDienstDatum": "03/12/2020",
+      "iban": "NL00TEST0160555657",
+      "telefoonMobiel": "+31 6 75288804",
+      "laatstGewijzigd": "03/11/2025"
+    },
+    {
+      "loonstrookNummer": 257350,
+      "afdeling": "ICT",
+      "priveEmail": "wouter.dekker@example.net",
+      "adres": {
+        "postcode": "7626 EP",
+        "woonplaats": "Zandwijk"
+      },
+      "volledigeNaam": "Wouter Dekker",
+      "betalingStatus": "in_behandeling",
+      "geboorteDatum": "02/05/1971",
+      "brutoLoon": 4043.24,
+      "werkEmail": "wouter.dekker@corp.example.com",
+      "leidinggevende": "Thijs Kuiper",
+      "personeelsNummer": 411982,
+      "dienstverbandStatus": "actief",
+      "nettoLoon": 2749.4,
+      "inDienstDatum": "09/02/2019",
+      "iban": "NL00TEST0332814912",
+      "telefoonMobiel": null,
+      "laatstGewijzigd": "05/03/2026"
+    },
+    {
+      "loonstrookNummer": 390886,
+      "afdeling": "ICT",
+      "priveEmail": "lieke.vanleeuwen@example.net",
+      "adres": {
+        "postcode": "2778 KM",
+        "woonplaats": "Brakkenburg"
+      },
+      "volledigeNaam": "Lieke van Leeuwen",
+      "betalingStatus": "betaald",
+      "geboorteDatum": "01/11/1993",
+      "brutoLoon": 4415.98,
+      "werkEmail": "lieke.vanleeuwen@corp.example.com",
+      "leidinggevende": "Wouter van Leeuwen",
+      "personeelsNummer": 107070,
+      "dienstverbandStatus": "uit_dienst",
+      "nettoLoon": 3002.87,
+      "inDienstDatum": "01/09/2021",
+      "iban": "NL00TEST0358713972",
+      "telefoonMobiel": null,
+      "laatstGewijzigd": "05/03/2026"
+    },
+    {
+      "loonstrookNummer": 407604,
+      "afdeling": "Financiën",
+      "priveEmail": "ruben.vermeulen@example.net",
+      "adres": {
+        "postcode": "3724 TG",
+        "woonplaats": "Zandwijk"
+      },
+      "volledigeNaam": "Ruben Vermeulen",
+      "betalingStatus": "betaald",
+      "geboorteDatum": "08/07/1964",
+      "brutoLoon": 2572.81,
+      "werkEmail": "ruben.vermeulen@corp.example.com",
+      "leidinggevende": "Bram Brouwer",
+      "personeelsNummer": 266776,
+      "dienstverbandStatus": "verlof",
+      "nettoLoon": 1749.51,
+      "inDienstDatum": "04/08/2013",
+      "iban": "NL00TEST0587736503",
+      "telefoonMobiel": "+31 6 49662091",
+      "laatstGewijzigd": "10/11/2025"
+    },
+    {
+      "loonstrookNummer": 510576,
+      "afdeling": "Logistiek",
+      "priveEmail": "eline.bos@example.net",
+      "adres": {
+        "postcode": "4406 FK",
+        "woonplaats": "Zandwijk"
+      },
+      "volledigeNaam": "Eline Bos",
+      "betalingStatus": "geweigerd",
+      "geboorteDatum": "11/02/1999",
+      "brutoLoon": 5810.25,
+      "werkEmail": "eline.bos@corp.example.com",
+      "leidinggevende": "Wouter Brouwer",
+      "personeelsNummer": 244683,
+      "dienstverbandStatus": "proeftijd",
+      "nettoLoon": 3950.97,
+      "inDienstDatum": "04/01/2022",
+      "iban": "NL00TEST0541778201",
+      "telefoonMobiel": "+31 6 02257904",
+      "laatstGewijzigd": "04/08/2026"
+    },
+    {
+      "loonstrookNummer": 841572,
+      "afdeling": "Logistiek",
+      "priveEmail": "femke.vanleeuwen@example.net",
+      "adres": {
+        "postcode": "6902 CN",
+        "woonplaats": "Lisseloo"
+      },
+      "volledigeNaam": "Femke van Leeuwen",
+      "betalingStatus": "geweigerd",
+      "geboorteDatum": "04/09/1965",
+      "brutoLoon": 3824.63,
+      "werkEmail": "femke.vanleeuwen@corp.example.com",
+      "leidinggevende": "Femke Bos",
+      "personeelsNummer": 572524,
+      "dienstverbandStatus": "verlof",
+      "nettoLoon": 2600.75,
+      "inDienstDatum": "01/06/2013",
+      "iban": "NL00TEST0781586808",
+      "telefoonMobiel": "+31 6 00137975",
+      "laatstGewijzigd": "04/11/2026"
+    },
+    {
+      "loonstrookNummer": 815274,
+      "afdeling": "HR",
+      "priveEmail": "ruben.bakker@example.net",
+      "adres": {
+        "postcode": "4396 PC",
+        "woonplaats": "Brakkenburg"
+      },
+      "volledigeNaam": "Ruben Bakker",
+      "betalingStatus": "geweigerd",
+      "geboorteDatum": "11/07/1972",
+      "brutoLoon": 4710.44,
+      "werkEmail": "ruben.bakker@corp.example.com",
+      "leidinggevende": "Maaike Hendriks",
+      "personeelsNummer": 649778,
+      "dienstverbandStatus": "verlof",
+      "nettoLoon": 3203.1,
+      "inDienstDatum": "03/09/2020",
+      "iban": "NL00TEST0578893963",
+      "telefoonMobiel": "+31 6 73899078",
+      "laatstGewijzigd": "07/01/2026"
+    },
+    {
+      "loonstrookNummer": 590052,
+      "afdeling": "Financiën",
+      "priveEmail": "anouk.visser@example.net",
+      "adres": {
+        "postcode": "4822 AP",
+        "woonplaats": "Brakkenburg"
+      },
+      "volledigeNaam": "Anouk Visser",
+      "betalingStatus": "geweigerd",
+      "geboorteDatum": "05/02/1992",
+      "brutoLoon": 4007.59,
+      "werkEmail": "anouk.visser@corp.example.com",
+      "leidinggevende": "Femke Smit",
+      "personeelsNummer": 114083,
+      "dienstverbandStatus": "actief",
+      "nettoLoon": 2725.16,
+      "inDienstDatum": "04/07/2017",
+      "iban": "NL00TEST0620339913",
+      "telefoonMobiel": "+31 6 00520345",
+      "laatstGewijzigd": "03/04/2025"
+    },
+    {
+      "loonstrookNummer": 282026,
+      "afdeling": "Financiën",
+      "priveEmail": "ilse.mulder@example.net",
+      "adres": {
+        "postcode": "7088 FM",
+        "woonplaats": "Brakkenburg"
+      },
+      "volledigeNaam": "Ilse Mulder",
+      "betalingStatus": "geweigerd",
+      "geboorteDatum": "06/02/1977",
+      "brutoLoon": 2551.77,
+      "werkEmail": "ilse.mulder@corp.example.com",
+      "leidinggevende": "Ilse Mulder",
+      "personeelsNummer": 163466,
+      "dienstverbandStatus": "actief",
+      "nettoLoon": 1735.2,
+      "inDienstDatum": "02/12/2017",
+      "iban": "NL00TEST0544368576",
+      "telefoonMobiel": "+31 6 44282624",
+      "laatstGewijzigd": "12/11/2025"
+    },
+    {
+      "loonstrookNummer": 287403,
+      "afdeling": "ICT",
+      "priveEmail": "ilse.devries@example.net",
+      "adres": {
+        "postcode": "5393 KC",
+        "woonplaats": "Zandwijk"
+      },
+      "volledigeNaam": "Ilse de Vries",
+      "betalingStatus": "geweigerd",
+      "geboorteDatum": "08/09/1982",
+      "brutoLoon": 2671.96,
+      "werkEmail": "ilse.devries@corp.example.com",
+      "leidinggevende": "Noor Smit",
+      "personeelsNummer": 108693,
+      "dienstverbandStatus": "actief",
+      "nettoLoon": 1816.93,
+      "inDienstDatum": "08/08/2017",
+      "iban": "NL00TEST0459403170",
+      "telefoonMobiel": "+31 6 90712829",
+      "laatstGewijzigd": "02/07/2026"
+    },
+    {
+      "loonstrookNummer": 583005,
+      "afdeling": "HR",
+      "priveEmail": "ilse.vermeulen@example.net",
+      "adres": {
+        "postcode": "4363 CK",
+        "woonplaats": "Veldhoven-Noord"
+      },
+      "volledigeNaam": "Ilse Vermeulen",
+      "betalingStatus": "in_behandeling",
+      "geboorteDatum": "06/11/1994",
+      "brutoLoon": 3418.2,
+      "werkEmail": "ilse.vermeulen@corp.example.com",
+      "leidinggevende": "Noor Mulder",
+      "personeelsNummer": 192770,
+      "dienstverbandStatus": "actief",
+      "nettoLoon": 2324.38,
+      "inDienstDatum": "04/02/2023",
+      "iban": "NL00TEST0525388618",
+      "telefoonMobiel": "+31 6 80667184",
+      "laatstGewijzigd": "11/02/2026"
+    },
+    {
+      "loonstrookNummer": 225547,
+      "afdeling": "Verkoop",
+      "priveEmail": "noor.dekker@example.net",
+      "adres": {
+        "postcode": "2776 RA",
+        "woonplaats": "Lisseloo"
+      },
+      "volledigeNaam": "Noor Dekker",
+      "betalingStatus": "in_behandeling",
+      "geboorteDatum": "11/09/1990",
+      "brutoLoon": 5518.36,
+      "werkEmail": "noor.dekker@corp.example.com",
+      "leidinggevende": "Joost Dekker",
+      "personeelsNummer": 673421,
+      "dienstverbandStatus": "actief",
+      "nettoLoon": 3752.48,
+      "inDienstDatum": "06/05/2025",
+      "iban": "NL00TEST0139321728",
+      "telefoonMobiel": "+31 6 35928086",
+      "laatstGewijzigd": "01/02/2025"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "employee_id": {
+        "type": "integer"
+      },
+      "full_name": {
+        "type": "string"
+      },
+      "work_email": {
+        "type": "string",
+        "format": "email"
+      },
+      "hire_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "department": {
+        "type": "string",
+        "enum": [
+          "finance",
+          "logistics",
+          "sales",
+          "it",
+          "hr"
+        ]
+      },
+      "employment_status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "probation",
+          "on_leave",
+          "terminated"
+        ]
+      },
+      "manager_name": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "job_title": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "city": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "employee_id",
+      "full_name",
+      "work_email"
+    ]
+  },
+  "groundTruth": {
+    "employee_id": {
+      "source": "personeelsNummer",
+      "why": "personnel number; loonstrookNummer is the payslip number"
+    },
+    "full_name": {
+      "source": "volledigeNaam",
+      "why": "employee's own name; leidinggevende is the manager"
+    },
+    "work_email": {
+      "source": "werkEmail",
+      "why": "work email; priveEmail is personal"
+    },
+    "hire_date": {
+      "source": "inDienstDatum",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "in dienst = employment start; geboorteDatum is birth date"
+    },
+    "department": {
+      "source": "afdeling",
+      "why": "afdeling = department"
+    },
+    "employment_status": {
+      "source": "dienstverbandStatus",
+      "why": "employment state; betalingStatus is the payslip payment state"
+    },
+    "manager_name": {
+      "source": "leidinggevende",
+      "why": "leidinggevende = manager"
+    },
+    "job_title": {
+      "source": null,
+      "why": "no job title in the payroll export"
+    },
+    "city": {
+      "source": "adres.woonplaats",
+      "why": "woonplaats = home town"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "personeelsNummer",
+        "loonstrookNummer"
+      ],
+      "correctFor": "employee_id"
+    },
+    {
+      "kind": "birth-date-vs-signup-or-start-date",
+      "fields": [
+        "inDienstDatum",
+        "geboorteDatum"
+      ],
+      "correctFor": "hire_date"
+    },
+    {
+      "kind": "two-email-fields",
+      "fields": [
+        "werkEmail",
+        "priveEmail"
+      ],
+      "correctFor": "work_email"
+    },
+    {
+      "kind": "account-status-vs-transaction-status",
+      "fields": [
+        "dienstverbandStatus",
+        "betalingStatus"
+      ],
+      "correctFor": "employment_status"
+    },
+    {
+      "kind": "two-person-names",
+      "fields": [
+        "volledigeNaam",
+        "leidinggevende"
+      ],
+      "correctFor": "full_name"
+    }
+  ],
+  "sourceConcepts": {
+    "loonstrookNummer": "transaction-id",
+    "afdeling": "category",
+    "priveEmail": "email",
+    "adres.postcode": "postal-code",
+    "adres.woonplaats": "city",
+    "volledigeNaam": "person-name",
+    "betalingStatus": "payment-status",
+    "geboorteDatum": "birth-date",
+    "brutoLoon": "amount",
+    "werkEmail": "email",
+    "leidinggevende": "person-name",
+    "personeelsNummer": "employee-id",
+    "dienstverbandStatus": "account-status",
+    "nettoLoon": "amount",
+    "inDienstDatum": "start-date",
+    "iban": "other-identifier",
+    "telefoonMobiel": "phone",
+    "laatstGewijzigd": "modified-date"
+  },
+  "destinationConcepts": {
+    "employee_id": "employee-id",
+    "full_name": "person-name",
+    "work_email": "email",
+    "hire_date": "start-date",
+    "department": "category",
+    "employment_status": "account-status",
+    "manager_name": "person-name",
+    "job_title": "job-title",
+    "city": "city"
+  }
+}
