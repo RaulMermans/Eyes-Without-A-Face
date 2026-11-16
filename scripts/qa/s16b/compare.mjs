@@ -13,9 +13,11 @@ import path from "node:path";
 
 const arg = (name, fallback) => (process.argv.includes(`--${name}`) ? process.argv[process.argv.indexOf(`--${name}`) + 1] : fallback);
 const AFTER_RUN = arg("after", "local-rc-ed92f2a");
+/** Folder holding results-<after>.json; before-after.{json,md} are written there too (Sprint 16C: production evidence). */
+const AFTER_DIR = arg("evidence", "docs/evidence/sprint-16b");
 const ROOT = "qa-artifacts/sprint-16a";
 const before = JSON.parse(fs.readFileSync("docs/evidence/sprint-16a/results-production.json", "utf8")).results;
-const after = JSON.parse(fs.readFileSync(`docs/evidence/sprint-16b/results-${AFTER_RUN}.json`, "utf8")).results;
+const after = JSON.parse(fs.readFileSync(path.join(AFTER_DIR, `results-${AFTER_RUN}.json`), "utf8")).results;
 const scorecard16a = JSON.parse(fs.readFileSync("docs/evidence/sprint-16a/scorecard.json", "utf8"));
 
 /**
@@ -120,7 +122,7 @@ const leaks = (list) =>
 const metrics = {
   inputs: "same 62 generated cases (dataset-manifest.json of Sprint 16A), same canaries, same oracle, same verifier",
   before: "Sprint 16A, deployed c4a246c (production)",
-  after: `${AFTER_RUN} (LOCAL release candidate — not production evidence)`,
+  after: AFTER_RUN.startsWith("production") ? `${AFTER_RUN} (PRODUCTION)` : `${AFTER_RUN} (LOCAL release candidate — not production evidence)`,
   statusTotals: {
     before: Object.values(BEFORE_FINAL).reduce((acc, s) => ((acc[s] = (acc[s] ?? 0) + 1), acc), {}),
     after: rows.reduce((acc, r) => ((acc[r.after] = (acc[r.after] ?? 0) + 1), acc), {}),
@@ -175,7 +177,7 @@ const metrics = {
   },
   scorecard16a: { carefulRecords: scorecard16a.coreReliability.carefulUser },
 };
-fs.writeFileSync("docs/evidence/sprint-16b/before-after.json", `${JSON.stringify({ metrics, rows }, null, 2)}\n`);
+fs.writeFileSync(path.join(AFTER_DIR, "before-after.json"), `${JSON.stringify({ metrics, rows }, null, 2)}\n`);
 const md = [
   `# Sprint 16B — before / after (${AFTER_RUN})`,
   "",
@@ -186,5 +188,5 @@ const md = [
   ...rows.map((r) => `| ${r.id} | ${r.before} | **${r.after}** | ${r.beforeHeadline ?? "—"} → ${r.afterHeadline ?? "—"} | ${r.beforeExport ?? "—"} → ${r.afterExport ?? "—"} | ${r.beforeWrong ?? "—"} → ${r.afterWrong ?? "—"} | ${r.note ?? ""} |`),
   "",
 ];
-fs.writeFileSync("docs/evidence/sprint-16b/before-after.md", md.join("\n"));
+fs.writeFileSync(path.join(AFTER_DIR, "before-after.md"), md.join("\n"));
 console.log(JSON.stringify(metrics, null, 1));

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Shipment tracking record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "shipmentId",
+    "carrier",
+    "deliveryState",
+    "destinationCountry",
+    "recipientEmail",
+    "shippedAt"
+  ],
+  "properties": {
+    "shipmentId": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The shipment's own reference (not the label number)."
+    },
+    "carrier": {
+      "type": "string",
+      "minLength": 1
+    },
+    "deliveryState": {
+      "enum": [
+        "created",
+        "in_transit",
+        "delivered",
+        "exception"
+      ]
+    },
+    "destinationCountry": {
+      "enum": [
+        "DE",
+        "ES",
+        "NL",
+        "FR"
+      ]
+    },
+    "recipientEmail": {
+      "type": "string",
+      "format": "email"
+    },
+    "shippedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the shipment left the warehouse (not the last scan)."
+    }
+  }
+}

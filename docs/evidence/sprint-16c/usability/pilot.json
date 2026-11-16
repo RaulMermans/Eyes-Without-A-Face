@@ -1,0 +1,18 @@
+{
+  "kind": "AGENT_DRY_RUN_NOT_A_PARTICIPANT",
+  "traps": {
+    "shipmentId": "label_id",
+    "shippedAt": "last_scan_at"
+  },
+  "headline": "Structure verified",
+  "check": {
+    "expected": 30,
+    "received": 30,
+    "exact": 30,
+    "recordsWithUnknownShipmentId": 0,
+    "missing": 0,
+    "wrongFieldCounts": {},
+    "verdict": "CORRECT"
+  },
+  "modelRequests": 0
+}
