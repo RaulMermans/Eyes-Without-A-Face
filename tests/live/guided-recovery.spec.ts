@@ -110,7 +110,7 @@ async function outcome(page: import("@playwright/test").Page, entry: Record<stri
   }
 }
 
-test("S14-REC-1 helpdesk: the incident, then the user's recovery (≤ 2 requests)", async ({ page }) => {
+test("S14-REC-1 helpdesk: the incident is blocked before sending, then the user's recovery (1 request)", async ({ page }) => {
   test.skip(only !== "" && only !== "1", "filtered");
   const net = watch(page);
   const entry: Record<string, unknown> = { check: "S14-REC-1", destination: "helpdesk", at: new Date().toISOString(), model: FIREBASE_AI_LOGIC_API.defaultCloudModel, baseURL: page.url() };
@@ -121,20 +121,14 @@ test("S14-REC-1 helpdesk: the incident, then the user's recovery (≤ 2 requests
     await page.getByTestId("guided-build").click();
     await expect(page.getByTestId("guided-category-notice")).toBeVisible();
     expect(net.requests).toBe(0);
-    // Send WITHOUT sharing, as the production user did.
-    await page.getByTestId("guided-approve").click();
-    entry.first = { status: await settle(page), requests: net.requests };
-    (entry.first as Record<string, unknown>).diagnosis = (await page.getByTestId("guided-diagnosis").count()) > 0 ? await page.getByTestId("guided-diagnosis").getAttribute("data-kind") : null;
-    (entry.first as Record<string, unknown>).label = await page.getByTestId("guided-status-label").innerText();
-    (entry.first as Record<string, unknown>).retryOffered = (await page.getByTestId("guided-retry-proposal").count()) > 0;
-    if ((await page.getByTestId("guided-share-categories").count()) === 0) {
-      // Gemini happened to answer usably without the names; record it, spend nothing more.
-      await outcome(page, entry.first as Record<string, unknown>);
-      return;
-    }
+    // Sprint 17A: the production user could send this request without the names (the incident). It is no
+    // longer offered: Approve is disabled and the prerequisite is named. Nothing is sent.
+    await expect(page.getByTestId("guided-approve")).toBeDisabled();
+    await expect(page.getByTestId("approval-blocked")).toContainText("account_state");
+    entry.first = { blocked: true, requests: net.requests };
     await page.getByTestId("guided-share-categories").click();
     await expect(page.getByTestId("approval-card")).toBeVisible();
-    expect(net.requests).toBe(1);
+    expect(net.requests).toBe(0);
     await page.getByTestId("guided-approve").click();
     entry.second = { status: await settle(page), requests: net.requests };
     await outcome(page, entry.second as Record<string, unknown>);
@@ -149,7 +143,7 @@ test("S14-REC-1 helpdesk: the incident, then the user's recovery (≤ 2 requests
     append(entry);
   }
   expect(net.leaks).toEqual([]);
-  expect(net.requests).toBeLessThanOrEqual(2);
+  expect(net.requests).toBeLessThanOrEqual(1);
 });
 
 test("S14-REC-2 marketing: category names shared before the first request (1 request)", async ({ page }) => {

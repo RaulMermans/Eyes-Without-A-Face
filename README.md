@@ -19,6 +19,14 @@ A privacy-aware integration studio for the Google #BuildHybridAI 2026 hackathon.
 
 If Gemini's answer cannot be used, EYES says why in plain words, keeps your data and destination, and offers the next step that can actually work. It never repairs the answer, and never re-sends without a new approval.
 
+**When a request can't work, EYES says so before you send it.** For example, Helpdesk's required `status` needs your category names, and you haven't chosen the field or shared them. "Approve and send" is then disabled and the screen names what is missing:
+
+- choose the field and share only its names (a new request you review); or
+- build on this device; or
+- change the destination.
+
+**When a mapping misses a required field, EYES names it.** It says that no record can be valid without it, and offers the questions to answer on this device. It never adds the missing rule.
+
 Everything technical (the Phantom Twin, the 17-stage runtime, the workbench) is one click away under **Technical details** (`/#technical`).
 
 ## The problem

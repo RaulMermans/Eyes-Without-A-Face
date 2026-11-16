@@ -60,42 +60,37 @@ test.describe("E2E-140 the production incident, explained before and after", () 
     expect(await cloudCalls(page)).toBe(0);
   });
 
-  test("after a rejected answer: plain diagnosis, protection, no identical retry, and a recovery that keeps the work", async ({ page }) => {
+  test("the incident cannot recur: a request that cannot fill status is not offered; sharing the names prepares a usable one (Sprint 17A)", async ({ page }) => {
+    // Before Sprint 17A the user could approve this request; Gemini then answered with an unusable
+    // status rule (the Sprint 14 incident, diagnosed as "withheld-categories" — still unit-tested).
     const providerRequests = attachProviderWatch(page);
-    await boot(page, { cloudOutputs: [realHelpdeskAnswer, correctedHelpdesk] });
+    await boot(page, { cloudOutputs: [correctedHelpdesk] });
     await toDestination(page, "helpdesk");
     await page.getByTestId("guided-build").click();
     const firstHash = await page.getByTestId("approval-card").getAttribute("data-payload-hash");
-    await page.getByTestId("guided-approve").click();
-
-    await expect(page.getByTestId("guided-status")).toHaveAttribute("data-status", "not-built");
-    await expect(page.getByTestId("guided-status-label")).toHaveText("One field couldn't be matched");
-    await expect(page.getByText("Needs your attention")).toHaveCount(0);
-    await expect(page.getByTestId("guided-diagnosis")).toHaveAttribute("data-kind", "withheld-categories");
-    await expect(page.getByTestId("guided-diagnosis-what")).toContainText('"status"');
-    await expect(page.getByTestId("guided-diagnosis-what")).toContainText('"account_state"');
-    await expect(page.getByTestId("guided-protected")).toContainText("Nothing was run on your 3 records");
-    await expect(page.getByTestId("guided-retry-proposal")).toHaveCount(0);
-    await expect(page.getByTestId("guided-same-request-note")).toBeVisible();
-    await expect(page.getByTestId("guided-diagnosis-codes")).toHaveText("INVALID_ENUM_MAPPING");
-    await page.screenshot({ path: path.join(shots, "02-rejected-explained.png"), fullPage: true });
-    expect(await cloudCalls(page)).toBe(1);
+    await expect(page.getByTestId("guided-approve")).toBeDisabled();
+    await expect(page.getByTestId("approval-blocked")).toHaveAttribute("data-targets", "status");
+    await expect(page.getByTestId("approval-blocked")).toContainText("account_state");
+    await expect(page.getByTestId("guided-category-notice")).toHaveAttribute("data-context", "before");
+    await page.screenshot({ path: path.join(shots, "02-blocked-before-sending.png"), fullPage: true });
+    expect(await cloudCalls(page)).toBe(0);
 
     // Recovery: share the names → a NEW request is shown for approval. Nothing is sent by the click.
     await page.getByTestId("guided-share-categories").click();
     await expect(page.getByTestId("approval-card")).toBeVisible();
     const secondHash = await page.getByTestId("approval-card").getAttribute("data-payload-hash");
     expect(secondHash).not.toBe(firstHash);
-    expect(await cloudCalls(page)).toBe(1);
+    expect(await cloudCalls(page)).toBe(0);
     await page.getByTestId("approval-exact").locator("summary").click();
     await expect(page.getByTestId("approval-prompt")).toContainText("active_customer");
     await expect(page.getByTestId("guided-category-notice")).toHaveCount(0);
+    await expect(page.getByTestId("approval-blocked")).toHaveCount(0);
 
     // Work preserved: same data, same destination.
     await expect(page.getByTestId("approval-kept")).toContainText("Your 3 records");
     await page.getByTestId("guided-approve").click();
     await expect(page.getByTestId("guided-outcome")).toBeVisible();
-    expect(await cloudCalls(page)).toBe(2);
+    expect(await cloudCalls(page)).toBe(1);
     await expect(page.getByTestId("guided-count-transformed")).toHaveText("3");
     await expect(page.getByTestId("guided-origin")).toContainText("Simulated test adapter — not Gemini");
     await page.screenshot({ path: path.join(shots, "03-recovered.png"), fullPage: true });

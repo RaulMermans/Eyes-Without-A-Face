@@ -1,0 +1,20 @@
+{
+  "createdAtSuggestion": "Use contract.signed_at",
+  "buildLabel": "Build integration",
+  "preSendNotice": true,
+  "approveEnabled": true,
+  "failureCode": "PROVIDER_OVERLOADED",
+  "secondApproveEnabled": true,
+  "statusLabel": "Draft — not fully verified",
+  "outcomeVisible": true,
+  "rejected": false,
+  "counts": {
+    "transformed": "0",
+    "setAside": "0",
+    "attention": "120"
+  },
+  "reasons": "Why it is not ready\n\n120 record(s) are unresolved: the engine refused them and no policy rule covers them.",
+  "mentionsMissingStatus": true,
+  "localQuestionsOffered": false,
+  "cloudCalls": 2
+}

@@ -1,0 +1,3366 @@
+{
+  "datasetId": "fictional-meridian-style-120",
+  "localOnly": true,
+  "notes": "Sprint 17A: fictional stand-in for the owner's Meridian file (120 records, 18 leaf fields, nested; Spanish account states; 4 malformed emails: invalid, empty, truncated, missing). Every value is invented.",
+  "records": [
+    {
+      "record_id": "MRX-00001",
+      "organization": "Fictional Org 001",
+      "organization_type": "education",
+      "account_state": "suspendido",
+      "region": "north",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 1",
+        "phone": "+34 600 222536",
+        "email": "person.001@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-04-25",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 7"
+      },
+      "language": "en",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00002",
+      "organization": "Fictional Org 002",
+      "organization_type": "design",
+      "account_state": "activo",
+      "region": "south",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 2",
+        "phone": "+34 600 647791",
+        "email": "person.002@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-07-03",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 1"
+      },
+      "language": "es",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00003",
+      "organization": "Fictional Org 003",
+      "organization_type": "retail",
+      "account_state": "inactivo",
+      "region": "west",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 3",
+        "phone": "+34 600 845321",
+        "email": "person.003@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-03-28",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 2"
+      },
+      "language": "en",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00004",
+      "organization": "Fictional Org 004",
+      "organization_type": "education",
+      "account_state": "pendiente",
+      "region": "east",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 4",
+        "phone": "+34 600 184585",
+        "email": "not-an-email"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-08-04",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 9"
+      },
+      "language": "es",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00005",
+      "organization": "Fictional Org 005",
+      "organization_type": "design",
+      "account_state": "reactivado",
+      "region": "west",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 5",
+        "phone": "+34 600 897520",
+        "email": "person.005@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "EUR",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2025-11-12",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 4"
+      },
+      "language": "es",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00006",
+      "organization": "Fictional Org 006",
+      "organization_type": "design",
+      "account_state": "inactivo",
+      "region": "east",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 6",
+        "phone": "+34 600 538664",
+        "email": "person.006@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-09-12",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 2"
+      },
+      "language": "ca",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00007",
+      "organization": "Fictional Org 007",
+      "organization_type": "culture",
+      "account_state": "activo",
+      "region": "north",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 7",
+        "phone": "+34 600 165227",
+        "email": ""
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2024-05-26",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 4"
+      },
+      "language": "ca",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00008",
+      "organization": "Fictional Org 008",
+      "organization_type": "culture",
+      "account_state": "reactivado",
+      "region": "south",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 8",
+        "phone": "+34 600 095383",
+        "email": "person.008@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2025-09-18",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 3"
+      },
+      "language": "en",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00009",
+      "organization": "Fictional Org 009",
+      "organization_type": "culture",
+      "account_state": "pendiente",
+      "region": "north",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 9",
+        "phone": "+34 600 302116",
+        "email": "person.009@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2024-03-19",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 2"
+      },
+      "language": "en",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00010",
+      "organization": "Fictional Org 010",
+      "organization_type": "culture",
+      "account_state": "activo",
+      "region": "west",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 10",
+        "phone": "+34 600 331917",
+        "email": "person.010@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-10-21",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 1"
+      },
+      "language": "es",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00011",
+      "organization": "Fictional Org 011",
+      "organization_type": "culture",
+      "account_state": "activo",
+      "region": "west",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 11",
+        "phone": "+34 600 538967",
+        "email": "person.011@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2024-11-27",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 1"
+      },
+      "language": "en",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00012",
+      "organization": "Fictional Org 012",
+      "organization_type": "retail",
+      "account_state": "pendiente",
+      "region": "east",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 12",
+        "phone": "+34 600 154982",
+        "email": "person.012@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2024-03-13",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 6"
+      },
+      "language": "ca",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00013",
+      "organization": "Fictional Org 013",
+      "organization_type": "design",
+      "account_state": "suspendido",
+      "region": "south",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 13",
+        "phone": "+34 600 985611",
+        "email": "person.013@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-03-19",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 9"
+      },
+      "language": "ca",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00014",
+      "organization": "Fictional Org 014",
+      "organization_type": "culture",
+      "account_state": "activo",
+      "region": "south",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 14",
+        "phone": "+34 600 709226",
+        "email": "person.014@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "EUR",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-02-24",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 1"
+      },
+      "language": "ca",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00015",
+      "organization": "Fictional Org 015",
+      "organization_type": "design",
+      "account_state": "inactivo",
+      "region": "south",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 15",
+        "phone": "+34 600 607056",
+        "email": "person.015@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2025-06-17",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 6"
+      },
+      "language": "en",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00016",
+      "organization": "Fictional Org 016",
+      "organization_type": "education",
+      "account_state": "inactivo",
+      "region": "north",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 16",
+        "phone": "+34 600 380543",
+        "email": "person.016@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2024-10-20",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 3"
+      },
+      "language": "ca",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00017",
+      "organization": "Fictional Org 017",
+      "organization_type": "retail",
+      "account_state": "pendiente",
+      "region": "east",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 17",
+        "phone": "+34 600 406775",
+        "email": "person.017@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2024-11-18",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 9"
+      },
+      "language": "en",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00018",
+      "organization": "Fictional Org 018",
+      "organization_type": "education",
+      "account_state": "inactivo",
+      "region": "north",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 18",
+        "phone": "+34 600 269400",
+        "email": "person.018@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-05-11",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 3"
+      },
+      "language": "es",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00019",
+      "organization": "Fictional Org 019",
+      "organization_type": "culture",
+      "account_state": "suspendido",
+      "region": "south",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 19",
+        "phone": "+34 600 978979",
+        "email": "person.019@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "GBP",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2024-01-01",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 7"
+      },
+      "language": "es",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00020",
+      "organization": "Fictional Org 020",
+      "organization_type": "retail",
+      "account_state": "suspendido",
+      "region": "south",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 20",
+        "phone": "+34 600 656674",
+        "email": "person.020@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "EUR",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2025-08-14",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 6"
+      },
+      "language": "es",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00021",
+      "organization": "Fictional Org 021",
+      "organization_type": "education",
+      "account_state": "suspendido",
+      "region": "north",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 21",
+        "phone": "+34 600 146295",
+        "email": "person.021@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "GBP",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-06-01",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 1"
+      },
+      "language": "es",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00022",
+      "organization": "Fictional Org 022",
+      "organization_type": "education",
+      "account_state": "suspendido",
+      "region": "west",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 22",
+        "phone": "+34 600 915794",
+        "email": "person.022@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "GBP",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-10-14",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 6"
+      },
+      "language": "en",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00023",
+      "organization": "Fictional Org 023",
+      "organization_type": "culture",
+      "account_state": "reactivado",
+      "region": "west",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 23",
+        "phone": "+34 600 393481",
+        "email": "person.023@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-01-05",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 4"
+      },
+      "language": "en",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00024",
+      "organization": "Fictional Org 024",
+      "organization_type": "design",
+      "account_state": "pendiente",
+      "region": "north",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 24",
+        "phone": "+34 600 333537",
+        "email": "person.024@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2025-01-15",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 6"
+      },
+      "language": "ca",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00025",
+      "organization": "Fictional Org 025",
+      "organization_type": "retail",
+      "account_state": "activo",
+      "region": "north",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 25",
+        "phone": "+34 600 401570",
+        "email": "person.025@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "EUR",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2025-03-09",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 1"
+      },
+      "language": "en",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00026",
+      "organization": "Fictional Org 026",
+      "organization_type": "culture",
+      "account_state": "inactivo",
+      "region": "south",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 26",
+        "phone": "+34 600 469099",
+        "email": "person.026@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-08-02",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 7"
+      },
+      "language": "ca",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00027",
+      "organization": "Fictional Org 027",
+      "organization_type": "education",
+      "account_state": "inactivo",
+      "region": "west",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 27",
+        "phone": "+34 600 655681",
+        "email": "person.027@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-10-14",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 5"
+      },
+      "language": "ca",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00028",
+      "organization": "Fictional Org 028",
+      "organization_type": "retail",
+      "account_state": "inactivo",
+      "region": "west",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 28",
+        "phone": "+34 600 844731",
+        "email": "person.028@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "EUR",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2025-05-26",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 3"
+      },
+      "language": "es",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00029",
+      "organization": "Fictional Org 029",
+      "organization_type": "retail",
+      "account_state": "pendiente",
+      "region": "east",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 29",
+        "phone": "+34 600 522372",
+        "email": "person.029@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-05-04",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 6"
+      },
+      "language": "en",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00030",
+      "organization": "Fictional Org 030",
+      "organization_type": "retail",
+      "account_state": "pendiente",
+      "region": "west",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 30",
+        "phone": "+34 600 136458",
+        "email": "person.030@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2025-01-04",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 9"
+      },
+      "language": "en",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00031",
+      "organization": "Fictional Org 031",
+      "organization_type": "design",
+      "account_state": "reactivado",
+      "region": "east",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 31",
+        "phone": "+34 600 722344",
+        "email": "person.031@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "GBP",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-05-08",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 5"
+      },
+      "language": "es",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00032",
+      "organization": "Fictional Org 032",
+      "organization_type": "design",
+      "account_state": "activo",
+      "region": "west",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 32",
+        "phone": "+34 600 658662",
+        "email": "person.032@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-07-19",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 8"
+      },
+      "language": "ca",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00033",
+      "organization": "Fictional Org 033",
+      "organization_type": "retail",
+      "account_state": "reactivado",
+      "region": "north",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 33",
+        "phone": "+34 600 177786",
+        "email": "person.033@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "EUR",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-11-24",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 4"
+      },
+      "language": "en",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00034",
+      "organization": "Fictional Org 034",
+      "organization_type": "design",
+      "account_state": "inactivo",
+      "region": "south",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 34",
+        "phone": "+34 600 485307",
+        "email": "person.034@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2024-12-08",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 7"
+      },
+      "language": "ca",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00035",
+      "organization": "Fictional Org 035",
+      "organization_type": "culture",
+      "account_state": "pendiente",
+      "region": "east",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 35",
+        "phone": "+34 600 717972",
+        "email": "person.035@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-10-28",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 9"
+      },
+      "language": "en",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00036",
+      "organization": "Fictional Org 036",
+      "organization_type": "education",
+      "account_state": "inactivo",
+      "region": "south",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 36",
+        "phone": "+34 600 483997",
+        "email": "person.036@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "EUR",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2025-06-02",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 6"
+      },
+      "language": "es",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00037",
+      "organization": "Fictional Org 037",
+      "organization_type": "retail",
+      "account_state": "pendiente",
+      "region": "north",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 37",
+        "phone": "+34 600 690502",
+        "email": "person.037@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2025-02-26",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 9"
+      },
+      "language": "es",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00038",
+      "organization": "Fictional Org 038",
+      "organization_type": "culture",
+      "account_state": "suspendido",
+      "region": "west",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 38",
+        "phone": "+34 600 410615",
+        "email": "person.038@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2024-06-07",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 7"
+      },
+      "language": "en",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00039",
+      "organization": "Fictional Org 039",
+      "organization_type": "design",
+      "account_state": "reactivado",
+      "region": "west",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 39",
+        "phone": "+34 600 906296",
+        "email": "person.039@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "EUR",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2025-12-16",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 6"
+      },
+      "language": "ca",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00040",
+      "organization": "Fictional Org 040",
+      "organization_type": "culture",
+      "account_state": "reactivado",
+      "region": "east",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 40",
+        "phone": "+34 600 662717",
+        "email": "person.040@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-11-13",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 5"
+      },
+      "language": "es",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00041",
+      "organization": "Fictional Org 041",
+      "organization_type": "design",
+      "account_state": "suspendido",
+      "region": "south",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 41",
+        "phone": "+34 600 636543",
+        "email": "person.041@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "GBP",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2024-01-25",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 1"
+      },
+      "language": "ca",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00042",
+      "organization": "Fictional Org 042",
+      "organization_type": "education",
+      "account_state": "suspendido",
+      "region": "south",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 42",
+        "phone": "+34 600 660190",
+        "email": "person.042@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2025-07-25",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 4"
+      },
+      "language": "ca",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00043",
+      "organization": "Fictional Org 043",
+      "organization_type": "retail",
+      "account_state": "reactivado",
+      "region": "east",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 43",
+        "phone": "+34 600 677607",
+        "email": "person.043@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-01-04",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 6"
+      },
+      "language": "ca",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00044",
+      "organization": "Fictional Org 044",
+      "organization_type": "education",
+      "account_state": "suspendido",
+      "region": "south",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 44",
+        "phone": "+34 600 478642",
+        "email": "person.044@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "GBP",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-06-08",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 8"
+      },
+      "language": "ca",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00045",
+      "organization": "Fictional Org 045",
+      "organization_type": "retail",
+      "account_state": "suspendido",
+      "region": "west",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 45",
+        "phone": "+34 600 366281",
+        "email": "person.045@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "GBP",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2024-10-06",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 2"
+      },
+      "language": "es",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00046",
+      "organization": "Fictional Org 046",
+      "organization_type": "culture",
+      "account_state": "activo",
+      "region": "north",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 46",
+        "phone": "+34 600 887400",
+        "email": "person.046@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "GBP",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2024-02-20",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 5"
+      },
+      "language": "ca",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00047",
+      "organization": "Fictional Org 047",
+      "organization_type": "education",
+      "account_state": "pendiente",
+      "region": "east",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 47",
+        "phone": "+34 600 451513",
+        "email": "person.047@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-09-17",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 4"
+      },
+      "language": "ca",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00048",
+      "organization": "Fictional Org 048",
+      "organization_type": "education",
+      "account_state": "pendiente",
+      "region": "south",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 48",
+        "phone": "+34 600 852260",
+        "email": "person.048@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "GBP",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-08-06",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 7"
+      },
+      "language": "ca",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00049",
+      "organization": "Fictional Org 049",
+      "organization_type": "retail",
+      "account_state": "reactivado",
+      "region": "north",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 49",
+        "phone": "+34 600 982956",
+        "email": "person.049@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-09-08",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 3"
+      },
+      "language": "es",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00050",
+      "organization": "Fictional Org 050",
+      "organization_type": "retail",
+      "account_state": "suspendido",
+      "region": "east",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 50",
+        "phone": "+34 600 373983",
+        "email": "person.050@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-06-06",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 1"
+      },
+      "language": "ca",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00051",
+      "organization": "Fictional Org 051",
+      "organization_type": "culture",
+      "account_state": "inactivo",
+      "region": "north",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 51",
+        "phone": "+34 600 367937",
+        "email": "person.051@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2024-03-20",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 8"
+      },
+      "language": "ca",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00052",
+      "organization": "Fictional Org 052",
+      "organization_type": "retail",
+      "account_state": "activo",
+      "region": "south",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 52",
+        "phone": "+34 600 874449",
+        "email": "person.052@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-01-23",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 9"
+      },
+      "language": "ca",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00053",
+      "organization": "Fictional Org 053",
+      "organization_type": "education",
+      "account_state": "activo",
+      "region": "east",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 53",
+        "phone": "+34 600 730257",
+        "email": "person.053@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "GBP",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2024-11-02",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 2"
+      },
+      "language": "es",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00054",
+      "organization": "Fictional Org 054",
+      "organization_type": "culture",
+      "account_state": "suspendido",
+      "region": "north",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 54",
+        "phone": "+34 600 180477",
+        "email": "person.054@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "EUR",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2025-08-01",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 3"
+      },
+      "language": "en",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00055",
+      "organization": "Fictional Org 055",
+      "organization_type": "retail",
+      "account_state": "reactivado",
+      "region": "east",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 55",
+        "phone": "+34 600 167046",
+        "email": "person.055@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2025-08-17",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 2"
+      },
+      "language": "es",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00056",
+      "organization": "Fictional Org 056",
+      "organization_type": "retail",
+      "account_state": "pendiente",
+      "region": "west",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 56",
+        "phone": "+34 600 389986",
+        "email": "person.056@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "EUR",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2025-12-26",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 2"
+      },
+      "language": "ca",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00057",
+      "organization": "Fictional Org 057",
+      "organization_type": "culture",
+      "account_state": "inactivo",
+      "region": "north",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 57",
+        "phone": "+34 600 737846",
+        "email": "person.057@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "GBP",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2024-06-07",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 7"
+      },
+      "language": "ca",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00058",
+      "organization": "Fictional Org 058",
+      "organization_type": "education",
+      "account_state": "inactivo",
+      "region": "east",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 58",
+        "phone": "+34 600 246333",
+        "email": "person.058@"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "EUR",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2025-12-23",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 3"
+      },
+      "language": "en",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00059",
+      "organization": "Fictional Org 059",
+      "organization_type": "culture",
+      "account_state": "activo",
+      "region": "north",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 59",
+        "phone": "+34 600 901740",
+        "email": "person.059@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "GBP",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-01-05",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 1"
+      },
+      "language": "en",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00060",
+      "organization": "Fictional Org 060",
+      "organization_type": "retail",
+      "account_state": "suspendido",
+      "region": "east",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 60",
+        "phone": "+34 600 206898",
+        "email": "person.060@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2024-06-08",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 6"
+      },
+      "language": "es",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00061",
+      "organization": "Fictional Org 061",
+      "organization_type": "education",
+      "account_state": "activo",
+      "region": "south",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 61",
+        "phone": "+34 600 636516",
+        "email": "person.061@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-12-01",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 6"
+      },
+      "language": "en",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00062",
+      "organization": "Fictional Org 062",
+      "organization_type": "education",
+      "account_state": "suspendido",
+      "region": "west",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 62",
+        "phone": "+34 600 467326",
+        "email": "person.062@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-02-03",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 5"
+      },
+      "language": "es",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00063",
+      "organization": "Fictional Org 063",
+      "organization_type": "design",
+      "account_state": "inactivo",
+      "region": "east",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 63",
+        "phone": "+34 600 652837",
+        "email": "person.063@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-09-20",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 1"
+      },
+      "language": "ca",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00064",
+      "organization": "Fictional Org 064",
+      "organization_type": "culture",
+      "account_state": "reactivado",
+      "region": "north",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 64",
+        "phone": "+34 600 447889",
+        "email": "person.064@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-07-26",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 8"
+      },
+      "language": "en",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00065",
+      "organization": "Fictional Org 065",
+      "organization_type": "design",
+      "account_state": "suspendido",
+      "region": "south",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 65",
+        "phone": "+34 600 164907",
+        "email": "person.065@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2025-12-23",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 4"
+      },
+      "language": "en",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00066",
+      "organization": "Fictional Org 066",
+      "organization_type": "retail",
+      "account_state": "pendiente",
+      "region": "south",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 66",
+        "phone": "+34 600 913692",
+        "email": "person.066@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-07-05",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 6"
+      },
+      "language": "es",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00067",
+      "organization": "Fictional Org 067",
+      "organization_type": "retail",
+      "account_state": "suspendido",
+      "region": "west",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 67",
+        "phone": "+34 600 872038",
+        "email": "person.067@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-06-21",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 5"
+      },
+      "language": "es",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00068",
+      "organization": "Fictional Org 068",
+      "organization_type": "design",
+      "account_state": "reactivado",
+      "region": "east",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 68",
+        "phone": "+34 600 142194",
+        "email": "person.068@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-01-11",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 8"
+      },
+      "language": "ca",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00069",
+      "organization": "Fictional Org 069",
+      "organization_type": "culture",
+      "account_state": "pendiente",
+      "region": "east",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 69",
+        "phone": "+34 600 686844",
+        "email": "person.069@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "EUR",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-11-15",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 7"
+      },
+      "language": "en",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00070",
+      "organization": "Fictional Org 070",
+      "organization_type": "education",
+      "account_state": "suspendido",
+      "region": "south",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 70",
+        "phone": "+34 600 291072",
+        "email": "person.070@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "EUR",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2025-06-02",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 2"
+      },
+      "language": "en",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00071",
+      "organization": "Fictional Org 071",
+      "organization_type": "culture",
+      "account_state": "suspendido",
+      "region": "north",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 71",
+        "phone": "+34 600 386972",
+        "email": "person.071@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "EUR",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-03-06",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 8"
+      },
+      "language": "es",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00072",
+      "organization": "Fictional Org 072",
+      "organization_type": "retail",
+      "account_state": "reactivado",
+      "region": "south",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 72",
+        "phone": "+34 600 100343",
+        "email": "person.072@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "GBP",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-05-25",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 1"
+      },
+      "language": "en",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00073",
+      "organization": "Fictional Org 073",
+      "organization_type": "culture",
+      "account_state": "suspendido",
+      "region": "east",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 73",
+        "phone": "+34 600 311758",
+        "email": "person.073@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-01-23",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 5"
+      },
+      "language": "es",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00074",
+      "organization": "Fictional Org 074",
+      "organization_type": "retail",
+      "account_state": "inactivo",
+      "region": "east",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 74",
+        "phone": "+34 600 427659",
+        "email": "person.074@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-11-15",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 3"
+      },
+      "language": "ca",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00075",
+      "organization": "Fictional Org 075",
+      "organization_type": "education",
+      "account_state": "activo",
+      "region": "north",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 75",
+        "phone": "+34 600 404683",
+        "email": "person.075@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "GBP",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-11-12",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 4"
+      },
+      "language": "es",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00076",
+      "organization": "Fictional Org 076",
+      "organization_type": "design",
+      "account_state": "activo",
+      "region": "north",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 76",
+        "phone": "+34 600 988383",
+        "email": "person.076@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "GBP",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-01-09",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 9"
+      },
+      "language": "ca",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00077",
+      "organization": "Fictional Org 077",
+      "organization_type": "retail",
+      "account_state": "inactivo",
+      "region": "east",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 77",
+        "phone": "+34 600 052114",
+        "email": "person.077@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2024-09-28",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 9"
+      },
+      "language": "es",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00078",
+      "organization": "Fictional Org 078",
+      "organization_type": "education",
+      "account_state": "activo",
+      "region": "west",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 78",
+        "phone": "+34 600 068101",
+        "email": "person.078@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "EUR",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-02-10",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 5"
+      },
+      "language": "ca",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00079",
+      "organization": "Fictional Org 079",
+      "organization_type": "education",
+      "account_state": "pendiente",
+      "region": "west",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 79",
+        "phone": "+34 600 275004",
+        "email": "person.079@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2024-08-26",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 6"
+      },
+      "language": "ca",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00080",
+      "organization": "Fictional Org 080",
+      "organization_type": "retail",
+      "account_state": "inactivo",
+      "region": "south",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 80",
+        "phone": "+34 600 809364",
+        "email": "person.080@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-11-03",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 4"
+      },
+      "language": "en",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00081",
+      "organization": "Fictional Org 081",
+      "organization_type": "culture",
+      "account_state": "suspendido",
+      "region": "north",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 81",
+        "phone": "+34 600 214206",
+        "email": "person.081@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-11-19",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 4"
+      },
+      "language": "ca",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00082",
+      "organization": "Fictional Org 082",
+      "organization_type": "culture",
+      "account_state": "activo",
+      "region": "south",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 82",
+        "phone": "+34 600 609558",
+        "email": "person.082@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-11-06",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 8"
+      },
+      "language": "es",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00083",
+      "organization": "Fictional Org 083",
+      "organization_type": "design",
+      "account_state": "suspendido",
+      "region": "west",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 83",
+        "phone": "+34 600 689865",
+        "email": "person.083@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "EUR",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2025-10-18",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 3"
+      },
+      "language": "es",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00084",
+      "organization": "Fictional Org 084",
+      "organization_type": "design",
+      "account_state": "activo",
+      "region": "north",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 84",
+        "phone": "+34 600 792853",
+        "email": "person.084@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2025-11-25",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 7"
+      },
+      "language": "en",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00085",
+      "organization": "Fictional Org 085",
+      "organization_type": "culture",
+      "account_state": "activo",
+      "region": "west",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 85",
+        "phone": "+34 600 841504",
+        "email": "person.085@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "EUR",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2025-02-18",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 6"
+      },
+      "language": "es",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00086",
+      "organization": "Fictional Org 086",
+      "organization_type": "design",
+      "account_state": "reactivado",
+      "region": "north",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 86",
+        "phone": "+34 600 300259",
+        "email": "person.086@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "GBP",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-10-14",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 5"
+      },
+      "language": "en",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00087",
+      "organization": "Fictional Org 087",
+      "organization_type": "design",
+      "account_state": "inactivo",
+      "region": "south",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 87",
+        "phone": "+34 600 518074",
+        "email": "person.087@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2024-01-26",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 3"
+      },
+      "language": "en",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00088",
+      "organization": "Fictional Org 088",
+      "organization_type": "retail",
+      "account_state": "pendiente",
+      "region": "east",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 88",
+        "phone": "+34 600 646783",
+        "email": "person.088@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "GBP",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2024-02-02",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 9"
+      },
+      "language": "ca",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00089",
+      "organization": "Fictional Org 089",
+      "organization_type": "culture",
+      "account_state": "reactivado",
+      "region": "east",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 89",
+        "phone": "+34 600 425863",
+        "email": "person.089@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "EUR",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-04-28",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 4"
+      },
+      "language": "es",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00090",
+      "organization": "Fictional Org 090",
+      "organization_type": "retail",
+      "account_state": "inactivo",
+      "region": "west",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 90",
+        "phone": "+34 600 279860",
+        "email": "person.090@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "GBP",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-11-24",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 2"
+      },
+      "language": "es",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00091",
+      "organization": "Fictional Org 091",
+      "organization_type": "culture",
+      "account_state": "reactivado",
+      "region": "south",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 91",
+        "phone": "+34 600 788319"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "EUR",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-05-20",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 3"
+      },
+      "language": "ca",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00092",
+      "organization": "Fictional Org 092",
+      "organization_type": "education",
+      "account_state": "suspendido",
+      "region": "south",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 92",
+        "phone": "+34 600 264031",
+        "email": "person.092@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-07-27",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 6"
+      },
+      "language": "es",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00093",
+      "organization": "Fictional Org 093",
+      "organization_type": "design",
+      "account_state": "inactivo",
+      "region": "west",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 93",
+        "phone": "+34 600 914464",
+        "email": "person.093@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "GBP",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2024-03-02",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 7"
+      },
+      "language": "ca",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00094",
+      "organization": "Fictional Org 094",
+      "organization_type": "retail",
+      "account_state": "inactivo",
+      "region": "south",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 94",
+        "phone": "+34 600 900438",
+        "email": "person.094@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-12-13",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 4"
+      },
+      "language": "ca",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00095",
+      "organization": "Fictional Org 095",
+      "organization_type": "design",
+      "account_state": "reactivado",
+      "region": "south",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 95",
+        "phone": "+34 600 945983",
+        "email": "person.095@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-05-13",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 4"
+      },
+      "language": "ca",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00096",
+      "organization": "Fictional Org 096",
+      "organization_type": "culture",
+      "account_state": "suspendido",
+      "region": "south",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 96",
+        "phone": "+34 600 216731",
+        "email": "person.096@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "GBP",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-07-07",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 4"
+      },
+      "language": "ca",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00097",
+      "organization": "Fictional Org 097",
+      "organization_type": "design",
+      "account_state": "reactivado",
+      "region": "north",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 97",
+        "phone": "+34 600 075879",
+        "email": "person.097@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-06-08",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 3"
+      },
+      "language": "es",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00098",
+      "organization": "Fictional Org 098",
+      "organization_type": "design",
+      "account_state": "activo",
+      "region": "north",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 98",
+        "phone": "+34 600 358249",
+        "email": "person.098@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-10-20",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 8"
+      },
+      "language": "es",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00099",
+      "organization": "Fictional Org 099",
+      "organization_type": "culture",
+      "account_state": "activo",
+      "region": "west",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 99",
+        "phone": "+34 600 355840",
+        "email": "person.099@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "GBP",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-06-19",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 1"
+      },
+      "language": "ca",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00100",
+      "organization": "Fictional Org 100",
+      "organization_type": "education",
+      "account_state": "suspendido",
+      "region": "west",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 100",
+        "phone": "+34 600 239157",
+        "email": "person.100@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "GBP",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-11-08",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 8"
+      },
+      "language": "ca",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00101",
+      "organization": "Fictional Org 101",
+      "organization_type": "culture",
+      "account_state": "suspendido",
+      "region": "south",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 101",
+        "phone": "+34 600 237880",
+        "email": "person.101@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "GBP",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2024-08-06",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 3"
+      },
+      "language": "es",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00102",
+      "organization": "Fictional Org 102",
+      "organization_type": "design",
+      "account_state": "reactivado",
+      "region": "east",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 102",
+        "phone": "+34 600 968246",
+        "email": "person.102@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "EUR",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2025-07-03",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 1"
+      },
+      "language": "ca",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00103",
+      "organization": "Fictional Org 103",
+      "organization_type": "culture",
+      "account_state": "pendiente",
+      "region": "north",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 103",
+        "phone": "+34 600 438539",
+        "email": "person.103@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-01-01",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 4"
+      },
+      "language": "ca",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00104",
+      "organization": "Fictional Org 104",
+      "organization_type": "retail",
+      "account_state": "activo",
+      "region": "north",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 104",
+        "phone": "+34 600 648516",
+        "email": "person.104@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "GBP",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-02-19",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 9"
+      },
+      "language": "ca",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00105",
+      "organization": "Fictional Org 105",
+      "organization_type": "culture",
+      "account_state": "activo",
+      "region": "west",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 105",
+        "phone": "+34 600 251136",
+        "email": "person.105@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "EUR",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2025-07-24",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 7"
+      },
+      "language": "ca",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00106",
+      "organization": "Fictional Org 106",
+      "organization_type": "education",
+      "account_state": "pendiente",
+      "region": "west",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 106",
+        "phone": "+34 600 052432",
+        "email": "person.106@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-11-22",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 3"
+      },
+      "language": "en",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00107",
+      "organization": "Fictional Org 107",
+      "organization_type": "culture",
+      "account_state": "reactivado",
+      "region": "south",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 107",
+        "phone": "+34 600 872706",
+        "email": "person.107@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "EUR",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2025-12-22",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 7"
+      },
+      "language": "en",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00108",
+      "organization": "Fictional Org 108",
+      "organization_type": "design",
+      "account_state": "suspendido",
+      "region": "south",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 108",
+        "phone": "+34 600 122993",
+        "email": "person.108@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-02-06",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 6"
+      },
+      "language": "ca",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00109",
+      "organization": "Fictional Org 109",
+      "organization_type": "retail",
+      "account_state": "activo",
+      "region": "west",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 109",
+        "phone": "+34 600 821980",
+        "email": "person.109@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-12-02",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 1"
+      },
+      "language": "en",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00110",
+      "organization": "Fictional Org 110",
+      "organization_type": "retail",
+      "account_state": "pendiente",
+      "region": "south",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 110",
+        "phone": "+34 600 881939",
+        "email": "person.110@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "GBP",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2024-01-19",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 6"
+      },
+      "language": "en",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00111",
+      "organization": "Fictional Org 111",
+      "organization_type": "education",
+      "account_state": "activo",
+      "region": "west",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 111",
+        "phone": "+34 600 809296",
+        "email": "person.111@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-09-05",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 9"
+      },
+      "language": "es",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00112",
+      "organization": "Fictional Org 112",
+      "organization_type": "education",
+      "account_state": "pendiente",
+      "region": "west",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 112",
+        "phone": "+34 600 110850",
+        "email": "person.112@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-02-11",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 8"
+      },
+      "language": "es",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00113",
+      "organization": "Fictional Org 113",
+      "organization_type": "design",
+      "account_state": "pendiente",
+      "region": "west",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 113",
+        "phone": "+34 600 562950",
+        "email": "person.113@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2025-02-27",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 1"
+      },
+      "language": "es",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00114",
+      "organization": "Fictional Org 114",
+      "organization_type": "retail",
+      "account_state": "pendiente",
+      "region": "east",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 114",
+        "phone": "+34 600 574062",
+        "email": "person.114@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2025-12-18",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 4"
+      },
+      "language": "en",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00115",
+      "organization": "Fictional Org 115",
+      "organization_type": "retail",
+      "account_state": "pendiente",
+      "region": "west",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 115",
+        "phone": "+34 600 549634",
+        "email": "person.115@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "EUR",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2025-03-15",
+        "term_months": 36
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 6"
+      },
+      "language": "es",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00116",
+      "organization": "Fictional Org 116",
+      "organization_type": "culture",
+      "account_state": "activo",
+      "region": "south",
+      "segment": "smb",
+      "contact": {
+        "full_name": "Test Person 116",
+        "phone": "+34 600 111157",
+        "email": "person.116@example.com"
+      },
+      "billing": {
+        "plan_code": "studio",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-06-01",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 2"
+      },
+      "language": "en",
+      "referral": "web"
+    },
+    {
+      "record_id": "MRX-00117",
+      "organization": "Fictional Org 117",
+      "organization_type": "retail",
+      "account_state": "suspendido",
+      "region": "east",
+      "segment": "mid",
+      "contact": {
+        "full_name": "Test Person 117",
+        "phone": "+34 600 587282",
+        "email": "person.117@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-06-08",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "gamma",
+        "manager": "Fictional Manager 3"
+      },
+      "language": "ca",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00118",
+      "organization": "Fictional Org 118",
+      "organization_type": "retail",
+      "account_state": "inactivo",
+      "region": "south",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 118",
+        "phone": "+34 600 919187",
+        "email": "person.118@example.com"
+      },
+      "billing": {
+        "plan_code": "premium",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2024-09-09",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "alpha",
+        "manager": "Fictional Manager 9"
+      },
+      "language": "ca",
+      "referral": "event"
+    },
+    {
+      "record_id": "MRX-00119",
+      "organization": "Fictional Org 119",
+      "organization_type": "education",
+      "account_state": "pendiente",
+      "region": "east",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 119",
+        "phone": "+34 600 710522",
+        "email": "person.119@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "GBP",
+        "cycle": "yearly"
+      },
+      "contract": {
+        "signed_at": "2024-04-08",
+        "term_months": 24
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 4"
+      },
+      "language": "ca",
+      "referral": "partner"
+    },
+    {
+      "record_id": "MRX-00120",
+      "organization": "Fictional Org 120",
+      "organization_type": "retail",
+      "account_state": "reactivado",
+      "region": "east",
+      "segment": "enterprise",
+      "contact": {
+        "full_name": "Test Person 120",
+        "phone": "+34 600 536217",
+        "email": "person.120@example.com"
+      },
+      "billing": {
+        "plan_code": "basic",
+        "currency": "EUR",
+        "cycle": "monthly"
+      },
+      "contract": {
+        "signed_at": "2025-03-13",
+        "term_months": 12
+      },
+      "owner": {
+        "team": "beta",
+        "manager": "Fictional Manager 6"
+      },
+      "language": "es",
+      "referral": "partner"
+    }
+  ]
+}

@@ -568,3 +568,37 @@ export function describeRule(operation: MappingOperation): string {
   }
 }
 
+
+/**
+ * Sprint 17A (Workstream 3): required destination fields that a mapping never
+ * writes, in destination order. A pure reading of the mapping and the
+ * destination on screen. Such a mapping cannot produce a single valid
+ * destination record, whatever the data. EYES never adds the missing rules.
+ */
+export function unwrittenRequiredTargets(contract: MappingContract | null, destinationText: string): string[] {
+  if (!contract) return [];
+  const summary = summarizeDestination(destinationText);
+  if (!summary.ok) return [];
+  const written = new Set(contract.operations.map((operation) => operation.to.split(".")[0]));
+  return summary.fields.filter((field) => field.required && !written.has(field.name)).map((field) => field.name);
+}
+
+/**
+ * Sprint 17A (Workstream 2): required fixed-list destination fields that a
+ * Gemini request provably cannot fill, with the reason. Deterministic and
+ * local: the field has no category-like source, or Gemini would see only
+ * placeholders for its category names (withheld or not shareable). Uncertainty
+ * Gemini can resolve (which field gives an id, an email, a date) never blocks.
+ */
+export function cloudBlockedTargets(
+  plan: FieldPlan | null,
+): Array<{ target: string; source: string | null; reason: Exclude<TargetPlan["cloud"], "ok"> | "choose-source"; options: string[] }> {
+  if (!plan) return [];
+  return plan.targets
+    .filter((item) => item.target.type === "enum" && item.target.required && item.cloud !== "ok")
+    .map((item) => {
+      // "no-source" means no field is chosen; it is a missing source only when no field could give it.
+      const reason = item.cloud === "no-source" && item.candidates.length > 0 ? ("choose-source" as const) : (item.cloud as Exclude<TargetPlan["cloud"], "ok">);
+      return { target: item.target.name, source: item.chosen, reason, options: item.candidates.slice(0, 3).map((candidate) => candidate.path) };
+    });
+}
