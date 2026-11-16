@@ -1,0 +1,167 @@
+{
+  "datasetId": "fictional-meridian-like",
+  "localOnly": true,
+  "notes": "Sprint 15 PF-2/PF-3 regression: common-word category values (design, studio) and a few malformed nested emails. Fictional.",
+  "records": [
+    {
+      "record_id": "MRX-00001",
+      "organization": "Fictional Org 001",
+      "organization_type": "retail",
+      "account_state": "inactivo",
+      "contact": {
+        "full_name": "Test Person 1",
+        "email": "person.001@example.com"
+      },
+      "billing": {
+        "plan_code": "basic"
+      },
+      "contract": {
+        "signed_at": "2025-02-11"
+      }
+    },
+    {
+      "record_id": "MRX-00002",
+      "organization": "Fictional Org 002",
+      "organization_type": "culture",
+      "account_state": "pendiente",
+      "contact": {
+        "full_name": "Test Person 2",
+        "email": "person.002@example.com"
+      },
+      "billing": {
+        "plan_code": "premium"
+      },
+      "contract": {
+        "signed_at": "2025-03-12"
+      }
+    },
+    {
+      "record_id": "MRX-00003",
+      "organization": "Fictional Org 003",
+      "organization_type": "design",
+      "account_state": "suspendido",
+      "contact": {
+        "full_name": "Test Person 3",
+        "email": "person.003@example.com"
+      },
+      "billing": {
+        "plan_code": "studio"
+      },
+      "contract": {
+        "signed_at": "2025-04-13"
+      }
+    },
+    {
+      "record_id": "MRX-00004",
+      "organization": "Fictional Org 004",
+      "organization_type": "retail",
+      "account_state": "activo",
+      "contact": {
+        "full_name": "Test Person 4",
+        "email": "not-an-email"
+      },
+      "billing": {
+        "plan_code": "basic"
+      },
+      "contract": {
+        "signed_at": "2025-05-14"
+      }
+    },
+    {
+      "record_id": "MRX-00005",
+      "organization": "Fictional Org 005",
+      "organization_type": "culture",
+      "account_state": "inactivo",
+      "contact": {
+        "full_name": "Test Person 5",
+        "email": "person.005@example.com"
+      },
+      "billing": {
+        "plan_code": "premium"
+      },
+      "contract": {
+        "signed_at": "2025-06-15"
+      }
+    },
+    {
+      "record_id": "MRX-00006",
+      "organization": "Fictional Org 006",
+      "organization_type": "design",
+      "account_state": "pendiente",
+      "contact": {
+        "full_name": "Test Person 6",
+        "email": "person.006@example.com"
+      },
+      "billing": {
+        "plan_code": "studio"
+      },
+      "contract": {
+        "signed_at": "2025-07-16"
+      }
+    },
+    {
+      "record_id": "MRX-00007",
+      "organization": "Fictional Org 007",
+      "organization_type": "retail",
+      "account_state": "suspendido",
+      "contact": {
+        "full_name": "Test Person 7",
+        "email": ""
+      },
+      "billing": {
+        "plan_code": "basic"
+      },
+      "contract": {
+        "signed_at": "2025-08-17"
+      }
+    },
+    {
+      "record_id": "MRX-00008",
+      "organization": "Fictional Org 008",
+      "organization_type": "culture",
+      "account_state": "activo",
+      "contact": {
+        "full_name": "Test Person 8",
+        "email": "person.008@example.com"
+      },
+      "billing": {
+        "plan_code": "premium"
+      },
+      "contract": {
+        "signed_at": "2025-09-18"
+      }
+    },
+    {
+      "record_id": "MRX-00009",
+      "organization": "Fictional Org 009",
+      "organization_type": "design",
+      "account_state": "inactivo",
+      "contact": {
+        "full_name": "Test Person 9",
+        "email": "person.009@example.com"
+      },
+      "billing": {
+        "plan_code": "studio"
+      },
+      "contract": {
+        "signed_at": "2025-01-10"
+      }
+    },
+    {
+      "record_id": "MRX-00010",
+      "organization": "Fictional Org 010",
+      "organization_type": "retail",
+      "account_state": "pendiente",
+      "contact": {
+        "full_name": "Test Person 10",
+        "email": "person.010@example.com"
+      },
+      "billing": {
+        "plan_code": "basic"
+      },
+      "contract": {
+        "signed_at": "2025-02-11"
+      }
+    }
+  ]
+}

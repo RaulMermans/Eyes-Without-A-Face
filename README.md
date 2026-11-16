@@ -111,7 +111,7 @@ The package status is computed, never asserted: `VERIFIED`, `VERIFIED_WITH_EXCEP
 
 ## Status
 
-**Sprint 15 (end-to-end experience, guided mapping, semantic trust): `CODE_READY`.** Not deployed.
+**Sprint 15 (end-to-end experience, guided mapping, semantic trust): `PRODUCTION_ACCEPTED`.** Live as `c4a246c`. 19 / 19 production checks, real Gemini Nano plus one real Gemini Cloud request, and the exported integration all pass on the public URL.
 
 - **One question at a time.** Helpdesk asks "Which field in your data gives status?", with up to three candidates. It no longer shows a list of every category field. Readiness is judged per destination field.
 - **Build on this device.** Translate your categories locally and build with nothing sent to any model. The mapping runs through the same engine and is labeled "no AI".

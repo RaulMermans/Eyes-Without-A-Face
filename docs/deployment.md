@@ -1,14 +1,16 @@
 # Deployment
 
-**Status (2026-11-14, Sprint 14): `DEPLOYED_UNVERIFIED`.**
+**Status (2026-11-16, Sprint 15): `PRODUCTION_ACCEPTED`.**
 
-<https://eyes-without-a-face-b7281.web.app> serves `95a9564c90efd97085dea420b5dca3d62ff265cf`, deployed about 06:47 UTC with the owner's explicit approval of that exact SHA. No configuration change was made.
+<https://eyes-without-a-face-b7281.web.app> serves `c4a246cee43239a29298e919fe49c83fc0a8e9bb`, the Sprint 15 branch head (PR #16, before the merge). It was deployed with the owner's approval of that exact SHA. No configuration change was made.
 
-- **Passed:** every deterministic production check (17 / 17) and real Gemini Nano on the hosted build.
-- **Not verified:** the real Gemini Cloud happy path. Two automated sessions were refused at the App Check exchange (HTTP 403). The app failed closed and sent nothing.
-- **To finish:** one human run in a normal Chrome window ([evidence/production/95a9564c90ef/failures.md](evidence/production/95a9564c90ef/failures.md)).
-- **Previous release** `a548d7f` was RELEASE_FAILED ([failures](evidence/production/a548d7fbd7b8/failures.md)).
-- **Rollback target:** `b93e3ed`, the last PRODUCTION_ACCEPTED release.
+- **Passed:**
+  - 19 / 19 deterministic production checks;
+  - the real hybrid happy path: real Gemini Nano, then 1 approved real Gemini Cloud request through production App Check (exchange 200);
+  - the owner's Meridian source, end to end;
+  - the exported integration run independently.
+- **Evidence:** [evidence/production/c4a246cee432/](evidence/production/c4a246cee432/acceptance-results.json).
+- **Previous release:** `0a9d42a` (DEPLOYED_UNVERIFIED; PF-2 and PF-3 are fixed in this release). Rollback target: `0a9d42a`, or `b93e3ed`.
 
 ## Production acceptance standard (permanent)
 

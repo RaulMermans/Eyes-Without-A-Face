@@ -130,6 +130,23 @@ export function distinctLabels(records: readonly unknown[], field: FieldProfile)
   return [...counts.entries()].map(([value, count]) => ({ value, count })).sort((a, b) => b.count - a.count || a.value.localeCompare(b.value));
 }
 
+const EMAIL_SHAPE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+/** At least this share of a field's present values must look like emails to count as evidence. */
+const EMAIL_SHARE = 0.8;
+
+/** How many present values of a field look like email addresses. Local only. */
+function emailShare(records: readonly unknown[], path: string): { emails: number; total: number } {
+  let emails = 0;
+  let total = 0;
+  for (const record of records) {
+    const value = readLocal(record, path);
+    if (value === undefined || value === null) continue;
+    total += 1;
+    if (typeof value === "string" && EMAIL_SHAPE.test(value.trim())) emails += 1;
+  }
+  return { emails, total };
+}
+
 const tokens = (name: string): string[] =>
   name
     .replace(/([a-z0-9])([A-Z])/g, "$1 $2")
@@ -189,7 +206,12 @@ export function rankCandidates(prepared: PreparedTwin, records: readonly unknown
         score += 6;
         reasons.push("every value looks like an email address");
       } else if (field.type === "string") {
-        score += 1;
+        // Real data has a few malformed emails; the profile then drops the format. Count locally (PF-2).
+        const share = emailShare(records, field.path);
+        if (share.total >= 2 && share.emails / share.total >= EMAIL_SHARE) {
+          score += 5;
+          reasons.push(`${share.emails} of ${share.total} values look like email addresses`);
+        } else score += 1;
       } else continue;
     } else if (target.format === "date" || target.format === "date-time") {
       if (field.type === "date" || field.type === "datetime") {

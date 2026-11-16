@@ -6,7 +6,13 @@
 
 Decision: [ADR 0014](../decisions/0014-target-first-mapping-and-local-meaning.md).
 
-**Release status: `CODE_READY`.** Code, tests and the release artifact are verified locally. Nothing was deployed. Deployment needs the owner's approval of the exact SHA, which is in the PR and the final handoff. The public URL still serves `95a9564`, which is **`DEPLOYED_UNVERIFIED`**: its real cloud run still needs one human session.
+**Release status: `PRODUCTION_ACCEPTED`.** `c4a246c` is live with the owner's approval of that SHA.
+
+- 19 / 19 deterministic production checks pass.
+- The real hybrid happy path passes: real Gemini Nano, then 1 approved real Gemini Cloud request (App Check exchange 200).
+- The owner's Meridian source completes the journey, and its exported integration runs outside the app with identical outputs.
+- Evidence: [evidence/production/c4a246cee432/](../evidence/production/c4a246cee432/acceptance-results.json).
+- The first Sprint 15 deployment (`0a9d42a`) is DEPLOYED_UNVERIFIED. Its real cloud run was refused at App Check, and the owner's file found PF-2 and PF-3 ([failures](../evidence/production/0a9d42aeac68/failures.md)).
 
 ## Starting state (verified)
 
@@ -98,19 +104,22 @@ Decision: [ADR 0014](../decisions/0014-target-first-mapping-and-local-meaning.md
 
 | Suite | Sprint 14 | Sprint 15 | New |
 | --- | --- | --- | --- |
-| Unit | 339 | **360** | S15-001…021 |
+| Unit | 339 | **362** | S15-001…023 |
 | Contracts | 43 | **43** | — |
-| Privacy | 83 | **89** | PRV-S15-001…004 (6 cases) |
+| Privacy | 83 | **91** | PRV-S15-001…005 (8 cases) |
 | Evaluation | 84 | **84** | — (frozen, unchanged) |
 | E2E | 139 | **151** | E2E-150…155 (12 cases) |
-| **Total** | **688** | **727** | +39 |
+| **Total** | **688** | **731** | +43 |
 
-- **Existing assertions:** no assertion was weakened, skipped or amended. No frozen file changed.
+- **Existing assertions:** no assertion was weakened, skipped or amended.
+- **Freeze amendment:** `src/phantom/generate.ts` (Nano-value freeze), for PF-3. It is stricter and proven output-neutral for every frozen scenario; see [failures.md](../evidence/production/0a9d42aeac68/failures.md).
 - **Production suite:** P-024 is new (local build, zero `generateContent`). It runs only against the deployed URL, after an approved deployment.
 - **Model evidence this sprint:**
   - **Deterministic:** all of the above.
   - **Simulated:** the labeled test adapter in E2E.
-  - **Genuine model runs:** **none**. No real Gemini Nano or Gemini Cloud request was made in Sprint 15.
+  - **Genuine model runs:** on production only.
+    - `0a9d42a`: real Nano passed; the cloud request was refused at App Check, with 0 requests sent.
+    - `c4a246c`: real Nano passed, and 1 real Gemini Cloud request passed.
 
 ## Risks
 
