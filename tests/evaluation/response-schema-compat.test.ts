@@ -13,8 +13,15 @@ import Ajv2020 from "ajv/dist/2020.js";
 import fs from "node:fs";
 import { describe, expect, it } from "vitest";
 import evidence from "../../docs/evidence/sprint-8/live-semantic-benchmark.json" with { type: "json" };
-import { MAPPING_PROPOSAL_JSON_SCHEMA, MAPPING_REVISION_JSON_SCHEMA } from "../../src/inference/prompts.ts";
-import { INITIAL_MAPPING_RESPONSE_SCHEMA, INITIAL_RESPONSE_SCHEMA_ID } from "../../src/inference/response-schemas.ts";
+import { MAPPING_PROPOSAL_JSON_SCHEMA, MAPPING_REVISION_JSON_SCHEMA, buildCloudPromptText } from "../../src/inference/prompts.ts";
+import {
+  INITIAL_MAPPING_RESPONSE_SCHEMA,
+  INITIAL_RESPONSE_SCHEMA_ID,
+  INTENT_PLAN_RESPONSE_SCHEMA,
+  INTENT_PLAN_RESPONSE_SCHEMA_ID,
+  cloudResponseKind,
+} from "../../src/inference/response-schemas.ts";
+import { buildIntentPlanPromptText } from "../../src/inference/intent-prompt.ts";
 import { INITIAL_MAPPING_RESPONSE_SCHEMA_V2 } from "../../src/inference/planner-prompt.ts";
 
 type Json = Record<string, unknown>;
@@ -65,6 +72,16 @@ describe("EVAL-090 per-operation response schema vs recorded real outputs", () =
     // Sprint 18A.5 tried initial schema 2 together with prompt v4; the pair was rejected (ADR 0017) and reverted.
     expect(INITIAL_MAPPING_RESPONSE_SCHEMA).toBe(MAPPING_REVISION_JSON_SCHEMA);
     expect(INITIAL_RESPONSE_SCHEMA_ID).toBe("mapping-response-per-operation-1");
+  });
+
+  it("records (Sprint 18B, ADR 0018): prompt v5 requests use the separate intent-plan schema; Mapping Proposal answers keep this one", () => {
+    // These recorded outputs are Mapping Proposals; the plan schema answers a different contract, so it is not
+    // replayed against them. Its decoder ⊆ canonical proof is S18B-C-002 (tests/contracts/intent-plan.test.ts).
+    expect(INTENT_PLAN_RESPONSE_SCHEMA_ID).toBe("integration-intent-plan-1");
+    expect(INTENT_PLAN_RESPONSE_SCHEMA).not.toBe(INITIAL_MAPPING_RESPONSE_SCHEMA);
+    expect(cloudResponseKind(buildIntentPlanPromptText("{}"), false)).toBe("integration-intent-plan");
+    expect(cloudResponseKind(buildCloudPromptText("{}", "1.1.0"), false)).toBe("mapping-proposal");
+    expect(cloudResponseKind(buildIntentPlanPromptText("{}"), true)).toBe("mapping-proposal");
   });
 
   it("every converter-valid real output is admitted by the per-operation schema (no valid shape excluded)", () => {
