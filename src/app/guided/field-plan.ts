@@ -318,7 +318,7 @@ function slashOrder(field: FieldProfile, confirmations: Readonly<Record<string, 
 }
 
 /** The deterministic local rule for one destination field from one source field, or what is missing. */
-function deriveRule(
+export function deriveRule(
   prepared: PreparedTwin,
   target: CloudDisclosureTargetField,
   source: string,

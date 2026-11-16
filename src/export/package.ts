@@ -83,6 +83,8 @@ export interface PackageInput {
   privacy: PrivacyContext;
   app: { version: string; buildSha: string | null };
   assets: PackageAssets;
+  /** Sprint 18B (ADR 0018): destination fields completed from the user's own answers (a count; never names). */
+  userDeclaredFields?: number;
 }
 
 export interface PackageFinding {
@@ -338,6 +340,8 @@ const LIMITATION_TEXT = {
   draft: "DRAFT: exported with unresolved findings after explicit confirmation. Not production-ready.",
   gemini: "The mapping was proposed by Gemini from an approved Phantom Twin. Its correctness rests on the local verification recorded here, not on the model.",
   testAdapter: "The mapping came from the labeled test adapter (simulated), not from Gemini.",
+  userDeclared: (count: number) =>
+    `${count} destination field(s) were completed from the data owner's own answers on the source device (field choices, category translations or date orders), not by the model.`,
   revised: (verdict: string) => `This is the revised mapping from one approved blind revision. Local acceptance check: ${verdict}.`,
   withheld: (count: number) => `${count} semantic constraint(s) were withheld because they would reveal unapproved labels or local field names.`,
   finding: (reason: string) => `Finding: ${reason}`,
@@ -356,7 +360,7 @@ const OWNED_SENTENCES: ReadonlySet<string> = (() => {
   const eligibility = eligibilitySentenceSkeletons(sentenceSkeleton);
   const t = LIMITATION_TEXT;
   const fixed = [
-    t.scope(7, 7), t.fixtures, t.bindings, t.runner, t.semantic, t.draft, t.gemini, t.testAdapter, t.revised("ACCEPTED"), t.revised("not recorded"), t.withheld(7),
+    t.scope(7, 7), t.fixtures, t.bindings, t.runner, t.semantic, t.draft, t.gemini, t.testAdapter, t.userDeclared(7), t.revised("ACCEPTED"), t.revised("not recorded"), t.withheld(7),
     PRIVACY_SCAN_METHOD, REPORT_OMITTED, POLICY_NOTE, PACKAGE_DESCRIPTION, MAPPING_NOTES, DECLARATIONS_NOTE, STRICT_POLICY.description, GUIDED_SET_ASIDE_DESCRIPTION,
     "node run.mjs verify", "node run.mjs fixtures",
   ].map(sentenceSkeleton);
@@ -483,6 +487,7 @@ function limitationsFor(input: PackageInput, status: ExportContractV11["status"]
   if (status === "DRAFT") lines.unshift(t.draft);
   if (input.origin === "gemini-cloud") lines.push(t.gemini);
   if (input.origin === "test-adapter") lines.push(t.testAdapter);
+  if ((input.userDeclaredFields ?? 0) > 0) lines.push(t.userDeclared(input.userDeclaredFields ?? 0));
   if (input.variant === "revised") lines.push(t.revised(input.revisionVerdict ?? "not recorded"));
   if (semanticWithheld > 0) lines.push(t.withheld(semanticWithheld));
   for (const reason of input.eligibility.reasons) lines.push(t.finding(reason));

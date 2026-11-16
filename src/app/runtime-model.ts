@@ -24,7 +24,7 @@ import type { SemanticReport, SemanticStatus } from "../semantics/verify.ts";
 import type { CompletionState } from "../verification/outcomes.ts";
 import type { PreparedTwin } from "../workflow/pipeline.ts";
 import type { WorkflowStepId } from "./workflow.ts";
-import type { WorkspaceState } from "./workspace-state.ts";
+import type { ProposalState, WorkspaceState } from "./workspace-state.ts";
 
 export type RuntimeStatus =
   | "not-started"
@@ -164,6 +164,18 @@ function originText(origin: string, simulated: boolean | undefined, source: stri
   if (origin === "manual-edit") return "manually edited locally — not model output";
   if (origin === "test-adapter" || simulated) return "simulated test adapter — not Gemini";
   return source === "IN_CLOUD" ? "real Gemini output · IN_CLOUD" : "Gemini output · provenance unverified";
+}
+
+/**
+ * Sprint 18B (ADR 0018): a blind revision is offered for a plan-based mapping
+ * only when no operation is user-declared. User-declared operations hold the
+ * user's private answers (category labels); they must never enter a feedback
+ * payload. Mapping Proposal answers (no plan) are unaffected.
+ */
+export function planRevisionAllowed(proposal: ProposalState | null | undefined): boolean {
+  const compiled = proposal?.plan?.compiled;
+  if (!compiled) return true;
+  return compiled.fields.every((field) => field.operationOrigin !== "user" && field.operationOrigin !== "gemini+user");
 }
 
 /** The candidate with the strongest eligibility, without promoting anything. */
@@ -509,7 +521,7 @@ export function deriveRuntime(input: RuntimeInput): RuntimeStage[] {
   // 12–15 · Blind revision (optional)
   const best = bestCandidate(input.candidates);
   const revisionNotNeeded = !revision && best?.eligibility.state === "VERIFIED";
-  const revisionAvailable = !revision && Boolean(report) && Boolean(proposal?.result.ok) && !revisionNotNeeded;
+  const revisionAvailable = !revision && Boolean(report) && Boolean(proposal?.result.ok) && !revisionNotNeeded && planRevisionAllowed(proposal);
   push({
     id: "revision-prepared",
     label: "Safe revision prepared",
