@@ -95,3 +95,64 @@ describe.runIf(process.env.EYES_AI_VALUE_HOLDOUT === "1")("EVAL-182 holdout: agg
     console.log(JSON.stringify(summary, null, 2));
   });
 });
+
+/**
+ * EVAL-183 live run (G0 vs G1). The offline reconstruction must reproduce the
+ * exact previewed prompt: pinned here on dev (hashes recorded by the zero-
+ * request rehearsal of tests/live/ai-value.spec.ts). Scoring of the holdout run
+ * writes aggregates when EYES_WRITE_AI_VALUE_LIVE=1, otherwise replays them.
+ */
+describe("EVAL-183 live AI-value run", () => {
+  it("the offline reconstruction reproduces the prompts the two apps previewed (dev, rehearsal)", async () => {
+    const { reconstruct, promptSha256 } = await import("../../src/evaluation/ai-value-live.ts");
+    const first = load(list("dev")[0]!);
+    expect((await promptSha256((await reconstruct(first, false))!)).slice(0, 16)).toBe("41949fad70703962");
+    expect((await promptSha256((await reconstruct(first, true))!)).slice(0, 16)).toBe("9a53440131d7a4dd");
+  });
+});
+
+const livePath = "docs/evidence/sprint-18a/ai-value-live.json";
+const liveSummaryPath = "docs/evidence/sprint-18a/ai-value-live-summary.json";
+
+describe.runIf(fs.existsSync(livePath))("EVAL-184 live holdout scoring (G0 vs G1)", () => {
+  it("scores the recorded run against the pre-registered live thresholds", async () => {
+    const { scoreEntry, summarizeLive, pairedByScenario } = await import("../../src/evaluation/ai-value-live.ts");
+    const raw = fs.readFileSync(livePath);
+    const entries = JSON.parse(raw.toString("utf8")) as import("../../src/evaluation/ai-value-live.ts").LiveEntry[];
+    const scenarios = list("holdout").map(load);
+    const scores = [];
+    for (const entry of entries) scores.push(await scoreEntry(entry, scenarios[entry.index]!));
+    const g0 = summarizeLive(scores.filter((score) => score.config === "G0"));
+    const g1 = summarizeLive(scores.filter((score) => score.config === "G1"));
+    const paired = pairedByScenario(scores);
+    const comparable = paired.filter((row) => row.g0 !== null && row.g1 !== null);
+    const notWorse = comparable.filter((row) => (row.g1 as number) >= (row.g0 as number)).length;
+    const verdict = {
+      L1: g1.L1_correctCorrespondences >= g0.L1_correctCorrespondences + 0.1,
+      notWorseScenarios: `${notWorse}/${comparable.length}`,
+      notWorse: notWorse >= 7,
+      L2: g1.L2_validProposals >= g0.L2_validProposals,
+      L3: g1.L3_hallucinatedReferences <= g0.L3_hallucinatedReferences,
+      privacy: g0.leaks + g1.leaks === 0,
+      promptsProven: g0.promptMismatches + g1.promptMismatches === 0,
+    };
+    const summary = {
+      experiment: "sprint-18a-ai-value",
+      split: "holdout",
+      evidenceSha256: createHash("sha256").update(raw).digest("hex"),
+      G0: g0,
+      G1: g1,
+      // Per-scenario rows are by index only, never by name.
+      pairedL1ByScenarioIndex: paired,
+      verdict: { ...verdict, livePass: verdict.L1 && verdict.notWorse && verdict.L2 && verdict.L3 && verdict.privacy && verdict.promptsProven },
+    };
+    if (process.env.EYES_WRITE_AI_VALUE_LIVE === "1") {
+      fs.writeFileSync(liveSummaryPath, `${JSON.stringify(summary, null, 2)}\n`);
+      console.log(JSON.stringify(summary, null, 2));
+    } else {
+      expect(summary).toEqual(JSON.parse(fs.readFileSync(liveSummaryPath, "utf8")));
+    }
+    expect(verdict.privacy).toBe(true);
+    expect(verdict.promptsProven).toBe(true);
+  });
+});

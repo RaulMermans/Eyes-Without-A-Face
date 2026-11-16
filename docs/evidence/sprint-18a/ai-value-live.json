@@ -1,0 +1,872 @@
+[
+  {
+    "config": "G0",
+    "trial": 1,
+    "index": 0,
+    "at": "2026-11-16T20:50:32.560Z",
+    "harnessError": "build: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+    "ms": 5575,
+    "requests": 0,
+    "leakCount": 0,
+    "promptSha256": [],
+    "httpStatus": [],
+    "answers": []
+  },
+  {
+    "config": "G0",
+    "trial": 1,
+    "index": 1,
+    "at": "2026-11-16T20:50:38.253Z",
+    "previewSha256": "d6a59345b2e8c49cf0f2c3c91d0803386d4538eaf9bc396739b43655dd1f7b2b",
+    "proposalStatus": "Rejected at convert · 3 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 4125ms",
+    "ms": 5189,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "d6a59345b2e8c49cf0f2c3c91d0803386d4538eaf9bc396739b43655dd1f7b2b"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_01\",\n      \"to\": \"borrower_name\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_12\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"email\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_13\",\n      \"to\": \"date_of_birth\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_07\",\n      \"to\": \"client_number\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_02\",\n      \"to\": \"outstanding_balance\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_06\",\n      \"to\": \"credit_score\"\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_03\",\n      \"to\": \"customer_status\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"active\",\n          \"category_b\": \"closed\",\n          \"category_c\": \"litigation\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"active\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_04\",\n      \"to\": \"employer_name\"\n    }\n  ],\n  \"rationale\": \"Mapped source fields to target schema using appropriate copy, parse_date, normalize_email, and map_enum transformations for fields like borrower name, email, dates, and status categories.\"\n}"
+    ]
+  },
+  {
+    "config": "G0",
+    "trial": 1,
+    "index": 2,
+    "at": "2026-11-16T20:50:43.563Z",
+    "previewSha256": "fe305913c6764188292035df21db036d9f9cf76ffc82d6a03f5ec890ca2dd8db",
+    "proposalStatus": "Rejected at convert · 2 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 3311ms",
+    "ms": 4669,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "fe305913c6764188292035df21db036d9f9cf76ffc82d6a03f5ec890ca2dd8db"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_03\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_13\",\n      \"to\": \"date_of_birth\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_06\",\n      \"to\": \"enrollment_status\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"enrolled\",\n          \"category_b\": \"waitlisted\",\n          \"category_c\": \"withdrawn\",\n          \"category_d\": \"completed\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"enrolled\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_16\",\n      \"to\": \"campus\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"north\",\n          \"category_b\": \"south\",\n          \"category_c\": \"online\",\n          \"category_d\": \"north\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"online\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_02\",\n      \"to\": \"full_name\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_07\",\n      \"to\": \"city\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_15\",\n      \"to\": \"guardian_name\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_08\",\n      \"to\": \"national_student_number\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"student_id\"\n    }\n  ],\n  \"rationale\": \"Mapping source fields to target schema fields using normalize_email, parse_date, map_enum, copy operations.\"\n}"
+    ]
+  },
+  {
+    "config": "G0",
+    "trial": 1,
+    "index": 3,
+    "at": "2026-11-16T20:50:48.382Z",
+    "previewSha256": "0dfa2da80fbc7c14f856f2caf54fe010dfad6fa2d176d8818856d04908646abf",
+    "proposalStatus": "Rejected at convert · 2 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2834ms",
+    "ms": 4275,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "0dfa2da80fbc7c14f856f2caf54fe010dfad6fa2d176d8818856d04908646abf"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_09\",\n      \"to\": \"supporter_id\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_04\",\n      \"to\": \"name\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_12\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_01\",\n      \"to\": \"first_gift_date\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_06\",\n      \"to\": \"giving_frequency\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"monthly\",\n          \"category_b\": \"quarterly\",\n          \"category_c\": \"annual\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"one_off\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_08\",\n      \"to\": \"membership_status\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"active\",\n          \"category_b\": \"lapsed\",\n          \"category_c\": \"cancelled\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"lapsed\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_02\",\n      \"to\": \"lifetime_giving\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_07\",\n      \"to\": \"email_opt_in\"\n    },\n    {\n      \"op\": \"default_if_missing\",\n      \"to\": \"gift_aid_eligible\",\n      \"params\": {\n        \"value\": null\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_14\",\n      \"to\": \"postal_code\"\n    }\n  ],\n  \"rationale\": \"Mapped available source fields to target schema using appropriate type conversions, email normalization, date parsing for DD/MM/YYYY formats, enum mappings, and safe defaults for missing data.\"\n}"
+    ]
+  },
+  {
+    "config": "G0",
+    "trial": 1,
+    "index": 4,
+    "at": "2026-11-16T20:50:52.789Z",
+    "harnessError": "destination: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+    "ms": 5549,
+    "requests": 0,
+    "leakCount": 0,
+    "promptSha256": [],
+    "httpStatus": [],
+    "answers": []
+  },
+  {
+    "config": "G0",
+    "trial": 1,
+    "index": 5,
+    "at": "2026-11-16T20:50:58.446Z",
+    "previewSha256": "4a03436b1803c137a0f9349988f0d603dcaff378cbd249dd7f0f42efec4cc98b",
+    "proposalStatus": "Valid · 6 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2080ms",
+    "ms": 3233,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "4a03436b1803c137a0f9349988f0d603dcaff378cbd249dd7f0f42efec4cc98b"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_01\",\n      \"to\": \"customer_number\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_02\",\n      \"to\": \"first_name\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"last_name\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_09\",\n      \"to\": \"date_of_birth\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_08\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_04\",\n      \"to\": \"monthly_fee\"\n    }\n  ],\n  \"rationale\": \"Mapped source fields to corresponding target fields based on semantic descriptors and types.\"\n}"
+    ]
+  },
+  {
+    "config": "G0",
+    "trial": 1,
+    "index": 6,
+    "at": "2026-11-16T20:51:01.835Z",
+    "previewSha256": "0993fe74628c2ddd38cbf3cecbf02e101eafcd6452743224989265d99733ffcd",
+    "proposalStatus": "Rejected at convert · 2 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 10914ms",
+    "ms": 11822,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "0993fe74628c2ddd38cbf3cecbf02e101eafcd6452743224989265d99733ffcd"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_04\",\n      \"to\": \"customer_code\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"full_name\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_02\",\n      \"to\": \"date_of_birth\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_01\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_06\",\n      \"to\": \"mobile_phone\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_09\",\n      \"to\": \"postal_code\"\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_10\",\n      \"to\": \"customer_status\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"active\",\n          \"category_b\": \"suspended\",\n          \"category_c\": \"terminated\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"active\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_14\",\n      \"to\": \"primary_policy_type\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"auto\",\n          \"category_b\": \"home\",\n          \"category_c\": \"life\",\n          \"category_d\": \"health\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"auto\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_08\",\n      \"to\": \"tax_id\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_11\",\n      \"to\": \"preferred_contact_time\"\n    }\n  ],\n  \"rationale\": \"Mapped source fields to target schema fields using appropriate copy, date parsing, email normalization, and enum mapping operations based on semantic types and examples.\"\n}"
+    ]
+  },
+  {
+    "config": "G0",
+    "trial": 1,
+    "index": 7,
+    "at": "2026-11-16T20:51:13.800Z",
+    "previewSha256": "101238b657f30f577a7ef1dfeed20e38abea406d84b880fc6061d1e7b776dffd",
+    "proposalStatus": "Rejected at convert · 3 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2445ms",
+    "ms": 4027,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "101238b657f30f577a7ef1dfeed20e38abea406d84b880fc6061d1e7b776dffd"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_02\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_02\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_08\",\n      \"to\": \"created_date\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_11\",\n      \"to\": \"stage\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"new\",\n          \"category_b\": \"qualified\",\n          \"category_c\": \"visit_scheduled\",\n          \"category_d\": \"lost\",\n          \"category_e\": \"won\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"new\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_18\",\n      \"to\": \"lead_source\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"portal\",\n          \"category_b\": \"referral\",\n          \"category_c\": \"website\",\n          \"category_d\": \"social\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"website\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_19\",\n      \"to\": \"city\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_04\",\n      \"to\": \"max_budget\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_03\",\n      \"to\": \"company\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"contact_name\"\n    }\n  ],\n  \"rationale\": \"Mapped source fields to target schema using appropriate copy, normalization, date parsing, and enum mapping operations adhering strictly to the schema.\"\n}"
+    ]
+  },
+  {
+    "config": "G0",
+    "trial": 1,
+    "index": 8,
+    "at": "2026-11-16T20:51:18.079Z",
+    "previewSha256": "16f8d387b5474340bcbde7c59b33582805aa569b26dbfc0bc516cfc0cddf9454",
+    "proposalStatus": "Valid · 9 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2394ms",
+    "ms": 4813,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "16f8d387b5474340bcbde7c59b33582805aa569b26dbfc0bc516cfc0cddf9454"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_06\",\n      \"to\": \"supplier_number\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_01\",\n      \"to\": \"legal_name\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_02\",\n      \"to\": \"primary_contact.name\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_09\",\n      \"to\": \"primary_contact.email\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_04\",\n      \"to\": \"primary_contact.phone\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_16\",\n      \"to\": \"remittance_email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_17\",\n      \"to\": \"onboarded_date\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_10\",\n      \"to\": \"tax_id\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_08\",\n      \"to\": \"duns_number\"\n    }\n  ],\n  \"rationale\": \"Mapped available source identifiers, text fields, and emails to the corresponding target fields, utilizing proper normalization and date parsing operations where required.\"\n}"
+    ]
+  },
+  {
+    "config": "G0",
+    "trial": 1,
+    "index": 9,
+    "at": "2026-11-16T20:51:23.091Z",
+    "previewSha256": "ec83181d268e95491c600f272d9e09d1cc5d85f59fb6c55ab5cbd8935331f97e",
+    "proposalStatus": "Rejected at convert · 1 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 8747ms",
+    "ms": 10798,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "ec83181d268e95491c600f272d9e09d1cc5d85f59fb6c55ab5cbd8935331f97e"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_04\",\n      \"to\": \"customer_number\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_07\",\n      \"to\": \"name\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_08\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_01\",\n      \"to\": \"customer_since\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_11\",\n      \"to\": \"status\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"active\",\n          \"category_b\": \"inactive\",\n          \"category_c\": \"blocked\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"active\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"license_plate\"\n    },\n    {\n      \"op\": \"default_if_missing\",\n      \"to\": \"phone\",\n      \"params\": {\n        \"value\": null\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_12\",\n      \"to\": \"preferred_workshop\"\n    }\n  ],\n  \"rationale\": \"Mapped source fields to target schema matching types, formats, and enums appropriately using standard operations.\"\n}"
+    ]
+  },
+  {
+    "config": "G1",
+    "trial": 1,
+    "index": 0,
+    "at": "2026-11-16T20:51:36.267Z",
+    "harnessError": "build: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+    "ms": 6344,
+    "requests": 0,
+    "leakCount": 0,
+    "promptSha256": [],
+    "httpStatus": [],
+    "answers": []
+  },
+  {
+    "config": "G1",
+    "trial": 1,
+    "index": 1,
+    "at": "2026-11-16T20:51:42.792Z",
+    "previewSha256": "393fe71de51bb0088dff2eb2ade232ed7648c632ed2a1f7249beca78400269f1",
+    "proposalStatus": "Valid · 9 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2411ms",
+    "ms": 4818,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "393fe71de51bb0088dff2eb2ade232ed7648c632ed2a1f7249beca78400269f1"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_15\",\n      \"to\": \"client_number\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_01\",\n      \"to\": \"borrower_name\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_08\",\n      \"to\": \"employer_name\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_14\",\n      \"to\": \"date_of_birth\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_12\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_04\",\n      \"to\": \"mobile_phone\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_07\",\n      \"to\": \"postal_code\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_02\",\n      \"to\": \"outstanding_balance\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_06\",\n      \"to\": \"credit_score\"\n    }\n  ],\n  \"rationale\": \"Mapping source aliases to target fields using appropriate copy, parse_date, and normalize_email operations.\"\n}"
+    ]
+  },
+  {
+    "config": "G1",
+    "trial": 1,
+    "index": 2,
+    "at": "2026-11-16T20:51:47.849Z",
+    "previewSha256": "8a4d16c7b9513c78526a7c5f3a271b91630225cbb99ea3b7a9932e4279ed06c8",
+    "proposalStatus": "Valid · 7 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2544ms",
+    "ms": 4606,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "8a4d16c7b9513c78526a7c5f3a271b91630225cbb99ea3b7a9932e4279ed06c8"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_01\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"rename\",\n      \"from\": \"f_02\",\n      \"to\": \"full_name\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_17\",\n      \"to\": \"date_of_birth\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"rename\",\n      \"from\": \"f_11\",\n      \"to\": \"city\"\n    },\n    {\n      \"op\": \"rename\",\n      \"from\": \"f_15\",\n      \"to\": \"guardian_name\"\n    },\n    {\n      \"op\": \"rename\",\n      \"from\": \"f_18\",\n      \"to\": \"student_id\"\n    },\n    {\n      \"op\": \"rename\",\n      \"from\": \"f_08\",\n      \"to\": \"national_student_number\"\n    }\n  ],\n  \"rationale\": \"Mapped source fields to corresponding target fields using normalization for email, renaming for text fields, and date parsing for date_of_birth.\"\n}"
+    ]
+  },
+  {
+    "config": "G1",
+    "trial": 1,
+    "index": 3,
+    "at": "2026-11-16T20:51:52.703Z",
+    "previewSha256": "f0565639a6e187da7db91a75df0eaf12e336f5ae5ba210bb029eeb1b5ebc2435",
+    "proposalStatus": "Valid · 6 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 6851ms",
+    "ms": 8885,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "f0565639a6e187da7db91a75df0eaf12e336f5ae5ba210bb029eeb1b5ebc2435"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_18\",\n      \"to\": \"supporter_id\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_04\",\n      \"to\": \"name\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_12\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_11\",\n      \"to\": \"first_gift_date\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_07\",\n      \"to\": \"email_opt_in\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_09\",\n      \"to\": \"postal_code\"\n    }\n  ],\n  \"rationale\": \"Mapped source fields to destination fields appropriately using copy and normalization operations for emails and dates.\"\n}"
+    ]
+  },
+  {
+    "config": "G1",
+    "trial": 1,
+    "index": 4,
+    "at": "2026-11-16T20:52:01.852Z",
+    "previewSha256": "078b50aafd36ee04fa2666dbe5bd9862b45435e85fbc0343b062cebba8b0e4ff",
+    "proposalStatus": "Rejected at convert · 2 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 24578ms",
+    "ms": 26989,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "078b50aafd36ee04fa2666dbe5bd9862b45435e85fbc0343b062cebba8b0e4ff"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_08\",\n      \"to\": \"member_id\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_03\",\n      \"to\": \"full_name\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_07\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_14\",\n      \"to\": \"join_date\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_04\",\n      \"to\": \"membership_status\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"active\",\n          \"category_b\": \"suspended\",\n          \"category_c\": \"expired\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"cancelled\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_13\",\n      \"to\": \"plan\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"basic\",\n          \"category_b\": \"plus\",\n          \"category_c\": \"premium\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": null\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"home_club\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_10\",\n      \"to\": \"monthly_fee\"\n    },\n    {\n      \"op\": \"default_if_missing\",\n      \"to\": \"emergency_contact_phone\",\n      \"params\": {\n        \"value\": null\n      }\n    }\n  ],\n  \"rationale\": \"Mapped customer identifier to member_id, person's full name to full_name, email with normalization, creation date with DD/MM/YYYY parsing, categorical fields using map_enum, organization name to home_club, a numeric field to monthly_fee, and defaulted missing optional emergency_contact_phone to null.\"\n}"
+    ]
+  },
+  {
+    "config": "G1",
+    "trial": 1,
+    "index": 5,
+    "at": "2026-11-16T20:52:29.070Z",
+    "previewSha256": "9b91a1b671dded0172ba13af3c877ba1e37441415cfccf6d963fb85c6e25b5cb",
+    "proposalStatus": "Valid · 7 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2250ms",
+    "ms": 3733,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "9b91a1b671dded0172ba13af3c877ba1e37441415cfccf6d963fb85c6e25b5cb"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_03\",\n      \"to\": \"customer_number\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"first_name\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_10\",\n      \"to\": \"last_name\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_12\",\n      \"to\": \"date_of_birth\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_08\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_01\",\n      \"to\": \"billing_postal_code\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_06\",\n      \"to\": \"monthly_fee\"\n    }\n  ],\n  \"rationale\": \"Mapping established using standard copy, parse_date for birth date, and normalize_email for email fields matching the target schema.\"\n}"
+    ]
+  },
+  {
+    "config": "G1",
+    "trial": 1,
+    "index": 6,
+    "at": "2026-11-16T20:52:32.939Z",
+    "previewSha256": "98d91db02f3c9a057c28ba5d91e00b81bbd65cf2f6062dec74de86235a63a153",
+    "proposalStatus": "Valid · 8 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2154ms",
+    "ms": 3280,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "98d91db02f3c9a057c28ba5d91e00b81bbd65cf2f6062dec74de86235a63a153"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_04\",\n      \"to\": \"customer_code\"\n    },\n    {\n      \"op\": \"concat\",\n      \"from\": [\"f_05\", \"f_11\"],\n      \"to\": \"full_name\",\n      \"params\": {\n        \"separator\": \" \"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_02\",\n      \"to\": \"date_of_birth\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_01\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_19\",\n      \"to\": \"mobile_phone\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_09\",\n      \"to\": \"postal_code\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_07\",\n      \"to\": \"tax_id\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_15\",\n      \"to\": \"preferred_contact_time\"\n    }\n  ],\n  \"rationale\": \"Mapped source fields to target schema using copy, concat, parse_date, and normalize_email operations based on semantic types and synthetic examples.\"\n}"
+    ]
+  },
+  {
+    "config": "G1",
+    "trial": 1,
+    "index": 7,
+    "at": "2026-11-16T20:52:36.416Z",
+    "previewSha256": "e0675108eb503ab4873d68fc6165b9b84bb63eaed5deba3ce754a150698980a7",
+    "proposalStatus": "Rejected at convert · 2 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2528ms",
+    "ms": 4291,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "e0675108eb503ab4873d68fc6165b9b84bb63eaed5deba3ce754a150698980a7"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_12\",\n      \"to\": \"lead_id\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"contact_name\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_02\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_14\",\n      \"to\": \"mobile\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_08\",\n      \"to\": \"created_date\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_18\",\n      \"to\": \"stage\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"new\",\n          \"category_b\": \"qualified\",\n          \"category_c\": \"visit_scheduled\",\n          \"category_d\": \"lost\",\n          \"category_e\": \"won\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"new\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_11\",\n      \"to\": \"lead_source\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"portal\",\n          \"category_b\": \"referral\",\n          \"category_c\": \"website\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"portal\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_09\",\n      \"to\": \"city\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_07\",\n      \"to\": \"max_budget\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_03\",\n      \"to\": \"company\"\n    }\n  ],\n  \"rationale\": \"Mapped source fields to target schema fields using appropriate copy, normalization, date parsing, and enumeration mapping operations.\"\n}"
+    ]
+  },
+  {
+    "config": "G1",
+    "trial": 1,
+    "index": 8,
+    "at": "2026-11-16T20:52:40.877Z",
+    "previewSha256": "c27a02bbe43f04432a2fefdc64be616bd3037706bd75a104ec6390c00eeaf493",
+    "proposalStatus": "Valid · 8 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2358ms",
+    "ms": 3632,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "c27a02bbe43f04432a2fefdc64be616bd3037706bd75a104ec6390c00eeaf493"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_08\",\n      \"to\": \"supplier_number\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_01\",\n      \"to\": \"legal_name\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_07\",\n      \"to\": \"primary_contact.name\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_09\",\n      \"to\": \"primary_contact.email\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_10\",\n      \"to\": \"primary_contact.phone\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_16\",\n      \"to\": \"remittance_email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_17\",\n      \"to\": \"onboarded_date\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_06\",\n      \"to\": \"tax_id\"\n    }\n  ],\n  \"rationale\": \"Mapped available source fields to corresponding target schema fields based on semantic descriptors, data types, and observed example formats.\"\n}"
+    ]
+  },
+  {
+    "config": "G1",
+    "trial": 1,
+    "index": 9,
+    "at": "2026-11-16T20:52:44.647Z",
+    "previewSha256": "f3d1be1299c7c5f491264a0767c229dcf2f035566f2d26388616c15937cec503",
+    "proposalStatus": "Rejected at convert · 1 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2325ms",
+    "ms": 3713,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "f3d1be1299c7c5f491264a0767c229dcf2f035566f2d26388616c15937cec503"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_14\",\n      \"to\": \"customer_number\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_07\",\n      \"to\": \"name\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_02\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_13\",\n      \"to\": \"customer_since\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_15\",\n      \"to\": \"status\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"active\",\n          \"category_b\": \"inactive\",\n          \"category_c\": \"blocked\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"inactive\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"license_plate\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_16\",\n      \"to\": \"phone\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_12\",\n      \"to\": \"preferred_workshop\"\n    }\n  ],\n  \"rationale\": \"Mapping source fields to target fields based on semantic types, identifiers, and sample values.\"\n}"
+    ]
+  },
+  {
+    "config": "G1",
+    "trial": 2,
+    "index": 0,
+    "at": "2026-11-16T20:52:49.434Z",
+    "harnessError": "build: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+    "ms": 5665,
+    "requests": 0,
+    "leakCount": 0,
+    "promptSha256": [],
+    "httpStatus": [],
+    "answers": []
+  },
+  {
+    "config": "G1",
+    "trial": 2,
+    "index": 1,
+    "at": "2026-11-16T20:52:55.318Z",
+    "previewSha256": "393fe71de51bb0088dff2eb2ade232ed7648c632ed2a1f7249beca78400269f1",
+    "proposalStatus": "Valid · 9 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 4185ms",
+    "ms": 6266,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "393fe71de51bb0088dff2eb2ade232ed7648c632ed2a1f7249beca78400269f1"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_15\",\n      \"to\": \"client_number\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_01\",\n      \"to\": \"borrower_name\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_08\",\n      \"to\": \"employer_name\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_14\",\n      \"to\": \"date_of_birth\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_12\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_04\",\n      \"to\": \"mobile_phone\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_07\",\n      \"to\": \"postal_code\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_02\",\n      \"to\": \"outstanding_balance\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_06\",\n      \"to\": \"credit_score\"\n    }\n  ],\n  \"rationale\": \"Mapping source aliases to target fields using appropriate copy, parse_date, and normalize_email operations.\"\n}"
+    ]
+  },
+  {
+    "config": "G1",
+    "trial": 2,
+    "index": 2,
+    "at": "2026-11-16T20:53:01.789Z",
+    "previewSha256": "8a4d16c7b9513c78526a7c5f3a271b91630225cbb99ea3b7a9932e4279ed06c8",
+    "proposalStatus": "Valid · 7 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 9739ms",
+    "ms": 11567,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "8a4d16c7b9513c78526a7c5f3a271b91630225cbb99ea3b7a9932e4279ed06c8"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_01\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_02\",\n      \"to\": \"full_name\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_17\",\n      \"to\": \"date_of_birth\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_11\",\n      \"to\": \"city\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_15\",\n      \"to\": \"guardian_name\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_18\",\n      \"to\": \"student_id\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_08\",\n      \"to\": \"national_student_number\"\n    }\n  ],\n  \"rationale\": \"Mapped source fields to the corresponding target fields based on semantic types and descriptors, such as email normalization, personal names, dates of birth, city, student ID, and national student number.\"\n}"
+    ]
+  },
+  {
+    "config": "G1",
+    "trial": 2,
+    "index": 3,
+    "at": "2026-11-16T20:53:13.555Z",
+    "previewSha256": "f0565639a6e187da7db91a75df0eaf12e336f5ae5ba210bb029eeb1b5ebc2435",
+    "proposalStatus": "Rejected at convert · 2 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 7106ms",
+    "ms": 9255,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "f0565639a6e187da7db91a75df0eaf12e336f5ae5ba210bb029eeb1b5ebc2435"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_18\",\n      \"to\": \"supporter_id\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_04\",\n      \"to\": \"name\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_12\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_11\",\n      \"to\": \"first_gift_date\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_06\",\n      \"to\": \"giving_frequency\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"monthly\",\n          \"category_b\": \"quarterly\",\n          \"category_c\": \"annual\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"one_off\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_08\",\n      \"to\": \"membership_status\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"active\",\n          \"category_b\": \"lapsed\",\n          \"category_c\": \"cancelled\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"lapsed\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"lifetime_giving\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_07\",\n      \"to\": \"email_opt_in\"\n    },\n    {\n      \"op\": \"default_if_missing\",\n      \"to\": \"gift_aid_eligible\",\n      \"params\": {\n        \"value\": null\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_09\",\n      \"to\": \"postal_code\"\n    }\n  ],\n  \"rationale\": \"Mapped source fields to target schema using appropriate type conversions, email normalization, date parsing with DD/MM/YYYY format, and enum mapping with defaults.\"\n}"
+    ]
+  },
+  {
+    "config": "G1",
+    "trial": 2,
+    "index": 4,
+    "at": "2026-11-16T20:53:23.078Z",
+    "previewSha256": "078b50aafd36ee04fa2666dbe5bd9862b45435e85fbc0343b062cebba8b0e4ff",
+    "proposalStatus": "Rejected at convert · 2 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 3698ms",
+    "ms": 5851,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "078b50aafd36ee04fa2666dbe5bd9862b45435e85fbc0343b062cebba8b0e4ff"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_08\",\n      \"to\": \"member_id\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_03\",\n      \"to\": \"full_name\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_07\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_14\",\n      \"to\": \"join_date\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_04\",\n      \"to\": \"membership_status\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"active\",\n          \"category_b\": \"suspended\",\n          \"category_c\": \"expired\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"cancelled\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_13\",\n      \"to\": \"plan\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"basic\",\n          \"category_b\": \"plus\",\n          \"category_c\": \"premium\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"basic\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"home_club\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_10\",\n      \"to\": \"monthly_fee\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_17\",\n      \"to\": \"emergency_contact_phone\"\n    }\n  ],\n  \"rationale\": \"Mapped source fields to target schema fields using appropriate copy, normalization, date parsing, and enum mapping operations.\"\n}"
+    ]
+  },
+  {
+    "config": "G1",
+    "trial": 2,
+    "index": 5,
+    "at": "2026-11-16T20:53:29.120Z",
+    "previewSha256": "9b91a1b671dded0172ba13af3c877ba1e37441415cfccf6d963fb85c6e25b5cb",
+    "proposalStatus": "Valid · 7 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2010ms",
+    "ms": 3933,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "9b91a1b671dded0172ba13af3c877ba1e37441415cfccf6d963fb85c6e25b5cb"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_03\",\n      \"to\": \"customer_number\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"first_name\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_10\",\n      \"to\": \"last_name\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_12\",\n      \"to\": \"date_of_birth\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_08\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_01\",\n      \"to\": \"billing_postal_code\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_06\",\n      \"to\": \"monthly_fee\"\n    }\n  ],\n  \"rationale\": \"Mapping established using standard copy, parse_date, and normalize_email operations based on field semantic descriptors and synthetic examples.\"\n}"
+    ]
+  },
+  {
+    "config": "G1",
+    "trial": 2,
+    "index": 6,
+    "at": "2026-11-16T20:53:33.303Z",
+    "previewSha256": "98d91db02f3c9a057c28ba5d91e00b81bbd65cf2f6062dec74de86235a63a153",
+    "proposalStatus": "Rejected at convert · 2 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 8301ms",
+    "ms": 10382,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "98d91db02f3c9a057c28ba5d91e00b81bbd65cf2f6062dec74de86235a63a153"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_04\",\n      \"to\": \"customer_code\"\n    },\n    {\n      \"op\": \"concat\",\n      \"from\": [\n        \"f_05\",\n        \"f_11\"\n      ],\n      \"to\": \"full_name\",\n      \"params\": {\n        \"separator\": \" \"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_02\",\n      \"to\": \"date_of_birth\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_01\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_19\",\n      \"to\": \"mobile_phone\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_09\",\n      \"to\": \"postal_code\"\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_10\",\n      \"to\": \"customer_status\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"active\",\n          \"category_b\": \"active\",\n          \"category_c\": \"suspended\",\n          \"category_d\": \"terminated\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"active\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_14\",\n      \"to\": \"primary_policy_type\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"auto\",\n          \"category_b\": \"home\",\n          \"category_c\": \"life\",\n          \"category_d\": \"health\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"auto\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_06\",\n      \"to\": \"tax_id\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_15\",\n      \"to\": \"preferred_contact_time\"\n    }\n  ],\n  \"rationale\": \"Mapped source fields to target schema using appropriate copy, concat for names, parse_date for date formatting, normalize_email, and map_enum for category translations.\"\n}"
+    ]
+  },
+  {
+    "config": "G1",
+    "trial": 2,
+    "index": 7,
+    "at": "2026-11-16T20:53:43.921Z",
+    "previewSha256": "e0675108eb503ab4873d68fc6165b9b84bb63eaed5deba3ce754a150698980a7",
+    "proposalStatus": "Rejected at convert · 2 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2332ms",
+    "ms": 4022,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "e0675108eb503ab4873d68fc6165b9b84bb63eaed5deba3ce754a150698980a7"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_12\",\n      \"to\": \"lead_id\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"contact_name\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_02\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"trim\",\n      \"from\": \"f_14\",\n      \"to\": \"mobile\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_08\",\n      \"to\": \"created_date\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_11\",\n      \"to\": \"stage\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"new\",\n          \"category_b\": \"qualified\",\n          \"category_c\": \"visit_scheduled\",\n          \"category_d\": \"lost\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"new\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_18\",\n      \"to\": \"lead_source\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"portal\",\n          \"category_b\": \"referral\",\n          \"category_c\": \"website\",\n          \"category_d\": \"social\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"portal\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_09\",\n      \"to\": \"city\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_07\",\n      \"to\": \"max_budget\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_03\",\n      \"to\": \"company\"\n    }\n  ],\n  \"rationale\": \"Mapped source fields to target schema using appropriate copy, normalization, date parsing, and enum mapping operations based on semantic types and examples.\"\n}"
+    ]
+  },
+  {
+    "config": "G1",
+    "trial": 2,
+    "index": 8,
+    "at": "2026-11-16T20:53:48.179Z",
+    "previewSha256": "c27a02bbe43f04432a2fefdc64be616bd3037706bd75a104ec6390c00eeaf493",
+    "proposalStatus": "Valid · 8 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2065ms",
+    "ms": 4024,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "c27a02bbe43f04432a2fefdc64be616bd3037706bd75a104ec6390c00eeaf493"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_08\",\n      \"to\": \"supplier_number\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_01\",\n      \"to\": \"legal_name\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_07\",\n      \"to\": \"primary_contact.name\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_09\",\n      \"to\": \"primary_contact.email\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_10\",\n      \"to\": \"primary_contact.phone\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_16\",\n      \"to\": \"remittance_email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_17\",\n      \"to\": \"onboarded_date\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_06\",\n      \"to\": \"tax_id\"\n    }\n  ],\n  \"rationale\": \"Mapped available source fields to their corresponding target fields based on semantic descriptors, formats, and synthetic example contents.\"\n}"
+    ]
+  },
+  {
+    "config": "G1",
+    "trial": 2,
+    "index": 9,
+    "at": "2026-11-16T20:53:52.399Z",
+    "previewSha256": "f3d1be1299c7c5f491264a0767c229dcf2f035566f2d26388616c15937cec503",
+    "proposalStatus": "Rejected at convert · 1 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2131ms",
+    "ms": 3704,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "f3d1be1299c7c5f491264a0767c229dcf2f035566f2d26388616c15937cec503"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_14\",\n      \"to\": \"customer_number\"\n    },\n    {\n      \"op\": \"trim\",\n      \"from\": \"f_07\",\n      \"to\": \"name\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_02\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_01\",\n      \"to\": \"customer_since\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_15\",\n      \"to\": \"status\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"active\",\n          \"category_b\": \"inactive\",\n          \"category_c\": \"blocked\",\n          \"category_d\": \"inactive\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"active\"\n      }\n    },\n    {\n      \"op\": \"trim\",\n      \"from\": \"f_05\",\n      \"to\": \"license_plate\"\n    },\n    {\n      \"op\": \"trim\",\n      \"from\": \"f_16\",\n      \"to\": \"phone\"\n    },\n    {\n      \"op\": \"trim\",\n      \"from\": \"f_12\",\n      \"to\": \"preferred_workshop\"\n    }\n  ],\n  \"rationale\": \"Mapped source fields to appropriate target fields based on semantic types and descriptors, applying safe transformations like trimming, date parsing, email normalization, and enum mapping.\"\n}"
+    ]
+  },
+  {
+    "config": "G0",
+    "trial": 2,
+    "index": 0,
+    "at": "2026-11-16T20:53:57.696Z",
+    "harnessError": "build: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+    "ms": 6095,
+    "requests": 0,
+    "leakCount": 0,
+    "promptSha256": [],
+    "httpStatus": [],
+    "answers": []
+  },
+  {
+    "config": "G0",
+    "trial": 2,
+    "index": 1,
+    "at": "2026-11-16T20:54:03.994Z",
+    "previewSha256": "d6a59345b2e8c49cf0f2c3c91d0803386d4538eaf9bc396739b43655dd1f7b2b",
+    "proposalStatus": "Rejected at convert · 1 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2591ms",
+    "ms": 4501,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "d6a59345b2e8c49cf0f2c3c91d0803386d4538eaf9bc396739b43655dd1f7b2b"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_01\",\n      \"to\": \"borrower_name\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_12\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_13\",\n      \"to\": \"date_of_birth\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_07\",\n      \"to\": \"client_number\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_06\",\n      \"to\": \"credit_score\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_02\",\n      \"to\": \"outstanding_balance\"\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_03\",\n      \"to\": \"customer_status\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"active\",\n          \"category_b\": \"closed\",\n          \"category_c\": \"litigation\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"active\"\n      }\n    }\n  ],\n  \"rationale\": \"Mapped source fields to destination target fields using copy, normalize_email, parse_date, and map_enum operations based on semantic types and examples.\"\n}"
+    ]
+  },
+  {
+    "config": "G0",
+    "trial": 2,
+    "index": 2,
+    "at": "2026-11-16T20:54:08.701Z",
+    "previewSha256": "fe305913c6764188292035df21db036d9f9cf76ffc82d6a03f5ec890ca2dd8db",
+    "proposalStatus": "Rejected at convert · 2 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2878ms",
+    "ms": 4247,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "fe305913c6764188292035df21db036d9f9cf76ffc82d6a03f5ec890ca2dd8db"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"student_id\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_02\",\n      \"to\": \"full_name\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_03\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_13\",\n      \"to\": \"date_of_birth\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_06\",\n      \"to\": \"enrollment_status\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"enrolled\",\n          \"category_b\": \"waitlisted\",\n          \"category_c\": \"withdrawn\",\n          \"category_d\": \"completed\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"enrolled\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_16\",\n      \"to\": \"campus\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"north\",\n          \"category_b\": \"south\",\n          \"category_c\": \"online\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"online\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_07\",\n      \"to\": \"city\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_15\",\n      \"to\": \"guardian_name\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_10\",\n      \"to\": \"national_student_number\"\n    }\n  ],\n  \"rationale\": \"Mapping source fields to target schema fields using appropriate copy, normalization, date parsing, and enum mapping transformations.\"\n}"
+    ]
+  },
+  {
+    "config": "G0",
+    "trial": 2,
+    "index": 3,
+    "at": "2026-11-16T20:54:13.190Z",
+    "previewSha256": "0dfa2da80fbc7c14f856f2caf54fe010dfad6fa2d176d8818856d04908646abf",
+    "proposalStatus": "Rejected at convert · 2 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2412ms",
+    "ms": 4676,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "0dfa2da80fbc7c14f856f2caf54fe010dfad6fa2d176d8818856d04908646abf"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_09\",\n      \"to\": \"supporter_id\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_04\",\n      \"to\": \"name\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_12\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_01\",\n      \"to\": \"first_gift_date\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_06\",\n      \"to\": \"giving_frequency\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"monthly\",\n          \"category_b\": \"quarterly\",\n          \"category_c\": \"annual\",\n          \"category_d\": \"one_off\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"one_off\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_08\",\n      \"to\": \"membership_status\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"active\",\n          \"category_b\": \"lapsed\",\n          \"category_c\": \"cancelled\",\n          \"category_d\": \"active\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"lapsed\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_02\",\n      \"to\": \"lifetime_giving\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_07\",\n      \"to\": \"email_opt_in\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_07\",\n      \"to\": \"gift_aid_eligible\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_14\",\n      \"to\": \"postal_code\"\n    }\n  ],\n  \"rationale\": \"Mapped source fields to destination fields appropriately using copy, normalize_email, parse_date, and map_enum with valid enum options.\"\n}"
+    ]
+  },
+  {
+    "config": "G0",
+    "trial": 2,
+    "index": 4,
+    "at": "2026-11-16T20:54:18.096Z",
+    "previewSha256": "e7a2c7636a7fd4c5dd0eb77c59a3f0e989e2396db784359afd48c81ce912596e",
+    "proposalStatus": "Rejected at convert · 2 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 10135ms",
+    "ms": 12461,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "e7a2c7636a7fd4c5dd0eb77c59a3f0e989e2396db784359afd48c81ce912596e"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_01\",\n      \"to\": \"member_id\"\n    },\n    {\n      \"op\": \"concat\",\n      \"from\": [\"f_02\", \"f_03\"],\n      \"to\": \"full_name\",\n      \"params\": {\n        \"separator\": \" \"\n      }\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_07\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_09\",\n      \"to\": \"join_date\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_04\",\n      \"to\": \"membership_status\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"active\",\n          \"category_b\": \"suspended\",\n          \"category_c\": \"expired\",\n          \"category_d\": \"cancelled\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"active\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_13\",\n      \"to\": \"plan\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"basic\",\n          \"category_b\": \"plus\",\n          \"category_c\": \"premium\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"basic\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"home_club\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_08\",\n      \"to\": \"monthly_fee\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_17\",\n      \"to\": \"emergency_contact_phone\"\n    }\n  ],\n  \"rationale\": \"Mapped source fields directly to the target schema fields using appropriate types, copying IDs, concatenating names, normalizing email fields, parsing date formats, and mapping categories using enum mappings.\"\n}"
+    ]
+  },
+  {
+    "config": "G0",
+    "trial": 2,
+    "index": 5,
+    "at": "2026-11-16T20:54:30.750Z",
+    "previewSha256": "4a03436b1803c137a0f9349988f0d603dcaff378cbd249dd7f0f42efec4cc98b",
+    "proposalStatus": "Valid · 6 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2583ms",
+    "ms": 4166,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "4a03436b1803c137a0f9349988f0d603dcaff378cbd249dd7f0f42efec4cc98b"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_01\",\n      \"to\": \"customer_number\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_02\",\n      \"to\": \"first_name\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"last_name\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_09\",\n      \"to\": \"date_of_birth\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_08\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_04\",\n      \"to\": \"monthly_fee\"\n    }\n  ],\n  \"rationale\": \"Mapped source fields to corresponding target fields based on semantic descriptors and field types.\"\n}"
+    ]
+  },
+  {
+    "config": "G0",
+    "trial": 2,
+    "index": 6,
+    "at": "2026-11-16T20:54:35.148Z",
+    "previewSha256": "0993fe74628c2ddd38cbf3cecbf02e101eafcd6452743224989265d99733ffcd",
+    "proposalStatus": "Rejected at convert · 2 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 8791ms",
+    "ms": 10552,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "0993fe74628c2ddd38cbf3cecbf02e101eafcd6452743224989265d99733ffcd"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_04\",\n      \"to\": \"customer_code\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"full_name\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_02\",\n      \"to\": \"date_of_birth\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_01\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"default_if_missing\",\n      \"to\": \"mobile_phone\",\n      \"params\": {\n        \"value\": null\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_09\",\n      \"to\": \"postal_code\"\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_10\",\n      \"to\": \"customer_status\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"active\",\n          \"category_b\": \"suspended\",\n          \"category_c\": \"terminated\",\n          \"category_d\": \"active\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"active\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_14\",\n      \"to\": \"primary_policy_type\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"auto\",\n          \"category_b\": \"home\",\n          \"category_c\": \"life\",\n          \"category_d\": \"health\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"auto\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_06\",\n      \"to\": \"tax_id\"\n    },\n    {\n      \"op\": \"default_if_missing\",\n      \"to\": \"preferred_contact_time\",\n      \"params\": {\n        \"value\": null\n      }\n    }\n  ],\n  \"rationale\": \"Mapped source fields to target schema using copy, parse_date, normalize_email, map_enum, and default_if_missing operations appropriately based on type and semantic requirements.\"\n}"
+    ]
+  },
+  {
+    "config": "G0",
+    "trial": 2,
+    "index": 7,
+    "at": "2026-11-16T20:54:45.908Z",
+    "previewSha256": "101238b657f30f577a7ef1dfeed20e38abea406d84b880fc6061d1e7b776dffd",
+    "proposalStatus": "Rejected at convert · 1 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2060ms",
+    "ms": 3746,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "101238b657f30f577a7ef1dfeed20e38abea406d84b880fc6061d1e7b776dffd"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_02\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_08\",\n      \"to\": \"created_date\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_11\",\n      \"to\": \"stage\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"new\",\n          \"category_b\": \"qualified\",\n          \"category_c\": \"visit_scheduled\",\n          \"category_d\": \"lost\",\n          \"category_e\": \"won\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"new\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_03\",\n      \"to\": \"contact_name\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_19\",\n      \"to\": \"city\"\n    }\n  ],\n  \"rationale\": \"Mapped available source fields to corresponding target fields based on semantic types and formats.\"\n}"
+    ]
+  },
+  {
+    "config": "G0",
+    "trial": 2,
+    "index": 8,
+    "at": "2026-11-16T20:54:49.866Z",
+    "previewSha256": "16f8d387b5474340bcbde7c59b33582805aa569b26dbfc0bc516cfc0cddf9454",
+    "proposalStatus": "Valid · 8 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 11459ms",
+    "ms": 13014,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "16f8d387b5474340bcbde7c59b33582805aa569b26dbfc0bc516cfc0cddf9454"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_06\",\n      \"to\": \"supplier_number\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_01\",\n      \"to\": \"legal_name\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_02\",\n      \"to\": \"primary_contact.name\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_09\",\n      \"to\": \"primary_contact.email\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_16\",\n      \"to\": \"remittance_email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_17\",\n      \"to\": \"onboarded_date\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_08\",\n      \"to\": \"tax_id\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_20\",\n      \"to\": \"duns_number\"\n    }\n  ],\n  \"rationale\": \"Mapped source identifiers, names, emails, dates, and tax IDs to their corresponding target fields using copy, normalize_email, and parse_date operations.\"\n}"
+    ]
+  },
+  {
+    "config": "G0",
+    "trial": 2,
+    "index": 9,
+    "at": "2026-11-16T20:55:03.085Z",
+    "previewSha256": "ec83181d268e95491c600f272d9e09d1cc5d85f59fb6c55ab5cbd8935331f97e",
+    "proposalStatus": "Rejected at convert · 1 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 6044ms",
+    "ms": 7882,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "ec83181d268e95491c600f272d9e09d1cc5d85f59fb6c55ab5cbd8935331f97e"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_04\",\n      \"to\": \"customer_number\"\n    },\n    {\n      \"op\": \"concat\",\n      \"from\": [\"f_07\", \"f_16\"],\n      \"to\": \"name\",\n      \"params\": {\n        \"separator\": \" \"\n      }\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_08\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_01\",\n      \"to\": \"customer_since\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_11\",\n      \"to\": \"status\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"active\",\n          \"category_b\": \"inactive\",\n          \"category_c\": \"blocked\",\n          \"category_d\": \"active\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"active\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"license_plate\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_02\",\n      \"to\": \"phone\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_12\",\n      \"to\": \"preferred_workshop\"\n    }\n  ],\n  \"rationale\": \"Mapped source fields to destination fields appropriately using copy, concat, normalize_email, parse_date, and map_enum based on semantic types and formats.\"\n}"
+    ]
+  }
+]

@@ -166,14 +166,14 @@ Complexity is rated S (≤ 1 day), M (2–4 days) or L (≥ 1 week). Every incre
 | # | Increment | Files | Depends on | Acceptance | Evaluation | Release | Risk | Size |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | **A.1** ✅ | Concept-bearing twin | `src/phantom/concepts.ts`, `generate.ts`, `src/evaluation/ai-value.ts` | — | Offline O1/O2/O3/O5 on independent holdout | Holdout: **PASS** (see E) | CODE_READY (branch) | Lexicon fits dev (0.915 → 0.658 on holdout) | M |
-| A.2 | **Live G0/G1 run** (Gate A evidence) | `tests/live/ai-value.spec.ts` (new); two dev servers (`82400dd` and the 18A branch), so no product flag is needed | A.1, **owner budget approval** | L1 ≥ +10 pp, ≥ 7/10 scenarios not worse, L2/L3 not worse | Pre-registered | none | Provider failures (Sprint 8: 33 %) shrink n | M |
+| **A.2** ✅ | Live G0/G1 run (Gate A evidence) | `tests/live/ai-value.spec.ts`, `src/evaluation/ai-value-live.ts`; two dev servers (`82400dd` and the 18A branch), so no product flag is needed | A.1, owner budget approval (given) | L1 ≥ +10 pp, ≥ 7/10 scenarios not worse, L2/L3 not worse | **PASS:** L1 0.275 → 0.551, 9/9 not worse, L2 0.235 → 0.556, L3 1 → 0, 0 leaks, 35/40 requests | none | n = 17/18; holdout now inspected | M |
 | A.3 | Investigate the holdout build failure on a *fresh* realistic case | `src/domain/profile/`, `src/sources/` | — | Root cause documented; regression test on a fresh fixture | Must not touch the 18A holdout | product fix → own release | Unknown cause | S–M |
 | A.4 | Nano concept suggestions: new local prompt and schema in a new module; frozen `prompts.ts` untouched | `src/private-semantics/concept-prompt.ts`, `PrivateUnderstanding.tsx` | A.1 | Validated against `conceptCompatible`; user-applied; labelled on-device | Nano vs deterministic coverage on a fresh holdout; precision ≥ 0.85 | UI change → release | Nano latency (17.9 s median); unavailable on most browsers | M |
-| A.5 | Planner completeness: proposal must address every destination field (`confident / tentative / unsupported`) and never invent defaults | new response-schema id, prompt v4 (freeze amendment) | A.2 shows the twin is no longer the bottleneck | L4 invented values = 0; L1 not worse | Live, pre-registered | release | Touches frozen prompt files | M |
+| A.5 | **Next.** Planner enum handling and abstention. All remaining G1 rejections are `INVALID_ENUM_MAPPING`, and the planner made 16 invented defaults. The proposal must address every destination field (`confident / tentative / unsupported`), keep `unmapped=fail` when labels are withheld, and never invent defaults | new response-schema id, prompt v4 (freeze amendment) | A.2 (done: the twin is no longer the bottleneck) | L2 ↑ with L1 not worse; L4 = 0 | Live, pre-registered on a **fresh** holdout | release | Touches frozen prompt files | M |
 | A.6 | AI-targeted clarification: ask only where the concept is missing or ambiguous among candidates | `field-plan.ts` (concept-aware ranking), `FieldQuestions.tsx` | A.1, A.4 | Questions asked ≤ the current count on a fresh holdout; 0 wrong suggestions labelled as decisions | Fresh holdout (not 16A) | release | Must keep the 16B rule "a suggestion is never a decision" | M |
 | A.7 | Bounded repair loop with explicit budget (initial + 1 revision; the second disclosure always previewed) | existing `src/revision/` | A.5 | Decision rule unchanged; no auto-retry | Live | release | Revision timeouts (5/8 in Sprint 8) | S |
 
-**Gate A:** A.2 passes. Until then, 18B does not start.
+**Gate A: PASSED** (2026-11-16, live, see E). 18B may start, but A.3 and A.5 address defects the run exposed. The owner decides whether they come first.
 
 ### 18B — One AI-first experience (after Gate A)
 
@@ -211,7 +211,16 @@ The pre-registration, budget and thresholds are in [docs/evaluation/sprint-18a-a
 - **Falsifiable claims.**
   1. Offline: the twin separates confusable fields without disclosing names or values.
   2. Live: Gemini then picks more correct source fields (L1 ≥ +10 pp), with no more invalid output or hallucinated references.
-- **Result so far.** Offline passes on the holdout (O1 0.127 → 0.658; O2 0.286 → 0.683; precision 0.978; privacy 0). The live run has **not been run**; it needs the owner's approval of 40 cloud requests.
+- **Result.**
+  - **Offline (holdout):** O1 0.127 → 0.658; O2 0.286 → 0.683; precision 0.978; privacy 0.
+  - **Live (real Gemini, 35 of the 40 approved requests):**
+    - correct correspondences 0.275 → 0.551;
+    - G1 not worse in 9 of 9 comparable scenarios;
+    - valid proposals 0.235 → 0.556;
+    - hallucinated references 1 → 0;
+    - 0 leaks;
+    - every sent prompt hash-proven identical to the reconstruction.
+  - **Gate A: PASS.**
 
 ## F. Immediate implementation (done in this increment)
 
@@ -255,13 +264,13 @@ The pre-registration, budget and thresholds are in [docs/evaluation/sprint-18a-a
   - E2E 162 PASS.
 - **Evaluation evidence:**
   - offline holdout PASS;
-  - live Gate A NOT RUN (needs budget approval).
+  - live G0/G1 PASS, so **Gate A passed**.
 - **Risks:**
   - The lexicon partly fits dev.
   - One holdout scenario failed to build, cause not inspected.
   - A concept inferred from a name is a hypothesis; the descriptor says so, but Gemini may still over-trust it.
   - Better descriptions may not change Gemini's mapping: Sprint 12 showed ordering can dominate.
-- **Release status:** **CODE_READY**, on branch `sprint-18a-ai-mapping`.
+- **Release status:** **CODE_READY**, on branch `sprint-18a-ai-mapping`. The concept twin is in the app code, so shipping it is a product release that needs the standard approval of the exact SHA.
   - Not deployed. No release candidate built.
   - The production release `c7220768bed9` is unchanged.
-- **Next increment:** A.2 (live run, after approval), then A.3 (fresh-case build failure).
+- **Next increment:** A.5 (planner enum handling and abstention) and A.3 (fresh-case build failure). Then 18B, on the owner's go.

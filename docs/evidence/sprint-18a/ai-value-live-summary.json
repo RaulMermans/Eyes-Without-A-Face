@@ -1,0 +1,99 @@
+{
+  "experiment": "sprint-18a-ai-value",
+  "split": "holdout",
+  "evidenceSha256": "0c209422759c54c5ef179ca85101dacdd8443c502e1f29e485a66a1cd4726853",
+  "G0": {
+    "requests": 17,
+    "answered": 17,
+    "providerFailures": 0,
+    "promptMismatches": 0,
+    "leaks": 0,
+    "L1_correctCorrespondences": 0.275,
+    "L2_validProposals": 0.235,
+    "L3_hallucinatedReferences": 1,
+    "L4_inventedValues": 23,
+    "rejectionCodes": {
+      "DUPLICATE_DESTINATION": 2,
+      "INVALID_ENUM_MAPPING": 13,
+      "UNKNOWN_ALIAS": 1
+    },
+    "medianMs": 4676
+  },
+  "G1": {
+    "requests": 18,
+    "answered": 18,
+    "providerFailures": 0,
+    "promptMismatches": 0,
+    "leaks": 0,
+    "L1_correctCorrespondences": 0.551,
+    "L2_validProposals": 0.556,
+    "L3_hallucinatedReferences": 0,
+    "L4_inventedValues": 16,
+    "rejectionCodes": {
+      "INVALID_ENUM_MAPPING": 8
+    },
+    "medianMs": 4606
+  },
+  "pairedL1ByScenarioIndex": [
+    {
+      "index": 0,
+      "g0": null,
+      "g1": null
+    },
+    {
+      "index": 1,
+      "g0": 0.25,
+      "g1": 0.7
+    },
+    {
+      "index": 2,
+      "g0": 0.333,
+      "g1": 0.556
+    },
+    {
+      "index": 3,
+      "g0": 0.3,
+      "g1": 0.7
+    },
+    {
+      "index": 4,
+      "g0": 0.222,
+      "g1": 0.667
+    },
+    {
+      "index": 5,
+      "g0": 0.273,
+      "g1": 0.364
+    },
+    {
+      "index": 6,
+      "g0": 0.35,
+      "g1": 0.35
+    },
+    {
+      "index": 7,
+      "g0": 0.25,
+      "g1": 0.55
+    },
+    {
+      "index": 8,
+      "g0": 0.182,
+      "g1": 0.455
+    },
+    {
+      "index": 9,
+      "g0": 0.313,
+      "g1": 0.688
+    }
+  ],
+  "verdict": {
+    "L1": true,
+    "notWorseScenarios": "9/9",
+    "notWorse": true,
+    "L2": true,
+    "L3": true,
+    "privacy": true,
+    "promptsProven": true,
+    "livePass": true
+  }
+}

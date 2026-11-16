@@ -201,7 +201,7 @@ Report: [docs/qa/sprint-17a-hybrid-recovery.md](docs/qa/sprint-17a-hybrid-recove
 Decisions: [ADR 0015](docs/decisions/0015-ai-integration-engineer-program.md), [ADR 0016](docs/decisions/0016-concept-bearing-phantom-twin.md). Assessment: [docs/program/master-transformation-assessment.md](docs/program/master-transformation-assessment.md).
 
 - **Stages 18A–18E are gated by evidence.**
-  - Do not start 18B (UI redesign) before Gate A passes live.
+  - Gate A passed live on 2026-11-16 ([evaluation](docs/evaluation/sprint-18a-ai-value.md)). 18B starts only on the owner's go.
   - Do not start 18C+ (connectors, backend, writes, scheduling) before its ADR and owner approval.
   - Never describe a later stage as shipped.
 - **A concept is a claim, never evidence** (`src/phantom/concepts.ts`).
@@ -217,7 +217,7 @@ Decisions: [ADR 0015](docs/decisions/0015-ai-integration-engineer-program.md), [
 - **The Sprint 18A evaluation set is frozen** (`docs/evidence/sprint-18a/ai-value-freeze.json`).
   - Never open `tests/fixtures/ai-value-18a/holdout/`. Score it only with `node scripts/eval-ai-value.mjs`, which writes aggregates only.
   - Tune the lexicon on `dev/` only.
-  - Any implementation change after the holdout run needs a fresh holdout before a new claim.
+  - The holdout was scored offline and live on 2026-11-16; treat it as **inspected**. Any new claim needs a fresh holdout written by an independent author before the change.
 
 ## Release lifecycle and production acceptance (Sprint 14 — permanent, every sprint)
 

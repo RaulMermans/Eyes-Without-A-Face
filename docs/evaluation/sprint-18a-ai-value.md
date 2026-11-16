@@ -127,6 +127,60 @@ Notes, reported as found:
 
 **Offline verdict:** the necessary conditions O1, O2, O3 and O5 hold on the independent holdout. This shows the twin now *describes* fields distinguishably. It does not show that Gemini *maps* better.
 
-### Live (G0 vs G1)
+### Live (G0 vs G1) — run 2026-11-16, owner-approved budget of 40 requests
 
-**NOT RUN.** It needs owner approval of the budget above: 40 cloud requests, no retries, no revision. Gate A is therefore **not passed**, and 18B does not start.
+**Setup.**
+
+- Harness: [tests/live/ai-value.spec.ts](../../tests/live/ai-value.spec.ts).
+- G0 is `main` @ `82400dd`, served from a temporary worktree on port 5175. G1 is this branch at `9df199b` + harness on port 5174.
+- The run used the technical view, `gemini-3.5-flash-lite` (`ONLY_IN_CLOUD`), the registered App Check debug token and the in-app approval gate.
+- Order was ABBA: G0 t1, G1 t1, G1 t2, G0 t2.
+- There was no revision and no retry.
+- Before any request, a rehearsal sent nothing (0 requests) on both the dev and holdout splits.
+
+Raw evidence: [ai-value-live.json](../evidence/sprint-18a/ai-value-live.json). It holds alias-level model text, prompt hashes, statuses and timings, and no request bodies, records or tokens. Scored by EVAL-184 into [ai-value-live-summary.json](../evidence/sprint-18a/ai-value-live-summary.json).
+
+**Budget used: 35 of 40 requests.**
+
+- Holdout #1 fails at the build step in both apps and sends nothing. This is the same scenario as the offline build failure; it accounts for 4 unsent runs.
+- One G0 run (#5, trial 1) failed in the harness at the destination step and sent nothing. It was **not** re-run after the results were seen, so G0 has n = 17 and G1 has n = 18.
+
+**Proof of what was sent.** For all 35 requests, the SHA-256 of the sent prompt text equals that of the previewed prompt, which equals that of the offline reconstruction (G0 with `concepts: false`, G1 with concepts). The scored payload is therefore exactly the one sent.
+
+| Metric | G0 | G1 | Pre-registered condition | Verdict |
+| --- | --- | --- | --- | --- |
+| **L1 correct correspondences** | **0.275** | **0.551** | G1 ≥ G0 + 0.10 | **PASS** (+0.276) |
+| Scenarios where G1 is not worse (mean over trials) | — | **9 / 9** comparable (8 better, 1 tie) | ≥ 7 of 10 | **PASS** |
+| L2 valid proposals (`convertProposal` ok) | 0.235 | 0.556 | G1 not worse | **PASS** |
+| L3 hallucinated references | 1 | 0 | G1 not worse | **PASS** |
+| L4 invented values (defaults on null or enum targets) | 23 | 16 | reported | still high |
+| L5 provider failures | 0 / 17 | 0 / 18 | reported | — |
+| Request-body privacy scan (coded keys, values ≥ 6 chars) | 0 | 0 | = 0 | **PASS** |
+| Median request time | 4.7 s | 4.6 s | — | — |
+
+Per-scenario L1, G0 → G1 (index only; #1 not buildable):
+
+| #2 | #3 | #4 | #5 | #6 | #7 | #8 | #9 | #10 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 0.25 → 0.70 | 0.33 → 0.56 | 0.30 → 0.70 | 0.22 → 0.67 | 0.27 → 0.36 | 0.35 → 0.35 | 0.25 → 0.55 | 0.18 → 0.46 | 0.31 → 0.69 |
+
+**Evidence privacy trace.**
+
+- The committed evidence contains no App Check token.
+- A scan of the evidence for coded source keys and source values of 6 or more characters matched **6 distinct terms** (53 occurrences across entries). All 6 are destination field names or allowed values from the reviewed `target`, which the source shares by coincidence. They are approved disclosure, not source leakage.
+- No source-only key or value appears.
+- The in-run request-body scan, which excludes destination words by design, found 0.
+
+**Sensitivity.** G0 is missing one run (#5 t1). Even if that run had been perfect, G0's L1 would stay below G1 − 0.10. The verdict does not depend on the missing run.
+
+**What is still wrong.**
+
+- **Every one of G1's 8 rejected proposals is `INVALID_ENUM_MAPPING`.** Category names are withheld by default, so Gemini writes `map_enum` with labels it cannot know. This is the Sprint 14 mechanism, not a twin-fidelity problem. G0's rejections were 13 `INVALID_ENUM_MAPPING`, 2 `DUPLICATE_DESTINATION` and 1 `UNKNOWN_ALIAS`.
+- **The planner still invents values.** It made 16 default writes on targets whose truth is "no source", or on fixed-list targets. These are exactly the defaults the acceptance policy rejects, so they never pass as correct output, but they are a planner defect.
+- **L1 of 0.551 means almost half of the destination fields are still wrong or missing.** The twin is no longer the main bottleneck. The planner's enum handling and abstention are.
+
+**Gate A verdict: PASS.** The pre-registered live condition holds on an independent holdout, with privacy and validity no worse, and with proof of the exact payload sent. Caveats:
+
+- n = 17 and 18 requests, on one model;
+- the holdout is now **inspected** (evidence scored), so any further claim needs a fresh holdout;
+- the mapping is better, not good.

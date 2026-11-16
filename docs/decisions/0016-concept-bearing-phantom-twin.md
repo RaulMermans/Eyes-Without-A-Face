@@ -1,6 +1,6 @@
 # 0016 — Concept-bearing Phantom Twin
 
-Status: Accepted (offline evidence). Whether it becomes Gate A evidence depends on the pre-registered live run ([evaluation](../evaluation/sprint-18a-ai-value.md)).
+Status: Accepted. Offline and live evidence both pass the pre-registered thresholds; Gate A passed on 2026-11-16 ([evaluation](../evaluation/sprint-18a-ai-value.md)).
 Date: 2026-11-16
 
 ## Context
@@ -68,7 +68,10 @@ On the independent dev split, only **14.9 %** of ground-truth source fields had 
   | O5 privacy findings | — | 0 |
 
   Held-out results are in the evaluation report.
-- **Better descriptions are not proof of better mappings.** Gate A needs the live G0/G1 run.
+- **Live result (holdout, real Gemini):** correct correspondences rose from 0.275 to 0.551. Valid proposals rose from 0.235 to 0.556. G1 was not worse in 9 of 9 comparable scenarios. There were 0 leaks.
+  - All remaining G1 rejections are `INVALID_ENUM_MAPPING`, caused by withheld category names.
+  - The planner still invents defaults (16 cases).
+  - The bottleneck has moved from the twin to the planner.
 - **Prompts and response schemas are unchanged.** `src/inference/prompts.ts` stays frozen.
 - **Not in this increment:**
   - Nano concept suggestions (a new local prompt and schema);
