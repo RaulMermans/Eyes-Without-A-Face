@@ -1,0 +1,1006 @@
+{
+  "scenarioId": "university-enrollments-to-student-information-system",
+  "split": "holdout",
+  "industry": "higher education enrolment",
+  "sourceLanguage": "pt",
+  "description": "Enrolment export of a fictional university (Portuguese camelCase, three-level nested programme) to be loaded into a student information system.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "morada": {
+        "codigoPostal": "4700-045",
+        "localidade": "Braga"
+      },
+      "anoCurricular": 1,
+      "emailPessoal": "matilde25@mail.example.com",
+      "dataAtualizacao": "2025-11-04T19:11:55Z",
+      "telemovel": "+351 91 555 5725",
+      "primeiroNome": "Matilde",
+      "numeroMatricula": "2021400",
+      "nacionalidade": "CV",
+      "dataNascimento": "08/06/1996",
+      "regime": "Tempo integral",
+      "emailInstitucional": "Matilde.Nogueira@alunos.universidade.example.org",
+      "situacao": "Inscrito",
+      "dataInscricao": "08/11/2021",
+      "situacaoPropinas": "Regularizado",
+      "curso": {
+        "nome": "Mestrado em Gestão",
+        "faculdade": {
+          "sigla": "FEG"
+        },
+        "codigo": "M-GES"
+      },
+      "apelido": "Nogueira",
+      "codigoInscricao": "INS15034151"
+    },
+    {
+      "morada": {
+        "codigoPostal": "4000-321",
+        "localidade": "Porto"
+      },
+      "anoCurricular": 1,
+      "emailPessoal": null,
+      "dataAtualizacao": "2025-05-20T08:09:54Z",
+      "telemovel": null,
+      "primeiroNome": "Joana",
+      "numeroMatricula": "2021423",
+      "nacionalidade": "CV",
+      "dataNascimento": "12/11/2000",
+      "regime": "Tempo parcial",
+      "emailInstitucional": "Joana.Sampaio@Alunos.universidade.example.org",
+      "situacao": "Suspenso",
+      "dataInscricao": "05/04/2020",
+      "situacaoPropinas": "Regularizado",
+      "curso": {
+        "nome": "Licenciatura em Biologia",
+        "faculdade": {
+          "sigla": "FCT"
+        },
+        "codigo": "L-BIO"
+      },
+      "apelido": "Sampaio",
+      "codigoInscricao": "INS74259792"
+    },
+    {
+      "morada": {
+        "codigoPostal": "4000-321",
+        "localidade": "Porto"
+      },
+      "anoCurricular": 2,
+      "emailPessoal": "rui78@mail.example.com",
+      "dataAtualizacao": "2025-09-19T18:06:31Z",
+      "telemovel": "+351 91 555 0317",
+      "primeiroNome": "Rui",
+      "numeroMatricula": "2021446",
+      "nacionalidade": "PT",
+      "dataNascimento": "07/07/2002",
+      "regime": "Trabalhador-estudante",
+      "emailInstitucional": "rui.sampaio@alunos.universidade.example.org",
+      "situacao": "Anulado",
+      "dataInscricao": "05/12/2025",
+      "situacaoPropinas": "Regularizado",
+      "curso": {
+        "nome": "Licenciatura em História",
+        "faculdade": {
+          "sigla": "FLH"
+        },
+        "codigo": "L-HIS"
+      },
+      "apelido": "Sampaio",
+      "codigoInscricao": "INS12950965"
+    },
+    {
+      "morada": {
+        "codigoPostal": "4700-045",
+        "localidade": "Braga"
+      },
+      "anoCurricular": 2,
+      "emailPessoal": "henrique93@mail.example.com",
+      "dataAtualizacao": "2026-06-15T07:07:06Z",
+      "telemovel": null,
+      "primeiroNome": "Henrique",
+      "numeroMatricula": "2021469",
+      "nacionalidade": "CV",
+      "dataNascimento": "04/12/2004",
+      "regime": "Erasmus (entrada)",
+      "emailInstitucional": "henrique.almeida@alunos.universidade.example.org",
+      "situacao": "Concluído",
+      "dataInscricao": "07/02/2023",
+      "situacaoPropinas": "Em dívida",
+      "curso": {
+        "nome": "Licenciatura em História",
+        "faculdade": {
+          "sigla": "FLH"
+        },
+        "codigo": "L-HIS"
+      },
+      "apelido": "Almeida",
+      "codigoInscricao": "INS65063019"
+    },
+    {
+      "morada": {
+        "codigoPostal": "1000-123",
+        "localidade": "Lisboa"
+      },
+      "anoCurricular": 5,
+      "emailPessoal": null,
+      "dataAtualizacao": "2025-12-20T17:39:58Z",
+      "telemovel": null,
+      "primeiroNome": "Beatriz",
+      "numeroMatricula": "2021492",
+      "nacionalidade": "AO",
+      "dataNascimento": "04/06/1996",
+      "regime": "Tempo parcial",
+      "emailInstitucional": "beatriz.pinheiro@alunos.universidade.example.org",
+      "situacao": "Pré-inscrição",
+      "dataInscricao": "01/10/2020",
+      "situacaoPropinas": "Regularizado",
+      "curso": {
+        "nome": "Licenciatura em Informática",
+        "faculdade": {
+          "sigla": "FCT"
+        },
+        "codigo": "L-INF"
+      },
+      "apelido": "Pinheiro",
+      "codigoInscricao": "INS93150682"
+    },
+    {
+      "morada": {
+        "codigoPostal": "1000-123",
+        "localidade": "Lisboa"
+      },
+      "anoCurricular": 2,
+      "emailPessoal": "afonso30@mail.example.com",
+      "dataAtualizacao": "2025-07-04T08:02:44Z",
+      "telemovel": "+351 91 555 2573",
+      "primeiroNome": "Afonso",
+      "numeroMatricula": "2021515",
+      "nacionalidade": "CV",
+      "dataNascimento": "07/05/1999",
+      "regime": "Tempo parcial",
+      "emailInstitucional": "Afonso.Nogueira@Alunos.universidade.example.org",
+      "situacao": "Suspenso",
+      "dataInscricao": "09/10/2021",
+      "situacaoPropinas": "Regularizado",
+      "curso": {
+        "nome": "Mestrado em Gestão",
+        "faculdade": {
+          "sigla": "FEG"
+        },
+        "codigo": "M-GES"
+      },
+      "apelido": "Nogueira",
+      "codigoInscricao": "INS73982415"
+    },
+    {
+      "morada": {
+        "codigoPostal": "1000-123",
+        "localidade": "Lisboa"
+      },
+      "anoCurricular": 4,
+      "emailPessoal": "rodrigo24@mail.example.com",
+      "dataAtualizacao": "2025-10-02T14:18:10Z",
+      "telemovel": "+351 91 555 3646",
+      "primeiroNome": "Rodrigo",
+      "numeroMatricula": "2021538",
+      "nacionalidade": "PT",
+      "dataNascimento": "04/08/1997",
+      "regime": "Tempo parcial",
+      "emailInstitucional": "rodrigo.almeida@alunos.universidade.example.org",
+      "situacao": "Suspenso",
+      "dataInscricao": "06/05/2020",
+      "situacaoPropinas": "Regularizado",
+      "curso": {
+        "nome": "Licenciatura em Biologia",
+        "faculdade": {
+          "sigla": "FCT"
+        },
+        "codigo": "L-BIO"
+      },
+      "apelido": "Almeida",
+      "codigoInscricao": "INS04591385"
+    },
+    {
+      "morada": {
+        "codigoPostal": "3000-214",
+        "localidade": "Coimbra"
+      },
+      "anoCurricular": 2,
+      "emailPessoal": "ines77@mail.example.com",
+      "dataAtualizacao": "2026-01-12T08:34:06Z",
+      "telemovel": null,
+      "primeiroNome": "Inês",
+      "numeroMatricula": "2021561",
+      "nacionalidade": "ES",
+      "dataNascimento": "11/09/2006",
+      "regime": "Trabalhador-estudante",
+      "emailInstitucional": "ines.moura@alunos.universidade.example.org",
+      "situacao": "Inscrito",
+      "dataInscricao": "09/07/2022",
+      "situacaoPropinas": "Isento",
+      "curso": {
+        "nome": "Mestrado em Gestão",
+        "faculdade": {
+          "sigla": "FEG"
+        },
+        "codigo": "M-GES"
+      },
+      "apelido": "Moura",
+      "codigoInscricao": "INS87815405"
+    },
+    {
+      "morada": {
+        "codigoPostal": "4700-045",
+        "localidade": "Braga"
+      },
+      "anoCurricular": 3,
+      "emailPessoal": null,
+      "dataAtualizacao": "2026-02-17T17:23:30Z",
+      "telemovel": "+351 91 555 3657",
+      "primeiroNome": "Duarte",
+      "numeroMatricula": "2021584",
+      "nacionalidade": "CV",
+      "dataNascimento": "08/11/2004",
+      "regime": "Trabalhador-estudante",
+      "emailInstitucional": "Duarte.Pinheiro@alunos.universidade.example.org",
+      "situacao": "Concluído",
+      "dataInscricao": "01/09/2020",
+      "situacaoPropinas": "Regularizado",
+      "curso": {
+        "nome": "Licenciatura em Biologia",
+        "faculdade": {
+          "sigla": "FCT"
+        },
+        "codigo": "L-BIO"
+      },
+      "apelido": "Pinheiro",
+      "codigoInscricao": "INS91675912"
+    },
+    {
+      "morada": {
+        "codigoPostal": "1000-123",
+        "localidade": "Lisboa"
+      },
+      "anoCurricular": 3,
+      "emailPessoal": "tiago43@mail.example.com",
+      "dataAtualizacao": "2025-08-21T15:55:31Z",
+      "telemovel": "+351 91 555 0241",
+      "primeiroNome": "Tiago",
+      "numeroMatricula": "2021607",
+      "nacionalidade": "AO",
+      "dataNascimento": "03/04/1996",
+      "regime": "Tempo parcial",
+      "emailInstitucional": "Tiago.Esteves@Alunos.universidade.example.org",
+      "situacao": "Pré-inscrição",
+      "dataInscricao": "02/05/2020",
+      "situacaoPropinas": "Em dívida",
+      "curso": {
+        "nome": "Licenciatura em Informática",
+        "faculdade": {
+          "sigla": "FCT"
+        },
+        "codigo": "L-INF"
+      },
+      "apelido": "Esteves",
+      "codigoInscricao": "INS28883011"
+    },
+    {
+      "morada": {
+        "codigoPostal": "4700-045",
+        "localidade": "Braga"
+      },
+      "anoCurricular": 1,
+      "emailPessoal": null,
+      "dataAtualizacao": "2026-11-27T15:52:58Z",
+      "telemovel": "+351 91 555 2444",
+      "primeiroNome": "Sofia",
+      "numeroMatricula": "2021630",
+      "nacionalidade": "PT",
+      "dataNascimento": "05/07/2000",
+      "regime": "Trabalhador-estudante",
+      "emailInstitucional": "sofia.sampaio@alunos.universidade.example.org",
+      "situacao": "Inscrito",
+      "dataInscricao": "04/05/2024",
+      "situacaoPropinas": "Regularizado",
+      "curso": {
+        "nome": "Licenciatura em Biologia",
+        "faculdade": {
+          "sigla": "FCT"
+        },
+        "codigo": "L-BIO"
+      },
+      "apelido": "Sampaio",
+      "codigoInscricao": "INS28524133"
+    },
+    {
+      "morada": {
+        "codigoPostal": "4000-321",
+        "localidade": "Porto"
+      },
+      "anoCurricular": 3,
+      "emailPessoal": "goncalo53@mail.example.com",
+      "dataAtualizacao": "2025-12-23T11:07:58Z",
+      "telemovel": "+351 91 555 7298",
+      "primeiroNome": "Gonçalo",
+      "numeroMatricula": "2021653",
+      "nacionalidade": null,
+      "dataNascimento": "01/12/2001",
+      "regime": "Trabalhador-estudante",
+      "emailInstitucional": "goncalo.almeida@alunos.universidade.example.org",
+      "situacao": "Concluído",
+      "dataInscricao": "06/03/2022",
+      "situacaoPropinas": "Regularizado",
+      "curso": {
+        "nome": "Licenciatura em Informática",
+        "faculdade": {
+          "sigla": "FCT"
+        },
+        "codigo": "L-INF"
+      },
+      "apelido": "Almeida",
+      "codigoInscricao": "INS45853451"
+    },
+    {
+      "morada": {
+        "codigoPostal": "1000-123",
+        "localidade": "Lisboa"
+      },
+      "anoCurricular": 3,
+      "emailPessoal": "vasco42@mail.example.com",
+      "dataAtualizacao": "2026-09-28T20:10:30Z",
+      "telemovel": "+351 91 555 9696",
+      "primeiroNome": "Vasco",
+      "numeroMatricula": "2021676",
+      "nacionalidade": "AO",
+      "dataNascimento": "02/01/2000",
+      "regime": "Tempo parcial",
+      "emailInstitucional": "Vasco.Nogueira@Alunos.universidade.example.org",
+      "situacao": "Anulado",
+      "dataInscricao": "07/01/2020",
+      "situacaoPropinas": "Regularizado",
+      "curso": {
+        "nome": "Licenciatura em Informática",
+        "faculdade": {
+          "sigla": "FCT"
+        },
+        "codigo": "L-INF"
+      },
+      "apelido": "Nogueira",
+      "codigoInscricao": "INS13386103"
+    },
+    {
+      "morada": {
+        "codigoPostal": "1000-123",
+        "localidade": "Lisboa"
+      },
+      "anoCurricular": 4,
+      "emailPessoal": "goncalo52@mail.example.com",
+      "dataAtualizacao": "2025-03-09T07:34:45Z",
+      "telemovel": "+351 91 555 0765",
+      "primeiroNome": "Gonçalo",
+      "numeroMatricula": "2021699",
+      "nacionalidade": "PT",
+      "dataNascimento": "07/05/1999",
+      "regime": "Tempo integral",
+      "emailInstitucional": "Goncalo.Gouveia@Alunos.universidade.example.org",
+      "situacao": "Suspenso",
+      "dataInscricao": "07/10/2021",
+      "situacaoPropinas": "Em dívida",
+      "curso": {
+        "nome": "Mestrado em Gestão",
+        "faculdade": {
+          "sigla": "FEG"
+        },
+        "codigo": "M-GES"
+      },
+      "apelido": "Gouveia",
+      "codigoInscricao": "INS88275026"
+    },
+    {
+      "morada": {
+        "codigoPostal": "1000-123",
+        "localidade": "Lisboa"
+      },
+      "anoCurricular": 1,
+      "emailPessoal": "afonso86@mail.example.com",
+      "dataAtualizacao": "2026-01-23T18:25:26Z",
+      "telemovel": "+351 91 555 4161",
+      "primeiroNome": "Afonso",
+      "numeroMatricula": "2021722",
+      "nacionalidade": "BR",
+      "dataNascimento": "08/08/2005",
+      "regime": "Tempo parcial",
+      "emailInstitucional": "afonso.teixeira@alunos.universidade.example.org",
+      "situacao": "Inscrito",
+      "dataInscricao": "03/01/2020",
+      "situacaoPropinas": "Em dívida",
+      "curso": {
+        "nome": "Licenciatura em Informática",
+        "faculdade": {
+          "sigla": "FCT"
+        },
+        "codigo": "L-INF"
+      },
+      "apelido": "Teixeira",
+      "codigoInscricao": "INS86778887"
+    },
+    {
+      "morada": {
+        "codigoPostal": "4700-045",
+        "localidade": "Braga"
+      },
+      "anoCurricular": 1,
+      "emailPessoal": "sofia92@mail.example.com",
+      "dataAtualizacao": "2026-11-25T13:40:43Z",
+      "telemovel": "+351 91 555 3869",
+      "primeiroNome": "Sofia",
+      "numeroMatricula": "2021745",
+      "nacionalidade": "ES",
+      "dataNascimento": "06/07/1998",
+      "regime": "Erasmus (entrada)",
+      "emailInstitucional": "sofia.pinheiro@alunos.universidade.example.org",
+      "situacao": "Pré-inscrição",
+      "dataInscricao": "06/04/2024",
+      "situacaoPropinas": "Em dívida",
+      "curso": {
+        "nome": "Licenciatura em História",
+        "faculdade": {
+          "sigla": "FLH"
+        },
+        "codigo": "L-HIS"
+      },
+      "apelido": "Pinheiro",
+      "codigoInscricao": "INS07183201"
+    },
+    {
+      "morada": {
+        "codigoPostal": "4000-321",
+        "localidade": "Porto"
+      },
+      "anoCurricular": 2,
+      "emailPessoal": null,
+      "dataAtualizacao": "2025-02-13T10:32:39Z",
+      "telemovel": "+351 91 555 4634",
+      "primeiroNome": "Gonçalo",
+      "numeroMatricula": "2021768",
+      "nacionalidade": "AO",
+      "dataNascimento": "09/07/1997",
+      "regime": "Trabalhador-estudante",
+      "emailInstitucional": "goncalo.teixeira@alunos.universidade.example.org",
+      "situacao": "Anulado",
+      "dataInscricao": "12/07/2022",
+      "situacaoPropinas": "Isento",
+      "curso": {
+        "nome": "Licenciatura em História",
+        "faculdade": {
+          "sigla": "FLH"
+        },
+        "codigo": "L-HIS"
+      },
+      "apelido": "Teixeira",
+      "codigoInscricao": "INS48298730"
+    },
+    {
+      "morada": {
+        "codigoPostal": "1000-123",
+        "localidade": "Lisboa"
+      },
+      "anoCurricular": 5,
+      "emailPessoal": "tiago11@mail.example.com",
+      "dataAtualizacao": "2025-06-02T17:09:35Z",
+      "telemovel": null,
+      "primeiroNome": "Tiago",
+      "numeroMatricula": "2021791",
+      "nacionalidade": "ES",
+      "dataNascimento": "05/01/2006",
+      "regime": "Erasmus (entrada)",
+      "emailInstitucional": "Tiago.Magalhaes@Alunos.universidade.example.org",
+      "situacao": "Concluído",
+      "dataInscricao": "09/09/2022",
+      "situacaoPropinas": "Isento",
+      "curso": {
+        "nome": "Licenciatura em Biologia",
+        "faculdade": {
+          "sigla": "FCT"
+        },
+        "codigo": "L-BIO"
+      },
+      "apelido": "Magalhães",
+      "codigoInscricao": "INS83279410"
+    },
+    {
+      "morada": {
+        "codigoPostal": "4700-045",
+        "localidade": "Braga"
+      },
+      "anoCurricular": 5,
+      "emailPessoal": "carolina32@mail.example.com",
+      "dataAtualizacao": "2025-04-20T11:23:39Z",
+      "telemovel": "+351 91 555 5094",
+      "primeiroNome": "Carolina",
+      "numeroMatricula": "2021814",
+      "nacionalidade": "PT",
+      "dataNascimento": "11/04/1998",
+      "regime": "Tempo integral",
+      "emailInstitucional": "carolina.teixeira@alunos.universidade.example.org",
+      "situacao": "Anulado",
+      "dataInscricao": "12/05/2022",
+      "situacaoPropinas": "Regularizado",
+      "curso": {
+        "nome": "Licenciatura em História",
+        "faculdade": {
+          "sigla": "FLH"
+        },
+        "codigo": "L-HIS"
+      },
+      "apelido": "Teixeira",
+      "codigoInscricao": "INS48066565"
+    },
+    {
+      "morada": {
+        "codigoPostal": "4000-321",
+        "localidade": "Porto"
+      },
+      "anoCurricular": 4,
+      "emailPessoal": "henrique91@mail.example.com",
+      "dataAtualizacao": "2025-12-11T18:43:03Z",
+      "telemovel": "+351 91 555 0497",
+      "primeiroNome": "Henrique",
+      "numeroMatricula": "2021837",
+      "nacionalidade": null,
+      "dataNascimento": "06/10/1998",
+      "regime": "Erasmus (entrada)",
+      "emailInstitucional": "henrique.magalhaes@alunos.universidade.example.org",
+      "situacao": "Inscrito",
+      "dataInscricao": "09/02/2020",
+      "situacaoPropinas": "Regularizado",
+      "curso": {
+        "nome": "Licenciatura em Informática",
+        "faculdade": {
+          "sigla": "FCT"
+        },
+        "codigo": "L-INF"
+      },
+      "apelido": "Magalhães",
+      "codigoInscricao": "INS52871693"
+    },
+    {
+      "morada": {
+        "codigoPostal": "1000-123",
+        "localidade": "Lisboa"
+      },
+      "anoCurricular": 2,
+      "emailPessoal": null,
+      "dataAtualizacao": "2025-08-14T15:04:39Z",
+      "telemovel": "+351 91 555 9094",
+      "primeiroNome": "Carolina",
+      "numeroMatricula": "2021860",
+      "nacionalidade": "AO",
+      "dataNascimento": "01/12/2000",
+      "regime": "Trabalhador-estudante",
+      "emailInstitucional": "Carolina.Magalhaes@alunos.universidade.example.org",
+      "situacao": "Pré-inscrição",
+      "dataInscricao": "11/06/2022",
+      "situacaoPropinas": "Isento",
+      "curso": {
+        "nome": "Licenciatura em Informática",
+        "faculdade": {
+          "sigla": "FCT"
+        },
+        "codigo": "L-INF"
+      },
+      "apelido": "Magalhães",
+      "codigoInscricao": "INS08708785"
+    },
+    {
+      "morada": {
+        "codigoPostal": "1000-123",
+        "localidade": "Lisboa"
+      },
+      "anoCurricular": 1,
+      "dataAtualizacao": "2026-02-09T12:58:27Z",
+      "telemovel": null,
+      "primeiroNome": "Rodrigo",
+      "numeroMatricula": "2021883",
+      "dataNascimento": "06/03/1998",
+      "regime": "Tempo parcial",
+      "emailInstitucional": "Rodrigo.Almeida@Alunos.universidade.example.org",
+      "situacao": "Anulado",
+      "dataInscricao": "11/12/2024",
+      "situacaoPropinas": "Em dívida",
+      "curso": {
+        "nome": "Licenciatura em Informática",
+        "faculdade": {
+          "sigla": "FCT"
+        },
+        "codigo": "L-INF"
+      },
+      "apelido": "Almeida",
+      "codigoInscricao": "INS30926044"
+    },
+    {
+      "morada": {
+        "codigoPostal": "1000-123",
+        "localidade": "Lisboa"
+      },
+      "anoCurricular": 3,
+      "emailPessoal": "joana50@mail.example.com",
+      "dataAtualizacao": "2025-06-10T15:18:32Z",
+      "telemovel": "+351 91 555 5416",
+      "primeiroNome": "Joana",
+      "numeroMatricula": "2021906",
+      "nacionalidade": "AO",
+      "dataNascimento": "09/12/1997",
+      "regime": "Erasmus (entrada)",
+      "emailInstitucional": "joana.fonseca@alunos.universidade.example.org",
+      "situacao": "Concluído",
+      "dataInscricao": "01/09/2021",
+      "situacaoPropinas": "Em dívida",
+      "curso": {
+        "nome": "Licenciatura em História",
+        "faculdade": {
+          "sigla": "FLH"
+        },
+        "codigo": "L-HIS"
+      },
+      "apelido": "Fonseca",
+      "codigoInscricao": "INS27762633"
+    },
+    {
+      "morada": {
+        "codigoPostal": "1000-123",
+        "localidade": "Lisboa"
+      },
+      "anoCurricular": 5,
+      "emailPessoal": "goncalo55@mail.example.com",
+      "dataAtualizacao": "2025-11-13T09:06:55Z",
+      "telemovel": "+351 91 555 2652",
+      "primeiroNome": "Gonçalo",
+      "numeroMatricula": "2021929",
+      "nacionalidade": "ES",
+      "dataNascimento": "04/02/2006",
+      "regime": "Tempo integral",
+      "emailInstitucional": "goncalo.esteves@alunos.universidade.example.org",
+      "situacao": "Inscrito",
+      "dataInscricao": "01/10/2025",
+      "situacaoPropinas": "Isento",
+      "curso": {
+        "nome": "Licenciatura em Biologia",
+        "faculdade": {
+          "sigla": "FCT"
+        },
+        "codigo": "L-BIO"
+      },
+      "apelido": "Esteves",
+      "codigoInscricao": "INS79546009"
+    },
+    {
+      "morada": {
+        "codigoPostal": "3000-214",
+        "localidade": "Coimbra"
+      },
+      "anoCurricular": 5,
+      "dataAtualizacao": "2025-09-12T17:16:36Z",
+      "telemovel": null,
+      "primeiroNome": "Rui",
+      "numeroMatricula": "2021952",
+      "nacionalidade": "PT",
+      "dataNascimento": "12/07/1999",
+      "regime": "Tempo parcial",
+      "emailInstitucional": "rui.pinheiro@alunos.universidade.example.org",
+      "situacao": "Inscrito",
+      "dataInscricao": "06/08/2020",
+      "situacaoPropinas": "Regularizado",
+      "curso": {
+        "nome": "Mestrado em Gestão",
+        "faculdade": {
+          "sigla": "FEG"
+        },
+        "codigo": "M-GES"
+      },
+      "apelido": "Pinheiro",
+      "codigoInscricao": "INS66364681"
+    },
+    {
+      "morada": {
+        "codigoPostal": "1000-123",
+        "localidade": "Lisboa"
+      },
+      "anoCurricular": 1,
+      "emailPessoal": "rodrigo96@mail.example.com",
+      "dataAtualizacao": "2025-01-14T22:24:47Z",
+      "telemovel": "+351 91 555 1266",
+      "primeiroNome": "Rodrigo",
+      "numeroMatricula": "2021975",
+      "nacionalidade": "PT",
+      "dataNascimento": "03/08/1997",
+      "regime": "Tempo parcial",
+      "emailInstitucional": "Rodrigo.Moura@Alunos.universidade.example.org",
+      "situacao": "Suspenso",
+      "dataInscricao": "06/03/2021",
+      "situacaoPropinas": "Regularizado",
+      "curso": {
+        "nome": "Mestrado em Gestão",
+        "faculdade": {
+          "sigla": "FEG"
+        },
+        "codigo": "M-GES"
+      },
+      "apelido": "Moura",
+      "codigoInscricao": "INS30793334"
+    },
+    {
+      "morada": {
+        "codigoPostal": "3000-214",
+        "localidade": "Coimbra"
+      },
+      "anoCurricular": 4,
+      "emailPessoal": "ines34@mail.example.com",
+      "dataAtualizacao": "2026-10-08T09:30:07Z",
+      "telemovel": "+351 91 555 9528",
+      "primeiroNome": "Inês",
+      "numeroMatricula": "2021998",
+      "nacionalidade": "BR",
+      "dataNascimento": "05/11/2006",
+      "regime": "Trabalhador-estudante",
+      "emailInstitucional": "ines.teixeira@alunos.universidade.example.org",
+      "situacao": "Concluído",
+      "dataInscricao": "05/07/2024",
+      "situacaoPropinas": "Isento",
+      "curso": {
+        "nome": "Licenciatura em Biologia",
+        "faculdade": {
+          "sigla": "FCT"
+        },
+        "codigo": "L-BIO"
+      },
+      "apelido": "Teixeira",
+      "codigoInscricao": "INS21614879"
+    },
+    {
+      "morada": {
+        "codigoPostal": "4700-045",
+        "localidade": "Braga"
+      },
+      "anoCurricular": 3,
+      "emailPessoal": "henrique12@mail.example.com",
+      "dataAtualizacao": "2025-01-17T16:16:01Z",
+      "telemovel": "+351 91 555 3747",
+      "primeiroNome": "Henrique",
+      "numeroMatricula": "2022021",
+      "nacionalidade": "PT",
+      "dataNascimento": "11/06/2006",
+      "regime": "Tempo parcial",
+      "emailInstitucional": "henrique.teixeira@alunos.universidade.example.org",
+      "situacao": "Inscrito",
+      "dataInscricao": "07/01/2020",
+      "situacaoPropinas": "Regularizado",
+      "curso": {
+        "nome": "Mestrado em Gestão",
+        "faculdade": {
+          "sigla": "FEG"
+        },
+        "codigo": "M-GES"
+      },
+      "apelido": "Teixeira",
+      "codigoInscricao": "INS07001243"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "student_number": {
+        "type": "string"
+      },
+      "full_name": {
+        "type": "string"
+      },
+      "institutional_email": {
+        "type": "string",
+        "format": "email"
+      },
+      "birth_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "enrolled_on": {
+        "type": "string",
+        "format": "date"
+      },
+      "program_code": {
+        "type": "string"
+      },
+      "study_mode": {
+        "type": "string",
+        "enum": [
+          "full_time",
+          "part_time",
+          "exchange"
+        ]
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "enrolled",
+          "suspended",
+          "withdrawn",
+          "graduated"
+        ]
+      },
+      "year_of_study": {
+        "type": "integer"
+      },
+      "nationality": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "national_id": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "student_number",
+      "full_name",
+      "institutional_email",
+      "enrolled_on",
+      "program_code",
+      "study_mode",
+      "status"
+    ]
+  },
+  "groundTruth": {
+    "student_number": {
+      "source": "numeroMatricula",
+      "transform": "copy",
+      "why": "matriculation number; codigoInscricao identifies one enrolment event"
+    },
+    "full_name": {
+      "source": null,
+      "sources": [
+        "primeiroNome",
+        "apelido"
+      ],
+      "transform": "concat",
+      "separator": " ",
+      "why": "full name is first name plus surname"
+    },
+    "institutional_email": {
+      "source": "emailInstitucional",
+      "transform": "normalize_email",
+      "why": "university mailbox, mixed case; emailPessoal is private"
+    },
+    "birth_date": {
+      "source": "dataNascimento",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "date of birth (Portuguese day-first)"
+    },
+    "enrolled_on": {
+      "source": "dataInscricao",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "enrolment date (Portuguese day-first); dataAtualizacao is a modification stamp"
+    },
+    "program_code": {
+      "source": "curso.codigo",
+      "transform": "copy",
+      "why": "programme code, not the programme title"
+    },
+    "study_mode": {
+      "source": "regime",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Tempo integral": "full_time",
+        "Tempo parcial": "part_time",
+        "Trabalhador-estudante": "part_time",
+        "Erasmus (entrada)": "exchange"
+      },
+      "why": "study regime; working students study part time; incoming Erasmus is exchange"
+    },
+    "status": {
+      "source": "situacao",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Inscrito": "enrolled",
+        "Suspenso": "suspended",
+        "Anulado": "withdrawn",
+        "Concluído": "graduated",
+        "Pré-inscrição": null
+      },
+      "why": "academic state; pre-registration is not yet an enrolment"
+    },
+    "year_of_study": {
+      "source": "anoCurricular",
+      "transform": "copy",
+      "why": "curricular year"
+    },
+    "nationality": {
+      "source": "nacionalidade",
+      "transform": "copy",
+      "why": "nationality country code"
+    },
+    "national_id": {
+      "source": null,
+      "transform": "none",
+      "why": "no citizen card or tax number is exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "numeroMatricula",
+        "codigoInscricao"
+      ],
+      "correctFor": "student_number"
+    },
+    {
+      "kind": "two-email-fields",
+      "fields": [
+        "emailInstitucional",
+        "emailPessoal"
+      ],
+      "correctFor": "institutional_email"
+    },
+    {
+      "kind": "birth-date-vs-start-date",
+      "fields": [
+        "dataNascimento",
+        "dataInscricao"
+      ],
+      "correctFor": "enrolled_on"
+    },
+    {
+      "kind": "account-status-vs-transaction-status",
+      "fields": [
+        "situacao",
+        "situacaoPropinas"
+      ],
+      "correctFor": "status"
+    }
+  ],
+  "sourceConcepts": {
+    "morada.codigoPostal": "postal-code",
+    "morada.localidade": "city",
+    "anoCurricular": "quantity",
+    "emailPessoal": "email",
+    "dataAtualizacao": "modified-date",
+    "telemovel": "phone",
+    "primeiroNome": "given-name",
+    "numeroMatricula": "customer-id",
+    "nacionalidade": "country",
+    "dataNascimento": "birth-date",
+    "regime": "category",
+    "emailInstitucional": "email",
+    "situacao": "account-status",
+    "dataInscricao": "start-date",
+    "situacaoPropinas": "payment-status",
+    "curso.nome": "category",
+    "apelido": "family-name",
+    "curso.faculdade.sigla": "organization-name",
+    "curso.codigo": "other-identifier",
+    "codigoInscricao": "transaction-id"
+  },
+  "destinationConcepts": {
+    "student_number": "customer-id",
+    "full_name": "person-name",
+    "institutional_email": "email",
+    "birth_date": "birth-date",
+    "enrolled_on": "start-date",
+    "program_code": "other-identifier",
+    "study_mode": "category",
+    "status": "account-status",
+    "year_of_study": "quantity",
+    "nationality": "country",
+    "national_id": "other-identifier"
+  }
+}

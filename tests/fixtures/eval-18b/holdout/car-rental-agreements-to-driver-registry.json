@@ -1,0 +1,838 @@
+{
+  "scenarioId": "car-rental-agreements-to-driver-registry",
+  "split": "holdout",
+  "industry": "car rental",
+  "sourceLanguage": "it",
+  "description": "Rental agreement export of a fictional car rental company (Italian snake_case, three-level nested driver licence) to be loaded into a driver registry.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "conducente": {
+        "patente": {
+          "scadenza": "12/12/2029",
+          "numero": "BM5589385M"
+        },
+        "nome": "Elena",
+        "cognome": "Galli   "
+      },
+      "valuta": "EUR",
+      "intestatario_fattura": null,
+      "importo": 607.59,
+      "numero_contratto": "RA-5259061",
+      "codice_cliente": "CL90500",
+      "stato_cliente": "attivo",
+      "data_nascita": "06/01/1973",
+      "cellulare": null,
+      "nazione_patente": "IT",
+      "fascia_cliente": "Standard",
+      "email_agenzia": "filiale.bologna@autonoleggio.example.com",
+      "data_ritiro": "08/06/2026",
+      "stato_noleggio": "in ritardo",
+      "email_conducente": "elena.galli@posta.example.com"
+    },
+    {
+      "conducente": {
+        "patente": {
+          "scadenza": "10/05/2030",
+          "numero": "MW0268161T"
+        },
+        "nome": "Niccolò",
+        "cognome": "Valentini"
+      },
+      "valuta": "EUR",
+      "intestatario_fattura": null,
+      "importo": 339.08,
+      "numero_contratto": "RA-7986218",
+      "codice_cliente": "CL90541",
+      "stato_cliente": "sospeso",
+      "data_nascita": "07/01/1984",
+      "cellulare": "+39 347 555 3732",
+      "nazione_patente": "IT",
+      "fascia_cliente": "Gold",
+      "email_agenzia": "filiale.bologna@autonoleggio.example.com",
+      "data_ritiro": "08/09/2026",
+      "stato_noleggio": "in ritardo",
+      "email_conducente": "Niccolo.Valentini@posta.example.com"
+    },
+    {
+      "conducente": {
+        "patente": {
+          "scadenza": "04/11/2026",
+          "numero": "WT5645716R"
+        },
+        "nome": "Elena",
+        "cognome": "  Testa "
+      },
+      "valuta": "EUR",
+      "intestatario_fattura": null,
+      "importo": 104.3,
+      "numero_contratto": "RA-3948911",
+      "codice_cliente": "CL90582",
+      "stato_cliente": "bloccato",
+      "data_nascita": "01/10/1981",
+      "nazione_patente": "IT",
+      "fascia_cliente": "Platino",
+      "email_agenzia": "filiale.milano@autonoleggio.example.com",
+      "data_ritiro": "02/03/2026",
+      "stato_noleggio": "aperto",
+      "email_conducente": "elena.testa@posta.example.com"
+    },
+    {
+      "conducente": {
+        "patente": {
+          "scadenza": "03/02/2028",
+          "numero": "VS2760410P"
+        },
+        "nome": "Giulia",
+        "cognome": "Valentini   "
+      },
+      "valuta": "EUR",
+      "intestatario_fattura": "Emberfield Ltd",
+      "importo": 397.59,
+      "numero_contratto": "RA-6436867",
+      "codice_cliente": "CL90623",
+      "stato_cliente": "da verificare",
+      "data_nascita": "11/03/1973",
+      "cellulare": "+39 347 555 3671",
+      "nazione_patente": "IT",
+      "fascia_cliente": "Aziendale",
+      "email_agenzia": "filiale.bologna@autonoleggio.example.com",
+      "data_ritiro": "06/03/2026",
+      "stato_noleggio": "chiuso",
+      "email_conducente": "Giulia.Valentini@Posta.example.com"
+    },
+    {
+      "conducente": {
+        "patente": {
+          "scadenza": "10/08/2028",
+          "numero": "SA4386885L"
+        },
+        "nome": "Bianca",
+        "cognome": "  Bellini"
+      },
+      "valuta": "EUR",
+      "intestatario_fattura": null,
+      "importo": 495.26,
+      "numero_contratto": "RA-4748724",
+      "codice_cliente": "CL90664",
+      "stato_cliente": "attivo",
+      "data_nascita": "06/06/1980",
+      "cellulare": "+39 347 555 4783",
+      "nazione_patente": "IT",
+      "fascia_cliente": "Lista nera",
+      "email_agenzia": "filiale.torino@autonoleggio.example.com",
+      "data_ritiro": "11/12/2025",
+      "stato_noleggio": "in ritardo",
+      "email_conducente": "Bianca.Bellini@posta.example.com"
+    },
+    {
+      "conducente": {
+        "patente": {
+          "scadenza": "01/12/2031",
+          "numero": "PB4129037C"
+        },
+        "nome": "Lorenzo",
+        "cognome": "Orlando"
+      },
+      "valuta": "EUR",
+      "intestatario_fattura": null,
+      "importo": 450.89,
+      "numero_contratto": "RA-9849182",
+      "codice_cliente": "CL90705",
+      "stato_cliente": "attivo",
+      "data_nascita": "11/09/1998",
+      "cellulare": "+39 347 555 7102",
+      "nazione_patente": "ES",
+      "fascia_cliente": "Standard",
+      "email_agenzia": "filiale.milano@autonoleggio.example.com",
+      "data_ritiro": "06/05/2025",
+      "stato_noleggio": "chiuso",
+      "email_conducente": "Lorenzo.Orlando@posta.example.com"
+    },
+    {
+      "conducente": {
+        "patente": {
+          "scadenza": "07/04/2033",
+          "numero": "EK3169507W"
+        },
+        "nome": "Chiara",
+        "cognome": "Bellini"
+      },
+      "valuta": "EUR",
+      "intestatario_fattura": "Lumenvale Energy",
+      "importo": 500.52,
+      "numero_contratto": "RA-9137609",
+      "codice_cliente": "CL90746",
+      "stato_cliente": "sospeso",
+      "data_nascita": "02/04/1963",
+      "nazione_patente": "DE",
+      "fascia_cliente": "Aziendale",
+      "email_agenzia": "filiale.bologna@autonoleggio.example.com",
+      "data_ritiro": "05/11/2026",
+      "stato_noleggio": "chiuso",
+      "email_conducente": "chiara.bellini@posta.example.com"
+    },
+    {
+      "conducente": {
+        "patente": {
+          "scadenza": "12/12/2028",
+          "numero": "RE2450870C"
+        },
+        "nome": "Tommaso",
+        "cognome": "  Rinaldi "
+      },
+      "valuta": "EUR",
+      "intestatario_fattura": null,
+      "importo": 239.04,
+      "numero_contratto": "RA-4748798",
+      "codice_cliente": "CL90787",
+      "stato_cliente": "bloccato",
+      "data_nascita": "12/04/1968",
+      "cellulare": "+39 347 555 8820",
+      "nazione_patente": "ES",
+      "fascia_cliente": "Standard",
+      "email_agenzia": "filiale.milano@autonoleggio.example.com",
+      "data_ritiro": "01/07/2026",
+      "stato_noleggio": "in ritardo",
+      "email_conducente": "Tommaso.Rinaldi@posta.example.com"
+    },
+    {
+      "conducente": {
+        "patente": {
+          "scadenza": "03/06/2027",
+          "numero": "GC0801538G"
+        },
+        "nome": "Chiara",
+        "cognome": "Bassani"
+      },
+      "valuta": "EUR",
+      "intestatario_fattura": null,
+      "importo": 914.91,
+      "numero_contratto": "RA-7726875",
+      "codice_cliente": "CL90828",
+      "stato_cliente": "sospeso",
+      "data_nascita": "04/03/1985",
+      "cellulare": "+39 347 555 4661",
+      "nazione_patente": "IT",
+      "fascia_cliente": "Lista nera",
+      "email_agenzia": "filiale.milano@autonoleggio.example.com",
+      "data_ritiro": "09/12/2025",
+      "stato_noleggio": "in ritardo",
+      "email_conducente": "Chiara.Bassani@Posta.example.com"
+    },
+    {
+      "conducente": {
+        "patente": {
+          "scadenza": "12/05/2027",
+          "numero": "KF0554546L"
+        },
+        "nome": "Francesca",
+        "cognome": "Caruso"
+      },
+      "valuta": "EUR",
+      "intestatario_fattura": "Emberfield Ltd",
+      "importo": 86.07,
+      "numero_contratto": "RA-7873670",
+      "codice_cliente": "CL90869",
+      "stato_cliente": "da verificare",
+      "data_nascita": "12/05/1987",
+      "cellulare": null,
+      "nazione_patente": "CH",
+      "fascia_cliente": "Aziendale",
+      "email_agenzia": "filiale.torino@autonoleggio.example.com",
+      "data_ritiro": "07/06/2025",
+      "stato_noleggio": "chiuso",
+      "email_conducente": "Francesca.Caruso@posta.example.com"
+    },
+    {
+      "conducente": {
+        "patente": {
+          "scadenza": "06/01/2034",
+          "numero": "JM6063529X"
+        },
+        "nome": "Alessia",
+        "cognome": "Santoro"
+      },
+      "valuta": "EUR",
+      "intestatario_fattura": null,
+      "importo": 884.09,
+      "numero_contratto": "RA-1419676",
+      "codice_cliente": "CL90910",
+      "stato_cliente": "attivo",
+      "data_nascita": "06/01/2000",
+      "cellulare": "+39 347 555 0626",
+      "nazione_patente": "IT",
+      "fascia_cliente": "Gold",
+      "email_agenzia": "filiale.torino@autonoleggio.example.com",
+      "data_ritiro": "05/08/2026",
+      "stato_noleggio": "in ritardo",
+      "email_conducente": "alessia.santoro@posta.example.com"
+    },
+    {
+      "conducente": {
+        "patente": {
+          "scadenza": "07/06/2028",
+          "numero": "CP4798829R"
+        },
+        "nome": "Elena",
+        "cognome": "Bassani"
+      },
+      "valuta": "EUR",
+      "intestatario_fattura": null,
+      "importo": 505.05,
+      "numero_contratto": "RA-4192228",
+      "codice_cliente": "CL90951",
+      "stato_cliente": "sospeso",
+      "data_nascita": "04/06/1965",
+      "cellulare": "+39 347 555 4061",
+      "nazione_patente": "IT",
+      "fascia_cliente": "Lista nera",
+      "email_agenzia": "filiale.torino@autonoleggio.example.com",
+      "data_ritiro": "12/03/2025",
+      "stato_noleggio": "chiuso",
+      "email_conducente": "elena.bassani@posta.example.com"
+    },
+    {
+      "conducente": {
+        "patente": {
+          "scadenza": "03/05/2034",
+          "numero": "GA3376220N"
+        },
+        "nome": "Niccolò",
+        "cognome": "  Zanetti "
+      },
+      "valuta": "EUR",
+      "intestatario_fattura": "Altheon Works",
+      "importo": 118.68,
+      "numero_contratto": "RA-4265190",
+      "codice_cliente": "CL90992",
+      "stato_cliente": "sospeso",
+      "data_nascita": "04/12/1983",
+      "cellulare": "+39 347 555 9404",
+      "nazione_patente": "IT",
+      "fascia_cliente": "Aziendale",
+      "email_agenzia": "filiale.bologna@autonoleggio.example.com",
+      "data_ritiro": "07/05/2026",
+      "stato_noleggio": "in ritardo",
+      "email_conducente": "Niccolo.Zanetti@posta.example.com"
+    },
+    {
+      "conducente": {
+        "patente": {
+          "scadenza": "01/03/2035",
+          "numero": "VZ3684569A"
+        },
+        "nome": "Francesca",
+        "cognome": "Bassani"
+      },
+      "valuta": "EUR",
+      "intestatario_fattura": null,
+      "importo": 730.34,
+      "numero_contratto": "RA-3919082",
+      "codice_cliente": "CL91033",
+      "stato_cliente": "sospeso",
+      "data_nascita": "07/02/1982",
+      "cellulare": "+39 347 555 9795",
+      "nazione_patente": "DE",
+      "fascia_cliente": "Lista nera",
+      "email_agenzia": "filiale.milano@autonoleggio.example.com",
+      "data_ritiro": "11/10/2026",
+      "stato_noleggio": "in ritardo",
+      "email_conducente": "Francesca.Bassani@posta.example.com"
+    },
+    {
+      "conducente": {
+        "patente": {
+          "scadenza": "04/07/2033",
+          "numero": "EX8378274V"
+        },
+        "nome": "Alessia",
+        "cognome": "Negri"
+      },
+      "valuta": "EUR",
+      "intestatario_fattura": "Harrowgate Supplies",
+      "importo": 143.21,
+      "numero_contratto": "RA-9027069",
+      "codice_cliente": "CL91074",
+      "stato_cliente": "da verificare",
+      "data_nascita": "08/04/1965",
+      "cellulare": "+39 347 555 6190",
+      "nazione_patente": "ES",
+      "fascia_cliente": "Aziendale",
+      "email_agenzia": "filiale.milano@autonoleggio.example.com",
+      "data_ritiro": "01/10/2025",
+      "stato_noleggio": "chiuso",
+      "email_conducente": "alessia.negri@posta.example.com"
+    },
+    {
+      "conducente": {
+        "patente": {
+          "scadenza": "03/05/2035",
+          "numero": "ZJ2393687V"
+        },
+        "nome": "Tommaso",
+        "cognome": "Valentini"
+      },
+      "valuta": "EUR",
+      "intestatario_fattura": null,
+      "importo": 623.24,
+      "numero_contratto": "RA-4487892",
+      "codice_cliente": "CL91115",
+      "stato_cliente": "da verificare",
+      "data_nascita": "05/06/1960",
+      "cellulare": "+39 347 555 1114",
+      "nazione_patente": "IT",
+      "fascia_cliente": "Platino",
+      "email_agenzia": "filiale.torino@autonoleggio.example.com",
+      "data_ritiro": "07/01/2025",
+      "stato_noleggio": "aperto",
+      "email_conducente": "Tommaso.Valentini@Posta.example.com"
+    },
+    {
+      "conducente": {
+        "patente": {
+          "scadenza": "03/06/2033",
+          "numero": "FB2552878Z"
+        },
+        "nome": "Giulia",
+        "cognome": "  Negri"
+      },
+      "valuta": "EUR",
+      "intestatario_fattura": "Kestrel Ridge Foods",
+      "importo": 753.47,
+      "numero_contratto": "RA-8839494",
+      "codice_cliente": "CL91156",
+      "stato_cliente": "bloccato",
+      "data_nascita": "11/07/1988",
+      "cellulare": "+39 347 555 7340",
+      "nazione_patente": "DE",
+      "fascia_cliente": "Aziendale",
+      "email_agenzia": "filiale.torino@autonoleggio.example.com",
+      "data_ritiro": "06/01/2026",
+      "stato_noleggio": "chiuso",
+      "email_conducente": "giulia.negri@posta.example.com"
+    },
+    {
+      "conducente": {
+        "patente": {
+          "scadenza": "01/11/2029",
+          "numero": "NP4509445A"
+        },
+        "nome": "Martina",
+        "cognome": "  Orlando "
+      },
+      "valuta": "EUR",
+      "intestatario_fattura": null,
+      "importo": 478.5,
+      "numero_contratto": "RA-9648832",
+      "codice_cliente": "CL91197",
+      "stato_cliente": "da verificare",
+      "data_nascita": "07/05/1982",
+      "cellulare": "+39 347 555 1806",
+      "nazione_patente": "CH",
+      "fascia_cliente": "Lista nera",
+      "email_agenzia": "filiale.milano@autonoleggio.example.com",
+      "data_ritiro": "11/02/2025",
+      "stato_noleggio": "chiuso",
+      "email_conducente": "Martina.Orlando@Posta.example.com"
+    },
+    {
+      "conducente": {
+        "patente": {
+          "scadenza": "11/11/2033",
+          "numero": "JJ3559891M"
+        },
+        "nome": "Tommaso",
+        "cognome": "Galli"
+      },
+      "valuta": "EUR",
+      "intestatario_fattura": "Emberfield Ltd",
+      "importo": 569.03,
+      "numero_contratto": "RA-1244430",
+      "codice_cliente": "CL91238",
+      "stato_cliente": "sospeso",
+      "data_nascita": "09/04/1986",
+      "cellulare": "+39 347 555 8821",
+      "nazione_patente": "DE",
+      "fascia_cliente": "Aziendale",
+      "email_agenzia": "filiale.milano@autonoleggio.example.com",
+      "data_ritiro": "04/02/2026",
+      "stato_noleggio": "chiuso",
+      "email_conducente": "tommaso.galli@posta.example.com"
+    },
+    {
+      "conducente": {
+        "patente": {
+          "scadenza": "07/04/2026",
+          "numero": "FC9305908S"
+        },
+        "nome": "Pietro",
+        "cognome": "Pellegrini   "
+      },
+      "valuta": "EUR",
+      "intestatario_fattura": "Kestrel Ridge Foods",
+      "importo": 769.92,
+      "numero_contratto": "RA-7216206",
+      "codice_cliente": "CL91279",
+      "stato_cliente": "da verificare",
+      "data_nascita": "09/05/1982",
+      "cellulare": "+39 347 555 8570",
+      "nazione_patente": "ES",
+      "fascia_cliente": "Aziendale",
+      "email_agenzia": "filiale.milano@autonoleggio.example.com",
+      "data_ritiro": "02/03/2026",
+      "stato_noleggio": "in ritardo",
+      "email_conducente": "pietro.pellegrini@posta.example.com"
+    },
+    {
+      "conducente": {
+        "patente": {
+          "scadenza": "04/04/2033",
+          "numero": "RZ8243623S"
+        },
+        "nome": "Tommaso",
+        "cognome": "Bassani"
+      },
+      "valuta": "EUR",
+      "intestatario_fattura": null,
+      "importo": 488.13,
+      "numero_contratto": "RA-8306490",
+      "codice_cliente": "CL91320",
+      "stato_cliente": "attivo",
+      "data_nascita": "09/08/2003",
+      "cellulare": "+39 347 555 2910",
+      "nazione_patente": "IT",
+      "fascia_cliente": "Standard",
+      "email_agenzia": "filiale.bologna@autonoleggio.example.com",
+      "data_ritiro": "10/12/2025",
+      "stato_noleggio": "aperto",
+      "email_conducente": "Tommaso.Bassani@Posta.example.com"
+    },
+    {
+      "conducente": {
+        "patente": {
+          "scadenza": "06/08/2034",
+          "numero": "LF9635428H"
+        },
+        "nome": "Sara",
+        "cognome": "Zanetti"
+      },
+      "valuta": "EUR",
+      "intestatario_fattura": null,
+      "importo": 218.96,
+      "numero_contratto": "RA-1310817",
+      "codice_cliente": "CL91361",
+      "stato_cliente": "attivo",
+      "data_nascita": "09/08/1973",
+      "cellulare": "+39 347 555 7594",
+      "nazione_patente": "IT",
+      "fascia_cliente": "Platino",
+      "email_agenzia": "filiale.milano@autonoleggio.example.com",
+      "data_ritiro": "04/10/2026",
+      "stato_noleggio": "in ritardo",
+      "email_conducente": "Sara.Zanetti@posta.example.com"
+    },
+    {
+      "conducente": {
+        "patente": {
+          "scadenza": "01/06/2030",
+          "numero": "WC6494787V"
+        },
+        "nome": "Chiara",
+        "cognome": "  Rinaldi "
+      },
+      "valuta": "EUR",
+      "intestatario_fattura": "Lumenvale Energy",
+      "importo": 814.03,
+      "numero_contratto": "RA-7850444",
+      "codice_cliente": "CL91402",
+      "stato_cliente": "sospeso",
+      "data_nascita": "06/10/1998",
+      "cellulare": "+39 347 555 0422",
+      "nazione_patente": "FR",
+      "fascia_cliente": "Aziendale",
+      "email_agenzia": "filiale.torino@autonoleggio.example.com",
+      "data_ritiro": "05/05/2026",
+      "stato_noleggio": "in ritardo",
+      "email_conducente": "Chiara.Rinaldi@Posta.example.com"
+    },
+    {
+      "conducente": {
+        "patente": {
+          "scadenza": "01/10/2035",
+          "numero": "WH2755894H"
+        },
+        "nome": "Chiara",
+        "cognome": "Negri"
+      },
+      "valuta": "EUR",
+      "intestatario_fattura": null,
+      "importo": 873.33,
+      "numero_contratto": "RA-8484910",
+      "codice_cliente": "CL91443",
+      "stato_cliente": "sospeso",
+      "data_nascita": "11/04/1957",
+      "cellulare": null,
+      "nazione_patente": "ES",
+      "fascia_cliente": "Lista nera",
+      "email_agenzia": "filiale.torino@autonoleggio.example.com",
+      "data_ritiro": "06/09/2025",
+      "stato_noleggio": "aperto",
+      "email_conducente": "chiara.negri@posta.example.com"
+    },
+    {
+      "conducente": {
+        "patente": {
+          "scadenza": "04/05/2028",
+          "numero": "SG7534438C"
+        },
+        "nome": "Bianca",
+        "cognome": "Ferrara"
+      },
+      "valuta": "EUR",
+      "intestatario_fattura": "Kestrel Ridge Foods",
+      "importo": 974.18,
+      "numero_contratto": "RA-8100524",
+      "codice_cliente": "CL91484",
+      "stato_cliente": "sospeso",
+      "data_nascita": "03/05/1963",
+      "cellulare": "+39 347 555 0411",
+      "nazione_patente": "DE",
+      "fascia_cliente": "Aziendale",
+      "email_agenzia": "filiale.torino@autonoleggio.example.com",
+      "data_ritiro": "06/08/2026",
+      "stato_noleggio": "chiuso",
+      "email_conducente": "bianca.ferrara@posta.example.com"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "driver_id": {
+        "type": "string"
+      },
+      "first_name": {
+        "type": "string"
+      },
+      "last_name": {
+        "type": "string"
+      },
+      "email": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "format": "email"
+      },
+      "mobile": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "birth_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "license": {
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "string"
+          },
+          "expires": {
+            "type": "string",
+            "format": "date"
+          },
+          "country": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "number",
+          "expires"
+        ]
+      },
+      "tier": {
+        "type": "string",
+        "enum": [
+          "standard",
+          "preferred",
+          "corporate"
+        ]
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "suspended",
+          "blocked"
+        ]
+      },
+      "loyalty_points": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "driver_id",
+      "first_name",
+      "last_name",
+      "birth_date",
+      "status",
+      "license"
+    ]
+  },
+  "groundTruth": {
+    "driver_id": {
+      "source": "codice_cliente",
+      "transform": "copy",
+      "why": "customer code; numero_contratto is one rental agreement"
+    },
+    "first_name": {
+      "source": "conducente.nome",
+      "transform": "copy",
+      "why": "driver first name"
+    },
+    "last_name": {
+      "source": "conducente.cognome",
+      "transform": "trim",
+      "why": "driver surname, padded in some rows"
+    },
+    "email": {
+      "source": "email_conducente",
+      "transform": "normalize_email",
+      "why": "driver email, mixed case; email_agenzia is the rental branch"
+    },
+    "mobile": {
+      "source": "cellulare",
+      "transform": "copy",
+      "why": "driver mobile"
+    },
+    "birth_date": {
+      "source": "data_nascita",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "driver date of birth (Italian day-first); data_ritiro is a pickup date"
+    },
+    "license.number": {
+      "source": "conducente.patente.numero",
+      "transform": "copy",
+      "why": "driving licence number"
+    },
+    "license.expires": {
+      "source": "conducente.patente.scadenza",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "licence expiry (Italian day-first)"
+    },
+    "license.country": {
+      "source": "nazione_patente",
+      "transform": "copy",
+      "why": "issuing country of the licence"
+    },
+    "tier": {
+      "source": "fascia_cliente",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Standard": "standard",
+        "Gold": "preferred",
+        "Platino": "preferred",
+        "Aziendale": "corporate",
+        "Lista nera": null
+      },
+      "why": "customer band; Lista nera is a blacklist flag, not a tier, and needs review"
+    },
+    "status": {
+      "source": "stato_cliente",
+      "transform": "map_enum",
+      "categoryMap": {
+        "attivo": "active",
+        "sospeso": "suspended",
+        "bloccato": "blocked",
+        "da verificare": null
+      },
+      "why": "customer state; da verificare is pending identity check; stato_noleggio is the rental state"
+    },
+    "loyalty_points": {
+      "source": null,
+      "transform": "none",
+      "why": "no loyalty points are exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "codice_cliente",
+        "numero_contratto"
+      ],
+      "correctFor": "driver_id"
+    },
+    {
+      "kind": "birth-date-vs-start-date",
+      "fields": [
+        "data_nascita",
+        "data_ritiro"
+      ],
+      "correctFor": "birth_date"
+    },
+    {
+      "kind": "two-email-fields",
+      "fields": [
+        "email_conducente",
+        "email_agenzia"
+      ],
+      "correctFor": "email"
+    },
+    {
+      "kind": "account-status-vs-transaction-status",
+      "fields": [
+        "stato_cliente",
+        "stato_noleggio"
+      ],
+      "correctFor": "status"
+    }
+  ],
+  "sourceConcepts": {
+    "conducente.patente.scadenza": "end-date",
+    "valuta": "currency-code",
+    "conducente.patente.numero": "other-identifier",
+    "intestatario_fattura": "organization-name",
+    "conducente.nome": "given-name",
+    "importo": "amount",
+    "numero_contratto": "transaction-id",
+    "codice_cliente": "customer-id",
+    "stato_cliente": "account-status",
+    "data_nascita": "birth-date",
+    "cellulare": "phone",
+    "nazione_patente": "country",
+    "fascia_cliente": "category",
+    "email_agenzia": "email",
+    "data_ritiro": "transaction-date",
+    "stato_noleggio": "order-status",
+    "conducente.cognome": "family-name",
+    "email_conducente": "email"
+  },
+  "destinationConcepts": {
+    "driver_id": "customer-id",
+    "first_name": "given-name",
+    "last_name": "family-name",
+    "email": "email",
+    "mobile": "phone",
+    "birth_date": "birth-date",
+    "license.number": "other-identifier",
+    "license.expires": "end-date",
+    "license.country": "country",
+    "tier": "category",
+    "status": "account-status",
+    "loyalty_points": "quantity"
+  }
+}

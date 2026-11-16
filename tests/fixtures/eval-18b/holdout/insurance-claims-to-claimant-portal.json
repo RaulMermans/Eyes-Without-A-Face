@@ -1,0 +1,1116 @@
+{
+  "scenarioId": "insurance-claims-to-claimant-portal",
+  "split": "holdout",
+  "industry": "property and motor insurance claims",
+  "sourceLanguage": "nl",
+  "description": "Claims export of a fictional insurer (Dutch names with a fld_ vendor prefix, nested insured and counterparty) to be loaded into a claimant self-service portal.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "fld_schadesoort": "Aanrijding",
+      "fld_betaalstatus": "open",
+      "fld_eigen_risico": 500,
+      "fld_gewijzigd": "2026-12-25T11:06:42Z",
+      "fld_schadedatum": "12/04/2025",
+      "fld_status": "Ingediend",
+      "fld_geschat_bedrag": 1536.68,
+      "fld_expert": null,
+      "fld_polisnummer": "POL12673606",
+      "fld_meldingsdatum": "02/08/2026",
+      "fld_tegenpartij": {
+        "kenteken": "TV-005-N",
+        "naam": "Jelle Hazeveld"
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "sven.hoekstra@mail.example.net",
+        "naam": "Sven Hoekstra",
+        "telefoon": "+31 20 555 4202"
+      },
+      "fld_schadenummer": "SCH-2025-10400"
+    },
+    {
+      "fld_schadesoort": "Ruitschade",
+      "fld_betaalstatus": "open",
+      "fld_eigen_risico": 250,
+      "fld_gewijzigd": "2026-07-09T09:58:39Z",
+      "fld_schadedatum": "08/10/2025",
+      "fld_status": "In behandeling",
+      "fld_geschat_bedrag": 10668.62,
+      "fld_expert": null,
+      "fld_polisnummer": "POL77297874",
+      "fld_meldingsdatum": "07/03/2026",
+      "fld_tegenpartij": {
+        "kenteken": null,
+        "naam": null
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "Bram.Mulder@mail.example.net",
+        "naam": "Bram Mulder",
+        "telefoon": "+31 20 555 2860"
+      },
+      "fld_schadenummer": "SCH-2025-10419"
+    },
+    {
+      "fld_schadesoort": "Diefstal",
+      "fld_betaalstatus": "open",
+      "fld_eigen_risico": 500,
+      "fld_gewijzigd": "2026-07-23T10:37:47Z",
+      "fld_schadedatum": "01/01/2025",
+      "fld_status": "Expertise gepland",
+      "fld_geschat_bedrag": 6666.39,
+      "fld_expert": "Bram Jansen",
+      "fld_polisnummer": "POL93150404",
+      "fld_meldingsdatum": "03/01/2025",
+      "fld_tegenpartij": {
+        "kenteken": null,
+        "naam": null
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "sven.hoekstra@mail.example.net",
+        "naam": "  Sven Hoekstra ",
+        "telefoon": "+31 20 555 1284"
+      },
+      "fld_schadenummer": "SCH-2025-10438"
+    },
+    {
+      "fld_schadesoort": "Brand",
+      "fld_betaalstatus": "teruggevorderd",
+      "fld_eigen_risico": 250,
+      "fld_gewijzigd": "2026-12-14T11:01:26Z",
+      "fld_schadedatum": "12/12/2025",
+      "fld_status": "Uitgekeerd",
+      "fld_geschat_bedrag": 5343.28,
+      "fld_expert": null,
+      "fld_polisnummer": "POL07217355",
+      "fld_meldingsdatum": "02/12/2025",
+      "fld_tegenpartij": {
+        "kenteken": null,
+        "naam": null
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "Wouter.Kuipers@mail.example.net",
+        "naam": "Wouter Kuipers",
+        "telefoon": "+31 20 555 5689"
+      },
+      "fld_schadenummer": "SCH-2025-10457"
+    },
+    {
+      "fld_schadesoort": "Stormschade",
+      "fld_betaalstatus": "open",
+      "fld_eigen_risico": 150,
+      "fld_gewijzigd": "2026-05-02T20:38:10Z",
+      "fld_schadedatum": "09/02/2025",
+      "fld_status": "Afgewezen",
+      "fld_geschat_bedrag": 8936.25,
+      "fld_expert": null,
+      "fld_polisnummer": "POL49638482",
+      "fld_meldingsdatum": "02/06/2026",
+      "fld_tegenpartij": {
+        "kenteken": null,
+        "naam": null
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "ruben.mulder@mail.example.net",
+        "naam": "Ruben Mulder",
+        "telefoon": "+31 20 555 2245"
+      },
+      "fld_schadenummer": "SCH-2025-10476"
+    },
+    {
+      "fld_schadesoort": "Testmelding",
+      "fld_betaalstatus": "teruggevorderd",
+      "fld_eigen_risico": 500,
+      "fld_gewijzigd": "2026-10-22T09:07:24Z",
+      "fld_schadedatum": "03/08/2025",
+      "fld_status": "Ingetrokken",
+      "fld_geschat_bedrag": 5498.97,
+      "fld_expert": null,
+      "fld_polisnummer": "POL87794239",
+      "fld_meldingsdatum": "06/01/2026",
+      "fld_tegenpartij": {
+        "kenteken": null,
+        "naam": null
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "Wouter.Schouten@Mail.example.net",
+        "naam": "Wouter Schouten",
+        "telefoon": "+31 20 555 5003"
+      },
+      "fld_schadenummer": "SCH-2025-10495"
+    },
+    {
+      "fld_schadesoort": "Brand",
+      "fld_betaalstatus": "open",
+      "fld_eigen_risico": 250,
+      "fld_gewijzigd": "2026-06-18T10:47:07Z",
+      "fld_schadedatum": "10/07/2025",
+      "fld_status": "Afgewezen",
+      "fld_geschat_bedrag": 5348.52,
+      "fld_expert": null,
+      "fld_polisnummer": "POL56516283",
+      "fld_meldingsdatum": "10/11/2025",
+      "fld_tegenpartij": {
+        "kenteken": null,
+        "naam": null
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "ilse.wijnands@mail.example.net",
+        "naam": "  Ilse Wijnands",
+        "telefoon": "+31 20 555 3345"
+      },
+      "fld_schadenummer": "SCH-2025-10514"
+    },
+    {
+      "fld_schadesoort": "Diefstal",
+      "fld_betaalstatus": "open",
+      "fld_eigen_risico": 150,
+      "fld_gewijzigd": "2026-08-12T17:17:10Z",
+      "fld_schadedatum": "04/03/2025",
+      "fld_status": "Expertise gepland",
+      "fld_geschat_bedrag": 443.5,
+      "fld_expert": null,
+      "fld_polisnummer": "POL08718500",
+      "fld_meldingsdatum": "03/04/2025",
+      "fld_tegenpartij": {
+        "kenteken": null,
+        "naam": null
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "roos.schouten@mail.example.net",
+        "naam": "  Roos Schouten ",
+        "telefoon": "+31 20 555 5088"
+      },
+      "fld_schadenummer": "SCH-2025-10533"
+    },
+    {
+      "fld_schadesoort": "Aanrijding",
+      "fld_betaalstatus": "open",
+      "fld_eigen_risico": 500,
+      "fld_gewijzigd": "2026-05-26T12:17:23Z",
+      "fld_schadedatum": "08/01/2025",
+      "fld_status": "Expertise gepland",
+      "fld_geschat_bedrag": 5456.63,
+      "fld_expert": null,
+      "fld_polisnummer": "POL72827654",
+      "fld_meldingsdatum": "08/05/2026",
+      "fld_tegenpartij": {
+        "kenteken": "FU-523-N",
+        "naam": "Lotte Bakker"
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "daan.schouten@mail.example.net",
+        "naam": "Daan Schouten",
+        "telefoon": "+31 20 555 9375"
+      },
+      "fld_schadenummer": "SCH-2025-10552"
+    },
+    {
+      "fld_schadesoort": "Testmelding",
+      "fld_betaalstatus": "betaald",
+      "fld_eigen_risico": 0,
+      "fld_gewijzigd": "2026-04-09T15:51:38Z",
+      "fld_schadedatum": "06/12/2025",
+      "fld_status": "Ingediend",
+      "fld_geschat_bedrag": 7282.64,
+      "fld_expert": "Ilse Schouten",
+      "fld_polisnummer": "POL23295396",
+      "fld_meldingsdatum": "04/08/2025",
+      "fld_tegenpartij": {
+        "kenteken": null,
+        "naam": null
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "Noor.Mulder@mail.example.net",
+        "naam": "Noor Mulder",
+        "telefoon": "+31 20 555 8574"
+      },
+      "fld_schadenummer": "SCH-2025-10571"
+    },
+    {
+      "fld_schadesoort": "Testmelding",
+      "fld_betaalstatus": "betaald",
+      "fld_eigen_risico": 150,
+      "fld_gewijzigd": "2026-04-16T09:04:21Z",
+      "fld_schadedatum": "09/06/2025",
+      "fld_status": "In behandeling",
+      "fld_geschat_bedrag": 11154.1,
+      "fld_expert": null,
+      "fld_polisnummer": "POL91289816",
+      "fld_meldingsdatum": "10/09/2026",
+      "fld_tegenpartij": {
+        "kenteken": null,
+        "naam": null
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "daan.smit@mail.example.net",
+        "naam": "Daan Smit",
+        "telefoon": "+31 20 555 4229"
+      },
+      "fld_schadenummer": "SCH-2025-10590"
+    },
+    {
+      "fld_schadesoort": "Stormschade",
+      "fld_betaalstatus": "open",
+      "fld_eigen_risico": 0,
+      "fld_gewijzigd": "2026-05-27T09:44:26Z",
+      "fld_schadedatum": "06/04/2025",
+      "fld_status": "Ingediend",
+      "fld_geschat_bedrag": 2856.21,
+      "fld_expert": null,
+      "fld_polisnummer": "POL93929908",
+      "fld_meldingsdatum": "11/11/2025",
+      "fld_tegenpartij": {
+        "kenteken": null,
+        "naam": null
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "lotte.postma@mail.example.net",
+        "naam": "Lotte Postma",
+        "telefoon": "+31 20 555 9582"
+      },
+      "fld_schadenummer": "SCH-2025-10609"
+    },
+    {
+      "fld_schadesoort": "Brand",
+      "fld_betaalstatus": "betaald",
+      "fld_eigen_risico": 0,
+      "fld_gewijzigd": "2026-05-12T07:44:01Z",
+      "fld_schadedatum": "11/10/2025",
+      "fld_status": "Afgewezen",
+      "fld_geschat_bedrag": 6517.66,
+      "fld_expert": null,
+      "fld_polisnummer": "POL62663503",
+      "fld_meldingsdatum": "09/06/2025",
+      "fld_tegenpartij": {
+        "kenteken": null,
+        "naam": null
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "lotte.hoekstra@mail.example.net",
+        "naam": "  Lotte Hoekstra ",
+        "telefoon": "+31 20 555 2865"
+      },
+      "fld_schadenummer": "SCH-2025-10628"
+    },
+    {
+      "fld_schadesoort": "Ruitschade",
+      "fld_betaalstatus": "teruggevorderd",
+      "fld_eigen_risico": 250,
+      "fld_gewijzigd": "2026-08-26T21:02:11Z",
+      "fld_schadedatum": "12/12/2025",
+      "fld_status": "Expertise gepland",
+      "fld_geschat_bedrag": 8794.65,
+      "fld_expert": null,
+      "fld_polisnummer": "POL88150440",
+      "fld_meldingsdatum": "10/06/2025",
+      "fld_tegenpartij": {
+        "kenteken": null,
+        "naam": null
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "Ruben.Bakker@mail.example.net",
+        "naam": "  Ruben Bakker",
+        "telefoon": "+31 20 555 0114"
+      },
+      "fld_schadenummer": "SCH-2025-10647"
+    },
+    {
+      "fld_schadesoort": "Stormschade",
+      "fld_betaalstatus": "teruggevorderd",
+      "fld_eigen_risico": 150,
+      "fld_gewijzigd": "2026-09-17T10:49:24Z",
+      "fld_schadedatum": "07/01/2025",
+      "fld_status": "Expertise gepland",
+      "fld_geschat_bedrag": 453.68,
+      "fld_expert": "Thijs Jansen",
+      "fld_polisnummer": "POL31052633",
+      "fld_meldingsdatum": "02/04/2025",
+      "fld_tegenpartij": {
+        "kenteken": null,
+        "naam": null
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "Sanne.Kuipers@Mail.example.net",
+        "naam": "  Sanne Kuipers",
+        "telefoon": "+31 20 555 4048"
+      },
+      "fld_schadenummer": "SCH-2025-10666"
+    },
+    {
+      "fld_schadesoort": "Diefstal",
+      "fld_betaalstatus": "open",
+      "fld_eigen_risico": 0,
+      "fld_gewijzigd": "2026-03-23T21:04:01Z",
+      "fld_schadedatum": "04/10/2025",
+      "fld_status": "Afgewezen",
+      "fld_geschat_bedrag": 789.49,
+      "fld_expert": "Jelle Veenstra",
+      "fld_polisnummer": "POL99963933",
+      "fld_meldingsdatum": "10/10/2026",
+      "fld_tegenpartij": {
+        "kenteken": null,
+        "naam": null
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "ruben.timmer@mail.example.net",
+        "naam": "Ruben Timmer",
+        "telefoon": "+31 20 555 8375"
+      },
+      "fld_schadenummer": "SCH-2025-10685"
+    },
+    {
+      "fld_schadesoort": "Diefstal",
+      "fld_betaalstatus": "betaald",
+      "fld_eigen_risico": 0,
+      "fld_gewijzigd": "2026-04-12T15:24:05Z",
+      "fld_schadedatum": "08/11/2025",
+      "fld_status": "Ingediend",
+      "fld_geschat_bedrag": 2125.42,
+      "fld_expert": null,
+      "fld_polisnummer": "POL73991657",
+      "fld_meldingsdatum": "09/09/2026",
+      "fld_tegenpartij": {
+        "kenteken": null,
+        "naam": null
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "joris.hoekstra@mail.example.net",
+        "naam": "Joris Hoekstra   ",
+        "telefoon": "+31 20 555 1916"
+      },
+      "fld_schadenummer": "SCH-2025-10704"
+    },
+    {
+      "fld_schadesoort": "Aanrijding",
+      "fld_betaalstatus": "open",
+      "fld_eigen_risico": 0,
+      "fld_gewijzigd": "2026-10-07T10:01:07Z",
+      "fld_schadedatum": "09/07/2025",
+      "fld_status": "In behandeling",
+      "fld_geschat_bedrag": 3590.73,
+      "fld_expert": null,
+      "fld_polisnummer": "POL78075863",
+      "fld_meldingsdatum": "05/02/2025",
+      "fld_tegenpartij": {
+        "kenteken": "LK-321-J",
+        "naam": "Ruben Brouwer"
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "Joris.Verhoef@mail.example.net",
+        "naam": "  Joris Verhoef ",
+        "telefoon": "+31 20 555 3192"
+      },
+      "fld_schadenummer": "SCH-2025-10723"
+    },
+    {
+      "fld_schadesoort": "Aanrijding",
+      "fld_betaalstatus": "open",
+      "fld_eigen_risico": 0,
+      "fld_gewijzigd": "2026-05-07T18:06:48Z",
+      "fld_schadedatum": "06/01/2025",
+      "fld_status": "Expertise gepland",
+      "fld_geschat_bedrag": 2845.7,
+      "fld_expert": null,
+      "fld_polisnummer": "POL34276870",
+      "fld_meldingsdatum": "06/01/2026",
+      "fld_tegenpartij": {
+        "kenteken": "DT-917-W",
+        "naam": "Femke Zwart"
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "jelle.hazeveld@mail.example.net",
+        "naam": "Jelle Hazeveld",
+        "telefoon": "+31 20 555 6272"
+      },
+      "fld_schadenummer": "SCH-2025-10742"
+    },
+    {
+      "fld_schadesoort": "Brand",
+      "fld_betaalstatus": "open",
+      "fld_eigen_risico": 500,
+      "fld_gewijzigd": "2026-10-18T22:48:07Z",
+      "fld_schadedatum": "04/05/2025",
+      "fld_status": "In behandeling",
+      "fld_geschat_bedrag": 11789.84,
+      "fld_expert": null,
+      "fld_polisnummer": "POL55358179",
+      "fld_meldingsdatum": "12/05/2025",
+      "fld_tegenpartij": {
+        "kenteken": null,
+        "naam": null
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "Sven.Zwart@mail.example.net",
+        "naam": "Sven Zwart",
+        "telefoon": "+31 20 555 1173"
+      },
+      "fld_schadenummer": "SCH-2025-10761"
+    },
+    {
+      "fld_schadesoort": "Aanrijding",
+      "fld_betaalstatus": "open",
+      "fld_eigen_risico": 150,
+      "fld_gewijzigd": "2026-07-02T12:56:16Z",
+      "fld_schadedatum": "02/09/2025",
+      "fld_status": "Expertise gepland",
+      "fld_geschat_bedrag": 155.66,
+      "fld_expert": "Jelle Zwart",
+      "fld_polisnummer": "POL43781698",
+      "fld_meldingsdatum": "06/10/2026",
+      "fld_tegenpartij": {
+        "kenteken": "DW-990-B",
+        "naam": "Daan Verhoef"
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "ruben.hoekstra@mail.example.net",
+        "naam": "Ruben Hoekstra",
+        "telefoon": "+31 20 555 3759"
+      },
+      "fld_schadenummer": "SCH-2025-10780"
+    },
+    {
+      "fld_schadesoort": "Ruitschade",
+      "fld_betaalstatus": "betaald",
+      "fld_eigen_risico": 0,
+      "fld_gewijzigd": "2026-04-16T18:36:36Z",
+      "fld_schadedatum": "09/08/2025",
+      "fld_status": "In behandeling",
+      "fld_geschat_bedrag": 5890.17,
+      "fld_expert": "Ilse Kuipers",
+      "fld_polisnummer": "POL32483171",
+      "fld_meldingsdatum": "07/05/2025",
+      "fld_tegenpartij": {
+        "kenteken": null,
+        "naam": null
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "Ruben.Verhoef@Mail.example.net",
+        "naam": "Ruben Verhoef",
+        "telefoon": "+31 20 555 6100"
+      },
+      "fld_schadenummer": "SCH-2025-10799"
+    },
+    {
+      "fld_schadesoort": "Testmelding",
+      "fld_betaalstatus": "betaald",
+      "fld_eigen_risico": 500,
+      "fld_gewijzigd": "2026-01-23T18:02:19Z",
+      "fld_schadedatum": "05/05/2025",
+      "fld_status": "In behandeling",
+      "fld_geschat_bedrag": 5383.35,
+      "fld_expert": "Sven Brouwer",
+      "fld_polisnummer": "POL21254415",
+      "fld_meldingsdatum": "02/12/2026",
+      "fld_tegenpartij": {
+        "kenteken": null,
+        "naam": null
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "Wouter.Zwart@mail.example.net",
+        "naam": "  Wouter Zwart ",
+        "telefoon": "+31 20 555 1509"
+      },
+      "fld_schadenummer": "SCH-2025-10818"
+    },
+    {
+      "fld_schadesoort": "Aanrijding",
+      "fld_betaalstatus": "open",
+      "fld_eigen_risico": 150,
+      "fld_gewijzigd": "2026-08-13T06:41:08Z",
+      "fld_schadedatum": "09/09/2025",
+      "fld_status": "Afgewezen",
+      "fld_geschat_bedrag": 8153.46,
+      "fld_expert": null,
+      "fld_polisnummer": "POL04867596",
+      "fld_meldingsdatum": "11/11/2025",
+      "fld_tegenpartij": {
+        "kenteken": "WW-814-X",
+        "naam": "Lotte Schouten"
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "jelle.wijnands@mail.example.net",
+        "naam": "Jelle Wijnands",
+        "telefoon": "+31 20 555 8704"
+      },
+      "fld_schadenummer": "SCH-2025-10837"
+    },
+    {
+      "fld_schadesoort": "Brand",
+      "fld_betaalstatus": "teruggevorderd",
+      "fld_eigen_risico": 150,
+      "fld_gewijzigd": "2026-02-21T18:28:48Z",
+      "fld_schadedatum": "09/08/2025",
+      "fld_status": "Ingetrokken",
+      "fld_geschat_bedrag": 7741.26,
+      "fld_expert": null,
+      "fld_polisnummer": "POL06211577",
+      "fld_meldingsdatum": "04/02/2026",
+      "fld_tegenpartij": {
+        "kenteken": null,
+        "naam": null
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "roos.zwart@mail.example.net",
+        "naam": "Roos Zwart",
+        "telefoon": "+31 20 555 6711"
+      },
+      "fld_schadenummer": "SCH-2025-10856"
+    },
+    {
+      "fld_schadesoort": "Stormschade",
+      "fld_betaalstatus": "open",
+      "fld_eigen_risico": 250,
+      "fld_gewijzigd": "2026-08-20T06:19:02Z",
+      "fld_schadedatum": "10/12/2025",
+      "fld_status": "In behandeling",
+      "fld_geschat_bedrag": 11145.76,
+      "fld_expert": null,
+      "fld_polisnummer": "POL47669000",
+      "fld_meldingsdatum": "09/05/2026",
+      "fld_tegenpartij": {
+        "kenteken": null,
+        "naam": null
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "Femke.Zwart@mail.example.net",
+        "naam": "Femke Zwart",
+        "telefoon": "+31 20 555 2404"
+      },
+      "fld_schadenummer": "SCH-2025-10875"
+    },
+    {
+      "fld_schadesoort": "Ruitschade",
+      "fld_betaalstatus": "open",
+      "fld_eigen_risico": 0,
+      "fld_gewijzigd": "2026-07-23T11:13:41Z",
+      "fld_schadedatum": "03/08/2025",
+      "fld_status": "In behandeling",
+      "fld_geschat_bedrag": 6403.48,
+      "fld_expert": "Sven Timmer",
+      "fld_polisnummer": "POL60729654",
+      "fld_meldingsdatum": "07/08/2026",
+      "fld_tegenpartij": {
+        "kenteken": null,
+        "naam": null
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "Lotte.Schouten@mail.example.net",
+        "naam": "  Lotte Schouten",
+        "telefoon": "+31 20 555 3795"
+      },
+      "fld_schadenummer": "SCH-2025-10894"
+    },
+    {
+      "fld_schadesoort": "Ruitschade",
+      "fld_betaalstatus": "betaald",
+      "fld_eigen_risico": 500,
+      "fld_gewijzigd": "2026-04-13T20:59:44Z",
+      "fld_schadedatum": "10/09/2025",
+      "fld_status": "Afgewezen",
+      "fld_geschat_bedrag": 11595.71,
+      "fld_expert": null,
+      "fld_polisnummer": "POL11977708",
+      "fld_meldingsdatum": "11/05/2025",
+      "fld_tegenpartij": {
+        "kenteken": null,
+        "naam": null
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "daan.veenstra@mail.example.net",
+        "naam": "  Daan Veenstra ",
+        "telefoon": "+31 20 555 3283"
+      },
+      "fld_schadenummer": "SCH-2025-10913"
+    },
+    {
+      "fld_schadesoort": "Stormschade",
+      "fld_betaalstatus": "teruggevorderd",
+      "fld_eigen_risico": 250,
+      "fld_gewijzigd": "2026-03-05T15:42:24Z",
+      "fld_schadedatum": "12/05/2025",
+      "fld_status": "Uitgekeerd",
+      "fld_geschat_bedrag": 7161.76,
+      "fld_expert": "Jelle Dekker",
+      "fld_polisnummer": "POL74878240",
+      "fld_meldingsdatum": "09/06/2025",
+      "fld_tegenpartij": {
+        "kenteken": null,
+        "naam": null
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "wouter.mulder@mail.example.net",
+        "naam": "Wouter Mulder",
+        "telefoon": "+31 20 555 7905"
+      },
+      "fld_schadenummer": "SCH-2025-10932"
+    },
+    {
+      "fld_schadesoort": "Aanrijding",
+      "fld_betaalstatus": "betaald",
+      "fld_eigen_risico": 500,
+      "fld_gewijzigd": "2026-07-12T08:38:26Z",
+      "fld_schadedatum": "10/11/2025",
+      "fld_status": "Afgewezen",
+      "fld_geschat_bedrag": 6842.04,
+      "fld_expert": null,
+      "fld_polisnummer": "POL19169819",
+      "fld_meldingsdatum": "05/10/2026",
+      "fld_tegenpartij": {
+        "kenteken": "RE-141-L",
+        "naam": "Evi Timmer"
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "Wouter.Veenstra@mail.example.net",
+        "naam": "Wouter Veenstra",
+        "telefoon": "+31 20 555 2985"
+      },
+      "fld_schadenummer": "SCH-2025-10951"
+    },
+    {
+      "fld_schadesoort": "Brand",
+      "fld_betaalstatus": "betaald",
+      "fld_eigen_risico": 0,
+      "fld_gewijzigd": "2026-09-08T15:18:23Z",
+      "fld_schadedatum": "12/11/2025",
+      "fld_status": "Expertise gepland",
+      "fld_geschat_bedrag": 8062.32,
+      "fld_expert": "Maaike Wijnands",
+      "fld_polisnummer": "POL33726521",
+      "fld_meldingsdatum": "09/12/2026",
+      "fld_tegenpartij": {
+        "kenteken": null,
+        "naam": null
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "joris.jansen@mail.example.net",
+        "naam": "Joris Jansen",
+        "telefoon": "+31 20 555 4980"
+      },
+      "fld_schadenummer": "SCH-2025-10970"
+    },
+    {
+      "fld_schadesoort": "Stormschade",
+      "fld_betaalstatus": "teruggevorderd",
+      "fld_eigen_risico": 0,
+      "fld_gewijzigd": "2026-06-09T16:22:16Z",
+      "fld_schadedatum": "10/07/2025",
+      "fld_status": "In behandeling",
+      "fld_geschat_bedrag": 12018.46,
+      "fld_expert": "Maaike Bakker",
+      "fld_polisnummer": "POL27078780",
+      "fld_meldingsdatum": "06/09/2026",
+      "fld_tegenpartij": {
+        "kenteken": null,
+        "naam": null
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "joris.brouwer@mail.example.net",
+        "naam": "Joris Brouwer",
+        "telefoon": "+31 20 555 6312"
+      },
+      "fld_schadenummer": "SCH-2025-10989"
+    },
+    {
+      "fld_schadesoort": "Aanrijding",
+      "fld_betaalstatus": "betaald",
+      "fld_eigen_risico": 250,
+      "fld_gewijzigd": "2026-03-08T10:13:45Z",
+      "fld_schadedatum": "01/10/2025",
+      "fld_status": "Expertise gepland",
+      "fld_geschat_bedrag": 3651.7,
+      "fld_expert": "Lotte Veenstra",
+      "fld_polisnummer": "POL23111154",
+      "fld_meldingsdatum": "11/05/2025",
+      "fld_tegenpartij": {
+        "kenteken": "LF-748-W",
+        "naam": "Roos Brouwer"
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "ilse.mulder@mail.example.net",
+        "naam": "  Ilse Mulder ",
+        "telefoon": null
+      },
+      "fld_schadenummer": "SCH-2025-11008"
+    },
+    {
+      "fld_schadesoort": "Diefstal",
+      "fld_betaalstatus": "betaald",
+      "fld_eigen_risico": 500,
+      "fld_gewijzigd": "2026-11-19T11:24:48Z",
+      "fld_schadedatum": "12/05/2025",
+      "fld_status": "Ingediend",
+      "fld_geschat_bedrag": 9494.28,
+      "fld_expert": "Daan Wijnands",
+      "fld_polisnummer": "POL19292536",
+      "fld_meldingsdatum": "07/03/2025",
+      "fld_tegenpartij": {
+        "kenteken": null,
+        "naam": null
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "Joris.Verhoef@mail.example.net",
+        "naam": "Joris Verhoef",
+        "telefoon": "+31 20 555 9114"
+      },
+      "fld_schadenummer": "SCH-2025-11027"
+    },
+    {
+      "fld_schadesoort": "Brand",
+      "fld_betaalstatus": "betaald",
+      "fld_eigen_risico": 500,
+      "fld_gewijzigd": "2026-06-17T08:10:55Z",
+      "fld_schadedatum": "10/08/2025",
+      "fld_status": "In behandeling",
+      "fld_geschat_bedrag": 1459.44,
+      "fld_polisnummer": "POL00791647",
+      "fld_meldingsdatum": "03/04/2025",
+      "fld_tegenpartij": {
+        "kenteken": null,
+        "naam": null
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "Evi.Timmer@mail.example.net",
+        "naam": "Evi Timmer",
+        "telefoon": "+31 20 555 8675"
+      },
+      "fld_schadenummer": "SCH-2025-11046"
+    },
+    {
+      "fld_schadesoort": "Testmelding",
+      "fld_betaalstatus": "teruggevorderd",
+      "fld_eigen_risico": 0,
+      "fld_gewijzigd": "2026-07-22T16:18:23Z",
+      "fld_schadedatum": "05/08/2025",
+      "fld_status": "Afgewezen",
+      "fld_geschat_bedrag": 1070.17,
+      "fld_expert": "Sanne Wijnands",
+      "fld_polisnummer": "POL59600361",
+      "fld_meldingsdatum": "07/05/2026",
+      "fld_tegenpartij": {
+        "kenteken": null,
+        "naam": null
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "jelle.hoekstra@mail.example.net",
+        "naam": "Jelle Hoekstra",
+        "telefoon": "+31 20 555 6580"
+      },
+      "fld_schadenummer": "SCH-2025-11065"
+    },
+    {
+      "fld_schadesoort": "Diefstal",
+      "fld_betaalstatus": "open",
+      "fld_eigen_risico": 500,
+      "fld_gewijzigd": "2026-09-02T07:26:09Z",
+      "fld_schadedatum": "01/04/2025",
+      "fld_status": "Afgewezen",
+      "fld_geschat_bedrag": 3395.63,
+      "fld_expert": null,
+      "fld_polisnummer": "POL74442439",
+      "fld_meldingsdatum": "11/05/2025",
+      "fld_tegenpartij": {
+        "kenteken": null,
+        "naam": null
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "thijs.wijnands@mail.example.net",
+        "naam": "Thijs Wijnands   ",
+        "telefoon": "+31 20 555 6306"
+      },
+      "fld_schadenummer": "SCH-2025-11084"
+    },
+    {
+      "fld_schadesoort": "Testmelding",
+      "fld_betaalstatus": "open",
+      "fld_eigen_risico": 0,
+      "fld_gewijzigd": "2026-04-25T12:06:18Z",
+      "fld_schadedatum": "02/01/2025",
+      "fld_status": "Ingetrokken",
+      "fld_geschat_bedrag": 6127.88,
+      "fld_expert": "Noor Brouwer",
+      "fld_polisnummer": "POL93805791",
+      "fld_meldingsdatum": "04/04/2026",
+      "fld_tegenpartij": {
+        "kenteken": null,
+        "naam": null
+      },
+      "fld_valuta": "EUR",
+      "fld_verzekerde": {
+        "email": "Thijs.Verhoef@Mail.example.net",
+        "naam": "  Thijs Verhoef ",
+        "telefoon": "+31 20 555 9095"
+      },
+      "fld_schadenummer": "SCH-2025-11103"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "claim_reference": {
+        "type": "string"
+      },
+      "policy_number": {
+        "type": "string"
+      },
+      "claimant_name": {
+        "type": "string"
+      },
+      "claimant_email": {
+        "type": "string",
+        "format": "email"
+      },
+      "claimant_phone": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "incident_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "reported_on": {
+        "type": "string",
+        "format": "date"
+      },
+      "claim_type": {
+        "type": "string",
+        "enum": [
+          "collision",
+          "glass",
+          "theft",
+          "fire",
+          "weather"
+        ]
+      },
+      "claim_status": {
+        "type": "string",
+        "enum": [
+          "submitted",
+          "in_review",
+          "settled",
+          "rejected",
+          "withdrawn"
+        ]
+      },
+      "estimated_amount": {
+        "type": "number"
+      },
+      "adjuster_name": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "language": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "claim_reference",
+      "policy_number",
+      "claimant_name",
+      "claimant_email",
+      "incident_date",
+      "claim_type",
+      "claim_status"
+    ]
+  },
+  "groundTruth": {
+    "claim_reference": {
+      "source": "fld_schadenummer",
+      "transform": "copy",
+      "why": "the claim number identifies the claim; fld_polisnummer is the policy"
+    },
+    "policy_number": {
+      "source": "fld_polisnummer",
+      "transform": "copy",
+      "why": "policy number of the insured"
+    },
+    "claimant_name": {
+      "source": "fld_verzekerde.naam",
+      "transform": "trim",
+      "why": "the insured files the claim; fld_tegenpartij is the other party"
+    },
+    "claimant_email": {
+      "source": "fld_verzekerde.email",
+      "transform": "normalize_email",
+      "why": "insured email, mixed case"
+    },
+    "claimant_phone": {
+      "source": "fld_verzekerde.telefoon",
+      "transform": "copy",
+      "why": "insured phone"
+    },
+    "incident_date": {
+      "source": "fld_schadedatum",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "date the damage happened (Dutch day-first); fld_meldingsdatum is when it was reported"
+    },
+    "reported_on": {
+      "source": "fld_meldingsdatum",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "date the claim was reported (Dutch day-first)"
+    },
+    "claim_type": {
+      "source": "fld_schadesoort",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Aanrijding": "collision",
+        "Ruitschade": "glass",
+        "Diefstal": "theft",
+        "Brand": "fire",
+        "Stormschade": "weather",
+        "Testmelding": null
+      },
+      "why": "damage type translated; Testmelding is a test entry"
+    },
+    "claim_status": {
+      "source": "fld_status",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Ingediend": "submitted",
+        "In behandeling": "in_review",
+        "Expertise gepland": "in_review",
+        "Uitgekeerd": "settled",
+        "Afgewezen": "rejected",
+        "Ingetrokken": "withdrawn"
+      },
+      "why": "handling state of the claim; fld_betaalstatus is the payout payment state"
+    },
+    "estimated_amount": {
+      "source": "fld_geschat_bedrag",
+      "transform": "copy",
+      "why": "estimated damage; fld_eigen_risico is the deductible"
+    },
+    "adjuster_name": {
+      "source": "fld_expert",
+      "transform": "copy",
+      "why": "name of the loss adjuster when assigned"
+    },
+    "language": {
+      "source": null,
+      "transform": "none",
+      "why": "no claimant language preference is exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "fld_polisnummer",
+        "fld_schadenummer"
+      ],
+      "correctFor": "claim_reference"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "fld_verzekerde.naam",
+        "fld_tegenpartij.naam"
+      ],
+      "correctFor": "claimant_name"
+    },
+    {
+      "kind": "account-status-vs-transaction-status",
+      "fields": [
+        "fld_status",
+        "fld_betaalstatus"
+      ],
+      "correctFor": "claim_status"
+    },
+    {
+      "kind": "currency-amount-confusion",
+      "fields": [
+        "fld_geschat_bedrag",
+        "fld_eigen_risico"
+      ],
+      "correctFor": "estimated_amount"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "fld_schadedatum",
+        "fld_meldingsdatum"
+      ],
+      "correctFor": "incident_date"
+    }
+  ],
+  "sourceConcepts": {
+    "fld_schadesoort": "category",
+    "fld_betaalstatus": "payment-status",
+    "fld_eigen_risico": "amount",
+    "fld_gewijzigd": "modified-date",
+    "fld_schadedatum": "transaction-date",
+    "fld_status": "order-status",
+    "fld_geschat_bedrag": "amount",
+    "fld_expert": "person-name",
+    "fld_polisnummer": "customer-id",
+    "fld_meldingsdatum": "created-date",
+    "fld_tegenpartij.kenteken": "other-identifier",
+    "fld_tegenpartij.naam": "person-name",
+    "fld_valuta": "currency-code",
+    "fld_verzekerde.email": "email",
+    "fld_verzekerde.naam": "person-name",
+    "fld_schadenummer": "transaction-id",
+    "fld_verzekerde.telefoon": "phone"
+  },
+  "destinationConcepts": {
+    "claim_reference": "transaction-id",
+    "policy_number": "customer-id",
+    "claimant_name": "person-name",
+    "claimant_email": "email",
+    "claimant_phone": "phone",
+    "incident_date": "transaction-date",
+    "reported_on": "created-date",
+    "claim_type": "category",
+    "claim_status": "order-status",
+    "estimated_amount": "amount",
+    "adjuster_name": "person-name",
+    "language": "language-code"
+  }
+}

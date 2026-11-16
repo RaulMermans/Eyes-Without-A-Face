@@ -1,0 +1,979 @@
+{
+  "scenarioId": "coworking-memberships-to-access-badges",
+  "split": "holdout",
+  "industry": "coworking space memberships",
+  "sourceLanguage": "fr",
+  "description": "Member export of a fictional coworking operator (French snake_case, three-level nested space) to be loaded into a badge access system.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "num_adherent": "ADH-7300",
+      "courriel": "juliette.roussel@juniper.example.com",
+      "tel_portable": "+33 6 55 50 03 23",
+      "courriel_facturation": "compta@juniper.example.com",
+      "date_fin": "20/11/2023",
+      "nom": "Roussel",
+      "date_debut": "27/02/2022",
+      "raison_sociale": "  Juniper Quay Consulting",
+      "tel_standard": "+33 1 55 50 60 00",
+      "espace": {
+        "etage": 0,
+        "site": {
+          "ville": "Lyon",
+          "code": "LYO-PDI"
+        }
+      },
+      "casier_num": null,
+      "statut_paiement": "partiel",
+      "num_facture": "FA-2025-74712",
+      "statut_contrat": "en cours",
+      "formule": "Nomade",
+      "date_creation": "2020-02-25T10:16:32Z",
+      "prenom": "Juliette"
+    },
+    {
+      "num_adherent": "ADH-7317",
+      "courriel": "Romain.Brunet@Ivorine.example.com",
+      "tel_portable": "+33 6 55 50 65 10",
+      "courriel_facturation": "compta@ivorine.example.com",
+      "date_fin": null,
+      "nom": "Brunet",
+      "date_debut": "22/01/2024",
+      "raison_sociale": "Ivorine Media",
+      "tel_standard": "+33 1 55 50 34 00",
+      "espace": {
+        "etage": 5,
+        "site": {
+          "ville": "Nantes",
+          "code": "NTE-ILE"
+        }
+      },
+      "casier_num": "C-305",
+      "statut_paiement": "payé",
+      "num_facture": "FA-2025-32147",
+      "statut_contrat": "suspendu",
+      "formule": "Bureau fixe",
+      "date_creation": "2021-09-18T22:09:01Z",
+      "prenom": "Romain"
+    },
+    {
+      "num_adherent": "ADH-7334",
+      "courriel": "mathis.lefevre@juniper.example.com",
+      "tel_portable": "+33 6 55 50 59 12",
+      "courriel_facturation": "compta@juniper.example.com",
+      "date_fin": "26/02/2027",
+      "nom": "Lefèvre",
+      "date_debut": "24/07/2025",
+      "raison_sociale": "  Juniper Quay Consulting ",
+      "tel_standard": "+33 1 55 50 49 00",
+      "espace": {
+        "etage": 2,
+        "site": {
+          "ville": "Lyon",
+          "code": "LYO-PDI"
+        }
+      },
+      "casier_num": null,
+      "statut_paiement": "payé",
+      "num_facture": "FA-2025-84082",
+      "statut_contrat": "résilié",
+      "formule": "Bureau privatif",
+      "date_creation": "2020-08-02T17:49:30Z",
+      "prenom": "Mathis"
+    },
+    {
+      "num_adherent": "ADH-7351",
+      "courriel": "romain.girard@courriel.example.net",
+      "tel_portable": "+33 6 55 50 21 32",
+      "courriel_facturation": "romain.girard@courriel.example.net",
+      "date_fin": null,
+      "nom": "Girard",
+      "date_debut": "06/09/2023",
+      "raison_sociale": null,
+      "espace": {
+        "etage": 1,
+        "site": {
+          "ville": "Paris",
+          "code": "PAR-BAT"
+        }
+      },
+      "casier_num": "C-198",
+      "statut_paiement": "partiel",
+      "num_facture": "FA-2025-55728",
+      "statut_contrat": "en attente de paiement",
+      "formule": "Accès week-end",
+      "date_creation": "2021-08-04T22:15:51Z",
+      "prenom": "Romain"
+    },
+    {
+      "num_adherent": "ADH-7368",
+      "courriel": "mathis.marchand@dunlace.example.com",
+      "tel_portable": "+33 6 55 50 32 13",
+      "courriel_facturation": "compta@dunlace.example.com",
+      "date_fin": "21/12/2024",
+      "nom": "Marchand",
+      "date_debut": "21/02/2022",
+      "raison_sociale": "Dunlace Partners   ",
+      "tel_standard": "+33 1 55 50 39 00",
+      "espace": {
+        "etage": 1,
+        "site": {
+          "ville": "Nantes",
+          "code": "NTE-ILE"
+        }
+      },
+      "casier_num": "C-398",
+      "statut_paiement": "partiel",
+      "num_facture": "FA-2025-35548",
+      "statut_contrat": "en attente de paiement",
+      "formule": "Domiciliation",
+      "date_creation": "2020-06-24T21:59:44Z",
+      "prenom": "Mathis"
+    },
+    {
+      "num_adherent": "ADH-7385",
+      "courriel": "Bastien.Girard@courriel.example.net",
+      "tel_portable": "+33 6 55 50 09 53",
+      "courriel_facturation": "bastien.girard@courriel.example.net",
+      "date_fin": "22/03/2025",
+      "nom": "Girard",
+      "date_debut": "18/04/2023",
+      "raison_sociale": null,
+      "espace": {
+        "etage": 3,
+        "site": {
+          "ville": "Nantes",
+          "code": "NTE-ILE"
+        }
+      },
+      "casier_num": "C-340",
+      "statut_paiement": "payé",
+      "num_facture": "FA-2025-13558",
+      "statut_contrat": "résilié",
+      "formule": "Invité test",
+      "date_creation": "2021-03-14T11:51:07Z",
+      "prenom": "Bastien"
+    },
+    {
+      "num_adherent": "ADH-7402",
+      "courriel": "manon.bertrand@brightmoor.example.com",
+      "tel_portable": null,
+      "courriel_facturation": "compta@brightmoor.example.com",
+      "date_fin": null,
+      "nom": "Bertrand",
+      "date_debut": "11/11/2023",
+      "raison_sociale": "Brightmoor Systems",
+      "tel_standard": "+33 1 55 50 14 00",
+      "espace": {
+        "etage": 4,
+        "site": {
+          "ville": "Paris",
+          "code": "PAR-BAT"
+        }
+      },
+      "casier_num": null,
+      "statut_paiement": "payé",
+      "num_facture": "FA-2025-58737",
+      "statut_contrat": "en attente de paiement",
+      "formule": "Invité test",
+      "date_creation": "2020-09-21T06:14:16Z",
+      "prenom": "Manon"
+    },
+    {
+      "num_adherent": "ADH-7419",
+      "courriel": "gaspard.morel@courriel.example.net",
+      "tel_portable": "+33 6 55 50 40 83",
+      "courriel_facturation": "gaspard.morel@courriel.example.net",
+      "date_fin": null,
+      "nom": "Morel",
+      "date_debut": "07/06/2022",
+      "raison_sociale": null,
+      "espace": {
+        "etage": 1,
+        "site": {
+          "ville": "Paris",
+          "code": "PAR-BAT"
+        }
+      },
+      "statut_paiement": "payé",
+      "num_facture": "FA-2025-95695",
+      "statut_contrat": "en attente de paiement",
+      "formule": "Bureau fixe",
+      "date_creation": "2020-12-05T12:56:19Z",
+      "prenom": "Gaspard"
+    },
+    {
+      "num_adherent": "ADH-7436",
+      "courriel": "romain.chevalier@courriel.example.net",
+      "tel_portable": "+33 6 55 50 09 87",
+      "courriel_facturation": "romain.chevalier@courriel.example.net",
+      "date_fin": "24/02/2025",
+      "nom": "Chevalier",
+      "date_debut": "03/04/2023",
+      "raison_sociale": null,
+      "espace": {
+        "etage": 5,
+        "site": {
+          "ville": "Paris",
+          "code": "PAR-BAT"
+        }
+      },
+      "casier_num": null,
+      "statut_paiement": "impayé",
+      "num_facture": "FA-2025-14066",
+      "statut_contrat": "résilié",
+      "formule": "Invité test",
+      "date_creation": "2021-02-01T11:36:27Z",
+      "prenom": "Romain"
+    },
+    {
+      "num_adherent": "ADH-7453",
+      "courriel": "Victor.Marchand@courriel.example.net",
+      "tel_portable": "+33 6 55 50 33 85",
+      "courriel_facturation": "victor.marchand@courriel.example.net",
+      "date_fin": null,
+      "nom": "Marchand",
+      "date_debut": "23/02/2025",
+      "raison_sociale": null,
+      "espace": {
+        "etage": 5,
+        "site": {
+          "ville": "Paris",
+          "code": "PAR-BAT"
+        }
+      },
+      "casier_num": "C-230",
+      "statut_paiement": "payé",
+      "num_facture": "FA-2025-37396",
+      "statut_contrat": "en attente de paiement",
+      "formule": "Domiciliation",
+      "date_creation": "2021-03-26T16:12:11Z",
+      "prenom": "Victor"
+    },
+    {
+      "num_adherent": "ADH-7470",
+      "courriel": "chloe.garnier@juniper.example.com",
+      "tel_portable": "+33 6 55 50 75 18",
+      "courriel_facturation": "compta@juniper.example.com",
+      "date_fin": "23/07/2025",
+      "nom": "Garnier",
+      "date_debut": "28/09/2024",
+      "raison_sociale": "Juniper Quay Consulting",
+      "tel_standard": "+33 1 55 50 88 00",
+      "espace": {
+        "etage": 1,
+        "site": {
+          "ville": "Lyon",
+          "code": "LYO-PDI"
+        }
+      },
+      "statut_paiement": "payé",
+      "num_facture": "FA-2025-99363",
+      "statut_contrat": "résilié",
+      "formule": "Domiciliation",
+      "date_creation": "2020-08-05T11:19:06Z",
+      "prenom": "Chloé"
+    },
+    {
+      "num_adherent": "ADH-7487",
+      "courriel": "Chloe.Lefevre@courriel.example.net",
+      "tel_portable": "+33 6 55 50 70 64",
+      "courriel_facturation": "chloe.lefevre@courriel.example.net",
+      "date_fin": null,
+      "nom": "Lefèvre",
+      "date_debut": "16/11/2024",
+      "raison_sociale": null,
+      "espace": {
+        "etage": 3,
+        "site": {
+          "ville": "Lyon",
+          "code": "LYO-PDI"
+        }
+      },
+      "casier_num": null,
+      "statut_paiement": "payé",
+      "num_facture": "FA-2025-12669",
+      "statut_contrat": "en attente de paiement",
+      "formule": "Bureau fixe",
+      "date_creation": "2021-04-08T18:00:27Z",
+      "prenom": "Chloé"
+    },
+    {
+      "num_adherent": "ADH-7504",
+      "courriel": "Elise.Girard@Ivorine.example.com",
+      "tel_portable": "+33 6 55 50 80 24",
+      "courriel_facturation": "compta@ivorine.example.com",
+      "date_fin": "25/03/2025",
+      "nom": "Girard",
+      "date_debut": "10/02/2024",
+      "raison_sociale": "  Ivorine Media ",
+      "tel_standard": "+33 1 55 50 91 00",
+      "espace": {
+        "etage": 3,
+        "site": {
+          "ville": "Nantes",
+          "code": "NTE-ILE"
+        }
+      },
+      "casier_num": "C-316",
+      "statut_paiement": "payé",
+      "num_facture": "FA-2025-90725",
+      "statut_contrat": "suspendu",
+      "formule": "Bureau privatif",
+      "date_creation": "2020-01-13T17:25:49Z",
+      "prenom": "Élise"
+    },
+    {
+      "num_adherent": "ADH-7521",
+      "courriel": "Ines.Aubert@courriel.example.net",
+      "tel_portable": "+33 6 55 50 73 09",
+      "courriel_facturation": "ines.aubert@courriel.example.net",
+      "date_fin": "24/11/2024",
+      "nom": "Aubert",
+      "date_debut": "21/02/2023",
+      "raison_sociale": null,
+      "espace": {
+        "etage": 3,
+        "site": {
+          "ville": "Lyon",
+          "code": "LYO-PDI"
+        }
+      },
+      "casier_num": null,
+      "statut_paiement": "partiel",
+      "num_facture": "FA-2025-05809",
+      "statut_contrat": "résilié",
+      "formule": "Domiciliation",
+      "date_creation": "2020-12-08T17:57:14Z",
+      "prenom": "Inès"
+    },
+    {
+      "num_adherent": "ADH-7538",
+      "courriel": "Mathis.Brunet@Courriel.example.net",
+      "tel_portable": null,
+      "courriel_facturation": "mathis.brunet@courriel.example.net",
+      "date_fin": null,
+      "nom": "Brunet",
+      "date_debut": "10/03/2023",
+      "raison_sociale": null,
+      "espace": {
+        "etage": 4,
+        "site": {
+          "ville": "Lyon",
+          "code": "LYO-PDI"
+        }
+      },
+      "casier_num": null,
+      "statut_paiement": "payé",
+      "num_facture": "FA-2025-12533",
+      "statut_contrat": "suspendu",
+      "formule": "Nomade",
+      "date_creation": "2020-03-04T19:58:47Z",
+      "prenom": "Mathis"
+    },
+    {
+      "num_adherent": "ADH-7555",
+      "courriel": "aurelien.lefevre@cobaltine.example.com",
+      "tel_portable": "+33 6 55 50 20 55",
+      "courriel_facturation": "compta@cobaltine.example.com",
+      "date_fin": "26/12/2023",
+      "nom": "Lefèvre",
+      "date_debut": "24/10/2022",
+      "raison_sociale": "Cobaltine Group",
+      "tel_standard": "+33 1 55 50 49 00",
+      "espace": {
+        "etage": 3,
+        "site": {
+          "ville": "Nantes",
+          "code": "NTE-ILE"
+        }
+      },
+      "statut_paiement": "payé",
+      "num_facture": "FA-2025-12999",
+      "statut_contrat": "résilié",
+      "formule": "Nomade",
+      "date_creation": "2020-12-22T10:46:29Z",
+      "prenom": "Aurélien"
+    },
+    {
+      "num_adherent": "ADH-7572",
+      "courriel": "manon.morel@dunlace.example.com",
+      "tel_portable": "+33 6 55 50 42 79",
+      "courriel_facturation": "compta@dunlace.example.com",
+      "date_fin": "25/02/2024",
+      "nom": "Morel",
+      "date_debut": "15/03/2023",
+      "raison_sociale": "Dunlace Partners",
+      "tel_standard": "+33 1 55 50 34 00",
+      "espace": {
+        "etage": 2,
+        "site": {
+          "ville": "Nantes",
+          "code": "NTE-ILE"
+        }
+      },
+      "casier_num": null,
+      "statut_paiement": "payé",
+      "num_facture": "FA-2025-21342",
+      "statut_contrat": "en cours",
+      "formule": "Bureau privatif",
+      "date_creation": "2020-08-25T19:20:53Z",
+      "prenom": "Manon"
+    },
+    {
+      "num_adherent": "ADH-7589",
+      "courriel": "Theo.Garnier@Courriel.example.net",
+      "tel_portable": "+33 6 55 50 11 09",
+      "courriel_facturation": "theo.garnier@courriel.example.net",
+      "date_fin": null,
+      "nom": "Garnier",
+      "date_debut": "19/07/2025",
+      "raison_sociale": null,
+      "espace": {
+        "etage": 4,
+        "site": {
+          "ville": "Nantes",
+          "code": "NTE-ILE"
+        }
+      },
+      "casier_num": null,
+      "statut_paiement": "impayé",
+      "num_facture": "FA-2025-33291",
+      "statut_contrat": "en cours",
+      "formule": "Nomade",
+      "date_creation": "2020-01-16T09:00:32Z",
+      "prenom": "Théo"
+    },
+    {
+      "num_adherent": "ADH-7606",
+      "courriel": "mathis.quemener@courriel.example.net",
+      "tel_portable": null,
+      "courriel_facturation": "mathis.quemener@courriel.example.net",
+      "date_fin": "21/10/2026",
+      "nom": "Quémener",
+      "date_debut": "04/06/2024",
+      "raison_sociale": null,
+      "espace": {
+        "etage": 2,
+        "site": {
+          "ville": "Nantes",
+          "code": "NTE-ILE"
+        }
+      },
+      "casier_num": null,
+      "statut_paiement": "payé",
+      "num_facture": "FA-2025-51744",
+      "statut_contrat": "résilié",
+      "formule": "Invité test",
+      "date_creation": "2020-07-14T09:12:51Z",
+      "prenom": "Mathis"
+    },
+    {
+      "num_adherent": "ADH-7623",
+      "courriel": "margaux.garnier@courriel.example.net",
+      "tel_portable": "+33 6 55 50 02 41",
+      "courriel_facturation": "margaux.garnier@courriel.example.net",
+      "date_fin": null,
+      "nom": "Garnier",
+      "date_debut": "18/03/2023",
+      "raison_sociale": null,
+      "espace": {
+        "etage": 4,
+        "site": {
+          "ville": "Nantes",
+          "code": "NTE-ILE"
+        }
+      },
+      "casier_num": null,
+      "statut_paiement": "impayé",
+      "num_facture": "FA-2025-46618",
+      "statut_contrat": "en cours",
+      "formule": "Bureau fixe",
+      "date_creation": "2020-09-23T06:08:39Z",
+      "prenom": "Margaux"
+    },
+    {
+      "num_adherent": "ADH-7640",
+      "courriel": "Juliette.Renaud@emberfield.example.com",
+      "tel_portable": "+33 6 55 50 24 29",
+      "courriel_facturation": "compta@emberfield.example.com",
+      "date_fin": "21/02/2025",
+      "nom": "Renaud",
+      "date_debut": "22/11/2024",
+      "raison_sociale": "  Emberfield Ltd",
+      "tel_standard": "+33 1 55 50 52 00",
+      "espace": {
+        "etage": 2,
+        "site": {
+          "ville": "Lyon",
+          "code": "LYO-PDI"
+        }
+      },
+      "casier_num": null,
+      "statut_paiement": "impayé",
+      "num_facture": "FA-2025-64507",
+      "statut_contrat": "résilié",
+      "formule": "Invité test",
+      "date_creation": "2020-11-27T11:13:45Z",
+      "prenom": "Juliette"
+    },
+    {
+      "num_adherent": "ADH-7657",
+      "courriel": "Margaux.Chevalier@Harrowgate.example.com",
+      "tel_portable": "+33 6 55 50 60 43",
+      "courriel_facturation": "compta@harrowgate.example.com",
+      "date_fin": "28/05/2024",
+      "nom": "Chevalier",
+      "date_debut": "11/04/2023",
+      "raison_sociale": "Harrowgate Supplies",
+      "tel_standard": "+33 1 55 50 10 00",
+      "espace": {
+        "etage": 5,
+        "site": {
+          "ville": "Paris",
+          "code": "PAR-BAT"
+        }
+      },
+      "casier_num": "C-279",
+      "statut_paiement": "payé",
+      "num_facture": "FA-2025-76266",
+      "statut_contrat": "résilié",
+      "formule": "Accès week-end",
+      "date_creation": "2020-04-17T09:11:23Z",
+      "prenom": "Margaux"
+    },
+    {
+      "num_adherent": "ADH-7674",
+      "courriel": "romain.renaud@harrowgate.example.com",
+      "tel_portable": "+33 6 55 50 63 76",
+      "courriel_facturation": "compta@harrowgate.example.com",
+      "date_fin": null,
+      "nom": "Renaud",
+      "date_debut": "02/05/2025",
+      "raison_sociale": "  Harrowgate Supplies ",
+      "tel_standard": "+33 1 55 50 63 00",
+      "espace": {
+        "etage": 4,
+        "site": {
+          "ville": "Paris",
+          "code": "PAR-BAT"
+        }
+      },
+      "statut_paiement": "payé",
+      "num_facture": "FA-2025-02314",
+      "statut_contrat": "en attente de paiement",
+      "formule": "Domiciliation",
+      "date_creation": "2020-08-04T12:22:34Z",
+      "prenom": "Romain"
+    },
+    {
+      "num_adherent": "ADH-7691",
+      "courriel": "bastien.vasseur@cobaltine.example.com",
+      "tel_portable": "+33 6 55 50 76 53",
+      "courriel_facturation": "compta@cobaltine.example.com",
+      "date_fin": null,
+      "nom": "Vasseur",
+      "date_debut": "18/05/2021",
+      "raison_sociale": "Cobaltine Group",
+      "tel_standard": "+33 1 55 50 88 00",
+      "espace": {
+        "etage": 3,
+        "site": {
+          "ville": "Nantes",
+          "code": "NTE-ILE"
+        }
+      },
+      "casier_num": "C-393",
+      "statut_paiement": "impayé",
+      "num_facture": "FA-2025-95580",
+      "statut_contrat": "suspendu",
+      "formule": "Bureau fixe",
+      "date_creation": "2020-10-23T07:13:28Z",
+      "prenom": "Bastien"
+    },
+    {
+      "num_adherent": "ADH-7708",
+      "courriel": "juliette.marchand@kestrel.example.com",
+      "tel_portable": "+33 6 55 50 96 05",
+      "courriel_facturation": "compta@kestrel.example.com",
+      "date_fin": "16/07/2023",
+      "nom": "Marchand",
+      "date_debut": "21/06/2021",
+      "raison_sociale": "Kestrel Ridge Foods   ",
+      "tel_standard": "+33 1 55 50 18 00",
+      "espace": {
+        "etage": 1,
+        "site": {
+          "ville": "Lyon",
+          "code": "LYO-PDI"
+        }
+      },
+      "casier_num": "C-278",
+      "statut_paiement": "payé",
+      "num_facture": "FA-2025-87029",
+      "statut_contrat": "suspendu",
+      "formule": "Bureau privatif",
+      "date_creation": "2020-11-28T06:34:00Z",
+      "prenom": "Juliette"
+    },
+    {
+      "num_adherent": "ADH-7725",
+      "courriel": "Manon.Garnier@Ivorine.example.com",
+      "tel_portable": "+33 6 55 50 96 91",
+      "courriel_facturation": "compta@ivorine.example.com",
+      "date_fin": null,
+      "nom": "Garnier",
+      "date_debut": "23/01/2025",
+      "raison_sociale": "Ivorine Media",
+      "tel_standard": "+33 1 55 50 25 00",
+      "espace": {
+        "etage": 4,
+        "site": {
+          "ville": "Lyon",
+          "code": "LYO-PDI"
+        }
+      },
+      "casier_num": "C-203",
+      "statut_paiement": "payé",
+      "num_facture": "FA-2025-33730",
+      "statut_contrat": "en cours",
+      "formule": "Bureau fixe",
+      "date_creation": "2021-04-17T19:10:14Z",
+      "prenom": "Manon"
+    },
+    {
+      "num_adherent": "ADH-7742",
+      "courriel": "aurelien.perrin@altheon.example.com",
+      "tel_portable": "+33 6 55 50 91 85",
+      "courriel_facturation": "compta@altheon.example.com",
+      "date_fin": null,
+      "nom": "Perrin",
+      "date_debut": "02/04/2024",
+      "raison_sociale": "Altheon Works   ",
+      "tel_standard": "+33 1 55 50 24 00",
+      "espace": {
+        "etage": 1,
+        "site": {
+          "ville": "Lyon",
+          "code": "LYO-PDI"
+        }
+      },
+      "casier_num": null,
+      "statut_paiement": "payé",
+      "num_facture": "FA-2025-27772",
+      "statut_contrat": "en attente de paiement",
+      "formule": "Bureau fixe",
+      "date_creation": "2021-04-13T14:49:11Z",
+      "prenom": "Aurélien"
+    },
+    {
+      "num_adherent": "ADH-7759",
+      "courriel": "antoine.marchand@brightmoor.example.com",
+      "tel_portable": "+33 6 55 50 66 72",
+      "courriel_facturation": "compta@brightmoor.example.com",
+      "date_fin": "16/10/2024",
+      "nom": "Marchand",
+      "date_debut": "25/06/2023",
+      "raison_sociale": "  Brightmoor Systems ",
+      "tel_standard": "+33 1 55 50 65 00",
+      "espace": {
+        "etage": 5,
+        "site": {
+          "ville": "Paris",
+          "code": "PAR-BAT"
+        }
+      },
+      "casier_num": null,
+      "statut_paiement": "payé",
+      "num_facture": "FA-2025-93031",
+      "statut_contrat": "résilié",
+      "formule": "Bureau privatif",
+      "date_creation": "2021-01-14T16:20:59Z",
+      "prenom": "Antoine"
+    },
+    {
+      "num_adherent": "ADH-7776",
+      "courriel": "ines.renaud@glenmark.example.com",
+      "tel_portable": "+33 6 55 50 88 13",
+      "courriel_facturation": "compta@glenmark.example.com",
+      "date_fin": "23/01/2025",
+      "nom": "Renaud",
+      "date_debut": "26/07/2023",
+      "raison_sociale": "Glenmark Analytics",
+      "tel_standard": "+33 1 55 50 81 00",
+      "espace": {
+        "etage": 2,
+        "site": {
+          "ville": "Lyon",
+          "code": "LYO-PDI"
+        }
+      },
+      "casier_num": null,
+      "statut_paiement": "impayé",
+      "num_facture": "FA-2025-76855",
+      "statut_contrat": "en cours",
+      "formule": "Domiciliation",
+      "date_creation": "2020-02-14T11:37:40Z",
+      "prenom": "Inès"
+    },
+    {
+      "num_adherent": "ADH-7793",
+      "courriel": "Bastien.Quemener@courriel.example.net",
+      "tel_portable": "+33 6 55 50 61 66",
+      "courriel_facturation": "bastien.quemener@courriel.example.net",
+      "date_fin": null,
+      "nom": "Quémener",
+      "date_debut": "06/02/2021",
+      "raison_sociale": null,
+      "espace": {
+        "etage": 0,
+        "site": {
+          "ville": "Nantes",
+          "code": "NTE-ILE"
+        }
+      },
+      "casier_num": null,
+      "statut_paiement": "impayé",
+      "num_facture": "FA-2025-63899",
+      "statut_contrat": "suspendu",
+      "formule": "Domiciliation",
+      "date_creation": "2020-01-06T11:55:41Z",
+      "prenom": "Bastien"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "badge_holder_id": {
+        "type": "string"
+      },
+      "holder_name": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string",
+        "format": "email"
+      },
+      "phone": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "company": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "plan": {
+        "type": "string",
+        "enum": [
+          "hot_desk",
+          "dedicated_desk",
+          "private_office"
+        ]
+      },
+      "badge_state": {
+        "type": "string",
+        "enum": [
+          "enabled",
+          "disabled"
+        ]
+      },
+      "valid_from": {
+        "type": "string",
+        "format": "date"
+      },
+      "valid_to": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "format": "date"
+      },
+      "site_code": {
+        "type": "string"
+      },
+      "floor": {
+        "type": "integer"
+      },
+      "vehicle_plate": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "badge_holder_id",
+      "holder_name",
+      "email",
+      "plan",
+      "badge_state",
+      "valid_from"
+    ]
+  },
+  "groundTruth": {
+    "badge_holder_id": {
+      "source": "num_adherent",
+      "transform": "copy",
+      "why": "member number; num_facture is an invoice"
+    },
+    "holder_name": {
+      "source": null,
+      "sources": [
+        "prenom",
+        "nom"
+      ],
+      "transform": "concat",
+      "separator": " ",
+      "why": "name printed on the badge is first name plus surname"
+    },
+    "email": {
+      "source": "courriel",
+      "transform": "normalize_email",
+      "why": "member's own address; courriel_facturation is the billing mailbox"
+    },
+    "phone": {
+      "source": "tel_portable",
+      "transform": "copy",
+      "why": "member mobile; tel_standard is the company switchboard"
+    },
+    "company": {
+      "source": "raison_sociale",
+      "transform": "trim",
+      "why": "employer, empty for freelancers, padded in some rows"
+    },
+    "plan": {
+      "source": "formule",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Nomade": "hot_desk",
+        "Bureau fixe": "dedicated_desk",
+        "Bureau privatif": "private_office",
+        "Accès week-end": "hot_desk",
+        "Domiciliation": null,
+        "Invité test": null
+      },
+      "why": "membership formula to desk type; Domiciliation is a mail-address service with no physical access and Invité test is a test account"
+    },
+    "badge_state": {
+      "source": "statut_contrat",
+      "transform": "map_enum",
+      "categoryMap": {
+        "en cours": "enabled",
+        "suspendu": "disabled",
+        "résilié": "disabled",
+        "en attente de paiement": null
+      },
+      "why": "contract state decides the badge; awaiting first payment needs a human decision"
+    },
+    "valid_from": {
+      "source": "date_debut",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "contract start (French day-first); date_creation is when the CRM row was made"
+    },
+    "valid_to": {
+      "source": "date_fin",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "contract end, empty when open-ended"
+    },
+    "site_code": {
+      "source": "espace.site.code",
+      "transform": "copy",
+      "why": "site code of the member's space"
+    },
+    "floor": {
+      "source": "espace.etage",
+      "transform": "copy",
+      "why": "floor number of the assigned space"
+    },
+    "vehicle_plate": {
+      "source": null,
+      "transform": "none",
+      "why": "no parking or vehicle data is exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "num_adherent",
+        "num_facture"
+      ],
+      "correctFor": "badge_holder_id"
+    },
+    {
+      "kind": "two-email-fields",
+      "fields": [
+        "courriel",
+        "courriel_facturation"
+      ],
+      "correctFor": "email"
+    },
+    {
+      "kind": "phone-or-code-confusion",
+      "fields": [
+        "tel_portable",
+        "tel_standard"
+      ],
+      "correctFor": "phone"
+    },
+    {
+      "kind": "account-status-vs-transaction-status",
+      "fields": [
+        "statut_contrat",
+        "statut_paiement"
+      ],
+      "correctFor": "badge_state"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "date_debut",
+        "date_creation"
+      ],
+      "correctFor": "valid_from"
+    }
+  ],
+  "sourceConcepts": {
+    "num_adherent": "customer-id",
+    "courriel": "email",
+    "tel_portable": "phone",
+    "courriel_facturation": "email",
+    "date_fin": "end-date",
+    "nom": "family-name",
+    "date_debut": "start-date",
+    "raison_sociale": "organization-name",
+    "tel_standard": "phone",
+    "espace.etage": "other",
+    "espace.site.ville": "city",
+    "casier_num": "other-identifier",
+    "statut_paiement": "payment-status",
+    "num_facture": "transaction-id",
+    "statut_contrat": "account-status",
+    "espace.site.code": "other-identifier",
+    "formule": "category",
+    "date_creation": "created-date",
+    "prenom": "given-name"
+  },
+  "destinationConcepts": {
+    "badge_holder_id": "customer-id",
+    "holder_name": "person-name",
+    "email": "email",
+    "phone": "phone",
+    "company": "organization-name",
+    "plan": "category",
+    "badge_state": "account-status",
+    "valid_from": "start-date",
+    "valid_to": "end-date",
+    "site_code": "other-identifier",
+    "floor": "other",
+    "vehicle_plate": "other-identifier"
+  }
+}

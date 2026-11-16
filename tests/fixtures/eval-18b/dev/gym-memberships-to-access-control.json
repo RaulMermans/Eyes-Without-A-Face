@@ -1,0 +1,1083 @@
+{
+  "scenarioId": "gym-memberships-to-access-control",
+  "split": "dev",
+  "industry": "fitness club memberships",
+  "sourceLanguage": "es",
+  "description": "Member export from a fictional fitness club chain (Spanish camelCase, nested site and card) to be loaded into a door access-control system.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "plan": "Básico",
+      "nombreCompleto": "Irene Navarro",
+      "idSocio": "SOC5100",
+      "importeMensual": 29.9,
+      "fechaAlta": "25/09/2024",
+      "telefonoFijo": null,
+      "tarjeta": {
+        "uid": "F138637D",
+        "emitida": "20/12/2023"
+      },
+      "estadoCuota": "impagada",
+      "estadoSocio": "activo",
+      "telefonoMovil": "+34 600 555 645",
+      "fechaBaja": null,
+      "idPago": "PG5530262",
+      "correoEmpresa": null,
+      "sede": {
+        "ciudad": "Madrid",
+        "codigo": "MAD-02"
+      },
+      "fechaUltimoAcceso": "2025-07-16T09:57:12Z",
+      "moneda": "EUR",
+      "correo": "Irene.Navarro@Correo.example.com"
+    },
+    {
+      "plan": "Premium",
+      "nombreCompleto": "Iker Galindo",
+      "idSocio": "SOC5111",
+      "importeMensual": 49.9,
+      "fechaAlta": "21/07/2019",
+      "telefonoFijo": null,
+      "tarjeta": {
+        "uid": "DACC8AA1",
+        "emitida": "16/05/2020"
+      },
+      "estadoCuota": "al corriente",
+      "estadoSocio": "congelado",
+      "telefonoMovil": "+34 600 555 270",
+      "fechaBaja": null,
+      "idPago": "PG5907428",
+      "correoEmpresa": null,
+      "sede": {
+        "ciudad": "Valencia",
+        "codigo": "VLC-01"
+      },
+      "fechaUltimoAcceso": "2025-04-10T22:34:49Z",
+      "moneda": "EUR",
+      "correo": "Iker.Galindo@Correo.example.com"
+    },
+    {
+      "plan": "Nocturno",
+      "nombreCompleto": "  Ainhoa Jiménez ",
+      "idSocio": "SOC5122",
+      "importeMensual": 24.5,
+      "fechaAlta": "28/01/2025",
+      "telefonoFijo": "+34 91 555 5018",
+      "tarjeta": {
+        "uid": "98E14FA4",
+        "emitida": "18/01/2019"
+      },
+      "estadoCuota": "al corriente",
+      "estadoSocio": "moroso",
+      "telefonoMovil": "+34 600 555 936",
+      "fechaBaja": null,
+      "idPago": "PG7900574",
+      "correoEmpresa": null,
+      "sede": {
+        "ciudad": "Madrid",
+        "codigo": "MAD-02"
+      },
+      "fechaUltimoAcceso": "2025-05-24T18:03:14Z",
+      "moneda": "EUR",
+      "correo": "ainhoa.jimenez@correo.example.com"
+    },
+    {
+      "plan": "Familiar",
+      "nombreCompleto": "Rubén Lozano",
+      "idSocio": "SOC5133",
+      "importeMensual": 29.9,
+      "fechaAlta": "28/12/2021",
+      "tarjeta": {
+        "uid": "30145208",
+        "emitida": "23/04/2019"
+      },
+      "estadoCuota": "al corriente",
+      "estadoSocio": "baja",
+      "telefonoMovil": "+34 600 555 045",
+      "fechaBaja": "14/08/2023",
+      "idPago": "PG9110385",
+      "correoEmpresa": null,
+      "sede": {
+        "ciudad": "Zaragoza",
+        "codigo": "ZGZ-01"
+      },
+      "fechaUltimoAcceso": "2026-09-03T08:54:26Z",
+      "moneda": "EUR",
+      "correo": "ruben.lozano@correo.example.com"
+    },
+    {
+      "plan": "Corporativo",
+      "nombreCompleto": "Hugo Domínguez",
+      "idSocio": "SOC5144",
+      "importeMensual": 29.9,
+      "fechaAlta": "22/06/2025",
+      "telefonoFijo": "+34 91 555 9587",
+      "tarjeta": {
+        "uid": "79F32D15",
+        "emitida": "25/10/2023"
+      },
+      "estadoCuota": "impagada",
+      "estadoSocio": "pendiente alta",
+      "telefonoMovil": "+34 600 555 006",
+      "fechaBaja": null,
+      "idPago": "PG4753146",
+      "correoEmpresa": "rrhh@fernhollow.example.com",
+      "sede": {
+        "ciudad": "Madrid",
+        "codigo": "MAD-02"
+      },
+      "fechaUltimoAcceso": "2026-10-28T08:31:40Z",
+      "moneda": "EUR",
+      "correo": "Hugo.Dominguez@correo.example.com"
+    },
+    {
+      "plan": "Prueba 7 días",
+      "nombreCompleto": "Sergio Domínguez",
+      "idSocio": "SOC5155",
+      "importeMensual": 29.9,
+      "fechaAlta": "24/03/2020",
+      "telefonoFijo": "+34 91 555 9047",
+      "tarjeta": {
+        "uid": "83F5010B",
+        "emitida": "22/01/2021"
+      },
+      "estadoCuota": "al corriente",
+      "estadoSocio": "baja",
+      "telefonoMovil": "+34 600 555 566",
+      "fechaBaja": "24/11/2022",
+      "idPago": "PG0505743",
+      "correoEmpresa": null,
+      "sede": {
+        "ciudad": "Valencia",
+        "codigo": "VLC-01"
+      },
+      "fechaUltimoAcceso": "2025-02-17T06:48:36Z",
+      "moneda": "EUR",
+      "correo": "Sergio.Dominguez@correo.example.com"
+    },
+    {
+      "plan": "INTERNO-QA",
+      "nombreCompleto": "Javier Pascual",
+      "idSocio": "SOC5166",
+      "importeMensual": 24.5,
+      "fechaAlta": "12/12/2021",
+      "telefonoFijo": null,
+      "tarjeta": {
+        "uid": "DAE35056",
+        "emitida": "26/09/2023"
+      },
+      "estadoCuota": "devuelta",
+      "estadoSocio": "activo",
+      "telefonoMovil": "+34 600 555 436",
+      "fechaBaja": null,
+      "idPago": "PG6058530",
+      "correoEmpresa": null,
+      "sede": {
+        "ciudad": "Zaragoza",
+        "codigo": "ZGZ-01"
+      },
+      "fechaUltimoAcceso": "2025-06-21T22:46:35Z",
+      "moneda": "EUR",
+      "correo": "javier.pascual@correo.example.com"
+    },
+    {
+      "plan": "INTERNO-QA",
+      "nombreCompleto": "  Rubén Jiménez ",
+      "idSocio": "SOC5177",
+      "importeMensual": 24.5,
+      "fechaAlta": "02/12/2024",
+      "telefonoFijo": null,
+      "tarjeta": {
+        "uid": "68ED0ADC",
+        "emitida": "16/01/2022"
+      },
+      "estadoCuota": "impagada",
+      "estadoSocio": "pendiente alta",
+      "telefonoMovil": "+34 600 555 282",
+      "fechaBaja": null,
+      "idPago": "PG0955156",
+      "correoEmpresa": null,
+      "sede": {
+        "ciudad": "Madrid",
+        "codigo": "MAD-01"
+      },
+      "fechaUltimoAcceso": "2025-02-12T17:39:36Z",
+      "moneda": "EUR",
+      "correo": "Ruben.Jimenez@Correo.example.com"
+    },
+    {
+      "plan": "Nocturno",
+      "nombreCompleto": "Elena Ferrán",
+      "idSocio": "SOC5188",
+      "importeMensual": 39.9,
+      "fechaAlta": "20/01/2020",
+      "telefonoFijo": "+34 91 555 8351",
+      "tarjeta": {
+        "uid": "1567CB57",
+        "emitida": "21/03/2025"
+      },
+      "estadoCuota": "impagada",
+      "estadoSocio": "moroso",
+      "telefonoMovil": "+34 600 555 754",
+      "fechaBaja": null,
+      "idPago": "PG3516396",
+      "correoEmpresa": null,
+      "sede": {
+        "ciudad": "Zaragoza",
+        "codigo": "ZGZ-01"
+      },
+      "fechaUltimoAcceso": "2025-02-28T20:35:29Z",
+      "moneda": "EUR",
+      "correo": null
+    },
+    {
+      "plan": "INTERNO-QA",
+      "nombreCompleto": "Mateo Olmedo",
+      "idSocio": "SOC5199",
+      "importeMensual": 39.9,
+      "fechaAlta": "07/02/2023",
+      "telefonoFijo": null,
+      "tarjeta": {
+        "uid": "5AB54923",
+        "emitida": "05/11/2022"
+      },
+      "estadoCuota": "al corriente",
+      "estadoSocio": "pendiente alta",
+      "telefonoMovil": "+34 600 555 351",
+      "fechaBaja": null,
+      "idPago": "PG3131073",
+      "correoEmpresa": null,
+      "sede": {
+        "ciudad": "Zaragoza",
+        "codigo": "ZGZ-01"
+      },
+      "fechaUltimoAcceso": "2025-08-27T07:07:20Z",
+      "moneda": "EUR",
+      "correo": "Mateo.Olmedo@correo.example.com"
+    },
+    {
+      "plan": "Corporativo",
+      "nombreCompleto": "Mateo Marín",
+      "idSocio": "SOC5210",
+      "importeMensual": 29.9,
+      "fechaAlta": "15/01/2024",
+      "telefonoFijo": null,
+      "tarjeta": {
+        "uid": "54BA8E00",
+        "emitida": "19/10/2019"
+      },
+      "estadoCuota": "al corriente",
+      "estadoSocio": "moroso",
+      "telefonoMovil": "+34 600 555 573",
+      "fechaBaja": null,
+      "idPago": "PG1261551",
+      "correoEmpresa": "rrhh@cobaltine.example.com",
+      "sede": {
+        "ciudad": "Madrid",
+        "codigo": "MAD-01"
+      },
+      "fechaUltimoAcceso": "2025-08-21T07:51:58Z",
+      "moneda": "EUR",
+      "correo": "Mateo.Marin@Correo.example.com"
+    },
+    {
+      "plan": "Nocturno",
+      "nombreCompleto": "Elena Jiménez",
+      "idSocio": "SOC5221",
+      "importeMensual": 24.5,
+      "fechaAlta": "25/11/2019",
+      "telefonoFijo": null,
+      "tarjeta": {
+        "uid": "925D9BB2",
+        "emitida": "21/10/2025"
+      },
+      "estadoCuota": "devuelta",
+      "estadoSocio": "activo",
+      "telefonoMovil": null,
+      "fechaBaja": null,
+      "idPago": "PG8785420",
+      "correoEmpresa": null,
+      "sede": {
+        "ciudad": "Madrid",
+        "codigo": "MAD-01"
+      },
+      "fechaUltimoAcceso": "2026-10-13T21:20:46Z",
+      "moneda": "EUR",
+      "correo": "elena.jimenez@correo.example.com"
+    },
+    {
+      "plan": "Premium",
+      "nombreCompleto": "  Lucía Arriaga ",
+      "idSocio": "SOC5232",
+      "importeMensual": 49.9,
+      "fechaAlta": "07/04/2021",
+      "telefonoFijo": null,
+      "tarjeta": {
+        "uid": "6491DEC6",
+        "emitida": "08/08/2025"
+      },
+      "estadoCuota": "devuelta",
+      "estadoSocio": "activo",
+      "telefonoMovil": "+34 600 555 301",
+      "fechaBaja": null,
+      "idPago": "PG7359903",
+      "correoEmpresa": null,
+      "sede": {
+        "ciudad": "Zaragoza",
+        "codigo": "ZGZ-01"
+      },
+      "fechaUltimoAcceso": "2026-07-25T19:30:07Z",
+      "moneda": "EUR",
+      "correo": "lucia.arriaga@correo.example.com"
+    },
+    {
+      "plan": "INTERNO-QA",
+      "nombreCompleto": "Rocío Navarro",
+      "idSocio": "SOC5243",
+      "importeMensual": 29.9,
+      "fechaAlta": "10/08/2023",
+      "telefonoFijo": "+34 91 555 5456",
+      "tarjeta": {
+        "uid": "E3F87541",
+        "emitida": "22/04/2024"
+      },
+      "estadoCuota": "al corriente",
+      "estadoSocio": "activo",
+      "telefonoMovil": "+34 600 555 971",
+      "fechaBaja": null,
+      "idPago": "PG5518083",
+      "correoEmpresa": null,
+      "sede": {
+        "ciudad": "Madrid",
+        "codigo": "MAD-01"
+      },
+      "fechaUltimoAcceso": "2025-11-06T09:45:29Z",
+      "moneda": "EUR",
+      "correo": "Rocio.Navarro@Correo.example.com"
+    },
+    {
+      "plan": "Premium",
+      "nombreCompleto": "Iker Ferrán   ",
+      "idSocio": "SOC5254",
+      "importeMensual": 29.9,
+      "fechaAlta": "18/09/2024",
+      "telefonoFijo": null,
+      "tarjeta": {
+        "uid": "2F6E94E2",
+        "emitida": "17/08/2019"
+      },
+      "estadoCuota": "al corriente",
+      "estadoSocio": "baja",
+      "telefonoMovil": "+34 600 555 426",
+      "fechaBaja": "16/01/2025",
+      "idPago": "PG4963298",
+      "correoEmpresa": null,
+      "sede": {
+        "ciudad": "Zaragoza",
+        "codigo": "ZGZ-01"
+      },
+      "fechaUltimoAcceso": "2025-01-11T07:03:38Z",
+      "moneda": "EUR",
+      "correo": "Iker.Ferran@Correo.example.com"
+    },
+    {
+      "plan": "Nocturno",
+      "nombreCompleto": "Álvaro Echeverría",
+      "idSocio": "SOC5265",
+      "importeMensual": 29.9,
+      "fechaAlta": "19/06/2022",
+      "telefonoFijo": "+34 91 555 0459",
+      "tarjeta": {
+        "uid": "8CAAE1BF",
+        "emitida": "21/01/2025"
+      },
+      "estadoCuota": "impagada",
+      "estadoSocio": "activo",
+      "telefonoMovil": "+34 600 555 848",
+      "fechaBaja": null,
+      "idPago": "PG5986862",
+      "correoEmpresa": null,
+      "sede": {
+        "ciudad": "Madrid",
+        "codigo": "MAD-01"
+      },
+      "fechaUltimoAcceso": "2025-01-09T14:25:29Z",
+      "moneda": "EUR",
+      "correo": "Alvaro.Echeverria@correo.example.com"
+    },
+    {
+      "plan": "Corporativo",
+      "nombreCompleto": "  Sergio Ferrán",
+      "idSocio": "SOC5276",
+      "importeMensual": 29.9,
+      "fechaAlta": "17/02/2025",
+      "telefonoFijo": "+34 91 555 1636",
+      "tarjeta": {
+        "uid": "D2B96E1B",
+        "emitida": "08/05/2023"
+      },
+      "estadoCuota": "al corriente",
+      "estadoSocio": "activo",
+      "telefonoMovil": "+34 600 555 284",
+      "fechaBaja": null,
+      "idPago": "PG6461635",
+      "correoEmpresa": "rrhh@kestrel.example.com",
+      "sede": {
+        "ciudad": "Madrid",
+        "codigo": "MAD-02"
+      },
+      "fechaUltimoAcceso": "2025-04-27T13:44:41Z",
+      "moneda": "EUR",
+      "correo": "sergio.ferran@correo.example.com"
+    },
+    {
+      "plan": "Básico",
+      "nombreCompleto": "  Rocío Marín ",
+      "idSocio": "SOC5287",
+      "importeMensual": 24.5,
+      "fechaAlta": "15/08/2020",
+      "telefonoFijo": "+34 91 555 7037",
+      "tarjeta": {
+        "uid": "083BBCC4",
+        "emitida": "02/12/2020"
+      },
+      "estadoCuota": "devuelta",
+      "estadoSocio": "moroso",
+      "telefonoMovil": "+34 600 555 718",
+      "fechaBaja": null,
+      "idPago": "PG9846093",
+      "correoEmpresa": null,
+      "sede": {
+        "ciudad": "Valencia",
+        "codigo": "VLC-01"
+      },
+      "fechaUltimoAcceso": "2025-07-04T16:43:18Z",
+      "moneda": "EUR",
+      "correo": null
+    },
+    {
+      "plan": "Básico",
+      "nombreCompleto": "Carmen Marín",
+      "idSocio": "SOC5298",
+      "importeMensual": 49.9,
+      "fechaAlta": "09/08/2023",
+      "telefonoFijo": null,
+      "tarjeta": {
+        "uid": "06D35B49",
+        "emitida": "12/05/2020"
+      },
+      "estadoCuota": "al corriente",
+      "estadoSocio": "pendiente alta",
+      "telefonoMovil": "+34 600 555 414",
+      "fechaBaja": null,
+      "idPago": "PG2454877",
+      "correoEmpresa": null,
+      "sede": {
+        "ciudad": "Zaragoza",
+        "codigo": "ZGZ-01"
+      },
+      "fechaUltimoAcceso": "2026-02-01T11:19:59Z",
+      "moneda": "EUR",
+      "correo": "carmen.marin@correo.example.com"
+    },
+    {
+      "plan": "INTERNO-QA",
+      "nombreCompleto": "Noelia Domínguez   ",
+      "idSocio": "SOC5309",
+      "importeMensual": 29.9,
+      "fechaAlta": "12/08/2020",
+      "telefonoFijo": "+34 91 555 0372",
+      "tarjeta": {
+        "uid": "EC60A433",
+        "emitida": "27/06/2022"
+      },
+      "estadoCuota": "al corriente",
+      "estadoSocio": "pendiente alta",
+      "telefonoMovil": "+34 600 555 686",
+      "fechaBaja": null,
+      "idPago": "PG1746385",
+      "correoEmpresa": null,
+      "sede": {
+        "ciudad": "Madrid",
+        "codigo": "MAD-02"
+      },
+      "fechaUltimoAcceso": "2025-02-20T15:52:47Z",
+      "moneda": "EUR",
+      "correo": "noelia.dominguez@correo.example.com"
+    },
+    {
+      "plan": "Familiar",
+      "nombreCompleto": "Sergio Quesada",
+      "idSocio": "SOC5320",
+      "importeMensual": 24.5,
+      "fechaAlta": "13/11/2019",
+      "telefonoFijo": "+34 91 555 3860",
+      "tarjeta": {
+        "uid": "523B3655",
+        "emitida": "28/06/2022"
+      },
+      "estadoCuota": "al corriente",
+      "estadoSocio": "pendiente alta",
+      "telefonoMovil": "+34 600 555 585",
+      "fechaBaja": null,
+      "idPago": "PG2636705",
+      "correoEmpresa": null,
+      "sede": {
+        "ciudad": "Madrid",
+        "codigo": "MAD-02"
+      },
+      "fechaUltimoAcceso": "2025-10-26T19:48:46Z",
+      "moneda": "EUR",
+      "correo": "sergio.quesada@correo.example.com"
+    },
+    {
+      "plan": "Básico",
+      "nombreCompleto": "Rubén Herrero",
+      "idSocio": "SOC5331",
+      "importeMensual": 49.9,
+      "fechaAlta": "13/08/2022",
+      "telefonoFijo": "+34 91 555 5662",
+      "tarjeta": {
+        "uid": "8BE337B9",
+        "emitida": "02/09/2020"
+      },
+      "estadoCuota": "al corriente",
+      "estadoSocio": "baja",
+      "telefonoMovil": "+34 600 555 907",
+      "fechaBaja": "24/12/2024",
+      "idPago": "PG7895383",
+      "correoEmpresa": null,
+      "sede": {
+        "ciudad": "Zaragoza",
+        "codigo": "ZGZ-01"
+      },
+      "fechaUltimoAcceso": "2025-01-27T14:53:36Z",
+      "moneda": "EUR",
+      "correo": "Ruben.Herrero@Correo.example.com"
+    },
+    {
+      "plan": "Corporativo",
+      "nombreCompleto": "  Álvaro Quesada ",
+      "idSocio": "SOC5342",
+      "importeMensual": 29.9,
+      "fechaAlta": "21/08/2022",
+      "telefonoFijo": null,
+      "tarjeta": {
+        "uid": "C7F1E0C0",
+        "emitida": "22/10/2019"
+      },
+      "estadoCuota": "al corriente",
+      "estadoSocio": "moroso",
+      "telefonoMovil": "+34 600 555 130",
+      "fechaBaja": null,
+      "idPago": "PG7306142",
+      "correoEmpresa": "rrhh@brightmoor.example.com",
+      "sede": {
+        "ciudad": "Zaragoza",
+        "codigo": "ZGZ-01"
+      },
+      "fechaUltimoAcceso": "2025-12-10T10:17:32Z",
+      "moneda": "EUR",
+      "correo": "Alvaro.Quesada@correo.example.com"
+    },
+    {
+      "plan": "Corporativo",
+      "nombreCompleto": "Álvaro Olmedo",
+      "idSocio": "SOC5353",
+      "importeMensual": 49.9,
+      "fechaAlta": "25/02/2019",
+      "telefonoFijo": "+34 91 555 8519",
+      "tarjeta": {
+        "uid": "02BD107B",
+        "emitida": "22/11/2023"
+      },
+      "estadoCuota": "devuelta",
+      "estadoSocio": "baja",
+      "telefonoMovil": null,
+      "fechaBaja": "25/04/2021",
+      "idPago": "PG9840551",
+      "correoEmpresa": "rrhh@brightmoor.example.com",
+      "sede": {
+        "ciudad": "Madrid",
+        "codigo": "MAD-01"
+      },
+      "fechaUltimoAcceso": "2025-08-10T13:16:07Z",
+      "moneda": "EUR",
+      "correo": "alvaro.olmedo@correo.example.com"
+    },
+    {
+      "plan": "Prueba 7 días",
+      "nombreCompleto": "Carmen Galindo",
+      "idSocio": "SOC5364",
+      "importeMensual": 24.5,
+      "fechaAlta": "24/05/2022",
+      "telefonoFijo": "+34 91 555 5917",
+      "tarjeta": {
+        "uid": "571751A7",
+        "emitida": "05/01/2022"
+      },
+      "estadoCuota": "devuelta",
+      "estadoSocio": "activo",
+      "telefonoMovil": "+34 600 555 367",
+      "fechaBaja": null,
+      "idPago": "PG4023724",
+      "correoEmpresa": null,
+      "sede": {
+        "ciudad": "Madrid",
+        "codigo": "MAD-01"
+      },
+      "fechaUltimoAcceso": "2026-01-25T09:28:15Z",
+      "moneda": "EUR",
+      "correo": "carmen.galindo@correo.example.com"
+    },
+    {
+      "plan": "Premium",
+      "nombreCompleto": "Ainhoa Echeverría",
+      "idSocio": "SOC5375",
+      "importeMensual": 29.9,
+      "fechaAlta": "14/12/2024",
+      "telefonoFijo": null,
+      "tarjeta": {
+        "uid": "168FA6EF",
+        "emitida": "06/08/2021"
+      },
+      "estadoCuota": "al corriente",
+      "estadoSocio": "moroso",
+      "telefonoMovil": "+34 600 555 433",
+      "fechaBaja": null,
+      "idPago": "PG2241653",
+      "correoEmpresa": null,
+      "sede": {
+        "ciudad": "Zaragoza",
+        "codigo": "ZGZ-01"
+      },
+      "fechaUltimoAcceso": "2026-05-12T20:10:39Z",
+      "moneda": "EUR",
+      "correo": "Ainhoa.Echeverria@Correo.example.com"
+    },
+    {
+      "plan": "Nocturno",
+      "nombreCompleto": "Carmen Domínguez",
+      "idSocio": "SOC5386",
+      "importeMensual": 49.9,
+      "fechaAlta": "28/04/2023",
+      "telefonoFijo": null,
+      "tarjeta": {
+        "uid": "65A782D7",
+        "emitida": "08/05/2023"
+      },
+      "estadoCuota": "impagada",
+      "estadoSocio": "activo",
+      "telefonoMovil": "+34 600 555 621",
+      "fechaBaja": null,
+      "idPago": "PG7671247",
+      "correoEmpresa": null,
+      "sede": {
+        "ciudad": "Valencia",
+        "codigo": "VLC-01"
+      },
+      "fechaUltimoAcceso": "2026-09-15T15:52:17Z",
+      "moneda": "EUR",
+      "correo": null
+    },
+    {
+      "plan": "INTERNO-QA",
+      "nombreCompleto": "  Marta Iturbe ",
+      "idSocio": "SOC5397",
+      "importeMensual": 24.5,
+      "fechaAlta": "05/08/2020",
+      "telefonoFijo": "+34 91 555 8459",
+      "tarjeta": {
+        "uid": "75A9B431",
+        "emitida": "26/07/2023"
+      },
+      "estadoCuota": "devuelta",
+      "estadoSocio": "moroso",
+      "telefonoMovil": null,
+      "fechaBaja": null,
+      "idPago": "PG8920946",
+      "correoEmpresa": null,
+      "sede": {
+        "ciudad": "Madrid",
+        "codigo": "MAD-02"
+      },
+      "fechaUltimoAcceso": "2026-11-24T13:04:55Z",
+      "moneda": "EUR",
+      "correo": "marta.iturbe@correo.example.com"
+    },
+    {
+      "plan": "INTERNO-QA",
+      "nombreCompleto": "Rubén Arriaga",
+      "idSocio": "SOC5408",
+      "importeMensual": 49.9,
+      "fechaAlta": "03/11/2020",
+      "telefonoFijo": null,
+      "tarjeta": {
+        "uid": "60BE91D2",
+        "emitida": "08/10/2020"
+      },
+      "estadoCuota": "devuelta",
+      "estadoSocio": "activo",
+      "telefonoMovil": "+34 600 555 285",
+      "fechaBaja": null,
+      "idPago": "PG8397078",
+      "correoEmpresa": null,
+      "sede": {
+        "ciudad": "Zaragoza",
+        "codigo": "ZGZ-01"
+      },
+      "fechaUltimoAcceso": "2025-03-07T06:03:28Z",
+      "moneda": "EUR",
+      "correo": "ruben.arriaga@correo.example.com"
+    },
+    {
+      "plan": "Corporativo",
+      "nombreCompleto": "Carmen Iturbe",
+      "idSocio": "SOC5419",
+      "importeMensual": 39.9,
+      "fechaAlta": "04/01/2024",
+      "telefonoFijo": "+34 91 555 4273",
+      "tarjeta": {
+        "uid": "4C8E2DDC",
+        "emitida": "02/09/2024"
+      },
+      "estadoCuota": "al corriente",
+      "estadoSocio": "baja",
+      "telefonoMovil": "+34 600 555 180",
+      "fechaBaja": "17/07/2026",
+      "idPago": "PG3401732",
+      "correoEmpresa": "rrhh@harrowgate.example.com",
+      "sede": {
+        "ciudad": "Valencia",
+        "codigo": "VLC-01"
+      },
+      "fechaUltimoAcceso": "2025-06-19T12:46:32Z",
+      "moneda": "EUR",
+      "correo": "Carmen.Iturbe@Correo.example.com"
+    },
+    {
+      "plan": "Corporativo",
+      "nombreCompleto": "Javier Arriaga",
+      "idSocio": "SOC5430",
+      "importeMensual": 24.5,
+      "fechaAlta": "16/07/2020",
+      "telefonoFijo": "+34 91 555 8534",
+      "tarjeta": {
+        "uid": "CD083123",
+        "emitida": "17/06/2023"
+      },
+      "estadoCuota": "al corriente",
+      "estadoSocio": "pendiente alta",
+      "telefonoMovil": "+34 600 555 153",
+      "fechaBaja": null,
+      "idPago": "PG2764585",
+      "correoEmpresa": "rrhh@harrowgate.example.com",
+      "sede": {
+        "ciudad": "Madrid",
+        "codigo": "MAD-01"
+      },
+      "fechaUltimoAcceso": "2026-06-21T11:52:44Z",
+      "moneda": "EUR",
+      "correo": "javier.arriaga@correo.example.com"
+    },
+    {
+      "plan": "Básico",
+      "nombreCompleto": "Hugo Domínguez",
+      "idSocio": "SOC5441",
+      "importeMensual": 29.9,
+      "fechaAlta": "25/09/2021",
+      "telefonoFijo": null,
+      "tarjeta": {
+        "uid": "F4815F7B",
+        "emitida": "06/07/2023"
+      },
+      "estadoCuota": "al corriente",
+      "estadoSocio": "moroso",
+      "telefonoMovil": "+34 600 555 614",
+      "fechaBaja": null,
+      "idPago": "PG3360499",
+      "correoEmpresa": null,
+      "sede": {
+        "ciudad": "Madrid",
+        "codigo": "MAD-02"
+      },
+      "fechaUltimoAcceso": "2026-12-19T14:07:06Z",
+      "moneda": "EUR",
+      "correo": "hugo.dominguez@correo.example.com"
+    },
+    {
+      "plan": "Nocturno",
+      "nombreCompleto": "  Irene Quesada ",
+      "idSocio": "SOC5452",
+      "importeMensual": 29.9,
+      "fechaAlta": "13/10/2024",
+      "telefonoFijo": "+34 91 555 8268",
+      "tarjeta": {
+        "uid": "F1C64228",
+        "emitida": "04/06/2023"
+      },
+      "estadoCuota": "devuelta",
+      "estadoSocio": "activo",
+      "telefonoMovil": "+34 600 555 787",
+      "fechaBaja": null,
+      "idPago": "PG8636435",
+      "correoEmpresa": null,
+      "sede": {
+        "ciudad": "Valencia",
+        "codigo": "VLC-01"
+      },
+      "fechaUltimoAcceso": "2026-12-27T09:45:55Z",
+      "moneda": "EUR",
+      "correo": "irene.quesada@correo.example.com"
+    },
+    {
+      "plan": "Corporativo",
+      "nombreCompleto": "  Rubén Jiménez",
+      "idSocio": "SOC5463",
+      "importeMensual": 49.9,
+      "fechaAlta": "15/01/2025",
+      "telefonoFijo": null,
+      "tarjeta": {
+        "uid": "ACF307DF",
+        "emitida": "01/10/2025"
+      },
+      "estadoCuota": "al corriente",
+      "estadoSocio": "baja",
+      "telefonoMovil": "+34 600 555 295",
+      "fechaBaja": "27/09/2027",
+      "idPago": "PG2997616",
+      "correoEmpresa": "rrhh@harrowgate.example.com",
+      "sede": {
+        "ciudad": "Madrid",
+        "codigo": "MAD-01"
+      },
+      "fechaUltimoAcceso": "2026-10-05T06:03:24Z",
+      "moneda": "EUR",
+      "correo": "Ruben.Jimenez@correo.example.com"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "member_id": {
+        "type": "string"
+      },
+      "holder_name": {
+        "type": "string"
+      },
+      "email": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "format": "email"
+      },
+      "mobile": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "badge_uid": {
+        "type": "string"
+      },
+      "access_level": {
+        "type": "string",
+        "enum": [
+          "standard",
+          "full",
+          "off_peak"
+        ]
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "suspended",
+          "terminated"
+        ]
+      },
+      "valid_from": {
+        "type": "string",
+        "format": "date"
+      },
+      "valid_until": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "format": "date"
+      },
+      "home_site": {
+        "type": "string"
+      },
+      "photo_url": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "member_id",
+      "holder_name",
+      "badge_uid",
+      "access_level",
+      "status",
+      "valid_from"
+    ]
+  },
+  "groundTruth": {
+    "member_id": {
+      "source": "idSocio",
+      "transform": "copy",
+      "why": "member number; idPago is a payment reference"
+    },
+    "holder_name": {
+      "source": "nombreCompleto",
+      "transform": "trim",
+      "why": "full member name with stray whitespace in some rows"
+    },
+    "email": {
+      "source": "correo",
+      "transform": "normalize_email",
+      "why": "member's own email; correoEmpresa is the employer HR contact for corporate plans"
+    },
+    "mobile": {
+      "source": "telefonoMovil",
+      "transform": "copy",
+      "why": "mobile number; telefonoFijo is a landline"
+    },
+    "badge_uid": {
+      "source": "tarjeta.uid",
+      "transform": "copy",
+      "why": "NFC card UID that the door readers check"
+    },
+    "access_level": {
+      "source": "plan",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Básico": "standard",
+        "Premium": "full",
+        "Nocturno": "off_peak",
+        "Familiar": "full",
+        "Corporativo": "standard",
+        "Prueba 7 días": "standard",
+        "INTERNO-QA": null
+      },
+      "why": "plan name decides door access hours; INTERNO-QA is a staff test account"
+    },
+    "status": {
+      "source": "estadoSocio",
+      "transform": "map_enum",
+      "categoryMap": {
+        "activo": "active",
+        "congelado": "suspended",
+        "moroso": "suspended",
+        "baja": "terminated",
+        "pendiente alta": null
+      },
+      "why": "membership state; pendiente alta has not been activated yet"
+    },
+    "valid_from": {
+      "source": "fechaAlta",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "membership start date; fechaUltimoAcceso is the last door scan"
+    },
+    "valid_until": {
+      "source": "fechaBaja",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "cancellation date, empty for running memberships"
+    },
+    "home_site": {
+      "source": "sede.codigo",
+      "transform": "copy",
+      "why": "site code of the home club, not the city"
+    },
+    "photo_url": {
+      "source": null,
+      "transform": "none",
+      "why": "no member photo is exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "idSocio",
+        "idPago"
+      ],
+      "correctFor": "member_id"
+    },
+    {
+      "kind": "account-status-vs-transaction-status",
+      "fields": [
+        "estadoSocio",
+        "estadoCuota"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "phone-or-code-confusion",
+      "fields": [
+        "telefonoMovil",
+        "telefonoFijo"
+      ],
+      "correctFor": "mobile"
+    },
+    {
+      "kind": "two-email-fields",
+      "fields": [
+        "correo",
+        "correoEmpresa"
+      ],
+      "correctFor": "email"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "fechaAlta",
+        "fechaUltimoAcceso"
+      ],
+      "correctFor": "valid_from"
+    }
+  ],
+  "sourceConcepts": {
+    "plan": "category",
+    "nombreCompleto": "person-name",
+    "idSocio": "customer-id",
+    "importeMensual": "amount",
+    "fechaAlta": "start-date",
+    "telefonoFijo": "phone",
+    "tarjeta.uid": "other-identifier",
+    "estadoCuota": "payment-status",
+    "estadoSocio": "account-status",
+    "telefonoMovil": "phone",
+    "fechaBaja": "end-date",
+    "idPago": "transaction-id",
+    "correoEmpresa": "email",
+    "sede.ciudad": "city",
+    "fechaUltimoAcceso": "modified-date",
+    "sede.codigo": "other-identifier",
+    "tarjeta.emitida": "created-date",
+    "moneda": "currency-code",
+    "correo": "email"
+  },
+  "destinationConcepts": {
+    "member_id": "customer-id",
+    "holder_name": "person-name",
+    "email": "email",
+    "mobile": "phone",
+    "badge_uid": "other-identifier",
+    "access_level": "category",
+    "status": "account-status",
+    "valid_from": "start-date",
+    "valid_until": "end-date",
+    "home_site": "other-identifier",
+    "photo_url": "url"
+  }
+}

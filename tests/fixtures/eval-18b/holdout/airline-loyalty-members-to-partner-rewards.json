@@ -1,0 +1,870 @@
+{
+  "scenarioId": "airline-loyalty-members-to-partner-rewards",
+  "split": "holdout",
+  "industry": "airline frequent-flyer programme",
+  "sourceLanguage": "mixed",
+  "description": "Member export of a fictional regional airline loyalty programme with mixed Italian and English field names (nested residence) to be loaded into a partner rewards platform.",
+  "fictional": true,
+  "completable": false,
+  "records": [
+    {
+      "data_iscrizione": "09/10/2022",
+      "consenso_marketing": false,
+      "livello": "Blu",
+      "PNR_ultimo": "GXVBGR",
+      "miglia_qualificanti": 9527,
+      "email_socio": "Edoardo.Bassani@Posta.example.org",
+      "nome": "Edoardo",
+      "punti_saldo": 161157,
+      "telefono": "+39 080 555 1946",
+      "data_nascita": "12/01/1993",
+      "member_code": "AZ7712000",
+      "cognome": "  Bassani",
+      "residenza": {
+        "citta": "Ancona",
+        "paese": "AL"
+      },
+      "stato_account": "attivo",
+      "last_flight_date": "2025-07-06T18:34:47Z",
+      "secondary_email": null
+    },
+    {
+      "data_iscrizione": "06/10/2010",
+      "consenso_marketing": false,
+      "livello": "Argento",
+      "PNR_ultimo": "VHMNVF",
+      "miglia_qualificanti": 65986,
+      "email_socio": "Edoardo.Pellegrini@posta.example.org",
+      "nome": "Edoardo",
+      "punti_saldo": 68207,
+      "telefono": "+39 080 555 0136",
+      "data_nascita": "08/02/1967",
+      "member_code": "AZ7712053",
+      "cognome": "Pellegrini",
+      "residenza": {
+        "citta": "Lecce",
+        "paese": "IT"
+      },
+      "stato_account": "sospeso",
+      "last_flight_date": "2024-01-18T17:45:44Z",
+      "secondary_email": "edoardo.pellegrini@lavoro.example.com"
+    },
+    {
+      "data_iscrizione": "09/12/2010",
+      "consenso_marketing": false,
+      "livello": "Oro",
+      "PNR_ultimo": null,
+      "miglia_qualificanti": 23234,
+      "email_socio": "Pietro.Bellini@posta.example.org",
+      "nome": "Pietro",
+      "punti_saldo": 128609,
+      "telefono": "+39 080 555 6566",
+      "data_nascita": "04/10/1960",
+      "member_code": "AZ7712106",
+      "cognome": "  Bellini ",
+      "residenza": {
+        "citta": "Bari",
+        "paese": "AL"
+      },
+      "stato_account": "chiuso",
+      "last_flight_date": "2026-09-10T20:35:33Z"
+    },
+    {
+      "data_iscrizione": "02/09/2012",
+      "consenso_marketing": false,
+      "livello": "Platino",
+      "PNR_ultimo": "AVCKSA",
+      "miglia_qualificanti": 57455,
+      "email_socio": "chiara.orlando@posta.example.org",
+      "nome": "Chiara",
+      "punti_saldo": 131118,
+      "telefono": "+39 080 555 3078",
+      "data_nascita": "11/02/1982",
+      "member_code": "AZ7712159",
+      "cognome": "Orlando",
+      "residenza": {
+        "citta": "Pescara",
+        "paese": "SM"
+      },
+      "stato_account": "fusione in corso",
+      "last_flight_date": "2025-03-08T18:24:03Z",
+      "secondary_email": null
+    },
+    {
+      "data_iscrizione": "01/06/2018",
+      "consenso_marketing": true,
+      "livello": "Staff interno",
+      "PNR_ultimo": null,
+      "miglia_qualificanti": 89678,
+      "email_socio": "Sara.Ferrara@Posta.example.org",
+      "nome": "Sara",
+      "punti_saldo": 171881,
+      "telefono": null,
+      "data_nascita": "04/11/1990",
+      "member_code": "AZ7712212",
+      "cognome": "Ferrara",
+      "residenza": {
+        "citta": "Foggia",
+        "paese": "SM"
+      },
+      "stato_account": "fusione in corso",
+      "last_flight_date": "2026-04-24T17:47:26Z",
+      "secondary_email": null
+    },
+    {
+      "data_iscrizione": "02/07/2018",
+      "consenso_marketing": true,
+      "livello": "Staff interno",
+      "PNR_ultimo": null,
+      "miglia_qualificanti": 85460,
+      "email_socio": "Edoardo.Orlando@posta.example.org",
+      "nome": "Edoardo",
+      "punti_saldo": 68598,
+      "telefono": "+39 080 555 2880",
+      "data_nascita": "03/07/1983",
+      "member_code": "AZ7712265",
+      "cognome": "Orlando",
+      "residenza": {
+        "citta": "Pescara",
+        "paese": "IT"
+      },
+      "stato_account": "sospeso",
+      "last_flight_date": "2026-03-08T21:18:26Z"
+    },
+    {
+      "data_iscrizione": "02/08/2025",
+      "consenso_marketing": true,
+      "livello": "Argento",
+      "PNR_ultimo": "NNXLNU",
+      "miglia_qualificanti": 85164,
+      "email_socio": "Riccardo.Lombardi@Posta.example.org",
+      "nome": "Riccardo",
+      "punti_saldo": 117533,
+      "telefono": "+39 080 555 7046",
+      "data_nascita": "04/10/1990",
+      "member_code": "AZ7712318",
+      "cognome": "Lombardi",
+      "residenza": {
+        "citta": "Foggia",
+        "paese": "IT"
+      },
+      "stato_account": "chiuso",
+      "last_flight_date": "2025-02-02T11:51:14Z",
+      "secondary_email": null
+    },
+    {
+      "data_iscrizione": "05/07/2010",
+      "consenso_marketing": true,
+      "livello": "Blu",
+      "PNR_ultimo": "SGTUPP",
+      "miglia_qualificanti": 51449,
+      "email_socio": "Chiara.Bassani@Posta.example.org",
+      "nome": "Chiara",
+      "punti_saldo": 7943,
+      "telefono": "+39 080 555 2418",
+      "data_nascita": "11/09/2001",
+      "member_code": "AZ7712371",
+      "cognome": "  Bassani ",
+      "residenza": {
+        "citta": "Pescara",
+        "paese": "IT"
+      },
+      "stato_account": "sospeso",
+      "last_flight_date": null,
+      "secondary_email": "chiara.bassani@lavoro.example.com"
+    },
+    {
+      "data_iscrizione": "08/10/2010",
+      "consenso_marketing": true,
+      "livello": "Blu",
+      "PNR_ultimo": "HHAGLC",
+      "miglia_qualificanti": 81372,
+      "email_socio": "sara.galli@posta.example.org",
+      "nome": "Sara",
+      "punti_saldo": 71034,
+      "telefono": "+39 080 555 5058",
+      "data_nascita": "02/04/1990",
+      "member_code": "AZ7712424",
+      "cognome": "Galli",
+      "residenza": {
+        "citta": "Pescara",
+        "paese": "SM"
+      },
+      "stato_account": "sospeso",
+      "last_flight_date": "2024-06-22T15:31:52Z",
+      "secondary_email": "sara.galli@lavoro.example.com"
+    },
+    {
+      "data_iscrizione": "02/07/2016",
+      "consenso_marketing": true,
+      "livello": "Argento",
+      "PNR_ultimo": "ZBTJCU",
+      "miglia_qualificanti": 74440,
+      "email_socio": "Chiara.Ruggeri@Posta.example.org",
+      "nome": "Chiara",
+      "punti_saldo": 121906,
+      "telefono": "+39 080 555 6409",
+      "data_nascita": "01/11/1973",
+      "member_code": "AZ7712477",
+      "cognome": "Ruggeri",
+      "residenza": {
+        "citta": "Ancona",
+        "paese": "IT"
+      },
+      "stato_account": "attivo",
+      "last_flight_date": "2026-08-22T15:55:17Z",
+      "secondary_email": "chiara.ruggeri@lavoro.example.com"
+    },
+    {
+      "data_iscrizione": "07/08/2024",
+      "consenso_marketing": false,
+      "livello": "Staff interno",
+      "PNR_ultimo": "FWPPNA",
+      "miglia_qualificanti": 58049,
+      "email_socio": "edoardo.lombardi@posta.example.org",
+      "nome": "Edoardo",
+      "punti_saldo": 10351,
+      "telefono": "+39 080 555 4681",
+      "data_nascita": "02/01/1952",
+      "member_code": "AZ7712530",
+      "cognome": "Lombardi   ",
+      "residenza": {
+        "citta": "Foggia",
+        "paese": "AL"
+      },
+      "stato_account": "fusione in corso",
+      "last_flight_date": null,
+      "secondary_email": null
+    },
+    {
+      "data_iscrizione": "06/10/2017",
+      "consenso_marketing": true,
+      "livello": "Argento",
+      "PNR_ultimo": null,
+      "miglia_qualificanti": 30136,
+      "email_socio": "Pietro.Valentini@posta.example.org",
+      "nome": "Pietro",
+      "punti_saldo": 50536,
+      "telefono": null,
+      "data_nascita": "06/12/1981",
+      "member_code": "AZ7712583",
+      "cognome": "Valentini   ",
+      "residenza": {
+        "citta": "Bari",
+        "paese": "AL"
+      },
+      "stato_account": "fusione in corso",
+      "last_flight_date": "2025-10-18T15:48:23Z",
+      "secondary_email": null
+    },
+    {
+      "data_iscrizione": "02/08/2012",
+      "consenso_marketing": true,
+      "livello": "Blu",
+      "PNR_ultimo": "UDXKJX",
+      "miglia_qualificanti": 32870,
+      "email_socio": "giulia.santoro@posta.example.org",
+      "nome": "Giulia",
+      "punti_saldo": 92182,
+      "telefono": "+39 080 555 9561",
+      "data_nascita": "10/05/1972",
+      "member_code": "AZ7712636",
+      "cognome": "  Santoro ",
+      "residenza": {
+        "citta": "Ancona",
+        "paese": "IT"
+      },
+      "stato_account": "attivo",
+      "last_flight_date": "2024-05-16T17:21:04Z",
+      "secondary_email": null
+    },
+    {
+      "data_iscrizione": "05/10/2012",
+      "consenso_marketing": true,
+      "livello": "Staff interno",
+      "PNR_ultimo": "DFDNGV",
+      "miglia_qualificanti": 22118,
+      "email_socio": "Bianca.Bassani@Posta.example.org",
+      "nome": "Bianca",
+      "punti_saldo": 88500,
+      "telefono": "+39 080 555 3889",
+      "data_nascita": "12/02/1997",
+      "member_code": "AZ7712689",
+      "cognome": "Bassani",
+      "residenza": {
+        "citta": "Foggia",
+        "paese": "SM"
+      },
+      "stato_account": "chiuso",
+      "last_flight_date": null,
+      "secondary_email": "bianca.bassani@lavoro.example.com"
+    },
+    {
+      "data_iscrizione": "08/12/2012",
+      "consenso_marketing": true,
+      "livello": "Staff interno",
+      "PNR_ultimo": "UVDBSW",
+      "miglia_qualificanti": 47563,
+      "email_socio": "Niccolo.Bassani@posta.example.org",
+      "nome": "Niccolò",
+      "punti_saldo": 135311,
+      "telefono": null,
+      "data_nascita": "04/08/1966",
+      "member_code": "AZ7712742",
+      "cognome": "Bassani",
+      "residenza": {
+        "citta": "Ancona",
+        "paese": "SM"
+      },
+      "stato_account": "chiuso",
+      "last_flight_date": "2026-04-23T09:36:33Z",
+      "secondary_email": "niccolo.bassani@lavoro.example.com"
+    },
+    {
+      "data_iscrizione": "01/12/2013",
+      "consenso_marketing": false,
+      "livello": "Staff interno",
+      "PNR_ultimo": null,
+      "miglia_qualificanti": 55221,
+      "email_socio": "Niccolo.Zanetti@posta.example.org",
+      "nome": "Niccolò",
+      "punti_saldo": 59064,
+      "telefono": null,
+      "data_nascita": "09/12/1982",
+      "member_code": "AZ7712795",
+      "cognome": "Zanetti",
+      "residenza": {
+        "citta": "Foggia",
+        "paese": "IT"
+      },
+      "stato_account": "chiuso",
+      "last_flight_date": "2026-01-04T17:09:51Z",
+      "secondary_email": null
+    },
+    {
+      "data_iscrizione": "05/02/2025",
+      "consenso_marketing": false,
+      "livello": "Platino",
+      "PNR_ultimo": "DAAFNG",
+      "miglia_qualificanti": 64723,
+      "email_socio": "chiara.ruggeri@posta.example.org",
+      "nome": "Chiara",
+      "punti_saldo": 30543,
+      "telefono": "+39 080 555 0918",
+      "data_nascita": "05/01/1988",
+      "member_code": "AZ7712848",
+      "cognome": "Ruggeri",
+      "residenza": {
+        "citta": "Ancona",
+        "paese": "AL"
+      },
+      "stato_account": "sospeso",
+      "last_flight_date": null,
+      "secondary_email": null
+    },
+    {
+      "data_iscrizione": "05/06/2022",
+      "consenso_marketing": true,
+      "livello": "Oro",
+      "PNR_ultimo": "UVCACX",
+      "miglia_qualificanti": 47944,
+      "email_socio": "Tommaso.Zanetti@Posta.example.org",
+      "nome": "Tommaso",
+      "punti_saldo": 7417,
+      "telefono": null,
+      "data_nascita": "09/10/1984",
+      "member_code": "AZ7712901",
+      "cognome": "  Zanetti ",
+      "residenza": {
+        "citta": "Pescara",
+        "paese": "IT"
+      },
+      "stato_account": "attivo",
+      "last_flight_date": "2024-07-28T16:35:26Z"
+    },
+    {
+      "data_iscrizione": "09/07/2015",
+      "consenso_marketing": true,
+      "livello": "Oro",
+      "PNR_ultimo": "HKSNWK",
+      "miglia_qualificanti": 30969,
+      "email_socio": "elena.bellini@posta.example.org",
+      "nome": "Elena",
+      "punti_saldo": 97331,
+      "telefono": "+39 080 555 6613",
+      "data_nascita": "03/07/2001",
+      "member_code": "AZ7712954",
+      "cognome": "Bellini",
+      "residenza": {
+        "citta": "Bari",
+        "paese": "IT"
+      },
+      "stato_account": "attivo",
+      "last_flight_date": "2025-09-03T16:08:47Z"
+    },
+    {
+      "data_iscrizione": "07/08/2022",
+      "consenso_marketing": true,
+      "livello": "Argento",
+      "PNR_ultimo": "CGETDT",
+      "miglia_qualificanti": 45989,
+      "email_socio": "Niccolo.Pellegrini@Posta.example.org",
+      "nome": "Niccolò",
+      "punti_saldo": 155790,
+      "telefono": "+39 080 555 2464",
+      "data_nascita": "04/04/1952",
+      "member_code": "AZ7713007",
+      "cognome": "Pellegrini",
+      "residenza": {
+        "citta": "Foggia",
+        "paese": "IT"
+      },
+      "stato_account": "attivo",
+      "last_flight_date": "2024-10-21T21:47:36Z",
+      "secondary_email": null
+    },
+    {
+      "data_iscrizione": "02/12/2017",
+      "consenso_marketing": true,
+      "livello": "Staff interno",
+      "PNR_ultimo": null,
+      "miglia_qualificanti": 18615,
+      "email_socio": "Lorenzo.Rinaldi@posta.example.org",
+      "nome": "Lorenzo",
+      "punti_saldo": 53187,
+      "telefono": "+39 080 555 3401",
+      "data_nascita": "07/12/2004",
+      "member_code": "AZ7713060",
+      "cognome": "Rinaldi",
+      "residenza": {
+        "citta": "Bari",
+        "paese": "IT"
+      },
+      "stato_account": "attivo",
+      "last_flight_date": null,
+      "secondary_email": "lorenzo.rinaldi@lavoro.example.com"
+    },
+    {
+      "data_iscrizione": "07/08/2010",
+      "consenso_marketing": true,
+      "livello": "Oro",
+      "PNR_ultimo": "ADNLPK",
+      "miglia_qualificanti": 17158,
+      "email_socio": "Martina.Valentini@Posta.example.org",
+      "nome": "Martina",
+      "punti_saldo": 61776,
+      "telefono": "+39 080 555 4202",
+      "data_nascita": "05/11/1953",
+      "member_code": "AZ7713113",
+      "cognome": "Valentini",
+      "residenza": {
+        "citta": "Lecce",
+        "paese": "IT"
+      },
+      "stato_account": "fusione in corso",
+      "last_flight_date": "2026-07-12T22:43:43Z",
+      "secondary_email": "martina.valentini@lavoro.example.com"
+    },
+    {
+      "data_iscrizione": "08/06/2012",
+      "consenso_marketing": false,
+      "livello": "Oro",
+      "PNR_ultimo": "CFAXJX",
+      "miglia_qualificanti": 13978,
+      "email_socio": "davide.rinaldi@posta.example.org",
+      "nome": "Davide",
+      "punti_saldo": 75368,
+      "telefono": "+39 080 555 9465",
+      "data_nascita": "03/10/1953",
+      "member_code": "AZ7713166",
+      "cognome": "  Rinaldi ",
+      "residenza": {
+        "citta": "Ancona",
+        "paese": "IT"
+      },
+      "stato_account": "sospeso",
+      "last_flight_date": null,
+      "secondary_email": null
+    },
+    {
+      "data_iscrizione": "09/09/2012",
+      "consenso_marketing": true,
+      "livello": "Oro",
+      "PNR_ultimo": "DTFFRT",
+      "miglia_qualificanti": 9995,
+      "email_socio": "matteo.valentini@posta.example.org",
+      "nome": "Matteo",
+      "punti_saldo": 60098,
+      "telefono": "+39 080 555 1671",
+      "data_nascita": "05/06/1959",
+      "member_code": "AZ7713219",
+      "cognome": "Valentini",
+      "residenza": {
+        "citta": "Pescara",
+        "paese": "IT"
+      },
+      "stato_account": "chiuso",
+      "last_flight_date": "2025-10-26T19:32:13Z",
+      "secondary_email": null
+    },
+    {
+      "data_iscrizione": "04/12/2020",
+      "consenso_marketing": true,
+      "livello": "Staff interno",
+      "PNR_ultimo": "TXBDFN",
+      "miglia_qualificanti": 45387,
+      "email_socio": "Sara.Ferrara@posta.example.org",
+      "nome": "Sara",
+      "punti_saldo": 41630,
+      "telefono": "+39 080 555 7237",
+      "data_nascita": "06/05/1984",
+      "member_code": "AZ7713272",
+      "cognome": "Ferrara   ",
+      "residenza": {
+        "citta": "Pescara",
+        "paese": "IT"
+      },
+      "stato_account": "attivo",
+      "last_flight_date": "2026-05-11T19:22:42Z",
+      "secondary_email": null
+    },
+    {
+      "data_iscrizione": "04/02/2017",
+      "consenso_marketing": false,
+      "livello": "Argento",
+      "PNR_ultimo": "TMXLHN",
+      "miglia_qualificanti": 33890,
+      "email_socio": "Pietro.Negri@Posta.example.org",
+      "nome": "Pietro",
+      "punti_saldo": 160615,
+      "telefono": null,
+      "data_nascita": "10/07/1987",
+      "member_code": "AZ7713325",
+      "cognome": "Negri",
+      "residenza": {
+        "citta": "Lecce",
+        "paese": "IT"
+      },
+      "stato_account": "sospeso",
+      "last_flight_date": "2026-11-19T16:14:18Z",
+      "secondary_email": "pietro.negri@lavoro.example.com"
+    },
+    {
+      "data_iscrizione": "03/06/2019",
+      "consenso_marketing": true,
+      "livello": "Blu",
+      "PNR_ultimo": "WTHRUF",
+      "miglia_qualificanti": 82411,
+      "email_socio": "Edoardo.Valentini@Posta.example.org",
+      "nome": "Edoardo",
+      "punti_saldo": 652,
+      "telefono": "+39 080 555 4795",
+      "data_nascita": "05/12/1982",
+      "member_code": "AZ7713378",
+      "cognome": "Valentini",
+      "residenza": {
+        "citta": "Foggia",
+        "paese": "IT"
+      },
+      "stato_account": "attivo",
+      "last_flight_date": null
+    },
+    {
+      "data_iscrizione": "08/11/2019",
+      "consenso_marketing": true,
+      "livello": "Staff interno",
+      "PNR_ultimo": "FPAUJL",
+      "miglia_qualificanti": 55899,
+      "email_socio": "alessia.testa@posta.example.org",
+      "nome": "Alessia",
+      "punti_saldo": 17711,
+      "telefono": "+39 080 555 4517",
+      "data_nascita": "07/11/1973",
+      "member_code": "AZ7713431",
+      "cognome": "  Testa ",
+      "residenza": {
+        "citta": "Foggia",
+        "paese": "IT"
+      },
+      "stato_account": "attivo",
+      "last_flight_date": null,
+      "secondary_email": null
+    },
+    {
+      "data_iscrizione": "10/11/2010",
+      "consenso_marketing": false,
+      "livello": "Blu",
+      "PNR_ultimo": "SVWFTC",
+      "miglia_qualificanti": 76863,
+      "email_socio": "Niccolo.Ferrara@posta.example.org",
+      "nome": "Niccolò",
+      "punti_saldo": 17890,
+      "telefono": "+39 080 555 5515",
+      "data_nascita": "10/10/1981",
+      "member_code": "AZ7713484",
+      "cognome": "Ferrara",
+      "residenza": {
+        "citta": "Bari",
+        "paese": "IT"
+      },
+      "stato_account": "attivo",
+      "last_flight_date": "2025-09-10T06:53:26Z",
+      "secondary_email": null
+    },
+    {
+      "data_iscrizione": "12/12/2011",
+      "consenso_marketing": true,
+      "livello": "Argento",
+      "PNR_ultimo": "XMTVEP",
+      "miglia_qualificanti": 85210,
+      "email_socio": "Matteo.Pellegrini@posta.example.org",
+      "nome": "Matteo",
+      "punti_saldo": 113157,
+      "telefono": "+39 080 555 0363",
+      "data_nascita": "10/01/2000",
+      "member_code": "AZ7713537",
+      "cognome": "Pellegrini",
+      "residenza": {
+        "citta": "Lecce",
+        "paese": "IT"
+      },
+      "stato_account": "sospeso",
+      "last_flight_date": "2026-12-21T12:34:10Z"
+    },
+    {
+      "data_iscrizione": "10/11/2010",
+      "consenso_marketing": false,
+      "livello": "Platino",
+      "PNR_ultimo": "ZHLFUM",
+      "miglia_qualificanti": 60052,
+      "email_socio": "elena.rinaldi@posta.example.org",
+      "nome": "Elena",
+      "punti_saldo": 68520,
+      "telefono": "+39 080 555 1378",
+      "data_nascita": "06/05/1964",
+      "member_code": "AZ7713590",
+      "cognome": "  Rinaldi",
+      "residenza": {
+        "citta": "Lecce",
+        "paese": "AL"
+      },
+      "stato_account": "attivo",
+      "last_flight_date": "2024-12-19T16:56:37Z",
+      "secondary_email": "elena.rinaldi@lavoro.example.com"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "member_id": {
+        "type": "string"
+      },
+      "first_name": {
+        "type": "string"
+      },
+      "last_name": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string",
+        "format": "email"
+      },
+      "birth_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "enrolled_on": {
+        "type": "string",
+        "format": "date"
+      },
+      "tier": {
+        "type": "string",
+        "enum": [
+          "base",
+          "silver",
+          "gold",
+          "platinum"
+        ]
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "suspended",
+          "closed"
+        ]
+      },
+      "points_balance": {
+        "type": "integer"
+      },
+      "marketing_opt_in": {
+        "type": "boolean"
+      },
+      "country": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "partner_consent_date": {
+        "type": "string",
+        "format": "date"
+      }
+    },
+    "required": [
+      "member_id",
+      "first_name",
+      "last_name",
+      "email",
+      "enrolled_on",
+      "tier",
+      "status",
+      "partner_consent_date"
+    ]
+  },
+  "groundTruth": {
+    "member_id": {
+      "source": "member_code",
+      "transform": "copy",
+      "why": "loyalty member code; PNR_ultimo is the last booking"
+    },
+    "first_name": {
+      "source": "nome",
+      "transform": "copy",
+      "why": "first name"
+    },
+    "last_name": {
+      "source": "cognome",
+      "transform": "trim",
+      "why": "surname, padded in some rows"
+    },
+    "email": {
+      "source": "email_socio",
+      "transform": "normalize_email",
+      "why": "member email, mixed case; secondary_email is an optional work address"
+    },
+    "birth_date": {
+      "source": "data_nascita",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "date of birth (Italian day-first)"
+    },
+    "enrolled_on": {
+      "source": "data_iscrizione",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "programme enrolment date (Italian day-first)"
+    },
+    "tier": {
+      "source": "livello",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Blu": "base",
+        "Argento": "silver",
+        "Oro": "gold",
+        "Platino": "platinum",
+        "Staff interno": null
+      },
+      "why": "colour level to tier; internal staff accounts are not a customer tier"
+    },
+    "status": {
+      "source": "stato_account",
+      "transform": "map_enum",
+      "categoryMap": {
+        "attivo": "active",
+        "sospeso": "suspended",
+        "chiuso": "closed",
+        "fusione in corso": null
+      },
+      "why": "account state; accounts being merged need review"
+    },
+    "points_balance": {
+      "source": "punti_saldo",
+      "transform": "copy",
+      "why": "spendable points balance; miglia_qualificanti only count toward tier status"
+    },
+    "marketing_opt_in": {
+      "source": "consenso_marketing",
+      "transform": "copy",
+      "why": "the airline's own marketing consent flag"
+    },
+    "country": {
+      "source": "residenza.paese",
+      "transform": "copy",
+      "why": "country of residence"
+    },
+    "partner_consent_date": {
+      "source": null,
+      "transform": "none",
+      "why": "no consent to share data with partners, and no date of such consent, is exported; the marketing flag is a different consent"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "member_code",
+        "PNR_ultimo"
+      ],
+      "correctFor": "member_id"
+    },
+    {
+      "kind": "two-email-fields",
+      "fields": [
+        "email_socio",
+        "secondary_email"
+      ],
+      "correctFor": "email"
+    },
+    {
+      "kind": "birth-date-vs-start-date",
+      "fields": [
+        "data_nascita",
+        "data_iscrizione"
+      ],
+      "correctFor": "enrolled_on"
+    },
+    {
+      "kind": "currency-amount-confusion",
+      "fields": [
+        "punti_saldo",
+        "miglia_qualificanti"
+      ],
+      "correctFor": "points_balance"
+    }
+  ],
+  "sourceConcepts": {
+    "data_iscrizione": "start-date",
+    "consenso_marketing": "consent-flag",
+    "livello": "category",
+    "PNR_ultimo": "transaction-id",
+    "miglia_qualificanti": "quantity",
+    "email_socio": "email",
+    "nome": "given-name",
+    "punti_saldo": "quantity",
+    "telefono": "phone",
+    "data_nascita": "birth-date",
+    "member_code": "customer-id",
+    "cognome": "family-name",
+    "residenza.citta": "city",
+    "stato_account": "account-status",
+    "last_flight_date": "transaction-date",
+    "residenza.paese": "country",
+    "secondary_email": "email"
+  },
+  "destinationConcepts": {
+    "member_id": "customer-id",
+    "first_name": "given-name",
+    "last_name": "family-name",
+    "email": "email",
+    "birth_date": "birth-date",
+    "enrolled_on": "start-date",
+    "tier": "category",
+    "status": "account-status",
+    "points_balance": "quantity",
+    "marketing_opt_in": "consent-flag",
+    "country": "country",
+    "partner_consent_date": "other"
+  }
+}
