@@ -1,6 +1,15 @@
 # Sprint 16C — production evidence
 
-**Status: NOT RUN. Waiting for the owner's approval to deploy `489c6baaf18bf22d146e583752eecc343ed3d986`.** Production serves `c4a246c` (Sprint 15, `PRODUCTION_ACCEPTED`). Nothing here describes the new build on the public URL yet.
+**Status: `PRODUCTION_ACCEPTED`.** `489c6baaf18bf22d146e583752eecc343ed3d986` was deployed with the owner's approval on 2026-11-16 at 14:06:49 UTC, and every required hosted check passed.
+
+| Evidence | Where |
+| --- | --- |
+| 62-case matrix (production) | [results-production-489c6ba.json](results-production-489c6ba.json), [before-after.md](before-after.md) |
+| Real Nano subset | [nano-results.json](nano-results.json) |
+| Deterministic suite, real hybrid path, release status | [../../production/489c6baaf18b/](../../production/489c6baaf18b/acceptance-results.json) |
+| Access automation | [../accessibility/automated-production.json](../accessibility/automated-production.json) |
+
+The runbook that was used, kept for re-runs:
 
 After an approved deployment, run in this order (from the repository root). Results go into this folder and `docs/evidence/production/489c6baaf18b/`.
 

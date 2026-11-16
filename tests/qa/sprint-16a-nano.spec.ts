@@ -50,6 +50,8 @@ for (const id of CASES) {
       await available.locator("summary").first().click();
       const started = Date.now();
       await page.getByTestId("interpret-private-on-device").click();
+      // Next is held while on-device analysis runs (Sprint 14): wait for the hold, then for its release.
+      await expect(page.getByTestId("data-continue")).toBeDisabled({ timeout: 10_000 });
       await expect(page.getByTestId("data-continue")).toBeEnabled({ timeout: 240_000 });
       entry.nanoMs = Date.now() - started;
       entry.error = (await page.getByTestId("private-semantics-error").count()) > 0 ? (await page.getByTestId("private-semantics-error").innerText()).slice(0, 200) : null;

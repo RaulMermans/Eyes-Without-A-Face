@@ -1,0 +1,27 @@
+[
+  {
+    "check": "S14-REC-3",
+    "destination": "helpdesk",
+    "at": "2026-11-16T14:13:56.346Z",
+    "model": "gemini-3.5-flash-lite",
+    "baseURL": "https://eyes-without-a-face-b7281.web.app",
+    "nanoMs": 15226,
+    "nanoRows": 6,
+    "requestsAfterNano": 0,
+    "status": "draft",
+    "outcomeState": "PARTIALLY_VERIFIED",
+    "origin": "· MAPPING: REAL GEMINI OUTPUT · IN_CLOUD",
+    "transformed": "3",
+    "attention": "0",
+    "structure": "true",
+    "meaning": "unknown",
+    "understanding": "nano-used",
+    "exportVerify": "exit 0",
+    "requests": 1,
+    "leaks": [],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"id\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_01\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_03\",\n      \"to\": \"status\",\n      \"params\": {\n        \"map\": {\n          \"active_customer\": \"active\",\n          \"inactive_customer\": \"inactive\",\n          \"prospect\": \"prospect\"\n        },\n        \"unmapped\": \"fail\"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_06\",\n      \"to\": \"createdAt\",\n      \"params\": {\n        \"inputFormat\": \"YYYY-MM-DD\"\n      }\n    },\n    {\n      \"op\": \"trim\",\n      \"from\": \"f_02\",\n      \"to\": \"organization\"\n    }\n  ],\n  \"rationale\": \"Map source fields to target schema using copy for ID, normalize_email for email, map_enum for lifecycle status, parse_date for createdAt, and trim for organization.\"\n}"
+    ],
+    "attestation": []
+  }
+]

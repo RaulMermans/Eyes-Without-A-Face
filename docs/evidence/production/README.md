@@ -17,3 +17,6 @@ Never store tokens, API keys, request bodies or real records here. A body-scan o
 | --- | --- | --- |
 | [a548d7fbd7b8](a548d7fbd7b8/) | **RELEASE_FAILED** | Sprint 13 merge. The default guided journey cannot build (F-1). Fix in Sprint 14 |
 | [95a9564c90ef](95a9564c90ef/) | **DEPLOYED_UNVERIFIED** | Sprint 14, owner-approved. Deterministic 17/17 PASS, real Nano PASS; real cloud blocked by App Check 403 for the automated session (failed closed). Needs one human run (PF-1) |
+| [0a9d42aeac68](0a9d42aeac68/) | **DEPLOYED_UNVERIFIED** | Sprint 15 first deployment. Real cloud refused at App Check; the owner's file found PF-2 and PF-3 |
+| [c4a246cee432](c4a246cee432/) | **PRODUCTION_ACCEPTED** (superseded) | Sprint 15. 19/19 deterministic, real Nano + 1 real cloud request, Meridian export run independently. Rollback target for 489c6ba |
+| [489c6baaf18b](489c6baaf18b/) | **PRODUCTION_ACCEPTED** (live) | Sprint 16B code (merge of PR #19), accepted in Sprint 16C on 2026-11-16: 19/19 deterministic, 62-case matrix equal to the local baseline, 45/45 exports verified, access automation 13/13, real Nano 4/4 + hybrid path with 1 approved real cloud request. Human usability and screen reader NOT RUN |
