@@ -3,6 +3,7 @@ import fs from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { expect, test } from "./fixtures.ts";
+import { privateTermsInBody } from "../../src/evaluation/ai-value-live.ts";
 
 /**
  * Sprint 18A — live AI-value run, G0 vs G1 (docs/evaluation/sprint-18a-ai-value.md).
@@ -62,31 +63,6 @@ function append(entry: Record<string, unknown>): void {
   fs.writeFileSync(evidencePath, `${JSON.stringify(existing, null, 2)}\n`);
 }
 
-/** Terms that must never appear in a request body: coded source keys and longer private values. */
-function privateTerms(scenario: HoldoutScenario): string[] {
-  const destinationWords = new Set<string>();
-  const visitSchema = (node: unknown) => {
-    if (!node || typeof node !== "object") return;
-    const record = node as Record<string, unknown>;
-    if (record.properties && typeof record.properties === "object") {
-      for (const [key, child] of Object.entries(record.properties as Record<string, unknown>)) {
-        destinationWords.add(key.toLowerCase());
-        visitSchema(child);
-      }
-    }
-    if (Array.isArray(record.enum)) for (const value of record.enum) if (typeof value === "string") destinationWords.add(value.toLowerCase());
-  };
-  visitSchema(scenario.destination);
-  const terms = new Set<string>();
-  const visit = (value: unknown, key?: string) => {
-    if (key && (/[_0-9]/.test(key) || /[a-z][A-Z]/.test(key)) && !destinationWords.has(key.toLowerCase())) terms.add(key);
-    if (typeof value === "string" && value.trim().length >= 6 && !destinationWords.has(value.trim().toLowerCase())) terms.add(value.trim());
-    if (value && typeof value === "object") for (const [k, v] of Object.entries(value as Record<string, unknown>)) visit(v, k);
-  };
-  for (const record of scenario.records) visit(record);
-  return [...terms];
-}
-
 test.describe("S18A-LIVE G0/G1 holdout run", () => {
   test.beforeAll(() => {
     expect(set === "a5" ? ["P0", "P1"] : ["G0", "G1"]).toContain(config);
@@ -98,14 +74,14 @@ test.describe("S18A-LIVE G0/G1 holdout run", () => {
   for (let index = 0; index < (split === "dev" ? 6 : 10); index += 1) {
     test(`holdout #${String(index + 1).padStart(2, "0")}`, async ({ page }) => {
       const scenario = JSON.parse(fs.readFileSync(path.join(root, files[index]!), "utf8")) as HoldoutScenario;
-      const terms = privateTerms(scenario);
       const entry: Record<string, unknown> = { config, trial, index, at: new Date().toISOString() };
       const net = { requests: 0, leakCount: 0, promptSha256: [] as string[], answers: [] as string[], httpStatus: [] as number[] };
       page.on("request", (request) => {
         if (!request.url().includes("generateContent")) return;
         net.requests += 1;
         const body = request.postData() ?? "";
-        net.leakCount += terms.filter((term) => body.includes(term)).length;
+        // Sprint 18A.5 trace: destination vocabulary is blanked as exact quoted strings before matching.
+        net.leakCount += privateTermsInBody(body, scenario).length;
         try {
           const parsed = JSON.parse(body) as { contents?: Array<{ parts?: Array<{ text?: string }> }> };
           const text = (parsed.contents ?? []).flatMap((content) => content.parts ?? []).map((part) => part.text ?? "").join("");

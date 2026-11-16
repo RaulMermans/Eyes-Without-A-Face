@@ -86,4 +86,37 @@ Definitions:
 
 ## Results
 
-_Not yet run._
+### Run 1 — stopped by the pre-registered stop rule (2026-11-16)
+
+**What happened.**
+
+- The zero-request rehearsal passed on the 18A dev split and on the fresh holdout for both P0 and P1.
+- Holdout #8 cannot be built in either app and sends nothing. It is the same failure class as 18A holdout #1, so A.3 is now seen in two independent sets.
+- The live run started in ABBA order. During **P0, trial 1, scenario #7**, the in-run request-body scan reported **2 matches**, and the stop rule ended the run.
+- **7 requests had been sent, all P0. No P1 request was sent.**
+- The evidence is kept unchanged in [planner-live.json](../evidence/sprint-18a5/planner-live.json); the match count of 2 is preserved.
+
+**Trace before any conclusion.**
+
+- The sent prompt is hash-proven identical to the offline reconstruction, so the matches could be located exactly. Both terms are source category values that occur **only as substrings of destination enum values** in the reviewed `target` block:
+  - `pledge` inside the destination value `pledged`;
+  - `refund` inside `refunded`.
+- The harness excluded exact destination words but not substrings.
+- **No source-derived text contained a private term. This was not a leak.** It is the same class of false positive as Sprint 12's "Copperfield Partners".
+
+**Correction (scan precision, not an allowlist).**
+
+- The scan moved to `privateTermsInBody` (`src/evaluation/ai-value-live.ts`). Before matching, it blanks the reviewed destination names and values **as exact quoted strings**, the established `checkOutboundPrompt` method. The same value anywhere else is still a finding.
+- EVAL-188 covers it:
+  - the traced case;
+  - positive controls for a value in a descriptor, a person name, a coded key and an identifier;
+  - a re-scan of all 35 Sprint 18A requests (0 findings).
+- An offline re-scan of the 7 recorded A.5 requests found 0 source-derived findings (#7: 2 harness matches, 0 source-derived). A pre-scan of every prompt the remaining run would send (P0 and P1, 9 buildable scenarios each) also found 0.
+
+**Partial data, P0 only (n = 7). Not a verdict.**
+
+- valid proposals 0 of 7, all `INVALID_ENUM_MAPPING`;
+- 21 invented values;
+- mappable correct 0.674.
+
+Resuming needs the owner's decision: the stop rule fired, and the budget was approved under it.

@@ -295,3 +295,53 @@ export function summarizePlanner(scores: readonly EntryScore[]): PlannerSummary 
     medianMs: base.medianMs,
   };
 }
+
+/**
+ * Request-body privacy scan used by the live harness and re-run by the scorer.
+ *
+ * Terms: coded source keys and source string values of 6+ characters. The
+ * reviewed destination `target` is approved disclosure: its names and enum
+ * values are blanked as exact quoted strings first (the `checkOutboundPrompt`
+ * method of src/evaluation/benchmark.ts), so a source value that is only a
+ * substring of a destination value ("refund" in "refunded", Sprint 18A.5 trace)
+ * is not a finding, while the same value anywhere else still is. Nothing is
+ * allowlisted by word.
+ */
+export function privateTermsInBody(body: string, scenario: Pick<AiValueScenario, "records" | "destination">): string[] {
+  const approved = new Set<string>();
+  const visitSchema = (node: unknown) => {
+    if (!node || typeof node !== "object") return;
+    const record = node as Record<string, unknown>;
+    if (record.properties && typeof record.properties === "object") {
+      for (const [key, child] of Object.entries(record.properties as Record<string, unknown>)) {
+        approved.add(key);
+        visitSchema(child);
+      }
+    }
+    if (Array.isArray(record.enum)) for (const value of record.enum) if (typeof value === "string") approved.add(value);
+  };
+  visitSchema(scenario.destination);
+  const approvedLower = new Set([...approved].map((term) => term.toLowerCase()));
+  const terms = new Set<string>();
+  const visit = (value: unknown, key?: string) => {
+    if (key && (/[_0-9]/.test(key) || /[a-z][A-Z]/.test(key)) && !approvedLower.has(key.toLowerCase())) terms.add(key);
+    if (typeof value === "string" && value.trim().length >= 6 && !approvedLower.has(value.trim().toLowerCase())) terms.add(value.trim());
+    if (value && typeof value === "object") for (const [k, v] of Object.entries(value as Record<string, unknown>)) visit(v, k);
+  };
+  for (const record of scenario.records) visit(record);
+  let residual = body;
+  for (const term of [...approved].sort((a, b) => b.length - a.length)) {
+    // Plain JSON and JSON-in-a-JSON-string (the request body embeds the prompt as a string).
+    residual = residual.split(`"${term}"`).join('" "').split(`\\"${term}\\"`).join('\\" \\"');
+  }
+  return [...terms].filter((term) => residual.includes(term));
+}
+
+/** Offline re-scan of a recorded request: the reconstructed prompt is hash-proven identical to the one sent. */
+export async function rescanEntry(entry: LiveEntry, scenario: AiValueScenario): Promise<number | null> {
+  if (entry.requests === 0) return null;
+  const reconstruction = await reconstruct(scenario, entry.config !== "G0", entry.config === "P1" ? "current" : "sprint3");
+  if (!reconstruction) return null;
+  const body = JSON.stringify({ contents: [{ role: "user", parts: [{ text: reconstruction.outboundPrompt }] }] });
+  return privateTermsInBody(body, scenario).length;
+}
