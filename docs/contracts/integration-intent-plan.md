@@ -77,7 +77,9 @@ The model's `status` is a claim. The compiler computes the readiness in force fr
 | slash `parse_date` with an unproven order; the user confirmed one | `ready` | `parse_date` with the user's order (`gemini+user`) |
 | same, not yet confirmed | `needs_clarification` (`date-order`) | none |
 | order contradicts proven local evidence | `needs_clarification`, failure `semantic-disagreement` | none, until the user confirms an order |
-| `fieldMatches[target]` set by the user | follows the user's field | rule as in Sprint 15 (origin `user`) |
+| `fieldMatches[target]` set by the user to a different field | follows the user's field | rule as in Sprint 15 (origin `user`) |
+| `fieldMatches[target]` set to the same field as an executable Gemini operation | `ready` | the Gemini operation is kept (origin `gemini`); confirming a match never discards a validated operation |
+| `fieldMatches[target] = null` | `no_source` | none |
 | `no_source` (or the user chose "no field"), and required | `no_source` | none; question `missing-required-source`; never a default |
 | unaddressed by the plan, or its entry was rejected | `needs_clarification` | none; question `choose-field` (reason `unaddressed` or `rejected-entry`); never a default |
 

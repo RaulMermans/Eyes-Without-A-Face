@@ -118,7 +118,7 @@ Each category has one next action: `ask-user`, `revise-with-model`, `review-reco
 - **Provenance:**
   - the plan's operations are labelled Gemini (`IN_CLOUD`, real provenance);
   - user-declared operations are labelled "your answer";
-  - the export names both. The Export Contract stays 1.1.0 with origin `gemini-cloud`, plus a limitation line listing the user-declared fields.
+  - the export names both. The Export Contract stays 1.1.0 with origin `gemini-cloud`, plus one owned limitation line stating how many destination fields were completed from the user's answers (a count only; no field names).
 - **Gemini Nano:** no change in this milestone. It stays conditional and user-started, with no cloud fallback.
 
 ### 9. One AI-first journey
