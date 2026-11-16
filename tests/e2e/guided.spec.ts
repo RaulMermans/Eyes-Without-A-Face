@@ -29,6 +29,9 @@ async function toApproval(page: Page, demo: "csv" | "xlsx" | "json" = "csv"): Pr
   await expect(page.getByTestId("source-summary")).toBeVisible();
   await page.getByTestId("data-continue").click();
   await expect(page.getByTestId("guided-destination")).toBeVisible();
+  // Sprint 17A: Helpdesk's required status needs the account states; without them the request is not
+  // offered for approval. The user opts in to share that one field's names (explicit, per field).
+  await page.getByTestId("share-categories-account_state").check();
   await page.getByTestId("guided-build").click();
   await expect(page.getByTestId("approval-card")).toBeVisible();
 }
@@ -56,6 +59,8 @@ test.describe("E2E-130 guided journey", () => {
     await expect(page.getByTestId("destination-summary-fields")).toContainText("createdAt");
     await page.screenshot({ path: path.join(shots, "03-destination.png"), fullPage: true });
 
+    // Sprint 17A: share the status names first (explicit opt-in); otherwise the request is not offered.
+    await page.getByTestId("share-categories-account_state").check();
     await page.getByTestId("guided-build").click();
     // Build stopped at the approval: nothing approved, nothing sent.
     await expect(page.getByTestId("guided-status")).toHaveAttribute("data-status", "approval");

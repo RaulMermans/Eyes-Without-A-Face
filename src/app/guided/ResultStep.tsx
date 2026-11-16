@@ -17,7 +17,7 @@ import type { WorkspaceState } from "../workspace-state.ts";
 import type { FieldUnderstanding, GuidedStatus } from "./guided-status.ts";
 import type { CategoryField, CategoryNeed, ProposalDiagnosis } from "./recovery.ts";
 import { beforeAfter, transformedCsv, transformedJson, transformedRecords, type BeforeAfterExample } from "./transformed-output.ts";
-import { isLocalMapping, type CategoryMeaning, type FieldPlan } from "./field-plan.ts";
+import { cloudBlockedTargets, isLocalMapping, unwrittenRequiredTargets, type CategoryMeaning, type FieldPlan } from "./field-plan.ts";
 import { CategoryTranslation, DateOrderQuestion, type FieldQuestionHandlers, type SlashOrder } from "./FieldQuestions.tsx";
 import { bindingsTemplate } from "../../export/runtime/runtime.ts";
 
@@ -125,7 +125,14 @@ export function ResultStep({
     <section aria-labelledby="result-heading" className="space-y-6" data-testid="guided-result">
       <header className="max-w-3xl">
         <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-gold">Step 3 of 3</p>
-        <StatusHeadline status={status} />
+        <StatusHeadline
+          status={
+            // Sprint 17A: a request preflight proves unusable is not "awaiting approval" — say why, same status id.
+            status.id === "approval" && review?.status === "pending" && cloudBlockedTargets(plan).length > 0
+              ? { ...status, label: "Not ready to send", detail: "This request can't produce a usable integration yet. Nothing has been sent. Resolve the point below, or build on this device.", tone: "warn" }
+              : status
+          }
+        />
       </header>
 
       {recoveryError ? (
@@ -145,10 +152,18 @@ export function ResultStep({
           {categoryNeed?.blocking && review.status === "pending" ? (
             <>
               <CategoryNotice need={categoryNeed} onShare={onShareCategories} onEditDestination={onEditDestination} context="before" />
-              <LocalAlternative plan={plan} onBuildLocal={onBuildLocal} onEditDestination={onEditDestination} context="before" />
+              <LocalAlternative plan={plan} onBuildLocal={onBuildLocal} onEditDestination={onEditDestination} context="blocked" />
             </>
           ) : null}
-          <ApprovalCard workspace={workspace} cloudAvailable={cloudAvailable} sending={sending} onApproveAndSend={onApproveAndSend} onReject={onReject} onTechnical={onTechnical} />
+          <ApprovalCard
+            workspace={workspace}
+            cloudAvailable={cloudAvailable}
+            sending={sending}
+            blocked={review.status === "pending" ? cloudBlockedTargets(plan) : []}
+            onApproveAndSend={onApproveAndSend}
+            onReject={onReject}
+            onTechnical={onTechnical}
+          />
         </>
       ) : null}
 
@@ -223,6 +238,7 @@ export function ResultStep({
           onMeaning={onMeaning}
           onDateOrder={onDateOrder}
           onBuildLocal={onBuildLocal}
+          onEditDestination={onEditDestination}
           onIncludeLabels={onIncludeLabels}
           onChange={onChange}
         />
@@ -271,6 +287,7 @@ function ApprovalCard({
   workspace,
   cloudAvailable,
   sending,
+  blocked = [],
   onApproveAndSend,
   onReject,
   onTechnical,
@@ -278,6 +295,13 @@ function ApprovalCard({
   workspace: WorkspaceState;
   cloudAvailable: boolean;
   sending: boolean;
+  /**
+   * Sprint 17A (Workstream 2): required destination fields that local preflight proves this request
+   * cannot fill. While any is listed, the request is not offered for approval: nothing would make
+   * its answer usable. The routes above it (share names → a NEW request; translate on this device)
+   * resolve it; nothing is disclosed or retried automatically.
+   */
+  blocked?: ReturnType<typeof cloudBlockedTargets>;
   onApproveAndSend: () => void;
   onReject: () => void;
   onTechnical: () => void;
@@ -343,8 +367,41 @@ function ApprovalCard({
           .
         </p>
       ) : null}
+      {blocked.length > 0 ? (
+        <div role="alert" className="mt-4 border border-warn/40 border-l-4 border-l-warn p-3 text-sm" data-testid="approval-blocked" data-targets={blocked.map((item) => item.target).join(",")}>
+          <p className="font-medium">This request can't produce a usable integration, so it can't be sent yet.</p>
+          <ul className="mt-1 list-disc space-y-1 pl-5 text-ink-text">
+            {blocked.map((item) => (
+              <li key={item.target}>
+                {item.reason === "choose-source" ? (
+                  <>
+                    “{item.target}” must be one of a fixed list. Choose which of your fields gives it ({item.options.join(", ")}), then translate its values on this device or
+                    share their names.
+                  </>
+                ) : item.reason === "no-source" ? (
+                  <>
+                    “{item.target}” must be one of a fixed list, and none of your fields has a short list of values that could give it. Change the destination, or check your
+                    data.
+                  </>
+                ) : item.reason === "names-not-shareable" ? (
+                  <>
+                    “{item.target}” must be one of a fixed list. The values of <span className="font-mono">{item.source}</span> are free text, so Gemini would only see
+                    placeholders. Translate them on this device instead.
+                  </>
+                ) : (
+                  <>
+                    “{item.target}” must be one of a fixed list. Gemini would see only placeholders for the values of <span className="font-mono">{item.source}</span>, so it
+                    could not translate them. Translate them on this device, or choose to share their names above (a new request you review).
+                  </>
+                )}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-1 text-xs text-mute">Nothing has been sent. Your records, your answers and this destination are kept.</p>
+        </div>
+      ) : null}
       <div className="mt-5 flex flex-wrap items-center gap-3">
-        <Button variant="approve" size="lg" onClick={onApproveAndSend} disabled={!cloudAvailable || sending} data-testid="guided-approve">
+        <Button variant="approve" size="lg" onClick={onApproveAndSend} disabled={!cloudAvailable || sending || blocked.length > 0} data-testid="guided-approve">
           <SealIcon size={15} /> {approved ? "Send the approved request" : "Approve and send"}
         </Button>
         {!approved ? (
@@ -444,7 +501,15 @@ function meaningLines(candidate: ExportCandidate, meanings: Readonly<Record<stri
       if (status === "SEMANTIC_MISMATCH") return { target: operation.to, source, tone: "fail", text: `Contradicts your answer: the mapping reads these dates as ${operation.params.inputFormat}.`, action: "date-order" };
       return { target: operation.to, source, tone: "open", text: `Not verified: dates like 03/04/2026 could mean 3 April or 4 March. Tell EYES which order your data uses.`, action: "date-order" };
     }
-    if (operation.op === "parse_date") return { target: operation.to, source, tone: "info", text: `${source}, read as ${operation.params.inputFormat}: an unambiguous date format, so there is nothing more to confirm.`, action: null };
+    // Sprint 17A (Workstream 4): an unambiguous format proves how the date is read, never what it means.
+    if (operation.op === "parse_date")
+      return {
+        target: operation.to,
+        source,
+        tone: "info",
+        text: `${source}, read as ${operation.params.inputFormat}. The format is unambiguous, but EYES can't tell whether this date means “${operation.to}”. Look at the preview to be sure it's the right field.`,
+        action: null,
+      };
     const how = operation.op === "normalize_email" ? "as a lower-case email" : operation.op === "trim" ? "with spaces trimmed" : operation.op === "copy" || operation.op === "rename" ? "unchanged" : "by a fixed rule";
     return {
       target: operation.to,
@@ -621,6 +686,7 @@ function Outcome({
   onMeaning,
   onDateOrder,
   onBuildLocal,
+  onEditDestination,
   onIncludeLabels,
   onChange,
 }: {
@@ -637,6 +703,8 @@ function Outcome({
   onMeaning: FieldQuestionHandlers["onMeaning"];
   onDateOrder: FieldQuestionHandlers["onDateOrder"];
   onBuildLocal: () => void;
+  /** Sprint 17A: back to the destination step (field questions), keeping the data and decisions. */
+  onEditDestination: () => void;
   onIncludeLabels: (paths: string[], include: boolean) => void;
   onChange: (next: WorkspaceState) => void;
 }) {
@@ -662,7 +730,12 @@ function Outcome({
   const lines = meaningLines(candidate, meanings);
   const openQuestions = lines.filter((line) => line.tone === "open").length;
   const mismatch = candidate.semantic?.overall === "SEMANTIC_MISMATCH";
-  const next = nextStepText(candidate.eligibility.state, meaning.complete, openQuestions, output.records.length, mismatch);
+  // Sprint 17A (Workstream 3): required destination fields this mapping never writes. Read only; never filled in.
+  const missing = unwrittenRequiredTargets(candidate.executable, workspace.destinationText);
+  const next =
+    missing.length > 0
+      ? `This mapping is missing ${missing.length === 1 ? "a required field" : `${missing.length} required fields`} (${missing.join(", ")}), so no record can be valid. Answer the questions for ${missing.length === 1 ? "it" : "them"} and build on this device, or change the destination.`
+      : nextStepText(candidate.eligibility.state, meaning.complete, openQuestions, output.records.length, mismatch);
   // B4/D4: category names inside the package of a mapping built here need the user's explicit approval.
   const approvedForCloud = new Set((workspace.review?.preview.payload.fields ?? []).flatMap((field) => (field.enumValues?.length ? [field.alias] : [])));
   const labelSources = local
@@ -699,6 +772,39 @@ function Outcome({
         <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-mute">Next · </span>
         {next}
       </p>
+
+      {missing.length > 0 ? (
+        <div role="alert" className="space-y-3 border border-fail/40 border-l-4 border-l-fail bg-panel p-4 text-sm" data-testid="guided-incomplete" data-missing={missing.join(",")}>
+          <p className="font-medium">
+            Incomplete mapping: nothing writes {missing.map((name) => `“${name}”`).join(" and ")}.
+          </p>
+          <p className="text-ink-text">
+            The destination requires {missing.length === 1 ? "this field" : "these fields"}. No record can be valid without {missing.length === 1 ? "it" : "them"}, so every record
+            below is held as needing attention. EYES never adds missing rules itself: the mapping is shown exactly as {local ? "it was built" : "it was proposed"}.
+          </p>
+          <p className="flex items-start gap-2 text-ink-text" data-testid="guided-incomplete-kept">
+            <LockIcon size={14} className="mt-1 shrink-0 text-ink" />
+            <span>
+              The mapping ran on this device only; your {workspace.source?.records.length ?? 0} records never left this browser. Your data, answers and destination are kept — you don't
+              have to start over.
+            </span>
+          </p>
+          <div className="flex flex-wrap items-center gap-3">
+            {plan?.localReady ? (
+              <Button size="sm" variant="primary" onClick={onBuildLocal} data-testid="guided-incomplete-build-local">
+                Build on this device from your answers
+              </Button>
+            ) : (
+              <Button size="sm" variant="primary" onClick={onEditDestination} data-testid="guided-incomplete-local">
+                Answer the questions on this device{plan?.localBlocker ? ` (${plan.localBlocker})` : ""}
+              </Button>
+            )}
+            <Button size="sm" variant="ghost" onClick={onEditDestination} data-testid="guided-incomplete-destination">
+              Change the destination
+            </Button>
+          </div>
+        </div>
+      ) : null}
 
       <dl className="grid grid-cols-3 gap-px border border-rule bg-rule" data-testid="guided-counts">
         <div className="bg-panel p-4">
@@ -976,8 +1082,12 @@ function CategoryNotice({
   onEditDestination: () => void;
   context: "before" | "after";
 }) {
-  const withheld = need.fields.filter((field) => !field.shared);
   const targets = need.targets.filter((target) => target.required);
+  // Sprint 17A: only the names of a field the user chose for a required target may be offered for sharing.
+  // With no field chosen, sharing cannot make the request usable, so the route is "choose the field" instead.
+  const chosenSources = new Set(targets.flatMap((target) => (target.source ? [target.source] : [])));
+  const withheld = need.fields.filter((field) => !field.shared && chosenSources.has(field.path));
+  const unchosen = targets.filter((target) => !target.source);
   return (
     <div className="space-y-3 border border-warn/50 border-l-4 border-l-warn bg-panel p-4 text-sm" data-testid="guided-category-notice" data-context={context}>
       <p className="font-medium">
@@ -985,17 +1095,30 @@ function CategoryNotice({
       </p>
       <p className="text-ink-text">
         Your destination needs {targets.map((target) => `"${target.name}" (one of ${target.values.join(", ")})`).join(" and ")}. That value comes from your categories, and
-        Gemini only sees placeholders for them, so it cannot translate them. Sharing the names below lets it write that rule. Your records still stay here.
+        Gemini only sees placeholders for them, so it cannot translate them.{withheld.length > 0 ? " Sharing the names below lets it write that rule." : ""} Your records still stay
+        here.
       </p>
+      {unchosen.length > 0 ? (
+        <p className="text-ink-text" data-testid="guided-category-unchosen">
+          First choose which of your fields gives {unchosen.map((target) => `“${target.name}”`).join(" and ")}. Then translate its values on this device, or share only that
+          field's names.
+        </p>
+      ) : null}
       <ul className="space-y-1.5">
         {withheld.map((field) => (
           <CategoryList key={field.path} field={field} />
         ))}
       </ul>
       <div className="flex flex-wrap gap-2">
-        <Button variant="primary" size="sm" onClick={() => onShare(withheld.map((field) => field.path))} data-testid="guided-share-categories">
-          Share these names and prepare a new request
-        </Button>
+        {unchosen.length > 0 ? (
+          <Button variant="primary" size="sm" onClick={onEditDestination} data-testid="guided-choose-category-source">
+            Choose the field for {unchosen.map((target) => target.name).join(" and ")}
+          </Button>
+        ) : withheld.length > 0 ? (
+          <Button variant="primary" size="sm" onClick={() => onShare(withheld.map((field) => field.path))} data-testid="guided-share-categories">
+            Share these names and prepare a new request
+          </Button>
+        ) : null}
         <Button variant="ghost" size="sm" onClick={onEditDestination}>
           Choose another destination
         </Button>
@@ -1116,7 +1239,7 @@ function LocalAlternative({
   plan: FieldPlan | null;
   onBuildLocal: () => void;
   onEditDestination: () => void;
-  context: "before" | "declined" | "failed" | "rejected";
+  context: "before" | "blocked" | "declined" | "failed" | "rejected" | "incomplete";
 }) {
   if (!plan) return null;
   if (plan.localReady) {
@@ -1124,7 +1247,7 @@ function LocalAlternative({
       <div className="flex flex-wrap items-center gap-3 border border-ink/40 bg-panel p-3 text-sm" data-testid="guided-local-alternative" data-context={context} data-ready="true">
         <LockIcon size={15} className="shrink-0" />
         <span className="flex-1 text-ink-text">
-          {context === "before" ? "Or skip Gemini: " : ""}Your answers are enough to build this integration on this device, with no AI and nothing sent.
+          {context === "before" || context === "blocked" ? "Or skip Gemini: " : ""}Your answers are enough to build this integration on this device, with no AI and nothing sent.
         </span>
         <Button size="sm" variant={context === "before" ? "outline" : "primary"} onClick={onBuildLocal} data-testid="guided-local-fallback">
           Build on this device

@@ -264,7 +264,7 @@ test.describe("E2E-153 declining and refusals offer the on-device path honestly"
     expect(await cloudCalls(page)).toBe(0);
   });
 
-  test("a refused Gemini answer offers the local build next to the existing recovery", async ({ page }) => {
+  test("complete local answers but withheld names: the request is not offered, and the local build is (Sprint 17A)", async ({ page }) => {
     await boot(page, { cloudOutput: realHelpdeskAnswer });
     await demoToHelpdesk(page);
     await translateCrm(page);
@@ -272,14 +272,14 @@ test.describe("E2E-153 declining and refusals offer the on-device path honestly"
     await expect(page.getByTestId("guided-build")).toContainText("Build with Gemini");
     await page.getByTestId("guided-build").click();
     await expect(page.getByTestId("guided-category-notice")).toHaveAttribute("data-context", "before");
-    await expect(page.getByTestId("guided-local-alternative")).toHaveAttribute("data-context", "before");
-    await page.getByTestId("guided-approve").click();
-    await expect(page.getByTestId("guided-diagnosis")).toHaveAttribute("data-kind", "withheld-categories");
-    await expect(page.getByTestId("guided-local-alternative")).toHaveAttribute("data-context", "rejected");
-    await page.screenshot({ path: path.join(shots, "09-rejected-with-local.png"), fullPage: true });
+    // Before Sprint 17A the user could send this; Gemini's answer was then refused (withheld categories).
+    await expect(page.getByTestId("guided-approve")).toBeDisabled();
+    await expect(page.getByTestId("guided-local-alternative")).toHaveAttribute("data-context", "blocked");
+    await expect(page.getByTestId("guided-local-alternative")).toHaveAttribute("data-ready", "true");
+    await page.screenshot({ path: path.join(shots, "09-blocked-with-local.png"), fullPage: true });
     await page.getByTestId("guided-local-fallback").click();
     await expect(page.getByTestId("guided-count-transformed")).toHaveText("3");
-    expect(await cloudCalls(page)).toBe(1);
+    expect(await cloudCalls(page)).toBe(0);
   });
 });
 

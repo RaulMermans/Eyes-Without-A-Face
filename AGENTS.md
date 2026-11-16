@@ -175,6 +175,27 @@ Report: [docs/qa/sprint-16b-mapping-integrity.md](docs/qa/sprint-16b-mapping-int
   - Never hide them silently.
   - Never rename a user's columns.
 
+## Hybrid journey recovery (Sprint 17A)
+
+Report: [docs/qa/sprint-17a-hybrid-recovery.md](docs/qa/sprint-17a-hybrid-recovery.md).
+
+- **Never offer a request that preflight proves unusable.**
+  - `cloudBlockedTargets(plan)` lists required fixed-list destination fields a request cannot fill: no chosen field (`choose-source`), no category-like field (`no-source`), or names that are not shareable or not shared.
+  - While any is listed:
+    - "Approve and send" is disabled;
+    - the headline says "Not ready to send";
+    - `approval-blocked` names each prerequisite;
+    - the routes are: choose the field, share only that field's names (a NEW request), build on this device, or change the destination.
+  - Uncertainty Gemini can resolve (which field gives an id, an email or a date) never blocks.
+- **Offer sharing only for a field the user chose for a required target.**
+  - Never offer a bulk share of unchosen fields' names.
+  - Never share automatically.
+- **Name an incomplete mapping.** `unwrittenRequiredTargets(contract, destination)` lists required destination fields no operation writes.
+  - The Result names them, explains that no record can be valid, and offers the local route.
+  - Never add, repair or infer a missing operation.
+  - The validator, contracts and export eligibility are unchanged.
+- **An unambiguous date format never establishes meaning.** Say which field was read and that EYES can't tell whether it means the destination field.
+
 ## Release lifecycle and production acceptance (Sprint 14 — permanent, every sprint)
 
 **Tests passing does not mean the product works in production.** Procedure, commands, budget and evidence layout: [docs/deployment.md](docs/deployment.md#production-acceptance-standard-permanent).
