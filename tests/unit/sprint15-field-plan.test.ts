@@ -324,3 +324,26 @@ describe("S15-B5 overrides never rewrite an approved request", () => {
     expect(applyFieldDecision(manual, { fieldMatches: { id: "customer_id" } }).report).not.toBeNull();
   });
 });
+
+describe("S15-PF2 real data with a few malformed emails (production check, Meridian source)", () => {
+  it("S15-022 a field whose values are mostly emails is suggested for an email destination, with the count as evidence", async () => {
+    const { default: like } = await import("../fixtures/sprint-15/meridian-like.json", { with: { type: "json" } });
+    const records = like.records as Record<string, unknown>[];
+    const prepared = twin(records);
+    // The profile drops the email format (2 of 10 values are not emails)…
+    expect(prepared.profile.fields.find((field) => field.path === "contact.email")?.format).toBeUndefined();
+    // …but the ranking still finds it, and says why.
+    const plan = planFields(prepared, records, pretty(helpdesk), none)!;
+    const email = plan.targets.find((item) => item.target.name === "email")!;
+    expect(email.chosen).toBe("contact.email");
+    expect(email.chosenBy).toBe("suggested");
+    expect(email.candidates[0]!.reasons[0]).toBe("8 of 10 values look like email addresses");
+    expect(email.rule).toMatchObject({ op: "normalize_email", from: "contact.email" });
+  });
+
+  it("S15-023 a field with only a few email-shaped values is not evidence", () => {
+    const records = crm.map((record, index) => ({ ...record, note: index === 0 ? "a@example.com" : "free text here" }));
+    const ranked = rankCandidates(twin(records), records, { name: "email", type: "string", required: true, format: "email" });
+    expect(ranked.find((item) => item.path === "note")!.reasons.join(" ")).not.toContain("look like email");
+  });
+});

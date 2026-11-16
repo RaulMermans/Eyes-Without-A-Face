@@ -330,6 +330,23 @@ function descriptorProblem(
   return null;
 }
 
+/** Shortest private value the export privacy scan matches as a substring (src/export/package.ts). */
+const SCAN_MIN_LENGTH = 4;
+
+/**
+ * Sprint 15 (PF-3): a synthetic string collides with the private source when
+ * it equals a private value, or CONTAINS one the export privacy scan would
+ * find (e.g. the fictional name "Lumen Studio" when "studio" is a real plan
+ * code). Labels the user approved for disclosure are allowed. Stricter than
+ * the scan, never looser.
+ */
+function collidesWithPrivate(value: string, approvedLabels: ReadonlySet<string>, privateStrings: ReadonlySet<string>, scanValues: readonly string[]): boolean {
+  const normalized = value.trim().toLowerCase();
+  if (approvedLabels.has(normalized)) return false;
+  if (privateStrings.has(normalized)) return true;
+  return scanValues.some((secret) => !approvedLabels.has(secret) && normalized.includes(secret));
+}
+
 function buildExamples(
   seed: number,
   plans: Array<{ alias: string; field: FieldProfile; role: SemanticRole; labels: string[] | null }>,
@@ -337,6 +354,8 @@ function buildExamples(
   issues: TwinIssue[],
 ): Array<Record<string, SyntheticValue>> {
   const examples: Array<Record<string, SyntheticValue>> = [];
+  // Private values the export privacy scan looks for (lowercase substrings, ≥ 4 characters).
+  const scanValues = [...privateStrings].filter((value) => value.length >= SCAN_MIN_LENGTH);
   for (let variant = 0; variant < SYNTHETIC_EXAMPLE_COUNT; variant += 1) {
     const row: Record<string, SyntheticValue> = {};
     for (const plan of plans) {
@@ -352,23 +371,15 @@ function buildExamples(
       const rng = createRng(deriveSeed(seed, `${plan.alias}:${plan.role}:${variant}`));
       let value = syntheticValue(rng, { role: plan.role, field: plan.field, categoryLabels: plan.labels }, variant);
       const approvedLabels = new Set((plan.labels ?? []).map((label) => label.trim().toLowerCase()));
+      const collides = (candidate: SyntheticValue): boolean => typeof candidate === "string" && collidesWithPrivate(candidate, approvedLabels, privateStrings, scanValues);
       let attempts = 0;
-      while (
-        typeof value === "string" &&
-        !approvedLabels.has(value.trim().toLowerCase()) &&
-        privateStrings.has(value.trim().toLowerCase()) &&
-        attempts < 8
-      ) {
+      while (collides(value) && attempts < 8) {
         value = syntheticValue(rng, { role: plan.role, field: plan.field, categoryLabels: plan.labels }, variant);
         attempts += 1;
       }
-      if (
-        typeof value === "string" &&
-        !approvedLabels.has(value.trim().toLowerCase()) &&
-        privateStrings.has(value.trim().toLowerCase())
-      ) {
+      if (collides(value)) {
         value = fallbackSynthetic(plan.alias, variant);
-        if (privateStrings.has(value)) {
+        if (collides(value)) {
           issues.push({ code: "SYNTHETIC_COLLISION", alias: plan.alias, message: `${plan.alias}: could not generate a value distinct from the private source.` });
         }
       }

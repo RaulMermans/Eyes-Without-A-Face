@@ -107,3 +107,45 @@ describe("PRV-S15-004 the local build sends nothing", () => {
     expect(workspace.report?.overall).toBe("pass");
   });
 });
+
+describe("PRV-S15-005 common-word category values (production check, Meridian source)", () => {
+  async function likeWorkspace() {
+    const { default: like } = await import("../fixtures/sprint-15/meridian-like.json", { with: { type: "json" } });
+    const base = crmDemo();
+    const start: WorkspaceState = {
+      ...base,
+      source: { ...base.source!, label: "meridian-like", records: like.records as Record<string, unknown>[] },
+      reservedRecords: null,
+      fieldMatches: { status: "account_state", email: "contact.email" },
+      categoryMeanings: { status: { source: "account_state", values: { activo: "active", inactivo: "inactive", pendiente: "prospect", suspendido: null } } },
+      packageLabelSources: ["account_state"],
+    };
+    const prepared = prepare(start);
+    const plan = planFields(prepared, start.source!.records, start.destinationText, start)!;
+    const contract = localContract(plan, prepared, start.destinationText);
+    if (!contract) throw new Error(plan.localBlocker ?? "not ready");
+    return { workspace: runLocalVerification({ ...start, mappingText: JSON.stringify(contract), mappingChoice: "manual" }, prepared, false), prepared };
+  }
+
+  it("synthetic examples never contain a real value as a substring (e.g. a plan code 'studio' inside a fictional company name)", async () => {
+    const { prepared } = await likeWorkspace();
+    const secrets = [...prepared.privateStrings].filter((value) => value.length >= 4);
+    for (const row of prepared.twin.phantom.syntheticExamples) {
+      for (const value of Object.values(row)) {
+        if (typeof value !== "string") continue;
+        const lowered = value.toLowerCase();
+        expect(secrets.filter((secret) => lowered.includes(secret))).toEqual([]);
+      }
+    }
+  });
+
+  it("the package of such data exports with the unchanged scan, and still contains no record values or field names", async () => {
+    const { workspace, prepared } = await likeWorkspace();
+    const { result } = await zipFor(workspace, prepared);
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    const text = readStoredZip(result.zip).map((file) => new TextDecoder().decode(file.data)).join("\n");
+    for (const value of ["person.001@example.com", "Fictional Org 001", "MRX-00001"]) expect(text).not.toContain(value);
+    expect(text).not.toContain('"contact.email"');
+  });
+});

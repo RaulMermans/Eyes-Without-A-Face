@@ -319,7 +319,7 @@ function limitationsFor(input: PackageInput, status: ExportContractV11["status"]
   const imported = report.total - report.reservedTotal;
   const lines = [
     `Verified in the source environment against ${imported} imported record(s) and ${report.reservedTotal} reserved hidden case(s) only, not against a full production dataset.`,
-    "Fixtures are fictional twin examples keyed by alias. Their results show engine behavior, not data quality; categories withheld at disclosure appear as placeholders and may fail enum mappings by design.",
+    "Fixtures are fictional twin examples keyed by alias. Their results show engine behavior, not data quality; categories withheld at disclosure appear as placeholders, so enum rules may refuse them; that is expected.",
     "Running against real records requires a local bindings file (alias → source field). Field names are sensitive metadata: keep the bindings file in the environment that owns the data.",
     "The runner validates outputs against the packaged destination schema. It does not write to any destination system.",
     "Semantic verification covers only the declared or locally observed constraints listed in policy/semantic-declarations.json; other fields' meaning is unverified.",

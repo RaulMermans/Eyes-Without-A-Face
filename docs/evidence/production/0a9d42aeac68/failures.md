@@ -63,3 +63,14 @@ The answers used by the test (business choices made for the test only):
 - **Not changed during acceptance.** The scan must never be weakened to make an export pass. Fix options need the owner's decision:
   1. Remove the collisions at the source, without touching the scan. Reword app-authored package text that contains a private value, or keep it out of the scanned text. Make the synthetic generator never emit a word equal to a private value.
   2. Do nothing, and document that some real datasets cannot be exported.
+
+### Status of PF-2 and PF-3 (fixed on the branch, not yet deployed)
+
+- **PF-2.** `rankCandidates` counts email-shaped values locally. At least 80 % of present values counts as evidence ("117 of 119 values look like email addresses").
+  - Regression tests: S15-022 and S15-023.
+- **PF-3, option 1 (owner instruction "fix what you have witnessed").** The privacy scan is unchanged.
+  - The package sentence "…by design." is reworded.
+  - The twin's example generator now rejects any synthetic string that *contains* a private value of 4 or more characters (the scan's own rule). Before, it rejected only exact matches. This is stricter, never looser.
+  - Regression test: PRV-S15-005, with a fictional Meridian-like fixture. All three new tests fail on the previous code.
+- **Freeze amendment.** `src/phantom/generate.ts` is pinned by the Sprint 12 Nano-value freeze, so the freeze was amended with `node scripts/freeze-nano-value.mjs --amend "…"` and the reason recorded. The change is proven output-neutral: synthetic examples are byte-identical before and after for every picker scenario (with and without twin overrides) and for the CRM demo. EVAL 84 / 84.
+- **Offline check on the Meridian file (unchanged scan).** The package builds.

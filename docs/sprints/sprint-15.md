@@ -102,14 +102,15 @@ Decision: [ADR 0014](../decisions/0014-target-first-mapping-and-local-meaning.md
 
 | Suite | Sprint 14 | Sprint 15 | New |
 | --- | --- | --- | --- |
-| Unit | 339 | **360** | S15-001…021 |
+| Unit | 339 | **362** | S15-001…023 |
 | Contracts | 43 | **43** | — |
-| Privacy | 83 | **89** | PRV-S15-001…004 (6 cases) |
+| Privacy | 83 | **91** | PRV-S15-001…005 (8 cases) |
 | Evaluation | 84 | **84** | — (frozen, unchanged) |
 | E2E | 139 | **151** | E2E-150…155 (12 cases) |
-| **Total** | **688** | **727** | +39 |
+| **Total** | **688** | **731** | +43 |
 
-- **Existing assertions:** no assertion was weakened, skipped or amended. No frozen file changed.
+- **Existing assertions:** no assertion was weakened, skipped or amended.
+- **Freeze amendment:** `src/phantom/generate.ts` (Nano-value freeze), for PF-3. It is stricter and proven output-neutral for every frozen scenario; see [failures.md](../evidence/production/0a9d42aeac68/failures.md).
 - **Production suite:** P-024 is new (local build, zero `generateContent`). It runs only against the deployed URL, after an approved deployment.
 - **Model evidence this sprint:**
   - **Deterministic:** all of the above.
