@@ -1,4 +1,32 @@
 import type { CloudDisclosurePayload } from "../domain/contracts/types.ts";
+import { DESCRIPTOR_SEPARATOR, OWNED_DESCRIPTOR_SEGMENTS, OWNED_WHOLE_TEXT } from "../phantom/fixed-text.ts";
+
+type Span = readonly [start: number, end: number];
+
+/** Spans of `text` that are whole descriptor segments emitted verbatim by `defaultDescriptor`. */
+function ownedDescriptorSpans(text: string): Span[] {
+  const spans: Span[] = [];
+  let start = 0;
+  for (const segment of text.split(DESCRIPTOR_SEPARATOR)) {
+    if (OWNED_DESCRIPTOR_SEGMENTS.has(segment)) spans.push([start, start + segment.length]);
+    start += segment.length + DESCRIPTOR_SEPARATOR.length;
+  }
+  return spans;
+}
+
+/** The whole text when it is a fixed twin sentence (entity description, disclosure constraint). */
+function ownedWholeSpan(text: string): Span[] {
+  return OWNED_WHOLE_TEXT.has(text) ? [[0, text.length]] : [];
+}
+
+/** True when `value` occurs in `lowered` at least once outside every owned span. */
+function occursOutside(lowered: string, value: string, owned: readonly Span[]): boolean {
+  for (let at = lowered.indexOf(value); at !== -1; at = lowered.indexOf(value, at + 1)) {
+    const end = at + value.length;
+    if (!owned.some(([start, stop]) => start <= at && end <= stop)) return true;
+  }
+  return false;
+}
 
 /**
  * In-memory index of normalized private string values from the currently
@@ -48,24 +76,37 @@ export function findPrivateValueLeaks(
   // (fields[].enumValues), so finding one inside generated text is not a new
   // disclosure (Sprint 7: "email" as a channel label matched "Email address").
   const approvedLabels = new Set([...approved.values()].flatMap((labels) => [...labels]));
-  const containsPrivate = (text: string) => {
+  const containsPrivate = (text: string, owned: ReadonlyArray<readonly [number, number]> = []) => {
     const lowered = text.toLowerCase();
+    // Spans index the original text; if lowercasing changed its length, fail closed and scan everything.
+    const spans = lowered.length === text.length ? owned : [];
     for (const value of values) {
-      if (value.length >= 4 && !approvedLabels.has(value) && lowered.includes(value)) return true;
+      if (value.length >= 4 && !approvedLabels.has(value) && occursOutside(lowered, value, spans)) return true;
     }
     return false;
   };
 
+  // Sprint 18B (source compatibility): an occurrence lying entirely inside
+  // application-owned wording is not a disclosure, so it is not a finding.
+  // Before this, a private value such as the category label "email", "date",
+  // "code" or "life" matched the fixed descriptor "Email address", "Calendar
+  // date", "(opaque code)" or "Lifecycle status category", and the disclosure
+  // preview could never be built for that source. Only exact, whole owned
+  // segments are recognised (src/phantom/fixed-text.ts); every other part of
+  // the text, and any occurrence crossing a segment boundary, is still scanned.
   payload.fields.forEach((field, index) => {
-    if (containsPrivate(field.semanticDescriptor)) findings.push({ location: `/fields/${index}/semanticDescriptor` });
+    if (containsPrivate(field.semanticDescriptor, ownedDescriptorSpans(field.semanticDescriptor))) {
+      findings.push({ location: `/fields/${index}/semanticDescriptor` });
+    }
   });
   payload.entities.forEach((entity, index) => {
-    if (isPrivate(entity.label) || containsPrivate(entity.description ?? "")) {
+    const description = entity.description ?? "";
+    if (isPrivate(entity.label) || containsPrivate(description, ownedWholeSpan(description))) {
       findings.push({ location: `/entities/${index}` });
     }
   });
   (payload.disclosureConstraints ?? []).forEach((constraint, index) => {
-    if (containsPrivate(constraint)) findings.push({ location: `/disclosureConstraints/${index}` });
+    if (containsPrivate(constraint, ownedWholeSpan(constraint))) findings.push({ location: `/disclosureConstraints/${index}` });
   });
   const revision = payload.revision?.feedback;
   if (revision) {
