@@ -114,12 +114,21 @@ The package status is computed, never asserted: `VERIFIED`, `VERIFIED_WITH_EXCEP
 
 ## Status
 
-**Sprint 16B (mapping integrity): `DEPLOYMENT_PENDING`.** The release candidate is built and verified. It waits for the owner's approval of its exact SHA; `c4a246c` stays live until then. See [docs/qa/sprint-16b-mapping-integrity.md](docs/qa/sprint-16b-mapping-integrity.md).
+**Sprint 16C (production acceptance): `PRODUCTION_ACCEPTED`.** Live as `489c6ba` (the Sprint 16B code), deployed with the owner's approval of that exact SHA on 2026-11-16.
+
+- 19 / 19 production checks pass.
+- The 62 real-world-style cases match the local release candidate case for case.
+- 45 / 45 exported packages verify outside the app.
+- Real Gemini Nano runs on device, and one approved real Gemini Cloud request passes end to end.
+- Independent usability sessions and a manual screen-reader pass are **not done yet**.
+- See [docs/qa/sprint-16c-production-acceptance.md](docs/qa/sprint-16c-production-acceptance.md).
+
+**Sprint 16B (mapping integrity):** the fixes now live in `489c6ba`. See [docs/qa/sprint-16b-mapping-integrity.md](docs/qa/sprint-16b-mapping-integrity.md).
 
 - **No silent field mapping.** A suggested field is never used until you choose it. "No field" is respected. The local result headline says "Structure verified" unless the meaning of every field was verified.
 - **Exports.** An ordinary word in your data (such as "failed") no longer blocks the reusable integration. The privacy scan now tells the app's own text apart from your data, and real leaks still block it.
 - **Columns EYES can't map are listed**, with the reason and a rename example.
-- **Same 62 real-world-style cases as Sprint 16A, run on the release candidate locally:**
+- **Same 62 real-world-style cases as Sprint 16A, on the release candidate locally and then in production (identical results):**
   - 43 PASS (was 39);
   - 0 "Integration ready" headlines over wrong data (was 3);
   - 0 privacy findings;

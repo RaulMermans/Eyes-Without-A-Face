@@ -1,0 +1,229 @@
+{
+  "target": "PRODUCTION_DETERMINISTIC (489c6baaf18b) — automated, NOT a screen-reader pass",
+  "results": {
+    "access-chromium": {
+      "workflow": {
+        "browser": "chromium",
+        "transformed": 30,
+        "modelRequests": 0,
+        "pageErrors": []
+      },
+      "mobile390": {
+        "overflowPx": [
+          0,
+          0,
+          0
+        ]
+      },
+      "zoom200": {
+        "overflowPx": [
+          0,
+          0
+        ]
+      },
+      "keyboard-chromium": {
+        "match-deliveryState-status": {
+          "reached": true,
+          "presses": 10,
+          "focusVisible": true
+        },
+        "translate-open-deliveryState": {
+          "reached": true,
+          "presses": 2,
+          "focusVisible": true
+        },
+        "translate-deliveryState-creado": {
+          "reached": true,
+          "presses": 8,
+          "focusVisible": true
+        },
+        "field-match-shipmentId": {
+          "reached": true,
+          "presses": 5,
+          "focusVisible": true
+        },
+        "field-match-use-shipmentId": {
+          "reached": true,
+          "presses": 1,
+          "focusVisible": true
+        },
+        "field-match-shippedAt": {
+          "reached": true,
+          "presses": 7,
+          "focusVisible": true
+        },
+        "guided-build-local": {
+          "reached": true,
+          "presses": 13,
+          "focusVisible": true
+        },
+        "download-transformed-json": {
+          "reached": true,
+          "presses": 1,
+          "focusVisible": true
+        }
+      },
+      "reducedMotion": {
+        "infiniteRunningAnimations": 0
+      },
+      "liveRegions": {
+        "buildBlocker": "alert",
+        "importProblem": "alert"
+      }
+    },
+    "access-firefox": {
+      "workflow": {
+        "browser": "firefox",
+        "transformed": 30,
+        "modelRequests": 0,
+        "pageErrors": []
+      },
+      "mobile390": {
+        "overflowPx": [
+          0,
+          0,
+          0
+        ]
+      },
+      "zoom200": {
+        "overflowPx": [
+          0,
+          0
+        ]
+      },
+      "keyboard-firefox": {
+        "match-deliveryState-status": {
+          "reached": true,
+          "presses": 10,
+          "focusVisible": true
+        },
+        "translate-open-deliveryState": {
+          "reached": true,
+          "presses": 2,
+          "focusVisible": true
+        },
+        "translate-deliveryState-creado": {
+          "reached": true,
+          "presses": 8,
+          "focusVisible": true
+        },
+        "field-match-shipmentId": {
+          "reached": true,
+          "presses": 5,
+          "focusVisible": true
+        },
+        "field-match-use-shipmentId": {
+          "reached": true,
+          "presses": 1,
+          "focusVisible": true
+        },
+        "field-match-shippedAt": {
+          "reached": true,
+          "presses": 7,
+          "focusVisible": true
+        },
+        "guided-build-local": {
+          "reached": true,
+          "presses": 13,
+          "focusVisible": true
+        },
+        "download-transformed-json": {
+          "reached": true,
+          "presses": 1,
+          "focusVisible": true
+        }
+      },
+      "reducedMotion": {
+        "infiniteRunningAnimations": 0
+      },
+      "liveRegions": {
+        "buildBlocker": "alert",
+        "importProblem": "alert"
+      }
+    },
+    "keyboard-chromium": {
+      "match-deliveryState-status": {
+        "reached": true,
+        "presses": 10,
+        "focusVisible": true
+      },
+      "translate-open-deliveryState": {
+        "reached": true,
+        "presses": 2,
+        "focusVisible": true
+      },
+      "translate-deliveryState-creado": {
+        "reached": true,
+        "presses": 8,
+        "focusVisible": true
+      },
+      "field-match-shipmentId": {
+        "reached": true,
+        "presses": 5,
+        "focusVisible": true
+      },
+      "field-match-use-shipmentId": {
+        "reached": true,
+        "presses": 1,
+        "focusVisible": true
+      },
+      "field-match-shippedAt": {
+        "reached": true,
+        "presses": 7,
+        "focusVisible": true
+      },
+      "guided-build-local": {
+        "reached": true,
+        "presses": 13,
+        "focusVisible": true
+      },
+      "download-transformed-json": {
+        "reached": true,
+        "presses": 1,
+        "focusVisible": true
+      }
+    },
+    "keyboard-firefox": {
+      "match-deliveryState-status": {
+        "reached": true,
+        "presses": 10,
+        "focusVisible": true
+      },
+      "translate-open-deliveryState": {
+        "reached": true,
+        "presses": 2,
+        "focusVisible": true
+      },
+      "translate-deliveryState-creado": {
+        "reached": true,
+        "presses": 8,
+        "focusVisible": true
+      },
+      "field-match-shipmentId": {
+        "reached": true,
+        "presses": 5,
+        "focusVisible": true
+      },
+      "field-match-use-shipmentId": {
+        "reached": true,
+        "presses": 1,
+        "focusVisible": true
+      },
+      "field-match-shippedAt": {
+        "reached": true,
+        "presses": 7,
+        "focusVisible": true
+      },
+      "guided-build-local": {
+        "reached": true,
+        "presses": 13,
+        "focusVisible": true
+      },
+      "download-transformed-json": {
+        "reached": true,
+        "presses": 1,
+        "focusVisible": true
+      }
+    }
+  }
+}

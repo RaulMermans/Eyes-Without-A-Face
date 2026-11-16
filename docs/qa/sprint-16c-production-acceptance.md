@@ -2,9 +2,19 @@
 
 **Date:** 2026-11-16 · **Branch:** `sprint-16c-production-acceptance` (from `origin/main` @ `489c6ba`) · **Kind:** release qualification. No feature work, and no product code changed.
 
-**Release status of `489c6ba`: `DEPLOYMENT_PENDING`.** The owner's approval of this exact SHA is required. Production still serves `c4a246c` (`PRODUCTION_ACCEPTED`, Sprint 15).
+**Release status of `489c6ba`: `PRODUCTION_ACCEPTED`** (2026-11-16, 14:06–14:15 UTC).
 
-**Readiness decision at this gate: `INSUFFICIENT_EVIDENCE`** (§ 15).
+- **Deployment:** done with the owner's approval of exactly this SHA.
+- **Checks on the public URL, all passed:**
+  - 19 / 19 deterministic checks;
+  - the 62-case matrix, identical to the local baseline case for case;
+  - 45 / 45 exports verified independently;
+  - 13 / 13 automated access checks;
+  - real Gemini Nano;
+  - one approved real Gemini Cloud request, the full budget.
+- **Rollback target:** `c4a246c`.
+
+**Readiness decision: `SUBMISSION_READY_WITH_DISCLOSED_LIMITATIONS`** (§ 15). Independent human usability sessions and a manual screen-reader pass are NOT_RUN and must be disclosed.
 
 Evidence labels used throughout:
 
@@ -56,7 +66,7 @@ Evidence labels used throughout:
 | Secret scan | No local App Check debug token, no private key, no source map, no `.env` file. Two expected matches: the public Firebase web API key (documented), and the export scanner's own detection regexes, which the live `c4a246c` bundle also contains |
 | Config source | Public Firebase web config from the untracked `.env` / `.env.local`, as in every previous release; `build:release` forces App Check debug off |
 
-### Deployment approval package (STOP)
+### Deployment approval package (approved by the owner for exactly this SHA; deployed — see § 3)
 
 | Item | Value |
 | --- | --- |
@@ -70,27 +80,55 @@ Evidence labels used throughout:
 | Command (after approval only) | `npx -y firebase-tools@15.35.0 deploy --only hosting --project eyes-without-a-face-b7281 -m "sprint-16c 489c6baaf18b (owner-approved)"` |
 | Acceptance procedure | [../evidence/sprint-16c/production/README.md](../evidence/sprint-16c/production/README.md): identity → `pnpm test:production` → 62-case matrix + comparison → automated access checks → real Nano + 1 approved cloud request |
 
-## 3. Phase B — production deployment and live acceptance: **NOT_RUN**
+## 3. Phase B — production deployment and live acceptance
 
-Blocked at the deployment-approval gate. No deployment, no production checks of `489c6ba` and no 62-case production run. The runbook is ready.
+**Owner approval:** deploy only the verified artifact of `489c6baaf18bf22d146e583752eecc343ed3d986`, plus at most 1 real Gemini Cloud request. `main` had meanwhile moved to `9f47dec` (PR #20, docs and QA only); as instructed, it was **not** substituted.
 
-The best available proxy is **LOCAL**, and it is not production evidence. Sprint 16B's LOCAL run on `25c5eeb`, whose app code is identical, gave:
-
-- PASS 43 · FAIL 4 · PARTIAL 7 · UNSUPPORTED 8;
-- 0 / 246 fields pre-selected;
-- 0 rules without a user decision;
-- 0 disclosures;
-- 45 / 45 packages verified outside the app;
-- 2,174 / 2,174 confirmed-field records exact.
-
-## 4. Phase C — genuine hybrid AI
-
-| Check | Status | Note |
+| Step | Label | Result |
 | --- | --- | --- |
-| Gemini Nano on `489c6ba` | **NOT_RUN** | needs the deployed build. Last real evidence: Sprint 16A on `c4a246c` (4 / 4 real on-device, 0 cloud requests, 31 / 41 roles plausible). Applying Nano's suggestions changed **no** guided field match. Re-verify after deployment, do not assume |
-| Gemini Cloud on `489c6ba` | **NOT_RUN** | needs the deployment **and** a separate budget approval |
+| Pre-deploy integrity | — | Clean checkout still at `489c6ba`; `dist/` unchanged: 31 files, digest `247e7057…`; `verify:release` PASS; `firebase.json` as committed |
+| Deploy | — | `firebase-tools@15.35.0 deploy --only hosting`, release complete at 14:06:49 UTC. No configuration, App Check, billing or policy change |
+| Served identity | PRODUCTION_DETERMINISTIC | `build-info.json` = `489c6ba…`, `mode: production`, `appCheckDebug: false`; **31 / 31 served files byte-identical** to the artifact; HTTP 200 |
+| `pnpm test:production` | PRODUCTION_DETERMINISTIC | **19 / 19 PASS** (Chromium plus the Firefox subset). Covers identity, App Check enforced (tokenless request refused), JSON / CSV / XLSX imports, one read-only REST GET, invalid file, approval gate (declining sends nothing), category warning, invalid destination, local build with explicit field choices (P-024), navigation, 390 px, keyboard. 0 model requests |
+| 62-case matrix (Sprint 16A inputs and canaries, oracle unchanged) | PRODUCTION_DETERMINISTIC | PASS 43 · FAIL 4 · PARTIAL 7 · UNSUPPORTED 8. **0 per-case discrepancies** against the local release candidate (status, counts, per-record correctness, headline, export status, verification) |
 
-### Gemini Cloud approval package (separate decision)
+### 62-case comparison
+
+**Sprint 16A production (`c4a246c`) → production now (`489c6ba`):**
+
+| Measure | `c4a246c` | `489c6ba` |
+| --- | --- | --- |
+| PASS / FAIL / PARTIAL / UNSUPPORTED | 39 / 10 / 7 / 6 | 43 / 4 / 7 / 8 |
+| Fields pre-selected before the user acts | silently applied | 0 / 246 |
+| Exported rules without an explicit decision | present | 0 (45 integrations) |
+| “Integration ready” over wrong data | 3 | 0 |
+| “Integration ready” headlines in total | 17 | 0 |
+| Exports blocked by the scan false positive | 3 | 0 |
+| Model requests | 0 | 0 |
+| Canary or ZIP leaks | 0 | 0 |
+| Confirmed-field records exact (wrong) | 2,079 (0) | 2,174 (0) |
+| PASS cases that regressed | — | none |
+
+**Notes on the FAIL and limitation counts:**
+
+- **The 4 FAIL** are the click-through probes that click “Use …” on every suggestion; 4 suggestions are wrong.
+- **The 129 wrong JSON values** all come from those explicitly confirmed wrong suggestions. Wrong values with correctly chosen fields: 0.
+- **UNSUPPORTED** results are honest stops with a reason. They are not counted as successful integrations.
+
+Evidence: [results-production-489c6ba.json](../evidence/sprint-16c/production/results-production-489c6ba.json), [before-after.md](../evidence/sprint-16c/production/before-after.md), [production/489c6baaf18b/](../evidence/production/489c6baaf18b/acceptance-results.json).
+
+## 4. Phase C — genuine hybrid AI (PRODUCTION_REAL_MODEL)
+
+| Check | Result |
+| --- | --- |
+| **Gemini Nano**, Sprint 16A subset (A1 nested JSON, H2 mixed-language CSV, C3 XLSX with sensitive columns, X15 prompt-injection strings) | **4 / 4 PASS.** Installed Chrome with the dedicated Nano profile. 41 rows, all labeled “Gemini Nano (real on-device)”; 17–29 s per source; **0 cloud requests**. Validator: 20 consistent, 7 applicable, 14 rejected. 38 / 41 roles identical to Sprint 16A; 3 changed between runs (model non-determinism), 2 of which the validator rejected |
+| Nano's effect on guided mapping | **None, by design.** After applying the applicable suggestions, **0 / 27** destination fields were selected. Nano is advisory: it never chooses a field, and it did not improve field matching (as in Sprint 16A) |
+| First Nano attempt | Harness race: the spec did not wait for the app's “Next is held while Nano runs” state, so it recorded 0 rows while Nano was still running. Fixed in the spec; product unchanged; 0 cloud requests |
+| **Hybrid path** `S14-REC-3` (`pnpm test:production:real`) | **PASS, 1 / 1 request used.** Real Nano 6 / 6 fields in 15.2 s with 0 requests during Nano. One request through the app's approval card to `gemini-3.5-flash-lite`: provenance **REAL GEMINI OUTPUT · IN_CLOUD**; **0 private terms** in the request body. Local verification: 3 transformed, structure passed; outcome **`PARTIALLY_VERIFIED` (Draft)** because the demo's reserved hidden cases fail; meaning “unknown”, not promoted. Exported package: `node run.mjs verify` exit 0 in a clean directory |
+| App Check during the cloud request | No App Check exchange was observed in this session: the dedicated profile reused a still-valid token. The request was authenticated: P-002 shows the endpoint refuses tokenless requests on this deployment, and this one returned a real answer |
+| Retries / extra requests | none |
+
+### Gemini Cloud budget (approved by the owner: 1 request; used: 1)
 
 | Item | Proposal |
 | --- | --- |
@@ -99,18 +137,30 @@ The best available proxy is **LOCAL**, and it is not production evidence. Sprint
 | Sent | Only the previewed, approved alias-level disclosure through production App Check: aliases, descriptors, fictional examples, plus the category names of the one field the procedure opts into. Never records, field names or bindings |
 | Checked | approved payload only (0 private terms in the body); `inferenceSource: IN_CLOUD`; `convertProposal` validity; semantic verdict; outcome headline not above its proven level; the export verifies with `node run.mjs verify` in a clean directory |
 
-## 5. Export portability
+## 5. Export portability (PRODUCTION_DETERMINISTIC)
 
-- **Production:** NOT_RUN.
-- **LOCAL proxy (Sprint 16B, identical app code), across the JSON, CSV, XLSX and REST cases** (verified per case in [results-local-rc-25c5eeb45f23.json](../evidence/sprint-16b/results-local-rc-25c5eeb45f23.json)):
-  - 45 / 45 packages pass `verify` in a clean environment;
-  - every file is re-hashed against its manifest;
-  - runner output equals app output and the oracle;
-  - reproducible across two runs;
-  - 0 dropped or invented values;
-  - quarantined records listed;
-  - DRAFT packages labeled DRAFT;
-  - 0 records, bindings or private values in any ZIP.
+The independent verifier checked every reusable integration downloaded from production:
+
+- unzip into a fresh directory;
+- re-hash every file against `manifest.json`;
+- run `node run.mjs verify` with a clean environment and no `node_modules`;
+- run `node run.mjs run` with the downloaded `bindings.local.json`, twice;
+- compare record by record with the app's download and with the oracle.
+
+| Format | Packages | `verify` OK | runner = app | Reproducible | Records exact / compared | Wrong values |
+| --- | --- | --- | --- | --- | --- | --- |
+| JSON | 22 | 22 | 22 | 22 | 682 / 839 | 129* |
+| CSV | 12 | 12 | 12 | 12 | 675 / 740 | 0 |
+| XLSX | 10 | 10 | 10 | 10 | 957 / 1,102 | 0 |
+| REST | 1 | 1 | 1 | 1 | 11 / 11 | 0 |
+
+\* Only the four JSON click-through probes that explicitly confirmed wrong suggestions. The other non-exact records were correctly flagged or quarantined (optional-field limit, injected bad data), never altered or dropped.
+
+**Package findings:**
+
+- Statuses: DRAFT 20, VERIFIED_WITH_EXCEPTIONS 9, VERIFIED 16.
+- Quarantined records are listed by index.
+- 0 records, bindings, canaries or private values in any ZIP. Six package-vocabulary matches were traced and are reported separately.
 
 ## 6. Phase D — independent developer usability: **NOT_RUN (0 participants)**
 
@@ -134,7 +184,7 @@ No independent participant was available to the agent, and participants must nev
 | --- | --- |
 | Manual screen reader (Orca / NVDA / VoiceOver, with a person) | **NOT_RUN**. 12-step protocol ready ([../evidence/sprint-16c/accessibility/README.md](../evidence/sprint-16c/accessibility/README.md)) |
 | Scenario 2 workflow in Chromium and Firefox; 390 px; 200% zoom; keyboard only (Tab + Space/Enter through the category radio, translation, field matches, “Use …”, build, download, visible focus); reduced motion; `role="alert"` blockers | **LOCAL, automated: 13 / 13 PASS** on the `489c6ba` artifact ([automated-local.json](../evidence/sprint-16c/accessibility/automated-local.json)) |
-| The same on production | NOT_RUN (pending deployment). One command: `pnpm exec playwright test -c playwright.qa-16c.config.ts` |
+| The same on production | **PRODUCTION_DETERMINISTIC: 13 / 13 PASS**, Chromium + Firefox ([automated-production.json](../evidence/sprint-16c/accessibility/automated-production.json)); the Scenario 2 dry-run also passes on production ([pilot-production.json](../evidence/sprint-16c/usability/pilot-production.json)) |
 
 **Harness bugs (not product defects):**
 
@@ -161,7 +211,7 @@ No independent participant was available to the agent, and participants must nev
 
 ## 10. Risks and the `VERIFIED` remediation proposal (not implemented)
 
-1. **The new build is not production-proven.** Everything after A3 waits for approval.
+1. **Superseded: the new build is now production-accepted** (§ 3, § 4). Residual: the real cloud path was exercised once, on the demo data (no statistical claim).
 2. **No human evidence.**
    - The Design claim (“a developer can complete it”) rests on automated journeys only.
    - The most likely misunderstanding, “`VERIFIED` = correct meaning”, is untested with people.
@@ -178,34 +228,62 @@ No independent participant was available to the agent, and participants must nev
 
 | # | Item | Label | Result |
 | --- | --- | --- | --- |
-| 1 | Starting SHA / release SHA | — | `489c6ba` (main) / `489c6ba` |
-| 2 | PR / merge | — | PR #19 merged by the owner; CI green |
-| 3 | Production deployment identity | NOT_RUN | serves `c4a246c` |
+| 1 | Starting SHA / release SHA | — | `489c6ba` (main at the start) / `489c6ba` (deployed). `main` is now `9f47dec` (PR #20, docs and QA only; not deployed) |
+| 2 | PR / merge | — | PR #19 (16B) and PR #20 (16C prep) merged by the owner; CI green |
+| 3 | Production deployment identity | PRODUCTION_DETERMINISTIC | `489c6ba` served; 31 / 31 files = artifact |
 | 4 | Local regression | LOCAL | 759 / 759 |
-| 5 | Production acceptance | NOT_RUN | — |
-| 6 | 62-case comparison | LOCAL (16B) / production NOT_RUN | 43 / 4 / 7 / 8 vs. 39 / 10 / 7 / 6 |
-| 7 | Gemini Nano | NOT_RUN on the new SHA | — |
-| 8 | Gemini Cloud | NOT_RUN (deployment + budget gates) | — |
-| 9 | Export portability | LOCAL | 45 / 45 |
+| 5 | Production acceptance | PRODUCTION_DETERMINISTIC | 19 / 19 |
+| 6 | 62-case comparison | PRODUCTION_DETERMINISTIC | 43 / 4 / 7 / 8, equal to LOCAL; 16A production 39 / 10 / 7 / 6 |
+| 7 | Gemini Nano | PRODUCTION_REAL_MODEL | 4 / 4 subset + hybrid path; advisory only |
+| 8 | Gemini Cloud | PRODUCTION_REAL_MODEL | 1 / 1 approved request, `IN_CLOUD`, verified locally, Draft (not promoted) |
+| 9 | Export portability | PRODUCTION_DETERMINISTIC | 45 / 45 |
 | 10 | Independent participants | NOT_RUN | 0 sessions |
-| 11 | Manual accessibility | NOT_RUN | automated LOCAL 13 / 13 |
-| 12 | Privacy / security | LOCAL + earlier production | no findings |
+| 11 | Manual accessibility | NOT_RUN | automated 13 / 13 on production |
+| 12 | Privacy / security | PRODUCTION_DETERMINISTIC + PRODUCTION_REAL_MODEL | no findings: 0 unapproved model requests, 0 leaks, App Check enforced |
 | 13 | Open defects | — | none new; 16B limits disclosed |
-| 14 | Release status | — | **`DEPLOYMENT_PENDING`** |
+| 14 | Release status | — | **`PRODUCTION_ACCEPTED`** (`489c6ba`) |
 
-## 15. Final decision: `INSUFFICIENT_EVIDENCE`
+## 15. Final decision: `SUBMISSION_READY_WITH_DISCLOSED_LIMITATIONS`
 
-- **Why not `SUBMISSION_READY_WITH_DISCLOSED_LIMITATIONS`?**
-  - The build that fixes the Sprint 16A defects is not deployed, and no production or real-model check has run on it.
-  - The live build `c4a246c` still has D1–D3: silent wrong mappings shown as “Integration ready”, and blocked exports.
-  - There is no human evidence for the Design claim.
-- **Why not `BLOCKED_BY_CRITICAL_DEFECTS`?** No P0 or P1 defect is open in the release build. Everything measured so far passes.
+**Why it is submittable:**
 
-**Exact path to `SUBMISSION_READY_WITH_DISCLOSED_LIMITATIONS`:**
+- The release that fixes every Sprint 16A defect is live and passed every required production check on its exact SHA.
+- Real Nano and real Gemini Cloud work through production App Check.
+- Privacy held in every measurement.
+- Every exported integration runs independently and matches the app and the oracle.
 
-1. The owner approves the deployment of `489c6ba` and the 1-request cloud budget.
-2. Deploy; `pnpm test:production` passes on that SHA; the 62-case production run matches the LOCAL baseline with 0 privacy or decision regressions; real Nano plus 1 real cloud request pass. The release can then be marked `PRODUCTION_ACCEPTED`.
-3. Run at least 3 independent sessions and a manual screen-reader pass. **Strongly recommended for the Design criterion.** Without them, the submission must state that no usability study was performed.
-4. Owner submission steps: [submission-readiness.md](../evidence/sprint-16c/submission-readiness.md).
+**What must be disclosed:**
 
-Sprint 17 was not started, nothing was submitted, and no video was uploaded.
+- No independent usability sessions.
+- No manual screen-reader pass.
+- Suggestions can be wrong. Accepting every one gave wrong values in 4 of 8 click-through probes, always as an explicit act, never shown as “Integration ready”.
+- `VERIFIED` is a structural package status.
+- The 16A limitations remain (optional fields, locale numbers and dates, column names, depth, arrays).
+
+**What would move it to `SUBMISSION_READY`:**
+
+- At least 3 independent sessions that meet the targets in the protocol, in particular 0 participants reading `VERIFIED` or “Structure verified” as guaranteed meaning.
+- One manual screen-reader pass without blockers.
+
+**Next actions for human usability sessions:** see § 16.
+
+## 16. Next actions — independent usability sessions (owner)
+
+1. **Recruit** three developers who have never used EYES and have JSON / CSV / API experience. Get consent for note-taking only: no recordings in the repository.
+2. **Prepare** each machine: Chrome; Node 22 and `unzip` in an empty folder.
+   - Materials: [`docs/usability/fixtures/customers.json`](../usability/fixtures/customers.json) (Scenario 1) and the [`participant/`](../usability/sprint-16c/participant/) pack (Scenario 2).
+   - Do **not** share the `facilitator/` folder.
+3. **Check** that the footer shows `build 489c6baaf18b` on <https://eyes-without-a-face-b7281.web.app>.
+4. **Run** the session exactly as in [protocol.md](../evidence/sprint-16c/usability/protocol.md):
+   - read the verbatim briefing;
+   - stay silent; intervene only after 3 minutes stuck, and record it;
+   - time the measures;
+   - mark the 14 checklist items.
+5. **Check correctness** with `node scripts/qa/s16c/check-usability-output.mjs <their transformed-records.json>` (Scenario 2). It prints counts and field names only.
+6. **Ask the trust questions** after the task, especially “Does this result guarantee the correct business meaning?”, for “Structure verified” and `VERIFIED`.
+7. **Record aggregate, sanitized results** in [results.md](../evidence/sprint-16c/usability/results.md).
+8. **If a critical misunderstanding of `VERIFIED` appears:** record it as a release risk and consider the UI-only remediation in § 10. Any contract change needs its own review.
+9. **Screen-reader pass:** one person, Orca / NVDA / VoiceOver, the 12 steps in [accessibility/README.md](../evidence/sprint-16c/accessibility/README.md).
+10. **Then** update the decision, before the deadline: 2026-11-30, 2:00 PM PT.
+
+Sprint 17 was not started, nothing was submitted to Devpost, and no video was uploaded.

@@ -1,0 +1,67 @@
+{
+  "releaseSha": "489c6baaf18bf22d146e583752eecc343ed3d986",
+  "testedUrl": "https://eyes-without-a-face-b7281.web.app",
+  "deployedAt": "2026-11-16T14:06:49Z (owner-approved for exactly this SHA; firebase-tools@15.35.0 deploy --only hosting; no configuration change)",
+  "artifact": "build:release + verify:release PASS from a clean checkout of 489c6ba; 31 files, 2,653 KiB; digest 247e7057e2184f3f6c1bbd715a18a804bb047b87be828ae2b3711362e22ddad2; all 31 served files byte-identical to the artifact after deployment",
+  "testedAt": "2026-11-16T14:07Z–14:15Z",
+  "status": "PRODUCTION_ACCEPTED",
+  "statusReason": "The served SHA matches and every served file is identical to the verified artifact. All 19 deterministic production checks pass (Chromium, Firefox). The 62-case real-world matrix on production matches the local release-candidate baseline case for case, with no privacy, field-decision, semantic-wording or export regression. Automated access checks pass 13/13. Real Gemini Nano runs on device (4/4 plus the hybrid path). One approved real Gemini Cloud request returns IN_CLOUD output, is verified locally and exports a package that verifies independently.",
+  "rollbackTarget": "c4a246cee43239a29298e919fe49c83fc0a8e9bb",
+  "inferenceBudget": { "cloudRequestsAllowed": 1, "cloudRequestsUsed": 1, "declaredExtra": 0, "extraUsed": 0 },
+  "checks": [
+    {
+      "area": "deployment identity: build-info, production mode, App Check debug off, served files = artifact",
+      "result": "PASS",
+      "kind": "DETERMINISTIC",
+      "evidence": "release-manifest.json; served files: 31 / 31 SHA-256 identical to dist/"
+    },
+    {
+      "area": "identity, App Check enforced (tokenless request refused), JSON / CSV / XLSX imports, read-only REST, invalid file, approval gate, category warning, invalid destination, local build with explicit field choices (P-024), navigation, 390 px, keyboard, Firefox subset",
+      "result": "PASS",
+      "kind": "DETERMINISTIC",
+      "evidence": "browser-results.json (19 / 19), screenshots/"
+    },
+    {
+      "area": "62-case real-world matrix (Sprint 16A inputs, oracle unchanged)",
+      "result": "PASS (gates)",
+      "kind": "DETERMINISTIC",
+      "evidence": "../../sprint-16c/production/results-production-489c6ba.json and before-after.md: PASS 43, FAIL 4 (click-through probes that explicitly accepted wrong suggestions), PARTIAL 7 (optional-field limit), UNSUPPORTED 8; 0 per-case discrepancies vs the local release candidate; 0 / 246 fields pre-selected; 0 rules without an explicit decision; 0 “Integration ready” over wrong data; 0 model requests; 0 canary or ZIP leaks; 2,174 confirmed-field records exact"
+    },
+    {
+      "area": "export portability (independent: clean Node 22 env, re-hash vs manifest, run twice, compare with app and oracle)",
+      "result": "PASS",
+      "kind": "DETERMINISTIC",
+      "evidence": "45 / 45 packages (JSON 22, CSV 12, XLSX 10, REST 1): verify exit 0, integrity, reproducible, runner = app; DRAFT 20, VERIFIED_WITH_EXCEPTIONS 9, VERIFIED 16"
+    },
+    {
+      "area": "automated cross-browser / access (Scenario 2 journey, 390 px, 200% zoom, keyboard, reduced motion, alerts) and Scenario 2 materials dry-run",
+      "result": "PASS",
+      "kind": "DETERMINISTIC",
+      "evidence": "../../sprint-16c/accessibility/automated-production.json (13 / 13, Chromium + Firefox); ../../sprint-16c/usability/pilot-production.json (agent dry-run, not a participant)"
+    },
+    {
+      "area": "genuine Gemini Nano on the hosted build (Sprint 16A subset)",
+      "result": "PASS",
+      "kind": "REAL",
+      "evidence": "../../sprint-16c/production/nano-results.json: 4 / 4 cases, 41 rows all real on-device, 17–29 s, 0 cloud requests; applying Nano's suggestions selected 0 of 27 destination fields (advisory only); 38 / 41 roles identical to Sprint 16A"
+    },
+    {
+      "area": "genuine hybrid path: Gemini Nano, then one approved Gemini Cloud request",
+      "result": "PASS",
+      "kind": "REAL",
+      "evidence": "inference-results.json (S14-REC-3): Nano 6 / 6, 0 requests during Nano; 1 request, gemini-3.5-flash-lite, origin REAL GEMINI OUTPUT · IN_CLOUD; 0 private terms in the request body; 3 transformed; outcome PARTIALLY_VERIFIED (the demo's reserved hidden cases) with meaning unknown, not promoted; export verify exit 0. No App Check exchange was observed in this session (token reused within its lifetime by the dedicated profile); App Check enforcement is proven by P-002 on this deployment"
+    },
+    {
+      "area": "independent human usability sessions",
+      "result": "NOT RUN",
+      "kind": "—",
+      "evidence": "../../sprint-16c/usability/protocol.md (ready), results.md (empty)"
+    },
+    {
+      "area": "manual screen-reader pass",
+      "result": "NOT RUN",
+      "kind": "—",
+      "evidence": "../../sprint-16c/accessibility/README.md (12-step protocol)"
+    }
+  ]
+}
