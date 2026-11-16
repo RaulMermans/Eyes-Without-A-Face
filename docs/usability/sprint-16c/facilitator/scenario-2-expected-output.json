@@ -1,0 +1,242 @@
+[
+  {
+    "shipmentId": "SHP-048210",
+    "carrier": "Paketblitz",
+    "deliveryState": "created",
+    "destinationCountry": "DE",
+    "recipientEmail": "emre.brekke.0@example.test",
+    "shippedAt": "2026-07-19T09:45:25.000Z"
+  },
+  {
+    "shipmentId": "SHP-048223",
+    "carrier": "Rápido Norte",
+    "deliveryState": "created",
+    "destinationCountry": "NL",
+    "recipientEmail": "dalia.vasquez.1@example.test",
+    "shippedAt": "2025-11-18T17:00:13.000Z"
+  },
+  {
+    "shipmentId": "SHP-048236",
+    "carrier": "Paketblitz",
+    "deliveryState": "exception",
+    "destinationCountry": "FR",
+    "recipientEmail": "mael.szabo.2@example.test",
+    "shippedAt": "2024-02-01T06:21:01.000Z"
+  },
+  {
+    "shipmentId": "SHP-048249",
+    "carrier": "Rápido Norte",
+    "deliveryState": "in_transit",
+    "destinationCountry": "ES",
+    "recipientEmail": "priya.weissmann.3@example.test",
+    "shippedAt": "2024-11-03T08:39:47.000Z"
+  },
+  {
+    "shipmentId": "SHP-048262",
+    "carrier": "Paketblitz",
+    "deliveryState": "delivered",
+    "destinationCountry": "FR",
+    "recipientEmail": "oskar.kowalczyk.4@example.test",
+    "shippedAt": "2025-05-28T09:40:02.000Z"
+  },
+  {
+    "shipmentId": "SHP-048275",
+    "carrier": "Coastline Freight",
+    "deliveryState": "in_transit",
+    "destinationCountry": "DE",
+    "recipientEmail": "goran.brekke.5@example.test",
+    "shippedAt": "2024-08-04T04:14:22.000Z"
+  },
+  {
+    "shipmentId": "SHP-048288",
+    "carrier": "Rápido Norte",
+    "deliveryState": "in_transit",
+    "destinationCountry": "DE",
+    "recipientEmail": "emre.rautio.6@example.test",
+    "shippedAt": "2026-07-15T09:12:22.000Z"
+  },
+  {
+    "shipmentId": "SHP-048301",
+    "carrier": "Paketblitz",
+    "deliveryState": "delivered",
+    "destinationCountry": "NL",
+    "recipientEmail": "fenna.moreau.7@example.test",
+    "shippedAt": "2025-11-24T21:34:38.000Z"
+  },
+  {
+    "shipmentId": "SHP-048314",
+    "carrier": "Rápido Norte",
+    "deliveryState": "exception",
+    "destinationCountry": "NL",
+    "recipientEmail": "tamsin.gronlund.8@example.test",
+    "shippedAt": "2026-08-21T03:54:00.000Z"
+  },
+  {
+    "shipmentId": "SHP-048327",
+    "carrier": "Paketblitz",
+    "deliveryState": "in_transit",
+    "destinationCountry": "FR",
+    "recipientEmail": "priya.szabo.9@example.test",
+    "shippedAt": "2025-01-07T12:16:55.000Z"
+  },
+  {
+    "shipmentId": "SHP-048340",
+    "carrier": "Paketblitz",
+    "deliveryState": "in_transit",
+    "destinationCountry": "ES",
+    "recipientEmail": "bram.farrugia.10@example.test",
+    "shippedAt": "2024-11-19T17:48:16.000Z"
+  },
+  {
+    "shipmentId": "SHP-048353",
+    "carrier": "Paketblitz",
+    "deliveryState": "delivered",
+    "destinationCountry": "ES",
+    "recipientEmail": "noemi.halloran.11@example.test",
+    "shippedAt": "2026-08-26T14:54:51.000Z"
+  },
+  {
+    "shipmentId": "SHP-048366",
+    "carrier": "Paketblitz",
+    "deliveryState": "exception",
+    "destinationCountry": "FR",
+    "recipientEmail": "dalia.uriarte.12@example.test",
+    "shippedAt": "2025-01-24T03:22:01.000Z"
+  },
+  {
+    "shipmentId": "SHP-048379",
+    "carrier": "Paketblitz",
+    "deliveryState": "delivered",
+    "destinationCountry": "ES",
+    "recipientEmail": "ainhoa.brekke.13@example.test",
+    "shippedAt": "2026-09-13T12:20:15.000Z"
+  },
+  {
+    "shipmentId": "SHP-048392",
+    "carrier": "Paketblitz",
+    "deliveryState": "created",
+    "destinationCountry": "ES",
+    "recipientEmail": "chiara.lindqvist.14@example.test",
+    "shippedAt": "2024-07-13T12:44:33.000Z"
+  },
+  {
+    "shipmentId": "SHP-048405",
+    "carrier": "Paketblitz",
+    "deliveryState": "delivered",
+    "destinationCountry": "ES",
+    "recipientEmail": "iker.uriarte.15@example.test",
+    "shippedAt": "2024-11-22T13:35:03.000Z"
+  },
+  {
+    "shipmentId": "SHP-048418",
+    "carrier": "Coastline Freight",
+    "deliveryState": "exception",
+    "destinationCountry": "NL",
+    "recipientEmail": "vesna.kowalczyk.16@example.test",
+    "shippedAt": "2026-09-04T08:19:52.000Z"
+  },
+  {
+    "shipmentId": "SHP-048431",
+    "carrier": "Rápido Norte",
+    "deliveryState": "in_transit",
+    "destinationCountry": "NL",
+    "recipientEmail": "soren.tremblay.17@example.test",
+    "shippedAt": "2025-12-07T16:55:25.000Z"
+  },
+  {
+    "shipmentId": "SHP-048444",
+    "carrier": "Paketblitz",
+    "deliveryState": "exception",
+    "destinationCountry": "DE",
+    "recipientEmail": "bjorn.moreau.18@example.test",
+    "shippedAt": "2024-03-07T07:24:08.000Z"
+  },
+  {
+    "shipmentId": "SHP-048457",
+    "carrier": "Coastline Freight",
+    "deliveryState": "in_transit",
+    "destinationCountry": "FR",
+    "recipientEmail": "chiara.gronlund.19@example.test",
+    "shippedAt": "2025-05-28T14:00:19.000Z"
+  },
+  {
+    "shipmentId": "SHP-048470",
+    "carrier": "Coastline Freight",
+    "deliveryState": "in_transit",
+    "destinationCountry": "DE",
+    "recipientEmail": "oskar.kowalczyk.20@example.test",
+    "shippedAt": "2024-02-20T00:45:27.000Z"
+  },
+  {
+    "shipmentId": "SHP-048483",
+    "carrier": "Rápido Norte",
+    "deliveryState": "exception",
+    "destinationCountry": "DE",
+    "recipientEmail": "vesna.szabo.21@example.test",
+    "shippedAt": "2024-03-12T05:35:09.000Z"
+  },
+  {
+    "shipmentId": "SHP-048496",
+    "carrier": "Rápido Norte",
+    "deliveryState": "in_transit",
+    "destinationCountry": "ES",
+    "recipientEmail": "dalia.zubiri.22@example.test",
+    "shippedAt": "2025-01-07T09:46:35.000Z"
+  },
+  {
+    "shipmentId": "SHP-048509",
+    "carrier": "Rápido Norte",
+    "deliveryState": "created",
+    "destinationCountry": "ES",
+    "recipientEmail": "jurgen.ekwueme.23@example.test",
+    "shippedAt": "2025-10-21T15:54:40.000Z"
+  },
+  {
+    "shipmentId": "SHP-048522",
+    "carrier": "Paketblitz",
+    "deliveryState": "in_transit",
+    "destinationCountry": "ES",
+    "recipientEmail": "ines.yilmaz.24@example.test",
+    "shippedAt": "2026-10-15T05:57:38.000Z"
+  },
+  {
+    "shipmentId": "SHP-048535",
+    "carrier": "Rápido Norte",
+    "deliveryState": "exception",
+    "destinationCountry": "NL",
+    "recipientEmail": "vesna.quist.25@example.test",
+    "shippedAt": "2024-11-15T07:58:36.000Z"
+  },
+  {
+    "shipmentId": "SHP-048548",
+    "carrier": "Paketblitz",
+    "deliveryState": "created",
+    "destinationCountry": "NL",
+    "recipientEmail": "bram.pellegrini.26@example.test",
+    "shippedAt": "2024-01-28T07:23:29.000Z"
+  },
+  {
+    "shipmentId": "SHP-048561",
+    "carrier": "Coastline Freight",
+    "deliveryState": "in_transit",
+    "destinationCountry": "ES",
+    "recipientEmail": "xiomara.moreau.27@example.test",
+    "shippedAt": "2026-03-09T21:08:13.000Z"
+  },
+  {
+    "shipmentId": "SHP-048574",
+    "carrier": "Coastline Freight",
+    "deliveryState": "delivered",
+    "destinationCountry": "ES",
+    "recipientEmail": "dalia.ibarra.28@example.test",
+    "shippedAt": "2026-06-27T22:15:23.000Z"
+  },
+  {
+    "shipmentId": "SHP-048587",
+    "carrier": "Rápido Norte",
+    "deliveryState": "delivered",
+    "destinationCountry": "NL",
+    "recipientEmail": "iker.halloran.29@example.test",
+    "shippedAt": "2025-06-21T21:44:52.000Z"
+  }
+]

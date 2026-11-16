@@ -41,5 +41,6 @@ Read, in order:
 34. `docs/usability/sprint-15-protocol.md` — independent usability protocol (NOT PERFORMED)
 35. `docs/qa/sprint-16a-real-world-production.md` — Sprint 16A production QA: held-out data, defects D1–D4, readiness decision
 36. `docs/qa/sprint-16b-mapping-integrity.md` — Sprint 16B: explicit field decisions, honest verdicts, provenance-aware export scan, release candidate
+37. `docs/qa/sprint-16c-production-acceptance.md` — Sprint 16C: release 489c6ba (DEPLOYMENT_PENDING), usability and accessibility kits, submission readiness
 
 Every sprint ends with an evidence-backed release status (`CODE_READY`, `DEPLOYMENT_PENDING`, `DEPLOYED_UNVERIFIED`, `PRODUCTION_ACCEPTED`, `RELEASE_FAILED`); rules in `AGENTS.md`. Do not duplicate architecture here. Do not start Sprint 16 automatically.
