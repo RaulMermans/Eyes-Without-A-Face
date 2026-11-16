@@ -1,0 +1,1245 @@
+{
+  "generator": "scripts/qa/s16a/generate.mjs",
+  "generatorVersion": "1.0.0",
+  "masterSeed": "S16A-HOLDOUT-2026-11-16-q7c2",
+  "generatedAt": "2026-11-16T09:26:07.967Z",
+  "independence": "Imports nothing from src/. Expected outputs are projections of hidden canonical entities, never parses of the source text.",
+  "canaryRegistrySha256": "71433b2845435e8f0e932c7c06389923b30c26d2639f47417db539386bbb4c21",
+  "cases": [
+    {
+      "id": "S16A-A1",
+      "group": "scenario",
+      "scenario": "A",
+      "dimension": null,
+      "format": "json",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/A/v1",
+      "dims": {
+        "records": 38,
+        "columns": 11,
+        "nested": true,
+        "bytes": 17154
+      },
+      "expectation": "transform",
+      "sourceSha256": "fbf5678943ef1e56a37f9dc190ef79a99eb99f2bfe3274801f06087013ee0bb8",
+      "expectedCounts": {
+        "transformed": 36,
+        "quarantined": 1,
+        "unresolved": 1
+      }
+    },
+    {
+      "id": "S16A-A1-D",
+      "group": "probe",
+      "scenario": "A",
+      "dimension": null,
+      "format": "json",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/A/v1",
+      "dims": {
+        "records": 38,
+        "columns": 11,
+        "nested": true,
+        "bytes": 17154
+      },
+      "expectation": "transform",
+      "sourceSha256": "fbf5678943ef1e56a37f9dc190ef79a99eb99f2bfe3274801f06087013ee0bb8",
+      "expectedCounts": {
+        "transformed": 36,
+        "quarantined": 1,
+        "unresolved": 1
+      }
+    },
+    {
+      "id": "S16A-A2",
+      "group": "scenario",
+      "scenario": "A",
+      "dimension": null,
+      "format": "csv",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/A/v2",
+      "dims": {
+        "records": 56,
+        "columns": 11,
+        "nested": false,
+        "bytes": 10644
+      },
+      "expectation": "transform",
+      "sourceSha256": "9b1f2d7d865494636691ab7f9f5bcf653022d0c3eb3e381ad8e4558a32463404",
+      "expectedCounts": {
+        "transformed": 55,
+        "quarantined": 0,
+        "unresolved": 1
+      }
+    },
+    {
+      "id": "S16A-A3",
+      "group": "scenario",
+      "scenario": "A",
+      "dimension": null,
+      "format": "xlsx",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/A/v3",
+      "dims": {
+        "records": 110,
+        "columns": 11,
+        "nested": false,
+        "bytes": 30017
+      },
+      "expectation": "transform",
+      "sourceSha256": "9319ff0a27c07d8f587dd1f8fce773433cf2369205c6bfa76d632dc2e7c57693",
+      "expectedCounts": {
+        "transformed": 109,
+        "quarantined": 0,
+        "unresolved": 1
+      }
+    },
+    {
+      "id": "S16A-B1",
+      "group": "scenario",
+      "scenario": "B",
+      "dimension": null,
+      "format": "json",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/B/v1",
+      "dims": {
+        "records": 40,
+        "columns": 13,
+        "nested": false,
+        "bytes": 13859
+      },
+      "expectation": "transform",
+      "sourceSha256": "2d4f49df5b494913901a6f7f73dbd46ccc720c0e44844342209e574a0004fa21",
+      "expectedCounts": {
+        "transformed": 39,
+        "quarantined": 1,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-B1-D",
+      "group": "probe",
+      "scenario": "B",
+      "dimension": null,
+      "format": "json",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/B/v1",
+      "dims": {
+        "records": 40,
+        "columns": 13,
+        "nested": false,
+        "bytes": 13859
+      },
+      "expectation": "transform",
+      "sourceSha256": "2d4f49df5b494913901a6f7f73dbd46ccc720c0e44844342209e574a0004fa21",
+      "expectedCounts": {
+        "transformed": 39,
+        "quarantined": 1,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-B2",
+      "group": "scenario",
+      "scenario": "B",
+      "dimension": null,
+      "format": "csv",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/B/v2",
+      "dims": {
+        "records": 78,
+        "columns": 13,
+        "nested": false,
+        "bytes": 8621
+      },
+      "expectation": "transform",
+      "sourceSha256": "bd5d34834dcce66db4377dbf3c90b88e17f0d21c3aa3a811a902c766d28cc829",
+      "expectedCounts": {
+        "transformed": 76,
+        "quarantined": 2,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-B3",
+      "group": "scenario",
+      "scenario": "B",
+      "dimension": null,
+      "format": "xlsx",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/B/v3",
+      "dims": {
+        "records": 104,
+        "columns": 13,
+        "nested": false,
+        "bytes": 27703
+      },
+      "expectation": "transform",
+      "sourceSha256": "b2bb9dbdea165d31979402e8362e1ab8227baa953ad8886863664c34e68ae130",
+      "expectedCounts": {
+        "transformed": 104,
+        "quarantined": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-C1",
+      "group": "scenario",
+      "scenario": "C",
+      "dimension": null,
+      "format": "json",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/C/v1",
+      "dims": {
+        "records": 35,
+        "columns": 11,
+        "nested": false,
+        "bytes": 14026
+      },
+      "expectation": "transform",
+      "sourceSha256": "e77071ebb66eb62fcd162923b9e82746487d621fb8d2e3aea2edd33560716d5e",
+      "expectedCounts": {
+        "transformed": 34,
+        "quarantined": 0,
+        "unresolved": 1
+      }
+    },
+    {
+      "id": "S16A-C1-D",
+      "group": "probe",
+      "scenario": "C",
+      "dimension": null,
+      "format": "json",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/C/v1",
+      "dims": {
+        "records": 35,
+        "columns": 11,
+        "nested": false,
+        "bytes": 14026
+      },
+      "expectation": "transform",
+      "sourceSha256": "e77071ebb66eb62fcd162923b9e82746487d621fb8d2e3aea2edd33560716d5e",
+      "expectedCounts": {
+        "transformed": 34,
+        "quarantined": 0,
+        "unresolved": 1
+      }
+    },
+    {
+      "id": "S16A-C2",
+      "group": "scenario",
+      "scenario": "C",
+      "dimension": null,
+      "format": "csv",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/C/v2",
+      "dims": {
+        "records": 86,
+        "columns": 11,
+        "nested": false,
+        "bytes": 14684
+      },
+      "expectation": "transform",
+      "sourceSha256": "009e48aeea79205de0e76dcbe5697558b2990b19ba474793a9e45f3370c74d10",
+      "expectedCounts": {
+        "transformed": 84,
+        "quarantined": 1,
+        "unresolved": 1
+      }
+    },
+    {
+      "id": "S16A-C3",
+      "group": "scenario",
+      "scenario": "C",
+      "dimension": null,
+      "format": "xlsx",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/C/v3",
+      "dims": {
+        "records": 157,
+        "columns": 11,
+        "nested": false,
+        "bytes": 33638
+      },
+      "expectation": "transform",
+      "sourceSha256": "2cbc2adfc9ba66a581202e3c8922cb970328367151e50ecfbb06a0ac2ae2c108",
+      "expectedCounts": {
+        "transformed": 157,
+        "quarantined": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-D1",
+      "group": "scenario",
+      "scenario": "D",
+      "dimension": null,
+      "format": "json",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/D/v1",
+      "dims": {
+        "records": 34,
+        "columns": 11,
+        "nested": false,
+        "bytes": 12092
+      },
+      "expectation": "transform",
+      "sourceSha256": "4b9dfa202ba9835701697d13aee7dc1f1d950cbcb2d95f47ce17e5ec39a4a561",
+      "expectedCounts": {
+        "transformed": 33,
+        "quarantined": 1,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-D1-D",
+      "group": "probe",
+      "scenario": "D",
+      "dimension": null,
+      "format": "json",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/D/v1",
+      "dims": {
+        "records": 34,
+        "columns": 11,
+        "nested": false,
+        "bytes": 12092
+      },
+      "expectation": "transform",
+      "sourceSha256": "4b9dfa202ba9835701697d13aee7dc1f1d950cbcb2d95f47ce17e5ec39a4a561",
+      "expectedCounts": {
+        "transformed": 33,
+        "quarantined": 1,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-D2",
+      "group": "scenario",
+      "scenario": "D",
+      "dimension": null,
+      "format": "csv",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/D/v2",
+      "dims": {
+        "records": 82,
+        "columns": 11,
+        "nested": false,
+        "bytes": 10345
+      },
+      "expectation": "transform",
+      "sourceSha256": "96dc05d791e3fa3cd5d8e383e4818d71936e9f61de3253c9877166790c30dc2c",
+      "expectedCounts": {
+        "transformed": 81,
+        "quarantined": 0,
+        "unresolved": 1
+      }
+    },
+    {
+      "id": "S16A-D3",
+      "group": "scenario",
+      "scenario": "D",
+      "dimension": null,
+      "format": "xlsx",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/D/v3",
+      "dims": {
+        "records": 171,
+        "columns": 11,
+        "nested": false,
+        "bytes": 38751
+      },
+      "expectation": "transform",
+      "sourceSha256": "62b83cb2fa2eb917f6e912e9fface5f06d6c004e63d259a35117edeec3fbe038",
+      "expectedCounts": {
+        "transformed": 171,
+        "quarantined": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-E1",
+      "group": "scenario",
+      "scenario": "E",
+      "dimension": null,
+      "format": "json",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/E/v1",
+      "dims": {
+        "records": 22,
+        "columns": 11,
+        "nested": true,
+        "bytes": 10732
+      },
+      "expectation": "transform",
+      "sourceSha256": "80e4aadd4881d1e6c824f1b65c6a23a5d594bc54c01ddcae85b29abb306dcfa7",
+      "expectedCounts": {
+        "transformed": 21,
+        "quarantined": 1,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-E1-D",
+      "group": "probe",
+      "scenario": "E",
+      "dimension": null,
+      "format": "json",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/E/v1",
+      "dims": {
+        "records": 22,
+        "columns": 11,
+        "nested": true,
+        "bytes": 10732
+      },
+      "expectation": "transform",
+      "sourceSha256": "80e4aadd4881d1e6c824f1b65c6a23a5d594bc54c01ddcae85b29abb306dcfa7",
+      "expectedCounts": {
+        "transformed": 21,
+        "quarantined": 1,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-E2",
+      "group": "scenario",
+      "scenario": "E",
+      "dimension": null,
+      "format": "csv",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/E/v2",
+      "dims": {
+        "records": 62,
+        "columns": 10,
+        "nested": false,
+        "bytes": 8126
+      },
+      "expectation": "transform",
+      "sourceSha256": "c643fa7f1671b04541bcee841fb64f834093127850275fc7e3a76440c583371b",
+      "expectedCounts": {
+        "transformed": 61,
+        "quarantined": 0,
+        "unresolved": 1
+      }
+    },
+    {
+      "id": "S16A-E3",
+      "group": "scenario",
+      "scenario": "E",
+      "dimension": null,
+      "format": "xlsx",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/E/v3",
+      "dims": {
+        "records": 155,
+        "columns": 10,
+        "nested": false,
+        "bytes": 30501
+      },
+      "expectation": "transform",
+      "sourceSha256": "4e33a3eeccea4db545349a69127a32e91cb37f4247503f75b8dc4b6c1d71ed2c",
+      "expectedCounts": {
+        "transformed": 155,
+        "quarantined": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-F1",
+      "group": "scenario",
+      "scenario": "F",
+      "dimension": null,
+      "format": "json",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/F/v1",
+      "dims": {
+        "records": 23,
+        "columns": 10,
+        "nested": false,
+        "bytes": 8942
+      },
+      "expectation": "transform",
+      "sourceSha256": "cdbab832c34081289a44fef0c6073cdc03d786faa023db1b70aa9770d63aef24",
+      "expectedCounts": {
+        "transformed": 22,
+        "quarantined": 0,
+        "unresolved": 1
+      }
+    },
+    {
+      "id": "S16A-F1-D",
+      "group": "probe",
+      "scenario": "F",
+      "dimension": null,
+      "format": "json",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/F/v1",
+      "dims": {
+        "records": 23,
+        "columns": 10,
+        "nested": false,
+        "bytes": 8942
+      },
+      "expectation": "transform",
+      "sourceSha256": "cdbab832c34081289a44fef0c6073cdc03d786faa023db1b70aa9770d63aef24",
+      "expectedCounts": {
+        "transformed": 22,
+        "quarantined": 0,
+        "unresolved": 1
+      }
+    },
+    {
+      "id": "S16A-F2",
+      "group": "scenario",
+      "scenario": "F",
+      "dimension": null,
+      "format": "csv",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/F/v2",
+      "dims": {
+        "records": 72,
+        "columns": 10,
+        "nested": false,
+        "bytes": 12515
+      },
+      "expectation": "transform",
+      "sourceSha256": "27aa6282466f0d145611be7ceeea2bcd0184e1d6ff4da27f0f713f981d48a0c9",
+      "expectedCounts": {
+        "transformed": 71,
+        "quarantined": 1,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-F3",
+      "group": "scenario",
+      "scenario": "F",
+      "dimension": null,
+      "format": "xlsx",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/F/v3",
+      "dims": {
+        "records": 158,
+        "columns": 10,
+        "nested": false,
+        "bytes": 35689
+      },
+      "expectation": "transform",
+      "sourceSha256": "0ed38785db8cabfc63f95675af6b416d512d9cb4523989b35b59bf108df380e8",
+      "expectedCounts": {
+        "transformed": 157,
+        "quarantined": 0,
+        "unresolved": 1
+      }
+    },
+    {
+      "id": "S16A-G1",
+      "group": "scenario",
+      "scenario": "G",
+      "dimension": null,
+      "format": "json",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/G/v1",
+      "dims": {
+        "records": 38,
+        "columns": 9,
+        "nested": false,
+        "bytes": 11870
+      },
+      "expectation": "transform",
+      "sourceSha256": "478344e463726ff874cd625a458f392d062d9de696b47752c6c356ed0e8ae1d0",
+      "expectedCounts": {
+        "transformed": 38,
+        "quarantined": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-G1-D",
+      "group": "probe",
+      "scenario": "G",
+      "dimension": null,
+      "format": "json",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/G/v1",
+      "dims": {
+        "records": 38,
+        "columns": 9,
+        "nested": false,
+        "bytes": 11870
+      },
+      "expectation": "transform",
+      "sourceSha256": "478344e463726ff874cd625a458f392d062d9de696b47752c6c356ed0e8ae1d0",
+      "expectedCounts": {
+        "transformed": 38,
+        "quarantined": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-G2",
+      "group": "scenario",
+      "scenario": "G",
+      "dimension": null,
+      "format": "csv",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/G/v2",
+      "dims": {
+        "records": 84,
+        "columns": 9,
+        "nested": false,
+        "bytes": 11497
+      },
+      "expectation": "transform",
+      "sourceSha256": "dd122798599415b1ac2a83e2e0e83e55a738e71fc9730eb658a777137d3b4acf",
+      "expectedCounts": {
+        "transformed": 82,
+        "quarantined": 1,
+        "unresolved": 1
+      }
+    },
+    {
+      "id": "S16A-G3",
+      "group": "scenario",
+      "scenario": "G",
+      "dimension": null,
+      "format": "xlsx",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/G/v3",
+      "dims": {
+        "records": 125,
+        "columns": 9,
+        "nested": false,
+        "bytes": 24914
+      },
+      "expectation": "transform",
+      "sourceSha256": "5cd39485d9741402733860c320cd150af2c33d06ee95e64ffe2ec5293c2524e1",
+      "expectedCounts": {
+        "transformed": 125,
+        "quarantined": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-H1",
+      "group": "scenario",
+      "scenario": "H",
+      "dimension": null,
+      "format": "json",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/H/v1",
+      "dims": {
+        "records": 39,
+        "columns": 12,
+        "nested": false,
+        "bytes": 17594
+      },
+      "expectation": "transform",
+      "sourceSha256": "09bcf53012e6147befc60c6ded89b947ae870c82ef895839dadf3c464047a8b9",
+      "expectedCounts": {
+        "transformed": 38,
+        "quarantined": 1,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-H1-D",
+      "group": "probe",
+      "scenario": "H",
+      "dimension": null,
+      "format": "json",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/H/v1",
+      "dims": {
+        "records": 39,
+        "columns": 12,
+        "nested": false,
+        "bytes": 17594
+      },
+      "expectation": "transform",
+      "sourceSha256": "09bcf53012e6147befc60c6ded89b947ae870c82ef895839dadf3c464047a8b9",
+      "expectedCounts": {
+        "transformed": 38,
+        "quarantined": 1,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-H2",
+      "group": "scenario",
+      "scenario": "H",
+      "dimension": null,
+      "format": "csv",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/H/v2",
+      "dims": {
+        "records": 58,
+        "columns": 12,
+        "nested": false,
+        "bytes": 11657
+      },
+      "expectation": "transform",
+      "sourceSha256": "b0ee270660fecc28fa2c93cfedb57a845eb944bc59b792af24958d92f3f2c13d",
+      "expectedCounts": {
+        "transformed": 57,
+        "quarantined": 0,
+        "unresolved": 1
+      }
+    },
+    {
+      "id": "S16A-H3",
+      "group": "scenario",
+      "scenario": "H",
+      "dimension": null,
+      "format": "xlsx",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/H/v3",
+      "dims": {
+        "records": 108,
+        "columns": 12,
+        "nested": false,
+        "bytes": 29671
+      },
+      "expectation": "transform",
+      "sourceSha256": "d547bd022f240df2aad2daafa6aa1914302e84deadc219b70d716ca443a6b776",
+      "expectedCounts": {
+        "transformed": 108,
+        "quarantined": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-X01",
+      "group": "edge",
+      "scenario": null,
+      "dimension": "volume",
+      "format": "json",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/S16A-X01",
+      "dims": {
+        "records": 0,
+        "columns": 0,
+        "bytes": 3
+      },
+      "expectation": "reject_import",
+      "sourceSha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "expectedCounts": null
+    },
+    {
+      "id": "S16A-X02",
+      "group": "edge",
+      "scenario": null,
+      "dimension": "volume",
+      "format": "csv",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/S16A-X02",
+      "dims": {
+        "records": 0,
+        "columns": 3,
+        "bytes": 41
+      },
+      "expectation": "reject_import",
+      "sourceSha256": "658ee64758cd11b0438d76cc1245f3759ff0ab204c163a03b7cd5b1ffe2c475a",
+      "expectedCounts": null
+    },
+    {
+      "id": "S16A-X03",
+      "group": "edge",
+      "scenario": null,
+      "dimension": "volume",
+      "format": "json",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/S16A-X03",
+      "dims": {
+        "records": 1,
+        "columns": 7,
+        "bytes": 323
+      },
+      "expectation": "transform",
+      "sourceSha256": "942f631c435f8e7c07f74d4537ffcd79f38c9d2ef2435995e6c44b394fd26146",
+      "expectedCounts": {
+        "transformed": 1,
+        "quarantined": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-X04",
+      "group": "edge",
+      "scenario": null,
+      "dimension": "volume+width",
+      "format": "json",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/S16A-X04",
+      "dims": {
+        "records": 250,
+        "columns": 64,
+        "cells": 16000,
+        "bytes": 269220
+      },
+      "expectation": "transform",
+      "sourceSha256": "ee035dd00bf3bfa8958090c087e8670e86a6d48e932f52d2004e2983649a535a",
+      "expectedCounts": {
+        "transformed": 250,
+        "quarantined": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-X05",
+      "group": "edge",
+      "scenario": null,
+      "dimension": "volume",
+      "format": "json",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/S16A-X05",
+      "dims": {
+        "records": 251,
+        "columns": 64,
+        "bytes": 270345
+      },
+      "expectation": "reject_import",
+      "sourceSha256": "d50b41ebcf8d3b07baf6e0e27c576a03f5c350b80098224044361c5a7b512964",
+      "expectedCounts": null
+    },
+    {
+      "id": "S16A-X06",
+      "group": "edge",
+      "scenario": null,
+      "dimension": "width",
+      "format": "csv",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/S16A-X06",
+      "dims": {
+        "records": 5,
+        "columns": 65,
+        "bytes": 1742
+      },
+      "expectation": "reject_import",
+      "sourceSha256": "8daf70e2973237f6f2d0cafd9b45de78a70d88639a75b90ebca6523c5cd2d359",
+      "expectedCounts": null
+    },
+    {
+      "id": "S16A-X07",
+      "group": "edge",
+      "scenario": null,
+      "dimension": "width",
+      "format": "csv",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/S16A-X07",
+      "dims": {
+        "records": 4,
+        "columns": 7,
+        "bytes": 10568
+      },
+      "expectation": "reject_import",
+      "sourceSha256": "f8c9f59e378a380f45898fe5209f9097ab4c2f2fc8cc00776b5a874b0e30a39a",
+      "expectedCounts": null
+    },
+    {
+      "id": "S16A-X08",
+      "group": "edge",
+      "scenario": null,
+      "dimension": "volume",
+      "format": "json",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/S16A-X08",
+      "dims": {
+        "records": 200,
+        "columns": 7,
+        "bytes": 1120470
+      },
+      "expectation": "reject_import",
+      "sourceSha256": "f55ebb9bf785a1a9dce7a862bfbe88e448edf10d674a04b23e23cffc101f378d",
+      "expectedCounts": null
+    },
+    {
+      "id": "S16A-X09",
+      "group": "edge",
+      "scenario": null,
+      "dimension": "adversarial",
+      "format": "csv",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/S16A-X09",
+      "dims": {
+        "records": 2,
+        "columns": 3,
+        "bytes": 97
+      },
+      "expectation": "reject_import",
+      "sourceSha256": "2fb47b39d061e2b56d90b04f60f665cc21966b4cfabae68dfdcea16eb23bb819",
+      "expectedCounts": null
+    },
+    {
+      "id": "S16A-X10",
+      "group": "edge",
+      "scenario": null,
+      "dimension": "localization",
+      "format": "csv",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/S16A-X10",
+      "dims": {
+        "records": 2,
+        "columns": 3,
+        "bytes": 95
+      },
+      "expectation": "reject_import",
+      "sourceSha256": "b930c49e41c9bd6f6f17a258e9144bcfa45e71729ca3ce1a27ad1705f434f3fe",
+      "expectedCounts": null
+    },
+    {
+      "id": "S16A-X11",
+      "group": "edge",
+      "scenario": null,
+      "dimension": "data-quality",
+      "format": "csv",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/S16A-X11",
+      "dims": {
+        "records": 2,
+        "columns": 3,
+        "bytes": 102
+      },
+      "expectation": "reject_import",
+      "sourceSha256": "f440904d0d8bb5cfaf420eac85d1055514793dffb32dc3e922f3d01e3c0e8a26",
+      "expectedCounts": null
+    },
+    {
+      "id": "S16A-X12",
+      "group": "edge",
+      "scenario": null,
+      "dimension": "field-discovery",
+      "format": "csv",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/S16A-X12",
+      "dims": {
+        "records": 12,
+        "columns": 6,
+        "bytes": 1255
+      },
+      "expectation": "transform",
+      "sourceSha256": "ae9c0db6ba780dde4a3838f820939146a7174c1aa54fded9bef94714b3fd6bf1",
+      "expectedCounts": {
+        "transformed": 12,
+        "quarantined": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-X13",
+      "group": "edge",
+      "scenario": null,
+      "dimension": "adversarial",
+      "format": "csv",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/S16A-X13",
+      "dims": {
+        "records": 8,
+        "columns": 7,
+        "bytes": 948
+      },
+      "expectation": "transform",
+      "sourceSha256": "3c57e4aad171482e499acc139469347861d5b55a461da3258d2d22f219236e88",
+      "expectedCounts": {
+        "transformed": 8,
+        "quarantined": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-X14",
+      "group": "edge",
+      "scenario": null,
+      "dimension": "adversarial",
+      "format": "xlsx",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/S16A-X14",
+      "dims": {
+        "records": 6,
+        "columns": 8,
+        "bytes": 10432
+      },
+      "expectation": "transform",
+      "sourceSha256": "a4799b1206a41b834fedc8bd6dcf12065b4da0d0983db0a6821316879e2f0b27",
+      "expectedCounts": {
+        "transformed": 6,
+        "quarantined": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-X15",
+      "group": "edge",
+      "scenario": null,
+      "dimension": "adversarial",
+      "format": "json",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/S16A-X15",
+      "dims": {
+        "records": 10,
+        "columns": 7,
+        "bytes": 3033
+      },
+      "expectation": "transform",
+      "sourceSha256": "40660a7e7cb77d6084055c23d9762e4924423498b98b7cbc405fbaced14a4788",
+      "expectedCounts": {
+        "transformed": 10,
+        "quarantined": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-X16",
+      "group": "edge",
+      "scenario": null,
+      "dimension": "depth",
+      "format": "json",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/S16A-X16",
+      "dims": {
+        "records": 10,
+        "columns": 8,
+        "depth": 6,
+        "bytes": 5641
+      },
+      "expectation": "transform",
+      "sourceSha256": "1a850d10d6434e0909834e406b2e9a5feff02f0e0117d242ced170fe0552c8c8",
+      "expectedCounts": {
+        "transformed": 10,
+        "quarantined": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-X17",
+      "group": "edge",
+      "scenario": null,
+      "dimension": "data-quality",
+      "format": "json",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/S16A-X17",
+      "dims": {
+        "records": 10,
+        "columns": 7,
+        "bytes": 2718
+      },
+      "expectation": "transform",
+      "sourceSha256": "3776632debc091f1f8e6733ef8b0089452074700412e61ef9dde86f01da30d05",
+      "expectedCounts": {
+        "transformed": 10,
+        "quarantined": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-X18",
+      "group": "edge",
+      "scenario": null,
+      "dimension": "data-quality",
+      "format": "csv",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/S16A-X18",
+      "dims": {
+        "records": 15,
+        "columns": 7,
+        "bytes": 1852
+      },
+      "expectation": "transform",
+      "sourceSha256": "78b8c86b9f8986addd508adf4c52c8e8b72e7ac5d037ba6b2b9df4cf3d2802a4",
+      "expectedCounts": {
+        "transformed": 14,
+        "quarantined": 0,
+        "unresolved": 1
+      }
+    },
+    {
+      "id": "S16A-X19",
+      "group": "edge",
+      "scenario": null,
+      "dimension": "semantic-ambiguity",
+      "format": "csv",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/S16A-X19",
+      "dims": {
+        "records": 12,
+        "columns": 7,
+        "bytes": 1512
+      },
+      "expectation": "transform",
+      "sourceSha256": "19a0994968039aa0fb336cda16b386b024c969de8b5f8af27f47f59123bfa38a",
+      "expectedCounts": {
+        "transformed": 12,
+        "quarantined": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-X20",
+      "group": "edge",
+      "scenario": null,
+      "dimension": "data-quality",
+      "format": "json",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/S16A-X20",
+      "dims": {
+        "records": 14,
+        "columns": 7,
+        "bytes": 3817
+      },
+      "expectation": "transform",
+      "sourceSha256": "0bb81b7a354bbe9b0895c133cf1441f262b6b60801d96c820253bee29a0281a2",
+      "expectedCounts": {
+        "transformed": 14,
+        "quarantined": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-X21",
+      "group": "edge",
+      "scenario": null,
+      "dimension": "data-quality",
+      "format": "json",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/S16A-X21",
+      "dims": {
+        "records": 12,
+        "columns": 7,
+        "bytes": 3176
+      },
+      "expectation": "transform",
+      "sourceSha256": "e42b4e23e3c801247d09071d63b753755e3586916e255c2a821a976a3e2ab75e",
+      "expectedCounts": {
+        "transformed": 9,
+        "quarantined": 0,
+        "unresolved": 3
+      }
+    },
+    {
+      "id": "S16A-X22",
+      "group": "edge",
+      "scenario": null,
+      "dimension": "localization",
+      "format": "xlsx",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/S16A-X22",
+      "dims": {
+        "records": 8,
+        "columns": 7,
+        "bytes": 9907
+      },
+      "expectation": "transform",
+      "sourceSha256": "367e8d8d4b3f2e4f2665a330fce6ac2de04ebd8d6c786c9d99db55cfd842adc5",
+      "expectedCounts": {
+        "transformed": 8,
+        "quarantined": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-X23",
+      "group": "edge",
+      "scenario": null,
+      "dimension": "localization",
+      "format": "csv",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/S16A-X23",
+      "dims": {
+        "records": 10,
+        "columns": 3,
+        "bytes": 344
+      },
+      "expectation": "transform",
+      "sourceSha256": "24dd4c45e2f33a6a93877a37eb9b831fea113ac1c6adcecc43a6f24b703b5826",
+      "expectedCounts": {
+        "transformed": 10,
+        "quarantined": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-X24",
+      "group": "edge",
+      "scenario": null,
+      "dimension": "localization",
+      "format": "csv",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/S16A-X24",
+      "dims": {
+        "records": 10,
+        "columns": 3,
+        "bytes": 324
+      },
+      "expectation": "transform",
+      "sourceSha256": "8eb9f7ed74abf305433074caee02a577231042e4e776a8ab7fb9df25f8636af6",
+      "expectedCounts": {
+        "transformed": 10,
+        "quarantined": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-X25",
+      "group": "edge",
+      "scenario": null,
+      "dimension": "semantic-ambiguity",
+      "format": "csv",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/S16A-X25",
+      "dims": {
+        "records": 16,
+        "columns": 7,
+        "bytes": 2009
+      },
+      "expectation": "transform",
+      "sourceSha256": "24e9d6ac5e45da56cbb5e6c7a70f9c05ef8d1aed93d1154b0eac749ac2268218",
+      "expectedCounts": {
+        "transformed": 16,
+        "quarantined": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-X26",
+      "group": "edge",
+      "scenario": null,
+      "dimension": "width",
+      "format": "json",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/S16A-X26",
+      "dims": {
+        "records": 3,
+        "columns": 15,
+        "bytes": 72804
+      },
+      "expectation": "transform",
+      "sourceSha256": "92b987d7d10ae145b66a2bfd740b6b91acf3bc3e9511067b4de3c9ab3fcc90d0",
+      "expectedCounts": {
+        "transformed": 2,
+        "quarantined": 0,
+        "unresolved": 1
+      }
+    },
+    {
+      "id": "S16A-X27",
+      "group": "edge",
+      "scenario": null,
+      "dimension": "data-quality",
+      "format": "json",
+      "seed": "S16A-HOLDOUT-2026-11-16-q7c2/S16A-X27",
+      "dims": {
+        "records": 12,
+        "columns": 7,
+        "bytes": 3187
+      },
+      "expectation": "transform",
+      "sourceSha256": "2a566d4674613e5c919fe2a0f3f766e041df545de4922333544ac7740f985761",
+      "expectedCounts": {
+        "transformed": 12,
+        "quarantined": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-R01",
+      "group": "public",
+      "scenario": null,
+      "dimension": "public-data",
+      "format": "csv",
+      "seed": null,
+      "dims": {
+        "records": 126,
+        "columns": 22,
+        "bytes": 24152
+      },
+      "expectation": "transform",
+      "sourceSha256": "19d23181a292f5f955e052702573af5c8df60fdb6eaa555cbf9b4b325e94fef5",
+      "expectedCounts": {
+        "transformed": 126,
+        "quarantined": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-R02",
+      "group": "public",
+      "scenario": null,
+      "dimension": "public-data",
+      "format": "rest-json",
+      "seed": null,
+      "dims": {
+        "records": 11,
+        "columns": 11,
+        "bytes": 10833
+      },
+      "expectation": "transform",
+      "sourceSha256": "ef0a3828c808b7c2b5a0b8aed62dc2845062fdeb5fedafc53cff92d634c18e5c",
+      "expectedCounts": {
+        "transformed": 11,
+        "quarantined": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "S16A-R03",
+      "group": "public",
+      "scenario": null,
+      "dimension": "public-data",
+      "format": "rest-json",
+      "seed": null,
+      "dims": {
+        "records": 1,
+        "columns": null,
+        "bytes": 29
+      },
+      "expectation": "block_build",
+      "sourceSha256": "94c03e127ffe08d7e9c6c437b5402d9906f12ab6aba5d1597b50d4082098f594",
+      "expectedCounts": null
+    }
+  ],
+  "datasetSha256": "2d89da7a7a7ece353f6fd912544b7d0a106315c886a8b8bc98d0f676887f360d"
+}

@@ -1,0 +1,396 @@
+{
+  "run": "production, installed Chrome + dedicated Nano profile, on-device only",
+  "inferenceSource": "rows labeled by the app as Gemini Nano (real on-device)",
+  "results": [
+    {
+      "id": "S16A-A1",
+      "availability": "AVAILABLE",
+      "served": "build c4a246cee432",
+      "nanoMs": 57463,
+      "error": null,
+      "rows": [
+        {
+          "alias": "f_07",
+          "status": "rejected",
+          "path": "account_state",
+          "provenance": "real-on-device",
+          "role": "Status / category"
+        },
+        {
+          "alias": "f_06",
+          "status": "consistent",
+          "path": "angelegt_am",
+          "provenance": "real-on-device",
+          "role": "Date"
+        },
+        {
+          "alias": "f_03",
+          "status": "applicable",
+          "path": "company.name",
+          "provenance": "real-on-device",
+          "role": "Organization"
+        },
+        {
+          "alias": "f_08",
+          "status": "consistent",
+          "path": "correo_facturacion",
+          "provenance": "real-on-device",
+          "role": "Email"
+        },
+        {
+          "alias": "f_02",
+          "status": "consistent",
+          "path": "e_mail",
+          "provenance": "real-on-device",
+          "role": "Identifier"
+        },
+        {
+          "alias": "f_10",
+          "status": "consistent",
+          "path": "kundennummer",
+          "provenance": "real-on-device",
+          "role": "Identifier"
+        },
+        {
+          "alias": "f_01",
+          "status": "consistent",
+          "path": "last_login",
+          "provenance": "real-on-device",
+          "role": "Timestamp"
+        },
+        {
+          "alias": "f_11",
+          "status": "consistent",
+          "path": "legacy_crm_id",
+          "provenance": "real-on-device",
+          "role": "Identifier"
+        },
+        {
+          "alias": "f_09",
+          "status": "applicable",
+          "path": "notes",
+          "provenance": "real-on-device",
+          "role": "Text"
+        },
+        {
+          "alias": "f_04",
+          "status": "applicable",
+          "path": "support_line",
+          "provenance": "real-on-device",
+          "role": "Identifier"
+        },
+        {
+          "alias": "f_05",
+          "status": "consistent",
+          "path": "zahlungsstatus",
+          "provenance": "real-on-device",
+          "role": "Status / category"
+        }
+      ],
+      "applied": 3,
+      "cloudRequests": 0,
+      "crossOriginHosts": [
+        "eyes-without-a-face-b7281.web.app",
+        "www.google.com",
+        "www.gstatic.com",
+        "content-firebaseappcheck.googleapis.com"
+      ],
+      "suggestionsAfterNano": {
+        "customerId": "legacy_crm_id",
+        "primaryEmail": "",
+        "accountStatus": "",
+        "createdOn": "angelegt_am",
+        "companyName": "company.name",
+        "phone": ""
+      }
+    },
+    {
+      "id": "S16A-C3",
+      "availability": "AVAILABLE",
+      "served": "build c4a246cee432",
+      "nanoMs": 54270,
+      "error": null,
+      "rows": [
+        {
+          "alias": "f_07",
+          "status": "applicable",
+          "path": "abteilung",
+          "provenance": "real-on-device",
+          "role": "Organization"
+        },
+        {
+          "alias": "f_06",
+          "status": "rejected",
+          "path": "beschaeftigung",
+          "provenance": "real-on-device",
+          "role": "Identifier"
+        },
+        {
+          "alias": "f_03",
+          "status": "rejected",
+          "path": "corp_email",
+          "provenance": "real-on-device",
+          "role": "Identifier"
+        },
+        {
+          "alias": "f_08",
+          "status": "consistent",
+          "path": "correo_personal",
+          "provenance": "real-on-device",
+          "role": "Email"
+        },
+        {
+          "alias": "f_02",
+          "status": "consistent",
+          "path": "date_of_birth",
+          "provenance": "real-on-device",
+          "role": "Date"
+        },
+        {
+          "alias": "f_10",
+          "status": "consistent",
+          "path": "eintritt",
+          "provenance": "real-on-device",
+          "role": "Date"
+        },
+        {
+          "alias": "f_01",
+          "status": "consistent",
+          "path": "employee_id",
+          "provenance": "real-on-device",
+          "role": "Identifier"
+        },
+        {
+          "alias": "f_11",
+          "status": "rejected",
+          "path": "grade",
+          "provenance": "real-on-device",
+          "role": "Identifier"
+        },
+        {
+          "alias": "f_09",
+          "status": "consistent",
+          "path": "hr_notes",
+          "provenance": "real-on-device",
+          "role": "Free text"
+        },
+        {
+          "alias": "f_04",
+          "status": "rejected",
+          "path": "manager_id",
+          "provenance": "real-on-device",
+          "role": "Identifier"
+        },
+        {
+          "alias": "f_05",
+          "status": "rejected",
+          "path": "salary_band",
+          "provenance": "real-on-device",
+          "role": "Identifier"
+        }
+      ],
+      "applied": 1,
+      "cloudRequests": 0,
+      "crossOriginHosts": [
+        "eyes-without-a-face-b7281.web.app",
+        "www.google.com",
+        "www.gstatic.com",
+        "content-firebaseappcheck.googleapis.com"
+      ],
+      "suggestionsAfterNano": {
+        "employeeId": "employee_id",
+        "workEmail": "corp_email",
+        "department": "",
+        "jobLevel": "",
+        "employmentStatus": "",
+        "startDate": "date_of_birth",
+        "managerId": "employee_id"
+      }
+    },
+    {
+      "id": "S16A-H2",
+      "availability": "AVAILABLE",
+      "served": "build c4a246cee432",
+      "nanoMs": 62838,
+      "error": null,
+      "rows": [
+        {
+          "alias": "f_09",
+          "status": "consistent",
+          "path": "actualizado",
+          "provenance": "real-on-device",
+          "role": "Timestamp"
+        },
+        {
+          "alias": "f_12",
+          "status": "consistent",
+          "path": "auswirkung",
+          "provenance": "real-on-device",
+          "role": "Status / category"
+        },
+        {
+          "alias": "f_10",
+          "status": "consistent",
+          "path": "bearbeiter_mail",
+          "provenance": "real-on-device",
+          "role": "Email"
+        },
+        {
+          "alias": "f_05",
+          "status": "consistent",
+          "path": "case_number",
+          "provenance": "real-on-device",
+          "role": "Identifier"
+        },
+        {
+          "alias": "f_03",
+          "status": "consistent",
+          "path": "comentario_interno",
+          "provenance": "real-on-device",
+          "role": "Text"
+        },
+        {
+          "alias": "f_01",
+          "status": "rejected",
+          "path": "estado",
+          "provenance": "real-on-device",
+          "role": "Status / category"
+        },
+        {
+          "alias": "f_08",
+          "status": "rejected",
+          "path": "impact_level",
+          "provenance": "real-on-device",
+          "role": "Status / category"
+        },
+        {
+          "alias": "f_06",
+          "status": "consistent",
+          "path": "opened_at",
+          "provenance": "real-on-device",
+          "role": "Timestamp"
+        },
+        {
+          "alias": "f_11",
+          "status": "rejected",
+          "path": "prioridad",
+          "provenance": "real-on-device",
+          "role": "Status / category"
+        },
+        {
+          "alias": "f_02",
+          "status": "rejected",
+          "path": "reporter",
+          "provenance": "real-on-device",
+          "role": "Email"
+        },
+        {
+          "alias": "f_07",
+          "status": "applicable",
+          "path": "tier",
+          "provenance": "real-on-device",
+          "role": "Organization"
+        },
+        {
+          "alias": "f_04",
+          "status": "rejected",
+          "path": "title",
+          "provenance": "real-on-device",
+          "role": "Identifier"
+        }
+      ],
+      "applied": 1,
+      "cloudRequests": 0,
+      "crossOriginHosts": [
+        "eyes-without-a-face-b7281.web.app",
+        "www.google.com",
+        "www.gstatic.com",
+        "content-firebaseappcheck.googleapis.com"
+      ],
+      "suggestionsAfterNano": {
+        "issueKey": "",
+        "priority": "",
+        "severity": "",
+        "customerTier": "",
+        "state": "",
+        "openedAt": "opened_at",
+        "reporterEmail": "",
+        "summary": ""
+      }
+    },
+    {
+      "id": "S16A-X15",
+      "availability": "AVAILABLE",
+      "served": "build c4a246cee432",
+      "nanoMs": 35124,
+      "error": null,
+      "rows": [
+        {
+          "alias": "f_03",
+          "status": "consistent",
+          "path": "account_state",
+          "provenance": "real-on-device",
+          "role": "Status / category"
+        },
+        {
+          "alias": "f_06",
+          "status": "consistent",
+          "path": "company_name",
+          "provenance": "real-on-device",
+          "role": "Organization"
+        },
+        {
+          "alias": "f_07",
+          "status": "rejected",
+          "path": "contact_email",
+          "provenance": "real-on-device",
+          "role": "Identifier"
+        },
+        {
+          "alias": "f_01",
+          "status": "consistent",
+          "path": "customer_id",
+          "provenance": "real-on-device",
+          "role": "Identifier"
+        },
+        {
+          "alias": "f_04",
+          "status": "consistent",
+          "path": "notes",
+          "provenance": "real-on-device",
+          "role": "Free text"
+        },
+        {
+          "alias": "f_05",
+          "status": "consistent",
+          "path": "opened_on",
+          "provenance": "real-on-device",
+          "role": "Date"
+        },
+        {
+          "alias": "f_02",
+          "status": "applicable",
+          "path": "phone",
+          "provenance": "real-on-device",
+          "role": "Identifier"
+        }
+      ],
+      "applied": 1,
+      "cloudRequests": 0,
+      "crossOriginHosts": [
+        "eyes-without-a-face-b7281.web.app",
+        "www.google.com",
+        "www.gstatic.com",
+        "content-firebaseappcheck.googleapis.com"
+      ],
+      "suggestionsAfterNano": {
+        "customerId": "customer_id",
+        "primaryEmail": "contact_email",
+        "accountStatus": "",
+        "createdOn": "opened_on",
+        "companyName": "company_name",
+        "phone": "phone"
+      }
+    }
+  ]
+}

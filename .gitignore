@@ -35,3 +35,6 @@ live-evidence
 
 # Firebase CLI deploy cache
 .firebase/
+
+# Sprint 16A QA generated datasets, private canary registry and raw downloads (regenerate with scripts/qa/s16a/generate.mjs)
+qa-artifacts

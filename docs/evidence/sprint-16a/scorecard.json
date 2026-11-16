@@ -1,0 +1,375 @@
+{
+  "run": "production",
+  "generatedAt": "2026-11-16T12:13:57.997Z",
+  "sampleSize": {
+    "cases": 62,
+    "byGroup": {
+      "scenario": 24,
+      "probe": 8,
+      "public": 3,
+      "edge": 27
+    }
+  },
+  "statusTotals": {
+    "PASS": 39,
+    "FAIL": 10,
+    "PARTIAL": 7,
+    "UNSUPPORTED": 6
+  },
+  "byScenario": {
+    "A": {
+      "PASS": 3,
+      "FAIL": 1
+    },
+    "B": {
+      "PASS": 4
+    },
+    "C": {
+      "PARTIAL": 3,
+      "FAIL": 1
+    },
+    "D": {
+      "PASS": 4
+    },
+    "E": {
+      "PARTIAL": 3,
+      "FAIL": 1
+    },
+    "F": {
+      "FAIL": 3,
+      "PASS": 1
+    },
+    "G": {
+      "PASS": 3,
+      "FAIL": 1
+    },
+    "H": {
+      "PASS": 4
+    },
+    "—": {
+      "PASS": 20,
+      "FAIL": 3,
+      "UNSUPPORTED": 6,
+      "PARTIAL": 1
+    }
+  },
+  "byFormat": {
+    "json": {
+      "PASS": 16,
+      "FAIL": 7,
+      "PARTIAL": 3,
+      "UNSUPPORTED": 2
+    },
+    "csv": {
+      "PASS": 15,
+      "PARTIAL": 2,
+      "FAIL": 2,
+      "UNSUPPORTED": 3
+    },
+    "xlsx": {
+      "PASS": 8,
+      "PARTIAL": 2
+    },
+    "rest-json": {
+      "FAIL": 1,
+      "UNSUPPORTED": 1
+    }
+  },
+  "byDimension": {
+    "—": {
+      "PASS": 19,
+      "FAIL": 7,
+      "PARTIAL": 6
+    },
+    "public-data": {
+      "PASS": 1,
+      "FAIL": 1,
+      "UNSUPPORTED": 1
+    },
+    "volume": {
+      "PASS": 4,
+      "UNSUPPORTED": 1
+    },
+    "volume+width": {
+      "PASS": 1
+    },
+    "width": {
+      "PASS": 3
+    },
+    "adversarial": {
+      "PASS": 4
+    },
+    "localization": {
+      "PASS": 2,
+      "UNSUPPORTED": 2
+    },
+    "data-quality": {
+      "PASS": 3,
+      "FAIL": 1,
+      "UNSUPPORTED": 1,
+      "PARTIAL": 1
+    },
+    "field-discovery": {
+      "FAIL": 1
+    },
+    "depth": {
+      "UNSUPPORTED": 1
+    },
+    "semantic-ambiguity": {
+      "PASS": 2
+    }
+  },
+  "coreReliability": {
+    "importRefusalsCorrect": {
+      "numerator": 9,
+      "denominator": 9
+    },
+    "journeysBuilt": {
+      "numerator": 46,
+      "denominator": 52
+    },
+    "carefulUser": {
+      "note": "the user answers every question correctly (data owner knows the data); excludes X17/R02 where clearing a wrong default was impossible (D1)",
+      "cases": 36,
+      "recordsCorrect": 2079,
+      "recordsWrongValue": 0,
+      "recordsFalselyTransformed": 0,
+      "recordsFlaggedOnlyBecauseOptionalValueAbsent": 238,
+      "recordsSilentlyDropped": 0,
+      "recordsTotal": 2317,
+      "countsMatchOracle": {
+        "numerator": 29,
+        "denominator": 36
+      }
+    },
+    "acceptDefaultsProbe": {
+      "note": "same data as variant 1; the user keeps every pre-selected field and answers only what EYES asks",
+      "cases": 8,
+      "pass": 3,
+      "wrongValueRecords": 129,
+      "recordsCompared": 246,
+      "headlines": {
+        "S16A-A1-D": "FAIL · Draft — not fully verified · export DRAFT",
+        "S16A-B1-D": "PASS · Ready, with exceptions · export VERIFIED_WITH_EXCEPTIONS",
+        "S16A-C1-D": "FAIL · Draft — not fully verified · export DRAFT",
+        "S16A-D1-D": "PASS · Ready, with exceptions · export VERIFIED_WITH_EXCEPTIONS",
+        "S16A-E1-D": "FAIL · Ready, with exceptions · export VERIFIED_WITH_EXCEPTIONS",
+        "S16A-F1-D": "FAIL · Draft — not fully verified · export blocked",
+        "S16A-G1-D": "FAIL · Integration ready · export VERIFIED",
+        "S16A-H1-D": "PASS · Ready, with exceptions · export VERIFIED_WITH_EXCEPTIONS"
+      }
+    },
+    "export": {
+      "zipsDownloaded": 43,
+      "exportEligibleButBlocked": 3,
+      "runnerVerifyOk": 43,
+      "manifestIntegrityOk": 43,
+      "runtimeHashOk": 43,
+      "reproducible": 43,
+      "appRunnerAgree": 43,
+      "statusHonestStructurally": 43,
+      "statuses": {
+        "DRAFT": 18,
+        "VERIFIED_WITH_EXCEPTIONS": 8,
+        "VERIFIED": 17
+      },
+      "runnerImports": [
+        "node:crypto",
+        "node:fs",
+        "node:path",
+        "node:url"
+      ],
+      "npmDependencies": []
+    }
+  },
+  "fieldDiscovery": {
+    "scenarioVariants": {
+      "cases": 24,
+      "targets": 162,
+      "suggestedCorrect": 47,
+      "suggestedWrong": 14,
+      "noSuggestion": 101,
+      "truthOffered": 162,
+      "truthRankedFirst": 105,
+      "optionalWithoutSourceSuggested": 0
+    },
+    "allCasesWithTargets": {
+      "cases": 52,
+      "targets": 321,
+      "suggestedCorrect": 136,
+      "suggestedWrong": 23,
+      "noSuggestion": 162,
+      "truthOffered": 310,
+      "truthRankedFirst": 235,
+      "optionalWithoutSourceSuggested": 1
+    }
+  },
+  "ai": {
+    "cloudRequests": 0,
+    "cloudStatus": "NOT RUN — no approved budget for Sprint 16A (approval package in the report)",
+    "nano": [
+      {
+        "id": "S16A-A1",
+        "availability": "AVAILABLE",
+        "served": "build c4a246cee432",
+        "nanoMs": 57463,
+        "rows": 11,
+        "provenance": [
+          "real-on-device"
+        ],
+        "statuses": {
+          "rejected": 1,
+          "consistent": 7,
+          "applicable": 3
+        },
+        "applied": 3,
+        "cloudRequests": 0
+      },
+      {
+        "id": "S16A-C3",
+        "availability": "AVAILABLE",
+        "served": "build c4a246cee432",
+        "nanoMs": 54270,
+        "rows": 11,
+        "provenance": [
+          "real-on-device"
+        ],
+        "statuses": {
+          "applicable": 1,
+          "rejected": 5,
+          "consistent": 5
+        },
+        "applied": 1,
+        "cloudRequests": 0
+      },
+      {
+        "id": "S16A-H2",
+        "availability": "AVAILABLE",
+        "served": "build c4a246cee432",
+        "nanoMs": 62838,
+        "rows": 12,
+        "provenance": [
+          "real-on-device"
+        ],
+        "statuses": {
+          "consistent": 6,
+          "rejected": 5,
+          "applicable": 1
+        },
+        "applied": 1,
+        "cloudRequests": 0
+      },
+      {
+        "id": "S16A-X15",
+        "availability": "AVAILABLE",
+        "served": "build c4a246cee432",
+        "nanoMs": 35124,
+        "rows": 7,
+        "provenance": [
+          "real-on-device"
+        ],
+        "statuses": {
+          "consistent": 5,
+          "rejected": 1,
+          "applicable": 1
+        },
+        "applied": 1,
+        "cloudRequests": 0
+      }
+    ]
+  },
+  "privacy": {
+    "generateContentRequests": 0,
+    "canaryHitsInRequestsConsoleStorage": 0,
+    "nonGetOrCrossOriginRequests": 2,
+    "webStorageKeys": 0,
+    "zipFindings": {
+      "canaries": 0,
+      "sourceFieldNames": 0,
+      "bindingPaths": 0,
+      "sourceValues": 0,
+      "sensitiveFields": 0,
+      "adversarialStrings": 0,
+      "bindingsFileInZip": 0,
+      "genericWordMatchesReportedSeparately": 133
+    },
+    "csvFormulaCellsUnescaped": {
+      "S16A-X13": 0,
+      "S16A-X15": 0
+    }
+  },
+  "experience": {
+    "msToFirstValidMappingMedian": 922,
+    "msToDownloadsMedian": 1356,
+    "decisionsPerBuiltJourney": {
+      "median": 15,
+      "min": 5,
+      "max": 28
+    },
+    "note": "automated timings measure the product, not a human; usability with people is NOT PERFORMED",
+    "consoleErrors": 0,
+    "pageErrors": 0
+  },
+  "defects": {
+    "S16A-D1": {
+      "severity": "P1",
+      "layer": "UI_STATE",
+      "kind": "DEFECT",
+      "title": "A pre-selected field match cannot be removed: “Leave empty” / “Choose…” re-applies the suggestion"
+    },
+    "S16A-D2": {
+      "severity": "P1",
+      "layer": "FIELD_DISCOVERY",
+      "kind": "DEFECT",
+      "title": "Pre-selected source fields are often semantically wrong and build “Integration ready” / VERIFIED output"
+    },
+    "S16A-D3": {
+      "severity": "P1",
+      "layer": "EXPORT",
+      "kind": "DEFECT",
+      "title": "Export privacy scan false positive: an ordinary word in any column (e.g. “failed”) blocks the reusable integration"
+    },
+    "S16A-D4": {
+      "severity": "P1",
+      "layer": "FIELD_DISCOVERY",
+      "kind": "DEFECT",
+      "title": "Columns whose names contain spaces or punctuation are silently unusable (typical CSV/Excel headers)"
+    },
+    "S16A-L1": {
+      "severity": "P1",
+      "layer": "SEMANTIC_MAPPING",
+      "kind": "LIMITATION",
+      "title": "An absent optional source value fails the record (no optional copy in the DSL)"
+    },
+    "S16A-L2": {
+      "severity": "P2",
+      "layer": "FIELD_DISCOVERY",
+      "kind": "LIMITATION",
+      "title": "One dirty value (“n/a”) removes a date column from the candidates, without explanation"
+    },
+    "S16A-L3": {
+      "severity": "P2",
+      "layer": "SOURCE_ADAPTER",
+      "kind": "LIMITATION",
+      "title": "Locale numbers/dates (1234,50 · 1.234,50 · 15.03.2026) and two-decimal text amounts cannot become numbers/dates"
+    },
+    "S16A-L4": {
+      "severity": "P2",
+      "layer": "SOURCE_ADAPTER",
+      "kind": "LIMITATION",
+      "title": "One object branch deeper than 4 levels refuses the whole source"
+    },
+    "S16A-L5": {
+      "severity": "P2",
+      "layer": "FIELD_DISCOVERY",
+      "kind": "LIMITATION",
+      "title": "A single-record source cannot fill a fixed-list (category) field"
+    },
+    "S16A-L6": {
+      "severity": "P3",
+      "layer": "SOURCE_ADAPTER",
+      "kind": "LIMITATION",
+      "title": "Arrays (e.g. GeoJSON features[], TfL lineStatuses[]) cannot be mapped"
+    }
+  }
+}

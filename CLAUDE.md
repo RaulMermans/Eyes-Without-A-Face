@@ -39,5 +39,6 @@ Read, in order:
 32. `docs/decisions/0014-target-first-mapping-and-local-meaning.md` — target-first questions, on-device mapping, user-declared meaning
 33. `docs/sprints/sprint-15.md` — Sprint 15 report: experience, tests, release status
 34. `docs/usability/sprint-15-protocol.md` — independent usability protocol (NOT PERFORMED)
+35. `docs/qa/sprint-16a-real-world-production.md` — Sprint 16A production QA: held-out data, defects D1–D4, readiness decision
 
 Every sprint ends with an evidence-backed release status (`CODE_READY`, `DEPLOYMENT_PENDING`, `DEPLOYED_UNVERIFIED`, `PRODUCTION_ACCEPTED`, `RELEASE_FAILED`); rules in `AGENTS.md`. Do not duplicate architecture here. Do not start Sprint 16 automatically.
