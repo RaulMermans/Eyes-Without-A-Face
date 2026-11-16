@@ -2,7 +2,7 @@
   "metrics": {
     "inputs": "same 62 generated cases (dataset-manifest.json of Sprint 16A), same canaries, same oracle, same verifier",
     "before": "Sprint 16A, deployed c4a246c (production)",
-    "after": "local-rc-ed92f2a (LOCAL release candidate — not production evidence)",
+    "after": "local-rc-25c5eeb45f23 (LOCAL release candidate — not production evidence)",
     "statusTotals": {
       "before": {
         "PASS": 39,

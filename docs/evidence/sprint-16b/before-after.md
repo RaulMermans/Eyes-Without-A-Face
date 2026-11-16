@@ -1,4 +1,4 @@
-# Sprint 16B — before / after (local-rc-ed92f2a)
+# Sprint 16B — before / after (local-rc-25c5eeb45f23)
 
 BEFORE = Sprint 16A on deployed `c4a246c`. AFTER = release candidate served LOCALLY (not production evidence). Same inputs, oracle and verifier.
 
