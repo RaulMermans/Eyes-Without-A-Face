@@ -122,6 +122,14 @@ The package status is computed, never asserted: `VERIFIED`, `VERIFIED_WITH_EXCEP
 
 ## Status
 
+**Sprint 17A (hybrid journey recovery): `PRODUCTION_ACCEPTED`.** Live as `c722076` since 2026-11-16, deployed with the owner's approval of that exact SHA.
+
+- A Gemini request that can't fill a required field (for example `status` when its category names aren't chosen or shared) is not offered for approval. The screen names what is missing and offers routes.
+- An incomplete mapping names its missing required fields and offers the local route.
+- **Checks on the public URL:** 19 / 19 production checks; the 62 real-world cases unchanged; 45 / 45 exports verified; the Meridian-style recovery journey; one approved real Gemini Cloud request.
+- Independent usability sessions and a screen-reader pass are still not done.
+- See [docs/qa/sprint-17a-hybrid-recovery.md](docs/qa/sprint-17a-hybrid-recovery.md).
+
 **Sprint 16C (production acceptance): `PRODUCTION_ACCEPTED`.** Live as `489c6ba` (the Sprint 16B code), deployed with the owner's approval of that exact SHA on 2026-11-16.
 
 - 19 / 19 production checks pass.

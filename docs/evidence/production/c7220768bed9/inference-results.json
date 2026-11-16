@@ -1,0 +1,31 @@
+[
+  {
+    "check": "S14-REC-3",
+    "destination": "helpdesk",
+    "at": "2026-11-16T17:37:02.614Z",
+    "model": "gemini-3.5-flash-lite",
+    "baseURL": "https://eyes-without-a-face-b7281.web.app",
+    "nanoMs": 30422,
+    "nanoRows": 6,
+    "requestsAfterNano": 0,
+    "status": "draft",
+    "outcomeState": "PARTIALLY_VERIFIED",
+    "origin": "· MAPPING: REAL GEMINI OUTPUT · IN_CLOUD",
+    "transformed": "3",
+    "attention": "0",
+    "structure": "true",
+    "meaning": "unknown",
+    "understanding": "nano-used",
+    "exportVerify": "exit 0",
+    "requests": 1,
+    "leaks": [],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"id\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_01\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_03\",\n      \"to\": \"status\",\n      \"params\": {\n        \"map\": {\n          \"active_customer\": \"active\",\n          \"inactive_customer\": \"inactive\",\n          \"prospect\": \"prospect\"\n        },\n        \"unmapped\": \"fail\"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_06\",\n      \"to\": \"createdAt\",\n      \"params\": {\n        \"inputFormat\": \"YYYY-MM-DD\"\n      }\n    },\n    {\n      \"op\": \"trim\",\n      \"from\": \"f_02\",\n      \"to\": \"organization\"\n    }\n  ],\n  \"rationale\": \"Mapped source fields to target fields based on types and semantic meanings, including email normalization, enum mapping, date parsing, and trimming for organization names.\"\n}"
+    ],
+    "attestation": [
+      "www.google.com/recaptcha/enterprise/reload 200",
+      "www.google.com/recaptcha/enterprise/clr 200",
+      "content-firebaseappcheck.googleapis.com/v1/projects/…/apps/…:507051460368:web:086c755a2c003fb30b4795:exchangeRecaptchaEnterpriseToken 200"
+    ]
+  }
+]

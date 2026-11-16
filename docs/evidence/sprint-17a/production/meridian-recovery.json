@@ -1,0 +1,29 @@
+{
+  "blocked": {
+    "approveDisabledWhileBlocked": true,
+    "newRequestAfterChoosing": true,
+    "approvableAfterChoosingAndSharing": true,
+    "onlyChosenFieldNames": true,
+    "noRecordValuesInPrompt": true,
+    "generateContent": 0,
+    "pageErrors": []
+  },
+  "local": {
+    "expected": {
+      "transformed": 88,
+      "setAside": 28,
+      "attention": 4
+    },
+    "observed": {
+      "transformed": "88",
+      "setAside": "28",
+      "attention": "4"
+    },
+    "headline": "Draft — not fully verified",
+    "origin": "local",
+    "zipVerifyExit": 0,
+    "zipHasRecordValues": false,
+    "zipHasSourceFieldNames": false,
+    "generateContent": 0
+  }
+}
