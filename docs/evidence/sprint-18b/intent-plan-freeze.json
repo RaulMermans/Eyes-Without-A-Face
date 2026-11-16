@@ -1,0 +1,23 @@
+{
+  "manifestVersion": "1.0.0",
+  "experiment": "sprint-18b-intent-plan",
+  "frozenAt": "2026-11-16T22:21:20.078Z",
+  "frozenFromCommit": "93e201b2beaac68780588b15e40daab17b17db23",
+  "statement": "Frozen before any model saw this evaluation set. The set was written by an independent author after the ADR 0018 contract freeze, without access to the implementation, prompts or earlier holdouts. Implementation workers never opened the holdout; the frozen harness and scorer read it and emit aggregates and per-index rows only.",
+  "preregistration": {
+    "path": "docs/evaluation/sprint-18b-intent-plan.md",
+    "sha256AboveResults": "d6981f57251f0c3a00dbcb940fefe230a1b3110973022f177da17622d6cc9d9a"
+  },
+  "files": {
+    "tests/fixtures/eval-18b/README.md": "630c2e6492a5b383527f6c0085c71a088cb01959f0f3cef85bbfffd1ed3d582b",
+    "tests/fixtures/eval-18b/dev/crm-contacts-to-helpdesk-requester.json": "815cf95acbcfc481366d711ebba58b41e6b220e8d188f79dc7c06f4b263b8425",
+    "tests/fixtures/eval-18b/dev/gym-memberships-to-access-control.json": "d2d8f0336c8209a330fd0ed32245206671300f425078a2ef3dd9cb0dd326c94d",
+    "tests/fixtures/eval-18b/dev/music-school-enrollments-to-student-portal.json": "f240930c18dca39ac407cced78d658dcbf98ad34775fea40b006093708c7a2f0",
+    "tests/fixtures/eval-18b/dev/public-library-patrons-to-notification-service.json": "bce115890fe716ccef6464e74fa5c505d4864f986112b06b14991c16b28ec1de"
+  },
+  "holdout": {
+    "count": 10,
+    "sha256": "764681eb874359a9e197a62352a4c3ec516b014a27f2093c2d7eb617bae3022d"
+  },
+  "amendments": []
+}

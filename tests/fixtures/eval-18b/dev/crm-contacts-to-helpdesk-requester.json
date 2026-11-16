@@ -1,0 +1,994 @@
+{
+  "scenarioId": "crm-contacts-to-helpdesk-requester",
+  "split": "dev",
+  "industry": "B2B sales CRM contacts",
+  "sourceLanguage": "en",
+  "description": "Contact export from an unfamiliar, fictional sales CRM (vendor-prefixed PascalCase fields, nested mailing address) to be loaded as requesters/customers in a helpdesk-compatible destination.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "c_MailingAddress": {
+        "Country": "NL",
+        "City": "Utrecht",
+        "Street": "145 Mill Lane",
+        "PostalCode": "3511 LX"
+      },
+      "c_AssistantEmail": "assistant.callum@harrowgate.example.com",
+      "c_ContactId": "CT-204100",
+      "c_OpportunityId": "OP-884955",
+      "c_MobilePhone": "+44 7700 900109",
+      "c_CreatedOn": "02/28/2022",
+      "c_LastName": "Pemberton",
+      "c_DoNotEmail": false,
+      "c_PreferredLang": "English",
+      "c_AccountName": "Harrowgate Supplies",
+      "c_ContactOwner": "Leona Ashdown",
+      "c_Email": "saffron.pemberton@harrowgate.example.com",
+      "c_Phone": "+44 113 555 0492",
+      "c_LifecycleStage": "Subscriber",
+      "c_LeadSource": "Referral",
+      "c_FirstName": "Saffron",
+      "c_LastActivity": "04/15/2026"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "DE",
+        "City": "Kassel",
+        "Street": "154 Orchard Way",
+        "PostalCode": "34117"
+      },
+      "c_AssistantEmail": null,
+      "c_ContactId": "CT-204137",
+      "c_OpportunityId": "OP-886746",
+      "c_MobilePhone": "+44 7700 900941",
+      "c_CreatedOn": "02/07/2024",
+      "c_LastName": "Greaves",
+      "c_DoNotEmail": false,
+      "c_PreferredLang": "Deutsch",
+      "c_AccountName": "Cobaltine Group",
+      "c_ContactOwner": "Rowan Ashdown",
+      "c_Email": "Hazel.Greaves@Cobaltine.example.com",
+      "c_Phone": "+44 113 555 0211",
+      "c_LifecycleStage": "Lead",
+      "c_LeadSource": "Website Form",
+      "c_FirstName": "Hazel",
+      "c_LastActivity": "05/23/2025"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "GB",
+        "City": "Leeds",
+        "Street": "37 Harbour Road",
+        "PostalCode": "LS1 4AP"
+      },
+      "c_ContactId": "CT-204174",
+      "c_OpportunityId": "OP-885480",
+      "c_MobilePhone": "+44 7700 900623",
+      "c_CreatedOn": "08/13/2024",
+      "c_LastName": "Quarrie",
+      "c_DoNotEmail": true,
+      "c_PreferredLang": "Français",
+      "c_AccountName": "  Harrowgate Supplies ",
+      "c_ContactOwner": "Rowan Hollins",
+      "c_Email": "Priya.Quarrie@Harrowgate.example.com",
+      "c_Phone": "+44 113 555 0245",
+      "c_LifecycleStage": "Marketing Qualified Lead",
+      "c_LeadSource": "Referral",
+      "c_FirstName": "Priya",
+      "c_LastActivity": "05/07/2026"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "DE",
+        "City": "Kassel",
+        "Street": "68 Station Street",
+        "PostalCode": "34117"
+      },
+      "c_AssistantEmail": "assistant.rowan@cobaltine.example.com",
+      "c_ContactId": "CT-204211",
+      "c_OpportunityId": null,
+      "c_MobilePhone": "+44 7700 900257",
+      "c_CreatedOn": "07/04/2018",
+      "c_LastName": "Greaves",
+      "c_DoNotEmail": false,
+      "c_PreferredLang": "Nederlands",
+      "c_AccountName": "Cobaltine Group",
+      "c_ContactOwner": "Amelia Pemberton",
+      "c_Email": "Nadia.Greaves@cobaltine.example.com",
+      "c_Phone": "+44 113 555 0044",
+      "c_LifecycleStage": "Sales Qualified Lead",
+      "c_LeadSource": "Cold Outreach",
+      "c_FirstName": "Nadia",
+      "c_LastActivity": "04/23/2025"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "NL",
+        "City": "Utrecht",
+        "Street": "172 Mill Lane",
+        "PostalCode": "3511 LX"
+      },
+      "c_AssistantEmail": null,
+      "c_ContactId": "CT-204248",
+      "c_OpportunityId": "OP-880375",
+      "c_CreatedOn": "08/20/2021",
+      "c_LastName": "Ingleby",
+      "c_DoNotEmail": false,
+      "c_PreferredLang": "Español",
+      "c_AccountName": "Dunlace Partners",
+      "c_ContactOwner": "Hazel Fairbank",
+      "c_Email": "imogen.ingleby@dunlace.example.com",
+      "c_Phone": "+44 113 555 0097",
+      "c_LifecycleStage": "Customer",
+      "c_LeadSource": "Trade Show",
+      "c_FirstName": "Imogen",
+      "c_LastActivity": "04/27/2025"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "US",
+        "City": "Dayton",
+        "Street": "112 Mill Lane",
+        "PostalCode": "45402"
+      },
+      "c_ContactId": "CT-204285",
+      "c_OpportunityId": "OP-886976",
+      "c_MobilePhone": "+44 7700 900227",
+      "c_CreatedOn": "03/27/2019",
+      "c_LastName": "Hollins",
+      "c_DoNotEmail": false,
+      "c_PreferredLang": "--None--",
+      "c_AccountName": "  Brightmoor Systems",
+      "c_ContactOwner": "Freya Everley",
+      "c_Email": "Jasper.Hollins@brightmoor.example.com",
+      "c_Phone": "+44 113 555 0346",
+      "c_LifecycleStage": "Evangelist",
+      "c_LeadSource": "Trade Show",
+      "c_FirstName": "Jasper",
+      "c_LastActivity": "02/10/2026"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "NL",
+        "City": "Utrecht",
+        "Street": "42 Harbour Road",
+        "PostalCode": "3511 LX"
+      },
+      "c_AssistantEmail": "assistant.rowan@fernhollow.example.com",
+      "c_ContactId": "CT-204322",
+      "c_OpportunityId": "OP-887498",
+      "c_MobilePhone": "+44 7700 900727",
+      "c_CreatedOn": "12/18/2017",
+      "c_LastName": "Brierley",
+      "c_DoNotEmail": false,
+      "c_PreferredLang": "Español",
+      "c_AccountName": "Fernhollow Design   ",
+      "c_ContactOwner": "Marcus Denholm",
+      "c_Email": "Ellis.Brierley@Fernhollow.example.com",
+      "c_Phone": "+44 113 555 0256",
+      "c_LifecycleStage": "Former Customer",
+      "c_LeadSource": "Webinar",
+      "c_FirstName": "Ellis",
+      "c_LastActivity": "02/20/2025"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "DE",
+        "City": "Kassel",
+        "Street": "70 Mill Lane",
+        "PostalCode": "34117"
+      },
+      "c_AssistantEmail": null,
+      "c_ContactId": "CT-204359",
+      "c_OpportunityId": null,
+      "c_MobilePhone": null,
+      "c_CreatedOn": "01/09/2017",
+      "c_LastName": "Lavery",
+      "c_DoNotEmail": false,
+      "c_PreferredLang": "Deutsch",
+      "c_AccountName": "  Cobaltine Group ",
+      "c_ContactOwner": "Jasper Ingleby",
+      "c_Email": "tobias.lavery@cobaltine.example.com",
+      "c_Phone": "+44 113 555 0932",
+      "c_LifecycleStage": "TEST RECORD",
+      "c_LeadSource": "Website Form",
+      "c_FirstName": "Tobias",
+      "c_LastActivity": "02/02/2026"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "NL",
+        "City": "Utrecht",
+        "Street": "173 Orchard Way",
+        "PostalCode": "3511 LX"
+      },
+      "c_ContactId": "CT-204396",
+      "c_OpportunityId": "OP-880656",
+      "c_CreatedOn": "06/20/2017",
+      "c_LastName": "Ingleby",
+      "c_DoNotEmail": false,
+      "c_PreferredLang": "Deutsch",
+      "c_AccountName": "Altheon Works",
+      "c_ContactOwner": "Imogen Merriman",
+      "c_Email": "nadia.ingleby@altheon.example.com",
+      "c_Phone": "+44 113 555 0966",
+      "c_LifecycleStage": "Lead",
+      "c_LeadSource": "Cold Outreach",
+      "c_FirstName": "Nadia",
+      "c_LastActivity": "07/18/2025"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "GB",
+        "City": "Leeds",
+        "Street": "45 Mill Lane",
+        "PostalCode": "LS1 4AP"
+      },
+      "c_AssistantEmail": "assistant.tobias@fernhollow.example.com",
+      "c_ContactId": "CT-204433",
+      "c_OpportunityId": "OP-889103",
+      "c_MobilePhone": "+44 7700 900452",
+      "c_CreatedOn": "01/03/2022",
+      "c_LastName": "Kirkwood",
+      "c_DoNotEmail": true,
+      "c_PreferredLang": "Nederlands",
+      "c_AccountName": "Fernhollow Design",
+      "c_ContactOwner": "Amelia Greaves",
+      "c_Email": "Imogen.Kirkwood@fernhollow.example.com",
+      "c_Phone": "+44 113 555 0316",
+      "c_LifecycleStage": "Former Customer",
+      "c_LeadSource": "Trade Show",
+      "c_FirstName": "Imogen",
+      "c_LastActivity": "06/23/2026"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "US",
+        "City": "Dayton",
+        "Street": "82 Harbour Road",
+        "PostalCode": "45402"
+      },
+      "c_AssistantEmail": null,
+      "c_ContactId": "CT-204470",
+      "c_OpportunityId": "OP-888785",
+      "c_MobilePhone": "+44 7700 900666",
+      "c_CreatedOn": "08/17/2024",
+      "c_LastName": "Hollins",
+      "c_DoNotEmail": true,
+      "c_PreferredLang": "Español",
+      "c_AccountName": "Altheon Works",
+      "c_ContactOwner": "Nadia Greaves",
+      "c_Email": "tobias.hollins@altheon.example.com",
+      "c_Phone": "+44 113 555 0646",
+      "c_LifecycleStage": "Subscriber",
+      "c_LeadSource": "Website Form",
+      "c_FirstName": "Tobias",
+      "c_LastActivity": "02/12/2025"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "IE",
+        "City": "Galway",
+        "Street": "32 Harbour Road",
+        "PostalCode": "H91 E2K3"
+      },
+      "c_ContactId": "CT-204507",
+      "c_OpportunityId": null,
+      "c_MobilePhone": null,
+      "c_CreatedOn": "12/03/2019",
+      "c_LastName": "Brierley",
+      "c_DoNotEmail": true,
+      "c_PreferredLang": "Español",
+      "c_AccountName": "Glenmark Analytics",
+      "c_ContactOwner": "Amelia Lavery",
+      "c_Email": "callum.brierley@glenmark.example.com",
+      "c_Phone": "+44 113 555 0182",
+      "c_LifecycleStage": "Subscriber",
+      "c_LeadSource": "Cold Outreach",
+      "c_FirstName": "Callum",
+      "c_LastActivity": "02/12/2026"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "GB",
+        "City": "Leeds",
+        "Street": "39 Station Street",
+        "PostalCode": "LS1 4AP"
+      },
+      "c_AssistantEmail": "assistant.saffron@fernhollow.example.com",
+      "c_ContactId": "CT-204544",
+      "c_OpportunityId": "OP-889651",
+      "c_MobilePhone": "+44 7700 900829",
+      "c_CreatedOn": "10/16/2024",
+      "c_LastName": "Merriman",
+      "c_DoNotEmail": false,
+      "c_PreferredLang": "Nederlands",
+      "c_AccountName": "  Fernhollow Design ",
+      "c_ContactOwner": "Jasper Quarrie",
+      "c_Email": "Nadia.Merriman@fernhollow.example.com",
+      "c_Phone": "+44 113 555 0598",
+      "c_LifecycleStage": "Lead",
+      "c_LeadSource": "Referral",
+      "c_FirstName": "Nadia",
+      "c_LastActivity": "11/22/2026"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "NL",
+        "City": "Utrecht",
+        "Street": "78 Harbour Road",
+        "PostalCode": "3511 LX"
+      },
+      "c_AssistantEmail": null,
+      "c_ContactId": "CT-204581",
+      "c_OpportunityId": "OP-881922",
+      "c_MobilePhone": "+44 7700 900374",
+      "c_CreatedOn": "06/26/2021",
+      "c_LastName": "Calloway",
+      "c_DoNotEmail": false,
+      "c_PreferredLang": "English",
+      "c_AccountName": "Dunlace Partners",
+      "c_ContactOwner": "Hazel Calloway",
+      "c_Email": "Imogen.Calloway@dunlace.example.com",
+      "c_Phone": "+44 113 555 0489",
+      "c_LifecycleStage": "Former Customer",
+      "c_LeadSource": "Cold Outreach",
+      "c_FirstName": "Imogen",
+      "c_LastActivity": "01/27/2026"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "DE",
+        "City": "Kassel",
+        "Street": "212 Station Street",
+        "PostalCode": "34117"
+      },
+      "c_ContactId": "CT-204618",
+      "c_OpportunityId": "OP-884863",
+      "c_CreatedOn": "07/21/2024",
+      "c_LastName": "Greaves",
+      "c_DoNotEmail": false,
+      "c_PreferredLang": "English",
+      "c_AccountName": "Lumenvale Energy",
+      "c_ContactOwner": "Ellis Quarrie",
+      "c_Email": "Tobias.Greaves@lumenvale.example.com",
+      "c_Phone": "+44 113 555 0045",
+      "c_LifecycleStage": "TEST RECORD",
+      "c_LeadSource": "Website Form",
+      "c_FirstName": "Tobias",
+      "c_LastActivity": "12/24/2025"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "NL",
+        "City": "Utrecht",
+        "Street": "138 Station Street",
+        "PostalCode": "3511 LX"
+      },
+      "c_AssistantEmail": "assistant.nadia@cobaltine.example.com",
+      "c_ContactId": "CT-204655",
+      "c_OpportunityId": null,
+      "c_MobilePhone": null,
+      "c_CreatedOn": "02/19/2017",
+      "c_LastName": "Pemberton",
+      "c_DoNotEmail": false,
+      "c_PreferredLang": "Deutsch",
+      "c_AccountName": "Cobaltine Group",
+      "c_ContactOwner": "Amelia Greaves",
+      "c_Email": "tobias.pemberton@cobaltine.example.com",
+      "c_Phone": "+44 113 555 0447",
+      "c_LifecycleStage": "Subscriber",
+      "c_LeadSource": "Webinar",
+      "c_FirstName": "Tobias",
+      "c_LastActivity": "11/25/2026"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "IE",
+        "City": "Galway",
+        "Street": "22 Orchard Way",
+        "PostalCode": "H91 E2K3"
+      },
+      "c_AssistantEmail": null,
+      "c_ContactId": "CT-204692",
+      "c_OpportunityId": "OP-883679",
+      "c_MobilePhone": "+44 7700 900446",
+      "c_CreatedOn": "05/07/2018",
+      "c_LastName": "Jessop",
+      "c_DoNotEmail": false,
+      "c_PreferredLang": "Español",
+      "c_AccountName": "Dunlace Partners",
+      "c_ContactOwner": "Imogen Northcott",
+      "c_Email": "rowan.jessop@dunlace.example.com",
+      "c_Phone": "+44 113 555 0269",
+      "c_LifecycleStage": "Customer",
+      "c_LeadSource": "Referral",
+      "c_FirstName": "Rowan",
+      "c_LastActivity": "10/18/2025"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "NL",
+        "City": "Utrecht",
+        "Street": "35 Harbour Road",
+        "PostalCode": "3511 LX"
+      },
+      "c_ContactId": "CT-204729",
+      "c_OpportunityId": "OP-885885",
+      "c_CreatedOn": "07/26/2019",
+      "c_LastName": "Everley",
+      "c_DoNotEmail": false,
+      "c_PreferredLang": "Español",
+      "c_AccountName": "  Harrowgate Supplies ",
+      "c_ContactOwner": "Hazel Quarrie",
+      "c_Email": "Ellis.Everley@Harrowgate.example.com",
+      "c_Phone": "+44 113 555 0885",
+      "c_LifecycleStage": "Former Customer",
+      "c_LeadSource": "Trade Show",
+      "c_FirstName": "Ellis",
+      "c_LastActivity": "09/27/2026"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "NL",
+        "City": "Utrecht",
+        "Street": "36 Quay Side",
+        "PostalCode": "3511 LX"
+      },
+      "c_AssistantEmail": "assistant.nadia@ivorine.example.com",
+      "c_ContactId": "CT-204766",
+      "c_OpportunityId": "OP-880428",
+      "c_MobilePhone": "+44 7700 900199",
+      "c_CreatedOn": "08/15/2021",
+      "c_LastName": "Merriman",
+      "c_DoNotEmail": false,
+      "c_PreferredLang": "Español",
+      "c_AccountName": "Ivorine Media",
+      "c_ContactOwner": "Amelia Northcott",
+      "c_Email": "marcus.merriman@ivorine.example.com",
+      "c_Phone": "+44 113 555 0216",
+      "c_LifecycleStage": "Lead",
+      "c_LeadSource": "Website Form",
+      "c_FirstName": "Marcus",
+      "c_LastActivity": "03/17/2025"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "DE",
+        "City": "Kassel",
+        "Street": "47 Orchard Way",
+        "PostalCode": "34117"
+      },
+      "c_AssistantEmail": null,
+      "c_ContactId": "CT-204803",
+      "c_OpportunityId": null,
+      "c_MobilePhone": "+44 7700 900200",
+      "c_CreatedOn": "11/16/2018",
+      "c_LastName": "Denholm",
+      "c_DoNotEmail": false,
+      "c_PreferredLang": "Español",
+      "c_AccountName": "Altheon Works",
+      "c_ContactOwner": "Tobias Kirkwood",
+      "c_Email": "jasper.denholm@altheon.example.com",
+      "c_Phone": "+44 113 555 0036",
+      "c_LifecycleStage": "Customer",
+      "c_LeadSource": "Website Form",
+      "c_FirstName": "Jasper",
+      "c_LastActivity": "10/02/2026"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "NL",
+        "City": "Utrecht",
+        "Street": "89 Station Street",
+        "PostalCode": "3511 LX"
+      },
+      "c_ContactId": "CT-204840",
+      "c_OpportunityId": "OP-884581",
+      "c_MobilePhone": "+44 7700 900901",
+      "c_CreatedOn": "06/13/2019",
+      "c_LastName": "Ashdown",
+      "c_DoNotEmail": false,
+      "c_PreferredLang": "English",
+      "c_AccountName": "Dunlace Partners",
+      "c_ContactOwner": "Ellis Everley",
+      "c_Email": "jasper.ashdown@dunlace.example.com",
+      "c_Phone": "+44 113 555 0098",
+      "c_LifecycleStage": "Lead",
+      "c_LeadSource": "Referral",
+      "c_FirstName": "Jasper",
+      "c_LastActivity": "11/14/2026"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "NL",
+        "City": "Utrecht",
+        "Street": "165 Station Street",
+        "PostalCode": "3511 LX"
+      },
+      "c_AssistantEmail": "assistant.ellis@cobaltine.example.com",
+      "c_ContactId": "CT-204877",
+      "c_OpportunityId": "OP-884669",
+      "c_CreatedOn": "03/07/2022",
+      "c_LastName": "Hollins",
+      "c_DoNotEmail": false,
+      "c_PreferredLang": "Deutsch",
+      "c_AccountName": "Cobaltine Group",
+      "c_ContactOwner": "Nadia Quarrie",
+      "c_Email": "Tobias.Hollins@Cobaltine.example.com",
+      "c_Phone": "+44 113 555 0824",
+      "c_LifecycleStage": "Subscriber",
+      "c_LeadSource": "Trade Show",
+      "c_FirstName": "Tobias",
+      "c_LastActivity": "11/23/2025"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "GB",
+        "City": "Leeds",
+        "Street": "25 Harbour Road",
+        "PostalCode": "LS1 4AP"
+      },
+      "c_AssistantEmail": null,
+      "c_ContactId": "CT-204914",
+      "c_OpportunityId": "OP-887620",
+      "c_MobilePhone": "+44 7700 900488",
+      "c_CreatedOn": "03/26/2023",
+      "c_LastName": "Quarrie",
+      "c_DoNotEmail": false,
+      "c_PreferredLang": "English",
+      "c_AccountName": "  Kestrel Ridge Foods ",
+      "c_ContactOwner": "Saffron Fairbank",
+      "c_Email": "Priya.Quarrie@kestrel.example.com",
+      "c_Phone": "+44 113 555 0994",
+      "c_LifecycleStage": "Sales Qualified Lead",
+      "c_LeadSource": "Trade Show",
+      "c_FirstName": "Priya",
+      "c_LastActivity": "12/10/2026"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "US",
+        "City": "Dayton",
+        "Street": "168 Orchard Way",
+        "PostalCode": "45402"
+      },
+      "c_ContactId": "CT-204951",
+      "c_OpportunityId": null,
+      "c_MobilePhone": null,
+      "c_CreatedOn": "08/09/2024",
+      "c_LastName": "Hollins",
+      "c_DoNotEmail": true,
+      "c_PreferredLang": "Nederlands",
+      "c_AccountName": "Juniper Quay Consulting",
+      "c_ContactOwner": "Saffron Denholm",
+      "c_Email": "Ellis.Hollins@Juniper.example.com",
+      "c_Phone": "+44 113 555 0627",
+      "c_LifecycleStage": "Marketing Qualified Lead",
+      "c_LeadSource": "Website Form",
+      "c_FirstName": "Ellis",
+      "c_LastActivity": "12/04/2026"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "GB",
+        "City": "Leeds",
+        "Street": "36 Mill Lane",
+        "PostalCode": "LS1 4AP"
+      },
+      "c_AssistantEmail": "assistant.jasper@fernhollow.example.com",
+      "c_ContactId": "CT-204988",
+      "c_OpportunityId": "OP-881300",
+      "c_CreatedOn": "04/21/2019",
+      "c_LastName": "Fairbank",
+      "c_DoNotEmail": false,
+      "c_PreferredLang": "Français",
+      "c_AccountName": "Fernhollow Design",
+      "c_ContactOwner": "Priya Lavery",
+      "c_Email": "Rowan.Fairbank@fernhollow.example.com",
+      "c_Phone": "+44 113 555 0465",
+      "c_LifecycleStage": "Lead",
+      "c_LeadSource": "Webinar",
+      "c_FirstName": "Rowan",
+      "c_LastActivity": "05/19/2025"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "IE",
+        "City": "Galway",
+        "Street": "118 Harbour Road",
+        "PostalCode": "H91 E2K3"
+      },
+      "c_AssistantEmail": null,
+      "c_ContactId": "CT-205025",
+      "c_OpportunityId": "OP-887767",
+      "c_MobilePhone": null,
+      "c_CreatedOn": "06/25/2022",
+      "c_LastName": "Fairbank",
+      "c_DoNotEmail": false,
+      "c_PreferredLang": "Français",
+      "c_AccountName": "  Harrowgate Supplies",
+      "c_ContactOwner": "Jasper Brierley",
+      "c_Email": "Freya.Fairbank@harrowgate.example.com",
+      "c_Phone": "+44 113 555 0999",
+      "c_LifecycleStage": "Subscriber",
+      "c_LeadSource": "Trade Show",
+      "c_FirstName": "Freya",
+      "c_LastActivity": "06/27/2026"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "DE",
+        "City": "Kassel",
+        "Street": "217 Station Street",
+        "PostalCode": "34117"
+      },
+      "c_ContactId": "CT-205062",
+      "c_OpportunityId": "OP-881810",
+      "c_MobilePhone": "+44 7700 900916",
+      "c_CreatedOn": "06/24/2024",
+      "c_LastName": "Fairbank",
+      "c_DoNotEmail": false,
+      "c_PreferredLang": "English",
+      "c_AccountName": "Cobaltine Group",
+      "c_ContactOwner": "Priya Merriman",
+      "c_Email": "owen.fairbank@cobaltine.example.com",
+      "c_Phone": "+44 113 555 0906",
+      "c_LifecycleStage": "Former Customer",
+      "c_LeadSource": "Webinar",
+      "c_FirstName": "Owen",
+      "c_LastActivity": "07/18/2025"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "US",
+        "City": "Dayton",
+        "Street": "52 Station Street",
+        "PostalCode": "45402"
+      },
+      "c_AssistantEmail": "assistant.marcus@juniper.example.com",
+      "c_ContactId": "CT-205099",
+      "c_OpportunityId": null,
+      "c_MobilePhone": null,
+      "c_CreatedOn": "03/10/2020",
+      "c_LastName": "Lavery",
+      "c_DoNotEmail": false,
+      "c_PreferredLang": "--None--",
+      "c_AccountName": "  Juniper Quay Consulting ",
+      "c_ContactOwner": "Amelia Pemberton",
+      "c_Email": "priya.lavery@juniper.example.com",
+      "c_Phone": "+44 113 555 0379",
+      "c_LifecycleStage": "TEST RECORD",
+      "c_LeadSource": "Trade Show",
+      "c_FirstName": "Priya",
+      "c_LastActivity": "06/18/2026"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "US",
+        "City": "Dayton",
+        "Street": "53 Harbour Road",
+        "PostalCode": "45402"
+      },
+      "c_AssistantEmail": null,
+      "c_ContactId": "CT-205136",
+      "c_OpportunityId": "OP-882313",
+      "c_MobilePhone": "+44 7700 900961",
+      "c_CreatedOn": "06/05/2022",
+      "c_LastName": "Denholm",
+      "c_DoNotEmail": false,
+      "c_PreferredLang": "English",
+      "c_AccountName": "Glenmark Analytics",
+      "c_ContactOwner": "Tobias Kirkwood",
+      "c_Email": "nadia.denholm@glenmark.example.com",
+      "c_Phone": "+44 113 555 0284",
+      "c_LifecycleStage": "Marketing Qualified Lead",
+      "c_LeadSource": "Trade Show",
+      "c_FirstName": "Nadia",
+      "c_LastActivity": "07/08/2025"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "GB",
+        "City": "Leeds",
+        "Street": "216 Harbour Road",
+        "PostalCode": "LS1 4AP"
+      },
+      "c_ContactId": "CT-205173",
+      "c_OpportunityId": "OP-887566",
+      "c_MobilePhone": "+44 7700 900438",
+      "c_CreatedOn": "11/04/2021",
+      "c_LastName": "Ashdown",
+      "c_DoNotEmail": false,
+      "c_PreferredLang": "English",
+      "c_AccountName": "  Juniper Quay Consulting",
+      "c_ContactOwner": "Nadia Ashdown",
+      "c_Email": "Rowan.Ashdown@Juniper.example.com",
+      "c_Phone": "+44 113 555 0816",
+      "c_LifecycleStage": "Sales Qualified Lead",
+      "c_LeadSource": "Cold Outreach",
+      "c_FirstName": "Rowan",
+      "c_LastActivity": "03/18/2026"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "DE",
+        "City": "Kassel",
+        "Street": "191 Mill Lane",
+        "PostalCode": "34117"
+      },
+      "c_AssistantEmail": "assistant.nadia@kestrel.example.com",
+      "c_ContactId": "CT-205210",
+      "c_OpportunityId": "OP-889290",
+      "c_CreatedOn": "10/27/2022",
+      "c_LastName": "Greaves",
+      "c_DoNotEmail": false,
+      "c_PreferredLang": "English",
+      "c_AccountName": "Kestrel Ridge Foods",
+      "c_ContactOwner": "Amelia Merriman",
+      "c_Email": "owen.greaves@kestrel.example.com",
+      "c_Phone": "+44 113 555 0287",
+      "c_LifecycleStage": "Customer",
+      "c_LeadSource": "Website Form",
+      "c_FirstName": "Owen",
+      "c_LastActivity": "03/19/2025"
+    },
+    {
+      "c_MailingAddress": {
+        "Country": "US",
+        "City": "Dayton",
+        "Street": "63 Mill Lane",
+        "PostalCode": "45402"
+      },
+      "c_AssistantEmail": null,
+      "c_ContactId": "CT-205247",
+      "c_OpportunityId": null,
+      "c_MobilePhone": "+44 7700 900892",
+      "c_CreatedOn": "02/02/2019",
+      "c_LastName": "Everley",
+      "c_DoNotEmail": false,
+      "c_PreferredLang": "Français",
+      "c_AccountName": "Harrowgate Supplies",
+      "c_ContactOwner": "Declan Greaves",
+      "c_Email": "Tobias.Everley@harrowgate.example.com",
+      "c_Phone": "+44 113 555 0087",
+      "c_LifecycleStage": "Sales Qualified Lead",
+      "c_LeadSource": "Trade Show",
+      "c_FirstName": "Tobias",
+      "c_LastActivity": "09/26/2025"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "external_id": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string",
+        "format": "email"
+      },
+      "phone": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "organization": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "created_at": {
+        "type": "string",
+        "format": "date"
+      },
+      "requester_type": {
+        "type": "string",
+        "enum": [
+          "prospect",
+          "customer",
+          "former_customer"
+        ]
+      },
+      "locale": {
+        "type": "string",
+        "enum": [
+          "en",
+          "de",
+          "fr",
+          "nl",
+          "es"
+        ]
+      },
+      "address": {
+        "type": "object",
+        "properties": {
+          "city": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
+      "time_zone": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "external_id",
+      "name",
+      "email",
+      "requester_type"
+    ]
+  },
+  "groundTruth": {
+    "external_id": {
+      "source": "c_ContactId",
+      "transform": "copy",
+      "why": "the CRM contact id identifies the person; c_OpportunityId is a sales deal"
+    },
+    "name": {
+      "source": null,
+      "sources": [
+        "c_FirstName",
+        "c_LastName"
+      ],
+      "transform": "concat",
+      "separator": " ",
+      "why": "requester display name is given name plus family name; c_ContactOwner is the sales rep"
+    },
+    "email": {
+      "source": "c_Email",
+      "transform": "normalize_email",
+      "why": "the contact's own address (mixed case in the export); c_AssistantEmail belongs to an assistant"
+    },
+    "phone": {
+      "source": "c_Phone",
+      "transform": "copy",
+      "why": "main business phone of the contact; mobile is a separate optional number"
+    },
+    "organization": {
+      "source": "c_AccountName",
+      "transform": "trim",
+      "why": "the account the contact works for; some values carry padding whitespace"
+    },
+    "created_at": {
+      "source": "c_CreatedOn",
+      "transform": "parse_date",
+      "dateFormat": "MM/DD/YYYY",
+      "why": "when the contact was created; c_LastActivity is last touched"
+    },
+    "requester_type": {
+      "source": "c_LifecycleStage",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Subscriber": "prospect",
+        "Lead": "prospect",
+        "Marketing Qualified Lead": "prospect",
+        "Sales Qualified Lead": "prospect",
+        "Customer": "customer",
+        "Evangelist": "customer",
+        "Former Customer": "former_customer",
+        "TEST RECORD": null
+      },
+      "why": "lifecycle stage expresses the commercial relationship; TEST RECORD rows are not real requesters"
+    },
+    "locale": {
+      "source": "c_PreferredLang",
+      "transform": "map_enum",
+      "categoryMap": {
+        "English": "en",
+        "Deutsch": "de",
+        "Français": "fr",
+        "Nederlands": "nl",
+        "Español": "es",
+        "--None--": null
+      },
+      "why": "preferred language label to ISO code; --None-- means not chosen"
+    },
+    "address.city": {
+      "source": "c_MailingAddress.City",
+      "transform": "copy",
+      "why": "city of the mailing address"
+    },
+    "address.country": {
+      "source": "c_MailingAddress.Country",
+      "transform": "copy",
+      "why": "ISO country code of the mailing address"
+    },
+    "time_zone": {
+      "source": null,
+      "transform": "none",
+      "why": "the CRM export carries no time zone; country alone does not determine it"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "c_ContactId",
+        "c_OpportunityId"
+      ],
+      "correctFor": "external_id"
+    },
+    {
+      "kind": "two-email-fields",
+      "fields": [
+        "c_Email",
+        "c_AssistantEmail"
+      ],
+      "correctFor": "email"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "c_CreatedOn",
+        "c_LastActivity"
+      ],
+      "correctFor": "created_at"
+    },
+    {
+      "kind": "phone-or-code-confusion",
+      "fields": [
+        "c_Phone",
+        "c_MobilePhone"
+      ],
+      "correctFor": "phone"
+    },
+    {
+      "kind": "organization-name-vs-person-name",
+      "fields": [
+        "c_AccountName",
+        "c_ContactOwner"
+      ],
+      "correctFor": "organization"
+    }
+  ],
+  "sourceConcepts": {
+    "c_MailingAddress.Country": "country",
+    "c_AssistantEmail": "email",
+    "c_ContactId": "customer-id",
+    "c_MailingAddress.City": "city",
+    "c_OpportunityId": "transaction-id",
+    "c_MobilePhone": "phone",
+    "c_CreatedOn": "created-date",
+    "c_LastName": "family-name",
+    "c_DoNotEmail": "consent-flag",
+    "c_PreferredLang": "language-code",
+    "c_AccountName": "organization-name",
+    "c_ContactOwner": "person-name",
+    "c_Email": "email",
+    "c_MailingAddress.Street": "street-address",
+    "c_Phone": "phone",
+    "c_LifecycleStage": "account-status",
+    "c_MailingAddress.PostalCode": "postal-code",
+    "c_LeadSource": "category",
+    "c_FirstName": "given-name",
+    "c_LastActivity": "modified-date"
+  },
+  "destinationConcepts": {
+    "external_id": "customer-id",
+    "name": "person-name",
+    "email": "email",
+    "phone": "phone",
+    "organization": "organization-name",
+    "created_at": "created-date",
+    "requester_type": "account-status",
+    "locale": "language-code",
+    "address.city": "city",
+    "address.country": "country",
+    "time_zone": "other"
+  }
+}

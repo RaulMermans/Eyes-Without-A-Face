@@ -1,0 +1,807 @@
+{
+  "scenarioId": "water-utility-accounts-to-billing-customer",
+  "split": "holdout",
+  "industry": "municipal water utility",
+  "sourceLanguage": "mixed",
+  "description": "Account export of a fictional municipal water utility with mixed German and English field names (nested service and billing address) to be loaded as billing customers.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "Email_Rechnung": "henrik.rechnung@mail.example.net",
+      "account_state": "aktiv",
+      "email_primary": "henrik.mertens@mail.example.net",
+      "Nachname": "Mertens",
+      "Anschrift": {
+        "PLZ": "55543",
+        "Strasse": "Weinbergstraße 8",
+        "Ort": "Bad Kreuznach"
+      },
+      "meter_id": "WZ-82544975",
+      "Rechnungsanschrift": {
+        "Ort": "Bad Kreuznach",
+        "PLZ": "55543"
+      },
+      "invoice_no": "RE-2025-15949",
+      "Tarif": "Haushalt Standard",
+      "Verbrauch_m3": 21,
+      "last_reading_date": "10/09/2025",
+      "Vertragsbeginn": "11/08/2013",
+      "Firma": null,
+      "Vorname": "Henrik",
+      "Zahlungsart": "SEPA-Lastschrift",
+      "Kundennummer": "30118200"
+    },
+    {
+      "Email_Rechnung": null,
+      "account_state": "gesperrt",
+      "email_primary": "Mira.Eggert@mail.example.net",
+      "Nachname": "Eggert",
+      "Anschrift": {
+        "PLZ": "55543",
+        "Strasse": "Am Brühl 33",
+        "Ort": "Bad Kreuznach"
+      },
+      "meter_id": "WZ-59169509",
+      "Rechnungsanschrift": {
+        "Ort": null,
+        "PLZ": null
+      },
+      "invoice_no": "RE-2025-29167",
+      "Tarif": "Haushalt Öko",
+      "Verbrauch_m3": 899,
+      "last_reading_date": "01/09/2025",
+      "Vertragsbeginn": "04/04/1998",
+      "Firma": null,
+      "Vorname": "Mira",
+      "Zahlungsart": "Überweisung",
+      "Kundennummer": "30118231"
+    },
+    {
+      "Email_Rechnung": "rechnung@kellerei.example.com",
+      "account_state": "gekündigt",
+      "email_primary": "henrik.oberle@mail.example.net",
+      "Nachname": "Oberle",
+      "Anschrift": {
+        "PLZ": "55606",
+        "Strasse": "Mühlenteich 20",
+        "Ort": "Kirn"
+      },
+      "meter_id": "WZ-24553728",
+      "Rechnungsanschrift": {
+        "Ort": null,
+        "PLZ": null
+      },
+      "invoice_no": "RE-2025-05463",
+      "Tarif": "Gewerbe",
+      "Verbrauch_m3": 80,
+      "last_reading_date": "06/10/2025",
+      "Vertragsbeginn": "11/04/2012",
+      "Firma": "  Kellerei am Rosenberg ",
+      "Vorname": "Henrik",
+      "Zahlungsart": "Barzahler",
+      "Kundennummer": "30118262"
+    },
+    {
+      "Email_Rechnung": "rechnung@hofgut.example.com",
+      "account_state": "Neuanschluss in Bearbeitung",
+      "email_primary": "lukas.eggert@mail.example.net",
+      "Nachname": "Eggert",
+      "Anschrift": {
+        "PLZ": "55543",
+        "Strasse": "Salinenstraße 56",
+        "Ort": "Bad Kreuznach"
+      },
+      "meter_id": "WZ-74190934",
+      "Rechnungsanschrift": {
+        "Ort": null,
+        "PLZ": null
+      },
+      "invoice_no": "RE-2025-07364",
+      "Tarif": "Landwirtschaft",
+      "Verbrauch_m3": 499,
+      "last_reading_date": "05/01/2025",
+      "Vertragsbeginn": "10/04/2025",
+      "Firma": "  Hofgut Nahetal ",
+      "Vorname": "Lukas",
+      "Zahlungsart": "SEPA-Lastschrift",
+      "Kundennummer": "30118293"
+    },
+    {
+      "Email_Rechnung": null,
+      "account_state": "Neuanschluss in Bearbeitung",
+      "email_primary": "frieda.nolte@mail.example.net",
+      "Nachname": "Nolte",
+      "Anschrift": {
+        "PLZ": "55543",
+        "Strasse": "Weinbergstraße 49",
+        "Ort": "Bad Kreuznach"
+      },
+      "meter_id": "WZ-92356126",
+      "Rechnungsanschrift": {
+        "Ort": "Meisenheim",
+        "PLZ": "55543"
+      },
+      "invoice_no": "RE-2025-58147",
+      "Tarif": "Leerstand",
+      "Verbrauch_m3": 657,
+      "last_reading_date": "05/04/2025",
+      "Vertragsbeginn": "10/03/2017",
+      "Firma": null,
+      "Vorname": "Frieda",
+      "Zahlungsart": "SEPA-Lastschrift",
+      "Kundennummer": "30118324"
+    },
+    {
+      "Email_Rechnung": null,
+      "account_state": "gekündigt",
+      "email_primary": "Konstantin.Iffland@Mail.example.net",
+      "Nachname": "Iffland",
+      "Anschrift": {
+        "PLZ": "55743",
+        "Strasse": "Am Brühl 14",
+        "Ort": "Idar-Oberstein"
+      },
+      "meter_id": "WZ-14485054",
+      "Rechnungsanschrift": {
+        "Ort": null,
+        "PLZ": null
+      },
+      "invoice_no": "RE-2025-93745",
+      "Tarif": "Leerstand",
+      "Verbrauch_m3": 603,
+      "last_reading_date": "07/02/2025",
+      "Vertragsbeginn": "05/09/2004",
+      "Firma": null,
+      "Vorname": "Konstantin",
+      "Zahlungsart": "SEPA-Lastschrift",
+      "Kundennummer": "30118355"
+    },
+    {
+      "Email_Rechnung": "jorg.rechnung@mail.example.net",
+      "account_state": "gekündigt",
+      "email_primary": "Jorg.Jaschke@mail.example.net",
+      "Nachname": "Jaschke",
+      "Anschrift": {
+        "PLZ": "55743",
+        "Strasse": "Weinbergstraße 37",
+        "Ort": "Idar-Oberstein"
+      },
+      "meter_id": "WZ-38825300",
+      "Rechnungsanschrift": {
+        "Ort": null,
+        "PLZ": null
+      },
+      "invoice_no": "RE-2025-16641",
+      "Tarif": "Haushalt Öko",
+      "Verbrauch_m3": 450,
+      "last_reading_date": "05/01/2025",
+      "Vertragsbeginn": "03/06/2018",
+      "Firma": null,
+      "Vorname": "Jörg",
+      "Zahlungsart": "SEPA-Lastschrift",
+      "Kundennummer": "30118386"
+    },
+    {
+      "Email_Rechnung": null,
+      "account_state": "gekündigt",
+      "email_primary": "jorg.mertens@mail.example.net",
+      "Nachname": "Mertens",
+      "Anschrift": {
+        "PLZ": "55743",
+        "Strasse": "Mühlenteich 48",
+        "Ort": "Idar-Oberstein"
+      },
+      "meter_id": "WZ-85043613",
+      "Rechnungsanschrift": {
+        "Ort": null,
+        "PLZ": null
+      },
+      "invoice_no": "RE-2025-20049",
+      "Tarif": "Haushalt Standard",
+      "Verbrauch_m3": 112,
+      "last_reading_date": "04/12/2025",
+      "Vertragsbeginn": "07/09/2015",
+      "Firma": null,
+      "Vorname": "Jörg",
+      "Zahlungsart": "Überweisung",
+      "Kundennummer": "30118417"
+    },
+    {
+      "Email_Rechnung": null,
+      "account_state": "aktiv",
+      "email_primary": "jorg.iffland@mail.example.net",
+      "Nachname": "Iffland",
+      "Anschrift": {
+        "PLZ": "55543",
+        "Strasse": "Weinbergstraße 56",
+        "Ort": "Bad Kreuznach"
+      },
+      "meter_id": "WZ-57858069",
+      "Rechnungsanschrift": {
+        "Ort": "Kirn",
+        "PLZ": "55743"
+      },
+      "invoice_no": "RE-2025-47116",
+      "Tarif": "Leerstand",
+      "Verbrauch_m3": 403,
+      "last_reading_date": "04/06/2025",
+      "Vertragsbeginn": "04/04/2021",
+      "Firma": null,
+      "Vorname": "Jörg",
+      "Zahlungsart": "SEPA-Lastschrift",
+      "Kundennummer": "30118448"
+    },
+    {
+      "Email_Rechnung": "jonas.rechnung@mail.example.net",
+      "account_state": "gesperrt",
+      "email_primary": "Jonas.Haberl@Mail.example.net",
+      "Nachname": "Haberl",
+      "Anschrift": {
+        "PLZ": "55590",
+        "Strasse": "Weinbergstraße 30",
+        "Ort": "Meisenheim"
+      },
+      "meter_id": "WZ-31841634",
+      "Rechnungsanschrift": {
+        "Ort": null,
+        "PLZ": null
+      },
+      "invoice_no": "RE-2025-05062",
+      "Tarif": "Haushalt Öko",
+      "Verbrauch_m3": 33,
+      "last_reading_date": "05/12/2025",
+      "Vertragsbeginn": "10/12/2005",
+      "Firma": null,
+      "Vorname": "Jonas",
+      "Zahlungsart": "Barzahler",
+      "Kundennummer": "30118479"
+    },
+    {
+      "Email_Rechnung": null,
+      "account_state": "gesperrt",
+      "email_primary": "ida.jaschke@mail.example.net",
+      "Nachname": "Jaschke",
+      "Anschrift": {
+        "PLZ": "55590",
+        "Strasse": "Am Brühl 65",
+        "Ort": "Meisenheim"
+      },
+      "meter_id": "WZ-01562131",
+      "Rechnungsanschrift": {
+        "Ort": null,
+        "PLZ": null
+      },
+      "invoice_no": "RE-2025-43142",
+      "Tarif": "Haushalt Öko",
+      "Verbrauch_m3": 267,
+      "last_reading_date": "05/09/2025",
+      "Vertragsbeginn": "03/07/2012",
+      "Firma": null,
+      "Vorname": "Ida",
+      "Zahlungsart": "SEPA-Lastschrift",
+      "Kundennummer": "30118510"
+    },
+    {
+      "Email_Rechnung": "rechnung@hofgut.example.com",
+      "account_state": "gekündigt",
+      "email_primary": "greta.nolte@mail.example.net",
+      "Nachname": "Nolte",
+      "Anschrift": {
+        "PLZ": "55590",
+        "Strasse": "Salinenstraße 9",
+        "Ort": "Meisenheim"
+      },
+      "meter_id": "WZ-80167222",
+      "Rechnungsanschrift": {
+        "Ort": null,
+        "PLZ": null
+      },
+      "invoice_no": "RE-2025-96243",
+      "Tarif": "Landwirtschaft",
+      "Verbrauch_m3": 672,
+      "last_reading_date": "10/06/2025",
+      "Vertragsbeginn": "11/09/2022",
+      "Firma": "  Hofgut Nahetal ",
+      "Vorname": "Greta",
+      "Zahlungsart": "Barzahler",
+      "Kundennummer": "30118541"
+    },
+    {
+      "Email_Rechnung": "henrik.rechnung@mail.example.net",
+      "account_state": "gekündigt",
+      "email_primary": "henrik.wohler@mail.example.net",
+      "Nachname": "Wöhler",
+      "Anschrift": {
+        "PLZ": "55590",
+        "Strasse": "Salinenstraße 48",
+        "Ort": "Meisenheim"
+      },
+      "meter_id": "WZ-44916506",
+      "Rechnungsanschrift": {
+        "Ort": "Bad Kreuznach",
+        "PLZ": "55543"
+      },
+      "invoice_no": "RE-2025-95018",
+      "Tarif": "Haushalt Öko",
+      "Verbrauch_m3": 48,
+      "last_reading_date": "01/02/2025",
+      "Vertragsbeginn": "10/09/2019",
+      "Firma": null,
+      "Vorname": "Henrik",
+      "Zahlungsart": "Barzahler",
+      "Kundennummer": "30118572"
+    },
+    {
+      "Email_Rechnung": null,
+      "account_state": "aktiv",
+      "email_primary": "Jorg.Dorfmann@Mail.example.net",
+      "Nachname": "Dorfmann",
+      "Anschrift": {
+        "PLZ": "55590",
+        "Strasse": "Mühlenteich 12",
+        "Ort": "Meisenheim"
+      },
+      "meter_id": "WZ-23753955",
+      "Rechnungsanschrift": {
+        "Ort": null,
+        "PLZ": null
+      },
+      "invoice_no": "RE-2025-40923",
+      "Tarif": "Haushalt Öko",
+      "Verbrauch_m3": 610,
+      "last_reading_date": "10/08/2025",
+      "Vertragsbeginn": "04/11/2011",
+      "Firma": null,
+      "Vorname": "Jörg",
+      "Zahlungsart": "SEPA-Lastschrift",
+      "Kundennummer": "30118603"
+    },
+    {
+      "Email_Rechnung": null,
+      "account_state": "Neuanschluss in Bearbeitung",
+      "email_primary": "paula.nolte@mail.example.net",
+      "Nachname": "Nolte",
+      "Anschrift": {
+        "PLZ": "55590",
+        "Strasse": "Weinbergstraße 12",
+        "Ort": "Meisenheim"
+      },
+      "meter_id": "WZ-89252916",
+      "Rechnungsanschrift": {
+        "Ort": null,
+        "PLZ": null
+      },
+      "invoice_no": "RE-2025-18377",
+      "Tarif": "Haushalt Standard",
+      "Verbrauch_m3": 462,
+      "last_reading_date": "12/12/2025",
+      "Vertragsbeginn": "02/02/2008",
+      "Firma": null,
+      "Vorname": "Paula",
+      "Zahlungsart": "Überweisung",
+      "Kundennummer": "30118634"
+    },
+    {
+      "Email_Rechnung": "rechnung@gartnerei.example.com",
+      "account_state": "gekündigt",
+      "email_primary": "greta.eggert@mail.example.net",
+      "Nachname": "Eggert",
+      "Anschrift": {
+        "PLZ": "55743",
+        "Strasse": "Weinbergstraße 51",
+        "Ort": "Idar-Oberstein"
+      },
+      "meter_id": "WZ-12362681",
+      "Rechnungsanschrift": {
+        "Ort": null,
+        "PLZ": null
+      },
+      "invoice_no": "RE-2025-35540",
+      "Tarif": "Landwirtschaft",
+      "Verbrauch_m3": 316,
+      "last_reading_date": "07/02/2025",
+      "Vertragsbeginn": "01/12/2023",
+      "Firma": "  Gärtnerei Lindner ",
+      "Vorname": "Greta",
+      "Zahlungsart": "Barzahler",
+      "Kundennummer": "30118665"
+    },
+    {
+      "Email_Rechnung": "rechnung@kellerei.example.com",
+      "account_state": "aktiv",
+      "email_primary": "Henrik.Oberle@mail.example.net",
+      "Nachname": "Oberle",
+      "Anschrift": {
+        "PLZ": "55606",
+        "Strasse": "Salinenstraße 1",
+        "Ort": "Kirn"
+      },
+      "meter_id": "WZ-66288780",
+      "Rechnungsanschrift": {
+        "Ort": "Kirn",
+        "PLZ": "55543"
+      },
+      "invoice_no": "RE-2025-40649",
+      "Tarif": "Gewerbe",
+      "Verbrauch_m3": 438,
+      "last_reading_date": "12/09/2025",
+      "Vertragsbeginn": "11/04/2007",
+      "Firma": "  Kellerei am Rosenberg ",
+      "Vorname": "Henrik",
+      "Zahlungsart": "Überweisung",
+      "Kundennummer": "30118696"
+    },
+    {
+      "Email_Rechnung": "rechnung@kellerei.example.com",
+      "account_state": "gekündigt",
+      "email_primary": "Henrik.Mertens@mail.example.net",
+      "Nachname": "Mertens",
+      "Anschrift": {
+        "PLZ": "55543",
+        "Strasse": "Weinbergstraße 57",
+        "Ort": "Bad Kreuznach"
+      },
+      "meter_id": "WZ-05557297",
+      "Rechnungsanschrift": {
+        "Ort": null,
+        "PLZ": null
+      },
+      "invoice_no": "RE-2025-85598",
+      "Tarif": "Gewerbe",
+      "Verbrauch_m3": 592,
+      "last_reading_date": "11/04/2025",
+      "Vertragsbeginn": "11/06/2011",
+      "Firma": "  Kellerei am Rosenberg ",
+      "Vorname": "Henrik",
+      "Zahlungsart": "SEPA-Lastschrift",
+      "Kundennummer": "30118727"
+    },
+    {
+      "Email_Rechnung": "mira.rechnung@mail.example.net",
+      "account_state": "gekündigt",
+      "email_primary": "mira.albrecht@mail.example.net",
+      "Nachname": "Albrecht",
+      "Anschrift": {
+        "PLZ": "55606",
+        "Strasse": "Mühlenteich 4",
+        "Ort": "Kirn"
+      },
+      "meter_id": "WZ-09398721",
+      "Rechnungsanschrift": {
+        "Ort": null,
+        "PLZ": null
+      },
+      "invoice_no": "RE-2025-71783",
+      "Tarif": "Haushalt Öko",
+      "Verbrauch_m3": 591,
+      "last_reading_date": "02/04/2025",
+      "Vertragsbeginn": "07/06/2005",
+      "Firma": null,
+      "Vorname": "Mira",
+      "Zahlungsart": "Überweisung",
+      "Kundennummer": "30118758"
+    },
+    {
+      "Email_Rechnung": "rechnung@kellerei.example.com",
+      "account_state": "aktiv",
+      "email_primary": "matthias.nolte@mail.example.net",
+      "Nachname": "Nolte",
+      "Anschrift": {
+        "PLZ": "55606",
+        "Strasse": "Am Brühl 38",
+        "Ort": "Kirn"
+      },
+      "meter_id": "WZ-98401075",
+      "Rechnungsanschrift": {
+        "Ort": null,
+        "PLZ": null
+      },
+      "invoice_no": "RE-2025-32616",
+      "Tarif": "Landwirtschaft",
+      "Verbrauch_m3": 433,
+      "last_reading_date": "04/01/2025",
+      "Vertragsbeginn": "01/12/2004",
+      "Firma": "  Kellerei am Rosenberg ",
+      "Vorname": "Matthias",
+      "Zahlungsart": "SEPA-Lastschrift",
+      "Kundennummer": "30118789"
+    },
+    {
+      "Email_Rechnung": null,
+      "account_state": "gesperrt",
+      "email_primary": "moritz.falkner@mail.example.net",
+      "Nachname": "Falkner",
+      "Anschrift": {
+        "PLZ": "55543",
+        "Strasse": "Salinenstraße 1",
+        "Ort": "Bad Kreuznach"
+      },
+      "meter_id": "WZ-25366748",
+      "Rechnungsanschrift": {
+        "Ort": "Bad Kreuznach",
+        "PLZ": "55743"
+      },
+      "invoice_no": "RE-2025-26557",
+      "Tarif": "Leerstand",
+      "Verbrauch_m3": 885,
+      "last_reading_date": "01/10/2025",
+      "Vertragsbeginn": "04/06/1999",
+      "Firma": null,
+      "Vorname": "Moritz",
+      "Zahlungsart": "SEPA-Lastschrift",
+      "Kundennummer": "30118820"
+    },
+    {
+      "Email_Rechnung": "ida.rechnung@mail.example.net",
+      "account_state": "aktiv",
+      "email_primary": "Ida.Wohler@mail.example.net",
+      "Nachname": "Wöhler",
+      "Anschrift": {
+        "PLZ": "55543",
+        "Strasse": "Salinenstraße 52",
+        "Ort": "Bad Kreuznach"
+      },
+      "meter_id": "WZ-62955030",
+      "Rechnungsanschrift": {
+        "Ort": null,
+        "PLZ": null
+      },
+      "invoice_no": "RE-2025-03254",
+      "Tarif": "Haushalt Öko",
+      "Verbrauch_m3": 867,
+      "last_reading_date": "01/06/2025",
+      "Vertragsbeginn": "04/07/2022",
+      "Firma": null,
+      "Vorname": "Ida",
+      "Zahlungsart": "SEPA-Lastschrift",
+      "Kundennummer": "30118851"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "customer_number": {
+        "type": "string"
+      },
+      "full_name": {
+        "type": "string"
+      },
+      "company": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "contact_email": {
+        "type": "string",
+        "format": "email"
+      },
+      "billing_email": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "format": "email"
+      },
+      "contract_start": {
+        "type": "string",
+        "format": "date"
+      },
+      "tariff": {
+        "type": "string",
+        "enum": [
+          "residential",
+          "business",
+          "agricultural"
+        ]
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "suspended",
+          "terminated"
+        ]
+      },
+      "payment_method": {
+        "type": "string",
+        "enum": [
+          "direct_debit",
+          "bank_transfer",
+          "cash"
+        ]
+      },
+      "service_address": {
+        "type": "object",
+        "properties": {
+          "postal_code": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
+      "tax_id": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "customer_number",
+      "full_name",
+      "contact_email",
+      "contract_start",
+      "tariff",
+      "status"
+    ]
+  },
+  "groundTruth": {
+    "customer_number": {
+      "source": "Kundennummer",
+      "transform": "copy",
+      "why": "customer number; invoice_no is a single bill and meter_id the meter"
+    },
+    "full_name": {
+      "source": null,
+      "sources": [
+        "Vorname",
+        "Nachname"
+      ],
+      "transform": "concat",
+      "separator": " ",
+      "why": "account holder name is first name plus surname"
+    },
+    "company": {
+      "source": "Firma",
+      "transform": "trim",
+      "why": "business name for commercial accounts, padded"
+    },
+    "contact_email": {
+      "source": "email_primary",
+      "transform": "normalize_email",
+      "why": "main contact email, mixed case"
+    },
+    "billing_email": {
+      "source": "Email_Rechnung",
+      "transform": "copy",
+      "why": "separate e-invoice address when given"
+    },
+    "contract_start": {
+      "source": "Vertragsbeginn",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "supply contract start (German day-first); last_reading_date is the last meter reading"
+    },
+    "tariff": {
+      "source": "Tarif",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Haushalt Standard": "residential",
+        "Haushalt Öko": "residential",
+        "Gewerbe": "business",
+        "Landwirtschaft": "agricultural",
+        "Leerstand": null
+      },
+      "why": "tariff group; Leerstand marks a vacant property with no paying customer"
+    },
+    "status": {
+      "source": "account_state",
+      "transform": "map_enum",
+      "categoryMap": {
+        "aktiv": "active",
+        "gesperrt": "suspended",
+        "gekündigt": "terminated",
+        "Neuanschluss in Bearbeitung": null
+      },
+      "why": "account state; a pending new connection is not yet billable"
+    },
+    "payment_method": {
+      "source": "Zahlungsart",
+      "transform": "map_enum",
+      "categoryMap": {
+        "SEPA-Lastschrift": "direct_debit",
+        "Überweisung": "bank_transfer",
+        "Barzahler": "cash"
+      },
+      "why": "payment method translated"
+    },
+    "service_address.postal_code": {
+      "source": "Anschrift.PLZ",
+      "transform": "copy",
+      "why": "supply address postcode; Rechnungsanschrift is an optional different billing address"
+    },
+    "service_address.city": {
+      "source": "Anschrift.Ort",
+      "transform": "copy",
+      "why": "supply address town"
+    },
+    "tax_id": {
+      "source": null,
+      "transform": "none",
+      "why": "no VAT or tax number is exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "Kundennummer",
+        "invoice_no"
+      ],
+      "correctFor": "customer_number"
+    },
+    {
+      "kind": "two-email-fields",
+      "fields": [
+        "email_primary",
+        "Email_Rechnung"
+      ],
+      "correctFor": "contact_email"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "Anschrift.PLZ",
+        "Rechnungsanschrift.PLZ"
+      ],
+      "correctFor": "service_address.postal_code"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "Vertragsbeginn",
+        "last_reading_date"
+      ],
+      "correctFor": "contract_start"
+    },
+    {
+      "kind": "organization-name-vs-person-name",
+      "fields": [
+        "Firma",
+        "Nachname"
+      ],
+      "correctFor": "company"
+    }
+  ],
+  "sourceConcepts": {
+    "Email_Rechnung": "email",
+    "account_state": "account-status",
+    "email_primary": "email",
+    "Nachname": "family-name",
+    "Anschrift.PLZ": "postal-code",
+    "meter_id": "other-identifier",
+    "Rechnungsanschrift.Ort": "city",
+    "invoice_no": "transaction-id",
+    "Tarif": "category",
+    "Verbrauch_m3": "quantity",
+    "last_reading_date": "modified-date",
+    "Rechnungsanschrift.PLZ": "postal-code",
+    "Anschrift.Strasse": "street-address",
+    "Vertragsbeginn": "start-date",
+    "Firma": "organization-name",
+    "Vorname": "given-name",
+    "Zahlungsart": "category",
+    "Anschrift.Ort": "city",
+    "Kundennummer": "customer-id"
+  },
+  "destinationConcepts": {
+    "customer_number": "customer-id",
+    "full_name": "person-name",
+    "company": "organization-name",
+    "contact_email": "email",
+    "billing_email": "email",
+    "contract_start": "start-date",
+    "tariff": "category",
+    "status": "account-status",
+    "payment_method": "category",
+    "service_address.postal_code": "postal-code",
+    "service_address.city": "city",
+    "tax_id": "other-identifier"
+  }
+}

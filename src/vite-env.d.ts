@@ -27,6 +27,9 @@ interface EyesTestHarness {
   cloudOutput?: unknown;
   cloudOutputs?: unknown[];
   deriveProposal?: boolean;
+  planOutput?: unknown;
+  planOutputs?: unknown[];
+  planMode?: "derive" | "malformed" | "hallucinated-alias";
   rawCloudText?: string;
   malformedCloudOutput?: unknown;
   cloudErrorCode?:

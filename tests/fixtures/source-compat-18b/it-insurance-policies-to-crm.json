@@ -1,0 +1,948 @@
+{
+  "scenarioId": "it-insurance-policies-to-crm",
+  "split": "dev",
+  "industry": "insurance brokerage",
+  "sourceLanguage": "it",
+  "description": "Sprint 18B source-compatibility fixture: fictional Italian policy records whose category labels ('email', 'life') coincide with EYES's own fixed descriptor wording.",
+  "fictional": true,
+  "records": [
+    {
+      "canaleContatto": "email",
+      "codCliente": "CL40210",
+      "polizza": {
+        "numeroPolizza": "PZ-639109",
+        "ramo": "life",
+        "statoPolizza": "sospesa",
+        "premio": {
+          "importoAnnuo": 521.98,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Giulia Marino",
+        "emailPersonale": "giulia.marino@example.com",
+        "emailUfficio": null,
+        "dataNascita": "25/06/1964"
+      },
+      "decorrenza": "2025-03-25",
+      "aggiornatoIl": "2026-09-28T09:15:00Z",
+      "statoPagamento": "insoluto",
+      "consensoMarketing": false,
+      "noteAgente": "Richiamare dopo il 13 del mese"
+    },
+    {
+      "canaleContatto": "telefono",
+      "codCliente": "CL40217",
+      "polizza": {
+        "numeroPolizza": "PZ-562709",
+        "ramo": "casa",
+        "statoPolizza": "scaduta",
+        "premio": {
+          "importoAnnuo": 252.4,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Marco Serra",
+        "emailPersonale": "marco.serra@example.com",
+        "emailUfficio": "mserra@uffici.example.org",
+        "dataNascita": "11/07/2001"
+      },
+      "decorrenza": "2025-01-07",
+      "aggiornatoIl": "2026-09-14T09:15:00Z",
+      "statoPagamento": "in_attesa",
+      "consensoMarketing": true,
+      "noteAgente": null
+    },
+    {
+      "canaleContatto": "posta",
+      "codCliente": "CL40224",
+      "polizza": {
+        "numeroPolizza": "PZ-428482",
+        "ramo": "auto",
+        "statoPolizza": "scaduta",
+        "premio": {
+          "importoAnnuo": 1005.12,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Chiara Ferraro",
+        "emailPersonale": "chiara.ferraro@example.com",
+        "emailUfficio": "cferraro@uffici.example.org",
+        "dataNascita": "01/03/1957"
+      },
+      "decorrenza": "2025-01-06",
+      "aggiornatoIl": "2026-03-18T18:15:00Z",
+      "statoPagamento": "pagato",
+      "consensoMarketing": true,
+      "noteAgente": null
+    },
+    {
+      "canaleContatto": "email",
+      "codCliente": "CL40231",
+      "polizza": {
+        "numeroPolizza": "PZ-537255",
+        "ramo": "salute",
+        "statoPolizza": "sospesa",
+        "premio": {
+          "importoAnnuo": 1882.52,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Luca Fontana",
+        "emailPersonale": "luca.fontana@example.com",
+        "emailUfficio": "lfontana@uffici.example.org",
+        "dataNascita": "23/03/1955"
+      },
+      "decorrenza": "2025-02-22",
+      "aggiornatoIl": "2026-01-15T12:15:00Z",
+      "statoPagamento": "insoluto",
+      "consensoMarketing": false,
+      "noteAgente": null
+    },
+    {
+      "canaleContatto": "telefono",
+      "codCliente": "CL40238",
+      "polizza": {
+        "numeroPolizza": "PZ-892470",
+        "ramo": "life",
+        "statoPolizza": "scaduta",
+        "premio": {
+          "importoAnnuo": 679.93,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Sara Galli",
+        "emailPersonale": "sara.galli@example.com",
+        "emailUfficio": null,
+        "dataNascita": "10/01/1967"
+      },
+      "decorrenza": "2025-09-04",
+      "aggiornatoIl": "2026-05-14T13:15:00Z",
+      "statoPagamento": "insoluto",
+      "consensoMarketing": true,
+      "noteAgente": null
+    },
+    {
+      "canaleContatto": "posta",
+      "codCliente": "CL40245",
+      "polizza": {
+        "numeroPolizza": "PZ-515372",
+        "ramo": "casa",
+        "statoPolizza": "annullata",
+        "premio": {
+          "importoAnnuo": 368.18,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Paolo Greco",
+        "emailPersonale": "paolo.greco@example.com",
+        "emailUfficio": "pgreco@uffici.example.org",
+        "dataNascita": "12/10/1958"
+      },
+      "decorrenza": "2025-07-24",
+      "aggiornatoIl": "2026-02-12T08:15:00Z",
+      "statoPagamento": "insoluto",
+      "consensoMarketing": true
+    },
+    {
+      "canaleContatto": "email",
+      "codCliente": "CL40252",
+      "polizza": {
+        "numeroPolizza": "PZ-624798",
+        "ramo": "auto",
+        "statoPolizza": "attiva",
+        "premio": {
+          "importoAnnuo": 2227.07,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Elena Caruso",
+        "emailPersonale": "elena.caruso@example.com",
+        "emailUfficio": "ecaruso@uffici.example.org",
+        "dataNascita": "05/05/1998"
+      },
+      "decorrenza": "2025-12-12",
+      "aggiornatoIl": "2026-07-21T08:15:00Z",
+      "statoPagamento": "in_attesa",
+      "consensoMarketing": false,
+      "noteAgente": null
+    },
+    {
+      "canaleContatto": "telefono",
+      "codCliente": "CL40259",
+      "polizza": {
+        "numeroPolizza": "PZ-201462",
+        "ramo": "salute",
+        "statoPolizza": "attiva",
+        "premio": {
+          "importoAnnuo": 801.47,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Davide Greco",
+        "emailPersonale": "davide.greco@example.com",
+        "emailUfficio": "dgreco@uffici.example.org",
+        "dataNascita": "11/08/1976"
+      },
+      "decorrenza": "2025-02-22",
+      "aggiornatoIl": "2026-08-21T15:15:00Z",
+      "statoPagamento": "pagato",
+      "consensoMarketing": true,
+      "noteAgente": null
+    },
+    {
+      "canaleContatto": "posta",
+      "codCliente": "CL40266",
+      "polizza": {
+        "numeroPolizza": "PZ-991372",
+        "ramo": "life",
+        "statoPolizza": "sospesa",
+        "premio": {
+          "importoAnnuo": 493.98,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Marta Barbieri",
+        "emailPersonale": "marta.barbieri@example.com",
+        "emailUfficio": null,
+        "dataNascita": "10/12/1992"
+      },
+      "decorrenza": "2025-08-15",
+      "aggiornatoIl": "2026-08-26T15:15:00Z",
+      "statoPagamento": "insoluto",
+      "consensoMarketing": true,
+      "noteAgente": null
+    },
+    {
+      "canaleContatto": "email",
+      "codCliente": "CL40273",
+      "polizza": {
+        "numeroPolizza": "PZ-387151",
+        "ramo": "casa",
+        "statoPolizza": "sospesa",
+        "premio": {
+          "importoAnnuo": 2359.96,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Andrea Bruno",
+        "emailPersonale": "andrea.bruno@example.com",
+        "emailUfficio": "abruno@uffici.example.org",
+        "dataNascita": "28/04/1968"
+      },
+      "decorrenza": "2025-01-19",
+      "aggiornatoIl": "2026-08-23T13:15:00Z",
+      "statoPagamento": "insoluto",
+      "consensoMarketing": false,
+      "noteAgente": null
+    },
+    {
+      "canaleContatto": "telefono",
+      "codCliente": "CL40280",
+      "polizza": {
+        "numeroPolizza": "PZ-103931",
+        "ramo": "auto",
+        "statoPolizza": "annullata",
+        "premio": {
+          "importoAnnuo": 1873.66,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Irene Bianchi",
+        "emailPersonale": "irene.bianchi@example.com",
+        "emailUfficio": "ibianchi@uffici.example.org",
+        "dataNascita": "21/12/2001"
+      },
+      "decorrenza": "2025-06-01",
+      "aggiornatoIl": "2026-07-26T10:15:00Z",
+      "statoPagamento": "insoluto",
+      "consensoMarketing": true,
+      "noteAgente": "Richiamare dopo il 6 del mese"
+    },
+    {
+      "canaleContatto": "posta",
+      "codCliente": "CL40287",
+      "polizza": {
+        "numeroPolizza": "PZ-809747",
+        "ramo": "salute",
+        "statoPolizza": "annullata",
+        "premio": {
+          "importoAnnuo": 648.66,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Matteo Testa",
+        "emailPersonale": "matteo.testa@example.com",
+        "emailUfficio": "mtesta@uffici.example.org",
+        "dataNascita": "16/07/1965"
+      },
+      "decorrenza": "2025-03-22",
+      "aggiornatoIl": "2026-07-13T16:15:00Z",
+      "statoPagamento": "pagato",
+      "consensoMarketing": true
+    },
+    {
+      "canaleContatto": "email",
+      "codCliente": "CL40294",
+      "polizza": {
+        "numeroPolizza": "PZ-426681",
+        "ramo": "life",
+        "statoPolizza": "attiva",
+        "premio": {
+          "importoAnnuo": 463.47,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Silvia Caruso",
+        "emailPersonale": "silvia.caruso@example.com",
+        "emailUfficio": null,
+        "dataNascita": "15/01/1958"
+      },
+      "decorrenza": "2025-04-06",
+      "aggiornatoIl": "2026-07-22T14:15:00Z",
+      "statoPagamento": "in_attesa",
+      "consensoMarketing": false,
+      "noteAgente": null
+    },
+    {
+      "canaleContatto": "telefono",
+      "codCliente": "CL40301",
+      "polizza": {
+        "numeroPolizza": "PZ-381052",
+        "ramo": "casa",
+        "statoPolizza": "scaduta",
+        "premio": {
+          "importoAnnuo": 534.99,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Fabio Serra",
+        "emailPersonale": "fabio.serra@example.com",
+        "emailUfficio": "fserra@uffici.example.org",
+        "dataNascita": "25/03/1960"
+      },
+      "decorrenza": "2025-12-02",
+      "aggiornatoIl": "2026-06-23T11:15:00Z",
+      "statoPagamento": "in_attesa",
+      "consensoMarketing": true,
+      "noteAgente": null
+    },
+    {
+      "canaleContatto": "posta",
+      "codCliente": "CL40308",
+      "polizza": {
+        "numeroPolizza": "PZ-803026",
+        "ramo": "auto",
+        "statoPolizza": "attiva",
+        "premio": {
+          "importoAnnuo": 787.4,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Laura Testa",
+        "emailPersonale": "laura.testa@example.com",
+        "emailUfficio": "ltesta@uffici.example.org",
+        "dataNascita": "01/08/1985"
+      },
+      "decorrenza": "2025-03-14",
+      "aggiornatoIl": "2026-02-25T16:15:00Z",
+      "statoPagamento": "pagato",
+      "consensoMarketing": true,
+      "noteAgente": null
+    },
+    {
+      "canaleContatto": "email",
+      "codCliente": "CL40315",
+      "polizza": {
+        "numeroPolizza": "PZ-379069",
+        "ramo": "salute",
+        "statoPolizza": "attiva",
+        "premio": {
+          "importoAnnuo": 2327.24,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Nicola Bianchi",
+        "emailPersonale": "nicola.bianchi@example.com",
+        "emailUfficio": "nbianchi@uffici.example.org",
+        "dataNascita": "20/10/1970"
+      },
+      "decorrenza": "2025-02-21",
+      "aggiornatoIl": "2026-07-23T11:15:00Z",
+      "statoPagamento": "insoluto",
+      "consensoMarketing": false,
+      "noteAgente": "Richiamare dopo il 23 del mese"
+    },
+    {
+      "canaleContatto": "telefono",
+      "codCliente": "CL40322",
+      "polizza": {
+        "numeroPolizza": "PZ-627363",
+        "ramo": "life",
+        "statoPolizza": "annullata",
+        "premio": {
+          "importoAnnuo": 1780.03,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Anna Moretti",
+        "emailPersonale": "anna.moretti@example.com",
+        "emailUfficio": null,
+        "dataNascita": "20/05/1975"
+      },
+      "decorrenza": "2025-02-14",
+      "aggiornatoIl": "2026-02-17T13:15:00Z",
+      "statoPagamento": "pagato",
+      "consensoMarketing": true,
+      "noteAgente": null
+    },
+    {
+      "canaleContatto": "posta",
+      "codCliente": "CL40329",
+      "polizza": {
+        "numeroPolizza": "PZ-584314",
+        "ramo": "casa",
+        "statoPolizza": "annullata",
+        "premio": {
+          "importoAnnuo": 234.9,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Stefano Ferraro",
+        "emailPersonale": "stefano.ferraro@example.com",
+        "emailUfficio": "sferraro@uffici.example.org",
+        "dataNascita": "12/04/1961"
+      },
+      "decorrenza": "2025-07-12",
+      "aggiornatoIl": "2026-07-11T12:15:00Z",
+      "statoPagamento": "in_attesa",
+      "consensoMarketing": true
+    },
+    {
+      "canaleContatto": "email",
+      "codCliente": "CL40336",
+      "polizza": {
+        "numeroPolizza": "PZ-222897",
+        "ramo": "auto",
+        "statoPolizza": "sospesa",
+        "premio": {
+          "importoAnnuo": 2335.74,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Valeria Bianchi",
+        "emailPersonale": "valeria.bianchi@example.com",
+        "emailUfficio": "vbianchi@uffici.example.org",
+        "dataNascita": "22/03/1960"
+      },
+      "decorrenza": "2025-04-17",
+      "aggiornatoIl": "2026-01-19T18:15:00Z",
+      "statoPagamento": "pagato",
+      "consensoMarketing": false,
+      "noteAgente": null
+    },
+    {
+      "canaleContatto": "telefono",
+      "codCliente": "CL40343",
+      "polizza": {
+        "numeroPolizza": "PZ-303224",
+        "ramo": "salute",
+        "statoPolizza": "attiva",
+        "premio": {
+          "importoAnnuo": 1125.87,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Simone Conti",
+        "emailPersonale": "simone.conti@example.com",
+        "emailUfficio": "sconti@uffici.example.org",
+        "dataNascita": "16/06/1986"
+      },
+      "decorrenza": "2025-07-16",
+      "aggiornatoIl": "2026-09-23T17:15:00Z",
+      "statoPagamento": "insoluto",
+      "consensoMarketing": true,
+      "noteAgente": null
+    },
+    {
+      "canaleContatto": "posta",
+      "codCliente": "CL40350",
+      "polizza": {
+        "numeroPolizza": "PZ-140911",
+        "ramo": "life",
+        "statoPolizza": "sospesa",
+        "premio": {
+          "importoAnnuo": 348.74,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Federica Marino",
+        "emailPersonale": "federica.marino@example.com",
+        "emailUfficio": null,
+        "dataNascita": "01/02/1968"
+      },
+      "decorrenza": "2025-04-08",
+      "aggiornatoIl": "2026-05-25T16:15:00Z",
+      "statoPagamento": "in_attesa",
+      "consensoMarketing": true,
+      "noteAgente": "Richiamare dopo il 18 del mese"
+    },
+    {
+      "canaleContatto": "email",
+      "codCliente": "CL40357",
+      "polizza": {
+        "numeroPolizza": "PZ-270835",
+        "ramo": "casa",
+        "statoPolizza": "scaduta",
+        "premio": {
+          "importoAnnuo": 2064.67,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Alberto Barbieri",
+        "emailPersonale": "alberto.barbieri@example.com",
+        "emailUfficio": "abarbieri@uffici.example.org",
+        "dataNascita": "26/01/1976"
+      },
+      "decorrenza": "2025-04-24",
+      "aggiornatoIl": "2026-03-13T10:15:00Z",
+      "statoPagamento": "pagato",
+      "consensoMarketing": false,
+      "noteAgente": null
+    },
+    {
+      "canaleContatto": "telefono",
+      "codCliente": "CL40364",
+      "polizza": {
+        "numeroPolizza": "PZ-116234",
+        "ramo": "auto",
+        "statoPolizza": "scaduta",
+        "premio": {
+          "importoAnnuo": 1925.75,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Roberta Testa",
+        "emailPersonale": "roberta.testa@example.com",
+        "emailUfficio": "rtesta@uffici.example.org",
+        "dataNascita": "21/01/1975"
+      },
+      "decorrenza": "2025-04-18",
+      "aggiornatoIl": "2026-02-22T15:15:00Z",
+      "statoPagamento": "insoluto",
+      "consensoMarketing": true,
+      "noteAgente": null
+    },
+    {
+      "canaleContatto": "posta",
+      "codCliente": "CL40371",
+      "polizza": {
+        "numeroPolizza": "PZ-259270",
+        "ramo": "salute",
+        "statoPolizza": "scaduta",
+        "premio": {
+          "importoAnnuo": 1943.97,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Enrico Moretti",
+        "emailPersonale": "enrico.moretti@example.com",
+        "emailUfficio": "emoretti@uffici.example.org",
+        "dataNascita": "18/11/1987"
+      },
+      "decorrenza": "2025-11-09",
+      "aggiornatoIl": "2026-03-11T14:15:00Z",
+      "statoPagamento": "insoluto",
+      "consensoMarketing": true
+    },
+    {
+      "canaleContatto": "email",
+      "codCliente": "CL40378",
+      "polizza": {
+        "numeroPolizza": "PZ-874102",
+        "ramo": "life",
+        "statoPolizza": "attiva",
+        "premio": {
+          "importoAnnuo": 777.94,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Paola Conti",
+        "emailPersonale": "paola.conti@example.com",
+        "emailUfficio": null,
+        "dataNascita": "23/11/2001"
+      },
+      "decorrenza": "2025-03-14",
+      "aggiornatoIl": "2026-03-22T17:15:00Z",
+      "statoPagamento": "insoluto",
+      "consensoMarketing": false,
+      "noteAgente": null
+    },
+    {
+      "canaleContatto": "telefono",
+      "codCliente": "CL40385",
+      "polizza": {
+        "numeroPolizza": "PZ-556106",
+        "ramo": "casa",
+        "statoPolizza": "scaduta",
+        "premio": {
+          "importoAnnuo": 410.15,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Pietro Rossi",
+        "emailPersonale": "pietro.rossi@example.com",
+        "emailUfficio": "prossi@uffici.example.org",
+        "dataNascita": "10/02/1994"
+      },
+      "decorrenza": "2025-07-04",
+      "aggiornatoIl": "2026-03-12T16:15:00Z",
+      "statoPagamento": "in_attesa",
+      "consensoMarketing": true,
+      "noteAgente": "Richiamare dopo il 27 del mese"
+    },
+    {
+      "canaleContatto": "posta",
+      "codCliente": "CL40392",
+      "polizza": {
+        "numeroPolizza": "PZ-299055",
+        "ramo": "auto",
+        "statoPolizza": "scaduta",
+        "premio": {
+          "importoAnnuo": 668.51,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Alessia Rossi",
+        "emailPersonale": "alessia.rossi@example.com",
+        "emailUfficio": "arossi@uffici.example.org",
+        "dataNascita": "15/01/1989"
+      },
+      "decorrenza": "2025-08-26",
+      "aggiornatoIl": "2026-07-25T09:15:00Z",
+      "statoPagamento": "in_attesa",
+      "consensoMarketing": true,
+      "noteAgente": null
+    },
+    {
+      "canaleContatto": "email",
+      "codCliente": "CL40399",
+      "polizza": {
+        "numeroPolizza": "PZ-921209",
+        "ramo": "salute",
+        "statoPolizza": "annullata",
+        "premio": {
+          "importoAnnuo": 2010.75,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Tommaso Testa",
+        "emailPersonale": "tommaso.testa@example.com",
+        "emailUfficio": "ttesta@uffici.example.org",
+        "dataNascita": "22/05/1951"
+      },
+      "decorrenza": "2025-03-16",
+      "aggiornatoIl": "2026-08-24T16:15:00Z",
+      "statoPagamento": "insoluto",
+      "consensoMarketing": false,
+      "noteAgente": null
+    },
+    {
+      "canaleContatto": "telefono",
+      "codCliente": "CL40406",
+      "polizza": {
+        "numeroPolizza": "PZ-210083",
+        "ramo": "life",
+        "statoPolizza": "attiva",
+        "premio": {
+          "importoAnnuo": 1969.36,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Ilaria Bianchi",
+        "emailPersonale": "ilaria.bianchi@example.com",
+        "emailUfficio": null,
+        "dataNascita": "02/02/1970"
+      },
+      "decorrenza": "2025-11-21",
+      "aggiornatoIl": "2026-09-26T11:15:00Z",
+      "statoPagamento": "in_attesa",
+      "consensoMarketing": true,
+      "noteAgente": null
+    },
+    {
+      "canaleContatto": "posta",
+      "codCliente": "CL40413",
+      "polizza": {
+        "numeroPolizza": "PZ-354338",
+        "ramo": "casa",
+        "statoPolizza": "annullata",
+        "premio": {
+          "importoAnnuo": 1329.7,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Giorgio Moretti",
+        "emailPersonale": "giorgio.moretti@example.com",
+        "emailUfficio": "gmoretti@uffici.example.org",
+        "dataNascita": "26/12/1975"
+      },
+      "decorrenza": "2025-05-12",
+      "aggiornatoIl": "2026-01-18T14:15:00Z",
+      "statoPagamento": "pagato",
+      "consensoMarketing": true
+    },
+    {
+      "canaleContatto": "email",
+      "codCliente": "CL40420",
+      "polizza": {
+        "numeroPolizza": "PZ-891241",
+        "ramo": "auto",
+        "statoPolizza": "scaduta",
+        "premio": {
+          "importoAnnuo": 594.59,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Noemi Marino",
+        "emailPersonale": "noemi.marino@example.com",
+        "emailUfficio": "nmarino@uffici.example.org",
+        "dataNascita": "15/03/1989"
+      },
+      "decorrenza": "2025-12-11",
+      "aggiornatoIl": "2026-05-19T10:15:00Z",
+      "statoPagamento": "in_attesa",
+      "consensoMarketing": false,
+      "noteAgente": "Richiamare dopo il 18 del mese"
+    },
+    {
+      "canaleContatto": "telefono",
+      "codCliente": "CL40427",
+      "polizza": {
+        "numeroPolizza": "PZ-523407",
+        "ramo": "salute",
+        "statoPolizza": "sospesa",
+        "premio": {
+          "importoAnnuo": 1656.47,
+          "valuta": "eur"
+        }
+      },
+      "contraente": {
+        "nomeCompleto": "Riccardo Serra",
+        "emailPersonale": "riccardo.serra@example.com",
+        "emailUfficio": "rserra@uffici.example.org",
+        "dataNascita": "18/05/1966"
+      },
+      "decorrenza": "2025-04-09",
+      "aggiornatoIl": "2026-07-18T13:15:00Z",
+      "statoPagamento": "pagato",
+      "consensoMarketing": true,
+      "noteAgente": null
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "customer_ref": {
+        "type": "string"
+      },
+      "full_name": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string",
+        "format": "email"
+      },
+      "birth_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "preferred_channel": {
+        "type": "string",
+        "enum": [
+          "email",
+          "phone",
+          "mail"
+        ]
+      },
+      "policy": {
+        "type": "object",
+        "properties": {
+          "line": {
+            "type": "string",
+            "enum": [
+              "life",
+              "home",
+              "motor",
+              "health"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "suspended",
+              "expired",
+              "cancelled"
+            ]
+          },
+          "start_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "annual_premium": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "line",
+          "status"
+        ]
+      },
+      "broker_region": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "customer_ref",
+      "email",
+      "preferred_channel",
+      "policy",
+      "broker_region"
+    ]
+  },
+  "groundTruth": {
+    "customer_ref": {
+      "source": "codCliente",
+      "why": "customer code"
+    },
+    "full_name": {
+      "source": "contraente.nomeCompleto",
+      "why": "policyholder name"
+    },
+    "email": {
+      "source": "contraente.emailPersonale",
+      "why": "personal, not office, email"
+    },
+    "birth_date": {
+      "source": "contraente.dataNascita",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "birth date"
+    },
+    "preferred_channel": {
+      "source": "canaleContatto",
+      "why": "contact channel"
+    },
+    "policy.line": {
+      "source": "polizza.ramo",
+      "why": "line of business"
+    },
+    "policy.status": {
+      "source": "polizza.statoPolizza",
+      "why": "policy status, not payment status"
+    },
+    "policy.start_date": {
+      "source": "decorrenza",
+      "dateFormat": "YYYY-MM-DD",
+      "why": "start, not last modified"
+    },
+    "policy.annual_premium": {
+      "source": "polizza.premio.importoAnnuo",
+      "why": "annual premium"
+    },
+    "broker_region": {
+      "source": null,
+      "why": "no region in the source"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "two email fields",
+      "fields": [
+        "contraente.emailPersonale",
+        "contraente.emailUfficio"
+      ],
+      "correctFor": "email"
+    },
+    {
+      "kind": "account status vs transaction status",
+      "fields": [
+        "polizza.statoPolizza",
+        "statoPagamento"
+      ],
+      "correctFor": "policy.status"
+    },
+    {
+      "kind": "modified vs created date",
+      "fields": [
+        "decorrenza",
+        "aggiornatoIl"
+      ],
+      "correctFor": "policy.start_date"
+    }
+  ],
+  "sourceConcepts": {
+    "canaleContatto": "category",
+    "codCliente": "customer-id",
+    "polizza.numeroPolizza": "other-identifier",
+    "polizza.ramo": "category",
+    "polizza.statoPolizza": "account-status",
+    "polizza.premio.importoAnnuo": "amount",
+    "polizza.premio.valuta": "currency-code",
+    "contraente.nomeCompleto": "person-name",
+    "contraente.emailPersonale": "email",
+    "contraente.emailUfficio": "email",
+    "contraente.dataNascita": "birth-date",
+    "decorrenza": "start-date",
+    "aggiornatoIl": "modified-date",
+    "statoPagamento": "payment-status",
+    "consensoMarketing": "consent-flag",
+    "noteAgente": "note"
+  },
+  "destinationConcepts": {
+    "customer_ref": "customer-id",
+    "full_name": "person-name",
+    "email": "email",
+    "birth_date": "birth-date",
+    "preferred_channel": "category",
+    "policy.line": "category",
+    "policy.status": "account-status",
+    "policy.start_date": "start-date",
+    "policy.annual_premium": "amount",
+    "broker_region": "region"
+  }
+}

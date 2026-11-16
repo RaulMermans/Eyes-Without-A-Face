@@ -78,7 +78,8 @@ The model's `status` is a claim. The compiler computes the readiness in force fr
 | same, not yet confirmed | `needs_clarification` (`date-order`) | none |
 | order contradicts proven local evidence | `needs_clarification`, failure `semantic-disagreement` | none, until the user confirms an order |
 | `fieldMatches[target]` set by the user | follows the user's field | rule as in Sprint 15 (origin `user`) |
-| `no_source` or unaddressed, and required | `no_source` / `needs_clarification` | none; question `missing-required-source`; never a default |
+| `no_source` (or the user chose "no field"), and required | `no_source` | none; question `missing-required-source`; never a default |
+| unaddressed by the plan, or its entry was rejected | `needs_clarification` | none; question `choose-field` (reason `unaddressed` or `rejected-entry`); never a default |
 
 `complete` is true only when every required destination field has an operation. A `CompiledIntegration` with zero operations has `aliasContract: null`. It is a planning artifact, never an integration.
 

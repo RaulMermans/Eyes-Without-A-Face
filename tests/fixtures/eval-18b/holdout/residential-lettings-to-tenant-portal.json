@@ -1,0 +1,946 @@
+{
+  "scenarioId": "residential-lettings-to-tenant-portal",
+  "split": "holdout",
+  "industry": "residential lettings agency",
+  "sourceLanguage": "en",
+  "description": "Tenancy export of a fictional UK lettings agency (abbreviated PascalCase, three-level nested property address) to be loaded into a tenant self-service portal.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "TntRef": "TNT3300",
+      "TntStatus": "Current",
+      "DOB": "23/06/1978",
+      "PropRef": "PRP-6352",
+      "Prop": {
+        "Addr": {
+          "Town": "Sheffield",
+          "Line1": "Flat 11, 7 Kings Road",
+          "Postcode": "S10 2QQ"
+        }
+      },
+      "LeaseEnd": "19/12/2022",
+      "RentPCM": 1410,
+      "TntFullName": "Rowan Brierley",
+      "TntEmail": "rowan.brierley@inbox.example.com",
+      "LeaseStart": "24/06/2020",
+      "RentStatus": "Paid",
+      "LeaseNo": "LSE-797161",
+      "TenancyType": "AST",
+      "DepositAmt": 1120,
+      "AgentEmail": "accounts@lettings.example.example.net",
+      "TntMob": null,
+      "GuarantorName": "Saffron Jessop",
+      "TntHomeTel": null
+    },
+    {
+      "TntRef": "TNT3309",
+      "TntStatus": "Notice Given",
+      "DOB": "15/01/1983",
+      "PropRef": "PRP-8772",
+      "Prop": {
+        "Addr": {
+          "Town": "Doncaster",
+          "Line1": "Flat 3, 62 Bootham Terrace",
+          "Postcode": "DN4 8PT"
+        }
+      },
+      "LeaseEnd": null,
+      "RentPCM": 1750,
+      "TntFullName": "Priya Lavery",
+      "TntEmail": "Priya.Lavery@Inbox.example.com",
+      "LeaseStart": "09/04/2024",
+      "RentStatus": "Late",
+      "LeaseNo": "LSE-378028",
+      "TenancyType": "Periodic",
+      "DepositAmt": 1180,
+      "AgentEmail": "property.manager@lettings.example.example.net",
+      "TntMob": "+44 7700 900119",
+      "TntHomeTel": null
+    },
+    {
+      "TntRef": "TNT3318",
+      "TntStatus": "Former",
+      "DOB": "26/09/1958",
+      "PropRef": "PRP-7990",
+      "Prop": {
+        "Addr": {
+          "Town": "Sheffield",
+          "Line1": "Flat 10, 62 Bootham Terrace",
+          "Postcode": "S10 2QQ"
+        }
+      },
+      "LeaseEnd": "21/02/2022",
+      "RentPCM": 1740,
+      "TntFullName": "  Declan Ingleby ",
+      "TntEmail": "declan.ingleby@inbox.example.com",
+      "LeaseStart": "18/07/2020",
+      "RentStatus": "Late",
+      "LeaseNo": "LSE-130501",
+      "TenancyType": "Company Let",
+      "DepositAmt": 1800,
+      "AgentEmail": "property.manager@lettings.example.example.net",
+      "TntMob": "+44 7700 900384",
+      "GuarantorName": "Saffron Everley",
+      "TntHomeTel": "+44 114 496 0827"
+    },
+    {
+      "TntRef": "TNT3327",
+      "TntStatus": "Arrears",
+      "DOB": "12/10/1974",
+      "PropRef": "PRP-8994",
+      "Prop": {
+        "Addr": {
+          "Town": "Harrogate",
+          "Line1": "Flat 3, 6 Kings Road",
+          "Postcode": "HG1 5LN"
+        }
+      },
+      "LeaseEnd": "24/03/2020",
+      "RentPCM": 980,
+      "TntFullName": "  Nadia Jessop",
+      "TntEmail": "nadia.jessop@inbox.example.com",
+      "LeaseStart": "18/02/2019",
+      "RentStatus": "Partial",
+      "LeaseNo": "LSE-103116",
+      "TenancyType": "Student HMO",
+      "DepositAmt": 1200,
+      "AgentEmail": "lettings@lettings.example.example.net",
+      "TntMob": "+44 7700 900849",
+      "GuarantorName": "Declan Hollins",
+      "TntHomeTel": "+44 114 496 0551"
+    },
+    {
+      "TntRef": "TNT3336",
+      "TntStatus": "Applicant",
+      "DOB": "17/02/1982",
+      "PropRef": "PRP-5882",
+      "Prop": {
+        "Addr": {
+          "Town": "Sheffield",
+          "Line1": "Flat 9, 39 Bawtry Road",
+          "Postcode": "S10 2QQ"
+        }
+      },
+      "LeaseEnd": "21/12/2024",
+      "RentPCM": 1200,
+      "TntFullName": "Owen Quarrie",
+      "TntEmail": "owen.quarrie@inbox.example.com",
+      "LeaseStart": "13/03/2023",
+      "RentStatus": "Paid",
+      "LeaseNo": "LSE-659159",
+      "TenancyType": "Lodger",
+      "DepositAmt": 830,
+      "AgentEmail": "lettings@lettings.example.example.net",
+      "TntMob": "+44 7700 900414",
+      "GuarantorName": null,
+      "TntHomeTel": null
+    },
+    {
+      "TntRef": "TNT3345",
+      "TntStatus": "Former",
+      "DOB": "15/09/1997",
+      "PropRef": "PRP-6388",
+      "Prop": {
+        "Addr": {
+          "Town": "York",
+          "Line1": "Flat 7, 39 Kings Road",
+          "Postcode": "YO31 7EZ"
+        }
+      },
+      "LeaseEnd": "15/11/2025",
+      "RentPCM": 1520,
+      "TntFullName": "Priya Ingleby",
+      "TntEmail": "Priya.Ingleby@inbox.example.com",
+      "LeaseStart": "18/10/2024",
+      "RentStatus": "Paid",
+      "LeaseNo": "LSE-694286",
+      "TenancyType": "Company Let",
+      "DepositAmt": 1700,
+      "AgentEmail": "property.manager@lettings.example.example.net",
+      "TntMob": "+44 7700 900461",
+      "GuarantorName": null,
+      "TntHomeTel": "+44 114 496 0685"
+    },
+    {
+      "TntRef": "TNT3354",
+      "TntStatus": "Notice Given",
+      "DOB": "09/10/1969",
+      "PropRef": "PRP-7990",
+      "Prop": {
+        "Addr": {
+          "Town": "Harrogate",
+          "Line1": "Flat 7, 39 Bootham Terrace",
+          "Postcode": "HG1 5LN"
+        }
+      },
+      "LeaseEnd": "21/12/2022",
+      "RentPCM": 700,
+      "TntFullName": "Ellis Denholm",
+      "TntEmail": "Ellis.Denholm@inbox.example.com",
+      "LeaseStart": "20/01/2021",
+      "RentStatus": "Late",
+      "LeaseNo": "LSE-782633",
+      "TenancyType": "Lodger",
+      "DepositAmt": 1040,
+      "AgentEmail": "property.manager@lettings.example.example.net",
+      "TntMob": "+44 7700 900900",
+      "GuarantorName": null,
+      "TntHomeTel": "+44 114 496 0368"
+    },
+    {
+      "TntRef": "TNT3363",
+      "TntStatus": "Former",
+      "DOB": "16/06/1971",
+      "PropRef": "PRP-5406",
+      "Prop": {
+        "Addr": {
+          "Town": "York",
+          "Line1": "Flat 1, 17 Bootham Terrace",
+          "Postcode": "YO31 7EZ"
+        }
+      },
+      "LeaseEnd": "10/11/2024",
+      "RentPCM": 1490,
+      "TntFullName": "  Marcus Quarrie ",
+      "TntEmail": "marcus.quarrie@inbox.example.com",
+      "LeaseStart": "27/07/2023",
+      "RentStatus": "Late",
+      "LeaseNo": "LSE-882898",
+      "TenancyType": "AST",
+      "DepositAmt": 1160,
+      "AgentEmail": "lettings@lettings.example.example.net",
+      "TntMob": "+44 7700 900306",
+      "GuarantorName": null
+    },
+    {
+      "TntRef": "TNT3372",
+      "TntStatus": "Applicant",
+      "DOB": "19/01/1976",
+      "PropRef": "PRP-8352",
+      "Prop": {
+        "Addr": {
+          "Town": "Harrogate",
+          "Line1": "Flat 1, 77 Kings Road",
+          "Postcode": "HG1 5LN"
+        }
+      },
+      "LeaseEnd": null,
+      "RentPCM": 870,
+      "TntFullName": "Priya Hollins",
+      "TntEmail": "priya.hollins@inbox.example.com",
+      "LeaseStart": "14/05/2024",
+      "RentStatus": "Paid",
+      "LeaseNo": "LSE-901024",
+      "TenancyType": "Periodic",
+      "DepositAmt": 1290,
+      "AgentEmail": "lettings@lettings.example.example.net",
+      "TntMob": "+44 7700 900351",
+      "GuarantorName": "Marcus Ingleby",
+      "TntHomeTel": null
+    },
+    {
+      "TntRef": "TNT3381",
+      "TntStatus": "Applicant",
+      "DOB": "03/11/1983",
+      "PropRef": "PRP-0357",
+      "Prop": {
+        "Addr": {
+          "Town": "York",
+          "Line1": "Flat 11, 28 Bawtry Road",
+          "Postcode": "YO31 7EZ"
+        }
+      },
+      "LeaseEnd": "28/06/2024",
+      "RentPCM": 1240,
+      "TntFullName": "Declan Pemberton",
+      "TntEmail": "Declan.Pemberton@Inbox.example.com",
+      "LeaseStart": "05/08/2023",
+      "RentStatus": "Late",
+      "LeaseNo": "LSE-729400",
+      "TenancyType": "Company Let",
+      "DepositAmt": 1960,
+      "AgentEmail": "property.manager@lettings.example.example.net",
+      "TntMob": "+44 7700 900868",
+      "GuarantorName": null,
+      "TntHomeTel": "+44 114 496 0466"
+    },
+    {
+      "TntRef": "TNT3390",
+      "TntStatus": "Former",
+      "DOB": "24/11/1973",
+      "PropRef": "PRP-2753",
+      "Prop": {
+        "Addr": {
+          "Town": "Doncaster",
+          "Line1": "Flat 1, 14 Bootham Terrace",
+          "Postcode": "DN4 8PT"
+        }
+      },
+      "LeaseEnd": "07/10/2022",
+      "RentPCM": 630,
+      "TntFullName": "Priya Fairbank   ",
+      "TntEmail": "priya.fairbank@inbox.example.com",
+      "LeaseStart": "27/11/2021",
+      "RentStatus": "Partial",
+      "LeaseNo": "LSE-933900",
+      "TenancyType": "Lodger",
+      "DepositAmt": 1260,
+      "AgentEmail": "property.manager@lettings.example.example.net",
+      "TntMob": null,
+      "GuarantorName": null,
+      "TntHomeTel": null
+    },
+    {
+      "TntRef": "TNT3399",
+      "TntStatus": "Notice Given",
+      "DOB": "23/01/1961",
+      "PropRef": "PRP-5593",
+      "Prop": {
+        "Addr": {
+          "Town": "Harrogate",
+          "Line1": "Flat 10, 2 Kings Road",
+          "Postcode": "HG1 5LN"
+        }
+      },
+      "LeaseEnd": "12/04/2022",
+      "RentPCM": 990,
+      "TntFullName": "Declan Ingleby",
+      "TntEmail": "declan.ingleby@inbox.example.com",
+      "LeaseStart": "14/02/2021",
+      "RentStatus": "Partial",
+      "LeaseNo": "LSE-901008",
+      "TenancyType": "AST",
+      "DepositAmt": 1770,
+      "AgentEmail": "property.manager@lettings.example.example.net",
+      "TntMob": "+44 7700 900186",
+      "GuarantorName": null,
+      "TntHomeTel": null
+    },
+    {
+      "TntRef": "TNT3408",
+      "TntStatus": "Arrears",
+      "DOB": "23/07/1982",
+      "PropRef": "PRP-1883",
+      "Prop": {
+        "Addr": {
+          "Town": "Sheffield",
+          "Line1": "Flat 2, 48 Kings Road",
+          "Postcode": "S10 2QQ"
+        }
+      },
+      "LeaseEnd": "27/05/2021",
+      "RentPCM": 900,
+      "TntFullName": "  Rowan Merriman ",
+      "TntEmail": "Rowan.Merriman@Inbox.example.com",
+      "LeaseStart": "15/10/2020",
+      "RentStatus": "Paid",
+      "LeaseNo": "LSE-286867",
+      "TenancyType": "Student HMO",
+      "DepositAmt": 630,
+      "AgentEmail": "accounts@lettings.example.example.net",
+      "TntMob": "+44 7700 900660",
+      "GuarantorName": "Amelia Ingleby",
+      "TntHomeTel": null
+    },
+    {
+      "TntRef": "TNT3417",
+      "TntStatus": "Current",
+      "DOB": "05/01/1975",
+      "PropRef": "PRP-8912",
+      "Prop": {
+        "Addr": {
+          "Town": "Harrogate",
+          "Line1": "Flat 11, 59 Ecclesall Road",
+          "Postcode": "HG1 5LN"
+        }
+      },
+      "LeaseEnd": "14/08/2026",
+      "RentPCM": 1430,
+      "TntFullName": "Imogen Jessop",
+      "TntEmail": "Imogen.Jessop@inbox.example.com",
+      "LeaseStart": "19/04/2024",
+      "RentStatus": "Paid",
+      "LeaseNo": "LSE-349416",
+      "TenancyType": "Student HMO",
+      "DepositAmt": 1230,
+      "AgentEmail": "lettings@lettings.example.example.net",
+      "TntMob": "+44 7700 900289",
+      "GuarantorName": null,
+      "TntHomeTel": null
+    },
+    {
+      "TntRef": "TNT3426",
+      "TntStatus": "Former",
+      "DOB": "19/01/1965",
+      "PropRef": "PRP-3461",
+      "Prop": {
+        "Addr": {
+          "Town": "York",
+          "Line1": "Flat 11, 49 Kings Road",
+          "Postcode": "YO31 7EZ"
+        }
+      },
+      "LeaseEnd": "09/08/2021",
+      "RentPCM": 940,
+      "TntFullName": "Ellis Jessop",
+      "TntEmail": "ellis.jessop@inbox.example.com",
+      "LeaseStart": "01/12/2019",
+      "RentStatus": "Late",
+      "LeaseNo": "LSE-450634",
+      "TenancyType": "AST",
+      "DepositAmt": 740,
+      "AgentEmail": "lettings@lettings.example.example.net",
+      "TntMob": "+44 7700 900690",
+      "GuarantorName": null,
+      "TntHomeTel": "+44 114 496 0398"
+    },
+    {
+      "TntRef": "TNT3435",
+      "TntStatus": "Arrears",
+      "DOB": "28/05/1965",
+      "PropRef": "PRP-4586",
+      "Prop": {
+        "Addr": {
+          "Town": "Harrogate",
+          "Line1": "Flat 2, 21 Bawtry Road",
+          "Postcode": "HG1 5LN"
+        }
+      },
+      "LeaseEnd": "20/03/2026",
+      "RentPCM": 1740,
+      "TntFullName": "Ellis Brierley",
+      "TntEmail": "ellis.brierley@inbox.example.com",
+      "LeaseStart": "21/04/2025",
+      "RentStatus": "Partial",
+      "LeaseNo": "LSE-376202",
+      "TenancyType": "AST",
+      "DepositAmt": 2200,
+      "AgentEmail": "lettings@lettings.example.example.net",
+      "TntMob": "+44 7700 900946",
+      "GuarantorName": null,
+      "TntHomeTel": null
+    },
+    {
+      "TntRef": "TNT3444",
+      "TntStatus": "Notice Given",
+      "DOB": "20/03/1978",
+      "PropRef": "PRP-9593",
+      "Prop": {
+        "Addr": {
+          "Town": "York",
+          "Line1": "Flat 9, 61 Ecclesall Road",
+          "Postcode": "YO31 7EZ"
+        }
+      },
+      "LeaseEnd": "14/09/2026",
+      "RentPCM": 550,
+      "TntFullName": "Amelia Brierley",
+      "TntEmail": "amelia.brierley@inbox.example.com",
+      "LeaseStart": "02/12/2025",
+      "RentStatus": "Paid",
+      "LeaseNo": "LSE-141465",
+      "TenancyType": "AST",
+      "DepositAmt": 1360,
+      "AgentEmail": "accounts@lettings.example.example.net",
+      "TntMob": "+44 7700 900688",
+      "GuarantorName": "Leona Pemberton",
+      "TntHomeTel": null
+    },
+    {
+      "TntRef": "TNT3453",
+      "TntStatus": "Former",
+      "DOB": "11/10/1985",
+      "PropRef": "PRP-8126",
+      "Prop": {
+        "Addr": {
+          "Town": "York",
+          "Line1": "Flat 2, 29 Kings Road",
+          "Postcode": "YO31 7EZ"
+        }
+      },
+      "LeaseEnd": "03/04/2023",
+      "RentPCM": 1010,
+      "TntFullName": "  Hazel Denholm ",
+      "TntEmail": "Hazel.Denholm@inbox.example.com",
+      "LeaseStart": "26/12/2022",
+      "RentStatus": "Paid",
+      "LeaseNo": "LSE-804082",
+      "TenancyType": "Student HMO",
+      "DepositAmt": 1170,
+      "AgentEmail": "lettings@lettings.example.example.net",
+      "TntMob": "+44 7700 900999",
+      "GuarantorName": null,
+      "TntHomeTel": null
+    },
+    {
+      "TntRef": "TNT3462",
+      "TntStatus": "Current",
+      "DOB": "21/05/1961",
+      "PropRef": "PRP-1484",
+      "Prop": {
+        "Addr": {
+          "Town": "Harrogate",
+          "Line1": "Flat 2, 23 Bootham Terrace",
+          "Postcode": "HG1 5LN"
+        }
+      },
+      "LeaseEnd": null,
+      "RentPCM": 580,
+      "TntFullName": "Callum Ingleby",
+      "TntEmail": "callum.ingleby@inbox.example.com",
+      "LeaseStart": "01/01/2022",
+      "RentStatus": "Paid",
+      "LeaseNo": "LSE-218402",
+      "TenancyType": "Periodic",
+      "DepositAmt": 1380,
+      "AgentEmail": "accounts@lettings.example.example.net",
+      "TntMob": "+44 7700 900016",
+      "GuarantorName": "Nadia Brierley",
+      "TntHomeTel": "+44 114 496 0189"
+    },
+    {
+      "TntRef": "TNT3471",
+      "TntStatus": "Notice Given",
+      "DOB": "19/02/1994",
+      "PropRef": "PRP-7857",
+      "Prop": {
+        "Addr": {
+          "Town": "Doncaster",
+          "Line1": "Flat 8, 62 Bawtry Road",
+          "Postcode": "DN4 8PT"
+        }
+      },
+      "LeaseEnd": "17/03/2022",
+      "RentPCM": 870,
+      "TntFullName": "Jasper Fairbank",
+      "TntEmail": "jasper.fairbank@inbox.example.com",
+      "LeaseStart": "26/02/2021",
+      "RentStatus": "Late",
+      "LeaseNo": "LSE-770355",
+      "TenancyType": "AST",
+      "DepositAmt": 2090,
+      "AgentEmail": "property.manager@lettings.example.example.net",
+      "TntMob": "+44 7700 900078",
+      "GuarantorName": "Leona Ashdown",
+      "TntHomeTel": null
+    },
+    {
+      "TntRef": "TNT3480",
+      "TntStatus": "Current",
+      "DOB": "27/04/2002",
+      "PropRef": "PRP-6685",
+      "Prop": {
+        "Addr": {
+          "Town": "Harrogate",
+          "Line1": "Flat 1, 50 Bawtry Road",
+          "Postcode": "HG1 5LN"
+        }
+      },
+      "LeaseEnd": "15/02/2024",
+      "RentPCM": 1570,
+      "TntFullName": "Freya Lavery",
+      "TntEmail": "freya.lavery@inbox.example.com",
+      "LeaseStart": "20/05/2023",
+      "RentStatus": "Partial",
+      "LeaseNo": "LSE-574251",
+      "TenancyType": "Company Let",
+      "DepositAmt": 1230,
+      "AgentEmail": "lettings@lettings.example.example.net",
+      "TntMob": null,
+      "GuarantorName": "Ellis Lavery"
+    },
+    {
+      "TntRef": "TNT3489",
+      "TntStatus": "Notice Given",
+      "DOB": "15/04/1992",
+      "PropRef": "PRP-8845",
+      "Prop": {
+        "Addr": {
+          "Town": "Sheffield",
+          "Line1": "Flat 1, 72 Bootham Terrace",
+          "Postcode": "S10 2QQ"
+        }
+      },
+      "LeaseEnd": null,
+      "RentPCM": 570,
+      "TntFullName": "Ellis Northcott",
+      "TntEmail": "Ellis.Northcott@inbox.example.com",
+      "LeaseStart": "27/06/2020",
+      "RentStatus": "Late",
+      "LeaseNo": "LSE-702413",
+      "TenancyType": "Periodic",
+      "DepositAmt": 1710,
+      "AgentEmail": "property.manager@lettings.example.example.net",
+      "TntMob": "+44 7700 900385",
+      "GuarantorName": null,
+      "TntHomeTel": "+44 114 496 0041"
+    },
+    {
+      "TntRef": "TNT3498",
+      "TntStatus": "Current",
+      "DOB": "04/04/1995",
+      "PropRef": "PRP-8919",
+      "Prop": {
+        "Addr": {
+          "Town": "Sheffield",
+          "Line1": "Flat 12, 45 Bawtry Road",
+          "Postcode": "S10 2QQ"
+        }
+      },
+      "LeaseEnd": "19/02/2025",
+      "RentPCM": 1230,
+      "TntFullName": "  Rowan Ingleby ",
+      "TntEmail": "Rowan.Ingleby@Inbox.example.com",
+      "LeaseStart": "11/04/2024",
+      "RentStatus": "Partial",
+      "LeaseNo": "LSE-446799",
+      "TenancyType": "Company Let",
+      "DepositAmt": 1240,
+      "AgentEmail": "lettings@lettings.example.example.net",
+      "TntMob": "+44 7700 900162",
+      "GuarantorName": null,
+      "TntHomeTel": null
+    },
+    {
+      "TntRef": "TNT3507",
+      "TntStatus": "Former",
+      "DOB": "26/01/2000",
+      "PropRef": "PRP-2681",
+      "Prop": {
+        "Addr": {
+          "Town": "Doncaster",
+          "Line1": "Flat 4, 76 Bawtry Road",
+          "Postcode": "DN4 8PT"
+        }
+      },
+      "LeaseEnd": "28/05/2021",
+      "RentPCM": 1450,
+      "TntFullName": "Jasper Merriman   ",
+      "TntEmail": "jasper.merriman@inbox.example.com",
+      "LeaseStart": "28/07/2020",
+      "RentStatus": "Paid",
+      "LeaseNo": "LSE-393203",
+      "TenancyType": "Student HMO",
+      "DepositAmt": 810,
+      "AgentEmail": "property.manager@lettings.example.example.net",
+      "TntMob": "+44 7700 900168",
+      "GuarantorName": null,
+      "TntHomeTel": null
+    },
+    {
+      "TntRef": "TNT3516",
+      "TntStatus": "Former",
+      "DOB": "19/05/1959",
+      "PropRef": "PRP-9033",
+      "Prop": {
+        "Addr": {
+          "Town": "York",
+          "Line1": "Flat 6, 52 Bawtry Road",
+          "Postcode": "YO31 7EZ"
+        }
+      },
+      "LeaseEnd": "27/12/2027",
+      "RentPCM": 1740,
+      "TntFullName": "Nadia Pemberton",
+      "TntEmail": "nadia.pemberton@inbox.example.com",
+      "LeaseStart": "15/09/2025",
+      "RentStatus": "Partial",
+      "LeaseNo": "LSE-884756",
+      "TenancyType": "AST",
+      "DepositAmt": 1110,
+      "AgentEmail": "property.manager@lettings.example.example.net",
+      "TntMob": "+44 7700 900465",
+      "GuarantorName": "Owen Ashdown",
+      "TntHomeTel": "+44 114 496 0647"
+    },
+    {
+      "TntRef": "TNT3525",
+      "TntStatus": "Notice Given",
+      "DOB": "23/07/1982",
+      "PropRef": "PRP-8602",
+      "Prop": {
+        "Addr": {
+          "Town": "Doncaster",
+          "Line1": "Flat 3, 74 Bootham Terrace",
+          "Postcode": "DN4 8PT"
+        }
+      },
+      "LeaseEnd": "22/12/2025",
+      "RentPCM": 1580,
+      "TntFullName": "Amelia Hollins",
+      "TntEmail": "Amelia.Hollins@Inbox.example.com",
+      "LeaseStart": "14/01/2023",
+      "RentStatus": "Paid",
+      "LeaseNo": "LSE-156368",
+      "TenancyType": "AST",
+      "DepositAmt": 1950,
+      "AgentEmail": "property.manager@lettings.example.example.net",
+      "TntMob": "+44 7700 900155",
+      "GuarantorName": null
+    },
+    {
+      "TntRef": "TNT3534",
+      "TntStatus": "Arrears",
+      "DOB": "07/11/1975",
+      "PropRef": "PRP-3083",
+      "Prop": {
+        "Addr": {
+          "Town": "Doncaster",
+          "Line1": "Flat 2, 35 Bawtry Road",
+          "Postcode": "DN4 8PT"
+        }
+      },
+      "LeaseEnd": "06/06/2024",
+      "RentPCM": 750,
+      "TntFullName": "Saffron Lavery",
+      "TntEmail": "Saffron.Lavery@inbox.example.com",
+      "LeaseStart": "16/04/2022",
+      "RentStatus": "Late",
+      "LeaseNo": "LSE-909898",
+      "TenancyType": "AST",
+      "DepositAmt": 770,
+      "AgentEmail": "lettings@lettings.example.example.net",
+      "TntMob": "+44 7700 900882",
+      "GuarantorName": null,
+      "TntHomeTel": null
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "tenant_ref": {
+        "type": "string"
+      },
+      "property_ref": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string",
+        "format": "email"
+      },
+      "mobile": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "lease_start": {
+        "type": "string",
+        "format": "date"
+      },
+      "lease_end": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "format": "date"
+      },
+      "monthly_rent": {
+        "type": "number"
+      },
+      "tenancy_type": {
+        "type": "string",
+        "enum": [
+          "fixed_term",
+          "rolling",
+          "corporate"
+        ]
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "current",
+          "leaving",
+          "former"
+        ]
+      },
+      "postcode": {
+        "type": "string"
+      },
+      "emergency_contact": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "tenant_ref",
+      "property_ref",
+      "name",
+      "email",
+      "lease_start",
+      "tenancy_type",
+      "status"
+    ]
+  },
+  "groundTruth": {
+    "tenant_ref": {
+      "source": "TntRef",
+      "transform": "copy",
+      "why": "tenant reference; LeaseNo identifies a lease document"
+    },
+    "property_ref": {
+      "source": "PropRef",
+      "transform": "copy",
+      "why": "property reference the tenant occupies"
+    },
+    "name": {
+      "source": "TntFullName",
+      "transform": "trim",
+      "why": "tenant full name, padded in some rows; GuarantorName is the guarantor"
+    },
+    "email": {
+      "source": "TntEmail",
+      "transform": "normalize_email",
+      "why": "tenant email, mixed case; AgentEmail is the agency mailbox"
+    },
+    "mobile": {
+      "source": "TntMob",
+      "transform": "copy",
+      "why": "tenant mobile; TntHomeTel is a landline"
+    },
+    "lease_start": {
+      "source": "LeaseStart",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "tenancy start (UK day-first); DOB is the tenant birth date"
+    },
+    "lease_end": {
+      "source": "LeaseEnd",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "fixed-term end, empty for periodic tenancies"
+    },
+    "monthly_rent": {
+      "source": "RentPCM",
+      "transform": "copy",
+      "why": "rent per calendar month; DepositAmt is the deposit"
+    },
+    "tenancy_type": {
+      "source": "TenancyType",
+      "transform": "map_enum",
+      "categoryMap": {
+        "AST": "fixed_term",
+        "Periodic": "rolling",
+        "Company Let": "corporate",
+        "Student HMO": "fixed_term",
+        "Lodger": null
+      },
+      "why": "UK tenancy type; a lodger licence is not a tenancy and needs review"
+    },
+    "status": {
+      "source": "TntStatus",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Current": "current",
+        "Notice Given": "leaving",
+        "Former": "former",
+        "Arrears": "current",
+        "Applicant": null
+      },
+      "why": "tenant state; tenants in arrears are still current; applicants are not tenants yet"
+    },
+    "postcode": {
+      "source": "Prop.Addr.Postcode",
+      "transform": "copy",
+      "why": "postcode of the let property"
+    },
+    "emergency_contact": {
+      "source": null,
+      "transform": "none",
+      "why": "no emergency contact is exported; the guarantor is not an emergency contact"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "TntRef",
+        "LeaseNo"
+      ],
+      "correctFor": "tenant_ref"
+    },
+    {
+      "kind": "two-email-fields",
+      "fields": [
+        "TntEmail",
+        "AgentEmail"
+      ],
+      "correctFor": "email"
+    },
+    {
+      "kind": "phone-or-code-confusion",
+      "fields": [
+        "TntMob",
+        "TntHomeTel"
+      ],
+      "correctFor": "mobile"
+    },
+    {
+      "kind": "birth-date-vs-start-date",
+      "fields": [
+        "DOB",
+        "LeaseStart"
+      ],
+      "correctFor": "lease_start"
+    },
+    {
+      "kind": "currency-amount-confusion",
+      "fields": [
+        "RentPCM",
+        "DepositAmt"
+      ],
+      "correctFor": "monthly_rent"
+    },
+    {
+      "kind": "account-status-vs-transaction-status",
+      "fields": [
+        "TntStatus",
+        "RentStatus"
+      ],
+      "correctFor": "status"
+    }
+  ],
+  "sourceConcepts": {
+    "TntRef": "customer-id",
+    "TntStatus": "account-status",
+    "DOB": "birth-date",
+    "PropRef": "product-id",
+    "Prop.Addr.Town": "city",
+    "LeaseEnd": "end-date",
+    "RentPCM": "amount",
+    "TntFullName": "person-name",
+    "TntEmail": "email",
+    "LeaseStart": "start-date",
+    "RentStatus": "payment-status",
+    "LeaseNo": "transaction-id",
+    "TenancyType": "category",
+    "DepositAmt": "amount",
+    "AgentEmail": "email",
+    "Prop.Addr.Line1": "street-address",
+    "TntMob": "phone",
+    "GuarantorName": "person-name",
+    "Prop.Addr.Postcode": "postal-code",
+    "TntHomeTel": "phone"
+  },
+  "destinationConcepts": {
+    "tenant_ref": "customer-id",
+    "property_ref": "product-id",
+    "name": "person-name",
+    "email": "email",
+    "mobile": "phone",
+    "lease_start": "start-date",
+    "lease_end": "end-date",
+    "monthly_rent": "amount",
+    "tenancy_type": "category",
+    "status": "account-status",
+    "postcode": "postal-code",
+    "emergency_contact": "person-name"
+  }
+}

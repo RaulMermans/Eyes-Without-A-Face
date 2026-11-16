@@ -143,6 +143,8 @@ The guided flow becomes **Connect → Destination → Generate → Verify → De
 | E — source compatibility | `src/sources/`, `src/domain/profile/`, `src/twin/target-disclosure.ts` (fix only) | everything else |
 | F — independent evaluation author | `tests/fixtures/eval-18b/` only | all code |
 
+Ownership exception (lead-approved after review): Worker E's root-cause fix touched `src/privacy/leak-scan.ts` and added `src/phantom/fixed-text.ts`. The disclosure leak scan now ignores a match only when it lies entirely inside one exact application-owned twin segment (derived from `defaultDescriptor`, never hand-listed); see [docs/qa/sprint-18b-source-compat.md](../qa/sprint-18b-source-compat.md).
+
 The lead architect owns `src/plan/types.ts`, this ADR, the pre-registration, integration and acceptance.
 
 ## Consequences
