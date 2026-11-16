@@ -1,0 +1,21 @@
+{
+  "releaseSha": "0a9d42aeac68a792203c190d3ccc922661b543ff",
+  "testedUrl": "https://eyes-without-a-face-b7281.web.app",
+  "deployedAt": "2026-11-16T07:4xZ (owner-approved: 'renew production with the new deployment'; exact artifact 0a9d42a, head of PR #16, verify-release PASS)",
+  "testedAt": "2026-11-16T07:48–07:56Z",
+  "status": "DEPLOYED_UNVERIFIED",
+  "statusReason": "All 19 deterministic production checks pass, real Gemini Nano passes and the exported integration runs independently. The real Gemini Cloud happy path could not be verified from an automated session (App Check exchange 403, failed closed, 0 requests). A human run is required (failures.md PF-1).",
+  "inferenceBudget": { "cloudRequestsAllowed": 1, "cloudRequestsUsed": 0, "declaredExtra": 0, "extraUsed": 0 },
+  "checks": [
+    { "area": "identity (served SHA, assets, footer), App Check enforced", "result": "PASS", "kind": "DETERMINISTIC/REAL", "evidence": "browser-results.json P-001, P-002 (HTTP 401 without a token)" },
+    { "area": "imports JSON / CSV / XLSX, REST snapshot, invalid file", "result": "PASS", "kind": "DETERMINISTIC", "evidence": "browser-results.json P-010…P-014 (Chromium; Firefox for P-010…P-012)" },
+    { "area": "approval gate; decline sends nothing", "result": "PASS", "kind": "DETERMINISTIC", "evidence": "browser-results.json P-020 (Chromium, Firefox)" },
+    { "area": "category readiness warning before sending", "result": "PASS", "kind": "DETERMINISTIC", "evidence": "browser-results.json P-021" },
+    { "area": "Sprint 15: target-first question, local translation, build on this device, 0 model requests", "result": "PASS", "kind": "DETERMINISTIC", "evidence": "browser-results.json P-024 (Chromium, Firefox): 3 transformed, state PARTIALLY_VERIFIED (demo's reserved test cases), generateContent 0; screenshots/production-chromium-local-result.png" },
+    { "area": "invalid destination, guided/technical navigation, mobile 390 px, keyboard", "result": "PASS", "kind": "DETERMINISTIC", "evidence": "browser-results.json P-022, P-023, P-030, P-031" },
+    { "area": "genuine Gemini Nano on the hosted build", "result": "PASS", "kind": "REAL", "evidence": "inference-results.json: 6/6 fields, 37.0 s, 0 cloud requests while it ran" },
+    { "area": "genuine Gemini Cloud on the hosted build", "result": "NOT VERIFIED", "kind": "REAL", "evidence": "inference-results.json: exchangeRecaptchaEnterpriseToken 403 (automated session); APP_CHECK_REJECTED; 0 requests sent" },
+    { "area": "exported integration runs outside the app (hosted local build)", "result": "PASS", "kind": "REAL", "evidence": "ZIP + bindings.local.json downloaded from the live site; `node run.mjs verify` exit 0 (contract, validation, fixture replay); `node run.mjs run` on the demo records: 3/3 transformed, exit 0; no records, private values or source field names in the ZIP" },
+    { "area": "human usability, manual screen reader", "result": "NOT PERFORMED", "kind": "—", "evidence": "docs/usability/sprint-15-protocol.md" }
+  ]
+}

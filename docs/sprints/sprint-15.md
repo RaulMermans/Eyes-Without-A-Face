@@ -6,7 +6,11 @@
 
 Decision: [ADR 0014](../decisions/0014-target-first-mapping-and-local-meaning.md).
 
-**Release status: `CODE_READY`.** Code, tests and the release artifact are verified locally. Nothing was deployed. Deployment needs the owner's approval of the exact SHA, which is in the PR and the final handoff. The public URL still serves `95a9564`, which is **`DEPLOYED_UNVERIFIED`**: its real cloud run still needs one human session.
+**Release status: `DEPLOYED_UNVERIFIED`.** `0a9d42a` (head of PR #16) was deployed on the owner's explicit instruction.
+
+- **Passed on the public URL:** 19 / 19 deterministic checks, real Gemini Nano, and the exported integration run outside the app.
+- **Not verified:** real Gemini Cloud. The automated session was refused at App Check (403), with 0 requests.
+- **To finish:** one human run ([evidence](../evidence/production/0a9d42aeac68/acceptance-results.json)).
 
 ## Starting state (verified)
 

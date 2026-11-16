@@ -1,14 +1,16 @@
 # Deployment
 
-**Status (2026-11-14, Sprint 14): `DEPLOYED_UNVERIFIED`.**
+**Status (2026-11-16, Sprint 15): `DEPLOYED_UNVERIFIED`.**
 
-<https://eyes-without-a-face-b7281.web.app> serves `95a9564c90efd97085dea420b5dca3d62ff265cf`, deployed about 06:47 UTC with the owner's explicit approval of that exact SHA. No configuration change was made.
+<https://eyes-without-a-face-b7281.web.app> serves `0a9d42aeac68a792203c190d3ccc922661b543ff`, the head of PR #16. It was deployed on the owner's explicit instruction, before the merge. No configuration change was made.
 
-- **Passed:** every deterministic production check (17 / 17) and real Gemini Nano on the hosted build.
-- **Not verified:** the real Gemini Cloud happy path. Two automated sessions were refused at the App Check exchange (HTTP 403). The app failed closed and sent nothing.
-- **To finish:** one human run in a normal Chrome window ([evidence/production/95a9564c90ef/failures.md](evidence/production/95a9564c90ef/failures.md)).
-- **Previous release** `a548d7f` was RELEASE_FAILED ([failures](evidence/production/a548d7fbd7b8/failures.md)).
-- **Rollback target:** `b93e3ed`, the last PRODUCTION_ACCEPTED release.
+- **Passed:**
+  - every deterministic production check (19 / 19 on Chromium and Firefox, including the new P-024 on-device build);
+  - real Gemini Nano on the hosted build;
+  - the exported integration, downloaded from the live site and run with `node run.mjs verify` / `run` (exit 0).
+- **Not verified:** the real Gemini Cloud happy path. The automated session was refused at the App Check exchange (HTTP 403). The app failed closed and sent nothing.
+- **To finish:** one human run ([evidence/production/0a9d42aeac68/failures.md](evidence/production/0a9d42aeac68/failures.md)).
+- **Previous release:** `95a9564` (DEPLOYED_UNVERIFIED). Rollback targets are `95a9564`, or `b93e3ed`, the last PRODUCTION_ACCEPTED release.
 
 ## Production acceptance standard (permanent)
 

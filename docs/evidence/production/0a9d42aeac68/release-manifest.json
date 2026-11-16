@@ -1,0 +1,20 @@
+{
+  "testedUrl": "https://eyes-without-a-face-b7281.web.app",
+  "expectedSha": "0a9d42aeac68a792203c190d3ccc922661b543ff",
+  "servedSha": "0a9d42aeac68a792203c190d3ccc922661b543ff",
+  "buildInfo": {
+    "gitSha": "0a9d42aeac68a792203c190d3ccc922661b543ff",
+    "dirty": false,
+    "builtAt": "2026-11-16T07:32:09.011Z",
+    "mode": "production",
+    "appCheckDebug": false
+  },
+  "footer": "build 0a9d42aeac68",
+  "assets": {
+    "/assets/index-a-b6VCXd.js": 200,
+    "/assets/index-Bue2taXH.css": 200
+  },
+  "testedAt": "2026-11-16T07:51:37.162Z",
+  "browser": "chromium 158.0.8127.18",
+  "runner": "pnpm test:production (playwright.production.config.ts)"
+}

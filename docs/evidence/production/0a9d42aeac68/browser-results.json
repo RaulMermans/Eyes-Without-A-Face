@@ -1,0 +1,239 @@
+[
+  {
+    "id": "P-001",
+    "title": "P-001 served build is the approved SHA, production mode, no debug",
+    "project": "production-chromium",
+    "status": "PASS",
+    "durationMs": 2772,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/",
+      "servedSha": "0a9d42aeac68a792203c190d3ccc922661b543ff",
+      "assets": 2
+    }
+  },
+  {
+    "id": "P-002",
+    "title": "P-002 App Check: no debug token in the page; the model endpoint refuses a request without App Check",
+    "project": "production-chromium",
+    "status": "PASS",
+    "durationMs": 995,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/",
+      "probeStatus": 401,
+      "appCheckRefusal": true
+    }
+  },
+  {
+    "id": "P-010",
+    "title": "P-010 JSON demo imports and normalizes to 3 records × 6 fields @cross-browser",
+    "project": "production-chromium",
+    "status": "PASS",
+    "durationMs": 980,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/",
+      "pageErrors": 0,
+      "generateContent": 0
+    }
+  },
+  {
+    "id": "P-011",
+    "title": "P-011 CSV demo imports and normalizes to 3 records × 6 fields @cross-browser",
+    "project": "production-chromium",
+    "status": "PASS",
+    "durationMs": 610,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/",
+      "pageErrors": 0,
+      "generateContent": 0
+    }
+  },
+  {
+    "id": "P-012",
+    "title": "P-012 XLSX demo imports and normalizes to 3 records × 6 fields @cross-browser",
+    "project": "production-chromium",
+    "status": "PASS",
+    "durationMs": 1356,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/",
+      "pageErrors": 0,
+      "generateContent": 0
+    }
+  },
+  {
+    "id": "P-013",
+    "title": "P-013 read-only REST connector reads a public CORS API once, as a snapshot",
+    "project": "production-chromium",
+    "status": "PASS",
+    "durationMs": 1150,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/",
+      "gets": 1,
+      "locality": "Read from jsonplaceholder.typicode.com · a one-time snapshot, kept in this browser"
+    }
+  },
+  {
+    "id": "P-014",
+    "title": "P-014 an invalid file explains itself and loads nothing",
+    "project": "production-chromium",
+    "status": "PASS",
+    "durationMs": 593,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/"
+    }
+  },
+  {
+    "id": "P-020",
+    "title": "P-020 Build stops at the exact request; declining sends nothing @cross-browser",
+    "project": "production-chromium",
+    "status": "PASS",
+    "durationMs": 927,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/",
+      "generateContent": 0,
+      "payloadHash": 0
+    }
+  },
+  {
+    "id": "P-021",
+    "title": "P-021 a destination that needs category names says so before anything is sent",
+    "project": "production-chromium",
+    "status": "PASS",
+    "durationMs": 736,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/"
+    }
+  },
+  {
+    "id": "P-024",
+    "title": "P-024 Sprint 15: Helpdesk asks one target-first question; a local translation builds on the device with zero model requests @cross-browser",
+    "project": "production-chromium",
+    "status": "PASS",
+    "durationMs": 839,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/",
+      "generateContent": 0,
+      "transformed": 3,
+      "state": "PARTIALLY_VERIFIED"
+    }
+  },
+  {
+    "id": "P-022",
+    "title": "P-022 an invalid destination blocks Build with a reason",
+    "project": "production-chromium",
+    "status": "PASS",
+    "durationMs": 739,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/"
+    }
+  },
+  {
+    "id": "P-023",
+    "title": "P-023 guided ↔ technical navigation keeps the work",
+    "project": "production-chromium",
+    "status": "PASS",
+    "durationMs": 789,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/"
+    }
+  },
+  {
+    "id": "P-030",
+    "title": "P-030 mobile 390 px: no horizontal scroll on any step",
+    "project": "production-chromium",
+    "status": "PASS",
+    "durationMs": 733,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/"
+    }
+  },
+  {
+    "id": "P-031",
+    "title": "P-031 keyboard reaches the file control",
+    "project": "production-chromium",
+    "status": "PASS",
+    "durationMs": 453,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/"
+    }
+  },
+  {
+    "id": "P-010",
+    "title": "P-010 JSON demo imports and normalizes to 3 records × 6 fields @cross-browser",
+    "project": "production-firefox",
+    "status": "PASS",
+    "durationMs": 2190,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/",
+      "pageErrors": 0,
+      "generateContent": 0
+    }
+  },
+  {
+    "id": "P-011",
+    "title": "P-011 CSV demo imports and normalizes to 3 records × 6 fields @cross-browser",
+    "project": "production-firefox",
+    "status": "PASS",
+    "durationMs": 1054,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/",
+      "pageErrors": 0,
+      "generateContent": 0
+    }
+  },
+  {
+    "id": "P-012",
+    "title": "P-012 XLSX demo imports and normalizes to 3 records × 6 fields @cross-browser",
+    "project": "production-firefox",
+    "status": "PASS",
+    "durationMs": 1370,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/",
+      "pageErrors": 0,
+      "generateContent": 0
+    }
+  },
+  {
+    "id": "P-020",
+    "title": "P-020 Build stops at the exact request; declining sends nothing @cross-browser",
+    "project": "production-firefox",
+    "status": "PASS",
+    "durationMs": 1438,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/",
+      "generateContent": 0,
+      "payloadHash": 0
+    }
+  },
+  {
+    "id": "P-024",
+    "title": "P-024 Sprint 15: Helpdesk asks one target-first question; a local translation builds on the device with zero model requests @cross-browser",
+    "project": "production-firefox",
+    "status": "PASS",
+    "durationMs": 1526,
+    "kind": "DETERMINISTIC",
+    "details": {
+      "url": "https://eyes-without-a-face-b7281.web.app/",
+      "generateContent": 0,
+      "transformed": 3,
+      "state": "PARTIALLY_VERIFIED"
+    }
+  }
+]
