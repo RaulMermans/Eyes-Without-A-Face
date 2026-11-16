@@ -10,10 +10,12 @@
  * can measure (docs/evaluation/sprint-9-reliability.md).
  */
 import Ajv2020 from "ajv/dist/2020.js";
+import fs from "node:fs";
 import { describe, expect, it } from "vitest";
 import evidence from "../../docs/evidence/sprint-8/live-semantic-benchmark.json" with { type: "json" };
 import { MAPPING_PROPOSAL_JSON_SCHEMA, MAPPING_REVISION_JSON_SCHEMA } from "../../src/inference/prompts.ts";
 import { INITIAL_MAPPING_RESPONSE_SCHEMA, INITIAL_RESPONSE_SCHEMA_ID } from "../../src/inference/response-schemas.ts";
+import { INITIAL_MAPPING_RESPONSE_SCHEMA_V2 } from "../../src/inference/planner-prompt.ts";
 
 type Json = Record<string, unknown>;
 
@@ -60,6 +62,7 @@ describe("EVAL-090 per-operation response schema vs recorded real outputs", () =
   const initial = all.filter((sample) => sample.id.endsWith("initial"));
 
   it("initial proposals now use the per-operation schema (the Sprint 7 revision schema)", () => {
+    // Sprint 18A.5 tried initial schema 2 together with prompt v4; the pair was rejected (ADR 0017) and reverted.
     expect(INITIAL_MAPPING_RESPONSE_SCHEMA).toBe(MAPPING_REVISION_JSON_SCHEMA);
     expect(INITIAL_RESPONSE_SCHEMA_ID).toBe("mapping-response-per-operation-1");
   });
@@ -84,5 +87,45 @@ describe("EVAL-090 per-operation response schema vs recorded real outputs", () =
       initialPerOperationAdmitted: initial.filter((sample) => sample.perOperation).length,
     };
     expect(summary).toEqual({ initialResponses: 20, initialConverterValid: 19, initialFlatAdmitted: 20, initialPerOperationAdmitted: 19 });
+  });
+});
+
+describe("EVAL-186 rejected initial schema 2 (Sprint 18A.5, not used) only narrowed the per-operation schema", () => {
+  const initial2 = ajv.compile(strict(INITIAL_MAPPING_RESPONSE_SCHEMA_V2) as object);
+  const hasDefault = (parsed: unknown) =>
+    JSON.stringify(parsed).includes('"default_if_missing"') || /"unmapped"\s*:\s*"default"/.test(JSON.stringify(parsed));
+
+  it("every recorded real answer the per-operation schema admits, and that has no default, is still admitted", () => {
+    // Every converter-valid Sprint 8 initial answer used a default, so the Sprint 18A live answers (alias-level) are included.
+    const texts: string[] = [];
+    for (const entry of evidence as Array<Json>) {
+      const initial = entry.initial as { text?: string } | undefined;
+      if (initial?.text) texts.push(initial.text);
+    }
+    for (const entry of JSON.parse(fs.readFileSync("docs/evidence/sprint-18a/ai-value-live.json", "utf8")) as Array<{ answers: string[] }>) {
+      texts.push(...entry.answers);
+    }
+    let compared = 0;
+    for (const text of texts) {
+      let parsed: unknown;
+      try {
+        parsed = JSON.parse(text);
+      } catch {
+        continue;
+      }
+      if (!perOperation(parsed) || hasDefault(parsed)) continue;
+      compared += 1;
+      expect(initial2(parsed)).toBe(true);
+    }
+    expect(compared).toBeGreaterThanOrEqual(10);
+  });
+
+  it("rejects default_if_missing and unmapped=default, which the per-operation schema admits", () => {
+    const withDefault = { operations: [{ op: "default_if_missing", to: "status", params: { value: "active" } }], rationale: "r" };
+    const withFallback = { operations: [{ op: "map_enum", from: "f_01", to: "status", params: { map: { a: "b" }, unmapped: "default", default: "b" } }], rationale: "r" };
+    expect(perOperation(withDefault)).toBe(true);
+    expect(perOperation(withFallback)).toBe(true);
+    expect(initial2(withDefault)).toBe(false);
+    expect(initial2(withFallback)).toBe(false);
   });
 });

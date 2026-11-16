@@ -3,6 +3,7 @@ import fs from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { expect, test } from "./fixtures.ts";
+import { privateTermsInBody } from "../../src/evaluation/ai-value-live.ts";
 
 /**
  * Sprint 18A — live AI-value run, G0 vs G1 (docs/evaluation/sprint-18a-ai-value.md).
@@ -34,10 +35,12 @@ const config = process.env.EYES_AI_VALUE_CONFIG ?? "";
 const trial = Number(process.env.EYES_AI_VALUE_TRIAL ?? "0");
 const baseURL = process.env.EYES_AI_VALUE_BASE_URL ?? "";
 const debugToken = process.env.EYES_APPCHECK_DEBUG_TOKEN ?? "";
-const evidencePath = process.env.EYES_LIVE_EVIDENCE ?? "docs/evidence/sprint-18a/ai-value-live.json";
+// Sets: 18a (G0/G1, Sprint 18A) and a5 (P0/P1, Sprint 18A.5 planner; docs/evaluation/sprint-18a5-planner.md).
+const set = process.env.EYES_AI_VALUE_SET === "a5" ? "a5" : "18a";
+const evidencePath = process.env.EYES_LIVE_EVIDENCE ?? (set === "a5" ? "docs/evidence/sprint-18a5/planner-live.json" : "docs/evidence/sprint-18a/ai-value-live.json");
 // Rehearsals may use the dev split (EYES_AI_VALUE_SPLIT=dev); the real run is always the holdout.
 const split = process.env.EYES_AI_VALUE_DRY === "1" && process.env.EYES_AI_VALUE_SPLIT === "dev" ? "dev" : "holdout";
-const root = `tests/fixtures/ai-value-18a/${split}`;
+const root = split === "dev" ? "tests/fixtures/ai-value-18a/dev" : set === "a5" ? "tests/fixtures/ai-value-18a5/holdout" : "tests/fixtures/ai-value-18a/holdout";
 /** Rehearsal: run everything up to an enabled Send button, send nothing, write no evidence. */
 const dryRun = process.env.EYES_AI_VALUE_DRY === "1";
 
@@ -60,34 +63,9 @@ function append(entry: Record<string, unknown>): void {
   fs.writeFileSync(evidencePath, `${JSON.stringify(existing, null, 2)}\n`);
 }
 
-/** Terms that must never appear in a request body: coded source keys and longer private values. */
-function privateTerms(scenario: HoldoutScenario): string[] {
-  const destinationWords = new Set<string>();
-  const visitSchema = (node: unknown) => {
-    if (!node || typeof node !== "object") return;
-    const record = node as Record<string, unknown>;
-    if (record.properties && typeof record.properties === "object") {
-      for (const [key, child] of Object.entries(record.properties as Record<string, unknown>)) {
-        destinationWords.add(key.toLowerCase());
-        visitSchema(child);
-      }
-    }
-    if (Array.isArray(record.enum)) for (const value of record.enum) if (typeof value === "string") destinationWords.add(value.toLowerCase());
-  };
-  visitSchema(scenario.destination);
-  const terms = new Set<string>();
-  const visit = (value: unknown, key?: string) => {
-    if (key && (/[_0-9]/.test(key) || /[a-z][A-Z]/.test(key)) && !destinationWords.has(key.toLowerCase())) terms.add(key);
-    if (typeof value === "string" && value.trim().length >= 6 && !destinationWords.has(value.trim().toLowerCase())) terms.add(value.trim());
-    if (value && typeof value === "object") for (const [k, v] of Object.entries(value as Record<string, unknown>)) visit(v, k);
-  };
-  for (const record of scenario.records) visit(record);
-  return [...terms];
-}
-
 test.describe("S18A-LIVE G0/G1 holdout run", () => {
   test.beforeAll(() => {
-    expect(["G0", "G1"]).toContain(config);
+    expect(set === "a5" ? ["P0", "P1"] : ["G0", "G1"]).toContain(config);
     expect([1, 2]).toContain(trial);
     expect(baseURL).toMatch(/^http:\/\/127\.0\.0\.1:\d+$/);
     expect(files.length).toBe(split === "dev" ? 6 : 10);
@@ -96,14 +74,14 @@ test.describe("S18A-LIVE G0/G1 holdout run", () => {
   for (let index = 0; index < (split === "dev" ? 6 : 10); index += 1) {
     test(`holdout #${String(index + 1).padStart(2, "0")}`, async ({ page }) => {
       const scenario = JSON.parse(fs.readFileSync(path.join(root, files[index]!), "utf8")) as HoldoutScenario;
-      const terms = privateTerms(scenario);
       const entry: Record<string, unknown> = { config, trial, index, at: new Date().toISOString() };
       const net = { requests: 0, leakCount: 0, promptSha256: [] as string[], answers: [] as string[], httpStatus: [] as number[] };
       page.on("request", (request) => {
         if (!request.url().includes("generateContent")) return;
         net.requests += 1;
         const body = request.postData() ?? "";
-        net.leakCount += terms.filter((term) => body.includes(term)).length;
+        // Sprint 18A.5 trace: destination vocabulary is blanked as exact quoted strings before matching.
+        net.leakCount += privateTermsInBody(body, scenario).length;
         try {
           const parsed = JSON.parse(body) as { contents?: Array<{ parts?: Array<{ text?: string }> }> };
           const text = (parsed.contents ?? []).flatMap((content) => content.parts ?? []).map((part) => part.text ?? "").join("");

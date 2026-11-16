@@ -1,0 +1,1048 @@
+{
+  "scenarioId": "lesson-bookings-en",
+  "split": "holdout",
+  "industry": "music lessons",
+  "sourceLanguage": "en",
+  "description": "Music school lesson bookings with PascalCase keys and nested student/guardian objects mapped to a booking record.",
+  "fictional": true,
+  "records": [
+    {
+      "Instrument": "gtr",
+      "TeacherName": "Wendell Orme",
+      "Guardian": {
+        "FullName": "Leah Castellane",
+        "Email": "leah.castellane@example.com",
+        "Phone": "555-666-2263"
+      },
+      "LessonFee": 35.0,
+      "BookingState": "cxl",
+      "StudentNo": "S1522",
+      "EnrolledOn": "09/21/2025",
+      "StudioName": "Bright Reed Academy",
+      "SkillLevel": "adv",
+      "Student": {
+        "FirstName": "Iris",
+        "LastName": "Castellane",
+        "BirthDate": "10/16/2019"
+      },
+      "AccountState": "hold",
+      "LessonDate": "02/17/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90000"
+    },
+    {
+      "Instrument": "vox",
+      "TeacherName": "Marco Bellweather",
+      "Guardian": {
+        "FullName": "Leah Okoro",
+        "Email": "leah.okoro@example.com",
+        "Phone": "555-228-2036"
+      },
+      "LessonFee": 35.0,
+      "BookingState": "cxl",
+      "StudentNo": "S1783",
+      "EnrolledOn": "11/01/2023",
+      "StudioName": "Cedar Hollow Music Studio",
+      "SkillLevel": null,
+      "Student": {
+        "FirstName": "Ava",
+        "LastName": "Okoro",
+        "BirthDate": "04/10/2011"
+      },
+      "AccountState": "ok",
+      "LessonDate": "11/08/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90004"
+    },
+    {
+      "Instrument": "gtr",
+      "TeacherName": "Saskia Lindgren",
+      "Guardian": {
+        "FullName": "Grace Okoro",
+        "Email": "grace.okoro@example.com",
+        "Phone": "555-525-1776"
+      },
+      "LessonFee": 35.0,
+      "BookingState": "done",
+      "StudentNo": "S1183",
+      "EnrolledOn": "10/03/2024",
+      "StudioName": "Lantern Street Music",
+      "SkillLevel": "adv",
+      "Student": {
+        "FirstName": "Nora",
+        "LastName": "Okoro",
+        "BirthDate": "02/01/2008"
+      },
+      "AccountState": "closed",
+      "LessonDate": "09/20/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90008"
+    },
+    {
+      "Instrument": "gtr",
+      "TeacherName": "Saskia Lindgren",
+      "Guardian": {
+        "FullName": "Grace Voss",
+        "Email": "grace.voss@example.com",
+        "Phone": "555-017-7504"
+      },
+      "LessonFee": 35.0,
+      "BookingState": "noshow",
+      "StudentNo": "S1000",
+      "EnrolledOn": "11/06/2023",
+      "StudioName": "Lantern Street Music",
+      "SkillLevel": "adv",
+      "Student": {
+        "FirstName": "Ava",
+        "LastName": "Voss",
+        "BirthDate": "08/23/2011"
+      },
+      "AccountState": "ok",
+      "LessonDate": "04/02/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90012"
+    },
+    {
+      "Instrument": "drm",
+      "TeacherName": "Marco Bellweather",
+      "Guardian": {
+        "FullName": "Victor Nakashima",
+        "Email": "victor.nakashima@example.com",
+        "Phone": "555-983-4473"
+      },
+      "LessonFee": 35.0,
+      "BookingState": "bkd",
+      "StudentNo": "S1456",
+      "EnrolledOn": "11/02/2026",
+      "StudioName": "Lantern Street Music",
+      "SkillLevel": "beg",
+      "Student": {
+        "FirstName": "Mila",
+        "LastName": "Nakashima",
+        "BirthDate": "04/01/2018"
+      },
+      "AccountState": "closed",
+      "LessonDate": "03/19/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90016"
+    },
+    {
+      "Instrument": "vox",
+      "TeacherName": "Saskia Lindgren",
+      "Guardian": {
+        "FullName": "Leah Delgado-Hart",
+        "Email": "leah.delgado-hart@example.com",
+        "Phone": "555-138-6594"
+      },
+      "LessonFee": 72.5,
+      "BookingState": "done",
+      "StudentNo": "S1794",
+      "EnrolledOn": "09/05/2026",
+      "StudioName": "Lantern Street Music",
+      "SkillLevel": "adv",
+      "Student": {
+        "FirstName": "Ava",
+        "LastName": "Delgado-Hart",
+        "BirthDate": "11/11/2014"
+      },
+      "AccountState": "closed",
+      "LessonDate": "11/03/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90020"
+    },
+    {
+      "Instrument": "pno",
+      "TeacherName": "Marco Bellweather",
+      "Guardian": {
+        "FullName": "Grace Whitcombe",
+        "Email": "grace.whitcombe@example.com",
+        "Phone": "555-611-7651"
+      },
+      "LessonFee": 45.0,
+      "BookingState": "done",
+      "StudentNo": "S1470",
+      "EnrolledOn": "11/17/2025",
+      "StudioName": "Bright Reed Academy",
+      "SkillLevel": "int",
+      "Student": {
+        "FirstName": "Mila",
+        "LastName": "Whitcombe",
+        "BirthDate": "05/17/2009"
+      },
+      "AccountState": "closed",
+      "LessonDate": "11/08/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90024"
+    },
+    {
+      "Instrument": "pno",
+      "TeacherName": "Hazel Quint",
+      "Guardian": {
+        "FullName": "Leah Brennan",
+        "Email": "leah.brennan@example.com",
+        "Phone": "555-975-6691"
+      },
+      "LessonFee": 45.0,
+      "BookingState": "noshow",
+      "StudentNo": "S1894",
+      "EnrolledOn": "02/28/2025",
+      "StudioName": "Lantern Street Music",
+      "SkillLevel": "adv",
+      "Student": {
+        "FirstName": "Theo",
+        "LastName": "Brennan",
+        "BirthDate": "06/16/2014"
+      },
+      "AccountState": "ok",
+      "LessonDate": "09/27/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90028"
+    },
+    {
+      "Instrument": "vox",
+      "TeacherName": "Hazel Quint",
+      "Guardian": {
+        "FullName": "Grace Castellane",
+        "Email": "grace.castellane@example.com",
+        "Phone": "555-437-2038"
+      },
+      "LessonFee": 45.0,
+      "BookingState": "done",
+      "StudentNo": "S1437",
+      "EnrolledOn": "09/11/2026",
+      "StudioName": "Lantern Street Music",
+      "SkillLevel": null,
+      "Student": {
+        "FirstName": "Mila",
+        "LastName": "Castellane",
+        "BirthDate": "04/17/2017"
+      },
+      "AccountState": "hold",
+      "LessonDate": "05/22/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90032"
+    },
+    {
+      "Instrument": "drm",
+      "TeacherName": "Wendell Orme",
+      "Guardian": {
+        "FullName": "Leah Whitcombe",
+        "Email": "leah.whitcombe@example.com",
+        "Phone": "555-928-8793"
+      },
+      "LessonFee": 45.0,
+      "BookingState": "bkd",
+      "StudentNo": "S1300",
+      "EnrolledOn": "09/07/2025",
+      "StudioName": "Lantern Street Music",
+      "SkillLevel": "adv",
+      "Student": {
+        "FirstName": "Theo",
+        "LastName": "Whitcombe",
+        "BirthDate": "04/26/2012"
+      },
+      "AccountState": "ok",
+      "LessonDate": "01/21/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90036"
+    },
+    {
+      "Instrument": "vox",
+      "TeacherName": "Saskia Lindgren",
+      "Guardian": {
+        "FullName": "Leah Okoro",
+        "Email": "leah.okoro@example.com",
+        "Phone": "555-446-9834"
+      },
+      "LessonFee": 60.0,
+      "BookingState": "noshow",
+      "StudentNo": "S1616",
+      "EnrolledOn": "09/17/2025",
+      "StudioName": "Lantern Street Music",
+      "SkillLevel": "beg",
+      "Student": {
+        "FirstName": "Eli",
+        "LastName": "Okoro",
+        "BirthDate": "12/26/2012"
+      },
+      "AccountState": "hold",
+      "LessonDate": "12/08/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90040"
+    },
+    {
+      "Instrument": "vox",
+      "TeacherName": "Hazel Quint",
+      "Guardian": {
+        "FullName": "Grace Whitcombe",
+        "Email": "grace.whitcombe@example.com",
+        "Phone": "555-805-7431"
+      },
+      "LessonFee": 35.0,
+      "BookingState": "cxl",
+      "StudentNo": "S1937",
+      "EnrolledOn": "06/15/2025",
+      "StudioName": "Cedar Hollow Music Studio",
+      "SkillLevel": "int",
+      "Student": {
+        "FirstName": "Nora",
+        "LastName": "Whitcombe",
+        "BirthDate": "10/02/2009"
+      },
+      "AccountState": "ok",
+      "LessonDate": "09/07/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90044"
+    },
+    {
+      "Instrument": "flt",
+      "TeacherName": "Marco Bellweather",
+      "Guardian": {
+        "FullName": "Dana Okoro",
+        "Email": "dana.okoro@example.com",
+        "Phone": "555-880-0079"
+      },
+      "LessonFee": 72.5,
+      "BookingState": "done",
+      "StudentNo": "S1202",
+      "EnrolledOn": "12/03/2023",
+      "StudioName": "Cedar Hollow Music Studio",
+      "SkillLevel": "adv",
+      "Student": {
+        "FirstName": "Ava",
+        "LastName": "Okoro",
+        "BirthDate": "05/03/2012"
+      },
+      "AccountState": "ok",
+      "LessonDate": "05/02/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90048"
+    },
+    {
+      "Instrument": "vox",
+      "TeacherName": "Wendell Orme",
+      "Guardian": {
+        "FullName": "Grace Whitcombe",
+        "Email": "grace.whitcombe@example.com",
+        "Phone": "555-718-0838"
+      },
+      "LessonFee": 72.5,
+      "BookingState": "noshow",
+      "StudentNo": "S1701",
+      "EnrolledOn": "08/18/2024",
+      "StudioName": "Bright Reed Academy",
+      "SkillLevel": null,
+      "Student": {
+        "FirstName": "Jasper",
+        "LastName": "Whitcombe",
+        "BirthDate": "01/17/2008"
+      },
+      "AccountState": "ok",
+      "LessonDate": "08/19/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90052"
+    },
+    {
+      "Instrument": "gtr",
+      "TeacherName": "Marco Bellweather",
+      "Guardian": {
+        "FullName": "Paul Brennan",
+        "Email": "paul.brennan@example.com",
+        "Phone": "555-885-8212"
+      },
+      "LessonFee": 35.0,
+      "BookingState": "noshow",
+      "StudentNo": "S1981",
+      "EnrolledOn": "09/20/2025",
+      "StudioName": "Bright Reed Academy",
+      "SkillLevel": "beg",
+      "Student": {
+        "FirstName": "Eli",
+        "LastName": "Brennan",
+        "BirthDate": "06/06/2013"
+      },
+      "AccountState": "ok",
+      "LessonDate": "04/04/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90056"
+    },
+    {
+      "Instrument": "drm",
+      "TeacherName": "Marco Bellweather",
+      "Guardian": {
+        "FullName": "Paul Delgado-Hart",
+        "Email": "paul.delgado-hart@example.com",
+        "Phone": "555-196-2669"
+      },
+      "LessonFee": 45.0,
+      "BookingState": "cxl",
+      "StudentNo": "S1472",
+      "EnrolledOn": "05/17/2024",
+      "StudioName": "Cedar Hollow Music Studio",
+      "SkillLevel": "adv",
+      "Student": {
+        "FirstName": "Theo",
+        "LastName": "Delgado-Hart",
+        "BirthDate": "01/18/2011"
+      },
+      "AccountState": "closed",
+      "LessonDate": "12/08/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90060"
+    },
+    {
+      "Instrument": "vln",
+      "TeacherName": "Saskia Lindgren",
+      "Guardian": {
+        "FullName": "Leah Nakashima",
+        "Email": "leah.nakashima@example.com",
+        "Phone": "555-803-5746"
+      },
+      "LessonFee": 72.5,
+      "BookingState": "bkd",
+      "StudentNo": "S1439",
+      "EnrolledOn": "05/08/2024",
+      "StudioName": "Cedar Hollow Music Studio",
+      "SkillLevel": "beg",
+      "Student": {
+        "FirstName": "Eli",
+        "LastName": "Nakashima",
+        "BirthDate": "05/01/2012"
+      },
+      "AccountState": "closed",
+      "LessonDate": "07/23/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90064"
+    },
+    {
+      "Instrument": "vln",
+      "TeacherName": "Wendell Orme",
+      "Guardian": {
+        "FullName": "Paul Voss",
+        "Email": "paul.voss@example.com",
+        "Phone": "555-951-4830"
+      },
+      "LessonFee": 60.0,
+      "BookingState": "bkd",
+      "StudentNo": "S1880",
+      "EnrolledOn": "04/25/2025",
+      "StudioName": "Lantern Street Music",
+      "SkillLevel": "adv",
+      "Student": {
+        "FirstName": "Iris",
+        "LastName": "Voss",
+        "BirthDate": "01/15/2014"
+      },
+      "AccountState": "closed",
+      "LessonDate": "11/06/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90068"
+    },
+    {
+      "Instrument": "vox",
+      "TeacherName": "Wendell Orme",
+      "Guardian": {
+        "FullName": "Victor Voss",
+        "Email": "victor.voss@example.com",
+        "Phone": "555-232-4927"
+      },
+      "LessonFee": 35.0,
+      "BookingState": "done",
+      "StudentNo": "S1430",
+      "EnrolledOn": "10/14/2026",
+      "StudioName": "Bright Reed Academy",
+      "SkillLevel": "int",
+      "Student": {
+        "FirstName": "Nora",
+        "LastName": "Voss",
+        "BirthDate": "03/05/2017"
+      },
+      "AccountState": "ok",
+      "LessonDate": "06/14/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90072"
+    },
+    {
+      "Instrument": "pno",
+      "TeacherName": "Hazel Quint",
+      "Guardian": {
+        "FullName": "Victor Castellane",
+        "Email": "victor.castellane@example.com",
+        "Phone": "555-063-5427"
+      },
+      "LessonFee": 60.0,
+      "BookingState": "noshow",
+      "StudentNo": "S1182",
+      "EnrolledOn": "06/16/2025",
+      "StudioName": "Cedar Hollow Music Studio",
+      "SkillLevel": "adv",
+      "Student": {
+        "FirstName": "Mila",
+        "LastName": "Castellane",
+        "BirthDate": "03/22/2014"
+      },
+      "AccountState": "ok",
+      "LessonDate": "07/09/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90076"
+    },
+    {
+      "Instrument": "flt",
+      "TeacherName": "Marco Bellweather",
+      "Guardian": {
+        "FullName": "Grace Brennan",
+        "Email": "grace.brennan@example.com",
+        "Phone": "555-766-4066"
+      },
+      "LessonFee": 45.0,
+      "BookingState": "done",
+      "StudentNo": "S1064",
+      "EnrolledOn": "12/12/2026",
+      "StudioName": "Bright Reed Academy",
+      "SkillLevel": "beg",
+      "Student": {
+        "FirstName": "Eli",
+        "LastName": "Brennan",
+        "BirthDate": "03/21/2019"
+      },
+      "AccountState": "ok",
+      "LessonDate": "02/25/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90080"
+    },
+    {
+      "Instrument": "drm",
+      "TeacherName": "Hazel Quint",
+      "Guardian": {
+        "FullName": "Dana Castellane",
+        "Email": "dana.castellane@example.com",
+        "Phone": "555-943-0267"
+      },
+      "LessonFee": 45.0,
+      "BookingState": "bkd",
+      "StudentNo": "S1293",
+      "EnrolledOn": "03/07/2025",
+      "StudioName": "Cedar Hollow Music Studio",
+      "SkillLevel": "beg",
+      "Student": {
+        "FirstName": "Jasper",
+        "LastName": "Castellane",
+        "BirthDate": "02/26/2017"
+      },
+      "AccountState": "ok",
+      "LessonDate": "04/13/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90084"
+    },
+    {
+      "Instrument": "gtr",
+      "TeacherName": "Hazel Quint",
+      "Guardian": {
+        "FullName": "Grace Castellane",
+        "Email": "grace.castellane@example.com",
+        "Phone": "555-094-4141"
+      },
+      "LessonFee": 72.5,
+      "BookingState": "bkd",
+      "StudentNo": "S1008",
+      "EnrolledOn": "07/25/2025",
+      "StudioName": "Bright Reed Academy",
+      "SkillLevel": null,
+      "Student": {
+        "FirstName": "Ruby",
+        "LastName": "Castellane",
+        "BirthDate": "12/15/2019"
+      },
+      "AccountState": "closed",
+      "LessonDate": "06/21/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90088"
+    },
+    {
+      "Instrument": "gtr",
+      "TeacherName": "Saskia Lindgren",
+      "Guardian": {
+        "FullName": "Victor Okoro",
+        "Email": "victor.okoro@example.com",
+        "Phone": "555-214-3375"
+      },
+      "LessonFee": 35.0,
+      "BookingState": "noshow",
+      "StudentNo": "S1241",
+      "EnrolledOn": "06/01/2023",
+      "StudioName": "Lantern Street Music",
+      "SkillLevel": "beg",
+      "Student": {
+        "FirstName": "Nora",
+        "LastName": "Okoro",
+        "BirthDate": "10/08/2013"
+      },
+      "AccountState": "hold",
+      "LessonDate": "07/07/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90092"
+    },
+    {
+      "Instrument": "drm",
+      "TeacherName": "Saskia Lindgren",
+      "Guardian": {
+        "FullName": "Dana Castellane",
+        "Email": "dana.castellane@example.com",
+        "Phone": "555-529-5596"
+      },
+      "LessonFee": 45.0,
+      "BookingState": "noshow",
+      "StudentNo": "S1114",
+      "EnrolledOn": "04/05/2025",
+      "StudioName": "Bright Reed Academy",
+      "SkillLevel": "adv",
+      "Student": {
+        "FirstName": "Eli",
+        "LastName": "Castellane",
+        "BirthDate": "10/25/2014"
+      },
+      "AccountState": "closed",
+      "LessonDate": "04/07/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90096"
+    },
+    {
+      "Instrument": "gtr",
+      "TeacherName": "Marco Bellweather",
+      "Guardian": {
+        "FullName": "Leah Voss",
+        "Email": "leah.voss@example.com",
+        "Phone": "555-767-6106"
+      },
+      "LessonFee": 45.0,
+      "BookingState": "bkd",
+      "StudentNo": "S1314",
+      "EnrolledOn": "11/05/2025",
+      "StudioName": "Cedar Hollow Music Studio",
+      "SkillLevel": "adv",
+      "Student": {
+        "FirstName": "Jasper",
+        "LastName": "Voss",
+        "BirthDate": "04/05/2019"
+      },
+      "AccountState": "ok",
+      "LessonDate": "11/01/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90100"
+    },
+    {
+      "Instrument": "drm",
+      "TeacherName": "Wendell Orme",
+      "Guardian": {
+        "FullName": "Victor Castellane",
+        "Email": "victor.castellane@example.com",
+        "Phone": "555-284-7228"
+      },
+      "LessonFee": 35.0,
+      "BookingState": "done",
+      "StudentNo": "S1387",
+      "EnrolledOn": "02/11/2024",
+      "StudioName": "Bright Reed Academy",
+      "SkillLevel": "beg",
+      "Student": {
+        "FirstName": "Theo",
+        "LastName": "Castellane",
+        "BirthDate": "03/11/2017"
+      },
+      "AccountState": "ok",
+      "LessonDate": "09/26/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90104"
+    },
+    {
+      "Instrument": "gtr",
+      "TeacherName": "Marco Bellweather",
+      "Guardian": {
+        "FullName": "Victor Castellane",
+        "Email": "victor.castellane@example.com",
+        "Phone": "555-261-6428"
+      },
+      "LessonFee": 45.0,
+      "BookingState": "done",
+      "StudentNo": "S1461",
+      "EnrolledOn": "07/26/2026",
+      "StudioName": "Lantern Street Music",
+      "SkillLevel": "int",
+      "Student": {
+        "FirstName": "Felix",
+        "LastName": "Castellane",
+        "BirthDate": "03/22/2012"
+      },
+      "AccountState": "hold",
+      "LessonDate": "07/06/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90108"
+    },
+    {
+      "Instrument": "gtr",
+      "TeacherName": "Wendell Orme",
+      "Guardian": {
+        "FullName": "Paul Brennan",
+        "Email": "paul.brennan@example.com",
+        "Phone": "555-914-6070"
+      },
+      "LessonFee": 45.0,
+      "BookingState": "noshow",
+      "StudentNo": "S1661",
+      "EnrolledOn": "04/02/2024",
+      "StudioName": "Lantern Street Music",
+      "SkillLevel": "adv",
+      "Student": {
+        "FirstName": "Jasper",
+        "LastName": "Brennan",
+        "BirthDate": "10/11/2015"
+      },
+      "AccountState": "hold",
+      "LessonDate": "02/21/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90112"
+    },
+    {
+      "Instrument": "flt",
+      "TeacherName": "Wendell Orme",
+      "Guardian": {
+        "FullName": "Paul Whitcombe",
+        "Email": "paul.whitcombe@example.com",
+        "Phone": "555-078-9504"
+      },
+      "LessonFee": 72.5,
+      "BookingState": "done",
+      "StudentNo": "S1484",
+      "EnrolledOn": "12/08/2024",
+      "StudioName": "Bright Reed Academy",
+      "SkillLevel": "beg",
+      "Student": {
+        "FirstName": "Eli",
+        "LastName": "Whitcombe",
+        "BirthDate": "02/28/2016"
+      },
+      "AccountState": "ok",
+      "LessonDate": "07/04/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90116"
+    },
+    {
+      "Instrument": "flt",
+      "TeacherName": "Wendell Orme",
+      "Guardian": {
+        "FullName": "Dana Nakashima",
+        "Email": "dana.nakashima@example.com",
+        "Phone": "555-162-9851"
+      },
+      "LessonFee": 45.0,
+      "BookingState": "noshow",
+      "StudentNo": "S1276",
+      "EnrolledOn": "11/09/2025",
+      "StudioName": "Lantern Street Music",
+      "SkillLevel": "int",
+      "Student": {
+        "FirstName": "Eli",
+        "LastName": "Nakashima",
+        "BirthDate": "06/09/2012"
+      },
+      "AccountState": "closed",
+      "LessonDate": "01/09/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90120"
+    },
+    {
+      "Instrument": "drm",
+      "TeacherName": "Saskia Lindgren",
+      "Guardian": {
+        "FullName": "Victor Delgado-Hart",
+        "Email": "victor.delgado-hart@example.com",
+        "Phone": "555-479-1797"
+      },
+      "LessonFee": 60.0,
+      "BookingState": "done",
+      "StudentNo": "S1736",
+      "EnrolledOn": "09/21/2026",
+      "StudioName": "Cedar Hollow Music Studio",
+      "SkillLevel": "beg",
+      "Student": {
+        "FirstName": "Ava",
+        "LastName": "Delgado-Hart",
+        "BirthDate": "01/16/2016"
+      },
+      "AccountState": "ok",
+      "LessonDate": "09/03/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90124"
+    },
+    {
+      "Instrument": "pno",
+      "TeacherName": "Marco Bellweather",
+      "Guardian": {
+        "FullName": "Grace Voss",
+        "Email": "grace.voss@example.com",
+        "Phone": "555-308-0549"
+      },
+      "LessonFee": 35.0,
+      "BookingState": "bkd",
+      "StudentNo": "S1514",
+      "EnrolledOn": "01/19/2023",
+      "StudioName": "Lantern Street Music",
+      "SkillLevel": "int",
+      "Student": {
+        "FirstName": "Jasper",
+        "LastName": "Voss",
+        "BirthDate": "11/13/2019"
+      },
+      "AccountState": "ok",
+      "LessonDate": "11/19/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90128"
+    },
+    {
+      "Instrument": "drm",
+      "TeacherName": "Marco Bellweather",
+      "Guardian": {
+        "FullName": "Dana Nakashima",
+        "Email": "dana.nakashima@example.com",
+        "Phone": "555-646-0672"
+      },
+      "LessonFee": 45.0,
+      "BookingState": "cxl",
+      "StudentNo": "S1855",
+      "EnrolledOn": "10/12/2025",
+      "StudioName": "Lantern Street Music",
+      "SkillLevel": "beg",
+      "Student": {
+        "FirstName": "Ruby",
+        "LastName": "Nakashima",
+        "BirthDate": "03/08/2019"
+      },
+      "AccountState": "ok",
+      "LessonDate": "05/03/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90132"
+    },
+    {
+      "Instrument": "flt",
+      "TeacherName": "Saskia Lindgren",
+      "Guardian": {
+        "FullName": "Victor Whitcombe",
+        "Email": "victor.whitcombe@example.com",
+        "Phone": "555-262-8047"
+      },
+      "LessonFee": 72.5,
+      "BookingState": "bkd",
+      "StudentNo": "S1338",
+      "EnrolledOn": "03/25/2026",
+      "StudioName": "Lantern Street Music",
+      "SkillLevel": null,
+      "Student": {
+        "FirstName": "Eli",
+        "LastName": "Whitcombe",
+        "BirthDate": "05/16/2017"
+      },
+      "AccountState": "closed",
+      "LessonDate": "06/07/2026",
+      "FeeCurrency": "USD",
+      "LessonBookingNo": "LB90136"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "LessonBooking",
+    "type": "object",
+    "properties": {
+      "booking_id": {
+        "type": "string"
+      },
+      "student_id": {
+        "type": "string"
+      },
+      "student_last_name": {
+        "type": "string"
+      },
+      "student_birth_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "lesson_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "instrument": {
+        "type": "string",
+        "enum": [
+          "piano",
+          "guitar",
+          "violin",
+          "drums",
+          "voice",
+          "flute"
+        ]
+      },
+      "booking_status": {
+        "type": "string",
+        "enum": [
+          "scheduled",
+          "completed",
+          "no_show",
+          "cancelled"
+        ]
+      },
+      "skill_level": {
+        "type": "string",
+        "enum": [
+          "beginner",
+          "intermediate",
+          "advanced"
+        ]
+      },
+      "lesson_fee": {
+        "type": "number"
+      },
+      "room_number": {
+        "type": "string"
+      },
+      "lead_source": {
+        "type": "string",
+        "enum": [
+          "flyer",
+          "website",
+          "school_partner",
+          "referral"
+        ]
+      }
+    },
+    "required": [
+      "booking_id",
+      "student_id",
+      "lesson_date",
+      "instrument",
+      "booking_status",
+      "room_number"
+    ]
+  },
+  "groundTruth": {
+    "booking_id": {
+      "source": "LessonBookingNo",
+      "why": "booking number"
+    },
+    "student_id": {
+      "source": "StudentNo",
+      "why": "student number"
+    },
+    "student_last_name": {
+      "source": "Student.LastName",
+      "why": "student, not guardian"
+    },
+    "student_birth_date": {
+      "source": "Student.BirthDate",
+      "dateFormat": "MM/DD/YYYY",
+      "why": "US month-first"
+    },
+    "lesson_date": {
+      "source": "LessonDate",
+      "dateFormat": "MM/DD/YYYY",
+      "why": "lesson date, US month-first"
+    },
+    "instrument": {
+      "source": "Instrument",
+      "why": "abbreviated instrument codes translate to the enum"
+    },
+    "booking_status": {
+      "source": "BookingState",
+      "why": "booking state, not account state"
+    },
+    "skill_level": {
+      "source": "SkillLevel",
+      "why": "beg/int/adv"
+    },
+    "lesson_fee": {
+      "source": "LessonFee",
+      "why": "fee amount; FeeCurrency is the currency"
+    },
+    "room_number": {
+      "source": null,
+      "why": "no room in the source"
+    },
+    "lead_source": {
+      "source": null,
+      "why": "no acquisition channel in the source"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "StudentNo",
+        "LessonBookingNo"
+      ],
+      "correctFor": "booking_id"
+    },
+    {
+      "kind": "birth-vs-created-date",
+      "fields": [
+        "Student.BirthDate",
+        "EnrolledOn"
+      ],
+      "correctFor": "student_birth_date"
+    },
+    {
+      "kind": "event-vs-created-date",
+      "fields": [
+        "LessonDate",
+        "EnrolledOn"
+      ],
+      "correctFor": "lesson_date"
+    },
+    {
+      "kind": "account-vs-order-status",
+      "fields": [
+        "AccountState",
+        "BookingState"
+      ],
+      "correctFor": "booking_status"
+    },
+    {
+      "kind": "currency-vs-amount",
+      "fields": [
+        "FeeCurrency",
+        "LessonFee"
+      ],
+      "correctFor": "lesson_fee"
+    }
+  ],
+  "sourceConcepts": {
+    "StudentNo": "customer-id",
+    "LessonBookingNo": "transaction-id",
+    "Student.FirstName": "given-name",
+    "Student.LastName": "family-name",
+    "Student.BirthDate": "birth-date",
+    "Guardian.FullName": "person-name",
+    "Guardian.Email": "email",
+    "Guardian.Phone": "phone",
+    "EnrolledOn": "created-date",
+    "LessonDate": "transaction-date",
+    "Instrument": "category",
+    "SkillLevel": "category",
+    "BookingState": "order-status",
+    "AccountState": "account-status",
+    "LessonFee": "amount",
+    "FeeCurrency": "currency-code",
+    "StudioName": "organization-name",
+    "TeacherName": "person-name"
+  },
+  "destinationConcepts": {
+    "booking_id": "transaction-id",
+    "student_id": "customer-id",
+    "student_last_name": "family-name",
+    "student_birth_date": "birth-date",
+    "lesson_date": "transaction-date",
+    "instrument": "category",
+    "booking_status": "order-status",
+    "skill_level": "category",
+    "lesson_fee": "amount",
+    "room_number": "other-identifier",
+    "lead_source": "category"
+  }
+}

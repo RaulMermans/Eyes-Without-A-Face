@@ -12,12 +12,16 @@
 import type { CloudDisclosurePayload } from "../domain/contracts/types.ts";
 import { DEFAULT_TWIN_SEED } from "../phantom/generate.ts";
 import { convertProposal, parseProposalText } from "../proposal/convert.ts";
+import { buildInitialPromptText } from "../inference/planner-prompt.ts";
+import { buildCloudPromptText } from "../inference/prompts.ts";
 import { createDisclosurePreview } from "../twin/authorization.ts";
 import { buildDisclosureDraft, prepareTwin } from "../workflow/pipeline.ts";
 import type { AiValueScenario } from "./ai-value.ts";
 
+export type LiveConfig = "G0" | "G1" | "P0" | "P1";
+
 export interface LiveEntry {
-  config: "G0" | "G1";
+  config: LiveConfig;
   trial: number;
   index: number;
   requests: number;
@@ -42,7 +46,11 @@ async function sha256(text: string): Promise<string> {
   return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, "0")).join("");
 }
 
-export async function reconstruct(scenario: AiValueScenario, concepts: boolean): Promise<Reconstruction | null> {
+/**
+ * `prompt: "sprint3"` rebuilds the initial prompt the app sends (MAPPING_PROPOSAL_INSTRUCTIONS
+ * via `buildCloudPromptText`); `"v4"` rebuilds the rejected Sprint 18A.5 P1 prompt.
+ */
+export async function reconstruct(scenario: AiValueScenario, concepts: boolean, prompt: "sprint3" | "v4" = "sprint3"): Promise<Reconstruction | null> {
   const prepared = prepareTwin({ records: scenario.records, datasetLabel: "imported.json", seed: DEFAULT_TWIN_SEED, concepts });
   if (!prepared.ok) return null;
   const draft = buildDisclosureDraft({ prepared: prepared.value, targetSchema: scenario.destination });
@@ -50,7 +58,7 @@ export async function reconstruct(scenario: AiValueScenario, concepts: boolean):
   const preview = await createDisclosurePreview(draft.value.payload);
   return {
     payload: draft.value.payload,
-    outboundPrompt: preview.outboundPrompt,
+    outboundPrompt: prompt === "v4" ? buildInitialPromptText(preview.canonicalJson) : buildCloudPromptText(preview.canonicalJson, draft.value.payload.schemaVersion),
     aliasByPath: new Map(prepared.value.twin.fields.map((field) => [field.localPath, field.alias])),
   };
 }
@@ -67,7 +75,7 @@ interface Op {
 }
 
 export interface EntryScore {
-  config: "G0" | "G1";
+  config: LiveConfig;
   trial: number;
   index: number;
   /** A request was sent and an answer text came back. */
@@ -86,6 +94,17 @@ export interface EntryScore {
   hallucinated: number;
   /** L4 */
   invented: number;
+  /** A.5: every default_if_missing, and every map_enum with unmapped=default, on any target. */
+  inventedAll: number;
+  /** A.5 C: targets that are neither category targets nor empty targets. */
+  mappableTargets: number;
+  mappableCorrect: number;
+  /** A.5 W: enum targets whose ground-truth source is a category field (no labels shared). */
+  categoryTargets: number;
+  categoryUnwritten: number;
+  /** A.5 N: targets whose ground truth is null. */
+  emptyTargets: number;
+  emptyUnwritten: number;
   leakCount: number;
   ms: number;
 }
@@ -105,10 +124,18 @@ export async function scoreEntry(entry: LiveEntry, scenario: AiValueScenario): P
     rejectionCodes: [],
     hallucinated: 0,
     invented: 0,
+    inventedAll: 0,
+    mappableTargets: 0,
+    mappableCorrect: 0,
+    categoryTargets: 0,
+    categoryUnwritten: 0,
+    emptyTargets: 0,
+    emptyUnwritten: 0,
     leakCount: entry.leakCount,
     ms: entry.ms,
   };
-  const reconstruction = await reconstruct(scenario, entry.config === "G1");
+  // G0: pre-18A twin + Sprint 3 prompt; G1 and P0: concept twin + Sprint 3 prompt; P1: concept twin + rejected v4 prompt.
+  const reconstruction = await reconstruct(scenario, entry.config !== "G0", entry.config === "P1" ? "v4" : "sprint3");
   if (entry.requests === 0 || !reconstruction) return base;
   const expected = await promptSha256(reconstruction);
   base.promptMatches = entry.promptSha256.length === 1 && entry.promptSha256[0] === expected && entry.previewSha256 === expected;
@@ -136,8 +163,24 @@ export async function scoreEntry(entry: LiveEntry, scenario: AiValueScenario): P
     const froms = Array.isArray(op.from) ? op.from : op.from === undefined ? [] : [op.from];
     if (typeof op.to !== "string" || !targetFields.has(op.to) || froms.some((from) => typeof from !== "string" || !aliases.has(from))) base.hallucinated += 1;
   }
+  const enumAliases = new Set(reconstruction.payload.fields.filter((field) => field.type === "enum").map((field) => field.alias));
+  for (const op of operations) {
+    if (op.op === "default_if_missing" || (op.op === "map_enum" && op.params?.unmapped === "default")) base.inventedAll += 1;
+  }
   for (const [target, truth] of Object.entries(scenario.groundTruth)) {
     const writers = operations.filter((op) => op.to === target);
+    const sourceAlias = truth.source === null ? undefined : reconstruction.aliasByPath.get(truth.source);
+    const isCategoryTarget = targetFields.get(target)?.type === "enum" && sourceAlias !== undefined && enumAliases.has(sourceAlias);
+    if (truth.source === null) {
+      base.emptyTargets += 1;
+      if (writers.length === 0) base.emptyUnwritten += 1;
+    } else if (isCategoryTarget) {
+      base.categoryTargets += 1;
+      if (writers.length === 0) base.categoryUnwritten += 1;
+    } else {
+      base.mappableTargets += 1;
+      if (writers.length === 1 && typeof writers[0]!.from === "string" && writers[0]!.from === sourceAlias) base.mappableCorrect += 1;
+    }
     if (truth.source === null) {
       if (writers.length === 0) base.correct += 1;
     } else {
@@ -205,4 +248,101 @@ export function pairedByScenario(scores: readonly EntryScore[]): Array<{ index: 
     return ratio(rows.reduce((t, s) => t + s.correct, 0), rows.reduce((t, s) => t + s.targets, 0));
   };
   return indices.map((index) => ({ index, g0: mean("G0", index), g1: mean("G1", index) }));
+}
+
+export interface PlannerSummary {
+  requests: number;
+  answered: number;
+  providerFailures: number;
+  promptMismatches: number;
+  leaks: number;
+  /** V: valid proposals over sent requests (a provider failure is not valid). */
+  V_validProposals: number;
+  /** I: invented values (any default). */
+  I_inventedValues: number;
+  /** C: correct correspondences on mappable targets, over sent requests. */
+  C_mappableCorrect: number;
+  /** W: category targets left unwritten, over answered proposals. */
+  W_categoryAbstention: number;
+  /** N: empty targets left unwritten, over answered proposals. */
+  N_emptyAbstention: number;
+  /** H: hallucinated references. */
+  H_hallucinatedReferences: number;
+  L1_correctCorrespondences: number;
+  rejectionCodes: Record<string, number>;
+  medianMs: number | null;
+}
+
+export function summarizePlanner(scores: readonly EntryScore[]): PlannerSummary {
+  const base = summarizeLive(scores);
+  const sent = scores.filter((score) => score.promptMatches !== null);
+  const answered = sent.filter((score) => score.answered && score.parseable);
+  const sum = (rows: readonly EntryScore[], key: keyof EntryScore) => rows.reduce((total, row) => total + (row[key] as number), 0);
+  return {
+    requests: base.requests,
+    answered: base.answered,
+    providerFailures: base.providerFailures,
+    promptMismatches: base.promptMismatches,
+    leaks: base.leaks,
+    V_validProposals: base.L2_validProposals,
+    I_inventedValues: sum(answered, "inventedAll"),
+    // Failed or unparseable requests contribute their targets with 0 correct.
+    C_mappableCorrect: ratio(sum(sent, "mappableCorrect"), sum(sent, "mappableTargets")),
+    W_categoryAbstention: ratio(sum(answered, "categoryUnwritten"), sum(answered, "categoryTargets")),
+    N_emptyAbstention: ratio(sum(answered, "emptyUnwritten"), sum(answered, "emptyTargets")),
+    H_hallucinatedReferences: base.L3_hallucinatedReferences,
+    L1_correctCorrespondences: base.L1_correctCorrespondences,
+    rejectionCodes: base.rejectionCodes,
+    medianMs: base.medianMs,
+  };
+}
+
+/**
+ * Request-body privacy scan used by the live harness and re-run by the scorer.
+ *
+ * Terms: coded source keys and source string values of 6+ characters. The
+ * reviewed destination `target` is approved disclosure: its names and enum
+ * values are blanked as exact quoted strings first (the `checkOutboundPrompt`
+ * method of src/evaluation/benchmark.ts), so a source value that is only a
+ * substring of a destination value ("refund" in "refunded", Sprint 18A.5 trace)
+ * is not a finding, while the same value anywhere else still is. Nothing is
+ * allowlisted by word.
+ */
+export function privateTermsInBody(body: string, scenario: Pick<AiValueScenario, "records" | "destination">): string[] {
+  const approved = new Set<string>();
+  const visitSchema = (node: unknown) => {
+    if (!node || typeof node !== "object") return;
+    const record = node as Record<string, unknown>;
+    if (record.properties && typeof record.properties === "object") {
+      for (const [key, child] of Object.entries(record.properties as Record<string, unknown>)) {
+        approved.add(key);
+        visitSchema(child);
+      }
+    }
+    if (Array.isArray(record.enum)) for (const value of record.enum) if (typeof value === "string") approved.add(value);
+  };
+  visitSchema(scenario.destination);
+  const approvedLower = new Set([...approved].map((term) => term.toLowerCase()));
+  const terms = new Set<string>();
+  const visit = (value: unknown, key?: string) => {
+    if (key && (/[_0-9]/.test(key) || /[a-z][A-Z]/.test(key)) && !approvedLower.has(key.toLowerCase())) terms.add(key);
+    if (typeof value === "string" && value.trim().length >= 6 && !approvedLower.has(value.trim().toLowerCase())) terms.add(value.trim());
+    if (value && typeof value === "object") for (const [k, v] of Object.entries(value as Record<string, unknown>)) visit(v, k);
+  };
+  for (const record of scenario.records) visit(record);
+  let residual = body;
+  for (const term of [...approved].sort((a, b) => b.length - a.length)) {
+    // Plain JSON and JSON-in-a-JSON-string (the request body embeds the prompt as a string).
+    residual = residual.split(`"${term}"`).join('" "').split(`\\"${term}\\"`).join('\\" \\"');
+  }
+  return [...terms].filter((term) => residual.includes(term));
+}
+
+/** Offline re-scan of a recorded request: the reconstructed prompt is hash-proven identical to the one sent. */
+export async function rescanEntry(entry: LiveEntry, scenario: AiValueScenario): Promise<number | null> {
+  if (entry.requests === 0) return null;
+  const reconstruction = await reconstruct(scenario, entry.config !== "G0", entry.config === "P1" ? "v4" : "sprint3");
+  if (!reconstruction) return null;
+  const body = JSON.stringify({ contents: [{ role: "user", parts: [{ text: reconstruction.outboundPrompt }] }] });
+  return privateTermsInBody(body, scenario).length;
 }

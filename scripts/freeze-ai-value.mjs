@@ -13,16 +13,44 @@
  *
  * tests/evaluation/ai-value.test.ts (EVAL-180) fails if a frozen input changes.
  *
- * Usage: node scripts/freeze-ai-value.mjs [--amend "reason"]
+ * Sets: `18a` (default; 18A AI-value, dev + holdout) and `a5` (18A.5 planner,
+ * fresh holdout only, docs/evaluation/sprint-18a5-planner.md).
+ *
+ * Usage: node scripts/freeze-ai-value.mjs [--set a5] [--amend "reason"]
  */
 import { createHash } from "node:crypto";
 import { execSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 
-const out = "docs/evidence/sprint-18a/ai-value-freeze.json";
-const root = "tests/fixtures/ai-value-18a";
-const preregistration = "docs/evaluation/sprint-18a-ai-value.md";
+const SETS = {
+  "18a": {
+    out: "docs/evidence/sprint-18a/ai-value-freeze.json",
+    root: "tests/fixtures/ai-value-18a",
+    preregistration: "docs/evaluation/sprint-18a-ai-value.md",
+    experiment: "sprint-18a-ai-value",
+    dev: true,
+    statement:
+      "Frozen before the Sprint 18A concept lexicon was tuned and before any model saw this evaluation set. The set was written by an independent author without access to the implementation. The holdout is never opened by the engineer; scripts/eval-ai-value.mjs prints aggregates only.",
+  },
+  a5: {
+    out: "docs/evidence/sprint-18a5/planner-freeze.json",
+    root: "tests/fixtures/ai-value-18a5",
+    preregistration: "docs/evaluation/sprint-18a5-planner.md",
+    experiment: "sprint-18a5-planner",
+    dev: false,
+    statement:
+      "Frozen before the Sprint 18A.5 planner change was written and before any model saw this evaluation set. The fresh holdout was written by an independent author without access to the implementation or to earlier holdouts. It is never opened by the engineer.",
+  },
+};
+const setIndex = process.argv.indexOf("--set");
+const setName = setIndex >= 0 ? process.argv[setIndex + 1] : "18a";
+const SET = SETS[setName];
+if (!SET) {
+  console.error(`Unknown set ${setName}`);
+  process.exit(1);
+}
+const { out, root, preregistration } = SET;
 
 const sha = (data) => createHash("sha256").update(data).digest("hex");
 const list = (dir) =>
@@ -52,18 +80,17 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   }
   const manifest = {
     manifestVersion: "1.0.0",
-    experiment: "sprint-18a-ai-value",
+    experiment: SET.experiment,
     frozenAt: previous?.frozenAt ?? new Date().toISOString(),
     frozenFromCommit: previous?.frozenFromCommit ?? execSync("git rev-parse HEAD").toString().trim(),
-    statement:
-      "Frozen before the Sprint 18A concept lexicon was tuned and before any model saw this evaluation set. The set was written by an independent author without access to the implementation. The holdout is never opened by the engineer; scripts/eval-ai-value.mjs prints aggregates only.",
+    statement: SET.statement,
     preregistration: { path: preregistration, sha256AboveResults: preregistrationDigest() },
-    files: Object.fromEntries([path.join(root, "README.md"), ...list("dev")].map((file) => [file, sha(fs.readFileSync(file))])),
+    files: Object.fromEntries([path.join(root, "README.md"), ...(SET.dev ? list("dev") : [])].map((file) => [file, sha(fs.readFileSync(file))])),
     holdout: holdoutDigest(),
     amendments: [...(previous?.amendments ?? [])],
   };
   if (amendIndex >= 0) manifest.amendments.push({ at: new Date().toISOString(), reason: process.argv[amendIndex + 1] ?? "unspecified" });
   fs.mkdirSync(path.dirname(out), { recursive: true });
   fs.writeFileSync(out, `${JSON.stringify(manifest, null, 2)}\n`);
-  console.log(`freeze-ai-value: wrote ${out} (${Object.keys(manifest.files).length} dev files, holdout ${manifest.holdout.count})`);
+  console.log(`freeze-ai-value: wrote ${out} (${Object.keys(manifest.files).length} listed files, holdout ${manifest.holdout.count})`);
 }

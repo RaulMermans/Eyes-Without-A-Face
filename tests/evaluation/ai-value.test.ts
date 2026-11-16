@@ -106,8 +106,10 @@ describe("EVAL-183 live AI-value run", () => {
   it("the offline reconstruction reproduces the prompts the two apps previewed (dev, rehearsal)", async () => {
     const { reconstruct, promptSha256 } = await import("../../src/evaluation/ai-value-live.ts");
     const first = load(list("dev")[0]!);
-    expect((await promptSha256((await reconstruct(first, false))!)).slice(0, 16)).toBe("41949fad70703962");
-    expect((await promptSha256((await reconstruct(first, true))!)).slice(0, 16)).toBe("9a53440131d7a4dd");
+    expect((await promptSha256((await reconstruct(first, false, "sprint3"))!)).slice(0, 16)).toBe("41949fad70703962");
+    expect((await promptSha256((await reconstruct(first, true, "sprint3"))!)).slice(0, 16)).toBe("9a53440131d7a4dd");
+    // Sprint 18A.5: P0 (2127cb9) previewed 9a53…, the same as G1; P1 (rejected prompt v4, eafca21) previewed 6562….
+    expect((await promptSha256((await reconstruct(first, true, "v4"))!)).slice(0, 16)).toBe("656223e93572b9b8");
   });
 });
 
@@ -154,5 +156,105 @@ describe.runIf(fs.existsSync(livePath))("EVAL-184 live holdout scoring (G0 vs G1
     }
     expect(verdict.privacy).toBe(true);
     expect(verdict.promptsProven).toBe(true);
+  });
+});
+
+describe("EVAL-185 the Sprint 18A.5 planner holdout is frozen", () => {
+  const a5 = JSON.parse(fs.readFileSync("docs/evidence/sprint-18a5/planner-freeze.json", "utf8")) as typeof freeze;
+  const dir = "tests/fixtures/ai-value-18a5/holdout";
+  it("README and holdout digest match (no holdout name or content is read here)", () => {
+    for (const [file, hash] of Object.entries(a5.files)) expect(sha(fs.readFileSync(file))).toBe(hash);
+    const files = fs.readdirSync(dir).filter((name) => name.endsWith(".json")).sort().map((name) => path.join(dir, name));
+    expect(files.length).toBe(a5.holdout.count);
+    expect(sha(files.map((file) => sha(fs.readFileSync(file))).join("\n"))).toBe(a5.holdout.sha256);
+  });
+  it("the pre-registration text above § Results is unchanged", () => {
+    const text = fs.readFileSync(a5.preregistration.path, "utf8");
+    expect(sha(text.slice(0, text.indexOf("\n## Results")))).toBe(a5.preregistration.sha256AboveResults);
+  });
+});
+
+const plannerLivePath = "docs/evidence/sprint-18a5/planner-live.json";
+const plannerSummaryPath = "docs/evidence/sprint-18a5/planner-live-summary.json";
+
+describe.runIf(fs.existsSync(plannerLivePath) && (fs.existsSync(plannerSummaryPath) || process.env.EYES_WRITE_PLANNER_LIVE === "1"))("EVAL-187 Sprint 18A.5 planner live scoring (P0 vs P1)", () => {
+  it("scores the recorded run against the pre-registered thresholds", async () => {
+    const { scoreEntry, summarizePlanner, rescanEntry } = await import("../../src/evaluation/ai-value-live.ts");
+    const raw = fs.readFileSync(plannerLivePath);
+    const entries = JSON.parse(raw.toString("utf8")) as import("../../src/evaluation/ai-value-live.ts").LiveEntry[];
+    const dir = "tests/fixtures/ai-value-18a5/holdout";
+    const scenarios = fs.readdirSync(dir).filter((name) => name.endsWith(".json")).sort().map((name) => load(path.join(dir, name)));
+    const scores = [];
+    for (const entry of entries) scores.push(await scoreEntry(entry, scenarios[entry.index]!));
+    const p0 = summarizePlanner(scores.filter((score) => score.config === "P0"));
+    const p1 = summarizePlanner(scores.filter((score) => score.config === "P1"));
+    // Privacy: the raw in-run matches are reported; the verdict uses the traced, source-derived re-scan (EVAL-188).
+    let sourceDerivedFindings = 0;
+    for (const entry of entries) sourceDerivedFindings += (await rescanEntry(entry, scenarios[entry.index]!)) ?? 0;
+    const verdict = {
+      V: p1.V_validProposals >= p0.V_validProposals + 0.2,
+      I: p1.I_inventedValues === 0,
+      C: p1.C_mappableCorrect >= p0.C_mappableCorrect - 0.05,
+      H: p1.H_hallucinatedReferences <= p0.H_hallucinatedReferences,
+      privacy: sourceDerivedFindings === 0,
+      promptsProven: p0.promptMismatches + p1.promptMismatches === 0,
+    };
+    const summary = {
+      experiment: "sprint-18a5-planner",
+      privacyScan: { harnessMatches: p0.leaks + p1.leaks, sourceDerivedFindings },
+      split: "holdout",
+      evidenceSha256: createHash("sha256").update(raw).digest("hex"),
+      P0: p0,
+      P1: p1,
+      verdict: { ...verdict, pass: Object.values(verdict).every(Boolean) },
+    };
+    if (process.env.EYES_WRITE_PLANNER_LIVE === "1") {
+      fs.writeFileSync(plannerSummaryPath, `${JSON.stringify(summary, null, 2)}\n`);
+      console.log(JSON.stringify(summary, null, 2));
+    } else {
+      expect(summary).toEqual(JSON.parse(fs.readFileSync(plannerSummaryPath, "utf8")));
+    }
+    expect(verdict.privacy).toBe(true);
+    expect(verdict.promptsProven).toBe(true);
+  });
+});
+
+describe("EVAL-188 live request-body scan precision (Sprint 18A.5 stop-rule trace)", () => {
+  const scenario = {
+    records: [{ estado_pago: "refund", donor_ref: "DN-000123", nombre: "Avery Holloway" }],
+    destination: { type: "object", properties: { payment_status: { type: "string", enum: ["completed", "refunded"] }, donor_ref: { type: "string" } } },
+  };
+  const bodyOf = (prompt: string) => JSON.stringify({ contents: [{ role: "user", parts: [{ text: prompt }] }] });
+
+  it("a source value that only occurs inside an approved destination value is not a finding (the traced case)", async () => {
+    const { privateTermsInBody } = await import("../../src/evaluation/ai-value-live.ts");
+    expect(privateTermsInBody(bodyOf('{"target":{"fields":[{"enumValues":["completed","refunded"],"name":"payment_status"}]}}'), scenario)).toEqual([]);
+  });
+
+  it("positive controls: the same value, a person name or a coded key anywhere else is still a finding", async () => {
+    const { privateTermsInBody } = await import("../../src/evaluation/ai-value-live.ts");
+    expect(privateTermsInBody(bodyOf('{"semanticDescriptor":"status; refund requested"}'), scenario)).toEqual(["refund"]);
+    expect(privateTermsInBody(bodyOf('{"examples":["Avery Holloway"]}'), scenario)).toEqual(["Avery Holloway"]);
+    expect(privateTermsInBody(bodyOf('{"field":"estado_pago"}'), scenario)).toEqual(["estado_pago"]);
+    expect(privateTermsInBody(bodyOf('{"x":"DN-000123"}'), scenario)).toEqual(["DN-000123"]);
+  });
+
+  it("a destination name equal to a coded source key is approved vocabulary, not a finding", async () => {
+    const { privateTermsInBody } = await import("../../src/evaluation/ai-value-live.ts");
+    expect(privateTermsInBody(bodyOf('{"name":"donor_ref"}'), scenario)).toEqual([]);
+  });
+
+  it("every recorded Sprint 18A live request re-scans with 0 source-derived findings", async () => {
+    const { rescanEntry } = await import("../../src/evaluation/ai-value-live.ts");
+    const entries = JSON.parse(fs.readFileSync(livePath, "utf8")) as import("../../src/evaluation/ai-value-live.ts").LiveEntry[];
+    const scenarios = list("holdout").map(load);
+    let scanned = 0;
+    for (const entry of entries) {
+      const findings = await rescanEntry(entry, scenarios[entry.index]!);
+      if (findings === null) continue;
+      scanned += 1;
+      expect(findings).toBe(0);
+    }
+    expect(scanned).toBe(35);
   });
 });

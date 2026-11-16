@@ -1,0 +1,1159 @@
+{
+  "scenarioId": "gala-donations-en",
+  "split": "holdout",
+  "industry": "charity fundraising events",
+  "sourceLanguage": "en",
+  "description": "UK charity fundraising-event donations with nested address and venue objects mapped to a donation record.",
+  "fictional": true,
+  "records": [
+    {
+      "giftAid": false,
+      "donationRef": "DN240000",
+      "mailingAddress": {
+        "street": "119 Wren Lane",
+        "city": "Stonecross",
+        "postcode": "ZZ9 9QX"
+      },
+      "channel": "phone_drive",
+      "donorName": "Harriet Thistlewood",
+      "currency": "GBP",
+      "donationDate": "08/04/2026",
+      "matchedAmount": 1585.45,
+      "donorStatus": "current",
+      "employerName": "Northmoor Logistics",
+      "eventVenue": {
+        "name": "Harbour Pavilion",
+        "city": "Norwick"
+      },
+      "donorId": "51120",
+      "paymentStatus": "pledge",
+      "email": "harriet99@example.com",
+      "donorSince": "10/28/2018",
+      "giftAmount": 1585.45
+    },
+    {
+      "giftAid": true,
+      "donationRef": "DN240017",
+      "mailingAddress": {
+        "street": "103 Sedge Road",
+        "city": "Stonecross",
+        "postcode": "ZZ5 8QX"
+      },
+      "channel": "mail_in",
+      "donorName": "Oskar Okonjo",
+      "currency": "GBP",
+      "donationDate": "07/04/2026",
+      "matchedAmount": 0.0,
+      "donorStatus": "current",
+      "employerName": null,
+      "eventVenue": {
+        "name": "Old Corn Exchange",
+        "city": "Millhaven"
+      },
+      "donorId": "57566",
+      "paymentStatus": "bounced",
+      "email": "oskar50@example.com",
+      "donorSince": "03/17/2010",
+      "giftAmount": 1770.09
+    },
+    {
+      "giftAid": true,
+      "donationRef": "DN240034",
+      "mailingAddress": {
+        "street": "89 Sedge Road",
+        "city": "Norwick",
+        "postcode": "ZZ7 1QX"
+      },
+      "channel": "mail_in",
+      "donorName": "Oskar Marchetti",
+      "currency": "GBP",
+      "donationDate": "03/10/2025",
+      "matchedAmount": 1669.24,
+      "donorStatus": "lapsed",
+      "employerName": "Northmoor Logistics",
+      "eventVenue": {
+        "name": "Harbour Pavilion",
+        "city": "Norwick"
+      },
+      "donorId": "58782",
+      "paymentStatus": "rcvd",
+      "email": "oskar69@example.com",
+      "donorSince": "09/28/2023",
+      "giftAmount": 1669.24
+    },
+    {
+      "giftAid": false,
+      "donationRef": "DN240051",
+      "mailingAddress": {
+        "street": "2 Wren Lane",
+        "city": "Norwick",
+        "postcode": "ZZ5 1QX"
+      },
+      "channel": "gala",
+      "donorName": "Oskar Marchetti",
+      "currency": "GBP",
+      "donationDate": "01/22/2026",
+      "matchedAmount": 2016.17,
+      "donorStatus": "current",
+      "employerName": "Larkspur Engineering Ltd",
+      "eventVenue": {
+        "name": "Harbour Pavilion",
+        "city": "Norwick"
+      },
+      "donorId": "54782",
+      "paymentStatus": "pledge",
+      "email": "oskar29@example.com",
+      "donorSince": "10/06/2021",
+      "giftAmount": 2016.17
+    },
+    {
+      "giftAid": true,
+      "donationRef": "DN240068",
+      "mailingAddress": {
+        "street": "10 Sedge Road",
+        "city": "Millhaven",
+        "postcode": "ZZ9 6QX"
+      },
+      "channel": "online",
+      "donorName": "Rufus Okonjo",
+      "currency": "GBP",
+      "donationDate": "02/11/2025",
+      "matchedAmount": 0.0,
+      "donorStatus": "current",
+      "employerName": null,
+      "eventVenue": {
+        "name": "Riverside Assembly Rooms",
+        "city": "Kettlebridge"
+      },
+      "donorId": "51439",
+      "paymentStatus": "rcvd",
+      "email": "rufus2@example.com",
+      "donorSince": "03/04/2014",
+      "giftAmount": 1506.54
+    },
+    {
+      "giftAid": true,
+      "donationRef": "DN240085",
+      "mailingAddress": {
+        "street": "79 Wren Lane",
+        "city": "Stonecross",
+        "postcode": "ZZ1 5QX"
+      },
+      "channel": "phone_drive",
+      "donorName": "Tamsin Ashworth",
+      "currency": "GBP",
+      "donationDate": "11/08/2025",
+      "matchedAmount": 1704.63,
+      "donorStatus": "lapsed",
+      "employerName": "Northmoor Logistics",
+      "eventVenue": {
+        "name": "Old Corn Exchange",
+        "city": "Millhaven"
+      },
+      "donorId": "57077",
+      "paymentStatus": "refund",
+      "email": "tamsin37@example.com",
+      "donorSince": "05/10/2011",
+      "giftAmount": 1704.63
+    },
+    {
+      "giftAid": false,
+      "donationRef": "DN240102",
+      "mailingAddress": {
+        "street": "96 Sedge Road",
+        "city": "Norwick",
+        "postcode": "ZZ7 3QX"
+      },
+      "channel": "online",
+      "donorName": "Tamsin Pemberton-Lowe",
+      "currency": "GBP",
+      "donationDate": "12/01/2025",
+      "matchedAmount": 752.51,
+      "donorStatus": "lapsed",
+      "employerName": "Bramblegate Analytics",
+      "eventVenue": {
+        "name": "Harbour Pavilion",
+        "city": "Norwick"
+      },
+      "donorId": "56915",
+      "paymentStatus": "rcvd",
+      "email": "tamsin26@example.com",
+      "donorSince": "05/01/2010",
+      "giftAmount": 752.51
+    },
+    {
+      "giftAid": true,
+      "donationRef": "DN240119",
+      "mailingAddress": {
+        "street": "109 Sedge Road",
+        "city": "Kettlebridge",
+        "postcode": "ZZ2 3QX"
+      },
+      "channel": "phone_drive",
+      "donorName": "Tamsin Fairbairn",
+      "currency": "GBP",
+      "donationDate": "10/15/2025",
+      "matchedAmount": 1903.47,
+      "donorStatus": "lapsed",
+      "employerName": "Bramblegate Analytics",
+      "eventVenue": {
+        "name": "Old Corn Exchange",
+        "city": "Millhaven"
+      },
+      "donorId": "50432",
+      "paymentStatus": "refund",
+      "email": "tamsin43@example.com",
+      "donorSince": "08/02/2018",
+      "giftAmount": 1903.47
+    },
+    {
+      "giftAid": false,
+      "donationRef": "DN240136",
+      "mailingAddress": {
+        "street": "125 Wren Lane",
+        "city": "Stonecross",
+        "postcode": "ZZ8 7QX"
+      },
+      "channel": "gala",
+      "donorName": "Priya Quayle",
+      "currency": "GBP",
+      "donationDate": "07/24/2026",
+      "matchedAmount": 358.33,
+      "donorStatus": "current",
+      "employerName": "Larkspur Engineering Ltd",
+      "eventVenue": {
+        "name": "Old Corn Exchange",
+        "city": "Millhaven"
+      },
+      "donorId": "50420",
+      "paymentStatus": "bounced",
+      "email": null,
+      "donorSince": "02/06/2022",
+      "giftAmount": 358.33
+    },
+    {
+      "giftAid": true,
+      "donationRef": "DN240153",
+      "mailingAddress": {
+        "street": "94 Sedge Road",
+        "city": "Ashford Vale",
+        "postcode": "ZZ3 8QX"
+      },
+      "channel": "mail_in",
+      "donorName": "Tamsin Quayle",
+      "currency": "GBP",
+      "donationDate": "12/19/2026",
+      "matchedAmount": 0.0,
+      "donorStatus": "current",
+      "employerName": null,
+      "eventVenue": {
+        "name": "Harbour Pavilion",
+        "city": "Norwick"
+      },
+      "donorId": "57560",
+      "paymentStatus": "rcvd",
+      "email": "tamsin65@example.com",
+      "donorSince": "09/11/2020",
+      "giftAmount": 1629.3
+    },
+    {
+      "giftAid": true,
+      "donationRef": "DN240170",
+      "mailingAddress": {
+        "street": "85 Fennel Close",
+        "city": "Ashford Vale",
+        "postcode": "ZZ7 2QX"
+      },
+      "channel": "online",
+      "donorName": "Tamsin Pemberton-Lowe",
+      "currency": "GBP",
+      "donationDate": "08/28/2026",
+      "matchedAmount": 0.0,
+      "donorStatus": "current",
+      "employerName": null,
+      "eventVenue": {
+        "name": "Harbour Pavilion",
+        "city": "Norwick"
+      },
+      "donorId": "58242",
+      "paymentStatus": "pledge",
+      "email": null,
+      "donorSince": "10/11/2015",
+      "giftAmount": 2018.42
+    },
+    {
+      "giftAid": false,
+      "donationRef": "DN240187",
+      "mailingAddress": {
+        "street": "98 Cobble Row",
+        "city": "Ashford Vale",
+        "postcode": "ZZ8 8QX"
+      },
+      "channel": "mail_in",
+      "donorName": "Oskar Thistlewood",
+      "currency": "GBP",
+      "donationDate": "09/16/2026",
+      "matchedAmount": 2495.94,
+      "donorStatus": "lapsed",
+      "employerName": "Northmoor Logistics",
+      "eventVenue": {
+        "name": "Harbour Pavilion",
+        "city": "Norwick"
+      },
+      "donorId": "59326",
+      "paymentStatus": "bounced",
+      "email": null,
+      "donorSince": "08/08/2019",
+      "giftAmount": 2495.94
+    },
+    {
+      "giftAid": true,
+      "donationRef": "DN240204",
+      "mailingAddress": {
+        "street": "70 Wren Lane",
+        "city": "Norwick",
+        "postcode": "ZZ2 5QX"
+      },
+      "channel": "mail_in",
+      "donorName": "Rufus Okonjo",
+      "currency": "GBP",
+      "donationDate": "05/10/2026",
+      "matchedAmount": 1953.2,
+      "donorStatus": "deceased",
+      "employerName": "Larkspur Engineering Ltd",
+      "eventVenue": {
+        "name": "Riverside Assembly Rooms",
+        "city": "Kettlebridge"
+      },
+      "donorId": "58789",
+      "paymentStatus": "bounced",
+      "email": "rufus57@example.com",
+      "donorSince": "08/17/2020",
+      "giftAmount": 1953.2
+    },
+    {
+      "giftAid": true,
+      "donationRef": "DN240221",
+      "mailingAddress": {
+        "street": "137 Cobble Row",
+        "city": "Stonecross",
+        "postcode": "ZZ2 7QX"
+      },
+      "channel": "online",
+      "donorName": "Delphine Pemberton-Lowe",
+      "currency": "GBP",
+      "donationDate": "09/21/2025",
+      "matchedAmount": 1561.73,
+      "donorStatus": "current",
+      "employerName": "Bramblegate Analytics",
+      "eventVenue": {
+        "name": "Riverside Assembly Rooms",
+        "city": "Kettlebridge"
+      },
+      "donorId": "52747",
+      "paymentStatus": "pledge",
+      "email": "delphine7@example.com",
+      "donorSince": "02/27/2021",
+      "giftAmount": 1561.73
+    },
+    {
+      "giftAid": true,
+      "donationRef": "DN240238",
+      "mailingAddress": {
+        "street": "14 Sedge Road",
+        "city": "Kettlebridge",
+        "postcode": "ZZ6 2QX"
+      },
+      "channel": "online",
+      "donorName": "Delphine Pemberton-Lowe",
+      "currency": "GBP",
+      "donationDate": "04/09/2026",
+      "matchedAmount": 1027.14,
+      "donorStatus": "current",
+      "employerName": "Northmoor Logistics",
+      "eventVenue": {
+        "name": "Harbour Pavilion",
+        "city": "Norwick"
+      },
+      "donorId": "56377",
+      "paymentStatus": "bounced",
+      "email": "delphine13@example.com",
+      "donorSince": "08/14/2025",
+      "giftAmount": 1027.14
+    },
+    {
+      "giftAid": true,
+      "donationRef": "DN240255",
+      "mailingAddress": {
+        "street": "83 Cobble Row",
+        "city": "Kettlebridge",
+        "postcode": "ZZ7 7QX"
+      },
+      "channel": "gala",
+      "donorName": "Oskar Marchetti",
+      "currency": "GBP",
+      "donationDate": "12/19/2026",
+      "matchedAmount": 829.88,
+      "donorStatus": "lapsed",
+      "employerName": "Northmoor Logistics",
+      "eventVenue": {
+        "name": "Riverside Assembly Rooms",
+        "city": "Kettlebridge"
+      },
+      "donorId": "52527",
+      "paymentStatus": "pledge",
+      "email": "oskar70@example.com",
+      "donorSince": "09/18/2020",
+      "giftAmount": 829.88
+    },
+    {
+      "giftAid": true,
+      "donationRef": "DN240272",
+      "mailingAddress": {
+        "street": "117 Sedge Road",
+        "city": "Millhaven",
+        "postcode": "ZZ2 7QX"
+      },
+      "channel": "online",
+      "donorName": "Harriet Fairbairn",
+      "currency": "GBP",
+      "donationDate": "06/13/2026",
+      "matchedAmount": 0.0,
+      "donorStatus": "current",
+      "employerName": null,
+      "eventVenue": {
+        "name": "Riverside Assembly Rooms",
+        "city": "Kettlebridge"
+      },
+      "donorId": "55729",
+      "paymentStatus": "pledge",
+      "email": null,
+      "donorSince": "06/17/2024",
+      "giftAmount": 734.35
+    },
+    {
+      "giftAid": false,
+      "donationRef": "DN240289",
+      "mailingAddress": {
+        "street": "25 Sedge Road",
+        "city": "Norwick",
+        "postcode": "ZZ2 8QX"
+      },
+      "channel": "mail_in",
+      "donorName": "Priya Okonjo",
+      "currency": "GBP",
+      "donationDate": "08/07/2026",
+      "matchedAmount": 1602.11,
+      "donorStatus": "deceased",
+      "employerName": "Bramblegate Analytics",
+      "eventVenue": {
+        "name": "Riverside Assembly Rooms",
+        "city": "Kettlebridge"
+      },
+      "donorId": "53548",
+      "paymentStatus": "bounced",
+      "email": "priya46@example.com",
+      "donorSince": "10/08/2023",
+      "giftAmount": 1602.11
+    },
+    {
+      "giftAid": false,
+      "donationRef": "DN240306",
+      "mailingAddress": {
+        "street": "25 Sedge Road",
+        "city": "Kettlebridge",
+        "postcode": "ZZ2 9QX"
+      },
+      "channel": "phone_drive",
+      "donorName": "Desmond Marchetti",
+      "currency": "GBP",
+      "donationDate": "07/12/2026",
+      "matchedAmount": 1311.65,
+      "donorStatus": "current",
+      "employerName": "Northmoor Logistics",
+      "eventVenue": {
+        "name": "Riverside Assembly Rooms",
+        "city": "Kettlebridge"
+      },
+      "donorId": "57095",
+      "paymentStatus": "pledge",
+      "email": "desmond33@example.com",
+      "donorSince": "04/01/2016",
+      "giftAmount": 1311.65
+    },
+    {
+      "giftAid": false,
+      "donationRef": "DN240323",
+      "mailingAddress": {
+        "street": "20 Wren Lane",
+        "city": "Stonecross",
+        "postcode": "ZZ6 1QX"
+      },
+      "channel": "mail_in",
+      "donorName": "Callum Quayle",
+      "currency": "GBP",
+      "donationDate": "08/13/2026",
+      "matchedAmount": 115.16,
+      "donorStatus": "deceased",
+      "employerName": "Northmoor Logistics",
+      "eventVenue": {
+        "name": "Harbour Pavilion",
+        "city": "Norwick"
+      },
+      "donorId": "57373",
+      "paymentStatus": "rcvd",
+      "email": null,
+      "donorSince": "12/13/2022",
+      "giftAmount": 115.16
+    },
+    {
+      "giftAid": true,
+      "donationRef": "DN240340",
+      "mailingAddress": {
+        "street": "56 Cobble Row",
+        "city": "Stonecross",
+        "postcode": "ZZ2 2QX"
+      },
+      "channel": "online",
+      "donorName": "Callum Ashworth",
+      "currency": "GBP",
+      "donationDate": "08/11/2025",
+      "matchedAmount": 0.0,
+      "donorStatus": "deceased",
+      "employerName": null,
+      "eventVenue": {
+        "name": "Harbour Pavilion",
+        "city": "Norwick"
+      },
+      "donorId": "50730",
+      "paymentStatus": "bounced",
+      "email": "callum20@example.com",
+      "donorSince": "07/26/2015",
+      "giftAmount": 639.0
+    },
+    {
+      "giftAid": true,
+      "donationRef": "DN240357",
+      "mailingAddress": {
+        "street": "16 Wren Lane",
+        "city": "Norwick",
+        "postcode": "ZZ8 1QX"
+      },
+      "channel": "mail_in",
+      "donorName": "Callum Okonjo",
+      "currency": "GBP",
+      "donationDate": "06/22/2026",
+      "matchedAmount": 0.0,
+      "donorStatus": "current",
+      "employerName": null,
+      "eventVenue": {
+        "name": "Harbour Pavilion",
+        "city": "Norwick"
+      },
+      "donorId": "53376",
+      "paymentStatus": "rcvd",
+      "email": "callum9@example.com",
+      "donorSince": "08/20/2015",
+      "giftAmount": 1006.7
+    },
+    {
+      "giftAid": true,
+      "donationRef": "DN240374",
+      "mailingAddress": {
+        "street": "42 Fennel Close",
+        "city": "Norwick",
+        "postcode": "ZZ3 2QX"
+      },
+      "channel": "gala",
+      "donorName": "Desmond Thistlewood",
+      "currency": "GBP",
+      "donationDate": "11/20/2026",
+      "matchedAmount": 866.37,
+      "donorStatus": "lapsed",
+      "employerName": "Bramblegate Analytics",
+      "eventVenue": {
+        "name": "Old Corn Exchange",
+        "city": "Millhaven"
+      },
+      "donorId": "59200",
+      "paymentStatus": "refund",
+      "email": "desmond88@example.com",
+      "donorSince": "02/05/2010",
+      "giftAmount": 866.37
+    },
+    {
+      "giftAid": false,
+      "donationRef": "DN240391",
+      "mailingAddress": {
+        "street": "53 Wren Lane",
+        "city": "Kettlebridge",
+        "postcode": "ZZ9 8QX"
+      },
+      "channel": "phone_drive",
+      "donorName": "Priya Fairbairn",
+      "currency": "GBP",
+      "donationDate": "12/28/2026",
+      "matchedAmount": 608.12,
+      "donorStatus": "current",
+      "employerName": "Larkspur Engineering Ltd",
+      "eventVenue": {
+        "name": "Harbour Pavilion",
+        "city": "Norwick"
+      },
+      "donorId": "54333",
+      "paymentStatus": "refund",
+      "email": "priya48@example.com",
+      "donorSince": "04/18/2012",
+      "giftAmount": 608.12
+    },
+    {
+      "giftAid": true,
+      "donationRef": "DN240408",
+      "mailingAddress": {
+        "street": "115 Sedge Road",
+        "city": "Ashford Vale",
+        "postcode": "ZZ7 6QX"
+      },
+      "channel": "gala",
+      "donorName": "Callum Okonjo",
+      "currency": "GBP",
+      "donationDate": "02/04/2026",
+      "matchedAmount": 0.0,
+      "donorStatus": "deceased",
+      "employerName": null,
+      "eventVenue": {
+        "name": "Harbour Pavilion",
+        "city": "Norwick"
+      },
+      "donorId": "52570",
+      "paymentStatus": "rcvd",
+      "email": "callum22@example.com",
+      "donorSince": "07/10/2011",
+      "giftAmount": 738.68
+    },
+    {
+      "giftAid": false,
+      "donationRef": "DN240425",
+      "mailingAddress": {
+        "street": "119 Sedge Road",
+        "city": "Stonecross",
+        "postcode": "ZZ1 2QX"
+      },
+      "channel": "online",
+      "donorName": "Callum Fairbairn",
+      "currency": "GBP",
+      "donationDate": "11/15/2025",
+      "matchedAmount": 0.0,
+      "donorStatus": "current",
+      "employerName": null,
+      "eventVenue": {
+        "name": "Harbour Pavilion",
+        "city": "Norwick"
+      },
+      "donorId": "50113",
+      "paymentStatus": "rcvd",
+      "email": "callum7@example.com",
+      "donorSince": "07/24/2014",
+      "giftAmount": 62.31
+    },
+    {
+      "giftAid": false,
+      "donationRef": "DN240442",
+      "mailingAddress": {
+        "street": "130 Wren Lane",
+        "city": "Kettlebridge",
+        "postcode": "ZZ5 5QX"
+      },
+      "channel": "online",
+      "donorName": "Rufus Okonjo",
+      "currency": "GBP",
+      "donationDate": "10/07/2025",
+      "matchedAmount": 0.0,
+      "donorStatus": "current",
+      "employerName": null,
+      "eventVenue": {
+        "name": "Riverside Assembly Rooms",
+        "city": "Kettlebridge"
+      },
+      "donorId": "59174",
+      "paymentStatus": "rcvd",
+      "email": null,
+      "donorSince": "02/28/2019",
+      "giftAmount": 308.76
+    },
+    {
+      "giftAid": true,
+      "donationRef": "DN240459",
+      "mailingAddress": {
+        "street": "11 Fennel Close",
+        "city": "Kettlebridge",
+        "postcode": "ZZ7 7QX"
+      },
+      "channel": "mail_in",
+      "donorName": "Delphine Okonjo",
+      "currency": "GBP",
+      "donationDate": "09/22/2026",
+      "matchedAmount": 0.0,
+      "donorStatus": "current",
+      "employerName": null,
+      "eventVenue": {
+        "name": "Harbour Pavilion",
+        "city": "Norwick"
+      },
+      "donorId": "55826",
+      "paymentStatus": "pledge",
+      "email": "delphine46@example.com",
+      "donorSince": "05/17/2012",
+      "giftAmount": 475.7
+    },
+    {
+      "giftAid": false,
+      "donationRef": "DN240476",
+      "mailingAddress": {
+        "street": "49 Wren Lane",
+        "city": "Millhaven",
+        "postcode": "ZZ5 8QX"
+      },
+      "channel": "mail_in",
+      "donorName": "Callum Fairbairn",
+      "currency": "GBP",
+      "donationDate": "12/08/2025",
+      "matchedAmount": 2226.43,
+      "donorStatus": "lapsed",
+      "employerName": "Larkspur Engineering Ltd",
+      "eventVenue": {
+        "name": "Harbour Pavilion",
+        "city": "Norwick"
+      },
+      "donorId": "58214",
+      "paymentStatus": "refund",
+      "email": "callum85@example.com",
+      "donorSince": "09/07/2019",
+      "giftAmount": 2226.43
+    },
+    {
+      "giftAid": false,
+      "donationRef": "DN240493",
+      "mailingAddress": {
+        "street": "117 Fennel Close",
+        "city": "Stonecross",
+        "postcode": "ZZ1 3QX"
+      },
+      "channel": "gala",
+      "donorName": "Oskar Okonjo",
+      "currency": "GBP",
+      "donationDate": "01/12/2025",
+      "matchedAmount": 2330.53,
+      "donorStatus": "current",
+      "employerName": "Northmoor Logistics",
+      "eventVenue": {
+        "name": "Old Corn Exchange",
+        "city": "Millhaven"
+      },
+      "donorId": "55801",
+      "paymentStatus": "rcvd",
+      "email": "oskar17@example.com",
+      "donorSince": "03/11/2025",
+      "giftAmount": 2330.53
+    },
+    {
+      "giftAid": false,
+      "donationRef": "DN240510",
+      "mailingAddress": {
+        "street": "130 Fennel Close",
+        "city": "Millhaven",
+        "postcode": "ZZ8 7QX"
+      },
+      "channel": "mail_in",
+      "donorName": "Imogen Marchetti",
+      "currency": "GBP",
+      "donationDate": "04/04/2025",
+      "matchedAmount": 758.61,
+      "donorStatus": "lapsed",
+      "employerName": "Larkspur Engineering Ltd",
+      "eventVenue": {
+        "name": "Old Corn Exchange",
+        "city": "Millhaven"
+      },
+      "donorId": "56542",
+      "paymentStatus": "pledge",
+      "email": null,
+      "donorSince": "06/11/2015",
+      "giftAmount": 758.61
+    },
+    {
+      "giftAid": true,
+      "donationRef": "DN240527",
+      "mailingAddress": {
+        "street": "47 Fennel Close",
+        "city": "Ashford Vale",
+        "postcode": "ZZ7 8QX"
+      },
+      "channel": "online",
+      "donorName": "Callum Okonjo",
+      "currency": "GBP",
+      "donationDate": "04/10/2026",
+      "matchedAmount": 2080.3,
+      "donorStatus": "lapsed",
+      "employerName": "Northmoor Logistics",
+      "eventVenue": {
+        "name": "Old Corn Exchange",
+        "city": "Millhaven"
+      },
+      "donorId": "59084",
+      "paymentStatus": "bounced",
+      "email": "callum68@example.com",
+      "donorSince": "04/21/2024",
+      "giftAmount": 2080.3
+    },
+    {
+      "giftAid": true,
+      "donationRef": "DN240544",
+      "mailingAddress": {
+        "street": "125 Cobble Row",
+        "city": "Stonecross",
+        "postcode": "ZZ3 9QX"
+      },
+      "channel": "gala",
+      "donorName": "Oskar Pemberton-Lowe",
+      "currency": "GBP",
+      "donationDate": "04/13/2025",
+      "matchedAmount": 1849.36,
+      "donorStatus": "current",
+      "employerName": "Bramblegate Analytics",
+      "eventVenue": {
+        "name": "Harbour Pavilion",
+        "city": "Norwick"
+      },
+      "donorId": "52475",
+      "paymentStatus": "rcvd",
+      "email": "oskar3@example.com",
+      "donorSince": "06/27/2022",
+      "giftAmount": 1849.36
+    },
+    {
+      "giftAid": true,
+      "donationRef": "DN240561",
+      "mailingAddress": {
+        "street": "137 Sedge Road",
+        "city": "Ashford Vale",
+        "postcode": "ZZ9 7QX"
+      },
+      "channel": "gala",
+      "donorName": "Rufus Marchetti",
+      "currency": "GBP",
+      "donationDate": "02/06/2025",
+      "matchedAmount": 0.0,
+      "donorStatus": "current",
+      "employerName": null,
+      "eventVenue": {
+        "name": "Harbour Pavilion",
+        "city": "Norwick"
+      },
+      "donorId": "55757",
+      "paymentStatus": "bounced",
+      "email": "rufus35@example.com",
+      "donorSince": "04/04/2016",
+      "giftAmount": 1396.46
+    },
+    {
+      "giftAid": false,
+      "donationRef": "DN240578",
+      "mailingAddress": {
+        "street": "44 Wren Lane",
+        "city": "Stonecross",
+        "postcode": "ZZ1 6QX"
+      },
+      "channel": "gala",
+      "donorName": "Callum Pemberton-Lowe",
+      "currency": "GBP",
+      "donationDate": "08/14/2025",
+      "matchedAmount": 2250.41,
+      "donorStatus": "current",
+      "employerName": "Northmoor Logistics",
+      "eventVenue": {
+        "name": "Riverside Assembly Rooms",
+        "city": "Kettlebridge"
+      },
+      "donorId": "59089",
+      "paymentStatus": "rcvd",
+      "email": "callum55@example.com",
+      "donorSince": "11/06/2015",
+      "giftAmount": 2250.41
+    },
+    {
+      "giftAid": false,
+      "donationRef": "DN240595",
+      "mailingAddress": {
+        "street": "103 Cobble Row",
+        "city": "Stonecross",
+        "postcode": "ZZ3 3QX"
+      },
+      "channel": "gala",
+      "donorName": "Harriet Ashworth",
+      "currency": "GBP",
+      "donationDate": "03/08/2026",
+      "matchedAmount": 0.0,
+      "donorStatus": "deceased",
+      "employerName": null,
+      "eventVenue": {
+        "name": "Old Corn Exchange",
+        "city": "Millhaven"
+      },
+      "donorId": "59210",
+      "paymentStatus": "refund",
+      "email": "harriet12@example.com",
+      "donorSince": "11/21/2017",
+      "giftAmount": 1092.41
+    },
+    {
+      "giftAid": true,
+      "donationRef": "DN240612",
+      "mailingAddress": {
+        "street": "59 Fennel Close",
+        "city": "Kettlebridge",
+        "postcode": "ZZ3 1QX"
+      },
+      "channel": "gala",
+      "donorName": "Priya Fairbairn",
+      "currency": "GBP",
+      "donationDate": "11/16/2025",
+      "matchedAmount": 655.95,
+      "donorStatus": "current",
+      "employerName": "Northmoor Logistics",
+      "eventVenue": {
+        "name": "Harbour Pavilion",
+        "city": "Norwick"
+      },
+      "donorId": "55996",
+      "paymentStatus": "refund",
+      "email": "priya42@example.com",
+      "donorSince": "05/12/2022",
+      "giftAmount": 655.95
+    },
+    {
+      "giftAid": false,
+      "donationRef": "DN240629",
+      "mailingAddress": {
+        "street": "57 Wren Lane",
+        "city": "Kettlebridge",
+        "postcode": "ZZ3 9QX"
+      },
+      "channel": "phone_drive",
+      "donorName": "Oskar Marchetti",
+      "currency": "GBP",
+      "donationDate": "09/20/2025",
+      "matchedAmount": 0.0,
+      "donorStatus": "current",
+      "employerName": null,
+      "eventVenue": {
+        "name": "Harbour Pavilion",
+        "city": "Norwick"
+      },
+      "donorId": "53455",
+      "paymentStatus": "pledge",
+      "email": "oskar16@example.com",
+      "donorSince": "10/01/2025",
+      "giftAmount": 1524.39
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Donation",
+    "type": "object",
+    "properties": {
+      "donation_id": {
+        "type": "string"
+      },
+      "donor": {
+        "type": "object",
+        "properties": {
+          "donor_id": {
+            "type": "string"
+          },
+          "full_name": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "lifecycle_stage": {
+            "type": "string",
+            "enum": [
+              "prospect",
+              "first_time",
+              "repeat",
+              "major"
+            ]
+          }
+        },
+        "required": [
+          "donor_id",
+          "lifecycle_stage"
+        ]
+      },
+      "donation_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "amount": {
+        "type": "number"
+      },
+      "payment_status": {
+        "type": "string",
+        "enum": [
+          "completed",
+          "pledged",
+          "failed",
+          "refunded"
+        ]
+      },
+      "donation_channel": {
+        "type": "string",
+        "enum": [
+          "web",
+          "event",
+          "telephone",
+          "post"
+        ]
+      },
+      "tax_receipt_number": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "donation_id",
+      "donor",
+      "donation_date",
+      "amount",
+      "payment_status",
+      "tax_receipt_number"
+    ]
+  },
+  "groundTruth": {
+    "donation_id": {
+      "source": "donationRef",
+      "why": "reference of the donation itself"
+    },
+    "donor.donor_id": {
+      "source": "donorId",
+      "why": "identifies the donor"
+    },
+    "donor.full_name": {
+      "source": "donorName",
+      "why": "donor person, not the employer"
+    },
+    "donor.city": {
+      "source": "mailingAddress.city",
+      "why": "donor's own address, not the event venue"
+    },
+    "donor.lifecycle_stage": {
+      "source": null,
+      "why": "no lifecycle stage in the source; donorStatus is a different concept"
+    },
+    "donation_date": {
+      "source": "donationDate",
+      "dateFormat": "MM/DD/YYYY",
+      "why": "US month-first"
+    },
+    "amount": {
+      "source": "giftAmount",
+      "why": "the donor's gift, not the employer match"
+    },
+    "payment_status": {
+      "source": "paymentStatus",
+      "why": "abbreviated payment labels translate to the enum"
+    },
+    "donation_channel": {
+      "source": "channel",
+      "why": "channel labels translate to the enum"
+    },
+    "tax_receipt_number": {
+      "source": null,
+      "why": "no receipt number in the source"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "donorId",
+        "donationRef"
+      ],
+      "correctFor": "donation_id"
+    },
+    {
+      "kind": "event-vs-created-date",
+      "fields": [
+        "donationDate",
+        "donorSince"
+      ],
+      "correctFor": "donation_date"
+    },
+    {
+      "kind": "organization-vs-person-name",
+      "fields": [
+        "employerName",
+        "donorName"
+      ],
+      "correctFor": "donor.full_name"
+    },
+    {
+      "kind": "two-amounts",
+      "fields": [
+        "giftAmount",
+        "matchedAmount"
+      ],
+      "correctFor": "amount"
+    },
+    {
+      "kind": "nested-relationship",
+      "fields": [
+        "mailingAddress.city",
+        "eventVenue.city"
+      ],
+      "correctFor": "donor.city"
+    },
+    {
+      "kind": "account-vs-payment-status",
+      "fields": [
+        "donorStatus",
+        "paymentStatus"
+      ],
+      "correctFor": "payment_status"
+    }
+  ],
+  "sourceConcepts": {
+    "donorId": "customer-id",
+    "donationRef": "transaction-id",
+    "donationDate": "transaction-date",
+    "donorSince": "created-date",
+    "donorName": "person-name",
+    "employerName": "organization-name",
+    "email": "email",
+    "giftAmount": "amount",
+    "matchedAmount": "amount",
+    "currency": "currency-code",
+    "paymentStatus": "payment-status",
+    "donorStatus": "account-status",
+    "channel": "category",
+    "giftAid": "consent-flag",
+    "mailingAddress.street": "street-address",
+    "mailingAddress.city": "city",
+    "mailingAddress.postcode": "postal-code",
+    "eventVenue.name": "organization-name",
+    "eventVenue.city": "city"
+  },
+  "destinationConcepts": {
+    "donation_id": "transaction-id",
+    "donor.donor_id": "customer-id",
+    "donor.full_name": "person-name",
+    "donor.city": "city",
+    "donor.lifecycle_stage": "category",
+    "donation_date": "transaction-date",
+    "amount": "amount",
+    "payment_status": "payment-status",
+    "donation_channel": "category",
+    "tax_receipt_number": "other-identifier"
+  }
+}

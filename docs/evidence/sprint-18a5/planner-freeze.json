@@ -1,0 +1,19 @@
+{
+  "manifestVersion": "1.0.0",
+  "experiment": "sprint-18a5-planner",
+  "frozenAt": "2026-11-16T21:10:05.736Z",
+  "frozenFromCommit": "2127cb95393dcb1fe7c04cc741a55c5fe7054e20",
+  "statement": "Frozen before the Sprint 18A.5 planner change was written and before any model saw this evaluation set. The fresh holdout was written by an independent author without access to the implementation or to earlier holdouts. It is never opened by the engineer.",
+  "preregistration": {
+    "path": "docs/evaluation/sprint-18a5-planner.md",
+    "sha256AboveResults": "49fd253580e0a8f19624fcb768f8feeccef8d888374f38d99facd64934596f83"
+  },
+  "files": {
+    "tests/fixtures/ai-value-18a5/README.md": "0ab139ced3e07748dbea6e9183299ba6d11723dd5360fa4807cc4c0bf86ebcd0"
+  },
+  "holdout": {
+    "count": 10,
+    "sha256": "e062db1796395c2a4079ebd84ec8240bcac869ede237a45ef07b2e9621a6c14d"
+  },
+  "amendments": []
+}
