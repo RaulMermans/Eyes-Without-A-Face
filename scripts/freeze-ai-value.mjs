@@ -14,9 +14,10 @@
  * tests/evaluation/ai-value.test.ts (EVAL-180) fails if a frozen input changes.
  *
  * Sets: `18a` (default; 18A AI-value, dev + holdout) and `a5` (18A.5 planner,
- * fresh holdout only, docs/evaluation/sprint-18a5-planner.md).
+ * fresh holdout only, docs/evaluation/sprint-18a5-planner.md) and `b` (Sprint 18B
+ * intent plan, dev + fresh holdout, docs/evaluation/sprint-18b-intent-plan.md).
  *
- * Usage: node scripts/freeze-ai-value.mjs [--set a5] [--amend "reason"]
+ * Usage: node scripts/freeze-ai-value.mjs [--set a5|b] [--amend "reason"]
  */
 import { createHash } from "node:crypto";
 import { execSync } from "node:child_process";
@@ -41,6 +42,15 @@ const SETS = {
     dev: false,
     statement:
       "Frozen before the Sprint 18A.5 planner change was written and before any model saw this evaluation set. The fresh holdout was written by an independent author without access to the implementation or to earlier holdouts. It is never opened by the engineer.",
+  },
+  b: {
+    out: "docs/evidence/sprint-18b/intent-plan-freeze.json",
+    root: "tests/fixtures/eval-18b",
+    preregistration: "docs/evaluation/sprint-18b-intent-plan.md",
+    experiment: "sprint-18b-intent-plan",
+    dev: true,
+    statement:
+      "Frozen before any model saw this evaluation set. The set was written by an independent author after the ADR 0018 contract freeze, without access to the implementation, prompts or earlier holdouts. Implementation workers never opened the holdout; the frozen harness and scorer read it and emit aggregates and per-index rows only.",
   },
 };
 const setIndex = process.argv.indexOf("--set");
