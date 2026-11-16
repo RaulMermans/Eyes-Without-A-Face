@@ -6,11 +6,13 @@
 
 Decision: [ADR 0014](../decisions/0014-target-first-mapping-and-local-meaning.md).
 
-**Release status: `DEPLOYED_UNVERIFIED`.** `0a9d42a` (head of PR #16) was deployed on the owner's explicit instruction.
+**Release status: `PRODUCTION_ACCEPTED`.** `c4a246c` is live with the owner's approval of that SHA.
 
-- **Passed on the public URL:** 19 / 19 deterministic checks, real Gemini Nano, and the exported integration run outside the app.
-- **Not verified:** real Gemini Cloud. The automated session was refused at App Check (403), with 0 requests.
-- **To finish:** one human run ([evidence](../evidence/production/0a9d42aeac68/acceptance-results.json)).
+- 19 / 19 deterministic production checks pass.
+- The real hybrid happy path passes: real Gemini Nano, then 1 approved real Gemini Cloud request (App Check exchange 200).
+- The owner's Meridian source completes the journey, and its exported integration runs outside the app with identical outputs.
+- Evidence: [evidence/production/c4a246cee432/](../evidence/production/c4a246cee432/acceptance-results.json).
+- The first Sprint 15 deployment (`0a9d42a`) is DEPLOYED_UNVERIFIED. Its real cloud run was refused at App Check, and the owner's file found PF-2 and PF-3 ([failures](../evidence/production/0a9d42aeac68/failures.md)).
 
 ## Starting state (verified)
 
@@ -115,7 +117,9 @@ Decision: [ADR 0014](../decisions/0014-target-first-mapping-and-local-meaning.md
 - **Model evidence this sprint:**
   - **Deterministic:** all of the above.
   - **Simulated:** the labeled test adapter in E2E.
-  - **Genuine model runs:** **none**. No real Gemini Nano or Gemini Cloud request was made in Sprint 15.
+  - **Genuine model runs:** on production only.
+    - `0a9d42a`: real Nano passed; the cloud request was refused at App Check, with 0 requests sent.
+    - `c4a246c`: real Nano passed, and 1 real Gemini Cloud request passed.
 
 ## Risks
 

@@ -1,0 +1,17 @@
+{
+  "releaseSha": "c4a246cee43239a29298e919fe49c83fc0a8e9bb",
+  "testedUrl": "https://eyes-without-a-face-b7281.web.app",
+  "deployedAt": "2026-11-16 (owner-approved: 'comit to github and redeploy producction', in reply to the approval request for c4a246c; verify-release PASS)",
+  "testedAt": "2026-11-16",
+  "status": "PRODUCTION_ACCEPTED",
+  "statusReason": "Served SHA matches; all 19 deterministic production checks pass (Chromium, Firefox); the real hybrid happy path passes on the public URL (real Gemini Nano, then one approved real Gemini Cloud request through production App Check, local verification, export verify); the owner's Meridian source completes the guided journey and its exported integration runs independently with outputs identical to the app's.",
+  "inferenceBudget": { "cloudRequestsAllowed": 1, "cloudRequestsUsed": 1, "declaredExtra": 0, "extraUsed": 0 },
+  "checks": [
+    { "area": "identity, App Check enforced, imports, REST, approval gate, readiness, local build (P-024), navigation, mobile, keyboard, Firefox", "result": "PASS", "kind": "DETERMINISTIC", "evidence": "browser-results.json (19/19), release-manifest.json" },
+    { "area": "genuine Gemini Nano on the hosted build", "result": "PASS", "kind": "REAL", "evidence": "inference-results.json: 6/6 fields, 30.4 s, understanding nano-used" },
+    { "area": "genuine Gemini Cloud on the hosted build", "result": "PASS", "kind": "REAL", "evidence": "inference-results.json: App Check exchange 200, 1 request, origin REAL GEMINI OUTPUT · IN_CLOUD, outcome PARTIALLY_VERIFIED (demo's reserved test cases), no private terms in the request" },
+    { "area": "owner's Meridian source (120 records, nested), on-device build", "result": "PASS", "kind": "DETERMINISTIC", "evidence": "screenshots/production-meridian-result.png: email suggested (117 of 119 look like emails), 102 transformed / 15 set aside / 3 need attention, 0 model requests, no page errors" },
+    { "area": "exported integration runs outside the app (Meridian)", "result": "PASS", "kind": "REAL", "evidence": "ZIP + bindings.local.json from the live site; node run.mjs verify exit 0; node run.mjs run on the original file 120 → 102 / 15 / 3, exit 0, 102 outputs identical to the app's download; no record values or source field names in the ZIP" },
+    { "area": "human usability, manual screen reader", "result": "NOT PERFORMED", "kind": "—", "evidence": "docs/usability/sprint-15-protocol.md" }
+  ]
+}
