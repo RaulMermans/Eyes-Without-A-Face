@@ -106,8 +106,8 @@ describe("EVAL-183 live AI-value run", () => {
   it("the offline reconstruction reproduces the prompts the two apps previewed (dev, rehearsal)", async () => {
     const { reconstruct, promptSha256 } = await import("../../src/evaluation/ai-value-live.ts");
     const first = load(list("dev")[0]!);
-    expect((await promptSha256((await reconstruct(first, false))!)).slice(0, 16)).toBe("41949fad70703962");
-    expect((await promptSha256((await reconstruct(first, true))!)).slice(0, 16)).toBe("9a53440131d7a4dd");
+    expect((await promptSha256((await reconstruct(first, false, "sprint3"))!)).slice(0, 16)).toBe("41949fad70703962");
+    expect((await promptSha256((await reconstruct(first, true, "sprint3"))!)).slice(0, 16)).toBe("9a53440131d7a4dd");
   });
 });
 

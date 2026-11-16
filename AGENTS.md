@@ -219,6 +219,17 @@ Decisions: [ADR 0015](docs/decisions/0015-ai-integration-engineer-program.md), [
   - Tune the lexicon on `dev/` only.
   - The holdout was scored offline and live on 2026-11-16; treat it as **inspected**. Any new claim needs a fresh holdout written by an independent author before the change.
 
+## Planner prompt v4 (Sprint 18A.5)
+
+Decision: [ADR 0017](docs/decisions/0017-planner-prompt-v4.md).
+
+- Initial proposals use `PLANNER_INSTRUCTIONS_V4` and `INITIAL_MAPPING_RESPONSE_SCHEMA` (`mapping-response-initial-2`).
+  - Never re-add `default_if_missing` or `unmapped: "default"` to the initial schema.
+  - Never tell the planner to fill a field it cannot source.
+- Revisions keep their frozen prompts and schema.
+- Do not edit `MAPPING_PROPOSAL_INSTRUCTIONS` or `buildCloudPromptText`: historical replays rebuild their recorded prompts from them.
+- The fresh 18A.5 holdout (`tests/fixtures/ai-value-18a5/holdout/`) follows the 18A holdout rules: never open it, and never tune on it.
+
 ## Release lifecycle and production acceptance (Sprint 14 — permanent, every sprint)
 
 **Tests passing does not mean the product works in production.** Procedure, commands, budget and evidence layout: [docs/deployment.md](docs/deployment.md#production-acceptance-standard-permanent).
