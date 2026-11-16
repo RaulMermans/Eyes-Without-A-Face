@@ -111,6 +111,16 @@ The package status is computed, never asserted: `VERIFIED`, `VERIFIED_WITH_EXCEP
 
 ## Status
 
+**Sprint 15 (end-to-end experience, guided mapping, semantic trust): `CODE_READY`.** Not deployed.
+
+- **One question at a time.** Helpdesk asks "Which field in your data gives status?", with up to three candidates. It no longer shows a list of every category field. Readiness is judged per destination field.
+- **Build on this device.** Translate your categories locally and build with nothing sent to any model. The mapping runs through the same engine and is labeled "no AI".
+- **Meaning you can act on.** Your translation is trusted evidence for the existing semantic verifier, for local and Gemini mappings alike. The Result explains each field and asks only the questions that would verify more.
+- **Outcome first.** Next step, a before → after view of your records, then two clearly separated downloads, plus an optional generated bindings file.
+- **Not yet done.** No independent usability sessions. No real-model runs this sprint.
+
+See [docs/sprints/sprint-15.md](docs/sprints/sprint-15.md) and [ADR 0014](docs/decisions/0014-target-first-mapping-and-local-meaning.md).
+
 **Sprint 14 (guided reliability, production acceptance): `DEPLOYED_UNVERIFIED`.**
 
 - **The incident.** The Sprint 13 build (`a548d7f`) could not build the default Helpdesk integration. The guided flow never offered the category-name choice that destination needs.

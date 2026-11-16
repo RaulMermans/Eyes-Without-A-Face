@@ -1,6 +1,8 @@
 # Usability — protocol and internal audit (Sprints 9–10)
 
-> **Independent usability testing: NOT PERFORMED (Sprints 9 to 14).** No developer unfamiliar with Eyes Without a Face has used the product yet. Everything below is either a protocol ready to run, or an internal heuristic audit by the team that built it. Do not cite it as user evidence.
+> **Sprint 15:** the current, ready-to-run protocol for the guided flow is [sprint-15-protocol.md](sprint-15-protocol.md) (NOT PERFORMED).
+>
+> **Independent usability testing: NOT PERFORMED (Sprints 9 to 15).** No developer unfamiliar with Eyes Without a Face has used the product yet. Everything below is either a protocol ready to run, or an internal heuristic audit by the team that built it. Do not cite it as user evidence.
 
 ## 1. Unassisted task protocol (ready to run, ≥ 3 participants)
 
