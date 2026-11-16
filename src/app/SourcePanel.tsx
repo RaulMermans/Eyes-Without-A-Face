@@ -9,7 +9,7 @@ import { withCrmDemo, withScenario } from "./demo.ts";
 import { PICKER_SCENARIOS } from "../evaluation/scenarios.ts";
 import { parseSourceDataset } from "./source-import.ts";
 import { firstPresent, formatSample } from "./view-model.ts";
-import { invalidateDownstream, type WorkspaceState } from "./workspace-state.ts";
+import { freshSourceDecisions, invalidateDownstream, type WorkspaceState } from "./workspace-state.ts";
 
 export function SourcePanel({
   workspace,
@@ -33,7 +33,7 @@ export function SourcePanel({
 }) {
   function applyText(text: string, label: string, reserved: Record<string, unknown>[] | null): void {
     const parsed = parseSourceDataset(text, label);
-    const base = invalidateDownstream({ ...workspace, overrides: {}, semanticConfirmations: {} });
+    const base = invalidateDownstream({ ...workspace, ...freshSourceDecisions() });
     if (!parsed.ok) {
       onChange({ ...base, source: null, reservedRecords: null, sourceError: parsed.message, scenario: null });
       return;

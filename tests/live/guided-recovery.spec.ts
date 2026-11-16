@@ -36,7 +36,14 @@ function append(entry: Record<string, unknown>): void {
 const PRIVATE_TERMS = ["PRIVATE_CANARY_PII_DO_NOT_SHARE", "email_address", "company_name", "internal_note", "joined_at", "customer_id", "CUST-001", "ALICE"];
 
 function watch(page: import("@playwright/test").Page) {
-  const state = { requests: 0, leaks: [] as string[], answers: [] as string[], provenance: [] as string[] };
+  const state = { requests: 0, leaks: [] as string[], answers: [] as string[], provenance: [] as string[], attestation: [] as string[] };
+  // App Check / reCAPTCHA exchanges: endpoint path and HTTP status only (never tokens or bodies).
+  page.on("response", (response) => {
+    const url = response.url();
+    if (!/firebaseappcheck|recaptcha\/enterprise\/(reload|clr)/.test(url)) return;
+    const parsed = new URL(url);
+    state.attestation.push(`${parsed.host}${parsed.pathname.replace(/\/projects\/[^/]+\/apps\/[^:]+/, "/projects/…/apps/…")} ${response.status()}`);
+  });
   page.on("request", (request) => {
     if (!request.url().includes("generateContent")) return;
     state.requests += 1;
@@ -217,6 +224,8 @@ test("S14-REC-3 hybrid happy path: real Gemini Nano on this device, then one app
     entry.requests = net.requests;
     entry.leaks = net.leaks;
     entry.answers = net.answers;
+    entry.attestation = net.attestation;
+    if ((await page.getByTestId("guided-cloud-failure").count()) > 0) entry.cloudFailure = await page.getByTestId("guided-cloud-failure").getAttribute("data-code");
     append(entry);
   }
   expect(net.leaks).toEqual([]);

@@ -15,10 +15,11 @@ import type { PrivateBindings } from "../phantom/bindings.ts";
 import type { RevisionVerdict } from "../revision/decision.ts";
 import type { SemanticVerificationContract } from "../semantics/contract.ts";
 import type { SemanticReport } from "../semantics/verify.ts";
-import { classifyReport, STRICT_POLICY, type ClassifiedRow } from "../verification/outcomes.ts";
+import { classifyReport, type AcceptancePolicy, type ClassifiedRow } from "../verification/outcomes.ts";
 import type { RealityCheckReport } from "../verification/reality-check.ts";
 import type { PreparedTwin } from "../workflow/pipeline.ts";
 import { computeWorkspaceSemantics, reportRecords } from "./semantic-context.ts";
+import { distinctLabels, guidedPolicy, isLocalMapping } from "./guided/field-plan.ts";
 import type { WorkspaceState } from "./workspace-state.ts";
 
 export const APP_VERSION = "0.1.0";
@@ -70,8 +71,17 @@ export function aliasManualContract(contract: MappingContract, bindings: Private
   return { ok: true, value: { ...contract, phantomId, operations } };
 }
 
+/**
+ * The local acceptance policy in force: a loaded fictional scenario's own
+ * policy, otherwise the guided policy derived from the user's explicit
+ * "set aside" choices (strict when there are none).
+ */
+export function activePolicy(workspace: WorkspaceState): AcceptancePolicy {
+  return workspace.scenario?.policy ?? guidedPolicy(workspace.categoryMeanings);
+}
+
 function blindRows(workspace: WorkspaceState, report: RealityCheckReport, executable: MappingContract): ClassifiedRow[] {
-  return classifyReport({ report, records: reportRecords(workspace, report), executable, policy: workspace.scenario?.policy ?? STRICT_POLICY });
+  return classifyReport({ report, records: reportRecords(workspace, report), executable, policy: activePolicy(workspace) });
 }
 
 function evidenceFor(workspace: WorkspaceState, prepared: PreparedTwin | null, executable: MappingContract | null, report: RealityCheckReport | null) {
@@ -82,7 +92,7 @@ function evidenceFor(workspace: WorkspaceState, prepared: PreparedTwin | null, e
 
 export function exportCandidates(workspace: WorkspaceState, prepared: PreparedTwin | null): ExportCandidate[] {
   if (!workspace.source || !prepared) return [];
-  const policy = workspace.scenario?.policy ?? STRICT_POLICY;
+  const policy = activePolicy(workspace);
   const hiddenCasesAvailable = workspace.reservedRecords?.length ?? 0;
   const candidates: ExportCandidate[] = [];
   const proposal = workspace.proposal;
@@ -128,7 +138,7 @@ export function exportCandidates(workspace: WorkspaceState, prepared: PreparedTw
     candidates.push({
       id: "active",
       variant: "initial",
-      label: "Hand-written contract (not AI)",
+      label: isLocalMapping(workspace.mappingText) ? "Built on this device from your choices (not AI)" : "Hand-written contract (not AI)",
       origin: "hand-written",
       aliasContract: aliased?.ok ? aliased.value : null,
       executable,
@@ -202,12 +212,27 @@ export function exportCandidates(workspace: WorkspaceState, prepared: PreparedTw
   return candidates;
 }
 
+/**
+ * Privacy context of a package. `approvedLabels` holds, per alias, the
+ * category names the user approved to leave this device: those in the
+ * reviewed disclosure and (Sprint 15) those the user explicitly allowed inside
+ * the downloaded package for a mapping built on this device. Nothing else is
+ * sanctioned; the scan itself is unchanged.
+ */
 export function privacyContext(workspace: WorkspaceState, prepared: PreparedTwin): PrivacyContext {
   const fields = workspace.review?.preview.payload.fields ?? prepared.twin.phantom.fields;
+  const approvedLabels: Record<string, string[]> = Object.fromEntries(fields.map((field) => [field.alias, [...(field.enumValues ?? [])]]));
+  for (const path of workspace.packageLabelSources) {
+    const alias = prepared.twin.bindings.aliasForPath(path);
+    const profile = prepared.profile.fields.find((field) => field.path === path);
+    const labels = profile ? distinctLabels(workspace.source?.records ?? [], profile) : null;
+    if (!alias || !labels) continue;
+    approvedLabels[alias] = [...new Set([...(approvedLabels[alias] ?? []), ...labels.map((item) => item.value)])];
+  }
   return {
     privateStrings: prepared.privateStrings,
     sourceFieldPaths: prepared.twin.source.fields.map((field) => field.path),
-    approvedLabels: Object.fromEntries(fields.map((field) => [field.alias, [...(field.enumValues ?? [])]])),
+    approvedLabels,
   };
 }
 
@@ -245,7 +270,7 @@ export function packageInputFor(input: {
     approvedDisclosureSha256: candidate.origin === "hand-written" ? null : (workspace.review?.preview.payloadHash ?? null),
     destinationSchema,
     fixtures: exportFixtures(workspace, prepared),
-    policy: workspace.scenario?.policy ?? STRICT_POLICY,
+    policy: activePolicy(workspace),
     report: candidate.report,
     rows: candidate.rows,
     semantic: candidate.semantic,

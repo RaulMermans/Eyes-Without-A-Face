@@ -36,5 +36,8 @@ Read, in order:
 29. `docs/decisions/0013-guided-recovery-and-production-acceptance.md` — rejected-proposal diagnosis, category-name readiness, production acceptance standard
 30. `docs/sprints/sprint-14.md` — Sprint 14 report: incident root cause, recovery, release status
 31. `docs/deployment.md` § Production acceptance standard — **permanent**: release statuses, deployment approval, `pnpm test:production`, evidence
+32. `docs/decisions/0014-target-first-mapping-and-local-meaning.md` — target-first questions, on-device mapping, user-declared meaning
+33. `docs/sprints/sprint-15.md` — Sprint 15 report: experience, tests, release status
+34. `docs/usability/sprint-15-protocol.md` — independent usability protocol (NOT PERFORMED)
 
-Every sprint ends with an evidence-backed release status (`CODE_READY`, `DEPLOYMENT_PENDING`, `DEPLOYED_UNVERIFIED`, `PRODUCTION_ACCEPTED`, `RELEASE_FAILED`); rules in `AGENTS.md`. Do not duplicate architecture here. Do not start Sprint 15 automatically.
+Every sprint ends with an evidence-backed release status (`CODE_READY`, `DEPLOYMENT_PENDING`, `DEPLOYED_UNVERIFIED`, `PRODUCTION_ACCEPTED`, `RELEASE_FAILED`); rules in `AGENTS.md`. Do not duplicate architecture here. Do not start Sprint 16 automatically.

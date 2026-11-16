@@ -2,7 +2,7 @@ import type { CloudDisclosurePayload } from "../../domain/contracts/types.ts";
 import type { ProposalIssue } from "../../proposal/convert.ts";
 import type { ResolutionIssue } from "../../proposal/resolve.ts";
 import type { AcceptProposalResult, PreparedTwin } from "../../workflow/pipeline.ts";
-import { summarizeDestination } from "./destinations.ts";
+import { planFields, type GuidedFieldDecisions } from "./field-plan.ts";
 
 /**
  * Sprint 14 (Workstreams A/B) — plain-language diagnosis of a rejected mapping
@@ -147,34 +147,56 @@ export function withheldCategoryFields(prepared: PreparedTwin): CategoryField[] 
 }
 
 export interface CategoryNeed {
-  /** Destination fields that take one of a fixed set of values. */
-  targets: Array<{ name: string; values: string[]; required: boolean }>;
-  /** Source category fields that could provide them. */
+  /** Destination fields that take one of a fixed set of values, each judged on its own. */
+  targets: Array<{
+    name: string;
+    values: string[];
+    required: boolean;
+    /** The source field that gives this destination field (user choice or the only candidate), or null. */
+    source: string | null;
+    /** How this field can be filled: Gemini sees the chosen field's names, the user translated them here, or not yet. */
+    ready: "shared" | "local" | null;
+  }>;
+  /** Only the source category fields relevant to these destination fields (never every category field). */
   fields: CategoryField[];
   /**
-   * True when a destination field from a fixed list is REQUIRED and no source
-   * category field is shared: Gemini cannot write a valid rule for it, so every
-   * such request is refused locally (the Sprint 14 production incident).
+   * True when a REQUIRED destination field from a fixed list cannot be filled
+   * by a Gemini request: its source is unknown, or the names of THAT source
+   * field are not shared. Sharing an unrelated field never clears it
+   * (Sprint 15, A3; the Sprint 14 rule accepted any shared category field).
    */
   blocking: boolean;
 }
 
 /**
- * Pre-send readiness (Sprint 14, A3/C2): does the destination need values from
- * a fixed list that only the user's category fields can provide? Null when the
- * destination has no such field or the source has no category field.
+ * Pre-send readiness, per destination field (Sprint 14 A3, corrected in
+ * Sprint 15 A3). Null when the destination has no fixed-list field or no
+ * source field could provide one.
  */
-export function categoryNeed(prepared: PreparedTwin | null, destinationText: string): CategoryNeed | null {
-  if (!prepared) return null;
-  const summary = summarizeDestination(destinationText);
-  if (!summary.ok) return null;
-  const targets = summary.fields
-    .filter((field) => field.type === "enum" && (field.enumValues?.length ?? 0) > 0)
-    .map((field) => ({ name: field.name, values: [...(field.enumValues ?? [])], required: field.required }));
-  if (targets.length === 0) return null;
-  const fields = categoryFields(prepared);
-  if (fields.length === 0) return null;
-  return { targets, fields, blocking: targets.some((target) => target.required) && !fields.some((field) => field.shared) };
+export function categoryNeed(
+  prepared: PreparedTwin | null,
+  destinationText: string,
+  decisions: GuidedFieldDecisions = { fieldMatches: {}, categoryMeanings: {} },
+  records: readonly unknown[] = [],
+): CategoryNeed | null {
+  const plan = planFields(prepared, records, destinationText, decisions);
+  if (!plan || !prepared) return null;
+  const enumTargets = plan.targets.filter((item) => item.target.type === "enum" && (item.target.enumValues?.length ?? 0) > 0);
+  if (enumTargets.length === 0 || enumTargets.every((item) => item.candidates.length === 0)) return null;
+  const relevant = new Set<string>();
+  for (const item of enumTargets) {
+    if (item.chosen) relevant.add(item.chosen);
+    else item.candidates.slice(0, 3).forEach((candidate) => relevant.add(candidate.path));
+  }
+  const fields = categoryFields(prepared).filter((field) => relevant.has(field.path));
+  const targets = enumTargets.map((item) => ({
+    name: item.target.name,
+    values: [...(item.target.enumValues ?? [])],
+    required: item.target.required,
+    source: item.chosen,
+    ready: item.cloud === "ok" && item.chosen ? ("shared" as const) : item.rule ? ("local" as const) : null,
+  }));
+  return { targets, fields, blocking: enumTargets.some((item) => item.target.required && item.cloud !== "ok") };
 }
 
 function aliasOf(issue: AnyIssue): string | null {

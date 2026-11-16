@@ -16,3 +16,4 @@ Never store tokens, API keys, request bodies or real records here. A body-scan o
 | Release | Status | Notes |
 | --- | --- | --- |
 | [a548d7fbd7b8](a548d7fbd7b8/) | **RELEASE_FAILED** | Sprint 13 merge. The default guided journey cannot build (F-1). Fix in Sprint 14 |
+| [95a9564c90ef](95a9564c90ef/) | **DEPLOYED_UNVERIFIED** | Sprint 14, owner-approved. Deterministic 17/17 PASS, real Nano PASS; real cloud blocked by App Check 403 for the automated session (failed closed). Needs one human run (PF-1) |

@@ -13,6 +13,7 @@ import { verifySemantics, type SemanticReport } from "../semantics/verify.ts";
 import type { RealityCheckReport } from "../verification/reality-check.ts";
 import type { PreparedTwin } from "../workflow/pipeline.ts";
 import type { WorkspaceState } from "./workspace-state.ts";
+import { meaningConstraints } from "./guided/field-plan.ts";
 
 export interface WorkspaceSemantics {
   contract: SemanticVerificationContract;
@@ -57,7 +58,12 @@ export function activeExecutable(workspace: WorkspaceState): MappingContract | n
 export function workspaceSemanticContract(workspace: WorkspaceState, prepared: PreparedTwin | null, records: readonly unknown[]): SemanticVerificationContract {
   return buildSemanticContract({
     contractId: workspace.scenario ? `${workspace.scenario.id}-semantics` : "workspace-semantics",
-    declared: [...(workspace.scenario?.semanticDeclared ?? []), ...confirmationConstraints(workspace.semanticConfirmations)],
+    declared: [
+      ...(workspace.scenario?.semanticDeclared ?? []),
+      ...confirmationConstraints(workspace.semanticConfirmations),
+      // Sprint 15: the user's own category translations (guided flow), trusted as user-declared.
+      ...meaningConstraints(workspace.categoryMeanings, workspace.destinationText, prepared?.profile.fields.map((field) => field.path) ?? []),
+    ],
     profile: prepared?.profile ?? null,
     records,
   });

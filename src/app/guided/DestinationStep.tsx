@@ -1,9 +1,11 @@
 import { useMemo, useState } from "react";
 import { Button } from "../../components/ui/button.tsx";
-import { AlertIcon, ArrowRightIcon } from "../../components/icons.tsx";
+import { AlertIcon, ArrowRightIcon, LockIcon } from "../../components/icons.tsx";
 import { Disclosure } from "../../components/spectral.tsx";
 import { draftSchemaFromSample, EXAMPLE_DESTINATIONS, exampleFor, summarizeDestination } from "./destinations.ts";
 import type { CategoryNeed } from "./recovery.ts";
+import { describeRule, type CategoryMeaning, type FieldPlan } from "./field-plan.ts";
+import { EnumQuestions, FieldMatches, type FieldQuestionHandlers, type SlashOrder } from "./FieldQuestions.tsx";
 
 /**
  * Guided step 2 — "Where should it go?" (Sprint 13, A3 / A4).
@@ -24,6 +26,14 @@ export function DestinationStep({
   sourceLabel,
   categoryNeed = null,
   onShareCategories = () => {},
+  plan = null,
+  meanings = {},
+  confirmations = {},
+  dateExamples = () => [],
+  onMatch = () => {},
+  onMeaning = () => {},
+  onDateOrder = () => {},
+  onBuildLocal = () => {},
   buildBlocker,
   building,
   onBuild,
@@ -36,6 +46,16 @@ export function DestinationStep({
   categoryNeed?: CategoryNeed | null;
   /** Sprint 14: the user's explicit choice to share (or stop sharing) a field's category names. */
   onShareCategories?: (paths: string[], share: boolean) => void;
+  /** Sprint 15: target-first field plan (field-plan.ts) and the user's decisions. */
+  plan?: FieldPlan | null;
+  meanings?: Readonly<Record<string, CategoryMeaning>>;
+  confirmations?: Readonly<Record<string, SlashOrder>>;
+  dateExamples?: (path: string) => string[];
+  onMatch?: FieldQuestionHandlers["onMatch"];
+  onMeaning?: FieldQuestionHandlers["onMeaning"];
+  onDateOrder?: FieldQuestionHandlers["onDateOrder"];
+  /** Sprint 15 (B3): build from the user's choices on this device; nothing is sent. */
+  onBuildLocal?: () => void;
   /** The one reason Build cannot run yet, or null. */
   buildBlocker: string | null;
   building: boolean;
@@ -53,6 +73,24 @@ export function DestinationStep({
   /** "Your own" is selected but no schema of the user's is in use yet. */
   const customEmpty = custom && draftText.trim() === "";
   const showSummary = summary.ok && !unapplied && !customEmpty;
+
+  const [localProblem, setLocalProblem] = useState<string | null>(null);
+  /** Prefer the on-device build when it is complete and a Gemini request could not fill a required field. */
+  const preferLocal = Boolean(plan?.localReady && categoryNeed?.blocking);
+
+  /** B3: build from the user's own choices on this device. Says why when it cannot. */
+  function buildLocal(): void {
+    if (custom && (customEmpty || unapplied)) {
+      setLocalProblem("Apply your schema first (“Use this schema”).");
+      return;
+    }
+    if (!plan?.localReady) {
+      setLocalProblem(plan?.localBlocker ?? "Some destination fields have no match yet.");
+      return;
+    }
+    setLocalProblem(null);
+    onBuildLocal();
+  }
 
   /** Build only against the destination on screen (C2). */
   function build(): void {
@@ -252,42 +290,47 @@ export function DestinationStep({
         </div>
       ) : null}
 
-      {showSummary && categoryNeed ? (
-        <fieldset className="space-y-3 rounded-[3px] border border-warn/50 border-l-4 border-l-warn bg-panel p-5 text-sm" data-testid="destination-categories" data-blocking={String(categoryNeed.blocking)}>
-          <legend className="sr-only">Category names</legend>
-          <p className="font-medium">
-            {categoryNeed.targets.map((target) => `“${target.name}”`).join(" and ")} must be one of a fixed list. Gemini can only fill {categoryNeed.targets.length === 1 ? "it" : "them"} if it sees
-            the names of your categories.
+      {showSummary && plan ? (
+        <EnumQuestions plan={plan} meanings={meanings} blocking={Boolean(categoryNeed?.blocking)} handlers={{ onMatch, onMeaning, onShareCategories, onDateOrder }} />
+      ) : null}
+
+      {showSummary && plan ? (
+        <Disclosure
+          summary={
+            <>
+              Field matches: {plan.targets.filter((item) => item.rule).length} of {plan.targets.length} ready to build on this device
+            </>
+          }
+          testId="field-matches-disclosure"
+          className="rounded-[3px] border border-rule bg-panel p-4"
+        >
+          <p className="mb-3 text-sm text-ink-text">
+            Gemini proposes these matches by itself. Check them here only if you want to build on this device without Gemini, or to see where each field comes from.
           </p>
-          <p className="text-ink-text">
-            By default EYES hides these names and shows Gemini placeholders.
-            {categoryNeed.blocking ? " Without them this integration can't be built." : ""} Your records are never sent either way. Decide per field:
+          <FieldMatches plan={plan} confirmations={confirmations} dateExamples={dateExamples} handlers={{ onMatch, onMeaning, onShareCategories, onDateOrder }} />
+        </Disclosure>
+      ) : null}
+
+      {showSummary && plan?.localReady ? (
+        <div className="rounded-[3px] border border-ink/40 bg-panel p-4 text-sm" data-testid="local-summary">
+          <p className="flex items-center gap-1.5 font-medium">
+            <LockIcon size={14} className="shrink-0" /> Built on this device, this mapping would be:
           </p>
-          <ul className="space-y-2">
-            {categoryNeed.fields.map((field) => (
-              <li key={field.path}>
-                <label className="flex items-start gap-2">
-                  <input
-                    type="checkbox"
-                    className="mt-1 accent-violet"
-                    checked={field.shared}
-                    onChange={(event) => onShareCategories([field.path], event.target.checked)}
-                    data-testid={`share-categories-${field.path}`}
-                  />
-                  <span>
-                    Share the {field.labels.length} category name{field.labels.length === 1 ? "" : "s"} of <span className="font-mono text-ink">{field.path}</span>:{" "}
-                    <span className="font-mono text-xs">{field.labels.join(", ")}</span>
-                    {field.rare > 0 ? (
-                      <span className="block text-xs text-warn">
-                        {field.rare === field.labels.length ? "All of these are" : `${field.rare} of these ${field.rare === 1 ? "is" : "are"}`} used by only a few records, so sharing could hint at which records they are.
-                      </span>
-                    ) : null}
+          <ul className="mt-2 grid gap-x-6 gap-y-1 sm:grid-cols-2" aria-label="Mapping built on this device">
+            {plan.targets.flatMap((item) =>
+              item.rule ? [
+                <li key={item.target.name} className="flex flex-wrap items-baseline gap-x-2" data-testid={`local-summary-${item.target.name}`}>
+                  <span className="font-mono text-ink">{item.target.name}</span>
+                  <span className="text-xs text-mute">
+                    ← <span className="font-mono">{item.chosen}</span>, {describeRule(item.rule)}
+                    {item.chosenBy === "suggested" ? " (suggested)" : ""}
                   </span>
-                </label>
-              </li>
-            ))}
+                </li>,
+              ] : [],
+            )}
           </ul>
-        </fieldset>
+          <p className="mt-2 text-xs text-mute">Not right? Change a row under “Field matches”. Nothing is built until you click.</p>
+        </div>
       ) : null}
 
       <div className="flex flex-col gap-3 border-t border-rule pt-5 sm:flex-row sm:items-center sm:justify-between">
@@ -295,11 +338,34 @@ export function DestinationStep({
           Back to your data
         </Button>
         <div className="flex flex-col items-stretch gap-2 sm:items-end">
-          <Button variant="primary" size="lg" onClick={build} disabled={building} data-testid="guided-build">
-            {building ? "Preparing…" : "Build integration"}
-            <ArrowRightIcon />
-          </Button>
-          <p className="text-xs text-mute sm:text-right">{sourceLabel ? `${sourceLabel} → ${showSummary && summary.ok ? summary.title : custom ? "your schema" : "destination"}. ` : ""}Nothing is sent without your approval.</p>
+          <div className="flex flex-col-reverse gap-2 sm:flex-row sm:items-center">
+            {plan && showSummary ? (
+              <Button
+                variant={preferLocal ? "primary" : "ghost"}
+                size={preferLocal ? "lg" : "md"}
+                onClick={buildLocal}
+                disabled={building}
+                title={plan.localReady ? undefined : (plan.localBlocker ?? undefined)}
+                data-testid="guided-build-local"
+                data-ready={String(plan.localReady)}
+              >
+                Build on this device
+              </Button>
+            ) : null}
+            <Button variant={preferLocal ? "outline" : "primary"} size="lg" onClick={build} disabled={building} data-testid="guided-build">
+              {building ? "Preparing…" : preferLocal ? "Build with Gemini" : "Build integration"}
+              <ArrowRightIcon />
+            </Button>
+          </div>
+          <p className="text-xs text-mute sm:text-right" data-testid="guided-build-hint">
+            {sourceLabel ? `${sourceLabel} → ${showSummary && summary.ok ? summary.title : custom ? "your schema" : "destination"}. ` : ""}
+            {preferLocal ? "Your answers are enough to build here, with nothing sent. Gemini needs your approval first." : "Gemini designs the mapping after your approval; nothing is sent before."}
+          </p>
+          {localProblem ? (
+            <p role="alert" className="text-xs text-warn sm:text-right" data-testid="guided-build-local-blocker">
+              {localProblem}
+            </p>
+          ) : null}
         </div>
       </div>
       {buildBlocker ? (

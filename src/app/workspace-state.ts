@@ -16,6 +16,7 @@ import type { SemanticConstraint } from "../semantics/contract.ts";
 import type { DateInputFormat } from "../domain/profile/profile.ts";
 import type { RevisionDecision } from "../revision/decision.ts";
 import type { SemanticWithheld } from "../revision/semantic-feedback.ts";
+import { isLocalMapping, type CategoryMeaning } from "./guided/field-plan.ts";
 
 export interface ReviewState {
   preview: DisclosurePreview;
@@ -100,6 +101,27 @@ export interface WorkspaceState {
   semanticConfirmations: Record<string, Extract<DateInputFormat, "MM/DD/YYYY" | "DD/MM/YYYY">>;
   /** Sprint 8: constraint ids the user authorized for disclosure in the revision request. */
   revisionConstraintIds: string[];
+  /**
+   * Sprint 15: destination field → local source path, set only by the user's
+   * explicit choice in the guided flow. Local only; never part of a request.
+   */
+  fieldMatches: Record<string, string>;
+  /**
+   * Sprint 15: destination enum field → the user's declared translation of a
+   * source field's categories. Local only. It is both the on-device mapping
+   * rule and a trusted user-declared enum-meaning constraint.
+   */
+  categoryMeanings: Record<string, CategoryMeaning>;
+  /**
+   * Sprint 15: source paths whose category names the user explicitly allowed
+   * inside the downloaded integration package. Off by default; never sent.
+   */
+  packageLabelSources: string[];
+}
+
+/** Decisions that belong to one source. A new source starts without them. */
+export function freshSourceDecisions(): Pick<WorkspaceState, "overrides" | "semanticConfirmations" | "fieldMatches" | "categoryMeanings" | "packageLabelSources"> {
+  return { overrides: {}, semanticConfirmations: {}, fieldMatches: {}, categoryMeanings: {}, packageLabelSources: [] };
 }
 
 export function initialWorkspaceState(): WorkspaceState {
@@ -121,6 +143,9 @@ export function initialWorkspaceState(): WorkspaceState {
     revision: null,
     semanticConfirmations: {},
     revisionConstraintIds: [],
+    fieldMatches: {},
+    categoryMeanings: {},
+    packageLabelSources: [],
   };
 }
 
@@ -141,4 +166,17 @@ export function invalidateDownstream(state: WorkspaceState): WorkspaceState {
 export function applyTwinOverride(state: WorkspaceState, path: string, patch: Record<string, unknown>): WorkspaceState {
   const current = state.overrides[path] ?? {};
   return invalidateDownstream({ ...state, overrides: { ...state.overrides, [path]: { ...current, ...patch } } });
+}
+
+/**
+ * Sprint 15 (B5): a guided field decision changed. A cloud request that was
+ * already prepared or approved is never rewritten (the decision is not part of
+ * it). What depended on the decision is cleared: a mapping built on this
+ * device from the old decisions and its result, and any blind revision run
+ * (its evaluations used the old semantic context).
+ */
+export function applyFieldDecision(state: WorkspaceState, patch: Partial<Pick<WorkspaceState, "fieldMatches" | "categoryMeanings" | "semanticConfirmations">>): WorkspaceState {
+  const next = { ...state, ...patch, revision: null, revisionConstraintIds: [] };
+  if (state.mappingChoice === "manual" && isLocalMapping(state.mappingText)) return { ...next, report: null, mappingRunError: null };
+  return next;
 }

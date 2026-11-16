@@ -114,6 +114,35 @@ Build a privacy-aware integration tool: private CRM JSON stays local; on-device 
 - The guided destination is the one on screen: Build validates and applies the visible schema, or refuses with a reason.
 - Never call a simulated on-device run "Gemini Nano" (`fieldUnderstanding`), and never claim Nano ran unless the on-device stage completed.
 
+## Target-first mapping and local meaning (Sprint 15)
+
+Decision: [ADR 0014](docs/decisions/0014-target-first-mapping-and-local-meaning.md). Code: `src/app/guided/field-plan.ts`.
+
+- **Ask per destination field, never per source field.**
+  - Offer only compatible candidates (at most three, plus "Choose another field").
+  - Never list every category field for disclosure.
+  - A disclosure checkbox appears only for the field the user chose. It is off by default.
+- **Readiness is per destination field** (`planFields`, `categoryNeed`). A shared unrelated field never makes a required fixed-list field ready.
+- **Name similarity is a hint, never evidence.**
+  - Never pre-fill a category translation.
+  - Never translate business states by language similarity.
+  - An identical spelling is copied only on an explicit click.
+- **A mapping built on this device** goes only through the existing hand-written route:
+  - `localContract` → `mappingText`, with `mappingChoice: "manual"`;
+  - then the canonical engine and export.
+  - It is labeled "built on this device — no AI" and is never called Gemini. No new operation, no second engine.
+- **The user's valid translation is a trusted user-declared `enum-meaning` constraint** (`meaningConstraints`).
+  - Invalid declarations are dropped, never trusted.
+  - A model suggestion never becomes trusted evidence.
+  - Confirming one field never verifies another.
+  - Never promote a status because a control was clicked: the verifier decides.
+- **Field decisions go through `applyFieldDecision`.**
+  - They clear a local result and any revision run.
+  - They never rewrite or clear a prepared or approved cloud request.
+- **The guided acceptance policy (`guidedPolicy`) comes only from the user's translations.** Unknown or set-aside values are quarantined, never transformed. A loaded scenario keeps its own policy.
+- **Category names enter the downloaded package only after the explicit per-field opt-in** (`packageLabelSources`). Never widen the privacy scan in any other way.
+- **`bindings.local.json` is a separate local download.** Never put it, or records, in the ZIP.
+
 ## Release lifecycle and production acceptance (Sprint 14 — permanent, every sprint)
 
 **Tests passing does not mean the product works in production.** Procedure, commands, budget and evidence layout: [docs/deployment.md](docs/deployment.md#production-acceptance-standard-permanent).
