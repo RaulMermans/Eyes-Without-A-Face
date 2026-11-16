@@ -1,0 +1,865 @@
+{
+  "scenarioId": "music-school-enrollments-to-student-portal",
+  "split": "dev",
+  "industry": "music school lessons",
+  "sourceLanguage": "de",
+  "description": "Enrolment export of a fictional community music school (German snake_case, nested guardian and address) to be loaded into a student portal.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "monatsbeitrag": 99,
+      "nachname": "Mertens",
+      "adresse": {
+        "strasse": "Lindenweg 76",
+        "ort": "Paderborn",
+        "plz": "33098"
+      },
+      "vertragsstatus": "aktiv",
+      "vertrag_nr": "V-170652",
+      "schueler_email": null,
+      "lehrkraft": "Lukas Mertens",
+      "instrument": "Klavier",
+      "erziehungsberechtigter": {
+        "telefon": "+49 521 555 1794",
+        "name": "Lukas Mertens",
+        "email": "Lukas.Mertens@Post.example.net"
+      },
+      "anmeldedatum": "07/01/2024",
+      "schueler_nr": "S31020",
+      "unterrichtsdauer_min": 45,
+      "vorname": "Matthias",
+      "geburtsdatum": "03/08/2011"
+    },
+    {
+      "monatsbeitrag": 79,
+      "nachname": "Oberle",
+      "adresse": {
+        "strasse": "Bachstraße 46",
+        "ort": "Bielefeld",
+        "plz": "33602"
+      },
+      "vertragsstatus": "pausiert",
+      "vertrag_nr": "V-938798",
+      "schueler_email": "greta.oberle@schule.example.org",
+      "lehrkraft": "Felix Falkner",
+      "instrument": "Geige",
+      "erziehungsberechtigter": {
+        "telefon": "+49 521 555 6846",
+        "name": "Frieda Oberle",
+        "email": "Frieda.Oberle@post.example.net"
+      },
+      "anmeldedatum": "07/07/2021",
+      "schueler_nr": "S31033",
+      "unterrichtsdauer_min": 60,
+      "vorname": "Greta",
+      "geburtsdatum": "03/06/2012"
+    },
+    {
+      "monatsbeitrag": 99,
+      "nachname": "  Falkner ",
+      "adresse": {
+        "strasse": "Am Markt 22",
+        "ort": "Göttingen",
+        "plz": "37073"
+      },
+      "vertragsstatus": "gekündigt",
+      "vertrag_nr": "V-388770",
+      "schueler_email": null,
+      "lehrkraft": "Konstantin Grünwald",
+      "instrument": "Gitarre",
+      "erziehungsberechtigter": {
+        "telefon": "+49 521 555 6461",
+        "name": "Jonas Falkner",
+        "email": "jonas.falkner@post.example.net"
+      },
+      "anmeldedatum": "01/02/2025",
+      "schueler_nr": "S31046",
+      "unterrichtsdauer_min": 45,
+      "vorname": "Matthias",
+      "geburtsdatum": "02/06/2018"
+    },
+    {
+      "monatsbeitrag": 79,
+      "nachname": "Pfister",
+      "adresse": {
+        "strasse": "Bachstraße 78",
+        "ort": "Göttingen",
+        "plz": "37073"
+      },
+      "vertragsstatus": "Probemonat",
+      "vertrag_nr": "V-305806",
+      "lehrkraft": "Hanna Eggert",
+      "instrument": "Schlagzeug",
+      "erziehungsberechtigter": {
+        "telefon": "+49 521 555 8760",
+        "name": "Frieda Pfister",
+        "email": "Frieda.Pfister@post.example.net"
+      },
+      "anmeldedatum": "08/06/2022",
+      "schueler_nr": "S31059",
+      "unterrichtsdauer_min": 30,
+      "vorname": "Jonas",
+      "geburtsdatum": "08/02/2011"
+    },
+    {
+      "monatsbeitrag": 59,
+      "nachname": "Dorfmann",
+      "adresse": {
+        "strasse": "Am Markt 13",
+        "ort": "Bielefeld",
+        "plz": "33602"
+      },
+      "vertragsstatus": "ALT-IMPORT 2019",
+      "vertrag_nr": "V-996154",
+      "schueler_email": null,
+      "lehrkraft": "Henrik Grünwald",
+      "instrument": "Querflöte",
+      "erziehungsberechtigter": {
+        "telefon": "+49 521 555 3551",
+        "name": "Paula Dorfmann",
+        "email": "Paula.Dorfmann@Post.example.net"
+      },
+      "anmeldedatum": "12/06/2025",
+      "schueler_nr": "S31072",
+      "unterrichtsdauer_min": 45,
+      "vorname": "Hanna",
+      "geburtsdatum": "04/02/2009"
+    },
+    {
+      "monatsbeitrag": 119,
+      "nachname": "Oberle",
+      "adresse": {
+        "strasse": "Mühlenkamp 66",
+        "ort": "Kassel",
+        "plz": "34117"
+      },
+      "vertragsstatus": "Probemonat",
+      "vertrag_nr": "V-916067",
+      "schueler_email": "frieda.oberle@schule.example.org",
+      "lehrkraft": "Lena Mertens",
+      "instrument": "Gesang",
+      "erziehungsberechtigter": {
+        "telefon": "+49 521 555 8470",
+        "name": "Jonas Oberle",
+        "email": "Jonas.Oberle@Post.example.net"
+      },
+      "anmeldedatum": "03/11/2023",
+      "schueler_nr": "S31085",
+      "unterrichtsdauer_min": 60,
+      "vorname": "Frieda",
+      "geburtsdatum": "05/09/2012"
+    },
+    {
+      "monatsbeitrag": 99,
+      "nachname": "Albrecht",
+      "adresse": {
+        "strasse": "Lindenweg 5",
+        "ort": "Kassel",
+        "plz": "34117"
+      },
+      "vertragsstatus": "Probemonat",
+      "vertrag_nr": "V-178059",
+      "schueler_email": "paula.albrecht@schule.example.org",
+      "lehrkraft": "Jörg Kessler",
+      "instrument": "Querflöte",
+      "erziehungsberechtigter": {
+        "telefon": "+49 521 555 9208",
+        "name": "Greta Dorfmann",
+        "email": "greta.dorfmann@post.example.net"
+      },
+      "anmeldedatum": "12/12/2021",
+      "schueler_nr": "S31098",
+      "unterrichtsdauer_min": 30,
+      "vorname": "Paula",
+      "geburtsdatum": "10/05/2015"
+    },
+    {
+      "monatsbeitrag": 99,
+      "nachname": "  Jaschke ",
+      "adresse": {
+        "strasse": "Mühlenkamp 51",
+        "ort": "Bielefeld",
+        "plz": "33602"
+      },
+      "vertragsstatus": "aktiv",
+      "vertrag_nr": "V-992545",
+      "schueler_email": "moritz.jaschke@schule.example.org",
+      "lehrkraft": "Mira Grünwald",
+      "instrument": "Gesang",
+      "erziehungsberechtigter": {
+        "telefon": "+49 521 555 1362",
+        "name": "Greta Haberl",
+        "email": "greta.haberl@post.example.net"
+      },
+      "anmeldedatum": "08/02/2021",
+      "schueler_nr": "S31111",
+      "unterrichtsdauer_min": 60,
+      "vorname": "Moritz",
+      "geburtsdatum": "12/01/2016"
+    },
+    {
+      "monatsbeitrag": 59,
+      "nachname": "Kessler",
+      "adresse": {
+        "strasse": "Bachstraße 24",
+        "ort": "Bielefeld",
+        "plz": "33602"
+      },
+      "vertragsstatus": "gekündigt",
+      "vertrag_nr": "V-946176",
+      "schueler_email": "henrik.kessler@schule.example.org",
+      "lehrkraft": "Frieda Albrecht",
+      "instrument": "Gesang",
+      "erziehungsberechtigter": {
+        "telefon": "+49 521 555 6630",
+        "name": "Ida Mertens",
+        "email": "ida.mertens@post.example.net"
+      },
+      "anmeldedatum": "01/09/2025",
+      "schueler_nr": "S31124",
+      "unterrichtsdauer_min": 45,
+      "vorname": "Henrik",
+      "geburtsdatum": "07/02/2018"
+    },
+    {
+      "monatsbeitrag": 79,
+      "nachname": "Grünwald",
+      "adresse": {
+        "strasse": "Mühlenkamp 76",
+        "ort": "Kassel",
+        "plz": "34117"
+      },
+      "vertragsstatus": "Probemonat",
+      "vertrag_nr": "V-881722",
+      "schueler_email": null,
+      "lehrkraft": "Lena Grünwald",
+      "instrument": "Querflöte",
+      "erziehungsberechtigter": {
+        "telefon": "+49 521 555 6653",
+        "name": "Felix Grünwald",
+        "email": "Felix.Grunwald@post.example.net"
+      },
+      "anmeldedatum": "03/04/2021",
+      "schueler_nr": "S31137",
+      "unterrichtsdauer_min": 45,
+      "vorname": "Konstantin",
+      "geburtsdatum": "06/01/2018"
+    },
+    {
+      "monatsbeitrag": 119,
+      "nachname": "Haberl",
+      "adresse": {
+        "strasse": "Bachstraße 15",
+        "ort": "Kassel",
+        "plz": "34117"
+      },
+      "vertragsstatus": "ALT-IMPORT 2019",
+      "vertrag_nr": "V-863766",
+      "schueler_email": null,
+      "lehrkraft": "Jörg Oberle",
+      "instrument": "Gesang",
+      "erziehungsberechtigter": {
+        "telefon": "+49 521 555 0839",
+        "name": "Felix Haberl",
+        "email": "felix.haberl@post.example.net"
+      },
+      "anmeldedatum": "11/09/2020",
+      "schueler_nr": "S31150",
+      "unterrichtsdauer_min": 30,
+      "vorname": "Paula",
+      "geburtsdatum": "02/06/2011"
+    },
+    {
+      "monatsbeitrag": 119,
+      "nachname": "Kessler   ",
+      "adresse": {
+        "strasse": "Bachstraße 25",
+        "ort": "Paderborn",
+        "plz": "33098"
+      },
+      "vertragsstatus": "pausiert",
+      "vertrag_nr": "V-111289",
+      "schueler_email": null,
+      "lehrkraft": "Mira Lohmeyer",
+      "instrument": "Gesang",
+      "erziehungsberechtigter": {
+        "telefon": "+49 521 555 5821",
+        "name": "Frieda Kessler",
+        "email": "frieda.kessler@post.example.net"
+      },
+      "anmeldedatum": "05/08/2022",
+      "schueler_nr": "S31163",
+      "unterrichtsdauer_min": 30,
+      "vorname": "Matthias",
+      "geburtsdatum": "08/05/2016"
+    },
+    {
+      "monatsbeitrag": 99,
+      "nachname": "  Wöhler ",
+      "adresse": {
+        "strasse": "Lindenweg 31",
+        "ort": "Paderborn",
+        "plz": "33098"
+      },
+      "vertragsstatus": "Probemonat",
+      "vertrag_nr": "V-872832",
+      "schueler_email": null,
+      "lehrkraft": "Mira Haberl",
+      "instrument": "Geige",
+      "erziehungsberechtigter": {
+        "telefon": "+49 521 555 4312",
+        "name": "Paula Kessler",
+        "email": "paula.kessler@post.example.net"
+      },
+      "anmeldedatum": "11/03/2024",
+      "schueler_nr": "S31176",
+      "unterrichtsdauer_min": 30,
+      "vorname": "Mira",
+      "geburtsdatum": "03/11/2015"
+    },
+    {
+      "monatsbeitrag": 59,
+      "nachname": "Dorfmann",
+      "adresse": {
+        "strasse": "Mühlenkamp 64",
+        "ort": "Göttingen",
+        "plz": "37073"
+      },
+      "vertragsstatus": "gekündigt",
+      "vertrag_nr": "V-928866",
+      "schueler_email": "konstantin.dorfmann@schule.example.org",
+      "lehrkraft": "Theresa Wöhler",
+      "instrument": "Querflöte",
+      "erziehungsberechtigter": {
+        "telefon": "+49 521 555 2920",
+        "name": "Greta Grünwald",
+        "email": "Greta.Grunwald@post.example.net"
+      },
+      "anmeldedatum": "02/08/2021",
+      "schueler_nr": "S31189",
+      "unterrichtsdauer_min": 30,
+      "vorname": "Konstantin",
+      "geburtsdatum": "05/03/2016"
+    },
+    {
+      "monatsbeitrag": 59,
+      "nachname": "Jaschke",
+      "adresse": {
+        "strasse": "Am Markt 61",
+        "ort": "Paderborn",
+        "plz": "33098"
+      },
+      "vertragsstatus": "ALT-IMPORT 2019",
+      "vertrag_nr": "V-061987",
+      "schueler_email": null,
+      "lehrkraft": "Matthias Iffland",
+      "instrument": "Gesang",
+      "erziehungsberechtigter": {
+        "telefon": "+49 521 555 2180",
+        "name": "Konstantin Jaschke",
+        "email": "konstantin.jaschke@post.example.net"
+      },
+      "anmeldedatum": "08/06/2020",
+      "schueler_nr": "S31202",
+      "unterrichtsdauer_min": 30,
+      "vorname": "Jörg",
+      "geburtsdatum": "05/10/2015"
+    },
+    {
+      "monatsbeitrag": 119,
+      "nachname": "Haberl",
+      "adresse": {
+        "strasse": "Lindenweg 28",
+        "ort": "Bielefeld",
+        "plz": "33602"
+      },
+      "vertragsstatus": "pausiert",
+      "vertrag_nr": "V-331716",
+      "lehrkraft": "Ida Falkner",
+      "instrument": "Klavier",
+      "erziehungsberechtigter": {
+        "telefon": "+49 521 555 3253",
+        "name": "Paula Haberl",
+        "email": "Paula.Haberl@Post.example.net"
+      },
+      "anmeldedatum": "04/12/2025",
+      "schueler_nr": "S31215",
+      "unterrichtsdauer_min": 60,
+      "vorname": "Lena",
+      "geburtsdatum": "07/05/2014"
+    },
+    {
+      "monatsbeitrag": 119,
+      "nachname": "Kessler",
+      "adresse": {
+        "strasse": "Am Markt 54",
+        "ort": "Paderborn",
+        "plz": "33098"
+      },
+      "vertragsstatus": "ALT-IMPORT 2019",
+      "vertrag_nr": "V-125684",
+      "schueler_email": null,
+      "lehrkraft": "Lukas Kessler",
+      "instrument": "Querflöte",
+      "erziehungsberechtigter": {
+        "telefon": "+49 521 555 5228",
+        "name": "Lena Lohmeyer",
+        "email": "lena.lohmeyer@post.example.net"
+      },
+      "anmeldedatum": "01/02/2019",
+      "schueler_nr": "S31228",
+      "unterrichtsdauer_min": 30,
+      "vorname": "Konstantin",
+      "geburtsdatum": "07/03/2016"
+    },
+    {
+      "monatsbeitrag": 119,
+      "nachname": "  Haberl ",
+      "adresse": {
+        "strasse": "Bachstraße 15",
+        "ort": "Paderborn",
+        "plz": "33098"
+      },
+      "vertragsstatus": "ALT-IMPORT 2019",
+      "vertrag_nr": "V-310275",
+      "schueler_email": null,
+      "lehrkraft": "Jonas Iffland",
+      "instrument": "Geige",
+      "erziehungsberechtigter": {
+        "telefon": "+49 521 555 5390",
+        "name": "Mira Haberl",
+        "email": "Mira.Haberl@post.example.net"
+      },
+      "anmeldedatum": "04/04/2023",
+      "schueler_nr": "S31241",
+      "unterrichtsdauer_min": 60,
+      "vorname": "Hanna",
+      "geburtsdatum": "08/11/2010"
+    },
+    {
+      "monatsbeitrag": 59,
+      "nachname": "Jaschke",
+      "adresse": {
+        "strasse": "Bachstraße 55",
+        "ort": "Paderborn",
+        "plz": "33098"
+      },
+      "vertragsstatus": "aktiv",
+      "vertrag_nr": "V-068043",
+      "schueler_email": null,
+      "lehrkraft": "Frieda Haberl",
+      "instrument": "Gitarre",
+      "erziehungsberechtigter": {
+        "telefon": "+49 521 555 5647",
+        "name": "Lukas Pfister",
+        "email": "lukas.pfister@post.example.net"
+      },
+      "anmeldedatum": "07/02/2021",
+      "schueler_nr": "S31254",
+      "unterrichtsdauer_min": 45,
+      "vorname": "Matthias",
+      "geburtsdatum": "12/08/2017"
+    },
+    {
+      "monatsbeitrag": 119,
+      "nachname": "Brenner",
+      "adresse": {
+        "strasse": "Am Markt 35",
+        "ort": "Bielefeld",
+        "plz": "33602"
+      },
+      "vertragsstatus": "ALT-IMPORT 2019",
+      "vertrag_nr": "V-465795",
+      "schueler_email": "frieda.brenner@schule.example.org",
+      "lehrkraft": "Lukas Nolte",
+      "instrument": "Gesang",
+      "erziehungsberechtigter": {
+        "telefon": "+49 521 555 4472",
+        "name": "Moritz Brenner",
+        "email": "moritz.brenner@post.example.net"
+      },
+      "anmeldedatum": "03/08/2022",
+      "schueler_nr": "S31267",
+      "unterrichtsdauer_min": 60,
+      "vorname": "Frieda",
+      "geburtsdatum": "02/06/2011"
+    },
+    {
+      "monatsbeitrag": 79,
+      "nachname": "Wöhler",
+      "adresse": {
+        "strasse": "Mühlenkamp 1",
+        "ort": "Paderborn",
+        "plz": "33098"
+      },
+      "vertragsstatus": "Probemonat",
+      "vertrag_nr": "V-629276",
+      "schueler_email": "matthias.wohler@schule.example.org",
+      "lehrkraft": "Greta Jaschke",
+      "instrument": "Gesang",
+      "erziehungsberechtigter": {
+        "telefon": "+49 521 555 8464",
+        "name": "Henrik Wöhler",
+        "email": "henrik.wohler@post.example.net"
+      },
+      "anmeldedatum": "09/11/2023",
+      "schueler_nr": "S31280",
+      "unterrichtsdauer_min": 45,
+      "vorname": "Matthias",
+      "geburtsdatum": "05/02/2018"
+    },
+    {
+      "monatsbeitrag": 59,
+      "nachname": "Lohmeyer",
+      "adresse": {
+        "strasse": "Bachstraße 50",
+        "ort": "Göttingen",
+        "plz": "37073"
+      },
+      "vertragsstatus": "ALT-IMPORT 2019",
+      "vertrag_nr": "V-486986",
+      "schueler_email": "konstantin.lohmeyer@schule.example.org",
+      "lehrkraft": "Frieda Jaschke",
+      "instrument": "Geige",
+      "erziehungsberechtigter": {
+        "telefon": "+49 521 555 2764",
+        "name": "Felix Lohmeyer",
+        "email": "Felix.Lohmeyer@post.example.net"
+      },
+      "anmeldedatum": "01/06/2025",
+      "schueler_nr": "S31293",
+      "unterrichtsdauer_min": 30,
+      "vorname": "Konstantin",
+      "geburtsdatum": "05/03/2011"
+    },
+    {
+      "monatsbeitrag": 119,
+      "nachname": "  Brenner ",
+      "adresse": {
+        "strasse": "Am Markt 75",
+        "ort": "Kassel",
+        "plz": "34117"
+      },
+      "vertragsstatus": "aktiv",
+      "vertrag_nr": "V-290060",
+      "lehrkraft": "Moritz Wöhler",
+      "instrument": "Klavier",
+      "erziehungsberechtigter": {
+        "telefon": "+49 521 555 9856",
+        "name": "Moritz Jaschke",
+        "email": "moritz.jaschke@post.example.net"
+      },
+      "anmeldedatum": "06/02/2024",
+      "schueler_nr": "S31306",
+      "unterrichtsdauer_min": 30,
+      "vorname": "Paula",
+      "geburtsdatum": "04/01/2011"
+    },
+    {
+      "monatsbeitrag": 79,
+      "nachname": "Mertens",
+      "adresse": {
+        "strasse": "Mühlenkamp 14",
+        "ort": "Paderborn",
+        "plz": "33098"
+      },
+      "vertragsstatus": "aktiv",
+      "vertrag_nr": "V-009915",
+      "schueler_email": null,
+      "lehrkraft": "Ida Brenner",
+      "instrument": "Gesang",
+      "erziehungsberechtigter": {
+        "telefon": "+49 521 555 0943",
+        "name": "Konstantin Mertens",
+        "email": "konstantin.mertens@post.example.net"
+      },
+      "anmeldedatum": "09/07/2022",
+      "schueler_nr": "S31319",
+      "unterrichtsdauer_min": 45,
+      "vorname": "Matthias",
+      "geburtsdatum": "05/12/2015"
+    },
+    {
+      "monatsbeitrag": 119,
+      "nachname": "Haberl",
+      "adresse": {
+        "strasse": "Lindenweg 39",
+        "ort": "Bielefeld",
+        "plz": "33602"
+      },
+      "vertragsstatus": "pausiert",
+      "vertrag_nr": "V-822849",
+      "schueler_email": "ida.haberl@schule.example.org",
+      "lehrkraft": "Paula Lohmeyer",
+      "instrument": "Querflöte",
+      "erziehungsberechtigter": {
+        "telefon": "+49 521 555 9297",
+        "name": "Felix Haberl",
+        "email": "Felix.Haberl@Post.example.net"
+      },
+      "anmeldedatum": "06/04/2023",
+      "schueler_nr": "S31332",
+      "unterrichtsdauer_min": 45,
+      "vorname": "Ida",
+      "geburtsdatum": "05/08/2016"
+    },
+    {
+      "monatsbeitrag": 99,
+      "nachname": "Iffland",
+      "adresse": {
+        "strasse": "Lindenweg 36",
+        "ort": "Paderborn",
+        "plz": "33098"
+      },
+      "vertragsstatus": "gekündigt",
+      "vertrag_nr": "V-257503",
+      "schueler_email": null,
+      "lehrkraft": "Jörg Pfister",
+      "instrument": "Querflöte",
+      "erziehungsberechtigter": {
+        "telefon": "+49 521 555 2636",
+        "name": "Lukas Iffland",
+        "email": "Lukas.Iffland@post.example.net"
+      },
+      "anmeldedatum": "04/07/2021",
+      "schueler_nr": "S31345",
+      "unterrichtsdauer_min": 30,
+      "vorname": "Lena",
+      "geburtsdatum": "01/02/2010"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "student_id": {
+        "type": "string"
+      },
+      "given_name": {
+        "type": "string"
+      },
+      "family_name": {
+        "type": "string"
+      },
+      "birth_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "enrolled_on": {
+        "type": "string",
+        "format": "date"
+      },
+      "instrument": {
+        "type": "string",
+        "enum": [
+          "piano",
+          "violin",
+          "guitar",
+          "drums",
+          "flute",
+          "voice"
+        ]
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "paused",
+          "cancelled",
+          "trial"
+        ]
+      },
+      "guardian": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "email": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "email"
+          }
+        },
+        "required": []
+      },
+      "student_email": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "format": "email"
+      },
+      "lesson_minutes": {
+        "type": "integer"
+      },
+      "grade_level": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "student_id",
+      "given_name",
+      "family_name",
+      "enrolled_on",
+      "instrument",
+      "status"
+    ]
+  },
+  "groundTruth": {
+    "student_id": {
+      "source": "schueler_nr",
+      "transform": "copy",
+      "why": "pupil number; vertrag_nr numbers the lesson contract"
+    },
+    "given_name": {
+      "source": "vorname",
+      "transform": "copy",
+      "why": "pupil first name"
+    },
+    "family_name": {
+      "source": "nachname",
+      "transform": "trim",
+      "why": "pupil surname, padded in some rows"
+    },
+    "birth_date": {
+      "source": "geburtsdatum",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "pupil date of birth (German day-first convention)"
+    },
+    "enrolled_on": {
+      "source": "anmeldedatum",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "registration date of the pupil (German day-first convention)"
+    },
+    "instrument": {
+      "source": "instrument",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Klavier": "piano",
+        "Geige": "violin",
+        "Gitarre": "guitar",
+        "Schlagzeug": "drums",
+        "Querflöte": "flute",
+        "Gesang": "voice"
+      },
+      "why": "German instrument names translated"
+    },
+    "status": {
+      "source": "vertragsstatus",
+      "transform": "map_enum",
+      "categoryMap": {
+        "aktiv": "active",
+        "pausiert": "paused",
+        "gekündigt": "cancelled",
+        "Probemonat": "trial",
+        "ALT-IMPORT 2019": null
+      },
+      "why": "contract state; ALT-IMPORT rows are unreviewed legacy imports"
+    },
+    "guardian.name": {
+      "source": "erziehungsberechtigter.name",
+      "transform": "copy",
+      "why": "the legal guardian; lehrkraft is the teacher"
+    },
+    "guardian.email": {
+      "source": "erziehungsberechtigter.email",
+      "transform": "normalize_email",
+      "why": "guardian email, mixed case in the export"
+    },
+    "student_email": {
+      "source": "schueler_email",
+      "transform": "copy",
+      "why": "the pupil's own address when present; not the guardian's"
+    },
+    "lesson_minutes": {
+      "source": "unterrichtsdauer_min",
+      "transform": "copy",
+      "why": "lesson length in minutes"
+    },
+    "grade_level": {
+      "source": null,
+      "transform": "none",
+      "why": "no exam grade or school year is exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "birth-date-vs-start-date",
+      "fields": [
+        "geburtsdatum",
+        "anmeldedatum"
+      ],
+      "correctFor": "enrolled_on"
+    },
+    {
+      "kind": "two-email-fields",
+      "fields": [
+        "schueler_email",
+        "erziehungsberechtigter.email"
+      ],
+      "correctFor": "student_email"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "schueler_nr",
+        "vertrag_nr"
+      ],
+      "correctFor": "student_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "erziehungsberechtigter.name",
+        "lehrkraft"
+      ],
+      "correctFor": "guardian.name"
+    }
+  ],
+  "sourceConcepts": {
+    "monatsbeitrag": "amount",
+    "nachname": "family-name",
+    "adresse.strasse": "street-address",
+    "vertragsstatus": "account-status",
+    "vertrag_nr": "transaction-id",
+    "schueler_email": "email",
+    "lehrkraft": "person-name",
+    "instrument": "category",
+    "adresse.ort": "city",
+    "erziehungsberechtigter.telefon": "phone",
+    "anmeldedatum": "start-date",
+    "schueler_nr": "customer-id",
+    "erziehungsberechtigter.name": "person-name",
+    "unterrichtsdauer_min": "quantity",
+    "vorname": "given-name",
+    "geburtsdatum": "birth-date",
+    "erziehungsberechtigter.email": "email",
+    "adresse.plz": "postal-code"
+  },
+  "destinationConcepts": {
+    "student_id": "customer-id",
+    "given_name": "given-name",
+    "family_name": "family-name",
+    "birth_date": "birth-date",
+    "enrolled_on": "start-date",
+    "instrument": "category",
+    "status": "account-status",
+    "guardian.name": "person-name",
+    "guardian.email": "email",
+    "student_email": "email",
+    "lesson_minutes": "quantity",
+    "grade_level": "other"
+  }
+}

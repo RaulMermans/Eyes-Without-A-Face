@@ -1,0 +1,1001 @@
+{
+  "scenarioId": "ngo-volunteers-to-volunteer-crm",
+  "split": "holdout",
+  "industry": "non-profit volunteer coordination",
+  "sourceLanguage": "es",
+  "description": "Volunteer register of a fictional food-bank NGO (Spanish snake_case, nested address) to be loaded into a volunteer management CRM.",
+  "fictional": true,
+  "completable": false,
+  "records": [
+    {
+      "email_personal": "mateo.olmedo@correo.example.org",
+      "area": "Reparto de alimentos",
+      "direccion": {
+        "calle": "Calle Betis 34",
+        "cp": "14002",
+        "municipio": "Córdoba",
+        "provincia": "Córdoba"
+      },
+      "importe_donado": null,
+      "apellidos": "Olmedo Arriaga",
+      "fecha_nacimiento": "23/04/1983",
+      "certificado_entregado": true,
+      "disponibilidad": "Mañanas",
+      "id_donacion": null,
+      "horas_acumuladas": 159.9,
+      "email_coordinador": "coordinacion.reparto@bancoalimentos.example.org",
+      "estado": "activo",
+      "nombre": "  Mateo",
+      "fecha_alta": "22/08/2019",
+      "telefono": "+34 655 555 737",
+      "id_voluntario": "VOL-1200"
+    },
+    {
+      "email_personal": "Irene.Lozano@Correo.example.org",
+      "area": "Acompañamiento a mayores",
+      "direccion": {
+        "calle": "Calle Real 3",
+        "cp": "41003",
+        "municipio": "Sevilla",
+        "provincia": "Sevilla"
+      },
+      "importe_donado": null,
+      "apellidos": "Lozano Quesada",
+      "fecha_nacimiento": "12/12/1974",
+      "certificado_entregado": true,
+      "disponibilidad": "Tardes",
+      "id_donacion": null,
+      "horas_acumuladas": 178.9,
+      "email_coordinador": "coordinacion.acompanamiento@bancoalimentos.example.org",
+      "estado": "inactivo",
+      "nombre": "Irene",
+      "fecha_alta": "20/06/2025",
+      "telefono": "+34 655 555 734",
+      "id_voluntario": "VOL-1207"
+    },
+    {
+      "email_personal": "Carmen.Dominguez@correo.example.org",
+      "area": "Apoyo escolar",
+      "direccion": {
+        "calle": "Calle Betis 20",
+        "cp": "41003",
+        "municipio": "Sevilla",
+        "provincia": "Sevilla"
+      },
+      "importe_donado": 94.67,
+      "apellidos": "Domínguez Pascual",
+      "fecha_nacimiento": "20/05/1997",
+      "certificado_entregado": true,
+      "disponibilidad": "Fines de semana",
+      "id_donacion": null,
+      "horas_acumuladas": 173.7,
+      "email_coordinador": "coordinacion.apoyo@bancoalimentos.example.org",
+      "estado": "baja voluntaria",
+      "nombre": "  Carmen ",
+      "fecha_alta": "26/03/2020",
+      "telefono": "+34 655 555 060",
+      "id_voluntario": "VOL-1214"
+    },
+    {
+      "email_personal": "Iker.Iturbe@correo.example.org",
+      "area": "Logística",
+      "direccion": {
+        "calle": "Calle Sierpes 3",
+        "cp": "11403",
+        "municipio": "Jerez de la Frontera",
+        "provincia": "Cádiz"
+      },
+      "importe_donado": 73.92,
+      "apellidos": "Iturbe Olmedo",
+      "fecha_nacimiento": "24/12/1971",
+      "certificado_entregado": true,
+      "disponibilidad": "Flexible",
+      "id_donacion": null,
+      "horas_acumuladas": 15.2,
+      "email_coordinador": "coordinacion.logistica@bancoalimentos.example.org",
+      "estado": "pendiente formación",
+      "nombre": "Iker   ",
+      "fecha_alta": "04/08/2021",
+      "telefono": "+34 655 555 707",
+      "id_voluntario": "VOL-1221"
+    },
+    {
+      "email_personal": "Alvaro.Lozano@Correo.example.org",
+      "area": "Eventos solidarios",
+      "direccion": {
+        "calle": "Calle Betis 40",
+        "cp": "11403",
+        "municipio": "Jerez de la Frontera",
+        "provincia": "Cádiz"
+      },
+      "importe_donado": 93.88,
+      "apellidos": "Lozano Echeverría",
+      "fecha_nacimiento": "16/10/1981",
+      "certificado_entregado": true,
+      "disponibilidad": "Sin indicar",
+      "id_donacion": null,
+      "horas_acumuladas": 116.1,
+      "email_coordinador": "coordinacion.eventos@bancoalimentos.example.org",
+      "estado": "baja voluntaria",
+      "nombre": "Álvaro",
+      "fecha_alta": "21/09/2021",
+      "telefono": "+34 655 555 056",
+      "id_voluntario": "VOL-1228"
+    },
+    {
+      "email_personal": "Carmen.Echeverria@Correo.example.org",
+      "area": "Prueba sistema",
+      "direccion": {
+        "calle": "Calle Feria 39",
+        "cp": "41700",
+        "municipio": "Dos Hermanas",
+        "provincia": "Sevilla"
+      },
+      "importe_donado": 188.02,
+      "apellidos": "Echeverría Galindo",
+      "fecha_nacimiento": "10/07/1952",
+      "certificado_entregado": true,
+      "disponibilidad": "Flexible",
+      "id_donacion": null,
+      "horas_acumuladas": 164.9,
+      "email_coordinador": "coordinacion.prueba@bancoalimentos.example.org",
+      "estado": "baja voluntaria",
+      "nombre": "Carmen",
+      "fecha_alta": "18/09/2018",
+      "telefono": "+34 655 555 654",
+      "id_voluntario": "VOL-1235"
+    },
+    {
+      "email_personal": "lucia.arriaga@correo.example.org",
+      "area": "Logística",
+      "direccion": {
+        "calle": "Calle Sierpes 73",
+        "cp": "41003",
+        "municipio": "Sevilla",
+        "provincia": "Sevilla"
+      },
+      "importe_donado": null,
+      "apellidos": "Arriaga Belmonte",
+      "fecha_nacimiento": "09/04/1987",
+      "certificado_entregado": true,
+      "disponibilidad": "Tardes",
+      "id_donacion": null,
+      "horas_acumuladas": 303.9,
+      "email_coordinador": "coordinacion.logistica@bancoalimentos.example.org",
+      "estado": "activo",
+      "nombre": "Lucía   ",
+      "fecha_alta": "16/06/2020",
+      "telefono": "+34 655 555 346",
+      "id_voluntario": "VOL-1242"
+    },
+    {
+      "email_personal": "irene.pascual@correo.example.org",
+      "area": "Prueba sistema",
+      "direccion": {
+        "calle": "Calle Betis 60",
+        "cp": "41003",
+        "municipio": "Sevilla",
+        "provincia": "Sevilla"
+      },
+      "importe_donado": null,
+      "apellidos": "Pascual Quesada",
+      "fecha_nacimiento": "24/03/1973",
+      "certificado_entregado": true,
+      "disponibilidad": "Flexible",
+      "id_donacion": "DON-819889",
+      "horas_acumuladas": 399.5,
+      "email_coordinador": "coordinacion.prueba@bancoalimentos.example.org",
+      "estado": "baja voluntaria",
+      "nombre": "  Irene ",
+      "fecha_alta": "13/05/2022",
+      "telefono": null,
+      "id_voluntario": "VOL-1249"
+    },
+    {
+      "email_personal": "hugo.quesada@correo.example.org",
+      "area": "Eventos solidarios",
+      "direccion": {
+        "calle": "Calle Feria 59",
+        "cp": "41700",
+        "municipio": "Dos Hermanas",
+        "provincia": "Sevilla"
+      },
+      "importe_donado": null,
+      "apellidos": "Quesada Navarro",
+      "fecha_nacimiento": "20/07/1962",
+      "certificado_entregado": false,
+      "disponibilidad": "Tardes",
+      "id_donacion": "DON-899004",
+      "horas_acumuladas": 17.6,
+      "email_coordinador": "coordinacion.eventos@bancoalimentos.example.org",
+      "estado": "activo",
+      "nombre": "Hugo",
+      "fecha_alta": "23/03/2020",
+      "telefono": "+34 655 555 490",
+      "id_voluntario": "VOL-1256"
+    },
+    {
+      "email_personal": "Carmen.Galindo@Correo.example.org",
+      "area": "Logística",
+      "direccion": {
+        "calle": "Calle Feria 41",
+        "cp": "41700",
+        "municipio": "Dos Hermanas",
+        "provincia": "Sevilla"
+      },
+      "importe_donado": 52.47,
+      "apellidos": "Galindo Jiménez",
+      "fecha_nacimiento": "14/06/1972",
+      "certificado_entregado": true,
+      "disponibilidad": "Tardes",
+      "id_donacion": "DON-257681",
+      "horas_acumuladas": 193.1,
+      "email_coordinador": "coordinacion.logistica@bancoalimentos.example.org",
+      "estado": "inactivo",
+      "nombre": "Carmen",
+      "fecha_alta": "16/04/2019",
+      "telefono": "+34 655 555 228",
+      "id_voluntario": "VOL-1263"
+    },
+    {
+      "email_personal": "lucia.olmedo@correo.example.org",
+      "area": "Apoyo escolar",
+      "direccion": {
+        "calle": "Calle Sierpes 52",
+        "cp": "11403",
+        "municipio": "Jerez de la Frontera",
+        "provincia": "Cádiz"
+      },
+      "importe_donado": 125.06,
+      "apellidos": "Olmedo Galindo",
+      "fecha_nacimiento": "09/09/1960",
+      "certificado_entregado": true,
+      "disponibilidad": "Flexible",
+      "id_donacion": "DON-862716",
+      "horas_acumuladas": 67.4,
+      "email_coordinador": "coordinacion.apoyo@bancoalimentos.example.org",
+      "estado": "pendiente formación",
+      "nombre": "Lucía",
+      "fecha_alta": "13/09/2019",
+      "telefono": "+34 655 555 424",
+      "id_voluntario": "VOL-1270"
+    },
+    {
+      "email_personal": "irene.ferran@correo.example.org",
+      "area": "Acompañamiento a mayores",
+      "direccion": {
+        "calle": "Calle Sierpes 89",
+        "cp": "11403",
+        "municipio": "Jerez de la Frontera",
+        "provincia": "Cádiz"
+      },
+      "importe_donado": null,
+      "apellidos": "Ferrán Cuadrado",
+      "fecha_nacimiento": "03/09/1969",
+      "certificado_entregado": true,
+      "disponibilidad": "Flexible",
+      "id_donacion": null,
+      "horas_acumuladas": 118.2,
+      "email_coordinador": "coordinacion.acompanamiento@bancoalimentos.example.org",
+      "estado": "baja voluntaria",
+      "nombre": "  Irene",
+      "fecha_alta": "21/12/2020",
+      "telefono": "+34 655 555 808",
+      "id_voluntario": "VOL-1277"
+    },
+    {
+      "email_personal": "mateo.navarro@correo.example.org",
+      "area": "Apoyo escolar",
+      "direccion": {
+        "calle": "Calle Feria 80",
+        "cp": "41700",
+        "municipio": "Dos Hermanas",
+        "provincia": "Sevilla"
+      },
+      "importe_donado": null,
+      "apellidos": "Navarro Ferrán",
+      "fecha_nacimiento": "28/01/1958",
+      "certificado_entregado": true,
+      "disponibilidad": "Tardes",
+      "id_donacion": "DON-588106",
+      "horas_acumuladas": 326.8,
+      "email_coordinador": "coordinacion.apoyo@bancoalimentos.example.org",
+      "estado": "activo",
+      "nombre": "  Mateo ",
+      "fecha_alta": "08/08/2021",
+      "telefono": "+34 655 555 016",
+      "id_voluntario": "VOL-1284"
+    },
+    {
+      "email_personal": "Mateo.Quesada@correo.example.org",
+      "area": "Reparto de alimentos",
+      "direccion": {
+        "calle": "Calle Real 84",
+        "cp": "11403",
+        "municipio": "Jerez de la Frontera",
+        "provincia": "Cádiz"
+      },
+      "importe_donado": null,
+      "apellidos": "Quesada Olmedo",
+      "fecha_nacimiento": "04/04/1980",
+      "certificado_entregado": true,
+      "disponibilidad": "Flexible",
+      "id_donacion": "DON-400574",
+      "horas_acumuladas": 203.3,
+      "email_coordinador": "coordinacion.reparto@bancoalimentos.example.org",
+      "estado": "pendiente formación",
+      "nombre": "Mateo",
+      "fecha_alta": "19/03/2016",
+      "telefono": null,
+      "id_voluntario": "VOL-1291"
+    },
+    {
+      "email_personal": "elena.navarro@correo.example.org",
+      "area": "Prueba sistema",
+      "direccion": {
+        "calle": "Calle Sierpes 18",
+        "cp": "11403",
+        "municipio": "Jerez de la Frontera",
+        "provincia": "Cádiz"
+      },
+      "importe_donado": null,
+      "apellidos": "Navarro Belmonte",
+      "fecha_nacimiento": "01/06/1971",
+      "certificado_entregado": false,
+      "disponibilidad": "Tardes",
+      "id_donacion": "DON-311936",
+      "horas_acumuladas": 245.4,
+      "email_coordinador": "coordinacion.prueba@bancoalimentos.example.org",
+      "estado": "activo",
+      "nombre": "Elena   ",
+      "fecha_alta": "08/06/2016",
+      "telefono": "+34 655 555 091",
+      "id_voluntario": "VOL-1298"
+    },
+    {
+      "email_personal": "ainhoa.pascual@correo.example.org",
+      "area": "Apoyo escolar",
+      "direccion": {
+        "calle": "Calle Betis 38",
+        "cp": "41003",
+        "municipio": "Sevilla",
+        "provincia": "Sevilla"
+      },
+      "importe_donado": null,
+      "apellidos": "Pascual Cuadrado",
+      "fecha_nacimiento": "06/04/1982",
+      "certificado_entregado": false,
+      "disponibilidad": "Fines de semana",
+      "id_donacion": null,
+      "horas_acumuladas": 9.1,
+      "email_coordinador": "coordinacion.apoyo@bancoalimentos.example.org",
+      "estado": "activo",
+      "nombre": "Ainhoa",
+      "fecha_alta": "22/08/2019",
+      "telefono": "+34 655 555 595",
+      "id_voluntario": "VOL-1305"
+    },
+    {
+      "email_personal": "mateo.arriaga@correo.example.org",
+      "area": "Prueba sistema",
+      "direccion": {
+        "calle": "Calle Real 87",
+        "cp": "41700",
+        "municipio": "Dos Hermanas",
+        "provincia": "Sevilla"
+      },
+      "importe_donado": 188.55,
+      "apellidos": "Arriaga Herrero",
+      "fecha_nacimiento": "20/05/1998",
+      "certificado_entregado": true,
+      "disponibilidad": "Tardes",
+      "id_donacion": "DON-504183",
+      "horas_acumuladas": 184.6,
+      "email_coordinador": "coordinacion.prueba@bancoalimentos.example.org",
+      "estado": "baja voluntaria",
+      "nombre": "Mateo",
+      "fecha_alta": "19/10/2017",
+      "telefono": "+34 655 555 822",
+      "id_voluntario": "VOL-1312"
+    },
+    {
+      "email_personal": "Iker.Ferran@correo.example.org",
+      "area": "Eventos solidarios",
+      "direccion": {
+        "calle": "Calle Real 73",
+        "cp": "14002",
+        "municipio": "Córdoba",
+        "provincia": "Córdoba"
+      },
+      "importe_donado": null,
+      "apellidos": "Ferrán Belmonte",
+      "fecha_nacimiento": "25/07/1998",
+      "certificado_entregado": true,
+      "disponibilidad": "Sin indicar",
+      "id_donacion": "DON-935934",
+      "horas_acumuladas": 390.8,
+      "email_coordinador": "coordinacion.eventos@bancoalimentos.example.org",
+      "estado": "inactivo",
+      "nombre": "  Iker ",
+      "fecha_alta": "26/01/2018",
+      "telefono": "+34 655 555 660",
+      "id_voluntario": "VOL-1319"
+    },
+    {
+      "email_personal": "Alvaro.Marin@correo.example.org",
+      "area": "Acompañamiento a mayores",
+      "direccion": {
+        "calle": "Calle Betis 49",
+        "cp": "11403",
+        "municipio": "Jerez de la Frontera",
+        "provincia": "Cádiz"
+      },
+      "importe_donado": 116.25,
+      "apellidos": "Marín Quesada",
+      "fecha_nacimiento": "26/01/1961",
+      "certificado_entregado": true,
+      "disponibilidad": "Mañanas",
+      "id_donacion": null,
+      "horas_acumuladas": 243.1,
+      "email_coordinador": "coordinacion.acompanamiento@bancoalimentos.example.org",
+      "estado": "pendiente formación",
+      "nombre": "Álvaro",
+      "fecha_alta": "07/10/2023",
+      "telefono": "+34 655 555 036",
+      "id_voluntario": "VOL-1326"
+    },
+    {
+      "email_personal": "carmen.iturbe@correo.example.org",
+      "area": "Acompañamiento a mayores",
+      "direccion": {
+        "calle": "Calle Real 5",
+        "cp": "11403",
+        "municipio": "Jerez de la Frontera",
+        "provincia": "Cádiz"
+      },
+      "importe_donado": null,
+      "apellidos": "Iturbe Galindo",
+      "fecha_nacimiento": "10/11/1973",
+      "certificado_entregado": true,
+      "disponibilidad": "Mañanas",
+      "id_donacion": null,
+      "horas_acumuladas": 36.4,
+      "email_coordinador": "coordinacion.acompanamiento@bancoalimentos.example.org",
+      "estado": "activo",
+      "nombre": "Carmen",
+      "fecha_alta": "04/09/2021",
+      "telefono": null,
+      "id_voluntario": "VOL-1333"
+    },
+    {
+      "email_personal": "Marta.Arriaga@Correo.example.org",
+      "area": "Reparto de alimentos",
+      "direccion": {
+        "calle": "Calle Sierpes 69",
+        "cp": "11403",
+        "municipio": "Jerez de la Frontera",
+        "provincia": "Cádiz"
+      },
+      "importe_donado": null,
+      "apellidos": "Arriaga Belmonte",
+      "fecha_nacimiento": "20/09/1980",
+      "certificado_entregado": true,
+      "disponibilidad": "Sin indicar",
+      "id_donacion": null,
+      "horas_acumuladas": 234.4,
+      "email_coordinador": "coordinacion.reparto@bancoalimentos.example.org",
+      "estado": "pendiente formación",
+      "nombre": "Marta",
+      "fecha_alta": "20/12/2021",
+      "telefono": "+34 655 555 891",
+      "id_voluntario": "VOL-1340"
+    },
+    {
+      "email_personal": "Sergio.Ferran@correo.example.org",
+      "area": "Logística",
+      "direccion": {
+        "calle": "Calle Betis 87",
+        "cp": "41700",
+        "municipio": "Dos Hermanas",
+        "provincia": "Sevilla"
+      },
+      "importe_donado": 85.12,
+      "apellidos": "Ferrán Navarro",
+      "fecha_nacimiento": "10/08/1975",
+      "certificado_entregado": false,
+      "disponibilidad": "Flexible",
+      "id_donacion": "DON-760553",
+      "horas_acumuladas": 263.9,
+      "email_coordinador": "coordinacion.logistica@bancoalimentos.example.org",
+      "estado": "pendiente formación",
+      "nombre": "Sergio",
+      "fecha_alta": "07/07/2019",
+      "telefono": "+34 655 555 159",
+      "id_voluntario": "VOL-1347"
+    },
+    {
+      "email_personal": "Javier.Cuadrado@Correo.example.org",
+      "area": "Logística",
+      "direccion": {
+        "calle": "Calle Betis 51",
+        "cp": "11403",
+        "municipio": "Jerez de la Frontera",
+        "provincia": "Cádiz"
+      },
+      "importe_donado": 195.73,
+      "apellidos": "Cuadrado Quesada",
+      "fecha_nacimiento": "22/11/1979",
+      "certificado_entregado": true,
+      "disponibilidad": "Fines de semana",
+      "id_donacion": null,
+      "horas_acumuladas": 186.2,
+      "email_coordinador": "coordinacion.logistica@bancoalimentos.example.org",
+      "estado": "pendiente formación",
+      "nombre": "  Javier ",
+      "fecha_alta": "27/10/2016",
+      "telefono": "+34 655 555 540",
+      "id_voluntario": "VOL-1354"
+    },
+    {
+      "email_personal": "Sergio.Quesada@Correo.example.org",
+      "area": "Logística",
+      "direccion": {
+        "calle": "Calle Real 13",
+        "cp": "41003",
+        "municipio": "Sevilla",
+        "provincia": "Sevilla"
+      },
+      "importe_donado": 50.04,
+      "apellidos": "Quesada Jiménez",
+      "fecha_nacimiento": "28/04/1969",
+      "certificado_entregado": true,
+      "disponibilidad": "Fines de semana",
+      "id_donacion": "DON-579574",
+      "horas_acumuladas": 96.3,
+      "email_coordinador": "coordinacion.logistica@bancoalimentos.example.org",
+      "estado": "pendiente formación",
+      "nombre": "Sergio",
+      "fecha_alta": "02/07/2023",
+      "telefono": null,
+      "id_voluntario": "VOL-1361"
+    },
+    {
+      "email_personal": "javier.lozano@correo.example.org",
+      "area": "Apoyo escolar",
+      "direccion": {
+        "calle": "Calle Betis 52",
+        "cp": "41700",
+        "municipio": "Dos Hermanas",
+        "provincia": "Sevilla"
+      },
+      "importe_donado": null,
+      "apellidos": "Lozano Belmonte",
+      "fecha_nacimiento": "14/09/2005",
+      "certificado_entregado": false,
+      "disponibilidad": "Tardes",
+      "id_donacion": "DON-786680",
+      "horas_acumuladas": 63,
+      "email_coordinador": "coordinacion.apoyo@bancoalimentos.example.org",
+      "estado": "activo",
+      "nombre": "Javier",
+      "fecha_alta": "08/10/2017",
+      "telefono": "+34 655 555 365",
+      "id_voluntario": "VOL-1368"
+    },
+    {
+      "email_personal": "Sergio.Dominguez@Correo.example.org",
+      "area": "Logística",
+      "direccion": {
+        "calle": "Calle Betis 57",
+        "cp": "11403",
+        "municipio": "Jerez de la Frontera",
+        "provincia": "Cádiz"
+      },
+      "importe_donado": 163.36,
+      "apellidos": "Domínguez Lozano",
+      "fecha_nacimiento": "19/10/1970",
+      "certificado_entregado": true,
+      "disponibilidad": "Tardes",
+      "id_donacion": null,
+      "horas_acumuladas": 133.7,
+      "email_coordinador": "coordinacion.logistica@bancoalimentos.example.org",
+      "estado": "baja voluntaria",
+      "nombre": "  Sergio",
+      "fecha_alta": "14/12/2021",
+      "telefono": "+34 655 555 439",
+      "id_voluntario": "VOL-1375"
+    },
+    {
+      "email_personal": "ruben.pascual@correo.example.org",
+      "area": "Reparto de alimentos",
+      "direccion": {
+        "calle": "Calle Real 45",
+        "cp": "11403",
+        "municipio": "Jerez de la Frontera",
+        "provincia": "Cádiz"
+      },
+      "importe_donado": null,
+      "apellidos": "Pascual Olmedo",
+      "fecha_nacimiento": "02/01/1981",
+      "certificado_entregado": true,
+      "disponibilidad": "Mañanas",
+      "id_donacion": null,
+      "horas_acumuladas": 231.2,
+      "email_coordinador": "coordinacion.reparto@bancoalimentos.example.org",
+      "estado": "activo",
+      "nombre": "Rubén   ",
+      "fecha_alta": "22/11/2024",
+      "telefono": null,
+      "id_voluntario": "VOL-1382"
+    },
+    {
+      "email_personal": "ruben.belmonte@correo.example.org",
+      "area": "Logística",
+      "direccion": {
+        "calle": "Calle Sierpes 56",
+        "cp": "11403",
+        "municipio": "Jerez de la Frontera",
+        "provincia": "Cádiz"
+      },
+      "importe_donado": 122.12,
+      "apellidos": "Belmonte Cuadrado",
+      "fecha_nacimiento": "13/02/1999",
+      "certificado_entregado": false,
+      "disponibilidad": "Fines de semana",
+      "id_donacion": null,
+      "horas_acumuladas": 136.9,
+      "email_coordinador": "coordinacion.logistica@bancoalimentos.example.org",
+      "estado": "activo",
+      "nombre": "  Rubén ",
+      "fecha_alta": "26/07/2017",
+      "telefono": "+34 655 555 827",
+      "id_voluntario": "VOL-1389"
+    },
+    {
+      "email_personal": "ruben.herrero@correo.example.org",
+      "area": "Apoyo escolar",
+      "direccion": {
+        "calle": "Calle Sierpes 54",
+        "cp": "11403",
+        "municipio": "Jerez de la Frontera",
+        "provincia": "Cádiz"
+      },
+      "importe_donado": 27.43,
+      "apellidos": "Herrero Lozano",
+      "fecha_nacimiento": "26/10/2004",
+      "certificado_entregado": false,
+      "disponibilidad": "Flexible",
+      "id_donacion": "DON-773187",
+      "horas_acumuladas": 303.8,
+      "email_coordinador": "coordinacion.apoyo@bancoalimentos.example.org",
+      "estado": "baja voluntaria",
+      "nombre": "Rubén",
+      "fecha_alta": "24/03/2021",
+      "telefono": "+34 655 555 163",
+      "id_voluntario": "VOL-1396"
+    },
+    {
+      "email_personal": "Alvaro.Navarro@correo.example.org",
+      "area": "Apoyo escolar",
+      "direccion": {
+        "calle": "Calle Real 6",
+        "cp": "41003",
+        "municipio": "Sevilla",
+        "provincia": "Sevilla"
+      },
+      "importe_donado": null,
+      "apellidos": "Navarro Pascual",
+      "fecha_nacimiento": "04/12/1966",
+      "certificado_entregado": false,
+      "disponibilidad": "Fines de semana",
+      "id_donacion": null,
+      "horas_acumuladas": 374,
+      "email_coordinador": "coordinacion.apoyo@bancoalimentos.example.org",
+      "estado": "baja voluntaria",
+      "nombre": "Álvaro",
+      "fecha_alta": "18/11/2023",
+      "telefono": "+34 655 555 108",
+      "id_voluntario": "VOL-1403"
+    },
+    {
+      "email_personal": "Valentina.Iturbe@correo.example.org",
+      "area": "Prueba sistema",
+      "direccion": {
+        "calle": "Calle Feria 28",
+        "cp": "41700",
+        "municipio": "Dos Hermanas",
+        "provincia": "Sevilla"
+      },
+      "importe_donado": null,
+      "apellidos": "Iturbe Jiménez",
+      "fecha_nacimiento": "23/06/1981",
+      "certificado_entregado": true,
+      "disponibilidad": "Sin indicar",
+      "id_donacion": null,
+      "horas_acumuladas": 151.5,
+      "email_coordinador": "coordinacion.prueba@bancoalimentos.example.org",
+      "estado": "baja voluntaria",
+      "nombre": "Valentina",
+      "fecha_alta": "17/11/2017",
+      "telefono": "+34 655 555 692",
+      "id_voluntario": "VOL-1410"
+    },
+    {
+      "email_personal": "javier.herrero@correo.example.org",
+      "area": "Eventos solidarios",
+      "direccion": {
+        "calle": "Calle Feria 42",
+        "cp": "14002",
+        "municipio": "Córdoba",
+        "provincia": "Córdoba"
+      },
+      "importe_donado": 16.38,
+      "apellidos": "Herrero Lozano",
+      "fecha_nacimiento": "05/04/1968",
+      "certificado_entregado": false,
+      "disponibilidad": "Flexible",
+      "id_donacion": null,
+      "horas_acumuladas": 206.1,
+      "email_coordinador": "coordinacion.eventos@bancoalimentos.example.org",
+      "estado": "inactivo",
+      "nombre": "Javier",
+      "fecha_alta": "13/07/2022",
+      "telefono": "+34 655 555 990",
+      "id_voluntario": "VOL-1417"
+    },
+    {
+      "email_personal": "Carmen.Jimenez@Correo.example.org",
+      "area": "Logística",
+      "direccion": {
+        "calle": "Calle Sierpes 13",
+        "cp": "11403",
+        "municipio": "Jerez de la Frontera",
+        "provincia": "Cádiz"
+      },
+      "importe_donado": 112.52,
+      "apellidos": "Jiménez Navarro",
+      "fecha_nacimiento": "19/12/1950",
+      "certificado_entregado": true,
+      "disponibilidad": "Mañanas",
+      "id_donacion": null,
+      "horas_acumuladas": 239.3,
+      "email_coordinador": "coordinacion.logistica@bancoalimentos.example.org",
+      "estado": "pendiente formación",
+      "nombre": "  Carmen ",
+      "fecha_alta": "27/02/2016",
+      "telefono": "+34 655 555 245",
+      "id_voluntario": "VOL-1424"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "volunteer_id": {
+        "type": "string"
+      },
+      "given_name": {
+        "type": "string"
+      },
+      "family_name": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string",
+        "format": "email"
+      },
+      "phone": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "joined_on": {
+        "type": "string",
+        "format": "date"
+      },
+      "program": {
+        "type": "string",
+        "enum": [
+          "food_bank",
+          "elder_care",
+          "tutoring",
+          "operations"
+        ]
+      },
+      "availability": {
+        "type": "string",
+        "enum": [
+          "weekday_morning",
+          "weekday_afternoon",
+          "weekend",
+          "flexible"
+        ]
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "inactive",
+          "onboarding"
+        ]
+      },
+      "hours_logged": {
+        "type": "number"
+      },
+      "safeguarding_check_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "municipality": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "volunteer_id",
+      "given_name",
+      "family_name",
+      "email",
+      "joined_on",
+      "program",
+      "status",
+      "safeguarding_check_date"
+    ]
+  },
+  "groundTruth": {
+    "volunteer_id": {
+      "source": "id_voluntario",
+      "transform": "copy",
+      "why": "volunteer number; id_donacion refers to a donation"
+    },
+    "given_name": {
+      "source": "nombre",
+      "transform": "trim",
+      "why": "first name, padded in some rows"
+    },
+    "family_name": {
+      "source": "apellidos",
+      "transform": "copy",
+      "why": "both Spanish surnames together form the family name"
+    },
+    "email": {
+      "source": "email_personal",
+      "transform": "normalize_email",
+      "why": "volunteer email, mixed case; email_coordinador is the area coordinator"
+    },
+    "phone": {
+      "source": "telefono",
+      "transform": "copy",
+      "why": "volunteer phone"
+    },
+    "joined_on": {
+      "source": "fecha_alta",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "date the volunteer joined (Spanish day-first); not the birth date"
+    },
+    "program": {
+      "source": "area",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Reparto de alimentos": "food_bank",
+        "Acompañamiento a mayores": "elder_care",
+        "Apoyo escolar": "tutoring",
+        "Logística": "operations",
+        "Eventos solidarios": "operations",
+        "Prueba sistema": null
+      },
+      "why": "activity area to programme; Prueba sistema is a test entry"
+    },
+    "availability": {
+      "source": "disponibilidad",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Mañanas": "weekday_morning",
+        "Tardes": "weekday_afternoon",
+        "Fines de semana": "weekend",
+        "Flexible": "flexible",
+        "Sin indicar": null
+      },
+      "why": "availability slot; Sin indicar means unknown"
+    },
+    "status": {
+      "source": "estado",
+      "transform": "map_enum",
+      "categoryMap": {
+        "activo": "active",
+        "inactivo": "inactive",
+        "baja voluntaria": "inactive",
+        "pendiente formación": "onboarding"
+      },
+      "why": "volunteer state; pending training is onboarding"
+    },
+    "hours_logged": {
+      "source": "horas_acumuladas",
+      "transform": "copy",
+      "why": "accumulated volunteer hours; importe_donado is money"
+    },
+    "safeguarding_check_date": {
+      "source": null,
+      "transform": "none",
+      "why": "only a yes/no certificate flag exists; the date of the safeguarding check is not exported"
+    },
+    "municipality": {
+      "source": "direccion.municipio",
+      "transform": "copy",
+      "why": "municipality of residence, not the province"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "id_voluntario",
+        "id_donacion"
+      ],
+      "correctFor": "volunteer_id"
+    },
+    {
+      "kind": "two-email-fields",
+      "fields": [
+        "email_personal",
+        "email_coordinador"
+      ],
+      "correctFor": "email"
+    },
+    {
+      "kind": "birth-date-vs-start-date",
+      "fields": [
+        "fecha_alta",
+        "fecha_nacimiento"
+      ],
+      "correctFor": "joined_on"
+    },
+    {
+      "kind": "currency-amount-confusion",
+      "fields": [
+        "horas_acumuladas",
+        "importe_donado"
+      ],
+      "correctFor": "hours_logged"
+    }
+  ],
+  "sourceConcepts": {
+    "email_personal": "email",
+    "area": "category",
+    "direccion.calle": "street-address",
+    "importe_donado": "amount",
+    "apellidos": "family-name",
+    "direccion.cp": "postal-code",
+    "fecha_nacimiento": "birth-date",
+    "certificado_entregado": "consent-flag",
+    "disponibilidad": "category",
+    "direccion.municipio": "city",
+    "id_donacion": "transaction-id",
+    "horas_acumuladas": "quantity",
+    "email_coordinador": "email",
+    "estado": "account-status",
+    "direccion.provincia": "region",
+    "nombre": "given-name",
+    "fecha_alta": "start-date",
+    "telefono": "phone",
+    "id_voluntario": "customer-id"
+  },
+  "destinationConcepts": {
+    "volunteer_id": "customer-id",
+    "given_name": "given-name",
+    "family_name": "family-name",
+    "email": "email",
+    "phone": "phone",
+    "joined_on": "start-date",
+    "program": "category",
+    "availability": "category",
+    "status": "account-status",
+    "hours_logged": "quantity",
+    "safeguarding_check_date": "start-date",
+    "municipality": "city"
+  }
+}

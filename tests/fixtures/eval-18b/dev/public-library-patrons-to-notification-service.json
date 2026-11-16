@@ -1,0 +1,849 @@
+{
+  "scenarioId": "public-library-patrons-to-notification-service",
+  "split": "dev",
+  "industry": "public library lending",
+  "sourceLanguage": "nl",
+  "description": "Patron export of a fictional public library (Dutch snake_case, nested branch and address) to be loaded into a reservation/overdue notification service.",
+  "fictional": true,
+  "completable": false,
+  "records": [
+    {
+      "emailadres_ouder": "ouder.hoekstra@mail.example.net",
+      "adres": {
+        "postcode": "8011 AB",
+        "straat": "Oosterlaan",
+        "woonplaats": "Zwolle",
+        "huisnummer": "105"
+      },
+      "emailadres": "evi.hoekstra@mail.example.net",
+      "vestiging": {
+        "code": "CB",
+        "naam": "Centrale Bibliotheek"
+      },
+      "kanaal_voorkeur": "E-mail",
+      "uitleennummer": "UIT-7605813",
+      "achternaam": "Hoekstra",
+      "vervaldatum_pas": "05/12/2026",
+      "status_pas": "geldig",
+      "geboortedatum": "04/11/2012",
+      "inschrijfdatum": "02/09/2021",
+      "lenernummer": "2100045000",
+      "telefoon": "+31 38 555 0830",
+      "voornaam": "Evi",
+      "abonnement": "Jeugd",
+      "openstaande_boete": 0
+    },
+    {
+      "adres": {
+        "postcode": "8261 GJ",
+        "straat": "Wipstrikkerallee",
+        "woonplaats": "Kampen",
+        "huisnummer": "107"
+      },
+      "emailadres": "Roos.Mulder@Mail.example.net",
+      "vestiging": {
+        "code": "KA",
+        "naam": "Filiaal Kampen"
+      },
+      "kanaal_voorkeur": "SMS",
+      "uitleennummer": "UIT-6431355",
+      "achternaam": "Mulder",
+      "vervaldatum_pas": "03/04/2028",
+      "status_pas": "geldig",
+      "geboortedatum": "12/08/1956",
+      "inschrijfdatum": "09/10/2010",
+      "lenernummer": "2100045071",
+      "telefoon": null,
+      "voornaam": "Roos",
+      "abonnement": "Volwassen",
+      "openstaande_boete": 0
+    },
+    {
+      "emailadres_ouder": null,
+      "adres": {
+        "postcode": "8261 GJ",
+        "straat": "Assendorperstraat",
+        "woonplaats": "Kampen",
+        "huisnummer": "63"
+      },
+      "emailadres": "noor.veenstra@mail.example.net",
+      "vestiging": {
+        "code": "KA",
+        "naam": "Filiaal Kampen"
+      },
+      "kanaal_voorkeur": "Brief",
+      "uitleennummer": "UIT-4934125",
+      "achternaam": "Veenstra",
+      "vervaldatum_pas": "02/12/2026",
+      "status_pas": "geblokkeerd",
+      "geboortedatum": "04/08/1974",
+      "inschrijfdatum": "06/11/2022",
+      "lenernummer": "2100045142",
+      "telefoon": "+31 38 555 8219",
+      "voornaam": "  Noor ",
+      "abonnement": "Senior",
+      "openstaande_boete": 0
+    },
+    {
+      "emailadres_ouder": null,
+      "adres": {
+        "postcode": "8043 KA",
+        "straat": "Wipstrikkerallee",
+        "woonplaats": "Zwolle",
+        "huisnummer": "8"
+      },
+      "emailadres": "Noor.Dekker@mail.example.net",
+      "vestiging": {
+        "code": "SH",
+        "naam": "Filiaal Stadshagen"
+      },
+      "kanaal_voorkeur": "Geen",
+      "uitleennummer": "UIT-9385996",
+      "achternaam": "Dekker",
+      "vervaldatum_pas": "04/10/2026",
+      "status_pas": "geblokkeerd",
+      "geboortedatum": "01/01/2011",
+      "inschrijfdatum": "04/05/2019",
+      "lenernummer": "2100045213",
+      "telefoon": "+31 38 555 6436",
+      "voornaam": "Noor   ",
+      "abonnement": "Student",
+      "openstaande_boete": 0.5
+    },
+    {
+      "emailadres_ouder": null,
+      "adres": {
+        "postcode": "8261 GJ",
+        "straat": "Oosterlaan",
+        "woonplaats": "Kampen",
+        "huisnummer": "133"
+      },
+      "emailadres": "bram.dekker@mail.example.net",
+      "vestiging": {
+        "code": "KA",
+        "naam": "Filiaal Kampen"
+      },
+      "kanaal_voorkeur": "E-mail",
+      "uitleennummer": "UIT-6595798",
+      "achternaam": "Dekker",
+      "vervaldatum_pas": "12/07/2027",
+      "status_pas": "verlopen",
+      "geboortedatum": "07/12/2007",
+      "inschrijfdatum": "07/12/2018",
+      "lenernummer": "2100045284",
+      "telefoon": "+31 38 555 8744",
+      "voornaam": "Bram",
+      "abonnement": "Proefabonnement",
+      "openstaande_boete": 0.5
+    },
+    {
+      "emailadres_ouder": null,
+      "adres": {
+        "postcode": "8011 AB",
+        "straat": "Oosterlaan",
+        "woonplaats": "Zwolle",
+        "huisnummer": "121"
+      },
+      "emailadres": "Ilse.Bakker@Mail.example.net",
+      "vestiging": {
+        "code": "CB",
+        "naam": "Centrale Bibliotheek"
+      },
+      "kanaal_voorkeur": "Brief",
+      "uitleennummer": "UIT-7270391",
+      "achternaam": "Bakker",
+      "vervaldatum_pas": "04/05/2028",
+      "status_pas": "verlopen",
+      "geboortedatum": "07/03/1989",
+      "inschrijfdatum": "05/12/2012",
+      "lenernummer": "2100045355",
+      "telefoon": null,
+      "voornaam": "Ilse",
+      "abonnement": "Personeel",
+      "openstaande_boete": 0
+    },
+    {
+      "emailadres_ouder": null,
+      "adres": {
+        "postcode": "8011 AB",
+        "straat": "Oosterlaan",
+        "woonplaats": "Zwolle",
+        "huisnummer": "138"
+      },
+      "emailadres": "femke.bakker@mail.example.net",
+      "vestiging": {
+        "code": "CB",
+        "naam": "Centrale Bibliotheek"
+      },
+      "kanaal_voorkeur": "SMS",
+      "uitleennummer": "UIT-4276971",
+      "achternaam": "Bakker",
+      "vervaldatum_pas": "05/07/2027",
+      "status_pas": "geldig",
+      "geboortedatum": "09/08/1968",
+      "inschrijfdatum": "02/09/2016",
+      "lenernummer": "2100045426",
+      "telefoon": null,
+      "voornaam": "Femke   ",
+      "abonnement": "Proefabonnement",
+      "openstaande_boete": 0
+    },
+    {
+      "emailadres_ouder": null,
+      "adres": {
+        "postcode": "8043 KA",
+        "straat": "Oosterlaan",
+        "woonplaats": "Zwolle",
+        "huisnummer": "21"
+      },
+      "emailadres": "Ilse.Zwart@Mail.example.net",
+      "vestiging": {
+        "code": "SH",
+        "naam": "Filiaal Stadshagen"
+      },
+      "kanaal_voorkeur": "E-mail",
+      "uitleennummer": "UIT-7752989",
+      "achternaam": "Zwart",
+      "vervaldatum_pas": "07/07/2027",
+      "status_pas": "verlopen",
+      "geboortedatum": "03/08/1969",
+      "inschrijfdatum": "09/01/2012",
+      "lenernummer": "2100045497",
+      "telefoon": "+31 38 555 9681",
+      "voornaam": "  Ilse ",
+      "abonnement": "Student",
+      "openstaande_boete": 0
+    },
+    {
+      "adres": {
+        "postcode": "8011 AB",
+        "straat": "Assendorperstraat",
+        "woonplaats": "Zwolle",
+        "huisnummer": "130"
+      },
+      "emailadres": "Roos.Smit@Mail.example.net",
+      "vestiging": {
+        "code": "CB",
+        "naam": "Centrale Bibliotheek"
+      },
+      "kanaal_voorkeur": "Brief",
+      "uitleennummer": "UIT-7771770",
+      "achternaam": "Smit",
+      "vervaldatum_pas": "10/07/2027",
+      "status_pas": "geldig",
+      "geboortedatum": "09/05/2005",
+      "inschrijfdatum": "08/04/2014",
+      "lenernummer": "2100045568",
+      "telefoon": "+31 38 555 2921",
+      "voornaam": "Roos",
+      "abonnement": "Personeel",
+      "openstaande_boete": 0.5
+    },
+    {
+      "emailadres_ouder": null,
+      "adres": {
+        "postcode": "8043 KA",
+        "straat": "Assendorperstraat",
+        "woonplaats": "Zwolle",
+        "huisnummer": "89"
+      },
+      "emailadres": "Sven.Brouwer@Mail.example.net",
+      "vestiging": {
+        "code": "SH",
+        "naam": "Filiaal Stadshagen"
+      },
+      "kanaal_voorkeur": "Brief",
+      "uitleennummer": "UIT-1793337",
+      "achternaam": "Brouwer",
+      "vervaldatum_pas": "05/04/2028",
+      "status_pas": "geldig",
+      "geboortedatum": "09/10/1994",
+      "inschrijfdatum": "09/02/2022",
+      "lenernummer": "2100045639",
+      "telefoon": "+31 38 555 4822",
+      "voornaam": "Sven",
+      "abonnement": "Proefabonnement",
+      "openstaande_boete": 0
+    },
+    {
+      "adres": {
+        "postcode": "8011 AB",
+        "straat": "Assendorperstraat",
+        "woonplaats": "Zwolle",
+        "huisnummer": "137"
+      },
+      "emailadres": "noor.kuipers@mail.example.net",
+      "vestiging": {
+        "code": "CB",
+        "naam": "Centrale Bibliotheek"
+      },
+      "kanaal_voorkeur": "Brief",
+      "uitleennummer": "UIT-6460545",
+      "achternaam": "Kuipers",
+      "vervaldatum_pas": "02/06/2027",
+      "status_pas": "geldig",
+      "geboortedatum": "04/10/1973",
+      "inschrijfdatum": "05/07/2024",
+      "lenernummer": "2100045710",
+      "telefoon": null,
+      "voornaam": "Noor",
+      "abonnement": "Volwassen",
+      "openstaande_boete": 0
+    },
+    {
+      "emailadres_ouder": "ouder.timmer@mail.example.net",
+      "adres": {
+        "postcode": "8043 KA",
+        "straat": "Thorbeckegracht",
+        "woonplaats": "Zwolle",
+        "huisnummer": "107"
+      },
+      "emailadres": "wouter.timmer@mail.example.net",
+      "vestiging": {
+        "code": "SH",
+        "naam": "Filiaal Stadshagen"
+      },
+      "kanaal_voorkeur": "Brief",
+      "uitleennummer": "UIT-7547006",
+      "achternaam": "Timmer",
+      "vervaldatum_pas": "02/05/2027",
+      "status_pas": "geldig",
+      "geboortedatum": "02/04/2005",
+      "inschrijfdatum": "10/05/2025",
+      "lenernummer": "2100045781",
+      "telefoon": "+31 38 555 6501",
+      "voornaam": "Wouter   ",
+      "abonnement": "Jeugd",
+      "openstaande_boete": 0
+    },
+    {
+      "adres": {
+        "postcode": "8261 GJ",
+        "straat": "Thorbeckegracht",
+        "woonplaats": "Kampen",
+        "huisnummer": "126"
+      },
+      "emailadres": "bram.schouten@mail.example.net",
+      "vestiging": {
+        "code": "KA",
+        "naam": "Filiaal Kampen"
+      },
+      "kanaal_voorkeur": "E-mail",
+      "uitleennummer": "UIT-7052774",
+      "achternaam": "Schouten",
+      "vervaldatum_pas": "05/08/2027",
+      "status_pas": "geblokkeerd",
+      "geboortedatum": "05/12/2010",
+      "inschrijfdatum": "05/06/2014",
+      "lenernummer": "2100045852",
+      "telefoon": "+31 38 555 5578",
+      "voornaam": "  Bram ",
+      "abonnement": "Proefabonnement",
+      "openstaande_boete": 0
+    },
+    {
+      "emailadres_ouder": null,
+      "adres": {
+        "postcode": "8261 GJ",
+        "straat": "Thorbeckegracht",
+        "woonplaats": "Kampen",
+        "huisnummer": "24"
+      },
+      "emailadres": "Evi.Smit@Mail.example.net",
+      "vestiging": {
+        "code": "KA",
+        "naam": "Filiaal Kampen"
+      },
+      "kanaal_voorkeur": "E-mail",
+      "uitleennummer": "UIT-2249361",
+      "achternaam": "Smit",
+      "vervaldatum_pas": "02/11/2027",
+      "status_pas": "verlopen",
+      "geboortedatum": "01/05/1992",
+      "inschrijfdatum": "08/10/2020",
+      "lenernummer": "2100045923",
+      "telefoon": "+31 38 555 2579",
+      "voornaam": "Evi",
+      "abonnement": "Senior",
+      "openstaande_boete": 3.6
+    },
+    {
+      "adres": {
+        "postcode": "8261 GJ",
+        "straat": "Wipstrikkerallee",
+        "woonplaats": "Kampen",
+        "huisnummer": "36"
+      },
+      "emailadres": "Joris.Dekker@mail.example.net",
+      "vestiging": {
+        "code": "KA",
+        "naam": "Filiaal Kampen"
+      },
+      "kanaal_voorkeur": "SMS",
+      "uitleennummer": "UIT-2056879",
+      "achternaam": "Dekker",
+      "vervaldatum_pas": "05/02/2026",
+      "status_pas": "verlopen",
+      "geboortedatum": "04/04/1960",
+      "inschrijfdatum": "01/12/2014",
+      "lenernummer": "2100045994",
+      "telefoon": "+31 38 555 4098",
+      "voornaam": "Joris   ",
+      "abonnement": "Senior",
+      "openstaande_boete": 0
+    },
+    {
+      "emailadres_ouder": null,
+      "adres": {
+        "postcode": "8043 KA",
+        "straat": "Assendorperstraat",
+        "woonplaats": "Zwolle",
+        "huisnummer": "17"
+      },
+      "emailadres": "Jelle.Bakker@mail.example.net",
+      "vestiging": {
+        "code": "SH",
+        "naam": "Filiaal Stadshagen"
+      },
+      "kanaal_voorkeur": "SMS",
+      "uitleennummer": "UIT-4516570",
+      "achternaam": "Bakker",
+      "vervaldatum_pas": "09/09/2027",
+      "status_pas": "verlopen",
+      "geboortedatum": "04/01/1963",
+      "inschrijfdatum": "10/06/2019",
+      "lenernummer": "2100046065",
+      "telefoon": "+31 38 555 3925",
+      "voornaam": "Jelle",
+      "abonnement": "Senior",
+      "openstaande_boete": 0
+    },
+    {
+      "emailadres_ouder": null,
+      "adres": {
+        "postcode": "8261 GJ",
+        "straat": "Assendorperstraat",
+        "woonplaats": "Kampen",
+        "huisnummer": "133"
+      },
+      "emailadres": "evi.jansen@mail.example.net",
+      "vestiging": {
+        "code": "KA",
+        "naam": "Filiaal Kampen"
+      },
+      "kanaal_voorkeur": "SMS",
+      "uitleennummer": "UIT-4832633",
+      "achternaam": "Jansen",
+      "vervaldatum_pas": "03/01/2026",
+      "status_pas": "geblokkeerd",
+      "geboortedatum": "07/03/1972",
+      "inschrijfdatum": "01/06/2013",
+      "lenernummer": "2100046136",
+      "telefoon": "+31 38 555 1323",
+      "voornaam": "Evi",
+      "abonnement": "Volwassen",
+      "openstaande_boete": 3.6
+    },
+    {
+      "adres": {
+        "postcode": "8011 AB",
+        "straat": "Assendorperstraat",
+        "woonplaats": "Zwolle",
+        "huisnummer": "104"
+      },
+      "emailadres": "Bram.Bakker@mail.example.net",
+      "vestiging": {
+        "code": "CB",
+        "naam": "Centrale Bibliotheek"
+      },
+      "kanaal_voorkeur": "Geen",
+      "uitleennummer": "UIT-6408806",
+      "achternaam": "Bakker",
+      "vervaldatum_pas": "07/07/2026",
+      "status_pas": "geblokkeerd",
+      "geboortedatum": "08/08/2000",
+      "inschrijfdatum": "01/09/2022",
+      "lenernummer": "2100046207",
+      "telefoon": "+31 38 555 0715",
+      "voornaam": "  Bram ",
+      "abonnement": "Senior",
+      "openstaande_boete": 3.6
+    },
+    {
+      "adres": {
+        "postcode": "8043 KA",
+        "straat": "Thorbeckegracht",
+        "woonplaats": "Zwolle",
+        "huisnummer": "90"
+      },
+      "emailadres": "wouter.schouten@mail.example.net",
+      "vestiging": {
+        "code": "SH",
+        "naam": "Filiaal Stadshagen"
+      },
+      "kanaal_voorkeur": "Geen",
+      "uitleennummer": "UIT-8365930",
+      "achternaam": "Schouten",
+      "vervaldatum_pas": "01/07/2027",
+      "status_pas": "geldig",
+      "geboortedatum": "01/07/1962",
+      "inschrijfdatum": "05/05/2017",
+      "lenernummer": "2100046278",
+      "telefoon": null,
+      "voornaam": "Wouter",
+      "abonnement": "Student",
+      "openstaande_boete": 3.6
+    },
+    {
+      "emailadres_ouder": null,
+      "adres": {
+        "postcode": "8043 KA",
+        "straat": "Oosterlaan",
+        "woonplaats": "Zwolle",
+        "huisnummer": "5"
+      },
+      "emailadres": "daan.bakker@mail.example.net",
+      "vestiging": {
+        "code": "SH",
+        "naam": "Filiaal Stadshagen"
+      },
+      "kanaal_voorkeur": "E-mail",
+      "uitleennummer": "UIT-2196121",
+      "achternaam": "Bakker",
+      "vervaldatum_pas": "12/02/2027",
+      "status_pas": "verlopen",
+      "geboortedatum": "11/06/1948",
+      "inschrijfdatum": "04/11/2013",
+      "lenernummer": "2100046349",
+      "telefoon": "+31 38 555 3278",
+      "voornaam": "Daan",
+      "abonnement": "Personeel",
+      "openstaande_boete": 0
+    },
+    {
+      "adres": {
+        "postcode": "8261 GJ",
+        "straat": "Assendorperstraat",
+        "woonplaats": "Kampen",
+        "huisnummer": "50"
+      },
+      "emailadres": "Maaike.Schouten@Mail.example.net",
+      "vestiging": {
+        "code": "KA",
+        "naam": "Filiaal Kampen"
+      },
+      "kanaal_voorkeur": "Brief",
+      "uitleennummer": "UIT-6431768",
+      "achternaam": "Schouten",
+      "vervaldatum_pas": "11/12/2028",
+      "status_pas": "geldig",
+      "geboortedatum": "04/06/1998",
+      "inschrijfdatum": "03/03/2021",
+      "lenernummer": "2100046420",
+      "telefoon": "+31 38 555 4109",
+      "voornaam": "Maaike",
+      "abonnement": "Student",
+      "openstaande_boete": 0.5
+    },
+    {
+      "adres": {
+        "postcode": "8011 AB",
+        "straat": "Oosterlaan",
+        "woonplaats": "Zwolle",
+        "huisnummer": "22"
+      },
+      "emailadres": "Bram.Postma@mail.example.net",
+      "vestiging": {
+        "code": "CB",
+        "naam": "Centrale Bibliotheek"
+      },
+      "kanaal_voorkeur": "E-mail",
+      "uitleennummer": "UIT-8186808",
+      "achternaam": "Postma",
+      "vervaldatum_pas": "06/12/2026",
+      "status_pas": "geblokkeerd",
+      "geboortedatum": "08/06/2006",
+      "inschrijfdatum": "06/11/2017",
+      "lenernummer": "2100046491",
+      "telefoon": "+31 38 555 1118",
+      "voornaam": "Bram",
+      "abonnement": "Proefabonnement",
+      "openstaande_boete": 1.2
+    },
+    {
+      "emailadres_ouder": "ouder.timmer@mail.example.net",
+      "adres": {
+        "postcode": "8261 GJ",
+        "straat": "Oosterlaan",
+        "woonplaats": "Kampen",
+        "huisnummer": "16"
+      },
+      "emailadres": "roos.timmer@mail.example.net",
+      "vestiging": {
+        "code": "KA",
+        "naam": "Filiaal Kampen"
+      },
+      "kanaal_voorkeur": "E-mail",
+      "uitleennummer": "UIT-3791427",
+      "achternaam": "Timmer",
+      "vervaldatum_pas": "01/05/2027",
+      "status_pas": "verlopen",
+      "geboortedatum": "02/10/1948",
+      "inschrijfdatum": "02/02/2022",
+      "lenernummer": "2100046562",
+      "telefoon": "+31 38 555 2440",
+      "voornaam": "  Roos ",
+      "abonnement": "Jeugd",
+      "openstaande_boete": 0
+    },
+    {
+      "emailadres_ouder": "ouder.zwart@mail.example.net",
+      "adres": {
+        "postcode": "8011 AB",
+        "straat": "Thorbeckegracht",
+        "woonplaats": "Zwolle",
+        "huisnummer": "33"
+      },
+      "emailadres": "jelle.zwart@mail.example.net",
+      "vestiging": {
+        "code": "CB",
+        "naam": "Centrale Bibliotheek"
+      },
+      "kanaal_voorkeur": "SMS",
+      "uitleennummer": "UIT-3401214",
+      "achternaam": "Zwart",
+      "vervaldatum_pas": "01/10/2027",
+      "status_pas": "geblokkeerd",
+      "geboortedatum": "06/03/2007",
+      "inschrijfdatum": "08/10/2024",
+      "lenernummer": "2100046633",
+      "telefoon": "+31 38 555 3672",
+      "voornaam": "Jelle",
+      "abonnement": "Jeugd",
+      "openstaande_boete": 0.5
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "patron_id": {
+        "type": "string"
+      },
+      "first_name": {
+        "type": "string"
+      },
+      "last_name": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string",
+        "format": "email"
+      },
+      "preferred_channel": {
+        "type": "string",
+        "enum": [
+          "email",
+          "sms",
+          "post"
+        ]
+      },
+      "membership": {
+        "type": "string",
+        "enum": [
+          "youth",
+          "adult",
+          "senior"
+        ]
+      },
+      "member_since": {
+        "type": "string",
+        "format": "date"
+      },
+      "card_expires": {
+        "type": "string",
+        "format": "date"
+      },
+      "notification_language": {
+        "type": "string",
+        "enum": [
+          "nl",
+          "en",
+          "fr",
+          "de"
+        ]
+      },
+      "home_branch": {
+        "type": "string"
+      },
+      "address": {
+        "type": "object",
+        "properties": {
+          "postal_code": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          }
+        },
+        "required": []
+      }
+    },
+    "required": [
+      "patron_id",
+      "first_name",
+      "last_name",
+      "email",
+      "membership",
+      "notification_language"
+    ]
+  },
+  "groundTruth": {
+    "patron_id": {
+      "source": "lenernummer",
+      "transform": "copy",
+      "why": "library card number; uitleennummer is a single loan"
+    },
+    "first_name": {
+      "source": "voornaam",
+      "transform": "trim",
+      "why": "first name with padding in some rows"
+    },
+    "last_name": {
+      "source": "achternaam",
+      "transform": "copy",
+      "why": "surname"
+    },
+    "email": {
+      "source": "emailadres",
+      "transform": "normalize_email",
+      "why": "patron email, mixed case; emailadres_ouder is a parent of a youth member"
+    },
+    "preferred_channel": {
+      "source": "kanaal_voorkeur",
+      "transform": "map_enum",
+      "categoryMap": {
+        "E-mail": "email",
+        "SMS": "sms",
+        "Brief": "post",
+        "Geen": null
+      },
+      "why": "preferred notice channel; Geen means the patron opted out, which needs review"
+    },
+    "membership": {
+      "source": "abonnement",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Jeugd": "youth",
+        "Volwassen": "adult",
+        "Senior": "senior",
+        "Student": "adult",
+        "Proefabonnement": "adult",
+        "Personeel": null
+      },
+      "why": "subscription type to age band; Personeel is an internal staff card"
+    },
+    "member_since": {
+      "source": "inschrijfdatum",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "registration date (Dutch day-first)"
+    },
+    "card_expires": {
+      "source": "vervaldatum_pas",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "card expiry date (Dutch day-first)"
+    },
+    "notification_language": {
+      "source": null,
+      "transform": "none",
+      "why": "no per-patron language is exported; the export language is not the patron's preference"
+    },
+    "home_branch": {
+      "source": "vestiging.code",
+      "transform": "copy",
+      "why": "branch code, not the branch name"
+    },
+    "address.postal_code": {
+      "source": "adres.postcode",
+      "transform": "copy",
+      "why": "home postcode"
+    },
+    "address.city": {
+      "source": "adres.woonplaats",
+      "transform": "copy",
+      "why": "home town"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "lenernummer",
+        "uitleennummer"
+      ],
+      "correctFor": "patron_id"
+    },
+    {
+      "kind": "two-email-fields",
+      "fields": [
+        "emailadres",
+        "emailadres_ouder"
+      ],
+      "correctFor": "email"
+    },
+    {
+      "kind": "birth-date-vs-start-date",
+      "fields": [
+        "geboortedatum",
+        "inschrijfdatum"
+      ],
+      "correctFor": "member_since"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "vestiging.code",
+        "adres.postcode"
+      ],
+      "correctFor": "home_branch"
+    }
+  ],
+  "sourceConcepts": {
+    "emailadres_ouder": "email",
+    "adres.postcode": "postal-code",
+    "emailadres": "email",
+    "vestiging.code": "other-identifier",
+    "kanaal_voorkeur": "category",
+    "uitleennummer": "transaction-id",
+    "achternaam": "family-name",
+    "vervaldatum_pas": "end-date",
+    "status_pas": "account-status",
+    "adres.straat": "street-address",
+    "geboortedatum": "birth-date",
+    "inschrijfdatum": "start-date",
+    "lenernummer": "customer-id",
+    "telefoon": "phone",
+    "voornaam": "given-name",
+    "vestiging.naam": "organization-name",
+    "abonnement": "category",
+    "adres.woonplaats": "city",
+    "openstaande_boete": "amount",
+    "adres.huisnummer": "street-address"
+  },
+  "destinationConcepts": {
+    "patron_id": "customer-id",
+    "first_name": "given-name",
+    "last_name": "family-name",
+    "email": "email",
+    "preferred_channel": "category",
+    "membership": "category",
+    "member_since": "start-date",
+    "card_expires": "end-date",
+    "notification_language": "language-code",
+    "home_branch": "other-identifier",
+    "address.postal_code": "postal-code",
+    "address.city": "city"
+  }
+}
