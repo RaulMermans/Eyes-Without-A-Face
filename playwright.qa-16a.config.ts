@@ -24,7 +24,7 @@ if (!local && /localhost|127\.0\.0\.1/.test(baseURL)) {
 export default defineConfig({
   testDir: "tests/qa",
   testMatch: "**/*.spec.ts",
-  testIgnore: /sprint-16a-nano\.spec\.ts|sprint-16c-/,
+  testIgnore: /sprint-16a-nano\.spec\.ts|sprint-16c-|sprint-17a-/,
   fullyParallel: false,
   workers: 1,
   retries: 0,

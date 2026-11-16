@@ -2,7 +2,10 @@
 
 **Date:** 2026-11-16 · **Branch:** `sprint-17a-hybrid-recovery` (from `origin/main` @ `25f2ce2`, PR #21; app code identical to the live `489c6ba`) · **Kind:** minimal corrective fix. No engine, validator, contract, export-eligibility, disclosure-gate or runtime change.
 
-**Release status: `DEPLOYMENT_PENDING`.** The candidate is built and verified; see [release-candidate.md](../evidence/sprint-17a/release-candidate.md). Production still serves `489c6ba` (`PRODUCTION_ACCEPTED`). No deployment, merge or Gemini request was made. **0 real cloud requests** this sprint; every provider error was simulated by the labeled test adapter.
+**Release status: `PRODUCTION_ACCEPTED`** (2026-11-16, 17:32–17:38 UTC).
+
+- **Deployment:** `c7220768bed91ebbdfcf2eb75408a3ae62efeb10`, with the owner's approval of exactly this SHA (§ 7). Rollback target: `489c6ba`.
+- **Model requests:** during development, **0 real cloud requests**; every provider error was simulated by the labeled test adapter. In production acceptance: **1 approved real request**, the full budget.
 
 ## 1. Reproduction
 
@@ -100,9 +103,22 @@ The derived proposal behaves like Gemini without readable category names: it wri
 - **“Ask Gemini for one revision” is still offered** on an incomplete mapping (it needs a separate approval). With names still withheld, it cannot fix `status`.
 - **The 62-case real-world matrix uses the local build path,** whose behaviour this sprint did not change. It was re-run on the candidate; see [release-candidate.md](../evidence/sprint-17a/release-candidate.md).
 
-## 7. Release
+## 7. Production acceptance (2026-11-16)
+
+| Check | Kind | Result |
+| --- | --- | --- |
+| Preconditions | — | PR #22 merged (`5828345`), CI success; `main`'s app code identical to `c722076`; artifact digest `eedabb00…` reconfirmed; `verify:release` PASS |
+| Deploy and identity | PRODUCTION_DETERMINISTIC | Released 17:32:08 UTC; after a < 30 s edge-cache window, **31 / 31 served files = artifact**; `c7220768…`, production, App Check debug off |
+| `pnpm test:production` | PRODUCTION_DETERMINISTIC | **19 / 19 PASS** (P-020 and P-021 compatible with the preflight block, as analysed) |
+| 62-case matrix + independent package verification | PRODUCTION_DETERMINISTIC | 43 / 4 / 7 / 8; **0 discrepancies** vs production `489c6ba` and vs the local candidate; **45 / 45** packages verify, reproducible, runner = app = oracle; 0 leaks; 0 model requests |
+| Meridian-style recovery (120 fictional records), 0 model requests | PRODUCTION_DETERMINISTIC | Approve disabled, “Not ready to send”, `status` / `account_state` named; no bulk share; choose-field route → a new request with only that field's names, approvable (not sent); “Don't send” sends nothing. Local recovery **88 / 28 / 4** = independent count; ZIP verify exit 0; no record values or field names in the ZIP |
+| Real hybrid path (S14-REC-3) | PRODUCTION_REAL_MODEL | Nano 6 / 6 on device; App Check token exchange 200 observed; **1** approved request, `IN_CLOUD`, 0 private terms; a complete mapping, 3 transformed, `PARTIALLY_VERIFIED` (the demo's hidden cases), meaning unknown, not promoted; export verify exit 0; no retry |
+| Human usability, manual screen reader | NOT_RUN | Sprint 16C protocols ready |
+
+Evidence: [production/c7220768bed9/](../evidence/production/c7220768bed9/acceptance-results.json), [sprint-17a/production/](../evidence/sprint-17a/production/meridian-recovery.json).
+
+## 8. Release
 
 - **Candidate:** SHA, artifact digest and the LOCAL matrix are in [release-candidate.md](../evidence/sprint-17a/release-candidate.md).
 - **Rollback:** Hosting release history → `489c6ba` (current `PRODUCTION_ACCEPTED`).
-- **Approvals needed:** deployment of the exact SHA; and any real Gemini request for post-deployment acceptance (the documented `S14-REC-3` budget is 1 request).
-- **Not done without approval:** no deploy, no merge, no cloud request.
+- **Approvals:** deployment of exactly `c722076` and one real Gemini request were approved and used (§ 7). No further deployment, rollback or cloud request was made.

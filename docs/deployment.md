@@ -126,7 +126,7 @@ Stop the release, and roll back or fix forward (owner approval either way) when 
 - mapping validation can be bypassed;
 - critical exports are corrupted.
 
-Rollback: Firebase Console → Hosting → release history → **Rollback** to the last `PRODUCTION_ACCEPTED` release. Today that is `c4a246c` (Sprint 15) for the live `489c6ba` (Sprint 16C acceptance, 2026-11-16). Never change Firebase or App Check configuration silently.
+Rollback: Firebase Console → Hosting → release history → **Rollback** to the last `PRODUCTION_ACCEPTED` release. Today that is `489c6ba` (Sprint 16C) for the live `c7220768bed9` (Sprint 17A acceptance, 2026-11-16). Never change Firebase or App Check configuration silently.
 
 ## Sprint 12 deployment record
 

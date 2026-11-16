@@ -1,0 +1,21 @@
+{
+  "releaseSha": "c7220768bed91ebbdfcf2eb75408a3ae62efeb10",
+  "testedUrl": "https://eyes-without-a-face-b7281.web.app",
+  "deployedAt": "2026-11-16T17:32:08Z (owner-approved for exactly this SHA; firebase-tools@15.35.0 deploy --only hosting; no configuration, App Check, billing, policy or key change)",
+  "artifact": "build:release + verify:release PASS from a clean checkout of c722076; 31 files, 2,658 KiB; digest eedabb00b5119bfba596ef841fb24ec423127d5ea12bd94a3427fc592066b0f6, reconfirmed before deploying; after a <30 s edge-cache window, all 31 served files byte-identical to the artifact",
+  "preconditions": "PR #22 merged as 5828345, CI success; main's app code identical to c722076; main itself not deployed",
+  "testedAt": "2026-11-16T17:32Z–17:38Z",
+  "status": "PRODUCTION_ACCEPTED",
+  "statusReason": "The served SHA and files match the approved artifact. All 19 deterministic production checks pass. The 62-case matrix equals both the previous production release and the local candidate, case for case. 45/45 exported packages verify independently. The Meridian-style recovery journey runs on the public URL with zero model requests: the unusable request is blocked, the choose-field route works, and the local recovery is correct and portable. One approved real Gemini Cloud request passes end to end with App Check attestation observed.",
+  "rollbackTarget": "489c6baaf18bf22d146e583752eecc343ed3d986",
+  "inferenceBudget": { "cloudRequestsAllowed": 1, "cloudRequestsUsed": 1, "declaredExtra": 0, "extraUsed": 0 },
+  "checks": [
+    { "area": "deployment identity and integrity", "result": "PASS", "kind": "DETERMINISTIC", "evidence": "release-manifest.json; build-info gitSha c7220768…, production, appCheckDebug false; 31/31 served files = artifact (first read inside the edge-cache window showed the previous index.html / build-info.json; re-checked)" },
+    { "area": "pnpm test:production (identity, App Check enforced, JSON/CSV/XLSX, REST, invalid file, approval gate incl. P-020/P-021 with the new preflight, invalid destination, local build P-024, navigation, 390 px, keyboard, Firefox subset)", "result": "PASS", "kind": "DETERMINISTIC", "evidence": "browser-results.json (19/19), 0 model requests" },
+    { "area": "62-case real-world matrix (Sprint 16A inputs, oracle unchanged)", "result": "PASS (gates)", "kind": "DETERMINISTIC", "evidence": "../../sprint-17a/production/results-production-c7220768bed9.json: PASS 43, FAIL 4, PARTIAL 7, UNSUPPORTED 8; 0 per-case discrepancies vs production 489c6ba and vs the local candidate; 0 model requests; 0 canary hits" },
+    { "area": "independent package verification", "result": "PASS", "kind": "DETERMINISTIC", "evidence": "45/45 ZIPs: re-hash vs manifest, node run.mjs verify in a clean env, run twice (reproducible), runner = app = oracle; 0 records, bindings, canaries or private values in any ZIP" },
+    { "area": "Meridian-style recovery (fictional 120 records) on the public URL, zero model requests", "result": "PASS", "kind": "DETERMINISTIC", "evidence": "../../sprint-17a/production/meridian-recovery.json: Approve disabled with “Not ready to send” and the status / account_state prerequisite; no bulk share of unchosen fields; choosing the field → a new request with only that field's names and no record values, approvable (not sent); “Don't send” sends nothing; local recovery 88 transformed / 28 set aside / 4 need attention = independent count; ZIP verify exit 0 with no record values or source field names" },
+    { "area": "real hybrid path: Gemini Nano, then the one approved Gemini Cloud request", "result": "PASS", "kind": "REAL", "evidence": "inference-results.json (S14-REC-3): Nano 6/6 on device, 0 requests during Nano; reCAPTCHA + App Check token exchange 200; 1 request, gemini-3.5-flash-lite, REAL GEMINI OUTPUT · IN_CLOUD; 0 private terms in the request body; complete mapping, 3 transformed; PARTIALLY_VERIFIED (the demo's reserved hidden cases), meaning unknown, not promoted; export verify exit 0; no retry" },
+    { "area": "independent human usability sessions, manual screen reader", "result": "NOT RUN", "kind": "—", "evidence": "../../sprint-16c/usability/protocol.md, ../../sprint-16c/accessibility/README.md" }
+  ]
+}

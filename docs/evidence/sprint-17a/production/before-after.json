@@ -1,0 +1,962 @@
+{
+  "metrics": {
+    "inputs": "same 62 generated cases (dataset-manifest.json of Sprint 16A), same canaries, same oracle, same verifier",
+    "before": "Sprint 16A, deployed c4a246c (production)",
+    "after": "production-c7220768bed9 (PRODUCTION)",
+    "statusTotals": {
+      "before": {
+        "PASS": 39,
+        "FAIL": 10,
+        "PARTIAL": 7,
+        "UNSUPPORTED": 6
+      },
+      "after": {
+        "PASS": 43,
+        "FAIL": 4,
+        "PARTIAL": 7,
+        "UNSUPPORTED": 8
+      }
+    },
+    "gates": {
+      "1 explicit decisions honoured": {
+        "nonEnumTargetsPreselectedBeforeUserAction": "0 / 246",
+        "exportedRulesWithoutExplicitDecision": "0 (across 45 built integrations with a ZIP)",
+        "R02_clearedOptionalField": {
+          "before": {
+            "statusText:invented": 11
+          },
+          "after": {},
+          "afterStatus": "PASS"
+        },
+        "X17_clearedRequiredId": {
+          "before": "BUILT · Integration ready",
+          "after": "BUILD_BLOCKED (blocked; excluded column listed)"
+        }
+      },
+      "2 no misleading verified-meaning claims": {
+        "integrationReadyWithWrongValues": {
+          "before": [
+            "S16A-G1-D",
+            "S16A-R02",
+            "S16A-X17"
+          ],
+          "after": []
+        },
+        "packageVerifiedWithWrongValues": {
+          "before": [
+            "S16A-G1-D",
+            "S16A-R02",
+            "S16A-X17"
+          ],
+          "after": [
+            "S16A-G1-D"
+          ],
+          "note": "VERIFIED is the export contract's structural status (unchanged contract). In 16B it is explained as structure-and-policy in the UI, the headline says “Structure verified”, and the wrong field entered only by an explicit “Use …” click."
+        },
+        "integrationReadyHeadlines": {
+          "before": 17,
+          "after": 0
+        }
+      },
+      "3 no unauthorized disclosures": {
+        "generateContent": {
+          "before": 0,
+          "after": 0
+        },
+        "canaryHitsOutsidePage": {
+          "before": 0,
+          "after": 0
+        },
+        "zipLeaks": {
+          "before": 0,
+          "after": 0
+        },
+        "zipPackageVocabularyMatchesReportedSeparately": 6
+      },
+      "4 no new invalid mappings accepted": {
+        "carefulWrongValues": {
+          "before": 0,
+          "after": 0
+        }
+      },
+      "5 no regression in confirmed mappings": {
+        "carefulRecordsCorrect": {
+          "before": 2079,
+          "after": 2174
+        },
+        "previouslyPassNowWorse": []
+      },
+      "6 previously successful exports remain portable": {
+        "zipsBefore": 43,
+        "stillPortable": 42,
+        "noLongerExported": [
+          {
+            "id": "S16A-X17",
+            "why": "true id column excluded (mixed types) and now LISTED with the reason; nothing else is used in its place; number→text conversion is not in the DSL"
+          }
+        ],
+        "zipsAfter": 45,
+        "verifyOkAfter": 45,
+        "integrityOkAfter": 45,
+        "reproducibleAfter": 45,
+        "appRunnerAgreeAfter": 45
+      },
+      "7 D3 false positives resolved": {
+        "exportBlockedByScanBefore": [
+          "S16A-F1",
+          "S16A-F2",
+          "S16A-F1-D"
+        ],
+        "exportBlockedByScanAfter": [],
+        "positiveControls": "tests/privacy/s16b-export-provenance.test.ts (S16B-D3-002/003) and PRIV-090/091: PASS"
+      }
+    },
+    "clickThroughProbes": {
+      "before": {
+        "S16A-A1-D": "FAIL · Draft — not fully verified",
+        "S16A-B1-D": "PASS · Ready, with exceptions",
+        "S16A-C1-D": "FAIL · Draft — not fully verified",
+        "S16A-D1-D": "PASS · Ready, with exceptions",
+        "S16A-E1-D": "FAIL · Ready, with exceptions",
+        "S16A-F1-D": "FAIL · Draft — not fully verified",
+        "S16A-G1-D": "FAIL · Integration ready",
+        "S16A-H1-D": "PASS · Ready, with exceptions"
+      },
+      "after": {
+        "S16A-A1-D": "FAIL · Draft — not fully verified · DRAFT",
+        "S16A-B1-D": "PASS · Structure verified, with exceptions · VERIFIED_WITH_EXCEPTIONS",
+        "S16A-C1-D": "FAIL · Draft — not fully verified · DRAFT",
+        "S16A-D1-D": "PASS · Structure verified, with exceptions · VERIFIED_WITH_EXCEPTIONS",
+        "S16A-E1-D": "FAIL · Structure verified, with exceptions · VERIFIED_WITH_EXCEPTIONS",
+        "S16A-F1-D": "PASS · Draft — not fully verified · DRAFT",
+        "S16A-G1-D": "FAIL · Structure verified · VERIFIED",
+        "S16A-H1-D": "PASS · Structure verified, with exceptions · VERIFIED_WITH_EXCEPTIONS"
+      },
+      "model": "AFTER: the probe clicks “Use …” on every suggestion EYES shows and chooses the right field only where EYES offers none (the most generous click-through model now that acceptance is an explicit click)."
+    },
+    "scorecard16a": {
+      "carefulRecords": {
+        "note": "the user answers every question correctly (data owner knows the data); excludes X17/R02 where clearing a wrong default was impossible (D1)",
+        "cases": 36,
+        "recordsCorrect": 2079,
+        "recordsWrongValue": 0,
+        "recordsFalselyTransformed": 0,
+        "recordsFlaggedOnlyBecauseOptionalValueAbsent": 238,
+        "recordsSilentlyDropped": 0,
+        "recordsTotal": 2317,
+        "countsMatchOracle": {
+          "numerator": 29,
+          "denominator": 36
+        }
+      }
+    }
+  },
+  "rows": [
+    {
+      "id": "S16A-A1",
+      "group": "scenario",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": "Draft — not fully verified",
+      "afterHeadline": "Draft — not fully verified",
+      "beforeExport": "DRAFT",
+      "afterExport": "DRAFT",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-A1-D",
+      "group": "probe",
+      "before": "FAIL",
+      "after": "FAIL",
+      "beforeHeadline": "Draft — not fully verified",
+      "afterHeadline": "Draft — not fully verified",
+      "beforeExport": "DRAFT",
+      "afterExport": "DRAFT",
+      "beforeWrong": 72,
+      "afterWrong": 72,
+      "note": "user clicked “Use legacy_crm_id” for customerId (explicit); headline Draft"
+    },
+    {
+      "id": "S16A-A2",
+      "group": "scenario",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": "Draft — not fully verified",
+      "afterHeadline": "Draft — not fully verified",
+      "beforeExport": "DRAFT",
+      "afterExport": "DRAFT",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-A3",
+      "group": "scenario",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": "Draft — not fully verified",
+      "afterHeadline": "Draft — not fully verified",
+      "beforeExport": "DRAFT",
+      "afterExport": "DRAFT",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-B1",
+      "group": "scenario",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": "Ready, with exceptions",
+      "afterHeadline": "Structure verified, with exceptions",
+      "beforeExport": "VERIFIED_WITH_EXCEPTIONS",
+      "afterExport": "VERIFIED_WITH_EXCEPTIONS",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-B1-D",
+      "group": "probe",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": "Ready, with exceptions",
+      "afterHeadline": "Structure verified, with exceptions",
+      "beforeExport": "VERIFIED_WITH_EXCEPTIONS",
+      "afterExport": "VERIFIED_WITH_EXCEPTIONS",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-B2",
+      "group": "scenario",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": "Ready, with exceptions",
+      "afterHeadline": "Structure verified, with exceptions",
+      "beforeExport": "VERIFIED_WITH_EXCEPTIONS",
+      "afterExport": "VERIFIED_WITH_EXCEPTIONS",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-B3",
+      "group": "scenario",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": "Integration ready",
+      "afterHeadline": "Structure verified",
+      "beforeExport": "VERIFIED",
+      "afterExport": "VERIFIED",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-C1",
+      "group": "scenario",
+      "before": "PARTIAL",
+      "after": "PARTIAL",
+      "beforeHeadline": "Draft — not fully verified",
+      "afterHeadline": "Draft — not fully verified",
+      "beforeExport": "DRAFT",
+      "afterExport": "DRAFT",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": "S16A-L1"
+    },
+    {
+      "id": "S16A-C1-D",
+      "group": "probe",
+      "before": "FAIL",
+      "after": "FAIL",
+      "beforeHeadline": "Draft — not fully verified",
+      "afterHeadline": "Draft — not fully verified",
+      "beforeExport": "DRAFT",
+      "afterExport": "DRAFT",
+      "beforeWrong": 68,
+      "afterWrong": 68,
+      "note": "user clicked “Use employee_id” for managerId (explicit); headline Draft"
+    },
+    {
+      "id": "S16A-C2",
+      "group": "scenario",
+      "before": "PARTIAL",
+      "after": "PARTIAL",
+      "beforeHeadline": "Draft — not fully verified",
+      "afterHeadline": "Draft — not fully verified",
+      "beforeExport": "DRAFT",
+      "afterExport": "DRAFT",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": "S16A-L1"
+    },
+    {
+      "id": "S16A-C3",
+      "group": "scenario",
+      "before": "PARTIAL",
+      "after": "PARTIAL",
+      "beforeHeadline": "Draft — not fully verified",
+      "afterHeadline": "Draft — not fully verified",
+      "beforeExport": "DRAFT",
+      "afterExport": "DRAFT",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": "S16A-L1"
+    },
+    {
+      "id": "S16A-D1",
+      "group": "scenario",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": "Ready, with exceptions",
+      "afterHeadline": "Structure verified, with exceptions",
+      "beforeExport": "VERIFIED_WITH_EXCEPTIONS",
+      "afterExport": "VERIFIED_WITH_EXCEPTIONS",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-D1-D",
+      "group": "probe",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": "Ready, with exceptions",
+      "afterHeadline": "Structure verified, with exceptions",
+      "beforeExport": "VERIFIED_WITH_EXCEPTIONS",
+      "afterExport": "VERIFIED_WITH_EXCEPTIONS",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-D2",
+      "group": "scenario",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": "Draft — not fully verified",
+      "afterHeadline": "Draft — not fully verified",
+      "beforeExport": "DRAFT",
+      "afterExport": "DRAFT",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-D3",
+      "group": "scenario",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": "Integration ready",
+      "afterHeadline": "Structure verified",
+      "beforeExport": "VERIFIED",
+      "afterExport": "VERIFIED",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-E1",
+      "group": "scenario",
+      "before": "PARTIAL",
+      "after": "PARTIAL",
+      "beforeHeadline": "Draft — not fully verified",
+      "afterHeadline": "Draft — not fully verified",
+      "beforeExport": "DRAFT",
+      "afterExport": "DRAFT",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": "S16A-L1"
+    },
+    {
+      "id": "S16A-E1-D",
+      "group": "probe",
+      "before": "FAIL",
+      "after": "FAIL",
+      "beforeHeadline": "Ready, with exceptions",
+      "afterHeadline": "Structure verified, with exceptions",
+      "beforeExport": "VERIFIED_WITH_EXCEPTIONS",
+      "afterExport": "VERIFIED_WITH_EXCEPTIONS",
+      "beforeWrong": 42,
+      "afterWrong": 42,
+      "note": "user clicked “Use last_scan_at” for shippedAt/deliveredAt (explicit); headline “Structure verified, with exceptions”"
+    },
+    {
+      "id": "S16A-E2",
+      "group": "scenario",
+      "before": "PARTIAL",
+      "after": "PARTIAL",
+      "beforeHeadline": "Draft — not fully verified",
+      "afterHeadline": "Draft — not fully verified",
+      "beforeExport": "DRAFT",
+      "afterExport": "DRAFT",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": "S16A-L1"
+    },
+    {
+      "id": "S16A-E3",
+      "group": "scenario",
+      "before": "PARTIAL",
+      "after": "PARTIAL",
+      "beforeHeadline": "Draft — not fully verified",
+      "afterHeadline": "Draft — not fully verified",
+      "beforeExport": "DRAFT",
+      "afterExport": "DRAFT",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": "S16A-L1"
+    },
+    {
+      "id": "S16A-F1",
+      "group": "scenario",
+      "before": "FAIL",
+      "after": "PASS",
+      "beforeHeadline": "Draft — not fully verified",
+      "afterHeadline": "Draft — not fully verified",
+      "beforeExport": "blocked",
+      "afterExport": "DRAFT",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-F1-D",
+      "group": "probe",
+      "before": "FAIL",
+      "after": "PASS",
+      "beforeHeadline": "Draft — not fully verified",
+      "afterHeadline": "Draft — not fully verified",
+      "beforeExport": "blocked",
+      "afterExport": "DRAFT",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-F2",
+      "group": "scenario",
+      "before": "FAIL",
+      "after": "PASS",
+      "beforeHeadline": "Ready, with exceptions",
+      "afterHeadline": "Structure verified, with exceptions",
+      "beforeExport": "blocked",
+      "afterExport": "VERIFIED_WITH_EXCEPTIONS",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-F3",
+      "group": "scenario",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": "Draft — not fully verified",
+      "afterHeadline": "Draft — not fully verified",
+      "beforeExport": "DRAFT",
+      "afterExport": "DRAFT",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-G1",
+      "group": "scenario",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": "Integration ready",
+      "afterHeadline": "Structure verified",
+      "beforeExport": "VERIFIED",
+      "afterExport": "VERIFIED",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-G1-D",
+      "group": "probe",
+      "before": "FAIL",
+      "after": "FAIL",
+      "beforeHeadline": "Integration ready",
+      "afterHeadline": "Structure verified",
+      "beforeExport": "VERIFIED",
+      "afterExport": "VERIFIED",
+      "beforeWrong": 76,
+      "afterWrong": 76,
+      "note": "user clicked “Use show_id” for ticketId (explicit); headline “Structure verified”, package VERIFIED (structural)"
+    },
+    {
+      "id": "S16A-G2",
+      "group": "scenario",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": "Draft — not fully verified",
+      "afterHeadline": "Draft — not fully verified",
+      "beforeExport": "DRAFT",
+      "afterExport": "DRAFT",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-G3",
+      "group": "scenario",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": "Integration ready",
+      "afterHeadline": "Structure verified",
+      "beforeExport": "VERIFIED",
+      "afterExport": "VERIFIED",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-H1",
+      "group": "scenario",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": "Ready, with exceptions",
+      "afterHeadline": "Structure verified, with exceptions",
+      "beforeExport": "VERIFIED_WITH_EXCEPTIONS",
+      "afterExport": "VERIFIED_WITH_EXCEPTIONS",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-H1-D",
+      "group": "probe",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": "Ready, with exceptions",
+      "afterHeadline": "Structure verified, with exceptions",
+      "beforeExport": "VERIFIED_WITH_EXCEPTIONS",
+      "afterExport": "VERIFIED_WITH_EXCEPTIONS",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-H2",
+      "group": "scenario",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": "Draft — not fully verified",
+      "afterHeadline": "Draft — not fully verified",
+      "beforeExport": "DRAFT",
+      "afterExport": "DRAFT",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-H3",
+      "group": "scenario",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": "Integration ready",
+      "afterHeadline": "Structure verified",
+      "beforeExport": "VERIFIED",
+      "afterExport": "VERIFIED",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-R01",
+      "group": "public",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": "Integration ready",
+      "afterHeadline": "Structure verified",
+      "beforeExport": "VERIFIED",
+      "afterExport": "VERIFIED",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-R02",
+      "group": "public",
+      "before": "FAIL",
+      "after": "PASS",
+      "beforeHeadline": "Integration ready",
+      "afterHeadline": "Structure verified",
+      "beforeExport": "VERIFIED",
+      "afterExport": "VERIFIED",
+      "beforeWrong": 22,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-R03",
+      "group": "public",
+      "before": "UNSUPPORTED",
+      "after": "UNSUPPORTED",
+      "beforeHeadline": null,
+      "afterHeadline": null,
+      "beforeExport": null,
+      "afterExport": null,
+      "beforeWrong": null,
+      "afterWrong": null,
+      "note": null
+    },
+    {
+      "id": "S16A-X01",
+      "group": "edge",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": null,
+      "afterHeadline": null,
+      "beforeExport": null,
+      "afterExport": null,
+      "beforeWrong": null,
+      "afterWrong": null,
+      "note": null
+    },
+    {
+      "id": "S16A-X02",
+      "group": "edge",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": null,
+      "afterHeadline": null,
+      "beforeExport": null,
+      "afterExport": null,
+      "beforeWrong": null,
+      "afterWrong": null,
+      "note": null
+    },
+    {
+      "id": "S16A-X03",
+      "group": "edge",
+      "before": "UNSUPPORTED",
+      "after": "UNSUPPORTED",
+      "beforeHeadline": null,
+      "afterHeadline": null,
+      "beforeExport": null,
+      "afterExport": null,
+      "beforeWrong": null,
+      "afterWrong": null,
+      "note": "S16A-L5 single record cannot fill a category field"
+    },
+    {
+      "id": "S16A-X04",
+      "group": "edge",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": "Integration ready",
+      "afterHeadline": "Structure verified",
+      "beforeExport": "VERIFIED",
+      "afterExport": "VERIFIED",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-X05",
+      "group": "edge",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": null,
+      "afterHeadline": null,
+      "beforeExport": null,
+      "afterExport": null,
+      "beforeWrong": null,
+      "afterWrong": null,
+      "note": null
+    },
+    {
+      "id": "S16A-X06",
+      "group": "edge",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": null,
+      "afterHeadline": null,
+      "beforeExport": null,
+      "afterExport": null,
+      "beforeWrong": null,
+      "afterWrong": null,
+      "note": null
+    },
+    {
+      "id": "S16A-X07",
+      "group": "edge",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": null,
+      "afterHeadline": null,
+      "beforeExport": null,
+      "afterExport": null,
+      "beforeWrong": null,
+      "afterWrong": null,
+      "note": null
+    },
+    {
+      "id": "S16A-X08",
+      "group": "edge",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": null,
+      "afterHeadline": null,
+      "beforeExport": null,
+      "afterExport": null,
+      "beforeWrong": null,
+      "afterWrong": null,
+      "note": null
+    },
+    {
+      "id": "S16A-X09",
+      "group": "edge",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": null,
+      "afterHeadline": null,
+      "beforeExport": null,
+      "afterExport": null,
+      "beforeWrong": null,
+      "afterWrong": null,
+      "note": null
+    },
+    {
+      "id": "S16A-X10",
+      "group": "edge",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": null,
+      "afterHeadline": null,
+      "beforeExport": null,
+      "afterExport": null,
+      "beforeWrong": null,
+      "afterWrong": null,
+      "note": null
+    },
+    {
+      "id": "S16A-X11",
+      "group": "edge",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": null,
+      "afterHeadline": null,
+      "beforeExport": null,
+      "afterExport": null,
+      "beforeWrong": null,
+      "afterWrong": null,
+      "note": null
+    },
+    {
+      "id": "S16A-X12",
+      "group": "edge",
+      "before": "FAIL",
+      "after": "UNSUPPORTED",
+      "beforeHeadline": null,
+      "afterHeadline": null,
+      "beforeExport": null,
+      "afterExport": null,
+      "beforeWrong": null,
+      "afterWrong": null,
+      "note": "S16A-D4 contained: the 4 unusable columns are listed with the naming rule; bracketed paths are post-hackathon"
+    },
+    {
+      "id": "S16A-X13",
+      "group": "edge",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": "Integration ready",
+      "afterHeadline": "Structure verified",
+      "beforeExport": "VERIFIED",
+      "afterExport": "VERIFIED",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-X14",
+      "group": "edge",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": "Integration ready",
+      "afterHeadline": "Structure verified",
+      "beforeExport": "VERIFIED",
+      "afterExport": "VERIFIED",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-X15",
+      "group": "edge",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": "Integration ready",
+      "afterHeadline": "Structure verified",
+      "beforeExport": "VERIFIED",
+      "afterExport": "VERIFIED",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-X16",
+      "group": "edge",
+      "before": "UNSUPPORTED",
+      "after": "UNSUPPORTED",
+      "beforeHeadline": null,
+      "afterHeadline": null,
+      "beforeExport": null,
+      "afterExport": null,
+      "beforeWrong": null,
+      "afterWrong": null,
+      "note": "S16A-L4 depth > 4 refuses the source, with a message"
+    },
+    {
+      "id": "S16A-X17",
+      "group": "edge",
+      "before": "FAIL",
+      "after": "UNSUPPORTED",
+      "beforeHeadline": "Integration ready",
+      "afterHeadline": null,
+      "beforeExport": "VERIFIED",
+      "afterExport": null,
+      "beforeWrong": 20,
+      "afterWrong": null,
+      "note": "true id column excluded (mixed types) and now LISTED with the reason; nothing else is used in its place; number→text conversion is not in the DSL"
+    },
+    {
+      "id": "S16A-X18",
+      "group": "edge",
+      "before": "UNSUPPORTED",
+      "after": "UNSUPPORTED",
+      "beforeHeadline": null,
+      "afterHeadline": null,
+      "beforeExport": null,
+      "afterExport": null,
+      "beforeWrong": null,
+      "afterWrong": null,
+      "note": "S16A-L2 one dirty value disables the date column (still not explained on screen)"
+    },
+    {
+      "id": "S16A-X19",
+      "group": "edge",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": "Integration ready",
+      "afterHeadline": "Structure verified",
+      "beforeExport": "VERIFIED",
+      "afterExport": "VERIFIED",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-X20",
+      "group": "edge",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": "Integration ready",
+      "afterHeadline": "Structure verified",
+      "beforeExport": "VERIFIED",
+      "afterExport": "VERIFIED",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-X21",
+      "group": "edge",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": "Draft — not fully verified",
+      "afterHeadline": "Draft — not fully verified",
+      "beforeExport": "DRAFT",
+      "afterExport": "DRAFT",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-X22",
+      "group": "edge",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": "Integration ready",
+      "afterHeadline": "Structure verified",
+      "beforeExport": "VERIFIED",
+      "afterExport": "VERIFIED",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-X23",
+      "group": "edge",
+      "before": "UNSUPPORTED",
+      "after": "UNSUPPORTED",
+      "beforeHeadline": null,
+      "afterHeadline": null,
+      "beforeExport": null,
+      "afterExport": null,
+      "beforeWrong": null,
+      "afterWrong": null,
+      "note": "S16A-L3 locale numbers/dates"
+    },
+    {
+      "id": "S16A-X24",
+      "group": "edge",
+      "before": "UNSUPPORTED",
+      "after": "UNSUPPORTED",
+      "beforeHeadline": null,
+      "afterHeadline": null,
+      "beforeExport": null,
+      "afterExport": null,
+      "beforeWrong": null,
+      "afterWrong": null,
+      "note": "S16A-L3 two-decimal text amounts"
+    },
+    {
+      "id": "S16A-X25",
+      "group": "edge",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": "Integration ready",
+      "afterHeadline": "Structure verified",
+      "beforeExport": "VERIFIED",
+      "afterExport": "VERIFIED",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-X26",
+      "group": "edge",
+      "before": "PASS",
+      "after": "PASS",
+      "beforeHeadline": "Draft — not fully verified",
+      "afterHeadline": "Draft — not fully verified",
+      "beforeExport": "DRAFT",
+      "afterExport": "DRAFT",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": null
+    },
+    {
+      "id": "S16A-X27",
+      "group": "edge",
+      "before": "PARTIAL",
+      "after": "PARTIAL",
+      "beforeHeadline": "Draft — not fully verified",
+      "afterHeadline": "Draft — not fully verified",
+      "beforeExport": "DRAFT",
+      "afterExport": "DRAFT",
+      "beforeWrong": 0,
+      "afterWrong": 0,
+      "note": "S16A-L1"
+    }
+  ]
+}
