@@ -1,7 +1,8 @@
 import type { CloudDisclosurePayload } from "../../domain/contracts/types.ts";
 import type { ProposalIssue } from "../../proposal/convert.ts";
 import type { ResolutionIssue } from "../../proposal/resolve.ts";
-import type { AcceptProposalResult, PreparedTwin } from "../../workflow/pipeline.ts";
+import type { PreparedTwin } from "../../workflow/pipeline.ts";
+import type { ProposalResult } from "../workspace-state.ts";
 import { planFields, type GuidedFieldDecisions } from "./field-plan.ts";
 
 /**
@@ -214,7 +215,7 @@ function plural(count: number, word: string): string {
  * result; `disclosure` is the approved request it answered.
  */
 export function diagnoseRejectedProposal(
-  result: Extract<AcceptProposalResult, { ok: false }>,
+  result: Extract<ProposalResult, { ok: false }>,
   disclosure: CloudDisclosurePayload,
   prepared: PreparedTwin | null,
 ): ProposalDiagnosis {

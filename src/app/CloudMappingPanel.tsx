@@ -259,7 +259,7 @@ export function CloudMappingPanel({
                 {result.issues.map((issue, index) => (
                   <li key={index} className="[overflow-wrap:anywhere]">
                     <span className="font-mono">{issue.code}</span>
-                    {typeof issue.operationIndex === "number" ? <span className="text-mute"> · operation #{issue.operationIndex + 1}</span> : null}: {issue.message}
+                    {"operationIndex" in issue && typeof issue.operationIndex === "number" ? <span className="text-mute"> · operation #{issue.operationIndex + 1}</span> : null}: {issue.message}
                   </li>
                 ))}
               </ul>

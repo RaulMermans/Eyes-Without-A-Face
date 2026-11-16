@@ -5,7 +5,7 @@
 import type { MappingOperation } from "../domain/contracts/types.ts";
 import type { ProposalIssue } from "../proposal/convert.ts";
 import type { ResolutionIssue } from "../proposal/resolve.ts";
-import type { AcceptProposalResult } from "../workflow/pipeline.ts";
+import type { ProposalResult } from "./workspace-state.ts";
 import type { RealityCheckReport } from "../verification/reality-check.ts";
 import { executionByOperation, operationSources, type OperationExecution } from "./view-model.ts";
 
@@ -42,7 +42,7 @@ function displayRef(value: unknown): string[] {
 }
 
 export function buildConnections(input: {
-  result: AcceptProposalResult;
+  result: ProposalResult;
   text: string;
   report: RealityCheckReport | null;
 }): Connection[] | null {
@@ -73,7 +73,8 @@ export function buildConnections(input: {
 
   if (result.ok) return fromContract(result.value.converted.contract.operations, [], false);
   if (result.stage === "resolve") return fromContract(result.converted.contract.operations, result.issues, true);
-  if (result.stage === "parse") return null;
+  // Sprint 18B: a plan refusal has no operations to draw.
+  if (result.stage === "parse" || result.stage === "plan") return null;
   const raw = rawOperations(input.text);
   if (!raw) return null;
   return raw.map((item, index) => ({

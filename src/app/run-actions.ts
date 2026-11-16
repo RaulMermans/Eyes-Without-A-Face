@@ -196,3 +196,17 @@ export async function prepareFreshReview(workspace: WorkspaceState, prepared: Pr
     return { ok: false, message: caught instanceof Error ? caught.message : String(caught) };
   }
 }
+
+/**
+ * Sprint 18B (ADR 0018). OWNER: Worker B. Re-derive `proposal.plan.compiled`
+ * and `proposal.result` from the immutable validated plan and the user's
+ * current answers (`fieldMatches`, `categoryMeanings`, `semanticConfirmations`).
+ * Clears `report` / `mappingRunError` when the compiled contract changed.
+ * Never sends, never approves, never touches `review`. Returns the workspace
+ * unchanged when the active proposal is not a plan.
+ */
+export function recompilePlan(workspace: WorkspaceState, prepared: PreparedTwin | null): WorkspaceState {
+  void prepared;
+  if (!workspace.proposal?.plan) return workspace;
+  throw new Error("recompilePlan: not implemented (Worker B)");
+}
