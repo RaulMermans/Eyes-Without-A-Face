@@ -1,0 +1,58 @@
+[
+  {
+    "ticket_ref": "T-500",
+    "requester": "r0@example.test",
+    "reminder_status": "failed",
+    "review_state": "pending",
+    "opened_on": "2026-01-01"
+  },
+  {
+    "ticket_ref": "T-501",
+    "requester": "r1@example.test",
+    "reminder_status": "sent",
+    "review_state": "approved",
+    "opened_on": "2026-02-02"
+  },
+  {
+    "ticket_ref": "T-502",
+    "requester": "r2@example.test",
+    "reminder_status": "pending",
+    "review_state": "verified",
+    "opened_on": "2026-03-03"
+  },
+  {
+    "ticket_ref": "T-503",
+    "requester": "r3@example.test",
+    "reminder_status": "approved",
+    "review_state": "resolved",
+    "opened_on": "2026-04-04"
+  },
+  {
+    "ticket_ref": "T-504",
+    "requester": "r4@example.test",
+    "reminder_status": "verified",
+    "review_state": "failed",
+    "opened_on": "2026-05-05"
+  },
+  {
+    "ticket_ref": "T-505",
+    "requester": "not-an-email",
+    "reminder_status": "resolved",
+    "review_state": "sent",
+    "opened_on": "2026-06-06"
+  },
+  {
+    "ticket_ref": "T-506",
+    "requester": "r6@example.test",
+    "reminder_status": "failed",
+    "review_state": "pending",
+    "opened_on": "2026-07-07"
+  },
+  {
+    "ticket_ref": "T-507",
+    "requester": "r7@example.test",
+    "reminder_status": "sent",
+    "review_state": "approved",
+    "opened_on": "2026-08-08"
+  }
+]

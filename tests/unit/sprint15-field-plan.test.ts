@@ -43,6 +43,9 @@ function twin(records: Record<string, unknown>[], overrides: Record<string, Twin
 }
 
 const statusTarget = { name: "status", type: "enum" as const, required: true, enumValues: ["active", "inactive", "prospect"] };
+/** Sprint 16B: the data owner's explicit field choices for the CRM demo and the wide fixture (suggestions are never applied). */
+const crmMatches = { id: "customer_id", email: "email_address", createdAt: "joined_at", organization: "company_name" };
+const wideMatches = { id: "customer_id", email: "contact_email", createdAt: "created_on", organization: "company" };
 const crmMeaning: CategoryMeaning = { source: "account_state", values: { active_customer: "active", inactive_customer: "inactive", prospect: "prospect" } };
 const wideMeaning: CategoryMeaning = { source: "account_state", values: { activo: "active", inactivo: "inactive", pendiente: "prospect" } };
 
@@ -105,11 +108,16 @@ describe("S15-A1/A2 target-first candidates", () => {
   it("S15-004 non-category fields get a structural suggestion (types, formats, unique codes), never a completed mapping by name alone", () => {
     const plan = planFields(twin(wideRecords), wideRecords, pretty(helpdesk), none)!;
     const by = (name: string) => plan.targets.find((item) => item.target.name === name)!;
-    expect(by("id").chosen).toBe("customer_id");
-    expect(by("email").chosen).toBe("contact_email");
-    expect(by("email").chosenBy).toBe("suggested");
-    expect(by("organization").chosen).toBe("company");
-    // A suggestion is not a local rule for a fixed-list field: nothing is ready without the user's answer.
+    // Sprint 16B (D2): structural evidence yields a SUGGESTION to confirm, never an active choice.
+    expect(by("id").suggested).toBe("customer_id");
+    expect(by("email").suggested).toBe("contact_email");
+    expect(by("organization").candidates[0]!.path).toBe("company");
+    // Without specific evidence (no format, no unique code, no similar name) nothing is suggested.
+    expect(by("organization").suggested).toBeNull();
+    for (const name of ["id", "email", "organization"]) {
+      expect(by(name).chosen).toBeNull();
+      expect(by(name).rule).toBeNull();
+    }
     expect(plan.localReady).toBe(false);
   });
 });
@@ -141,7 +149,7 @@ describe("S15-A3 readiness is judged per destination field", () => {
 
   it("S15-007 a correct local translation makes the field buildable on this device even with nothing shared", () => {
     const prepared = twin(crm);
-    const plan = planFields(prepared, crm, pretty(helpdesk), { ...none, categoryMeanings: { status: crmMeaning } })!;
+    const plan = planFields(prepared, crm, pretty(helpdesk), { fieldMatches: crmMatches, categoryMeanings: { status: crmMeaning } })!;
     const status = plan.targets.find((item) => item.target.name === "status")!;
     expect(status.cloud).toBe("names-withheld");
     expect(status.rule).toMatchObject({ op: "map_enum", from: "account_state", to: "status", params: { unmapped: "fail" } });
@@ -176,7 +184,7 @@ describe("S15-B local field mapping through the canonical engine", () => {
 
   it("S15-011 the local contract is a valid Mapping Contract 1.0.0, labeled as built here, and produces the expected records", () => {
     const prepared = twin(crm);
-    const plan = planFields(prepared, crm, pretty(helpdesk), { ...none, categoryMeanings: { status: crmMeaning } })!;
+    const plan = planFields(prepared, crm, pretty(helpdesk), { fieldMatches: crmMatches, categoryMeanings: { status: crmMeaning } })!;
     const contract = localContract(plan, prepared, pretty(helpdesk))!;
     expect(validateContract(contract)).toMatchObject({ valid: true, kind: "mapping" });
     expect(isLocalMapping(JSON.stringify(contract))).toBe(true);
@@ -191,7 +199,7 @@ describe("S15-B local field mapping through the canonical engine", () => {
   it("S15-012 a label set aside goes to review under the guided policy — never counted as transformed", () => {
     const prepared = twin(crm);
     const meaning: CategoryMeaning = { source: "account_state", values: { ...crmMeaning.values, prospect: null } };
-    const plan = planFields(prepared, crm, pretty(helpdesk), { ...none, categoryMeanings: { status: meaning } })!;
+    const plan = planFields(prepared, crm, pretty(helpdesk), { fieldMatches: crmMatches, categoryMeanings: { status: meaning } })!;
     const contract = localContract(plan, prepared, pretty(helpdesk))!;
     const report = run(crm, prepared, contract, helpdesk);
     const policy = guidedPolicy({ status: meaning });
@@ -207,7 +215,7 @@ describe("S15-B local field mapping through the canonical engine", () => {
 
   it("S15-013 ambiguous slash dates need the user's answer, which sets the rule", () => {
     const prepared = twin(wideRecords);
-    const decisions = { fieldMatches: { status: "account_state" }, categoryMeanings: { status: wideMeaning } };
+    const decisions = { fieldMatches: { ...wideMatches, status: "account_state" }, categoryMeanings: { status: wideMeaning } };
     const before = planFields(prepared, wideRecords, pretty(helpdesk), decisions)!;
     expect(before.targets.find((item) => item.target.name === "createdAt")!.need).toBe("date-order");
     expect(before.localReady).toBe(false);
@@ -224,7 +232,7 @@ describe("S15-B local field mapping through the canonical engine", () => {
   it("S15-014 before → after shows the actual engine output and the record that was not transformed", () => {
     const prepared = twin(crm);
     const meaning: CategoryMeaning = { source: "account_state", values: { ...crmMeaning.values, prospect: null } };
-    const plan = planFields(prepared, crm, pretty(helpdesk), { ...none, categoryMeanings: { status: meaning } })!;
+    const plan = planFields(prepared, crm, pretty(helpdesk), { fieldMatches: crmMatches, categoryMeanings: { status: meaning } })!;
     const contract = localContract(plan, prepared, pretty(helpdesk))!;
     const report = run(crm, prepared, contract, helpdesk);
     const examples = beforeAfter(report, crm, contract);
@@ -335,10 +343,13 @@ describe("S15-PF2 real data with a few malformed emails (production check, Merid
     // …but the ranking still finds it, and says why.
     const plan = planFields(prepared, records, pretty(helpdesk), none)!;
     const email = plan.targets.find((item) => item.target.name === "email")!;
-    expect(email.chosen).toBe("contact.email");
-    expect(email.chosenBy).toBe("suggested");
+    // Sprint 16B (D2): suggested with its evidence, applied only once the user confirms it.
+    expect(email.suggested).toBe("contact.email");
+    expect(email.chosen).toBeNull();
+    expect(email.rule).toBeNull();
     expect(email.candidates[0]!.reasons[0]).toBe("8 of 10 values look like email addresses");
-    expect(email.rule).toMatchObject({ op: "normalize_email", from: "contact.email" });
+    const confirmed = planFields(prepared, records, pretty(helpdesk), { ...none, fieldMatches: { email: "contact.email" } })!;
+    expect(confirmed.targets.find((item) => item.target.name === "email")!.rule).toMatchObject({ op: "normalize_email", from: "contact.email" });
   });
 
   it("S15-023 a field with only a few email-shaped values is not evidence", () => {

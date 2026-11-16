@@ -57,6 +57,26 @@ const VERDICT: Record<CompletionState, GuidedStatus> = {
   BLOCKED: { id: "failed", label: "Failed", detail: "There is no mapping that passed the local checks.", tone: "fail" },
 };
 
+/**
+ * Sprint 16B (D2): a passing structure is never worded as verified meaning.
+ * "Integration ready" only when the local verifier verified the meaning of
+ * every destination field; otherwise the headline says what was established —
+ * structure — and who chose the field matches. Ids are unchanged.
+ */
+function honestVerdict(best: OutcomeCandidateView): GuidedStatus {
+  const base = VERDICT[best.eligibility.state];
+  if (base.id !== "ready" && base.id !== "ready-exceptions") return base;
+  const meaning = best.meaning ?? null;
+  if (meaning?.complete) {
+    return base.id === "ready" ? { ...base, detail: "Every record passed the local checks, and the meaning of every destination field was verified." } : base;
+  }
+  const who = best.matchesChosenByUser ? "You chose the source of every field." : "Gemini chose which of your fields gives each destination field.";
+  const coverage = meaning ? `Meaning was verified for ${meaning.verified} of ${meaning.fields} fields; the rest were checked for format only — look at the preview.` : "Meaning was not checked — look at the preview.";
+  return base.id === "ready"
+    ? { id: "ready", label: "Structure verified", detail: `Every record matches the destination schema. ${who} ${coverage}`, tone: "pass" }
+    : { id: "ready-exceptions", label: "Structure verified, with exceptions", detail: `The mapping passed; some records are set aside for review. ${who} ${coverage}`, tone: "warn" };
+}
+
 export function guidedStatus(stages: readonly RuntimeStage[], candidates: readonly OutcomeCandidateView[], inFlight: InFlight, context: FailureContext = {}): GuidedStatus {
   if (inFlight === "preparing") return { id: "preparing", label: "Preparing the integration", detail: "Building the fictional stand-in for your data, on this device.", tone: "busy" };
   if (inFlight === "checking") return { id: "checking", label: "Checking the result", detail: "Running the mapping on your records, on this device.", tone: "busy" };
@@ -84,7 +104,7 @@ export function guidedStatus(stages: readonly RuntimeStage[], candidates: readon
   const outcome = byId.get("outcome");
   if (outcome && outcome.status !== "not-started" && outcome.status !== "skipped") {
     const best = bestCandidate(candidates);
-    if (best) return VERDICT[best.eligibility.state];
+    if (best) return honestVerdict(best);
   }
   const failed = stages.find((stage) => (stage.status === "failed" || stage.status === "blocked") && !stage.optional);
   if (failed?.id === "contract-validated" && context.rejection) {

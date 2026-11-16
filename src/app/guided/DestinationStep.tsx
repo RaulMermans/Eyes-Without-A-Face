@@ -35,6 +35,7 @@ export function DestinationStep({
   onDateOrder = () => {},
   onBuildLocal = () => {},
   buildBlocker,
+  excludedCount = 0,
   building,
   onBuild,
   onBack,
@@ -58,6 +59,8 @@ export function DestinationStep({
   onBuildLocal?: () => void;
   /** The one reason Build cannot run yet, or null. */
   buildBlocker: string | null;
+  /** Sprint 16B (D4): source fields that can't be used for mapping (listed on “Your data”). */
+  excludedCount?: number;
   building: boolean;
   onBuild: () => void;
   onBack: () => void;
@@ -75,6 +78,13 @@ export function DestinationStep({
   const showSummary = summary.ok && !unapplied && !customEmpty;
 
   const [localProblem, setLocalProblem] = useState<string | null>(null);
+  /**
+   * Sprint 16B (D2): open "Field matches" when a non-category destination field needs the user's
+   * decision, and keep it open (sticky) so it never snaps shut while the user is answering.
+   */
+  const needsDecision = Boolean(plan?.targets.some((item) => item.target.required && item.target.type !== "enum" && (item.need === "confirm" || item.need === "source")));
+  const [matchesOpen, setMatchesOpen] = useState(needsDecision);
+  if (needsDecision && !matchesOpen) setMatchesOpen(true);
   /** Prefer the on-device build when it is complete and a Gemini request could not fill a required field. */
   const preferLocal = Boolean(plan?.localReady && categoryNeed?.blocking);
 
@@ -303,9 +313,18 @@ export function DestinationStep({
           }
           testId="field-matches-disclosure"
           className="rounded-[3px] border border-rule bg-panel p-4"
+          defaultOpen={matchesOpen || undefined}
         >
+          {excludedCount > 0 ? (
+            <p className="mb-3 flex items-start gap-1.5 text-sm text-warn" data-testid="destination-excluded-note">
+              <AlertIcon size={14} className="mt-0.5 shrink-0" />
+              {excludedCount === 1 ? "1 of your fields can't be used for mapping and is not listed here" : `${excludedCount} of your fields can't be used for mapping and are not listed here`} — see
+              “Your data” for why and how to fix it.
+            </p>
+          ) : null}
           <p className="mb-3 text-sm text-ink-text">
-            Gemini proposes these matches by itself. Check them here only if you want to build on this device without Gemini, or to see where each field comes from.
+            To build on this device, choose or confirm the field that gives each destination field. EYES only suggests: a matching type, format or name is a hint, not proof of
+            meaning, and nothing is used until you decide. Gemini proposes its own matches if you build with Gemini instead.
           </p>
           <FieldMatches plan={plan} confirmations={confirmations} dateExamples={dateExamples} handlers={{ onMatch, onMeaning, onShareCategories, onDateOrder }} />
         </Disclosure>
@@ -323,7 +342,6 @@ export function DestinationStep({
                   <span className="font-mono text-ink">{item.target.name}</span>
                   <span className="text-xs text-mute">
                     ← <span className="font-mono">{item.chosen}</span>, {describeRule(item.rule)}
-                    {item.chosenBy === "suggested" ? " (suggested)" : ""}
                   </span>
                 </li>,
               ] : [],

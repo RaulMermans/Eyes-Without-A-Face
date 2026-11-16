@@ -143,6 +143,38 @@ Decision: [ADR 0014](docs/decisions/0014-target-first-mapping-and-local-meaning.
 - **Category names enter the downloaded package only after the explicit per-field opt-in** (`packageLabelSources`). Never widen the privacy scan in any other way.
 - **`bindings.local.json` is a separate local download.** Never put it, or records, in the ZIP.
 
+## Mapping integrity (Sprint 16B)
+
+Report: [docs/qa/sprint-16b-mapping-integrity.md](docs/qa/sprint-16b-mapping-integrity.md). Code: `src/app/guided/field-plan.ts`, `src/export/provenance.ts`.
+
+- **A suggestion is never a decision.**
+  - A non-category destination field gets a rule only from the user's explicit choice (`fieldMatches[target]` = a path).
+  - The best-ranked candidate is shown as `suggested` with a "Use …" button and builds nothing.
+  - Never auto-apply, pre-select or bulk-confirm suggestions.
+- **Three states per destination field:** no entry = undecided; a path = chosen; `null` = the user chose no field.
+  - `null` survives every replan and hides the suggestion.
+  - Required + `null` blocks the local build with a reason.
+- **A suggestion needs specific evidence** (`SourceCandidate.specific`): email share, a date type, unique codes for an id-like field (never an email column), a numeric or boolean type, or a similar name.
+  - Never suggest a field with no such evidence.
+  - Do not tune ranking on the Sprint 16A held-out data.
+- **Decisions belong to a destination.**
+  - Use `withDestination` for every destination change.
+  - It keeps a decision only when that field's name, type, format, allowed values and required flag are unchanged.
+- **Never headline "Integration ready" unless meaning was verified for every destination field.**
+  - Otherwise say "Structure verified" and who chose the field matches (`honestVerdict`).
+  - The export status VERIFIED is structural (Export Contract unchanged) and must be explained as such.
+- **The export privacy scan judges by provenance (`src/export/provenance.ts`).**
+  - Only application-owned text may be masked: owned`` template literals, `appCode` values, and exact JSON paths in `JSON_PROVENANCE`.
+  - Sentences are recognised by skeletons derived from the same tables that build them (`ELIGIBILITY_TEXT`, `LIMITATION_TEXT`).
+  - Never mask by bare key name or word list.
+  - Never mask labels, approved fallback/default values, fixture outputs or anything else user-derived.
+  - Secrets, canaries and field names are judged on the full text.
+  - A file without provenance is scanned as before.
+  - Packaged bytes must not change because of scanning.
+- **Fields the mapping cannot use are listed on the data screen** (`excludedFields`), with the reason and a rename example.
+  - Never hide them silently.
+  - Never rename a user's columns.
+
 ## Release lifecycle and production acceptance (Sprint 14 — permanent, every sprint)
 
 **Tests passing does not mean the product works in production.** Procedure, commands, budget and evidence layout: [docs/deployment.md](docs/deployment.md#production-acceptance-standard-permanent).

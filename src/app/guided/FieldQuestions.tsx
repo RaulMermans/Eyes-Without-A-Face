@@ -16,7 +16,11 @@ import { describeRule, translationComplete, type CategoryMeaning, type FieldPlan
 export type SlashOrder = Extract<DateInputFormat, "MM/DD/YYYY" | "DD/MM/YYYY">;
 
 export interface FieldQuestionHandlers {
-  onMatch: (target: string, source: string | null) => void;
+  /**
+   * Sprint 16B (D1): `source` is a field path (chosen), `null` (the user chose
+   * NO field — honoured, never refilled) or `undefined` (back to undecided).
+   */
+  onMatch: (target: string, source: string | null | undefined) => void;
   onMeaning: (target: string, meaning: CategoryMeaning | null) => void;
   onShareCategories: (paths: string[], share: boolean) => void;
   onDateOrder: (path: string, order: SlashOrder) => void;
@@ -196,7 +200,7 @@ function EnumQuestion({
               <span className="text-ink-text">Choose another field:</span>
               <select
                 value={others.some((candidate) => candidate.path === plan.chosen) ? plan.chosen! : ""}
-                onChange={(event) => handlers.onMatch(target.name, event.target.value || null)}
+                onChange={(event) => handlers.onMatch(target.name, event.target.value || undefined)}
                 className="min-h-9 rounded-[3px] border border-ink-3 bg-void px-2 text-sm text-ink focus:border-violet-soft focus:outline-none"
                 data-testid={`match-other-${target.name}`}
               >
@@ -324,9 +328,14 @@ export function DateOrderQuestion({
   );
 }
 
+/** Select value for an explicit "no field" decision (Sprint 16B, D1). Never a field path: paths are identifiers. */
+export const NO_FIELD = "__no_field__";
+
 /**
- * B1 — the field correspondence. Every row shows a real choice: the user's,
- * the only candidate, or the best-ranked candidate marked "suggested". A
+ * B1 — the field correspondence. Every row shows the user's decision. Sprint
+ * 16B (D1, D2): a ranked suggestion is shown beside an undecided row with a
+ * "Use …" button; it never becomes part of a mapping until the user confirms
+ * it, and an explicit "No field" is honoured. Historical note: a
  * suggestion becomes part of a mapping only when the user builds on this
  * device with these matches.
  */
@@ -362,20 +371,33 @@ export function FieldMatches({
                 <td className="py-2 pr-3">
                   <select
                     aria-label={`Source of ${item.target.name}`}
-                    value={item.chosen ?? ""}
-                    onChange={(event) => handlers.onMatch(item.target.name, event.target.value || null)}
+                    value={item.decision === "none" ? NO_FIELD : item.decision === "source" ? (item.chosen ?? "") : ""}
+                    onChange={(event) => {
+                      const value = event.target.value;
+                      handlers.onMatch(item.target.name, value === "" ? undefined : value === NO_FIELD ? null : value);
+                    }}
                     className="min-h-9 w-full rounded-[3px] border border-ink-3 bg-void px-2 text-sm text-ink focus:border-violet-soft focus:outline-none"
                     data-testid={`field-match-${item.target.name}`}
                   >
-                    <option value="">{item.target.required ? "Choose…" : "Leave empty"}</option>
+                    <option value="">{item.target.type === "enum" && item.chosenBy === "only-candidate" ? `${item.chosen} (asked above)` : "Not decided"}</option>
+                    <option value={NO_FIELD}>{item.target.required ? "No field (required: blocks the build)" : "No field — leave it out"}</option>
                     {item.candidates.map((candidate) => (
                       <option key={candidate.path} value={candidate.path}>
                         {candidate.path}
                       </option>
                     ))}
                   </select>
-                  {item.chosenBy === "suggested" ? <span className="mt-0.5 block text-[11px] text-mute">suggested: {item.candidates[0]?.reasons[0] ?? "compatible"}</span> : null}
-                  {item.chosenBy === "only-candidate" ? <span className="mt-0.5 block text-[11px] text-mute">the only compatible field</span> : null}
+                  {item.suggested ? (
+                    <span className="mt-1 flex flex-wrap items-center gap-2 text-[11px] text-mute" data-testid={`field-match-suggestion-${item.target.name}`}>
+                      <span>
+                        Suggested: <span className="font-mono text-ink">{item.suggested}</span> — {item.candidates[0]?.reasons[0] ?? "compatible"}. A suggestion, not proof of meaning.
+                      </span>
+                      <Button size="sm" variant="outline" onClick={() => handlers.onMatch(item.target.name, item.suggested)} data-testid={`field-match-use-${item.target.name}`}>
+                        Use {item.suggested}
+                      </Button>
+                    </span>
+                  ) : null}
+                  {item.chosenBy === "only-candidate" ? <span className="mt-0.5 block text-[11px] text-mute">the only compatible field — used once you translate its values</span> : null}
                 </td>
                 <td className="py-2 text-xs">
                   {item.rule ? (
@@ -387,10 +409,18 @@ export function FieldMatches({
                   ) : item.need ? (
                     <span className="flex items-center gap-1 text-warn">
                       <DashIcon size={12} className="shrink-0" />
-                      {item.need === "translation" ? "needs a translation (above)" : item.need === "source" ? "choose a field" : "Gemini can build this; EYES can't on this device"}
+                      {item.need === "translation"
+                        ? "needs a translation (above)"
+                        : item.need === "confirm"
+                          ? "confirm a field — nothing is used until you do"
+                          : item.need === "source"
+                            ? item.decision === "none"
+                              ? "required — choose a field"
+                              : "choose a field"
+                            : "Gemini can build this; EYES can't on this device"}
                     </span>
                   ) : (
-                    <span className="text-mute">left out</span>
+                    <span className="text-mute">{item.decision === "none" ? "left out by you" : "left out (not decided)"}</span>
                   )}
                 </td>
               </tr>

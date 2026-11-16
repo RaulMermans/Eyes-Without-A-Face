@@ -11,7 +11,10 @@ A privacy-aware integration studio for the Google #BuildHybridAI 2026 hackathon.
 ## Using it
 
 1. **Your data.** Upload a JSON, CSV or Excel (.xlsx) file, or take a one-time snapshot from a read-only, CORS-enabled HTTPS JSON API. Fictional demo data is one click away. Everything is parsed in the browser; nothing is saved, so a reload clears your work (the browser asks first).
-2. **Destination.** Pick a fictional example schema, or bring your own JSON Schema (import, paste, or draft one from a sample record). If the destination needs a value from a fixed list (for example a status), EYES shows which of your category names Gemini would need and lets you share them per field. Nothing is shared by default.
+2. **Destination.** Pick a fictional example schema, or bring your own JSON Schema (import, paste, or draft one from a sample record).
+   - **Fixed-list values.** If the destination needs a value from a fixed list (for example a status), EYES shows which of your category names Gemini would need and lets you share them per field. Nothing is shared by default.
+   - **Building on this device.** You choose which of your fields gives each destination field. EYES may *suggest* one ("Use …"), but a suggestion is a hint from types, formats and names, never proof. Nothing is used until you choose it.
+   - **Unusable columns.** Columns EYES can't map (names with spaces or punctuation, lists, mixed types) are listed on the data screen with the reason.
 3. **Result.** **Build integration** prepares everything locally and stops for your approval of one exact Gemini request. **Approve and send** sends it once. The mapping is checked locally. You then download your **transformed data** (JSON / CSV, your records, local only) or the **reusable integration** (.zip, the mapping and a runner, no records).
 
 If Gemini's answer cannot be used, EYES says why in plain words, keeps your data and destination, and offers the next step that can actually work. It never repairs the answer, and never re-sends without a new approval.
@@ -110,6 +113,22 @@ node run.mjs run --input ../records.json --bindings ../bindings.local.json --out
 The package status is computed, never asserted: `VERIFIED`, `VERIFIED_WITH_EXCEPTIONS` (quarantine within policy, listed), or a confirmed `DRAFT`, which is not production-ready.
 
 ## Status
+
+**Sprint 16B (mapping integrity): `DEPLOYMENT_PENDING`.** The release candidate is built and verified. It waits for the owner's approval of its exact SHA; `c4a246c` stays live until then. See [docs/qa/sprint-16b-mapping-integrity.md](docs/qa/sprint-16b-mapping-integrity.md).
+
+- **No silent field mapping.** A suggested field is never used until you choose it. "No field" is respected. The local result headline says "Structure verified" unless the meaning of every field was verified.
+- **Exports.** An ordinary word in your data (such as "failed") no longer blocks the reusable integration. The privacy scan now tells the app's own text apart from your data, and real leaks still block it.
+- **Columns EYES can't map are listed**, with the reason and a rename example.
+- **Same 62 real-world-style cases as Sprint 16A, run on the release candidate locally:**
+  - 43 PASS (was 39);
+  - 0 "Integration ready" headlines over wrong data (was 3);
+  - 0 privacy findings;
+  - 45 / 45 packages verify outside the app.
+- **Still true.** EYES' suggestions can be wrong: in 4 of 8 click-through tests, accepting every suggestion gave wrong values. Confirm each field against the preview.
+  - Optional fields must be present in every record.
+  - Locale numbers and dates (`1234,50`, `15.03.2026`) are not converted.
+
+**Sprint 16A (real-world production QA, 62 cases on the live build):** 0 disclosures, 2,079 / 2,079 confirmed records exact, 43 / 43 packages portable. It found the defects Sprint 16B fixes. See [docs/qa/sprint-16a-real-world-production.md](docs/qa/sprint-16a-real-world-production.md).
 
 **Sprint 15 (end-to-end experience, guided mapping, semantic trust): `PRODUCTION_ACCEPTED`.** Live as `c4a246c`. 19 / 19 production checks, real Gemini Nano plus one real Gemini Cloud request, and the exported integration all pass on the public URL.
 

@@ -66,6 +66,7 @@ The model proposes **data, not code**: a mapping contract in a small DSL. Every 
 - **Model unreliability.** Provider overloads and timeouts hit a third of requests in one benchmark week. We classify failures and offer a safe next step instead of retrying behind the user's back.
 - **Gemini Nano in practice.** Playwright's default Chrome flags silently disable the Nano component; we found the root cause and run real on-device tests with a dedicated profile.
 - **Deployment.** The release build refuses App Check debug mode, and preview channels fail closed because reCAPTCHA allows only the production domains.
+- **Real-world data.** We ran 62 fictional and public datasets (8 industries, JSON / CSV / Excel / REST) through the live product against an independent oracle. The engine was right every time the user confirmed the fields. But a structurally plausible *suggested* field could become the mapping without the user's decision, and an ordinary word like "failed" could block an export. We fixed both: suggestions now need an explicit click, and the privacy scan tells the app's own text apart from the user's data.
 
 ## Accomplishments that we're proud of
 
@@ -100,4 +101,11 @@ EYES existed before the period: Sprints 0–4 (foundation, Firebase AI Logic ada
 - **Stays local:** records, field names, alias bindings, hidden cases, failure values, Nano prompts and rationales.
 - **Disclosed after approval:** aliases, generated descriptors, fictional examples, labels you choose to disclose, a minimal destination description; for a revision, finding codes and the constraints you tick.
 - **Not anonymization.** A twin reduces disclosure; structure and approved labels still reveal something, so you review every request. Zero detected private strings is evidence, not proof.
-- **Known limits:** small fictional scenarios, no statistical claim; a deterministic patch with the same approved rule matched Gemini's revisions; no independent usability test yet.
+- **Known limits:**
+  - Small fictional scenarios; no statistical claim.
+  - A deterministic patch with the same approved rule matched Gemini's revisions.
+  - No independent usability test yet.
+  - EYES' own field suggestions are hints and can be wrong: accepting every one gave wrong values in 4 of 8 click-through tests. You confirm each field against the preview.
+  - Optional fields must be present in every record.
+  - Column names need letters, digits and `_`.
+  - Locale-formatted numbers and dates are not converted.

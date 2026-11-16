@@ -4,7 +4,7 @@ import { ErrorBanner } from "../components/ErrorBanner.tsx";
 import { Disclosure, FieldToken, Panel, PanelHeader, StatusMark } from "../components/spectral.tsx";
 import { assertTargetSchema } from "../domain/mapping/target-schema.ts";
 import { describeTargetSchema } from "../twin/target-disclosure.ts";
-import { invalidateDownstream, type WorkspaceState } from "./workspace-state.ts";
+import { withDestination, type WorkspaceState } from "./workspace-state.ts";
 
 export function DestinationPanel({
   workspace,
@@ -84,7 +84,7 @@ export function DestinationPanel({
           onChange={(event) => {
             setSchemaMessage(null);
             setSchemaError(null);
-            onChange(invalidateDownstream({ ...workspace, destinationText: event.target.value }));
+            onChange(withDestination(workspace, event.target.value));
           }}
         />
       </Disclosure>

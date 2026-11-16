@@ -1,0 +1,9 @@
+Customer ID,Contact Email,Account Status,Opened On,Phone
+CU-300,c0@example.test,active,2025-01-10,+34 600 000
+CU-301,c1@example.test,trial,2025-02-11,+34 600 001
+CU-302,c2@example.test,active,2025-03-12,+34 600 002
+CU-303,c3@example.test,trial,2025-04-13,+34 600 003
+CU-304,c4@example.test,active,2025-05-14,+34 600 004
+CU-305,c5@example.test,trial,2025-06-15,+34 600 005
+CU-306,c6@example.test,active,2025-07-16,+34 600 006
+CU-307,c7@example.test,trial,2025-08-17,+34 600 007

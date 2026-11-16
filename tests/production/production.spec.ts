@@ -221,6 +221,11 @@ test.describe("guided journey up to the approval gate (no request is sent)", () 
     await page.getByTestId("translate-status-active_customer").selectOption("active");
     await page.getByTestId("translate-status-inactive_customer").selectOption("inactive");
     await page.getByTestId("translate-status-prospect").selectOption("prospect");
+    // Sprint 16B (D2): the user chooses the source of each non-category field; a suggestion is never applied.
+    if (!(await page.getByTestId("field-matches").isVisible())) await page.getByTestId("field-matches-disclosure").locator("summary").click();
+    for (const [target, source] of Object.entries({ id: "customer_id", email: "email_address", createdAt: "joined_at", organization: "company_name" })) {
+      await page.getByTestId(`field-match-${target}`).selectOption(source);
+    }
     await page.getByTestId("guided-build-local").click();
     await expect(page.getByTestId("guided-outcome")).toBeVisible();
     await expect(page.getByTestId("guided-origin")).toHaveAttribute("data-origin", "local");

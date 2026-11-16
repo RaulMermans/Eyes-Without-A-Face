@@ -9,6 +9,7 @@ import { validateEndpoint } from "../../sources/rest.ts";
 import type { NormalizedSource } from "../../sources/types.ts";
 import { normalizeSheet, type WorkbookHandle } from "../../sources/xlsx.ts";
 import type { ImportedSource } from "../source-import.ts";
+import { EXCLUSION_TEXT, suggestedRename, type ExcludedField } from "./excluded-fields.ts";
 import type { OnDeviceMode } from "../use-on-device.ts";
 import crmCsvUrl from "../../examples/crm/source-records.csv?url";
 import crmXlsxUrl from "../../examples/crm/source-records.xlsx?url";
@@ -45,6 +46,7 @@ export function DataStep({
   onLoaded,
   onClear,
   profileIssues,
+  excluded = [],
   ready,
   onDevice,
   understanding,
@@ -57,6 +59,8 @@ export function DataStep({
   onLoaded: (next: LoadedSource, imported: ImportedSource) => void;
   onClear: () => void;
   profileIssues: ProfileIssue[];
+  /** Sprint 16B (D4): fields the import accepted but the mapping cannot use. Local only. */
+  excluded?: ExcludedField[];
   /** The source was profiled and a twin could be built. */
   ready: boolean;
   onDevice: OnDeviceMode;
@@ -223,6 +227,7 @@ export function DataStep({
           source={source}
           loaded={loaded}
           profileIssues={profileIssues}
+          excluded={excluded}
           ready={ready}
           problem={problem}
           onSheet={chooseSheet}
@@ -353,6 +358,7 @@ function LoadedSummary({
   source,
   loaded,
   profileIssues,
+  excluded,
   ready,
   problem,
   onSheet,
@@ -366,6 +372,7 @@ function LoadedSummary({
   source: ImportedSource;
   loaded: LoadedSource | null;
   profileIssues: ProfileIssue[];
+  excluded: ExcludedField[];
   ready: boolean;
   problem: string | null;
   onSheet: (name: string) => void;
@@ -484,6 +491,29 @@ function LoadedSummary({
               <li key={index}>{issue.message}</li>
             ))}
           </ul>
+        </div>
+      ) : null}
+      {excluded.length > 0 ? (
+        <div role="status" className="border border-warn/40 border-l-4 border-l-warn bg-panel p-4 text-sm" data-testid="source-excluded-fields" data-count={excluded.length}>
+          <p className="flex items-start gap-2 font-medium">
+            <AlertIcon size={15} className="mt-0.5 shrink-0 text-warn" />
+            {excluded.length === 1 ? "1 field can't be used for mapping" : `${excluded.length} fields can't be used for mapping`}. They are not offered as matches.
+          </p>
+          <ul className="mt-2 space-y-1 text-ink-text">
+            {excluded.slice(0, 12).map((item, index) => (
+              <li key={item.path} data-testid={`excluded-field-${index}`} data-reason={item.reason}>
+                <span className="font-mono text-ink">{item.path}</span> — {EXCLUSION_TEXT[item.reason]}
+                {item.reason === "name" ? (
+                  <span className="text-mute">
+                    {" "}
+                    Rename it in your file, for example to <span className="font-mono">{suggestedRename(item.path)}</span>, then load it again.
+                  </span>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+          {excluded.length > 12 ? <p className="mt-1 text-xs text-mute">and {excluded.length - 12} more.</p> : null}
+          <p className="mt-2 text-xs text-mute">Shown only on this device. EYES does not rename or change your file.</p>
         </div>
       ) : null}
       {attention.length > 0 ? (

@@ -20,7 +20,9 @@ const meaning: CategoryMeaning = { source: "account_state", values: { active_cus
 const LABELS = ["active_customer", "inactive_customer"];
 
 function localWorkspace(extra: Partial<WorkspaceState> = {}): { workspace: WorkspaceState; prepared: ReturnType<typeof prepare> } {
-  const start: WorkspaceState = { ...crmDemo(), reservedRecords: null, categoryMeanings: { status: meaning }, ...extra };
+  // Sprint 16B (D2): the data owner's explicit field choices; suggestions are never applied.
+  const fieldMatches = { id: "customer_id", email: "email_address", createdAt: "joined_at", organization: "company_name" };
+  const start: WorkspaceState = { ...crmDemo(), reservedRecords: null, categoryMeanings: { status: meaning }, fieldMatches, ...extra };
   const prepared = prepare(start);
   const plan = planFields(prepared, start.source!.records, start.destinationText, { fieldMatches: start.fieldMatches, categoryMeanings: start.categoryMeanings })!;
   const contract = localContract(plan, prepared, start.destinationText);
@@ -116,7 +118,7 @@ describe("PRV-S15-005 common-word category values (production check, Meridian so
       ...base,
       source: { ...base.source!, label: "meridian-like", records: like.records as Record<string, unknown>[] },
       reservedRecords: null,
-      fieldMatches: { status: "account_state", email: "contact.email" },
+      fieldMatches: { status: "account_state", email: "contact.email", id: "record_id", createdAt: "contract.signed_at", organization: "organization" },
       categoryMeanings: { status: { source: "account_state", values: { activo: "active", inactivo: "inactive", pendiente: "prospect", suspendido: null } } },
       packageLabelSources: ["account_state"],
     };

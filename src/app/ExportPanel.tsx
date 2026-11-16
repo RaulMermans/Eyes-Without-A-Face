@@ -159,7 +159,8 @@ export function ExportPanel({
         <li><span className="font-medium">Not deployed.</span> It is a ZIP download; nothing is installed or started anywhere.</li>
         <li className="md:col-span-2" data-testid="export-status-explained">
           <span className="font-medium">Labeled by its evidence:</span> VERIFIED, VERIFIED_WITH_EXCEPTIONS or DRAFT in its manifest. This one would be{" "}
-          <span className="font-mono">{eligibility.status ?? "not exportable"}</span>.
+          <span className="font-mono">{eligibility.status ?? "not exportable"}</span>. VERIFIED describes structure and policy — every record produced a valid destination
+          record — not business meaning; the manifest notes say which fields&apos; meaning was verified.
         </li>
       </ul>
 

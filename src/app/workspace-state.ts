@@ -16,7 +16,8 @@ import type { SemanticConstraint } from "../semantics/contract.ts";
 import type { DateInputFormat } from "../domain/profile/profile.ts";
 import type { RevisionDecision } from "../revision/decision.ts";
 import type { SemanticWithheld } from "../revision/semantic-feedback.ts";
-import { isLocalMapping, type CategoryMeaning } from "./guided/field-plan.ts";
+import { isLocalMapping, type CategoryMeaning, type FieldMatch } from "./guided/field-plan.ts";
+import { summarizeDestination } from "./guided/destinations.ts";
 
 export interface ReviewState {
   preview: DisclosurePreview;
@@ -105,7 +106,7 @@ export interface WorkspaceState {
    * Sprint 15: destination field → local source path, set only by the user's
    * explicit choice in the guided flow. Local only; never part of a request.
    */
-  fieldMatches: Record<string, string>;
+  fieldMatches: Record<string, FieldMatch>;
   /**
    * Sprint 15: destination enum field → the user's declared translation of a
    * source field's categories. Local only. It is both the on-device mapping
@@ -179,4 +180,26 @@ export function applyFieldDecision(state: WorkspaceState, patch: Partial<Pick<Wo
   const next = { ...state, ...patch, revision: null, revisionConstraintIds: [] };
   if (state.mappingChoice === "manual" && isLocalMapping(state.mappingText)) return { ...next, report: null, mappingRunError: null };
   return next;
+}
+
+/**
+ * Sprint 16B (D2): a new destination. Field decisions (source choices,
+ * explicit "no field", category translations) are kept only for destination
+ * fields whose definition — name, type, format, allowed values, required — is
+ * unchanged; any other decision is dropped, so a confirmation never carries
+ * over to a different field that happens to share a name. Everything
+ * downstream is invalidated as before.
+ */
+export function withDestination(state: WorkspaceState, destinationText: string): WorkspaceState {
+  const signatures = (text: string): Map<string, string> => {
+    const summary = summarizeDestination(text);
+    if (!summary.ok) return new Map();
+    return new Map(summary.fields.map((field) => [field.name, JSON.stringify([field.type, field.format ?? null, field.enumValues ?? null, field.required])]));
+  };
+  const before = signatures(state.destinationText);
+  const after = signatures(destinationText);
+  const same = (name: string) => before.has(name) && before.get(name) === after.get(name);
+  const fieldMatches = Object.fromEntries(Object.entries(state.fieldMatches).filter(([name]) => same(name)));
+  const categoryMeanings = Object.fromEntries(Object.entries(state.categoryMeanings).filter(([name]) => same(name)));
+  return invalidateDownstream({ ...state, destinationText, fieldMatches, categoryMeanings });
 }

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "amber",
+    "name": "Amber Line",
+    "modeName": "tram",
+    "lineStatuses": [
+      {
+        "statusSeverityDescription": "Good Service"
+      }
+    ]
+  },
+  {
+    "id": "cobalt",
+    "name": "Cobalt Line",
+    "modeName": "tram",
+    "lineStatuses": [
+      {
+        "statusSeverityDescription": "Minor Delays"
+      }
+    ]
+  },
+  {
+    "id": "juniper",
+    "name": "Juniper Line",
+    "modeName": "tram",
+    "lineStatuses": [
+      {
+        "statusSeverityDescription": "Good Service"
+      }
+    ]
+  },
+  {
+    "id": "saffron",
+    "name": "Saffron Line",
+    "modeName": "tram",
+    "lineStatuses": [
+      {
+        "statusSeverityDescription": "Minor Delays"
+      }
+    ]
+  },
+  {
+    "id": "teal",
+    "name": "Teal Line",
+    "modeName": "tram",
+    "lineStatuses": [
+      {
+        "statusSeverityDescription": "Good Service"
+      }
+    ]
+  },
+  {
+    "id": "umber",
+    "name": "Umber Line",
+    "modeName": "tram",
+    "lineStatuses": [
+      {
+        "statusSeverityDescription": "Minor Delays"
+      }
+    ]
+  }
+]
