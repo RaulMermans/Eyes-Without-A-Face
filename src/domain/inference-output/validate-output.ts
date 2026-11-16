@@ -1,6 +1,7 @@
 import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
 import fieldInterpretationSchema from "./schemas/field-interpretation.v1.schema.json" with { type: "json" };
+import integrationIntentPlanSchema from "./schemas/integration-intent-plan.v1.schema.json" with { type: "json" };
 import mappingProposalSchema from "./schemas/mapping-proposal.v1.schema.json" with { type: "json" };
 import privateFieldSemanticsSchema from "./schemas/private-field-semantics.v1.schema.json" with { type: "json" };
 import { findExecutableTransformations } from "../mapping/safety.ts";
@@ -15,8 +16,10 @@ addFormats(ajv);
 const fieldInterpretation = ajv.compile(fieldInterpretationSchema);
 const mappingProposal = ajv.compile(mappingProposalSchema);
 const privateFieldSemantics = ajv.compile(privateFieldSemanticsSchema);
+/** Sprint 18B (ADR 0018): Integration Intent Plan 1.0.0, the initial planner's answer. */
+const integrationIntentPlan = ajv.compile(integrationIntentPlanSchema);
 
-export type StructuredOutputKind = "field-interpretation" | "mapping-proposal" | "private-field-semantics";
+export type StructuredOutputKind = "field-interpretation" | "mapping-proposal" | "private-field-semantics" | "integration-intent-plan";
 
 export interface StructuredOutputValidation {
   valid: boolean;
@@ -36,7 +39,13 @@ export function validateStructuredOutput(
   value: unknown,
 ): StructuredOutputValidation {
   const validate =
-    kind === "field-interpretation" ? fieldInterpretation : kind === "private-field-semantics" ? privateFieldSemantics : mappingProposal;
+    kind === "field-interpretation"
+      ? fieldInterpretation
+      : kind === "private-field-semantics"
+        ? privateFieldSemantics
+        : kind === "integration-intent-plan"
+          ? integrationIntentPlan
+          : mappingProposal;
   const ok = validate(value);
   const issues: string[] = [];
   if (!ok && validate.errors) {

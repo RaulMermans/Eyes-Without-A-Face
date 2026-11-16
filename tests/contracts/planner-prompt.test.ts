@@ -2,7 +2,7 @@
  * Sprint 18A.5 (ADR 0017) — initial planner prompt v4 and initial response schema 2
  * were REJECTED by the pre-registered live evaluation and are NOT wired into the app.
  *
- * S18A5-P-001  the app sends the Sprint 3 initial instructions; revisions keep their frozen text
+ * S18A5-P-001  the app never sends v4 (Sprint 18B: it sends prompt v5); revisions keep their frozen text
  * S18A5-P-002  the recorded v4 text (kept so the evidence replays) is fixed text
  * S18A5-P-003  the app's initial schema is the Sprint 9 per-operation schema; validation unchanged
  */
@@ -11,7 +11,9 @@ import { BLIND_REVISION_INSTRUCTIONS, MAPPING_PROPOSAL_INSTRUCTIONS, SEMANTIC_RE
 import { INITIAL_MAPPING_RESPONSE_SCHEMA_V2, INITIAL_PROMPT_VERSION, PLANNER_INSTRUCTIONS_V4, buildInitialPromptText } from "../../src/inference/planner-prompt.ts";
 import { INITIAL_MAPPING_RESPONSE_SCHEMA, REVISION_MAPPING_RESPONSE_SCHEMA } from "../../src/inference/response-schemas.ts";
 import { convertProposal } from "../../src/proposal/convert.ts";
-import { buildOutboundApplicationRequest } from "../../src/twin/authorization.ts";
+import { buildOutboundApplicationRequest, buildOutboundPromptText } from "../../src/twin/authorization.ts";
+import { INTENT_PLAN_INSTRUCTIONS } from "../../src/inference/intent-prompt.ts";
+import { INITIAL_PLANNER } from "../../src/inference/planner-selection.ts";
 import type { CloudDisclosurePayload } from "../../src/domain/contracts/types.ts";
 
 const payload = (schemaVersion: string) =>
@@ -37,10 +39,15 @@ const payload = (schemaVersion: string) =>
   }) as unknown as CloudDisclosurePayload;
 
 describe("S18A5-P-001 prompt selection", () => {
-  it("an initial request (1.1.0) carries the Sprint 3 instructions, not the rejected v4", () => {
+  it("an initial request (1.1.0) carries the selected initial planner (Sprint 18B: prompt v5), never the rejected v4", () => {
+    // Sprint 18B (ADR 0018) replaced the Sprint 3 selection with INITIAL_PLANNER = "intent-plan-1".
+    expect(INITIAL_PLANNER).toBe("intent-plan-1");
     const outbound = buildOutboundApplicationRequest("r1", payload("1.1.0"), "{\"x\":1}", "h");
-    expect(outbound.prompt).toBe(`${MAPPING_PROPOSAL_INSTRUCTIONS}\n{"x":1}`);
+    expect(outbound.prompt).toBe(`${INTENT_PLAN_INSTRUCTIONS}\n{"x":1}`);
+    expect(outbound.prompt).not.toBe(`${MAPPING_PROPOSAL_INSTRUCTIONS}\n{"x":1}`);
     expect(outbound.prompt).not.toContain(PLANNER_INSTRUCTIONS_V4.split("\n")[2]!);
+    // The revert path of ADR 0018 restores the Sprint 3 instructions byte-for-byte.
+    expect(buildOutboundPromptText("{\"x\":1}", "1.1.0", "mapping-proposal-sprint3")).toBe(`${MAPPING_PROPOSAL_INSTRUCTIONS}\n{"x":1}`);
     // The recorded v4 builder still reproduces the P1 prompts of the evidence.
     expect(buildInitialPromptText("{}")).toBe(`${PLANNER_INSTRUCTIONS_V4}\n{}`);
     expect(INITIAL_PROMPT_VERSION).toBe("4");

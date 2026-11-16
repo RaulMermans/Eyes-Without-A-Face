@@ -31,7 +31,12 @@ import { assertReservedAuthorization } from "../twin/authorization-ledger.ts";
 import { raceAbort } from "./abort.ts";
 import { recordDiagnostic } from "./diagnostics.ts";
 import { classifyUnknownError, InferenceError, InferenceUnavailableError } from "./errors.ts";
-import { INITIAL_MAPPING_RESPONSE_SCHEMA, REVISION_MAPPING_RESPONSE_SCHEMA } from "./response-schemas.ts";
+import {
+  cloudResponseKind,
+  INITIAL_MAPPING_RESPONSE_SCHEMA,
+  INTENT_PLAN_RESPONSE_SCHEMA,
+  REVISION_MAPPING_RESPONSE_SCHEMA,
+} from "./response-schemas.ts";
 import { FIREBASE_AI_LOGIC_API } from "./firebase-api.ts";
 import { probeOnDeviceCapability } from "./on-device-capability.ts";
 import {
@@ -128,6 +133,8 @@ class LiveFirebaseRuntime {
   private cloudModel: GenerativeModel | null = null;
   /** Same model and ONLY_IN_CLOUD mode; per-operation response schema for 1.2.0 revision requests. */
   private cloudRevisionModel: GenerativeModel | null = null;
+  /** Same model and ONLY_IN_CLOUD mode; Integration Intent Plan schema for prompt v5 initial requests (ADR 0018). */
+  private cloudPlanModel: GenerativeModel | null = null;
   private initializingOnDevice: Promise<void> | null = null;
   private onDeviceBusy = false;
   private cloudBusy = false;
@@ -322,7 +329,20 @@ class LiveFirebaseRuntime {
     try {
       await this.requireAppCheckToken();
       const revision = isRevisionSchemaVersion(request.payload.schemaVersion);
-      if (!revision && !this.cloudModel) {
+      const plan = cloudResponseKind(request.outboundPrompt, revision) === "integration-intent-plan";
+      if (plan && !this.cloudPlanModel) {
+        this.cloudPlanModel = getGenerativeModel(this.ai(), {
+          mode: InferenceMode.ONLY_IN_CLOUD,
+          inCloudParams: {
+            model: FIREBASE_AI_LOGIC_API.defaultCloudModel,
+            generationConfig: {
+              responseMimeType: "application/json",
+              responseJsonSchema: INTENT_PLAN_RESPONSE_SCHEMA,
+            },
+          },
+        });
+      }
+      if (!plan && !revision && !this.cloudModel) {
         this.cloudModel = getGenerativeModel(this.ai(), {
           mode: InferenceMode.ONLY_IN_CLOUD,
           inCloudParams: {
@@ -346,7 +366,7 @@ class LiveFirebaseRuntime {
           },
         });
       }
-      const cloudModel = revision ? this.cloudRevisionModel : this.cloudModel;
+      const cloudModel = plan ? this.cloudPlanModel : revision ? this.cloudRevisionModel : this.cloudModel;
       if (!cloudModel) {
         throw new InferenceUnavailableError("Cloud model was not initialized.", "MODEL_UNAVAILABLE");
       }
@@ -356,7 +376,7 @@ class LiveFirebaseRuntime {
       }
       const result = await raceAbort(cloudModel.generateContent(prompt, { signal: controller.signal }), controller.signal);
       return this.finishStructuredResult({
-        kind: "mapping-proposal",
+        kind: plan ? "integration-intent-plan" : "mapping-proposal",
         text: result.response.text(),
         requestedMode: "ONLY_IN_CLOUD",
         reportedSource: result.response.inferenceSource,
@@ -453,7 +473,7 @@ class LiveFirebaseRuntime {
       resultKind: resolved.actualSource === "ON_DEVICE" ? ("real-on-device" as const) : ("real-cloud" as const),
     };
     recordDiagnostic({
-      kind: input.kind === "mapping-proposal" ? "cloud-inference" : "on-device-inference",
+      kind: input.kind === "mapping-proposal" || input.kind === "integration-intent-plan" ? "cloud-inference" : "on-device-inference",
       durationMs: provenance.durationMs,
       requestedMode: input.requestedMode,
       actualSource: provenance.actualSource,
