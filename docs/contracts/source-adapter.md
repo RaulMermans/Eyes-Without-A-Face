@@ -42,6 +42,21 @@ interface SourceAdapter<Config, Result> {
 - **XLSX:** text, numbers and booleans keep their types. Date-formatted numbers become ISO 8601 text from the workbook's date system (time-zone independent). Formulas contribute their cached result, which is reported. A formula without a cached result, and error cells, become missing and are reported. Hidden sheets are flagged. Other sheets can be selected.
 - **REST:** the same shapes as a JSON file, plus `{ data | items | results: [...] }` envelopes (reported).
 
+## Field names the mapping can use (Sprint 16B)
+
+The adapters accept any header up to 64 characters. The **mapping** reads a field only through a dot path whose segments are identifiers: letters, digits and `_`, starting with a letter or `_` (`^[A-Za-z_][A-Za-z0-9_]*$`).
+
+A field the mapping cannot use stays in the imported records but is **excluded** from field matching. The data screen lists every excluded field locally, with its reason and a rename example (for example `Customer ID` → `customer_id`); the destination step says how many there are.
+
+| Reason | Cause |
+| --- | --- |
+| `name` | spaces, punctuation, accents or a leading digit in the name |
+| `array` | the field holds lists |
+| `mixed` | different kinds of values across records (for example text and numbers) |
+| `null` | empty in every record |
+
+EYES never renames columns. **Workaround:** rename the column in the file and load it again. Support for arbitrary names (bracketed paths such as `["Customer ID"]`) would change the Mapping Contract's path grammar. It is a post-hackathon item that needs a contract review.
+
 ## Limits (`src/sources/limits.ts`)
 
 | Bound | Value |

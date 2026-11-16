@@ -114,7 +114,7 @@ function verifyZip(c, zipFile, bindingsFile) {
   // A source field name that is a short plain English word ("name", "notes") also occurs in the package's own
   // JSON keys; such hits are reported separately as generic. Distinctive names are blocking findings.
   const generic = (k) => /^[a-z]{2,7}$/.test(k) || destNames.has(k) || PACKAGE_VOCABULARY.has(k);
-  const privacy = { canaries: [], sourceFieldNames: [], genericWordMatches: [], bindingPaths: [], sourceValues: [], sensitive: [], adversarial: [], bindingsFileInZip: files.some((f) => /bindings\.local/.test(f)) };
+  const privacy = { canaries: [], sourceFieldNames: [], genericWordMatches: [], packageVocabularyValues: [], bindingPaths: [], sourceValues: [], sensitive: [], adversarial: [], bindingsFileInZip: files.some((f) => /bindings\.local/.test(f)) };
   const wordHit = (text, needle) => new RegExp(`(^|[^A-Za-z0-9_])${needle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}([^A-Za-z0-9_]|$)`).test(text);
   for (const file of files) {
     if (file.startsWith("runtime/")) continue; // reviewed engine bundle + notices: identical for every package (hash-checked)
@@ -122,7 +122,14 @@ function verifyZip(c, zipFile, bindingsFile) {
     for (const value of canaries) if (text.includes(value)) privacy.canaries.push(file);
     for (const key of sourceKeys) if (wordHit(text, key)) (generic(key) ? privacy.genericWordMatches : privacy.sourceFieldNames).push(`${file}:${sha(key).slice(0, 8)}`);
     for (const p of bindingPaths) if (wordHit(text, p)) (generic(p) ? privacy.genericWordMatches : privacy.bindingPaths).push(`${file}:${sha(p).slice(0, 8)}`);
-    for (const value of sourceValues) if (text.includes(value)) privacy.sourceValues.push(`${file}:${sha(value).slice(0, 8)}`);
+    for (const value of sourceValues) {
+      if (!text.includes(value)) continue;
+      // Independent provenance check: the same file of a control package built from OTHER data (which does
+      // not contain this value) also contains it → it is the package's own fixed text, reported separately.
+      const lowered = value.toLowerCase();
+      const vocabulary = !CONTROL_VALUES.has(lowered) && (CONTROL_TEXT.get(file) ?? "").includes(lowered);
+      (vocabulary ? privacy.packageVocabularyValues : privacy.sourceValues).push(`${file}:${sha(value).slice(0, 8)}`);
+    }
     for (const s of c.sensitiveSources ?? []) if (wordHit(text, s)) privacy.sensitive.push(file);
     for (const a of c.adversarialValues ?? []) if (text.includes(a)) privacy.adversarial.push(`${file}:${sha(a).slice(0, 8)}`);
   }
@@ -171,6 +178,9 @@ function verifyZip(c, zipFile, bindingsFile) {
  * excluded too: the destination schema legitimately contains them.
  */
 let PACKAGE_VOCABULARY = new Set();
+/** Control package text by file path (lower-case), and the control dataset's own values: for value-hit provenance. */
+let CONTROL_TEXT = new Map();
+let CONTROL_VALUES = new Set();
 function buildVocabulary(controlId) {
   const browser = path.join(RUN_DIR, controlId, "browser.json");
   if (!fs.existsSync(browser)) return;
@@ -178,7 +188,18 @@ function buildVocabulary(controlId) {
   if (!zipFile || !fs.existsSync(zipFile)) return;
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "s16a-vocab-"));
   execFileSync("unzip", ["-q", path.resolve(zipFile), "-d", dir]);
-  const own = collectKeys(JSON.parse(fs.readFileSync(path.join(ROOT, "cases", controlId, "runner-input.json"), "utf8")));
+  const controlRecords = JSON.parse(fs.readFileSync(path.join(ROOT, "cases", controlId, "runner-input.json"), "utf8"));
+  const own = collectKeys(controlRecords);
+  CONTROL_VALUES = new Set([...collectStrings(controlRecords)].map((value) => value.trim().toLowerCase()));
+  const top = fs.readdirSync(dir)[0];
+  const collect = (d) => {
+    for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+      const full = path.join(d, e.name);
+      if (e.isDirectory()) collect(full);
+      else CONTROL_TEXT.set(path.relative(path.join(dir, top), full), fs.readFileSync(full, "utf8").toLowerCase());
+    }
+  };
+  collect(dir);
   const tokens = new Set();
   const walk = (d) => {
     for (const e of fs.readdirSync(d, { withFileTypes: true })) {
