@@ -108,8 +108,8 @@ describe("EVAL-183 live AI-value run", () => {
     const first = load(list("dev")[0]!);
     expect((await promptSha256((await reconstruct(first, false, "sprint3"))!)).slice(0, 16)).toBe("41949fad70703962");
     expect((await promptSha256((await reconstruct(first, true, "sprint3"))!)).slice(0, 16)).toBe("9a53440131d7a4dd");
-    // Sprint 18A.5: P0 (2127cb9) previewed 9a53…, the same as G1; P1 (prompt v4) previewed 6562….
-    expect((await promptSha256((await reconstruct(first, true, "current"))!)).slice(0, 16)).toBe("656223e93572b9b8");
+    // Sprint 18A.5: P0 (2127cb9) previewed 9a53…, the same as G1; P1 (rejected prompt v4, eafca21) previewed 6562….
+    expect((await promptSha256((await reconstruct(first, true, "v4"))!)).slice(0, 16)).toBe("656223e93572b9b8");
   });
 });
 

@@ -1,0 +1,54 @@
+{
+  "experiment": "sprint-18a5-planner",
+  "privacyScan": {
+    "harnessMatches": 2,
+    "sourceDerivedFindings": 0
+  },
+  "split": "holdout",
+  "evidenceSha256": "a4ad7f446cbc512d8afb2dd8bf97552ecd98066e9692f5414bf6eab72420b3fd",
+  "P0": {
+    "requests": 18,
+    "answered": 18,
+    "providerFailures": 0,
+    "promptMismatches": 0,
+    "leaks": 2,
+    "V_validProposals": 0.167,
+    "I_inventedValues": 44,
+    "C_mappableCorrect": 0.661,
+    "W_categoryAbstention": 0.158,
+    "N_emptyAbstention": 0.111,
+    "H_hallucinatedReferences": 0,
+    "L1_correctCorrespondences": 0.484,
+    "rejectionCodes": {
+      "INVALID_ENUM_MAPPING": 15
+    },
+    "medianMs": 7257
+  },
+  "P1": {
+    "requests": 18,
+    "answered": 18,
+    "providerFailures": 0,
+    "promptMismatches": 0,
+    "leaks": 0,
+    "V_validProposals": 0.444,
+    "I_inventedValues": 0,
+    "C_mappableCorrect": 0.205,
+    "W_categoryAbstention": 1,
+    "N_emptyAbstention": 1,
+    "H_hallucinatedReferences": 0,
+    "L1_correctCorrespondences": 0.317,
+    "rejectionCodes": {
+      "MALFORMED_PROPOSAL": 10
+    },
+    "medianMs": 4221
+  },
+  "verdict": {
+    "V": true,
+    "I": true,
+    "C": false,
+    "H": true,
+    "privacy": true,
+    "promptsProven": true,
+    "pass": false
+  }
+}

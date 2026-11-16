@@ -1,13 +1,14 @@
 /**
- * Sprint 18A.5 (ADR 0017) — initial planner prompt v4 and initial response schema 2.
+ * Sprint 18A.5 (ADR 0017) — initial planner prompt v4 and initial response schema 2
+ * were REJECTED by the pre-registered live evaluation and are NOT wired into the app.
  *
- * S18A5-P-001  v4 is used for initial (1.1.0) requests only; revisions keep their frozen text
- * S18A5-P-002  v4 forbids what the run measured: map_enum without labels, invented values
- * S18A5-P-003  schema 2 cannot emit a default; validation is unchanged (a default still converts)
+ * S18A5-P-001  the app sends the Sprint 3 initial instructions; revisions keep their frozen text
+ * S18A5-P-002  the recorded v4 text (kept so the evidence replays) is fixed text
+ * S18A5-P-003  the app's initial schema is the Sprint 9 per-operation schema; validation unchanged
  */
 import { describe, expect, it } from "vitest";
 import { BLIND_REVISION_INSTRUCTIONS, MAPPING_PROPOSAL_INSTRUCTIONS, SEMANTIC_REVISION_INSTRUCTIONS, buildCloudPromptText } from "../../src/inference/prompts.ts";
-import { INITIAL_PROMPT_VERSION, PLANNER_INSTRUCTIONS_V4, buildInitialPromptText } from "../../src/inference/planner-prompt.ts";
+import { INITIAL_MAPPING_RESPONSE_SCHEMA_V2, INITIAL_PROMPT_VERSION, PLANNER_INSTRUCTIONS_V4, buildInitialPromptText } from "../../src/inference/planner-prompt.ts";
 import { INITIAL_MAPPING_RESPONSE_SCHEMA, REVISION_MAPPING_RESPONSE_SCHEMA } from "../../src/inference/response-schemas.ts";
 import { convertProposal } from "../../src/proposal/convert.ts";
 import { buildOutboundApplicationRequest } from "../../src/twin/authorization.ts";
@@ -36,9 +37,11 @@ const payload = (schemaVersion: string) =>
   }) as unknown as CloudDisclosurePayload;
 
 describe("S18A5-P-001 prompt selection", () => {
-  it("an initial request (1.1.0) carries v4 followed by exactly the canonical payload", () => {
+  it("an initial request (1.1.0) carries the Sprint 3 instructions, not the rejected v4", () => {
     const outbound = buildOutboundApplicationRequest("r1", payload("1.1.0"), "{\"x\":1}", "h");
-    expect(outbound.prompt).toBe(`${PLANNER_INSTRUCTIONS_V4}\n{"x":1}`);
+    expect(outbound.prompt).toBe(`${MAPPING_PROPOSAL_INSTRUCTIONS}\n{"x":1}`);
+    expect(outbound.prompt).not.toContain(PLANNER_INSTRUCTIONS_V4.split("\n")[2]!);
+    // The recorded v4 builder still reproduces the P1 prompts of the evidence.
     expect(buildInitialPromptText("{}")).toBe(`${PLANNER_INSTRUCTIONS_V4}\n{}`);
     expect(INITIAL_PROMPT_VERSION).toBe("4");
   });
@@ -77,8 +80,8 @@ describe("S18A5-P-002 what v4 tells the planner", () => {
   });
 });
 
-describe("S18A5-P-003 initial response schema 2", () => {
-  const ops = (INITIAL_MAPPING_RESPONSE_SCHEMA as unknown as { properties: { operations: { items: { anyOf: Array<{ properties: { op: { enum: string[] }; params?: { properties: Record<string, { enum?: string[] }> } } }> } } } }).properties.operations.items.anyOf;
+describe("S18A5-P-003 initial response schema 2 (rejected, not used)", () => {
+  const ops = (INITIAL_MAPPING_RESPONSE_SCHEMA_V2 as unknown as { properties: { operations: { items: { anyOf: Array<{ properties: { op: { enum: string[] }; params?: { properties: Record<string, { enum?: string[] }> } } }> } } } }).properties.operations.items.anyOf;
 
   it("has no default_if_missing branch and map_enum allows only unmapped=fail without a default param", () => {
     expect(ops.flatMap((branch) => branch.properties.op.enum)).not.toContain("default_if_missing");
@@ -87,8 +90,9 @@ describe("S18A5-P-003 initial response schema 2", () => {
     expect(Object.keys(mapEnum.properties.params!.properties)).not.toContain("default");
   });
 
-  it("revisions keep the Sprint 7 schema (an approved fallback stays possible there)", () => {
-    expect(REVISION_MAPPING_RESPONSE_SCHEMA).not.toBe(INITIAL_MAPPING_RESPONSE_SCHEMA);
+  it("the app's initial and revision proposals use the Sprint 9 per-operation schema, not schema 2", () => {
+    expect(INITIAL_MAPPING_RESPONSE_SCHEMA).toBe(REVISION_MAPPING_RESPONSE_SCHEMA);
+    expect(INITIAL_MAPPING_RESPONSE_SCHEMA).not.toBe(INITIAL_MAPPING_RESPONSE_SCHEMA_V2);
   });
 
   it("validation is unchanged: a proposal with a default still converts, and the policy, not the schema, judges it", () => {

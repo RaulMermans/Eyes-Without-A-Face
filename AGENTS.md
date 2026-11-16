@@ -219,16 +219,18 @@ Decisions: [ADR 0015](docs/decisions/0015-ai-integration-engineer-program.md), [
   - Tune the lexicon on `dev/` only.
   - The holdout was scored offline and live on 2026-11-16; treat it as **inspected**. Any new claim needs a fresh holdout written by an independent author before the change.
 
-## Planner prompt v4 (Sprint 18A.5)
+## Planner prompt v4 (Sprint 18A.5) — rejected
 
-Decision: [ADR 0017](docs/decisions/0017-planner-prompt-v4.md).
+Decision: [ADR 0017](docs/decisions/0017-planner-prompt-v4.md) (Rejected).
 
-- Initial proposals use `PLANNER_INSTRUCTIONS_V4` and `INITIAL_MAPPING_RESPONSE_SCHEMA` (`mapping-response-initial-2`).
-  - Never re-add `default_if_missing` or `unmapped: "default"` to the initial schema.
-  - Never tell the planner to fill a field it cannot source.
+- `src/inference/planner-prompt.ts` (v4, initial schema 2) is **not wired**. It exists only so the 18A.5 evidence replays.
+  - Never import it into the app.
+  - A successor needs a new ADR, a fresh holdout and a pre-registration.
+- The app's initial proposals use the Sprint 3 instructions and the Sprint 9 per-operation schema.
+- A planner prompt must never allow an empty operation list or an unbounded rationale, and must not trade correct mappings for abstention (18A.5 finding).
 - Revisions keep their frozen prompts and schema.
 - Do not edit `MAPPING_PROPOSAL_INSTRUCTIONS` or `buildCloudPromptText`: historical replays rebuild their recorded prompts from them.
-- The fresh 18A.5 holdout (`tests/fixtures/ai-value-18a5/holdout/`) follows the 18A holdout rules: never open it, and never tune on it.
+- The 18A.5 holdout (`tests/fixtures/ai-value-18a5/holdout/`) was scored on 2026-11-16 and is **inspected**. Never tune on it.
 
 ## Release lifecycle and production acceptance (Sprint 14 — permanent, every sprint)
 

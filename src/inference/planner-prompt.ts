@@ -1,4 +1,14 @@
 /**
+ * REJECTED (Sprint 18A.5, ADR 0017). NOT USED BY THE APP. Kept only so the
+ * pre-registered live evidence (docs/evidence/sprint-18a5/) replays: the P1
+ * prompts are reconstructed from this text and proven against the hashes sent.
+ *
+ * Pre-registered verdict: FAIL. It stopped invented values (44 → 0) and bad
+ * map_enum, but correct mappings on mappable fields fell 0.661 → 0.205: the
+ * planner over-abstained, and the prompt itself caused 10 malformed answers
+ * (5 with zero operations, 5 with a rationale over 500 characters). Do not
+ * wire it back; a successor needs a fresh holdout.
+ *
  * Sprint 18A.5 — initial mapping planner, prompt v4 (ADR 0017,
  * docs/evaluation/sprint-18a5-planner.md).
  *

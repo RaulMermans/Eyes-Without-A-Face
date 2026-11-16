@@ -120,3 +120,46 @@ Definitions:
 - mappable correct 0.674.
 
 Resuming needs the owner's decision: the stop rule fired, and the budget was approved under it.
+
+### Run 1, resumed (owner decision) — complete
+
+**Run.** The owner chose to resume.
+
+- The rest of P0 trial 1 ran from #8, then P1 t1, P1 t2 and P0 t2, using the precise scan and the same stop rule.
+- **36 requests in total:** 18 P0 and 18 P1, within the approved 40. Holdout #8 sent nothing four times.
+- 0 provider failures.
+- Every sent prompt is hash-proven against its reconstruction: Sprint 3 text for P0, v4 for P1.
+- Privacy: 2 harness matches (the traced #7 false positive) and **0 source-derived findings**.
+- Scored by EVAL-187 into [planner-live-summary.json](../evidence/sprint-18a5/planner-live-summary.json).
+
+| ID | Metric | P0 | P1 | Pass condition | Verdict |
+| --- | --- | --- | --- | --- | --- |
+| **V** | Valid proposals | 0.167 | 0.444 | P1 ≥ P0 + 0.20 | pass |
+| **I** | Invented values | 44 | **0** | P1 = 0 | pass |
+| **C** | Correct on mappable targets | 0.661 | **0.205** | P1 ≥ P0 − 0.05 | **FAIL** |
+| W | Category abstention | 0.158 | 1.000 | reported | — |
+| N | Empty-target abstention | 0.111 | 1.000 | reported | — |
+| H | Hallucinated references | 0 | 0 | P1 ≤ P0 | pass |
+| — | L1 (all targets) | 0.484 | 0.317 | reported | — |
+| — | Rejections | 15 × `INVALID_ENUM_MAPPING` | 10 × `MALFORMED_PROPOSAL` | reported | — |
+
+**A.5 verdict: FAIL.** The pre-registered non-inferiority condition C does not hold.
+
+**Mechanism.** It was examined after scoring, on alias-level answers only.
+
+- **Over-abstention.** P1 wrote 0–6 operations for 10–11 targets, where P0 wrote 7–11. The instructions "never invent… even a required one" and "write only when a source carries its meaning" made the planner drop confident mappings as well as the impossible ones.
+- **v4 created two new contract failures:**
+  - **5 answers had zero operations.** Mapping Proposal 1.0.0 requires at least one.
+  - **5 answers had a rationale over 500 characters.** v4 asked the planner to list every unwritten field in the rationale, and the decoder schema does not bound its length.
+- **What worked:** invented values fell to 0, and `map_enum` from withheld labels disappeared. The two targeted defects can be fixed. The way v4 fixed them cost too much.
+
+**Decision.**
+
+- **v4 and initial schema 2 are not shipped.** The app is reverted to the Sprint 3 initial prompt and the Sprint 9 schema, byte-identical to `baa5df9`.
+- The v4 text is kept, unwired, only so this evidence replays.
+- This holdout is now **inspected**. A successor (v5) is not tuned on it. It needs its own pre-registration and a fresh independent holdout.
+- **Design inputs for v5**, from the mechanism and not from tuning:
+  - forbid only `map_enum` without labels and invented values, and keep "map every field you can";
+  - never allow an empty operation list;
+  - do not ask for a per-field rationale, or move unresolved targets into a contract field (Mapping Proposal 1.1.0, A.6) with bounded length;
+  - test the constrained schema alone (no defaults) as a separate configuration.

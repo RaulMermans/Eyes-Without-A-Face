@@ -6,7 +6,6 @@ import { PRIVATE_DATA_CANARY } from "../privacy/canaries.ts";
 import { findPrivateValueLeaks } from "../privacy/leak-scan.ts";
 import { FIREBASE_AI_LOGIC_API } from "../inference/firebase-api.ts";
 import { buildCloudPromptText, SDK_TRANSPORT_NOTE } from "../inference/prompts.ts";
-import { buildInitialPromptText } from "../inference/planner-prompt.ts";
 
 export const MAX_CLOUD_PAYLOAD_BYTES = 24_576;
 export const MAX_CLOUD_RESPONSE_BYTES = 65_536;
@@ -114,8 +113,7 @@ export function buildOutboundApplicationRequest(
     requestId,
     destination: payload.destination,
     purpose: payload.purpose,
-    // Sprint 18A.5: initial proposals (1.1.0) use planner prompt v4; revisions keep their frozen instructions.
-    prompt: payload.schemaVersion === "1.1.0" ? buildInitialPromptText(canonicalJson) : buildCloudPromptText(canonicalJson, payload.schemaVersion),
+    prompt: buildCloudPromptText(canonicalJson, payload.schemaVersion),
     disclosurePayloadHash: payloadHash,
   };
 }

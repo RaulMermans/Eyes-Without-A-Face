@@ -12,6 +12,7 @@
 import type { CloudDisclosurePayload } from "../domain/contracts/types.ts";
 import { DEFAULT_TWIN_SEED } from "../phantom/generate.ts";
 import { convertProposal, parseProposalText } from "../proposal/convert.ts";
+import { buildInitialPromptText } from "../inference/planner-prompt.ts";
 import { buildCloudPromptText } from "../inference/prompts.ts";
 import { createDisclosurePreview } from "../twin/authorization.ts";
 import { buildDisclosureDraft, prepareTwin } from "../workflow/pipeline.ts";
@@ -46,10 +47,10 @@ async function sha256(text: string): Promise<string> {
 }
 
 /**
- * `prompt: "sprint3"` rebuilds the pre-A.5 initial prompt (MAPPING_PROPOSAL_INSTRUCTIONS
- * via the unchanged `buildCloudPromptText`); `"current"` is what this app sends now.
+ * `prompt: "sprint3"` rebuilds the initial prompt the app sends (MAPPING_PROPOSAL_INSTRUCTIONS
+ * via `buildCloudPromptText`); `"v4"` rebuilds the rejected Sprint 18A.5 P1 prompt.
  */
-export async function reconstruct(scenario: AiValueScenario, concepts: boolean, prompt: "current" | "sprint3" = "current"): Promise<Reconstruction | null> {
+export async function reconstruct(scenario: AiValueScenario, concepts: boolean, prompt: "sprint3" | "v4" = "sprint3"): Promise<Reconstruction | null> {
   const prepared = prepareTwin({ records: scenario.records, datasetLabel: "imported.json", seed: DEFAULT_TWIN_SEED, concepts });
   if (!prepared.ok) return null;
   const draft = buildDisclosureDraft({ prepared: prepared.value, targetSchema: scenario.destination });
@@ -57,7 +58,7 @@ export async function reconstruct(scenario: AiValueScenario, concepts: boolean, 
   const preview = await createDisclosurePreview(draft.value.payload);
   return {
     payload: draft.value.payload,
-    outboundPrompt: prompt === "sprint3" ? buildCloudPromptText(preview.canonicalJson, draft.value.payload.schemaVersion) : preview.outboundPrompt,
+    outboundPrompt: prompt === "v4" ? buildInitialPromptText(preview.canonicalJson) : buildCloudPromptText(preview.canonicalJson, draft.value.payload.schemaVersion),
     aliasByPath: new Map(prepared.value.twin.fields.map((field) => [field.localPath, field.alias])),
   };
 }
@@ -133,8 +134,8 @@ export async function scoreEntry(entry: LiveEntry, scenario: AiValueScenario): P
     leakCount: entry.leakCount,
     ms: entry.ms,
   };
-  // G0: pre-18A twin + Sprint 3 prompt; G1 and P0: concept twin + Sprint 3 prompt; P1: concept twin + current prompt.
-  const reconstruction = await reconstruct(scenario, entry.config !== "G0", entry.config === "P1" ? "current" : "sprint3");
+  // G0: pre-18A twin + Sprint 3 prompt; G1 and P0: concept twin + Sprint 3 prompt; P1: concept twin + rejected v4 prompt.
+  const reconstruction = await reconstruct(scenario, entry.config !== "G0", entry.config === "P1" ? "v4" : "sprint3");
   if (entry.requests === 0 || !reconstruction) return base;
   const expected = await promptSha256(reconstruction);
   base.promptMatches = entry.promptSha256.length === 1 && entry.promptSha256[0] === expected && entry.previewSha256 === expected;
@@ -340,7 +341,7 @@ export function privateTermsInBody(body: string, scenario: Pick<AiValueScenario,
 /** Offline re-scan of a recorded request: the reconstructed prompt is hash-proven identical to the one sent. */
 export async function rescanEntry(entry: LiveEntry, scenario: AiValueScenario): Promise<number | null> {
   if (entry.requests === 0) return null;
-  const reconstruction = await reconstruct(scenario, entry.config !== "G0", entry.config === "P1" ? "current" : "sprint3");
+  const reconstruction = await reconstruct(scenario, entry.config !== "G0", entry.config === "P1" ? "v4" : "sprint3");
   if (!reconstruction) return null;
   const body = JSON.stringify({ contents: [{ role: "user", parts: [{ text: reconstruction.outboundPrompt }] }] });
   return privateTermsInBody(body, scenario).length;

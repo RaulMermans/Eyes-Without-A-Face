@@ -1,6 +1,6 @@
 # 0017 — Initial planner prompt v4 and initial response schema 2
 
-Status: Accepted subject to the pre-registered live comparison ([evaluation](../evaluation/sprint-18a5-planner.md)).
+Status: **Rejected** (2026-11-16) by the pre-registered live comparison ([evaluation](../evaluation/sprint-18a5-planner.md)). Not wired into the app; the text is kept only so the evidence replays.
 Date: 2026-11-16
 
 ## Context
@@ -32,3 +32,18 @@ The Sprint 18A live run, with the concept-bearing twin, left two planner defects
 - **Expected trade-off:** valid proposals that leave category targets unwritten, instead of invalid proposals. The Sprint 14 and 17A recovery (share that field's names, or translate on this device) then takes over.
 - The pre-registered comparison P0 vs P1 on a fresh independent holdout decides acceptance.
 - `tests/evaluation/response-schema-compat.test.ts` EVAL-090 records that the Sprint 9 initial schema was replaced. EVAL-186 proves schema 2 only narrows it on every recorded real answer.
+
+## Outcome (2026-11-16)
+
+On a fresh independent holdout (36 real requests), v4 with schema 2 did three things:
+
+- **Removed invented values:** 44 → 0.
+- **Raised valid proposals:** 0.167 → 0.444.
+- **Cut correct mappings on mappable fields:** 0.661 → 0.205, against a pre-registered non-inferiority bound of −0.05.
+
+The planner over-abstained. The prompt itself caused 10 malformed answers: 5 with an empty operation list and 5 with a rationale over the 500-character limit.
+
+**Decision.**
+
+- **Reverted.** `buildOutboundApplicationRequest` and `response-schemas.ts` are byte-identical to `baa5df9`. The app sends the Sprint 3 initial prompt with the Sprint 9 per-operation schema.
+- **Successor.** A v5 needs a new ADR, a fresh holdout and its own pre-registration. Its design inputs are listed in the evaluation.
