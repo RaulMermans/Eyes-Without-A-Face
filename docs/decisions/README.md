@@ -15,3 +15,6 @@
 | [0011](0011-experience-architecture-black-halo.md) | Experience modes CONNECT / OBSERVE / OUTCOME, derived runtime, Black Halo art direction |
 | [0012](0012-guided-flow-and-source-adapters.md) | Guided flow (Your data → Destination → Result) and the Source Adapter Layer |
 | [0013](0013-guided-recovery-and-production-acceptance.md) | Rejected-proposal diagnosis, category-name readiness, bounded recovery, permanent production acceptance standard |
+| [0014](0014-target-first-mapping-and-local-meaning.md) | Target-first field questions, on-device mapping, user-declared meaning |
+| [0015](0015-ai-integration-engineer-program.md) | AI integration engineer: hybrid workflow-agent architecture, gated program 18A–18E |
+| [0016](0016-concept-bearing-phantom-twin.md) | Concept-bearing Phantom Twin: fixed business-meaning vocabulary with provenance |

@@ -81,7 +81,7 @@
     "src/inference/firebase-api.ts": "6721a4d32f629e0f82f1e515ffa675f7009838f7e0ce2695ba49a27c3f08de6f",
     "src/private-semantics/semantics.ts": "0e303be6f6896993d4776021d898388aeadde18ffa3c021fefdebaaf16db897b",
     "src/phantom/roles.ts": "93fdeca2bc00645ccc62f36ca34c8f651df15c4a489db8b5f962f5d530bf4d26",
-    "src/phantom/generate.ts": "de4fed6a56b1b23bbc5f11b6c25945f9f8b56eb553f4874d31eba1a8c2e533b6",
+    "src/phantom/generate.ts": "7390cd6f2dc39dc227657ac6a6e032f7592c240511886986e8eed3c2334f7c71",
     "src/proposal/convert.ts": "a34e00c8a2cf5c332d2a97d05243af613c54c2c27e33a6c11b8b09fd4974a7ea",
     "src/proposal/resolve.ts": "73094edeb9a3be46c623e1ddb2ded2cb11a70a7f5f783a2ca23667920e3c425d",
     "src/semantics/contract.ts": "da9efb11a4956a090c9d683eb0d5d806797a0c095b3ab8501d76af24d13f327e",
@@ -101,6 +101,10 @@
     {
       "at": "2026-11-16T08:02:30.814Z",
       "reason": "Sprint 15 PF-3: src/phantom/generate.ts now rejects synthetic strings that CONTAIN a private value (>=4 chars, the export scan's rule), not only exact matches. Stricter, never looser. Proven output-neutral for the frozen scenario: synthetic examples are byte-identical before/after for every picker scenario (with and without twin overrides) and the CRM demo."
+    },
+    {
+      "at": "2026-11-16T20:39:02.920Z",
+      "reason": "Sprint 18A (ADR 0016): src/phantom/generate.ts adds concept-bearing descriptors behind TwinOptions.concepts (default on). The Sprint 12 experiment is complete; its configuration A is reproduced with concepts:false in EVAL-121, and EVAL-122 replays the recorded runs unchanged."
     }
   ]
 }

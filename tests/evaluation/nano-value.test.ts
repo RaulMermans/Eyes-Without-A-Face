@@ -49,7 +49,8 @@ describe("EVAL-120 the Nano-value scenario is valid and frozen", () => {
 describe("EVAL-121 configuration A: deterministic profiling alone", () => {
   it("records the role and date order the deterministic twin assigns, against the frozen ground truth", () => {
     const scenario = scenarioById("crm-nl-relations")!;
-    const { prepared } = prepareScenario(scenario);
+    // Configuration A is the Sprint 12 twin, which had no field meanings (Sprint 18A, ADR 0016).
+    const { prepared } = prepareScenario(scenario, {}, { concepts: false });
     const byPath = new Map(prepared.profile.fields.map((field) => [field.path, field]));
     const local = Object.fromEntries(
       prepared.twin.fields.map((field) => {
@@ -65,6 +66,20 @@ describe("EVAL-121 configuration A: deterministic profiling alone", () => {
     const truth = freeze.groundTruthSemantics;
     const roleMatches = Object.entries(local).filter(([path, v]) => truth[path]?.role === v.role).map(([path]) => path).sort();
     expect(roleMatches).toEqual(["fase", "mailadres", "relatienr", "sinds"]);
+  });
+});
+
+describe("EVAL-123 Sprint 18A: the concept-bearing deterministic twin on the same scenario", () => {
+  it("separates bedrijf and contactpersoon without a model, as hypotheses; the date order stays unproven", () => {
+    const scenario = scenarioById("crm-nl-relations")!;
+    const { prepared } = prepareScenario(scenario);
+    const field = (path: string) => prepared.twin.fields.find((item) => item.localPath === path)!;
+    expect(field("bedrijf").concept).toMatchObject({ concept: "organization-name", status: "hypothesis" });
+    expect(field("contactpersoon").concept).toMatchObject({ concept: "person-name", status: "hypothesis" });
+    expect(field("bedrijf").descriptor).not.toBe(field("contactpersoon").descriptor);
+    // Meaning is not order: a concept never proves day/month order.
+    const sinds = prepared.profile.fields.find((item) => item.path === "sinds")!;
+    expect(sinds).toMatchObject({ dateFormat: "MM/DD/YYYY", dateFormatAmbiguous: true });
   });
 });
 

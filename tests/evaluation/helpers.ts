@@ -3,7 +3,11 @@ import type { EvaluationScenario } from "../../src/evaluation/scenarios.ts";
 import { DEFAULT_TWIN_SEED, type TwinFieldOverride } from "../../src/phantom/generate.ts";
 import { buildDisclosureDraft, prepareTwin, type PreparedTwin } from "../../src/workflow/pipeline.ts";
 
-export function prepareScenario(scenario: EvaluationScenario, extra: Record<string, TwinFieldOverride> = {}): {
+export function prepareScenario(
+  scenario: EvaluationScenario,
+  extra: Record<string, TwinFieldOverride> = {},
+  options: { concepts?: boolean } = {},
+): {
   prepared: PreparedTwin;
   payload: CloudDisclosurePayload;
   alias: (path: string) => string;
@@ -15,6 +19,7 @@ export function prepareScenario(scenario: EvaluationScenario, extra: Record<stri
     datasetLabel: scenario.datasetLabel,
     seed: DEFAULT_TWIN_SEED,
     overrides,
+    concepts: options.concepts,
   });
   if (!prepared.ok) throw new Error(`twin failed: ${prepared.stage}`);
   const draft = buildDisclosureDraft({ prepared: prepared.value, targetSchema: scenario.destinationSchema });
