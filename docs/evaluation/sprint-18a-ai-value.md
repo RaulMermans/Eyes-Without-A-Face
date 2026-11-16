@@ -106,4 +106,27 @@ The twin discloses only phrases from this vocabulary and never a field name or v
 
 ## Results
 
-_Not yet run._
+### Offline (T0 vs T1) — run 2026-11-16, implementation `e90b6c2`
+
+- **Holdout scoring.** The holdout was scored **once**, after the implementation commit, by `node scripts/eval-ai-value.mjs`. Aggregates only: [ai-value-offline-holdout.json](../evidence/sprint-18a/ai-value-offline-holdout.json). The file records the implementation's file hashes and the holdout digest.
+- **Dev scoring.** Dev numbers come from EVAL-181. The lexicon was tuned on dev only.
+
+| Metric | Dev T0 | Dev T1 | **Holdout T0** | **Holdout T1** | Threshold (T1) | Holdout verdict |
+| --- | --- | --- | --- | --- | --- | --- |
+| O1 distinguishability | 0.149 | 0.915 | **0.127** | **0.658** | ≥ T0 + 0.20 | **PASS** (+0.531) |
+| O2 confusable separation | 0.188 | 0.906 | **0.286** | **0.683** | ≥ T0 + 0.30 | **PASS** (+0.397) |
+| O3 concept precision | — | 1.000 | — | **0.978** | ≥ 0.85 | **PASS** |
+| O4 concept coverage | 0 | 0.957 | 0 | **0.595** | ≥ 0.50, reported | met |
+| O5 privacy findings | 0 | 0 | 0 | **0** | = 0 | **PASS** |
+
+Notes, reported as found:
+
+- **The dev → holdout drop is real.** O1 falls from 0.915 to 0.658 and coverage from 0.957 to 0.595: the lexicon partly fits the dev names. The holdout figures are the claim.
+- **A wrong meaning was rare.** Holdout precision is 0.978. A concept was stated only when the field name gave one, and the stated concept was almost always right; most of the remaining loss is fields with *no* concept.
+- **One holdout scenario of 10 could not be built in either configuration.** Its failure is not the synthetic-collision privacy check, because O5 = 0. It contributes no ground-truth fields to O1, O3 or O4. It does count its confusable pairs as *not* separated in both T0 and T1 for O2, the same in both configurations. The cause was **not inspected**, to keep the holdout blind. A product defect may exist for some realistic inputs. The next increment must investigate it on a fresh case, never on this holdout.
+
+**Offline verdict:** the necessary conditions O1, O2, O3 and O5 hold on the independent holdout. This shows the twin now *describes* fields distinguishably. It does not show that Gemini *maps* better.
+
+### Live (G0 vs G1)
+
+**NOT RUN.** It needs owner approval of the budget above: 40 cloud requests, no retries, no revision. Gate A is therefore **not passed**, and 18B does not start.

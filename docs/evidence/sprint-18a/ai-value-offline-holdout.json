@@ -1,0 +1,29 @@
+{
+  "experiment": "sprint-18a-ai-value",
+  "split": "holdout",
+  "holdoutDigest": "d5d2e08494d89215414e6a6f38f147017ee4e962cb30a7e5ab2512b37d55232b",
+  "implementation": {
+    "src/phantom/concepts.ts": "cd5ef02b94ee5357ac815652d832088d6c8c72cf69bdbd03fad98b45a0da6691",
+    "src/phantom/generate.ts": "7390cd6f2dc39dc227657ac6a6e032f7592c240511886986e8eed3c2334f7c71",
+    "src/phantom/roles.ts": "93fdeca2bc00645ccc62f36ca34c8f651df15c4a489db8b5f962f5d530bf4d26",
+    "src/evaluation/ai-value.ts": "42470d1d24da2b321f3af051f64dac9d492d66f4f86366661bec6184d0089ce0"
+  },
+  "T0": {
+    "scenarios": 10,
+    "failures": 1,
+    "O1_distinguishability": 0.127,
+    "O2_confusableSeparation": 0.286,
+    "O3_conceptPrecision": null,
+    "O4_conceptCoverage": 0,
+    "O5_privacyFindings": 0
+  },
+  "T1": {
+    "scenarios": 10,
+    "failures": 1,
+    "O1_distinguishability": 0.658,
+    "O2_confusableSeparation": 0.683,
+    "O3_conceptPrecision": 0.978,
+    "O4_conceptCoverage": 0.595,
+    "O5_privacyFindings": 0
+  }
+}
