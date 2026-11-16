@@ -3,6 +3,7 @@ import { parseFieldRef, readPath } from "../../domain/mapping/paths.ts";
 import type { DateInputFormat, FieldProfile } from "../../domain/profile/profile.ts";
 import type { EnumMeaningConstraint } from "../../semantics/contract.ts";
 import { STRICT_POLICY, type AcceptancePolicy } from "../../verification/outcomes.ts";
+import { GUIDED_SET_ASIDE_DESCRIPTION } from "../../verification/policy-text.ts";
 import type { PreparedTwin } from "../../workflow/pipeline.ts";
 import { summarizeDestination } from "./destinations.ts";
 
@@ -41,10 +42,19 @@ export interface CategoryMeaning {
   values: Record<string, string | null>;
 }
 
+/**
+ * One destination field's source decision (Sprint 16B, D1): a local source
+ * path the user chose, or `null` when the user explicitly chose NO field.
+ * A destination field without an entry is undecided. The three states are
+ * distinct: an explicit "no field" survives replanning and is never refilled
+ * from a suggestion.
+ */
+export type FieldMatch = string | null;
+
 /** Guided field decisions held in `WorkspaceState`. Local only; never serialized into a request. */
 export interface GuidedFieldDecisions {
-  /** destination field → local source path, set only by an explicit user choice. */
-  fieldMatches: Record<string, string>;
+  /** destination field → local source path (or `null` = explicitly none), set only by an explicit user choice. */
+  fieldMatches: Record<string, FieldMatch>;
   /** destination enum field → declared category translation. */
   categoryMeanings: Record<string, CategoryMeaning>;
 }
@@ -63,6 +73,13 @@ export interface SourceCandidate {
   shareable: boolean;
   /** The user already chose to share its category names. */
   shared: boolean;
+  /**
+   * Sprint 16B (D2/D4): specific structural evidence for this destination field
+   * (email share, date type, unique codes for an id, numeric/boolean type, or a
+   * similar name). Without it a compatible field is still listed, but never
+   * offered as the suggestion.
+   */
+  specific: boolean;
 }
 
 export type TargetNeed =
@@ -73,15 +90,33 @@ export type TargetNeed =
   /** A slash date whose day/month order is not proven. */
   | "date-order"
   /** No local rule can produce this field from the chosen source (Gemini may still). */
-  | "unsupported";
+  | "unsupported"
+  /**
+   * Sprint 16B (D2): EYES has a ranked suggestion but the user has not
+   * confirmed it. A suggestion is evidence, never a decision; it builds nothing.
+   */
+  | "confirm";
 
 export interface TargetPlan {
   target: CloudDisclosureTargetField;
   /** Ranked compatible source fields. */
   candidates: SourceCandidate[];
-  /** The source in use for this target, and why it was picked. */
+  /**
+   * The source in use for this target, and why. Non-enum fields: only the
+   * user's explicit choice (Sprint 16B). Enum fields: the user's choice, or the
+   * only category-like field — which still builds nothing until the user has
+   * translated every one of its values (an explicit per-field decision).
+   */
   chosen: string | null;
-  chosenBy: "user" | "only-candidate" | "suggested" | null;
+  chosenBy: "user" | "only-candidate" | null;
+  /**
+   * Sprint 16B (D2): the top-ranked candidate offered for confirmation when
+   * the user has not decided. Assistance, not authority: it is never part of
+   * a rule, and it is null once the user decided (including "no field").
+   */
+  suggested: string | null;
+  /** Sprint 16B (D1): the user's decision for this destination field. */
+  decision: "undecided" | "source" | "none";
   /** The local rule EYES can derive, or null with `need` explaining why not. */
   rule: MappingOperation | null;
   need: TargetNeed | null;
@@ -178,6 +213,7 @@ export function rankCandidates(prepared: PreparedTwin, records: readonly unknown
     if (!field.supported) continue;
     const reasons: string[] = [];
     let score = 0;
+    let specific = false;
     let labels: string[] = [];
     let rare = 0;
     const view = twinByPath.get(field.path);
@@ -204,18 +240,21 @@ export function rankCandidates(prepared: PreparedTwin, records: readonly unknown
     } else if (target.format === "email") {
       if (field.format === "email") {
         score += 6;
+        specific = true;
         reasons.push("every value looks like an email address");
       } else if (field.type === "string") {
         // Real data has a few malformed emails; the profile then drops the format. Count locally (PF-2).
         const share = emailShare(records, field.path);
         if (share.total >= 2 && share.emails / share.total >= EMAIL_SHARE) {
           score += 5;
+          specific = true;
           reasons.push(`${share.emails} of ${share.total} values look like email addresses`);
         } else score += 1;
       } else continue;
     } else if (target.format === "date" || target.format === "date-time") {
       if (field.type === "date" || field.type === "datetime") {
         score += field.type === (target.format === "date" ? "date" : "datetime") ? 6 : 3;
+        specific = true;
         reasons.push(`every value is a ${field.type === "date" ? "date" : "date and time"}`);
       } else continue;
     } else if (target.type === "string") {
@@ -225,6 +264,8 @@ export function rankCandidates(prepared: PreparedTwin, records: readonly unknown
       if (target.name.toLowerCase() === "id" || /(^|_)id$|Id$/.test(target.name)) {
         if (codeLike) {
           score += 3;
+          // Sprint 16B (D2): an email column is unique, but it is not evidence for an identifier (S16A X17).
+          specific = field.format !== "email";
           reasons.push("every value is a different code, like an identifier");
         }
       } else if (codeLike && field.format !== "email") {
@@ -236,10 +277,12 @@ export function rankCandidates(prepared: PreparedTwin, records: readonly unknown
     } else if (target.type === "integer" || target.type === "number") {
       if (!(field.type === "integer" || (target.type === "number" && field.type === "number"))) continue;
       score += 4;
+      specific = true;
       reasons.push("its values are numbers");
     } else if (target.type === "boolean") {
       if (field.type !== "boolean") continue;
       score += 4;
+      specific = true;
       reasons.push("its values are true/false");
     } else continue;
     if (target.required && field.missingCount === 0 && field.nullCount === 0) {
@@ -248,9 +291,10 @@ export function rankCandidates(prepared: PreparedTwin, records: readonly unknown
     }
     if (nameHint(field.path, target.name)) {
       score += 1;
+      specific = true;
       reasons.push("similar name (a hint, not proof)");
     }
-    out.push({ path: field.path, score, reasons, labels, rare, shareable, shared: Boolean(view?.categoriesDisclosed) });
+    out.push({ path: field.path, score, reasons, labels, rare, shareable, shared: Boolean(view?.categoriesDisclosed), specific });
   }
   return out.sort((a, b) => b.score - a.score || a.path.localeCompare(b.path));
 }
@@ -318,15 +362,20 @@ function deriveRule(
 
 const NEED_TEXT: Record<TargetNeed, (target: string) => string> = {
   source: (target) => `Choose which of your fields gives “${target}”.`,
+  confirm: (target) => `Confirm which of your fields gives “${target}”: EYES only suggested one.`,
   translation: (target) => `Say what each value means for “${target}”.`,
   "date-order": (target) => `Say whether the dates for “${target}” are day/month or month/day.`,
   unsupported: (target) => `EYES can't build “${target}” on this device from the chosen field.`,
 };
 
 /**
- * Plan every destination field. `choices` are the user's explicit decisions;
- * an unchosen field falls back to its only compatible candidate (enum fields)
- * or to the best-ranked one (other fields, shown as "suggested").
+ * Plan every destination field. `choices` are the user's explicit decisions.
+ * Sprint 16B (D1, D2): only an explicit decision puts a non-enum source field
+ * into a rule. The best-ranked candidate is offered as `suggested` (need
+ * "confirm") and builds nothing; an explicit "no field" (`null`) is honoured
+ * and hides the suggestion. Enum fields keep their Sprint 15 rule: the only
+ * category-like field is the subject of the translation question and builds
+ * nothing until the user has translated every one of its values.
  */
 export function planFields(
   prepared: PreparedTwin | null,
@@ -340,26 +389,35 @@ export function planFields(
   if (!summary.ok) return null;
   const targets: TargetPlan[] = summary.fields.map((target) => {
     const candidates = rankCandidates(prepared, records, target);
-    const picked = choices.fieldMatches[target.name];
+    const all = new Set(prepared.profile.fields.map((field) => field.path));
+    const has = Object.hasOwn(choices.fieldMatches, target.name);
+    const picked = has ? choices.fieldMatches[target.name] : undefined;
+    // Sprint 16B (D1): explicit "no field" (null), a chosen field, or undecided.
+    // A pick that is not a field of this data (stale decision) counts as undecided.
+    const decision: TargetPlan["decision"] = picked === null ? "none" : typeof picked === "string" && all.has(picked) ? "source" : "undecided";
     let chosen: string | null = null;
     let chosenBy: TargetPlan["chosenBy"] = null;
-    const all = new Set(prepared.profile.fields.map((field) => field.path));
-    if (picked && all.has(picked)) {
-      chosen = picked;
+    let suggested: string | null = null;
+    if (decision === "source") {
+      chosen = picked as string;
       chosenBy = "user";
-    } else if (target.type === "enum") {
-      if (candidates.length === 1) {
-        chosen = candidates[0]!.path;
-        chosenBy = "only-candidate";
+    } else if (decision === "undecided") {
+      if (target.type === "enum") {
+        // Unchanged since Sprint 15: the only category-like field is the subject of the
+        // translation question; it builds nothing until every value is translated.
+        if (candidates.length === 1) {
+          chosen = candidates[0]!.path;
+          chosenBy = "only-candidate";
+        }
+      } else if (candidates.length > 0 && candidates[0]!.specific && (candidates.length === 1 || candidates[0]!.score > candidates[1]!.score)) {
+        // Sprint 16B (D2): a ranked suggestion with specific evidence is shown for confirmation, never applied.
+        suggested = candidates[0]!.path;
       }
-    } else if (candidates.length > 0 && (candidates.length === 1 || candidates[0]!.score > candidates[1]!.score)) {
-      chosen = candidates[0]!.path;
-      chosenBy = "suggested";
     }
     const candidate = chosen ? (candidates.find((item) => item.path === chosen) ?? null) : null;
     let rule: MappingOperation | null = null;
     let need: TargetNeed | null = null;
-    if (!chosen) need = target.required ? "source" : null;
+    if (!chosen) need = decision === "none" ? (target.required ? "source" : null) : suggested ? (target.required ? "confirm" : null) : target.required ? "source" : null;
     else ({ rule, need } = deriveRule(prepared, target, chosen, candidate ?? undefined, choices.categoryMeanings[target.name], confirmations));
     let cloud: TargetPlan["cloud"] = "ok";
     if (target.type === "enum" && target.required) {
@@ -367,7 +425,7 @@ export function planFields(
       else if (!candidate?.shareable) cloud = "names-not-shareable";
       else if (!candidate.shared) cloud = "names-withheld";
     }
-    return { target, candidates, chosen, chosenBy, rule, need, cloud };
+    return { target, candidates, chosen, chosenBy, suggested, decision, rule, need, cloud };
   });
   const missing = targets.filter((plan) => plan.target.required && !plan.rule);
   const localReady = missing.length === 0 && targets.some((plan) => plan.rule);
@@ -483,7 +541,7 @@ export function guidedPolicy(categoryMeanings: Readonly<Record<string, CategoryM
   return {
     ...STRICT_POLICY,
     policyId: "guided-set-aside",
-    description: "Strict, except records whose category the user set aside, or that has no translation, are held for manual review (never counted as transformed).",
+    description: GUIDED_SET_ASIDE_DESCRIPTION,
     quarantine: targets.map((to) => ({ code: "UNMAPPED_ENUM" as const, to })),
     maxQuarantineRate: 0.5,
   };

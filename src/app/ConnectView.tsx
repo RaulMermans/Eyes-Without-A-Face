@@ -8,7 +8,7 @@ import type { ProfileIssue, SourceProfile } from "../domain/profile/profile.ts";
 import { DestinationPanel } from "./DestinationPanel.tsx";
 import { SourcePanel } from "./SourcePanel.tsx";
 import type { OnDeviceMode } from "./use-on-device.ts";
-import { invalidateDownstream, type WorkspaceState } from "./workspace-state.ts";
+import { withDestination, type WorkspaceState } from "./workspace-state.ts";
 
 const DEFAULT_DESTINATION_TEXT = JSON.stringify(defaultDestination, null, 2);
 
@@ -107,7 +107,7 @@ export function ConnectView({
                 name="destination-preset"
                 className="accent-violet"
                 checked={usingDefault}
-                onChange={() => onChange(invalidateDownstream({ ...workspace, destinationText: DEFAULT_DESTINATION_TEXT }))}
+                onChange={() => onChange(withDestination(workspace, DEFAULT_DESTINATION_TEXT))}
                 data-testid="destination-preset-default"
               />
               Helpdesk contact · fictional

@@ -189,12 +189,15 @@ for (const id of cases) {
       await expect(disclosure).toBeVisible({ timeout: 15_000 });
       if (!(await page.getByTestId("field-matches").isVisible())) await disclosure.locator("summary").first().click();
       const targets = Object.keys(c.plan?.fieldMatches ?? {});
-      const suggestions: Record<string, { suggested: string; offered: string[]; need: string | null; questionCandidates: string[]; onlyCandidate: string | null }> = {};
+      const suggestions: Record<string, { suggested: string; hint: string | null; offered: string[]; need: string | null; questionCandidates: string[]; onlyCandidate: string | null }> = {};
       for (const target of targets) {
         const select = page.getByTestId(`field-match-${target}`);
         const offered = (await select.locator("option").evaluateAll((nodes) => nodes.map((node) => (node as HTMLOptionElement).value))).filter(Boolean);
+        const use = page.getByTestId(`field-match-use-${target}`);
         suggestions[target] = {
           suggested: await select.inputValue(),
+          // Sprint 16B UI: a suggestion is a "Use X" offer, not a selected value.
+          hint: (await use.count()) > 0 ? ((await use.innerText()).replace(/^Use\s+/, "").trim() || null) : null,
           offered,
           need: await page.getByTestId(`field-match-row-${target}`).getAttribute("data-need"),
           questionCandidates: await page.locator(`[data-testid^="match-${target}-"]`).evaluateAll((nodes, t) => nodes.map((node) => node.getAttribute("data-testid")!.slice(`match-${t}-`.length)).filter((value) => value !== "other" && !value.startsWith("other")), target),
@@ -223,7 +226,12 @@ for (const id of cases) {
           }
           continue;
         }
-        if (c.plan!.mode === "defaults" && current !== "") {
+        const hint = suggestions[target]!.hint;
+        if (c.plan!.mode === "defaults" && current === "" && hint) {
+          // Probe (Sprint 16B UI): a click-through user clicks "Use" on every suggestion EYES offers.
+          await page.getByTestId(`field-match-use-${target}`).click();
+          decisions.push(`accept-suggestion:${target}`);
+        } else if (c.plan!.mode === "defaults" && current !== "") {
           // Probe: a click-through user keeps whatever EYES pre-selected.
           decisions.push(`accept-default:${target}`);
         } else if (!suggestions[target]!.offered.includes(want)) {
@@ -236,8 +244,8 @@ for (const id of cases) {
           }
           continue;
         }
-        if (c.plan!.mode === "defaults" && current !== "") {
-          /* keep the default */
+        if (c.plan!.mode === "defaults" && (current !== "" || hint)) {
+          /* keep the default / the accepted suggestion */
         } else if (current !== want) {
           await select.selectOption(want);
           decisions.push(`match:${target}`);

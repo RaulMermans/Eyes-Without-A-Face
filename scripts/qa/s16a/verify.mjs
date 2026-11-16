@@ -203,14 +203,16 @@ function judge(c, b) {
       const s = b.suggestions[target];
       if (!s) continue;
       if (truth === null) {
-        if (s.suggested) d.unsupportedTargetSuggested.push(target);
+        if (s.suggested || s.hint) d.unsupportedTargetSuggested.push(target);
         continue;
       }
       d.targets += 1;
       if (s.offered.includes(truth)) d.truthOffered += 1;
       if (s.offered[0] === truth || s.questionCandidates[0] === truth || s.onlyCandidate === truth) d.truthTopRanked += 1;
-      if (s.suggested === truth || s.onlyCandidate === truth) d.suggestedCorrect += 1;
-      else if (s.suggested) {
+      // Sprint 16B UI: a suggestion is an explicit "Use X" offer (hint); Sprint 16A UI: a pre-selected value.
+      const offeredSuggestion = s.suggested || s.hint || "";
+      if (offeredSuggestion === truth || s.onlyCandidate === truth) d.suggestedCorrect += 1;
+      else if (offeredSuggestion) {
         d.suggestedWrong += 1;
         d.wrongSuggestionTargets.push(target);
       } else d.noSuggestion += 1;

@@ -1,0 +1,56 @@
+[
+  {
+    "customer_id": "CU-20000",
+    "contact_email": "person0@example.test",
+    "account_state": "active",
+    "company_name": "Fictional Org 0"
+  },
+  {
+    "customer_id": 20001,
+    "contact_email": "person1@example.test",
+    "account_state": "trial",
+    "company_name": "Fictional Org 1"
+  },
+  {
+    "customer_id": "CU-20002",
+    "contact_email": "person2@example.test",
+    "account_state": "churned",
+    "company_name": "Fictional Org 2"
+  },
+  {
+    "customer_id": "CU-20003",
+    "contact_email": "person3@example.test",
+    "account_state": "active",
+    "company_name": "Fictional Org 3"
+  },
+  {
+    "customer_id": 20004,
+    "contact_email": "person4@example.test",
+    "account_state": "trial",
+    "company_name": "Fictional Org 4"
+  },
+  {
+    "customer_id": "CU-20005",
+    "contact_email": "person5@example.test",
+    "account_state": "churned",
+    "company_name": "Fictional Org 5"
+  },
+  {
+    "customer_id": "CU-20006",
+    "contact_email": "person6@example.test",
+    "account_state": "active",
+    "company_name": "Fictional Org 6"
+  },
+  {
+    "customer_id": 20007,
+    "contact_email": "person7@example.test",
+    "account_state": "trial",
+    "company_name": "Fictional Org 7"
+  },
+  {
+    "customer_id": "CU-20008",
+    "contact_email": "person8@example.test",
+    "account_state": "churned",
+    "company_name": "Fictional Org 8"
+  }
+]

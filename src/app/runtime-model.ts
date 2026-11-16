@@ -90,6 +90,13 @@ export interface OutcomeCandidateView {
   id: "active" | "revised";
   label: string;
   eligibility: ExportEligibility;
+  /**
+   * Sprint 16B (D2): what the local semantic verifier established, for honest
+   * wording only — it never changes a state. Absent = meaning was not checked.
+   */
+  meaning?: { verified: number; fields: number; complete: boolean } | null;
+  /** Sprint 16B: every field match of this mapping was chosen by the user (built on this device). */
+  matchesChosenByUser?: boolean;
 }
 
 export interface RuntimeInput {

@@ -19,6 +19,7 @@ import { VerificationPanel } from "./VerificationPanel.tsx";
 import type { ImportedSource } from "./source-import.ts";
 import { crmReservedRecords, withCrmDemo, withImportedSource } from "./demo.ts";
 import { DataStep, type LoadedSource } from "./guided/DataStep.tsx";
+import { excludedFields } from "./guided/excluded-fields.ts";
 import { DestinationStep } from "./guided/DestinationStep.tsx";
 import { ResultStep } from "./guided/ResultStep.tsx";
 import { fieldUnderstanding, guidedStatus, type InFlight } from "./guided/guided-status.ts";
@@ -27,7 +28,7 @@ import { guidanceForFailure } from "../inference/failure-guidance.ts";
 import { summarizeDestination } from "./guided/destinations.ts";
 import { approveReview, cancelWaiting, prepareFreshReview, rejectReview, runLocalVerification, sendApprovedRequest, spendApproval } from "./run-actions.ts";
 import { GUIDED_STEPS, initialView, viewHash, type GuidedStep, type View } from "./experience.ts";
-import { applyFieldDecision, initialWorkspaceState, invalidateDownstream, type WorkspaceState } from "./workspace-state.ts";
+import { applyFieldDecision, initialWorkspaceState, invalidateDownstream, withDestination, type WorkspaceState } from "./workspace-state.ts";
 import { localContract, isLocalMapping, planFields, type CategoryMeaning } from "./guided/field-plan.ts";
 import type { SlashOrder } from "./guided/FieldQuestions.tsx";
 import { WORKFLOW_STEPS, type WorkflowStepId } from "./workflow.ts";
@@ -39,6 +40,7 @@ import { RuntimeView } from "./RuntimeView.tsx";
 import { PrivacyBoundary } from "./PrivacyBoundary.tsx";
 import { EXPERIENCE_MODES, type ExperienceMode } from "./experience.ts";
 import { deriveRuntime, timelineEntries } from "./runtime-model.ts";
+import { meaningSentence } from "./outcome-verdict.ts";
 import { exportCandidates } from "./export-context.ts";
 import { prepareDisclosureReview } from "./disclosure-actions.ts";
 import { RuntimePreflight } from "./RuntimePreflight.tsx";
@@ -455,10 +457,15 @@ export default function App() {
     if (localActive(current) && current.report) void guidedBuildLocal(next);
   }
 
-  function guidedMatch(target: string, source: string | null): void {
+  /**
+   * Sprint 16B (D1): three distinct decisions. A path chooses that field; `null`
+   * records that the user chose NO field (honoured on every replan, never
+   * refilled from a suggestion); `undefined` returns the row to undecided.
+   */
+  function guidedMatch(target: string, source: string | null | undefined): void {
     const fieldMatches = { ...workspaceRef.current.fieldMatches };
-    if (source) fieldMatches[target] = source;
-    else delete fieldMatches[target];
+    if (source === undefined) delete fieldMatches[target];
+    else fieldMatches[target] = source;
     guidedDecision({ fieldMatches });
   }
 
@@ -502,7 +509,16 @@ export default function App() {
   const understanding = fieldUnderstanding(stages, onDeviceProbe.mode.kind);
   const status = guidedStatus(
     stages,
-    workspace.report ? candidates.map((candidate) => ({ id: candidate.id, label: candidate.label, eligibility: candidate.eligibility })) : [],
+    workspace.report
+      ? candidates.map((candidate) => ({
+          id: candidate.id,
+          label: candidate.label,
+          eligibility: candidate.eligibility,
+          // Sprint 16B (D2): wording only — what the verifier established and who chose the matches.
+          meaning: candidate.semantic ? { verified: candidate.semantic.coverage.verified, fields: candidate.semantic.coverage.fields, complete: meaningSentence(candidate.semantic).complete } : null,
+          matchesChosenByUser: candidate.id === "active" && localActive(workspace),
+        }))
+      : [],
     inFlight,
     { rejection: diagnosis, cloudFailureTitle: cloudFailure?.title ?? null },
   );
@@ -699,6 +715,7 @@ export default function App() {
                 updateWorkspace(withImportedSource(workspaceRef.current, null, null));
               }}
               profileIssues={twinState.profileIssues}
+              excluded={excludedFields(prepared?.profile)}
               ready={Boolean(workspace.source && prepared)}
               onDevice={onDeviceProbe.mode}
               understanding={localUnderstanding}
@@ -709,9 +726,10 @@ export default function App() {
           {guidedStep === "destination" ? (
             <DestinationStep
               destinationText={workspace.destinationText}
+              excludedCount={excludedFields(prepared?.profile).length}
               onDestination={(text) => {
                 setGuidedBlocker(null);
-                if (text !== workspaceRef.current.destinationText) updateWorkspace(invalidateDownstream({ ...workspaceRef.current, destinationText: text }));
+                if (text !== workspaceRef.current.destinationText) updateWorkspace(withDestination(workspaceRef.current, text));
               }}
               sourceLabel={workspace.source?.label ?? null}
               categoryNeed={need}

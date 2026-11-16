@@ -30,9 +30,12 @@ import type { InferenceProvenance } from "../inference/types.ts";
 import { sha256Hex } from "../privacy/fingerprint.ts";
 import type { SemanticVerificationContract } from "../semantics/contract.ts";
 import type { SemanticReport } from "../semantics/verify.ts";
-import { summarizeOutcomes, type AcceptancePolicy, type ClassifiedRow } from "../verification/outcomes.ts";
+import { STRICT_POLICY, summarizeOutcomes, type AcceptancePolicy, type ClassifiedRow } from "../verification/outcomes.ts";
+import { GUIDED_SET_ASIDE_DESCRIPTION } from "../verification/policy-text.ts";
 import type { RealityCheckReport } from "../verification/reality-check.ts";
-import type { ExportEligibility } from "./eligibility.ts";
+import { eligibilitySentenceSkeletons, type ExportEligibility } from "./eligibility.ts";
+import exportContractSchema from "../domain/contracts/schemas/export.v1.1.schema.json" with { type: "json" };
+import { appCode, joinOwned, maskJson, owned, ownedSentence, schemaKeyPaths, sentenceSkeleton, withPrefixes, type JsonProvenance, type ScanText } from "./provenance.ts";
 import { bindingsTemplate, mappingAliases, RUNTIME_NAME, RUNTIME_VERSION, runRecords } from "./runtime/runtime.ts";
 import { createZip, isSafeZipPath } from "./zip.ts";
 
@@ -154,7 +157,7 @@ export function projectSemanticDeclarations(
   }
   return {
     declarationsVersion: "1.0.0",
-    note: "Semantic constraints the local verifier used, expressed over Phantom aliases. Only labels already approved for disclosure appear. Model suggestions are never trusted.",
+    note: DECLARATIONS_NOTE,
     constraints: out,
     withheld,
   };
@@ -222,7 +225,7 @@ export function safeValidationReport(input: {
           })),
         }
       : null,
-    omitted: "Record values, outputs of private records, engine messages and source field names are intentionally not included.",
+    omitted: REPORT_OMITTED,
   };
 }
 
@@ -257,7 +260,7 @@ function stringsIn(value: unknown, out: Set<string>): Set<string> {
  * that belong to the destination schema are the only sanctioned overlaps.
  * Findings name the file and kind, never the value.
  */
-export function scanPackageFiles(files: ReadonlyArray<{ path: string; content: string }>, privacy: PrivacyContext, destinationSchema: unknown): PackageFinding[] {
+export function scanPackageFiles(files: ReadonlyArray<{ path: string; content: string; scan?: string }>, privacy: PrivacyContext, destinationSchema: unknown): PackageFinding[] {
   const findings: PackageFinding[] = [];
   const allowed = stringsIn(destinationSchema, new Set<string>());
   for (const labels of Object.values(privacy.approvedLabels)) labels.forEach((label) => allowed.add(label.trim().toLowerCase()));
@@ -285,14 +288,19 @@ export function scanPackageFiles(files: ReadonlyArray<{ path: string; content: s
     if (isJson) {
       // JSON: string values are searched for private substrings and exact field names;
       // object keys (e.g. enum-map labels) must not equal a private value.
+      // Sprint 16B (D3): private values are searched in the scan text, where only
+      // application-owned keys and values (by exact path) are masked; field names
+      // are still judged on the full content.
       const { strings, keys } = jsonStrings(parsed);
-      const lowered = strings.map((text) => text.toLowerCase());
-      if (values.some((value) => lowered.some((text) => text.includes(value))) || keys.some((key) => values.includes(key.trim().toLowerCase()))) {
+      const scanned = file.scan === undefined ? { strings, keys } : jsonStrings(JSON.parse(file.scan) as unknown);
+      const lowered = scanned.strings.map((text) => text.toLowerCase());
+      if (values.some((value) => lowered.some((text) => text.includes(value))) || scanned.keys.some((key) => values.includes(key.trim().toLowerCase()))) {
         findings.push({ file: file.path, kind: "private-value" });
       }
       if (strings.some((text) => fieldNames.includes(text))) findings.push({ file: file.path, kind: "source-field-name" });
     } else {
-      const lowered = file.content.toLowerCase();
+      // Sprint 16B (D3): owned prose is masked in `scan`; everything interpolated from user data is kept.
+      const lowered = (file.scan ?? file.content).toLowerCase();
       if (values.some((value) => lowered.includes(value))) findings.push({ file: file.path, kind: "private-value" });
       if (fieldNames.some((name) => file.content.includes(`\`${name}\``) || file.content.includes(JSON.stringify(name)))) {
         findings.push({ file: file.path, kind: "source-field-name" });
@@ -314,27 +322,175 @@ function jsonStrings(value: unknown, out: { strings: string[]; keys: string[] } 
   return out;
 }
 
+/**
+ * Every known-limitation line a package can carry. Templates take only counts
+ * and closed codes. Sprint 16B (D3): the same table yields the skeletons the
+ * privacy scan recognises as application-owned text.
+ */
+const LIMITATION_TEXT = {
+  scope: (imported: number, hidden: number) =>
+    `Verified in the source environment against ${imported} imported record(s) and ${hidden} reserved hidden case(s) only, not against a full production dataset.`,
+  fixtures:
+    "Fixtures are fictional twin examples keyed by alias. Their results show engine behavior, not data quality; categories withheld at disclosure appear as placeholders, so enum rules may refuse them; that is expected.",
+  bindings: "Running against real records requires a local bindings file (alias → source field). Field names are sensitive metadata: keep the bindings file in the environment that owns the data.",
+  runner: "The runner validates outputs against the packaged destination schema. It does not write to any destination system.",
+  semantic: "Semantic verification covers only the declared or locally observed constraints listed in policy/semantic-declarations.json; other fields' meaning is unverified.",
+  draft: "DRAFT: exported with unresolved findings after explicit confirmation. Not production-ready.",
+  gemini: "The mapping was proposed by Gemini from an approved Phantom Twin. Its correctness rests on the local verification recorded here, not on the model.",
+  testAdapter: "The mapping came from the labeled test adapter (simulated), not from Gemini.",
+  revised: (verdict: string) => `This is the revised mapping from one approved blind revision. Local acceptance check: ${verdict}.`,
+  withheld: (count: number) => `${count} semantic constraint(s) were withheld because they would reveal unapproved labels or local field names.`,
+  finding: (reason: string) => `Finding: ${reason}`,
+} as const;
+
+const PRIVACY_SCAN_METHOD = "Private record values (normalized, 4+ chars), local field names and secret patterns, over every data-bearing file; approved labels and destination-schema strings excepted.";
+const REPORT_OMITTED = "Record values, outputs of private records, engine messages and source field names are intentionally not included.";
+const POLICY_NOTE = "Local acceptance policy used for verification. Quarantined records are held for manual review and never counted as transformed.";
+const PACKAGE_DESCRIPTION = "Eyes Without a Face integration package";
+const MAPPING_NOTES = "Alias-level mapping exported by Eyes Without a Face. Field identifiers are Phantom aliases; bind them locally (README.md).";
+const DECLARATIONS_NOTE =
+  "Semantic constraints the local verifier used, expressed over Phantom aliases. Only labels already approved for disclosure appear. Model suggestions are never trusted.";
+
+/** Skeletons of every application sentence a package can contain (Sprint 16B, D3). */
+const OWNED_SENTENCES: ReadonlySet<string> = (() => {
+  const eligibility = eligibilitySentenceSkeletons(sentenceSkeleton);
+  const t = LIMITATION_TEXT;
+  const fixed = [
+    t.scope(7, 7), t.fixtures, t.bindings, t.runner, t.semantic, t.draft, t.gemini, t.testAdapter, t.revised("ACCEPTED"), t.revised("not recorded"), t.withheld(7),
+    PRIVACY_SCAN_METHOD, REPORT_OMITTED, POLICY_NOTE, PACKAGE_DESCRIPTION, MAPPING_NOTES, DECLARATIONS_NOTE, STRICT_POLICY.description, GUIDED_SET_ASIDE_DESCRIPTION,
+    "node run.mjs verify", "node run.mjs fixtures",
+  ].map(sentenceSkeleton);
+  return new Set([...eligibility, ...[...eligibility].map((item) => sentenceSkeleton(t.finding(item))), ...fixed]);
+})();
+
+const set = (items: readonly string[]) => new Set(items);
+const each = (prefix: string, keys: readonly string[]) => keys.map((key) => `${prefix}.${key}`);
+const MANIFEST_KEY_PATHS = schemaKeyPaths(exportContractSchema);
+
+/**
+ * Sprint 16B (D3): exact positions of application-owned text in the package's
+ * fixed-schema JSON files. Keys and values at any other position — mapping
+ * labels, approved fallback/default values, fixture outputs, the mapping id —
+ * are user-derived and stay scanned. A key missing here is scanned (fail-closed).
+ */
+const JSON_PROVENANCE: Readonly<Record<string, JsonProvenance>> = {
+  "manifest.json": {
+    keyPaths: MANIFEST_KEY_PATHS,
+    codePaths: set([
+      "contractKind", "schemaVersion", "mappingVersion", "status", "exportId", "mappingId",
+      ...each("packageFormat", ["name", "version"]),
+      ...each("runtime", ["engine", "minAppVersion", "runtimeName", "runtimeVersion", "runtimePath", "runtimeSha256", "runnerPath", "runnerSha256", "node", "npmDependencies.[]"]),
+      ...each("mapping", ["variant", "origin", "contractSha256", "revisionVerdict", "approvedDisclosureSha256"]),
+      ...[...MANIFEST_KEY_PATHS].filter((path) => path.startsWith("mapping.inference.")),
+      ...each("verification", ["state", "semanticOverall", "policyId", "policyVersion"]),
+      ...[...MANIFEST_KEY_PATHS].filter((path) => path.startsWith("paths.")),
+      "syntheticFixtureRefs.[]", "validationReportRef",
+      ...each("app", ["version", "buildSha"]),
+      ...each("files.[]", ["path", "sha256"]),
+    ]),
+    sentencePaths: set(["verification.reasons.[]", "knownLimitations.[]", "privacyScan.method"]),
+    sentences: OWNED_SENTENCES,
+  },
+  "reports/validation-report.json": {
+    keyPaths: withPrefixes([
+      "reportVersion", "mappingId", "variant", "state", "reasons", "notes", "omitted",
+      ...each("realityCheck.statuses", ["mappingContract", "targetSchema", "execution", "outputSchema", "hiddenCases"]),
+      ...each("realityCheck", ["overall", "importedRecords", "hiddenCases", "passed", "failed", "hiddenCasesFailed"]),
+      ...each("realityCheck.failureCodes.[]", ["code", "count"]),
+      ...each("policy", ["policyId", "policyVersion"]),
+      ...each("outcomes", ["transformedValid", "handledByApprovedRule", "quarantined", "unresolved", "rejectedByPolicy"]),
+      ...each("records.[]", ["set", "number", "outcome", "codes", "rulesUsed"]),
+      ...each("semantic", ["verifierVersion", "overall"]),
+      ...each("semantic.coverage", ["fields", "verified", "mismatched", "unknown"]),
+      ...each("semantic.fields.[]", ["target", "status", "operation"]),
+      ...each("semantic.results.[]", ["kind", "status", "code", "reasons", "target", "operations", "checkedRows", "violations"]),
+    ]),
+    codePaths: set([
+      "reportVersion", "mappingId", "variant", "state",
+      ...each("realityCheck.statuses", ["mappingContract", "targetSchema", "execution", "outputSchema", "hiddenCases"]),
+      "realityCheck.overall", "realityCheck.failureCodes.[].code",
+      ...each("policy", ["policyId", "policyVersion"]),
+      ...each("records.[]", ["set", "outcome", "codes.[]"]),
+      ...each("semantic", ["verifierVersion", "overall"]),
+      "semantic.fields.[].status",
+      ...each("semantic.results.[]", ["kind", "status", "code", "reasons.[]"]),
+    ]),
+    sentencePaths: set(["reasons.[]", "notes.[]", "omitted"]),
+    sentences: OWNED_SENTENCES,
+  },
+  "policy/acceptance-policy.json": {
+    keyPaths: withPrefixes([
+      "note",
+      ...each("policy", ["policyVersion", "policyId", "description", "maxQuarantineRate"]),
+      ...each("policy.quarantine.[]", ["code", "to"]),
+      ...each("policy.approvedFallbacks.[]", ["to", "value", "appliesTo"]),
+      ...each("policy.approvedDefaults.[]", ["to", "value"]),
+    ]),
+    // Approved fallback/default VALUES are the owner's data: never exempt.
+    codePaths: set(["policy.policyVersion", "policy.policyId", "policy.quarantine.[].code", "policy.approvedFallbacks.[].appliesTo"]),
+    sentencePaths: set(["note", "policy.description"]),
+    sentences: OWNED_SENTENCES,
+  },
+  "package.json": {
+    keyPaths: withPrefixes(["name", "private", "type", "description", "engines.node", "scripts.verify", "scripts.fixtures"]),
+    codePaths: set(["name", "type", "engines.node"]),
+    sentencePaths: set(["description", "scripts.verify", "scripts.fixtures"]),
+    sentences: OWNED_SENTENCES,
+  },
+  "mapping/mapping.alias.json": {
+    // Labels (params.map keys), default values and separators are the user's: never exempt.
+    keyPaths: withPrefixes([
+      "contractKind", "schemaVersion", "mappingId", "mappingVersion", "phantomId", "destinationSchemaId", "destinationSchemaVersion", "notes",
+      ...each("operations.[]", ["op", "from", "to"]),
+      ...each("operations.[].params", ["inputFormat", "unmapped", "map", "value", "separator"]),
+    ]),
+    codePaths: set(["contractKind", "schemaVersion", "mappingId", "mappingVersion", "phantomId", "destinationSchemaId", "destinationSchemaVersion", "operations.[].op", "operations.[].from", "operations.[].from.[]", "operations.[].params.inputFormat", "operations.[].params.unmapped"]),
+    sentencePaths: set(["notes"]),
+    sentences: OWNED_SENTENCES,
+  },
+  "policy/semantic-declarations.json": {
+    // Labels and values under meaning / values / orders are approved labels or destination values: still scanned.
+    keyPaths: withPrefixes(["declarationsVersion", "note", "withheld", ...each("constraints.[]", ["id", "kind", "trust", "evidence", "alias", "target", "meaning", "values", "sourceOrder", "targetOrder", "undeclared", "format", "candidates"])]),
+    codePaths: set(["declarationsVersion", ...each("constraints.[]", ["id", "kind", "trust", "evidence", "alias", "undeclared", "format"])]),
+    sentencePaths: set(["note"]),
+    sentences: OWNED_SENTENCES,
+  },
+  "fixtures/expected-outputs.json": {
+    // Keys and values under results[].output are fixture outputs: never exempt.
+    keyPaths: withPrefixes([
+      "runtimeVersion", "mappingId",
+      ...each("summary", ["total", "transformedValid", "handledByApprovedRule", "quarantined", "unresolved", "rejectedByPolicy", "quarantinedIndices", "quarantineRate", "withinQuarantinePolicy"]),
+      ...each("results.[]", ["index", "status", "outcome", "output"]),
+      ...each("results.[].issues.[]", ["code", "operation", "op", "path"]),
+    ]),
+    codePaths: set(["runtimeVersion", "mappingId", "results.[].status", "results.[].outcome", ...each("results.[].issues.[]", ["code", "op", "path"])]),
+    sentencePaths: set([]),
+    sentences: OWNED_SENTENCES,
+  },
+};
+
+/** A package file with its scan text (Sprint 16B, D3). Files without provenance are scanned as before. */
+function jsonFile(path: string, value: unknown): { path: string; content: string; scan?: string } {
+  const provenance = JSON_PROVENANCE[path];
+  return { path, content: json(value), ...(provenance ? { scan: JSON.stringify(maskJson(value, provenance)) } : {}) };
+}
+
 function limitationsFor(input: PackageInput, status: ExportContractV11["status"], semanticWithheld: number): string[] {
   const { report } = input;
   const imported = report.total - report.reservedTotal;
-  const lines = [
-    `Verified in the source environment against ${imported} imported record(s) and ${report.reservedTotal} reserved hidden case(s) only, not against a full production dataset.`,
-    "Fixtures are fictional twin examples keyed by alias. Their results show engine behavior, not data quality; categories withheld at disclosure appear as placeholders, so enum rules may refuse them; that is expected.",
-    "Running against real records requires a local bindings file (alias → source field). Field names are sensitive metadata: keep the bindings file in the environment that owns the data.",
-    "The runner validates outputs against the packaged destination schema. It does not write to any destination system.",
-    "Semantic verification covers only the declared or locally observed constraints listed in policy/semantic-declarations.json; other fields' meaning is unverified.",
-  ];
-  if (status === "DRAFT") lines.unshift("DRAFT: exported with unresolved findings after explicit confirmation. Not production-ready.");
-  if (input.origin === "gemini-cloud") lines.push("The mapping was proposed by Gemini from an approved Phantom Twin. Its correctness rests on the local verification recorded here, not on the model.");
-  if (input.origin === "test-adapter") lines.push("The mapping came from the labeled test adapter (simulated), not from Gemini.");
-  if (input.variant === "revised") lines.push(`This is the revised mapping from one approved blind revision. Local acceptance check: ${input.revisionVerdict ?? "not recorded"}.`);
-  if (semanticWithheld > 0) lines.push(`${semanticWithheld} semantic constraint(s) were withheld because they would reveal unapproved labels or local field names.`);
-  for (const reason of input.eligibility.reasons) lines.push(`Finding: ${reason}`);
+  const t = LIMITATION_TEXT;
+  const lines: string[] = [t.scope(imported, report.reservedTotal), t.fixtures, t.bindings, t.runner, t.semantic];
+  if (status === "DRAFT") lines.unshift(t.draft);
+  if (input.origin === "gemini-cloud") lines.push(t.gemini);
+  if (input.origin === "test-adapter") lines.push(t.testAdapter);
+  if (input.variant === "revised") lines.push(t.revised(input.revisionVerdict ?? "not recorded"));
+  if (semanticWithheld > 0) lines.push(t.withheld(semanticWithheld));
+  for (const reason of input.eligibility.reasons) lines.push(t.finding(reason));
   for (const note of input.eligibility.notes) lines.push(note);
   return lines.map((line) => line.slice(0, 512));
 }
 
-function readme(input: { manifest: Omit<ExportContractV11, "files">; rootDir: string; aliases: string[]; fixtureCount: number; fixturePasses: number }): string {
+function readme(input: { manifest: Omit<ExportContractV11, "files">; rootDir: string; aliases: string[]; fixtureCount: number; fixturePasses: number }): ScanText {
   const { manifest } = input;
   const outcome = manifest.verification.outcomes;
   const draft = manifest.status === "DRAFT";
@@ -344,12 +500,22 @@ function readme(input: { manifest: Omit<ExportContractV11, "files">; rootDir: st
     "manual-edit": "locally edited proposal (manual, not AI)",
     "hand-written": "hand-written contract (manual, not AI)",
   };
-  return `# Integration package · ${manifest.mappingId}
+  // Sprint 16B (D3): fixed prose, codes, counts and identifiers are application-owned. The mapping id
+  // and root directory are slugs of the destination title plus a hash; destination schema strings are
+  // already sanctioned by the scan. Findings and limitations are owned only when they match a template.
+  const code = appCode;
+  const sentence = (text: string) => ownedSentence(text, OWNED_SENTENCES);
+  const findings =
+    manifest.verification.reasons.length > 0
+      ? owned`Findings:\n\n${joinOwned(manifest.verification.reasons.map((reason) => owned`- ${sentence(reason)}`), "\n")}\n`
+      : owned`No unresolved findings.\n`;
+  const limitations = joinOwned(manifest.knownLimitations.map((line) => owned`- ${sentence(line)}`), "\n");
+  return owned`# Integration package · ${code(manifest.mappingId)}
 
-${draft ? "> **DRAFT — not production-ready.** Exported with unresolved findings after explicit confirmation. Read *Verification* before using it.\n\n" : ""}Exported by **Eyes Without a Face** (app ${manifest.app.version}${manifest.app.buildSha ? `, build ${manifest.app.buildSha}` : ""}).
-Status: **${manifest.status}** · verification state \`${manifest.verification.state}\` · mapping ${manifest.mapping.variant}, origin: ${originLabel[manifest.mapping.origin]}.
+${draft ? owned`> **DRAFT — not production-ready.** Exported with unresolved findings after explicit confirmation. Read *Verification* before using it.\n\n` : owned``}Exported by **Eyes Without a Face** (app ${code(manifest.app.version)}${manifest.app.buildSha ? owned`, build ${code(manifest.app.buildSha)}` : owned``}).
+Status: **${code(manifest.status)}** · verification state \`${code(manifest.verification.state)}\` · mapping ${code(manifest.mapping.variant)}, origin: ${code(originLabel[manifest.mapping.origin])}.
 
-This package contains a declarative mapping over **Phantom aliases** (${input.aliases.join(", ")}), the destination schema,
+This package contains a declarative mapping over **Phantom aliases** (${code(input.aliases.join(", "))}), the destination schema,
 fictional fixtures, a value-free validation report and the same deterministic engine the app used. It contains **no private
 records, no source field names and no alias bindings**.
 
@@ -360,13 +526,13 @@ records, no source field names and no alias bindings**.
 ## 1. Verify the package
 
 \`\`\`bash
-cd ${input.rootDir}
+cd ${code(input.rootDir)}
 node run.mjs verify
 \`\`\`
 
 This checks every file against the SHA-256 hashes in \`manifest.json\`, validates the mapping against the canonical
-Mapping Contract 1.0.0, and replays the ${input.fixtureCount} synthetic fixtures through the engine. The replay must reproduce the
-results recorded at export (\`fixtures/expected-outputs.json\`, ${input.fixturePasses} of ${input.fixtureCount} fixtures transform).
+Mapping Contract 1.0.0, and replays the ${code(input.fixtureCount)} synthetic fixtures through the engine. The replay must reproduce the
+results recorded at export (\`fixtures/expected-outputs.json\`, ${code(input.fixturePasses)} of ${code(input.fixtureCount)} fixtures transform).
 
 ## 2. Try it on the fixtures
 
@@ -397,15 +563,15 @@ node run.mjs run --input ../records.json --bindings ../bindings.local.json --out
 
 | Measure | Value |
 | --- | --- |
-| Imported records / hidden cases run | ${manifest.verification.importedRecords} / ${manifest.verification.hiddenCasesRun} (of ${manifest.verification.hiddenCasesAvailable} available) |
-| Transformed · approved rule · quarantined · unresolved · rejected by policy | ${outcome.transformedValid} · ${outcome.handledByApprovedRule} · ${outcome.quarantined} · ${outcome.unresolved} · ${outcome.rejectedByPolicy} |
-| Semantic verification | ${manifest.verification.semanticOverall} |
-| Acceptance policy | ${manifest.verification.policyId}@${manifest.verification.policyVersion} (\`policy/acceptance-policy.json\`) |
+| Imported records / hidden cases run | ${code(manifest.verification.importedRecords)} / ${code(manifest.verification.hiddenCasesRun)} (of ${code(manifest.verification.hiddenCasesAvailable)} available) |
+| Transformed · approved rule · quarantined · unresolved · rejected by policy | ${code(outcome.transformedValid)} · ${code(outcome.handledByApprovedRule)} · ${code(outcome.quarantined)} · ${code(outcome.unresolved)} · ${code(outcome.rejectedByPolicy)} |
+| Semantic verification | ${code(String(manifest.verification.semanticOverall))} |
+| Acceptance policy | ${code(manifest.verification.policyId)}@${code(manifest.verification.policyVersion)} (\`policy/acceptance-policy.json\`) |
 
-${manifest.verification.reasons.length > 0 ? `Findings:\n\n${manifest.verification.reasons.map((reason) => `- ${reason}`).join("\n")}\n` : "No unresolved findings.\n"}
+${findings}
 ## Known limitations
 
-${manifest.knownLimitations.map((line) => `- ${line}`).join("\n")}
+${limitations}
 
 ## Contents
 
@@ -413,8 +579,8 @@ ${manifest.knownLimitations.map((line) => `- ${line}`).join("\n")}
 | --- | --- |
 | \`manifest.json\` | Export Contract 1.1.0: versions, provenance, verification state, SHA-256 of every file |
 | \`run.mjs\` | Runner (verify · fixtures · bindings-template · run) |
-| \`runtime/eyes-mapping-runtime.mjs\` | The app's deterministic engine, bundled. Runtime ${manifest.runtime.runtimeVersion}, sha256 \`${manifest.runtime.runtimeSha256.slice(0, 16)}…\` |
-| \`mapping/mapping.alias.json\` | Mapping Contract 1.0.0 over aliases (sha256 \`${manifest.mapping.contractSha256.slice(0, 16)}…\`) |
+| \`runtime/eyes-mapping-runtime.mjs\` | The app's deterministic engine, bundled. Runtime ${code(manifest.runtime.runtimeVersion)}, sha256 \`${code(manifest.runtime.runtimeSha256.slice(0, 16))}…\` |
+| \`mapping/mapping.alias.json\` | Mapping Contract 1.0.0 over aliases (sha256 \`${code(manifest.mapping.contractSha256.slice(0, 16))}…\`) |
 | \`schemas/destination.schema.json\` | Destination JSON Schema |
 | \`fixtures/\` | Fictional alias-keyed records and their recorded results |
 | \`reports/validation-report.json\` | Value-free Reality Check and semantic summary |
@@ -438,7 +604,7 @@ export async function buildIntegrationPackage(input: PackageInput): Promise<Pack
 
   const aliasContract: MappingContract = {
     ...input.aliasContract,
-    notes: "Alias-level mapping exported by Eyes Without a Face. Field identifiers are Phantom aliases; bind them locally (README.md).",
+    notes: MAPPING_NOTES,
   };
   const contractCheck = validateContract(aliasContract);
   if (!contractCheck.valid) return fail("INVALID_INPUT", contractCheck.issues.map((issue) => `mapping ${issue.path}: ${issue.message}`));
@@ -458,25 +624,19 @@ export async function buildIntegrationPackage(input: PackageInput): Promise<Pack
   const exportId = `export-${slug(aliasContract.mappingId)}-${contractSha256.slice(0, 12)}`;
   const rootDir = `eyes-integration-${slug(aliasContract.mappingId)}-${contractSha256.slice(0, 8)}`;
 
-  const dataFiles: Array<{ path: string; content: string }> = [
+  const dataFiles: Array<{ path: string; content: string; scan?: string }> = [
     { path: "run.mjs", content: input.assets.runnerSource },
     { path: "runtime/eyes-mapping-runtime.mjs", content: input.assets.runtimeSource },
     { path: "runtime/THIRD_PARTY_NOTICES.md", content: input.assets.notices },
-    { path: "mapping/mapping.alias.json", content: json(aliasContract) },
+    jsonFile("mapping/mapping.alias.json", aliasContract),
     { path: "schemas/destination.schema.json", content: json(input.destinationSchema) },
     { path: "fixtures/synthetic-records.json", content: json({ fixturesVersion: "1.0.0", note: "Fictional Phantom Twin examples keyed by alias. Not derived from any record value.", records: input.fixtures }) },
-    { path: "fixtures/expected-outputs.json", content: json({ runtimeVersion: RUNTIME_VERSION, mappingId: aliasContract.mappingId, summary: fixtureRun.summary, results: fixtureRun.results }) },
-    {
-      path: "reports/validation-report.json",
-      content: json(safeValidationReport({ mappingId: aliasContract.mappingId, variant: input.variant, report: input.report, rows: input.rows, semantic: input.semantic, eligibility, policy: input.policy })),
-    },
-    { path: "policy/acceptance-policy.json", content: json({ note: "Local acceptance policy used for verification. Quarantined records are held for manual review and never counted as transformed.", policy: input.policy }) },
-    { path: "policy/semantic-declarations.json", content: json(declarations) },
+    jsonFile("fixtures/expected-outputs.json", { runtimeVersion: RUNTIME_VERSION, mappingId: aliasContract.mappingId, summary: fixtureRun.summary, results: fixtureRun.results }),
+    jsonFile("reports/validation-report.json", safeValidationReport({ mappingId: aliasContract.mappingId, variant: input.variant, report: input.report, rows: input.rows, semantic: input.semantic, eligibility, policy: input.policy })),
+    jsonFile("policy/acceptance-policy.json", { note: POLICY_NOTE, policy: input.policy }),
+    jsonFile("policy/semantic-declarations.json", declarations),
     { path: "bindings/bindings.template.json", content: json(bindingsTemplate(aliasContract)) },
-    {
-      path: "package.json",
-      content: json({ name: rootDir, private: true, type: "module", description: "Eyes Without a Face integration package", engines: { node: ">=22" }, scripts: { verify: "node run.mjs verify", fixtures: "node run.mjs fixtures" } }),
-    },
+    jsonFile("package.json", { name: rootDir, private: true, type: "module", description: PACKAGE_DESCRIPTION, engines: { node: ">=22" }, scripts: { verify: "node run.mjs verify", fixtures: "node run.mjs fixtures" } }),
   ];
 
   const manifestBase: Omit<ExportContractV11, "files"> = {
@@ -544,7 +704,7 @@ export async function buildIntegrationPackage(input: PackageInput): Promise<Pack
     includesPrivateSourceFixtures: false,
     includesSourceBindings: false,
     privacyScan: {
-      method: "Private record values (normalized, 4+ chars), local field names and secret patterns, over every data-bearing file; approved labels and destination-schema strings excepted.",
+      method: PRIVACY_SCAN_METHOD,
       scannedFiles: 0,
       findings: 0,
     },
@@ -552,10 +712,11 @@ export async function buildIntegrationPackage(input: PackageInput): Promise<Pack
     app: { version: input.app.version, buildSha: input.app.buildSha },
   };
   const fixturePasses = fixtureRun.results.filter((item) => item.status === "pass").length;
-  dataFiles.push({ path: "README.md", content: readme({ manifest: manifestBase, rootDir, aliases, fixtureCount: fixtureRun.results.length, fixturePasses }) });
+  const readmeText = readme({ manifest: manifestBase, rootDir, aliases, fixtureCount: fixtureRun.results.length, fixturePasses });
+  dataFiles.push({ path: "README.md", content: readmeText.text, scan: readmeText.scan });
 
   const fileEntries = await Promise.all(
-    dataFiles.map(async (file) => ({ path: file.path, content: file.content, sha256: await sha256Text(file.content), bytes: new TextEncoder().encode(file.content).length })),
+    dataFiles.map(async (file) => ({ path: file.path, content: file.content, scan: file.scan, sha256: await sha256Text(file.content), bytes: new TextEncoder().encode(file.content).length })),
   );
   fileEntries.sort((a, b) => a.path.localeCompare(b.path));
   const manifest: ExportContractV11 = {
@@ -564,7 +725,8 @@ export async function buildIntegrationPackage(input: PackageInput): Promise<Pack
     files: fileEntries.map(({ path, sha256, bytes }) => ({ path, sha256, bytes })),
   };
   const manifestText = json(manifest);
-  const findings = scanPackageFiles([...fileEntries, { path: "manifest.json", content: manifestText }], input.privacy, input.destinationSchema);
+  const manifestFile = jsonFile("manifest.json", manifest);
+  const findings = scanPackageFiles([...fileEntries, { path: "manifest.json", content: manifestText, scan: manifestFile.scan }], input.privacy, input.destinationSchema);
   if (findings.length > 0) {
     return fail(
       "PRIVACY_SCAN_FAILED",

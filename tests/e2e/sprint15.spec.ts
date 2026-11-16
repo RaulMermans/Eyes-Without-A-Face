@@ -35,11 +35,25 @@ async function boot(page: Page, harness: Record<string, unknown> = {}): Promise<
 
 const cloudCalls = (page: Page) => page.evaluate(() => window.__EYES_WITHOUT_A_FACE_TEST__?.cloudCalls ?? 0);
 
-async function demoToHelpdesk(page: Page, demo: "json" | "csv" | "xlsx" = "json"): Promise<void> {
+/** Sprint 16B: the field-matches table opens by default when a field needs a decision; open it only if closed. */
+async function openFieldMatches(page: Page): Promise<void> {
+  if (!(await page.getByTestId("field-matches").isVisible())) await page.getByTestId("field-matches-disclosure").locator("summary").click();
+}
+
+/** Sprint 16B (D2): the user explicitly chooses the source of each non-category field; suggestions are never applied. */
+async function chooseFields(page: Page, matches: Record<string, string>): Promise<void> {
+  await openFieldMatches(page);
+  for (const [target, source] of Object.entries(matches)) await page.getByTestId(`field-match-${target}`).selectOption(source);
+}
+const CRM_FIELDS = { id: "customer_id", email: "email_address", createdAt: "joined_at", organization: "company_name" };
+const WIDE_FIELDS = { id: "customer_id", email: "contact_email", createdAt: "created_on", organization: "company" };
+
+async function demoToHelpdesk(page: Page, demo: "json" | "csv" | "xlsx" = "json", confirm = true): Promise<void> {
   await page.getByTestId(`demo-${demo}`).click();
   await expect(page.getByTestId("source-summary")).toBeVisible();
   await page.getByTestId("data-continue").click();
   await page.getByTestId("destination-helpdesk").check();
+  if (confirm) await chooseFields(page, CRM_FIELDS);
 }
 
 /** The demo's reserved test cases include records no mapping can fix (an email that is a number): the result is a Draft. */
@@ -59,7 +73,15 @@ test.describe("E2E-150 Helpdesk, first run, on this device only", () => {
   test("one relevant question, a local translation, a verified local build — and nothing sent", async ({ page }) => {
     const providerRequests = attachProviderWatch(page);
     await boot(page, { cloudOutput: geminiLike });
-    await demoToHelpdesk(page);
+    await demoToHelpdesk(page, "json", false);
+    // Sprint 16B (D2): a suggestion is shown for confirmation; it is not a decision and builds nothing.
+    await expect(page.getByTestId("field-matches")).toBeVisible();
+    await expect(page.getByTestId("field-match-suggestion-email")).toContainText("email_address");
+    await expect(page.getByTestId("field-match-email")).toHaveValue("");
+    await expect(page.getByTestId("field-match-row-email")).toHaveAttribute("data-need", "confirm");
+    await page.getByTestId("field-match-use-email").click();
+    await expect(page.getByTestId("field-match-email")).toHaveValue("email_address");
+    await chooseFields(page, CRM_FIELDS);
     const question = page.getByTestId("question-status");
     await expect(question).toBeVisible();
     await expect(page.getByTestId("question-only-status")).toContainText("account_state");
@@ -151,8 +173,8 @@ test.describe("E2E-151 a source with 13 category fields", () => {
     await page.getByTestId("translate-status-inactivo").selectOption("inactive");
     await page.getByTestId("translate-status-pendiente").selectOption("prospect");
 
-    // The dates are ambiguous: the field table asks, once.
-    await page.getByTestId("field-matches-disclosure").locator("summary").click();
+    // The dates are ambiguous: the field table asks, once (after the user chose the field).
+    await chooseFields(page, WIDE_FIELDS);
     await expect(page.getByTestId("field-match-row-createdAt")).toHaveAttribute("data-need", "date-order");
     await page.screenshot({ path: path.join(shots, "05-wide-field-matches.png"), fullPage: true });
     await page.getByTestId("date-order-created_on-dmy").click();
@@ -176,13 +198,12 @@ test.describe("E2E-151 a source with 13 category fields", () => {
     await page.getByTestId("translate-lifecycleStage-cliente").selectOption("customer");
     await page.getByTestId("translate-lifecycleStage-antiguo").selectOption("former-customer");
     await page.getByTestId("translate-lifecycleStage-contacto").selectOption("lead");
-    await page.getByTestId("field-matches-disclosure").locator("summary").click();
-    await page.getByTestId("field-match-organization").selectOption("company");
+    await chooseFields(page, { email: "contact_email", organization: "company" });
     await page.getByTestId("guided-build-local").click();
     await expect(page.getByTestId("guided-before-after")).toContainText("Ficticia 1");
     // Correct the field from Result: the result is rebuilt locally, nothing sent.
     await page.getByTestId("step-destination").click();
-    await page.getByTestId("field-matches-disclosure").locator("summary").click();
+    await openFieldMatches(page);
     await page.getByTestId("field-match-organization").selectOption("region");
     await page.getByTestId("step-result").click();
     await expect(page.getByTestId("guided-before-after")).not.toContainText("Ficticia 1");
@@ -300,7 +321,7 @@ test.describe("E2E-155 set aside, mobile and keyboard", () => {
     await page.getByTestId("translate-status-activo").selectOption("active");
     await page.getByTestId("translate-status-inactivo").selectOption("inactive");
     await page.getByTestId("translate-status-pendiente").selectOption("prospect");
-    await page.getByTestId("field-matches-disclosure").locator("summary").click();
+    await chooseFields(page, WIDE_FIELDS);
     expect(await overflow()).toBeLessThanOrEqual(0);
     await page.getByTestId("date-order-created_on-dmy").click();
     await page.getByTestId("guided-build-local").click();
