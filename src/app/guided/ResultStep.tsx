@@ -20,6 +20,10 @@ import { beforeAfter, transformedCsv, transformedJson, transformedRecords, type 
 import { cloudBlockedTargets, isLocalMapping, unwrittenRequiredTargets, type CategoryMeaning, type FieldPlan } from "./field-plan.ts";
 import { CategoryTranslation, DateOrderQuestion, type FieldQuestionHandlers, type SlashOrder } from "./FieldQuestions.tsx";
 import { bindingsTemplate } from "../../export/runtime/runtime.ts";
+import { isIntentPlanRequest } from "../../inference/intent-prompt.ts";
+import { planRevisionAllowed } from "../runtime-model.ts";
+import { stepCaption } from "../experience.ts";
+import { PlanReview } from "./PlanReview.tsx";
 
 /**
  * Guided step 3 — the run and its result (Sprint 13, A5 / A6 / D / E).
@@ -60,7 +64,23 @@ export function ResultStep({
   onDateOrder = () => {},
   onBuildLocal = () => {},
   onIncludeLabels = () => {},
+  section = "verify",
+  newRequestAllowed = true,
+  onGenerate = () => {},
+  onMatch = () => {},
+  onMapManually = () => {},
+  onToVerify = () => {},
+  onToDeliver = () => {},
 }: {
+  /** Sprint 18B (ADR 0018 §9): which guided step this screen is — Generate, Verify or Deliver. */
+  section?: "generate" | "verify" | "deliver";
+  /** ADR 0018 §6: false once the plan-request budget for this content is spent. */
+  newRequestAllowed?: boolean;
+  onGenerate?: () => void;
+  onMatch?: FieldQuestionHandlers["onMatch"];
+  onMapManually?: () => void;
+  onToVerify?: () => void;
+  onToDeliver?: () => void;
   workspace: WorkspaceState;
   prepared: PreparedTwin | null;
   candidates: readonly ExportCandidate[];
@@ -109,7 +129,7 @@ export function ResultStep({
   if (!workspace.source) {
     return (
       <section aria-labelledby="result-heading" className="space-y-4" data-testid="guided-result">
-        <h2 id="result-heading" tabIndex={-1} className="focus:outline-none font-display text-4xl">No integration yet</h2>
+        <h2 id={`${section}-heading`} tabIndex={-1} className="focus:outline-none font-display text-4xl">No integration yet</h2>
         <p className="text-ink-text">Add your data and choose a destination first.</p>
         <Button variant="primary" onClick={onEditData} data-testid="result-to-data">
           Add your data <ArrowRightIcon />
@@ -119,16 +139,22 @@ export function ResultStep({
   }
 
   const failure = workspace.cloudError ? guidanceForFailure({ code: workspace.cloudError.code, stage: "cloud-mapping" }) : null;
-  const proposalRejected = workspace.proposal && !workspace.proposal.result.ok;
+  const proposalRejected = workspace.proposal && !workspace.proposal.result.ok && !workspace.proposal.plan;
+  // ADR 0018 §8: with the intent planner, withheld category names never block the request.
+  const planRequest = Boolean(review && isIntentPlanRequest(review.preview.outboundPrompt));
+  const blockedTargets = review?.status === "pending" && !planRequest ? cloudBlockedTargets(plan) : [];
+  const gen = section === "generate";
+  const ver = section === "verify";
 
   return (
     <section aria-labelledby="result-heading" className="space-y-6" data-testid="guided-result">
       <header className="max-w-3xl">
-        <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-gold">Step 3 of 3</p>
+        <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-gold">{stepCaption(section)}</p>
         <StatusHeadline
+          id={`${section}-heading`}
           status={
             // Sprint 17A: a request preflight proves unusable is not "awaiting approval" — say why, same status id.
-            status.id === "approval" && review?.status === "pending" && cloudBlockedTargets(plan).length > 0
+            status.id === "approval" && blockedTargets.length > 0
               ? { ...status, label: "Not ready to send", detail: "This request can't produce a usable integration yet. Nothing has been sent. Resolve the point below, or build on this device.", tone: "warn" }
               : status
           }
@@ -147,9 +173,20 @@ export function ResultStep({
         </p>
       ) : null}
 
-      {status.id === "approval" && review && (review.status === "pending" || review.status === "approved") ? (
+      {gen && !review && status.id !== "preparing" && !workspace.cloudError ? (
+        <div className="space-y-3 rounded-[3px] border border-rule bg-panel p-5 text-sm" data-testid="guided-generate-intro">
+          <p className="text-ink-text">
+            EYES prepares a fictional stand-in for your data on this device and shows you exactly what would be sent. Nothing is sent until you approve it.
+          </p>
+          <Button variant="primary" size="lg" onClick={onGenerate} data-testid="guided-generate">
+            Generate my integration <ArrowRightIcon />
+          </Button>
+        </div>
+      ) : null}
+
+      {gen && status.id === "approval" && review && (review.status === "pending" || review.status === "approved") ? (
         <>
-          {categoryNeed?.blocking && review.status === "pending" ? (
+          {!planRequest && categoryNeed?.blocking && review.status === "pending" ? (
             <>
               <CategoryNotice need={categoryNeed} onShare={onShareCategories} onEditDestination={onEditDestination} context="before" />
               <LocalAlternative plan={plan} onBuildLocal={onBuildLocal} onEditDestination={onEditDestination} context="blocked" />
@@ -159,7 +196,7 @@ export function ResultStep({
             workspace={workspace}
             cloudAvailable={cloudAvailable}
             sending={sending}
-            blocked={review.status === "pending" ? cloudBlockedTargets(plan) : []}
+            blocked={blockedTargets}
             onApproveAndSend={onApproveAndSend}
             onReject={onReject}
             onTechnical={onTechnical}
@@ -167,7 +204,7 @@ export function ResultStep({
         </>
       ) : null}
 
-      {status.id === "generating" ? (
+      {gen && status.id === "generating" ? (
         <div className="flex flex-wrap items-center gap-3 text-sm" data-testid="guided-waiting">
           <span className="text-ink-text">Only the approved request was sent. Your records stay here.</span>
           <Button size="sm" variant="ghost" onClick={onStopWaiting} data-testid="guided-stop">
@@ -176,7 +213,7 @@ export function ResultStep({
         </div>
       ) : null}
 
-      {status.id === "rejected" ? (
+      {gen && status.id === "rejected" ? (
         <div className="space-y-3">
           <LocalAlternative plan={plan} onBuildLocal={onBuildLocal} onEditDestination={onEditDestination} context="declined" />
           <div className="flex flex-wrap gap-3">
@@ -188,7 +225,7 @@ export function ResultStep({
         </div>
       ) : null}
 
-      {failure && !showOutcome ? (
+      {gen && failure && !showOutcome ? (
         <div className="space-y-3 border border-fail/40 border-l-4 border-l-fail bg-panel p-4 text-sm" data-testid="guided-cloud-failure" data-code={workspace.cloudError?.code}>
           <p className="font-medium">{failure.title}</p>
           <p className="text-ink-text">{failure.what}</p>
@@ -196,9 +233,20 @@ export function ResultStep({
           <p className="text-xs text-mute">The approval was used and is never reused. Trying again prepares a new request for you to approve; nothing is sent until you do.</p>
           <LocalAlternative plan={plan} onBuildLocal={onBuildLocal} onEditDestination={onEditDestination} context="failed" />
           <div className="flex flex-wrap gap-2">
-            <Button variant="primary" size="sm" onClick={onPrepareFresh} data-testid="guided-fresh-request">
-              Prepare a new request
-            </Button>
+            {newRequestAllowed ? (
+              <Button variant="primary" size="sm" onClick={onPrepareFresh} data-testid="guided-fresh-request">
+                Prepare a new request
+              </Button>
+            ) : (
+              <>
+                <p className="w-full text-xs text-mute" data-testid="guided-request-limit">
+                  EYES already asked Gemini the most times allowed for this data and destination. Map the fields yourself, or change the destination.
+                </p>
+                <Button variant="primary" size="sm" onClick={onMapManually} data-testid="guided-limit-map">
+                  Map fields yourself
+                </Button>
+              </>
+            )}
             <Button variant="ghost" size="sm" onClick={onTechnical}>
               View technical details
             </Button>
@@ -206,7 +254,60 @@ export function ResultStep({
         </div>
       ) : null}
 
-      {proposalRejected && !showOutcome ? (
+      {gen && workspace.proposal ? (
+        <p className="flex flex-wrap items-center gap-3 text-sm text-ink-text">
+          The request was sent and answered.
+          <Button size="sm" variant="primary" onClick={onToVerify} data-testid="generate-to-verify">
+            See the result in Verify
+          </Button>
+        </p>
+      ) : null}
+
+      {ver && !workspace.proposal && !workspace.report ? (
+        <p className="text-sm text-ink-text" data-testid="verify-empty">
+          Nothing to verify yet. Generate the integration first.{" "}
+          <button type="button" className="underline" onClick={onGenerate}>
+            Generate my integration
+          </button>
+        </p>
+      ) : null}
+
+      {ver && workspace.proposal?.plan && prepared ? (
+        <PlanReview
+          proposal={workspace.proposal}
+          prepared={prepared}
+          plan={plan}
+          meanings={meanings}
+          confirmations={confirmations}
+          dateExamples={dateExamples}
+          handlers={{ onMatch, onMeaning, onDateOrder, onShareCategories: () => {} }}
+          onMapManually={onMapManually}
+          onEditDestination={onEditDestination}
+        />
+      ) : null}
+
+      {ver && workspace.proposal && !workspace.proposal.result.ok && !workspace.proposal.plan && workspace.proposal.result.stage === "plan" ? (
+        <div className="space-y-3 border border-fail/40 border-l-4 border-l-fail bg-panel p-4 text-sm" data-testid="guided-plan-rejected">
+          <p className="font-medium">Gemini's answer couldn't be used</p>
+          <p className="text-ink-text">EYES checked it and stopped before running anything. It was not repaired.</p>
+          <Protected records={workspace.source.records.length} />
+          <div className="flex flex-wrap gap-2">
+            {newRequestAllowed ? (
+              <Button variant="primary" size="sm" onClick={onPrepareFresh} data-testid="guided-retry-proposal">
+                Ask Gemini again (new approval)
+              </Button>
+            ) : null}
+            <Button variant={newRequestAllowed ? "ghost" : "primary"} size="sm" onClick={onMapManually} data-testid="guided-plan-map">
+              Map fields yourself
+            </Button>
+            <Button variant="ghost" size="sm" onClick={onEditDestination}>
+              Change the destination
+            </Button>
+          </div>
+        </div>
+      ) : null}
+
+      {ver && proposalRejected && workspace.proposal?.result.ok === false && workspace.proposal.result.stage !== "plan" && !showOutcome ? (
         <RejectedProposal
           diagnosis={diagnosis}
           records={workspace.source.records.length}
@@ -223,8 +324,16 @@ export function ResultStep({
         />
       ) : null}
 
-      {showOutcome && candidate ? (
+      {section === "deliver" && !showOutcome ? (
+        <p className="text-sm text-ink-text" data-testid="deliver-empty">
+          Nothing to deliver yet: nothing has been checked on your records.
+        </p>
+      ) : null}
+
+      {(ver || section === "deliver") && showOutcome && candidate ? (
         <Outcome
+          part={ver ? "verify" : "deliver"}
+          onToDeliver={onToDeliver}
           workspace={workspace}
           prepared={prepared}
           candidate={candidate}
@@ -268,11 +377,11 @@ const TONE: Record<GuidedStatus["tone"], string> = {
   fail: "text-fail",
 };
 
-function StatusHeadline({ status }: { status: GuidedStatus }) {
+function StatusHeadline({ status, id }: { status: GuidedStatus; id: string }) {
   const Icon = status.tone === "pass" ? CheckIcon : status.tone === "fail" ? CrossIcon : status.tone === "approval" ? SealIcon : status.tone === "warn" ? AlertIcon : DashIcon;
   return (
     <div role="status" aria-live="polite" data-testid="guided-status" data-status={status.id}>
-      <h2 id="result-heading" className={`mt-2 flex items-center gap-3 font-display text-4xl leading-[1.05] tracking-[-0.01em] sm:text-5xl ${TONE[status.tone]}`}>
+      <h2 id={id} tabIndex={-1} className={`focus:outline-none mt-2 flex items-center gap-3 font-display text-4xl leading-[1.05] tracking-[-0.01em] sm:text-5xl ${TONE[status.tone]}`}>
         <Icon size={28} className={status.tone === "busy" ? "status-pulse shrink-0" : "shrink-0"} />
         <span data-testid="guided-status-label">{status.label}</span>
       </h2>
@@ -689,7 +798,11 @@ function Outcome({
   onEditDestination,
   onIncludeLabels,
   onChange,
+  part,
+  onToDeliver,
 }: {
+  part: "verify" | "deliver";
+  onToDeliver: () => void;
   workspace: WorkspaceState;
   prepared: PreparedTwin | null;
   candidate: ExportCandidate;
@@ -738,7 +851,8 @@ function Outcome({
       : nextStepText(candidate.eligibility.state, meaning.complete, openQuestions, output.records.length, mismatch);
   // B4/D4: category names inside the package of a mapping built here need the user's explicit approval.
   const approvedForCloud = new Set((workspace.review?.preview.payload.fields ?? []).flatMap((field) => (field.enumValues?.length ? [field.alias] : [])));
-  const labelSources = local
+  // Sprint 18B: a plan completed with the user's translation carries their labels too; the same opt-in applies.
+  const labelSources = local || workspace.proposal?.plan
     ? operations.flatMap((operation) => {
         if (operation.op !== "map_enum") return [];
         const alias = prepared?.twin.bindings.aliasForPath(operation.from);
@@ -768,6 +882,8 @@ function Outcome({
         </span>
       </p>
 
+      {part === "verify" ? (
+      <>
       <p className="border-l-4 border-l-violet-soft bg-panel p-3 text-sm text-ink" data-testid="guided-next">
         <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-mute">Next · </span>
         {next}
@@ -881,7 +997,17 @@ function Outcome({
       ) : null}
 
       <BeforeAfter examples={examples} />
+      <div className="flex flex-wrap items-center gap-3">
+        <Button variant="primary" onClick={onToDeliver} data-testid="verify-continue">
+          Continue to Deliver <ArrowRightIcon />
+        </Button>
+        <span className="text-xs text-mute">Download the transformed data and the reusable integration.</span>
+      </div>
+      </>
+      ) : null}
 
+      {part === "deliver" ? (
+      <>
       <section aria-labelledby="downloads-heading" className="space-y-3 border-t border-rule pt-5" data-testid="guided-downloads">
         <h3 id="downloads-heading" className="text-lg font-semibold">Downloads</h3>
         <p className="text-sm text-ink-text">
@@ -978,7 +1104,12 @@ node run.mjs run --input ../../records.json --bindings ../../bindings.local.json
             <p className="text-sm text-mute">No record passed, so there is nothing to preview.</p>
           )}
         </Disclosure>
+      </div>
+      </>
+      ) : null}
 
+      {part === "verify" ? (
+      <div className="space-y-3 border-t border-rule pt-4">
         {issues.length > 0 ? (
           <Disclosure summary={`Review issues (${issues.length})`} testId="guided-issues">
             <ul className="space-y-1.5 text-sm">
@@ -1005,12 +1136,13 @@ node run.mjs run --input ../../records.json --bindings ../../bindings.local.json
           </Disclosure>
         ) : null}
 
-        {!verified && workspace.proposal?.result.ok && workspace.mappingChoice === "proposal" ? (
+        {!verified && workspace.proposal?.result.ok && workspace.mappingChoice === "proposal" && planRevisionAllowed(workspace.proposal) ? (
           <Disclosure summary="Ask Gemini for one revision (needs a separate approval)" testId="guided-revision">
             <BlindRevisionPanel workspace={workspace} onChange={onChange} prepared={prepared} inference={inference} />
           </Disclosure>
         ) : null}
       </div>
+      ) : null}
     </div>
   );
 }

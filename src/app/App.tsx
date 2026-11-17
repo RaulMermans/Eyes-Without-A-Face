@@ -26,7 +26,9 @@ import { fieldUnderstanding, guidedStatus, type InFlight } from "./guided/guided
 import { ASK_AGAIN_LIMIT, categoryNeed, diagnoseRejectedProposal } from "./guided/recovery.ts";
 import { guidanceForFailure } from "../inference/failure-guidance.ts";
 import { summarizeDestination } from "./guided/destinations.ts";
-import { approveReview, cancelWaiting, prepareFreshReview, rejectReview, runLocalVerification, sendApprovedRequest, spendApproval } from "./run-actions.ts";
+import { approveReview, cancelWaiting, prepareFreshReview, recompilePlan, rejectReview, runLocalVerification, sendApprovedRequest, spendApproval } from "./run-actions.ts";
+import { isIntentPlanRequest } from "../inference/intent-prompt.ts";
+import { planRequestBudget } from "../plan/compare.ts";
 import { GUIDED_STEPS, initialView, viewHash, type GuidedStep, type View } from "./experience.ts";
 import { applyFieldDecision, initialWorkspaceState, invalidateDownstream, withDestination, type WorkspaceState } from "./workspace-state.ts";
 import { localContract, isLocalMapping, planFields, type CategoryMeaning } from "./guided/field-plan.ts";
@@ -305,7 +307,7 @@ export default function App() {
     requestAnimationFrame(() => {
       window.scrollTo({ top: 0, behavior: "instant" });
       // Move focus to the new step's heading so keyboard and screen-reader users land on it.
-      document.getElementById(step === "data" ? "data-heading" : step === "destination" ? "destination-step-heading" : "result-heading")?.focus({ preventScroll: true });
+      document.getElementById(GUIDED_STEPS.find((item) => item.id === step)?.headingId ?? "data-heading")?.focus({ preventScroll: true });
     });
   }, []);
 
@@ -330,7 +332,7 @@ export default function App() {
     setGuidedBlocker(null);
     if (!current.review || current.review.status === "rejected") {
       setInFlight("preparing");
-      goGuided("result");
+      goGuided("generate");
       const result = await prepareDisclosureReview(current, prepared);
       setInFlight(null);
       if (!result.ok) {
@@ -341,7 +343,7 @@ export default function App() {
       updateWorkspace(result.workspace);
       return;
     }
-    goGuided("result");
+    goGuided("generate");
   }
 
   /** The user's approval click: approve THIS preview and send it, once. Then check locally. */
@@ -363,7 +365,8 @@ export default function App() {
     setSending(false);
     if (!next) return;
     updateWorkspace(next);
-    if (!next.proposal?.result.ok) return;
+    if (next.proposal) goGuided("verify");
+    if (!runnable(next)) return;
     // Local, deterministic verification. Shown as "Checking the result" while it runs.
     setInFlight("checking");
     await new Promise((resolve) => requestAnimationFrame(() => resolve(null)));
@@ -434,7 +437,7 @@ export default function App() {
     setGuidedBlocker(null);
     const base: WorkspaceState = { ...invalidateDownstream(from), mappingText: JSON.stringify(contract, null, 2), mappingChoice: "manual" };
     setInFlight("checking");
-    if (guidedStep !== "result") goGuided("result");
+    if (guidedStep !== "verify") goGuided("verify");
     updateWorkspace(base);
     setInvalidation(null);
     await new Promise((resolve) => requestAnimationFrame(() => resolve(null)));
@@ -446,15 +449,22 @@ export default function App() {
     setInFlight(null);
   }
 
+  /** The active proposal can run: a legacy mapping that passed, or a plan whose every required field has an operation. */
+  const runnable = (state: WorkspaceState) =>
+    Boolean(state.proposal?.result.ok) && state.mappingChoice === "proposal" && (!state.proposal?.plan || state.proposal.plan.compiled.complete);
+
   /** A mapping built on this device is the active result. */
   const localActive = (state: WorkspaceState) => state.mappingChoice === "manual" && isLocalMapping(state.mappingText);
 
   /** Sprint 15 (B5/C4): apply one field decision; a local result is rebuilt from it at once (deterministic, nothing sent). */
   function guidedDecision(patch: Parameters<typeof applyFieldDecision>[1]): void {
     const current = workspaceRef.current;
-    const next = applyFieldDecision(current, patch);
+    const decided = applyFieldDecision(current, patch);
+    // Sprint 18B (ADR 0018 §4): an answer re-derives the plan; an executable result is checked on this device at once.
+    const next = decided.proposal?.plan ? recompilePlan(decided, prepared) : decided;
     updateWorkspace(next);
     if (localActive(current) && current.report) void guidedBuildLocal(next);
+    else if (next.proposal?.plan && !next.report && runnable(next)) updateWorkspace(runLocalVerification(next, prepared, true));
   }
 
   /**
@@ -506,6 +516,11 @@ export default function App() {
   const currentPayload = workspace.review?.preview.payloadHash ?? null;
   const rejectedAnswers = currentPayload ? runEvents.filter((event) => (event.kind === "proposal-validate" || event.kind === "alias-resolve") && !event.ok && event.payloadHash === currentPayload).length : 0;
   const askAgainAllowed = rejectedAnswers <= ASK_AGAIN_LIMIT;
+  const compiledPlan = workspace.proposal?.plan?.compiled ?? null;
+  const planRequest = Boolean(workspace.review && isIntentPlanRequest(workspace.review.preview.outboundPrompt));
+  // ADR 0018 §6: at most PLAN_REQUEST_LIMIT plan requests per (source, destination) content, counted from hashed telemetry.
+  const plansSent = currentPayload ? runEvents.filter((event) => event.kind === "cloud-proposal" && event.payloadHash === currentPayload).length : 0;
+  const newRequestAllowed = planRequest ? planRequestBudget(plansSent).allowed : true;
   const understanding = fieldUnderstanding(stages, onDeviceProbe.mode.kind);
   const status = guidedStatus(
     stages,
@@ -520,11 +535,35 @@ export default function App() {
         }))
       : [],
     inFlight,
-    { rejection: diagnosis, cloudFailureTitle: cloudFailure?.title ?? null },
+    {
+      rejection: diagnosis,
+      cloudFailureTitle: cloudFailure?.title ?? null,
+      plan: compiledPlan
+        ? {
+            fields: compiledPlan.counts.fields,
+            executable: compiledPlan.counts.executable,
+            questions: compiledPlan.clarifications.length,
+            requiredQuestions: compiledPlan.clarifications.filter((item) => item.required).length,
+            complete: compiledPlan.complete,
+            simulated: workspace.proposal?.origin !== "gemini-cloud",
+          }
+        : null,
+    },
   );
   const cloudAvailable = harness || inference.cloud.status().state === "configured";
   const loadedValue = loaded && loaded.source === workspace.source ? loaded.value : null;
-  const stepReachable = (id: GuidedStep) => (id === "data" ? true : id === "destination" ? Boolean(workspace.source && prepared) : Boolean(workspace.review || workspace.report));
+  const stepReachable = (id: GuidedStep): boolean => {
+    if (id === "data") return true;
+    if (id === "destination") return Boolean(workspace.source && prepared);
+    if (id === "generate") return Boolean(workspace.review || workspace.cloudError || workspace.proposal || workspace.report);
+    if (id === "verify") return Boolean(workspace.proposal || workspace.report);
+    return Boolean(workspace.report);
+  };
+  const [advancedOpen, setAdvancedOpen] = useState(false);
+  const mapManually = () => {
+    setAdvancedOpen(true);
+    goGuided("destination");
+  };
 
   const understandingStore = useMemo(() => ({ rows: understandingRows, setRows: setUnderstandingRows }), [understandingRows]);
   const notice = invalidation && !workspace.review ? (
@@ -742,16 +781,26 @@ export default function App() {
               onMeaning={guidedMeaning}
               onDateOrder={guidedDateOrder}
               onBuildLocal={() => void guidedBuildLocal()}
+              advancedOpen={advancedOpen}
+              onAdvancedToggle={setAdvancedOpen}
               buildBlocker={guidedBlocker}
               building={inFlight === "preparing"}
               onBuild={() => void guidedBuild()}
               onBack={() => goGuided("data")}
             />
           ) : null}
-          {guidedStep === "result" ? (
+          {guidedStep === "generate" || guidedStep === "verify" || guidedStep === "deliver" ? (
             <>
               {notice}
               <ResultStep
+                key={guidedStep}
+                section={guidedStep}
+                newRequestAllowed={newRequestAllowed}
+                onGenerate={() => void guidedBuild()}
+                onMatch={guidedMatch}
+                onMapManually={mapManually}
+                onToVerify={() => goGuided("verify")}
+                onToDeliver={() => goGuided("deliver")}
                 workspace={workspace}
                 prepared={prepared}
                 candidates={guidedCandidates}
