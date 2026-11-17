@@ -1,0 +1,900 @@
+{
+  "scenarioId": "honey-cooperative-deliveries-to-ledger",
+  "split": "holdout",
+  "industry": "beekeeping cooperative honey deliveries",
+  "sourceLanguage": "it",
+  "description": "Delivery export of a fictional beekeepers' cooperative (Italian snake_case, nested delivery, member and apiary) to be loaded into the cooperative ledger.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "classe_qualita": "Extra",
+      "id_riga": 300,
+      "apiario": {
+        "localita": "Podere Le Ripe",
+        "data_smielatura": "01/05/2025"
+      },
+      "stato_pagamento": "Acconto versato",
+      "certificazione": "Convenzionale",
+      "socio": {
+        "comune": "Asciano",
+        "email": "gabriele.ricci@apicoltori.example.net",
+        "codice": "SOC-041",
+        "nominativo": "  Ricci Gabriele"
+      },
+      "tipo_miele": "Acacia",
+      "conferimento": {
+        "peso_lordo_kg": 168.7,
+        "peso_netto_kg": 74.4,
+        "data": "01/11/2025",
+        "numero": "CONF-25-0088"
+      },
+      "assaggiatore": "Carlo Mazzei"
+    },
+    {
+      "assaggiatore": "Carlo Mazzei",
+      "socio": {
+        "comune": "Asciano",
+        "nominativo": "Giordano Elena",
+        "email": "Elena.Giordano@Apicoltori.Example.Net",
+        "codice": "SOC-046"
+      },
+      "conferimento": {
+        "data": "01/06/2025",
+        "peso_netto_kg": 246.1,
+        "numero": "CONF-25-0091",
+        "peso_lordo_kg": 432.2
+      },
+      "apiario": {
+        "data_smielatura": "11/07/2025",
+        "localita": "Poggio alle Api"
+      },
+      "certificazione": "In conversione",
+      "id_riga": 301,
+      "stato_pagamento": "Liquidato",
+      "classe_qualita": "Prima scelta",
+      "tipo_miele": "Tiglio"
+    },
+    {
+      "assaggiatore": "Ilaria Fanti",
+      "stato_pagamento": "Da liquidare",
+      "tipo_miele": "Acacia",
+      "classe_qualita": "Uso industriale",
+      "id_riga": 302,
+      "apiario": {
+        "localita": "Valle dell'Orcia",
+        "data_smielatura": "01/12/2025"
+      },
+      "conferimento": {
+        "peso_netto_kg": 432.1,
+        "numero": "CONF-25-0094",
+        "data": "05/02/2025",
+        "peso_lordo_kg": 414.4
+      },
+      "certificazione": "Bio",
+      "socio": {
+        "comune": "Pienza",
+        "nominativo": "Bianchi Riccardo",
+        "codice": "SOC-051",
+        "email": "riccardo.bianchi@apicoltori.example.net"
+      }
+    },
+    {
+      "apiario": {
+        "data_smielatura": "03/10/2025",
+        "localita": "Bosco di Sant'Anna"
+      },
+      "certificazione": "Bio",
+      "classe_qualita": "Extra",
+      "assaggiatore": "Carlo Mazzei",
+      "id_riga": 303,
+      "socio": {
+        "email": null,
+        "comune": "Pienza",
+        "codice": "SOC-056",
+        "nominativo": "Russo Beatrice"
+      },
+      "stato_pagamento": "Liquidato",
+      "tipo_miele": "Sulla",
+      "conferimento": {
+        "peso_lordo_kg": 455.1,
+        "data": "05/04/2025",
+        "peso_netto_kg": 186.4,
+        "numero": "CONF-25-0097"
+      }
+    },
+    {
+      "socio": {
+        "nominativo": "De Luca Francesco",
+        "email": "Francesco.Deluca@Apicoltori.Example.Net",
+        "comune": "Asciano",
+        "codice": "SOC-061"
+      },
+      "tipo_miele": "Tiglio",
+      "certificazione": "In conversione",
+      "apiario": {
+        "localita": "Bosco di Sant'Anna",
+        "data_smielatura": "01/12/2025"
+      },
+      "conferimento": {
+        "peso_netto_kg": 70.3,
+        "numero": "CONF-25-0100",
+        "data": "05/04/2025",
+        "peso_lordo_kg": 98.9
+      },
+      "assaggiatore": "Rita Benvenuti",
+      "stato_pagamento": "Acconto versato",
+      "classe_qualita": "Non conforme - campione",
+      "id_riga": 304
+    },
+    {
+      "apiario": {
+        "localita": "Valle dell'Orcia",
+        "data_smielatura": "04/07/2025"
+      },
+      "classe_qualita": "Non conforme - campione",
+      "stato_pagamento": "Liquidato",
+      "conferimento": {
+        "peso_netto_kg": 31.3,
+        "data": "02/12/2025",
+        "numero": "CONF-25-0103",
+        "peso_lordo_kg": 422.7
+      },
+      "certificazione": "Bio",
+      "tipo_miele": "Tiglio",
+      "socio": {
+        "comune": "Montalcino",
+        "codice": "SOC-066",
+        "nominativo": "De Luca Leonardo",
+        "email": "leonardo.deluca@apicoltori.example.net"
+      },
+      "id_riga": 305,
+      "assaggiatore": "Ilaria Fanti"
+    },
+    {
+      "id_riga": 306,
+      "certificazione": "Convenzionale",
+      "apiario": {
+        "data_smielatura": "04/12/2025",
+        "localita": "Poggio alle Api"
+      },
+      "assaggiatore": "Carlo Mazzei",
+      "classe_qualita": "Uso industriale",
+      "socio": {
+        "nominativo": "Giordano Riccardo",
+        "email": "riccardo.giordano@apicoltori.example.net",
+        "codice": "SOC-071",
+        "comune": "Radicofani"
+      },
+      "stato_pagamento": "Da liquidare",
+      "conferimento": {
+        "numero": "CONF-25-0106",
+        "peso_lordo_kg": 86.7,
+        "data": "12/12/2025",
+        "peso_netto_kg": 47.9
+      },
+      "tipo_miele": "Millefiori"
+    },
+    {
+      "socio": {
+        "email": "Riccardo.Conti@Apicoltori.Example.Net",
+        "codice": "SOC-076",
+        "nominativo": "Conti Riccardo  ",
+        "comune": "Montalcino"
+      },
+      "apiario": {
+        "localita": "Podere Le Ripe",
+        "data_smielatura": "02/08/2025"
+      },
+      "stato_pagamento": "Da liquidare",
+      "tipo_miele": "Melata di bosco",
+      "certificazione": "Convenzionale",
+      "assaggiatore": "Rita Benvenuti",
+      "classe_qualita": "Uso industriale",
+      "id_riga": 307,
+      "conferimento": {
+        "data": "07/03/2025",
+        "peso_lordo_kg": 206.8,
+        "numero": "CONF-25-0109",
+        "peso_netto_kg": 457.7
+      }
+    },
+    {
+      "socio": {
+        "nominativo": "Conti Francesco",
+        "codice": "SOC-044",
+        "email": "francesco.conti@apicoltori.example.net",
+        "comune": "Asciano"
+      },
+      "id_riga": 308,
+      "tipo_miele": "Tiglio",
+      "conferimento": {
+        "data": "02/07/2025",
+        "peso_lordo_kg": 286.2,
+        "peso_netto_kg": 438,
+        "numero": "CONF-25-0112"
+      },
+      "classe_qualita": "Uso industriale",
+      "apiario": {
+        "data_smielatura": "10/06/2025",
+        "localita": "Valle dell'Orcia"
+      },
+      "certificazione": "Convenzionale",
+      "assaggiatore": "Rita Benvenuti",
+      "stato_pagamento": "Da liquidare"
+    },
+    {
+      "classe_qualita": "Non conforme - campione",
+      "tipo_miele": "Castagno",
+      "certificazione": "Bio",
+      "stato_pagamento": "Da liquidare",
+      "apiario": {
+        "localita": "Bosco di Sant'Anna",
+        "data_smielatura": "02/08/2025"
+      },
+      "id_riga": 309,
+      "assaggiatore": "Rita Benvenuti",
+      "socio": {
+        "nominativo": "Lombardi Giulia",
+        "codice": "SOC-049",
+        "comune": "Radicofani"
+      },
+      "conferimento": {
+        "data": "06/06/2025",
+        "peso_netto_kg": 215.7,
+        "peso_lordo_kg": 141.2,
+        "numero": "CONF-25-0115"
+      }
+    },
+    {
+      "id_riga": 310,
+      "classe_qualita": "Extra",
+      "apiario": {
+        "data_smielatura": "07/03/2025",
+        "localita": "Valle dell'Orcia"
+      },
+      "socio": {
+        "nominativo": "Bruno Chiara",
+        "comune": "Montalcino",
+        "codice": "SOC-054",
+        "email": "Chiara.Bruno@Apicoltori.Example.Net"
+      },
+      "certificazione": "Convenzionale",
+      "assaggiatore": "Ilaria Fanti",
+      "tipo_miele": "Millefiori",
+      "conferimento": {
+        "numero": "CONF-25-0118",
+        "peso_netto_kg": 105.6,
+        "peso_lordo_kg": 135.8,
+        "data": "02/02/2025"
+      },
+      "stato_pagamento": "Acconto versato"
+    },
+    {
+      "apiario": {
+        "localita": "Valle dell'Orcia",
+        "data_smielatura": "11/06/2025"
+      },
+      "certificazione": "Convenzionale",
+      "tipo_miele": "Acacia",
+      "stato_pagamento": "Da liquidare",
+      "socio": {
+        "comune": "Asciano",
+        "nominativo": "Lombardi Edoardo",
+        "codice": "SOC-059",
+        "email": "edoardo.lombardi@apicoltori.example.net"
+      },
+      "id_riga": 311,
+      "classe_qualita": "Non conforme - campione",
+      "assaggiatore": "Carlo Mazzei",
+      "conferimento": {
+        "peso_netto_kg": 396.3,
+        "data": "07/06/2025",
+        "numero": "CONF-25-0121",
+        "peso_lordo_kg": 387.2
+      }
+    },
+    {
+      "assaggiatore": "Rita Benvenuti",
+      "certificazione": "Convenzionale",
+      "apiario": {
+        "data_smielatura": "03/09/2025",
+        "localita": "Podere Le Ripe"
+      },
+      "id_riga": 312,
+      "tipo_miele": "Castagno",
+      "classe_qualita": "Extra",
+      "conferimento": {
+        "data": "06/09/2025",
+        "peso_netto_kg": 325.8,
+        "numero": "CONF-25-0124",
+        "peso_lordo_kg": 413
+      },
+      "socio": {
+        "email": null,
+        "comune": "Pienza",
+        "nominativo": "Marino Elena",
+        "codice": "SOC-064"
+      },
+      "stato_pagamento": "Da liquidare"
+    },
+    {
+      "apiario": {
+        "localita": "Bosco di Sant'Anna",
+        "data_smielatura": "11/07/2025"
+      },
+      "assaggiatore": "Carlo Mazzei",
+      "classe_qualita": "Prima scelta",
+      "stato_pagamento": "Da liquidare",
+      "socio": {
+        "comune": "Radicofani",
+        "codice": "SOC-069",
+        "nominativo": "Giordano Sara",
+        "email": "Sara.Giordano@Apicoltori.Example.Net"
+      },
+      "conferimento": {
+        "peso_netto_kg": 270.7,
+        "numero": "CONF-25-0127",
+        "data": "09/02/2025",
+        "peso_lordo_kg": 91.8
+      },
+      "certificazione": "In conversione",
+      "tipo_miele": "Sulla",
+      "id_riga": 313
+    },
+    {
+      "conferimento": {
+        "peso_lordo_kg": 125.9,
+        "data": "09/06/2025",
+        "peso_netto_kg": 368.7,
+        "numero": "CONF-25-0130"
+      },
+      "certificazione": "In conversione",
+      "classe_qualita": "Extra",
+      "tipo_miele": "Millefiori",
+      "apiario": {
+        "data_smielatura": "10/12/2025",
+        "localita": "Podere Le Ripe"
+      },
+      "assaggiatore": "Ilaria Fanti",
+      "stato_pagamento": "Acconto versato",
+      "socio": {
+        "comune": "Asciano",
+        "codice": "SOC-074",
+        "nominativo": "Greco Elena",
+        "email": "elena.greco@apicoltori.example.net"
+      },
+      "id_riga": 314
+    },
+    {
+      "conferimento": {
+        "peso_lordo_kg": 331.3,
+        "numero": "CONF-25-0133",
+        "data": "01/12/2025",
+        "peso_netto_kg": 292.1
+      },
+      "socio": {
+        "codice": "SOC-042",
+        "email": "tommaso.conti@apicoltori.example.net",
+        "comune": "Montalcino",
+        "nominativo": "Conti Tommaso"
+      },
+      "stato_pagamento": "Acconto versato",
+      "apiario": {
+        "localita": "Podere Le Ripe",
+        "data_smielatura": "07/07/2025"
+      },
+      "assaggiatore": "Rita Benvenuti",
+      "classe_qualita": "Uso industriale",
+      "certificazione": "In conversione",
+      "tipo_miele": "Sulla",
+      "id_riga": 315
+    },
+    {
+      "socio": {
+        "nominativo": " Costa Gabriele ",
+        "comune": "Asciano",
+        "codice": "SOC-047",
+        "email": "Gabriele.Costa@Apicoltori.Example.Net"
+      },
+      "conferimento": {
+        "peso_netto_kg": 22.5,
+        "numero": "CONF-25-0136",
+        "peso_lordo_kg": 207.4,
+        "data": "01/09/2025"
+      },
+      "apiario": {
+        "localita": "Valle dell'Orcia",
+        "data_smielatura": "08/08/2025"
+      },
+      "tipo_miele": "Melata di bosco",
+      "id_riga": 316,
+      "certificazione": "In conversione",
+      "classe_qualita": "Prima scelta",
+      "stato_pagamento": "Acconto versato",
+      "assaggiatore": "Ilaria Fanti"
+    },
+    {
+      "tipo_miele": "Sulla",
+      "apiario": {
+        "localita": "Podere Le Ripe",
+        "data_smielatura": "02/07/2025"
+      },
+      "socio": {
+        "comune": "Montalcino",
+        "nominativo": "Romano Alice",
+        "email": "alice.romano@apicoltori.example.net",
+        "codice": "SOC-052"
+      },
+      "conferimento": {
+        "numero": "CONF-25-0139",
+        "peso_lordo_kg": 164.4,
+        "data": "04/06/2025",
+        "peso_netto_kg": 31.9
+      },
+      "certificazione": "Bio",
+      "classe_qualita": "Prima scelta",
+      "id_riga": 317,
+      "assaggiatore": "Carlo Mazzei",
+      "stato_pagamento": "Liquidato"
+    },
+    {
+      "classe_qualita": "Extra",
+      "conferimento": {
+        "peso_netto_kg": 67.3,
+        "numero": "CONF-25-0142",
+        "peso_lordo_kg": 340.1,
+        "data": "02/11/2025"
+      },
+      "tipo_miele": "Acacia",
+      "certificazione": "Bio",
+      "apiario": {
+        "localita": "Poggio alle Api",
+        "data_smielatura": "06/01/2025"
+      },
+      "id_riga": 318,
+      "assaggiatore": "Ilaria Fanti",
+      "stato_pagamento": "Acconto versato",
+      "socio": {
+        "nominativo": "Ricci Tommaso",
+        "codice": "SOC-057",
+        "comune": "Radicofani"
+      }
+    },
+    {
+      "certificazione": "Convenzionale",
+      "id_riga": 319,
+      "stato_pagamento": "Da liquidare",
+      "assaggiatore": "Carlo Mazzei",
+      "socio": {
+        "codice": "SOC-062",
+        "nominativo": "Costa Alice",
+        "email": "Alice.Costa@Apicoltori.Example.Net",
+        "comune": "Pienza"
+      },
+      "apiario": {
+        "localita": "Valle dell'Orcia",
+        "data_smielatura": "05/10/2025"
+      },
+      "classe_qualita": "Prima scelta",
+      "tipo_miele": "Castagno",
+      "conferimento": {
+        "peso_netto_kg": 93.5,
+        "peso_lordo_kg": 510.8,
+        "data": "10/10/2025",
+        "numero": "CONF-25-0145"
+      }
+    },
+    {
+      "id_riga": 320,
+      "socio": {
+        "nominativo": "Rizzo Alessandro",
+        "comune": "Asciano",
+        "codice": "SOC-067",
+        "email": "alessandro.rizzo@apicoltori.example.net"
+      },
+      "conferimento": {
+        "peso_netto_kg": 194.7,
+        "peso_lordo_kg": 175.8,
+        "numero": "CONF-25-0148",
+        "data": "11/05/2025"
+      },
+      "apiario": {
+        "localita": "Poggio alle Api",
+        "data_smielatura": "02/06/2025"
+      },
+      "stato_pagamento": "Liquidato",
+      "certificazione": "In conversione",
+      "assaggiatore": "Rita Benvenuti",
+      "classe_qualita": "Prima scelta",
+      "tipo_miele": "Melata di bosco"
+    },
+    {
+      "socio": {
+        "comune": "Asciano",
+        "email": "alessandro.giordano@apicoltori.example.net",
+        "nominativo": "Giordano Alessandro",
+        "codice": "SOC-072"
+      },
+      "assaggiatore": "Ilaria Fanti",
+      "stato_pagamento": "Liquidato",
+      "tipo_miele": "Acacia",
+      "certificazione": "In conversione",
+      "conferimento": {
+        "numero": "CONF-25-0151",
+        "peso_lordo_kg": 312.1,
+        "peso_netto_kg": 179.5,
+        "data": "01/03/2025"
+      },
+      "apiario": {
+        "data_smielatura": "01/11/2025",
+        "localita": "Podere Le Ripe"
+      },
+      "classe_qualita": "Non conforme - campione",
+      "id_riga": 321
+    },
+    {
+      "stato_pagamento": "Acconto versato",
+      "tipo_miele": "Melata di bosco",
+      "conferimento": {
+        "data": "09/05/2025",
+        "peso_netto_kg": 377.4,
+        "numero": "CONF-25-0154",
+        "peso_lordo_kg": 358.6
+      },
+      "id_riga": 322,
+      "apiario": {
+        "data_smielatura": "11/01/2025",
+        "localita": "Valle dell'Orcia"
+      },
+      "assaggiatore": "Rita Benvenuti",
+      "socio": {
+        "comune": "Montalcino",
+        "nominativo": "  Rizzo Francesco",
+        "codice": "SOC-077",
+        "email": "Francesco.Rizzo@Apicoltori.Example.Net"
+      },
+      "classe_qualita": "Non conforme - campione",
+      "certificazione": "Bio"
+    },
+    {
+      "classe_qualita": "Prima scelta",
+      "apiario": {
+        "localita": "Poggio alle Api",
+        "data_smielatura": "10/03/2025"
+      },
+      "socio": {
+        "nominativo": "Esposito Chiara",
+        "email": "chiara.esposito@apicoltori.example.net",
+        "comune": "Asciano",
+        "codice": "SOC-045"
+      },
+      "certificazione": "Bio",
+      "stato_pagamento": "Liquidato",
+      "conferimento": {
+        "peso_netto_kg": 53.3,
+        "numero": "CONF-25-0157",
+        "peso_lordo_kg": 296.9,
+        "data": "08/09/2025"
+      },
+      "assaggiatore": "Carlo Mazzei",
+      "tipo_miele": "Millefiori",
+      "id_riga": 323
+    },
+    {
+      "conferimento": {
+        "peso_netto_kg": 479.1,
+        "peso_lordo_kg": 365.1,
+        "data": "06/08/2025",
+        "numero": "CONF-25-0160"
+      },
+      "assaggiatore": "Ilaria Fanti",
+      "apiario": {
+        "localita": "Bosco di Sant'Anna",
+        "data_smielatura": "06/03/2025"
+      },
+      "id_riga": 324,
+      "stato_pagamento": "Liquidato",
+      "classe_qualita": "Extra",
+      "socio": {
+        "comune": "Radicofani",
+        "codice": "SOC-050",
+        "nominativo": "Rizzo Pietro"
+      },
+      "tipo_miele": "Castagno",
+      "certificazione": "Bio"
+    },
+    {
+      "stato_pagamento": "Liquidato",
+      "assaggiatore": "Rita Benvenuti",
+      "tipo_miele": "Millefiori",
+      "id_riga": 325,
+      "conferimento": {
+        "peso_netto_kg": 65.2,
+        "numero": "CONF-25-0163",
+        "data": "07/07/2025",
+        "peso_lordo_kg": 94.1
+      },
+      "certificazione": "Convenzionale",
+      "classe_qualita": "Uso industriale",
+      "apiario": {
+        "data_smielatura": "09/09/2025",
+        "localita": "Podere Le Ripe"
+      },
+      "socio": {
+        "comune": "Montalcino",
+        "nominativo": "Rossi Giulia",
+        "email": "Giulia.Rossi@Apicoltori.Example.Net",
+        "codice": "SOC-055"
+      }
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "delivery_id": {
+        "type": "string",
+        "description": "Number of the honey delivery."
+      },
+      "member_code": {
+        "type": "string",
+        "description": "Cooperative member code of the beekeeper."
+      },
+      "beekeeper_name": {
+        "type": "string",
+        "description": "Name of the beekeeper as registered (surname first)."
+      },
+      "beekeeper_email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email of the beekeeper for settlement notices."
+      },
+      "honey_type": {
+        "type": "string",
+        "enum": [
+          "wildflower",
+          "acacia",
+          "chestnut",
+          "linden",
+          "honeydew",
+          "sulla"
+        ],
+        "description": "Botanical variety of the honey."
+      },
+      "quality_grade": {
+        "type": "string",
+        "enum": [
+          "premium",
+          "standard",
+          "industrial"
+        ],
+        "description": "Quality grade assigned at intake."
+      },
+      "payment_status": {
+        "type": "string",
+        "enum": [
+          "settled",
+          "pending",
+          "advance_paid"
+        ],
+        "description": "Settlement of the delivery to the member."
+      },
+      "net_kg": {
+        "type": "number",
+        "description": "Net weight of honey delivered in kilograms."
+      },
+      "delivered_on": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the honey was delivered to the cooperative."
+      },
+      "lot_number": {
+        "type": "string",
+        "description": "Production lot number assigned to the honey."
+      }
+    },
+    "required": [
+      "delivery_id",
+      "member_code",
+      "beekeeper_name",
+      "honey_type",
+      "quality_grade",
+      "net_kg",
+      "delivered_on"
+    ]
+  },
+  "groundTruth": {
+    "delivery_id": {
+      "source": "conferimento.numero",
+      "transform": "copy",
+      "why": "delivery number; id_riga is the export row and socio.codice the member"
+    },
+    "member_code": {
+      "source": "socio.codice",
+      "transform": "copy",
+      "why": "member code"
+    },
+    "beekeeper_name": {
+      "source": "socio.nominativo",
+      "transform": "trim",
+      "why": "member name, padded; assaggiatore is the taster"
+    },
+    "beekeeper_email": {
+      "source": "socio.email",
+      "transform": "normalize_email",
+      "why": "member email, mixed case, sometimes absent"
+    },
+    "honey_type": {
+      "source": "tipo_miele",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Millefiori": "wildflower",
+        "Acacia": "acacia",
+        "Castagno": "chestnut",
+        "Tiglio": "linden",
+        "Melata di bosco": "honeydew",
+        "Sulla": "sulla"
+      },
+      "why": "honey variety"
+    },
+    "quality_grade": {
+      "source": "classe_qualita",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Extra": "premium",
+        "Prima scelta": "standard",
+        "Uso industriale": "industrial",
+        "Non conforme - campione": null
+      },
+      "why": "quality class; non-conforming samples need review; certificazione is organic status, not a grade"
+    },
+    "payment_status": {
+      "source": "stato_pagamento",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Liquidato": "settled",
+        "Da liquidare": "pending",
+        "Acconto versato": "advance_paid"
+      },
+      "why": "settlement state"
+    },
+    "net_kg": {
+      "source": "conferimento.peso_netto_kg",
+      "transform": "copy",
+      "why": "net weight; peso_lordo_kg includes the drums"
+    },
+    "delivered_on": {
+      "source": "conferimento.data",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "delivery date (Italian day-first); data_smielatura is the extraction date"
+    },
+    "lot_number": {
+      "source": null,
+      "transform": "none",
+      "why": "no lot number is exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "classe_qualita",
+        "certificazione"
+      ],
+      "correctFor": "quality_grade"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "stato_pagamento",
+        "classe_qualita"
+      ],
+      "correctFor": "payment_status"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "conferimento.numero",
+        "id_riga"
+      ],
+      "correctFor": "delivery_id"
+    },
+    {
+      "kind": "two-quantity-fields",
+      "fields": [
+        "conferimento.peso_netto_kg",
+        "conferimento.peso_lordo_kg"
+      ],
+      "correctFor": "net_kg"
+    },
+    {
+      "kind": "birth-date-vs-start-date",
+      "fields": [
+        "conferimento.data",
+        "apiario.data_smielatura"
+      ],
+      "correctFor": "delivered_on"
+    }
+  ],
+  "sourceConcepts": {
+    "id_riga": "other-identifier",
+    "conferimento.numero": "transaction-id",
+    "conferimento.data": "created-date",
+    "conferimento.peso_netto_kg": "quantity",
+    "conferimento.peso_lordo_kg": "quantity",
+    "socio.codice": "customer-id",
+    "socio.nominativo": "person-name",
+    "socio.email": "email",
+    "socio.comune": "city",
+    "apiario.localita": "other",
+    "apiario.data_smielatura": "start-date",
+    "tipo_miele": "category",
+    "classe_qualita": "category",
+    "certificazione": "category",
+    "stato_pagamento": "payment-status",
+    "assaggiatore": "person-name"
+  },
+  "destinationConcepts": {
+    "delivery_id": "transaction-id",
+    "member_code": "customer-id",
+    "beekeeper_name": "person-name",
+    "beekeeper_email": "email",
+    "honey_type": "category",
+    "quality_grade": "category",
+    "payment_status": "payment-status",
+    "net_kg": "quantity",
+    "delivered_on": "created-date",
+    "lot_number": "other-identifier"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 0,
+      "outcome": "transformed",
+      "output": {
+        "delivery_id": "CONF-25-0088",
+        "member_code": "SOC-041",
+        "beekeeper_name": "Ricci Gabriele",
+        "beekeeper_email": "gabriele.ricci@apicoltori.example.net",
+        "honey_type": "acacia",
+        "quality_grade": "premium",
+        "payment_status": "advance_paid",
+        "net_kg": 74.4,
+        "delivered_on": "2025-11-01"
+      }
+    },
+    {
+      "recordIndex": 3,
+      "outcome": "transformed",
+      "output": {
+        "delivery_id": "CONF-25-0097",
+        "member_code": "SOC-056",
+        "beekeeper_name": "Russo Beatrice",
+        "honey_type": "sulla",
+        "quality_grade": "premium",
+        "payment_status": "settled",
+        "net_kg": 186.4,
+        "delivered_on": "2025-04-05"
+      }
+    },
+    {
+      "recordIndex": 4,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 12,
+      "outcome": "transformed",
+      "output": {
+        "delivery_id": "CONF-25-0124",
+        "member_code": "SOC-064",
+        "beekeeper_name": "Marino Elena",
+        "honey_type": "chestnut",
+        "quality_grade": "premium",
+        "payment_status": "pending",
+        "net_kg": 325.8,
+        "delivered_on": "2025-09-06"
+      }
+    }
+  ]
+}

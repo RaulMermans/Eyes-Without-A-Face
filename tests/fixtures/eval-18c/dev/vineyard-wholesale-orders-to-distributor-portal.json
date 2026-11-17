@@ -1,0 +1,868 @@
+{
+  "scenarioId": "vineyard-wholesale-orders-to-distributor-portal",
+  "split": "dev",
+  "industry": "vineyard wholesale orders",
+  "sourceLanguage": "fr",
+  "description": "Wholesale order export of a fictional Bordeaux wine estate (French snake_case, nested buyer and buyer contact) to be loaded into a distributor order portal.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "num_commande": "CMD-24-3101",
+      "statut_commande": "Brouillon interne",
+      "client": {
+        "code_client": "CLI-0204",
+        "raison_sociale": "La Cave à Jules",
+        "contact": {
+          "prenom": "Clémence",
+          "nom": "Girard",
+          "courriel": "clemence.girard@achats.example.net"
+        }
+      },
+      "id_ligne": 50017,
+      "date_commande": "09/10/2024",
+      "date_livraison_souhaitee": "13/11/2025",
+      "nb_caisses": 33,
+      "commercial": "Olivier Castéra",
+      "appellation": "Saint-Émilion Grand Cru",
+      "montant_ht": 1407.48,
+      "statut_reglement": "Litige"
+    },
+    {
+      "client": {
+        "raison_sociale": "Cave des Remparts",
+        "code_client": "CLI-0217",
+        "contact": {
+          "prenom": "Mathis",
+          "courriel": "Mathis.Caron@Achats.Example.Net",
+          "nom": "Caron"
+        }
+      },
+      "statut_reglement": "Litige",
+      "appellation": "Saint-Émilion Grand Cru",
+      "statut_commande": "Livrée",
+      "id_ligne": 50020,
+      "montant_ht": 2617.4,
+      "date_commande": "22/11/2024",
+      "commercial": "Olivier Castéra",
+      "nb_caisses": 5,
+      "date_livraison_souhaitee": "14/12/2025",
+      "num_commande": "CMD-24-3108"
+    },
+    {
+      "appellation": "Saint-Émilion Grand Cru",
+      "statut_commande": "Expédiée",
+      "date_commande": "15/10/2024",
+      "statut_reglement": "Payé",
+      "date_livraison_souhaitee": "27/04/2025",
+      "id_ligne": 50023,
+      "montant_ht": 1880.5,
+      "num_commande": "CMD-24-3115",
+      "client": {
+        "raison_sociale": "  La Cave à Jules",
+        "code_client": "CLI-0230",
+        "contact": {
+          "prenom": "Juliette",
+          "courriel": "juliette.renaud@achats.example.net",
+          "nom": "Renaud"
+        }
+      },
+      "nb_caisses": 28,
+      "commercial": "Sylvie Darrieux"
+    },
+    {
+      "id_ligne": 50026,
+      "nb_caisses": 36,
+      "statut_commande": "En préparation",
+      "date_livraison_souhaitee": null,
+      "client": {
+        "contact": {
+          "prenom": "Chloé",
+          "nom": "Roussel",
+          "courriel": "chloe.roussel@achats.example.net"
+        },
+        "code_client": "CLI-0243",
+        "raison_sociale": "La Cave à Jules"
+      },
+      "statut_reglement": "Payé",
+      "montant_ht": 4092.46,
+      "num_commande": "CMD-24-3122",
+      "commercial": "Nadia Belkacem",
+      "appellation": "Pessac-Léognan",
+      "date_commande": "10/09/2025"
+    },
+    {
+      "date_livraison_souhaitee": "24/06/2025",
+      "date_commande": "15/02/2025",
+      "client": {
+        "raison_sociale": "Épicerie Fine Morel",
+        "contact": {
+          "nom": "Brunet",
+          "courriel": "Mathis.Brunet@Achats.Example.Net",
+          "prenom": "Mathis"
+        },
+        "code_client": "CLI-0256"
+      },
+      "nb_caisses": 27,
+      "num_commande": "CMD-24-3129",
+      "id_ligne": 50029,
+      "commercial": "Nadia Belkacem",
+      "statut_commande": "Annulée",
+      "appellation": "Saint-Émilion Grand Cru",
+      "montant_ht": 3550.4,
+      "statut_reglement": "En attente de règlement"
+    },
+    {
+      "client": {
+        "contact": {
+          "prenom": "Raphaël",
+          "courriel": "raphael.renaud@achats.example.net",
+          "nom": "Renaud"
+        },
+        "raison_sociale": "Cave des Remparts",
+        "code_client": "CLI-0208"
+      },
+      "id_ligne": 50032,
+      "num_commande": "CMD-24-3136",
+      "statut_commande": "En préparation",
+      "appellation": "Entre-Deux-Mers",
+      "date_livraison_souhaitee": "21/11/2025",
+      "statut_reglement": "Relance 1",
+      "date_commande": "17/03/2024",
+      "montant_ht": 670.93,
+      "nb_caisses": 13,
+      "commercial": "Olivier Castéra"
+    },
+    {
+      "date_livraison_souhaitee": "12/10/2025",
+      "id_ligne": 50035,
+      "appellation": "Bordeaux Supérieur",
+      "statut_commande": "Expédiée",
+      "date_commande": "03/06/2024",
+      "statut_reglement": "Relance 1",
+      "nb_caisses": 10,
+      "num_commande": "CMD-24-3143",
+      "client": {
+        "code_client": "CLI-0221",
+        "raison_sociale": "Cave des Remparts",
+        "contact": {
+          "nom": "Blanchard",
+          "prenom": "Chloé",
+          "courriel": "chloe.blanchard@achats.example.net"
+        }
+      },
+      "montant_ht": 1859.06,
+      "commercial": "Olivier Castéra"
+    },
+    {
+      "nb_caisses": 35,
+      "client": {
+        "contact": {
+          "nom": "Faure",
+          "courriel": "Theo.Faure@Achats.Example.Net",
+          "prenom": "Théo"
+        },
+        "code_client": "CLI-0234",
+        "raison_sociale": "Vins & Terroirs SARL"
+      },
+      "commercial": "Nadia Belkacem",
+      "montant_ht": 857.22,
+      "appellation": "Pessac-Léognan",
+      "statut_reglement": "Litige",
+      "num_commande": "CMD-24-3150",
+      "id_ligne": 50038,
+      "statut_commande": "Expédiée",
+      "date_commande": "28/05/2024"
+    },
+    {
+      "nb_caisses": 1,
+      "client": {
+        "code_client": "CLI-0247",
+        "contact": {
+          "nom": "Perrin",
+          "courriel": "antoine.perrin@achats.example.net",
+          "prenom": "Antoine"
+        },
+        "raison_sociale": "La Cave à Jules"
+      },
+      "date_commande": "14/08/2025",
+      "montant_ht": 1558.92,
+      "id_ligne": 50041,
+      "commercial": "Sylvie Darrieux",
+      "date_livraison_souhaitee": "23/02/2025",
+      "statut_reglement": "Relance 1",
+      "statut_commande": "Expédiée",
+      "appellation": "Côtes de Bourg",
+      "num_commande": "CMD-24-3157"
+    },
+    {
+      "appellation": "Côtes de Bourg",
+      "id_ligne": 50044,
+      "client": {
+        "contact": {
+          "prenom": "Mathis",
+          "courriel": "mathis.brunet@achats.example.net",
+          "nom": "Brunet"
+        },
+        "code_client": "CLI-0260",
+        "raison_sociale": "Épicerie Fine Morel  "
+      },
+      "date_livraison_souhaitee": "07/06/2025",
+      "commercial": "Sylvie Darrieux",
+      "nb_caisses": 37,
+      "num_commande": "CMD-24-3164",
+      "date_commande": "05/02/2024",
+      "statut_commande": "Livrée",
+      "montant_ht": 4457.89,
+      "statut_reglement": "Payé"
+    },
+    {
+      "commercial": "Nadia Belkacem",
+      "id_ligne": 50047,
+      "date_commande": "06/09/2025",
+      "client": {
+        "raison_sociale": "La Cave à Jules",
+        "contact": {
+          "prenom": "Mathis",
+          "courriel": "Mathis.Rousseau@Achats.Example.Net",
+          "nom": "Rousseau"
+        },
+        "code_client": "CLI-0212"
+      },
+      "appellation": "Bordeaux Supérieur",
+      "statut_reglement": "Avoir émis",
+      "date_livraison_souhaitee": "13/05/2025",
+      "statut_commande": "Annulée",
+      "nb_caisses": 10,
+      "montant_ht": 2615.25,
+      "num_commande": "CMD-24-3171"
+    },
+    {
+      "commercial": "Bernard Lacaze",
+      "num_commande": "CMD-24-3178",
+      "montant_ht": 2816.83,
+      "date_livraison_souhaitee": "05/06/2025",
+      "appellation": "Saint-Émilion Grand Cru",
+      "id_ligne": 50050,
+      "statut_reglement": "Payé",
+      "client": {
+        "contact": {
+          "courriel": "chloe.moreau@achats.example.net",
+          "prenom": "Chloé",
+          "nom": "Moreau"
+        },
+        "raison_sociale": "Restaurant Les Tilleuls",
+        "code_client": "CLI-0225"
+      },
+      "date_commande": "03/10/2024",
+      "statut_commande": "Livrée",
+      "nb_caisses": 32
+    },
+    {
+      "id_ligne": 50053,
+      "nb_caisses": 17,
+      "date_commande": "11/02/2025",
+      "statut_commande": "Expédiée",
+      "commercial": "Olivier Castéra",
+      "appellation": "Saint-Émilion Grand Cru",
+      "montant_ht": 1959.54,
+      "statut_reglement": "Avoir émis",
+      "date_livraison_souhaitee": null,
+      "num_commande": "CMD-24-3185",
+      "client": {
+        "code_client": "CLI-0238",
+        "contact": {
+          "prenom": "Jules",
+          "courriel": "jules.roussel@achats.example.net",
+          "nom": "Roussel"
+        },
+        "raison_sociale": "Cave des Remparts"
+      }
+    },
+    {
+      "statut_commande": "En préparation",
+      "id_ligne": 50056,
+      "nb_caisses": 28,
+      "commercial": "Sylvie Darrieux",
+      "client": {
+        "code_client": "CLI-0251",
+        "contact": {
+          "nom": "Dubois",
+          "prenom": "Élise",
+          "courriel": "Elise.Dubois@Achats.Example.Net"
+        },
+        "raison_sociale": "Le Comptoir du Vin"
+      },
+      "date_livraison_souhaitee": "06/03/2025",
+      "num_commande": "CMD-24-3192",
+      "appellation": "Pessac-Léognan",
+      "montant_ht": 1880.54,
+      "statut_reglement": "Avoir émis",
+      "date_commande": "03/05/2024"
+    },
+    {
+      "date_commande": "24/02/2024",
+      "commercial": "Nadia Belkacem",
+      "id_ligne": 50059,
+      "statut_commande": "Brouillon interne",
+      "statut_reglement": "En attente de règlement",
+      "date_livraison_souhaitee": "20/08/2025",
+      "appellation": "Pessac-Léognan",
+      "nb_caisses": 32,
+      "montant_ht": 2503.04,
+      "client": {
+        "contact": {
+          "nom": "Dubois",
+          "courriel": "ines.dubois@achats.example.net",
+          "prenom": "Inès"
+        },
+        "code_client": "CLI-0264",
+        "raison_sociale": "Le Comptoir du Vin"
+      },
+      "num_commande": "CMD-24-3199"
+    },
+    {
+      "num_commande": "CMD-24-3206",
+      "statut_commande": "En préparation",
+      "id_ligne": 50062,
+      "appellation": "Bordeaux Supérieur",
+      "montant_ht": 3841.84,
+      "date_commande": "17/04/2024",
+      "statut_reglement": "Litige",
+      "client": {
+        "code_client": "CLI-0216",
+        "raison_sociale": " Restaurant Les Tilleuls ",
+        "contact": {
+          "nom": "Rousseau",
+          "courriel": "arthur.rousseau@achats.example.net",
+          "prenom": "Arthur"
+        }
+      },
+      "date_livraison_souhaitee": "28/09/2025",
+      "nb_caisses": 2,
+      "commercial": "Bernard Lacaze"
+    },
+    {
+      "statut_reglement": "En attente de règlement",
+      "client": {
+        "raison_sociale": "Cave des Remparts",
+        "code_client": "CLI-0229",
+        "contact": {
+          "nom": "Caron",
+          "prenom": "Camille",
+          "courriel": "Camille.Caron@Achats.Example.Net"
+        }
+      },
+      "date_livraison_souhaitee": "06/08/2025",
+      "statut_commande": "Annulée",
+      "nb_caisses": 38,
+      "num_commande": "CMD-24-3213",
+      "date_commande": "01/03/2024",
+      "montant_ht": 1810.02,
+      "commercial": "Sylvie Darrieux",
+      "appellation": "Pessac-Léognan",
+      "id_ligne": 50065
+    },
+    {
+      "nb_caisses": 3,
+      "num_commande": "CMD-24-3220",
+      "commercial": "Bernard Lacaze",
+      "id_ligne": 50068,
+      "client": {
+        "raison_sociale": "Restaurant Les Tilleuls",
+        "code_client": "CLI-0242",
+        "contact": {
+          "prenom": "Camille",
+          "nom": "Girard",
+          "courriel": "camille.girard@achats.example.net"
+        }
+      },
+      "date_livraison_souhaitee": "18/11/2025",
+      "date_commande": "04/08/2025",
+      "statut_commande": "Livrée",
+      "montant_ht": 2280.41,
+      "appellation": "Entre-Deux-Mers",
+      "statut_reglement": "Avoir émis"
+    },
+    {
+      "statut_commande": "En préparation",
+      "date_commande": "02/06/2024",
+      "id_ligne": 50071,
+      "client": {
+        "code_client": "CLI-0255",
+        "raison_sociale": "Vins & Terroirs SARL",
+        "contact": {
+          "prenom": "Camille",
+          "nom": "Faure",
+          "courriel": "camille.faure@achats.example.net"
+        }
+      },
+      "commercial": "Olivier Castéra",
+      "montant_ht": 4297.46,
+      "appellation": "Entre-Deux-Mers",
+      "statut_reglement": "Relance 1",
+      "nb_caisses": 8,
+      "num_commande": "CMD-24-3227"
+    },
+    {
+      "client": {
+        "code_client": "CLI-0207",
+        "contact": {
+          "prenom": "Chloé",
+          "courriel": "Chloe.Moreau@Achats.Example.Net",
+          "nom": "Moreau"
+        },
+        "raison_sociale": "Cave des Remparts"
+      },
+      "commercial": "Sylvie Darrieux",
+      "statut_commande": "Livrée",
+      "montant_ht": 1137.74,
+      "num_commande": "CMD-24-3234",
+      "id_ligne": 50074,
+      "statut_reglement": "Payé",
+      "appellation": "Côtes de Bourg",
+      "nb_caisses": 33,
+      "date_commande": "12/08/2025",
+      "date_livraison_souhaitee": "28/06/2025"
+    },
+    {
+      "date_livraison_souhaitee": null,
+      "montant_ht": 2807.19,
+      "statut_commande": "Annulée",
+      "id_ligne": 50077,
+      "appellation": "Côtes de Bourg",
+      "num_commande": "CMD-24-3241",
+      "client": {
+        "code_client": "CLI-0220",
+        "raison_sociale": "Hôtel-Restaurant du Port",
+        "contact": {
+          "prenom": "Camille",
+          "courriel": "camille.rousseau@achats.example.net",
+          "nom": "Rousseau"
+        }
+      },
+      "statut_reglement": "En attente de règlement",
+      "commercial": "Bernard Lacaze",
+      "date_commande": "21/07/2024",
+      "nb_caisses": 22
+    },
+    {
+      "date_livraison_souhaitee": "02/12/2025",
+      "date_commande": "12/11/2024",
+      "nb_caisses": 27,
+      "montant_ht": 3181.2,
+      "commercial": "Bernard Lacaze",
+      "appellation": "Bordeaux Supérieur",
+      "statut_commande": "Brouillon interne",
+      "num_commande": "CMD-24-3248",
+      "id_ligne": 50080,
+      "client": {
+        "contact": {
+          "nom": "Girard",
+          "courriel": "louis.girard@achats.example.net",
+          "prenom": "Louis"
+        },
+        "code_client": "CLI-0233",
+        "raison_sociale": "Hôtel-Restaurant du Port"
+      },
+      "statut_reglement": "Relance 1"
+    },
+    {
+      "num_commande": "CMD-24-3255",
+      "statut_commande": "Brouillon interne",
+      "client": {
+        "contact": {
+          "courriel": "Mathis.Moreau@Achats.Example.Net",
+          "prenom": "Mathis",
+          "nom": "Moreau"
+        },
+        "code_client": "CLI-0246",
+        "raison_sociale": "  Hôtel-Restaurant du Port"
+      },
+      "nb_caisses": 14,
+      "id_ligne": 50083,
+      "date_commande": "18/10/2024",
+      "date_livraison_souhaitee": "26/04/2025",
+      "statut_reglement": "Relance 1",
+      "commercial": "Bernard Lacaze",
+      "montant_ht": 619.96,
+      "appellation": "Côtes de Bourg"
+    },
+    {
+      "id_ligne": 50086,
+      "client": {
+        "raison_sociale": "Le Comptoir du Vin",
+        "contact": {
+          "prenom": "Clémence",
+          "courriel": "clemence.lefevre@achats.example.net",
+          "nom": "Lefèvre"
+        },
+        "code_client": "CLI-0259"
+      },
+      "date_commande": "27/11/2025",
+      "montant_ht": 2382.46,
+      "commercial": "Olivier Castéra",
+      "nb_caisses": 6,
+      "appellation": "Côtes de Bourg",
+      "date_livraison_souhaitee": "02/09/2025",
+      "statut_commande": "Annulée",
+      "statut_reglement": "En attente de règlement",
+      "num_commande": "CMD-24-3262"
+    },
+    {
+      "statut_commande": "Expédiée",
+      "montant_ht": 1250.16,
+      "id_ligne": 50089,
+      "statut_reglement": "En attente de règlement",
+      "nb_caisses": 30,
+      "client": {
+        "contact": {
+          "nom": "Lefèvre",
+          "courriel": "margaux.lefevre@achats.example.net",
+          "prenom": "Margaux"
+        },
+        "raison_sociale": "Bistrot Lafayette",
+        "code_client": "CLI-0211"
+      },
+      "date_commande": "08/03/2024",
+      "appellation": "Bordeaux Supérieur",
+      "commercial": "Nadia Belkacem",
+      "num_commande": "CMD-24-3269",
+      "date_livraison_souhaitee": "27/08/2025"
+    },
+    {
+      "commercial": "Nadia Belkacem",
+      "appellation": "Bordeaux Supérieur",
+      "statut_commande": "Livrée",
+      "statut_reglement": "Payé",
+      "num_commande": "CMD-24-3276",
+      "id_ligne": 50092,
+      "nb_caisses": 27,
+      "date_livraison_souhaitee": "01/05/2025",
+      "montant_ht": 3938.52,
+      "date_commande": "28/04/2024",
+      "client": {
+        "contact": {
+          "nom": "Faure",
+          "courriel": "Antoine.Faure@Achats.Example.Net",
+          "prenom": "Antoine"
+        },
+        "raison_sociale": "Le Comptoir du Vin",
+        "code_client": "CLI-0224"
+      }
+    },
+    {
+      "nb_caisses": 3,
+      "date_livraison_souhaitee": "21/12/2025",
+      "appellation": "Entre-Deux-Mers",
+      "client": {
+        "code_client": "CLI-0237",
+        "contact": {
+          "prenom": "Baptiste",
+          "nom": "Roussel",
+          "courriel": "baptiste.roussel@achats.example.net"
+        },
+        "raison_sociale": "Cave des Remparts"
+      },
+      "id_ligne": 50095,
+      "commercial": "Bernard Lacaze",
+      "montant_ht": 3631.33,
+      "date_commande": "13/06/2025",
+      "num_commande": "CMD-24-3283",
+      "statut_commande": "En préparation",
+      "statut_reglement": "Litige"
+    },
+    {
+      "statut_reglement": "Avoir émis",
+      "nb_caisses": 14,
+      "statut_commande": "Brouillon interne",
+      "date_livraison_souhaitee": "10/12/2025",
+      "appellation": "Entre-Deux-Mers",
+      "commercial": "Sylvie Darrieux",
+      "id_ligne": 50098,
+      "montant_ht": 2555.1,
+      "date_commande": "23/05/2025",
+      "client": {
+        "contact": {
+          "courriel": "chloe.girard@achats.example.net",
+          "nom": "Girard",
+          "prenom": "Chloé"
+        },
+        "code_client": "CLI-0250",
+        "raison_sociale": "Le Comptoir du Vin"
+      },
+      "num_commande": "CMD-24-3290"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "order_id": {
+        "type": "string",
+        "description": "Unique identifier of the wholesale order as issued by the estate."
+      },
+      "customer_code": {
+        "type": "string",
+        "description": "Account code of the buying business at the estate."
+      },
+      "buyer_company": {
+        "type": "string",
+        "description": "Registered business name of the buyer."
+      },
+      "contact_name": {
+        "type": "string",
+        "description": "Full name of the person placing the order at the buyer, given name first."
+      },
+      "contact_email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address of the buyer contact for order confirmations."
+      },
+      "ordered_on": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the order was placed."
+      },
+      "requested_delivery_on": {
+        "type": "string",
+        "format": "date",
+        "description": "Delivery date requested by the buyer, if any."
+      },
+      "order_status": {
+        "type": "string",
+        "enum": [
+          "in_preparation",
+          "shipped",
+          "delivered",
+          "cancelled"
+        ],
+        "description": "Fulfilment state of the order."
+      },
+      "payment_status": {
+        "type": "string",
+        "enum": [
+          "paid",
+          "pending",
+          "overdue",
+          "disputed",
+          "credited"
+        ],
+        "description": "Settlement state of the order invoice."
+      },
+      "cases_ordered": {
+        "type": "integer",
+        "description": "Number of cases of wine ordered."
+      },
+      "amount_incl_vat": {
+        "type": "number",
+        "description": "Order amount including VAT, in euros."
+      }
+    },
+    "required": [
+      "order_id",
+      "customer_code",
+      "buyer_company",
+      "contact_name",
+      "contact_email",
+      "ordered_on",
+      "order_status",
+      "cases_ordered"
+    ]
+  },
+  "groundTruth": {
+    "order_id": {
+      "source": "num_commande",
+      "transform": "copy",
+      "why": "order number; id_ligne is an export row counter and code_client identifies the buyer"
+    },
+    "customer_code": {
+      "source": "client.code_client",
+      "transform": "copy",
+      "why": "buyer account code"
+    },
+    "buyer_company": {
+      "source": "client.raison_sociale",
+      "transform": "trim",
+      "why": "company name, padded in some rows"
+    },
+    "contact_name": {
+      "source": null,
+      "sources": [
+        "client.contact.prenom",
+        "client.contact.nom"
+      ],
+      "transform": "concat",
+      "separator": " ",
+      "why": "buyer contact first and last name; commercial is the estate sales rep"
+    },
+    "contact_email": {
+      "source": "client.contact.courriel",
+      "transform": "normalize_email",
+      "why": "buyer contact email, mixed case in the export"
+    },
+    "ordered_on": {
+      "source": "date_commande",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "order date (French day-first)"
+    },
+    "requested_delivery_on": {
+      "source": "date_livraison_souhaitee",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "requested delivery date, absent for some orders"
+    },
+    "order_status": {
+      "source": "statut_commande",
+      "transform": "map_enum",
+      "categoryMap": {
+        "En préparation": "in_preparation",
+        "Expédiée": "shipped",
+        "Livrée": "delivered",
+        "Annulée": "cancelled",
+        "Brouillon interne": null
+      },
+      "why": "fulfilment state; internal drafts are not real orders and need review"
+    },
+    "payment_status": {
+      "source": "statut_reglement",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Payé": "paid",
+        "En attente de règlement": "pending",
+        "Relance 1": "overdue",
+        "Litige": "disputed",
+        "Avoir émis": "credited"
+      },
+      "why": "payment state; a first reminder means the invoice is overdue, a credit note means credited"
+    },
+    "cases_ordered": {
+      "source": "nb_caisses",
+      "transform": "copy",
+      "why": "number of cases"
+    },
+    "amount_incl_vat": {
+      "source": null,
+      "transform": "none",
+      "why": "only the net amount (montant_ht) is exported",
+      "unsupportedReason": "the VAT-inclusive amount would have to be computed from the net amount and a VAT rate"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "statut_commande",
+        "statut_reglement"
+      ],
+      "correctFor": "order_status"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "num_commande",
+        "id_ligne"
+      ],
+      "correctFor": "order_id"
+    },
+    {
+      "kind": "birth-date-vs-start-date",
+      "fields": [
+        "date_commande",
+        "date_livraison_souhaitee"
+      ],
+      "correctFor": "ordered_on"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "client.contact.nom",
+        "commercial"
+      ],
+      "correctFor": "contact_name"
+    }
+  ],
+  "sourceConcepts": {
+    "num_commande": "transaction-id",
+    "id_ligne": "other-identifier",
+    "client.code_client": "customer-id",
+    "client.raison_sociale": "organization-name",
+    "client.contact.prenom": "given-name",
+    "client.contact.nom": "family-name",
+    "client.contact.courriel": "email",
+    "commercial": "person-name",
+    "date_commande": "created-date",
+    "date_livraison_souhaitee": "end-date",
+    "statut_commande": "account-status",
+    "statut_reglement": "payment-status",
+    "appellation": "category",
+    "nb_caisses": "quantity",
+    "montant_ht": "amount"
+  },
+  "destinationConcepts": {
+    "order_id": "transaction-id",
+    "customer_code": "customer-id",
+    "buyer_company": "organization-name",
+    "contact_name": "person-name",
+    "contact_email": "email",
+    "ordered_on": "created-date",
+    "requested_delivery_on": "end-date",
+    "order_status": "account-status",
+    "payment_status": "payment-status",
+    "cases_ordered": "quantity",
+    "amount_incl_vat": "amount"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 0,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 1,
+      "outcome": "transformed",
+      "output": {
+        "order_id": "CMD-24-3108",
+        "customer_code": "CLI-0217",
+        "buyer_company": "Cave des Remparts",
+        "contact_name": "Mathis Caron",
+        "contact_email": "mathis.caron@achats.example.net",
+        "ordered_on": "2024-11-22",
+        "requested_delivery_on": "2025-12-14",
+        "order_status": "delivered",
+        "payment_status": "disputed",
+        "cases_ordered": 5
+      }
+    },
+    {
+      "recordIndex": 3,
+      "outcome": "transformed",
+      "output": {
+        "order_id": "CMD-24-3122",
+        "customer_code": "CLI-0243",
+        "buyer_company": "La Cave à Jules",
+        "contact_name": "Chloé Roussel",
+        "contact_email": "chloe.roussel@achats.example.net",
+        "ordered_on": "2025-09-10",
+        "order_status": "in_preparation",
+        "payment_status": "paid",
+        "cases_ordered": 36
+      }
+    },
+    {
+      "recordIndex": 7,
+      "outcome": "transformed",
+      "output": {
+        "order_id": "CMD-24-3150",
+        "customer_code": "CLI-0234",
+        "buyer_company": "Vins & Terroirs SARL",
+        "contact_name": "Théo Faure",
+        "contact_email": "theo.faure@achats.example.net",
+        "ordered_on": "2024-05-28",
+        "order_status": "shipped",
+        "payment_status": "disputed",
+        "cases_ordered": 35
+      }
+    }
+  ]
+}

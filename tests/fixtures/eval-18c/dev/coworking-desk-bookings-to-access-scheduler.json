@@ -1,0 +1,1050 @@
+{
+  "scenarioId": "coworking-desk-bookings-to-access-scheduler",
+  "split": "dev",
+  "industry": "coworking desk bookings",
+  "sourceLanguage": "en",
+  "description": "Desk booking export of a fictional coworking space (English snake_case, nested member, company and desk) to be loaded into a door-access scheduler.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "row_id": 900,
+      "desk": {
+        "zone": "Meeting Pod 4p",
+        "desk_code": "D-01"
+      },
+      "plan": "Day Pass",
+      "member": {
+        "company": {
+          "name": "Pixel & Pine",
+          "vat_no": "GB100200300"
+        },
+        "member_no": "M-0310",
+        "full_name": "Jack Hughes",
+        "email": "jack.hughes@mail.example.com"
+      },
+      "booking_ref": "BK-77120",
+      "end_time": "17:00",
+      "billing": "Quarterly",
+      "host_on_duty": "Priya Raman",
+      "created_at": "2024-06-22T09:04:00Z",
+      "start_time": "09:30",
+      "booking_date": "09/28/2025"
+    },
+    {
+      "end_time": "17:00",
+      "booking_ref": "BK-77131",
+      "start_time": "09:00",
+      "desk": {
+        "zone": "Phone Booth",
+        "desk_code": "D-06"
+      },
+      "host_on_duty": "Ines Carvalho",
+      "billing": "Pay as you go",
+      "plan": "Day Pass",
+      "row_id": 901,
+      "created_at": "2025-02-21T09:07:00Z",
+      "booking_date": "02/26/2025",
+      "member": {
+        "member_no": "M-0317",
+        "company": {
+          "name": "Pixel & Pine",
+          "vat_no": "GB100204411"
+        },
+        "email": "Jack.Doyle@Mail.Example.Com",
+        "full_name": "Jack Doyle"
+      }
+    },
+    {
+      "booking_date": "10/15/2025",
+      "booking_ref": "BK-77142",
+      "end_time": "17:30",
+      "host_on_duty": "Priya Raman",
+      "start_time": "09:30",
+      "row_id": 902,
+      "billing": "Annual (prepaid)",
+      "created_at": "2025-03-28T12:29:00Z",
+      "member": {
+        "email": "ava.walsh@mail.example.com",
+        "member_no": "M-0324",
+        "company": {
+          "name": null,
+          "vat_no": "GB100208522"
+        },
+        "full_name": "Ava Walsh"
+      },
+      "desk": {
+        "zone": "Quiet Zone",
+        "desk_code": "D-11"
+      },
+      "plan": "Fixed Desk Monthly"
+    },
+    {
+      "plan": "Fixed Desk Monthly",
+      "start_time": "08:00",
+      "end_time": "18:00",
+      "booking_date": "10/02/2025",
+      "desk": {
+        "desk_code": "D-16",
+        "zone": "Meeting Pod 4p"
+      },
+      "booking_ref": "BK-77153",
+      "billing": "Monthly",
+      "host_on_duty": "Tom Whitlock",
+      "created_at": "2024-02-28T14:14:00Z",
+      "member": {
+        "email": "evie.ashby@mail.example.com",
+        "full_name": "  Evie Ashby",
+        "member_no": "M-0331",
+        "company": {
+          "name": "Harbour Legal LLP",
+          "vat_no": "GB100212633"
+        }
+      },
+      "row_id": 903
+    },
+    {
+      "end_time": "17:30",
+      "row_id": 904,
+      "created_at": "2025-03-02T07:49:00Z",
+      "billing": "Pay as you go",
+      "booking_date": "04/05/2025",
+      "host_on_duty": "Priya Raman",
+      "start_time": "09:30",
+      "desk": {
+        "zone": "Meeting Pod 4p",
+        "desk_code": "D-21"
+      },
+      "member": {
+        "full_name": "Grace Collier",
+        "member_no": "M-0338",
+        "company": {
+          "vat_no": "GB100216744",
+          "name": "Northlane Analytics"
+        },
+        "email": "Grace.Collier@Mail.Example.Com"
+      },
+      "plan": "Flex 10",
+      "booking_ref": "BK-77164"
+    },
+    {
+      "created_at": "2025-01-27T09:00:00Z",
+      "end_time": "17:00",
+      "start_time": "09:00",
+      "member": {
+        "company": {
+          "vat_no": "GB100220855"
+        },
+        "member_no": "M-0345",
+        "full_name": "Noah Neville",
+        "email": "noah.neville@mail.example.com"
+      },
+      "booking_ref": "BK-77175",
+      "host_on_duty": "Priya Raman",
+      "booking_date": "03/24/2025",
+      "row_id": 905,
+      "billing": "Annual (prepaid)",
+      "desk": {
+        "desk_code": "D-26",
+        "zone": "Phone Booth"
+      },
+      "plan": "INTERNAL STAFF"
+    },
+    {
+      "billing": "Quarterly",
+      "desk": {
+        "desk_code": "D-31",
+        "zone": "Open Floor"
+      },
+      "start_time": "09:30",
+      "booking_date": "04/02/2025",
+      "host_on_duty": "Ines Carvalho",
+      "member": {
+        "company": {
+          "name": "Fieldnote Media",
+          "vat_no": "GB100224966"
+        },
+        "email": "henry.ashby@mail.example.com",
+        "member_no": "M-0352",
+        "full_name": "Henry Ashby"
+      },
+      "end_time": "12:30",
+      "booking_ref": "BK-77186",
+      "created_at": "2024-05-13T08:52:00Z",
+      "plan": "INTERNAL STAFF",
+      "row_id": 906
+    },
+    {
+      "created_at": "2025-03-04T15:01:00Z",
+      "plan": "INTERNAL STAFF",
+      "end_time": "12:30",
+      "booking_date": "04/23/2025",
+      "start_time": "09:00",
+      "row_id": 907,
+      "host_on_duty": "Tom Whitlock",
+      "billing": "Monthly",
+      "member": {
+        "email": "Jack.Barker@Mail.Example.Com",
+        "company": {
+          "name": "Brightwater Studio Ltd",
+          "vat_no": "GB100229077"
+        },
+        "full_name": "Jack Barker",
+        "member_no": "M-0359"
+      },
+      "desk": {
+        "desk_code": "D-36",
+        "zone": "Open Floor"
+      },
+      "booking_ref": "BK-77197"
+    },
+    {
+      "row_id": 908,
+      "host_on_duty": "Tom Whitlock",
+      "start_time": "09:30",
+      "created_at": "2025-04-21T08:27:00Z",
+      "booking_date": "01/16/2025",
+      "billing": "Quarterly",
+      "plan": "Flex 10",
+      "booking_ref": "BK-77208",
+      "desk": {
+        "desk_code": "D-01",
+        "zone": "Open Floor"
+      },
+      "end_time": "12:30",
+      "member": {
+        "full_name": "Ava Fletcher",
+        "company": {
+          "vat_no": "GB100233188",
+          "name": "Pixel & Pine"
+        },
+        "email": "ava.fletcher@mail.example.com",
+        "member_no": "M-0366"
+      }
+    },
+    {
+      "member": {
+        "full_name": "Ruby Neville",
+        "member_no": "M-0373",
+        "company": {
+          "vat_no": "GB100237299",
+          "name": null
+        },
+        "email": "ruby.neville@mail.example.com"
+      },
+      "row_id": 909,
+      "created_at": "2025-11-21T11:22:00Z",
+      "end_time": "17:30",
+      "start_time": "13:00",
+      "billing": "Monthly",
+      "desk": {
+        "zone": "Open Floor",
+        "desk_code": "D-06"
+      },
+      "plan": "Fixed Desk Monthly",
+      "host_on_duty": "Ines Carvalho",
+      "booking_ref": "BK-77219",
+      "booking_date": "05/07/2025"
+    },
+    {
+      "booking_ref": "BK-77230",
+      "desk": {
+        "desk_code": "D-11",
+        "zone": "Meeting Pod 4p"
+      },
+      "member": {
+        "member_no": "M-0380",
+        "email": "Noah.Neville@Mail.Example.Com",
+        "company": {
+          "vat_no": "GB100241410",
+          "name": "Northlane Analytics"
+        },
+        "full_name": "Noah Neville  "
+      },
+      "start_time": "13:00",
+      "host_on_duty": "Tom Whitlock",
+      "row_id": 910,
+      "end_time": "12:30",
+      "plan": "Day Pass",
+      "booking_date": "03/07/2025",
+      "billing": "Quarterly",
+      "created_at": "2024-12-11T16:14:00Z"
+    },
+    {
+      "host_on_duty": "Priya Raman",
+      "member": {
+        "company": {
+          "vat_no": "GB100245521",
+          "name": "Northlane Analytics"
+        },
+        "member_no": "M-0387",
+        "full_name": "Ella Quinn",
+        "email": "ella.quinn@mail.example.com"
+      },
+      "row_id": 911,
+      "booking_ref": "BK-77241",
+      "created_at": "2025-06-22T15:45:00Z",
+      "plan": "Flex 10",
+      "start_time": "13:00",
+      "desk": {
+        "desk_code": "D-16",
+        "zone": "Quiet Zone"
+      },
+      "end_time": "12:30",
+      "billing": "Monthly",
+      "booking_date": "12/19/2025"
+    },
+    {
+      "row_id": 912,
+      "billing": "Annual (prepaid)",
+      "created_at": "2025-03-19T10:54:00Z",
+      "booking_ref": "BK-77252",
+      "plan": "Day Pass",
+      "member": {
+        "email": "leo.gallagher@mail.example.com",
+        "full_name": "Leo Gallagher",
+        "member_no": "M-0394",
+        "company": {
+          "vat_no": "GB100249632",
+          "name": "Harbour Legal LLP"
+        }
+      },
+      "host_on_duty": "Ines Carvalho",
+      "booking_date": "06/07/2025",
+      "end_time": "17:00",
+      "start_time": "08:00",
+      "desk": {
+        "zone": "Quiet Zone",
+        "desk_code": "D-21"
+      }
+    },
+    {
+      "desk": {
+        "zone": "Quiet Zone",
+        "desk_code": "D-26"
+      },
+      "start_time": "09:30",
+      "billing": "Quarterly",
+      "end_time": "17:30",
+      "plan": "Founders Club",
+      "booking_ref": "BK-77263",
+      "created_at": "2025-03-07T14:32:00Z",
+      "host_on_duty": "Ines Carvalho",
+      "member": {
+        "full_name": "Theo Dunmore",
+        "member_no": "M-0401",
+        "company": {
+          "vat_no": "GB100253743"
+        },
+        "email": "Theo.Dunmore@Mail.Example.Com"
+      },
+      "booking_date": "06/01/2025",
+      "row_id": 913
+    },
+    {
+      "member": {
+        "full_name": "Arthur Walsh",
+        "email": "arthur.walsh@mail.example.com",
+        "member_no": "M-0408",
+        "company": {
+          "vat_no": "GB100257854",
+          "name": "Northlane Analytics"
+        }
+      },
+      "row_id": 914,
+      "created_at": "2025-06-08T10:57:00Z",
+      "end_time": "12:30",
+      "host_on_duty": "Tom Whitlock",
+      "booking_date": "11/26/2025",
+      "start_time": "13:00",
+      "billing": "Monthly",
+      "desk": {
+        "zone": "Quiet Zone",
+        "desk_code": "D-31"
+      },
+      "plan": "INTERNAL STAFF",
+      "booking_ref": "BK-77274"
+    },
+    {
+      "booking_ref": "BK-77285",
+      "start_time": "13:00",
+      "host_on_duty": "Ines Carvalho",
+      "desk": {
+        "zone": "Phone Booth",
+        "desk_code": "D-36"
+      },
+      "member": {
+        "company": {
+          "name": "Fieldnote Media",
+          "vat_no": "GB100261965"
+        },
+        "email": "harry.dunmore@mail.example.com",
+        "member_no": "M-0415",
+        "full_name": "Harry Dunmore"
+      },
+      "created_at": "2024-03-02T11:21:00Z",
+      "row_id": 915,
+      "end_time": "12:30",
+      "booking_date": "12/15/2025",
+      "billing": "Annual (prepaid)",
+      "plan": "Founders Club"
+    },
+    {
+      "host_on_duty": "Ines Carvalho",
+      "end_time": "17:00",
+      "row_id": 916,
+      "booking_date": "01/04/2025",
+      "billing": "Pay as you go",
+      "member": {
+        "member_no": "M-0422",
+        "email": "Grace.Neville@Mail.Example.Com",
+        "company": {
+          "vat_no": "GB100266076",
+          "name": null
+        },
+        "full_name": "Grace Neville"
+      },
+      "start_time": "09:00",
+      "plan": "Fixed Desk Monthly",
+      "booking_ref": "BK-77296",
+      "created_at": "2024-10-01T17:16:00Z",
+      "desk": {
+        "zone": "Quiet Zone",
+        "desk_code": "D-01"
+      }
+    },
+    {
+      "booking_date": "12/22/2025",
+      "desk": {
+        "desk_code": "D-06",
+        "zone": "Open Floor"
+      },
+      "end_time": "17:30",
+      "created_at": "2024-08-01T13:01:00Z",
+      "plan": "Founders Club",
+      "member": {
+        "full_name": "Harry Hughes",
+        "email": "harry.hughes@mail.example.com",
+        "member_no": "M-0429",
+        "company": {
+          "vat_no": "GB100270187",
+          "name": "Northlane Analytics"
+        }
+      },
+      "row_id": 917,
+      "host_on_duty": "Priya Raman",
+      "booking_ref": "BK-77307",
+      "billing": "Quarterly",
+      "start_time": "08:00"
+    },
+    {
+      "row_id": 918,
+      "start_time": "09:00",
+      "plan": "Fixed Desk Monthly",
+      "member": {
+        "company": {
+          "vat_no": "GB100274298",
+          "name": "Northlane Analytics"
+        },
+        "email": "ella.lowell@mail.example.com",
+        "full_name": "Ella Lowell",
+        "member_no": "M-0436"
+      },
+      "desk": {
+        "desk_code": "D-11",
+        "zone": "Open Floor"
+      },
+      "end_time": "17:00",
+      "host_on_duty": "Tom Whitlock",
+      "booking_date": "07/19/2025",
+      "billing": "Annual (prepaid)",
+      "created_at": "2025-08-05T18:51:00Z",
+      "booking_ref": "BK-77318"
+    },
+    {
+      "host_on_duty": "Ines Carvalho",
+      "created_at": "2024-04-05T11:06:00Z",
+      "member": {
+        "company": {
+          "vat_no": "GB100278409",
+          "name": "Brightwater Studio Ltd"
+        },
+        "email": "Jack.Walsh@Mail.Example.Com",
+        "member_no": "M-0443",
+        "full_name": " Jack Walsh "
+      },
+      "desk": {
+        "zone": "Meeting Pod 4p",
+        "desk_code": "D-16"
+      },
+      "booking_ref": "BK-77329",
+      "billing": "Quarterly",
+      "row_id": 919,
+      "start_time": "09:00",
+      "booking_date": "05/07/2025",
+      "end_time": "12:30",
+      "plan": "Fixed Desk Monthly"
+    },
+    {
+      "member": {
+        "email": "oliver.kerr@mail.example.com",
+        "company": {
+          "name": "Northlane Analytics",
+          "vat_no": "GB100282520"
+        },
+        "full_name": "Oliver Kerr",
+        "member_no": "M-0450"
+      },
+      "plan": "Flex 10",
+      "row_id": 920,
+      "created_at": "2024-10-08T08:36:00Z",
+      "booking_date": "03/15/2025",
+      "booking_ref": "BK-77340",
+      "billing": "Pay as you go",
+      "desk": {
+        "desk_code": "D-21",
+        "zone": "Quiet Zone"
+      },
+      "host_on_duty": "Priya Raman",
+      "start_time": "09:00",
+      "end_time": "18:00"
+    },
+    {
+      "billing": "Annual (prepaid)",
+      "row_id": 921,
+      "end_time": "18:00",
+      "plan": "Fixed Desk Monthly",
+      "created_at": "2025-12-13T11:03:00Z",
+      "booking_ref": "BK-77351",
+      "desk": {
+        "desk_code": "D-26",
+        "zone": "Quiet Zone"
+      },
+      "booking_date": "07/17/2025",
+      "host_on_duty": "Priya Raman",
+      "member": {
+        "company": {
+          "vat_no": "GB100286631",
+          "name": "Northlane Analytics"
+        },
+        "member_no": "M-0457",
+        "email": "freya.quinn@mail.example.com",
+        "full_name": "Freya Quinn"
+      },
+      "start_time": "08:00"
+    },
+    {
+      "created_at": "2025-07-23T18:41:00Z",
+      "end_time": "17:00",
+      "row_id": 922,
+      "booking_date": "09/24/2025",
+      "start_time": "09:00",
+      "plan": "Founders Club",
+      "desk": {
+        "zone": "Phone Booth",
+        "desk_code": "D-31"
+      },
+      "host_on_duty": "Ines Carvalho",
+      "booking_ref": "BK-77362",
+      "member": {
+        "email": "Evie.Dunmore@Mail.Example.Com",
+        "company": {
+          "vat_no": "GB100290742",
+          "name": "Pixel & Pine"
+        },
+        "full_name": "Evie Dunmore",
+        "member_no": "M-0464"
+      },
+      "billing": "Pay as you go"
+    },
+    {
+      "plan": "Flex 10",
+      "billing": "Monthly",
+      "desk": {
+        "zone": "Phone Booth",
+        "desk_code": "D-36"
+      },
+      "booking_ref": "BK-77373",
+      "row_id": 923,
+      "created_at": "2025-04-17T12:18:00Z",
+      "start_time": "09:00",
+      "end_time": "18:00",
+      "member": {
+        "member_no": "M-0471",
+        "full_name": "George Marsh",
+        "email": "george.marsh@mail.example.com",
+        "company": {
+          "name": "Harbour Legal LLP",
+          "vat_no": "GB100294853"
+        }
+      },
+      "booking_date": "11/08/2025",
+      "host_on_duty": "Tom Whitlock"
+    },
+    {
+      "member": {
+        "member_no": "M-0478",
+        "company": {
+          "vat_no": "GB100298964",
+          "name": null
+        },
+        "full_name": "Jack Ashby",
+        "email": "jack.ashby@mail.example.com"
+      },
+      "host_on_duty": "Priya Raman",
+      "booking_date": "04/11/2025",
+      "billing": "Pay as you go",
+      "desk": {
+        "desk_code": "D-01",
+        "zone": "Meeting Pod 4p"
+      },
+      "end_time": "17:30",
+      "row_id": 924,
+      "start_time": "09:30",
+      "plan": "Day Pass",
+      "booking_ref": "BK-77384",
+      "created_at": "2025-07-16T18:32:00Z"
+    },
+    {
+      "member": {
+        "email": "Ava.Barker@Mail.Example.Com",
+        "member_no": "M-0485",
+        "full_name": "Ava Barker",
+        "company": {
+          "vat_no": "GB100303075",
+          "name": "Fieldnote Media"
+        }
+      },
+      "start_time": "09:30",
+      "host_on_duty": "Tom Whitlock",
+      "billing": "Pay as you go",
+      "booking_ref": "BK-77395",
+      "desk": {
+        "desk_code": "D-06",
+        "zone": "Phone Booth"
+      },
+      "row_id": 925,
+      "created_at": "2024-03-24T10:22:00Z",
+      "plan": "Founders Club",
+      "booking_date": "08/03/2025",
+      "end_time": "17:30"
+    },
+    {
+      "billing": "Monthly",
+      "end_time": "17:00",
+      "booking_date": "02/19/2025",
+      "member": {
+        "company": {
+          "vat_no": "GB100307186",
+          "name": "Pixel & Pine"
+        },
+        "email": "amelia.ashby@mail.example.com",
+        "member_no": "M-0492",
+        "full_name": "Amelia Ashby"
+      },
+      "row_id": 926,
+      "plan": "Founders Club",
+      "created_at": "2025-05-24T07:56:00Z",
+      "desk": {
+        "desk_code": "D-11",
+        "zone": "Phone Booth"
+      },
+      "host_on_duty": "Priya Raman",
+      "booking_ref": "BK-77406",
+      "start_time": "09:00"
+    },
+    {
+      "booking_ref": "BK-77417",
+      "member": {
+        "member_no": "M-0499",
+        "email": "noah.lowell@mail.example.com",
+        "company": {
+          "name": "Pixel & Pine",
+          "vat_no": "GB100311297"
+        },
+        "full_name": "  Noah Lowell"
+      },
+      "billing": "Pay as you go",
+      "start_time": "09:30",
+      "end_time": "18:00",
+      "plan": "INTERNAL STAFF",
+      "row_id": 927,
+      "booking_date": "05/23/2025",
+      "created_at": "2025-04-18T07:34:00Z",
+      "host_on_duty": "Tom Whitlock",
+      "desk": {
+        "desk_code": "D-16",
+        "zone": "Meeting Pod 4p"
+      }
+    },
+    {
+      "created_at": "2024-09-02T18:20:00Z",
+      "member": {
+        "member_no": "M-0506",
+        "email": "Ruby.Holt@Mail.Example.Com",
+        "company": {
+          "vat_no": "GB100315408",
+          "name": "Fieldnote Media"
+        },
+        "full_name": "Ruby Holt"
+      },
+      "end_time": "12:30",
+      "plan": "Flex 10",
+      "row_id": 928,
+      "start_time": "09:00",
+      "billing": "Monthly",
+      "desk": {
+        "desk_code": "D-21",
+        "zone": "Phone Booth"
+      },
+      "booking_date": "06/13/2025",
+      "host_on_duty": "Priya Raman",
+      "booking_ref": "BK-77428"
+    },
+    {
+      "start_time": "09:00",
+      "end_time": "12:30",
+      "booking_date": "12/13/2025",
+      "plan": "Flex 10",
+      "billing": "Annual (prepaid)",
+      "host_on_duty": "Tom Whitlock",
+      "booking_ref": "BK-77439",
+      "member": {
+        "full_name": "Ella Rowe",
+        "company": {
+          "vat_no": "GB100319519"
+        },
+        "member_no": "M-0513",
+        "email": "ella.rowe@mail.example.com"
+      },
+      "created_at": "2024-11-05T11:39:00Z",
+      "row_id": 929,
+      "desk": {
+        "desk_code": "D-26",
+        "zone": "Open Floor"
+      }
+    },
+    {
+      "start_time": "09:30",
+      "row_id": 930,
+      "booking_ref": "BK-77450",
+      "host_on_duty": "Tom Whitlock",
+      "booking_date": "06/10/2025",
+      "billing": "Annual (prepaid)",
+      "member": {
+        "email": "oliver.collier@mail.example.com",
+        "full_name": "Oliver Collier",
+        "member_no": "M-0520",
+        "company": {
+          "vat_no": "GB100323630",
+          "name": "Fieldnote Media"
+        }
+      },
+      "plan": "Day Pass",
+      "end_time": "12:30",
+      "created_at": "2024-01-23T12:38:00Z",
+      "desk": {
+        "zone": "Open Floor",
+        "desk_code": "D-31"
+      }
+    },
+    {
+      "billing": "Quarterly",
+      "booking_date": "05/27/2025",
+      "host_on_duty": "Ines Carvalho",
+      "created_at": "2025-04-14T10:47:00Z",
+      "row_id": 931,
+      "booking_ref": "BK-77461",
+      "member": {
+        "full_name": "Grace Turner",
+        "company": {
+          "name": "Harbour Legal LLP",
+          "vat_no": "GB100327741"
+        },
+        "member_no": "M-0527",
+        "email": "Grace.Turner@Mail.Example.Com"
+      },
+      "plan": "INTERNAL STAFF",
+      "desk": {
+        "zone": "Meeting Pod 4p",
+        "desk_code": "D-36"
+      },
+      "end_time": "17:30",
+      "start_time": "13:00"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "booking_id": {
+        "type": "string",
+        "description": "Identifier of the desk booking."
+      },
+      "member_id": {
+        "type": "string",
+        "description": "Membership number of the person who booked."
+      },
+      "member_name": {
+        "type": "string",
+        "description": "Full name of the member, as shown at the door panel."
+      },
+      "member_email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address used to send the access code."
+      },
+      "company_name": {
+        "type": "string",
+        "description": "Company the member works for, if any."
+      },
+      "space_type": {
+        "type": "string",
+        "enum": [
+          "quiet_desk",
+          "phone_booth",
+          "hot_desk",
+          "meeting_room"
+        ],
+        "description": "Kind of space booked."
+      },
+      "plan_tier": {
+        "type": "string",
+        "enum": [
+          "flex_bundle",
+          "dedicated_desk",
+          "day_pass",
+          "premium"
+        ],
+        "description": "Membership plan the booking is charged against."
+      },
+      "billing_cycle": {
+        "type": "string",
+        "enum": [
+          "monthly",
+          "yearly",
+          "per_use",
+          "quarterly"
+        ],
+        "description": "How often the member is billed."
+      },
+      "booking_date": {
+        "type": "string",
+        "format": "date",
+        "description": "Day the desk is booked for."
+      },
+      "booked_hours": {
+        "type": "number",
+        "description": "Length of the booking in hours."
+      },
+      "desk_label": {
+        "type": "string",
+        "description": "Code of the booked desk."
+      }
+    },
+    "required": [
+      "booking_id",
+      "member_id",
+      "member_name",
+      "member_email",
+      "space_type",
+      "plan_tier",
+      "booking_date"
+    ]
+  },
+  "groundTruth": {
+    "booking_id": {
+      "source": "booking_ref",
+      "transform": "copy",
+      "why": "booking reference; row_id is the export row number"
+    },
+    "member_id": {
+      "source": "member.member_no",
+      "transform": "copy",
+      "why": "member number"
+    },
+    "member_name": {
+      "source": "member.full_name",
+      "transform": "trim",
+      "why": "member name, padded in some rows; host_on_duty is staff"
+    },
+    "member_email": {
+      "source": "member.email",
+      "transform": "normalize_email",
+      "why": "member email, mixed case"
+    },
+    "company_name": {
+      "source": "member.company.name",
+      "transform": "copy",
+      "why": "employer name; null or missing for freelancers"
+    },
+    "space_type": {
+      "source": "desk.zone",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Quiet Zone": "quiet_desk",
+        "Phone Booth": "phone_booth",
+        "Open Floor": "hot_desk",
+        "Meeting Pod 4p": "meeting_room"
+      },
+      "why": "zone of the booked desk"
+    },
+    "plan_tier": {
+      "source": "plan",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Flex 10": "flex_bundle",
+        "Fixed Desk Monthly": "dedicated_desk",
+        "Day Pass": "day_pass",
+        "Founders Club": "premium",
+        "INTERNAL STAFF": null
+      },
+      "why": "membership plan; staff bookings are not member bookings and need review"
+    },
+    "billing_cycle": {
+      "source": "billing",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Monthly": "monthly",
+        "Annual (prepaid)": "yearly",
+        "Pay as you go": "per_use",
+        "Quarterly": "quarterly"
+      },
+      "why": "billing frequency; \"Fixed Desk Monthly\" in plan is a plan name, not the cycle"
+    },
+    "booking_date": {
+      "source": "booking_date",
+      "transform": "parse_date",
+      "dateFormat": "MM/DD/YYYY",
+      "why": "booked day (US month-first); created_at is when the booking was made"
+    },
+    "booked_hours": {
+      "source": null,
+      "transform": "none",
+      "why": "only start and end times are exported",
+      "unsupportedReason": "the duration would have to be computed from end_time minus start_time"
+    },
+    "desk_label": {
+      "source": "desk.desk_code",
+      "transform": "copy",
+      "why": "desk code"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "plan",
+        "billing"
+      ],
+      "correctFor": "plan_tier"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "booking_ref",
+        "row_id"
+      ],
+      "correctFor": "booking_id"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "booking_date",
+        "created_at"
+      ],
+      "correctFor": "booking_date"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "member.full_name",
+        "host_on_duty"
+      ],
+      "correctFor": "member_name"
+    }
+  ],
+  "sourceConcepts": {
+    "booking_ref": "transaction-id",
+    "row_id": "other-identifier",
+    "member.member_no": "customer-id",
+    "member.full_name": "person-name",
+    "member.email": "email",
+    "member.company.name": "organization-name",
+    "member.company.vat_no": "other-identifier",
+    "desk.zone": "category",
+    "desk.desk_code": "other-identifier",
+    "plan": "category",
+    "billing": "payment-status",
+    "booking_date": "start-date",
+    "start_time": "other",
+    "end_time": "other",
+    "created_at": "created-date",
+    "host_on_duty": "person-name"
+  },
+  "destinationConcepts": {
+    "booking_id": "transaction-id",
+    "member_id": "customer-id",
+    "member_name": "person-name",
+    "member_email": "email",
+    "company_name": "organization-name",
+    "space_type": "category",
+    "plan_tier": "category",
+    "billing_cycle": "payment-status",
+    "booking_date": "start-date",
+    "booked_hours": "quantity",
+    "desk_label": "other-identifier"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 0,
+      "outcome": "transformed",
+      "output": {
+        "booking_id": "BK-77120",
+        "member_id": "M-0310",
+        "member_name": "Jack Hughes",
+        "member_email": "jack.hughes@mail.example.com",
+        "company_name": "Pixel & Pine",
+        "space_type": "meeting_room",
+        "plan_tier": "day_pass",
+        "billing_cycle": "quarterly",
+        "booking_date": "2025-09-28",
+        "desk_label": "D-01"
+      }
+    },
+    {
+      "recordIndex": 2,
+      "outcome": "transformed",
+      "output": {
+        "booking_id": "BK-77142",
+        "member_id": "M-0324",
+        "member_name": "Ava Walsh",
+        "member_email": "ava.walsh@mail.example.com",
+        "space_type": "quiet_desk",
+        "plan_tier": "dedicated_desk",
+        "billing_cycle": "yearly",
+        "booking_date": "2025-10-15",
+        "desk_label": "D-11"
+      }
+    },
+    {
+      "recordIndex": 5,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 9,
+      "outcome": "transformed",
+      "output": {
+        "booking_id": "BK-77219",
+        "member_id": "M-0373",
+        "member_name": "Ruby Neville",
+        "member_email": "ruby.neville@mail.example.com",
+        "space_type": "hot_desk",
+        "plan_tier": "dedicated_desk",
+        "billing_cycle": "monthly",
+        "booking_date": "2025-05-07",
+        "desk_label": "D-06"
+      }
+    }
+  ]
+}

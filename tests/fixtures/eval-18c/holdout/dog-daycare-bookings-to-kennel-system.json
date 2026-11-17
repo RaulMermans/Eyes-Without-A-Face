@@ -1,0 +1,777 @@
+{
+  "scenarioId": "dog-daycare-bookings-to-kennel-system",
+  "split": "holdout",
+  "industry": "dog daycare and boarding",
+  "sourceLanguage": "mixed",
+  "description": "Booking export of a fictional dog daycare (field names mixing Spanish and English, nested dog and owner) to be loaded into a kennel management system that requires microchip registration.",
+  "fictional": true,
+  "completable": false,
+  "records": [
+    {
+      "estado_pago": "Bono",
+      "reserva_id": "RSV-30200",
+      "booking_status": "No show",
+      "walker": "Andrea Pons",
+      "servicio": "Prueba adaptación",
+      "check_in_fecha": "03/09/2025",
+      "owner": {
+        "name": "Lucía Morales",
+        "email": "lucia.morales@perros.example.net",
+        "phone": "+34 6 635 4761"
+      },
+      "row_num": 1,
+      "perro": {
+        "fecha_nacimiento": "26/01/2024",
+        "tamano": "Mediano",
+        "nombre": "Rocky",
+        "placa_collar": "TAG-5100",
+        "raza": "Labrador"
+      }
+    },
+    {
+      "perro": {
+        "fecha_nacimiento": "27/06/2022",
+        "nombre": "Coco",
+        "tamano": "Grande",
+        "raza": "Labrador",
+        "placa_collar": "TAG-5103"
+      },
+      "reserva_id": "RSV-30207",
+      "walker": "Sam Okoye",
+      "estado_pago": "Pagado",
+      "owner": {
+        "email": "Sofia.Medina@Perros.Example.Net",
+        "phone": "+34 6 123 5910",
+        "name": "Sofía Medina"
+      },
+      "row_num": 2,
+      "servicio": "Media jornada",
+      "booking_status": "Checked in",
+      "check_in_fecha": "24/06/2025"
+    },
+    {
+      "reserva_id": "RSV-30214",
+      "perro": {
+        "tamano": "Gigante (+45kg)",
+        "nombre": "Kira",
+        "raza": "Mestizo",
+        "placa_collar": "TAG-5106",
+        "fecha_nacimiento": "16/10/2019"
+      },
+      "row_num": 3,
+      "booking_status": "Checked in",
+      "servicio": "Media jornada",
+      "check_in_fecha": "21/09/2025",
+      "estado_pago": "Bono",
+      "walker": "Sam Okoye",
+      "owner": {
+        "name": "  Martina Garrido",
+        "phone": "+34 6 709 2160",
+        "email": "martina.garrido@perros.example.net"
+      }
+    },
+    {
+      "estado_pago": "Pendiente",
+      "owner": {
+        "name": "Paula López Martín",
+        "email": "paula.lopezmartin@perros.example.net",
+        "phone": "+34 6 822 3915"
+      },
+      "walker": "Sam Okoye",
+      "reserva_id": "RSV-30221",
+      "perro": {
+        "fecha_nacimiento": "28/07/2015",
+        "raza": "Mestizo",
+        "nombre": "Canela",
+        "tamano": "Gigante (+45kg)",
+        "placa_collar": "TAG-5109"
+      },
+      "booking_status": "Checked in",
+      "row_num": 4,
+      "check_in_fecha": "11/11/2025",
+      "servicio": "Guardería día"
+    },
+    {
+      "servicio": "Paseo 1h",
+      "estado_pago": "Pendiente",
+      "row_num": 5,
+      "check_in_fecha": "02/01/2025",
+      "reserva_id": "RSV-30228",
+      "booking_status": "Cancelled",
+      "owner": {
+        "phone": "+34 6 886 6194",
+        "name": "Lucía Iglesias",
+        "email": "Lucia.Iglesias@Perros.Example.Net"
+      },
+      "walker": "Jordi Vidal",
+      "perro": {
+        "placa_collar": "TAG-5112",
+        "nombre": "Simba",
+        "raza": "Caniche",
+        "tamano": "Pequeño",
+        "fecha_nacimiento": "02/07/2020"
+      }
+    },
+    {
+      "owner": {
+        "email": null,
+        "phone": "+34 6 985 1431",
+        "name": "Nerea Molina"
+      },
+      "row_num": 6,
+      "check_in_fecha": "04/04/2025",
+      "perro": {
+        "raza": "Bulldog francés",
+        "tamano": "Pequeño",
+        "nombre": "Kira",
+        "fecha_nacimiento": "25/03/2024",
+        "placa_collar": "TAG-5115"
+      },
+      "servicio": "Prueba adaptación",
+      "estado_pago": "Pendiente",
+      "reserva_id": "RSV-30235",
+      "booking_status": "Checked in",
+      "walker": "Jordi Vidal"
+    },
+    {
+      "walker": "Andrea Pons",
+      "estado_pago": "Pagado",
+      "perro": {
+        "placa_collar": "TAG-5118",
+        "nombre": "Rocky",
+        "raza": "Bulldog francés",
+        "fecha_nacimiento": "09/09/2023",
+        "tamano": "Mediano"
+      },
+      "reserva_id": "RSV-30242",
+      "row_num": 7,
+      "servicio": "Media jornada",
+      "owner": {
+        "phone": "+34 6 225 9321",
+        "name": "Nerea Medina",
+        "email": "nerea.medina@perros.example.net"
+      },
+      "check_in_fecha": "18/05/2025",
+      "booking_status": "Confirmed"
+    },
+    {
+      "reserva_id": "RSV-30249",
+      "check_in_fecha": "19/11/2025",
+      "walker": "Andrea Pons",
+      "owner": {
+        "email": "Paula.Delgado@Perros.Example.Net",
+        "phone": "+34 6 301 7378",
+        "name": "Paula Delgado"
+      },
+      "row_num": 8,
+      "estado_pago": "Pendiente",
+      "servicio": "Paseo 1h",
+      "perro": {
+        "fecha_nacimiento": "19/09/2015",
+        "placa_collar": "TAG-5121",
+        "tamano": "Mini (<5kg)",
+        "nombre": "Toby",
+        "raza": "Caniche"
+      },
+      "booking_status": "Cancelled"
+    },
+    {
+      "estado_pago": "Pendiente",
+      "check_in_fecha": "14/04/2025",
+      "reserva_id": "RSV-30256",
+      "booking_status": "Checked in",
+      "row_num": 9,
+      "servicio": "Guardería día",
+      "owner": {
+        "phone": "+34 6 535 3734",
+        "name": "Adrián Vega",
+        "email": "adrian.vega@perros.example.net"
+      },
+      "walker": "Jordi Vidal",
+      "perro": {
+        "tamano": "Gigante (+45kg)",
+        "raza": "Bulldog francés",
+        "placa_collar": "TAG-5124",
+        "nombre": "Bruno",
+        "fecha_nacimiento": "23/07/2023"
+      }
+    },
+    {
+      "check_in_fecha": "18/03/2025",
+      "servicio": "Guardería día",
+      "reserva_id": "RSV-30263",
+      "row_num": 10,
+      "owner": {
+        "email": "alba.medina@perros.example.net",
+        "name": "Alba Medina  ",
+        "phone": "+34 6 739 3404"
+      },
+      "estado_pago": "Pagado",
+      "perro": {
+        "placa_collar": "TAG-5127",
+        "raza": "Caniche",
+        "nombre": "Canela",
+        "fecha_nacimiento": "08/10/2017",
+        "tamano": "Grande"
+      },
+      "walker": "Bea Llorente",
+      "booking_status": "Cancelled"
+    },
+    {
+      "reserva_id": "RSV-30270",
+      "estado_pago": "Pagado",
+      "row_num": 11,
+      "booking_status": "Confirmed",
+      "perro": {
+        "raza": "Labrador",
+        "placa_collar": "TAG-5130",
+        "fecha_nacimiento": "07/01/2020",
+        "tamano": "Gigante (+45kg)",
+        "nombre": "Simba"
+      },
+      "walker": "Bea Llorente",
+      "servicio": "Guardería día",
+      "owner": {
+        "name": "Javier Navarro",
+        "email": "Javier.Navarro@Perros.Example.Net",
+        "phone": "+34 6 500 9865"
+      },
+      "check_in_fecha": "05/01/2025"
+    },
+    {
+      "reserva_id": "RSV-30277",
+      "estado_pago": "Pagado",
+      "row_num": 12,
+      "owner": {
+        "email": "alvaro.sanchezgil@perros.example.net",
+        "name": "Álvaro Sánchez Gil",
+        "phone": "+34 6 352 9517"
+      },
+      "perro": {
+        "fecha_nacimiento": "26/03/2021",
+        "nombre": "Coco",
+        "placa_collar": "TAG-5133",
+        "raza": "Mestizo",
+        "tamano": "Gigante (+45kg)"
+      },
+      "check_in_fecha": "21/11/2025",
+      "booking_status": "Confirmed",
+      "walker": "Bea Llorente",
+      "servicio": "Guardería día"
+    },
+    {
+      "booking_status": "No show",
+      "servicio": "Media jornada",
+      "walker": "Jordi Vidal",
+      "reserva_id": "RSV-30284",
+      "estado_pago": "Bono",
+      "row_num": 13,
+      "owner": {
+        "name": "Sergio Prieto",
+        "phone": "+34 6 310 6780"
+      },
+      "perro": {
+        "raza": "Bulldog francés",
+        "fecha_nacimiento": "06/07/2018",
+        "placa_collar": "TAG-5136",
+        "tamano": "Pequeño",
+        "nombre": "Kira"
+      },
+      "check_in_fecha": "15/01/2025"
+    },
+    {
+      "estado_pago": "Bono",
+      "reserva_id": "RSV-30291",
+      "check_in_fecha": "26/07/2025",
+      "booking_status": "Confirmed",
+      "perro": {
+        "tamano": "Mediano",
+        "fecha_nacimiento": "07/01/2021",
+        "placa_collar": "TAG-5139",
+        "nombre": "Bruno",
+        "raza": "Galgo"
+      },
+      "servicio": "Guardería día",
+      "row_num": 14,
+      "walker": "Sam Okoye",
+      "owner": {
+        "phone": "+34 6 897 2032",
+        "email": "Lucia.Iglesias@Perros.Example.Net",
+        "name": "Lucía Iglesias"
+      }
+    },
+    {
+      "reserva_id": "RSV-30298",
+      "servicio": "Media jornada",
+      "row_num": 15,
+      "perro": {
+        "raza": "Labrador",
+        "nombre": "Bruno",
+        "placa_collar": "TAG-5142",
+        "fecha_nacimiento": "10/11/2015",
+        "tamano": "Mediano"
+      },
+      "estado_pago": "Pendiente",
+      "owner": {
+        "name": "Sofía García Ruiz",
+        "phone": "+34 6 699 4765",
+        "email": "sofia.garciaruiz@perros.example.net"
+      },
+      "check_in_fecha": "08/01/2025",
+      "walker": "Andrea Pons",
+      "booking_status": "Cancelled"
+    },
+    {
+      "owner": {
+        "email": "lucia.sanchezgil@perros.example.net",
+        "phone": "+34 6 215 8306",
+        "name": "Lucía Sánchez Gil"
+      },
+      "row_num": 16,
+      "reserva_id": "RSV-30305",
+      "walker": "Bea Llorente",
+      "servicio": "Paseo 1h",
+      "estado_pago": "Bono",
+      "booking_status": "No show",
+      "perro": {
+        "placa_collar": "TAG-5145",
+        "nombre": "Kira",
+        "raza": "Labrador",
+        "tamano": "Grande",
+        "fecha_nacimiento": "16/05/2013"
+      },
+      "check_in_fecha": "14/01/2025"
+    },
+    {
+      "perro": {
+        "tamano": "Pequeño",
+        "raza": "Border Collie",
+        "placa_collar": "TAG-5148",
+        "nombre": "Simba",
+        "fecha_nacimiento": "25/01/2019"
+      },
+      "booking_status": "Checked in",
+      "servicio": "Hotel noche",
+      "estado_pago": "Bono",
+      "owner": {
+        "phone": "+34 6 926 6848",
+        "email": "Valeria.Delgado@Perros.Example.Net",
+        "name": "Valeria Delgado"
+      },
+      "reserva_id": "RSV-30312",
+      "check_in_fecha": "08/11/2025",
+      "walker": "Jordi Vidal",
+      "row_num": 17
+    },
+    {
+      "estado_pago": "Pagado",
+      "servicio": "Paseo 1h",
+      "check_in_fecha": "12/02/2025",
+      "booking_status": "Confirmed",
+      "walker": "Andrea Pons",
+      "row_num": 18,
+      "perro": {
+        "tamano": "Mini (<5kg)",
+        "nombre": "Bruno",
+        "fecha_nacimiento": "02/03/2014",
+        "raza": "Labrador",
+        "placa_collar": "TAG-5151"
+      },
+      "owner": {
+        "email": "martina.lopezmartin@perros.example.net",
+        "phone": "+34 6 132 9129",
+        "name": " Martina López Martín "
+      },
+      "reserva_id": "RSV-30319"
+    },
+    {
+      "walker": "Jordi Vidal",
+      "booking_status": "No show",
+      "row_num": 19,
+      "reserva_id": "RSV-30326",
+      "estado_pago": "Bono",
+      "check_in_fecha": "02/07/2025",
+      "servicio": "Prueba adaptación",
+      "owner": {
+        "name": "Valeria Cortés",
+        "phone": "+34 6 839 3049",
+        "email": null
+      },
+      "perro": {
+        "raza": "Bulldog francés",
+        "nombre": "Kira",
+        "placa_collar": "TAG-5154",
+        "tamano": "Mini (<5kg)",
+        "fecha_nacimiento": "22/09/2017"
+      }
+    },
+    {
+      "reserva_id": "RSV-30333",
+      "perro": {
+        "nombre": "Lola",
+        "raza": "Caniche",
+        "tamano": "Mediano",
+        "fecha_nacimiento": "04/10/2018",
+        "placa_collar": "TAG-5157"
+      },
+      "estado_pago": "Pendiente",
+      "row_num": 20,
+      "check_in_fecha": "11/03/2025",
+      "owner": {
+        "name": "Sergio García Ruiz",
+        "email": "Sergio.Garciaruiz@Perros.Example.Net",
+        "phone": "+34 6 963 3315"
+      },
+      "servicio": "Prueba adaptación",
+      "booking_status": "Confirmed",
+      "walker": "Jordi Vidal"
+    },
+    {
+      "servicio": "Hotel noche",
+      "perro": {
+        "raza": "Border Collie",
+        "fecha_nacimiento": "24/02/2013",
+        "placa_collar": "TAG-5160",
+        "nombre": "Bruno",
+        "tamano": "Pequeño"
+      },
+      "booking_status": "Confirmed",
+      "owner": {
+        "name": "Álvaro Delgado",
+        "phone": "+34 6 515 8857",
+        "email": "alvaro.delgado@perros.example.net"
+      },
+      "walker": "Sam Okoye",
+      "estado_pago": "Pagado",
+      "check_in_fecha": "13/02/2025",
+      "row_num": 21,
+      "reserva_id": "RSV-30340"
+    },
+    {
+      "servicio": "Hotel noche",
+      "walker": "Sam Okoye",
+      "owner": {
+        "name": "Valeria Delgado",
+        "email": "valeria.delgado@perros.example.net",
+        "phone": "+34 6 668 1488"
+      },
+      "check_in_fecha": "23/12/2025",
+      "row_num": 22,
+      "perro": {
+        "tamano": "Mini (<5kg)",
+        "raza": "Mestizo",
+        "placa_collar": "TAG-5163",
+        "fecha_nacimiento": "15/01/2021",
+        "nombre": "Bruno"
+      },
+      "reserva_id": "RSV-30347",
+      "booking_status": "Cancelled",
+      "estado_pago": "Pendiente"
+    },
+    {
+      "check_in_fecha": "25/09/2025",
+      "row_num": 23,
+      "servicio": "Hotel noche",
+      "reserva_id": "RSV-30354",
+      "perro": {
+        "raza": "Labrador",
+        "fecha_nacimiento": "20/02/2016",
+        "nombre": "Toby",
+        "placa_collar": "TAG-5166",
+        "tamano": "Grande"
+      },
+      "booking_status": "No show",
+      "owner": {
+        "phone": "+34 6 132 9068",
+        "email": "Paula.Garciaruiz@Perros.Example.Net",
+        "name": "Paula García Ruiz"
+      },
+      "walker": "Bea Llorente",
+      "estado_pago": "Pagado"
+    },
+    {
+      "estado_pago": "Bono",
+      "servicio": "Hotel noche",
+      "row_num": 24,
+      "owner": {
+        "email": "elena.romero@perros.example.net",
+        "name": "Elena Romero",
+        "phone": "+34 6 460 2647"
+      },
+      "reserva_id": "RSV-30361",
+      "perro": {
+        "fecha_nacimiento": "28/12/2021",
+        "tamano": "Grande",
+        "placa_collar": "TAG-5169",
+        "nombre": "Coco",
+        "raza": "Border Collie"
+      },
+      "check_in_fecha": "07/11/2025",
+      "booking_status": "Checked in",
+      "walker": "Andrea Pons"
+    },
+    {
+      "row_num": 25,
+      "perro": {
+        "raza": "Mestizo",
+        "fecha_nacimiento": "13/11/2019",
+        "nombre": "Canela",
+        "placa_collar": "TAG-5172",
+        "tamano": "Mini (<5kg)"
+      },
+      "servicio": "Paseo 1h",
+      "estado_pago": "Pagado",
+      "booking_status": "Cancelled",
+      "reserva_id": "RSV-30368",
+      "walker": "Andrea Pons",
+      "owner": {
+        "name": "  Adrián Garrido",
+        "phone": "+34 6 958 3264",
+        "email": "adrian.garrido@perros.example.net"
+      },
+      "check_in_fecha": "25/03/2025"
+    },
+    {
+      "booking_status": "No show",
+      "walker": "Bea Llorente",
+      "reserva_id": "RSV-30375",
+      "owner": {
+        "phone": "+34 6 803 6101",
+        "email": "Paula.Cortes@Perros.Example.Net",
+        "name": "Paula Cortés"
+      },
+      "servicio": "Prueba adaptación",
+      "check_in_fecha": "12/08/2025",
+      "perro": {
+        "placa_collar": "TAG-5175",
+        "fecha_nacimiento": "24/01/2013",
+        "tamano": "Mini (<5kg)",
+        "nombre": "Bruno",
+        "raza": "Border Collie"
+      },
+      "row_num": 26,
+      "estado_pago": "Bono"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "booking_id": {
+        "type": "string",
+        "description": "Identifier of the booking."
+      },
+      "dog_name": {
+        "type": "string",
+        "description": "Name of the dog."
+      },
+      "microchip_number": {
+        "type": "string",
+        "description": "15-digit ISO 11784 transponder number of the dog's implanted microchip."
+      },
+      "size_class": {
+        "type": "string",
+        "enum": [
+          "toy",
+          "small",
+          "medium",
+          "large",
+          "giant"
+        ],
+        "description": "Size class used for group allocation."
+      },
+      "service": {
+        "type": "string",
+        "enum": [
+          "daycare_full_day",
+          "daycare_half_day",
+          "overnight",
+          "walk"
+        ],
+        "description": "Service booked."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "confirmed",
+          "checked_in",
+          "no_show",
+          "cancelled"
+        ],
+        "description": "Attendance state of the booking."
+      },
+      "owner_name": {
+        "type": "string",
+        "description": "Name of the dog owner."
+      },
+      "owner_email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email of the dog owner."
+      },
+      "check_in": {
+        "type": "string",
+        "format": "date",
+        "description": "Day the dog is dropped off."
+      },
+      "vaccination_valid_until": {
+        "type": "string",
+        "format": "date",
+        "description": "Expiry of the dog's rabies vaccination."
+      }
+    },
+    "required": [
+      "booking_id",
+      "dog_name",
+      "microchip_number",
+      "size_class",
+      "service",
+      "owner_name",
+      "check_in"
+    ]
+  },
+  "groundTruth": {
+    "booking_id": {
+      "source": "reserva_id",
+      "transform": "copy",
+      "why": "booking id; row_num is the export row"
+    },
+    "dog_name": {
+      "source": "perro.nombre",
+      "transform": "copy",
+      "why": "dog name"
+    },
+    "microchip_number": {
+      "source": null,
+      "transform": "none",
+      "why": "the export has no microchip number; perro.placa_collar is the daycare's own collar tag"
+    },
+    "size_class": {
+      "source": "perro.tamano",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Mini (<5kg)": "toy",
+        "Pequeño": "small",
+        "Mediano": "medium",
+        "Grande": "large",
+        "Gigante (+45kg)": "giant"
+      },
+      "why": "size class"
+    },
+    "service": {
+      "source": "servicio",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Guardería día": "daycare_full_day",
+        "Media jornada": "daycare_half_day",
+        "Hotel noche": "overnight",
+        "Paseo 1h": "walk",
+        "Prueba adaptación": null
+      },
+      "why": "service; free adaptation trials need review"
+    },
+    "status": {
+      "source": "booking_status",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Confirmed": "confirmed",
+        "Checked in": "checked_in",
+        "No show": "no_show",
+        "Cancelled": "cancelled"
+      },
+      "why": "booking state; estado_pago is payment"
+    },
+    "owner_name": {
+      "source": "owner.name",
+      "transform": "trim",
+      "why": "owner, padded; walker is staff"
+    },
+    "owner_email": {
+      "source": "owner.email",
+      "transform": "normalize_email",
+      "why": "owner email, mixed case, sometimes absent"
+    },
+    "check_in": {
+      "source": "check_in_fecha",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "check-in date (Spanish day-first); fecha_nacimiento is the dog's birth date"
+    },
+    "vaccination_valid_until": {
+      "source": null,
+      "transform": "none",
+      "why": "vaccination records are not exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "booking_status",
+        "estado_pago"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "servicio",
+        "perro.tamano"
+      ],
+      "correctFor": "service"
+    },
+    {
+      "kind": "decoy-for-missing-field",
+      "fields": [
+        "perro.placa_collar",
+        "reserva_id"
+      ],
+      "correctFor": "microchip_number"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "reserva_id",
+        "row_num"
+      ],
+      "correctFor": "booking_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "owner.name",
+        "walker"
+      ],
+      "correctFor": "owner_name"
+    }
+  ],
+  "sourceConcepts": {
+    "reserva_id": "transaction-id",
+    "row_num": "other-identifier",
+    "perro.nombre": "other",
+    "perro.raza": "other",
+    "perro.tamano": "category",
+    "perro.placa_collar": "other-identifier",
+    "perro.fecha_nacimiento": "birth-date",
+    "owner.name": "person-name",
+    "owner.email": "email",
+    "owner.phone": "phone",
+    "servicio": "category",
+    "booking_status": "account-status",
+    "estado_pago": "payment-status",
+    "check_in_fecha": "start-date",
+    "walker": "person-name"
+  },
+  "destinationConcepts": {
+    "booking_id": "transaction-id",
+    "dog_name": "other",
+    "microchip_number": "other-identifier",
+    "size_class": "category",
+    "service": "category",
+    "status": "account-status",
+    "owner_name": "person-name",
+    "owner_email": "email",
+    "check_in": "start-date",
+    "vaccination_valid_until": "end-date"
+  }
+}

@@ -1,0 +1,1088 @@
+{
+  "scenarioId": "summer-camp-registrations-to-camp-manager",
+  "split": "holdout",
+  "industry": "children's summer camp registrations",
+  "sourceLanguage": "es",
+  "description": "Registration export of a fictional children's summer camp (Spanish snake_case, nested registration, participant and guardian contact) to be loaded into a camp management tool.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "dieta": "Sin gluten",
+      "inscripcion": {
+        "fecha": "12/01/2025",
+        "codigo": "CV25-0240",
+        "estado": "Pendiente de pago"
+      },
+      "turno": "2ª quincena julio",
+      "tutor": {
+        "apellidos": "Prieto",
+        "contacto": {
+          "email": "daniel.prieto@familia.example.com",
+          "movil": "+34 6 622 6445"
+        },
+        "nombre": "Daniel"
+      },
+      "participante": {
+        "talla_camiseta": "14",
+        "nombre_completo": "Martina Medina",
+        "fecha_nacimiento": "05/07/2019"
+      },
+      "monitor": "Nacho Ferrer",
+      "estado_pago": "Señal pagada",
+      "id_fila": 10
+    },
+    {
+      "id_fila": 11,
+      "estado_pago": "Pagado",
+      "tutor": {
+        "apellidos": "Vega",
+        "nombre": "Alba",
+        "contacto": {
+          "email": "Alba.Vega@Familia.Example.Com",
+          "movil": "+34 6 473 3903"
+        }
+      },
+      "dieta": "Sin lactosa",
+      "monitor": "Unai Etxeberria",
+      "inscripcion": {
+        "codigo": "CV25-0243",
+        "fecha": "21/08/2025",
+        "estado": "Lista de espera"
+      },
+      "turno": "1ª quincena julio",
+      "participante": {
+        "talla_camiseta": "14",
+        "fecha_nacimiento": "22/04/2015",
+        "nombre_completo": "Lucía Ortega"
+      }
+    },
+    {
+      "turno": "Agosto completo",
+      "id_fila": 12,
+      "inscripcion": {
+        "fecha": "09/05/2025",
+        "codigo": "CV25-0246",
+        "estado": "Lista de espera"
+      },
+      "tutor": {
+        "apellidos": "Molina",
+        "contacto": {
+          "movil": "+34 6 121 8648",
+          "email": "adrian.molina@familia.example.com"
+        },
+        "nombre": "Adrián"
+      },
+      "participante": {
+        "talla_camiseta": "10-12",
+        "nombre_completo": "  Irene Cortés",
+        "fecha_nacimiento": "17/11/2015"
+      },
+      "monitor": "Rocío Benítez",
+      "dieta": "Vegetariana",
+      "estado_pago": "Señal pagada"
+    },
+    {
+      "estado_pago": "Pagado",
+      "tutor": {
+        "contacto": {
+          "movil": null,
+          "email": "sofia.herrera@familia.example.com"
+        },
+        "nombre": "Sofía",
+        "apellidos": "Herrera"
+      },
+      "turno": "Semana de prueba",
+      "inscripcion": {
+        "codigo": "CV25-0249",
+        "fecha": "21/10/2025",
+        "estado": "Anulada"
+      },
+      "monitor": "Laia Puig",
+      "id_fila": 13,
+      "participante": {
+        "nombre_completo": "Sergio Ortega",
+        "fecha_nacimiento": "16/01/2015",
+        "talla_camiseta": "6-8"
+      },
+      "dieta": "Normal"
+    },
+    {
+      "dieta": "Normal",
+      "turno": "Agosto completo",
+      "tutor": {
+        "nombre": "Iker",
+        "apellidos": "Ortega",
+        "contacto": {
+          "movil": "+34 6 336 6094",
+          "email": "Iker.Ortega@Familia.Example.Com"
+        }
+      },
+      "estado_pago": "Pagado",
+      "id_fila": 14,
+      "inscripcion": {
+        "estado": "Lista de espera",
+        "fecha": "13/10/2025",
+        "codigo": "CV25-0252"
+      },
+      "monitor": "Nacho Ferrer",
+      "participante": {
+        "talla_camiseta": "6-8",
+        "nombre_completo": "Alba Navarro",
+        "fecha_nacimiento": "02/11/2012"
+      }
+    },
+    {
+      "id_fila": 15,
+      "estado_pago": "Pagado",
+      "participante": {
+        "fecha_nacimiento": "27/06/2013",
+        "talla_camiseta": "10-12",
+        "nombre_completo": "Elena Castro Vidal"
+      },
+      "tutor": {
+        "contacto": {
+          "movil": "+34 6 605 3781",
+          "email": "iker.castrovidal@familia.example.com"
+        },
+        "apellidos": "Castro Vidal",
+        "nombre": "Iker"
+      },
+      "monitor": "Laia Puig",
+      "turno": "Semana de prueba",
+      "dieta": "Normal",
+      "inscripcion": {
+        "estado": "Plaza reservada monitor",
+        "fecha": "24/06/2025",
+        "codigo": "CV25-0255"
+      }
+    },
+    {
+      "turno": "Semana de prueba",
+      "inscripcion": {
+        "estado": "Pendiente de pago",
+        "codigo": "CV25-0258",
+        "fecha": "17/03/2025"
+      },
+      "monitor": "Marta Soler",
+      "id_fila": 16,
+      "tutor": {
+        "apellidos": "Lozano",
+        "nombre": "Daniel",
+        "contacto": {
+          "email": "daniel.lozano@familia.example.com",
+          "movil": "+34 6 391 6140"
+        }
+      },
+      "dieta": "Normal",
+      "estado_pago": "Sin pagar",
+      "participante": {
+        "nombre_completo": "Martina Prieto",
+        "fecha_nacimiento": "26/08/2015",
+        "talla_camiseta": "S"
+      }
+    },
+    {
+      "monitor": "Unai Etxeberria",
+      "id_fila": 17,
+      "turno": "2ª quincena julio",
+      "participante": {
+        "nombre_completo": "Javier Iglesias",
+        "fecha_nacimiento": "18/11/2017",
+        "talla_camiseta": "10-12"
+      },
+      "tutor": {
+        "nombre": "Irene",
+        "contacto": {
+          "email": "Irene.Lozano@Familia.Example.Com"
+        },
+        "apellidos": "Lozano"
+      },
+      "dieta": "Sin lactosa",
+      "inscripcion": {
+        "fecha": "22/01/2025",
+        "codigo": "CV25-0261",
+        "estado": "Pendiente de pago"
+      },
+      "estado_pago": "Señal pagada"
+    },
+    {
+      "dieta": "Sin lactosa",
+      "id_fila": 18,
+      "turno": "Semana de prueba",
+      "inscripcion": {
+        "fecha": "19/09/2025",
+        "codigo": "CV25-0264",
+        "estado": "Pendiente de pago"
+      },
+      "monitor": "Marta Soler",
+      "participante": {
+        "nombre_completo": "Sofía Vega",
+        "talla_camiseta": "S",
+        "fecha_nacimiento": "25/02/2015"
+      },
+      "tutor": {
+        "apellidos": "Lozano",
+        "nombre": "Paula",
+        "contacto": {
+          "movil": "+34 6 686 2051",
+          "email": "paula.lozano@familia.example.com"
+        }
+      },
+      "estado_pago": "Pagado"
+    },
+    {
+      "id_fila": 19,
+      "turno": "1ª quincena julio",
+      "dieta": "Sin lactosa",
+      "participante": {
+        "nombre_completo": "Alba García Ruiz  ",
+        "talla_camiseta": "6-8",
+        "fecha_nacimiento": "10/11/2012"
+      },
+      "tutor": {
+        "nombre": "Pablo",
+        "contacto": {
+          "movil": "+34 6 514 2044",
+          "email": "pablo.romero@familia.example.com"
+        },
+        "apellidos": "Romero"
+      },
+      "monitor": "Laia Puig",
+      "inscripcion": {
+        "fecha": "20/01/2025",
+        "estado": "Confirmada",
+        "codigo": "CV25-0267"
+      },
+      "estado_pago": "Señal pagada"
+    },
+    {
+      "tutor": {
+        "nombre": "Javier",
+        "contacto": {
+          "email": "Javier.Prieto@Familia.Example.Com",
+          "movil": "+34 6 603 8948"
+        },
+        "apellidos": "Prieto"
+      },
+      "turno": "1ª quincena julio",
+      "dieta": "Sin gluten",
+      "inscripcion": {
+        "fecha": "10/07/2025",
+        "estado": "Anulada",
+        "codigo": "CV25-0270"
+      },
+      "estado_pago": "Sin pagar",
+      "monitor": "Unai Etxeberria",
+      "participante": {
+        "talla_camiseta": "6-8",
+        "nombre_completo": "Adrián Iglesias",
+        "fecha_nacimiento": "14/11/2011"
+      },
+      "id_fila": 20
+    },
+    {
+      "id_fila": 21,
+      "inscripcion": {
+        "codigo": "CV25-0273",
+        "fecha": "15/07/2025",
+        "estado": "Confirmada"
+      },
+      "tutor": {
+        "nombre": "Sofía",
+        "contacto": {
+          "movil": "+34 6 223 6938",
+          "email": "sofia.ortega@familia.example.com"
+        },
+        "apellidos": "Ortega"
+      },
+      "estado_pago": "Sin pagar",
+      "dieta": "Alergia frutos secos",
+      "monitor": "Unai Etxeberria",
+      "turno": "Agosto completo",
+      "participante": {
+        "talla_camiseta": "M",
+        "nombre_completo": "Marcos Fernández",
+        "fecha_nacimiento": "20/06/2013"
+      }
+    },
+    {
+      "inscripcion": {
+        "codigo": "CV25-0276",
+        "estado": "Confirmada",
+        "fecha": "24/09/2025"
+      },
+      "participante": {
+        "talla_camiseta": "10-12",
+        "nombre_completo": "Valeria Castro Vidal",
+        "fecha_nacimiento": "06/04/2017"
+      },
+      "estado_pago": "Señal pagada",
+      "id_fila": 22,
+      "dieta": "Alergia frutos secos",
+      "tutor": {
+        "nombre": "Pablo",
+        "contacto": {
+          "email": "pablo.molina@familia.example.com",
+          "movil": "+34 6 803 9155"
+        },
+        "apellidos": "Molina"
+      },
+      "monitor": "Unai Etxeberria",
+      "turno": "Semana de prueba"
+    },
+    {
+      "estado_pago": "Pagado",
+      "participante": {
+        "nombre_completo": "Nerea López Martín",
+        "talla_camiseta": "S",
+        "fecha_nacimiento": "22/10/2011"
+      },
+      "id_fila": 23,
+      "tutor": {
+        "nombre": "Mateo",
+        "contacto": {
+          "email": "Mateo.Molina@Familia.Example.Com",
+          "movil": "+34 6 602 7939"
+        },
+        "apellidos": "Molina"
+      },
+      "turno": "Agosto completo",
+      "monitor": "Rocío Benítez",
+      "inscripcion": {
+        "fecha": "04/04/2025",
+        "codigo": "CV25-0279",
+        "estado": "Anulada"
+      },
+      "dieta": "Sin gluten"
+    },
+    {
+      "turno": "2ª quincena julio",
+      "dieta": "Vegetariana",
+      "inscripcion": {
+        "fecha": "26/03/2025",
+        "estado": "Plaza reservada monitor",
+        "codigo": "CV25-0282"
+      },
+      "id_fila": 24,
+      "participante": {
+        "fecha_nacimiento": "13/03/2015",
+        "talla_camiseta": "14",
+        "nombre_completo": "Pablo Castro Vidal"
+      },
+      "monitor": "Laia Puig",
+      "estado_pago": "Señal pagada",
+      "tutor": {
+        "apellidos": "Navarro",
+        "nombre": "Sofía",
+        "contacto": {
+          "movil": "+34 6 801 7093",
+          "email": "sofia.navarro@familia.example.com"
+        }
+      }
+    },
+    {
+      "monitor": "Nacho Ferrer",
+      "participante": {
+        "talla_camiseta": "10-12",
+        "fecha_nacimiento": "25/12/2019",
+        "nombre_completo": "Nerea Garrido"
+      },
+      "id_fila": 25,
+      "tutor": {
+        "contacto": {
+          "email": "javier.cortes@familia.example.com",
+          "movil": null
+        },
+        "nombre": "Javier",
+        "apellidos": "Cortés"
+      },
+      "estado_pago": "Sin pagar",
+      "turno": "Agosto completo",
+      "dieta": "Normal",
+      "inscripcion": {
+        "fecha": "13/03/2025",
+        "estado": "Confirmada",
+        "codigo": "CV25-0285"
+      }
+    },
+    {
+      "participante": {
+        "talla_camiseta": "14",
+        "fecha_nacimiento": "26/08/2015",
+        "nombre_completo": "Alba García Ruiz"
+      },
+      "tutor": {
+        "contacto": {
+          "email": "Iker.Lopezmartin@Familia.Example.Com",
+          "movil": "+34 6 998 4402"
+        },
+        "apellidos": "López Martín",
+        "nombre": "Iker"
+      },
+      "inscripcion": {
+        "fecha": "16/05/2025",
+        "estado": "Pendiente de pago",
+        "codigo": "CV25-0288"
+      },
+      "turno": "2ª quincena julio",
+      "monitor": "Marta Soler",
+      "dieta": "Sin gluten",
+      "id_fila": 26,
+      "estado_pago": "Pagado"
+    },
+    {
+      "estado_pago": "Pagado",
+      "id_fila": 27,
+      "tutor": {
+        "contacto": {
+          "movil": "+34 6 733 1384",
+          "email": "paula.prieto@familia.example.com"
+        },
+        "nombre": "Paula",
+        "apellidos": "Prieto"
+      },
+      "monitor": "Rocío Benítez",
+      "dieta": "Normal",
+      "inscripcion": {
+        "estado": "Lista de espera",
+        "codigo": "CV25-0291",
+        "fecha": "16/04/2025"
+      },
+      "participante": {
+        "nombre_completo": "Álvaro Vega",
+        "talla_camiseta": "S",
+        "fecha_nacimiento": "17/04/2017"
+      },
+      "turno": "Semana de prueba"
+    },
+    {
+      "inscripcion": {
+        "fecha": "07/05/2025",
+        "estado": "Anulada",
+        "codigo": "CV25-0294"
+      },
+      "id_fila": 28,
+      "turno": "Agosto completo",
+      "participante": {
+        "nombre_completo": "Hugo Lozano",
+        "fecha_nacimiento": "25/05/2012",
+        "talla_camiseta": "6-8"
+      },
+      "monitor": "Unai Etxeberria",
+      "estado_pago": "Señal pagada",
+      "tutor": {
+        "contacto": {
+          "movil": "+34 6 292 6416",
+          "email": "carmen.herrera@familia.example.com"
+        },
+        "apellidos": "Herrera",
+        "nombre": "Carmen"
+      },
+      "dieta": "Alergia frutos secos"
+    },
+    {
+      "turno": "2ª quincena julio",
+      "dieta": "Sin gluten",
+      "tutor": {
+        "nombre": "Álvaro",
+        "contacto": {
+          "movil": "+34 6 348 8643",
+          "email": "Alvaro.Garciaruiz@Familia.Example.Com"
+        },
+        "apellidos": "García Ruiz"
+      },
+      "estado_pago": "Pagado",
+      "inscripcion": {
+        "codigo": "CV25-0297",
+        "estado": "Lista de espera",
+        "fecha": "12/09/2025"
+      },
+      "id_fila": 29,
+      "participante": {
+        "talla_camiseta": "S",
+        "nombre_completo": " Mateo López Martín ",
+        "fecha_nacimiento": "25/10/2012"
+      },
+      "monitor": "Laia Puig"
+    },
+    {
+      "dieta": "Alergia frutos secos",
+      "monitor": "Marta Soler",
+      "participante": {
+        "nombre_completo": "Daniel Medina",
+        "fecha_nacimiento": "28/10/2012",
+        "talla_camiseta": "6-8"
+      },
+      "turno": "1ª quincena julio",
+      "tutor": {
+        "apellidos": "Navarro",
+        "contacto": {
+          "movil": "+34 6 759 9079",
+          "email": "daniel.navarro@familia.example.com"
+        },
+        "nombre": "Daniel"
+      },
+      "estado_pago": "Sin pagar",
+      "id_fila": 30,
+      "inscripcion": {
+        "codigo": "CV25-0300",
+        "fecha": "07/02/2025",
+        "estado": "Pendiente de pago"
+      }
+    },
+    {
+      "estado_pago": "Señal pagada",
+      "tutor": {
+        "apellidos": "Ortega",
+        "nombre": "Javier",
+        "contacto": {
+          "email": "javier.ortega@familia.example.com",
+          "movil": "+34 6 441 7406"
+        }
+      },
+      "turno": "1ª quincena julio",
+      "inscripcion": {
+        "codigo": "CV25-0303",
+        "fecha": "09/08/2025",
+        "estado": "Lista de espera"
+      },
+      "monitor": "Laia Puig",
+      "id_fila": 31,
+      "dieta": "Vegetariana",
+      "participante": {
+        "talla_camiseta": "S",
+        "nombre_completo": "Daniel Medina",
+        "fecha_nacimiento": "07/12/2014"
+      }
+    },
+    {
+      "inscripcion": {
+        "codigo": "CV25-0306",
+        "estado": "Anulada",
+        "fecha": "26/05/2025"
+      },
+      "estado_pago": "Señal pagada",
+      "id_fila": 32,
+      "monitor": "Marta Soler",
+      "tutor": {
+        "nombre": "Adrián",
+        "contacto": {
+          "email": "Adrian.Romero@Familia.Example.Com"
+        },
+        "apellidos": "Romero"
+      },
+      "dieta": "Sin lactosa",
+      "turno": "1ª quincena julio",
+      "participante": {
+        "nombre_completo": "Valeria García Ruiz",
+        "talla_camiseta": "M",
+        "fecha_nacimiento": "14/09/2012"
+      }
+    },
+    {
+      "inscripcion": {
+        "fecha": "28/09/2025",
+        "estado": "Pendiente de pago",
+        "codigo": "CV25-0309"
+      },
+      "estado_pago": "Sin pagar",
+      "dieta": "Sin gluten",
+      "turno": "1ª quincena julio",
+      "tutor": {
+        "contacto": {
+          "movil": "+34 6 214 8746",
+          "email": "pablo.lopezmartin@familia.example.com"
+        },
+        "nombre": "Pablo",
+        "apellidos": "López Martín"
+      },
+      "participante": {
+        "fecha_nacimiento": "22/08/2014",
+        "talla_camiseta": "M",
+        "nombre_completo": "Álvaro Romero"
+      },
+      "id_fila": 33,
+      "monitor": "Rocío Benítez"
+    },
+    {
+      "estado_pago": "Sin pagar",
+      "turno": "2ª quincena julio",
+      "id_fila": 34,
+      "dieta": "Alergia frutos secos",
+      "inscripcion": {
+        "estado": "Confirmada",
+        "codigo": "CV25-0312",
+        "fecha": "01/10/2025"
+      },
+      "monitor": "Rocío Benítez",
+      "tutor": {
+        "nombre": "Martina",
+        "contacto": {
+          "email": "martina.delgado@familia.example.com",
+          "movil": "+34 6 729 3082"
+        },
+        "apellidos": "Delgado"
+      },
+      "participante": {
+        "fecha_nacimiento": "05/09/2017",
+        "nombre_completo": "Adrián Navarro",
+        "talla_camiseta": "M"
+      }
+    },
+    {
+      "id_fila": 35,
+      "dieta": "Normal",
+      "participante": {
+        "nombre_completo": "Mateo Morales",
+        "fecha_nacimiento": "06/10/2019",
+        "talla_camiseta": "10-12"
+      },
+      "inscripcion": {
+        "estado": "Plaza reservada monitor",
+        "codigo": "CV25-0315",
+        "fecha": "11/10/2025"
+      },
+      "tutor": {
+        "contacto": {
+          "email": "Martina.Prieto@Familia.Example.Com",
+          "movil": "+34 6 930 7453"
+        },
+        "nombre": "Martina",
+        "apellidos": "Prieto"
+      },
+      "estado_pago": "Señal pagada",
+      "turno": "Semana de prueba",
+      "monitor": "Nacho Ferrer"
+    },
+    {
+      "turno": "1ª quincena julio",
+      "participante": {
+        "talla_camiseta": "6-8",
+        "fecha_nacimiento": "27/06/2014",
+        "nombre_completo": "Mateo Medina"
+      },
+      "estado_pago": "Sin pagar",
+      "inscripcion": {
+        "fecha": "05/12/2025",
+        "estado": "Plaza reservada monitor",
+        "codigo": "CV25-0318"
+      },
+      "id_fila": 36,
+      "tutor": {
+        "apellidos": "Delgado",
+        "nombre": "Mateo",
+        "contacto": {
+          "movil": "+34 6 744 1861",
+          "email": "mateo.delgado@familia.example.com"
+        }
+      },
+      "dieta": "Vegetariana",
+      "monitor": "Nacho Ferrer"
+    },
+    {
+      "dieta": "Sin gluten",
+      "tutor": {
+        "contacto": {
+          "movil": null,
+          "email": "alba.herrera@familia.example.com"
+        },
+        "nombre": "Alba",
+        "apellidos": "Herrera"
+      },
+      "estado_pago": "Pagado",
+      "turno": "Agosto completo",
+      "participante": {
+        "fecha_nacimiento": "02/01/2019",
+        "talla_camiseta": "14",
+        "nombre_completo": "Álvaro Garrido"
+      },
+      "monitor": "Rocío Benítez",
+      "id_fila": 37,
+      "inscripcion": {
+        "fecha": "20/08/2025",
+        "codigo": "CV25-0321",
+        "estado": "Plaza reservada monitor"
+      }
+    },
+    {
+      "participante": {
+        "fecha_nacimiento": "04/08/2015",
+        "nombre_completo": "Mateo Castro Vidal",
+        "talla_camiseta": "M"
+      },
+      "tutor": {
+        "contacto": {
+          "email": "Elena.Lozano@Familia.Example.Com",
+          "movil": "+34 6 248 5182"
+        },
+        "apellidos": "Lozano",
+        "nombre": "Elena"
+      },
+      "monitor": "Laia Puig",
+      "turno": "2ª quincena julio",
+      "inscripcion": {
+        "fecha": "24/09/2025",
+        "estado": "Plaza reservada monitor",
+        "codigo": "CV25-0324"
+      },
+      "id_fila": 38,
+      "estado_pago": "Sin pagar",
+      "dieta": "Alergia frutos secos"
+    },
+    {
+      "id_fila": 39,
+      "participante": {
+        "fecha_nacimiento": "15/10/2018",
+        "talla_camiseta": "14",
+        "nombre_completo": "Pablo Fernández"
+      },
+      "tutor": {
+        "nombre": "Mateo",
+        "apellidos": "Lozano",
+        "contacto": {
+          "movil": "+34 6 504 3242",
+          "email": "mateo.lozano@familia.example.com"
+        }
+      },
+      "dieta": "Sin lactosa",
+      "monitor": "Marta Soler",
+      "estado_pago": "Sin pagar",
+      "turno": "Agosto completo",
+      "inscripcion": {
+        "fecha": "26/04/2025",
+        "estado": "Confirmada",
+        "codigo": "CV25-0327"
+      }
+    },
+    {
+      "participante": {
+        "talla_camiseta": "10-12",
+        "fecha_nacimiento": "16/03/2014",
+        "nombre_completo": "  Daniel Fernández"
+      },
+      "monitor": "Nacho Ferrer",
+      "dieta": "Vegetariana",
+      "id_fila": 40,
+      "tutor": {
+        "apellidos": "Medina",
+        "nombre": "Elena",
+        "contacto": {
+          "movil": "+34 6 569 7441",
+          "email": "elena.medina@familia.example.com"
+        }
+      },
+      "estado_pago": "Señal pagada",
+      "turno": "Semana de prueba",
+      "inscripcion": {
+        "codigo": "CV25-0330",
+        "estado": "Confirmada",
+        "fecha": "27/03/2025"
+      }
+    },
+    {
+      "participante": {
+        "fecha_nacimiento": "21/10/2017",
+        "talla_camiseta": "M",
+        "nombre_completo": "Paula Garrido"
+      },
+      "turno": "2ª quincena julio",
+      "inscripcion": {
+        "codigo": "CV25-0333",
+        "estado": "Anulada",
+        "fecha": "24/09/2025"
+      },
+      "dieta": "Vegetariana",
+      "tutor": {
+        "nombre": "Lucía",
+        "contacto": {
+          "movil": "+34 6 191 4503",
+          "email": "Lucia.Lozano@Familia.Example.Com"
+        },
+        "apellidos": "Lozano"
+      },
+      "id_fila": 41,
+      "monitor": "Nacho Ferrer",
+      "estado_pago": "Pagado"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "registration_id": {
+        "type": "string",
+        "description": "Code of the camp registration."
+      },
+      "camper_name": {
+        "type": "string",
+        "description": "Full name of the child attending."
+      },
+      "camper_birth_date": {
+        "type": "string",
+        "format": "date",
+        "description": "Date of birth of the child."
+      },
+      "guardian_name": {
+        "type": "string",
+        "description": "Full name of the parent or guardian, given name first."
+      },
+      "guardian_email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email of the parent or guardian."
+      },
+      "guardian_phone": {
+        "type": "string",
+        "description": "Mobile number of the parent or guardian."
+      },
+      "session": {
+        "type": "string",
+        "enum": [
+          "july_first_half",
+          "july_second_half",
+          "august_full",
+          "trial_week"
+        ],
+        "description": "Camp session booked."
+      },
+      "diet": {
+        "type": "string",
+        "enum": [
+          "standard",
+          "gluten_free",
+          "vegetarian",
+          "lactose_free",
+          "nut_allergy"
+        ],
+        "description": "Catering requirement of the child."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "confirmed",
+          "awaiting_payment",
+          "waitlisted",
+          "cancelled"
+        ],
+        "description": "State of the registration."
+      },
+      "swimming_level": {
+        "type": "string",
+        "enum": [
+          "non_swimmer",
+          "basic",
+          "confident"
+        ],
+        "description": "Swimming ability of the child."
+      }
+    },
+    "required": [
+      "registration_id",
+      "camper_name",
+      "camper_birth_date",
+      "guardian_name",
+      "guardian_email",
+      "session",
+      "status"
+    ]
+  },
+  "groundTruth": {
+    "registration_id": {
+      "source": "inscripcion.codigo",
+      "transform": "copy",
+      "why": "registration code; id_fila is the row number"
+    },
+    "camper_name": {
+      "source": "participante.nombre_completo",
+      "transform": "trim",
+      "why": "child name, padded; monitor is the counsellor"
+    },
+    "camper_birth_date": {
+      "source": "participante.fecha_nacimiento",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "child birth date (Spanish day-first); inscripcion.fecha is the sign-up date"
+    },
+    "guardian_name": {
+      "source": null,
+      "sources": [
+        "tutor.nombre",
+        "tutor.apellidos"
+      ],
+      "transform": "concat",
+      "separator": " ",
+      "why": "guardian first name plus surnames"
+    },
+    "guardian_email": {
+      "source": "tutor.contacto.email",
+      "transform": "normalize_email",
+      "why": "guardian email, mixed case"
+    },
+    "guardian_phone": {
+      "source": "tutor.contacto.movil",
+      "transform": "copy",
+      "why": "guardian mobile, sometimes absent"
+    },
+    "session": {
+      "source": "turno",
+      "transform": "map_enum",
+      "categoryMap": {
+        "1ª quincena julio": "july_first_half",
+        "2ª quincena julio": "july_second_half",
+        "Agosto completo": "august_full",
+        "Semana de prueba": "trial_week"
+      },
+      "why": "session"
+    },
+    "diet": {
+      "source": "dieta",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Normal": "standard",
+        "Sin gluten": "gluten_free",
+        "Vegetariana": "vegetarian",
+        "Sin lactosa": "lactose_free",
+        "Alergia frutos secos": "nut_allergy"
+      },
+      "why": "diet"
+    },
+    "status": {
+      "source": "inscripcion.estado",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Confirmada": "confirmed",
+        "Pendiente de pago": "awaiting_payment",
+        "Lista de espera": "waitlisted",
+        "Anulada": "cancelled",
+        "Plaza reservada monitor": null
+      },
+      "why": "registration state; places held for staff children need review; estado_pago is the payment detail"
+    },
+    "swimming_level": {
+      "source": null,
+      "transform": "none",
+      "why": "swimming ability is not exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "inscripcion.estado",
+        "estado_pago"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "turno",
+        "participante.talla_camiseta"
+      ],
+      "correctFor": "session"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "inscripcion.codigo",
+        "id_fila"
+      ],
+      "correctFor": "registration_id"
+    },
+    {
+      "kind": "birth-date-vs-start-date",
+      "fields": [
+        "participante.fecha_nacimiento",
+        "inscripcion.fecha"
+      ],
+      "correctFor": "camper_birth_date"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "participante.nombre_completo",
+        "monitor"
+      ],
+      "correctFor": "camper_name"
+    }
+  ],
+  "sourceConcepts": {
+    "id_fila": "other-identifier",
+    "inscripcion.codigo": "transaction-id",
+    "inscripcion.fecha": "created-date",
+    "inscripcion.estado": "account-status",
+    "estado_pago": "payment-status",
+    "participante.nombre_completo": "person-name",
+    "participante.fecha_nacimiento": "birth-date",
+    "participante.talla_camiseta": "category",
+    "tutor.nombre": "given-name",
+    "tutor.apellidos": "family-name",
+    "tutor.contacto.email": "email",
+    "tutor.contacto.movil": "phone",
+    "turno": "category",
+    "dieta": "category",
+    "monitor": "person-name"
+  },
+  "destinationConcepts": {
+    "registration_id": "transaction-id",
+    "camper_name": "person-name",
+    "camper_birth_date": "birth-date",
+    "guardian_name": "person-name",
+    "guardian_email": "email",
+    "guardian_phone": "phone",
+    "session": "category",
+    "diet": "category",
+    "status": "account-status",
+    "swimming_level": "other"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 0,
+      "outcome": "transformed",
+      "output": {
+        "registration_id": "CV25-0240",
+        "camper_name": "Martina Medina",
+        "camper_birth_date": "2019-07-05",
+        "guardian_name": "Daniel Prieto",
+        "guardian_email": "daniel.prieto@familia.example.com",
+        "guardian_phone": "+34 6 622 6445",
+        "session": "july_second_half",
+        "diet": "gluten_free",
+        "status": "awaiting_payment"
+      }
+    },
+    {
+      "recordIndex": 3,
+      "outcome": "transformed",
+      "output": {
+        "registration_id": "CV25-0249",
+        "camper_name": "Sergio Ortega",
+        "camper_birth_date": "2015-01-16",
+        "guardian_name": "Sofía Herrera",
+        "guardian_email": "sofia.herrera@familia.example.com",
+        "session": "trial_week",
+        "diet": "standard",
+        "status": "cancelled"
+      }
+    },
+    {
+      "recordIndex": 5,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 7,
+      "outcome": "transformed",
+      "output": {
+        "registration_id": "CV25-0261",
+        "camper_name": "Javier Iglesias",
+        "camper_birth_date": "2017-11-18",
+        "guardian_name": "Irene Lozano",
+        "guardian_email": "irene.lozano@familia.example.com",
+        "session": "july_second_half",
+        "diet": "lactose_free",
+        "status": "awaiting_payment"
+      }
+    }
+  ]
+}

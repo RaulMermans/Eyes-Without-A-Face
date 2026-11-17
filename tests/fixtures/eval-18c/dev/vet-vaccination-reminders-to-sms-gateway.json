@@ -1,0 +1,838 @@
+{
+  "scenarioId": "vet-vaccination-reminders-to-sms-gateway",
+  "split": "dev",
+  "industry": "veterinary vaccination reminders",
+  "sourceLanguage": "nl",
+  "description": "Vaccination recall export of a fictional veterinary practice (Dutch snake_case, nested animal, vaccination, owner and practice) to be loaded into an SMS reminder gateway.",
+  "fictional": true,
+  "completable": false,
+  "records": [
+    {
+      "dierenarts": "Dr. Marloes Kamp",
+      "dier": {
+        "soort": "Kat",
+        "naam": "Kiki",
+        "geboortedatum": "01/03/2024"
+      },
+      "praktijk": {
+        "telefoon": "030 555 1288",
+        "vestiging": "Bilthoven"
+      },
+      "eigenaar": {
+        "naam": "  Jesse van den Berg",
+        "email": "jesse.vandenberg@post.example.net"
+      },
+      "vaccinatie": {
+        "status": "Uitgesteld",
+        "laatste_datum": "09/06/2024",
+        "type": "Leptospirose",
+        "vervaldatum": "04/03/2025"
+      },
+      "patientnummer": "P-20410",
+      "betaalstatus": "Betaald",
+      "dossier_regel": 3300
+    },
+    {
+      "praktijk": {
+        "telefoon": "030 555 1200",
+        "vestiging": "Bilthoven"
+      },
+      "patientnummer": "P-20427",
+      "dier": {
+        "soort": "Cavia",
+        "geboortedatum": "04/04/2020",
+        "naam": "Guus"
+      },
+      "dierenarts": "Dr. Youssef El Amrani",
+      "betaalstatus": "Betaald",
+      "dossier_regel": 3302,
+      "vaccinatie": {
+        "vervaldatum": "04/06/2026",
+        "laatste_datum": "02/03/2025",
+        "status": "Gepland",
+        "type": "Myxomatose/RHD"
+      },
+      "eigenaar": {
+        "naam": "Iris Verhoeven",
+        "email": "Iris.Verhoeven@Post.Example.Net"
+      }
+    },
+    {
+      "dierenarts": "Dr. Youssef El Amrani",
+      "vaccinatie": {
+        "type": "Cocktail (DHP)",
+        "status": "Uitgesteld",
+        "laatste_datum": "12/12/2025",
+        "vervaldatum": "04/07/2025"
+      },
+      "eigenaar": {
+        "naam": "Roos Verhoeven",
+        "email": "roos.verhoeven@post.example.net"
+      },
+      "betaalstatus": "Betaald",
+      "dier": {
+        "soort": "Cavia",
+        "naam": "Luna",
+        "geboortedatum": "08/04/2014"
+      },
+      "patientnummer": "P-20444",
+      "dossier_regel": 3304,
+      "praktijk": {
+        "vestiging": "Utrecht-Oost",
+        "telefoon": "030 555 1200"
+      }
+    },
+    {
+      "dierenarts": "Dr. Pieter Gerrits",
+      "vaccinatie": {
+        "type": "Rabiës",
+        "laatste_datum": "01/10/2025",
+        "vervaldatum": "09/01/2025",
+        "status": "Toegediend"
+      },
+      "eigenaar": {
+        "email": "joris.mulder@post.example.net",
+        "naam": "Joris Mulder"
+      },
+      "dossier_regel": 3306,
+      "patientnummer": "P-20461",
+      "betaalstatus": "Betaald",
+      "dier": {
+        "soort": "Hond",
+        "naam": "Dribbel",
+        "geboortedatum": "10/08/2017"
+      },
+      "praktijk": {
+        "vestiging": "Utrecht-Oost",
+        "telefoon": "030 555 1288"
+      }
+    },
+    {
+      "patientnummer": "P-20478",
+      "praktijk": {
+        "vestiging": "Zeist",
+        "telefoon": "030 555 1200"
+      },
+      "dier": {
+        "geboortedatum": "07/03/2023",
+        "naam": "Snuf",
+        "soort": "Hond"
+      },
+      "dierenarts": "Dr. Youssef El Amrani",
+      "eigenaar": {
+        "email": null,
+        "naam": "Thijs de Boer"
+      },
+      "dossier_regel": 3308,
+      "vaccinatie": {
+        "status": "Overleden - niet benaderen",
+        "laatste_datum": "09/03/2024",
+        "vervaldatum": "08/05/2026",
+        "type": "Kattenziekte"
+      },
+      "betaalstatus": "Incasso"
+    },
+    {
+      "dier": {
+        "naam": "Luna",
+        "soort": "Konijn",
+        "geboortedatum": "10/04/2021"
+      },
+      "betaalstatus": "Openstaand",
+      "dossier_regel": 3310,
+      "patientnummer": "P-20495",
+      "praktijk": {
+        "telefoon": "030 555 1200",
+        "vestiging": "Utrecht-Oost"
+      },
+      "vaccinatie": {
+        "status": "Herinnering verstuurd",
+        "type": "Kattenziekte",
+        "vervaldatum": "06/01/2026",
+        "laatste_datum": "04/04/2024"
+      },
+      "dierenarts": "Dr. Pieter Gerrits",
+      "eigenaar": {
+        "email": "ruben.dijkstra@post.example.net",
+        "naam": "Ruben Dijkstra"
+      }
+    },
+    {
+      "patientnummer": "P-20512",
+      "dossier_regel": 3312,
+      "vaccinatie": {
+        "status": "Uitgesteld",
+        "vervaldatum": "04/06/2026",
+        "laatste_datum": "05/08/2025",
+        "type": "Cocktail (DHP)"
+      },
+      "praktijk": {
+        "vestiging": "Utrecht-Oost",
+        "telefoon": "030 555 1288"
+      },
+      "eigenaar": {
+        "email": "lieke.vandenberg@post.example.net",
+        "naam": "Lieke van den Berg"
+      },
+      "dier": {
+        "geboortedatum": "01/06/2014",
+        "soort": "Konijn",
+        "naam": "Mimi"
+      },
+      "betaalstatus": "Betaald",
+      "dierenarts": "Dr. Pieter Gerrits"
+    },
+    {
+      "dier": {
+        "naam": "Luna",
+        "soort": "Fret",
+        "geboortedatum": "06/12/2024"
+      },
+      "patientnummer": "P-20529",
+      "eigenaar": {
+        "naam": "Stijn Mulder  ",
+        "email": "Stijn.Mulder@Post.Example.Net"
+      },
+      "praktijk": {
+        "telefoon": "030 555 1288",
+        "vestiging": "Zeist"
+      },
+      "dierenarts": "Dr. Marloes Kamp",
+      "dossier_regel": 3314,
+      "vaccinatie": {
+        "laatste_datum": "03/04/2024",
+        "vervaldatum": "03/03/2025",
+        "type": "Cocktail (DHP)",
+        "status": "Toegediend"
+      },
+      "betaalstatus": "Incasso"
+    },
+    {
+      "patientnummer": "P-20546",
+      "betaalstatus": "Incasso",
+      "dossier_regel": 3316,
+      "dier": {
+        "soort": "Fret",
+        "geboortedatum": "02/05/2023",
+        "naam": "Bobbie"
+      },
+      "praktijk": {
+        "telefoon": "030 555 1288",
+        "vestiging": "Zeist"
+      },
+      "dierenarts": "Dr. Hanneke Spruit",
+      "eigenaar": {
+        "naam": "Milan de Boer"
+      },
+      "vaccinatie": {
+        "laatste_datum": "07/03/2025",
+        "vervaldatum": "10/09/2025",
+        "status": "Toegediend",
+        "type": "Cocktail (DHP)"
+      }
+    },
+    {
+      "vaccinatie": {
+        "vervaldatum": "12/10/2025",
+        "status": "Toegediend",
+        "laatste_datum": "08/09/2025",
+        "type": "Rabiës"
+      },
+      "dier": {
+        "soort": "Cavia",
+        "naam": "Guus",
+        "geboortedatum": "11/12/2017"
+      },
+      "betaalstatus": "Openstaand",
+      "praktijk": {
+        "vestiging": "Bilthoven",
+        "telefoon": "030 555 1200"
+      },
+      "eigenaar": {
+        "email": "fleur.verhoeven@post.example.net",
+        "naam": "Fleur Verhoeven"
+      },
+      "patientnummer": "P-20563",
+      "dossier_regel": 3318,
+      "dierenarts": "Dr. Marloes Kamp"
+    },
+    {
+      "vaccinatie": {
+        "status": "Herinnering verstuurd",
+        "vervaldatum": "10/01/2025",
+        "type": "Kennelhoest",
+        "laatste_datum": "05/03/2025"
+      },
+      "betaalstatus": "Openstaand",
+      "dier": {
+        "naam": "Moos",
+        "geboortedatum": "12/09/2021",
+        "soort": "Cavia"
+      },
+      "praktijk": {
+        "telefoon": "030 555 1288",
+        "vestiging": "Bilthoven"
+      },
+      "patientnummer": "P-20580",
+      "dossier_regel": 3320,
+      "dierenarts": "Dr. Hanneke Spruit",
+      "eigenaar": {
+        "naam": "Stijn van Leeuwen",
+        "email": "Stijn.Vanleeuwen@Post.Example.Net"
+      }
+    },
+    {
+      "vaccinatie": {
+        "status": "Herinnering verstuurd",
+        "type": "Kennelhoest",
+        "laatste_datum": "08/06/2024",
+        "vervaldatum": "04/09/2025"
+      },
+      "betaalstatus": "Betaald",
+      "praktijk": {
+        "telefoon": "030 555 1200",
+        "vestiging": "Zeist"
+      },
+      "dossier_regel": 3322,
+      "dierenarts": "Dr. Pieter Gerrits",
+      "eigenaar": {
+        "email": "ruben.bos@post.example.net",
+        "naam": "Ruben Bos"
+      },
+      "dier": {
+        "soort": "Konijn",
+        "naam": "Dribbel",
+        "geboortedatum": "09/11/2023"
+      },
+      "patientnummer": "P-20597"
+    },
+    {
+      "vaccinatie": {
+        "type": "Leptospirose",
+        "laatste_datum": "10/05/2024",
+        "status": "Overleden - niet benaderen",
+        "vervaldatum": "03/03/2025"
+      },
+      "praktijk": {
+        "vestiging": "Bilthoven",
+        "telefoon": "030 555 1200"
+      },
+      "betaalstatus": "Betaald",
+      "eigenaar": {
+        "email": "lotte.visser@post.example.net",
+        "naam": "Lotte Visser"
+      },
+      "dossier_regel": 3324,
+      "dierenarts": "Dr. Hanneke Spruit",
+      "dier": {
+        "naam": "Moos",
+        "soort": "Hond",
+        "geboortedatum": "02/05/2014"
+      },
+      "patientnummer": "P-20614"
+    },
+    {
+      "betaalstatus": "Betaald",
+      "eigenaar": {
+        "naam": "Jesse Jansen",
+        "email": null
+      },
+      "dossier_regel": 3326,
+      "dierenarts": "Dr. Hanneke Spruit",
+      "dier": {
+        "geboortedatum": "12/10/2023",
+        "soort": "Fret",
+        "naam": "Guus"
+      },
+      "patientnummer": "P-20631",
+      "vaccinatie": {
+        "vervaldatum": "09/07/2025",
+        "type": "Kennelhoest",
+        "status": "Gepland",
+        "laatste_datum": "05/11/2024"
+      },
+      "praktijk": {
+        "vestiging": "Bilthoven",
+        "telefoon": "030 555 1200"
+      }
+    },
+    {
+      "vaccinatie": {
+        "type": "Myxomatose/RHD",
+        "laatste_datum": "06/03/2025",
+        "status": "Gepland",
+        "vervaldatum": "10/08/2025"
+      },
+      "patientnummer": "P-20648",
+      "dier": {
+        "soort": "Kat",
+        "naam": "Bobbie",
+        "geboortedatum": "10/04/2017"
+      },
+      "dossier_regel": 3328,
+      "betaalstatus": "Openstaand",
+      "dierenarts": "Dr. Pieter Gerrits",
+      "praktijk": {
+        "telefoon": "030 555 1200",
+        "vestiging": "Zeist"
+      },
+      "eigenaar": {
+        "email": "stijn.meijer@post.example.net",
+        "naam": "Stijn Meijer"
+      }
+    },
+    {
+      "patientnummer": "P-20665",
+      "praktijk": {
+        "telefoon": "030 555 1288",
+        "vestiging": "Utrecht-Oost"
+      },
+      "vaccinatie": {
+        "laatste_datum": "08/01/2024",
+        "status": "Toegediend",
+        "type": "Myxomatose/RHD",
+        "vervaldatum": "02/01/2025"
+      },
+      "dier": {
+        "geboortedatum": "05/09/2023",
+        "naam": "Pip",
+        "soort": "Hond"
+      },
+      "eigenaar": {
+        "email": "joris.mulder@post.example.net",
+        "naam": " Joris Mulder "
+      },
+      "dierenarts": "Dr. Marloes Kamp",
+      "dossier_regel": 3330,
+      "betaalstatus": "Openstaand"
+    },
+    {
+      "betaalstatus": "Openstaand",
+      "dier": {
+        "naam": "Snuf",
+        "geboortedatum": "04/12/2023",
+        "soort": "Konijn"
+      },
+      "patientnummer": "P-20682",
+      "eigenaar": {
+        "naam": "Lars Peters",
+        "email": "Lars.Peters@Post.Example.Net"
+      },
+      "dierenarts": "Dr. Hanneke Spruit",
+      "vaccinatie": {
+        "status": "Overleden - niet benaderen",
+        "laatste_datum": "04/12/2024",
+        "vervaldatum": "12/09/2026",
+        "type": "Kattenziekte"
+      },
+      "praktijk": {
+        "telefoon": "030 555 1288",
+        "vestiging": "Zeist"
+      },
+      "dossier_regel": 3332
+    },
+    {
+      "eigenaar": {
+        "naam": "Daan Peters",
+        "email": "daan.peters@post.example.net"
+      },
+      "praktijk": {
+        "vestiging": "Utrecht-Oost",
+        "telefoon": "030 555 1288"
+      },
+      "betaalstatus": "Incasso",
+      "dossier_regel": 3334,
+      "dier": {
+        "naam": "Pip",
+        "soort": "Konijn",
+        "geboortedatum": "12/07/2017"
+      },
+      "patientnummer": "P-20699",
+      "vaccinatie": {
+        "type": "Kennelhoest",
+        "vervaldatum": "01/04/2026",
+        "laatste_datum": "02/05/2024",
+        "status": "Gepland"
+      },
+      "dierenarts": "Dr. Youssef El Amrani"
+    },
+    {
+      "dier": {
+        "soort": "Fret",
+        "naam": "Guus",
+        "geboortedatum": "11/07/2021"
+      },
+      "patientnummer": "P-20716",
+      "eigenaar": {
+        "email": "iris.peters@post.example.net",
+        "naam": "Iris Peters"
+      },
+      "vaccinatie": {
+        "type": "Myxomatose/RHD",
+        "status": "Gepland",
+        "vervaldatum": "04/12/2025",
+        "laatste_datum": "01/09/2025"
+      },
+      "betaalstatus": "Incasso",
+      "dossier_regel": 3336,
+      "praktijk": {
+        "telefoon": "030 555 1288",
+        "vestiging": "Utrecht-Oost"
+      },
+      "dierenarts": "Dr. Youssef El Amrani"
+    },
+    {
+      "betaalstatus": "Incasso",
+      "vaccinatie": {
+        "status": "Herinnering verstuurd",
+        "vervaldatum": "12/01/2026",
+        "type": "Rabiës",
+        "laatste_datum": "03/07/2025"
+      },
+      "dossier_regel": 3338,
+      "dierenarts": "Dr. Marloes Kamp",
+      "dier": {
+        "geboortedatum": "09/12/2022",
+        "soort": "Hond",
+        "naam": "Mimi"
+      },
+      "patientnummer": "P-20733",
+      "praktijk": {
+        "vestiging": "Utrecht-Oost",
+        "telefoon": "030 555 1200"
+      },
+      "eigenaar": {
+        "naam": "Eva van Leeuwen"
+      }
+    },
+    {
+      "patientnummer": "P-20750",
+      "dier": {
+        "geboortedatum": "02/10/2022",
+        "naam": "Kiki",
+        "soort": "Fret"
+      },
+      "dierenarts": "Dr. Hanneke Spruit",
+      "dossier_regel": 3340,
+      "betaalstatus": "Incasso",
+      "vaccinatie": {
+        "laatste_datum": "02/07/2024",
+        "type": "Rabiës",
+        "status": "Uitgesteld",
+        "vervaldatum": "01/02/2026"
+      },
+      "eigenaar": {
+        "email": "sem.brouwer@post.example.net",
+        "naam": "Sem Brouwer"
+      },
+      "praktijk": {
+        "telefoon": "030 555 1200",
+        "vestiging": "Zeist"
+      }
+    },
+    {
+      "patientnummer": "P-20767",
+      "eigenaar": {
+        "naam": "Femke Hendriks",
+        "email": "femke.hendriks@post.example.net"
+      },
+      "betaalstatus": "Incasso",
+      "vaccinatie": {
+        "status": "Overleden - niet benaderen",
+        "vervaldatum": "02/03/2026",
+        "laatste_datum": "04/12/2025",
+        "type": "Leptospirose"
+      },
+      "praktijk": {
+        "telefoon": "030 555 1288",
+        "vestiging": "Bilthoven"
+      },
+      "dierenarts": "Dr. Pieter Gerrits",
+      "dier": {
+        "soort": "Kat",
+        "geboortedatum": "08/01/2016",
+        "naam": "Pip"
+      },
+      "dossier_regel": 3342
+    },
+    {
+      "patientnummer": "P-20784",
+      "betaalstatus": "Openstaand",
+      "dierenarts": "Dr. Marloes Kamp",
+      "praktijk": {
+        "vestiging": "Zeist",
+        "telefoon": "030 555 1200"
+      },
+      "vaccinatie": {
+        "laatste_datum": "03/05/2025",
+        "vervaldatum": "11/04/2026",
+        "status": "Uitgesteld",
+        "type": "Kattenziekte"
+      },
+      "eigenaar": {
+        "naam": "Sem Hendriks",
+        "email": "Sem.Hendriks@Post.Example.Net"
+      },
+      "dossier_regel": 3344,
+      "dier": {
+        "naam": "Pip",
+        "geboortedatum": "09/03/2019",
+        "soort": "Kat"
+      }
+    },
+    {
+      "dier": {
+        "soort": "Kat",
+        "naam": "Luna",
+        "geboortedatum": "04/12/2023"
+      },
+      "dierenarts": "Dr. Youssef El Amrani",
+      "dossier_regel": 3346,
+      "eigenaar": {
+        "naam": "Joris Mulder",
+        "email": "joris.mulder@post.example.net"
+      },
+      "vaccinatie": {
+        "laatste_datum": "08/03/2024",
+        "status": "Herinnering verstuurd",
+        "vervaldatum": "08/05/2025",
+        "type": "Leptospirose"
+      },
+      "betaalstatus": "Openstaand",
+      "praktijk": {
+        "telefoon": "030 555 1288",
+        "vestiging": "Bilthoven"
+      },
+      "patientnummer": "P-20801"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "patient_id": {
+        "type": "string",
+        "description": "Identifier of the animal patient at the practice."
+      },
+      "pet_name": {
+        "type": "string",
+        "description": "Name of the animal, used in the SMS text."
+      },
+      "species": {
+        "type": "string",
+        "enum": [
+          "dog",
+          "cat",
+          "rabbit",
+          "ferret",
+          "guinea_pig"
+        ],
+        "description": "Species of the animal."
+      },
+      "vaccine": {
+        "type": "string",
+        "enum": [
+          "distemper_combo",
+          "feline_panleukopenia",
+          "rabies",
+          "kennel_cough",
+          "myxomatosis_rhd",
+          "leptospirosis"
+        ],
+        "description": "Vaccine that is due."
+      },
+      "due_on": {
+        "type": "string",
+        "format": "date",
+        "description": "Date by which the vaccination must be given."
+      },
+      "owner_name": {
+        "type": "string",
+        "description": "Full name of the owner."
+      },
+      "owner_mobile": {
+        "type": "string",
+        "description": "Mobile phone number of the owner, in international format; the SMS is sent here."
+      },
+      "owner_email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address of the owner, fallback channel."
+      },
+      "reminder_stage": {
+        "type": "string",
+        "enum": [
+          "scheduled",
+          "reminded",
+          "administered",
+          "postponed"
+        ],
+        "description": "Where the vaccination reminder stands."
+      },
+      "preferred_language": {
+        "type": "string",
+        "enum": [
+          "nl",
+          "en",
+          "de"
+        ],
+        "description": "Language for the SMS text."
+      }
+    },
+    "required": [
+      "patient_id",
+      "pet_name",
+      "species",
+      "vaccine",
+      "due_on",
+      "owner_name",
+      "owner_mobile"
+    ]
+  },
+  "groundTruth": {
+    "patient_id": {
+      "source": "patientnummer",
+      "transform": "copy",
+      "why": "patient number; dossier_regel is a record line"
+    },
+    "pet_name": {
+      "source": "dier.naam",
+      "transform": "copy",
+      "why": "animal name"
+    },
+    "species": {
+      "source": "dier.soort",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Hond": "dog",
+        "Kat": "cat",
+        "Konijn": "rabbit",
+        "Fret": "ferret",
+        "Cavia": "guinea_pig"
+      },
+      "why": "species translated"
+    },
+    "vaccine": {
+      "source": "vaccinatie.type",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Cocktail (DHP)": "distemper_combo",
+        "Kattenziekte": "feline_panleukopenia",
+        "Rabiës": "rabies",
+        "Kennelhoest": "kennel_cough",
+        "Myxomatose/RHD": "myxomatosis_rhd",
+        "Leptospirose": "leptospirosis"
+      },
+      "why": "vaccine names translated"
+    },
+    "due_on": {
+      "source": "vaccinatie.vervaldatum",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "due date (Dutch day-first); laatste_datum is the previous shot"
+    },
+    "owner_name": {
+      "source": "eigenaar.naam",
+      "transform": "trim",
+      "why": "owner name, padded; dierenarts is the vet"
+    },
+    "owner_mobile": {
+      "source": null,
+      "transform": "none",
+      "why": "the export contains no owner phone number; praktijk.telefoon is the practice switchboard"
+    },
+    "owner_email": {
+      "source": "eigenaar.email",
+      "transform": "normalize_email",
+      "why": "owner email, mixed case, sometimes absent"
+    },
+    "reminder_stage": {
+      "source": "vaccinatie.status",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Gepland": "scheduled",
+        "Herinnering verstuurd": "reminded",
+        "Toegediend": "administered",
+        "Uitgesteld": "postponed",
+        "Overleden - niet benaderen": null
+      },
+      "why": "reminder state; deceased animals must never be contacted and need review"
+    },
+    "preferred_language": {
+      "source": null,
+      "transform": "none",
+      "why": "no per-owner language is exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "vaccinatie.status",
+        "betaalstatus"
+      ],
+      "correctFor": "reminder_stage"
+    },
+    {
+      "kind": "phone-or-code-confusion",
+      "fields": [
+        "praktijk.telefoon",
+        "patientnummer"
+      ],
+      "correctFor": "owner_mobile"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "patientnummer",
+        "dossier_regel"
+      ],
+      "correctFor": "patient_id"
+    },
+    {
+      "kind": "birth-date-vs-start-date",
+      "fields": [
+        "vaccinatie.vervaldatum",
+        "vaccinatie.laatste_datum"
+      ],
+      "correctFor": "due_on"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "eigenaar.naam",
+        "dierenarts"
+      ],
+      "correctFor": "owner_name"
+    }
+  ],
+  "sourceConcepts": {
+    "patientnummer": "customer-id",
+    "dossier_regel": "other-identifier",
+    "dier.naam": "other",
+    "dier.soort": "category",
+    "dier.geboortedatum": "birth-date",
+    "vaccinatie.type": "category",
+    "vaccinatie.status": "account-status",
+    "vaccinatie.vervaldatum": "end-date",
+    "vaccinatie.laatste_datum": "start-date",
+    "eigenaar.naam": "person-name",
+    "eigenaar.email": "email",
+    "praktijk.telefoon": "phone",
+    "praktijk.vestiging": "city",
+    "dierenarts": "person-name",
+    "betaalstatus": "payment-status"
+  },
+  "destinationConcepts": {
+    "patient_id": "customer-id",
+    "pet_name": "other",
+    "species": "category",
+    "vaccine": "category",
+    "due_on": "end-date",
+    "owner_name": "person-name",
+    "owner_mobile": "phone",
+    "owner_email": "email",
+    "reminder_stage": "account-status",
+    "preferred_language": "language-code"
+  }
+}

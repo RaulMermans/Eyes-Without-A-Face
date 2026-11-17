@@ -1,0 +1,836 @@
+{
+  "scenarioId": "solar-cooperative-members-to-energy-portal",
+  "split": "holdout",
+  "industry": "community solar energy cooperative",
+  "sourceLanguage": "fr",
+  "description": "Member export of a fictional citizen solar cooperative (French snake_case, nested member contact details, shares and installation) to be loaded into an energy supplier portal.",
+  "fictional": true,
+  "completable": false,
+  "records": [
+    {
+      "statut_dividende": "Suspendu",
+      "installation": {
+        "puissance_kwc": 480,
+        "id_onduleur": "OND-SE-774100",
+        "type": "Ombrière parking"
+      },
+      "id_export": 100,
+      "parts": {
+        "categorie": "Part C collectivité",
+        "nombre": 22,
+        "date_souscription": "04/05/2024"
+      },
+      "adherent": {
+        "numero": "ADH-1020",
+        "nom_complet": "Louis Renaud",
+        "date_adhesion": "08/07/2024",
+        "coordonnees": {
+          "telephone": "+33 6 521 8727",
+          "commune": "Crest",
+          "courriel": "louis.renaud@energie.example.org"
+        }
+      },
+      "statut_adhesion": "En cours de validation"
+    },
+    {
+      "statut_dividende": "Versé",
+      "id_export": 101,
+      "statut_adhesion": "Active",
+      "adherent": {
+        "coordonnees": {
+          "telephone": "+33 6 922 4806",
+          "courriel": "Camille.Roussel@Energie.Example.Org",
+          "commune": "Aouste-sur-Sye"
+        },
+        "nom_complet": "  Camille Roussel",
+        "date_adhesion": "04/08/2025",
+        "numero": "ADH-1029"
+      },
+      "installation": {
+        "puissance_kwc": 99,
+        "type": "Toiture école",
+        "id_onduleur": "OND-SE-774311"
+      },
+      "parts": {
+        "categorie": "Part salarié",
+        "date_souscription": "02/04/2025",
+        "nombre": 34
+      }
+    },
+    {
+      "statut_dividende": "Suspendu",
+      "installation": {
+        "puissance_kwc": 250,
+        "id_onduleur": "OND-SE-774522",
+        "type": "Sol (friche)"
+      },
+      "statut_adhesion": "Radiée",
+      "parts": {
+        "date_souscription": "03/02/2022",
+        "categorie": "Part B citoyenne",
+        "nombre": 59
+      },
+      "adherent": {
+        "date_adhesion": "08/08/2018",
+        "nom_complet": "Jules Chevalier",
+        "coordonnees": {
+          "commune": "Crest",
+          "courriel": "jules.chevalier@energie.example.org",
+          "telephone": "+33 6 309 3697"
+        },
+        "numero": "ADH-1038"
+      },
+      "id_export": 102
+    },
+    {
+      "statut_adhesion": "En cours de validation",
+      "statut_dividende": "Réinvesti",
+      "id_export": 103,
+      "parts": {
+        "categorie": "Part A fondateur",
+        "nombre": 31,
+        "date_souscription": "09/06/2021"
+      },
+      "adherent": {
+        "coordonnees": {
+          "telephone": null,
+          "commune": "Aouste-sur-Sye",
+          "courriel": "raphael.girard@energie.example.org"
+        },
+        "numero": "ADH-1047",
+        "date_adhesion": "01/02/2021",
+        "nom_complet": "Raphaël Girard"
+      },
+      "installation": {
+        "id_onduleur": "OND-SE-774733",
+        "puissance_kwc": 250,
+        "type": "Ombrière parking"
+      }
+    },
+    {
+      "adherent": {
+        "coordonnees": {
+          "courriel": "Camille.Faure@Energie.Example.Org",
+          "telephone": "+33 6 866 4283",
+          "commune": "Die"
+        },
+        "nom_complet": "Camille Faure",
+        "numero": "ADH-1056",
+        "date_adhesion": "08/06/2024"
+      },
+      "id_export": 104,
+      "statut_dividende": "Réinvesti",
+      "installation": {
+        "id_onduleur": "OND-SE-774944",
+        "puissance_kwc": 99,
+        "type": "Sol (friche)"
+      },
+      "statut_adhesion": "Compte démo",
+      "parts": {
+        "date_souscription": "02/10/2019",
+        "nombre": 42,
+        "categorie": "Part B citoyenne"
+      }
+    },
+    {
+      "statut_adhesion": "Radiée",
+      "installation": {
+        "id_onduleur": "OND-SE-775155",
+        "puissance_kwc": 250,
+        "type": "Toiture agricole"
+      },
+      "adherent": {
+        "date_adhesion": "05/08/2022",
+        "coordonnees": {
+          "courriel": "juliette.blanchard@energie.example.org",
+          "telephone": "+33 6 271 9014",
+          "commune": "Die"
+        },
+        "numero": "ADH-1065",
+        "nom_complet": "Juliette Blanchard"
+      },
+      "id_export": 105,
+      "parts": {
+        "nombre": 56,
+        "categorie": "Part B citoyenne",
+        "date_souscription": "12/02/2019"
+      },
+      "statut_dividende": "Versé"
+    },
+    {
+      "id_export": 106,
+      "parts": {
+        "date_souscription": "09/06/2019",
+        "categorie": "Part salarié",
+        "nombre": 38
+      },
+      "statut_dividende": "Réinvesti",
+      "adherent": {
+        "nom_complet": "Inès Lambert",
+        "date_adhesion": "09/07/2025",
+        "coordonnees": {
+          "courriel": "ines.lambert@energie.example.org",
+          "telephone": "+33 6 684 3336",
+          "commune": "Saillans"
+        },
+        "numero": "ADH-1074"
+      },
+      "installation": {
+        "id_onduleur": "OND-SE-775366",
+        "type": "Toiture école",
+        "puissance_kwc": 250
+      },
+      "statut_adhesion": "En cours de validation"
+    },
+    {
+      "adherent": {
+        "numero": "ADH-1083",
+        "coordonnees": {
+          "commune": "Saillans",
+          "telephone": "+33 6 673 8169",
+          "courriel": "Mathis.Bonnet@Energie.Example.Org"
+        },
+        "date_adhesion": "04/12/2019",
+        "nom_complet": "Mathis Bonnet"
+      },
+      "statut_dividende": "Versé",
+      "statut_adhesion": "Active",
+      "id_export": 107,
+      "installation": {
+        "type": "Ombrière parking",
+        "id_onduleur": "OND-SE-775577",
+        "puissance_kwc": 36
+      },
+      "parts": {
+        "categorie": "Part C collectivité",
+        "nombre": 47,
+        "date_souscription": "10/01/2017"
+      }
+    },
+    {
+      "id_export": 108,
+      "parts": {
+        "categorie": "Part A fondateur",
+        "date_souscription": "09/04/2021",
+        "nombre": 24
+      },
+      "adherent": {
+        "coordonnees": {
+          "telephone": "+33 6 528 7837",
+          "commune": "Aouste-sur-Sye",
+          "courriel": "elise.gauthier@energie.example.org"
+        },
+        "date_adhesion": "06/06/2025",
+        "nom_complet": "Élise Gauthier  ",
+        "numero": "ADH-1092"
+      },
+      "statut_dividende": "Réinvesti",
+      "statut_adhesion": "En cours de validation",
+      "installation": {
+        "type": "Toiture école",
+        "id_onduleur": "OND-SE-775788",
+        "puissance_kwc": 36
+      }
+    },
+    {
+      "adherent": {
+        "coordonnees": {
+          "courriel": "hugo.faure@energie.example.org",
+          "telephone": "+33 6 944 5485",
+          "commune": "Saillans"
+        },
+        "date_adhesion": "10/12/2024",
+        "nom_complet": "Hugo Faure",
+        "numero": "ADH-1101"
+      },
+      "installation": {
+        "id_onduleur": "OND-SE-775999",
+        "type": "Toiture agricole",
+        "puissance_kwc": 36
+      },
+      "id_export": 109,
+      "statut_adhesion": "Compte démo",
+      "statut_dividende": "Réinvesti",
+      "parts": {
+        "nombre": 28,
+        "categorie": "Part A fondateur",
+        "date_souscription": "04/08/2023"
+      }
+    },
+    {
+      "parts": {
+        "nombre": 43,
+        "date_souscription": "01/03/2018",
+        "categorie": "Part C collectivité"
+      },
+      "statut_adhesion": "Compte démo",
+      "adherent": {
+        "numero": "ADH-1110",
+        "coordonnees": {
+          "commune": "Aouste-sur-Sye",
+          "courriel": "Baptiste.Blanchard@Energie.Example.Org"
+        },
+        "nom_complet": "Baptiste Blanchard",
+        "date_adhesion": "08/02/2020"
+      },
+      "id_export": 110,
+      "statut_dividende": "Versé",
+      "installation": {
+        "puissance_kwc": 250,
+        "type": "Ombrière parking",
+        "id_onduleur": "OND-SE-776210"
+      }
+    },
+    {
+      "installation": {
+        "id_onduleur": "OND-SE-776421",
+        "type": "Ombrière parking",
+        "puissance_kwc": 480
+      },
+      "parts": {
+        "date_souscription": "11/06/2022",
+        "nombre": 4,
+        "categorie": "Part B citoyenne"
+      },
+      "adherent": {
+        "numero": "ADH-1119",
+        "coordonnees": {
+          "telephone": "+33 6 860 8708",
+          "commune": "Aouste-sur-Sye",
+          "courriel": "ines.fontaine@energie.example.org"
+        },
+        "nom_complet": "Inès Fontaine",
+        "date_adhesion": "12/04/2019"
+      },
+      "id_export": 111,
+      "statut_dividende": "Versé",
+      "statut_adhesion": "Compte démo"
+    },
+    {
+      "installation": {
+        "type": "Toiture agricole",
+        "puissance_kwc": 99,
+        "id_onduleur": "OND-SE-776632"
+      },
+      "statut_dividende": "Suspendu",
+      "parts": {
+        "date_souscription": "06/08/2016",
+        "nombre": 18,
+        "categorie": "Part B citoyenne"
+      },
+      "adherent": {
+        "date_adhesion": "12/10/2018",
+        "numero": "ADH-1128",
+        "coordonnees": {
+          "commune": "Crest",
+          "courriel": "camille.perrin@energie.example.org",
+          "telephone": "+33 6 615 9878"
+        },
+        "nom_complet": "Camille Perrin"
+      },
+      "statut_adhesion": "Compte démo",
+      "id_export": 112
+    },
+    {
+      "statut_adhesion": "Radiée",
+      "adherent": {
+        "nom_complet": "Gabriel Renaud",
+        "date_adhesion": "10/01/2024",
+        "coordonnees": {
+          "courriel": "Gabriel.Renaud@Energie.Example.Org",
+          "telephone": "+33 6 872 4635",
+          "commune": "Crest"
+        },
+        "numero": "ADH-1137"
+      },
+      "parts": {
+        "categorie": "Part C collectivité",
+        "date_souscription": "04/07/2022",
+        "nombre": 9
+      },
+      "id_export": 113,
+      "statut_dividende": "Réinvesti",
+      "installation": {
+        "id_onduleur": "OND-SE-776843",
+        "type": "Sol (friche)",
+        "puissance_kwc": 99
+      }
+    },
+    {
+      "statut_adhesion": "Radiée",
+      "installation": {
+        "type": "Ombrière parking",
+        "puissance_kwc": 480,
+        "id_onduleur": "OND-SE-777054"
+      },
+      "adherent": {
+        "date_adhesion": "03/03/2024",
+        "numero": "ADH-1146",
+        "coordonnees": {
+          "courriel": "ines.brunet@energie.example.org",
+          "telephone": "+33 6 887 8682",
+          "commune": "Crest"
+        },
+        "nom_complet": "Inès Brunet"
+      },
+      "parts": {
+        "nombre": 48,
+        "categorie": "Part C collectivité",
+        "date_souscription": "11/04/2018"
+      },
+      "id_export": 114,
+      "statut_dividende": "Versé"
+    },
+    {
+      "id_export": 115,
+      "parts": {
+        "nombre": 38,
+        "date_souscription": "12/02/2022",
+        "categorie": "Part salarié"
+      },
+      "adherent": {
+        "date_adhesion": "07/12/2017",
+        "nom_complet": " Léa Faure ",
+        "coordonnees": {
+          "telephone": "+33 6 546 3520",
+          "courriel": "lea.faure@energie.example.org",
+          "commune": "Crest"
+        },
+        "numero": "ADH-1155"
+      },
+      "statut_dividende": "Suspendu",
+      "installation": {
+        "puissance_kwc": 99,
+        "id_onduleur": "OND-SE-777265",
+        "type": "Sol (friche)"
+      },
+      "statut_adhesion": "Radiée"
+    },
+    {
+      "installation": {
+        "type": "Toiture agricole",
+        "id_onduleur": "OND-SE-777476",
+        "puissance_kwc": 480
+      },
+      "id_export": 116,
+      "adherent": {
+        "coordonnees": {
+          "courriel": "Mathis.Lefevre@Energie.Example.Org",
+          "commune": "Aouste-sur-Sye",
+          "telephone": "+33 6 497 7346"
+        },
+        "numero": "ADH-1164",
+        "nom_complet": "Mathis Lefèvre",
+        "date_adhesion": "10/06/2017"
+      },
+      "parts": {
+        "categorie": "Part C collectivité",
+        "nombre": 11,
+        "date_souscription": "05/03/2018"
+      },
+      "statut_dividende": "Suspendu",
+      "statut_adhesion": "En cours de validation"
+    },
+    {
+      "id_export": 117,
+      "statut_dividende": "Réinvesti",
+      "parts": {
+        "categorie": "Part A fondateur",
+        "nombre": 2,
+        "date_souscription": "05/08/2023"
+      },
+      "installation": {
+        "type": "Toiture agricole",
+        "puissance_kwc": 99,
+        "id_onduleur": "OND-SE-777687"
+      },
+      "statut_adhesion": "Active",
+      "adherent": {
+        "numero": "ADH-1173",
+        "coordonnees": {
+          "courriel": "hugo.roussel@energie.example.org",
+          "commune": "Aouste-sur-Sye",
+          "telephone": null
+        },
+        "nom_complet": "Hugo Roussel",
+        "date_adhesion": "09/07/2023"
+      }
+    },
+    {
+      "statut_dividende": "Versé",
+      "adherent": {
+        "coordonnees": {
+          "commune": "Saillans",
+          "courriel": "jules.perrin@energie.example.org",
+          "telephone": "+33 6 149 6856"
+        },
+        "nom_complet": "Jules Perrin",
+        "date_adhesion": "10/07/2021",
+        "numero": "ADH-1182"
+      },
+      "parts": {
+        "date_souscription": "11/06/2025",
+        "nombre": 32,
+        "categorie": "Part A fondateur"
+      },
+      "id_export": 118,
+      "installation": {
+        "id_onduleur": "OND-SE-777898",
+        "type": "Toiture école",
+        "puissance_kwc": 480
+      },
+      "statut_adhesion": "Active"
+    },
+    {
+      "id_export": 119,
+      "adherent": {
+        "nom_complet": "Zoé Dubois",
+        "coordonnees": {
+          "courriel": "Zoe.Dubois@Energie.Example.Org",
+          "commune": "Crest",
+          "telephone": "+33 6 684 9869"
+        },
+        "numero": "ADH-1191",
+        "date_adhesion": "05/02/2020"
+      },
+      "statut_adhesion": "Active",
+      "parts": {
+        "nombre": 34,
+        "date_souscription": "11/05/2016",
+        "categorie": "Part salarié"
+      },
+      "statut_dividende": "Suspendu",
+      "installation": {
+        "type": "Toiture école",
+        "id_onduleur": "OND-SE-778109",
+        "puissance_kwc": 250
+      }
+    },
+    {
+      "id_export": 120,
+      "installation": {
+        "puissance_kwc": 99,
+        "id_onduleur": "OND-SE-778320",
+        "type": "Toiture agricole"
+      },
+      "parts": {
+        "nombre": 55,
+        "categorie": "Part B citoyenne",
+        "date_souscription": "03/11/2023"
+      },
+      "adherent": {
+        "numero": "ADH-1200",
+        "date_adhesion": "12/10/2017",
+        "coordonnees": {
+          "commune": "Saillans",
+          "telephone": "+33 6 722 5369",
+          "courriel": "gabriel.renaud@energie.example.org"
+        },
+        "nom_complet": "Gabriel Renaud"
+      },
+      "statut_adhesion": "Active",
+      "statut_dividende": "Suspendu"
+    },
+    {
+      "adherent": {
+        "date_adhesion": "04/05/2019",
+        "coordonnees": {
+          "telephone": "+33 6 516 1888",
+          "commune": "Crest",
+          "courriel": "zoe.perrin@energie.example.org"
+        },
+        "numero": "ADH-1209",
+        "nom_complet": "Zoé Perrin"
+      },
+      "installation": {
+        "type": "Sol (friche)",
+        "id_onduleur": "OND-SE-778531",
+        "puissance_kwc": 250
+      },
+      "statut_dividende": "Versé",
+      "parts": {
+        "nombre": 18,
+        "categorie": "Part salarié",
+        "date_souscription": "10/02/2020"
+      },
+      "id_export": 121,
+      "statut_adhesion": "Radiée"
+    },
+    {
+      "adherent": {
+        "date_adhesion": "04/08/2022",
+        "nom_complet": "Camille Gauthier",
+        "numero": "ADH-1218",
+        "coordonnees": {
+          "telephone": "+33 6 619 9008",
+          "commune": "Crest",
+          "courriel": "Camille.Gauthier@Energie.Example.Org"
+        }
+      },
+      "statut_adhesion": "En cours de validation",
+      "parts": {
+        "categorie": "Part A fondateur",
+        "nombre": 38,
+        "date_souscription": "03/09/2022"
+      },
+      "statut_dividende": "Réinvesti",
+      "installation": {
+        "type": "Sol (friche)",
+        "id_onduleur": "OND-SE-778742",
+        "puissance_kwc": 250
+      },
+      "id_export": 122
+    },
+    {
+      "id_export": 123,
+      "installation": {
+        "type": "Toiture école",
+        "id_onduleur": "OND-SE-778953",
+        "puissance_kwc": 99
+      },
+      "parts": {
+        "date_souscription": "03/12/2022",
+        "categorie": "Part salarié",
+        "nombre": 24
+      },
+      "statut_dividende": "Suspendu",
+      "adherent": {
+        "coordonnees": {
+          "commune": "Crest",
+          "telephone": "+33 6 498 8303",
+          "courriel": "camille.brunet@energie.example.org"
+        },
+        "numero": "ADH-1227",
+        "date_adhesion": "08/09/2021",
+        "nom_complet": "  Camille Brunet"
+      },
+      "statut_adhesion": "Compte démo"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "member_id": {
+        "type": "string",
+        "description": "Membership number in the cooperative."
+      },
+      "member_name": {
+        "type": "string",
+        "description": "Full name of the member."
+      },
+      "member_email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address of the member."
+      },
+      "member_phone": {
+        "type": "string",
+        "description": "Phone number of the member."
+      },
+      "meter_point_id": {
+        "type": "string",
+        "description": "14-digit delivery point identifier (PDL) of the member's own electricity meter, used to allocate self-consumption."
+      },
+      "share_class": {
+        "type": "string",
+        "enum": [
+          "founder",
+          "citizen",
+          "local_authority",
+          "employee"
+        ],
+        "description": "Class of shares held."
+      },
+      "installation_type": {
+        "type": "string",
+        "enum": [
+          "school_roof",
+          "carport",
+          "farm_roof",
+          "ground_mounted"
+        ],
+        "description": "Kind of installation the member invested in."
+      },
+      "membership_status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "pending",
+          "withdrawn"
+        ],
+        "description": "State of the membership."
+      },
+      "joined_on": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the member joined."
+      },
+      "shares_held": {
+        "type": "integer",
+        "description": "Number of shares held."
+      },
+      "iban_last4": {
+        "type": "string",
+        "description": "Last four characters of the member's IBAN."
+      }
+    },
+    "required": [
+      "member_id",
+      "member_name",
+      "member_email",
+      "meter_point_id",
+      "share_class",
+      "membership_status",
+      "joined_on"
+    ]
+  },
+  "groundTruth": {
+    "member_id": {
+      "source": "adherent.numero",
+      "transform": "copy",
+      "why": "member number; id_export is a row id"
+    },
+    "member_name": {
+      "source": "adherent.nom_complet",
+      "transform": "trim",
+      "why": "member name, padded"
+    },
+    "member_email": {
+      "source": "adherent.coordonnees.courriel",
+      "transform": "normalize_email",
+      "why": "member email, mixed case"
+    },
+    "member_phone": {
+      "source": "adherent.coordonnees.telephone",
+      "transform": "copy",
+      "why": "member phone, sometimes absent"
+    },
+    "meter_point_id": {
+      "source": null,
+      "transform": "none",
+      "why": "the export has no meter point; installation.id_onduleur is the inverter of the shared installation"
+    },
+    "share_class": {
+      "source": "parts.categorie",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Part A fondateur": "founder",
+        "Part B citoyenne": "citizen",
+        "Part C collectivité": "local_authority",
+        "Part salarié": "employee"
+      },
+      "why": "share class"
+    },
+    "installation_type": {
+      "source": "installation.type",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Toiture école": "school_roof",
+        "Ombrière parking": "carport",
+        "Toiture agricole": "farm_roof",
+        "Sol (friche)": "ground_mounted"
+      },
+      "why": "installation kind"
+    },
+    "membership_status": {
+      "source": "statut_adhesion",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Active": "active",
+        "En cours de validation": "pending",
+        "Radiée": "withdrawn",
+        "Compte démo": null
+      },
+      "why": "membership state; demo accounts need review; statut_dividende is about dividends"
+    },
+    "joined_on": {
+      "source": "adherent.date_adhesion",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "joining date (French day-first); date_souscription is the latest share purchase"
+    },
+    "shares_held": {
+      "source": "parts.nombre",
+      "transform": "copy",
+      "why": "share count"
+    },
+    "iban_last4": {
+      "source": null,
+      "transform": "none",
+      "why": "bank details are not exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "statut_adhesion",
+        "statut_dividende"
+      ],
+      "correctFor": "membership_status"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "parts.categorie",
+        "installation.type"
+      ],
+      "correctFor": "share_class"
+    },
+    {
+      "kind": "decoy-for-missing-field",
+      "fields": [
+        "installation.id_onduleur",
+        "adherent.numero"
+      ],
+      "correctFor": "meter_point_id"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "adherent.numero",
+        "id_export"
+      ],
+      "correctFor": "member_id"
+    },
+    {
+      "kind": "birth-date-vs-start-date",
+      "fields": [
+        "adherent.date_adhesion",
+        "parts.date_souscription"
+      ],
+      "correctFor": "joined_on"
+    }
+  ],
+  "sourceConcepts": {
+    "id_export": "other-identifier",
+    "adherent.numero": "customer-id",
+    "adherent.nom_complet": "person-name",
+    "adherent.date_adhesion": "start-date",
+    "adherent.coordonnees.courriel": "email",
+    "adherent.coordonnees.telephone": "phone",
+    "adherent.coordonnees.commune": "city",
+    "parts.categorie": "category",
+    "parts.nombre": "quantity",
+    "parts.date_souscription": "created-date",
+    "installation.type": "category",
+    "installation.id_onduleur": "other-identifier",
+    "installation.puissance_kwc": "quantity",
+    "statut_adhesion": "account-status",
+    "statut_dividende": "payment-status"
+  },
+  "destinationConcepts": {
+    "member_id": "customer-id",
+    "member_name": "person-name",
+    "member_email": "email",
+    "member_phone": "phone",
+    "meter_point_id": "other-identifier",
+    "share_class": "category",
+    "installation_type": "category",
+    "membership_status": "account-status",
+    "joined_on": "start-date",
+    "shares_held": "quantity",
+    "iban_last4": "other"
+  }
+}

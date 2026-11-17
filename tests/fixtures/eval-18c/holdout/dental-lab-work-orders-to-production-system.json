@@ -1,0 +1,1079 @@
+{
+  "scenarioId": "dental-lab-work-orders-to-production-system",
+  "split": "holdout",
+  "industry": "dental laboratory work orders",
+  "sourceLanguage": "it",
+  "description": "Work order export of a fictional dental laboratory (Italian snake_case, nested order, practice and dentist, patient) to be loaded into a lab production system.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "data_consegna": "27/06/2025",
+      "riga_id": 1200,
+      "importo": 1191.79,
+      "stato": "Rifare",
+      "paziente": {
+        "codice": "PZ-9000",
+        "eta": 63
+      },
+      "odontotecnico": "Anna Pellegrini",
+      "studio": {
+        "ragione_sociale": "Clinica Dentale San Marco",
+        "dentista": {
+          "nome": "Dr. Giulia Bruno",
+          "email": "giulia.bruno@studio.example.net"
+        },
+        "citta": "Firenze"
+      },
+      "priorita": "Normale",
+      "data_impronta": "24/09/2025",
+      "ordine": {
+        "numero": "ODL-25-0412"
+      },
+      "tipo_lavoro": "Faccetta",
+      "materiale": "Metallo-ceramica",
+      "colore": "A2"
+    },
+    {
+      "paziente": {
+        "codice": "PZ-9041",
+        "eta": 25
+      },
+      "colore": null,
+      "priorita": "Normale",
+      "riga_id": 1201,
+      "stato": "In lavorazione",
+      "odontotecnico": "Davide Santoro",
+      "data_consegna": "13/12/2025",
+      "materiale": "Disilicato di litio",
+      "ordine": {
+        "numero": "ODL-25-0417"
+      },
+      "tipo_lavoro": "Ponte 3 elementi",
+      "studio": {
+        "ragione_sociale": "Clinica Dentale San Marco",
+        "citta": "Prato",
+        "dentista": {
+          "email": "Sofia.Conti@Studio.Example.Net",
+          "nome": "Dr. Sofia Conti"
+        }
+      },
+      "importo": 1600.73,
+      "data_impronta": "24/12/2025"
+    },
+    {
+      "tipo_lavoro": "Ponte 3 elementi",
+      "priorita": "Urgentissimo 24h",
+      "riga_id": 1202,
+      "colore": "B1",
+      "importo": 1644.92,
+      "paziente": {
+        "eta": 38,
+        "codice": "PZ-9082"
+      },
+      "materiale": "Resina acrilica",
+      "studio": {
+        "citta": "Firenze",
+        "dentista": {
+          "nome": "Dr. Sofia Conti",
+          "email": "sofia.conti@studio.example.net"
+        },
+        "ragione_sociale": "Studio Dentistico Sorriso"
+      },
+      "ordine": {
+        "numero": "ODL-25-0422"
+      },
+      "odontotecnico": "Lucia Bertolini",
+      "stato": "Prova estetica",
+      "data_consegna": "04/09/2025",
+      "data_impronta": "13/01/2025"
+    },
+    {
+      "tipo_lavoro": "Bite notturno",
+      "priorita": "Urgente",
+      "importo": 1582.48,
+      "data_consegna": "03/06/2025",
+      "studio": {
+        "citta": "Prato",
+        "ragione_sociale": "  Centro Odontoiatrico Arno",
+        "dentista": {
+          "nome": "Dr. Sofia Rizzo",
+          "email": "sofia.rizzo@studio.example.net"
+        }
+      },
+      "stato": "Prova estetica",
+      "paziente": {
+        "eta": 66,
+        "codice": "PZ-9123"
+      },
+      "colore": "B1",
+      "data_impronta": "06/09/2025",
+      "materiale": "Disilicato di litio",
+      "ordine": {
+        "numero": "ODL-25-0427"
+      },
+      "odontotecnico": "Anna Pellegrini",
+      "riga_id": 1203
+    },
+    {
+      "colore": "B2",
+      "odontotecnico": "Lucia Bertolini",
+      "studio": {
+        "ragione_sociale": "Studio Dr. Valli",
+        "citta": "Firenze",
+        "dentista": {
+          "nome": "Dr. Tommaso Marino",
+          "email": "Tommaso.Marino@Studio.Example.Net"
+        }
+      },
+      "tipo_lavoro": "Riparazione",
+      "stato": "Consegnato",
+      "priorita": "Normale",
+      "riga_id": 1204,
+      "data_consegna": "13/12/2025",
+      "data_impronta": "13/09/2025",
+      "importo": 709.17,
+      "paziente": {
+        "codice": "PZ-9164",
+        "eta": 32
+      },
+      "ordine": {
+        "numero": "ODL-25-0432"
+      },
+      "materiale": "Disilicato di litio"
+    },
+    {
+      "odontotecnico": "Marco Ferri",
+      "paziente": {
+        "eta": 72,
+        "codice": "PZ-9205"
+      },
+      "data_impronta": "07/12/2025",
+      "riga_id": 1205,
+      "importo": 881.31,
+      "data_consegna": "10/04/2025",
+      "tipo_lavoro": "Ponte 3 elementi",
+      "stato": "Sospeso - attesa impronta",
+      "ordine": {
+        "numero": "ODL-25-0437"
+      },
+      "studio": {
+        "dentista": {
+          "email": "martina.bianchi@studio.example.net",
+          "nome": "Dr. Martina Bianchi"
+        },
+        "citta": "Firenze",
+        "ragione_sociale": "Studio Dentistico Sorriso"
+      },
+      "priorita": "Normale",
+      "colore": "C1",
+      "materiale": "Metallo-ceramica"
+    },
+    {
+      "priorita": "Urgente",
+      "riga_id": 1206,
+      "ordine": {
+        "numero": "ODL-25-0442"
+      },
+      "data_consegna": "27/12/2025",
+      "stato": "PROVA SISTEMA",
+      "tipo_lavoro": "Corona in zirconia",
+      "paziente": {
+        "eta": 86,
+        "codice": "PZ-9246"
+      },
+      "studio": {
+        "dentista": {
+          "nome": "Dr. Alessandro Bruno",
+          "email": "alessandro.bruno@studio.example.net"
+        },
+        "ragione_sociale": "Ambulatorio Ponte Vecchio",
+        "citta": "Prato"
+      },
+      "odontotecnico": "Davide Santoro",
+      "materiale": "Zirconia",
+      "data_impronta": "19/11/2025",
+      "importo": 1616.92
+    },
+    {
+      "studio": {
+        "citta": "Prato",
+        "dentista": {
+          "nome": "Dr. Riccardo Esposito",
+          "email": "Riccardo.Esposito@Studio.Example.Net"
+        },
+        "ragione_sociale": "Ambulatorio Ponte Vecchio"
+      },
+      "data_consegna": "10/06/2025",
+      "tipo_lavoro": "Riparazione",
+      "stato": "PROVA SISTEMA",
+      "importo": 1238.46,
+      "riga_id": 1207,
+      "paziente": {
+        "eta": 84,
+        "codice": "PZ-9287"
+      },
+      "priorita": "Urgente",
+      "data_impronta": "10/09/2025",
+      "odontotecnico": "Marco Ferri",
+      "ordine": {
+        "numero": "ODL-25-0447"
+      },
+      "materiale": "Zirconia",
+      "colore": "A1"
+    },
+    {
+      "ordine": {
+        "numero": "ODL-25-0452"
+      },
+      "materiale": "PMMA provvisorio",
+      "paziente": {
+        "eta": 33,
+        "codice": "PZ-9328"
+      },
+      "tipo_lavoro": "Ponte 3 elementi",
+      "riga_id": 1208,
+      "data_consegna": "15/06/2025",
+      "colore": "B1",
+      "priorita": "Urgentissimo 24h",
+      "stato": "Consegnato",
+      "data_impronta": "17/06/2025",
+      "studio": {
+        "dentista": {
+          "email": "giulia.costa@studio.example.net",
+          "nome": "Dr. Giulia Costa"
+        },
+        "citta": "Firenze",
+        "ragione_sociale": "Clinica Dentale San Marco"
+      },
+      "odontotecnico": "Marco Ferri",
+      "importo": 532.5
+    },
+    {
+      "paziente": {
+        "eta": 73,
+        "codice": "PZ-9369"
+      },
+      "colore": "C1",
+      "riga_id": 1209,
+      "odontotecnico": "Marco Ferri",
+      "importo": 309.77,
+      "data_consegna": "28/01/2025",
+      "studio": {
+        "ragione_sociale": "Ambulatorio Ponte Vecchio",
+        "citta": "Empoli",
+        "dentista": {
+          "email": "tommaso.bruno@studio.example.net",
+          "nome": "Dr. Tommaso Bruno"
+        }
+      },
+      "ordine": {
+        "numero": "ODL-25-0457"
+      },
+      "tipo_lavoro": "Ponte 3 elementi",
+      "data_impronta": "18/10/2025",
+      "priorita": "Urgentissimo 24h",
+      "materiale": "Disilicato di litio",
+      "stato": "In lavorazione"
+    },
+    {
+      "colore": "B2",
+      "importo": 1563.03,
+      "riga_id": 1210,
+      "data_impronta": "09/05/2025",
+      "ordine": {
+        "numero": "ODL-25-0462"
+      },
+      "materiale": "PMMA provvisorio",
+      "tipo_lavoro": "Faccetta",
+      "priorita": "Urgentissimo 24h",
+      "odontotecnico": "Lucia Bertolini",
+      "data_consegna": "04/06/2025",
+      "stato": "Rifare",
+      "studio": {
+        "dentista": {
+          "nome": "Dr. Ginevra Bruno",
+          "email": "Ginevra.Bruno@Studio.Example.Net"
+        },
+        "ragione_sociale": "Clinica Dentale San Marco  ",
+        "citta": "Firenze"
+      },
+      "paziente": {
+        "eta": 18,
+        "codice": "PZ-9410"
+      }
+    },
+    {
+      "riga_id": 1211,
+      "importo": 1395.59,
+      "materiale": "Metallo-ceramica",
+      "priorita": "Normale",
+      "paziente": {
+        "codice": "PZ-9451",
+        "eta": 46
+      },
+      "ordine": {
+        "numero": "ODL-25-0467"
+      },
+      "data_impronta": "25/05/2025",
+      "colore": "C1",
+      "odontotecnico": "Marco Ferri",
+      "stato": "In lavorazione",
+      "tipo_lavoro": "Corona in zirconia",
+      "studio": {
+        "citta": "Firenze",
+        "ragione_sociale": "Centro Odontoiatrico Arno",
+        "dentista": {
+          "email": "francesco.bianchi@studio.example.net",
+          "nome": "Dr. Francesco Bianchi"
+        }
+      },
+      "data_consegna": "26/04/2025"
+    },
+    {
+      "paziente": {
+        "codice": "PZ-9492",
+        "eta": 55
+      },
+      "odontotecnico": "Davide Santoro",
+      "ordine": {
+        "numero": "ODL-25-0472"
+      },
+      "importo": 462.29,
+      "materiale": "Metallo-ceramica",
+      "riga_id": 1212,
+      "stato": "PROVA SISTEMA",
+      "tipo_lavoro": "Faccetta",
+      "studio": {
+        "citta": "Empoli",
+        "ragione_sociale": "Studio Dr. Valli",
+        "dentista": {
+          "nome": "Dr. Riccardo Bianchi",
+          "email": "riccardo.bianchi@studio.example.net"
+        }
+      },
+      "priorita": "Normale",
+      "colore": null,
+      "data_impronta": "24/11/2025",
+      "data_consegna": "15/10/2025"
+    },
+    {
+      "studio": {
+        "citta": "Empoli",
+        "ragione_sociale": "Clinica Dentale San Marco",
+        "dentista": {
+          "email": "Alessandro.Ricci@Studio.Example.Net",
+          "nome": "Dr. Alessandro Ricci"
+        }
+      },
+      "paziente": {
+        "codice": "PZ-9533",
+        "eta": 45
+      },
+      "importo": 187.82,
+      "tipo_lavoro": "Riparazione",
+      "ordine": {
+        "numero": "ODL-25-0477"
+      },
+      "data_impronta": "08/02/2025",
+      "stato": "Prova estetica",
+      "materiale": "Resina acrilica",
+      "colore": "A3",
+      "riga_id": 1213,
+      "priorita": "Urgentissimo 24h",
+      "data_consegna": "19/01/2025",
+      "odontotecnico": "Lucia Bertolini"
+    },
+    {
+      "riga_id": 1214,
+      "ordine": {
+        "numero": "ODL-25-0482"
+      },
+      "data_consegna": "06/04/2025",
+      "data_impronta": "14/01/2025",
+      "tipo_lavoro": "Faccetta",
+      "importo": 724.79,
+      "odontotecnico": "Davide Santoro",
+      "priorita": "Normale",
+      "stato": "Prova estetica",
+      "colore": "C1",
+      "studio": {
+        "dentista": {
+          "nome": "Dr. Tommaso Marino",
+          "email": "tommaso.marino@studio.example.net"
+        },
+        "citta": "Pistoia",
+        "ragione_sociale": "Studio Dr. Valli"
+      },
+      "paziente": {
+        "eta": 41,
+        "codice": "PZ-9574"
+      },
+      "materiale": "PMMA provvisorio"
+    },
+    {
+      "paziente": {
+        "codice": "PZ-9615",
+        "eta": 44
+      },
+      "odontotecnico": "Anna Pellegrini",
+      "ordine": {
+        "numero": "ODL-25-0487"
+      },
+      "materiale": "Zirconia",
+      "colore": "B1",
+      "riga_id": 1215,
+      "data_consegna": "26/08/2025",
+      "priorita": "Urgentissimo 24h",
+      "tipo_lavoro": "Faccetta",
+      "studio": {
+        "ragione_sociale": "Studio Dr. Valli",
+        "dentista": {
+          "nome": "Dr. Gabriele Romano",
+          "email": "gabriele.romano@studio.example.net"
+        },
+        "citta": "Prato"
+      },
+      "data_impronta": "23/06/2025",
+      "stato": "Sospeso - attesa impronta",
+      "importo": 471.91
+    },
+    {
+      "ordine": {
+        "numero": "ODL-25-0492"
+      },
+      "priorita": "Normale",
+      "data_impronta": "27/09/2025",
+      "stato": "Sospeso - attesa impronta",
+      "studio": {
+        "citta": "Firenze",
+        "ragione_sociale": "Studio Dr. Valli",
+        "dentista": {
+          "email": "Alice.Colombo@Studio.Example.Net",
+          "nome": "Dr. Alice Colombo"
+        }
+      },
+      "riga_id": 1216,
+      "odontotecnico": "Anna Pellegrini",
+      "importo": 707.94,
+      "colore": "A1",
+      "materiale": "Metallo-ceramica",
+      "data_consegna": "01/02/2025",
+      "paziente": {
+        "eta": 70,
+        "codice": "PZ-9656"
+      },
+      "tipo_lavoro": "Corona in zirconia"
+    },
+    {
+      "data_impronta": "08/05/2025",
+      "importo": 1456.51,
+      "odontotecnico": "Lucia Bertolini",
+      "paziente": {
+        "codice": "PZ-9697",
+        "eta": 75
+      },
+      "priorita": "Urgentissimo 24h",
+      "studio": {
+        "dentista": {
+          "email": "alice.marino@studio.example.net",
+          "nome": "Dr. Alice Marino"
+        },
+        "ragione_sociale": "Ambulatorio Ponte Vecchio",
+        "citta": "Pistoia"
+      },
+      "stato": "Rifare",
+      "ordine": {
+        "numero": "ODL-25-0497"
+      },
+      "data_consegna": "06/10/2025",
+      "tipo_lavoro": "Protesi totale",
+      "riga_id": 1217,
+      "materiale": "Zirconia"
+    },
+    {
+      "data_impronta": "14/07/2025",
+      "ordine": {
+        "numero": "ODL-25-0502"
+      },
+      "materiale": "Zirconia",
+      "studio": {
+        "ragione_sociale": " Centro Odontoiatrico Arno ",
+        "citta": "Empoli",
+        "dentista": {
+          "email": "matteo.conti@studio.example.net",
+          "nome": "Dr. Matteo Conti"
+        }
+      },
+      "priorita": "Urgente",
+      "data_consegna": "08/11/2025",
+      "stato": "Sospeso - attesa impronta",
+      "tipo_lavoro": "Corona in zirconia",
+      "riga_id": 1218,
+      "importo": 1586.35,
+      "paziente": {
+        "eta": 53,
+        "codice": "PZ-9738"
+      },
+      "colore": "B1",
+      "odontotecnico": "Marco Ferri"
+    },
+    {
+      "importo": 1260.24,
+      "tipo_lavoro": "Bite notturno",
+      "paziente": {
+        "codice": "PZ-9779",
+        "eta": 42
+      },
+      "odontotecnico": "Marco Ferri",
+      "data_impronta": "11/05/2025",
+      "stato": "PROVA SISTEMA",
+      "studio": {
+        "dentista": {
+          "email": "Elena.Giordano@Studio.Example.Net",
+          "nome": "Dr. Elena Giordano"
+        },
+        "ragione_sociale": "Clinica Dentale San Marco",
+        "citta": "Empoli"
+      },
+      "ordine": {
+        "numero": "ODL-25-0507"
+      },
+      "materiale": "PMMA provvisorio",
+      "priorita": "Urgente",
+      "data_consegna": "27/07/2025",
+      "riga_id": 1219,
+      "colore": "A1"
+    },
+    {
+      "materiale": "Metallo-ceramica",
+      "odontotecnico": "Anna Pellegrini",
+      "priorita": "Urgente",
+      "data_consegna": "09/02/2025",
+      "tipo_lavoro": "Protesi totale",
+      "riga_id": 1220,
+      "paziente": {
+        "eta": 76,
+        "codice": "PZ-9820"
+      },
+      "colore": "B2",
+      "studio": {
+        "citta": "Firenze",
+        "dentista": {
+          "nome": "Dr. Matteo Colombo",
+          "email": "matteo.colombo@studio.example.net"
+        },
+        "ragione_sociale": "Studio Dentistico Sorriso"
+      },
+      "data_impronta": "22/01/2025",
+      "stato": "Consegnato",
+      "importo": 834.43,
+      "ordine": {
+        "numero": "ODL-25-0512"
+      }
+    },
+    {
+      "ordine": {
+        "numero": "ODL-25-0517"
+      },
+      "data_impronta": "28/06/2025",
+      "tipo_lavoro": "Corona in zirconia",
+      "riga_id": 1221,
+      "odontotecnico": "Davide Santoro",
+      "data_consegna": "04/07/2025",
+      "materiale": "Resina acrilica",
+      "paziente": {
+        "eta": 56,
+        "codice": "PZ-9861"
+      },
+      "priorita": "Urgentissimo 24h",
+      "studio": {
+        "citta": "Pistoia",
+        "ragione_sociale": "Clinica Dentale San Marco",
+        "dentista": {
+          "nome": "Dr. Sofia Bruno",
+          "email": "sofia.bruno@studio.example.net"
+        }
+      },
+      "colore": "A2",
+      "stato": "Consegnato",
+      "importo": 930.84
+    },
+    {
+      "stato": "In lavorazione",
+      "tipo_lavoro": "Protesi totale",
+      "importo": 563.28,
+      "studio": {
+        "dentista": {
+          "email": "Giulia.Ricci@Studio.Example.Net",
+          "nome": "Dr. Giulia Ricci"
+        },
+        "ragione_sociale": "Studio Dentistico Sorriso",
+        "citta": "Empoli"
+      },
+      "ordine": {
+        "numero": "ODL-25-0522"
+      },
+      "riga_id": 1222,
+      "odontotecnico": "Anna Pellegrini",
+      "data_impronta": "16/09/2025",
+      "paziente": {
+        "codice": "PZ-9902",
+        "eta": 85
+      },
+      "priorita": "Normale",
+      "colore": "A2",
+      "data_consegna": "26/08/2025",
+      "materiale": "Resina acrilica"
+    },
+    {
+      "materiale": "Zirconia",
+      "data_consegna": "24/01/2025",
+      "colore": null,
+      "data_impronta": "07/05/2025",
+      "paziente": {
+        "eta": 43,
+        "codice": "PZ-9943"
+      },
+      "tipo_lavoro": "Riparazione",
+      "priorita": "Normale",
+      "studio": {
+        "dentista": {
+          "nome": "Dr. Martina Gallo",
+          "email": "martina.gallo@studio.example.net"
+        },
+        "ragione_sociale": "Studio Dr. Valli",
+        "citta": "Firenze"
+      },
+      "ordine": {
+        "numero": "ODL-25-0527"
+      },
+      "odontotecnico": "Anna Pellegrini",
+      "riga_id": 1223,
+      "stato": "Rifare",
+      "importo": 1300.11
+    },
+    {
+      "priorita": "Urgente",
+      "data_impronta": "02/02/2025",
+      "materiale": "Disilicato di litio",
+      "tipo_lavoro": "Protesi totale",
+      "riga_id": 1224,
+      "colore": "A3",
+      "stato": "Consegnato",
+      "studio": {
+        "ragione_sociale": "Ambulatorio Ponte Vecchio",
+        "citta": "Firenze",
+        "dentista": {
+          "nome": "Dr. Gabriele Rizzo",
+          "email": "gabriele.rizzo@studio.example.net"
+        }
+      },
+      "importo": 950.78,
+      "ordine": {
+        "numero": "ODL-25-0532"
+      },
+      "data_consegna": "10/05/2025",
+      "paziente": {
+        "codice": "PZ-9984",
+        "eta": 65
+      },
+      "odontotecnico": "Davide Santoro"
+    },
+    {
+      "odontotecnico": "Lucia Bertolini",
+      "data_consegna": "23/02/2025",
+      "materiale": "Resina acrilica",
+      "studio": {
+        "citta": "Empoli",
+        "dentista": {
+          "email": "Francesco.Gallo@Studio.Example.Net",
+          "nome": "Dr. Francesco Gallo"
+        },
+        "ragione_sociale": "  Studio Dentistico Sorriso"
+      },
+      "paziente": {
+        "codice": "PZ-10025",
+        "eta": 18
+      },
+      "tipo_lavoro": "Bite notturno",
+      "stato": "Prova estetica",
+      "importo": 688.37,
+      "riga_id": 1225,
+      "priorita": "Urgente",
+      "colore": "C1",
+      "ordine": {
+        "numero": "ODL-25-0537"
+      },
+      "data_impronta": "13/01/2025"
+    },
+    {
+      "ordine": {
+        "numero": "ODL-25-0542"
+      },
+      "odontotecnico": "Davide Santoro",
+      "importo": 696.43,
+      "data_impronta": "21/02/2025",
+      "paziente": {
+        "codice": "PZ-10066",
+        "eta": 41
+      },
+      "studio": {
+        "dentista": {
+          "nome": "Dr. Tommaso Gallo",
+          "email": "tommaso.gallo@studio.example.net"
+        },
+        "citta": "Empoli",
+        "ragione_sociale": "Studio Dentistico Sorriso"
+      },
+      "priorita": "Urgente",
+      "tipo_lavoro": "Bite notturno",
+      "colore": "A3",
+      "data_consegna": "25/05/2025",
+      "materiale": "Disilicato di litio",
+      "stato": "Rifare",
+      "riga_id": 1226
+    },
+    {
+      "colore": "B2",
+      "ordine": {
+        "numero": "ODL-25-0547"
+      },
+      "tipo_lavoro": "Protesi totale",
+      "studio": {
+        "citta": "Empoli",
+        "ragione_sociale": "Studio Dentistico Sorriso",
+        "dentista": {
+          "email": "chiara.gallo@studio.example.net",
+          "nome": "Dr. Chiara Gallo"
+        }
+      },
+      "importo": 1510.77,
+      "priorita": "Urgentissimo 24h",
+      "data_consegna": "20/10/2025",
+      "odontotecnico": "Lucia Bertolini",
+      "stato": "In lavorazione",
+      "paziente": {
+        "codice": "PZ-10107",
+        "eta": 87
+      },
+      "data_impronta": "02/05/2025",
+      "materiale": "PMMA provvisorio",
+      "riga_id": 1227
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "work_order_id": {
+        "type": "string",
+        "description": "Identifier of the lab work order."
+      },
+      "practice_name": {
+        "type": "string",
+        "description": "Name of the dental practice that sent the order."
+      },
+      "dentist_name": {
+        "type": "string",
+        "description": "Prescribing dentist."
+      },
+      "dentist_email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email of the prescribing dentist for try-in questions."
+      },
+      "patient_ref": {
+        "type": "string",
+        "description": "Pseudonymous patient reference supplied by the practice."
+      },
+      "restoration_type": {
+        "type": "string",
+        "enum": [
+          "crown",
+          "bridge",
+          "veneer",
+          "full_denture",
+          "night_guard",
+          "repair"
+        ],
+        "description": "Kind of restoration to produce."
+      },
+      "material": {
+        "type": "string",
+        "enum": [
+          "zirconia",
+          "lithium_disilicate",
+          "porcelain_fused_to_metal",
+          "acrylic",
+          "temporary_pmma"
+        ],
+        "description": "Material of the restoration."
+      },
+      "priority": {
+        "type": "string",
+        "enum": [
+          "standard",
+          "rush",
+          "express"
+        ],
+        "description": "Turnaround priority."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "in_production",
+          "try_in",
+          "delivered",
+          "remake",
+          "on_hold"
+        ],
+        "description": "Production state of the order."
+      },
+      "shade": {
+        "type": "string",
+        "description": "Tooth shade code (VITA classical)."
+      },
+      "due_date": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the restoration must be delivered to the practice."
+      },
+      "turnaround_days": {
+        "type": "integer",
+        "description": "Days between impression and delivery."
+      }
+    },
+    "required": [
+      "work_order_id",
+      "practice_name",
+      "dentist_email",
+      "patient_ref",
+      "restoration_type",
+      "status",
+      "due_date"
+    ]
+  },
+  "groundTruth": {
+    "work_order_id": {
+      "source": "ordine.numero",
+      "transform": "copy",
+      "why": "order number; riga_id is an export row and paziente.codice is the patient"
+    },
+    "practice_name": {
+      "source": "studio.ragione_sociale",
+      "transform": "trim",
+      "why": "practice name, padded"
+    },
+    "dentist_name": {
+      "source": "studio.dentista.nome",
+      "transform": "copy",
+      "why": "dentist; odontotecnico is the lab technician"
+    },
+    "dentist_email": {
+      "source": "studio.dentista.email",
+      "transform": "normalize_email",
+      "why": "dentist email, mixed case"
+    },
+    "patient_ref": {
+      "source": "paziente.codice",
+      "transform": "copy",
+      "why": "patient code"
+    },
+    "restoration_type": {
+      "source": "tipo_lavoro",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Corona in zirconia": "crown",
+        "Ponte 3 elementi": "bridge",
+        "Faccetta": "veneer",
+        "Protesi totale": "full_denture",
+        "Bite notturno": "night_guard",
+        "Riparazione": "repair"
+      },
+      "why": "type of work"
+    },
+    "material": {
+      "source": "materiale",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Zirconia": "zirconia",
+        "Disilicato di litio": "lithium_disilicate",
+        "Metallo-ceramica": "porcelain_fused_to_metal",
+        "Resina acrilica": "acrylic",
+        "PMMA provvisorio": "temporary_pmma"
+      },
+      "why": "material"
+    },
+    "priority": {
+      "source": "priorita",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Normale": "standard",
+        "Urgente": "rush",
+        "Urgentissimo 24h": "express"
+      },
+      "why": "priority"
+    },
+    "status": {
+      "source": "stato",
+      "transform": "map_enum",
+      "categoryMap": {
+        "In lavorazione": "in_production",
+        "Prova estetica": "try_in",
+        "Consegnato": "delivered",
+        "Rifare": "remake",
+        "Sospeso - attesa impronta": "on_hold",
+        "PROVA SISTEMA": null
+      },
+      "why": "order state; system test rows need review"
+    },
+    "shade": {
+      "source": "colore",
+      "transform": "copy",
+      "why": "shade, absent when not specified"
+    },
+    "due_date": {
+      "source": "data_consegna",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "delivery date (Italian day-first); data_impronta is when the impression was taken"
+    },
+    "turnaround_days": {
+      "source": null,
+      "transform": "none",
+      "why": "no turnaround figure is exported",
+      "unsupportedReason": "the number of days would have to be computed from data_consegna minus data_impronta"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "stato",
+        "priorita"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "tipo_lavoro",
+        "materiale"
+      ],
+      "correctFor": "restoration_type"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "ordine.numero",
+        "riga_id"
+      ],
+      "correctFor": "work_order_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "studio.dentista.nome",
+        "odontotecnico"
+      ],
+      "correctFor": "dentist_name"
+    },
+    {
+      "kind": "birth-date-vs-start-date",
+      "fields": [
+        "data_consegna",
+        "data_impronta"
+      ],
+      "correctFor": "due_date"
+    }
+  ],
+  "sourceConcepts": {
+    "ordine.numero": "transaction-id",
+    "riga_id": "other-identifier",
+    "studio.ragione_sociale": "organization-name",
+    "studio.dentista.nome": "person-name",
+    "studio.dentista.email": "email",
+    "studio.citta": "city",
+    "paziente.codice": "other-identifier",
+    "paziente.eta": "quantity",
+    "tipo_lavoro": "category",
+    "materiale": "category",
+    "priorita": "category",
+    "stato": "account-status",
+    "colore": "other",
+    "data_consegna": "end-date",
+    "data_impronta": "created-date",
+    "odontotecnico": "person-name",
+    "importo": "amount"
+  },
+  "destinationConcepts": {
+    "work_order_id": "transaction-id",
+    "practice_name": "organization-name",
+    "dentist_name": "person-name",
+    "dentist_email": "email",
+    "patient_ref": "other-identifier",
+    "restoration_type": "category",
+    "material": "category",
+    "priority": "category",
+    "status": "account-status",
+    "shade": "other",
+    "due_date": "end-date",
+    "turnaround_days": "quantity"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 0,
+      "outcome": "transformed",
+      "output": {
+        "work_order_id": "ODL-25-0412",
+        "practice_name": "Clinica Dentale San Marco",
+        "dentist_name": "Dr. Giulia Bruno",
+        "dentist_email": "giulia.bruno@studio.example.net",
+        "patient_ref": "PZ-9000",
+        "restoration_type": "veneer",
+        "material": "porcelain_fused_to_metal",
+        "priority": "standard",
+        "status": "remake",
+        "shade": "A2",
+        "due_date": "2025-06-27"
+      }
+    },
+    {
+      "recordIndex": 1,
+      "outcome": "transformed",
+      "output": {
+        "work_order_id": "ODL-25-0417",
+        "practice_name": "Clinica Dentale San Marco",
+        "dentist_name": "Dr. Sofia Conti",
+        "dentist_email": "sofia.conti@studio.example.net",
+        "patient_ref": "PZ-9041",
+        "restoration_type": "bridge",
+        "material": "lithium_disilicate",
+        "priority": "standard",
+        "status": "in_production",
+        "due_date": "2025-12-13"
+      }
+    },
+    {
+      "recordIndex": 6,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 17,
+      "outcome": "transformed",
+      "output": {
+        "work_order_id": "ODL-25-0497",
+        "practice_name": "Ambulatorio Ponte Vecchio",
+        "dentist_name": "Dr. Alice Marino",
+        "dentist_email": "alice.marino@studio.example.net",
+        "patient_ref": "PZ-9697",
+        "restoration_type": "full_denture",
+        "material": "zirconia",
+        "priority": "express",
+        "status": "remake",
+        "due_date": "2025-10-06"
+      }
+    }
+  ]
+}

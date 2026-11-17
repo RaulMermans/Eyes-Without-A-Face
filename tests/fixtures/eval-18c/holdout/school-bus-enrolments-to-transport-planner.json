@@ -1,0 +1,1124 @@
+{
+  "scenarioId": "school-bus-enrolments-to-transport-planner",
+  "split": "holdout",
+  "industry": "municipal school bus transport",
+  "sourceLanguage": "pt",
+  "description": "School transport enrolment export of a fictional municipality (Portuguese snake_case, nested pupil, school, guardian and bus stop) to be loaded into a route planner.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "paragem": {
+        "codigo": "P-022",
+        "nome": "Largo da Igreja"
+      },
+      "turno": "Tarde",
+      "id_registo": 5500,
+      "estado_inscricao": "Cancelada",
+      "encarregado": {
+        "email": "tomas.fernandes@correio.example.org",
+        "telemovel": "+351 91 963 4102",
+        "nome": "Tomás Fernandes"
+      },
+      "escola": {
+        "nome": "EB de Vale Formoso",
+        "codigo": "EB23-0177"
+      },
+      "estado_pagamento": "Isento",
+      "escalao_ase": "Escalão C",
+      "data_inicio": "11/04/2025",
+      "aluno": {
+        "data_nascimento": "08/05/2015",
+        "ano_escolar": 6,
+        "apelido": "Oliveira",
+        "nome_proprio": "Francisca",
+        "numero_processo": "240100"
+      }
+    },
+    {
+      "id_registo": 5501,
+      "encarregado": {
+        "telemovel": "+351 91 723 6856",
+        "nome": "Carolina Pereira",
+        "email": "Carolina.Pereira@Correio.Example.Org"
+      },
+      "estado_inscricao": "Duplicada - verificar",
+      "escola": {
+        "codigo": "ES-0031",
+        "nome": "  EB da Quinta Nova"
+      },
+      "turno": "Tarde",
+      "data_inicio": "11/07/2025",
+      "estado_pagamento": "Isento",
+      "aluno": {
+        "ano_escolar": 2,
+        "numero_processo": "240117",
+        "data_nascimento": "11/10/2017",
+        "apelido": "Almeida",
+        "nome_proprio": "Leonor"
+      },
+      "escalao_ase": "Escalão B",
+      "paragem": {
+        "nome": "Rotunda Norte",
+        "codigo": "P-022"
+      }
+    },
+    {
+      "turno": "Manhã",
+      "id_registo": 5502,
+      "paragem": {
+        "nome": "Largo da Igreja",
+        "codigo": "P-014"
+      },
+      "escalao_ase": "Escalão C",
+      "estado_inscricao": "Cancelada",
+      "encarregado": {
+        "telemovel": null,
+        "nome": "Diogo Gonçalves",
+        "email": "diogo.goncalves@correio.example.org"
+      },
+      "data_inicio": "09/11/2025",
+      "aluno": {
+        "nome_proprio": "Carolina",
+        "apelido": "Ribeiro",
+        "ano_escolar": 9,
+        "numero_processo": "240134",
+        "data_nascimento": "02/10/2016"
+      },
+      "escola": {
+        "codigo": "EB1-0412",
+        "nome": "EB da Quinta Nova"
+      },
+      "estado_pagamento": "Pago"
+    },
+    {
+      "escola": {
+        "nome": "EB de Vale Formoso",
+        "codigo": "EB1-0290"
+      },
+      "turno": "Manhã",
+      "estado_pagamento": "Pago",
+      "data_inicio": "05/02/2025",
+      "id_registo": 5503,
+      "paragem": {
+        "codigo": "P-047",
+        "nome": "Junta de Freguesia"
+      },
+      "aluno": {
+        "nome_proprio": "Simão",
+        "ano_escolar": 2,
+        "data_nascimento": "08/01/2019",
+        "apelido": "Santos",
+        "numero_processo": "240151"
+      },
+      "estado_inscricao": "Pendente documentos",
+      "encarregado": {
+        "email": "martim.goncalves@correio.example.org",
+        "nome": "Martim Gonçalves",
+        "telemovel": "+351 91 640 4818"
+      },
+      "escalao_ase": "Sem escalão"
+    },
+    {
+      "aluno": {
+        "apelido": "Costa",
+        "ano_escolar": 5,
+        "data_nascimento": "11/04/2019",
+        "numero_processo": "240168",
+        "nome_proprio": "Tiago"
+      },
+      "id_registo": 5504,
+      "data_inicio": "08/04/2025",
+      "estado_pagamento": "Isento",
+      "turno": "Tarde",
+      "paragem": {
+        "nome": "Bairro das Flores",
+        "codigo": "P-052"
+      },
+      "escola": {
+        "codigo": "EB1-0290",
+        "nome": "Agrupamento Rio Maior"
+      },
+      "encarregado": {
+        "nome": "Carolina Costa",
+        "email": "Carolina.Costa@Correio.Example.Org",
+        "telemovel": "+351 91 923 2680"
+      },
+      "estado_inscricao": "Duplicada - verificar",
+      "escalao_ase": "Escalão A"
+    },
+    {
+      "turno": "Manhã",
+      "escalao_ase": "Escalão C",
+      "id_registo": 5505,
+      "escola": {
+        "codigo": "EB23-0177",
+        "nome": "EB da Quinta Nova"
+      },
+      "paragem": {
+        "codigo": "P-052",
+        "nome": "Junta de Freguesia"
+      },
+      "estado_pagamento": "Em dívida",
+      "encarregado": {
+        "telemovel": "+351 91 629 9912",
+        "nome": "Martim Martins",
+        "email": "martim.martins@correio.example.org"
+      },
+      "aluno": {
+        "apelido": "Silva",
+        "data_nascimento": "09/09/2014",
+        "ano_escolar": 5,
+        "numero_processo": "240185",
+        "nome_proprio": "Joana"
+      },
+      "estado_inscricao": "Pendente documentos",
+      "data_inicio": "01/02/2025"
+    },
+    {
+      "escalao_ase": "Escalão B",
+      "escola": {
+        "nome": "Agrupamento Rio Maior",
+        "codigo": "EB23-0177"
+      },
+      "estado_inscricao": "Duplicada - verificar",
+      "encarregado": {
+        "email": "joana.carvalho@correio.example.org",
+        "nome": "Joana Carvalho"
+      },
+      "data_inicio": "12/11/2025",
+      "paragem": {
+        "nome": "Junta de Freguesia",
+        "codigo": "P-052"
+      },
+      "estado_pagamento": "Em dívida",
+      "aluno": {
+        "data_nascimento": "03/01/2012",
+        "apelido": "Gomes",
+        "nome_proprio": "Leonor",
+        "numero_processo": "240202",
+        "ano_escolar": 3
+      },
+      "turno": "Manhã + Tarde",
+      "id_registo": 5506
+    },
+    {
+      "escalao_ase": "Sem escalão",
+      "data_inicio": "03/11/2025",
+      "id_registo": 5507,
+      "paragem": {
+        "codigo": "P-052",
+        "nome": "Bairro das Flores"
+      },
+      "estado_pagamento": "Em dívida",
+      "estado_inscricao": "Ativa",
+      "encarregado": {
+        "telemovel": "+351 91 817 9964",
+        "nome": "Leonor Rodrigues",
+        "email": "Leonor.Rodrigues@Correio.Example.Org"
+      },
+      "turno": "Só regresso",
+      "escola": {
+        "nome": "Escola Básica do Outeiro",
+        "codigo": "EB23-0177"
+      },
+      "aluno": {
+        "ano_escolar": 2,
+        "numero_processo": "240219",
+        "nome_proprio": "Tomás",
+        "apelido": "Silva",
+        "data_nascimento": "08/10/2019"
+      }
+    },
+    {
+      "paragem": {
+        "codigo": "P-031",
+        "nome": "Rotunda Norte"
+      },
+      "id_registo": 5508,
+      "aluno": {
+        "apelido": "Rodrigues",
+        "data_nascimento": "02/09/2014",
+        "nome_proprio": "Joana",
+        "ano_escolar": 2,
+        "numero_processo": "240236"
+      },
+      "estado_pagamento": "Em dívida",
+      "escalao_ase": "Sem escalão",
+      "data_inicio": "03/09/2025",
+      "encarregado": {
+        "telemovel": "+351 91 223 8900",
+        "nome": "Joana Almeida",
+        "email": "joana.almeida@correio.example.org"
+      },
+      "escola": {
+        "nome": "EB de Vale Formoso",
+        "codigo": "EB23-0177"
+      },
+      "turno": "Manhã",
+      "estado_inscricao": "Pendente documentos"
+    },
+    {
+      "escola": {
+        "nome": "EB de Vale Formoso",
+        "codigo": "EB1-0412"
+      },
+      "id_registo": 5509,
+      "encarregado": {
+        "nome": "Beatriz Costa",
+        "telemovel": "+351 91 744 2619",
+        "email": "beatriz.costa@correio.example.org"
+      },
+      "aluno": {
+        "numero_processo": "240253",
+        "nome_proprio": "Simão",
+        "ano_escolar": 4,
+        "data_nascimento": "10/04/2013",
+        "apelido": "Gomes"
+      },
+      "turno": "Manhã + Tarde",
+      "estado_inscricao": "Cancelada",
+      "data_inicio": null,
+      "estado_pagamento": "Pago",
+      "paragem": {
+        "codigo": "P-022",
+        "nome": "Bairro das Flores"
+      },
+      "escalao_ase": "Escalão A"
+    },
+    {
+      "turno": "Só regresso",
+      "data_inicio": "01/10/2025",
+      "escalao_ase": "Escalão C",
+      "aluno": {
+        "numero_processo": "240270",
+        "ano_escolar": 5,
+        "apelido": "Silva",
+        "nome_proprio": "Mariana",
+        "data_nascimento": "09/10/2018"
+      },
+      "estado_pagamento": "Pago",
+      "estado_inscricao": "Ativa",
+      "paragem": {
+        "nome": "Rotunda Norte",
+        "codigo": "P-014"
+      },
+      "encarregado": {
+        "email": "Simao.Costa@Correio.Example.Org",
+        "nome": "Simão Costa",
+        "telemovel": "+351 91 962 6918"
+      },
+      "id_registo": 5510,
+      "escola": {
+        "nome": "Escola Básica do Outeiro  ",
+        "codigo": "EB23-0177"
+      }
+    },
+    {
+      "paragem": {
+        "nome": "Bairro das Flores",
+        "codigo": "P-022"
+      },
+      "estado_inscricao": "Cancelada",
+      "escola": {
+        "nome": "EB de Vale Formoso",
+        "codigo": "EB1-0290"
+      },
+      "escalao_ase": "Escalão B",
+      "data_inicio": "07/12/2025",
+      "aluno": {
+        "ano_escolar": 8,
+        "apelido": "Alves",
+        "nome_proprio": "Duarte",
+        "data_nascimento": "04/02/2019",
+        "numero_processo": "240287"
+      },
+      "encarregado": {
+        "email": "tiago.pereira@correio.example.org",
+        "nome": "Tiago Pereira",
+        "telemovel": "+351 91 965 1929"
+      },
+      "id_registo": 5511,
+      "estado_pagamento": "Isento",
+      "turno": "Só regresso"
+    },
+    {
+      "encarregado": {
+        "telemovel": "+351 91 943 8149",
+        "email": "margarida.silva@correio.example.org",
+        "nome": "Margarida Silva"
+      },
+      "aluno": {
+        "apelido": "Santos",
+        "nome_proprio": "Inês",
+        "numero_processo": "240304",
+        "data_nascimento": "03/01/2012",
+        "ano_escolar": 8
+      },
+      "turno": "Manhã + Tarde",
+      "paragem": {
+        "nome": "Largo da Igreja",
+        "codigo": "P-022"
+      },
+      "estado_inscricao": "Pendente documentos",
+      "data_inicio": "08/04/2025",
+      "estado_pagamento": "Em dívida",
+      "escalao_ase": "Sem escalão",
+      "escola": {
+        "nome": "Agrupamento Rio Maior",
+        "codigo": "EB23-0177"
+      },
+      "id_registo": 5512
+    },
+    {
+      "encarregado": {
+        "email": "Francisca.Lopes@Correio.Example.Org",
+        "telemovel": null,
+        "nome": "Francisca Lopes"
+      },
+      "escola": {
+        "codigo": "EB1-0290",
+        "nome": "EB da Quinta Nova"
+      },
+      "turno": "Só regresso",
+      "escalao_ase": "Escalão B",
+      "estado_inscricao": "Pendente documentos",
+      "data_inicio": "08/06/2025",
+      "id_registo": 5513,
+      "estado_pagamento": "Isento",
+      "aluno": {
+        "ano_escolar": 8,
+        "data_nascimento": "04/01/2017",
+        "numero_processo": "240321",
+        "apelido": "Oliveira",
+        "nome_proprio": "Mariana"
+      },
+      "paragem": {
+        "nome": "Bairro das Flores",
+        "codigo": "P-022"
+      }
+    },
+    {
+      "encarregado": {
+        "email": "tiago.oliveira@correio.example.org",
+        "nome": "Tiago Oliveira",
+        "telemovel": "+351 91 607 8817"
+      },
+      "paragem": {
+        "nome": "Largo da Igreja",
+        "codigo": "P-031"
+      },
+      "turno": "Só regresso",
+      "data_inicio": "05/05/2025",
+      "escola": {
+        "codigo": "EB23-0177",
+        "nome": "EB da Quinta Nova"
+      },
+      "aluno": {
+        "apelido": "Almeida",
+        "nome_proprio": "Leonor",
+        "ano_escolar": 7,
+        "data_nascimento": "10/07/2018",
+        "numero_processo": "240338"
+      },
+      "id_registo": 5514,
+      "estado_pagamento": "Isento",
+      "escalao_ase": "Escalão C",
+      "estado_inscricao": "Ativa"
+    },
+    {
+      "estado_pagamento": "Em dívida",
+      "id_registo": 5515,
+      "turno": "Tarde",
+      "estado_inscricao": "Ativa",
+      "escola": {
+        "nome": "Agrupamento Rio Maior",
+        "codigo": "EB1-0412"
+      },
+      "paragem": {
+        "nome": "Bairro das Flores",
+        "codigo": "P-052"
+      },
+      "encarregado": {
+        "nome": "Tomás Marques",
+        "telemovel": "+351 91 611 9188",
+        "email": "tomas.marques@correio.example.org"
+      },
+      "escalao_ase": "Escalão A",
+      "aluno": {
+        "nome_proprio": "Rodrigo",
+        "apelido": "Oliveira",
+        "ano_escolar": 4,
+        "data_nascimento": "04/01/2012",
+        "numero_processo": "240355"
+      },
+      "data_inicio": "11/02/2025"
+    },
+    {
+      "estado_inscricao": "Cancelada",
+      "escalao_ase": "Sem escalão",
+      "encarregado": {
+        "telemovel": "+351 91 489 8478",
+        "email": "Goncalo.Goncalves@Correio.Example.Org",
+        "nome": "Gonçalo Gonçalves"
+      },
+      "turno": "Tarde",
+      "escola": {
+        "nome": "Agrupamento Rio Maior",
+        "codigo": "EB23-0177"
+      },
+      "data_inicio": "12/10/2025",
+      "id_registo": 5516,
+      "aluno": {
+        "nome_proprio": "Duarte",
+        "numero_processo": "240372",
+        "apelido": "Silva",
+        "data_nascimento": "10/06/2018",
+        "ano_escolar": 9
+      },
+      "paragem": {
+        "codigo": "P-047",
+        "nome": "Junta de Freguesia"
+      },
+      "estado_pagamento": "Pago"
+    },
+    {
+      "escola": {
+        "codigo": "ES-0031",
+        "nome": "Agrupamento Rio Maior"
+      },
+      "estado_inscricao": "Duplicada - verificar",
+      "paragem": {
+        "codigo": "P-047",
+        "nome": "Rotunda Norte"
+      },
+      "encarregado": {
+        "telemovel": "+351 91 252 9742",
+        "email": "tiago.ferreira@correio.example.org",
+        "nome": "Tiago Ferreira"
+      },
+      "escalao_ase": "Escalão A",
+      "turno": "Manhã + Tarde",
+      "aluno": {
+        "numero_processo": "240389",
+        "nome_proprio": "Carolina",
+        "apelido": "Ferreira",
+        "data_nascimento": "02/07/2015",
+        "ano_escolar": 8
+      },
+      "estado_pagamento": "Em dívida",
+      "data_inicio": "04/07/2025",
+      "id_registo": 5517
+    },
+    {
+      "data_inicio": "04/05/2025",
+      "encarregado": {
+        "email": "afonso.teixeira@correio.example.org",
+        "telemovel": "+351 91 512 1505",
+        "nome": "Afonso Teixeira"
+      },
+      "escalao_ase": "Escalão B",
+      "estado_inscricao": "Ativa",
+      "estado_pagamento": "Pago",
+      "turno": "Manhã + Tarde",
+      "aluno": {
+        "apelido": "Oliveira",
+        "ano_escolar": 3,
+        "data_nascimento": "10/11/2014",
+        "nome_proprio": "Diogo",
+        "numero_processo": "240406"
+      },
+      "escola": {
+        "nome": " EB da Quinta Nova ",
+        "codigo": "EB1-0412"
+      },
+      "id_registo": 5518,
+      "paragem": {
+        "codigo": "P-022",
+        "nome": "Rotunda Norte"
+      }
+    },
+    {
+      "id_registo": 5519,
+      "estado_pagamento": "Em dívida",
+      "turno": "Manhã + Tarde",
+      "paragem": {
+        "codigo": "P-052",
+        "nome": "Rotunda Norte"
+      },
+      "escalao_ase": "Sem escalão",
+      "estado_inscricao": "Pendente documentos",
+      "aluno": {
+        "ano_escolar": 1,
+        "apelido": "Almeida",
+        "numero_processo": "240423",
+        "data_nascimento": "05/07/2015",
+        "nome_proprio": "Tomás"
+      },
+      "escola": {
+        "nome": "Agrupamento Rio Maior",
+        "codigo": "EB1-0412"
+      },
+      "encarregado": {
+        "email": "Carolina.Oliveira@Correio.Example.Org",
+        "telemovel": "+351 91 585 4629",
+        "nome": "Carolina Oliveira"
+      },
+      "data_inicio": "09/07/2025"
+    },
+    {
+      "aluno": {
+        "numero_processo": "240440",
+        "ano_escolar": 5,
+        "apelido": "Pereira",
+        "data_nascimento": "02/09/2017",
+        "nome_proprio": "Matilde"
+      },
+      "data_inicio": "12/05/2025",
+      "paragem": {
+        "nome": "Bairro das Flores",
+        "codigo": "P-052"
+      },
+      "id_registo": 5520,
+      "estado_inscricao": "Ativa",
+      "estado_pagamento": "Isento",
+      "encarregado": {
+        "nome": "Beatriz Teixeira",
+        "email": "beatriz.teixeira@correio.example.org"
+      },
+      "escola": {
+        "codigo": "ES-0031",
+        "nome": "EB da Quinta Nova"
+      },
+      "turno": "Manhã",
+      "escalao_ase": "Sem escalão"
+    },
+    {
+      "aluno": {
+        "data_nascimento": "11/03/2017",
+        "ano_escolar": 8,
+        "apelido": "Pereira",
+        "nome_proprio": "Margarida",
+        "numero_processo": "240457"
+      },
+      "escalao_ase": "Escalão A",
+      "data_inicio": "07/01/2025",
+      "id_registo": 5521,
+      "estado_inscricao": "Ativa",
+      "paragem": {
+        "nome": "Bairro das Flores",
+        "codigo": "P-031"
+      },
+      "turno": "Só regresso",
+      "estado_pagamento": "Pago",
+      "encarregado": {
+        "email": "tomas.silva@correio.example.org",
+        "telemovel": "+351 91 659 4164",
+        "nome": "Tomás Silva"
+      },
+      "escola": {
+        "nome": "EB de Vale Formoso",
+        "codigo": "EB1-0290"
+      }
+    },
+    {
+      "escalao_ase": "Escalão C",
+      "encarregado": {
+        "email": "Ines.Almeida@Correio.Example.Org",
+        "nome": "Inês Almeida",
+        "telemovel": "+351 91 964 7896"
+      },
+      "estado_pagamento": "Isento",
+      "id_registo": 5522,
+      "aluno": {
+        "ano_escolar": 2,
+        "apelido": "Ferreira",
+        "nome_proprio": "Tomás",
+        "data_nascimento": "11/02/2019",
+        "numero_processo": "240474"
+      },
+      "escola": {
+        "nome": "Escola Básica do Outeiro",
+        "codigo": "EB23-0177"
+      },
+      "turno": "Só regresso",
+      "data_inicio": "08/10/2025",
+      "estado_inscricao": "Duplicada - verificar",
+      "paragem": {
+        "nome": "Bairro das Flores",
+        "codigo": "P-031"
+      }
+    },
+    {
+      "paragem": {
+        "codigo": "P-052",
+        "nome": "Largo da Igreja"
+      },
+      "estado_pagamento": "Isento",
+      "encarregado": {
+        "nome": "Tomás Almeida",
+        "email": "tomas.almeida@correio.example.org",
+        "telemovel": "+351 91 622 6499"
+      },
+      "aluno": {
+        "apelido": "Teixeira",
+        "data_nascimento": "03/07/2012",
+        "nome_proprio": "Rodrigo",
+        "numero_processo": "240491",
+        "ano_escolar": 8
+      },
+      "data_inicio": null,
+      "escola": {
+        "codigo": "EB23-0177",
+        "nome": "Agrupamento Rio Maior"
+      },
+      "escalao_ase": "Escalão B",
+      "turno": "Manhã",
+      "id_registo": 5523,
+      "estado_inscricao": "Ativa"
+    },
+    {
+      "id_registo": 5524,
+      "estado_inscricao": "Cancelada",
+      "escola": {
+        "nome": "Escola Básica do Outeiro",
+        "codigo": "EB1-0412"
+      },
+      "estado_pagamento": "Em dívida",
+      "encarregado": {
+        "email": "simao.teixeira@correio.example.org",
+        "nome": "Simão Teixeira",
+        "telemovel": "+351 91 614 2733"
+      },
+      "data_inicio": "04/08/2025",
+      "turno": "Manhã",
+      "escalao_ase": "Escalão A",
+      "paragem": {
+        "codigo": "P-052",
+        "nome": "Rotunda Norte"
+      },
+      "aluno": {
+        "ano_escolar": 1,
+        "apelido": "Gonçalves",
+        "numero_processo": "240508",
+        "nome_proprio": "Afonso",
+        "data_nascimento": "06/12/2017"
+      }
+    },
+    {
+      "turno": "Manhã + Tarde",
+      "aluno": {
+        "data_nascimento": "12/05/2012",
+        "nome_proprio": "Duarte",
+        "ano_escolar": 4,
+        "numero_processo": "240525",
+        "apelido": "Costa"
+      },
+      "data_inicio": "01/09/2025",
+      "estado_inscricao": "Duplicada - verificar",
+      "escalao_ase": "Escalão B",
+      "id_registo": 5525,
+      "estado_pagamento": "Isento",
+      "escola": {
+        "codigo": "EB1-0290",
+        "nome": "Escola Básica do Outeiro"
+      },
+      "encarregado": {
+        "telemovel": "+351 91 468 9024",
+        "email": "Tiago.Almeida@Correio.Example.Org",
+        "nome": "Tiago Almeida"
+      },
+      "paragem": {
+        "nome": "Bairro das Flores",
+        "codigo": "P-047"
+      }
+    },
+    {
+      "turno": "Tarde",
+      "aluno": {
+        "data_nascimento": "04/11/2013",
+        "numero_processo": "240542",
+        "nome_proprio": "Martim",
+        "ano_escolar": 2,
+        "apelido": "Alves"
+      },
+      "encarregado": {
+        "nome": "Gonçalo Rodrigues",
+        "email": "goncalo.rodrigues@correio.example.org",
+        "telemovel": null
+      },
+      "data_inicio": "12/02/2025",
+      "id_registo": 5526,
+      "escalao_ase": "Escalão A",
+      "escola": {
+        "nome": "Agrupamento Rio Maior",
+        "codigo": "EB1-0412"
+      },
+      "estado_inscricao": "Pendente documentos",
+      "paragem": {
+        "codigo": "P-031",
+        "nome": "Bairro das Flores"
+      },
+      "estado_pagamento": "Em dívida"
+    },
+    {
+      "estado_inscricao": "Cancelada",
+      "escalao_ase": "Escalão B",
+      "encarregado": {
+        "telemovel": "+351 91 559 8437",
+        "email": "rodrigo.costa@correio.example.org",
+        "nome": "Rodrigo Costa"
+      },
+      "estado_pagamento": "Pago",
+      "data_inicio": "10/04/2025",
+      "aluno": {
+        "numero_processo": "240559",
+        "nome_proprio": "Margarida",
+        "apelido": "Sousa",
+        "ano_escolar": 7,
+        "data_nascimento": "06/02/2018"
+      },
+      "paragem": {
+        "nome": "Largo da Igreja",
+        "codigo": "P-022"
+      },
+      "escola": {
+        "nome": "  Agrupamento Rio Maior",
+        "codigo": "EB1-0412"
+      },
+      "id_registo": 5527,
+      "turno": "Manhã"
+    },
+    {
+      "paragem": {
+        "codigo": "P-022",
+        "nome": "Junta de Freguesia"
+      },
+      "turno": "Tarde",
+      "estado_pagamento": "Pago",
+      "escalao_ase": "Escalão A",
+      "encarregado": {
+        "telemovel": "+351 91 726 3796",
+        "nome": "Carolina Pereira",
+        "email": "Carolina.Pereira@Correio.Example.Org"
+      },
+      "estado_inscricao": "Pendente documentos",
+      "data_inicio": "03/12/2025",
+      "aluno": {
+        "data_nascimento": "07/02/2019",
+        "ano_escolar": 3,
+        "nome_proprio": "Sofia",
+        "numero_processo": "240576",
+        "apelido": "Costa"
+      },
+      "escola": {
+        "codigo": "EB1-0412",
+        "nome": "Escola Básica do Outeiro"
+      },
+      "id_registo": 5528
+    },
+    {
+      "estado_pagamento": "Pago",
+      "data_inicio": "08/01/2025",
+      "aluno": {
+        "data_nascimento": "02/04/2019",
+        "nome_proprio": "Francisca",
+        "ano_escolar": 2,
+        "apelido": "Fernandes",
+        "numero_processo": "240593"
+      },
+      "encarregado": {
+        "nome": "Inês Sousa",
+        "telemovel": "+351 91 824 6570",
+        "email": "ines.sousa@correio.example.org"
+      },
+      "turno": "Tarde",
+      "id_registo": 5529,
+      "escola": {
+        "codigo": "EB23-0177",
+        "nome": "Escola Básica do Outeiro"
+      },
+      "escalao_ase": "Escalão C",
+      "estado_inscricao": "Duplicada - verificar",
+      "paragem": {
+        "nome": "Rotunda Norte",
+        "codigo": "P-047"
+      }
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "pupil_id": {
+        "type": "string",
+        "description": "School process number of the pupil."
+      },
+      "pupil_name": {
+        "type": "string",
+        "description": "Full name of the pupil, given name first."
+      },
+      "school_code": {
+        "type": "string",
+        "description": "Code of the school the pupil attends."
+      },
+      "guardian_email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email of the guardian for route changes."
+      },
+      "guardian_phone": {
+        "type": "string",
+        "description": "Mobile number of the guardian."
+      },
+      "shift": {
+        "type": "string",
+        "enum": [
+          "morning",
+          "afternoon",
+          "both",
+          "return_only"
+        ],
+        "description": "Which runs the pupil rides."
+      },
+      "subsidy_tier": {
+        "type": "string",
+        "enum": [
+          "full",
+          "partial",
+          "reduced",
+          "no_subsidy"
+        ],
+        "description": "School social support tier that determines the transport subsidy."
+      },
+      "enrolment_status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "pending",
+          "cancelled"
+        ],
+        "description": "State of the transport enrolment."
+      },
+      "stop_code": {
+        "type": "string",
+        "description": "Code of the boarding stop."
+      },
+      "service_start": {
+        "type": "string",
+        "format": "date",
+        "description": "First day of transport."
+      },
+      "wheelchair_access_needed": {
+        "type": "string",
+        "description": "Whether the pupil needs a wheelchair-accessible vehicle (yes/no)."
+      }
+    },
+    "required": [
+      "pupil_id",
+      "pupil_name",
+      "school_code",
+      "guardian_email",
+      "shift",
+      "enrolment_status",
+      "stop_code",
+      "service_start"
+    ]
+  },
+  "groundTruth": {
+    "pupil_id": {
+      "source": "aluno.numero_processo",
+      "transform": "copy",
+      "why": "pupil process number; id_registo is the export row"
+    },
+    "pupil_name": {
+      "source": null,
+      "sources": [
+        "aluno.nome_proprio",
+        "aluno.apelido"
+      ],
+      "transform": "concat",
+      "separator": " ",
+      "why": "pupil first name plus surname; encarregado.nome is the guardian"
+    },
+    "school_code": {
+      "source": "escola.codigo",
+      "transform": "copy",
+      "why": "school code, not the school name"
+    },
+    "guardian_email": {
+      "source": "encarregado.email",
+      "transform": "normalize_email",
+      "why": "guardian email, mixed case"
+    },
+    "guardian_phone": {
+      "source": "encarregado.telemovel",
+      "transform": "copy",
+      "why": "guardian mobile, sometimes absent"
+    },
+    "shift": {
+      "source": "turno",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Manhã": "morning",
+        "Tarde": "afternoon",
+        "Manhã + Tarde": "both",
+        "Só regresso": "return_only"
+      },
+      "why": "runs used"
+    },
+    "subsidy_tier": {
+      "source": "escalao_ase",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Escalão A": "full",
+        "Escalão B": "partial",
+        "Escalão C": "reduced",
+        "Sem escalão": "no_subsidy"
+      },
+      "why": "ASE support tier"
+    },
+    "enrolment_status": {
+      "source": "estado_inscricao",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Ativa": "active",
+        "Pendente documentos": "pending",
+        "Cancelada": "cancelled",
+        "Duplicada - verificar": null
+      },
+      "why": "enrolment state; suspected duplicates need review; estado_pagamento is about fees"
+    },
+    "stop_code": {
+      "source": "paragem.codigo",
+      "transform": "copy",
+      "why": "stop code"
+    },
+    "service_start": {
+      "source": "data_inicio",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "start of service (Portuguese day-first); rows without it must be held"
+    },
+    "wheelchair_access_needed": {
+      "source": null,
+      "transform": "none",
+      "why": "accessibility needs are not exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "estado_inscricao",
+        "estado_pagamento"
+      ],
+      "correctFor": "enrolment_status"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "escalao_ase",
+        "turno"
+      ],
+      "correctFor": "subsidy_tier"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "aluno.numero_processo",
+        "id_registo"
+      ],
+      "correctFor": "pupil_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "aluno.apelido",
+        "encarregado.nome"
+      ],
+      "correctFor": "pupil_name"
+    },
+    {
+      "kind": "birth-date-vs-start-date",
+      "fields": [
+        "data_inicio",
+        "aluno.data_nascimento"
+      ],
+      "correctFor": "service_start"
+    }
+  ],
+  "sourceConcepts": {
+    "id_registo": "other-identifier",
+    "aluno.numero_processo": "customer-id",
+    "aluno.nome_proprio": "given-name",
+    "aluno.apelido": "family-name",
+    "aluno.data_nascimento": "birth-date",
+    "aluno.ano_escolar": "quantity",
+    "escola.codigo": "other-identifier",
+    "escola.nome": "organization-name",
+    "encarregado.nome": "person-name",
+    "encarregado.email": "email",
+    "encarregado.telemovel": "phone",
+    "turno": "category",
+    "escalao_ase": "category",
+    "estado_inscricao": "account-status",
+    "estado_pagamento": "payment-status",
+    "paragem.codigo": "other-identifier",
+    "paragem.nome": "street-address",
+    "data_inicio": "start-date"
+  },
+  "destinationConcepts": {
+    "pupil_id": "customer-id",
+    "pupil_name": "person-name",
+    "school_code": "other-identifier",
+    "guardian_email": "email",
+    "guardian_phone": "phone",
+    "shift": "category",
+    "subsidy_tier": "category",
+    "enrolment_status": "account-status",
+    "stop_code": "other-identifier",
+    "service_start": "start-date",
+    "wheelchair_access_needed": "other"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 1,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 2,
+      "outcome": "transformed",
+      "output": {
+        "pupil_id": "240134",
+        "pupil_name": "Carolina Ribeiro",
+        "school_code": "EB1-0412",
+        "guardian_email": "diogo.goncalves@correio.example.org",
+        "shift": "morning",
+        "subsidy_tier": "reduced",
+        "enrolment_status": "cancelled",
+        "stop_code": "P-014",
+        "service_start": "2025-11-09"
+      }
+    },
+    {
+      "recordIndex": 9,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 13,
+      "outcome": "transformed",
+      "output": {
+        "pupil_id": "240321",
+        "pupil_name": "Mariana Oliveira",
+        "school_code": "EB1-0290",
+        "guardian_email": "francisca.lopes@correio.example.org",
+        "shift": "return_only",
+        "subsidy_tier": "partial",
+        "enrolment_status": "pending",
+        "stop_code": "P-022",
+        "service_start": "2025-06-08"
+      }
+    }
+  ]
+}

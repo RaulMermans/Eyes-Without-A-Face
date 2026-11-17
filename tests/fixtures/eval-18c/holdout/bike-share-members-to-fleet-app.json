@@ -1,0 +1,762 @@
+{
+  "scenarioId": "bike-share-members-to-fleet-app",
+  "split": "holdout",
+  "industry": "municipal bike-share membership",
+  "sourceLanguage": "es",
+  "description": "Flat member export of a fictional municipal bike-share scheme (Spanish snake_case) to be loaded into the fleet mobile app.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "fecha_alta": "01/12/2025",
+      "ciclo_cobro": "Trimestral",
+      "telefono": "+34 6 217 7928",
+      "tipo_abono": "Tarifa Social",
+      "correo": "elena.castrovidal@correo.example.com",
+      "id_tarjeta": "04A3F21C0",
+      "estacion_habitual": "Campus Sur",
+      "nombre": "  Elena",
+      "viajes_mes": 4,
+      "apellidos": "Castro Vidal",
+      "estado_ultimo_viaje": "Finalizado",
+      "fecha_nacimiento": "12/06/1978",
+      "num_socio": "BICI-60310",
+      "estado_cuenta": "Suspendida (incidencia)"
+    },
+    {
+      "fecha_alta": "12/04/2025",
+      "telefono": "+34 6 998 1144",
+      "correo": "Hugo.Prieto@Correo.Example.Com",
+      "ciclo_cobro": "Mensual domiciliado",
+      "tipo_abono": "Bono 10 viajes",
+      "viajes_mes": 44,
+      "fecha_nacimiento": "11/08/1994",
+      "num_socio": "BICI-60333",
+      "id_tarjeta": "04A3F2591",
+      "estado_cuenta": "Activa",
+      "estacion_habitual": "Parque del Río",
+      "estado_ultimo_viaje": "Finalizado",
+      "apellidos": "Prieto",
+      "nombre": "Hugo"
+    },
+    {
+      "estado_cuenta": "Suspendida (incidencia)",
+      "fecha_alta": "05/08/2023",
+      "estacion_habitual": "Campus Sur",
+      "viajes_mes": 5,
+      "id_tarjeta": "04A3F2962",
+      "num_socio": "BICI-60356",
+      "fecha_nacimiento": "07/02/1957",
+      "nombre": "Adrián",
+      "telefono": "+34 6 914 7296",
+      "estado_ultimo_viaje": "Incidencia abierta",
+      "tipo_abono": "Bono 10 viajes",
+      "apellidos": "Lozano",
+      "correo": "adrian.lozano@correo.example.com",
+      "ciclo_cobro": "Pago único"
+    },
+    {
+      "id_tarjeta": "04A3F2D33",
+      "fecha_alta": "12/02/2022",
+      "viajes_mes": 16,
+      "nombre": "Alba",
+      "apellidos": "Rubio",
+      "tipo_abono": "Abono Joven",
+      "fecha_nacimiento": null,
+      "estado_ultimo_viaje": "En curso",
+      "num_socio": "BICI-60379",
+      "telefono": "+34 6 418 2199",
+      "ciclo_cobro": "Mensual domiciliado",
+      "correo": "alba.rubio@correo.example.com",
+      "estacion_habitual": "Plaza Mayor",
+      "estado_cuenta": "Bloqueada por impago"
+    },
+    {
+      "nombre": "Valeria",
+      "estacion_habitual": "Mercado Central",
+      "viajes_mes": 0,
+      "estado_cuenta": "Activa",
+      "tipo_abono": "Anual",
+      "fecha_alta": "01/11/2023",
+      "telefono": "+34 6 858 6066",
+      "correo": "Valeria.Prieto@Correo.Example.Com",
+      "ciclo_cobro": "Pago único",
+      "id_tarjeta": "04A3F3104",
+      "fecha_nacimiento": "12/07/1971",
+      "estado_ultimo_viaje": "Incidencia abierta",
+      "apellidos": "Prieto",
+      "num_socio": "BICI-60402"
+    },
+    {
+      "viajes_mes": 47,
+      "apellidos": "Castro Vidal",
+      "estado_cuenta": "Suspendida (incidencia)",
+      "num_socio": "BICI-60425",
+      "ciclo_cobro": "Mensual domiciliado",
+      "fecha_nacimiento": "03/12/1990",
+      "id_tarjeta": "04A3F34D5",
+      "fecha_alta": "04/09/2023",
+      "estacion_habitual": "Mercado Central",
+      "nombre": "Sofía",
+      "telefono": "+34 6 157 7301",
+      "tipo_abono": "Cuenta de prueba",
+      "correo": "sofia.castrovidal@correo.example.com",
+      "estado_ultimo_viaje": "En curso"
+    },
+    {
+      "viajes_mes": 48,
+      "fecha_alta": "05/08/2020",
+      "num_socio": "BICI-60448",
+      "estado_ultimo_viaje": "Finalizado",
+      "id_tarjeta": "04A3F38A6",
+      "correo": "alba.vega@correo.example.com",
+      "tipo_abono": "Mensual",
+      "ciclo_cobro": "Mensual domiciliado",
+      "apellidos": "Vega",
+      "estacion_habitual": "Mercado Central",
+      "estado_cuenta": "Bloqueada por impago",
+      "telefono": "+34 6 440 3861",
+      "nombre": "Alba"
+    },
+    {
+      "telefono": "+34 6 708 5179",
+      "estacion_habitual": "Parque del Río",
+      "viajes_mes": 15,
+      "ciclo_cobro": "Mensual domiciliado",
+      "fecha_nacimiento": "02/01/1970",
+      "num_socio": "BICI-60471",
+      "correo": "Sergio.Delgado@Correo.Example.Com",
+      "fecha_alta": "02/03/2020",
+      "tipo_abono": "Tarifa Social",
+      "nombre": "Sergio",
+      "estado_cuenta": "Activa",
+      "apellidos": "Delgado",
+      "id_tarjeta": "04A3F3C77",
+      "estado_ultimo_viaje": "Incidencia abierta"
+    },
+    {
+      "apellidos": "García Ruiz",
+      "estado_cuenta": "Baja voluntaria",
+      "viajes_mes": 54,
+      "nombre": "Elena  ",
+      "ciclo_cobro": "Trimestral",
+      "estacion_habitual": "Plaza Mayor",
+      "fecha_alta": "08/06/2025",
+      "correo": "elena.garciaruiz@correo.example.com",
+      "telefono": "+34 6 642 5850",
+      "id_tarjeta": "04A3F4048",
+      "num_socio": "BICI-60494",
+      "tipo_abono": "Mensual",
+      "estado_ultimo_viaje": "Incidencia abierta",
+      "fecha_nacimiento": "07/06/1965"
+    },
+    {
+      "correo": "lucia.medina@correo.example.com",
+      "fecha_nacimiento": "05/04/1954",
+      "tipo_abono": "Abono Joven",
+      "estado_cuenta": "Baja voluntaria",
+      "viajes_mes": 8,
+      "id_tarjeta": "04A3F4419",
+      "num_socio": "BICI-60517",
+      "estado_ultimo_viaje": "Incidencia abierta",
+      "nombre": "Lucía",
+      "ciclo_cobro": "Pago único",
+      "fecha_alta": "10/01/2025",
+      "telefono": "+34 6 558 7805",
+      "apellidos": "Medina",
+      "estacion_habitual": "Mercado Central"
+    },
+    {
+      "tipo_abono": "Bono 10 viajes",
+      "estado_cuenta": "Bloqueada por impago",
+      "ciclo_cobro": "Trimestral",
+      "fecha_alta": "11/08/2019",
+      "estacion_habitual": "Mercado Central",
+      "telefono": "+34 6 845 3462",
+      "id_tarjeta": "04A3F47EA",
+      "estado_ultimo_viaje": "Finalizado",
+      "viajes_mes": 11,
+      "fecha_nacimiento": "02/02/1962",
+      "num_socio": "BICI-60540",
+      "correo": "Iker.Lozano@Correo.Example.Com",
+      "apellidos": "Lozano",
+      "nombre": "Iker"
+    },
+    {
+      "tipo_abono": "Anual",
+      "id_tarjeta": "04A3F4BBB",
+      "fecha_nacimiento": "01/07/1960",
+      "estado_cuenta": "Activa",
+      "viajes_mes": 15,
+      "estacion_habitual": "Plaza Mayor",
+      "estado_ultimo_viaje": "Finalizado",
+      "num_socio": "BICI-60563",
+      "correo": "carmen.iglesias@correo.example.com",
+      "telefono": "+34 6 535 5515",
+      "apellidos": "Iglesias",
+      "nombre": "Carmen",
+      "ciclo_cobro": "Mensual domiciliado",
+      "fecha_alta": "04/05/2023"
+    },
+    {
+      "estado_cuenta": "Bloqueada por impago",
+      "apellidos": "López Martín",
+      "estado_ultimo_viaje": "En curso",
+      "viajes_mes": 61,
+      "tipo_abono": "Anual",
+      "telefono": "+34 6 516 8691",
+      "fecha_nacimiento": "02/02/1951",
+      "fecha_alta": "10/10/2023",
+      "nombre": "Elena",
+      "correo": "elena.lopezmartin@correo.example.com",
+      "id_tarjeta": "04A3F4F8C",
+      "estacion_habitual": "Parque del Río",
+      "num_socio": "BICI-60586",
+      "ciclo_cobro": "Trimestral"
+    },
+    {
+      "nombre": "Adrián",
+      "num_socio": "BICI-60609",
+      "estacion_habitual": "Campus Sur",
+      "apellidos": "Cortés",
+      "tipo_abono": "Anual",
+      "fecha_alta": "01/05/2021",
+      "ciclo_cobro": "Pago único",
+      "viajes_mes": 47,
+      "telefono": "+34 6 267 9572",
+      "correo": "Adrian.Cortes@Correo.Example.Com",
+      "fecha_nacimiento": "04/04/2001",
+      "estado_cuenta": "Activa",
+      "id_tarjeta": "04A3F535D",
+      "estado_ultimo_viaje": "Finalizado"
+    },
+    {
+      "fecha_alta": "10/12/2023",
+      "estado_ultimo_viaje": "Incidencia abierta",
+      "telefono": "+34 6 238 8651",
+      "tipo_abono": "Tarifa Social",
+      "correo": "alvaro.lozano@correo.example.com",
+      "ciclo_cobro": "Pago único",
+      "viajes_mes": 21,
+      "num_socio": "BICI-60632",
+      "estacion_habitual": "Estación Norte",
+      "nombre": "Álvaro",
+      "apellidos": "Lozano",
+      "estado_cuenta": "Bloqueada por impago",
+      "fecha_nacimiento": null,
+      "id_tarjeta": "04A3F572E"
+    },
+    {
+      "fecha_alta": "02/11/2023",
+      "estado_cuenta": "Bloqueada por impago",
+      "apellidos": "Iglesias",
+      "id_tarjeta": "04A3F5AFF",
+      "estacion_habitual": "Parque del Río",
+      "ciclo_cobro": "Pago único",
+      "num_socio": "BICI-60655",
+      "fecha_nacimiento": "03/04/1987",
+      "estado_ultimo_viaje": "En curso",
+      "telefono": "+34 6 794 3242",
+      "nombre": "Martina",
+      "correo": "martina.iglesias@correo.example.com",
+      "viajes_mes": 13,
+      "tipo_abono": "Tarifa Social"
+    },
+    {
+      "nombre": " Irene ",
+      "ciclo_cobro": "Pago único",
+      "viajes_mes": 49,
+      "estado_cuenta": "Suspendida (incidencia)",
+      "num_socio": "BICI-60678",
+      "telefono": "+34 6 837 6246",
+      "estacion_habitual": "Plaza Mayor",
+      "correo": "Irene.Cortes@Correo.Example.Com",
+      "estado_ultimo_viaje": "En curso",
+      "tipo_abono": "Mensual",
+      "fecha_nacimiento": "10/04/1990",
+      "id_tarjeta": "04A3F5ED0",
+      "apellidos": "Cortés",
+      "fecha_alta": "08/12/2023"
+    },
+    {
+      "fecha_nacimiento": "02/01/1986",
+      "estacion_habitual": "Estación Norte",
+      "telefono": "+34 6 112 7017",
+      "tipo_abono": "Cuenta de prueba",
+      "estado_cuenta": "Baja voluntaria",
+      "id_tarjeta": "04A3F62A1",
+      "correo": "elena.lopezmartin@correo.example.com",
+      "apellidos": "López Martín",
+      "num_socio": "BICI-60701",
+      "ciclo_cobro": "Trimestral",
+      "viajes_mes": 16,
+      "estado_ultimo_viaje": "Finalizado",
+      "fecha_alta": "03/08/2020",
+      "nombre": "Elena"
+    },
+    {
+      "ciclo_cobro": "Trimestral",
+      "viajes_mes": 20,
+      "id_tarjeta": "04A3F6672",
+      "estado_ultimo_viaje": "En curso",
+      "fecha_nacimiento": "06/06/1965",
+      "estacion_habitual": "Campus Sur",
+      "tipo_abono": "Anual",
+      "telefono": "+34 6 306 3496",
+      "correo": "alba.iglesias@correo.example.com",
+      "estado_cuenta": "Baja voluntaria",
+      "apellidos": "Iglesias",
+      "nombre": "Alba",
+      "fecha_alta": "07/03/2020",
+      "num_socio": "BICI-60724"
+    },
+    {
+      "id_tarjeta": "04A3F6A43",
+      "correo": "Mateo.Delgado@Correo.Example.Com",
+      "nombre": "Mateo",
+      "ciclo_cobro": "Mensual domiciliado",
+      "tipo_abono": "Tarifa Social",
+      "estacion_habitual": "Campus Sur",
+      "fecha_alta": "12/05/2025",
+      "num_socio": "BICI-60747",
+      "apellidos": "Delgado",
+      "telefono": "+34 6 691 5836",
+      "estado_cuenta": "Bloqueada por impago",
+      "viajes_mes": 24,
+      "estado_ultimo_viaje": "Finalizado"
+    },
+    {
+      "fecha_alta": "08/01/2023",
+      "id_tarjeta": "04A3F6E14",
+      "apellidos": "Ortega",
+      "tipo_abono": "Cuenta de prueba",
+      "estacion_habitual": "Estación Norte",
+      "estado_cuenta": "Activa",
+      "num_socio": "BICI-60770",
+      "correo": "marcos.ortega@correo.example.com",
+      "fecha_nacimiento": "10/03/1969",
+      "estado_ultimo_viaje": "Incidencia abierta",
+      "nombre": "Marcos",
+      "viajes_mes": 61,
+      "ciclo_cobro": "Pago único",
+      "telefono": "+34 6 153 5543"
+    },
+    {
+      "fecha_alta": "09/02/2020",
+      "nombre": "Sergio",
+      "viajes_mes": 10,
+      "num_socio": "BICI-60793",
+      "ciclo_cobro": "Pago único",
+      "estacion_habitual": "Estación Norte",
+      "fecha_nacimiento": "09/12/2001",
+      "id_tarjeta": "04A3F71E5",
+      "correo": "sergio.herrera@correo.example.com",
+      "estado_cuenta": "Baja voluntaria",
+      "estado_ultimo_viaje": "Incidencia abierta",
+      "tipo_abono": "Abono Joven",
+      "telefono": "+34 6 416 2947",
+      "apellidos": "Herrera"
+    },
+    {
+      "id_tarjeta": "04A3F75B6",
+      "viajes_mes": 12,
+      "nombre": "Sofía",
+      "apellidos": "Vega",
+      "estado_cuenta": "Activa",
+      "tipo_abono": "Abono Joven",
+      "ciclo_cobro": "Trimestral",
+      "estado_ultimo_viaje": "En curso",
+      "estacion_habitual": "Mercado Central",
+      "num_socio": "BICI-60816",
+      "telefono": "+34 6 915 1573",
+      "fecha_nacimiento": "02/04/1984",
+      "fecha_alta": "07/08/2021",
+      "correo": "Sofia.Vega@Correo.Example.Com"
+    },
+    {
+      "num_socio": "BICI-60839",
+      "id_tarjeta": "04A3F7987",
+      "telefono": "+34 6 162 8000",
+      "apellidos": "Rubio",
+      "estado_cuenta": "Bloqueada por impago",
+      "fecha_nacimiento": "01/01/2000",
+      "estacion_habitual": "Parque del Río",
+      "viajes_mes": 35,
+      "tipo_abono": "Abono Joven",
+      "fecha_alta": "07/11/2025",
+      "nombre": "Carmen",
+      "correo": "carmen.rubio@correo.example.com",
+      "estado_ultimo_viaje": "En curso",
+      "ciclo_cobro": "Mensual domiciliado"
+    },
+    {
+      "fecha_alta": "05/03/2024",
+      "apellidos": "Castro Vidal",
+      "num_socio": "BICI-60862",
+      "estacion_habitual": "Plaza Mayor",
+      "correo": "marcos.castrovidal@correo.example.com",
+      "viajes_mes": 62,
+      "ciclo_cobro": "Trimestral",
+      "estado_ultimo_viaje": "Incidencia abierta",
+      "telefono": "+34 6 721 8697",
+      "fecha_nacimiento": null,
+      "id_tarjeta": "04A3F7D58",
+      "nombre": "Marcos",
+      "tipo_abono": "Cuenta de prueba",
+      "estado_cuenta": "Baja voluntaria"
+    },
+    {
+      "id_tarjeta": "04A3F8129",
+      "estado_cuenta": "Activa",
+      "fecha_nacimiento": "04/07/1986",
+      "viajes_mes": 61,
+      "nombre": "Hugo",
+      "correo": "Hugo.Castrovidal@Correo.Example.Com",
+      "ciclo_cobro": "Trimestral",
+      "estado_ultimo_viaje": "En curso",
+      "estacion_habitual": "Campus Sur",
+      "apellidos": "Castro Vidal",
+      "tipo_abono": "Mensual",
+      "num_socio": "BICI-60885",
+      "fecha_alta": "03/12/2024",
+      "telefono": "+34 6 207 2452"
+    },
+    {
+      "id_tarjeta": "04A3F84FA",
+      "ciclo_cobro": "Mensual domiciliado",
+      "estado_cuenta": "Suspendida (incidencia)",
+      "viajes_mes": 47,
+      "correo": "carmen.prieto@correo.example.com",
+      "estado_ultimo_viaje": "En curso",
+      "fecha_nacimiento": "02/09/2007",
+      "nombre": "Carmen",
+      "fecha_alta": "06/04/2019",
+      "estacion_habitual": "Parque del Río",
+      "tipo_abono": "Bono 10 viajes",
+      "apellidos": "Prieto",
+      "telefono": "+34 6 918 7765",
+      "num_socio": "BICI-60908"
+    },
+    {
+      "id_tarjeta": "04A3F88CB",
+      "fecha_alta": "11/09/2019",
+      "tipo_abono": "Bono 10 viajes",
+      "apellidos": "Ortega",
+      "telefono": "+34 6 728 4380",
+      "nombre": "  Elena",
+      "fecha_nacimiento": "03/03/1990",
+      "estacion_habitual": "Estación Norte",
+      "viajes_mes": 63,
+      "num_socio": "BICI-60931",
+      "estado_cuenta": "Suspendida (incidencia)",
+      "ciclo_cobro": "Trimestral",
+      "estado_ultimo_viaje": "Finalizado",
+      "correo": "elena.ortega@correo.example.com"
+    },
+    {
+      "fecha_nacimiento": "08/08/1974",
+      "ciclo_cobro": "Mensual domiciliado",
+      "correo": "Alvaro.Morales@Correo.Example.Com",
+      "estado_ultimo_viaje": "Incidencia abierta",
+      "nombre": "Álvaro",
+      "estado_cuenta": "Suspendida (incidencia)",
+      "num_socio": "BICI-60954",
+      "viajes_mes": 36,
+      "id_tarjeta": "04A3F8C9C",
+      "estacion_habitual": "Estación Norte",
+      "tipo_abono": "Cuenta de prueba",
+      "telefono": "+34 6 979 2821",
+      "fecha_alta": "11/10/2020",
+      "apellidos": "Morales"
+    },
+    {
+      "estado_cuenta": "Baja voluntaria",
+      "id_tarjeta": "04A3F906D",
+      "ciclo_cobro": "Pago único",
+      "correo": "alvaro.herrera@correo.example.com",
+      "num_socio": "BICI-60977",
+      "telefono": "+34 6 479 5806",
+      "fecha_nacimiento": "04/02/2008",
+      "estacion_habitual": "Plaza Mayor",
+      "estado_ultimo_viaje": "Finalizado",
+      "viajes_mes": 11,
+      "tipo_abono": "Mensual",
+      "nombre": "Álvaro",
+      "apellidos": "Herrera",
+      "fecha_alta": "09/07/2024"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "member_id": {
+        "type": "string",
+        "description": "Membership number of the subscriber."
+      },
+      "first_name": {
+        "type": "string",
+        "description": "Given name of the member."
+      },
+      "last_name": {
+        "type": "string",
+        "description": "Family name(s) of the member."
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "description": "Login email of the member."
+      },
+      "plan": {
+        "type": "string",
+        "enum": [
+          "annual",
+          "monthly",
+          "ten_ride_pack",
+          "youth",
+          "reduced"
+        ],
+        "description": "Subscription product the member holds."
+      },
+      "billing_cycle": {
+        "type": "string",
+        "enum": [
+          "one_off",
+          "monthly",
+          "quarterly"
+        ],
+        "description": "How the subscription is charged."
+      },
+      "account_status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "blocked",
+          "closed",
+          "suspended"
+        ],
+        "description": "Whether the member may unlock bikes."
+      },
+      "member_since": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the member joined."
+      },
+      "birth_date": {
+        "type": "string",
+        "format": "date",
+        "description": "Date of birth of the member."
+      },
+      "age": {
+        "type": "integer",
+        "description": "Current age of the member in years."
+      },
+      "home_station": {
+        "type": "string",
+        "description": "Station the member uses most."
+      }
+    },
+    "required": [
+      "member_id",
+      "first_name",
+      "last_name",
+      "email",
+      "plan",
+      "member_since"
+    ]
+  },
+  "groundTruth": {
+    "member_id": {
+      "source": "num_socio",
+      "transform": "copy",
+      "why": "member number; id_tarjeta is the RFID card that can be replaced"
+    },
+    "first_name": {
+      "source": "nombre",
+      "transform": "trim",
+      "why": "first name, padded"
+    },
+    "last_name": {
+      "source": "apellidos",
+      "transform": "copy",
+      "why": "surnames"
+    },
+    "email": {
+      "source": "correo",
+      "transform": "normalize_email",
+      "why": "member email, mixed case"
+    },
+    "plan": {
+      "source": "tipo_abono",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Anual": "annual",
+        "Mensual": "monthly",
+        "Bono 10 viajes": "ten_ride_pack",
+        "Abono Joven": "youth",
+        "Tarifa Social": "reduced",
+        "Cuenta de prueba": null
+      },
+      "why": "subscription product; test accounts need review"
+    },
+    "billing_cycle": {
+      "source": "ciclo_cobro",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Pago único": "one_off",
+        "Mensual domiciliado": "monthly",
+        "Trimestral": "quarterly"
+      },
+      "why": "charging cycle; \"Mensual\" in tipo_abono is the product, not the cycle"
+    },
+    "account_status": {
+      "source": "estado_cuenta",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Activa": "active",
+        "Bloqueada por impago": "blocked",
+        "Baja voluntaria": "closed",
+        "Suspendida (incidencia)": "suspended"
+      },
+      "why": "account state; estado_ultimo_viaje describes the last ride"
+    },
+    "member_since": {
+      "source": "fecha_alta",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "sign-up date (Spanish day-first)"
+    },
+    "birth_date": {
+      "source": "fecha_nacimiento",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "birth date (Spanish day-first), sometimes absent"
+    },
+    "age": {
+      "source": null,
+      "transform": "none",
+      "why": "no age is exported",
+      "unsupportedReason": "the age would have to be computed from the birth date and today's date"
+    },
+    "home_station": {
+      "source": "estacion_habitual",
+      "transform": "copy",
+      "why": "usual station"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "tipo_abono",
+        "ciclo_cobro"
+      ],
+      "correctFor": "plan"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "estado_cuenta",
+        "estado_ultimo_viaje"
+      ],
+      "correctFor": "account_status"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "num_socio",
+        "id_tarjeta"
+      ],
+      "correctFor": "member_id"
+    },
+    {
+      "kind": "birth-date-vs-start-date",
+      "fields": [
+        "fecha_alta",
+        "fecha_nacimiento"
+      ],
+      "correctFor": "member_since"
+    }
+  ],
+  "sourceConcepts": {
+    "num_socio": "customer-id",
+    "id_tarjeta": "other-identifier",
+    "nombre": "given-name",
+    "apellidos": "family-name",
+    "correo": "email",
+    "telefono": "phone",
+    "tipo_abono": "category",
+    "ciclo_cobro": "payment-status",
+    "estado_cuenta": "account-status",
+    "estado_ultimo_viaje": "category",
+    "fecha_alta": "start-date",
+    "fecha_nacimiento": "birth-date",
+    "estacion_habitual": "other",
+    "viajes_mes": "quantity"
+  },
+  "destinationConcepts": {
+    "member_id": "customer-id",
+    "first_name": "given-name",
+    "last_name": "family-name",
+    "email": "email",
+    "plan": "category",
+    "billing_cycle": "payment-status",
+    "account_status": "account-status",
+    "member_since": "start-date",
+    "birth_date": "birth-date",
+    "age": "quantity",
+    "home_station": "other"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 0,
+      "outcome": "transformed",
+      "output": {
+        "member_id": "BICI-60310",
+        "first_name": "Elena",
+        "last_name": "Castro Vidal",
+        "email": "elena.castrovidal@correo.example.com",
+        "plan": "reduced",
+        "billing_cycle": "quarterly",
+        "account_status": "suspended",
+        "member_since": "2025-12-01",
+        "birth_date": "1978-06-12",
+        "home_station": "Campus Sur"
+      }
+    },
+    {
+      "recordIndex": 3,
+      "outcome": "transformed",
+      "output": {
+        "member_id": "BICI-60379",
+        "first_name": "Alba",
+        "last_name": "Rubio",
+        "email": "alba.rubio@correo.example.com",
+        "plan": "youth",
+        "billing_cycle": "monthly",
+        "account_status": "blocked",
+        "member_since": "2022-02-12",
+        "home_station": "Plaza Mayor"
+      }
+    },
+    {
+      "recordIndex": 5,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 6,
+      "outcome": "transformed",
+      "output": {
+        "member_id": "BICI-60448",
+        "first_name": "Alba",
+        "last_name": "Vega",
+        "email": "alba.vega@correo.example.com",
+        "plan": "monthly",
+        "billing_cycle": "monthly",
+        "account_status": "blocked",
+        "member_since": "2020-08-05",
+        "home_station": "Mercado Central"
+      }
+    }
+  ]
+}
