@@ -51,7 +51,7 @@ async function sha256(text: string): Promise<string> {
  * via `buildCloudPromptText`); `"v4"` rebuilds the rejected Sprint 18A.5 P1 prompt.
  */
 export async function reconstruct(scenario: AiValueScenario, concepts: boolean, prompt: "sprint3" | "v4" = "sprint3"): Promise<Reconstruction | null> {
-  const prepared = prepareTwin({ records: scenario.records, datasetLabel: "imported.json", seed: DEFAULT_TWIN_SEED, concepts });
+  const prepared = prepareTwin({ records: scenario.records, datasetLabel: "imported.json", seed: DEFAULT_TWIN_SEED, concepts, labelCategories: false });
   if (!prepared.ok) return null;
   const draft = buildDisclosureDraft({ prepared: prepared.value, targetSchema: scenario.destination });
   if (!draft.ok) return null;

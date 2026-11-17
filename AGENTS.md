@@ -244,6 +244,9 @@ Decision: [ADR 0018](docs/decisions/0018-integration-intent-plan.md). Report: [d
   - Never treat a zero-operation plan as an integration.
 - **Decoder schemas sent to Gemini carry no nested array bounds.** The provider refuses them (HTTP 400 "too many states"). Bounds belong in the canonical schema.
 - **The harness legacy planner (`initialPlanner: "mapping-proposal-sprint3"`) is for planner-independent technical-view tests only.** Production never reads it.
+- **Category detection accepts real-world labels** (`profileRecords`). A field is a category when it has ≤ 12 labels of ≤ 32 characters and each label is used about twice or more.
+  - Labels stay withheld by default.
+  - `labelCategories: false` exists only for historical replays (18A, 18A.5, 18B evidence). Never expose it in the product.
 - **The leak scan ignores a match only inside an exact application-owned twin segment** (`src/phantom/fixed-text.ts`). Never add a word list.
 
 ## Release lifecycle and production acceptance (Sprint 14 — permanent, every sprint)

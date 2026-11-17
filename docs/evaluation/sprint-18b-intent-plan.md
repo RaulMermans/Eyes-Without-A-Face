@@ -297,3 +297,10 @@ The holdout was read only through its existing aggregate rows.
 - **The question for a required `no_source` field** should name the candidate fields. The oracle could then answer it as a user would.
 - **An optional destination field whose source is null or missing** could be omitted instead of failing the record.
   - This changes the engine semantics in ADR 0006, so it needs a new ADR.
+
+**Fix applied for cause 2 (not yet evaluated live).**
+- `profileRecords` also accepts repeated real-world labels as categories: ≤ 12 labels, ≤ 32 characters, at least 2 values per label on average.
+- All 8 dev category sources are now `enum` with labels withheld. 7 of 8 have a descriptor no other field shares.
+- Historical replays use `labelCategories: false` and still reproduce their recorded prompts.
+- **Remaining weakness:** every category gets the role text "Lifecycle status category". A category without a concept (for example a membership type) can still look like other category fields.
+- Whether Gemini now finds category sources must be measured on a fresh holdout. This holdout is inspected.

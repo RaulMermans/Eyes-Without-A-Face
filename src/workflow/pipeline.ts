@@ -39,10 +39,12 @@ export function prepareTwin(input: {
   now?: () => number;
   /** Sprint 18A: false reproduces the pre-18A twin (evaluation baseline only). */
   concepts?: boolean;
+  /** Sprint 18B: false reproduces the pre-18B token-only category rule (historical replays only). */
+  labelCategories?: boolean;
 }): PrepareTwinResult {
   const now = input.now ?? (() => performance.now());
   const t0 = now();
-  const profiled = profileRecords(input.records);
+  const profiled = profileRecords(input.records, { labelCategories: input.labelCategories });
   const t1 = now();
   if (!profiled.ok) {
     return { ok: false, stage: "profile", issues: profiled.issues };

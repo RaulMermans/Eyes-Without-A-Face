@@ -160,7 +160,8 @@ function detectDateFormat(values: string[]): { type: "date" | "datetime"; format
 /**
  * Profile an array of JSON records. Expected failures return `{ ok: false }`.
  */
-export function profileRecords(records: unknown): ProfileResult {
+/** `labelCategories: false` reproduces the pre-18B token-only category rule (historical replays only). */
+export function profileRecords(records: unknown, options: { labelCategories?: boolean } = {}): ProfileResult {
   if (!Array.isArray(records)) {
     return fail("NOT_AN_OBJECT", "Source must be an array of JSON objects.");
   }
@@ -202,7 +203,7 @@ export function profileRecords(records: unknown): ProfileResult {
 
   const fields: FieldProfile[] = [];
   for (const accumulator of [...accumulators.values()].sort((a, b) => a.path.localeCompare(b.path))) {
-    const field = finalize(accumulator, records.length, issues);
+    const field = finalize(accumulator, records.length, issues, options.labelCategories !== false);
     if (field) {
       fields.push(field);
     }
@@ -310,7 +311,7 @@ function collect(
   return null;
 }
 
-function finalize(accumulator: Accumulator, recordCount: number, issues: ProfileIssue[]): FieldProfile | null {
+function finalize(accumulator: Accumulator, recordCount: number, issues: ProfileIssue[], labelCategories: boolean): FieldProfile | null {
   const types = new Set(accumulator.types);
   types.delete("null");
   // Container-only paths (always objects) are represented by their children.
@@ -447,10 +448,14 @@ function finalize(accumulator: Accumulator, recordCount: number, issues: Profile
   for (const value of strings) {
     counts.set(value, (counts.get(value) ?? 0) + 1);
   }
+  const labels = [...counts.keys()];
+  const fewLabels = counts.size <= PROFILE_LIMITS.maxCategories && labels.every((value) => value.length <= PROFILE_LIMITS.maxCategoryLength);
+  // Sprint 18B: real exports use labels like "Marketing Qualified Lead", "Básico", "ALT-IMPORT 2019". They are
+  // categories when they repeat (≥ 2 values per label on average), which keeps names and identifiers out.
   const categoryLike =
     strings.length >= 2 &&
-    counts.size <= PROFILE_LIMITS.maxCategories &&
-    [...counts.keys()].every((value) => CATEGORY_TOKEN.test(value) && value.length <= PROFILE_LIMITS.maxCategoryLength);
+    fewLabels &&
+    (labels.every((value) => CATEGORY_TOKEN.test(value)) || (labelCategories && counts.size * 2 <= strings.length && labels.every((value) => value.trim() !== "")));
   if (categoryLike) {
     field.type = "enum";
     field.categories = [...counts.entries()]

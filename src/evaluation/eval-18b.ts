@@ -95,7 +95,7 @@ export function promptFor(config: Config18b, canonicalJson: string, schemaVersio
 
 /** Twin + disclosure + preview, as the app builds them (same seed, same label, concepts on). Null when the scenario cannot be built. */
 export async function buildScenario(scenario: Pick<Eval18bScenario, "records" | "destination">, config: Config18b): Promise<Built18b | null> {
-  const prepared = prepareTwin({ records: scenario.records, datasetLabel: "imported.json", seed: DEFAULT_TWIN_SEED, concepts: true });
+  const prepared = prepareTwin({ records: scenario.records, datasetLabel: "imported.json", seed: DEFAULT_TWIN_SEED, concepts: true, labelCategories: false });
   if (!prepared.ok) return null;
   const draft = buildDisclosureDraft({ prepared: prepared.value, targetSchema: scenario.destination });
   if (!draft.ok) return null;
