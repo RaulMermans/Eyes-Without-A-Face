@@ -15,7 +15,7 @@ Mapping execution is a local, provider-independent interpreter of the Mapping Co
 | --- | --- |
 | Missing | Key absent on the source object |
 | `null` | Present value. Not missing. `default_if_missing` does not replace it |
-| Optional destination | Omitted unless an operation writes it; target schema then decides validity |
+| Optional destination | Omitted unless an operation writes it; target schema then decides validity. An operation whose input is missing or null and whose destination is optional writes nothing ([ADR 0019](0019-optional-destination-absent-input.md)) |
 | Type preservation | `copy` / `rename` keep string, number, boolean, or null. Objects and arrays are rejected |
 | Strings | `trim` / `normalize_email` / `concat` / `map_enum` / `parse_date` require strings. No coercion |
 | Empty string | Present value. `parse_date` rejects it |

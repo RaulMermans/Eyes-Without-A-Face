@@ -15,6 +15,7 @@ import {
 import {
   destinationHas,
   parseFieldRef,
+  readPath,
   scanForbiddenKeys,
   writePath,
   type FieldPath,
@@ -183,6 +184,8 @@ export function executeMapping(input: ExecuteMappingInput): MappingExecutionResu
         ),
       ]);
     }
+    // ADR 0019: an absent input for an optional destination field omits that field instead of refusing the record.
+    if (absentForOptional(source, operation, schemaCheck.schema)) continue;
     const applied = applyOperation(source, output, operation, index);
     if (applied) {
       return fail([applied]);
@@ -458,4 +461,47 @@ function applyConcat(
   }
   const written = writePath(output, toPath.path, parts.join(operation.params.separator));
   return written ? withOp(written, index, operation.op) : undefined;
+}
+
+/**
+ * ADR 0019. True when `operation` writes an optional destination field (not in
+ * its parent's `required`) and an input it reads is missing or null. The field
+ * is then omitted and the record goes on; the target schema still judges the
+ * output. A null copied into an optional field that accepts null is written as
+ * before (ADR 0006). Required fields and `default_if_missing` are unchanged.
+ */
+function absentForOptional(source: Record<string, unknown>, operation: MappingOperation, schema: object): boolean {
+  if (operation.op === "default_if_missing") return false;
+  const destination = destinationSchema(schema, operation.to);
+  if (!destination || destination.required) return false;
+  const refs = Array.isArray(operation.from) ? operation.from : [operation.from];
+  for (const ref of refs) {
+    const parsed = parseFieldRef(ref, "from");
+    if (!parsed.ok) return false;
+    const read = readPath(source, parsed.path);
+    if ("code" in read) {
+      if (read.code === "NULL_VALUE") return true;
+      continue;
+    }
+    if (read.kind === "missing") return true;
+    if (read.value === null) return !((operation.op === "copy" || operation.op === "rename") && destination.acceptsNull);
+  }
+  return false;
+}
+
+/** The leaf property of a dotted destination path in an object schema, or null when the schema does not declare it. */
+function destinationSchema(schema: object, to: string): { required: boolean; acceptsNull: boolean } | null {
+  let node: unknown = schema;
+  const segments = to.split(".");
+  for (const [position, segment] of segments.entries()) {
+    if (!isPlainObject(node) || !isPlainObject(node.properties) || !Object.hasOwn(node.properties, segment)) return null;
+    const child = node.properties[segment];
+    if (position === segments.length - 1) {
+      const type = isPlainObject(child) ? child.type : undefined;
+      const acceptsNull = type === "null" || (Array.isArray(type) && type.includes("null")) || (isPlainObject(child) && Array.isArray(child.enum) && child.enum.includes(null));
+      return { required: Array.isArray(node.required) && node.required.includes(segment), acceptsNull };
+    }
+    node = child;
+  }
+  return null;
 }

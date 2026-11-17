@@ -248,6 +248,9 @@ Decision: [ADR 0018](docs/decisions/0018-integration-intent-plan.md). Report: [d
   - Labels stay withheld by default.
   - A category is described as "Category field with N distinct values" (the count only, never a label), plus its meaning claim when there is one. Never claim a lifecycle or status meaning that the evidence does not give.
   - `labelCategories: false` reproduces both pre-18B behaviours (token-only detection, "Lifecycle status category"). It exists only for historical replays (18A, 18A.5, 18B evidence). Never expose it in the product.
+- **An absent input for an optional destination field omits that field** ([ADR 0019](docs/decisions/0019-optional-destination-absent-input.md)). The record goes on.
+  - Required fields still refuse the record.
+  - Never fill an omitted field.
 - **The leak scan ignores a match only inside an exact application-owned twin segment** (`src/phantom/fixed-text.ts`). Never add a word list.
 
 ## Release lifecycle and production acceptance (Sprint 14 — permanent, every sprint)
