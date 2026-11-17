@@ -43,7 +43,7 @@
 
 ## Live evaluation (51 owner-approved requests)
 
-**Gate B-AI: FAIL** on M1, M2, M3, M9 and E1. See the evaluation for the full table.
+**Gate B-AI: FAIL** on M1, M2, M3, M9, E1 and E2. See the evaluation for the full table.
 
 **What worked:**
 - invented values and invalid enum translations fell from 17 to 0;
@@ -63,11 +63,11 @@
 - **Workstream C (Gemini Nano):** not started.
 - **Independent usability sessions (Gate B):** not run.
 - **Visual and accessibility audit beyond the existing E2E:** not done.
-- **Scorer defects found after the run** (E2 count against rate; S2 also requiring every scenario to be sent): reported, not changed.
+- **Scorer note:** S2 also requires every scenario to be sent; reported, not changed. An earlier E2 "defect" claim was the lead's misreading and is corrected.
 
 ## Next
 
-1. Trace on the dev split why compiled plans leave records unresolved (E1 = 0).
+1. **Traced on dev** ([evaluation § Trace](../evaluation/sprint-18b-intent-plan.md#trace-why-records-stay-unresolved-dev-split-2026-11-17)). The profile's category rule rejects real-world labels, so Gemini cannot see category fields and plans stay incomplete. Fix category detection first.
 2. Reduce provider errors: a smaller decoder schema, or a two-step request.
 3. Pre-register a successor on a fresh holdout. This holdout is inspected.
 

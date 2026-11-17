@@ -213,20 +213,18 @@ Run 1's P2 t1 (10 × HTTP 400) is kept in its own file and is not scored, becaus
 | **M9** | Whole-plan rejections + provider failures | 0.111 (2 × HTTP 500) | **0.300 (6 × HTTP 500)** | ≤ 0.10 | **FAIL** |
 | **M10** | Hallucinated references | 0 | 0 | P2 ≤ P0 | pass |
 | **E1** | End-to-end success, completable answers | 0 / 14 | **0 / 14** | ≥ 0.50 | **FAIL** |
-| **E2** | Incorrect transformed records | — (0 transformed) | 1 / 28 = 0.036 | ≤ 0.05 | pass by the pre-registered rate (see note) |
+| **E2** | Incorrect transformed records | — (0 transformed) | **28 / 28 = 1.0** | ≤ 0.05 | **FAIL** |
 | **E3** | False completes | 0 | 0 | = 0 | pass |
 | **U1** | Manual mapping operations per scenario | 10.9 | **4.2** | ≤ 0.5 × baseline (10.7) | pass |
 | U2 | All clarification answers; unnecessary questions | 14.1; 0 | 7.3; 4 | reported | — |
 | **S1** | Privacy findings | 0 | 0 | = 0 | pass |
 | **S2** | Prompt proof | 0 mismatches | 0 mismatches | every request | every sent request proven; the scorer reports false because P0 holdout #3 could never be built and sent |
 
-Notes on the scorer, reported rather than changed after the run:
-- **E2:** the code compares the *count* of incorrect records (1) with 0.05, whereas the pre-registration defines a rate.
+Note on the scorer, reported rather than changed after the run:
 - **S2:** the scorer also requires every scenario to have been sent.
+- **Correction (2026-11-17):** an earlier version of this section called E2 a scorer defect ("count against rate"). That was the lead's misreading: the summary value 1 is the rate 28 / 28. The scorer was right.
 
-Neither changes the gate.
-
-**Gate B-AI verdict: FAIL** on M1, M2, M3, M9 and E1.
+**Gate B-AI verdict: FAIL** on M1, M2, M3, M9, E1 and E2.
 
 **Explanatory breakdown (not pre-registered).** These figures count only requests that got an answer.
 
@@ -259,3 +257,43 @@ On the 9 scenarios both configurations answered, mappable correctness was 0.755 
   - a smaller decoder schema or a two-step request, to cut provider errors;
   - tracing why compiled plans leave records unresolved;
   - mappable recall.
+
+### Trace: why records stay unresolved (dev split, 2026-11-17)
+
+**Method.** A throwaway script, not committed, ran each dev scenario through the frozen scorer's oracle and the canonical engine. It printed codes and counts only, for two kinds of plan:
+- a plan stating the ground-truth correspondences, with category labels withheld;
+- the simulated planner.
+
+The holdout was read only through its existing aggregate rows.
+
+**1. The pipeline is sound once the correspondences are right.**
+- With the ground-truth plan, every completable dev scenario reached exactly the expected outcome. For CRM → helpdesk: 28 records transformed and 4 held for review, as expected.
+- The oracle's local category translation works on these fields.
+
+**2. Primary cause: category source fields are invisible to Gemini.**
+- The profile's category rule `CATEGORY_TOKEN = /^[a-z][a-z0-9_-]{0,31}$/` (`src/domain/profile/profile.ts`) accepts only lowercase ASCII tokens.
+- All 8 dev category sources fail it. Real labels have capitals, spaces, accents or codes: "Marketing Qualified Lead", "Básico", "Klavier", "ALT-IMPORT 2019".
+- Such a field is profiled as `string`. The twin therefore describes it as "Short text value", the same as 13–16 other text fields in the same request. Nothing tells Gemini that it holds a small set of categories.
+- Gemini then cannot find the source of a required fixed-list field (M3 = 0.25 live). The compiled integration lacks a required field, so every record fails `OUTPUT_SCHEMA_MISMATCH` and is UNRESOLVED.
+- **Live aggregates agree:** 11 of 14 answered P2 plans were incomplete, with 0 records transformed.
+
+**3. The oracle overstates failure.**
+- A required field that the plan wrongly marks `no_source` yields `missing-required-source`. The pre-registration treats that question as unanswerable.
+- The UI offers "choose a field", which a real user could answer.
+
+**4. Strict null handling loses valid records, even with the correct mapping.**
+- A record whose source value for an *optional* destination field is null or missing is refused whole (`NULL_VALUE`, `MISSING_SOURCE_FIELD`).
+- Dev examples: 16 of 34 records (gym) and 3 of 26 (music school).
+- The scorer counts these as "correctly not transformed", because the ground-truth contract refuses them too. For a user they are still lost records.
+
+**5. Complete but wrong: not traced on dev.**
+- One holdout scenario compiled complete in both trials and transformed 14 of 14 records wrongly.
+- The simulated planner on dev reproduces no such case, and the holdout is not opened for it.
+
+**Candidate fixes for a successor.** Each needs its own decision and tests.
+- **Category detection that accepts real-world labels** (≤ 12 repeated values, ≤ 32 characters, any letters or spaces).
+  - Labels stay withheld by default. Only the category kind and the count reach the twin.
+  - This needs a privacy review, because more fields become enum.
+- **The question for a required `no_source` field** should name the candidate fields. The oracle could then answer it as a user would.
+- **An optional destination field whose source is null or missing** could be omitted instead of failing the record.
+  - This changes the engine semantics in ADR 0006, so it needs a new ADR.
