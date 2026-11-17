@@ -121,4 +121,41 @@ The compiled contract then runs through the canonical engine, the acceptance pol
 
 ## Results
 
-*(appended after the run; not yet run)*
+### Run 1 — stopped by the lead after P2 trial 1 (2026-11-17)
+
+**Setup.**
+- The owner approved the 40-request budget on 2026-11-17.
+- P2 = `sprint-18b-ai-first` @ `9489795`, served on port 5174. P0 = `main` @ `1e9de92`, served from a temporary worktree on port 5175.
+
+**Zero-request rehearsals.**
+
+| Split | P0 | P2 |
+| --- | --- | --- |
+| Dev (4) | 4 / 4 ready to send, prompt reconstruction matched | 4 / 4 ready to send, prompt reconstruction matched |
+| Holdout (10) | 9 / 10 ready to send. Holdout #3 cannot be built on `main`: the build step fails, with the same symptom as the 18A / 18A.5 build failure | 10 / 10 ready to send |
+
+**Live, in ABBA order.**
+
+| Config | Requests | Outcome |
+| --- | --- | --- |
+| P0 t1 | 9 | #3 not buildable; 1 HTTP 500 provider failure |
+| P2 t1 | 10 | **every request refused by the provider with HTTP 400 before any answer**. No plan was produced. |
+
+- Privacy: 0 findings.
+- Budget used: **19 of 40**.
+
+**Why the run stopped.**
+- A provider refusal of every request is deterministic. It is not a sampling outcome, so P2 t2 would have spent 10 more requests on certain refusals.
+- AGENTS.md says to never loop real requests until one passes. The lead therefore stopped before P2 t2 and P0 t2.
+- The evidence is kept unchanged in [intent-plan-live.json](../evidence/sprint-18b/intent-plan-live.json).
+
+**Diagnosis so far (no request text inspected).**
+- The P2 request differs from P0 only in two things: the instruction text and the response schema `INTENT_PLAN_JSON_SCHEMA`.
+- The schema is the most likely cause. It uses `minItems` / `maxItems`, which no earlier live schema used, and Worker A had verified it only against documentation.
+- The provider's 400 text was not recorded by the harness, so the exact rejected keyword is unproven.
+
+**Status: no verdict.**
+- As run, P2 produced no usable answer: M9 = 1.0 > 0.10, so Gate B-AI would **FAIL**.
+- The cause is in the request transport, not in planning quality. Resuming needs the owner's decision, as in 18A.5.
+- Nothing was tuned on the holdout. No P0 or P2 answer was read by an engineer.
+
