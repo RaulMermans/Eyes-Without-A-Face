@@ -1,4 +1,4 @@
-import type { DateInputFormat, FieldProfile } from "../domain/profile/profile.ts";
+import { PROFILE_LIMITS, type DateInputFormat, type FieldProfile } from "../domain/profile/profile.ts";
 import { defaultDescriptor, SEMANTIC_ROLES } from "./roles.ts";
 
 /**
@@ -34,16 +34,21 @@ export const OWNED_DESCRIPTOR_SEGMENTS: ReadonlySet<string> = (() => {
   const formats: Array<DateInputFormat | undefined> = [undefined, "ISO-8601", "YYYY-MM-DD", "MM/DD/YYYY", "DD/MM/YYYY"];
   for (const role of SEMANTIC_ROLES) {
     for (const dateFormat of formats) {
-      for (let bits = 0; bits < 32; bits += 1) {
-        const field = {
-          dateFormat,
-          hasPaddedWhitespace: (bits & 1) !== 0,
-          hasMixedCase: (bits & 2) !== 0,
-          required: (bits & 4) !== 0,
-          nullable: (bits & 8) !== 0,
-        } as FieldProfile;
-        const text = defaultDescriptor(role, field, { categoriesDisclosed: (bits & 16) !== 0 });
-        for (const segment of text.split(DESCRIPTOR_SEPARATOR)) segments.add(segment);
+      // Category value counts the profile can produce (0 and 2..maxCategories), in both wordings.
+      const counts = role === "status" ? [0, ...Array.from({ length: PROFILE_LIMITS.maxCategories - 1 }, (_, index) => index + 2)] : [0];
+      for (const count of counts) {
+        for (let bits = 0; bits < 64; bits += 1) {
+          const field = {
+            dateFormat,
+            hasPaddedWhitespace: (bits & 1) !== 0,
+            hasMixedCase: (bits & 2) !== 0,
+            required: (bits & 4) !== 0,
+            nullable: (bits & 8) !== 0,
+            categories: Array.from({ length: count }, () => ({ value: "", count: 1 })),
+          } as FieldProfile;
+          const text = defaultDescriptor(role, field, { categoriesDisclosed: (bits & 16) !== 0, legacyCategory: (bits & 32) !== 0 });
+          for (const segment of text.split(DESCRIPTOR_SEPARATOR)) segments.add(segment);
+        }
       }
     }
   }

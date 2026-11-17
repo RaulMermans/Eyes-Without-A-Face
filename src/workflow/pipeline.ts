@@ -56,6 +56,7 @@ export function prepareTwin(input: {
     overrides: input.overrides,
     privateStrings,
     concepts: input.concepts,
+    labelCategories: input.labelCategories,
   });
   const t2 = now();
   if (!generated.ok) {

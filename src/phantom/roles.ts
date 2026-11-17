@@ -72,9 +72,15 @@ const BASE_DESCRIPTORS: Record<SemanticRole, string> = {
 export function defaultDescriptor(
   role: SemanticRole,
   field: FieldProfile,
-  options: { categoriesDisclosed: boolean },
+  options: { categoriesDisclosed: boolean; legacyCategory?: boolean },
 ): string {
   const parts = [BASE_DESCRIPTORS[role]];
+  // Sprint 18B: a category is described by what is known (its value count), not as a "lifecycle status".
+  // legacyCategory keeps the pre-18B wording for historical replays only.
+  if (role === "status" && !options.legacyCategory) {
+    const count = field.categories?.length ?? 0;
+    parts[0] = count >= 2 ? `Category field with ${count} distinct values` : "Category field";
+  }
   if (role === "date" && field.dateFormat) {
     parts[0] = `${BASE_DESCRIPTORS.date} in ${field.dateFormat} format`;
   }

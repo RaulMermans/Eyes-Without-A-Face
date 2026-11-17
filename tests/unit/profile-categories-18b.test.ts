@@ -51,3 +51,24 @@ describe("S18B-CAT category detection accepts real-world labels", () => {
     expect(field!.enumValues).toBeUndefined();
   });
 });
+
+describe("S18B-CAT descriptor describes what is known about a category", () => {
+  const records = REAL.map((value, index) => ({ id: `r${index}`, stage: value }));
+  const descriptor = (labelCategories?: boolean) => {
+    const prepared = prepareTwin({ records, datasetLabel: "t.json", seed: DEFAULT_TWIN_SEED, labelCategories });
+    if (!prepared.ok) throw new Error("twin failed");
+    return prepared.value.twin.fields.find((view) => view.localPath === "stage");
+  };
+
+  it("S18B-CAT-006 a category states its value count, never a lifecycle meaning it does not know, and no label", () => {
+    const view = descriptor();
+    expect(view?.descriptor).toMatch(/^Category field with 4 distinct values; category labels withheld/);
+    for (const label of ["Marketing Qualified Lead", "Customer", "TEST RECORD"]) expect(view?.descriptor).not.toContain(label);
+  });
+
+  it("S18B-CAT-007 historical replays (labelCategories: false) keep the pre-18B wording", () => {
+    const legacy = prepareTwin({ records: [{ s: "active" }, { s: "inactive" }, { s: "active" }], datasetLabel: "t.json", seed: DEFAULT_TWIN_SEED, labelCategories: false });
+    if (!legacy.ok) throw new Error("twin failed");
+    expect(legacy.value.twin.fields[0]!.descriptor).toMatch(/^Lifecycle status category/);
+  });
+});

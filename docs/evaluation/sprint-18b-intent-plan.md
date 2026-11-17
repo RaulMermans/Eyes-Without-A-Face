@@ -302,5 +302,6 @@ The holdout was read only through its existing aggregate rows.
 - `profileRecords` also accepts repeated real-world labels as categories: ≤ 12 labels, ≤ 32 characters, at least 2 values per label on average.
 - All 8 dev category sources are now `enum` with labels withheld. 7 of 8 have a descriptor no other field shares.
 - Historical replays use `labelCategories: false` and still reproduce their recorded prompts.
-- **Remaining weakness:** every category gets the role text "Lifecycle status category". A category without a concept (for example a membership type) can still look like other category fields.
+- **Descriptor fixed too.** A category is now described as "Category field with N distinct values", plus its meaning claim, instead of "Lifecycle status category" for every category. All 8 dev category sources now have a descriptor that no other field shares, membership included. Historical replays keep the old wording through `labelCategories: false`.
+- The Nano-value freeze was amended for `roles.ts` and `generate.ts`, as for the 18A concepts.
 - Whether Gemini now finds category sources must be measured on a fresh holdout. This holdout is inspected.

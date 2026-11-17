@@ -65,7 +65,7 @@ const minimalDestination = {
 
 describe("SC18B-1 reproduction: a category label that coincides with EYES's fixed wording", () => {
   // Each word is a plausible lowercase category label AND a substring of a fixed descriptor or sentence.
-  const words = ["email", "date", "code", "life", "text", "true", "false", "name", "data", "used", "exam", "record", "value", "status", "address", "label", "null", "flag", "source", "place", "holder", "produce"];
+  const words = ["email", "date", "code", "text", "true", "false", "name", "data", "used", "exam", "record", "value", "address", "label", "null", "flag", "source", "place", "holder", "produce", "field", "distinct", "category"];
 
   it.each(words)("label %s appears in the payload's fixed wording, yet the preview builds and the scan finds nothing", async (word) => {
     const prepared = prepare(sourceWithLabel(word));
