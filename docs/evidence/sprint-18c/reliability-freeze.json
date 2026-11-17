@@ -1,0 +1,23 @@
+{
+  "manifestVersion": "1.0.0",
+  "experiment": "sprint-18c-reliability",
+  "frozenAt": "2026-11-17T20:05:22.746Z",
+  "frozenFromCommit": "a08149bd52bbfdbf192cb57e9feceeca6285b7c2",
+  "statement": "Frozen before any model saw this evaluation set and before the live run. The set was written by an independent author without access to the implementation, prompts or earlier holdouts. The engineer never opened the holdout; the frozen harness and scorer read it and emit aggregates and per-index rows only.",
+  "preregistration": {
+    "path": "docs/evaluation/sprint-18c-reliability.md",
+    "sha256AboveResults": "98dd754f998c52592a0ea6c703d268e8648484046a66fa9123b8964a5973f4bb"
+  },
+  "files": {
+    "tests/fixtures/eval-18c/README.md": "996d13eb189035e7c4f45a7215a69dfbc4cc22ce1fa1af2994c65ea07e3a536b",
+    "tests/fixtures/eval-18c/dev/coworking-desk-bookings-to-access-scheduler.json": "9b35e59ca220884550eb80b3bf091f47905abde3e8d95e99e4e35909a6d23b7f",
+    "tests/fixtures/eval-18c/dev/driving-school-students-to-exam-booking.json": "c0526eb161d6a5b5bbb12936937af99027ab29f0e8a249012d6d1e3f444d8e84",
+    "tests/fixtures/eval-18c/dev/vet-vaccination-reminders-to-sms-gateway.json": "0b13a502d915e600abfdddf33e4e3b1281f981c2309654a5d7c52a66e02b523a",
+    "tests/fixtures/eval-18c/dev/vineyard-wholesale-orders-to-distributor-portal.json": "bd9027c9d4983aef09f493dea702c19f483987196120d9e4d8f4b871ec2b2797"
+  },
+  "holdout": {
+    "count": 16,
+    "sha256": "cea0297307f0a2d19f75729887e1b398958227b93a355fb40e519dcb40b72a96"
+  },
+  "amendments": []
+}
