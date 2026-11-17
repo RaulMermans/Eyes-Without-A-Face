@@ -25,7 +25,6 @@ export function DestinationStep({
   destinationText,
   onDestination,
   sourceLabel,
-  categoryNeed = null,
   onShareCategories = () => {},
   plan = null,
   meanings = {},

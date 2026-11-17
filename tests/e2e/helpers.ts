@@ -1,4 +1,5 @@
 import type { Page } from "@playwright/test";
+import { expect } from "@playwright/test";
 
 export const screenshotDir = "test-results/sprint-1-screenshots";
 
@@ -57,3 +58,17 @@ export async function openOutcome(page: Page): Promise<void> {
  * are unchanged; only the entry URL moved.
  */
 export const TECHNICAL_VIEW = "/#technical";
+
+/** Sprint 18B: the target-first manual mapping lives behind "Advanced: map fields yourself". Opens it once. */
+export async function openAdvanced(page: Page): Promise<void> {
+  const advanced = page.getByTestId("advanced-manual");
+  await expect(advanced).toBeVisible();
+  if ((await advanced.getAttribute("open")) === null) await advanced.locator(":scope > summary").click();
+}
+
+/** Sprint 18B: downloads and the package live on the Deliver step. No-op when already there. */
+export async function toDeliver(page: Page): Promise<void> {
+  if (await page.locator("#deliver-heading").isVisible()) return;
+  await page.getByTestId("verify-continue").click();
+  await expect(page.locator("#deliver-heading")).toBeVisible();
+}

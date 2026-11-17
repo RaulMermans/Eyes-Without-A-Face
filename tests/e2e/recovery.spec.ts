@@ -1,6 +1,6 @@
 import { expect, test, type Page } from "@playwright/test";
 import path from "node:path";
-import { attachProviderWatch } from "./helpers.ts";
+import { attachProviderWatch, openAdvanced, toDeliver } from "./helpers.ts";
 
 /**
  * Sprint 14 — guided reliability and recovery (E2E-140…149).
@@ -27,12 +27,7 @@ async function toDestination(page: Page, destination: "helpdesk" | "billing" | "
   await expect(page.getByTestId("source-summary")).toBeVisible();
   await page.getByTestId("data-continue").click();
   await page.getByTestId(`destination-${destination}`).check();
-}
-
-/** Sprint 18B: the manual mapping (and the per-field share choice) is behind "Advanced: map fields yourself". */
-async function openAdvanced(page: Page): Promise<void> {
-  const advanced = page.getByTestId("advanced-manual");
-  if ((await advanced.getAttribute("open")) === null) await advanced.locator("summary").click();
+  await openAdvanced(page);
 }
 
 /** Sprint 18B: the user's one answer on the Helpdesk demo — what each account state means. */
@@ -56,8 +51,10 @@ test.describe("E2E-140 the production incident, explained before and after", () 
     await page.screenshot({ path: path.join(shots, "01-destination-needs-categories.png"), fullPage: true });
     // Billing has no fixed-list field: no question.
     await page.getByTestId("destination-billing").check();
+    await openAdvanced(page);
     await expect(page.getByTestId("destination-categories")).toHaveCount(0);
     await page.getByTestId("destination-helpdesk").check();
+    await openAdvanced(page);
     await page.getByTestId("guided-build").click();
     await expect(page.getByTestId("guided-category-notice")).toHaveCount(0);
     await expect(page.getByTestId("guided-approve")).toBeEnabled();
@@ -205,8 +202,10 @@ test.describe("E2E-146 result clarity", () => {
     await expect(understanding).toContainText("deterministic");
     await page.getByTestId("verify-continue").click();
     const downloads = page.getByTestId("guided-downloads");
+    await toDeliver(page);
     await expect(downloads.getByTestId("download-transformed")).toContainText("contains your real data");
     await expect(downloads.getByTestId("export-panel")).toContainText("does not contain your records");
+    await toDeliver(page);
     await expect(page.getByTestId("export-integration")).toContainText("(.zip)");
     await page.screenshot({ path: path.join(shots, "04-result-downloads.png"), fullPage: true });
   });
