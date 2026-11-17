@@ -1,0 +1,1129 @@
+{
+  "scenarioId": "chimney-sweep-inspections-to-building-registry",
+  "split": "holdout",
+  "industry": "chimney sweep inspections",
+  "sourceLanguage": "de",
+  "description": "Inspection export of a fictional district chimney sweep office (German field names, nested inspection, property, owner, fireplace and measurement) to be loaded into a building registry.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "Bezirksschornsteinfeger": "Andreas Wörner",
+      "Messung": {
+        "CO_ppm": 264
+      },
+      "Rechnungsstatus": "storniert",
+      "Feuerstaette": {
+        "Baujahr": 1988,
+        "Art": "Kaminofen (Holz)",
+        "naechste_Faelligkeit": "21/01/2026",
+        "Brennstoff": "Erdgas"
+      },
+      "Kehrbuch_Nr": "KB 1700",
+      "Eigentuemer": {
+        "EMail": "sophie.neumann@haus.example.com",
+        "Name": "Sophie Neumann"
+      },
+      "Objekt": {
+        "Strasse": "Weinbergweg 22",
+        "Liegenschafts_ID": "LG-0831200",
+        "PLZ": "72108"
+      },
+      "Pruefung": {
+        "Datum": "13/02/2025",
+        "Auftragsnr": "FS-25-5100",
+        "Ergebnis": "erhebliche Mängel – Nachprüfung"
+      }
+    },
+    {
+      "Kehrbuch_Nr": "KB 1703",
+      "Messung": {
+        "CO_ppm": 432
+      },
+      "Rechnungsstatus": "offen",
+      "Eigentuemer": {
+        "Name": "  Paul Friedrich",
+        "EMail": "Paul.Friedrich@Haus.Example.Com"
+      },
+      "Objekt": {
+        "Liegenschafts_ID": "LG-0831229",
+        "Strasse": "Weinbergweg 22",
+        "PLZ": "72072"
+      },
+      "Feuerstaette": {
+        "naechste_Faelligkeit": "17/10/2026",
+        "Baujahr": 2021,
+        "Brennstoff": "Scheitholz",
+        "Art": "Gas-Brennwerttherme"
+      },
+      "Bezirksschornsteinfeger": "Michael Rapp",
+      "Pruefung": {
+        "Ergebnis": "Probelauf (nicht werten)",
+        "Datum": "18/06/2025",
+        "Auftragsnr": "FS-25-5107"
+      }
+    },
+    {
+      "Messung": {
+        "CO_ppm": 318
+      },
+      "Objekt": {
+        "Liegenschafts_ID": "LG-0831258",
+        "PLZ": "72108",
+        "Strasse": "Talstraße 4"
+      },
+      "Rechnungsstatus": "storniert",
+      "Feuerstaette": {
+        "Art": "Pelletkessel",
+        "Baujahr": 1984,
+        "naechste_Faelligkeit": null,
+        "Brennstoff": "Scheitholz"
+      },
+      "Pruefung": {
+        "Datum": "13/08/2025",
+        "Auftragsnr": "FS-25-5114",
+        "Ergebnis": "Stilllegung angeordnet"
+      },
+      "Bezirksschornsteinfeger": "Jasmin Kögel",
+      "Kehrbuch_Nr": "KB 1706",
+      "Eigentuemer": {
+        "EMail": "niklas.hoffmann@haus.example.com",
+        "Name": "Niklas Hoffmann"
+      }
+    },
+    {
+      "Kehrbuch_Nr": "KB 1709",
+      "Objekt": {
+        "Strasse": "Schulgasse 9",
+        "PLZ": "72108",
+        "Liegenschafts_ID": "LG-0831287"
+      },
+      "Pruefung": {
+        "Datum": "05/04/2025",
+        "Auftragsnr": "FS-25-5121",
+        "Ergebnis": "geringe Mängel"
+      },
+      "Eigentuemer": {
+        "Name": "Laura Braun",
+        "EMail": "laura.braun@haus.example.com"
+      },
+      "Feuerstaette": {
+        "Art": "Pelletkessel",
+        "Brennstoff": "Scheitholz",
+        "Baujahr": 2003,
+        "naechste_Faelligkeit": "16/02/2027"
+      },
+      "Messung": {
+        "CO_ppm": 422
+      },
+      "Rechnungsstatus": "bezahlt",
+      "Bezirksschornsteinfeger": "Jasmin Kögel"
+    },
+    {
+      "Messung": {
+        "CO_ppm": 799
+      },
+      "Eigentuemer": {
+        "EMail": null,
+        "Name": "Jonas Schäfer"
+      },
+      "Kehrbuch_Nr": "KB 1712",
+      "Pruefung": {
+        "Auftragsnr": "FS-25-5128",
+        "Ergebnis": "ohne Mängel",
+        "Datum": "25/08/2025"
+      },
+      "Objekt": {
+        "PLZ": "72108",
+        "Liegenschafts_ID": "LG-0831316",
+        "Strasse": "Dorfplatz 1"
+      },
+      "Rechnungsstatus": "offen",
+      "Bezirksschornsteinfeger": "Michael Rapp",
+      "Feuerstaette": {
+        "Art": "Offener Kamin",
+        "Baujahr": 1983,
+        "naechste_Faelligkeit": "11/09/2026",
+        "Brennstoff": "Heizöl"
+      }
+    },
+    {
+      "Rechnungsstatus": "offen",
+      "Messung": {
+        "CO_ppm": 579
+      },
+      "Kehrbuch_Nr": "KB 1715",
+      "Eigentuemer": {
+        "Name": "Laura Becker",
+        "EMail": "laura.becker@haus.example.com"
+      },
+      "Feuerstaette": {
+        "Baujahr": 1987,
+        "naechste_Faelligkeit": "15/02/2026",
+        "Art": "Pelletkessel",
+        "Brennstoff": "Scheitholz"
+      },
+      "Pruefung": {
+        "Ergebnis": "geringe Mängel",
+        "Auftragsnr": "FS-25-5135",
+        "Datum": "07/02/2025"
+      },
+      "Bezirksschornsteinfeger": "Jasmin Kögel",
+      "Objekt": {
+        "Strasse": "Am Bühl 17",
+        "Liegenschafts_ID": "LG-0831345",
+        "PLZ": "72108"
+      }
+    },
+    {
+      "Kehrbuch_Nr": "KB 1718",
+      "Feuerstaette": {
+        "Brennstoff": "Scheitholz",
+        "Art": "Öl-Heizkessel",
+        "Baujahr": 2004
+      },
+      "Eigentuemer": {
+        "Name": "Maximilian Keller",
+        "EMail": "maximilian.keller@haus.example.com"
+      },
+      "Bezirksschornsteinfeger": "Jasmin Kögel",
+      "Rechnungsstatus": "storniert",
+      "Objekt": {
+        "Liegenschafts_ID": "LG-0831374",
+        "PLZ": "72108",
+        "Strasse": "Schulgasse 9"
+      },
+      "Messung": {
+        "CO_ppm": 18
+      },
+      "Pruefung": {
+        "Datum": "16/10/2025",
+        "Ergebnis": "Probelauf (nicht werten)",
+        "Auftragsnr": "FS-25-5142"
+      }
+    },
+    {
+      "Pruefung": {
+        "Auftragsnr": "FS-25-5149",
+        "Datum": "14/11/2025",
+        "Ergebnis": "Probelauf (nicht werten)"
+      },
+      "Objekt": {
+        "Liegenschafts_ID": "LG-0831403",
+        "Strasse": "Weinbergweg 22",
+        "PLZ": "72072"
+      },
+      "Bezirksschornsteinfeger": "Jasmin Kögel",
+      "Rechnungsstatus": "bezahlt",
+      "Feuerstaette": {
+        "naechste_Faelligkeit": "18/07/2026",
+        "Baujahr": 1988,
+        "Brennstoff": "Heizöl",
+        "Art": "Gas-Brennwerttherme"
+      },
+      "Kehrbuch_Nr": "KB 1721",
+      "Messung": {
+        "CO_ppm": 211
+      },
+      "Eigentuemer": {
+        "EMail": "Greta.Becker@Haus.Example.Com",
+        "Name": "Greta Becker"
+      }
+    },
+    {
+      "Pruefung": {
+        "Datum": "24/08/2025",
+        "Ergebnis": "ohne Mängel",
+        "Auftragsnr": "FS-25-5156"
+      },
+      "Kehrbuch_Nr": "KB 1724",
+      "Feuerstaette": {
+        "Art": "Offener Kamin",
+        "Brennstoff": "Scheitholz",
+        "naechste_Faelligkeit": "27/10/2027",
+        "Baujahr": 1996
+      },
+      "Rechnungsstatus": "bezahlt",
+      "Messung": {
+        "CO_ppm": 758
+      },
+      "Bezirksschornsteinfeger": "Jasmin Kögel",
+      "Eigentuemer": {
+        "EMail": "emma.hoffmann@haus.example.com",
+        "Name": "Emma Hoffmann"
+      },
+      "Objekt": {
+        "Liegenschafts_ID": "LG-0831432",
+        "Strasse": "Schulgasse 9",
+        "PLZ": "72072"
+      }
+    },
+    {
+      "Pruefung": {
+        "Datum": "07/05/2025",
+        "Auftragsnr": "FS-25-5163",
+        "Ergebnis": "geringe Mängel"
+      },
+      "Kehrbuch_Nr": "KB 1727",
+      "Eigentuemer": {
+        "Name": "Simon Neumann  ",
+        "EMail": "simon.neumann@haus.example.com"
+      },
+      "Messung": {
+        "CO_ppm": 776
+      },
+      "Objekt": {
+        "Liegenschafts_ID": "LG-0831461",
+        "Strasse": "Dorfplatz 1",
+        "PLZ": "72108"
+      },
+      "Rechnungsstatus": "storniert",
+      "Feuerstaette": {
+        "Brennstoff": "Pellets",
+        "Art": "Öl-Heizkessel",
+        "Baujahr": 1989,
+        "naechste_Faelligkeit": "27/05/2026"
+      },
+      "Bezirksschornsteinfeger": "Andreas Wörner"
+    },
+    {
+      "Pruefung": {
+        "Datum": "07/04/2025",
+        "Auftragsnr": "FS-25-5170",
+        "Ergebnis": "erhebliche Mängel – Nachprüfung"
+      },
+      "Feuerstaette": {
+        "Brennstoff": "Pellets",
+        "naechste_Faelligkeit": "26/09/2027",
+        "Art": "Öl-Heizkessel",
+        "Baujahr": 2013
+      },
+      "Bezirksschornsteinfeger": "Andreas Wörner",
+      "Messung": {
+        "CO_ppm": 725
+      },
+      "Eigentuemer": {
+        "EMail": "Felix.Braun@Haus.Example.Com",
+        "Name": "Felix Braun"
+      },
+      "Rechnungsstatus": "bezahlt",
+      "Kehrbuch_Nr": "KB 1730",
+      "Objekt": {
+        "Strasse": "Weinbergweg 22",
+        "PLZ": "72070",
+        "Liegenschafts_ID": "LG-0831490"
+      }
+    },
+    {
+      "Eigentuemer": {
+        "Name": "Mia Pohl"
+      },
+      "Kehrbuch_Nr": "KB 1733",
+      "Rechnungsstatus": "storniert",
+      "Feuerstaette": {
+        "Art": "Öl-Heizkessel",
+        "Baujahr": 2004,
+        "Brennstoff": "Pellets",
+        "naechste_Faelligkeit": "19/06/2027"
+      },
+      "Pruefung": {
+        "Auftragsnr": "FS-25-5177",
+        "Datum": "10/11/2025",
+        "Ergebnis": "ohne Mängel"
+      },
+      "Bezirksschornsteinfeger": "Michael Rapp",
+      "Messung": {
+        "CO_ppm": 577
+      },
+      "Objekt": {
+        "PLZ": "72072",
+        "Liegenschafts_ID": "LG-0831519",
+        "Strasse": "Schulgasse 9"
+      }
+    },
+    {
+      "Bezirksschornsteinfeger": "Jasmin Kögel",
+      "Messung": {
+        "CO_ppm": 731
+      },
+      "Rechnungsstatus": "storniert",
+      "Feuerstaette": {
+        "Brennstoff": "Erdgas",
+        "Art": "Offener Kamin",
+        "naechste_Faelligkeit": "04/05/2026",
+        "Baujahr": 1986
+      },
+      "Kehrbuch_Nr": "KB 1736",
+      "Objekt": {
+        "PLZ": "72070",
+        "Strasse": "Am Bühl 17",
+        "Liegenschafts_ID": "LG-0831548"
+      },
+      "Pruefung": {
+        "Datum": "18/03/2025",
+        "Auftragsnr": "FS-25-5184",
+        "Ergebnis": "geringe Mängel"
+      },
+      "Eigentuemer": {
+        "EMail": "clara.roth@haus.example.com",
+        "Name": "Clara Roth"
+      }
+    },
+    {
+      "Messung": {
+        "CO_ppm": 445
+      },
+      "Objekt": {
+        "Liegenschafts_ID": "LG-0831577",
+        "Strasse": "Talstraße 4",
+        "PLZ": "72070"
+      },
+      "Pruefung": {
+        "Ergebnis": "Stilllegung angeordnet",
+        "Auftragsnr": "FS-25-5191",
+        "Datum": "18/05/2025"
+      },
+      "Rechnungsstatus": "storniert",
+      "Eigentuemer": {
+        "Name": "Lukas Krause",
+        "EMail": "Lukas.Krause@Haus.Example.Com"
+      },
+      "Feuerstaette": {
+        "Baujahr": 2010,
+        "naechste_Faelligkeit": "11/05/2026",
+        "Brennstoff": "Erdgas",
+        "Art": "Kaminofen (Holz)"
+      },
+      "Bezirksschornsteinfeger": "Michael Rapp",
+      "Kehrbuch_Nr": "KB 1739"
+    },
+    {
+      "Kehrbuch_Nr": "KB 1742",
+      "Objekt": {
+        "Liegenschafts_ID": "LG-0831606",
+        "Strasse": "Dorfplatz 1",
+        "PLZ": "72072"
+      },
+      "Messung": {
+        "CO_ppm": 395
+      },
+      "Eigentuemer": {
+        "Name": "Laura Becker",
+        "EMail": "laura.becker@haus.example.com"
+      },
+      "Pruefung": {
+        "Ergebnis": "Probelauf (nicht werten)",
+        "Auftragsnr": "FS-25-5198",
+        "Datum": "13/01/2025"
+      },
+      "Feuerstaette": {
+        "Art": "Öl-Heizkessel",
+        "Baujahr": 1993,
+        "Brennstoff": "Pellets",
+        "naechste_Faelligkeit": null
+      },
+      "Rechnungsstatus": "storniert",
+      "Bezirksschornsteinfeger": "Jasmin Kögel"
+    },
+    {
+      "Bezirksschornsteinfeger": "Michael Rapp",
+      "Objekt": {
+        "Strasse": "Weinbergweg 22",
+        "PLZ": "72070",
+        "Liegenschafts_ID": "LG-0831635"
+      },
+      "Messung": {
+        "CO_ppm": 427
+      },
+      "Kehrbuch_Nr": "KB 1745",
+      "Eigentuemer": {
+        "Name": "Jan Neumann",
+        "EMail": "jan.neumann@haus.example.com"
+      },
+      "Pruefung": {
+        "Datum": "15/11/2025",
+        "Ergebnis": "erhebliche Mängel – Nachprüfung",
+        "Auftragsnr": "FS-25-5205"
+      },
+      "Rechnungsstatus": "bezahlt",
+      "Feuerstaette": {
+        "naechste_Faelligkeit": "18/04/2026",
+        "Brennstoff": "Erdgas",
+        "Art": "Gas-Brennwerttherme",
+        "Baujahr": 2008
+      }
+    },
+    {
+      "Rechnungsstatus": "offen",
+      "Objekt": {
+        "PLZ": "72070",
+        "Liegenschafts_ID": "LG-0831664",
+        "Strasse": "Am Bühl 17"
+      },
+      "Feuerstaette": {
+        "naechste_Faelligkeit": "19/05/2026",
+        "Brennstoff": "Pellets",
+        "Baujahr": 1992,
+        "Art": "Gas-Brennwerttherme"
+      },
+      "Eigentuemer": {
+        "EMail": null,
+        "Name": "Simon Friedrich"
+      },
+      "Pruefung": {
+        "Ergebnis": "Stilllegung angeordnet",
+        "Datum": "17/09/2025",
+        "Auftragsnr": "FS-25-5212"
+      },
+      "Messung": {
+        "CO_ppm": 73
+      },
+      "Bezirksschornsteinfeger": "Andreas Wörner",
+      "Kehrbuch_Nr": "KB 1748"
+    },
+    {
+      "Rechnungsstatus": "offen",
+      "Messung": {
+        "CO_ppm": 823
+      },
+      "Kehrbuch_Nr": "KB 1751",
+      "Objekt": {
+        "Liegenschafts_ID": "LG-0831693",
+        "Strasse": "Dorfplatz 1",
+        "PLZ": "72070"
+      },
+      "Feuerstaette": {
+        "Brennstoff": "Heizöl",
+        "Art": "Kaminofen (Holz)",
+        "Baujahr": 1984,
+        "naechste_Faelligkeit": "25/12/2027"
+      },
+      "Pruefung": {
+        "Auftragsnr": "FS-25-5219",
+        "Ergebnis": "erhebliche Mängel – Nachprüfung",
+        "Datum": "15/02/2025"
+      },
+      "Eigentuemer": {
+        "Name": "Hannah Kühn",
+        "EMail": "hannah.kuhn@haus.example.com"
+      },
+      "Bezirksschornsteinfeger": "Michael Rapp"
+    },
+    {
+      "Rechnungsstatus": "bezahlt",
+      "Eigentuemer": {
+        "EMail": "jonas.werner@haus.example.com",
+        "Name": " Jonas Werner "
+      },
+      "Pruefung": {
+        "Datum": "10/06/2025",
+        "Ergebnis": "ohne Mängel",
+        "Auftragsnr": "FS-25-5226"
+      },
+      "Objekt": {
+        "Liegenschafts_ID": "LG-0831722",
+        "Strasse": "Weinbergweg 22",
+        "PLZ": "72072"
+      },
+      "Feuerstaette": {
+        "Baujahr": 2023,
+        "Art": "Pelletkessel",
+        "naechste_Faelligkeit": "28/07/2026",
+        "Brennstoff": "Heizöl"
+      },
+      "Messung": {
+        "CO_ppm": 93
+      },
+      "Kehrbuch_Nr": "KB 1754",
+      "Bezirksschornsteinfeger": "Jasmin Kögel"
+    },
+    {
+      "Rechnungsstatus": "bezahlt",
+      "Pruefung": {
+        "Ergebnis": "geringe Mängel",
+        "Auftragsnr": "FS-25-5233",
+        "Datum": "04/05/2025"
+      },
+      "Messung": {
+        "CO_ppm": 574
+      },
+      "Eigentuemer": {
+        "EMail": "Lukas.Friedrich@Haus.Example.Com",
+        "Name": "Lukas Friedrich"
+      },
+      "Feuerstaette": {
+        "Brennstoff": "Heizöl",
+        "naechste_Faelligkeit": "21/08/2026",
+        "Baujahr": 2021,
+        "Art": "Kaminofen (Holz)"
+      },
+      "Bezirksschornsteinfeger": "Andreas Wörner",
+      "Objekt": {
+        "Strasse": "Dorfplatz 1",
+        "Liegenschafts_ID": "LG-0831751",
+        "PLZ": "72070"
+      },
+      "Kehrbuch_Nr": "KB 1757"
+    },
+    {
+      "Messung": {
+        "CO_ppm": 397
+      },
+      "Bezirksschornsteinfeger": "Michael Rapp",
+      "Eigentuemer": {
+        "Name": "Anna Roth",
+        "EMail": "anna.roth@haus.example.com"
+      },
+      "Pruefung": {
+        "Ergebnis": "geringe Mängel",
+        "Auftragsnr": "FS-25-5240",
+        "Datum": "23/10/2025"
+      },
+      "Feuerstaette": {
+        "naechste_Faelligkeit": "02/01/2027",
+        "Brennstoff": "Heizöl",
+        "Art": "Gas-Brennwerttherme",
+        "Baujahr": 2013
+      },
+      "Objekt": {
+        "Strasse": "Schulgasse 9",
+        "PLZ": "72108",
+        "Liegenschafts_ID": "LG-0831780"
+      },
+      "Rechnungsstatus": "storniert",
+      "Kehrbuch_Nr": "KB 1760"
+    },
+    {
+      "Bezirksschornsteinfeger": "Andreas Wörner",
+      "Rechnungsstatus": "bezahlt",
+      "Eigentuemer": {
+        "Name": "Lena Schäfer",
+        "EMail": "lena.schafer@haus.example.com"
+      },
+      "Pruefung": {
+        "Ergebnis": "ohne Mängel",
+        "Auftragsnr": "FS-25-5247",
+        "Datum": "25/01/2025"
+      },
+      "Messung": {
+        "CO_ppm": 304
+      },
+      "Objekt": {
+        "PLZ": "72072",
+        "Liegenschafts_ID": "LG-0831809",
+        "Strasse": "Talstraße 4"
+      },
+      "Kehrbuch_Nr": "KB 1763",
+      "Feuerstaette": {
+        "Baujahr": 1997,
+        "Art": "Pelletkessel",
+        "Brennstoff": "Erdgas"
+      }
+    },
+    {
+      "Eigentuemer": {
+        "Name": "Hannah Pohl",
+        "EMail": "Hannah.Pohl@Haus.Example.Com"
+      },
+      "Bezirksschornsteinfeger": "Andreas Wörner",
+      "Objekt": {
+        "PLZ": "72072",
+        "Liegenschafts_ID": "LG-0831838",
+        "Strasse": "Talstraße 4"
+      },
+      "Kehrbuch_Nr": "KB 1766",
+      "Rechnungsstatus": "offen",
+      "Messung": {
+        "CO_ppm": 599
+      },
+      "Pruefung": {
+        "Ergebnis": "Stilllegung angeordnet",
+        "Auftragsnr": "FS-25-5254",
+        "Datum": "20/02/2025"
+      },
+      "Feuerstaette": {
+        "naechste_Faelligkeit": "26/07/2026",
+        "Baujahr": 1991,
+        "Art": "Gas-Brennwerttherme",
+        "Brennstoff": "Erdgas"
+      }
+    },
+    {
+      "Feuerstaette": {
+        "naechste_Faelligkeit": "18/06/2027",
+        "Brennstoff": "Erdgas",
+        "Baujahr": 2009,
+        "Art": "Offener Kamin"
+      },
+      "Kehrbuch_Nr": "KB 1769",
+      "Pruefung": {
+        "Datum": "18/02/2025",
+        "Ergebnis": "ohne Mängel",
+        "Auftragsnr": "FS-25-5261"
+      },
+      "Messung": {
+        "CO_ppm": 562
+      },
+      "Eigentuemer": {
+        "Name": "Marie Vogel",
+        "EMail": "marie.vogel@haus.example.com"
+      },
+      "Bezirksschornsteinfeger": "Andreas Wörner",
+      "Objekt": {
+        "Strasse": "Am Bühl 17",
+        "Liegenschafts_ID": "LG-0831867",
+        "PLZ": "72108"
+      },
+      "Rechnungsstatus": "offen"
+    },
+    {
+      "Objekt": {
+        "PLZ": "72070",
+        "Strasse": "Schulgasse 9",
+        "Liegenschafts_ID": "LG-0831896"
+      },
+      "Eigentuemer": {
+        "Name": "Felix Hartmann",
+        "EMail": "felix.hartmann@haus.example.com"
+      },
+      "Kehrbuch_Nr": "KB 1772",
+      "Bezirksschornsteinfeger": "Andreas Wörner",
+      "Feuerstaette": {
+        "naechste_Faelligkeit": "13/05/2026",
+        "Brennstoff": "Heizöl",
+        "Baujahr": 2016,
+        "Art": "Offener Kamin"
+      },
+      "Pruefung": {
+        "Auftragsnr": "FS-25-5268",
+        "Ergebnis": "erhebliche Mängel – Nachprüfung",
+        "Datum": "07/11/2025"
+      },
+      "Messung": {
+        "CO_ppm": 440
+      },
+      "Rechnungsstatus": "offen"
+    },
+    {
+      "Rechnungsstatus": "offen",
+      "Messung": {
+        "CO_ppm": 793
+      },
+      "Objekt": {
+        "PLZ": "72070",
+        "Liegenschafts_ID": "LG-0831925",
+        "Strasse": "Am Bühl 17"
+      },
+      "Bezirksschornsteinfeger": "Michael Rapp",
+      "Kehrbuch_Nr": "KB 1775",
+      "Feuerstaette": {
+        "Art": "Kaminofen (Holz)",
+        "Baujahr": 2007,
+        "naechste_Faelligkeit": "26/10/2027",
+        "Brennstoff": "Erdgas"
+      },
+      "Pruefung": {
+        "Ergebnis": "Probelauf (nicht werten)",
+        "Datum": "20/01/2025",
+        "Auftragsnr": "FS-25-5275"
+      },
+      "Eigentuemer": {
+        "Name": "Sophie Neumann"
+      }
+    },
+    {
+      "Bezirksschornsteinfeger": "Michael Rapp",
+      "Objekt": {
+        "PLZ": "72108",
+        "Strasse": "Dorfplatz 1",
+        "Liegenschafts_ID": "LG-0831954"
+      },
+      "Kehrbuch_Nr": "KB 1778",
+      "Eigentuemer": {
+        "EMail": "simon.vogel@haus.example.com",
+        "Name": "Simon Vogel"
+      },
+      "Feuerstaette": {
+        "Brennstoff": "Scheitholz",
+        "Baujahr": 2009,
+        "Art": "Pelletkessel",
+        "naechste_Faelligkeit": "07/01/2027"
+      },
+      "Messung": {
+        "CO_ppm": 154
+      },
+      "Rechnungsstatus": "bezahlt",
+      "Pruefung": {
+        "Auftragsnr": "FS-25-5282",
+        "Datum": "02/12/2025",
+        "Ergebnis": "Stilllegung angeordnet"
+      }
+    },
+    {
+      "Eigentuemer": {
+        "Name": "Greta Pohl",
+        "EMail": "greta.pohl@haus.example.com"
+      },
+      "Objekt": {
+        "PLZ": "72072",
+        "Strasse": "Schulgasse 9",
+        "Liegenschafts_ID": "LG-0831983"
+      },
+      "Feuerstaette": {
+        "Brennstoff": "Pellets",
+        "naechste_Faelligkeit": null,
+        "Art": "Offener Kamin",
+        "Baujahr": 2002
+      },
+      "Bezirksschornsteinfeger": "Michael Rapp",
+      "Messung": {
+        "CO_ppm": 475
+      },
+      "Kehrbuch_Nr": "KB 1781",
+      "Pruefung": {
+        "Datum": "26/01/2025",
+        "Auftragsnr": "FS-25-5289",
+        "Ergebnis": "erhebliche Mängel – Nachprüfung"
+      },
+      "Rechnungsstatus": "bezahlt"
+    },
+    {
+      "Pruefung": {
+        "Auftragsnr": "FS-25-5296",
+        "Ergebnis": "Stilllegung angeordnet",
+        "Datum": "09/01/2025"
+      },
+      "Objekt": {
+        "Liegenschafts_ID": "LG-0832012",
+        "Strasse": "Am Bühl 17",
+        "PLZ": "72070"
+      },
+      "Feuerstaette": {
+        "Brennstoff": "Pellets",
+        "Baujahr": 2009,
+        "naechste_Faelligkeit": "11/01/2027",
+        "Art": "Kaminofen (Holz)"
+      },
+      "Rechnungsstatus": "offen",
+      "Messung": {
+        "CO_ppm": 595
+      },
+      "Eigentuemer": {
+        "EMail": "Marie.Braun@Haus.Example.Com",
+        "Name": "  Marie Braun"
+      },
+      "Bezirksschornsteinfeger": "Andreas Wörner",
+      "Kehrbuch_Nr": "KB 1784"
+    },
+    {
+      "Feuerstaette": {
+        "naechste_Faelligkeit": "26/12/2026",
+        "Baujahr": 2011,
+        "Brennstoff": "Heizöl",
+        "Art": "Öl-Heizkessel"
+      },
+      "Rechnungsstatus": "storniert",
+      "Kehrbuch_Nr": "KB 1787",
+      "Eigentuemer": {
+        "Name": "Sophie Keller",
+        "EMail": "sophie.keller@haus.example.com"
+      },
+      "Messung": {
+        "CO_ppm": 565
+      },
+      "Bezirksschornsteinfeger": "Jasmin Kögel",
+      "Pruefung": {
+        "Datum": "13/06/2025",
+        "Auftragsnr": "FS-25-5303",
+        "Ergebnis": "Probelauf (nicht werten)"
+      },
+      "Objekt": {
+        "Strasse": "Weinbergweg 22",
+        "Liegenschafts_ID": "LG-0832041",
+        "PLZ": "72070"
+      }
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "inspection_id": {
+        "type": "string",
+        "description": "Order number of the inspection visit."
+      },
+      "property_id": {
+        "type": "string",
+        "description": "Registry identifier of the inspected property."
+      },
+      "owner_name": {
+        "type": "string",
+        "description": "Name of the property owner."
+      },
+      "owner_email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email of the property owner."
+      },
+      "heating_type": {
+        "type": "string",
+        "enum": [
+          "gas_condensing",
+          "oil_boiler",
+          "wood_stove",
+          "pellet_boiler",
+          "open_fireplace"
+        ],
+        "description": "Kind of heating appliance inspected."
+      },
+      "result": {
+        "type": "string",
+        "enum": [
+          "passed",
+          "minor_defects",
+          "major_defects",
+          "shutdown_ordered"
+        ],
+        "description": "Outcome of the inspection."
+      },
+      "billing_status": {
+        "type": "string",
+        "enum": [
+          "paid",
+          "open",
+          "voided"
+        ],
+        "description": "State of the inspection invoice."
+      },
+      "inspected_on": {
+        "type": "string",
+        "format": "date",
+        "description": "Date of the inspection."
+      },
+      "next_due": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the next inspection is due."
+      },
+      "co_ppm": {
+        "type": "integer",
+        "description": "Measured carbon monoxide concentration in ppm."
+      },
+      "emission_class": {
+        "type": "string",
+        "description": "Emission class of the appliance under the federal ordinance."
+      }
+    },
+    "required": [
+      "inspection_id",
+      "property_id",
+      "owner_name",
+      "heating_type",
+      "result",
+      "inspected_on"
+    ]
+  },
+  "groundTruth": {
+    "inspection_id": {
+      "source": "Pruefung.Auftragsnr",
+      "transform": "copy",
+      "why": "inspection order number; Kehrbuch_Nr is the property's sweep log entry"
+    },
+    "property_id": {
+      "source": "Objekt.Liegenschafts_ID",
+      "transform": "copy",
+      "why": "property id"
+    },
+    "owner_name": {
+      "source": "Eigentuemer.Name",
+      "transform": "trim",
+      "why": "owner name, padded; Bezirksschornsteinfeger is the inspector"
+    },
+    "owner_email": {
+      "source": "Eigentuemer.EMail",
+      "transform": "normalize_email",
+      "why": "owner email, mixed case, sometimes absent"
+    },
+    "heating_type": {
+      "source": "Feuerstaette.Art",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Gas-Brennwerttherme": "gas_condensing",
+        "Öl-Heizkessel": "oil_boiler",
+        "Kaminofen (Holz)": "wood_stove",
+        "Pelletkessel": "pellet_boiler",
+        "Offener Kamin": "open_fireplace"
+      },
+      "why": "appliance kind; Brennstoff is the fuel"
+    },
+    "result": {
+      "source": "Pruefung.Ergebnis",
+      "transform": "map_enum",
+      "categoryMap": {
+        "ohne Mängel": "passed",
+        "geringe Mängel": "minor_defects",
+        "erhebliche Mängel – Nachprüfung": "major_defects",
+        "Stilllegung angeordnet": "shutdown_ordered",
+        "Probelauf (nicht werten)": null
+      },
+      "why": "inspection result; trial runs are not to be counted and need review"
+    },
+    "billing_status": {
+      "source": "Rechnungsstatus",
+      "transform": "map_enum",
+      "categoryMap": {
+        "bezahlt": "paid",
+        "offen": "open",
+        "storniert": "voided"
+      },
+      "why": "invoice state"
+    },
+    "inspected_on": {
+      "source": "Pruefung.Datum",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "inspection date (German day-first)"
+    },
+    "next_due": {
+      "source": "Feuerstaette.naechste_Faelligkeit",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "next due date, sometimes absent"
+    },
+    "co_ppm": {
+      "source": "Messung.CO_ppm",
+      "transform": "copy",
+      "why": "CO measurement"
+    },
+    "emission_class": {
+      "source": null,
+      "transform": "none",
+      "why": "no emission class is exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "Pruefung.Ergebnis",
+        "Rechnungsstatus"
+      ],
+      "correctFor": "result"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "Feuerstaette.Art",
+        "Feuerstaette.Brennstoff"
+      ],
+      "correctFor": "heating_type"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "Pruefung.Auftragsnr",
+        "Kehrbuch_Nr"
+      ],
+      "correctFor": "inspection_id"
+    },
+    {
+      "kind": "birth-date-vs-start-date",
+      "fields": [
+        "Pruefung.Datum",
+        "Feuerstaette.naechste_Faelligkeit"
+      ],
+      "correctFor": "inspected_on"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "Eigentuemer.Name",
+        "Bezirksschornsteinfeger"
+      ],
+      "correctFor": "owner_name"
+    }
+  ],
+  "sourceConcepts": {
+    "Pruefung.Auftragsnr": "transaction-id",
+    "Pruefung.Datum": "start-date",
+    "Pruefung.Ergebnis": "account-status",
+    "Kehrbuch_Nr": "other-identifier",
+    "Objekt.Liegenschafts_ID": "customer-id",
+    "Objekt.Strasse": "street-address",
+    "Objekt.PLZ": "postal-code",
+    "Eigentuemer.Name": "person-name",
+    "Eigentuemer.EMail": "email",
+    "Feuerstaette.Art": "category",
+    "Feuerstaette.Brennstoff": "category",
+    "Feuerstaette.naechste_Faelligkeit": "end-date",
+    "Feuerstaette.Baujahr": "quantity",
+    "Messung.CO_ppm": "quantity",
+    "Rechnungsstatus": "payment-status",
+    "Bezirksschornsteinfeger": "person-name"
+  },
+  "destinationConcepts": {
+    "inspection_id": "transaction-id",
+    "property_id": "customer-id",
+    "owner_name": "person-name",
+    "owner_email": "email",
+    "heating_type": "category",
+    "result": "account-status",
+    "billing_status": "payment-status",
+    "inspected_on": "start-date",
+    "next_due": "end-date",
+    "co_ppm": "quantity",
+    "emission_class": "other"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 0,
+      "outcome": "transformed",
+      "output": {
+        "inspection_id": "FS-25-5100",
+        "property_id": "LG-0831200",
+        "owner_name": "Sophie Neumann",
+        "owner_email": "sophie.neumann@haus.example.com",
+        "heating_type": "wood_stove",
+        "result": "major_defects",
+        "billing_status": "voided",
+        "inspected_on": "2025-02-13",
+        "next_due": "2026-01-21",
+        "co_ppm": 264
+      }
+    },
+    {
+      "recordIndex": 1,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 2,
+      "outcome": "transformed",
+      "output": {
+        "inspection_id": "FS-25-5114",
+        "property_id": "LG-0831258",
+        "owner_name": "Niklas Hoffmann",
+        "owner_email": "niklas.hoffmann@haus.example.com",
+        "heating_type": "pellet_boiler",
+        "result": "shutdown_ordered",
+        "billing_status": "voided",
+        "inspected_on": "2025-08-13",
+        "co_ppm": 318
+      }
+    },
+    {
+      "recordIndex": 4,
+      "outcome": "transformed",
+      "output": {
+        "inspection_id": "FS-25-5128",
+        "property_id": "LG-0831316",
+        "owner_name": "Jonas Schäfer",
+        "heating_type": "open_fireplace",
+        "result": "passed",
+        "billing_status": "open",
+        "inspected_on": "2025-08-25",
+        "next_due": "2026-09-11",
+        "co_ppm": 799
+      }
+    }
+  ]
+}

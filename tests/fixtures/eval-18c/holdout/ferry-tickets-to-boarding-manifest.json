@@ -1,0 +1,1112 @@
+{
+  "scenarioId": "ferry-tickets-to-boarding-manifest",
+  "split": "holdout",
+  "industry": "passenger ferry tickets",
+  "sourceLanguage": "pt",
+  "description": "Ticket export of a fictional river ferry operator (Portuguese snake_case, nested ticket, booking, passenger, document and vehicle) to be loaded into a boarding manifest.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "data_viagem": "15/01/2025",
+      "bilhete": {
+        "codigo": "TJ880120"
+      },
+      "passageiro": {
+        "nome_completo": "Tomás Ferreira",
+        "documento": {
+          "numero": "12000000",
+          "tipo": "Título de residência"
+        },
+        "email": "tomas.ferreira@correio.example.com",
+        "data_nascimento": "25/11/1951"
+      },
+      "hora_partida": "19:10",
+      "reserva": {
+        "numero": "R-51000"
+      },
+      "preco_bilhete": 13.11,
+      "estado_pagamento": "MB Way pendente",
+      "tipo_bilhete": "Sénior +65",
+      "veiculo": {
+        "matricula": null,
+        "categoria": "Autocaravana"
+      },
+      "data_compra": "2025-12-08T09:40:00Z",
+      "estado_embarque": "Não compareceu"
+    },
+    {
+      "reserva": {
+        "numero": "R-51000"
+      },
+      "hora_partida": "12:05",
+      "data_compra": "2025-06-02T13:08:00Z",
+      "passageiro": {
+        "documento": {
+          "tipo": "CC",
+          "numero": "12007919"
+        },
+        "data_nascimento": "23/05/1953",
+        "email": "Mariana.Santos@Correio.Example.Com",
+        "nome_completo": "Mariana Santos"
+      },
+      "estado_pagamento": "Reembolsado",
+      "bilhete": {
+        "codigo": "TJ880139"
+      },
+      "estado_embarque": "Cancelado",
+      "tipo_bilhete": "Passe Mensal",
+      "veiculo": {
+        "matricula": "BG-11-EI",
+        "categoria": "Ligeiro"
+      },
+      "preco_bilhete": 13.97,
+      "data_viagem": "27/02/2025"
+    },
+    {
+      "bilhete": {
+        "codigo": "TJ880158"
+      },
+      "data_compra": "2025-12-16T07:05:00Z",
+      "estado_pagamento": "MB Way pendente",
+      "preco_bilhete": 3.82,
+      "data_viagem": "05/03/2025",
+      "reserva": {
+        "numero": "R-51003"
+      },
+      "passageiro": {
+        "email": "sofia.sousa@correio.example.com",
+        "data_nascimento": "26/09/1951",
+        "nome_completo": "  Sofia Sousa",
+        "documento": {
+          "numero": "12015838",
+          "tipo": "CC"
+        }
+      },
+      "veiculo": {
+        "categoria": "Motociclo",
+        "matricula": "CH-12-HJ"
+      },
+      "estado_embarque": "Embarcado",
+      "tipo_bilhete": "Sénior +65",
+      "hora_partida": "12:05"
+    },
+    {
+      "preco_bilhete": 5.9,
+      "tipo_bilhete": "Criança (4-12)",
+      "veiculo": {
+        "categoria": "Sem veículo",
+        "matricula": "DI-13-KK"
+      },
+      "reserva": {
+        "numero": "R-51003"
+      },
+      "bilhete": {
+        "codigo": "TJ880177"
+      },
+      "estado_embarque": "Embarcado",
+      "passageiro": {
+        "nome_completo": "Mariana Silva",
+        "documento": {
+          "numero": "12023757",
+          "tipo": "Título de residência"
+        },
+        "email": "mariana.silva@correio.example.com",
+        "data_nascimento": "22/04/2013"
+      },
+      "hora_partida": "19:10",
+      "data_viagem": "07/06/2025",
+      "data_compra": "2025-02-14T08:50:00Z",
+      "estado_pagamento": "MB Way pendente"
+    },
+    {
+      "hora_partida": "07:15",
+      "veiculo": {
+        "matricula": "EJ-14-NL",
+        "categoria": "Bicicleta"
+      },
+      "reserva": {
+        "numero": "R-51006"
+      },
+      "tipo_bilhete": "Criança (4-12)",
+      "estado_embarque": "Cancelado",
+      "estado_pagamento": "Pago",
+      "preco_bilhete": 8.57,
+      "passageiro": {
+        "documento": {
+          "tipo": "Título de residência",
+          "numero": "12031676"
+        },
+        "nome_completo": "Simão Pereira",
+        "email": null,
+        "data_nascimento": "11/09/1959"
+      },
+      "data_viagem": "28/09/2025",
+      "data_compra": "2025-11-24T17:38:00Z",
+      "bilhete": {
+        "codigo": "TJ880196"
+      }
+    },
+    {
+      "passageiro": {
+        "documento": {
+          "tipo": "CC",
+          "numero": "12039595"
+        },
+        "nome_completo": "Francisca Gomes",
+        "email": "francisca.gomes@correio.example.com",
+        "data_nascimento": "10/05/1989"
+      },
+      "estado_embarque": "Não compareceu",
+      "bilhete": {
+        "codigo": "TJ880215"
+      },
+      "data_compra": "2025-06-15T07:27:00Z",
+      "preco_bilhete": 13.36,
+      "hora_partida": "07:15",
+      "veiculo": {
+        "categoria": "Sem veículo",
+        "matricula": null
+      },
+      "estado_pagamento": "Pendente",
+      "reserva": {
+        "numero": "R-51006"
+      },
+      "tipo_bilhete": "Passe Mensal",
+      "data_viagem": "16/02/2025"
+    },
+    {
+      "bilhete": {
+        "codigo": "TJ880234"
+      },
+      "passageiro": {
+        "documento": {
+          "numero": "12047514",
+          "tipo": "Passaporte"
+        },
+        "email": "ines.alves@correio.example.com",
+        "nome_completo": "Inês Alves",
+        "data_nascimento": "02/09/1969"
+      },
+      "reserva": {
+        "numero": "R-51009"
+      },
+      "estado_pagamento": "Pago",
+      "estado_embarque": "Por embarcar",
+      "data_viagem": "19/01/2025",
+      "data_compra": "2025-08-27T11:05:00Z",
+      "veiculo": {
+        "matricula": "GL-16-TN",
+        "categoria": "Motociclo"
+      },
+      "hora_partida": "19:10",
+      "preco_bilhete": 14.09,
+      "tipo_bilhete": "Estudante"
+    },
+    {
+      "tipo_bilhete": "Passe Mensal",
+      "veiculo": {
+        "matricula": "HM-17-CO",
+        "categoria": "Bicicleta"
+      },
+      "estado_pagamento": "Reembolsado",
+      "hora_partida": "19:10",
+      "reserva": {
+        "numero": "R-51009"
+      },
+      "estado_embarque": "Não compareceu",
+      "data_compra": "2025-04-16T11:01:00Z",
+      "data_viagem": "15/03/2025",
+      "passageiro": {
+        "data_nascimento": "04/04/1983",
+        "nome_completo": "Inês Almeida",
+        "documento": {
+          "numero": "12055433",
+          "tipo": "Passaporte"
+        },
+        "email": "Ines.Almeida@Correio.Example.Com"
+      },
+      "preco_bilhete": 9.14,
+      "bilhete": {
+        "codigo": "TJ880253"
+      }
+    },
+    {
+      "tipo_bilhete": "Cortesia tripulação",
+      "estado_pagamento": "Pago",
+      "data_viagem": "24/07/2025",
+      "preco_bilhete": 8.91,
+      "hora_partida": "17:30",
+      "passageiro": {
+        "documento": {
+          "numero": "12063352",
+          "tipo": "CC"
+        },
+        "email": "mariana.fernandes@correio.example.com",
+        "nome_completo": "Mariana Fernandes",
+        "data_nascimento": "19/08/1987"
+      },
+      "veiculo": {
+        "matricula": "IN-18-FP",
+        "categoria": "Sem veículo"
+      },
+      "estado_embarque": "Por embarcar",
+      "bilhete": {
+        "codigo": "TJ880272"
+      },
+      "data_compra": "2025-08-24T13:30:00Z",
+      "reserva": {
+        "numero": "R-51012"
+      }
+    },
+    {
+      "estado_pagamento": "Pago",
+      "data_compra": "2025-02-03T12:59:00Z",
+      "hora_partida": "17:30",
+      "data_viagem": "03/11/2025",
+      "estado_embarque": "Embarcado",
+      "tipo_bilhete": "Cortesia tripulação",
+      "veiculo": {
+        "matricula": "JO-19-IQ",
+        "categoria": "Ligeiro"
+      },
+      "preco_bilhete": 9.03,
+      "reserva": {
+        "numero": "R-51012"
+      },
+      "passageiro": {
+        "nome_completo": "Inês Gomes",
+        "documento": {
+          "numero": "12071271",
+          "tipo": "Título de residência"
+        },
+        "data_nascimento": "21/03/1957"
+      },
+      "bilhete": {
+        "codigo": "TJ880291"
+      }
+    },
+    {
+      "preco_bilhete": 2.12,
+      "veiculo": {
+        "categoria": "Autocaravana",
+        "matricula": null
+      },
+      "data_viagem": "06/01/2025",
+      "reserva": {
+        "numero": "R-51015"
+      },
+      "bilhete": {
+        "codigo": "TJ880310"
+      },
+      "estado_pagamento": "Reembolsado",
+      "passageiro": {
+        "email": "Francisca.Marques@Correio.Example.Com",
+        "documento": {
+          "numero": "12079190",
+          "tipo": "CC"
+        },
+        "nome_completo": "Francisca Marques",
+        "data_nascimento": "08/03/2005"
+      },
+      "hora_partida": "19:10",
+      "data_compra": "2025-05-04T16:36:00Z",
+      "tipo_bilhete": "Cortesia tripulação",
+      "estado_embarque": "Por embarcar"
+    },
+    {
+      "reserva": {
+        "numero": "R-51015"
+      },
+      "preco_bilhete": 14.25,
+      "data_compra": "2025-01-06T15:28:00Z",
+      "tipo_bilhete": "Sénior +65",
+      "veiculo": {
+        "categoria": "Ligeiro",
+        "matricula": "LQ-21-OS"
+      },
+      "estado_pagamento": "Pendente",
+      "passageiro": {
+        "data_nascimento": "27/05/1953",
+        "email": "rodrigo.pinto@correio.example.com",
+        "nome_completo": "Rodrigo Pinto  ",
+        "documento": {
+          "numero": "12087109",
+          "tipo": "Título de residência"
+        }
+      },
+      "hora_partida": "08:40",
+      "estado_embarque": "Por embarcar",
+      "data_viagem": "04/05/2025",
+      "bilhete": {
+        "codigo": "TJ880329"
+      }
+    },
+    {
+      "hora_partida": "19:10",
+      "veiculo": {
+        "categoria": "Sem veículo",
+        "matricula": "MR-22-RH"
+      },
+      "data_compra": "2025-07-19T18:06:00Z",
+      "bilhete": {
+        "codigo": "TJ880348"
+      },
+      "estado_embarque": "Não compareceu",
+      "preco_bilhete": 6.43,
+      "estado_pagamento": "Reembolsado",
+      "data_viagem": "19/02/2025",
+      "passageiro": {
+        "email": "beatriz.oliveira@correio.example.com",
+        "data_nascimento": "20/12/1976",
+        "nome_completo": "Beatriz Oliveira",
+        "documento": {
+          "numero": "12095028",
+          "tipo": "CC"
+        }
+      },
+      "reserva": {
+        "numero": "R-51018"
+      },
+      "tipo_bilhete": "Sénior +65"
+    },
+    {
+      "preco_bilhete": 13.8,
+      "tipo_bilhete": "Cortesia tripulação",
+      "estado_pagamento": "Pendente",
+      "estado_embarque": "Não compareceu",
+      "passageiro": {
+        "data_nascimento": "02/07/2006",
+        "documento": {
+          "numero": "12102947",
+          "tipo": "Passaporte"
+        },
+        "nome_completo": "Duarte Pinto",
+        "email": "Duarte.Pinto@Correio.Example.Com"
+      },
+      "data_viagem": "01/04/2025",
+      "data_compra": "2025-01-23T13:36:00Z",
+      "reserva": {
+        "numero": "R-51018"
+      },
+      "hora_partida": "08:40",
+      "bilhete": {
+        "codigo": "TJ880367"
+      },
+      "veiculo": {
+        "matricula": "NS-23-UI",
+        "categoria": "Autocaravana"
+      }
+    },
+    {
+      "reserva": {
+        "numero": "R-51021"
+      },
+      "tipo_bilhete": "Estudante",
+      "hora_partida": "17:30",
+      "estado_pagamento": "Reembolsado",
+      "preco_bilhete": 6.36,
+      "data_compra": "2025-07-12T17:22:00Z",
+      "data_viagem": "26/06/2025",
+      "estado_embarque": "Cancelado",
+      "veiculo": {
+        "categoria": "Autocaravana",
+        "matricula": "OT-24-DJ"
+      },
+      "passageiro": {
+        "data_nascimento": "19/06/2006",
+        "email": "duarte.oliveira@correio.example.com",
+        "nome_completo": "Duarte Oliveira",
+        "documento": {
+          "numero": "12110866",
+          "tipo": "Passaporte"
+        }
+      },
+      "bilhete": {
+        "codigo": "TJ880386"
+      }
+    },
+    {
+      "data_compra": "2025-12-27T11:32:00Z",
+      "estado_pagamento": "Pendente",
+      "preco_bilhete": 8.24,
+      "bilhete": {
+        "codigo": "TJ880405"
+      },
+      "estado_embarque": "Embarcado",
+      "hora_partida": "17:30",
+      "veiculo": {
+        "matricula": null,
+        "categoria": "Motociclo"
+      },
+      "passageiro": {
+        "documento": {
+          "tipo": "Passaporte",
+          "numero": "12118785"
+        },
+        "data_nascimento": "19/02/1976",
+        "nome_completo": "Leonor Sousa",
+        "email": null
+      },
+      "tipo_bilhete": "Criança (4-12)",
+      "data_viagem": "16/01/2025",
+      "reserva": {
+        "numero": "R-51021"
+      }
+    },
+    {
+      "tipo_bilhete": "Adulto",
+      "data_viagem": "20/03/2025",
+      "bilhete": {
+        "codigo": "TJ880424"
+      },
+      "data_compra": "2025-10-09T17:29:00Z",
+      "veiculo": {
+        "matricula": "QG-26-JL",
+        "categoria": "Ligeiro"
+      },
+      "hora_partida": "17:30",
+      "passageiro": {
+        "documento": {
+          "tipo": "Título de residência",
+          "numero": "12126704"
+        },
+        "email": "Tomas.Ferreira@Correio.Example.Com",
+        "data_nascimento": "07/05/2003",
+        "nome_completo": "Tomás Ferreira"
+      },
+      "estado_pagamento": "Pendente",
+      "preco_bilhete": 3.96,
+      "reserva": {
+        "numero": "R-51024"
+      },
+      "estado_embarque": "Embarcado"
+    },
+    {
+      "data_compra": "2025-05-24T14:37:00Z",
+      "passageiro": {
+        "nome_completo": "Inês Marques",
+        "email": "ines.marques@correio.example.com",
+        "documento": {
+          "tipo": "Passaporte",
+          "numero": "12134623"
+        },
+        "data_nascimento": "18/07/2003"
+      },
+      "tipo_bilhete": "Passe Mensal",
+      "hora_partida": "17:30",
+      "preco_bilhete": 9.5,
+      "data_viagem": "02/11/2025",
+      "reserva": {
+        "numero": "R-51024"
+      },
+      "veiculo": {
+        "matricula": "RH-27-MM",
+        "categoria": "Sem veículo"
+      },
+      "estado_pagamento": "Pago",
+      "bilhete": {
+        "codigo": "TJ880443"
+      },
+      "estado_embarque": "Embarcado"
+    },
+    {
+      "preco_bilhete": 5.37,
+      "passageiro": {
+        "email": "beatriz.marques@correio.example.com",
+        "nome_completo": "Beatriz Marques",
+        "documento": {
+          "tipo": "Passaporte",
+          "numero": "12142542"
+        },
+        "data_nascimento": "13/07/2007"
+      },
+      "hora_partida": "07:15",
+      "data_viagem": "13/04/2025",
+      "bilhete": {
+        "codigo": "TJ880462"
+      },
+      "estado_pagamento": "MB Way pendente",
+      "reserva": {
+        "numero": "R-51027"
+      },
+      "data_compra": "2025-02-01T08:10:00Z",
+      "estado_embarque": "Por embarcar",
+      "tipo_bilhete": "Adulto",
+      "veiculo": {
+        "categoria": "Bicicleta",
+        "matricula": "SI-28-PN"
+      }
+    },
+    {
+      "data_compra": "2025-06-11T18:24:00Z",
+      "passageiro": {
+        "nome_completo": "Simão Ribeiro",
+        "data_nascimento": "01/08/2002",
+        "documento": {
+          "tipo": "Título de residência",
+          "numero": "12150461"
+        },
+        "email": "Simao.Ribeiro@Correio.Example.Com"
+      },
+      "preco_bilhete": 2.09,
+      "data_viagem": "03/02/2025",
+      "bilhete": {
+        "codigo": "TJ880481"
+      },
+      "reserva": {
+        "numero": "R-51027"
+      },
+      "estado_embarque": "Cancelado",
+      "hora_partida": "08:40",
+      "tipo_bilhete": "Adulto",
+      "estado_pagamento": "MB Way pendente",
+      "veiculo": {
+        "categoria": "Motociclo",
+        "matricula": "TJ-29-SO"
+      }
+    },
+    {
+      "hora_partida": "12:05",
+      "tipo_bilhete": "Adulto",
+      "data_compra": "2025-08-13T17:23:00Z",
+      "estado_embarque": "Embarcado",
+      "reserva": {
+        "numero": "R-51030"
+      },
+      "estado_pagamento": "MB Way pendente",
+      "passageiro": {
+        "documento": {
+          "numero": "12158380",
+          "tipo": "Passaporte"
+        },
+        "nome_completo": " Rafael Alves ",
+        "email": "rafael.alves@correio.example.com",
+        "data_nascimento": "23/02/1968"
+      },
+      "veiculo": {
+        "matricula": null,
+        "categoria": "Bicicleta"
+      },
+      "preco_bilhete": 1.67,
+      "bilhete": {
+        "codigo": "TJ880500"
+      },
+      "data_viagem": "28/09/2025"
+    },
+    {
+      "tipo_bilhete": "Criança (4-12)",
+      "preco_bilhete": 12.62,
+      "estado_pagamento": "Pendente",
+      "veiculo": {
+        "categoria": "Sem veículo",
+        "matricula": "BL-31-EQ"
+      },
+      "data_viagem": "03/05/2025",
+      "passageiro": {
+        "nome_completo": "Duarte Ribeiro",
+        "data_nascimento": "18/06/2008",
+        "documento": {
+          "tipo": "Título de residência",
+          "numero": "12166299"
+        },
+        "email": "duarte.ribeiro@correio.example.com"
+      },
+      "hora_partida": "07:15",
+      "reserva": {
+        "numero": "R-51030"
+      },
+      "data_compra": "2025-01-25T07:56:00Z",
+      "bilhete": {
+        "codigo": "TJ880519"
+      },
+      "estado_embarque": "Não compareceu"
+    },
+    {
+      "tipo_bilhete": "Estudante",
+      "estado_embarque": "Por embarcar",
+      "veiculo": {
+        "categoria": "Autocaravana",
+        "matricula": "CM-32-HR"
+      },
+      "reserva": {
+        "numero": "R-51033"
+      },
+      "bilhete": {
+        "codigo": "TJ880538"
+      },
+      "preco_bilhete": 6.01,
+      "data_compra": "2025-03-08T07:46:00Z",
+      "data_viagem": "16/08/2025",
+      "hora_partida": "07:15",
+      "estado_pagamento": "Reembolsado",
+      "passageiro": {
+        "documento": {
+          "tipo": "CC",
+          "numero": "12174218"
+        },
+        "nome_completo": "Tiago Oliveira",
+        "data_nascimento": "17/11/1974"
+      }
+    },
+    {
+      "tipo_bilhete": "Sénior +65",
+      "data_viagem": "17/09/2025",
+      "estado_embarque": "Não compareceu",
+      "veiculo": {
+        "matricula": "DN-33-KS",
+        "categoria": "Ligeiro"
+      },
+      "reserva": {
+        "numero": "R-51033"
+      },
+      "preco_bilhete": 10.15,
+      "estado_pagamento": "Pago",
+      "passageiro": {
+        "nome_completo": "Duarte Ribeiro",
+        "documento": {
+          "tipo": "Passaporte",
+          "numero": "12182137"
+        },
+        "email": "duarte.ribeiro@correio.example.com",
+        "data_nascimento": "06/02/1995"
+      },
+      "bilhete": {
+        "codigo": "TJ880557"
+      },
+      "data_compra": "2025-01-06T08:18:00Z",
+      "hora_partida": "19:10"
+    },
+    {
+      "veiculo": {
+        "categoria": "Ligeiro",
+        "matricula": "EO-34-NH"
+      },
+      "preco_bilhete": 14.18,
+      "estado_pagamento": "Pago",
+      "passageiro": {
+        "documento": {
+          "numero": "12190056",
+          "tipo": "CC"
+        },
+        "nome_completo": "Beatriz Lopes",
+        "email": "beatriz.lopes@correio.example.com",
+        "data_nascimento": "21/08/2015"
+      },
+      "data_viagem": "16/11/2025",
+      "data_compra": "2025-12-21T10:29:00Z",
+      "hora_partida": "19:10",
+      "tipo_bilhete": "Cortesia tripulação",
+      "reserva": {
+        "numero": "R-51036"
+      },
+      "bilhete": {
+        "codigo": "TJ880576"
+      },
+      "estado_embarque": "Cancelado"
+    },
+    {
+      "veiculo": {
+        "categoria": "Bicicleta",
+        "matricula": null
+      },
+      "data_viagem": "10/01/2025",
+      "reserva": {
+        "numero": "R-51036"
+      },
+      "bilhete": {
+        "codigo": "TJ880595"
+      },
+      "passageiro": {
+        "data_nascimento": "15/12/1998",
+        "documento": {
+          "numero": "12197975",
+          "tipo": "Passaporte"
+        },
+        "nome_completo": "Simão Sousa",
+        "email": "Simao.Sousa@Correio.Example.Com"
+      },
+      "estado_embarque": "Embarcado",
+      "hora_partida": "12:05",
+      "tipo_bilhete": "Estudante",
+      "data_compra": "2025-11-08T13:07:00Z",
+      "estado_pagamento": "Pago",
+      "preco_bilhete": 3.7
+    },
+    {
+      "estado_embarque": "Cancelado",
+      "tipo_bilhete": "Criança (4-12)",
+      "data_compra": "2025-12-28T14:54:00Z",
+      "estado_pagamento": "MB Way pendente",
+      "reserva": {
+        "numero": "R-51039"
+      },
+      "bilhete": {
+        "codigo": "TJ880614"
+      },
+      "hora_partida": "19:10",
+      "preco_bilhete": 6.26,
+      "passageiro": {
+        "nome_completo": "Rafael Gomes",
+        "documento": {
+          "numero": "12205894",
+          "tipo": "CC"
+        },
+        "email": "rafael.gomes@correio.example.com",
+        "data_nascimento": "05/02/1995"
+      },
+      "veiculo": {
+        "categoria": "Motociclo",
+        "matricula": "GQ-36-TJ"
+      },
+      "data_viagem": "01/07/2025"
+    },
+    {
+      "reserva": {
+        "numero": "R-51039"
+      },
+      "estado_embarque": "Por embarcar",
+      "tipo_bilhete": "Adulto",
+      "hora_partida": "07:15",
+      "estado_pagamento": "Reembolsado",
+      "data_viagem": "06/10/2025",
+      "data_compra": "2025-11-12T12:10:00Z",
+      "preco_bilhete": 11.94,
+      "bilhete": {
+        "codigo": "TJ880633"
+      },
+      "passageiro": {
+        "nome_completo": "  Matilde Lopes",
+        "data_nascimento": "15/09/1956",
+        "documento": {
+          "numero": "12213813",
+          "tipo": "CC"
+        },
+        "email": "matilde.lopes@correio.example.com"
+      },
+      "veiculo": {
+        "matricula": "HR-37-CK",
+        "categoria": "Motociclo"
+      }
+    },
+    {
+      "estado_pagamento": "Pendente",
+      "data_compra": "2025-05-05T13:55:00Z",
+      "preco_bilhete": 12.66,
+      "hora_partida": "07:15",
+      "reserva": {
+        "numero": "R-51042"
+      },
+      "bilhete": {
+        "codigo": "TJ880652"
+      },
+      "estado_embarque": "Cancelado",
+      "data_viagem": "24/03/2025",
+      "passageiro": {
+        "email": "Tomas.Goncalves@Correio.Example.Com",
+        "documento": {
+          "numero": "12221732",
+          "tipo": "Título de residência"
+        },
+        "data_nascimento": "12/03/1951",
+        "nome_completo": "Tomás Gonçalves"
+      },
+      "tipo_bilhete": "Estudante",
+      "veiculo": {
+        "categoria": "Bicicleta",
+        "matricula": "IS-38-FL"
+      }
+    },
+    {
+      "hora_partida": "12:05",
+      "passageiro": {
+        "documento": {
+          "numero": "12229651",
+          "tipo": "Título de residência"
+        },
+        "nome_completo": "Martim Pinto",
+        "data_nascimento": "23/05/1967",
+        "email": "martim.pinto@correio.example.com"
+      },
+      "reserva": {
+        "numero": "R-51042"
+      },
+      "veiculo": {
+        "matricula": "JT-39-IM",
+        "categoria": "Autocaravana"
+      },
+      "tipo_bilhete": "Passe Mensal",
+      "data_viagem": "13/09/2025",
+      "preco_bilhete": 12.55,
+      "estado_embarque": "Não compareceu",
+      "estado_pagamento": "Pendente",
+      "data_compra": "2025-02-24T14:14:00Z",
+      "bilhete": {
+        "codigo": "TJ880671"
+      }
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "ticket_id": {
+        "type": "string",
+        "description": "Identifier of the individual ticket."
+      },
+      "passenger_name": {
+        "type": "string",
+        "description": "Full name of the passenger."
+      },
+      "passenger_email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address of the passenger for delay notices."
+      },
+      "passenger_age": {
+        "type": "integer",
+        "description": "Age of the passenger in whole years on the sailing date."
+      },
+      "document_number": {
+        "type": "string",
+        "description": "Number of the identity document shown at boarding."
+      },
+      "sailing_date": {
+        "type": "string",
+        "format": "date",
+        "description": "Date of the crossing."
+      },
+      "fare_class": {
+        "type": "string",
+        "enum": [
+          "adult",
+          "child",
+          "senior",
+          "student",
+          "season_pass"
+        ],
+        "description": "Fare category of the ticket."
+      },
+      "vehicle_type": {
+        "type": "string",
+        "enum": [
+          "none",
+          "car",
+          "motorcycle",
+          "bicycle",
+          "motorhome"
+        ],
+        "description": "Vehicle travelling with the passenger."
+      },
+      "boarding_status": {
+        "type": "string",
+        "enum": [
+          "boarded",
+          "no_show",
+          "pending",
+          "cancelled"
+        ],
+        "description": "Whether the passenger has boarded."
+      },
+      "fare_eur": {
+        "type": "number",
+        "description": "Ticket price in euros."
+      }
+    },
+    "required": [
+      "ticket_id",
+      "passenger_name",
+      "sailing_date",
+      "fare_class",
+      "boarding_status"
+    ]
+  },
+  "groundTruth": {
+    "ticket_id": {
+      "source": "bilhete.codigo",
+      "transform": "copy",
+      "why": "ticket code; reserva.numero groups several tickets of one booking"
+    },
+    "passenger_name": {
+      "source": "passageiro.nome_completo",
+      "transform": "trim",
+      "why": "passenger name, padded"
+    },
+    "passenger_email": {
+      "source": "passageiro.email",
+      "transform": "normalize_email",
+      "why": "passenger email, mixed case, sometimes absent"
+    },
+    "passenger_age": {
+      "source": null,
+      "transform": "none",
+      "why": "the export only has a birth date",
+      "unsupportedReason": "the age would have to be computed from the birth date and the sailing date"
+    },
+    "document_number": {
+      "source": "passageiro.documento.numero",
+      "transform": "copy",
+      "why": "identity document number"
+    },
+    "sailing_date": {
+      "source": "data_viagem",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "travel date (Portuguese day-first); data_compra is the purchase timestamp"
+    },
+    "fare_class": {
+      "source": "tipo_bilhete",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Adulto": "adult",
+        "Criança (4-12)": "child",
+        "Sénior +65": "senior",
+        "Estudante": "student",
+        "Passe Mensal": "season_pass",
+        "Cortesia tripulação": null
+      },
+      "why": "fare type; crew courtesy tickets are not passenger fares and need review"
+    },
+    "vehicle_type": {
+      "source": "veiculo.categoria",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Sem veículo": "none",
+        "Ligeiro": "car",
+        "Motociclo": "motorcycle",
+        "Bicicleta": "bicycle",
+        "Autocaravana": "motorhome"
+      },
+      "why": "vehicle category"
+    },
+    "boarding_status": {
+      "source": "estado_embarque",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Embarcado": "boarded",
+        "Não compareceu": "no_show",
+        "Por embarcar": "pending",
+        "Cancelado": "cancelled"
+      },
+      "why": "boarding state; estado_pagamento is about payment"
+    },
+    "fare_eur": {
+      "source": "preco_bilhete",
+      "transform": "copy",
+      "why": "price in euros"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "estado_embarque",
+        "estado_pagamento"
+      ],
+      "correctFor": "boarding_status"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "tipo_bilhete",
+        "veiculo.categoria"
+      ],
+      "correctFor": "fare_class"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "bilhete.codigo",
+        "reserva.numero"
+      ],
+      "correctFor": "ticket_id"
+    },
+    {
+      "kind": "birth-date-vs-start-date",
+      "fields": [
+        "data_viagem",
+        "passageiro.data_nascimento"
+      ],
+      "correctFor": "sailing_date"
+    }
+  ],
+  "sourceConcepts": {
+    "bilhete.codigo": "transaction-id",
+    "reserva.numero": "other-identifier",
+    "passageiro.nome_completo": "person-name",
+    "passageiro.email": "email",
+    "passageiro.data_nascimento": "birth-date",
+    "passageiro.documento.numero": "other-identifier",
+    "passageiro.documento.tipo": "category",
+    "data_viagem": "start-date",
+    "data_compra": "created-date",
+    "hora_partida": "other",
+    "tipo_bilhete": "category",
+    "veiculo.categoria": "category",
+    "veiculo.matricula": "other-identifier",
+    "estado_pagamento": "payment-status",
+    "estado_embarque": "account-status",
+    "preco_bilhete": "amount"
+  },
+  "destinationConcepts": {
+    "ticket_id": "transaction-id",
+    "passenger_name": "person-name",
+    "passenger_email": "email",
+    "passenger_age": "quantity",
+    "document_number": "other-identifier",
+    "sailing_date": "start-date",
+    "fare_class": "category",
+    "vehicle_type": "category",
+    "boarding_status": "account-status",
+    "fare_eur": "amount"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 0,
+      "outcome": "transformed",
+      "output": {
+        "ticket_id": "TJ880120",
+        "passenger_name": "Tomás Ferreira",
+        "passenger_email": "tomas.ferreira@correio.example.com",
+        "document_number": "12000000",
+        "sailing_date": "2025-01-15",
+        "fare_class": "senior",
+        "vehicle_type": "motorhome",
+        "boarding_status": "no_show",
+        "fare_eur": 13.11
+      }
+    },
+    {
+      "recordIndex": 4,
+      "outcome": "transformed",
+      "output": {
+        "ticket_id": "TJ880196",
+        "passenger_name": "Simão Pereira",
+        "document_number": "12031676",
+        "sailing_date": "2025-09-28",
+        "fare_class": "child",
+        "vehicle_type": "bicycle",
+        "boarding_status": "cancelled",
+        "fare_eur": 8.57
+      }
+    },
+    {
+      "recordIndex": 8,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 15,
+      "outcome": "transformed",
+      "output": {
+        "ticket_id": "TJ880405",
+        "passenger_name": "Leonor Sousa",
+        "document_number": "12118785",
+        "sailing_date": "2025-01-16",
+        "fare_class": "child",
+        "vehicle_type": "motorcycle",
+        "boarding_status": "boarded",
+        "fare_eur": 8.24
+      }
+    }
+  ]
+}

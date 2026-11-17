@@ -82,6 +82,14 @@ export const QUALIFIERS = [
   "tax",
   "unit",
   "total",
+  // Sprint 18C: what kind of grouping a category field is (only for the "category" concept).
+  "plan-tier",
+  "channel",
+  "segment",
+  "department",
+  "gender",
+  "offering",
+  "kind",
 ] as const;
 
 export type ConceptQualifier = (typeof QUALIFIERS)[number];
@@ -145,7 +153,7 @@ export const CONCEPT_SPECS: Readonly<Record<Concept, ConceptSpec>> = {
   amount: { phrases: ["money amount", "monetary value"], types: NUMERIC },
   "currency-code": { phrases: ["currency code", "ISO currency"], types: TEXT },
   quantity: { phrases: ["quantity", "number of units"], types: NUMERIC },
-  "account-status": { phrases: ["status of the customer or account", "customer lifecycle state"], types: TEXT },
+  "account-status": { phrases: ["status of the customer or account", "customer lifecycle state", "standing of the relationship"], types: TEXT },
   "payment-status": { phrases: ["payment status", "state of a payment or invoice"], types: TEXT },
   "order-status": { phrases: ["status of a transaction (order, booking, shipment, ticket)", "state of an order or booking"], types: TEXT },
   priority: { phrases: ["priority level", "urgency level"], types: TEXT },
@@ -171,6 +179,13 @@ const QUALIFIER_PHRASES: Readonly<Record<ConceptQualifier, readonly string[]>> =
   tax: ["tax", "levy"],
   unit: ["per unit", "each"],
   total: ["total", "overall"],
+  "plan-tier": ["plan or membership tier", "service level purchased"],
+  channel: ["channel, medium or origin", "route or source"],
+  segment: ["customer segment or market group", "audience grouping"],
+  department: ["department or team", "organizational unit"],
+  gender: ["gender", "sex of a person"],
+  offering: ["product, course or program chosen", "offering selected"],
+  kind: ["type or kind", "sort of record"],
 };
 
 /** Whether a concept is consistent with observed, deterministic facts. The profile is authoritative. */
@@ -295,6 +310,13 @@ const Q: Readonly<Record<ConceptQualifier, Lexicon>> = {
   tax: ["tax", "iva", "vat", "mwst", "btw", "tva", "steuer", "impuesto", "belasting", "imposta", "imposto"],
   unit: ["unit", "unitario", "unitaria", "einzel", "einzelpreis", "stueckpreis", "stuk", "eenheid", "unitaire", "unitario", "each", "per"],
   total: ["total", "totale", "gesamt", "gesamtbetrag", "totaal", "sum", "summe", "suma"],
+  "plan-tier": ["plan", "tier", "level", "nivel", "niveau", "livello", "stufe", "grade", "membership", "package", "paquete", "paket", "pakket", "pacchetto", "tarif", "tariff", "tarifa", "tariffa", "rango", "rank"],
+  channel: ["channel", "canal", "kanal", "kanaal", "canale", "source", "origen", "quelle", "bron", "origine", "origin", "referral"],
+  segment: ["segment", "segmento", "group", "grupo", "gruppe", "groep", "gruppo", "industry", "sector", "branche", "rubro", "audience"],
+  department: ["department", "departamento", "abteilung", "afdeling", "dipartimento", "team", "equipo"],
+  gender: ["gender", "genero", "geschlecht", "geslacht", "sexo", "sexe", "sesso"],
+  offering: ["product", "producto", "course", "curso", "kurs", "cursus", "corso", "program", "programa", "programm", "programma", "coverage", "cobertura", "deckung", "dekking", "room", "habitacion", "zimmer", "kamer", "modalidad", "modality"],
+  kind: ["type", "tipo", "typ", "soort", "kind", "category", "categoria", "kategorie", "categorie", "class", "clase", "klasse", "classe"],
 };
 
 function hit(tokens: readonly string[], words: Lexicon): boolean {
@@ -334,7 +356,10 @@ function looksLikeCurrencyCodes(field: FieldProfile): boolean {
   return labels.length > 0 && labels.every((label) => ISO_CURRENCIES.has(label));
 }
 
-function qualifierFor(concept: Concept, tokens: readonly string[], parents: readonly string[]): ConceptQualifier | null {
+/** Sprint 18C category groupings, most specific first ("membership type" is a plan tier, not a bare type). */
+const CATEGORY_QUALIFIERS: readonly ConceptQualifier[] = ["plan-tier", "channel", "segment", "department", "gender", "offering", "kind"];
+
+function qualifierFor(concept: Concept, tokens: readonly string[], parents: readonly string[], legacy = false): ConceptQualifier | null {
   const all = [...tokens, ...parents];
   const allowed: Partial<Record<Concept, readonly ConceptQualifier[]>> = {
     email: ["billing", "work", "personal", "contact", "sales-owner", "emergency"],
@@ -348,6 +373,7 @@ function qualifierFor(concept: Concept, tokens: readonly string[], parents: read
     "given-name": ["contact", "sales-owner", "emergency"],
     "family-name": ["contact", "sales-owner", "emergency"],
     amount: ["net", "gross", "tax", "unit", "total"],
+    ...(legacy ? {} : { category: CATEGORY_QUALIFIERS }),
   };
   for (const qualifier of allowed[concept] ?? []) {
     // A qualifier word that is itself the concept word (mobile for phone) still qualifies; "contact" alone does not qualify a contact name twice.
@@ -356,7 +382,7 @@ function qualifierFor(concept: Concept, tokens: readonly string[], parents: read
   return null;
 }
 
-function inferFromName(field: FieldProfile, siblings: readonly string[]): Concept | null {
+function inferFromName(field: FieldProfile, siblings: readonly string[], legacy: boolean): Concept | null {
   const { leaf, parents } = splitPath(field.path);
   const context = [...parents, ...leaf];
   const has = (words: Lexicon) => hit(leaf, words);
@@ -399,6 +425,8 @@ function inferFromName(field: FieldProfile, siblings: readonly string[]): Concep
     }
     if (hasAny(["payment", "pago", "zahlung", "betaling", "paiement", "pagamento", "pmt", "billing", "cobro"])) return "payment-status";
     if (hasAny(L.customer)) return "account-status";
+    // Sprint 18C: a lifecycle stage is the lifecycle of the record's customer or member ("customer lifecycle state").
+    if (!legacy && has(["lifecycle"])) return "account-status";
     return null;
   }
 
@@ -449,7 +477,11 @@ function inferFromName(field: FieldProfile, siblings: readonly string[]): Concep
  * then a field-name hypothesis. Returns null when nothing specific is known:
  * no concept is better than a guessed one.
  */
-export function inferConcept(field: FieldProfile, siblings: readonly string[] = []): ConceptClaim | null {
+/**
+ * `legacy` (TwinOptions.labelCategories === false) reproduces the pre-18C
+ * lexicon (no category groupings, no lifecycle rule) for historical replays.
+ */
+export function inferConcept(field: FieldProfile, siblings: readonly string[] = [], legacy = false): ConceptClaim | null {
   if (field.type === "unsupported") return null;
   const { leaf, parents } = splitPath(field.path);
   if (field.type === "enum" && looksLikeCurrencyCodes(field)) {
@@ -458,9 +490,9 @@ export function inferConcept(field: FieldProfile, siblings: readonly string[] = 
   if (field.format === "email") {
     return { concept: "email", qualifier: qualifierFor("email", leaf, parents), evidence: "value-shape", status: "observed" };
   }
-  const concept = inferFromName(field, siblings);
+  const concept = inferFromName(field, siblings, legacy);
   if (!concept || !conceptCompatible(concept, field)) return null;
-  return { concept, qualifier: qualifierFor(concept, leaf, parents), evidence: "field-name", status: "hypothesis" };
+  return { concept, qualifier: qualifierFor(concept, leaf, parents, legacy), evidence: "field-name", status: "hypothesis" };
 }
 
 /** A user- or Nano-applied concept, validated against the profile. Null when it contradicts observed facts. */

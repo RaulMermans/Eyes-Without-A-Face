@@ -196,7 +196,7 @@ export function generatePhantomTwin(profile: SourceProfile, options: TwinOptions
           issues.push({ code: "SEMANTICS_INCOMPATIBLE", alias, message: `${alias}: the reviewed meaning contradicts the observed profile.` });
         }
       } else {
-        concept = inferConcept(observed, siblingPaths.filter((path) => path !== observed.path));
+        concept = inferConcept(observed, siblingPaths.filter((path) => path !== observed.path), options.labelCategories === false);
       }
     }
     const shareable = override.shareable !== false;

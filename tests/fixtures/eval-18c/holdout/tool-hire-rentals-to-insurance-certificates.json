@@ -1,0 +1,634 @@
+{
+  "scenarioId": "tool-hire-rentals-to-insurance-certificates",
+  "split": "holdout",
+  "industry": "construction equipment hire",
+  "sourceLanguage": "en",
+  "description": "Flat rental export of a fictional plant and tool hire depot (English snake_case) to be loaded into an insurer's hire-certificate service.",
+  "fictional": true,
+  "completable": false,
+  "records": [
+    {
+      "start_date": "01/10/2025",
+      "tool_group": "Scissor Lift",
+      "asset_tag": "AT-9000",
+      "email": "harry.rowe@site.example.com",
+      "rental_status": "Returned",
+      "depot_staff": "Kwame Asante",
+      "waiver": "Full cover",
+      "site_postcode": "HG2 8PL",
+      "payment_status": "Paid",
+      "customer": "  J. Okafor Groundworks",
+      "daily_rate": 48,
+      "rental_no": "HR-66100",
+      "end_date": "01/26/2025",
+      "line_id": 4400,
+      "min_hire_days": 7
+    },
+    {
+      "asset_tag": "AT-9037",
+      "payment_status": "Deposit held",
+      "tool_group": "Plate Compactor",
+      "end_date": "09/22/2025",
+      "start_date": "12/19/2025",
+      "site_postcode": "BD9 4RJ",
+      "min_hire_days": 1,
+      "customer": "Elm Street Renovations",
+      "rental_status": "Reserved",
+      "line_id": 4401,
+      "daily_rate": 35,
+      "rental_no": "HR-66113",
+      "depot_staff": "Kwame Asante",
+      "waiver": "Declined – own insurance",
+      "email": "Harry.Pearce@Site.Example.Com"
+    },
+    {
+      "payment_status": "Paid",
+      "end_date": "04/19/2025",
+      "email": "poppy.holt@site.example.com",
+      "customer": "Pennine Landscapes",
+      "line_id": 4402,
+      "asset_tag": "AT-9074",
+      "rental_no": "HR-66126",
+      "depot_staff": "Dawn Pritchard",
+      "min_hire_days": 1,
+      "rental_status": "Returned",
+      "site_postcode": null,
+      "daily_rate": 35,
+      "start_date": "09/04/2025",
+      "waiver": "Basic (excess 500)",
+      "tool_group": "Scissor Lift"
+    },
+    {
+      "end_date": "05/12/2025",
+      "rental_no": "HR-66139",
+      "line_id": 4403,
+      "rental_status": "Out on hire",
+      "min_hire_days": 1,
+      "depot_staff": "Kwame Asante",
+      "daily_rate": 210,
+      "site_postcode": "HX1 5AB",
+      "asset_tag": "AT-9111",
+      "tool_group": "Mini Excavator",
+      "waiver": "Basic (excess 500)",
+      "customer": "Brookfield Builders Ltd",
+      "payment_status": "Account (30 days)",
+      "start_date": "10/21/2025",
+      "email": null
+    },
+    {
+      "email": "Oscar.Kerr@Site.Example.Com",
+      "site_postcode": "HG2 8PL",
+      "asset_tag": "AT-9148",
+      "tool_group": "Plate Compactor",
+      "rental_no": "HR-66152",
+      "daily_rate": 95,
+      "rental_status": "Returned",
+      "line_id": 4404,
+      "waiver": "Basic (excess 500)",
+      "payment_status": "Account (30 days)",
+      "start_date": "08/19/2025",
+      "depot_staff": "Gary Holloway",
+      "end_date": "10/04/2025",
+      "customer": "Castlegate Roofing",
+      "min_hire_days": 1
+    },
+    {
+      "tool_group": "Concrete Mixer",
+      "end_date": "09/09/2025",
+      "waiver": "Full cover",
+      "payment_status": "Deposit held",
+      "customer": "Elm Street Renovations",
+      "line_id": 4405,
+      "rental_no": "HR-66165",
+      "rental_status": "Out on hire",
+      "start_date": "04/23/2025",
+      "min_hire_days": 2,
+      "daily_rate": 95,
+      "email": "amelia.walsh@site.example.com",
+      "depot_staff": "Lisa Moorcroft",
+      "asset_tag": "AT-9185"
+    },
+    {
+      "tool_group": "Scaffold Tower",
+      "line_id": 4406,
+      "customer": "Pennine Landscapes",
+      "daily_rate": 35,
+      "asset_tag": "AT-9222",
+      "waiver": "Declined – own insurance",
+      "rental_status": "Out on hire",
+      "depot_staff": "Gary Holloway",
+      "email": "theo.collier@site.example.com",
+      "min_hire_days": 7,
+      "site_postcode": "LS6 2QT",
+      "start_date": "08/28/2025",
+      "end_date": "07/02/2025",
+      "payment_status": "Account (30 days)",
+      "rental_no": "HR-66178"
+    },
+    {
+      "tool_group": "DEMO UNIT",
+      "asset_tag": "AT-9259",
+      "rental_no": "HR-66191",
+      "customer": "Castlegate Roofing  ",
+      "min_hire_days": 7,
+      "start_date": "12/25/2025",
+      "depot_staff": "Gary Holloway",
+      "site_postcode": "BD9 4RJ",
+      "waiver": "Full cover",
+      "rental_status": "Off-hire requested",
+      "end_date": "07/04/2025",
+      "line_id": 4407,
+      "email": "Poppy.Quinn@Site.Example.Com",
+      "daily_rate": 35,
+      "payment_status": "Account (30 days)"
+    },
+    {
+      "waiver": "Full cover",
+      "email": "jack.collier@site.example.com",
+      "asset_tag": "AT-9296",
+      "line_id": 4408,
+      "rental_no": "HR-66204",
+      "depot_staff": "Lisa Moorcroft",
+      "min_hire_days": 2,
+      "rental_status": "Reserved",
+      "site_postcode": "LS6 2QT",
+      "daily_rate": 35,
+      "start_date": "02/26/2025",
+      "payment_status": "Deposit held",
+      "customer": "Brookfield Builders Ltd",
+      "tool_group": "Mini Excavator",
+      "end_date": "01/15/2025"
+    },
+    {
+      "payment_status": "Account (30 days)",
+      "customer": "Castlegate Roofing",
+      "min_hire_days": 2,
+      "tool_group": "Scissor Lift",
+      "waiver": "Declined – own insurance",
+      "rental_no": "HR-66217",
+      "rental_status": "Out on hire",
+      "site_postcode": "LS6 2QT",
+      "end_date": "06/22/2025",
+      "asset_tag": "AT-9333",
+      "depot_staff": "Gary Holloway",
+      "daily_rate": 210,
+      "line_id": 4409,
+      "start_date": "08/26/2025"
+    },
+    {
+      "waiver": "Full cover",
+      "min_hire_days": 1,
+      "depot_staff": "Dawn Pritchard",
+      "asset_tag": "AT-9370",
+      "tool_group": "Scaffold Tower",
+      "rental_no": "HR-66230",
+      "start_date": "05/04/2025",
+      "end_date": "10/03/2025",
+      "daily_rate": 140,
+      "rental_status": "Reserved",
+      "site_postcode": "BD9 4RJ",
+      "line_id": 4410,
+      "payment_status": "Paid",
+      "customer": "Elm Street Renovations",
+      "email": "Isla.Turner@Site.Example.Com"
+    },
+    {
+      "customer": "Castlegate Roofing",
+      "waiver": "Declined – own insurance",
+      "payment_status": "Paid",
+      "depot_staff": "Kwame Asante",
+      "start_date": "03/17/2025",
+      "site_postcode": "BD9 4RJ",
+      "line_id": 4411,
+      "daily_rate": 35,
+      "end_date": "03/09/2025",
+      "tool_group": "Scaffold Tower",
+      "rental_no": "HR-66243",
+      "rental_status": "Reserved",
+      "email": "leo.fletcher@site.example.com",
+      "asset_tag": "AT-9407",
+      "min_hire_days": 7
+    },
+    {
+      "daily_rate": 48,
+      "start_date": "01/24/2025",
+      "rental_status": "Off-hire requested",
+      "waiver": "Declined – own insurance",
+      "tool_group": "Scissor Lift",
+      "payment_status": "Overdue",
+      "depot_staff": "Kwame Asante",
+      "end_date": "11/19/2025",
+      "email": "arthur.holt@site.example.com",
+      "asset_tag": "AT-9444",
+      "min_hire_days": 7,
+      "customer": "Elm Street Renovations",
+      "line_id": 4412,
+      "site_postcode": "HG2 8PL",
+      "rental_no": "HR-66256"
+    },
+    {
+      "site_postcode": "LS6 2QT",
+      "depot_staff": "Dawn Pritchard",
+      "tool_group": "Plate Compactor",
+      "rental_no": "HR-66269",
+      "email": "Harry.Kerr@Site.Example.Com",
+      "payment_status": "Deposit held",
+      "daily_rate": 48,
+      "line_id": 4413,
+      "start_date": "07/06/2025",
+      "end_date": "08/21/2025",
+      "waiver": "Declined – own insurance",
+      "min_hire_days": 7,
+      "asset_tag": "AT-9481",
+      "customer": " Castlegate Roofing ",
+      "rental_status": "Off-hire requested"
+    },
+    {
+      "line_id": 4414,
+      "site_postcode": null,
+      "asset_tag": "AT-9518",
+      "rental_no": "HR-66282",
+      "payment_status": "Overdue",
+      "customer": "Pennine Landscapes",
+      "depot_staff": "Dawn Pritchard",
+      "start_date": "08/09/2025",
+      "daily_rate": 210,
+      "tool_group": "Mini Excavator",
+      "min_hire_days": 1,
+      "rental_status": "Returned",
+      "waiver": "Basic (excess 500)",
+      "email": "harry.shaw@site.example.com",
+      "end_date": "05/07/2025"
+    },
+    {
+      "tool_group": "DEMO UNIT",
+      "waiver": "Basic (excess 500)",
+      "email": "ella.pearce@site.example.com",
+      "payment_status": "Paid",
+      "start_date": "01/27/2025",
+      "end_date": "11/19/2025",
+      "customer": "Pennine Landscapes",
+      "min_hire_days": 1,
+      "daily_rate": 210,
+      "rental_no": "HR-66295",
+      "rental_status": "Off-hire requested",
+      "asset_tag": "AT-9555",
+      "line_id": 4415,
+      "site_postcode": "HX1 5AB",
+      "depot_staff": "Gary Holloway"
+    },
+    {
+      "min_hire_days": 1,
+      "rental_no": "HR-66308",
+      "waiver": "Basic (excess 500)",
+      "start_date": "08/08/2025",
+      "depot_staff": "Lisa Moorcroft",
+      "line_id": 4416,
+      "asset_tag": "AT-9592",
+      "daily_rate": 35,
+      "tool_group": "Mini Excavator",
+      "customer": "J. Okafor Groundworks",
+      "email": null,
+      "site_postcode": "LS6 2QT",
+      "end_date": "10/15/2025",
+      "rental_status": "Returned",
+      "payment_status": "Overdue"
+    },
+    {
+      "waiver": "Full cover",
+      "daily_rate": 48,
+      "end_date": "09/07/2025",
+      "asset_tag": "AT-9629",
+      "email": "ruby.prentice@site.example.com",
+      "min_hire_days": 1,
+      "site_postcode": "LS6 2QT",
+      "rental_status": "Off-hire requested",
+      "depot_staff": "Lisa Moorcroft",
+      "tool_group": "Concrete Mixer",
+      "line_id": 4417,
+      "start_date": "11/11/2025",
+      "customer": "Castlegate Roofing",
+      "payment_status": "Paid",
+      "rental_no": "HR-66321"
+    },
+    {
+      "rental_no": "HR-66334",
+      "waiver": "Basic (excess 500)",
+      "email": "mia.ashby@site.example.com",
+      "tool_group": "DEMO UNIT",
+      "daily_rate": 210,
+      "payment_status": "Deposit held",
+      "depot_staff": "Dawn Pritchard",
+      "min_hire_days": 2,
+      "site_postcode": "HX1 5AB",
+      "asset_tag": "AT-9666",
+      "line_id": 4418,
+      "customer": "J. Okafor Groundworks",
+      "rental_status": "Out on hire",
+      "start_date": "07/16/2025",
+      "end_date": "11/02/2025"
+    },
+    {
+      "payment_status": "Overdue",
+      "start_date": "12/23/2025",
+      "asset_tag": "AT-9703",
+      "depot_staff": "Gary Holloway",
+      "email": "Ella.Quinn@Site.Example.Com",
+      "rental_no": "HR-66347",
+      "daily_rate": 210,
+      "min_hire_days": 7,
+      "rental_status": "Reserved",
+      "line_id": 4419,
+      "end_date": "11/03/2025",
+      "tool_group": "Plate Compactor",
+      "waiver": "Declined – own insurance",
+      "customer": "Pennine Landscapes"
+    },
+    {
+      "site_postcode": "LS6 2QT",
+      "daily_rate": 35,
+      "customer": "  Elm Street Renovations",
+      "rental_status": "Returned",
+      "tool_group": "Concrete Mixer",
+      "payment_status": "Account (30 days)",
+      "waiver": "Full cover",
+      "line_id": 4420,
+      "start_date": "06/28/2025",
+      "min_hire_days": 1,
+      "asset_tag": "AT-9740",
+      "end_date": "05/27/2025",
+      "rental_no": "HR-66360",
+      "depot_staff": "Lisa Moorcroft",
+      "email": "harry.prentice@site.example.com"
+    },
+    {
+      "line_id": 4421,
+      "rental_no": "HR-66373",
+      "site_postcode": "LS6 2QT",
+      "depot_staff": "Kwame Asante",
+      "start_date": "02/11/2025",
+      "asset_tag": "AT-9777",
+      "customer": "J. Okafor Groundworks",
+      "rental_status": "Off-hire requested",
+      "min_hire_days": 1,
+      "daily_rate": 35,
+      "payment_status": "Overdue",
+      "tool_group": "Scaffold Tower",
+      "waiver": "Full cover",
+      "end_date": "10/28/2025",
+      "email": "harry.doyle@site.example.com"
+    },
+    {
+      "payment_status": "Deposit held",
+      "line_id": 4422,
+      "min_hire_days": 2,
+      "start_date": "09/18/2025",
+      "depot_staff": "Dawn Pritchard",
+      "customer": "Elm Street Renovations",
+      "tool_group": "Concrete Mixer",
+      "email": "Theo.Neville@Site.Example.Com",
+      "daily_rate": 95,
+      "rental_status": "Reserved",
+      "asset_tag": "AT-9814",
+      "site_postcode": "HG2 8PL",
+      "waiver": "Basic (excess 500)",
+      "rental_no": "HR-66386",
+      "end_date": "12/17/2025"
+    },
+    {
+      "rental_status": "Out on hire",
+      "payment_status": "Overdue",
+      "customer": "Pennine Landscapes",
+      "tool_group": "DEMO UNIT",
+      "depot_staff": "Lisa Moorcroft",
+      "end_date": "10/27/2025",
+      "line_id": 4423,
+      "rental_no": "HR-66399",
+      "daily_rate": 210,
+      "min_hire_days": 7,
+      "email": "freya.doyle@site.example.com",
+      "start_date": "12/20/2025",
+      "asset_tag": "AT-9851",
+      "waiver": "Declined – own insurance",
+      "site_postcode": "HG2 8PL"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "rental_id": {
+        "type": "string",
+        "description": "Hire contract number."
+      },
+      "customer_name": {
+        "type": "string",
+        "description": "Business hiring the equipment."
+      },
+      "customer_email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address for the certificate."
+      },
+      "equipment_category": {
+        "type": "string",
+        "enum": [
+          "excavator",
+          "aerial_platform",
+          "compaction",
+          "mixing",
+          "access_scaffold"
+        ],
+        "description": "Insurance category of the hired equipment."
+      },
+      "damage_waiver": {
+        "type": "string",
+        "enum": [
+          "full",
+          "basic",
+          "declined"
+        ],
+        "description": "Damage waiver taken by the hirer."
+      },
+      "rental_status": {
+        "type": "string",
+        "enum": [
+          "on_hire",
+          "returned",
+          "reserved",
+          "off_hire_pending"
+        ],
+        "description": "Where the hire stands."
+      },
+      "hire_start": {
+        "type": "string",
+        "format": "date",
+        "description": "First day of the hire."
+      },
+      "rental_days": {
+        "type": "integer",
+        "description": "Number of calendar days the equipment is on hire; determines the premium."
+      },
+      "site_postcode": {
+        "type": "string",
+        "description": "Postcode of the site where the equipment is used."
+      },
+      "operator_licence_no": {
+        "type": "string",
+        "description": "Licence number of the machine operator."
+      }
+    },
+    "required": [
+      "rental_id",
+      "customer_name",
+      "equipment_category",
+      "damage_waiver",
+      "hire_start",
+      "rental_days"
+    ]
+  },
+  "groundTruth": {
+    "rental_id": {
+      "source": "rental_no",
+      "transform": "copy",
+      "why": "rental number; line_id is the export row"
+    },
+    "customer_name": {
+      "source": "customer",
+      "transform": "trim",
+      "why": "hirer, padded; depot_staff is the depot employee"
+    },
+    "customer_email": {
+      "source": "email",
+      "transform": "normalize_email",
+      "why": "hirer email, mixed case, sometimes absent"
+    },
+    "equipment_category": {
+      "source": "tool_group",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Mini Excavator": "excavator",
+        "Scissor Lift": "aerial_platform",
+        "Plate Compactor": "compaction",
+        "Concrete Mixer": "mixing",
+        "Scaffold Tower": "access_scaffold",
+        "DEMO UNIT": null
+      },
+      "why": "equipment group; demo units are not hired out and need review"
+    },
+    "damage_waiver": {
+      "source": "waiver",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Full cover": "full",
+        "Basic (excess 500)": "basic",
+        "Declined – own insurance": "declined"
+      },
+      "why": "waiver choice; payment_status is about payment"
+    },
+    "rental_status": {
+      "source": "rental_status",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Out on hire": "on_hire",
+        "Returned": "returned",
+        "Reserved": "reserved",
+        "Off-hire requested": "off_hire_pending"
+      },
+      "why": "hire state"
+    },
+    "hire_start": {
+      "source": "start_date",
+      "transform": "parse_date",
+      "dateFormat": "MM/DD/YYYY",
+      "why": "start (US month-first)"
+    },
+    "rental_days": {
+      "source": null,
+      "transform": "none",
+      "why": "no hire length is exported; min_hire_days is the tariff minimum, not this hire's length",
+      "unsupportedReason": "the length would have to be computed from end_date minus start_date"
+    },
+    "site_postcode": {
+      "source": "site_postcode",
+      "transform": "copy",
+      "why": "site postcode, sometimes absent"
+    },
+    "operator_licence_no": {
+      "source": null,
+      "transform": "none",
+      "why": "operator licences are not exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "waiver",
+        "payment_status"
+      ],
+      "correctFor": "damage_waiver"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "rental_status",
+        "payment_status"
+      ],
+      "correctFor": "rental_status"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "rental_no",
+        "line_id"
+      ],
+      "correctFor": "rental_id"
+    },
+    {
+      "kind": "decoy-for-missing-field",
+      "fields": [
+        "min_hire_days",
+        "daily_rate"
+      ],
+      "correctFor": "rental_days"
+    },
+    {
+      "kind": "birth-date-vs-start-date",
+      "fields": [
+        "start_date",
+        "end_date"
+      ],
+      "correctFor": "hire_start"
+    }
+  ],
+  "sourceConcepts": {
+    "rental_no": "transaction-id",
+    "line_id": "other-identifier",
+    "customer": "organization-name",
+    "email": "email",
+    "depot_staff": "person-name",
+    "tool_group": "category",
+    "asset_tag": "other-identifier",
+    "waiver": "category",
+    "payment_status": "payment-status",
+    "rental_status": "account-status",
+    "start_date": "start-date",
+    "end_date": "end-date",
+    "min_hire_days": "quantity",
+    "site_postcode": "postal-code",
+    "daily_rate": "amount"
+  },
+  "destinationConcepts": {
+    "rental_id": "transaction-id",
+    "customer_name": "organization-name",
+    "customer_email": "email",
+    "equipment_category": "category",
+    "damage_waiver": "category",
+    "rental_status": "account-status",
+    "hire_start": "start-date",
+    "rental_days": "quantity",
+    "site_postcode": "postal-code",
+    "operator_licence_no": "other-identifier"
+  }
+}

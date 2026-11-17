@@ -21,3 +21,4 @@
 | [0017](0017-planner-prompt-v4.md) | Initial planner prompt v4 and initial response schema 2: no invented values, no map_enum without disclosed labels |
 | [0018](0018-integration-intent-plan.md) | Integration Intent Plan: correspondence separate from transformation (implemented, not shipped: Gate B-AI failed) |
 | [0019](0019-optional-destination-absent-input.md) | An absent input for an optional destination field omits the field instead of refusing the record |
+| [0020](0020-category-groupings-and-plan-recovery.md) | Category groupings, "Choose another field" on plan questions, plan output cap, uncertain matches become questions (Gate C failed; not shipped) |

@@ -1,0 +1,890 @@
+{
+  "scenarioId": "allotment-plot-leases-to-municipal-registry",
+  "split": "holdout",
+  "industry": "allotment garden plot leases",
+  "sourceLanguage": "fr",
+  "description": "Lease export of a fictional municipal allotment garden association (French snake_case, nested lease, plot and holder) to be loaded into the city land registry.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "titulaire": {
+        "nom": "Gauthier",
+        "courriel": "juliette.gauthier@courriel.example.org",
+        "telephone": "+33 6 648 8717",
+        "prenom": "Juliette"
+      },
+      "statut_paiement": "Réglé",
+      "bail": {
+        "date_debut": "03/08/2012",
+        "statut": "Résilié",
+        "reference": "BAIL-2016-301",
+        "date_fin": null
+      },
+      "id_export": 70000,
+      "parcelle": {
+        "surface": 50,
+        "secteur": "Clos Saint-Roch",
+        "numero": "A-003",
+        "type": "Bac surélevé PMR"
+      },
+      "quartier": "Bellevue"
+    },
+    {
+      "bail": {
+        "reference": "BAIL-2017-308",
+        "date_debut": "09/09/2023",
+        "statut": "En cours",
+        "date_fin": "09/11/2026"
+      },
+      "id_export": 70001,
+      "quartier": "La Croix-Rouge",
+      "titulaire": {
+        "telephone": "+33 6 738 4986",
+        "nom": "Moreau",
+        "prenom": "Baptiste",
+        "courriel": null
+      },
+      "statut_paiement": "Échéancier",
+      "parcelle": {
+        "secteur": "Prairie Nord",
+        "numero": "B-005",
+        "surface": 150,
+        "type": "Parcelle pédagogique (école)"
+      }
+    },
+    {
+      "titulaire": {
+        "telephone": "+33 6 719 7021",
+        "prenom": "Juliette",
+        "nom": "Lefèvre",
+        "courriel": "juliette.lefevre@courriel.example.org"
+      },
+      "quartier": "Bellevue",
+      "id_export": 70002,
+      "statut_paiement": "Réglé",
+      "parcelle": {
+        "surface": 100,
+        "numero": "C-007",
+        "secteur": "  Les Coteaux",
+        "type": "Parcelle collective"
+      },
+      "bail": {
+        "date_fin": "10/03/2026",
+        "reference": "BAIL-2018-315",
+        "statut": "En cours",
+        "date_debut": "09/11/2012"
+      }
+    },
+    {
+      "parcelle": {
+        "type": "Parcelle collective",
+        "numero": "D-009",
+        "surface": 25,
+        "secteur": "Les Coteaux"
+      },
+      "quartier": "La Croix-Rouge",
+      "id_export": 70003,
+      "bail": {
+        "statut": "Bail test logiciel",
+        "reference": "BAIL-2019-322",
+        "date_fin": "11/10/2028",
+        "date_debut": "11/03/2015"
+      },
+      "titulaire": {
+        "prenom": "Théo",
+        "telephone": "+33 6 739 6976",
+        "courriel": "theo.perrin@courriel.example.org",
+        "nom": "Perrin"
+      },
+      "statut_paiement": "Échéancier"
+    },
+    {
+      "titulaire": {
+        "telephone": "+33 6 388 6543",
+        "courriel": "Elise.Lefevre@Courriel.Example.Org",
+        "prenom": "Élise",
+        "nom": "Lefèvre"
+      },
+      "statut_paiement": "Exonéré (CCAS)",
+      "bail": {
+        "date_fin": null,
+        "date_debut": "06/03/2016",
+        "statut": "Liste d'attente",
+        "reference": "BAIL-2020-329"
+      },
+      "parcelle": {
+        "secteur": "Les Coteaux",
+        "type": "Parcelle collective",
+        "numero": "A-011",
+        "surface": 150
+      },
+      "quartier": "Centre-Ville",
+      "id_export": 70004
+    },
+    {
+      "statut_paiement": "Exonéré (CCAS)",
+      "id_export": 70005,
+      "titulaire": {
+        "nom": "Roussel",
+        "prenom": "Louis",
+        "telephone": "+33 6 873 1915"
+      },
+      "bail": {
+        "statut": "Bail test logiciel",
+        "date_debut": "08/09/2012",
+        "date_fin": "05/10/2030",
+        "reference": "BAIL-2021-336"
+      },
+      "quartier": "Bellevue",
+      "parcelle": {
+        "surface": 100,
+        "numero": "B-013",
+        "secteur": "Prairie Nord",
+        "type": "Demi-parcelle"
+      }
+    },
+    {
+      "titulaire": {
+        "telephone": "+33 6 909 7928",
+        "courriel": "mathis.rousseau@courriel.example.org",
+        "nom": "Rousseau",
+        "prenom": "Mathis"
+      },
+      "parcelle": {
+        "secteur": "Prairie Nord",
+        "type": "Demi-parcelle",
+        "numero": "C-015",
+        "surface": 100
+      },
+      "bail": {
+        "date_debut": "06/08/2025",
+        "date_fin": "02/03/2027",
+        "statut": "En cours",
+        "reference": "BAIL-2022-343"
+      },
+      "quartier": "Bellevue",
+      "id_export": 70006,
+      "statut_paiement": "Impayé"
+    },
+    {
+      "bail": {
+        "date_fin": "04/04/2029",
+        "reference": "BAIL-2023-350",
+        "date_debut": "08/12/2021",
+        "statut": "En cours"
+      },
+      "quartier": "Centre-Ville",
+      "statut_paiement": "Exonéré (CCAS)",
+      "parcelle": {
+        "surface": 50,
+        "secteur": "Les Coteaux",
+        "numero": "D-017",
+        "type": "Parcelle collective"
+      },
+      "id_export": 70007,
+      "titulaire": {
+        "nom": "Brunet",
+        "prenom": "Camille",
+        "telephone": "+33 6 871 5009",
+        "courriel": "Camille.Brunet@Courriel.Example.Org"
+      }
+    },
+    {
+      "id_export": 70008,
+      "titulaire": {
+        "telephone": "+33 6 170 9467",
+        "courriel": "clemence.blanchard@courriel.example.org",
+        "nom": "Blanchard",
+        "prenom": "Clémence"
+      },
+      "bail": {
+        "statut": "Liste d'attente",
+        "date_fin": "10/01/2030",
+        "reference": "BAIL-2024-357",
+        "date_debut": "02/10/2020"
+      },
+      "quartier": "Centre-Ville",
+      "parcelle": {
+        "type": "Parcelle pédagogique (école)",
+        "secteur": "Prairie Nord  ",
+        "numero": "A-019",
+        "surface": 25
+      },
+      "statut_paiement": "Échéancier"
+    },
+    {
+      "parcelle": {
+        "secteur": "Clos Saint-Roch",
+        "surface": 25,
+        "type": "Bac surélevé PMR",
+        "numero": "B-021"
+      },
+      "quartier": "Bellevue",
+      "statut_paiement": "Réglé",
+      "bail": {
+        "date_debut": "03/08/2020",
+        "reference": "BAIL-2016-364",
+        "date_fin": null,
+        "statut": "En cours"
+      },
+      "titulaire": {
+        "prenom": "Louis",
+        "nom": "Fontaine",
+        "telephone": "+33 6 998 7762",
+        "courriel": "louis.fontaine@courriel.example.org"
+      },
+      "id_export": 70009
+    },
+    {
+      "statut_paiement": "Impayé",
+      "quartier": "La Croix-Rouge",
+      "parcelle": {
+        "secteur": "Prairie Nord",
+        "numero": "C-023",
+        "surface": 25,
+        "type": "Demi-parcelle"
+      },
+      "bail": {
+        "date_fin": "11/03/2026",
+        "reference": "BAIL-2017-371",
+        "date_debut": "09/02/2020",
+        "statut": "Résilié"
+      },
+      "titulaire": {
+        "nom": "Dubois",
+        "courriel": "Arthur.Dubois@Courriel.Example.Org",
+        "telephone": "+33 6 188 9977",
+        "prenom": "Arthur"
+      },
+      "id_export": 70010
+    },
+    {
+      "bail": {
+        "date_fin": "09/04/2026",
+        "statut": "Bail test logiciel",
+        "reference": "BAIL-2018-378",
+        "date_debut": "09/08/2023"
+      },
+      "quartier": "Bellevue",
+      "id_export": 70011,
+      "statut_paiement": "Réglé",
+      "titulaire": {
+        "courriel": "margaux.blanchard@courriel.example.org",
+        "telephone": "+33 6 417 4567",
+        "nom": "Blanchard",
+        "prenom": "Margaux"
+      },
+      "parcelle": {
+        "secteur": "Prairie Nord",
+        "surface": 75,
+        "type": "Parcelle familiale",
+        "numero": "D-025"
+      }
+    },
+    {
+      "id_export": 70012,
+      "statut_paiement": "Exonéré (CCAS)",
+      "titulaire": {
+        "telephone": "+33 6 189 5621",
+        "courriel": null,
+        "prenom": "Clémence",
+        "nom": "Caron"
+      },
+      "parcelle": {
+        "secteur": "Les Coteaux",
+        "type": "Parcelle pédagogique (école)",
+        "surface": 25,
+        "numero": "A-027"
+      },
+      "bail": {
+        "date_debut": "06/07/2024",
+        "statut": "Résilié",
+        "reference": "BAIL-2019-385",
+        "date_fin": "09/08/2028"
+      },
+      "quartier": "La Croix-Rouge"
+    },
+    {
+      "titulaire": {
+        "courriel": "Chloe.Faure@Courriel.Example.Org",
+        "telephone": "+33 6 760 6502",
+        "prenom": "Chloé",
+        "nom": "Faure"
+      },
+      "statut_paiement": "Impayé",
+      "parcelle": {
+        "surface": 75,
+        "numero": "B-029",
+        "secteur": " Les Coteaux ",
+        "type": "Bac surélevé PMR"
+      },
+      "bail": {
+        "date_fin": "08/08/2026",
+        "date_debut": "02/11/2022",
+        "statut": "Liste d'attente",
+        "reference": "BAIL-2020-392"
+      },
+      "id_export": 70013,
+      "quartier": "Bellevue"
+    },
+    {
+      "id_export": 70014,
+      "quartier": "Bellevue",
+      "titulaire": {
+        "prenom": "Manon",
+        "nom": "Mercier",
+        "courriel": "manon.mercier@courriel.example.org",
+        "telephone": "+33 6 261 5346"
+      },
+      "bail": {
+        "date_debut": "08/05/2018",
+        "reference": "BAIL-2021-399",
+        "date_fin": "04/09/2030",
+        "statut": "Résilié"
+      },
+      "parcelle": {
+        "surface": 150,
+        "numero": "C-031",
+        "type": "Parcelle collective",
+        "secteur": "Les Coteaux"
+      },
+      "statut_paiement": "Réglé"
+    },
+    {
+      "quartier": "La Croix-Rouge",
+      "titulaire": {
+        "prenom": "Clémence",
+        "nom": "Lefèvre",
+        "courriel": "clemence.lefevre@courriel.example.org",
+        "telephone": "+33 6 606 4064"
+      },
+      "parcelle": {
+        "numero": "D-033",
+        "type": "Parcelle familiale",
+        "secteur": "Les Coteaux",
+        "surface": 25
+      },
+      "bail": {
+        "reference": "BAIL-2022-406",
+        "statut": "Liste d'attente",
+        "date_debut": "06/12/2015",
+        "date_fin": null
+      },
+      "id_export": 70015,
+      "statut_paiement": "Réglé"
+    },
+    {
+      "quartier": "Bellevue",
+      "id_export": 70016,
+      "parcelle": {
+        "surface": 25,
+        "numero": "A-035",
+        "secteur": "Prairie Nord",
+        "type": "Parcelle familiale"
+      },
+      "titulaire": {
+        "courriel": "Zoe.Lambert@Courriel.Example.Org",
+        "telephone": "+33 6 185 6324",
+        "prenom": "Zoé",
+        "nom": "Lambert"
+      },
+      "statut_paiement": "Impayé",
+      "bail": {
+        "date_debut": "11/01/2015",
+        "reference": "BAIL-2023-413",
+        "statut": "En cours",
+        "date_fin": "03/03/2026"
+      }
+    },
+    {
+      "parcelle": {
+        "surface": 100,
+        "numero": "B-037",
+        "type": "Parcelle familiale",
+        "secteur": "Prairie Nord"
+      },
+      "titulaire": {
+        "courriel": "louis.brunet@courriel.example.org",
+        "nom": "Brunet",
+        "prenom": "Louis",
+        "telephone": "+33 6 540 2391"
+      },
+      "statut_paiement": "Impayé",
+      "quartier": "La Croix-Rouge",
+      "id_export": 70017,
+      "bail": {
+        "date_fin": "05/12/2030",
+        "date_debut": "09/08/2022",
+        "reference": "BAIL-2024-420",
+        "statut": "Préavis donné"
+      }
+    },
+    {
+      "quartier": "Bellevue",
+      "bail": {
+        "reference": "BAIL-2016-427",
+        "date_fin": "08/12/2028",
+        "date_debut": "01/02/2021",
+        "statut": "Préavis donné"
+      },
+      "titulaire": {
+        "nom": "Roussel",
+        "courriel": "louis.roussel@courriel.example.org",
+        "telephone": "+33 6 672 3036",
+        "prenom": "Louis"
+      },
+      "id_export": 70018,
+      "parcelle": {
+        "numero": "C-039",
+        "type": "Bac surélevé PMR",
+        "secteur": "Les Coteaux",
+        "surface": 75
+      },
+      "statut_paiement": "Réglé"
+    },
+    {
+      "parcelle": {
+        "type": "Parcelle familiale",
+        "secteur": "Jardins du Canal",
+        "numero": "D-041",
+        "surface": 150
+      },
+      "statut_paiement": "Exonéré (CCAS)",
+      "bail": {
+        "reference": "BAIL-2017-434",
+        "statut": "Préavis donné",
+        "date_debut": "06/05/2015",
+        "date_fin": "07/02/2026"
+      },
+      "titulaire": {
+        "prenom": "Arthur",
+        "telephone": "+33 6 938 3060",
+        "courriel": null,
+        "nom": "Lambert"
+      },
+      "id_export": 70019,
+      "quartier": "La Croix-Rouge"
+    },
+    {
+      "id_export": 70020,
+      "parcelle": {
+        "numero": "A-043",
+        "secteur": "Jardins du Canal",
+        "type": "Demi-parcelle",
+        "surface": 25
+      },
+      "statut_paiement": "Échéancier",
+      "quartier": "Centre-Ville",
+      "titulaire": {
+        "telephone": "+33 6 910 5065",
+        "prenom": "Léa",
+        "courriel": "lea.lambert@courriel.example.org",
+        "nom": "Lambert"
+      },
+      "bail": {
+        "reference": "BAIL-2018-441",
+        "statut": "Résilié",
+        "date_debut": "07/06/2019",
+        "date_fin": "11/12/2030"
+      }
+    },
+    {
+      "bail": {
+        "statut": "Bail test logiciel",
+        "date_fin": "06/01/2027",
+        "reference": "BAIL-2019-448",
+        "date_debut": "05/02/2023"
+      },
+      "titulaire": {
+        "courriel": "elise.lefevre@courriel.example.org",
+        "telephone": "+33 6 121 1142",
+        "nom": "Lefèvre",
+        "prenom": "Élise"
+      },
+      "statut_paiement": "Échéancier",
+      "id_export": 70021,
+      "parcelle": {
+        "numero": "B-045",
+        "type": "Demi-parcelle",
+        "surface": 75,
+        "secteur": "  Jardins du Canal"
+      },
+      "quartier": "La Croix-Rouge"
+    },
+    {
+      "parcelle": {
+        "type": "Parcelle pédagogique (école)",
+        "secteur": "Prairie Nord",
+        "numero": "C-047",
+        "surface": 100
+      },
+      "titulaire": {
+        "prenom": "Louis",
+        "courriel": "Louis.Renaud@Courriel.Example.Org",
+        "nom": "Renaud",
+        "telephone": "+33 6 587 3122"
+      },
+      "bail": {
+        "date_fin": null,
+        "statut": "Liste d'attente",
+        "reference": "BAIL-2020-455",
+        "date_debut": "08/12/2013"
+      },
+      "statut_paiement": "Impayé",
+      "quartier": "Bellevue",
+      "id_export": 70022
+    },
+    {
+      "bail": {
+        "statut": "Préavis donné",
+        "date_fin": "06/11/2027",
+        "reference": "BAIL-2021-462",
+        "date_debut": "09/10/2024"
+      },
+      "titulaire": {
+        "prenom": "Théo",
+        "nom": "Girard",
+        "courriel": "theo.girard@courriel.example.org",
+        "telephone": "+33 6 799 7367"
+      },
+      "parcelle": {
+        "secteur": "Les Coteaux",
+        "type": "Bac surélevé PMR",
+        "numero": "D-049",
+        "surface": 25
+      },
+      "id_export": 70023,
+      "statut_paiement": "Échéancier",
+      "quartier": "Centre-Ville"
+    },
+    {
+      "bail": {
+        "reference": "BAIL-2022-469",
+        "statut": "Bail test logiciel",
+        "date_debut": "03/09/2023",
+        "date_fin": "06/08/2029"
+      },
+      "quartier": "La Croix-Rouge",
+      "parcelle": {
+        "type": "Parcelle familiale",
+        "numero": "A-051",
+        "surface": 75,
+        "secteur": "Prairie Nord"
+      },
+      "id_export": 70024,
+      "statut_paiement": "Exonéré (CCAS)",
+      "titulaire": {
+        "telephone": "+33 6 176 3083",
+        "prenom": "Camille",
+        "nom": "Lambert"
+      }
+    },
+    {
+      "id_export": 70025,
+      "statut_paiement": "Impayé",
+      "titulaire": {
+        "nom": "Girard",
+        "prenom": "Baptiste",
+        "telephone": "+33 6 991 4295",
+        "courriel": "Baptiste.Girard@Courriel.Example.Org"
+      },
+      "quartier": "La Croix-Rouge",
+      "bail": {
+        "date_fin": "11/08/2026",
+        "reference": "BAIL-2023-476",
+        "date_debut": "01/07/2021",
+        "statut": "Préavis donné"
+      },
+      "parcelle": {
+        "numero": "B-053",
+        "secteur": "Prairie Nord",
+        "type": "Parcelle pédagogique (école)",
+        "surface": 100
+      }
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "lease_id": {
+        "type": "string",
+        "description": "Reference of the lease contract."
+      },
+      "plot_code": {
+        "type": "string",
+        "description": "Code of the leased plot."
+      },
+      "holder_name": {
+        "type": "string",
+        "description": "Full name of the leaseholder, given name first."
+      },
+      "holder_email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address of the leaseholder."
+      },
+      "plot_type": {
+        "type": "string",
+        "enum": [
+          "full_plot",
+          "half_plot",
+          "raised_bed_accessible",
+          "school_plot",
+          "shared_plot"
+        ],
+        "description": "Kind of plot."
+      },
+      "lease_status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "notice_given",
+          "terminated",
+          "pending"
+        ],
+        "description": "Legal state of the lease."
+      },
+      "payment_status": {
+        "type": "string",
+        "enum": [
+          "paid",
+          "unpaid",
+          "instalment_plan",
+          "exempt"
+        ],
+        "description": "State of the yearly fee."
+      },
+      "lease_start": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the lease began."
+      },
+      "surface_m2": {
+        "type": "integer",
+        "description": "Area of the plot in square metres."
+      },
+      "sector": {
+        "type": "string",
+        "description": "Garden site the plot belongs to."
+      },
+      "water_access": {
+        "type": "string",
+        "enum": [
+          "tap",
+          "rain_barrel",
+          "none"
+        ],
+        "description": "Water supply available on the plot."
+      }
+    },
+    "required": [
+      "lease_id",
+      "plot_code",
+      "holder_name",
+      "plot_type",
+      "lease_status",
+      "lease_start"
+    ]
+  },
+  "groundTruth": {
+    "lease_id": {
+      "source": "bail.reference",
+      "transform": "copy",
+      "why": "lease reference; id_export is a row id and parcelle.numero identifies the plot"
+    },
+    "plot_code": {
+      "source": "parcelle.numero",
+      "transform": "copy",
+      "why": "plot number"
+    },
+    "holder_name": {
+      "source": null,
+      "sources": [
+        "titulaire.prenom",
+        "titulaire.nom"
+      ],
+      "transform": "concat",
+      "separator": " ",
+      "why": "holder first name plus surname"
+    },
+    "holder_email": {
+      "source": "titulaire.courriel",
+      "transform": "normalize_email",
+      "why": "holder email, mixed case, sometimes absent"
+    },
+    "plot_type": {
+      "source": "parcelle.type",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Parcelle familiale": "full_plot",
+        "Demi-parcelle": "half_plot",
+        "Bac surélevé PMR": "raised_bed_accessible",
+        "Parcelle pédagogique (école)": "school_plot",
+        "Parcelle collective": "shared_plot"
+      },
+      "why": "plot type"
+    },
+    "lease_status": {
+      "source": "bail.statut",
+      "transform": "map_enum",
+      "categoryMap": {
+        "En cours": "active",
+        "Préavis donné": "notice_given",
+        "Résilié": "terminated",
+        "Liste d'attente": "pending",
+        "Bail test logiciel": null
+      },
+      "why": "lease state; software test leases need review"
+    },
+    "payment_status": {
+      "source": "statut_paiement",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Réglé": "paid",
+        "Impayé": "unpaid",
+        "Échéancier": "instalment_plan",
+        "Exonéré (CCAS)": "exempt"
+      },
+      "why": "fee state"
+    },
+    "lease_start": {
+      "source": "bail.date_debut",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "lease start (French day-first); date_fin is the end"
+    },
+    "surface_m2": {
+      "source": "parcelle.surface",
+      "transform": "copy",
+      "why": "plot area"
+    },
+    "sector": {
+      "source": "parcelle.secteur",
+      "transform": "trim",
+      "why": "garden site, padded; quartier is the holder's neighbourhood"
+    },
+    "water_access": {
+      "source": null,
+      "transform": "none",
+      "why": "water supply is not exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "bail.statut",
+        "statut_paiement"
+      ],
+      "correctFor": "lease_status"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "bail.reference",
+        "id_export"
+      ],
+      "correctFor": "lease_id"
+    },
+    {
+      "kind": "birth-date-vs-start-date",
+      "fields": [
+        "bail.date_debut",
+        "bail.date_fin"
+      ],
+      "correctFor": "lease_start"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "parcelle.secteur",
+        "quartier"
+      ],
+      "correctFor": "sector"
+    }
+  ],
+  "sourceConcepts": {
+    "bail.reference": "transaction-id",
+    "bail.statut": "account-status",
+    "bail.date_debut": "start-date",
+    "bail.date_fin": "end-date",
+    "parcelle.numero": "other-identifier",
+    "parcelle.type": "category",
+    "parcelle.surface": "quantity",
+    "parcelle.secteur": "other",
+    "titulaire.prenom": "given-name",
+    "titulaire.nom": "family-name",
+    "titulaire.courriel": "email",
+    "titulaire.telephone": "phone",
+    "statut_paiement": "payment-status",
+    "id_export": "other-identifier",
+    "quartier": "city"
+  },
+  "destinationConcepts": {
+    "lease_id": "transaction-id",
+    "plot_code": "other-identifier",
+    "holder_name": "person-name",
+    "holder_email": "email",
+    "plot_type": "category",
+    "lease_status": "account-status",
+    "payment_status": "payment-status",
+    "lease_start": "start-date",
+    "surface_m2": "quantity",
+    "sector": "other",
+    "water_access": "other"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 0,
+      "outcome": "transformed",
+      "output": {
+        "lease_id": "BAIL-2016-301",
+        "plot_code": "A-003",
+        "holder_name": "Juliette Gauthier",
+        "holder_email": "juliette.gauthier@courriel.example.org",
+        "plot_type": "raised_bed_accessible",
+        "lease_status": "terminated",
+        "payment_status": "paid",
+        "lease_start": "2012-08-03",
+        "surface_m2": 50,
+        "sector": "Clos Saint-Roch"
+      }
+    },
+    {
+      "recordIndex": 1,
+      "outcome": "transformed",
+      "output": {
+        "lease_id": "BAIL-2017-308",
+        "plot_code": "B-005",
+        "holder_name": "Baptiste Moreau",
+        "plot_type": "school_plot",
+        "lease_status": "active",
+        "payment_status": "instalment_plan",
+        "lease_start": "2023-09-09",
+        "surface_m2": 150,
+        "sector": "Prairie Nord"
+      }
+    },
+    {
+      "recordIndex": 3,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 12,
+      "outcome": "transformed",
+      "output": {
+        "lease_id": "BAIL-2019-385",
+        "plot_code": "A-027",
+        "holder_name": "Clémence Caron",
+        "plot_type": "school_plot",
+        "lease_status": "terminated",
+        "payment_status": "exempt",
+        "lease_start": "2024-07-06",
+        "surface_m2": 25,
+        "sector": "Les Coteaux"
+      }
+    }
+  ]
+}

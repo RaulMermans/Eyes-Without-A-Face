@@ -1,0 +1,858 @@
+{
+  "scenarioId": "translation-agency-jobs-to-vendor-portal",
+  "split": "holdout",
+  "industry": "translation agency jobs",
+  "sourceLanguage": "en",
+  "description": "Flat job export of a fictional translation agency (English snake_case) to be loaded into a client-facing job portal.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "po_number": "PO 445100",
+      "job_no": "TJ-25-1180",
+      "due": "09/26/2025",
+      "translator_email": "oliver.pearce@freelance.example.net",
+      "src_lang": "fr-FR",
+      "client": "Alder & Finch Solicitors",
+      "received": "08/24/2025",
+      "invoice_status": "Invoiced",
+      "turnaround": "Express 48h",
+      "tgt_lang": "pt-BR",
+      "project_manager": "Hannah Okafor",
+      "service_type": "Translation",
+      "rate_per_word": 0.14,
+      "client_contact_email": "ruby.shaw@client.example.com",
+      "job_status": "Quoted",
+      "words": 7262
+    },
+    {
+      "tgt_lang": "es-ES",
+      "rate_per_word": 0.11,
+      "project_manager": "Liam Brennan",
+      "invoice_status": "Not invoiced",
+      "service_type": "Translation",
+      "src_lang": "en-GB",
+      "due": "09/23/2025",
+      "received": "02/28/2025",
+      "job_status": "Cancelled",
+      "words": 4296,
+      "turnaround": "Express 48h",
+      "client_contact_email": "Henry.Holt@Client.Example.Com",
+      "job_no": "TJ-25-1184",
+      "po_number": "PO 445161",
+      "client": "  Lumen Games Studio",
+      "translator_email": "isla.hughes@freelance.example.net"
+    },
+    {
+      "invoice_status": "Not invoiced",
+      "project_manager": "Sofia Marchetti",
+      "turnaround": "Standard",
+      "po_number": "PO 445222",
+      "rate_per_word": 0.09,
+      "service_type": "Transcreation",
+      "due": "03/19/2025",
+      "received": "02/16/2025",
+      "words": 17048,
+      "job_no": "TJ-25-1188",
+      "tgt_lang": "it-IT",
+      "translator_email": "george.prentice@freelance.example.net",
+      "src_lang": "fr-FR",
+      "job_status": "In progress",
+      "client_contact_email": "ava.pearce@client.example.com",
+      "client": "Northwind Outdoor"
+    },
+    {
+      "po_number": "PO 445283",
+      "rate_per_word": 0.09,
+      "project_manager": "Sofia Marchetti",
+      "job_status": "Cancelled",
+      "service_type": "Subtitling",
+      "client_contact_email": null,
+      "src_lang": "fr-FR",
+      "received": "06/07/2025",
+      "job_no": "TJ-25-1192",
+      "due": "11/09/2025",
+      "translator_email": "arthur.holt@freelance.example.net",
+      "turnaround": "Express 48h",
+      "words": 16112,
+      "tgt_lang": "pl-PL",
+      "client": "Lumen Games Studio",
+      "invoice_status": "Paid"
+    },
+    {
+      "po_number": "PO 445344",
+      "client_contact_email": "Noah.Dunmore@Client.Example.Com",
+      "tgt_lang": "pt-BR",
+      "rate_per_word": 0.12,
+      "turnaround": "Standard",
+      "received": "10/13/2025",
+      "due": null,
+      "project_manager": "Sofia Marchetti",
+      "words": 6517,
+      "src_lang": "fr-FR",
+      "service_type": "Subtitling",
+      "client": "Lumen Games Studio",
+      "job_no": "TJ-25-1196",
+      "invoice_status": "Invoiced",
+      "translator_email": "noah.collier@freelance.example.net",
+      "job_status": "TEST JOB"
+    },
+    {
+      "translator_email": "leo.hughes@freelance.example.net",
+      "received": "10/14/2025",
+      "src_lang": "fr-FR",
+      "job_status": "Delivered",
+      "words": 7716,
+      "client": "Lumen Games Studio",
+      "client_contact_email": "oscar.gallagher@client.example.com",
+      "project_manager": "Liam Brennan",
+      "rate_per_word": 0.14,
+      "turnaround": "Same day",
+      "due": "05/11/2025",
+      "tgt_lang": "pt-BR",
+      "service_type": "Certified (sworn)",
+      "po_number": "PO 445405",
+      "job_no": "TJ-25-1200",
+      "invoice_status": "Invoiced"
+    },
+    {
+      "po_number": "PO 445466",
+      "client_contact_email": "amelia.lowell@client.example.com",
+      "translator_email": "theo.ashby@freelance.example.net",
+      "due": "11/23/2025",
+      "words": 13142,
+      "client": "Harborview Council",
+      "job_status": "Delivered",
+      "tgt_lang": "nl-NL",
+      "rate_per_word": 0.11,
+      "src_lang": "de-DE",
+      "service_type": "Transcreation",
+      "invoice_status": "Invoiced",
+      "turnaround": "Standard",
+      "job_no": "TJ-25-1204",
+      "project_manager": "Hannah Okafor",
+      "received": "07/04/2025"
+    },
+    {
+      "received": "10/06/2025",
+      "service_type": "Translation + Proofreading",
+      "rate_per_word": 0.12,
+      "words": 4387,
+      "translator_email": "ava.kerr@freelance.example.net",
+      "due": "04/21/2025",
+      "project_manager": "Sofia Marchetti",
+      "tgt_lang": "pl-PL",
+      "turnaround": "Standard",
+      "po_number": "PO 445527",
+      "invoice_status": "Paid",
+      "job_no": "TJ-25-1208",
+      "job_status": "In progress",
+      "client": "Harborview Council",
+      "src_lang": "de-DE"
+    },
+    {
+      "service_type": "Subtitling",
+      "project_manager": "Hannah Okafor",
+      "words": 2844,
+      "job_no": "TJ-25-1212",
+      "tgt_lang": "pl-PL",
+      "client": "Kestrel Pharma GmbH",
+      "invoice_status": "Paid",
+      "job_status": "On hold - client query",
+      "due": "03/17/2025",
+      "translator_email": "amelia.hughes@freelance.example.net",
+      "received": "07/14/2025",
+      "src_lang": "de-DE",
+      "rate_per_word": 0.14,
+      "po_number": "PO 445588",
+      "client_contact_email": "ava.shaw@client.example.com",
+      "turnaround": "Standard"
+    },
+    {
+      "received": "02/08/2025",
+      "translator_email": "leo.marsh@freelance.example.net",
+      "turnaround": "Same day",
+      "client_contact_email": "arthur.lowell@client.example.com",
+      "src_lang": "fr-FR",
+      "po_number": "PO 445649",
+      "words": 3547,
+      "rate_per_word": 0.09,
+      "client": "Lumen Games Studio  ",
+      "service_type": "Certified (sworn)",
+      "job_status": "Quoted",
+      "tgt_lang": "nl-NL",
+      "due": "09/23/2025",
+      "project_manager": "Ravi Menon",
+      "invoice_status": "Paid",
+      "job_no": "TJ-25-1216"
+    },
+    {
+      "src_lang": "de-DE",
+      "tgt_lang": "es-ES",
+      "invoice_status": "Not invoiced",
+      "project_manager": "Liam Brennan",
+      "po_number": "PO 445710",
+      "client": "Kestrel Pharma GmbH",
+      "turnaround": "Same day",
+      "client_contact_email": "Evie.Marsh@Client.Example.Com",
+      "words": 15593,
+      "translator_email": "oscar.neville@freelance.example.net",
+      "job_no": "TJ-25-1220",
+      "rate_per_word": 0.12,
+      "job_status": "Delivered",
+      "received": "01/05/2025",
+      "due": "10/07/2025",
+      "service_type": "Transcreation"
+    },
+    {
+      "turnaround": "Same day",
+      "job_status": "TEST JOB",
+      "received": "08/25/2025",
+      "project_manager": "Ravi Menon",
+      "due": "12/26/2025",
+      "service_type": "Subtitling",
+      "src_lang": "de-DE",
+      "tgt_lang": "it-IT",
+      "invoice_status": "Invoiced",
+      "job_no": "TJ-25-1224",
+      "words": 7175,
+      "client_contact_email": "jack.lowell@client.example.com",
+      "translator_email": "george.neville@freelance.example.net",
+      "rate_per_word": 0.12,
+      "client": "Kestrel Pharma GmbH",
+      "po_number": "PO 445771"
+    },
+    {
+      "received": "11/09/2025",
+      "service_type": "MT post-edit",
+      "client_contact_email": "oscar.holt@client.example.com",
+      "job_no": "TJ-25-1228",
+      "src_lang": "en-GB",
+      "turnaround": "Same day",
+      "tgt_lang": "nl-NL",
+      "project_manager": "Hannah Okafor",
+      "rate_per_word": 0.09,
+      "words": 6133,
+      "client": "Harborview Council",
+      "due": "02/13/2025",
+      "po_number": "PO 445832",
+      "invoice_status": "Overdue",
+      "translator_email": "henry.kerr@freelance.example.net",
+      "job_status": "On hold - client query"
+    },
+    {
+      "words": 12457,
+      "received": "08/11/2025",
+      "service_type": "Translation + Proofreading",
+      "rate_per_word": 0.11,
+      "po_number": "PO 445893",
+      "turnaround": "Express 48h",
+      "tgt_lang": "pt-BR",
+      "translator_email": "mia.ashby@freelance.example.net",
+      "job_status": "TEST JOB",
+      "due": "07/26/2025",
+      "src_lang": "de-DE",
+      "job_no": "TJ-25-1232",
+      "invoice_status": "Paid",
+      "client_contact_email": "Henry.Marsh@Client.Example.Com",
+      "client": "Kestrel Pharma GmbH",
+      "project_manager": "Hannah Okafor"
+    },
+    {
+      "client": "Northwind Outdoor",
+      "po_number": "PO 445954",
+      "rate_per_word": 0.14,
+      "due": "12/15/2025",
+      "received": "06/28/2025",
+      "src_lang": "en-GB",
+      "job_status": "Cancelled",
+      "tgt_lang": "nl-NL",
+      "service_type": "Transcreation",
+      "invoice_status": "Overdue",
+      "client_contact_email": null,
+      "turnaround": "Express 48h",
+      "words": 12114,
+      "project_manager": "Ravi Menon",
+      "job_no": "TJ-25-1236",
+      "translator_email": "freya.neville@freelance.example.net"
+    },
+    {
+      "tgt_lang": "es-ES",
+      "due": "03/25/2025",
+      "rate_per_word": 0.11,
+      "client": "Northwind Outdoor",
+      "translator_email": "ava.holt@freelance.example.net",
+      "received": "06/13/2025",
+      "job_no": "TJ-25-1240",
+      "invoice_status": "Not invoiced",
+      "client_contact_email": "oliver.fletcher@client.example.com",
+      "words": 16596,
+      "job_status": "Quoted",
+      "turnaround": "Express 48h",
+      "project_manager": "Liam Brennan",
+      "po_number": "PO 446015",
+      "service_type": "Translation",
+      "src_lang": "fr-FR"
+    },
+    {
+      "translator_email": "ava.pearce@freelance.example.net",
+      "src_lang": "de-DE",
+      "due": "11/22/2025",
+      "project_manager": "Sofia Marchetti",
+      "client_contact_email": "George.Lowell@Client.Example.Com",
+      "client": "Kestrel Pharma GmbH",
+      "job_no": "TJ-25-1244",
+      "words": 9515,
+      "po_number": "PO 446076",
+      "invoice_status": "Not invoiced",
+      "tgt_lang": "es-ES",
+      "job_status": "TEST JOB",
+      "service_type": "Translation + Proofreading",
+      "received": "12/22/2025",
+      "rate_per_word": 0.14,
+      "turnaround": "Express 48h"
+    },
+    {
+      "rate_per_word": 0.09,
+      "service_type": "Translation + Proofreading",
+      "due": "11/14/2025",
+      "translator_email": "oliver.shaw@freelance.example.net",
+      "job_no": "TJ-25-1248",
+      "received": "07/22/2025",
+      "project_manager": "Hannah Okafor",
+      "invoice_status": "Invoiced",
+      "job_status": "Cancelled",
+      "client_contact_email": "oscar.dunmore@client.example.com",
+      "src_lang": "fr-FR",
+      "client": " Alder & Finch Solicitors ",
+      "tgt_lang": "it-IT",
+      "turnaround": "Standard",
+      "po_number": "PO 446137",
+      "words": 2630
+    },
+    {
+      "po_number": "PO 446198",
+      "translator_email": "oliver.doyle@freelance.example.net",
+      "tgt_lang": "pl-PL",
+      "invoice_status": "Not invoiced",
+      "job_status": "On hold - client query",
+      "client": "Harborview Council",
+      "received": "05/03/2025",
+      "words": 4906,
+      "client_contact_email": "jack.hughes@client.example.com",
+      "project_manager": "Liam Brennan",
+      "job_no": "TJ-25-1252",
+      "src_lang": "fr-FR",
+      "due": "12/05/2025",
+      "rate_per_word": 0.14,
+      "turnaround": "Standard",
+      "service_type": "Certified (sworn)"
+    },
+    {
+      "received": "01/21/2025",
+      "service_type": "MT post-edit",
+      "src_lang": "fr-FR",
+      "job_status": "Cancelled",
+      "rate_per_word": 0.12,
+      "po_number": "PO 446259",
+      "project_manager": "Sofia Marchetti",
+      "tgt_lang": "it-IT",
+      "job_no": "TJ-25-1256",
+      "words": 9210,
+      "client_contact_email": "Evie.Turner@Client.Example.Com",
+      "translator_email": "grace.barker@freelance.example.net",
+      "due": null,
+      "client": "Alder & Finch Solicitors",
+      "turnaround": "Express 48h",
+      "invoice_status": "Invoiced"
+    },
+    {
+      "po_number": "PO 446320",
+      "invoice_status": "Invoiced",
+      "tgt_lang": "nl-NL",
+      "rate_per_word": 0.11,
+      "job_no": "TJ-25-1260",
+      "translator_email": "amelia.doyle@freelance.example.net",
+      "words": 3889,
+      "job_status": "In progress",
+      "service_type": "MT post-edit",
+      "client_contact_email": "mia.quinn@client.example.com",
+      "received": "04/17/2025",
+      "client": "Kestrel Pharma GmbH",
+      "project_manager": "Liam Brennan",
+      "due": "12/11/2025",
+      "turnaround": "Same day",
+      "src_lang": "de-DE"
+    },
+    {
+      "received": "01/20/2025",
+      "due": "09/21/2025",
+      "translator_email": "mia.quinn@freelance.example.net",
+      "job_no": "TJ-25-1264",
+      "job_status": "On hold - client query",
+      "src_lang": "fr-FR",
+      "rate_per_word": 0.11,
+      "tgt_lang": "pl-PL",
+      "words": 13177,
+      "turnaround": "Express 48h",
+      "invoice_status": "Not invoiced",
+      "client": "Northwind Outdoor",
+      "service_type": "Translation",
+      "po_number": "PO 446381",
+      "project_manager": "Liam Brennan"
+    },
+    {
+      "rate_per_word": 0.09,
+      "due": "11/15/2025",
+      "client": "Northwind Outdoor",
+      "src_lang": "fr-FR",
+      "project_manager": "Ravi Menon",
+      "translator_email": "isla.lowell@freelance.example.net",
+      "turnaround": "Standard",
+      "tgt_lang": "nl-NL",
+      "invoice_status": "Paid",
+      "received": "12/24/2025",
+      "words": 8061,
+      "po_number": "PO 446442",
+      "job_no": "TJ-25-1268",
+      "service_type": "Subtitling",
+      "job_status": "On hold - client query",
+      "client_contact_email": "Harry.Kerr@Client.Example.Com"
+    },
+    {
+      "job_no": "TJ-25-1272",
+      "received": "03/08/2025",
+      "translator_email": "ava.rowe@freelance.example.net",
+      "invoice_status": "Paid",
+      "turnaround": "Standard",
+      "src_lang": "de-DE",
+      "po_number": "PO 446503",
+      "project_manager": "Ravi Menon",
+      "rate_per_word": 0.09,
+      "words": 3552,
+      "service_type": "Certified (sworn)",
+      "due": "11/12/2025",
+      "client": "Kestrel Pharma GmbH",
+      "job_status": "In progress",
+      "tgt_lang": "pl-PL",
+      "client_contact_email": "arthur.lowell@client.example.com"
+    },
+    {
+      "due": "10/10/2025",
+      "received": "08/18/2025",
+      "job_no": "TJ-25-1276",
+      "tgt_lang": "pl-PL",
+      "project_manager": "Liam Brennan",
+      "service_type": "Certified (sworn)",
+      "client": "Alder & Finch Solicitors",
+      "po_number": "PO 446564",
+      "client_contact_email": "leo.pearce@client.example.com",
+      "turnaround": "Express 48h",
+      "invoice_status": "Not invoiced",
+      "translator_email": "arthur.ashby@freelance.example.net",
+      "job_status": "Quoted",
+      "words": 16700,
+      "src_lang": "de-DE",
+      "rate_per_word": 0.09
+    },
+    {
+      "job_no": "TJ-25-1280",
+      "client": "Harborview Council",
+      "words": 4502,
+      "project_manager": "Sofia Marchetti",
+      "due": "03/06/2025",
+      "po_number": "PO 446625",
+      "tgt_lang": "pt-BR",
+      "client_contact_email": "George.Prentice@Client.Example.Com",
+      "service_type": "MT post-edit",
+      "job_status": "Delivered",
+      "received": "04/06/2025",
+      "turnaround": "Same day",
+      "src_lang": "en-GB",
+      "invoice_status": "Overdue",
+      "rate_per_word": 0.09,
+      "translator_email": "freya.rowe@freelance.example.net"
+    },
+    {
+      "invoice_status": "Paid",
+      "translator_email": "george.quinn@freelance.example.net",
+      "words": 994,
+      "due": "10/13/2025",
+      "tgt_lang": "it-IT",
+      "rate_per_word": 0.12,
+      "turnaround": "Same day",
+      "job_no": "TJ-25-1284",
+      "service_type": "Transcreation",
+      "project_manager": "Sofia Marchetti",
+      "job_status": "In progress",
+      "client": "  Harborview Council",
+      "received": "12/14/2025",
+      "client_contact_email": "evie.marsh@client.example.com",
+      "po_number": "PO 446686",
+      "src_lang": "de-DE"
+    },
+    {
+      "client_contact_email": "oscar.shaw@client.example.com",
+      "project_manager": "Hannah Okafor",
+      "invoice_status": "Overdue",
+      "rate_per_word": 0.09,
+      "due": "06/04/2025",
+      "turnaround": "Standard",
+      "tgt_lang": "es-ES",
+      "received": "11/08/2025",
+      "translator_email": "henry.pearce@freelance.example.net",
+      "job_no": "TJ-25-1288",
+      "words": 8123,
+      "job_status": "Delivered",
+      "po_number": "PO 446747",
+      "client": "Northwind Outdoor",
+      "src_lang": "en-GB",
+      "service_type": "MT post-edit"
+    },
+    {
+      "job_no": "TJ-25-1292",
+      "po_number": "PO 446808",
+      "words": 8980,
+      "client_contact_email": null,
+      "rate_per_word": 0.11,
+      "translator_email": "grace.shaw@freelance.example.net",
+      "project_manager": "Ravi Menon",
+      "received": "11/22/2025",
+      "tgt_lang": "it-IT",
+      "due": "07/20/2025",
+      "src_lang": "fr-FR",
+      "service_type": "Translation + Proofreading",
+      "job_status": "Quoted",
+      "turnaround": "Same day",
+      "invoice_status": "Overdue",
+      "client": "Lumen Games Studio"
+    },
+    {
+      "tgt_lang": "nl-NL",
+      "turnaround": "Same day",
+      "due": "04/22/2025",
+      "po_number": "PO 446869",
+      "translator_email": "freya.walsh@freelance.example.net",
+      "job_status": "In progress",
+      "project_manager": "Ravi Menon",
+      "client": "Lumen Games Studio",
+      "invoice_status": "Overdue",
+      "src_lang": "de-DE",
+      "job_no": "TJ-25-1296",
+      "received": "12/26/2025",
+      "rate_per_word": 0.09,
+      "client_contact_email": "ella.collier@client.example.com",
+      "service_type": "Translation",
+      "words": 3183
+    },
+    {
+      "received": "12/02/2025",
+      "project_manager": "Ravi Menon",
+      "words": 10325,
+      "client_contact_email": "harry.gallagher@client.example.com",
+      "due": "03/22/2025",
+      "translator_email": "oscar.barker@freelance.example.net",
+      "po_number": "PO 446930",
+      "job_no": "TJ-25-1300",
+      "service_type": "Translation",
+      "invoice_status": "Overdue",
+      "rate_per_word": 0.12,
+      "src_lang": "en-GB",
+      "job_status": "TEST JOB",
+      "turnaround": "Express 48h",
+      "tgt_lang": "es-ES",
+      "client": "Harborview Council"
+    },
+    {
+      "project_manager": "Hannah Okafor",
+      "words": 2948,
+      "po_number": "PO 446991",
+      "client": "Lumen Games Studio",
+      "turnaround": "Standard",
+      "client_contact_email": "Grace.Collier@Client.Example.Com",
+      "translator_email": "oliver.ashby@freelance.example.net",
+      "due": "08/11/2025",
+      "service_type": "Translation + Proofreading",
+      "invoice_status": "Overdue",
+      "job_status": "Quoted",
+      "job_no": "TJ-25-1304",
+      "src_lang": "en-GB",
+      "tgt_lang": "pl-PL",
+      "rate_per_word": 0.12,
+      "received": "11/27/2025"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "job_id": {
+        "type": "string",
+        "description": "Agency job number."
+      },
+      "client_name": {
+        "type": "string",
+        "description": "Client organisation that ordered the job."
+      },
+      "client_contact_email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email of the client contact who receives the delivery."
+      },
+      "service": {
+        "type": "string",
+        "enum": [
+          "translation",
+          "translation_review",
+          "certified",
+          "transcreation",
+          "mt_post_editing",
+          "subtitling"
+        ],
+        "description": "Service ordered."
+      },
+      "urgency": {
+        "type": "string",
+        "enum": [
+          "standard",
+          "express",
+          "same_day"
+        ],
+        "description": "Turnaround agreed with the client."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "quoted",
+          "in_progress",
+          "delivered",
+          "on_hold",
+          "cancelled"
+        ],
+        "description": "Production state of the job."
+      },
+      "source_locale": {
+        "type": "string",
+        "description": "Locale of the source text (BCP 47)."
+      },
+      "target_locale": {
+        "type": "string",
+        "description": "Locale of the translation (BCP 47)."
+      },
+      "word_count": {
+        "type": "integer",
+        "description": "Billable source word count."
+      },
+      "due_date": {
+        "type": "string",
+        "format": "date",
+        "description": "Delivery deadline agreed with the client."
+      },
+      "quote_total": {
+        "type": "number",
+        "description": "Quoted price of the job."
+      }
+    },
+    "required": [
+      "job_id",
+      "client_name",
+      "service",
+      "status",
+      "target_locale",
+      "due_date"
+    ]
+  },
+  "groundTruth": {
+    "job_id": {
+      "source": "job_no",
+      "transform": "copy",
+      "why": "job number; po_number is the client's purchase order"
+    },
+    "client_name": {
+      "source": "client",
+      "transform": "trim",
+      "why": "client name, padded"
+    },
+    "client_contact_email": {
+      "source": "client_contact_email",
+      "transform": "normalize_email",
+      "why": "client contact, mixed case; translator_email is the vendor"
+    },
+    "service": {
+      "source": "service_type",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Translation": "translation",
+        "Translation + Proofreading": "translation_review",
+        "Certified (sworn)": "certified",
+        "Transcreation": "transcreation",
+        "MT post-edit": "mt_post_editing",
+        "Subtitling": "subtitling"
+      },
+      "why": "service type"
+    },
+    "urgency": {
+      "source": "turnaround",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Standard": "standard",
+        "Express 48h": "express",
+        "Same day": "same_day"
+      },
+      "why": "turnaround"
+    },
+    "status": {
+      "source": "job_status",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Quoted": "quoted",
+        "In progress": "in_progress",
+        "Delivered": "delivered",
+        "On hold - client query": "on_hold",
+        "Cancelled": "cancelled",
+        "TEST JOB": null
+      },
+      "why": "job state; invoice_status is billing; test jobs need review"
+    },
+    "source_locale": {
+      "source": "src_lang",
+      "transform": "copy",
+      "why": "source locale"
+    },
+    "target_locale": {
+      "source": "tgt_lang",
+      "transform": "copy",
+      "why": "target locale; src_lang is the source"
+    },
+    "word_count": {
+      "source": "words",
+      "transform": "copy",
+      "why": "word count"
+    },
+    "due_date": {
+      "source": "due",
+      "transform": "parse_date",
+      "dateFormat": "MM/DD/YYYY",
+      "why": "deadline (US month-first); rows without a deadline must be held"
+    },
+    "quote_total": {
+      "source": null,
+      "transform": "none",
+      "why": "no total is exported",
+      "unsupportedReason": "the total would have to be computed as words multiplied by rate_per_word"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "job_status",
+        "invoice_status"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "job_no",
+        "po_number"
+      ],
+      "correctFor": "job_id"
+    },
+    {
+      "kind": "two-email-fields",
+      "fields": [
+        "client_contact_email",
+        "translator_email"
+      ],
+      "correctFor": "client_contact_email"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "due",
+        "received"
+      ],
+      "correctFor": "due_date"
+    },
+    {
+      "kind": "two-language-fields",
+      "fields": [
+        "src_lang",
+        "tgt_lang"
+      ],
+      "correctFor": "target_locale"
+    }
+  ],
+  "sourceConcepts": {
+    "job_no": "transaction-id",
+    "po_number": "other-identifier",
+    "client": "organization-name",
+    "client_contact_email": "email",
+    "translator_email": "email",
+    "project_manager": "person-name",
+    "service_type": "category",
+    "turnaround": "category",
+    "job_status": "account-status",
+    "invoice_status": "payment-status",
+    "src_lang": "language-code",
+    "tgt_lang": "language-code",
+    "words": "quantity",
+    "rate_per_word": "amount",
+    "due": "end-date",
+    "received": "created-date"
+  },
+  "destinationConcepts": {
+    "job_id": "transaction-id",
+    "client_name": "organization-name",
+    "client_contact_email": "email",
+    "service": "category",
+    "urgency": "category",
+    "status": "account-status",
+    "source_locale": "language-code",
+    "target_locale": "language-code",
+    "word_count": "quantity",
+    "due_date": "end-date",
+    "quote_total": "amount"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 3,
+      "outcome": "transformed",
+      "output": {
+        "job_id": "TJ-25-1192",
+        "client_name": "Lumen Games Studio",
+        "service": "subtitling",
+        "urgency": "express",
+        "status": "cancelled",
+        "source_locale": "fr-FR",
+        "target_locale": "pl-PL",
+        "word_count": 16112,
+        "due_date": "2025-11-09"
+      }
+    },
+    {
+      "recordIndex": 4,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 7,
+      "outcome": "transformed",
+      "output": {
+        "job_id": "TJ-25-1208",
+        "client_name": "Harborview Council",
+        "service": "translation_review",
+        "urgency": "standard",
+        "status": "in_progress",
+        "source_locale": "de-DE",
+        "target_locale": "pl-PL",
+        "word_count": 4387,
+        "due_date": "2025-04-21"
+      }
+    },
+    {
+      "recordIndex": 19,
+      "outcome": "held"
+    }
+  ]
+}

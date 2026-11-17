@@ -191,3 +191,26 @@ test.describe("E2E-184 the revision offer follows planRevisionAllowed", () => {
     await expect(page.getByTestId("guided-revision")).toHaveCount(0);
   });
 });
+
+test.describe("E2E-185 Sprint 18C: a required field the planner missed is recoverable without the advanced editor", () => {
+  test("the picker lists every other usable field under 'Choose another field'; choosing one makes it the user's match", async ({ page }) => {
+    await boot(page, { planOutput: NOTHING_PLAN });
+    await generate(page);
+    await page.getByTestId("guided-approve").click();
+    const picker = page.getByTestId("clarify-pick-external_id");
+    await expect(picker).toBeVisible();
+    await expect(picker).toHaveAccessibleName("Source of external_id");
+    // Nothing is pre-selected.
+    await expect(picker).toHaveValue("");
+    const others = picker.locator('optgroup[label="Choose another field"] option');
+    expect(await others.count()).toBeGreaterThan(0);
+    // Every profiled field is offered exactly once across the candidates and the group.
+    const values = await picker.locator("option").evaluateAll((items) => items.map((item) => (item as HTMLOptionElement).value).filter(Boolean));
+    expect(new Set(values).size).toBe(values.length);
+    expect(values).toContain("c_ContactId");
+    await picker.selectOption("c_ContactId");
+    await expect(page.getByTestId("clarify-missing-required-source-external_id")).toHaveCount(0);
+    await expect(page.getByTestId("plan-field-external_id")).toHaveAttribute("data-by", "user");
+    expect(await cloudCalls(page)).toBe(1);
+  });
+});

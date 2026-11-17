@@ -101,6 +101,7 @@ export function PlanReview({
           {compiled.clarifications.map((question) => (
             <Question
               key={question.id}
+              prepared={prepared}
               question={question}
               plan={plan}
               meanings={meanings}
@@ -132,6 +133,7 @@ export function PlanReview({
 }
 
 function Question({
+  prepared,
   question,
   plan,
   meanings,
@@ -141,6 +143,7 @@ function Question({
   onMapManually,
   onEditDestination,
 }: {
+  prepared: PreparedTwin;
   question: Clarification;
   plan: FieldPlan | null;
   meanings: Readonly<Record<string, CategoryMeaning>>;
@@ -156,6 +159,8 @@ function Question({
   const candidate = target && path ? (target.candidates.find((item) => item.path === path) ?? null) : null;
   // Gemini's candidates first, then any other compatible field (local ranking).
   const options = [...new Set([...question.localPaths, ...(target?.candidates.map((item) => item.path) ?? [])])];
+  // "Choose another field" (Sprint 15 rule): every other usable field, so the user is never limited to EYES's ranking.
+  const others = prepared.profile.fields.filter((field) => field.type !== "unsupported" && !options.includes(field.path)).map((field) => field.path);
 
   let body;
   if (question.kind === "translate-categories") {
@@ -192,6 +197,15 @@ function Question({
                 {option}
               </option>
             ))}
+            {others.length > 0 ? (
+              <optgroup label="Choose another field">
+                {others.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </optgroup>
+            ) : null}
             {question.kind === "choose-field" ? <option value={NO_FIELD}>{question.required ? "None of them (required: can't build)" : "None of them — leave it empty"}</option> : null}
           </select>
         </label>

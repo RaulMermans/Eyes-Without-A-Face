@@ -1,0 +1,713 @@
+{
+  "scenarioId": "ski-school-enrolments-to-insurance-registry",
+  "split": "holdout",
+  "industry": "ski and snowboard school",
+  "sourceLanguage": "it",
+  "description": "Course enrolment export of a fictional ski school (Italian snake_case, nested enrolment, pupil and parent) to be loaded into a regional accident-insurance registry that requires the Italian tax code.",
+  "fictional": true,
+  "completable": false,
+  "records": [
+    {
+      "riga": 1,
+      "data_inizio": "08/03/2025",
+      "iscrizione": {
+        "numero": "SCI-2526-140",
+        "data": "07/09/2025"
+      },
+      "stato_pagamento": "Saldato",
+      "maestro": "Giada Kostner",
+      "tipo_corso": "Corso prova maestri",
+      "genitore": {
+        "nome": "Ginevra Bianchi",
+        "cellulare": "+39 34 495 5223",
+        "email": "ginevra.bianchi@famiglia.example.org"
+      },
+      "livello": "Agonista",
+      "allievo": {
+        "nome_cognome": "  Beatrice Marino",
+        "codice_skipass": "SKP-80031200",
+        "data_nascita": "01/03/2005",
+        "taglia_scarponi": 44
+      }
+    },
+    {
+      "allievo": {
+        "data_nascita": "06/04/2000",
+        "nome_cognome": "Sara Costa",
+        "codice_skipass": "SKP-80035327",
+        "taglia_scarponi": 37
+      },
+      "genitore": {
+        "cellulare": "+39 34 404 9313",
+        "nome": "Lorenzo Ferrari",
+        "email": "Lorenzo.Ferrari@Famiglia.Example.Org"
+      },
+      "tipo_corso": "Snowboard collettivo",
+      "livello": "Spazzaneve",
+      "iscrizione": {
+        "numero": "SCI-2526-143",
+        "data": "06/04/2025"
+      },
+      "data_inizio": "04/03/2026",
+      "riga": 2,
+      "stato_pagamento": "Da pagare",
+      "maestro": "Mirko Valentini"
+    },
+    {
+      "livello": "Curve parallele",
+      "maestro": "Stefano Dapoz",
+      "riga": 3,
+      "stato_pagamento": "Saldato",
+      "iscrizione": {
+        "data": "11/11/2025",
+        "numero": "SCI-2526-146"
+      },
+      "genitore": {
+        "nome": "Alessandro Mancini",
+        "email": null,
+        "cellulare": "+39 34 432 8491"
+      },
+      "data_inizio": "08/10/2026",
+      "allievo": {
+        "codice_skipass": "SKP-80039454",
+        "nome_cognome": "Tommaso Greco",
+        "data_nascita": "08/10/1990",
+        "taglia_scarponi": 28
+      },
+      "tipo_corso": "Lezione privata"
+    },
+    {
+      "livello": "Principiante",
+      "iscrizione": {
+        "numero": "SCI-2526-149",
+        "data": "05/11/2025"
+      },
+      "tipo_corso": "Baby club",
+      "stato_pagamento": "Da pagare",
+      "data_inizio": "05/01/2026",
+      "maestro": "Stefano Dapoz",
+      "riga": 4,
+      "allievo": {
+        "data_nascita": "02/12/1982",
+        "taglia_scarponi": 42,
+        "codice_skipass": "SKP-80043581",
+        "nome_cognome": "Ginevra De Luca"
+      },
+      "genitore": {
+        "nome": "Alessandro Romano",
+        "email": "alessandro.romano@famiglia.example.org",
+        "cellulare": "+39 34 724 5347"
+      }
+    },
+    {
+      "maestro": "Mirko Valentini",
+      "allievo": {
+        "taglia_scarponi": 37,
+        "nome_cognome": "Leonardo Gallo",
+        "codice_skipass": "SKP-80047708",
+        "data_nascita": null
+      },
+      "genitore": {
+        "nome": "Sara Lombardi",
+        "cellulare": "+39 34 330 2976",
+        "email": "Sara.Lombardi@Famiglia.Example.Org"
+      },
+      "data_inizio": "08/10/2026",
+      "tipo_corso": "Lezione privata",
+      "iscrizione": {
+        "numero": "SCI-2526-152",
+        "data": "09/11/2025"
+      },
+      "stato_pagamento": "Saldato",
+      "riga": 5,
+      "livello": "Avanzato"
+    },
+    {
+      "genitore": {
+        "cellulare": "+39 34 477 4921",
+        "nome": "Martina Gallo",
+        "email": "martina.gallo@famiglia.example.org"
+      },
+      "iscrizione": {
+        "data": "06/03/2025",
+        "numero": "SCI-2526-155"
+      },
+      "livello": "Spazzaneve",
+      "maestro": "Stefano Dapoz",
+      "tipo_corso": "Collettivo 6 giorni",
+      "riga": 6,
+      "data_inizio": "09/08/2026",
+      "allievo": {
+        "data_nascita": "08/03/1990",
+        "codice_skipass": "SKP-80051835",
+        "taglia_scarponi": 42,
+        "nome_cognome": "Matteo Rizzo"
+      },
+      "stato_pagamento": "Acconto"
+    },
+    {
+      "data_inizio": "10/05/2026",
+      "iscrizione": {
+        "numero": "SCI-2526-158",
+        "data": "12/11/2025"
+      },
+      "riga": 7,
+      "allievo": {
+        "nome_cognome": "Leonardo Greco  ",
+        "codice_skipass": "SKP-80055962",
+        "taglia_scarponi": 42,
+        "data_nascita": "06/12/1999"
+      },
+      "maestro": "Stefano Dapoz",
+      "tipo_corso": "Collettivo 6 giorni",
+      "stato_pagamento": "Da pagare",
+      "genitore": {
+        "email": "sara.rizzo@famiglia.example.org",
+        "cellulare": "+39 34 592 1226",
+        "nome": "Sara Rizzo"
+      },
+      "livello": "Principiante"
+    },
+    {
+      "livello": "Principiante",
+      "riga": 8,
+      "genitore": {
+        "cellulare": "+39 34 538 7179",
+        "email": "Matteo.Russo@Famiglia.Example.Org",
+        "nome": "Matteo Russo"
+      },
+      "allievo": {
+        "nome_cognome": "Sara Colombo",
+        "data_nascita": "01/02/1997",
+        "codice_skipass": "SKP-80060089",
+        "taglia_scarponi": 37
+      },
+      "maestro": "Stefano Dapoz",
+      "data_inizio": "01/11/2026",
+      "stato_pagamento": "Da pagare",
+      "tipo_corso": "Corso prova maestri",
+      "iscrizione": {
+        "data": "09/09/2025",
+        "numero": "SCI-2526-161"
+      }
+    },
+    {
+      "data_inizio": "12/07/2025",
+      "genitore": {
+        "cellulare": "+39 34 395 3946",
+        "nome": "Alessandro De Luca"
+      },
+      "tipo_corso": "Corso prova maestri",
+      "riga": 9,
+      "livello": "Avanzato",
+      "allievo": {
+        "taglia_scarponi": 44,
+        "nome_cognome": "Matteo Ferrari",
+        "data_nascita": "04/05/2003",
+        "codice_skipass": "SKP-80064216"
+      },
+      "iscrizione": {
+        "numero": "SCI-2526-164",
+        "data": "01/06/2025"
+      },
+      "maestro": "Giada Kostner",
+      "stato_pagamento": "Da pagare"
+    },
+    {
+      "genitore": {
+        "nome": "Pietro Ricci",
+        "email": "pietro.ricci@famiglia.example.org",
+        "cellulare": "+39 34 424 2687"
+      },
+      "allievo": {
+        "data_nascita": "03/05/1986",
+        "nome_cognome": "Riccardo De Luca",
+        "taglia_scarponi": 28,
+        "codice_skipass": "SKP-80068343"
+      },
+      "riga": 10,
+      "iscrizione": {
+        "data": "06/08/2025",
+        "numero": "SCI-2526-167"
+      },
+      "tipo_corso": "Collettivo 6 giorni",
+      "stato_pagamento": "Da pagare",
+      "maestro": "Elias Pescosta",
+      "livello": "Agonista",
+      "data_inizio": "07/11/2025"
+    },
+    {
+      "genitore": {
+        "cellulare": "+39 34 438 7469",
+        "nome": "Francesco Mancini",
+        "email": "Francesco.Mancini@Famiglia.Example.Org"
+      },
+      "maestro": "Giada Kostner",
+      "livello": "Curve parallele",
+      "riga": 11,
+      "iscrizione": {
+        "data": "01/12/2025",
+        "numero": "SCI-2526-170"
+      },
+      "stato_pagamento": "Acconto",
+      "data_inizio": "04/06/2026",
+      "allievo": {
+        "data_nascita": "03/01/1990",
+        "taglia_scarponi": 37,
+        "nome_cognome": "Giulia Esposito",
+        "codice_skipass": "SKP-80072470"
+      },
+      "tipo_corso": "Lezione privata"
+    },
+    {
+      "riga": 12,
+      "iscrizione": {
+        "numero": "SCI-2526-173",
+        "data": "07/01/2025"
+      },
+      "tipo_corso": "Snowboard collettivo",
+      "data_inizio": "11/02/2026",
+      "livello": "Avanzato",
+      "allievo": {
+        "codice_skipass": "SKP-80076597",
+        "nome_cognome": "Gabriele Rizzo",
+        "taglia_scarponi": 28
+      },
+      "stato_pagamento": "Acconto",
+      "genitore": {
+        "email": "leonardo.mancini@famiglia.example.org",
+        "nome": "Leonardo Mancini",
+        "cellulare": "+39 34 950 8347"
+      },
+      "maestro": "Stefano Dapoz"
+    },
+    {
+      "iscrizione": {
+        "data": "05/04/2025",
+        "numero": "SCI-2526-176"
+      },
+      "genitore": {
+        "cellulare": "+39 34 530 6998",
+        "email": "riccardo.ricci@famiglia.example.org",
+        "nome": "Riccardo Ricci"
+      },
+      "livello": "Spazzaneve",
+      "tipo_corso": "Lezione privata",
+      "maestro": "Giada Kostner",
+      "allievo": {
+        "codice_skipass": "SKP-80080724",
+        "taglia_scarponi": 31,
+        "nome_cognome": "Giulia Russo",
+        "data_nascita": "10/12/2001"
+      },
+      "riga": 13,
+      "stato_pagamento": "Saldato",
+      "data_inizio": "03/08/2026"
+    },
+    {
+      "stato_pagamento": "Saldato",
+      "maestro": "Elias Pescosta",
+      "genitore": {
+        "nome": "Leonardo Greco",
+        "cellulare": "+39 34 924 5041",
+        "email": "Leonardo.Greco@Famiglia.Example.Org"
+      },
+      "data_inizio": "05/01/2025",
+      "allievo": {
+        "taglia_scarponi": 42,
+        "nome_cognome": " Ginevra De Luca ",
+        "codice_skipass": "SKP-80084851",
+        "data_nascita": "12/03/2009"
+      },
+      "riga": 14,
+      "tipo_corso": "Baby club",
+      "iscrizione": {
+        "data": "12/10/2025",
+        "numero": "SCI-2526-179"
+      },
+      "livello": "Curve parallele"
+    },
+    {
+      "stato_pagamento": "Da pagare",
+      "allievo": {
+        "data_nascita": "08/01/2016",
+        "nome_cognome": "Edoardo Ferrari",
+        "codice_skipass": "SKP-80088978",
+        "taglia_scarponi": 31
+      },
+      "genitore": {
+        "cellulare": "+39 34 187 1474",
+        "nome": "Lorenzo Gallo",
+        "email": "lorenzo.gallo@famiglia.example.org"
+      },
+      "data_inizio": "10/05/2025",
+      "tipo_corso": "Collettivo 6 giorni",
+      "iscrizione": {
+        "numero": "SCI-2526-182",
+        "data": "04/08/2025"
+      },
+      "livello": "Agonista",
+      "maestro": "Mirko Valentini",
+      "riga": 15
+    },
+    {
+      "genitore": {
+        "email": null,
+        "cellulare": "+39 34 483 3599",
+        "nome": "Leonardo Bruno"
+      },
+      "maestro": "Elias Pescosta",
+      "data_inizio": "09/03/2025",
+      "iscrizione": {
+        "data": "11/02/2025",
+        "numero": "SCI-2526-185"
+      },
+      "stato_pagamento": "Saldato",
+      "allievo": {
+        "taglia_scarponi": 34,
+        "nome_cognome": "Pietro Esposito",
+        "codice_skipass": "SKP-80093105",
+        "data_nascita": "01/10/1994"
+      },
+      "riga": 16,
+      "tipo_corso": "Snowboard collettivo",
+      "livello": "Agonista"
+    },
+    {
+      "iscrizione": {
+        "data": "04/11/2025",
+        "numero": "SCI-2526-188"
+      },
+      "genitore": {
+        "cellulare": "+39 34 717 8162",
+        "nome": "Martina Costa",
+        "email": "Martina.Costa@Famiglia.Example.Org"
+      },
+      "allievo": {
+        "codice_skipass": "SKP-80097232",
+        "taglia_scarponi": 34,
+        "nome_cognome": "Lorenzo Rossi",
+        "data_nascita": "01/10/2014"
+      },
+      "riga": 17,
+      "tipo_corso": "Lezione privata",
+      "maestro": "Mirko Valentini",
+      "livello": "Spazzaneve",
+      "data_inizio": "01/09/2025",
+      "stato_pagamento": "Acconto"
+    },
+    {
+      "tipo_corso": "Baby club",
+      "data_inizio": "03/05/2026",
+      "iscrizione": {
+        "data": "06/03/2025",
+        "numero": "SCI-2526-191"
+      },
+      "stato_pagamento": "Acconto",
+      "riga": 18,
+      "genitore": {
+        "cellulare": "+39 34 129 3737",
+        "nome": "Alessandro Giordano",
+        "email": "alessandro.giordano@famiglia.example.org"
+      },
+      "livello": "Curve parallele",
+      "allievo": {
+        "taglia_scarponi": 42,
+        "codice_skipass": "SKP-80101359",
+        "nome_cognome": "Edoardo Lombardi"
+      },
+      "maestro": "Mirko Valentini"
+    },
+    {
+      "riga": 19,
+      "data_inizio": "12/10/2025",
+      "genitore": {
+        "nome": "Sofia Ricci",
+        "cellulare": "+39 34 180 5341",
+        "email": "sofia.ricci@famiglia.example.org"
+      },
+      "livello": "Avanzato",
+      "stato_pagamento": "Acconto",
+      "maestro": "Giada Kostner",
+      "iscrizione": {
+        "data": "04/04/2025",
+        "numero": "SCI-2526-194"
+      },
+      "allievo": {
+        "taglia_scarponi": 42,
+        "codice_skipass": "SKP-80105486",
+        "data_nascita": "06/07/1995",
+        "nome_cognome": "Gabriele Giordano"
+      },
+      "tipo_corso": "Baby club"
+    },
+    {
+      "tipo_corso": "Corso prova maestri",
+      "maestro": "Elias Pescosta",
+      "genitore": {
+        "email": "Chiara.Conti@Famiglia.Example.Org",
+        "nome": "Chiara Conti",
+        "cellulare": "+39 34 348 6773"
+      },
+      "stato_pagamento": "Saldato",
+      "livello": "Principiante",
+      "riga": 20,
+      "iscrizione": {
+        "numero": "SCI-2526-197",
+        "data": "05/07/2025"
+      },
+      "allievo": {
+        "taglia_scarponi": 42,
+        "data_nascita": "03/07/2004",
+        "codice_skipass": "SKP-80109613",
+        "nome_cognome": "Pietro Colombo"
+      },
+      "data_inizio": "07/06/2026"
+    },
+    {
+      "iscrizione": {
+        "data": "05/12/2025",
+        "numero": "SCI-2526-200"
+      },
+      "genitore": {
+        "email": "riccardo.gallo@famiglia.example.org",
+        "cellulare": "+39 34 592 9680",
+        "nome": "Riccardo Gallo"
+      },
+      "data_inizio": "07/01/2025",
+      "tipo_corso": "Snowboard collettivo",
+      "stato_pagamento": "Saldato",
+      "riga": 21,
+      "maestro": "Elias Pescosta",
+      "livello": "Spazzaneve",
+      "allievo": {
+        "codice_skipass": "SKP-80113740",
+        "data_nascita": "12/12/2018",
+        "taglia_scarponi": 31,
+        "nome_cognome": "  Leonardo Russo"
+      }
+    },
+    {
+      "livello": "Principiante",
+      "iscrizione": {
+        "numero": "SCI-2526-203",
+        "data": "06/01/2025"
+      },
+      "maestro": "Giada Kostner",
+      "data_inizio": "11/08/2026",
+      "genitore": {
+        "cellulare": "+39 34 558 5463",
+        "email": "gabriele.rossi@famiglia.example.org",
+        "nome": "Gabriele Rossi"
+      },
+      "allievo": {
+        "taglia_scarponi": 40,
+        "data_nascita": "02/05/1996",
+        "codice_skipass": "SKP-80117867",
+        "nome_cognome": "Matteo Gallo"
+      },
+      "stato_pagamento": "Acconto",
+      "tipo_corso": "Collettivo 6 giorni",
+      "riga": 22
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "enrolment_id": {
+        "type": "string",
+        "description": "Number of the course enrolment."
+      },
+      "participant_name": {
+        "type": "string",
+        "description": "Full name of the insured participant."
+      },
+      "tax_code": {
+        "type": "string",
+        "description": "Italian fiscal code (codice fiscale, 16 characters) of the insured participant."
+      },
+      "level": {
+        "type": "string",
+        "enum": [
+          "beginner",
+          "snowplough",
+          "parallel",
+          "advanced",
+          "racing"
+        ],
+        "description": "Skill level of the participant."
+      },
+      "course_type": {
+        "type": "string",
+        "enum": [
+          "group_week",
+          "private",
+          "kids_club",
+          "snowboard_group"
+        ],
+        "description": "Kind of course booked."
+      },
+      "course_start": {
+        "type": "string",
+        "format": "date",
+        "description": "First day of the course; insurance cover starts here."
+      },
+      "guardian_email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email of the parent for minors."
+      },
+      "birth_date": {
+        "type": "string",
+        "format": "date",
+        "description": "Date of birth of the participant."
+      },
+      "helmet_rental": {
+        "type": "string",
+        "description": "Whether a helmet is rented (yes/no)."
+      }
+    },
+    "required": [
+      "enrolment_id",
+      "participant_name",
+      "tax_code",
+      "level",
+      "course_type",
+      "course_start"
+    ]
+  },
+  "groundTruth": {
+    "enrolment_id": {
+      "source": "iscrizione.numero",
+      "transform": "copy",
+      "why": "enrolment number; riga is the export row"
+    },
+    "participant_name": {
+      "source": "allievo.nome_cognome",
+      "transform": "trim",
+      "why": "pupil name, padded; maestro is the instructor"
+    },
+    "tax_code": {
+      "source": null,
+      "transform": "none",
+      "why": "the export has no fiscal code; allievo.codice_skipass is the lift pass number"
+    },
+    "level": {
+      "source": "livello",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Principiante": "beginner",
+        "Spazzaneve": "snowplough",
+        "Curve parallele": "parallel",
+        "Avanzato": "advanced",
+        "Agonista": "racing"
+      },
+      "why": "skill level"
+    },
+    "course_type": {
+      "source": "tipo_corso",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Collettivo 6 giorni": "group_week",
+        "Lezione privata": "private",
+        "Baby club": "kids_club",
+        "Snowboard collettivo": "snowboard_group",
+        "Corso prova maestri": null
+      },
+      "why": "course kind; instructor trial courses need review"
+    },
+    "course_start": {
+      "source": "data_inizio",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "course start (Italian day-first); iscrizione.data is the booking date"
+    },
+    "guardian_email": {
+      "source": "genitore.email",
+      "transform": "normalize_email",
+      "why": "parent email, mixed case, sometimes absent"
+    },
+    "birth_date": {
+      "source": "allievo.data_nascita",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "pupil birth date (Italian day-first), sometimes absent"
+    },
+    "helmet_rental": {
+      "source": null,
+      "transform": "none",
+      "why": "rentals are not exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "tipo_corso",
+        "livello"
+      ],
+      "correctFor": "course_type"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "livello",
+        "stato_pagamento"
+      ],
+      "correctFor": "level"
+    },
+    {
+      "kind": "decoy-for-missing-field",
+      "fields": [
+        "allievo.codice_skipass",
+        "iscrizione.numero"
+      ],
+      "correctFor": "tax_code"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "iscrizione.numero",
+        "riga"
+      ],
+      "correctFor": "enrolment_id"
+    },
+    {
+      "kind": "birth-date-vs-start-date",
+      "fields": [
+        "data_inizio",
+        "iscrizione.data"
+      ],
+      "correctFor": "course_start"
+    }
+  ],
+  "sourceConcepts": {
+    "riga": "other-identifier",
+    "iscrizione.numero": "transaction-id",
+    "iscrizione.data": "created-date",
+    "allievo.nome_cognome": "person-name",
+    "allievo.data_nascita": "birth-date",
+    "allievo.codice_skipass": "other-identifier",
+    "allievo.taglia_scarponi": "quantity",
+    "genitore.nome": "person-name",
+    "genitore.email": "email",
+    "genitore.cellulare": "phone",
+    "livello": "category",
+    "tipo_corso": "category",
+    "stato_pagamento": "payment-status",
+    "data_inizio": "start-date",
+    "maestro": "person-name"
+  },
+  "destinationConcepts": {
+    "enrolment_id": "transaction-id",
+    "participant_name": "person-name",
+    "tax_code": "other-identifier",
+    "level": "category",
+    "course_type": "category",
+    "course_start": "start-date",
+    "guardian_email": "email",
+    "birth_date": "birth-date",
+    "helmet_rental": "other"
+  }
+}

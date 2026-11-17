@@ -1,0 +1,742 @@
+{
+  "scenarioId": "driving-school-students-to-exam-booking",
+  "split": "dev",
+  "industry": "driving school students",
+  "sourceLanguage": "de",
+  "description": "Flat student export of a fictional driving school (German field names) to be loaded into a licence-exam booking system.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "Mobil": "+49 15 119 4033",
+      "Geburtsdatum": "09/11/1996",
+      "Zahlungsstatus": "Rate offen",
+      "Vorname": "Tobias",
+      "Lfd_Nr": 1,
+      "Ausbildungsstand": "Praxis läuft",
+      "E_Mail": "tobias.werner@mail.example.org",
+      "Schueler_Nr": "FS-2024-0118",
+      "Theoriepruefung_am": "09/11/2025",
+      "Fuehrerscheinklasse": "BE",
+      "Fahrstunden_absolviert": 26,
+      "Sehtest_vorhanden": "ja",
+      "Nachname": "Werner",
+      "Fahrlehrer": "Sabine Ostrowski"
+    },
+    {
+      "Nachname": "Braun",
+      "Sehtest_vorhanden": "ja",
+      "Lfd_Nr": 2,
+      "E_Mail": "Clara.Braun@Mail.Example.Org",
+      "Theoriepruefung_am": "01/01/2025",
+      "Fuehrerscheinklasse": "Mofa-Prüfbescheinigung",
+      "Schueler_Nr": "FS-2024-0121",
+      "Ausbildungsstand": "Theorie läuft",
+      "Fahrstunden_absolviert": 17,
+      "Geburtsdatum": "10/03/2004",
+      "Fahrlehrer": "Murat Aydın",
+      "Zahlungsstatus": "bezahlt",
+      "Vorname": "  Clara",
+      "Mobil": "+49 15 340 1706"
+    },
+    {
+      "Ausbildungsstand": "Prüfungsreif",
+      "Theoriepruefung_am": null,
+      "Geburtsdatum": "05/02/2008",
+      "Vorname": "Greta",
+      "E_Mail": "greta.hoffmann@mail.example.org",
+      "Sehtest_vorhanden": "nein",
+      "Mobil": "+49 15 380 2266",
+      "Fuehrerscheinklasse": "AM Roller",
+      "Fahrstunden_absolviert": 32,
+      "Nachname": "Hoffmann",
+      "Zahlungsstatus": "Ratenplan",
+      "Fahrlehrer": "Petra Lindqvist",
+      "Schueler_Nr": "FS-2024-0124",
+      "Lfd_Nr": 3
+    },
+    {
+      "Fahrstunden_absolviert": 24,
+      "Sehtest_vorhanden": "nein",
+      "Nachname": "Friedrich",
+      "Geburtsdatum": "07/12/1999",
+      "Mobil": "+49 15 525 9790",
+      "Fuehrerscheinklasse": "B197",
+      "Vorname": "Lukas",
+      "Theoriepruefung_am": "06/11/2025",
+      "Fahrlehrer": "Petra Lindqvist",
+      "Lfd_Nr": 4,
+      "Ausbildungsstand": "Theorie läuft",
+      "E_Mail": "lukas.friedrich@mail.example.org",
+      "Zahlungsstatus": "Rate offen",
+      "Schueler_Nr": "FS-2024-0127"
+    },
+    {
+      "Fuehrerscheinklasse": "B197",
+      "Schueler_Nr": "FS-2024-0130",
+      "Geburtsdatum": "02/08/1997",
+      "Nachname": "Engel",
+      "Theoriepruefung_am": "03/09/2025",
+      "Ausbildungsstand": "Praxis läuft",
+      "Vorname": "Jan",
+      "Fahrstunden_absolviert": 12,
+      "Sehtest_vorhanden": "ja",
+      "Lfd_Nr": 5,
+      "Zahlungsstatus": "Rate offen",
+      "Fahrlehrer": "Petra Lindqvist",
+      "E_Mail": "Jan.Engel@Mail.Example.Org",
+      "Mobil": "+49 15 504 6752"
+    },
+    {
+      "Lfd_Nr": 6,
+      "Sehtest_vorhanden": "nein",
+      "Zahlungsstatus": "Mahnung",
+      "Schueler_Nr": "FS-2024-0133",
+      "Fahrlehrer": "Dieter Kranz",
+      "Mobil": "+49 15 696 6218",
+      "Geburtsdatum": null,
+      "Ausbildungsstand": "Theorie läuft",
+      "Vorname": "Sophie",
+      "Fuehrerscheinklasse": "Klasse B",
+      "Nachname": "Hoffmann",
+      "Theoriepruefung_am": "10/10/2025",
+      "Fahrstunden_absolviert": 7,
+      "E_Mail": "sophie.hoffmann@mail.example.org"
+    },
+    {
+      "Fahrstunden_absolviert": 31,
+      "Mobil": "+49 15 528 9178",
+      "Vorname": "Greta",
+      "Sehtest_vorhanden": "nein",
+      "E_Mail": "greta.brandt@mail.example.org",
+      "Nachname": "Brandt",
+      "Fuehrerscheinklasse": "Mofa-Prüfbescheinigung",
+      "Theoriepruefung_am": "05/04/2025",
+      "Lfd_Nr": 7,
+      "Ausbildungsstand": "Pausiert",
+      "Geburtsdatum": "11/05/1999",
+      "Fahrlehrer": "Murat Aydın",
+      "Schueler_Nr": "FS-2024-0136",
+      "Zahlungsstatus": "Rate offen"
+    },
+    {
+      "Vorname": "Sophie",
+      "Ausbildungsstand": "Praxis läuft",
+      "Fahrstunden_absolviert": 37,
+      "Lfd_Nr": 8,
+      "Zahlungsstatus": "bezahlt",
+      "Fahrlehrer": "Jens Gebauer",
+      "Theoriepruefung_am": "01/02/2025",
+      "Nachname": "Roth",
+      "Sehtest_vorhanden": "nein",
+      "Schueler_Nr": "FS-2024-0139",
+      "Geburtsdatum": "07/12/2008",
+      "Mobil": "+49 15 367 8595",
+      "E_Mail": "Sophie.Roth@Mail.Example.Org",
+      "Fuehrerscheinklasse": "B197"
+    },
+    {
+      "Mobil": "+49 15 435 9785",
+      "Schueler_Nr": "FS-2024-0142",
+      "Vorname": "Hannah  ",
+      "Sehtest_vorhanden": "nein",
+      "Fahrlehrer": "Murat Aydın",
+      "Lfd_Nr": 9,
+      "Fuehrerscheinklasse": "Klasse A2",
+      "E_Mail": "hannah.friedrich@mail.example.org",
+      "Nachname": "Friedrich",
+      "Theoriepruefung_am": "11/03/2025",
+      "Zahlungsstatus": "Mahnung",
+      "Ausbildungsstand": "Abgebrochen",
+      "Fahrstunden_absolviert": 33,
+      "Geburtsdatum": "04/10/2006"
+    },
+    {
+      "E_Mail": "mia.werner@mail.example.org",
+      "Fuehrerscheinklasse": "AM Roller",
+      "Schueler_Nr": "FS-2024-0145",
+      "Vorname": "Mia",
+      "Ausbildungsstand": "Pausiert",
+      "Geburtsdatum": "06/01/2002",
+      "Mobil": "+49 15 872 6395",
+      "Nachname": "Werner",
+      "Lfd_Nr": 10,
+      "Zahlungsstatus": "Rate offen",
+      "Fahrlehrer": "Murat Aydın",
+      "Fahrstunden_absolviert": 10,
+      "Sehtest_vorhanden": "ja"
+    },
+    {
+      "Ausbildungsstand": "Pausiert",
+      "Mobil": "+49 15 382 6630",
+      "Theoriepruefung_am": "09/01/2025",
+      "Fahrlehrer": "Murat Aydın",
+      "Vorname": "Marie",
+      "Zahlungsstatus": "bezahlt",
+      "Geburtsdatum": "02/03/1998",
+      "Fuehrerscheinklasse": "Klasse A2",
+      "Lfd_Nr": 11,
+      "E_Mail": "Marie.Krause@Mail.Example.Org",
+      "Schueler_Nr": "FS-2024-0148",
+      "Fahrstunden_absolviert": 27,
+      "Sehtest_vorhanden": "ja",
+      "Nachname": "Krause"
+    },
+    {
+      "Fuehrerscheinklasse": "BE",
+      "Fahrstunden_absolviert": 31,
+      "Vorname": "Sophie",
+      "Ausbildungsstand": "Praxis läuft",
+      "Mobil": "+49 15 839 9502",
+      "Theoriepruefung_am": null,
+      "Geburtsdatum": "01/03/2004",
+      "E_Mail": "sophie.brandt@mail.example.org",
+      "Schueler_Nr": "FS-2024-0151",
+      "Nachname": "Brandt",
+      "Zahlungsstatus": "Ratenplan",
+      "Fahrlehrer": "Jens Gebauer",
+      "Sehtest_vorhanden": "ja",
+      "Lfd_Nr": 12
+    },
+    {
+      "E_Mail": "tobias.werner@mail.example.org",
+      "Fahrlehrer": "Jens Gebauer",
+      "Ausbildungsstand": "Praxis läuft",
+      "Mobil": "+49 15 213 7350",
+      "Lfd_Nr": 13,
+      "Fuehrerscheinklasse": "Mofa-Prüfbescheinigung",
+      "Geburtsdatum": "02/12/2006",
+      "Zahlungsstatus": "Ratenplan",
+      "Nachname": "Werner",
+      "Vorname": "Tobias",
+      "Sehtest_vorhanden": "ja",
+      "Fahrstunden_absolviert": 32,
+      "Schueler_Nr": "FS-2024-0154",
+      "Theoriepruefung_am": "01/11/2025"
+    },
+    {
+      "Fahrlehrer": "Jens Gebauer",
+      "Zahlungsstatus": "bezahlt",
+      "Fahrstunden_absolviert": 0,
+      "Sehtest_vorhanden": "ja",
+      "Nachname": "Braun",
+      "Theoriepruefung_am": "01/07/2025",
+      "Fuehrerscheinklasse": "Klasse A2",
+      "Geburtsdatum": "04/12/2008",
+      "Schueler_Nr": "FS-2024-0157",
+      "Ausbildungsstand": "Abgebrochen",
+      "E_Mail": "Simon.Braun@Mail.Example.Org",
+      "Lfd_Nr": 14,
+      "Mobil": "+49 15 822 5672",
+      "Vorname": "Simon"
+    },
+    {
+      "Vorname": " Mia ",
+      "Sehtest_vorhanden": "ja",
+      "Zahlungsstatus": "Mahnung",
+      "Geburtsdatum": "06/04/2003",
+      "Mobil": "+49 15 877 1246",
+      "Ausbildungsstand": "Theorie läuft",
+      "Fahrstunden_absolviert": 12,
+      "Fahrlehrer": "Jens Gebauer",
+      "Theoriepruefung_am": "10/06/2025",
+      "Fuehrerscheinklasse": "BE",
+      "Nachname": "Neumann",
+      "Lfd_Nr": 15,
+      "Schueler_Nr": "FS-2024-0160",
+      "E_Mail": "mia.neumann@mail.example.org"
+    },
+    {
+      "Ausbildungsstand": "Pausiert",
+      "Lfd_Nr": 16,
+      "Sehtest_vorhanden": "ja",
+      "Fahrlehrer": "Petra Lindqvist",
+      "Fahrstunden_absolviert": 18,
+      "Theoriepruefung_am": "07/03/2025",
+      "Nachname": "Lange",
+      "Fuehrerscheinklasse": "Klasse A2",
+      "E_Mail": "lukas.lange@mail.example.org",
+      "Mobil": "+49 15 550 7914",
+      "Zahlungsstatus": "Ratenplan",
+      "Geburtsdatum": "06/03/2001",
+      "Schueler_Nr": "FS-2024-0163",
+      "Vorname": "Lukas"
+    },
+    {
+      "Mobil": "+49 15 163 5701",
+      "Ausbildungsstand": "Prüfungsreif",
+      "Lfd_Nr": 17,
+      "Theoriepruefung_am": "05/10/2025",
+      "Fahrstunden_absolviert": 35,
+      "Fuehrerscheinklasse": "AM Roller",
+      "Geburtsdatum": "08/08/2004",
+      "Sehtest_vorhanden": "ja",
+      "Zahlungsstatus": "Rate offen",
+      "Nachname": "Krause",
+      "E_Mail": "Maximilian.Krause@Mail.Example.Org",
+      "Schueler_Nr": "FS-2024-0166",
+      "Fahrlehrer": "Murat Aydın",
+      "Vorname": "Maximilian"
+    },
+    {
+      "Fuehrerscheinklasse": "B197",
+      "Mobil": "+49 15 906 3773",
+      "Sehtest_vorhanden": "nein",
+      "Fahrlehrer": "Jens Gebauer",
+      "Schueler_Nr": "FS-2024-0169",
+      "E_Mail": "maximilian.engel@mail.example.org",
+      "Theoriepruefung_am": "06/10/2025",
+      "Fahrstunden_absolviert": 28,
+      "Zahlungsstatus": "Rate offen",
+      "Nachname": "Engel",
+      "Ausbildungsstand": "Abgebrochen",
+      "Vorname": "Maximilian",
+      "Geburtsdatum": "09/12/1999",
+      "Lfd_Nr": 18
+    },
+    {
+      "Ausbildungsstand": "Theorie läuft",
+      "Geburtsdatum": null,
+      "Nachname": "Becker",
+      "Lfd_Nr": 19,
+      "Theoriepruefung_am": "10/08/2025",
+      "E_Mail": "anna.becker@mail.example.org",
+      "Fuehrerscheinklasse": "Mofa-Prüfbescheinigung",
+      "Sehtest_vorhanden": "nein",
+      "Fahrlehrer": "Petra Lindqvist",
+      "Fahrstunden_absolviert": 23,
+      "Zahlungsstatus": "Mahnung",
+      "Mobil": "+49 15 744 3608",
+      "Schueler_Nr": "FS-2024-0172",
+      "Vorname": "Anna"
+    },
+    {
+      "Fahrlehrer": "Sabine Ostrowski",
+      "Nachname": "Friedrich",
+      "Theoriepruefung_am": "12/10/2025",
+      "Fahrstunden_absolviert": 17,
+      "Zahlungsstatus": "Rate offen",
+      "Mobil": "+49 15 470 4297",
+      "Geburtsdatum": "01/05/2003",
+      "E_Mail": "Anna.Friedrich@Mail.Example.Org",
+      "Schueler_Nr": "FS-2024-0175",
+      "Lfd_Nr": 20,
+      "Ausbildungsstand": "Abgebrochen",
+      "Sehtest_vorhanden": "nein",
+      "Fuehrerscheinklasse": "Klasse B",
+      "Vorname": "Anna"
+    },
+    {
+      "Lfd_Nr": 21,
+      "Fahrlehrer": "Dieter Kranz",
+      "Mobil": "+49 15 323 2286",
+      "Vorname": "Maximilian",
+      "E_Mail": "maximilian.roth@mail.example.org",
+      "Schueler_Nr": "FS-2024-0178",
+      "Fahrstunden_absolviert": 24,
+      "Sehtest_vorhanden": "nein",
+      "Theoriepruefung_am": "06/08/2025",
+      "Ausbildungsstand": "Prüfungsreif",
+      "Fuehrerscheinklasse": "B197",
+      "Nachname": "Roth",
+      "Zahlungsstatus": "bezahlt",
+      "Geburtsdatum": "06/04/1996"
+    },
+    {
+      "Nachname": "Friedrich",
+      "E_Mail": "marie.friedrich@mail.example.org",
+      "Fuehrerscheinklasse": "Klasse B",
+      "Schueler_Nr": "FS-2024-0181",
+      "Mobil": "+49 15 216 7432",
+      "Zahlungsstatus": "Ratenplan",
+      "Geburtsdatum": "04/04/2008",
+      "Lfd_Nr": 22,
+      "Vorname": "Marie",
+      "Fahrlehrer": "Dieter Kranz",
+      "Sehtest_vorhanden": "ja",
+      "Ausbildungsstand": "Pausiert",
+      "Fahrstunden_absolviert": 3
+    },
+    {
+      "Fahrlehrer": "Sabine Ostrowski",
+      "Sehtest_vorhanden": "nein",
+      "Mobil": "+49 15 392 8868",
+      "Lfd_Nr": 23,
+      "Fuehrerscheinklasse": "Klasse A2",
+      "E_Mail": "Maximilian.Kuhn@Mail.Example.Org",
+      "Ausbildungsstand": "Theorie läuft",
+      "Zahlungsstatus": "Mahnung",
+      "Geburtsdatum": "01/09/2008",
+      "Theoriepruefung_am": "09/10/2025",
+      "Nachname": "Kühn",
+      "Fahrstunden_absolviert": 18,
+      "Vorname": "Maximilian",
+      "Schueler_Nr": "FS-2024-0184"
+    },
+    {
+      "Mobil": "+49 15 617 5453",
+      "Theoriepruefung_am": "04/10/2025",
+      "Fahrlehrer": "Dieter Kranz",
+      "Geburtsdatum": "01/11/2006",
+      "E_Mail": "laura.vogel@mail.example.org",
+      "Schueler_Nr": "FS-2024-0187",
+      "Vorname": "  Laura",
+      "Zahlungsstatus": "bezahlt",
+      "Nachname": "Vogel",
+      "Fahrstunden_absolviert": 23,
+      "Sehtest_vorhanden": "nein",
+      "Lfd_Nr": 24,
+      "Fuehrerscheinklasse": "AM Roller",
+      "Ausbildungsstand": "Praxis läuft"
+    },
+    {
+      "Mobil": "+49 15 308 8178",
+      "Schueler_Nr": "FS-2024-0190",
+      "Geburtsdatum": "11/04/2001",
+      "Fahrstunden_absolviert": 21,
+      "Zahlungsstatus": "Ratenplan",
+      "Nachname": "Schwarz",
+      "Fahrlehrer": "Dieter Kranz",
+      "Sehtest_vorhanden": "ja",
+      "Lfd_Nr": 25,
+      "E_Mail": "marie.schwarz@mail.example.org",
+      "Theoriepruefung_am": "11/04/2025",
+      "Vorname": "Marie",
+      "Fuehrerscheinklasse": "Klasse B",
+      "Ausbildungsstand": "Prüfungsreif"
+    },
+    {
+      "Fahrlehrer": "Petra Lindqvist",
+      "Zahlungsstatus": "Ratenplan",
+      "Schueler_Nr": "FS-2024-0193",
+      "Mobil": "+49 15 654 3514",
+      "Nachname": "Krause",
+      "E_Mail": "Mia.Krause@Mail.Example.Org",
+      "Fuehrerscheinklasse": "AM Roller",
+      "Theoriepruefung_am": "12/06/2025",
+      "Fahrstunden_absolviert": 13,
+      "Ausbildungsstand": "Abgebrochen",
+      "Geburtsdatum": "09/12/2001",
+      "Sehtest_vorhanden": "nein",
+      "Vorname": "Mia",
+      "Lfd_Nr": 26
+    },
+    {
+      "Fuehrerscheinklasse": "Mofa-Prüfbescheinigung",
+      "Theoriepruefung_am": null,
+      "Sehtest_vorhanden": "ja",
+      "Zahlungsstatus": "bezahlt",
+      "Vorname": "Jonas",
+      "Geburtsdatum": "05/09/2000",
+      "Fahrlehrer": "Sabine Ostrowski",
+      "Mobil": "+49 15 290 4633",
+      "Fahrstunden_absolviert": 3,
+      "E_Mail": "jonas.wagner@mail.example.org",
+      "Lfd_Nr": 27,
+      "Ausbildungsstand": "Prüfungsreif",
+      "Schueler_Nr": "FS-2024-0196",
+      "Nachname": "Wagner"
+    },
+    {
+      "Schueler_Nr": "FS-2024-0199",
+      "Sehtest_vorhanden": "nein",
+      "Theoriepruefung_am": "01/10/2025",
+      "Lfd_Nr": 28,
+      "Nachname": "Hoffmann",
+      "Fahrstunden_absolviert": 25,
+      "E_Mail": "maximilian.hoffmann@mail.example.org",
+      "Vorname": "Maximilian",
+      "Fuehrerscheinklasse": "BE",
+      "Fahrlehrer": "Dieter Kranz",
+      "Geburtsdatum": "09/04/1997",
+      "Ausbildungsstand": "Pausiert",
+      "Zahlungsstatus": "Mahnung",
+      "Mobil": "+49 15 243 3289"
+    },
+    {
+      "Lfd_Nr": 29,
+      "Fuehrerscheinklasse": "Klasse B",
+      "Schueler_Nr": "FS-2024-0202",
+      "Geburtsdatum": "10/09/2006",
+      "Vorname": "Laura",
+      "Mobil": "+49 15 743 9774",
+      "Fahrlehrer": "Sabine Ostrowski",
+      "Sehtest_vorhanden": "nein",
+      "Theoriepruefung_am": "10/12/2025",
+      "Nachname": "Werner",
+      "E_Mail": "Laura.Werner@Mail.Example.Org",
+      "Zahlungsstatus": "bezahlt",
+      "Ausbildungsstand": "Abgebrochen",
+      "Fahrstunden_absolviert": 8
+    },
+    {
+      "Mobil": "+49 15 441 5311",
+      "Lfd_Nr": 30,
+      "Nachname": "Hartmann",
+      "Theoriepruefung_am": "12/02/2025",
+      "Sehtest_vorhanden": "ja",
+      "Vorname": "Felix",
+      "E_Mail": "felix.hartmann@mail.example.org",
+      "Fahrstunden_absolviert": 6,
+      "Schueler_Nr": "FS-2024-0205",
+      "Ausbildungsstand": "Prüfungsreif",
+      "Geburtsdatum": "09/06/2004",
+      "Zahlungsstatus": "Mahnung",
+      "Fahrlehrer": "Sabine Ostrowski",
+      "Fuehrerscheinklasse": "BE"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "candidate_id": {
+        "type": "string",
+        "description": "Identifier of the learner driver at the school."
+      },
+      "first_name": {
+        "type": "string",
+        "description": "Given name of the candidate."
+      },
+      "last_name": {
+        "type": "string",
+        "description": "Family name of the candidate."
+      },
+      "date_of_birth": {
+        "type": "string",
+        "format": "date",
+        "description": "Date of birth of the candidate, needed for exam eligibility."
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address for exam invitations."
+      },
+      "licence_class": {
+        "type": "string",
+        "enum": [
+          "car",
+          "car_automatic_with_manual_option",
+          "car_with_trailer",
+          "motorcycle_medium",
+          "moped"
+        ],
+        "description": "Driving licence class the candidate is training for."
+      },
+      "training_stage": {
+        "type": "string",
+        "enum": [
+          "theory",
+          "practical",
+          "ready_for_exam",
+          "dropped_out",
+          "on_hold"
+        ],
+        "description": "Progress of the candidate through the training programme."
+      },
+      "theory_exam_on": {
+        "type": "string",
+        "format": "date",
+        "description": "Date of the theory exam, if already scheduled."
+      },
+      "lessons_completed": {
+        "type": "integer",
+        "description": "Number of practical driving lessons completed."
+      },
+      "mobile_phone": {
+        "type": "string",
+        "description": "Mobile number of the candidate."
+      },
+      "first_aid_course_on": {
+        "type": "string",
+        "format": "date",
+        "description": "Date of the mandatory first-aid course."
+      }
+    },
+    "required": [
+      "candidate_id",
+      "first_name",
+      "last_name",
+      "date_of_birth",
+      "email",
+      "licence_class"
+    ]
+  },
+  "groundTruth": {
+    "candidate_id": {
+      "source": "Schueler_Nr",
+      "transform": "copy",
+      "why": "student number; Lfd_Nr is only the row counter of the export"
+    },
+    "first_name": {
+      "source": "Vorname",
+      "transform": "trim",
+      "why": "first name, padded in some rows"
+    },
+    "last_name": {
+      "source": "Nachname",
+      "transform": "copy",
+      "why": "surname"
+    },
+    "date_of_birth": {
+      "source": "Geburtsdatum",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "birth date (German day-first); rows without it must be held"
+    },
+    "email": {
+      "source": "E_Mail",
+      "transform": "normalize_email",
+      "why": "student email, mixed case"
+    },
+    "licence_class": {
+      "source": "Fuehrerscheinklasse",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Klasse B": "car",
+        "B197": "car_automatic_with_manual_option",
+        "BE": "car_with_trailer",
+        "Klasse A2": "motorcycle_medium",
+        "AM Roller": "moped",
+        "Mofa-Prüfbescheinigung": null
+      },
+      "why": "licence class; a moped certificate is not a licence exam and needs review"
+    },
+    "training_stage": {
+      "source": "Ausbildungsstand",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Theorie läuft": "theory",
+        "Praxis läuft": "practical",
+        "Prüfungsreif": "ready_for_exam",
+        "Abgebrochen": "dropped_out",
+        "Pausiert": "on_hold"
+      },
+      "why": "training progress; Zahlungsstatus is about instalments, not training"
+    },
+    "theory_exam_on": {
+      "source": "Theoriepruefung_am",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "theory exam date (German day-first), absent when not scheduled"
+    },
+    "lessons_completed": {
+      "source": "Fahrstunden_absolviert",
+      "transform": "copy",
+      "why": "completed lessons"
+    },
+    "mobile_phone": {
+      "source": "Mobil",
+      "transform": "copy",
+      "why": "mobile number"
+    },
+    "first_aid_course_on": {
+      "source": null,
+      "transform": "none",
+      "why": "the export has no first-aid course date"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "Ausbildungsstand",
+        "Zahlungsstatus"
+      ],
+      "correctFor": "training_stage"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "Schueler_Nr",
+        "Lfd_Nr"
+      ],
+      "correctFor": "candidate_id"
+    },
+    {
+      "kind": "birth-date-vs-start-date",
+      "fields": [
+        "Geburtsdatum",
+        "Theoriepruefung_am"
+      ],
+      "correctFor": "date_of_birth"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "Vorname",
+        "Fahrlehrer"
+      ],
+      "correctFor": "first_name"
+    }
+  ],
+  "sourceConcepts": {
+    "Schueler_Nr": "customer-id",
+    "Lfd_Nr": "other-identifier",
+    "Vorname": "given-name",
+    "Nachname": "family-name",
+    "Geburtsdatum": "birth-date",
+    "Theoriepruefung_am": "start-date",
+    "E_Mail": "email",
+    "Fuehrerscheinklasse": "category",
+    "Ausbildungsstand": "account-status",
+    "Zahlungsstatus": "payment-status",
+    "Fahrlehrer": "person-name",
+    "Fahrstunden_absolviert": "quantity",
+    "Mobil": "phone",
+    "Sehtest_vorhanden": "consent-flag"
+  },
+  "destinationConcepts": {
+    "candidate_id": "customer-id",
+    "first_name": "given-name",
+    "last_name": "family-name",
+    "date_of_birth": "birth-date",
+    "email": "email",
+    "licence_class": "category",
+    "training_stage": "account-status",
+    "theory_exam_on": "start-date",
+    "lessons_completed": "quantity",
+    "mobile_phone": "phone",
+    "first_aid_course_on": "other"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 1,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 2,
+      "outcome": "transformed",
+      "output": {
+        "candidate_id": "FS-2024-0124",
+        "first_name": "Greta",
+        "last_name": "Hoffmann",
+        "date_of_birth": "2008-02-05",
+        "email": "greta.hoffmann@mail.example.org",
+        "licence_class": "moped",
+        "training_stage": "ready_for_exam",
+        "lessons_completed": 32,
+        "mobile_phone": "+49 15 380 2266"
+      }
+    },
+    {
+      "recordIndex": 5,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 9,
+      "outcome": "transformed",
+      "output": {
+        "candidate_id": "FS-2024-0145",
+        "first_name": "Mia",
+        "last_name": "Werner",
+        "date_of_birth": "2002-01-06",
+        "email": "mia.werner@mail.example.org",
+        "licence_class": "moped",
+        "training_stage": "on_hold",
+        "lessons_completed": 10,
+        "mobile_phone": "+49 15 872 6395"
+      }
+    }
+  ]
+}

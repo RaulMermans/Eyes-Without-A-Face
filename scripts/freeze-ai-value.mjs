@@ -17,7 +17,7 @@
  * fresh holdout only, docs/evaluation/sprint-18a5-planner.md) and `b` (Sprint 18B
  * intent plan, dev + fresh holdout, docs/evaluation/sprint-18b-intent-plan.md).
  *
- * Usage: node scripts/freeze-ai-value.mjs [--set a5|b] [--amend "reason"]
+ * Usage: node scripts/freeze-ai-value.mjs [--set a5|b|c] [--amend "reason"]
  */
 import { createHash } from "node:crypto";
 import { execSync } from "node:child_process";
@@ -51,6 +51,15 @@ const SETS = {
     dev: true,
     statement:
       "Frozen before any model saw this evaluation set. The set was written by an independent author after the ADR 0018 contract freeze, without access to the implementation, prompts or earlier holdouts. Implementation workers never opened the holdout; the frozen harness and scorer read it and emit aggregates and per-index rows only.",
+  },
+  c: {
+    out: "docs/evidence/sprint-18c/reliability-freeze.json",
+    root: "tests/fixtures/eval-18c",
+    preregistration: "docs/evaluation/sprint-18c-reliability.md",
+    experiment: "sprint-18c-reliability",
+    dev: true,
+    statement:
+      "Frozen before any model saw this evaluation set and before the live run. The set was written by an independent author without access to the implementation, prompts or earlier holdouts. The engineer never opened the holdout; the frozen harness and scorer read it and emit aggregates and per-index rows only.",
   },
 };
 const setIndex = process.argv.indexOf("--set");

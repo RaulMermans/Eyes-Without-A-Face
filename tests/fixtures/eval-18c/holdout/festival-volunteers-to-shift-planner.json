@@ -1,0 +1,930 @@
+{
+  "scenarioId": "festival-volunteers-to-shift-planner",
+  "split": "holdout",
+  "industry": "music festival volunteers",
+  "sourceLanguage": "nl",
+  "description": "Volunteer registration export of a fictional summer festival (Dutch snake_case, nested emergency contact) to be loaded into a shift planner.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "achternaam": "Peters",
+      "email": "jesse.peters@mail.example.org",
+      "aangemeld_op": "2025-12-03T12:49:00Z",
+      "vrijwilliger_id": "VW-1040",
+      "geboortedatum": "03/08/1992",
+      "noodcontact": {
+        "telefoon": "+31 6 264 8354",
+        "naam": "  Lieke Vos"
+      },
+      "coordinator": "Karim Bouzid",
+      "status_aanmelding": "Wachtlijst",
+      "voornaam": "Jesse",
+      "inschrijving_nr": "F25-7700",
+      "rol": "Backstage runner",
+      "beschikbaar_vanaf": "01/04/2025",
+      "ervaring": "Nieuw",
+      "voorkeur_dag": "hele weekend"
+    },
+    {
+      "geboortedatum": "04/08/1982",
+      "aangemeld_op": "2025-03-08T17:18:00Z",
+      "achternaam": "Verhoeven",
+      "rol": "Backstage runner",
+      "inschrijving_nr": "F25-7713",
+      "beschikbaar_vanaf": "08/03/2025",
+      "ervaring": "Veteraan (3+)",
+      "vrijwilliger_id": "VW-1043",
+      "coordinator": "Esther Lam",
+      "status_aanmelding": "Afgemeld",
+      "voornaam": "Lotte",
+      "noodcontact": {
+        "naam": "Lotte Brouwer",
+        "telefoon": "+31 6 860 6505"
+      },
+      "email": "Lotte.Verhoeven@Mail.Example.Org",
+      "voorkeur_dag": "hele weekend"
+    },
+    {
+      "achternaam": "Mulder",
+      "rol": "Afbouw",
+      "inschrijving_nr": "F25-7726",
+      "geboortedatum": "11/05/1983",
+      "email": "lieke.mulder@mail.example.org",
+      "coordinator": "Karim Bouzid",
+      "voorkeur_dag": "vrijdag",
+      "ervaring": "1-2 edities",
+      "noodcontact": {
+        "telefoon": "+31 6 749 9375",
+        "naam": "Lotte Brouwer"
+      },
+      "beschikbaar_vanaf": null,
+      "aangemeld_op": "2025-10-05T10:51:00Z",
+      "voornaam": "Lieke",
+      "vrijwilliger_id": "VW-1046",
+      "status_aanmelding": "Bevestigd"
+    },
+    {
+      "status_aanmelding": "Afgemeld",
+      "email": "stijn.devries@mail.example.org",
+      "geboortedatum": "10/09/1963",
+      "aangemeld_op": "2025-04-28T18:54:00Z",
+      "inschrijving_nr": "F25-7739",
+      "rol": "Afvalteam",
+      "vrijwilliger_id": "VW-1049",
+      "ervaring": "Teamleider",
+      "beschikbaar_vanaf": "03/10/2025",
+      "voorkeur_dag": "zaterdag",
+      "voornaam": "Stijn",
+      "coordinator": "Wendy Hoekstra",
+      "noodcontact": {
+        "naam": "Noor de Vries",
+        "telefoon": "+31 6 311 8818"
+      },
+      "achternaam": "de Vries"
+    },
+    {
+      "voornaam": "Ruben",
+      "vrijwilliger_id": "VW-1052",
+      "geboortedatum": "09/04/1999",
+      "aangemeld_op": "2025-10-10T11:26:00Z",
+      "status_aanmelding": "Test-inschrijving",
+      "inschrijving_nr": "F25-7752",
+      "noodcontact": {
+        "telefoon": "+31 6 583 4167",
+        "naam": "Lotte Kok"
+      },
+      "coordinator": "Gijs Oosterhuis",
+      "email": "Ruben.Vandenberg@Mail.Example.Org",
+      "ervaring": "Teamleider",
+      "beschikbaar_vanaf": "02/07/2025",
+      "achternaam": "van den Berg",
+      "voorkeur_dag": "zondag",
+      "rol": "Barmedewerker"
+    },
+    {
+      "rol": "Backstage runner",
+      "voornaam": "Roos",
+      "inschrijving_nr": "F25-7765",
+      "voorkeur_dag": "zaterdag",
+      "coordinator": "Esther Lam",
+      "vrijwilliger_id": "VW-1055",
+      "noodcontact": {
+        "telefoon": null,
+        "naam": "Anouk Brouwer"
+      },
+      "geboortedatum": "11/10/1973",
+      "achternaam": "Dekker",
+      "beschikbaar_vanaf": "07/11/2025",
+      "email": "roos.dekker@mail.example.org",
+      "status_aanmelding": "Bevestigd",
+      "aangemeld_op": "2025-11-11T17:53:00Z",
+      "ervaring": "Veteraan (3+)"
+    },
+    {
+      "rol": "Afbouw",
+      "geboortedatum": "09/09/1996",
+      "inschrijving_nr": "F25-7778",
+      "aangemeld_op": "2025-11-02T07:27:00Z",
+      "email": "lieke.vandenberg@mail.example.org",
+      "vrijwilliger_id": "VW-1058",
+      "status_aanmelding": "Bevestigd",
+      "achternaam": "van den Berg",
+      "voorkeur_dag": "vrijdag",
+      "coordinator": "Gijs Oosterhuis",
+      "ervaring": "1-2 edities",
+      "voornaam": "Lieke",
+      "beschikbaar_vanaf": "08/11/2025",
+      "noodcontact": {
+        "telefoon": "+31 6 652 8415",
+        "naam": "Lars Peters  "
+      }
+    },
+    {
+      "coordinator": "Karim Bouzid",
+      "inschrijving_nr": "F25-7791",
+      "ervaring": "Nieuw",
+      "noodcontact": {
+        "naam": "Sem de Vries",
+        "telefoon": "+31 6 707 9825"
+      },
+      "rol": "Barmedewerker",
+      "voorkeur_dag": "vrijdag",
+      "voornaam": "Thijs",
+      "geboortedatum": "08/08/1975",
+      "email": "Thijs.Devries@Mail.Example.Org",
+      "achternaam": "de Vries",
+      "status_aanmelding": "Afgemeld",
+      "aangemeld_op": "2025-09-06T13:25:00Z",
+      "vrijwilliger_id": "VW-1061"
+    },
+    {
+      "status_aanmelding": "Wachtlijst",
+      "beschikbaar_vanaf": "03/02/2025",
+      "voornaam": "Jesse",
+      "rol": "EHBO",
+      "achternaam": "de Vries",
+      "aangemeld_op": "2025-11-23T11:42:00Z",
+      "ervaring": "Nieuw",
+      "noodcontact": {
+        "naam": "Eva Jansen",
+        "telefoon": "+31 6 452 2790"
+      },
+      "vrijwilliger_id": "VW-1064",
+      "coordinator": "Wendy Hoekstra",
+      "geboortedatum": "06/10/1989",
+      "inschrijving_nr": "F25-7804",
+      "email": "jesse.devries@mail.example.org",
+      "voorkeur_dag": "hele weekend"
+    },
+    {
+      "rol": "Info & Kassa",
+      "aangemeld_op": "2025-01-16T18:14:00Z",
+      "ervaring": "Nieuw",
+      "beschikbaar_vanaf": "04/01/2025",
+      "voornaam": "Bram",
+      "achternaam": "de Vries",
+      "noodcontact": {
+        "naam": "Lotte Bos",
+        "telefoon": "+31 6 980 9970"
+      },
+      "status_aanmelding": "Test-inschrijving",
+      "vrijwilliger_id": "VW-1067",
+      "inschrijving_nr": "F25-7817",
+      "geboortedatum": "04/02/1973",
+      "coordinator": "Esther Lam",
+      "email": "bram.devries@mail.example.org",
+      "voorkeur_dag": "zondag"
+    },
+    {
+      "status_aanmelding": "Afgemeld",
+      "voorkeur_dag": "hele weekend",
+      "inschrijving_nr": "F25-7830",
+      "rol": "Opbouw",
+      "coordinator": "Gijs Oosterhuis",
+      "achternaam": "Bos",
+      "vrijwilliger_id": "VW-1070",
+      "aangemeld_op": "2025-02-28T08:56:00Z",
+      "email": "Anouk.Bos@Mail.Example.Org",
+      "ervaring": "Veteraan (3+)",
+      "noodcontact": {
+        "naam": "Joris de Vries",
+        "telefoon": "+31 6 729 9708"
+      },
+      "beschikbaar_vanaf": "04/12/2025",
+      "geboortedatum": "04/06/1991",
+      "voornaam": "Anouk"
+    },
+    {
+      "email": "sanne.peters@mail.example.org",
+      "vrijwilliger_id": "VW-1073",
+      "inschrijving_nr": "F25-7843",
+      "achternaam": "Peters",
+      "coordinator": "Mila Wouters",
+      "voorkeur_dag": "zaterdag",
+      "status_aanmelding": "Wachtlijst",
+      "noodcontact": {
+        "naam": "Noor Hendriks",
+        "telefoon": "+31 6 201 9398"
+      },
+      "aangemeld_op": "2025-08-23T18:43:00Z",
+      "geboortedatum": "05/03/1998",
+      "voornaam": "Sanne",
+      "beschikbaar_vanaf": "01/06/2025",
+      "ervaring": "Veteraan (3+)",
+      "rol": "Opbouw"
+    },
+    {
+      "rol": "Barmedewerker",
+      "ervaring": "1-2 edities",
+      "status_aanmelding": "Wachtlijst",
+      "voornaam": "Femke",
+      "email": "femke.mulder@mail.example.org",
+      "geboortedatum": "09/11/2007",
+      "achternaam": "Mulder",
+      "voorkeur_dag": "vrijdag",
+      "inschrijving_nr": "F25-7856",
+      "coordinator": "Gijs Oosterhuis",
+      "noodcontact": {
+        "telefoon": "+31 6 949 7813",
+        "naam": "Ruben Kok"
+      },
+      "vrijwilliger_id": "VW-1076",
+      "beschikbaar_vanaf": "10/04/2025",
+      "aangemeld_op": "2025-12-04T10:18:00Z"
+    },
+    {
+      "voornaam": "Sanne",
+      "vrijwilliger_id": "VW-1079",
+      "aangemeld_op": "2025-01-18T11:06:00Z",
+      "status_aanmelding": "Bevestigd",
+      "inschrijving_nr": "F25-7869",
+      "voorkeur_dag": "zondag",
+      "achternaam": "Dijkstra",
+      "rol": "Opbouw",
+      "email": "Sanne.Dijkstra@Mail.Example.Org",
+      "noodcontact": {
+        "naam": "Joris de Vries",
+        "telefoon": "+31 6 774 7258"
+      },
+      "ervaring": "Teamleider",
+      "beschikbaar_vanaf": null,
+      "coordinator": "Esther Lam",
+      "geboortedatum": "06/07/2002"
+    },
+    {
+      "rol": "Afbouw",
+      "geboortedatum": "02/08/1966",
+      "ervaring": "Nieuw",
+      "voornaam": "Joris",
+      "status_aanmelding": "Afgemeld",
+      "noodcontact": {
+        "naam": " Lieke Vos ",
+        "telefoon": "+31 6 704 4494"
+      },
+      "beschikbaar_vanaf": "12/02/2025",
+      "email": "joris.dekker@mail.example.org",
+      "vrijwilliger_id": "VW-1082",
+      "aangemeld_op": "2025-03-08T16:33:00Z",
+      "coordinator": "Esther Lam",
+      "voorkeur_dag": "vrijdag",
+      "inschrijving_nr": "F25-7882",
+      "achternaam": "Dekker"
+    },
+    {
+      "noodcontact": {
+        "naam": "Noor van den Berg",
+        "telefoon": "+31 6 473 9095"
+      },
+      "geboortedatum": "07/03/1996",
+      "coordinator": "Wendy Hoekstra",
+      "inschrijving_nr": "F25-7895",
+      "voorkeur_dag": "vrijdag",
+      "rol": "Backstage runner",
+      "achternaam": "de Boer",
+      "voornaam": "Eva",
+      "email": "eva.deboer@mail.example.org",
+      "vrijwilliger_id": "VW-1085",
+      "aangemeld_op": "2025-08-06T09:34:00Z",
+      "beschikbaar_vanaf": "05/03/2025",
+      "status_aanmelding": "Wachtlijst",
+      "ervaring": "1-2 edities"
+    },
+    {
+      "rol": "Afvalteam",
+      "status_aanmelding": "Bevestigd",
+      "geboortedatum": "08/04/1968",
+      "coordinator": "Karim Bouzid",
+      "inschrijving_nr": "F25-7908",
+      "noodcontact": {
+        "telefoon": "+31 6 747 7285",
+        "naam": "Iris Peters"
+      },
+      "ervaring": "Teamleider",
+      "voorkeur_dag": "vrijdag",
+      "beschikbaar_vanaf": "04/07/2025",
+      "email": "Daan.Visser@Mail.Example.Org",
+      "aangemeld_op": "2025-05-22T11:56:00Z",
+      "voornaam": "Daan",
+      "achternaam": "Visser",
+      "vrijwilliger_id": "VW-1088"
+    },
+    {
+      "voorkeur_dag": "zaterdag",
+      "beschikbaar_vanaf": "12/02/2025",
+      "vrijwilliger_id": "VW-1091",
+      "inschrijving_nr": "F25-7921",
+      "noodcontact": {
+        "telefoon": "+31 6 338 5559",
+        "naam": "Daan Visser"
+      },
+      "email": "sanne.devries@mail.example.org",
+      "coordinator": "Wendy Hoekstra",
+      "geboortedatum": "01/12/1978",
+      "aangemeld_op": "2025-10-17T17:22:00Z",
+      "achternaam": "de Vries",
+      "ervaring": "Veteraan (3+)",
+      "status_aanmelding": "Test-inschrijving",
+      "voornaam": "Sanne",
+      "rol": "Afbouw"
+    },
+    {
+      "achternaam": "van Leeuwen",
+      "voorkeur_dag": "hele weekend",
+      "status_aanmelding": "Bevestigd",
+      "coordinator": "Wendy Hoekstra",
+      "geboortedatum": "10/09/2000",
+      "aangemeld_op": "2025-11-05T14:52:00Z",
+      "inschrijving_nr": "F25-7934",
+      "ervaring": "Nieuw",
+      "voornaam": "Femke",
+      "email": "femke.vanleeuwen@mail.example.org",
+      "rol": "Info & Kassa",
+      "vrijwilliger_id": "VW-1094",
+      "noodcontact": {
+        "naam": "Ruben de Boer",
+        "telefoon": "+31 6 880 3077"
+      }
+    },
+    {
+      "aangemeld_op": "2025-07-09T07:56:00Z",
+      "geboortedatum": "02/07/1963",
+      "achternaam": "van den Berg",
+      "beschikbaar_vanaf": "08/10/2025",
+      "vrijwilliger_id": "VW-1097",
+      "noodcontact": {
+        "telefoon": "+31 6 102 2571",
+        "naam": "Lieke Bakker"
+      },
+      "email": "Milan.Vandenberg@Mail.Example.Org",
+      "rol": "EHBO",
+      "inschrijving_nr": "F25-7947",
+      "voornaam": "Milan",
+      "coordinator": "Esther Lam",
+      "status_aanmelding": "Afgemeld",
+      "ervaring": "1-2 edities",
+      "voorkeur_dag": "hele weekend"
+    },
+    {
+      "noodcontact": {
+        "naam": "Iris de Wit",
+        "telefoon": "+31 6 396 4731"
+      },
+      "voorkeur_dag": "vrijdag",
+      "aangemeld_op": "2025-09-08T15:36:00Z",
+      "geboortedatum": "10/06/2006",
+      "voornaam": "Lotte",
+      "inschrijving_nr": "F25-7960",
+      "achternaam": "Smit",
+      "beschikbaar_vanaf": "04/01/2025",
+      "status_aanmelding": "Test-inschrijving",
+      "ervaring": "Teamleider",
+      "coordinator": "Mila Wouters",
+      "rol": "Afvalteam",
+      "vrijwilliger_id": "VW-1100",
+      "email": "lotte.smit@mail.example.org"
+    },
+    {
+      "voorkeur_dag": "zondag",
+      "aangemeld_op": "2025-08-17T13:36:00Z",
+      "coordinator": "Wendy Hoekstra",
+      "noodcontact": {
+        "naam": "Roos Bakker",
+        "telefoon": null
+      },
+      "geboortedatum": "12/02/2007",
+      "inschrijving_nr": "F25-7973",
+      "email": "sanne.smit@mail.example.org",
+      "beschikbaar_vanaf": "08/04/2025",
+      "ervaring": "Teamleider",
+      "achternaam": "Smit",
+      "status_aanmelding": "Afgemeld",
+      "vrijwilliger_id": "VW-1103",
+      "rol": "Info & Kassa",
+      "voornaam": "Sanne"
+    },
+    {
+      "achternaam": "Verhoeven",
+      "noodcontact": {
+        "naam": "Jesse Peters",
+        "telefoon": "+31 6 985 1421"
+      },
+      "email": "Roos.Verhoeven@Mail.Example.Org",
+      "rol": "Barmedewerker",
+      "aangemeld_op": "2025-10-26T13:43:00Z",
+      "geboortedatum": "12/09/1974",
+      "ervaring": "Veteraan (3+)",
+      "voornaam": "Roos",
+      "vrijwilliger_id": "VW-1106",
+      "beschikbaar_vanaf": "07/08/2025",
+      "voorkeur_dag": "zaterdag",
+      "inschrijving_nr": "F25-7986",
+      "status_aanmelding": "Test-inschrijving",
+      "coordinator": "Mila Wouters"
+    },
+    {
+      "achternaam": "Visser",
+      "vrijwilliger_id": "VW-1109",
+      "beschikbaar_vanaf": "01/07/2025",
+      "ervaring": "Nieuw",
+      "email": "jesse.visser@mail.example.org",
+      "inschrijving_nr": "F25-7999",
+      "status_aanmelding": "Wachtlijst",
+      "voorkeur_dag": "zaterdag",
+      "coordinator": "Gijs Oosterhuis",
+      "voornaam": "Jesse",
+      "geboortedatum": "06/11/2004",
+      "rol": "Afbouw",
+      "aangemeld_op": "2025-01-13T08:59:00Z",
+      "noodcontact": {
+        "telefoon": "+31 6 402 3297",
+        "naam": "Jesse Mulder"
+      }
+    },
+    {
+      "status_aanmelding": "Bevestigd",
+      "vrijwilliger_id": "VW-1112",
+      "voornaam": "Roos",
+      "geboortedatum": "01/08/1978",
+      "email": "roos.vos@mail.example.org",
+      "achternaam": "Vos",
+      "aangemeld_op": "2025-07-27T15:45:00Z",
+      "rol": "Info & Kassa",
+      "ervaring": "1-2 edities",
+      "inschrijving_nr": "F25-8012",
+      "coordinator": "Esther Lam",
+      "beschikbaar_vanaf": "07/02/2025",
+      "noodcontact": {
+        "naam": "Eva Hendriks",
+        "telefoon": "+31 6 383 9506"
+      },
+      "voorkeur_dag": "zondag"
+    },
+    {
+      "coordinator": "Wendy Hoekstra",
+      "email": "Iris.Visser@Mail.Example.Org",
+      "noodcontact": {
+        "naam": "Thijs Meijer",
+        "telefoon": "+31 6 938 2270"
+      },
+      "inschrijving_nr": "F25-8025",
+      "rol": "Opbouw",
+      "achternaam": "Visser",
+      "aangemeld_op": "2025-08-18T14:23:00Z",
+      "beschikbaar_vanaf": null,
+      "ervaring": "Veteraan (3+)",
+      "status_aanmelding": "Wachtlijst",
+      "geboortedatum": "07/06/1993",
+      "voornaam": "Iris",
+      "vrijwilliger_id": "VW-1115",
+      "voorkeur_dag": "zondag"
+    },
+    {
+      "inschrijving_nr": "F25-8038",
+      "status_aanmelding": "Wachtlijst",
+      "coordinator": "Karim Bouzid",
+      "voornaam": "Stijn",
+      "beschikbaar_vanaf": "03/05/2025",
+      "ervaring": "Teamleider",
+      "rol": "EHBO",
+      "vrijwilliger_id": "VW-1118",
+      "aangemeld_op": "2025-07-11T12:54:00Z",
+      "achternaam": "Kok",
+      "geboortedatum": "07/11/1968",
+      "email": "stijn.kok@mail.example.org",
+      "voorkeur_dag": "vrijdag",
+      "noodcontact": {
+        "telefoon": "+31 6 757 7946",
+        "naam": "Iris Dijkstra"
+      }
+    },
+    {
+      "inschrijving_nr": "F25-8051",
+      "voornaam": "Fleur",
+      "status_aanmelding": "Test-inschrijving",
+      "achternaam": "Smit",
+      "voorkeur_dag": "hele weekend",
+      "email": "fleur.smit@mail.example.org",
+      "vrijwilliger_id": "VW-1121",
+      "ervaring": "1-2 edities",
+      "geboortedatum": "02/06/1972",
+      "noodcontact": {
+        "naam": "Sem Brouwer",
+        "telefoon": "+31 6 264 8384"
+      },
+      "rol": "Barmedewerker",
+      "beschikbaar_vanaf": "07/01/2025",
+      "aangemeld_op": "2025-01-08T15:11:00Z",
+      "coordinator": "Mila Wouters"
+    },
+    {
+      "inschrijving_nr": "F25-8064",
+      "achternaam": "Dekker",
+      "coordinator": "Mila Wouters",
+      "voorkeur_dag": "zondag",
+      "geboortedatum": "07/12/1963",
+      "noodcontact": {
+        "telefoon": "+31 6 576 9521",
+        "naam": "Roos Visser"
+      },
+      "aangemeld_op": "2025-05-27T09:46:00Z",
+      "email": "Stijn.Dekker@Mail.Example.Org",
+      "status_aanmelding": "Test-inschrijving",
+      "rol": "EHBO",
+      "beschikbaar_vanaf": "03/10/2025",
+      "vrijwilliger_id": "VW-1124",
+      "voornaam": "Stijn",
+      "ervaring": "Teamleider"
+    },
+    {
+      "achternaam": "Verhoeven",
+      "ervaring": "1-2 edities",
+      "vrijwilliger_id": "VW-1127",
+      "geboortedatum": "04/05/1981",
+      "beschikbaar_vanaf": "03/04/2025",
+      "voorkeur_dag": "zaterdag",
+      "aangemeld_op": "2025-05-16T17:16:00Z",
+      "noodcontact": {
+        "telefoon": "+31 6 101 5819",
+        "naam": "  Sem Bos"
+      },
+      "inschrijving_nr": "F25-8077",
+      "status_aanmelding": "Wachtlijst",
+      "coordinator": "Karim Bouzid",
+      "rol": "Afvalteam",
+      "email": "sem.verhoeven@mail.example.org",
+      "voornaam": "Sem"
+    },
+    {
+      "geboortedatum": "06/05/2003",
+      "noodcontact": {
+        "telefoon": "+31 6 619 3788",
+        "naam": "Joris Dekker"
+      },
+      "ervaring": "Nieuw",
+      "status_aanmelding": "Afgemeld",
+      "voorkeur_dag": "hele weekend",
+      "aangemeld_op": "2025-12-11T08:52:00Z",
+      "email": "fleur.vandenberg@mail.example.org",
+      "rol": "Afvalteam",
+      "coordinator": "Gijs Oosterhuis",
+      "achternaam": "van den Berg",
+      "voornaam": "Fleur",
+      "vrijwilliger_id": "VW-1130",
+      "inschrijving_nr": "F25-8090"
+    },
+    {
+      "achternaam": "van den Berg",
+      "geboortedatum": "08/06/1998",
+      "voorkeur_dag": "zondag",
+      "ervaring": "Veteraan (3+)",
+      "voornaam": "Jesse",
+      "vrijwilliger_id": "VW-1133",
+      "rol": "EHBO",
+      "aangemeld_op": "2025-05-22T07:20:00Z",
+      "status_aanmelding": "Bevestigd",
+      "noodcontact": {
+        "naam": "Noor Bos",
+        "telefoon": "+31 6 173 7001"
+      },
+      "coordinator": "Karim Bouzid",
+      "beschikbaar_vanaf": "12/09/2025",
+      "inschrijving_nr": "F25-8103",
+      "email": "Jesse.Vandenberg@Mail.Example.Org"
+    },
+    {
+      "inschrijving_nr": "F25-8116",
+      "achternaam": "Peters",
+      "rol": "Opbouw",
+      "noodcontact": {
+        "naam": "Ruben Meijer",
+        "telefoon": "+31 6 989 7007"
+      },
+      "voorkeur_dag": "zaterdag",
+      "status_aanmelding": "Test-inschrijving",
+      "vrijwilliger_id": "VW-1136",
+      "email": "bram.peters@mail.example.org",
+      "geboortedatum": "10/12/1990",
+      "voornaam": "Bram",
+      "coordinator": "Gijs Oosterhuis",
+      "ervaring": "1-2 edities",
+      "beschikbaar_vanaf": "03/08/2025",
+      "aangemeld_op": "2025-02-17T13:16:00Z"
+    },
+    {
+      "vrijwilliger_id": "VW-1139",
+      "rol": "Info & Kassa",
+      "voornaam": "Joris",
+      "ervaring": "Nieuw",
+      "coordinator": "Mila Wouters",
+      "email": "joris.peters@mail.example.org",
+      "inschrijving_nr": "F25-8129",
+      "voorkeur_dag": "zaterdag",
+      "status_aanmelding": "Bevestigd",
+      "noodcontact": {
+        "naam": "Ruben Smit",
+        "telefoon": "+31 6 817 3721"
+      },
+      "beschikbaar_vanaf": "02/03/2025",
+      "geboortedatum": "12/10/1965",
+      "aangemeld_op": "2025-06-15T16:39:00Z",
+      "achternaam": "Peters"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "volunteer_id": {
+        "type": "string",
+        "description": "Identifier of the volunteer across editions."
+      },
+      "display_name": {
+        "type": "string",
+        "description": "Name shown on the shift roster: given name, space, family name."
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address for shift notifications."
+      },
+      "role": {
+        "type": "string",
+        "enum": [
+          "bar",
+          "waste",
+          "info_desk",
+          "build_up",
+          "teardown",
+          "first_aid",
+          "runner"
+        ],
+        "description": "Team the volunteer works in."
+      },
+      "experience_level": {
+        "type": "string",
+        "enum": [
+          "newcomer",
+          "returning",
+          "veteran",
+          "lead"
+        ],
+        "description": "How experienced the volunteer is."
+      },
+      "registration_status": {
+        "type": "string",
+        "enum": [
+          "confirmed",
+          "waitlisted",
+          "withdrawn"
+        ],
+        "description": "State of the volunteer registration."
+      },
+      "available_from": {
+        "type": "string",
+        "format": "date",
+        "description": "First day the volunteer can work."
+      },
+      "date_of_birth": {
+        "type": "string",
+        "format": "date",
+        "description": "Date of birth, used for the bar age check."
+      },
+      "emergency_contact_phone": {
+        "type": "string",
+        "description": "Phone number of the emergency contact."
+      },
+      "dietary_requirement": {
+        "type": "string",
+        "description": "Dietary requirement for the crew catering."
+      }
+    },
+    "required": [
+      "volunteer_id",
+      "display_name",
+      "email",
+      "role",
+      "registration_status"
+    ]
+  },
+  "groundTruth": {
+    "volunteer_id": {
+      "source": "vrijwilliger_id",
+      "transform": "copy",
+      "why": "volunteer id; inschrijving_nr is this year's form submission"
+    },
+    "display_name": {
+      "source": null,
+      "sources": [
+        "voornaam",
+        "achternaam"
+      ],
+      "transform": "concat",
+      "separator": " ",
+      "why": "first name plus surname; coordinator is a staff member"
+    },
+    "email": {
+      "source": "email",
+      "transform": "normalize_email",
+      "why": "volunteer email, mixed case"
+    },
+    "role": {
+      "source": "rol",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Barmedewerker": "bar",
+        "Afvalteam": "waste",
+        "Info & Kassa": "info_desk",
+        "Opbouw": "build_up",
+        "Afbouw": "teardown",
+        "EHBO": "first_aid",
+        "Backstage runner": "runner"
+      },
+      "why": "volunteer team"
+    },
+    "experience_level": {
+      "source": "ervaring",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Nieuw": "newcomer",
+        "1-2 edities": "returning",
+        "Veteraan (3+)": "veteran",
+        "Teamleider": "lead"
+      },
+      "why": "experience band"
+    },
+    "registration_status": {
+      "source": "status_aanmelding",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Bevestigd": "confirmed",
+        "Wachtlijst": "waitlisted",
+        "Afgemeld": "withdrawn",
+        "Test-inschrijving": null
+      },
+      "why": "registration state; test registrations need review"
+    },
+    "available_from": {
+      "source": "beschikbaar_vanaf",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "availability start (Dutch day-first), sometimes absent"
+    },
+    "date_of_birth": {
+      "source": "geboortedatum",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "birth date (Dutch day-first)"
+    },
+    "emergency_contact_phone": {
+      "source": "noodcontact.telefoon",
+      "transform": "copy",
+      "why": "emergency contact number"
+    },
+    "dietary_requirement": {
+      "source": null,
+      "transform": "none",
+      "why": "no dietary information is exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "status_aanmelding",
+        "ervaring"
+      ],
+      "correctFor": "registration_status"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "rol",
+        "voorkeur_dag"
+      ],
+      "correctFor": "role"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "vrijwilliger_id",
+        "inschrijving_nr"
+      ],
+      "correctFor": "volunteer_id"
+    },
+    {
+      "kind": "birth-date-vs-start-date",
+      "fields": [
+        "beschikbaar_vanaf",
+        "geboortedatum"
+      ],
+      "correctFor": "available_from"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "achternaam",
+        "coordinator"
+      ],
+      "correctFor": "display_name"
+    }
+  ],
+  "sourceConcepts": {
+    "vrijwilliger_id": "customer-id",
+    "inschrijving_nr": "transaction-id",
+    "voornaam": "given-name",
+    "achternaam": "family-name",
+    "email": "email",
+    "rol": "category",
+    "ervaring": "category",
+    "status_aanmelding": "account-status",
+    "voorkeur_dag": "category",
+    "beschikbaar_vanaf": "start-date",
+    "geboortedatum": "birth-date",
+    "coordinator": "person-name",
+    "noodcontact.naam": "person-name",
+    "noodcontact.telefoon": "phone",
+    "aangemeld_op": "created-date"
+  },
+  "destinationConcepts": {
+    "volunteer_id": "customer-id",
+    "display_name": "person-name",
+    "email": "email",
+    "role": "category",
+    "experience_level": "category",
+    "registration_status": "account-status",
+    "available_from": "start-date",
+    "date_of_birth": "birth-date",
+    "emergency_contact_phone": "phone",
+    "dietary_requirement": "other"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 0,
+      "outcome": "transformed",
+      "output": {
+        "volunteer_id": "VW-1040",
+        "display_name": "Jesse Peters",
+        "email": "jesse.peters@mail.example.org",
+        "role": "runner",
+        "experience_level": "newcomer",
+        "registration_status": "waitlisted",
+        "available_from": "2025-04-01",
+        "date_of_birth": "1992-08-03",
+        "emergency_contact_phone": "+31 6 264 8354"
+      }
+    },
+    {
+      "recordIndex": 2,
+      "outcome": "transformed",
+      "output": {
+        "volunteer_id": "VW-1046",
+        "display_name": "Lieke Mulder",
+        "email": "lieke.mulder@mail.example.org",
+        "role": "teardown",
+        "experience_level": "returning",
+        "registration_status": "confirmed",
+        "date_of_birth": "1983-05-11",
+        "emergency_contact_phone": "+31 6 749 9375"
+      }
+    },
+    {
+      "recordIndex": 4,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 5,
+      "outcome": "transformed",
+      "output": {
+        "volunteer_id": "VW-1055",
+        "display_name": "Roos Dekker",
+        "email": "roos.dekker@mail.example.org",
+        "role": "runner",
+        "experience_level": "veteran",
+        "registration_status": "confirmed",
+        "available_from": "2025-11-07",
+        "date_of_birth": "1973-10-11"
+      }
+    }
+  ]
+}

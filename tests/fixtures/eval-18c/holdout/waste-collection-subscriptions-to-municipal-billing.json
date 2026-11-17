@@ -1,0 +1,975 @@
+{
+  "scenarioId": "waste-collection-subscriptions-to-municipal-billing",
+  "split": "holdout",
+  "industry": "municipal waste-collection subscriptions",
+  "sourceLanguage": "de",
+  "description": "Bin subscription export of a fictional municipal waste utility (German field names, nested owner, property address and container) to be loaded into the municipal billing system.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "Kontostatus": "aktiv",
+      "Abfuhrrhythmus": "14-täglich",
+      "Mahnstatus": "Vollstreckung",
+      "Gebuehr_Quartal": 73.16,
+      "Sachbearbeiter": "Frau Hellwig",
+      "Behaelter": {
+        "Tonnenart": "Bio",
+        "Groesse": "120 L Grau"
+      },
+      "Vertragsbeginn": "07/06/2018",
+      "laufende_nr": 1,
+      "Inhaber": {
+        "EMail": "niklas.keller@web.example.org",
+        "Name": "Niklas Keller"
+      },
+      "Objekt": {
+        "Adresse": {
+          "Hausnummer": "1",
+          "Ort": "Teningen",
+          "Strasse": "Mühlweg",
+          "PLZ": "79312"
+        }
+      },
+      "Vertragskonto": "VK-4401200"
+    },
+    {
+      "Sachbearbeiter": "Frau Hellwig",
+      "Behaelter": {
+        "Groesse": "120 L Grau",
+        "Tonnenart": "Bio"
+      },
+      "Kontostatus": "Testanschluss",
+      "laufende_nr": 2,
+      "Mahnstatus": "keine",
+      "Gebuehr_Quartal": 90.5,
+      "Objekt": {
+        "Adresse": {
+          "Hausnummer": "8",
+          "PLZ": "79336",
+          "Strasse": "Rosenstraße",
+          "Ort": "Emmendingen"
+        }
+      },
+      "Inhaber": {
+        "Name": "  Sophie Schäfer",
+        "EMail": "Sophie.Schafer@Web.Example.Org"
+      },
+      "Abfuhrrhythmus": "14-täglich",
+      "Vertragsbeginn": "12/09/2020",
+      "Vertragskonto": "VK-4401237"
+    },
+    {
+      "Vertragsbeginn": "01/01/2023",
+      "Gebuehr_Quartal": 46.13,
+      "Mahnstatus": "1. Mahnung",
+      "Vertragskonto": "VK-4401274",
+      "Sachbearbeiter": "Frau Okonkwo",
+      "Inhaber": {
+        "EMail": "niklas.engel@web.example.org",
+        "Name": "Niklas Engel"
+      },
+      "Abfuhrrhythmus": "Saisonal (Apr–Okt)",
+      "Kontostatus": "Testanschluss",
+      "laufende_nr": 3,
+      "Objekt": {
+        "Adresse": {
+          "PLZ": "79312",
+          "Hausnummer": "15",
+          "Strasse": "Am Sportpark",
+          "Ort": "Herbolzheim"
+        }
+      },
+      "Behaelter": {
+        "Groesse": "80 L Grau",
+        "Tonnenart": "Gelber Sack"
+      }
+    },
+    {
+      "Abfuhrrhythmus": "4-wöchentlich",
+      "Vertragsbeginn": "06/03/2021",
+      "Inhaber": {
+        "EMail": null,
+        "Name": "Moritz Hartmann"
+      },
+      "laufende_nr": 4,
+      "Mahnstatus": "2. Mahnung",
+      "Vertragskonto": "VK-4401311",
+      "Kontostatus": "ruhend (Leerstand)",
+      "Behaelter": {
+        "Tonnenart": "Bio",
+        "Groesse": "80 L Grau"
+      },
+      "Gebuehr_Quartal": 34.79,
+      "Sachbearbeiter": "Herr Steinle",
+      "Objekt": {
+        "Adresse": {
+          "Ort": "Herbolzheim",
+          "PLZ": "79331",
+          "Hausnummer": "22",
+          "Strasse": "Kirchplatz"
+        }
+      }
+    },
+    {
+      "Inhaber": {
+        "Name": "Lena Pohl",
+        "EMail": "Lena.Pohl@Web.Example.Org"
+      },
+      "Kontostatus": "aktiv",
+      "Gebuehr_Quartal": 40.21,
+      "Sachbearbeiter": "Frau Okonkwo",
+      "Vertragsbeginn": "08/08/2021",
+      "Objekt": {
+        "Adresse": {
+          "Hausnummer": "29a",
+          "Ort": "Emmendingen",
+          "PLZ": "79331",
+          "Strasse": "Hauptstraße"
+        }
+      },
+      "Behaelter": {
+        "Tonnenart": "Restmüll",
+        "Groesse": "240 L Grau"
+      },
+      "laufende_nr": 5,
+      "Abfuhrrhythmus": "wöchentlich",
+      "Vertragskonto": "VK-4401348",
+      "Mahnstatus": "Vollstreckung"
+    },
+    {
+      "Gebuehr_Quartal": 138.2,
+      "Abfuhrrhythmus": "wöchentlich",
+      "Vertragskonto": "VK-4401385",
+      "Objekt": {
+        "Adresse": {
+          "Ort": "Herbolzheim",
+          "Strasse": "Lindenallee",
+          "PLZ": "79312",
+          "Hausnummer": "36"
+        }
+      },
+      "Vertragsbeginn": "04/01/2024",
+      "Kontostatus": "Testanschluss",
+      "Inhaber": {
+        "Name": "Greta Roth",
+        "EMail": "greta.roth@web.example.org"
+      },
+      "Behaelter": {
+        "Groesse": "120 L Grau",
+        "Tonnenart": "Papier"
+      },
+      "laufende_nr": 6,
+      "Sachbearbeiter": "Herr Bastian",
+      "Mahnstatus": "Vollstreckung"
+    },
+    {
+      "Gebuehr_Quartal": 129.95,
+      "Kontostatus": "gekündigt zum Monatsende",
+      "Mahnstatus": "Vollstreckung",
+      "Vertragsbeginn": "10/01/2015",
+      "Objekt": {
+        "Adresse": {
+          "Strasse": "Rosenstraße",
+          "PLZ": "79336",
+          "Hausnummer": "43",
+          "Ort": "Teningen"
+        }
+      },
+      "laufende_nr": 7,
+      "Sachbearbeiter": "Herr Steinle",
+      "Inhaber": {
+        "Name": "Simon Pohl"
+      },
+      "Vertragskonto": "VK-4401422",
+      "Behaelter": {
+        "Groesse": "120 L Grau",
+        "Tonnenart": "Bio"
+      },
+      "Abfuhrrhythmus": "wöchentlich"
+    },
+    {
+      "Sachbearbeiter": "Frau Hellwig",
+      "Objekt": {
+        "Adresse": {
+          "PLZ": "79312",
+          "Hausnummer": "50",
+          "Strasse": "Birkenhof",
+          "Ort": "Teningen"
+        }
+      },
+      "Abfuhrrhythmus": "Saisonal (Apr–Okt)",
+      "Mahnstatus": "keine",
+      "Behaelter": {
+        "Groesse": "240 L Grau",
+        "Tonnenart": "Restmüll"
+      },
+      "laufende_nr": 8,
+      "Inhaber": {
+        "Name": "Moritz Werner",
+        "EMail": "Moritz.Werner@Web.Example.Org"
+      },
+      "Vertragsbeginn": "01/02/2019",
+      "Gebuehr_Quartal": 121.62,
+      "Kontostatus": "aktiv",
+      "Vertragskonto": "VK-4401459"
+    },
+    {
+      "Inhaber": {
+        "Name": "Tobias Krause",
+        "EMail": "tobias.krause@web.example.org"
+      },
+      "laufende_nr": 9,
+      "Abfuhrrhythmus": "4-wöchentlich",
+      "Objekt": {
+        "Adresse": {
+          "Strasse": "Lindenallee",
+          "Ort": "Teningen",
+          "Hausnummer": "57",
+          "PLZ": "79336"
+        }
+      },
+      "Vertragskonto": "VK-4401496",
+      "Kontostatus": "gekündigt zum Monatsende",
+      "Vertragsbeginn": null,
+      "Sachbearbeiter": "Herr Bastian",
+      "Mahnstatus": "2. Mahnung",
+      "Gebuehr_Quartal": 137.68,
+      "Behaelter": {
+        "Tonnenart": "Papier",
+        "Groesse": "80 L Grau"
+      }
+    },
+    {
+      "Vertragsbeginn": "07/10/2025",
+      "Inhaber": {
+        "Name": "Tobias Krause  ",
+        "EMail": "tobias.krause@web.example.org"
+      },
+      "Behaelter": {
+        "Groesse": "80 L Grau",
+        "Tonnenart": "Papier"
+      },
+      "Sachbearbeiter": "Frau Hellwig",
+      "Gebuehr_Quartal": 79.43,
+      "laufende_nr": 10,
+      "Vertragskonto": "VK-4401533",
+      "Objekt": {
+        "Adresse": {
+          "PLZ": "79336",
+          "Strasse": "Lindenallee",
+          "Hausnummer": "6",
+          "Ort": "Emmendingen"
+        }
+      },
+      "Mahnstatus": "keine",
+      "Abfuhrrhythmus": "wöchentlich",
+      "Kontostatus": "ruhend (Leerstand)"
+    },
+    {
+      "laufende_nr": 11,
+      "Vertragskonto": "VK-4401570",
+      "Abfuhrrhythmus": "wöchentlich",
+      "Behaelter": {
+        "Tonnenart": "Papier",
+        "Groesse": "120 L Grau"
+      },
+      "Objekt": {
+        "Adresse": {
+          "Strasse": "Rosenstraße",
+          "PLZ": "79336",
+          "Hausnummer": "13",
+          "Ort": "Teningen"
+        }
+      },
+      "Kontostatus": "aktiv",
+      "Sachbearbeiter": "Frau Hellwig",
+      "Inhaber": {
+        "Name": "Greta Neumann",
+        "EMail": "Greta.Neumann@Web.Example.Org"
+      },
+      "Gebuehr_Quartal": 134.77,
+      "Mahnstatus": "1. Mahnung",
+      "Vertragsbeginn": "08/11/2020"
+    },
+    {
+      "Inhaber": {
+        "EMail": "paul.schafer@web.example.org",
+        "Name": "Paul Schäfer"
+      },
+      "Kontostatus": "Testanschluss",
+      "Vertragsbeginn": "10/12/2023",
+      "Vertragskonto": "VK-4401607",
+      "Sachbearbeiter": "Herr Bastian",
+      "Objekt": {
+        "Adresse": {
+          "Strasse": "Birkenhof",
+          "PLZ": "79312",
+          "Hausnummer": "20",
+          "Ort": "Emmendingen"
+        }
+      },
+      "Mahnstatus": "2. Mahnung",
+      "Behaelter": {
+        "Groesse": "80 L Grau",
+        "Tonnenart": "Restmüll"
+      },
+      "Abfuhrrhythmus": "14-täglich",
+      "Gebuehr_Quartal": 52.2,
+      "laufende_nr": 12
+    },
+    {
+      "laufende_nr": 13,
+      "Kontostatus": "gekündigt zum Monatsende",
+      "Abfuhrrhythmus": "wöchentlich",
+      "Behaelter": {
+        "Tonnenart": "Bio",
+        "Groesse": "1.100 L Container"
+      },
+      "Vertragskonto": "VK-4401644",
+      "Mahnstatus": "1. Mahnung",
+      "Sachbearbeiter": "Frau Hellwig",
+      "Inhaber": {
+        "Name": "Hannah Wagner",
+        "EMail": "hannah.wagner@web.example.org"
+      },
+      "Vertragsbeginn": "09/11/2025",
+      "Gebuehr_Quartal": 39.54,
+      "Objekt": {
+        "Adresse": {
+          "Hausnummer": "27",
+          "Ort": "Teningen",
+          "Strasse": "Hauptstraße",
+          "PLZ": "79336"
+        }
+      }
+    },
+    {
+      "Mahnstatus": "keine",
+      "Abfuhrrhythmus": "4-wöchentlich",
+      "laufende_nr": 14,
+      "Kontostatus": "gekündigt zum Monatsende",
+      "Vertragskonto": "VK-4401681",
+      "Vertragsbeginn": "03/01/2015",
+      "Objekt": {
+        "Adresse": {
+          "Strasse": "Birkenhof",
+          "Hausnummer": "34a",
+          "Ort": "Herbolzheim",
+          "PLZ": "79336"
+        }
+      },
+      "Sachbearbeiter": "Herr Steinle",
+      "Behaelter": {
+        "Groesse": "120 L Grau",
+        "Tonnenart": "Gelber Sack"
+      },
+      "Inhaber": {
+        "EMail": "Emma.Vogel@Web.Example.Org",
+        "Name": "Emma Vogel"
+      },
+      "Gebuehr_Quartal": 41.04
+    },
+    {
+      "laufende_nr": 15,
+      "Abfuhrrhythmus": "14-täglich",
+      "Inhaber": {
+        "Name": "Moritz Krause",
+        "EMail": null
+      },
+      "Vertragsbeginn": "05/11/2025",
+      "Vertragskonto": "VK-4401718",
+      "Objekt": {
+        "Adresse": {
+          "PLZ": "79331",
+          "Ort": "Teningen",
+          "Strasse": "Am Sportpark",
+          "Hausnummer": "41"
+        }
+      },
+      "Kontostatus": "ruhend (Leerstand)",
+      "Mahnstatus": "1. Mahnung",
+      "Gebuehr_Quartal": 118.05,
+      "Sachbearbeiter": "Frau Hellwig",
+      "Behaelter": {
+        "Tonnenart": "Gelber Sack",
+        "Groesse": "1.100 L Container"
+      }
+    },
+    {
+      "laufende_nr": 16,
+      "Abfuhrrhythmus": "4-wöchentlich",
+      "Kontostatus": "Testanschluss",
+      "Inhaber": {
+        "EMail": "marie.schafer@web.example.org",
+        "Name": "Marie Schäfer"
+      },
+      "Behaelter": {
+        "Tonnenart": "Bio",
+        "Groesse": "1.100 L Container"
+      },
+      "Mahnstatus": "keine",
+      "Sachbearbeiter": "Frau Okonkwo",
+      "Gebuehr_Quartal": 26.2,
+      "Vertragsbeginn": "10/09/2021",
+      "Vertragskonto": "VK-4401755",
+      "Objekt": {
+        "Adresse": {
+          "PLZ": "79331",
+          "Strasse": "Rosenstraße",
+          "Ort": "Teningen",
+          "Hausnummer": "48"
+        }
+      }
+    },
+    {
+      "Sachbearbeiter": "Herr Bastian",
+      "Abfuhrrhythmus": "14-täglich",
+      "Objekt": {
+        "Adresse": {
+          "PLZ": "79336",
+          "Hausnummer": "55",
+          "Ort": "Teningen",
+          "Strasse": "Lindenallee"
+        }
+      },
+      "Kontostatus": "gekündigt zum Monatsende",
+      "laufende_nr": 17,
+      "Vertragskonto": "VK-4401792",
+      "Vertragsbeginn": "04/02/2018",
+      "Inhaber": {
+        "Name": "Jan Vogel",
+        "EMail": "Jan.Vogel@Web.Example.Org"
+      },
+      "Behaelter": {
+        "Tonnenart": "Gelber Sack",
+        "Groesse": "240 L Grau"
+      },
+      "Mahnstatus": "2. Mahnung",
+      "Gebuehr_Quartal": 42.07
+    },
+    {
+      "Sachbearbeiter": "Herr Bastian",
+      "Gebuehr_Quartal": 22.68,
+      "Behaelter": {
+        "Tonnenart": "Restmüll",
+        "Groesse": "1.100 L Container"
+      },
+      "Vertragskonto": "VK-4401829",
+      "Objekt": {
+        "Adresse": {
+          "Strasse": "Am Sportpark",
+          "PLZ": "79336",
+          "Hausnummer": "4",
+          "Ort": "Teningen"
+        }
+      },
+      "Mahnstatus": "2. Mahnung",
+      "laufende_nr": 18,
+      "Kontostatus": "gekündigt zum Monatsende",
+      "Inhaber": {
+        "Name": " Tobias Schäfer ",
+        "EMail": "tobias.schafer@web.example.org"
+      },
+      "Vertragsbeginn": "03/12/2019",
+      "Abfuhrrhythmus": "14-täglich"
+    },
+    {
+      "Behaelter": {
+        "Tonnenart": "Gelber Sack",
+        "Groesse": "240 L Grau"
+      },
+      "Kontostatus": "Testanschluss",
+      "Sachbearbeiter": "Herr Steinle",
+      "Abfuhrrhythmus": "Saisonal (Apr–Okt)",
+      "Mahnstatus": "1. Mahnung",
+      "laufende_nr": 19,
+      "Gebuehr_Quartal": 92.31,
+      "Vertragsbeginn": "10/10/2022",
+      "Objekt": {
+        "Adresse": {
+          "Strasse": "Lindenallee",
+          "PLZ": "79331",
+          "Ort": "Teningen",
+          "Hausnummer": "11"
+        }
+      },
+      "Vertragskonto": "VK-4401866",
+      "Inhaber": {
+        "EMail": "simon.hoffmann@web.example.org",
+        "Name": "Simon Hoffmann"
+      }
+    },
+    {
+      "Behaelter": {
+        "Tonnenart": "Restmüll",
+        "Groesse": "80 L Grau"
+      },
+      "Gebuehr_Quartal": 69.78,
+      "Sachbearbeiter": "Herr Bastian",
+      "Inhaber": {
+        "EMail": "Hannah.Werner@Web.Example.Org",
+        "Name": "Hannah Werner"
+      },
+      "Abfuhrrhythmus": "Saisonal (Apr–Okt)",
+      "Objekt": {
+        "Adresse": {
+          "Strasse": "Kirchplatz",
+          "PLZ": "79336",
+          "Ort": "Teningen",
+          "Hausnummer": "18"
+        }
+      },
+      "Mahnstatus": "Vollstreckung",
+      "Kontostatus": "aktiv",
+      "Vertragsbeginn": null,
+      "laufende_nr": 20,
+      "Vertragskonto": "VK-4401903"
+    },
+    {
+      "Mahnstatus": "Vollstreckung",
+      "Inhaber": {
+        "Name": "Lena Hartmann"
+      },
+      "Gebuehr_Quartal": 107.07,
+      "Behaelter": {
+        "Tonnenart": "Gelber Sack",
+        "Groesse": "120 L Grau"
+      },
+      "Sachbearbeiter": "Herr Bastian",
+      "Vertragsbeginn": "04/11/2024",
+      "Abfuhrrhythmus": "Saisonal (Apr–Okt)",
+      "laufende_nr": 21,
+      "Kontostatus": "aktiv",
+      "Vertragskonto": "VK-4401940",
+      "Objekt": {
+        "Adresse": {
+          "PLZ": "79331",
+          "Ort": "Teningen",
+          "Hausnummer": "25",
+          "Strasse": "Rosenstraße"
+        }
+      }
+    },
+    {
+      "Mahnstatus": "keine",
+      "Inhaber": {
+        "Name": "Moritz Schäfer",
+        "EMail": "moritz.schafer@web.example.org"
+      },
+      "Vertragsbeginn": "10/12/2021",
+      "Abfuhrrhythmus": "Saisonal (Apr–Okt)",
+      "Behaelter": {
+        "Tonnenart": "Papier",
+        "Groesse": "1.100 L Container"
+      },
+      "Kontostatus": "ruhend (Leerstand)",
+      "Vertragskonto": "VK-4401977",
+      "Objekt": {
+        "Adresse": {
+          "PLZ": "79336",
+          "Ort": "Herbolzheim",
+          "Hausnummer": "32",
+          "Strasse": "Mühlweg"
+        }
+      },
+      "Gebuehr_Quartal": 134.98,
+      "laufende_nr": 22,
+      "Sachbearbeiter": "Frau Okonkwo"
+    },
+    {
+      "Vertragsbeginn": "10/06/2019",
+      "Inhaber": {
+        "Name": "Tobias Hoffmann",
+        "EMail": "Tobias.Hoffmann@Web.Example.Org"
+      },
+      "Objekt": {
+        "Adresse": {
+          "PLZ": "79331",
+          "Strasse": "Kirchplatz",
+          "Hausnummer": "39a",
+          "Ort": "Herbolzheim"
+        }
+      },
+      "Abfuhrrhythmus": "4-wöchentlich",
+      "Kontostatus": "ruhend (Leerstand)",
+      "Mahnstatus": "2. Mahnung",
+      "Vertragskonto": "VK-4402014",
+      "Gebuehr_Quartal": 116.68,
+      "laufende_nr": 23,
+      "Behaelter": {
+        "Groesse": "80 L Grau",
+        "Tonnenart": "Bio"
+      },
+      "Sachbearbeiter": "Frau Okonkwo"
+    },
+    {
+      "Mahnstatus": "1. Mahnung",
+      "Sachbearbeiter": "Frau Okonkwo",
+      "Gebuehr_Quartal": 21.17,
+      "Objekt": {
+        "Adresse": {
+          "Strasse": "Rosenstraße",
+          "Hausnummer": "46",
+          "PLZ": "79336",
+          "Ort": "Teningen"
+        }
+      },
+      "Vertragskonto": "VK-4402051",
+      "Vertragsbeginn": "08/09/2025",
+      "Behaelter": {
+        "Groesse": "240 L Grau",
+        "Tonnenart": "Restmüll"
+      },
+      "Kontostatus": "ruhend (Leerstand)",
+      "Abfuhrrhythmus": "14-täglich",
+      "Inhaber": {
+        "Name": "Felix Werner"
+      },
+      "laufende_nr": 24
+    },
+    {
+      "Objekt": {
+        "Adresse": {
+          "Hausnummer": "53",
+          "Ort": "Teningen",
+          "Strasse": "Mühlweg",
+          "PLZ": "79312"
+        }
+      },
+      "Mahnstatus": "1. Mahnung",
+      "Abfuhrrhythmus": "4-wöchentlich",
+      "Gebuehr_Quartal": 85.63,
+      "Inhaber": {
+        "EMail": "sophie.engel@web.example.org",
+        "Name": "  Sophie Engel"
+      },
+      "Kontostatus": "ruhend (Leerstand)",
+      "Behaelter": {
+        "Groesse": "240 L Grau",
+        "Tonnenart": "Restmüll"
+      },
+      "Sachbearbeiter": "Herr Steinle",
+      "laufende_nr": 25,
+      "Vertragskonto": "VK-4402088",
+      "Vertragsbeginn": "11/03/2019"
+    },
+    {
+      "Behaelter": {
+        "Tonnenart": "Papier",
+        "Groesse": "1.100 L Container"
+      },
+      "Sachbearbeiter": "Herr Steinle",
+      "Inhaber": {
+        "Name": "Paul Schäfer",
+        "EMail": "Paul.Schafer@Web.Example.Org"
+      },
+      "Abfuhrrhythmus": "wöchentlich",
+      "Objekt": {
+        "Adresse": {
+          "Ort": "Herbolzheim",
+          "PLZ": "79336",
+          "Hausnummer": "2",
+          "Strasse": "Birkenhof"
+        }
+      },
+      "laufende_nr": 26,
+      "Kontostatus": "aktiv",
+      "Vertragskonto": "VK-4402125",
+      "Mahnstatus": "keine",
+      "Gebuehr_Quartal": 60.33,
+      "Vertragsbeginn": "11/07/2016"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "subscription_id": {
+        "type": "string",
+        "description": "Contract account number of the waste subscription."
+      },
+      "holder_name": {
+        "type": "string",
+        "description": "Name of the account holder billed for the service."
+      },
+      "holder_email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address for electronic bills."
+      },
+      "service_location": {
+        "type": "object",
+        "description": "Address where the bins are emptied.",
+        "properties": {
+          "street_line": {
+            "type": "string",
+            "description": "Street name followed by the house number."
+          },
+          "postal_code": {
+            "type": "string",
+            "description": "Postal code of the served property."
+          }
+        },
+        "required": [
+          "street_line",
+          "postal_code"
+        ]
+      },
+      "waste_stream": {
+        "type": "string",
+        "enum": [
+          "residual",
+          "organic",
+          "paper",
+          "packaging"
+        ],
+        "description": "Kind of waste collected in the bin."
+      },
+      "bin_size": {
+        "type": "string",
+        "enum": [
+          "bin_80l",
+          "bin_120l",
+          "bin_240l",
+          "container_1100l"
+        ],
+        "description": "Volume of the container."
+      },
+      "pickup_frequency": {
+        "type": "string",
+        "enum": [
+          "weekly",
+          "biweekly",
+          "every_four_weeks",
+          "seasonal"
+        ],
+        "description": "How often the bin is emptied."
+      },
+      "account_status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "suspended",
+          "ending"
+        ],
+        "description": "Lifecycle state of the subscription."
+      },
+      "start_date": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the subscription started."
+      },
+      "annual_fee_eur": {
+        "type": "number",
+        "description": "Yearly fee in euros."
+      }
+    },
+    "required": [
+      "subscription_id",
+      "holder_name",
+      "service_location",
+      "waste_stream",
+      "bin_size",
+      "account_status",
+      "start_date"
+    ]
+  },
+  "groundTruth": {
+    "subscription_id": {
+      "source": "Vertragskonto",
+      "transform": "copy",
+      "why": "contract account; laufende_nr is the export row counter"
+    },
+    "holder_name": {
+      "source": "Inhaber.Name",
+      "transform": "trim",
+      "why": "holder name, padded; Sachbearbeiter is the clerk"
+    },
+    "holder_email": {
+      "source": "Inhaber.EMail",
+      "transform": "normalize_email",
+      "why": "holder email, mixed case, absent for paper-bill customers"
+    },
+    "service_location.street_line": {
+      "source": null,
+      "sources": [
+        "Objekt.Adresse.Strasse",
+        "Objekt.Adresse.Hausnummer"
+      ],
+      "transform": "concat",
+      "separator": " ",
+      "why": "street and house number of the served property"
+    },
+    "service_location.postal_code": {
+      "source": "Objekt.Adresse.PLZ",
+      "transform": "copy",
+      "why": "property postcode"
+    },
+    "waste_stream": {
+      "source": "Behaelter.Tonnenart",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Restmüll": "residual",
+        "Bio": "organic",
+        "Papier": "paper",
+        "Gelber Sack": "packaging"
+      },
+      "why": "waste type of the container"
+    },
+    "bin_size": {
+      "source": "Behaelter.Groesse",
+      "transform": "map_enum",
+      "categoryMap": {
+        "80 L Grau": "bin_80l",
+        "120 L Grau": "bin_120l",
+        "240 L Grau": "bin_240l",
+        "1.100 L Container": "container_1100l"
+      },
+      "why": "container volume"
+    },
+    "pickup_frequency": {
+      "source": "Abfuhrrhythmus",
+      "transform": "map_enum",
+      "categoryMap": {
+        "wöchentlich": "weekly",
+        "14-täglich": "biweekly",
+        "4-wöchentlich": "every_four_weeks",
+        "Saisonal (Apr–Okt)": "seasonal"
+      },
+      "why": "collection rhythm"
+    },
+    "account_status": {
+      "source": "Kontostatus",
+      "transform": "map_enum",
+      "categoryMap": {
+        "aktiv": "active",
+        "ruhend (Leerstand)": "suspended",
+        "gekündigt zum Monatsende": "ending",
+        "Testanschluss": null
+      },
+      "why": "contract state; Mahnstatus is the dunning level; test connections need review"
+    },
+    "start_date": {
+      "source": "Vertragsbeginn",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "contract start (German day-first); rows without it must be held"
+    },
+    "annual_fee_eur": {
+      "source": null,
+      "transform": "none",
+      "why": "only a quarterly fee is exported",
+      "unsupportedReason": "the annual fee would have to be computed by multiplying the quarterly fee by four"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "Kontostatus",
+        "Mahnstatus"
+      ],
+      "correctFor": "account_status"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "Behaelter.Groesse",
+        "Abfuhrrhythmus"
+      ],
+      "correctFor": "bin_size"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "Vertragskonto",
+        "laufende_nr"
+      ],
+      "correctFor": "subscription_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "Inhaber.Name",
+        "Sachbearbeiter"
+      ],
+      "correctFor": "holder_name"
+    }
+  ],
+  "sourceConcepts": {
+    "Vertragskonto": "customer-id",
+    "laufende_nr": "other-identifier",
+    "Inhaber.Name": "person-name",
+    "Inhaber.EMail": "email",
+    "Objekt.Adresse.Strasse": "street-address",
+    "Objekt.Adresse.Hausnummer": "other",
+    "Objekt.Adresse.PLZ": "postal-code",
+    "Objekt.Adresse.Ort": "city",
+    "Behaelter.Groesse": "category",
+    "Behaelter.Tonnenart": "category",
+    "Abfuhrrhythmus": "category",
+    "Kontostatus": "account-status",
+    "Mahnstatus": "payment-status",
+    "Vertragsbeginn": "start-date",
+    "Gebuehr_Quartal": "amount",
+    "Sachbearbeiter": "person-name"
+  },
+  "destinationConcepts": {
+    "subscription_id": "customer-id",
+    "holder_name": "person-name",
+    "holder_email": "email",
+    "service_location.street_line": "street-address",
+    "service_location.postal_code": "postal-code",
+    "waste_stream": "category",
+    "bin_size": "category",
+    "pickup_frequency": "category",
+    "account_status": "account-status",
+    "start_date": "start-date",
+    "annual_fee_eur": "amount"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 1,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 3,
+      "outcome": "transformed",
+      "output": {
+        "subscription_id": "VK-4401311",
+        "holder_name": "Moritz Hartmann",
+        "service_location": {
+          "street_line": "Kirchplatz 22",
+          "postal_code": "79331"
+        },
+        "waste_stream": "organic",
+        "bin_size": "bin_80l",
+        "pickup_frequency": "every_four_weeks",
+        "account_status": "suspended",
+        "start_date": "2021-03-06"
+      }
+    },
+    {
+      "recordIndex": 6,
+      "outcome": "transformed",
+      "output": {
+        "subscription_id": "VK-4401422",
+        "holder_name": "Simon Pohl",
+        "service_location": {
+          "street_line": "Rosenstraße 43",
+          "postal_code": "79336"
+        },
+        "waste_stream": "organic",
+        "bin_size": "bin_120l",
+        "pickup_frequency": "weekly",
+        "account_status": "ending",
+        "start_date": "2015-01-10"
+      }
+    },
+    {
+      "recordIndex": 8,
+      "outcome": "held"
+    }
+  ]
+}
