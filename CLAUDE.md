@@ -48,5 +48,6 @@ Read, in order:
 41. `docs/evaluation/sprint-18a-ai-value.md` — pre-registered AI-value experiment and results (Gate A)
 42. `docs/decisions/0018-integration-intent-plan.md`, `docs/contracts/integration-intent-plan.md` — intent plan (implemented, not shipped)
 43. `docs/evaluation/sprint-18b-intent-plan.md` and `docs/sprints/sprint-18b.md` — Gate B-AI results (FAILED) and Sprint 18B report
+44. `docs/decisions/0020-category-groupings-and-plan-recovery.md`, `docs/evaluation/sprint-18c-reliability.md`, `docs/sprints/sprint-18c.md` — Sprint 18C: Gate C results (FAILED), confidence gate, next blocker
 
 Every sprint ends with an evidence-backed release status (`CODE_READY`, `DEPLOYMENT_PENDING`, `DEPLOYED_UNVERIFIED`, `PRODUCTION_ACCEPTED`, `RELEASE_FAILED`); rules in `AGENTS.md`. Do not duplicate architecture here. Do not start Sprint 16 automatically.

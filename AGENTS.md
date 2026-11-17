@@ -253,6 +253,21 @@ Decision: [ADR 0018](docs/decisions/0018-integration-intent-plan.md). Report: [d
   - Never fill an omitted field.
 - **The leak scan ignores a match only inside an exact application-owned twin segment** (`src/phantom/fixed-text.ts`). Never add a word list.
 
+## AI reliability (Sprint 18C) — Gate C failed, not shipped
+
+Decision: [ADR 0020](docs/decisions/0020-category-groupings-and-plan-recovery.md). Report: [docs/sprints/sprint-18c.md](docs/sprints/sprint-18c.md).
+
+- **Gate C failed live on 2026-11-17** (complete integrations 0 / 24).
+  - Do not ship the plan path as the product default without a successor that passes a fresh pre-registered holdout.
+  - The 18C holdout (`tests/fixtures/eval-18c/holdout/`) is **inspected**. Never tune on it.
+- **An uncertain Gemini match is a question.**
+  - `compileIntentPlan` never executes a single-field correspondence below `high` confidence. It asks with Gemini's pick listed first.
+  - Only a category match awaiting the user's translation is exempt.
+  - Never lower this bar to raise completion.
+- **Category groupings are fixed wordings** (`CATEGORY_QUALIFIERS`). They are `[inferred, unconfirmed]` and fail closed on any collision. A wording must not assert more than the name gives: "channel" is neutral, not "acquisition".
+- **Plan questions offer every usable field** under "Choose another field". Never pre-select one.
+- **Provider failures are not mapping failures.** In an evaluation, a provider failure may get one re-approved request, never an automatic retry.
+
 ## Release lifecycle and production acceptance (Sprint 14 — permanent, every sprint)
 
 **Tests passing does not mean the product works in production.** Procedure, commands, budget and evidence layout: [docs/deployment.md](docs/deployment.md#production-acceptance-standard-permanent).

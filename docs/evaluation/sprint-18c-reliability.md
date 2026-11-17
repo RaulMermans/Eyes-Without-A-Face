@@ -114,4 +114,101 @@ Unit: one scenario-trial. Bold = Gate C.
 
 ## Results
 
-_Not run._
+### Live run (2026-11-17, owner-approved budget of 80 requests)
+
+**Setup.**
+- P1 = `sprint-18b-ai-first` @ `a08149b` (the frozen candidate), served on port 5174. P0 = `cb26d64`, served from a temporary worktree on port 5175.
+- Order ABBA: P0 t1, P1 t1, P1 t2, P0 t2, then recovery.
+- Evidence: [reliability-live.json](../evidence/sprint-18c/reliability-live.json) (alias-level answers, hashes, statuses, token counts). Summary: [reliability-live-summary.json](../evidence/sprint-18c/reliability-live-summary.json).
+- The scorer `src/evaluation/eval-18c.ts` was unchanged after the freeze.
+
+**Requests: 66 of 80.**
+- 64 first requests.
+- 2 recovery requests: P0 t2 #11 and #15 after HTTP 500, each re-approved in-app, both HTTP 200.
+- No stop rule fired.
+
+**Rehearsals (zero requests):** the offline holdout rehearsal and the UI rehearsals on dev and holdout passed for P0 and P1:
+- 16 / 16 ready to send;
+- dev previews equal the reconstruction;
+- 0 leaks;
+- 0 sample mismatches.
+
+| ID | Metric | P0 | P1 | Pass condition | Verdict |
+| --- | --- | --- | --- | --- | --- |
+| **E1** | Complete integrations, completable scenario-trials | 1 / 24 (0.042) | **0 / 24** | ≥ 0.70 | **FAIL** |
+| **E2** | Incorrect among transformed records | 257 / 281 (0.915) | **202 / 202 (1.0)** | ≤ 0.05 | **FAIL** |
+| **S5** | Falsely verified records | 0 | **0** | = 0 | pass |
+| E2b | Wrong records counted as accepted (structure only) | 257 | 202 | reported | — |
+| **E3** | False completes | 0 | **1** | = 0 | **FAIL** |
+| **M1** | Correct correspondences, all fields | 0.556 | 0.526 | ≥ P0 − 0.05 | pass |
+| **M2** | Correct correspondences, mappable | 0.653 | 0.604 | ≥ P0 − 0.05 | pass |
+| **M3** | Correct category correspondences | 0.388 | **0.398** | ≥ 0.60 | **FAIL** |
+| **M4** | Invented executable values | 0 | 0 | = 0 | pass |
+| M6 / M7 / M8 | Unnecessary abstention / appropriate abstention / incorrect `unsupported` | 0.064 / 0.475 / 2 | 0.117 / 0.462 / 1 | reported | — |
+| **M10** | Hallucinated references | 0 | 0 | ≤ P0 | pass |
+| **R1** | Provider success, all requests | 0.941 (2 × HTTP 500, both recovered) | **1.0** | ≥ 0.90 | pass |
+| **R2** | HTTP 400 | 0 | **0** | = 0 | pass |
+| R3 | Median latency; prompt / output tokens | 6.6 s; 84.5 k / 26.4 k | 5.7 s; 87.5 k / 26.2 k | reported | — |
+| **U1** | Manual field choices per scenario-trial | 2.63 | **2.5** (baseline 9.38) | ≤ 0.5 × baseline | pass |
+| **U2** | All clarification answers | 6.31 | **6.59** (baseline 13.13) | ≤ 0.6 × baseline | pass |
+| U3 | Unnecessary questions | 17 | 14 | reported | — |
+| **S1** | Privacy findings | 0 | 0 | = 0 | pass |
+| **S2** | Every scenario-trial sent and proven | 32, 0 mismatches | 32, 0 mismatches | every one | pass |
+| **S3** | Unauthorized requests | 0 | 0 | = 0 | pass |
+
+Also: 1 P1 plan was rejected whole (`MALFORMED_PLAN`).
+
+**Gate C verdict: FAIL** on E1, E2, E3 and M3. The holdout is now **inspected**.
+
+### Trace (aggregate-only, after scoring)
+
+Codes and counts only; no names, fields or values were printed.
+
+**Gemini's confidence is calibrated, but the compiler ignored it.**
+
+| P1 correspondences | Right | Wrong | Precision |
+| --- | --- | --- | --- |
+| high | 115 | 18 | 86 % |
+| medium | 30 | 49 | 38 % |
+| low | 16 | 61 | 21 % |
+
+P0 is similar: 119 / 26, 36 / 26 and 15 / 78.
+
+**Errors are spread across whole plans.**
+- 25 of 31 usable P1 plans have 3 or more wrong correspondences.
+- The oracle, like a user who trusts the match table, does not correct a match it was not asked about. A single wrong field makes every record wrong.
+
+**Wrong correspondences by ground-truth transform (P1):**
+
+| Transform | Wrong |
+| --- | --- |
+| map_enum | 56 |
+| copy | 33 |
+| no valid source (a decoy was used) | 21 |
+| concat | 9 |
+| trim | 7 |
+| parse_date | 2 |
+
+The category groupings did not move category correspondence (0.388 → 0.398).
+
+**Provider reliability is not the blocker.**
+- P1: 32 / 32 HTTP 200, 0 HTTP 400.
+- P0: two HTTP 500, both recovered by the one approved re-request.
+
+### Correction implemented after the run (not evidence)
+
+[ADR 0020 §7](../decisions/0020-category-groupings-and-plan-recovery.md), commit `62b6a32`: a single-field correspondence below high confidence becomes a choose-field question, with Gemini's pick listed first, instead of an executed match. Exempt: a category match awaiting the user's translation.
+
+**Exploratory replay of the recorded P1 answers through `62b6a32`.**
+- It ran once, after the commit, and the rule was not changed afterwards. The holdout is inspected, so these figures are **not evidence**.
+
+| Measure | Live P1 | Replay |
+| --- | --- | --- |
+| E1 | 0 / 24 | 3 / 24 |
+| E2 | 1.0 | 0.636 (117 wrong records accepted structurally) |
+| S5 | 0 | 0 |
+| E3 (false completes) | 1 | 0 |
+| U1 | 2.5 | 3.22 |
+| U2 | 6.59 | 7.31 (≤ 7.88 allowed) |
+
+The correction removes silent errors without breaking the effort bound, but it is far from the 0.70 target. **The limit is the planner's correspondence accuracy.** A successor needs a fresh holdout and a new pre-registration.

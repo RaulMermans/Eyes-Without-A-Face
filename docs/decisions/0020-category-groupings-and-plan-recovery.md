@@ -1,6 +1,6 @@
 # 0020 — Category groupings, plan-question recovery and the Sprint 18C gate
 
-Status: Accepted (implementation); the product default still needs Gate C (live)
+Status: Accepted (implementation). Gate C FAILED live on 2026-11-17; the product default is unchanged
 Date: 2026-11-17
 Builds on: [ADR 0016](0016-concept-bearing-phantom-twin.md), [ADR 0018](0018-integration-intent-plan.md), [ADR 0019](0019-optional-destination-absent-input.md)
 
@@ -32,7 +32,12 @@ Builds on: [ADR 0016](0016-concept-bearing-phantom-twin.md), [ADR 0018](0018-int
 3. **Legacy switch.** `TwinOptions.labelCategories: false` also turns off 1 and 2. Historical replays (18A, 18A.5, 18B) reproduce their recorded prompts unchanged (EVAL-191 and the 18A / 18A.5 replays pass). Never expose it in the product.
 4. **"Choose another field."** A plan question's picker lists Gemini's candidates, then EYES's ranked candidates, then, under "Choose another field", every other usable field (`PlanReview`). The Sprint 15 rule "candidates plus 'Choose another field'" now holds on the plan path. Nothing is pre-selected and nothing is applied without a choice.
 5. **Output cap.** `maxOutputTokens: 8192` on the intent-plan model (`PLAN_MAX_OUTPUT_TOKENS`). This bounds cost per request. A truncated answer fails validation as `MALFORMED_PLAN` and is never repaired.
-6. **Not changed:**
+6. **Uncertain matches are questions (§7, added after the Gate C run).** Commit `62b6a32`, `compileIntentPlan`:
+   - A single-field correspondence whose plan confidence is not `high` is never executed. It becomes a choose-field question (`field-meaning`) with Gemini's pick listed first.
+   - Exempt: a category match still awaiting the user's translation. Its question already shows that field's own values, and no record runs without the answer.
+   - Live evidence: high-confidence matches were 86 % right, medium 38 %, low 21 % ([results](../evaluation/sprint-18c-reliability.md#results)).
+   - The simulated test planner labels its deterministic single matches `high`.
+7. **Not changed:**
    - prompt v5 and the decoder schema `integration-intent-plan-1`, kept so that P0 and P1 differ only in the corrective changes;
    - the validator, compiler, `convertProposal`, the engine, the verifier, the acceptance policy and export eligibility.
 
