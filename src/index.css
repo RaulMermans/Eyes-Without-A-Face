@@ -1003,4 +1003,8 @@ body {
 @media (max-width: 30rem) {
   .guided-steps button { padding: 0 0.55rem; font-size: 12px; }
   .guided-steps .step-label-long { display: none; }
+  /* Five steps fit at 375px: only the current step shows its name (each button keeps it as aria-label). */
+  .guided-steps button:not([aria-current="step"]) .step-label { display: none; }
+  .guided-steps .step-number { margin-right: 0; }
+  .guided-steps button[aria-current="step"] .step-number { margin-right: 0.35rem; }
 }

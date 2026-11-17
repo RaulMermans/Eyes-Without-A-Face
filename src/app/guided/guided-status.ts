@@ -27,6 +27,8 @@ export type GuidedStatusId =
   | "failed"
   /** Sprint 14: Gemini answered, EYES refused the answer locally; the diagnosis names why. */
   | "not-built"
+  /** Sprint 18B (ADR 0018): an Intent Plan arrived and the user's few answers are still needed before EYES can run it. */
+  | "answers-needed"
   | "attention";
 
 export interface GuidedStatus {
@@ -47,6 +49,50 @@ export type InFlight = "preparing" | "checking" | null;
 export interface FailureContext {
   rejection?: { title: string } | null;
   cloudFailureTitle?: string | null;
+  /**
+   * Sprint 18B: a pure reading of `proposal.plan.compiled` (counts only).
+   * Present only while a plan receipt is the active proposal.
+   */
+  plan?: PlanProgress | null;
+}
+
+export interface PlanProgress {
+  /** Destination fields in the plan. */
+  fields: number;
+  /** Fields with an executable operation. */
+  executable: number;
+  /** Open clarification questions (all, and required ones). */
+  questions: number;
+  requiredQuestions: number;
+  /** Every required destination field has an operation. */
+  complete: boolean;
+  /** The planner was the labelled simulated test adapter, never Gemini. */
+  simulated: boolean;
+}
+
+/** Sprint 18B: the plan's open state in words; null when nothing is open. Pure. */
+export function planStatus(plan: PlanProgress): GuidedStatus | null {
+  if (plan.complete && plan.questions === 0) return null;
+  const who = plan.simulated ? "The simulated planner (not Gemini)" : "Gemini";
+  const matched = `${who} matched ${plan.executable} of ${plan.fields} destination field${plan.fields === 1 ? "" : "s"}.`;
+  if (!plan.complete) {
+    if (plan.requiredQuestions > 0 || plan.questions > 0) {
+      const count = plan.requiredQuestions > 0 ? plan.requiredQuestions : plan.questions;
+      return {
+        id: "answers-needed",
+        label: count === 1 ? "One answer needed" : `${count} answers needed`,
+        detail: `${matched} Answer the question${count === 1 ? "" : "s"} below; EYES then checks the result on your records, on this device. Nothing has been run yet.`,
+        tone: "warn",
+      };
+    }
+    return {
+      id: "answers-needed",
+      label: "Not complete yet",
+      detail: `${matched} Some required fields can't be filled by any allowed step. Map them yourself or change the destination. Nothing has been run yet.`,
+      tone: "warn",
+    };
+  }
+  return null;
 }
 
 const VERDICT: Record<CompletionState, GuidedStatus> = {
@@ -102,7 +148,13 @@ export function guidedStatus(stages: readonly RuntimeStage[], candidates: readon
     return { id: "approval", label: "Approved — not sent yet", detail: "Your approval is valid for this one request. Send it when you are ready.", tone: "approval" };
   }
   const outcome = byId.get("outcome");
-  if (outcome && outcome.status !== "not-started" && outcome.status !== "skipped") {
+  const outcomeRan = Boolean(outcome && outcome.status !== "not-started" && outcome.status !== "skipped");
+  // Sprint 18B: before anything ran, a plan with open questions says so — never "integration" or "build stopped".
+  if (!outcomeRan && context.plan) {
+    const open = planStatus(context.plan);
+    if (open) return open;
+  }
+  if (outcome && outcomeRan) {
     const best = bestCandidate(candidates);
     if (best) return honestVerdict(best);
   }

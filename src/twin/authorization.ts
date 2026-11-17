@@ -8,6 +8,7 @@ import { FIREBASE_AI_LOGIC_API } from "../inference/firebase-api.ts";
 import { buildCloudPromptText, SDK_TRANSPORT_NOTE } from "../inference/prompts.ts";
 import { buildIntentPlanPromptText } from "../inference/intent-prompt.ts";
 import { INITIAL_PLANNER, type InitialPlanner } from "../inference/planner-selection.ts";
+import { effectiveInitialPlanner } from "../inference/harness-planner.ts";
 
 export const MAX_CLOUD_PAYLOAD_BYTES = 24_576;
 export const MAX_CLOUD_RESPONSE_BYTES = 65_536;
@@ -130,7 +131,7 @@ export function buildOutboundApplicationRequest(
     requestId,
     destination: payload.destination,
     purpose: payload.purpose,
-    prompt: buildOutboundPromptText(canonicalJson, payload.schemaVersion),
+    prompt: buildOutboundPromptText(canonicalJson, payload.schemaVersion, effectiveInitialPlanner()),
     disclosurePayloadHash: payloadHash,
   };
 }

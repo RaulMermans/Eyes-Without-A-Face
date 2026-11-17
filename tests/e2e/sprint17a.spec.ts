@@ -3,7 +3,7 @@ import { execFileSync, spawnSync } from "node:child_process";
 import { mkdtempSync, readdirSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { attachProviderWatch } from "./helpers.ts";
+import { attachProviderWatch, openAdvanced, toDeliver } from "./helpers.ts";
 
 /**
  * Sprint 17A — hybrid journey recovery on a Meridian-style source (E2E-170…176). Labeled test
@@ -26,6 +26,7 @@ async function boot(page: Page, harness: Record<string, unknown> = {}): Promise<
   await expect(page.getByTestId("source-record-count")).toHaveText("120");
   await page.getByTestId("data-continue").click();
   await page.getByTestId("destination-helpdesk").check();
+  await openAdvanced(page);
 }
 /** Choose account_state for status (several category-like fields compete), then opt in to share its names. */
 async function shareStatusNames(page: Page): Promise<void> {
@@ -50,37 +51,16 @@ async function answerLocally(page: Page): Promise<void> {
 }
 
 test.describe("E2E-170 a request preflight proves unusable is never offered for approval", () => {
-  test("required status, category names withheld: Approve is disabled, the prerequisite is named, and both routes work", async ({ page }) => {
+  test("required status, category names withheld: the request is sendable and carries no category names (ADR 0018 replaces the 17A block)", async ({ page }) => {
     const providerRequests = attachProviderWatch(page);
-    await boot(page, { deriveProposal: true });
+    await boot(page);
     await page.getByTestId("guided-build").click();
     await expect(page.getByTestId("approval-card")).toBeVisible();
-    await expect(page.getByTestId("guided-approve")).toBeDisabled();
-    await expect(page.getByTestId("guided-status-label")).toHaveText("Not ready to send");
-    const blocked = page.getByTestId("approval-blocked");
-    await expect(blocked).toBeVisible();
-    await expect(blocked).toContainText("status");
-    await expect(blocked).toContainText("account_state");
-    // "Don't send" stays available; the local route is offered even when local answers are still missing.
-    await expect(page.getByTestId("guided-reject")).toBeEnabled();
-    await expect(page.getByTestId("guided-local-alternative")).toBeVisible();
-    await page.screenshot({ path: path.join(shots, "01-blocked-request.png"), fullPage: true });
-    // No field chosen yet: no bulk "share these names" (it would disclose several fields and still not help).
-    await expect(page.getByTestId("guided-share-categories")).toHaveCount(0);
-    await expect(page.getByTestId("guided-category-unchosen")).toContainText("status");
-    // Route: choose the field, opt in to share only its names → a NEW request that can be approved.
-    const firstHash = await page.getByTestId("approval-card").getAttribute("data-payload-hash");
-    await page.getByTestId("guided-choose-category-source").click();
-    await shareStatusNames(page);
-    await page.getByTestId("guided-build").click();
-    await expect(page.getByTestId("approval-card")).toBeVisible();
-    expect(await page.getByTestId("approval-card").getAttribute("data-payload-hash")).not.toBe(firstHash);
     await expect(page.getByTestId("guided-approve")).toBeEnabled();
     await expect(page.getByTestId("approval-blocked")).toHaveCount(0);
-    // Only the chosen field's names are in the request.
+    // Withheld means withheld: no category name of any field is in the reviewed request.
     await page.getByTestId("approval-exact").locator("summary").click();
-    await expect(page.getByTestId("approval-prompt")).toContainText("suspendido");
-    for (const other of ["retail", "premium", "monthly"]) await expect(page.getByTestId("approval-prompt")).not.toContainText(other);
+    for (const label of ["suspendido", "retail", "premium", "monthly"]) await expect(page.getByTestId("approval-prompt")).not.toContainText(label);
     expect(await cloudCalls(page)).toBe(0);
     expect(providerRequests).toEqual([]);
   });
@@ -119,10 +99,13 @@ test.describe("E2E-172 correct local translation: a valid local integration and 
     // Never claimed complete: some records are set aside or need attention.
     await expect(page.getByTestId("guided-status-label")).not.toHaveText("Integration ready");
     await page.screenshot({ path: path.join(shots, "02-local-result.png"), fullPage: true });
+    await toDeliver(page);
     const confirm = page.getByTestId("export-draft-confirm");
     if (await confirm.isVisible()) await confirm.check();
+    await toDeliver(page);
     const labels = page.getByTestId("package-labels-include");
     if ((await labels.count()) > 0) await labels.check();
+    await toDeliver(page);
     const [download] = await Promise.all([page.waitForEvent("download"), page.getByTestId("export-integration").click()]);
     const dir = mkdtempSync(path.join(tmpdir(), "s17a-"));
     execFileSync("unzip", ["-q", await download.path(), "-d", dir]);
@@ -134,7 +117,7 @@ test.describe("E2E-172 correct local translation: a valid local integration and 
 
 test.describe("E2E-173 an incomplete mapping is named, explained and recoverable — never completed silently", () => {
   test("missing required fields are listed; no rule is added; the local path keeps the data", async ({ page }) => {
-    await boot(page, { deriveProposal: true });
+    await boot(page, { /* Legacy Sprint 3 initial planner (harness-only): this test's subject does not depend on the initial planner. */ initialPlanner: "mapping-proposal-sprint3", deriveProposal: true });
     await shareStatusNames(page);
     await page.getByTestId("guided-build").click();
     await page.getByTestId("guided-approve").click();
@@ -176,7 +159,7 @@ test.describe("E2E-174 provider overload, then recovery without re-importing", (
 
 test.describe("E2E-175 a matching date format is not presented as matching meaning", () => {
   test("createdAt read from contract.signed_at says EYES can't tell whether that date means createdAt", async ({ page }) => {
-    await boot(page, { deriveProposal: true });
+    await boot(page, { /* Legacy Sprint 3 initial planner (harness-only): this test's subject does not depend on the initial planner. */ initialPlanner: "mapping-proposal-sprint3", deriveProposal: true });
     await shareStatusNames(page);
     await page.getByTestId("guided-build").click();
     await page.getByTestId("guided-approve").click();

@@ -2,6 +2,9 @@ import { expect, test, type Page } from "@playwright/test";
 import path from "node:path";
 import { attachProviderWatch } from "./helpers.ts";
 
+/** LEGACY-PATH REGRESSION ONLY (Sprint 18B): this subject is independent of the initial planner, so it keeps the Sprint 3 Mapping Proposal path. */
+const LEGACY = { initialPlanner: "mapping-proposal-sprint3" } as const;
+
 /**
  * Sprint 8 semantic verification and semantic blind revision (Workstream F).
  * The cloud adapter is the labeled deterministic TEST adapter (no network).
@@ -44,7 +47,7 @@ const SUPPORT_PRIVATE = ["ticket_ref", "\"requester\"", "\"prio\"", "\"opened\""
 async function boot(page: Page, harness: Record<string, unknown>): Promise<void> {
   await page.addInitScript((value) => {
     window.__EYES_WITHOUT_A_FACE_TEST__ = value as Window["__EYES_WITHOUT_A_FACE_TEST__"];
-  }, { label: "test-harness", ...harness });
+  }, { label: "test-harness", ...LEGACY, ...harness });
   await page.goto("/#technical");
 }
 

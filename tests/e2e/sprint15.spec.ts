@@ -1,8 +1,7 @@
 import { expect, test, type Page } from "@playwright/test";
 import { readFileSync } from "node:fs";
 import path from "node:path";
-import evidence from "../../docs/evidence/sprint-14/guided-diagnosis.json" with { type: "json" };
-import { attachProviderWatch } from "./helpers.ts";
+import { attachProviderWatch, openAdvanced, toDeliver } from "./helpers.ts";
 
 /**
  * Sprint 15 — end-to-end product experience (E2E-150…160).
@@ -14,7 +13,6 @@ import { attachProviderWatch } from "./helpers.ts";
  */
 const shots = "test-results/sprint-15-screenshots";
 const WIDE = "tests/fixtures/sprint-15/wide-crm.records.json";
-const realHelpdeskAnswer = JSON.parse(evidence.find((item) => item.destination === "helpdesk")!.answer!) as Record<string, unknown>;
 const geminiLike = {
   operations: [
     { op: "copy", from: "f_05", to: "id" },
@@ -53,11 +51,13 @@ async function demoToHelpdesk(page: Page, demo: "json" | "csv" | "xlsx" = "json"
   await expect(page.getByTestId("source-summary")).toBeVisible();
   await page.getByTestId("data-continue").click();
   await page.getByTestId("destination-helpdesk").check();
+  await openAdvanced(page);
   if (confirm) await chooseFields(page, CRM_FIELDS);
 }
 
 /** The demo's reserved test cases include records no mapping can fix (an email that is a number): the result is a Draft. */
 async function confirmDraftIfAsked(page: Page): Promise<void> {
+  await toDeliver(page);
   const confirm = page.getByTestId("export-draft-confirm");
   if (await confirm.isVisible()) await confirm.check();
 }
@@ -116,6 +116,7 @@ test.describe("E2E-150 Helpdesk, first run, on this device only", () => {
     await page.screenshot({ path: path.join(shots, "03-local-result.png"), fullPage: true });
 
     // Transformed data downloads straight away.
+    await toDeliver(page);
     const [json] = await Promise.all([page.waitForEvent("download"), page.getByTestId("download-transformed-json").click()]);
     const records = JSON.parse(readFileSync(await json.path(), "utf8")) as Array<Record<string, unknown>>;
     expect(records).toHaveLength(3);
@@ -123,8 +124,10 @@ test.describe("E2E-150 Helpdesk, first run, on this device only", () => {
 
     // The reusable integration needs the category names inside it: off by default, explicit opt-in.
     await expect(page.getByTestId("package-labels-include")).not.toBeChecked();
+    await toDeliver(page);
     await page.getByTestId("package-labels-include").check();
     await confirmDraftIfAsked(page);
+    await toDeliver(page);
     const [zip] = await Promise.all([page.waitForEvent("download"), page.getByTestId("export-integration").click()]);
     expect(zip.suggestedFilename()).toMatch(/\.zip$/);
     const [bindings] = await Promise.all([page.waitForEvent("download"), page.getByTestId("download-bindings-file").click()]);
@@ -143,6 +146,7 @@ test.describe("E2E-150 Helpdesk, first run, on this device only", () => {
     await page.getByTestId("guided-build-local").click();
     await expect(page.getByTestId("guided-outcome")).toBeVisible();
     await confirmDraftIfAsked(page);
+    await toDeliver(page);
     await page.getByTestId("export-integration").click();
     await expect(page.getByTestId("guided-downloads")).toContainText(/privacy|private/i);
     expect(await cloudCalls(page)).toBe(0);
@@ -156,6 +160,7 @@ test.describe("E2E-151 a source with 13 category fields", () => {
     await expect(page.getByTestId("source-record-count")).toHaveText("8");
     await page.getByTestId("data-continue").click();
     await page.getByTestId("destination-helpdesk").check();
+    await openAdvanced(page);
     const question = page.getByTestId("question-status");
     await expect(question.locator('input[type="radio"]')).toHaveCount(3);
     await expect(page.getByTestId("match-status-account_state")).toBeVisible();
@@ -193,6 +198,7 @@ test.describe("E2E-151 a source with 13 category fields", () => {
     await page.getByTestId("source-file-input").setInputFiles(WIDE);
     await page.getByTestId("data-continue").click();
     await page.getByTestId("destination-marketing").check();
+    await openAdvanced(page);
     await page.getByTestId("match-lifecycleStage-lifecycle_stage").check();
     await page.getByTestId("translate-open-lifecycleStage").click();
     await page.getByTestId("translate-lifecycleStage-cliente").selectOption("customer");
@@ -205,7 +211,7 @@ test.describe("E2E-151 a source with 13 category fields", () => {
     await page.getByTestId("step-destination").click();
     await openFieldMatches(page);
     await page.getByTestId("field-match-organization").selectOption("region");
-    await page.getByTestId("step-result").click();
+    await page.getByTestId("step-verify").click();
     await expect(page.getByTestId("guided-before-after")).not.toContainText("Ficticia 1");
     expect(await cloudCalls(page)).toBe(0);
   });
@@ -213,7 +219,7 @@ test.describe("E2E-151 a source with 13 category fields", () => {
 
 test.describe("E2E-152 Gemini path: meaning becomes actionable", () => {
   test("an unverified translation is explained, the user's answer is checked by the verifier, and a contradiction is shown", async ({ page }) => {
-    await boot(page, { cloudOutput: geminiLike });
+    await boot(page, { /* Legacy Sprint 3 initial planner (harness-only): this test's subject does not depend on the initial planner. */ initialPlanner: "mapping-proposal-sprint3", cloudOutput: geminiLike });
     await demoToHelpdesk(page);
     await page.getByTestId("share-categories-account_state").check();
     await page.getByTestId("guided-build").click();
@@ -248,7 +254,7 @@ test.describe("E2E-152 Gemini path: meaning becomes actionable", () => {
 
 test.describe("E2E-153 declining and refusals offer the on-device path honestly", () => {
   test("declining sends nothing; the local build is offered when the answers allow it", async ({ page }) => {
-    await boot(page, { cloudOutput: geminiLike });
+    await boot(page, { /* Legacy Sprint 3 initial planner (harness-only): this test's subject does not depend on the initial planner. */ initialPlanner: "mapping-proposal-sprint3", cloudOutput: geminiLike });
     await demoToHelpdesk(page);
     await page.getByTestId("share-categories-account_state").check();
     await page.getByTestId("guided-build").click();
@@ -256,29 +262,23 @@ test.describe("E2E-153 declining and refusals offer the on-device path honestly"
     await expect(page.getByTestId("guided-local-alternative")).toHaveAttribute("data-ready", "false");
     await page.getByTestId("guided-local-questions").click();
     await translateCrm(page);
-    await page.getByTestId("step-result").click();
-    await expect(page.getByTestId("guided-local-alternative")).toHaveAttribute("data-ready", "true");
-    await page.getByTestId("guided-local-fallback").click();
+    // Sprint 18B: nothing was generated, so Verify stays closed; the local build lives under Advanced.
+    await expect(page.getByTestId("step-verify")).toBeDisabled();
+    await page.getByTestId("guided-build-local").click();
     await expect(page.getByTestId("guided-origin")).toHaveAttribute("data-origin", "local");
     await expect(page.getByTestId("guided-count-transformed")).toHaveText("3");
     expect(await cloudCalls(page)).toBe(0);
   });
 
-  test("complete local answers but withheld names: the request is not offered, and the local build is (Sprint 17A)", async ({ page }) => {
-    await boot(page, { cloudOutput: realHelpdeskAnswer });
+  test("complete local answers but withheld names: the request is no longer blocked (ADR 0018 replaces the Sprint 17A block)", async ({ page }) => {
+    await boot(page);
     await demoToHelpdesk(page);
     await translateCrm(page);
-    // Gemini is not the obvious action now: the local answers are complete.
-    await expect(page.getByTestId("guided-build")).toContainText("Build with Gemini");
     await page.getByTestId("guided-build").click();
-    await expect(page.getByTestId("guided-category-notice")).toHaveAttribute("data-context", "before");
-    // Before Sprint 17A the user could send this; Gemini's answer was then refused (withheld categories).
-    await expect(page.getByTestId("guided-approve")).toBeDisabled();
-    await expect(page.getByTestId("guided-local-alternative")).toHaveAttribute("data-context", "blocked");
-    await expect(page.getByTestId("guided-local-alternative")).toHaveAttribute("data-ready", "true");
-    await page.screenshot({ path: path.join(shots, "09-blocked-with-local.png"), fullPage: true });
-    await page.getByTestId("guided-local-fallback").click();
-    await expect(page.getByTestId("guided-count-transformed")).toHaveText("3");
+    await expect(page.getByTestId("approval-card")).toBeVisible();
+    // With the intent planner Gemini can name the status field without its category names; the user translates locally.
+    await expect(page.getByTestId("guided-approve")).toBeEnabled();
+    await expect(page.getByTestId("approval-blocked")).toHaveCount(0);
     expect(await cloudCalls(page)).toBe(0);
   });
 });
@@ -314,6 +314,7 @@ test.describe("E2E-155 set aside, mobile and keyboard", () => {
     await page.getByTestId("source-file-input").setInputFiles(WIDE);
     await page.getByTestId("data-continue").click();
     await page.getByTestId("destination-helpdesk").check();
+    await openAdvanced(page);
     await page.getByTestId("match-status-account_state").check();
     await page.getByTestId("translate-open-status").click();
     const overflow = () => page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);

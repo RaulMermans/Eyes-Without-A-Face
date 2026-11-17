@@ -6,6 +6,7 @@ import { draftSchemaFromSample, EXAMPLE_DESTINATIONS, exampleFor, summarizeDesti
 import type { CategoryNeed } from "./recovery.ts";
 import { describeRule, type CategoryMeaning, type FieldPlan } from "./field-plan.ts";
 import { EnumQuestions, FieldMatches, type FieldQuestionHandlers, type SlashOrder } from "./FieldQuestions.tsx";
+import { stepCaption } from "../experience.ts";
 
 /**
  * Guided step 2 — "Where should it go?" (Sprint 13, A3 / A4).
@@ -24,7 +25,6 @@ export function DestinationStep({
   destinationText,
   onDestination,
   sourceLabel,
-  categoryNeed = null,
   onShareCategories = () => {},
   plan = null,
   meanings = {},
@@ -34,6 +34,8 @@ export function DestinationStep({
   onMeaning = () => {},
   onDateOrder = () => {},
   onBuildLocal = () => {},
+  advancedOpen = false,
+  onAdvancedToggle = () => {},
   buildBlocker,
   excludedCount = 0,
   building,
@@ -57,6 +59,9 @@ export function DestinationStep({
   onDateOrder?: FieldQuestionHandlers["onDateOrder"];
   /** Sprint 15 (B3): build from the user's choices on this device; nothing is sent. */
   onBuildLocal?: () => void;
+  /** Sprint 18B (ADR 0018 §9): the target-first manual mapping is an advanced recovery route, collapsed by default. UI state only. */
+  advancedOpen?: boolean;
+  onAdvancedToggle?: (open: boolean) => void;
   /** The one reason Build cannot run yet, or null. */
   buildBlocker: string | null;
   /** Sprint 16B (D4): source fields that can't be used for mapping (listed on “Your data”). */
@@ -85,8 +90,6 @@ export function DestinationStep({
   const needsDecision = Boolean(plan?.targets.some((item) => item.target.required && item.target.type !== "enum" && (item.need === "confirm" || item.need === "source")));
   const [matchesOpen, setMatchesOpen] = useState(needsDecision);
   if (needsDecision && !matchesOpen) setMatchesOpen(true);
-  /** Prefer the on-device build when it is complete and a Gemini request could not fill a required field. */
-  const preferLocal = Boolean(plan?.localReady && categoryNeed?.blocking);
 
   /** B3: build from the user's own choices on this device. Says why when it cannot. */
   function buildLocal(): void {
@@ -153,7 +156,7 @@ export function DestinationStep({
   return (
     <section aria-labelledby="destination-step-heading" className="space-y-6" data-testid="guided-destination">
       <header className="max-w-3xl">
-        <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-gold">Step 2 of 3</p>
+        <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-gold">{stepCaption("destination")}</p>
         <h2 id="destination-step-heading" tabIndex={-1} className="focus:outline-none mt-2 font-display text-4xl leading-[1.05] tracking-[-0.01em] sm:text-5xl">
           Where should it go?
         </h2>
@@ -301,10 +304,26 @@ export function DestinationStep({
       ) : null}
 
       {showSummary && plan ? (
-        <EnumQuestions plan={plan} meanings={meanings} blocking={Boolean(categoryNeed?.blocking)} handlers={{ onMatch, onMeaning, onShareCategories, onDateOrder }} />
+        <details
+          className="group rounded-[3px] border border-rule bg-panel p-4"
+          data-testid="advanced-manual"
+          open={advancedOpen}
+          onToggle={(event) => onAdvancedToggle((event.currentTarget as HTMLDetailsElement).open)}
+        >
+          <summary className="flex cursor-pointer list-none items-center gap-2 text-sm font-medium [&::-webkit-details-marker]:hidden">
+            <span aria-hidden="true" className="inline-block w-3 font-mono text-mute transition-transform group-open:rotate-90">›</span>
+            Advanced: map fields yourself
+          </summary>
+          <p className="mt-2 text-xs text-mute">
+            Not needed for most data: Gemini matches the fields and you answer only what it can't know. Use this to choose every match yourself, to share a field's category names
+            with Gemini, or to build on this device with no AI at all.
+          </p>
+          <div className="mt-4 space-y-4">
+      {plan ? (
+        <EnumQuestions plan={plan} meanings={meanings} blocking={false} handlers={{ onMatch, onMeaning, onShareCategories, onDateOrder }} />
       ) : null}
 
-      {showSummary && plan ? (
+      {plan ? (
         <Disclosure
           summary={
             <>
@@ -330,7 +349,7 @@ export function DestinationStep({
         </Disclosure>
       ) : null}
 
-      {showSummary && plan?.localReady ? (
+      {plan?.localReady ? (
         <div className="rounded-[3px] border border-ink/40 bg-panel p-4 text-sm" data-testid="local-summary">
           <p className="flex items-center gap-1.5 font-medium">
             <LockIcon size={14} className="shrink-0" /> Built on this device, this mapping would be:
@@ -351,39 +370,33 @@ export function DestinationStep({
         </div>
       ) : null}
 
+          <div className="mt-4 flex flex-col items-start gap-2">
+            <Button variant="outline" onClick={buildLocal} disabled={building} title={plan.localReady ? undefined : (plan.localBlocker ?? undefined)} data-testid="guided-build-local" data-ready={String(plan.localReady)}>
+              Build on this device
+            </Button>
+            {localProblem ? (
+              <p role="alert" className="text-xs text-warn" data-testid="guided-build-local-blocker">
+                {localProblem}
+              </p>
+            ) : null}
+          </div>
+          </div>
+        </details>
+      ) : null}
+
       <div className="flex flex-col gap-3 border-t border-rule pt-5 sm:flex-row sm:items-center sm:justify-between">
         <Button variant="ghost" onClick={onBack} data-testid="destination-back">
           Back to your data
         </Button>
         <div className="flex flex-col items-stretch gap-2 sm:items-end">
-          <div className="flex flex-col-reverse gap-2 sm:flex-row sm:items-center">
-            {plan && showSummary ? (
-              <Button
-                variant={preferLocal ? "primary" : "ghost"}
-                size={preferLocal ? "lg" : "md"}
-                onClick={buildLocal}
-                disabled={building}
-                title={plan.localReady ? undefined : (plan.localBlocker ?? undefined)}
-                data-testid="guided-build-local"
-                data-ready={String(plan.localReady)}
-              >
-                Build on this device
-              </Button>
-            ) : null}
-            <Button variant={preferLocal ? "outline" : "primary"} size="lg" onClick={build} disabled={building} data-testid="guided-build">
-              {building ? "Preparing…" : preferLocal ? "Build with Gemini" : "Build integration"}
-              <ArrowRightIcon />
-            </Button>
-          </div>
+          <Button variant="primary" size="lg" onClick={build} disabled={building} data-testid="guided-build">
+            {building ? "Preparing…" : "Generate my integration"}
+            <ArrowRightIcon />
+          </Button>
           <p className="text-xs text-mute sm:text-right" data-testid="guided-build-hint">
             {sourceLabel ? `${sourceLabel} → ${showSummary && summary.ok ? summary.title : custom ? "your schema" : "destination"}. ` : ""}
-            {preferLocal ? "Your answers are enough to build here, with nothing sent. Gemini needs your approval first." : "Gemini designs the mapping after your approval; nothing is sent before."}
+            Gemini designs the integration after your approval; nothing is sent before.
           </p>
-          {localProblem ? (
-            <p role="alert" className="text-xs text-warn sm:text-right" data-testid="guided-build-local-blocker">
-              {localProblem}
-            </p>
-          ) : null}
         </div>
       </div>
       {buildBlocker ? (

@@ -1,4 +1,5 @@
 import { activePolicy } from "./export-context.ts";
+import { planRevisionAllowed } from "./runtime-model.ts";
 import { useMemo, useState } from "react";
 import { Button } from "../components/ui/button.tsx";
 import { ErrorBanner } from "../components/ErrorBanner.tsx";
@@ -113,7 +114,10 @@ export function BlindRevisionPanel({
     Boolean(accepted && proposal && report && prepared && source) &&
     workspace.mappingChoice === "proposal" &&
     review?.preview.payload.schemaVersion === "1.1.0" &&
-    review.status === "sent";
+    review.status === "sent" &&
+    // Sprint 18B (ADR 0018 §6): a plan completed with the user's own answers holds private labels; never revised.
+    planRevisionAllowed(proposal);
+  const userAnswered = Boolean(accepted && proposal) && !planRevisionAllowed(proposal);
 
   const reserved = report && report.reservedTotal > 0 ? (workspace.reservedRecords ?? []) : [];
   const expected = workspace.scenario ? workspace.scenario.expected.slice(0, (source?.records.length ?? 0) + reserved.length) : undefined;
@@ -149,7 +153,9 @@ export function BlindRevisionPanel({
           approve exactly one revised mapping. It needs a Gemini (or labeled simulated) proposal run as the active mapping.
         </PanelHeader>
         <p className="mt-3 text-xs text-mute" data-testid="blind-revision-unavailable">
-          Not available yet: run the Reality Check on the validated proposal first.
+          {userAnswered
+            ? "Not offered: this mapping includes your own answers (translations or field choices), and those never go into a request."
+            : "Not available yet: run the Reality Check on the validated proposal first."}
         </p>
       </Panel>
     );
