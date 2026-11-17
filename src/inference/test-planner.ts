@@ -144,7 +144,7 @@ export function deriveTestPlan(payload: CloudDisclosurePayload): IntentPlan {
     if (meaning.length === 1) {
       const field = meaning[0] as Field;
       const trim = /whitespace/i.test(field.semanticDescriptor);
-      return entry(target.name, "ready", [claim(field)], trim ? "trim" : "copy", { confidence: "medium", evidence: ["meaning"], missing: [] });
+      return entry(target.name, "ready", [claim(field)], trim ? "trim" : "copy", { confidence: "high", evidence: ["meaning"], missing: [] });
     }
     if (meaning.length > 1) {
       return entry(target.name, "needs_clarification", meaning.slice(0, 4).map((item) => item.alias), "copy", { confidence: "low", evidence: ["meaning"], missing: ["field-meaning"] });
@@ -153,7 +153,7 @@ export function deriveTestPlan(payload: CloudDisclosurePayload): IntentPlan {
     if (name === "id" || name.endsWith("id")) {
       const field = unused((item) => item.semanticDescriptor.startsWith("Unique record identifier"))[0];
       if (!field) return noSource(target.name);
-      return entry(target.name, "ready", [claim(field)], "copy", { confidence: "medium", evidence: ["meaning", "name-pattern"], missing: [] });
+      return entry(target.name, "ready", [claim(field)], "copy", { confidence: "high", evidence: ["meaning", "name-pattern"], missing: [] });
     }
     if (name.includes("org") || name.includes("company")) {
       const field = unused((item) => /^Organization|organization name|name of a company/i.test(item.semanticDescriptor))[0];

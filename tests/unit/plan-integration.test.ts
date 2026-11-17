@@ -81,6 +81,7 @@ describe("PLAN-I2 the CRM demo with withheld category names", () => {
     const workspace = await sent(s);
     const compiled = workspace.proposal!.plan!.compiled;
     expect(compiled.counts.executable).toBe(4);
+    // ADR 0020 §7 exemption: a category match awaiting translation is asked once, as the translation (it shows that field's values).
     expect(compiled.fields.find((item) => item.target === "status")).toMatchObject({ readiness: "needs_clarification", missing: ["category-labels"], correspondence: { by: "gemini" } });
     expect(compiled.clarifications.map((item) => item.kind)).toEqual(["translate-categories"]);
   });

@@ -211,6 +211,12 @@ export function compileIntentPlan(input: CompileInput): CompiledIntegration {
 
     if (entry.status === "no_source") return { ...base, readiness: "no_source", operation: null, origin: null, missing: [...entry.missing] };
 
+    // ADR 0020 §7: a single-field match Gemini is not highly confident about is a question (Gemini's pick listed first),
+    // never an executed match. Sprint 18C live: high 86 % right, medium 38 %, low 21 %. Exempt: a category match still
+    // awaiting the user's translation, whose question already shows that field's own values (no record runs without it).
+    const awaitsTranslation = entry.transform === "map_enum" && entry.status !== "ready";
+    if (single && entry.confidence !== "high" && !awaitsTranslation) return { ...base, readiness: "needs_clarification", operation: null, origin: null, missing: unique([...entry.missing, "field-meaning"]) };
+
     // A complete category translation by the user for the corresponding field completes any open enum entry.
     const translated = single && path ? userTranslation(target, path, single) : null;
     const withTranslation = (missing: MissingCode[], readiness: CompiledField["readiness"]): Draft =>
