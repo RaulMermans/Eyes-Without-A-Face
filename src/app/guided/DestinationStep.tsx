@@ -321,7 +321,7 @@ export function DestinationStep({
           </p>
           <div className="mt-4 space-y-4">
       {plan ? (
-        <EnumQuestions plan={plan} meanings={meanings} blocking={Boolean(categoryNeed?.blocking)} handlers={{ onMatch, onMeaning, onShareCategories, onDateOrder }} />
+        <EnumQuestions plan={plan} meanings={meanings} blocking={false} handlers={{ onMatch, onMeaning, onShareCategories, onDateOrder }} />
       ) : null}
 
       {plan ? (
