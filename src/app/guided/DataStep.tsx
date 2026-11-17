@@ -14,6 +14,7 @@ import type { OnDeviceMode } from "../use-on-device.ts";
 import crmCsvUrl from "../../examples/crm/source-records.csv?url";
 import crmXlsxUrl from "../../examples/crm/source-records.xlsx?url";
 import crmJsonUrl from "../../examples/crm/source-records.json?url";
+import { stepCaption } from "../experience.ts";
 
 /**
  * Guided step 1 — "Where is your data?" (Sprint 13, A2 / B / C).
@@ -129,7 +130,7 @@ export function DataStep({
   return (
     <section aria-labelledby="data-heading" className="space-y-6" data-testid="guided-data">
       <header className="max-w-3xl">
-        <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-gold">Step 1 of 3</p>
+        <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-gold">{stepCaption("data")}</p>
         <h2 id="data-heading" tabIndex={-1} className="focus:outline-none mt-2 font-display text-4xl leading-[1.05] tracking-[-0.01em] sm:text-5xl">
           Where is your data?
         </h2>
