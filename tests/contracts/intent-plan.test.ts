@@ -105,6 +105,11 @@ describe("S18B-C-001 canonical schema", () => {
  */
 const ENUMERATED_DIFFERENCES = [
   "/ additionalProperties",
+  "/fields maxItems",
+  "/fields minItems",
+  "/fields/items/evidence maxItems",
+  "/fields/items/from maxItems",
+  "/fields/items/missing maxItems",
   "/fields/items additionalProperties",
   "/fields/items/evidence uniqueItems",
   "/fields/items/from uniqueItems",
@@ -121,18 +126,14 @@ const ENUMERATED_DIFFERENCES = [
 ].sort();
 
 function compare(decoder: Json, canonical: Json, path: string, canonicalOnly: string[]): void {
-  const DECODER_KEYWORDS = new Set(["type", "properties", "required", "enum", "items", "additionalProperties", "minItems", "maxItems"]);
+  // Live 2026-11-17: Gemini refused the schema with nested array bounds (HTTP 400, "too many states"), so bounds are canonical-only.
+  const DECODER_KEYWORDS = new Set(["type", "properties", "required", "enum", "items", "additionalProperties"]);
   for (const key of Object.keys(decoder)) expect(DECODER_KEYWORDS.has(key), `${path} uses ${key}`).toBe(true);
   // type: the canonical either states the same type or has only an enum whose values all have that type.
   if (canonical.type !== undefined) expect(decoder.type, path).toBe(canonical.type);
   else if (Array.isArray(canonical.enum)) expect(canonical.enum.every((value) => typeof value === decoder.type), path).toBe(true);
   // enum: identical value sets (never wider).
   if (canonical.enum !== undefined || decoder.enum !== undefined) expect([...(decoder.enum as string[])].sort(), path).toEqual([...(canonical.enum as string[])].sort());
-  // array bounds: identical.
-  for (const key of ["minItems", "maxItems"]) {
-    if (canonical[key] !== undefined) expect(decoder[key], `${path} ${key}`).toBe(canonical[key]);
-    else expect(decoder[key], `${path} ${key}`).toBeUndefined();
-  }
   if (canonical.required !== undefined) expect([...(decoder.required as string[])].sort(), path).toEqual([...(canonical.required as string[])].sort());
   if (canonical.properties !== undefined) {
     const decoderProps = decoder.properties as Record<string, Json>;
@@ -147,7 +148,7 @@ function compare(decoder: Json, canonical: Json, path: string, canonicalOnly: st
     expect(decoder.additionalProperties, path).toBeUndefined();
     canonicalOnly.push(`${path} additionalProperties`);
   }
-  for (const key of ["minLength", "maxLength", "pattern", "uniqueItems", "maxProperties", "minProperties"]) {
+  for (const key of ["minLength", "maxLength", "pattern", "uniqueItems", "maxProperties", "minProperties", "minItems", "maxItems"]) {
     if (canonical[key] !== undefined) canonicalOnly.push(`${path} ${key}`);
   }
 }
@@ -155,7 +156,7 @@ function compare(decoder: Json, canonical: Json, path: string, canonicalOnly: st
 describe("S18B-C-002 decoder schema ⊆ canonical schema", () => {
   const { $schema: _s, $id: _i, title: _t, description: _d, ...canonical } = planSchema as Json;
 
-  it("every decoder keyword is one the existing decoder schemas use; types, enums, required, properties and array bounds equal the canonical", () => {
+  it("every decoder keyword is one the existing decoder schemas use; types, enums, required, properties and array bounds are canonical-only", () => {
     const canonicalOnly: string[] = [];
     compare(INTENT_PLAN_JSON_SCHEMA as unknown as Json, canonical, "/", canonicalOnly);
     expect(canonicalOnly.sort()).toEqual(ENUMERATED_DIFFERENCES);
@@ -175,6 +176,11 @@ describe("S18B-C-002 decoder schema ⊆ canonical schema", () => {
   const entry = { target: "email", status: "ready", from: ["f_01"], transform: "normalize_email", confidence: "high", evidence: ["format"], missing: [] };
   const plan = (patch: Json, summary = "s") => ({ fields: [{ ...entry, ...patch }], summary });
   const differences: Array<[string, unknown]> = [
+    ["/fields minItems", { fields: [], summary: "s" }],
+    ["/fields maxItems", { fields: Array.from({ length: 25 }, (_, index) => ({ ...entry, target: `t${index}` })), summary: "s" }],
+    ["/fields/items/evidence maxItems", plan({ evidence: ["meaning", "type", "format", "examples", "name-pattern"] })],
+    ["/fields/items/from maxItems", plan({ status: "unsupported", transform: "none", from: ["f_01", "f_02", "f_03", "f_04", "f_05"], missing: ["unsupported-transform"] })],
+    ["/fields/items/missing maxItems", plan({ status: "needs_clarification", missing: ["category-labels", "date-order", "field-meaning", "business-rule", "destination-value"] })],
     ["/fields/items/evidence uniqueItems", plan({ evidence: ["format", "format"] })],
     ["/fields/items/from uniqueItems", plan({ from: ["f_01", "f_01"] })],
     ["/fields/items/from/items pattern", plan({ from: ["email"] })],

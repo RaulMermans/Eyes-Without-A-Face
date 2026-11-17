@@ -69,10 +69,10 @@ const MISSING_CODES = [
  * id `INTENT_PLAN_RESPONSE_SCHEMA_ID` ("integration-intent-plan-1").
  *
  * Uses only keywords the existing decoder schemas use (type, properties,
- * required, enum, items, additionalProperties for maps) plus minItems /
- * maxItems, which the Gemini structured-output documentation lists as enforced
- * array keywords. minLength / maxLength / uniqueItems / maxProperties / pattern
- * are deliberately absent: Gemini ignores them during decoding. It is never
+ * required, enum, items, additionalProperties for maps). Array bounds are
+ * absent: the live provider refused nested minItems/maxItems (HTTP 400, "too
+ * many states for serving", 2026-11-17). minLength / maxLength / uniqueItems /
+ * maxProperties / pattern are absent too: Gemini ignores them during decoding. It is never
  * wider than the canonical schema except for exactly those constraints, which
  * `validateIntentPlan` enforces (tests/contracts/intent-plan.test.ts proves it).
  */
@@ -81,14 +81,14 @@ export const INTENT_PLAN_JSON_SCHEMA = {
   properties: {
     fields: {
       type: "array",
-      minItems: 1,
-      maxItems: 24,
+      // Live 2026-11-17: nested maxItems made Gemini refuse every request (HTTP 400 "too many states for serving").
+      // Array bounds are enforced only by the canonical schema in validateIntentPlan.
       items: {
         type: "object",
         properties: {
           target: { type: "string" },
           status: { type: "string", enum: ["ready", "needs_clarification", "unsupported", "no_source"] },
-          from: { type: "array", maxItems: 4, items: { type: "string" } },
+          from: { type: "array", items: { type: "string" } },
           transform: { type: "string", enum: ["copy", "trim", "normalize_email", "parse_date", "map_enum", "concat", "none"] },
           inputFormat: { type: "string", enum: [...DATE_INPUT_FORMATS] },
           separator: { type: "string" },
@@ -96,10 +96,9 @@ export const INTENT_PLAN_JSON_SCHEMA = {
           confidence: { type: "string", enum: ["high", "medium", "low"] },
           evidence: {
             type: "array",
-            maxItems: 4,
             items: { type: "string", enum: ["meaning", "type", "format", "examples", "category-labels", "name-pattern"] },
           },
-          missing: { type: "array", maxItems: 4, items: { type: "string", enum: [...MISSING_CODES] } },
+          missing: { type: "array", items: { type: "string", enum: [...MISSING_CODES] } },
         },
         required: ["target", "status", "from", "transform", "confidence", "evidence", "missing"],
       },
