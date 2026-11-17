@@ -159,3 +159,103 @@ The compiled contract then runs through the canonical engine, the acceptance pol
 - The cause is in the request transport, not in planning quality. Resuming needs the owner's decision, as in 18A.5.
 - Nothing was tuned on the holdout. No P0 or P2 answer was read by an engineer.
 
+
+### Diagnosis and fix (owner decision: diagnose, fix, resume)
+
+- **Two diagnostic requests and one check request** on the dev split (the CRM contacts → helpdesk scenario; the holdout was not used):
+  - The first diagnostic's error text was lost to an output-filter mistake by the lead.
+  - The second read the provider error: `INVALID_ARGUMENT — "The specified schema produces a constraint that has too many states for serving … long array length limits (especially when nested)"`.
+- **Fix** `0194e92`: the decoder schema no longer has `minItems` / `maxItems`.
+  - The canonical schema still enforces every bound in `validateIntentPlan`.
+  - S18B-C-002 lists the bounds as canonical-only, each with an instance proved `MALFORMED_PLAN`.
+- **The check request returned HTTP 200 with a valid plan.**
+- Nothing was tuned on the holdout. No P0 or P2 answer had been read.
+
+### Run 2 — resumed and complete (2026-11-17)
+
+**Setup.**
+
+| Item | Value |
+| --- | --- |
+| P2 | `0194e92` |
+| Order | P2 t1 (rerun), P2 t2, P0 t2 |
+| Evidence | [intent-plan-live-run2.json](../evidence/sprint-18b/intent-plan-live-run2.json) |
+| Scored set | P0 t1 from run 1 plus the three run-2 trials: [intent-plan-live-scored.json](../evidence/sprint-18b/intent-plan-live-scored.json) |
+| Scorer | `src/evaluation/eval-18b.ts`, unchanged. Only the evidence path became an environment variable. |
+| Summary | [intent-plan-live-summary.json](../evidence/sprint-18b/intent-plan-live-summary.json) |
+
+Run 1's P2 t1 (10 × HTTP 400) is kept in its own file and is not scored, because a transport defect means no plan was produced.
+
+**Requests in total: 51**, over the 40 first approved. The owner approved the overrun:
+
+| Requests | What |
+| --- | --- |
+| 9 | run 1 P0 t1 |
+| 10 | run 1 P2 t1 (refused) |
+| 3 | diagnostic and check, dev only |
+| 29 | run 2 |
+
+**Integrity:**
+- privacy: 0 source-derived findings;
+- prompt mismatches: 0;
+- every scored answer carries real `IN_CLOUD` provenance.
+
+| ID | Metric | P0 | P2 | Pass condition | Verdict |
+| --- | --- | --- | --- | --- | --- |
+| **M1** | Correct correspondences, all fields | 0.547 | 0.440 | P2 ≥ P0 | **FAIL** |
+| **M2** | Correct on mappable targets | 0.673 | 0.482 | P2 ≥ P0 − 0.05 | **FAIL** |
+| **M3** | Category correspondence preserved | 0.175 | 0.250 | P2 ≥ 0.60 | **FAIL** |
+| **M4** | Invented values in executable output | 17 | **0** | P2 = 0 | pass |
+| **M5** | Invalid enum translations | 17 | **0** | ≤ 0.25 × P0 | pass |
+| **M6** | Unnecessary abstention | 0.022 | 0.075 | ≤ 0.15 | pass |
+| M7 | Appropriate abstention | 0.313 | 0.714 | reported | — |
+| M8 | Incorrect `unsupported` | 0 | 0 | reported | — |
+| **M9** | Whole-plan rejections + provider failures | 0.111 (2 × HTTP 500) | **0.300 (6 × HTTP 500)** | ≤ 0.10 | **FAIL** |
+| **M10** | Hallucinated references | 0 | 0 | P2 ≤ P0 | pass |
+| **E1** | End-to-end success, completable answers | 0 / 14 | **0 / 14** | ≥ 0.50 | **FAIL** |
+| **E2** | Incorrect transformed records | — (0 transformed) | 1 / 28 = 0.036 | ≤ 0.05 | pass by the pre-registered rate (see note) |
+| **E3** | False completes | 0 | 0 | = 0 | pass |
+| **U1** | Manual mapping operations per scenario | 10.9 | **4.2** | ≤ 0.5 × baseline (10.7) | pass |
+| U2 | All clarification answers; unnecessary questions | 14.1; 0 | 7.3; 4 | reported | — |
+| **S1** | Privacy findings | 0 | 0 | = 0 | pass |
+| **S2** | Prompt proof | 0 mismatches | 0 mismatches | every request | every sent request proven; the scorer reports false because P0 holdout #3 could never be built and sent |
+
+Notes on the scorer, reported rather than changed after the run:
+- **E2:** the code compares the *count* of incorrect records (1) with 0.05, whereas the pre-registration defines a rate.
+- **S2:** the scorer also requires every scenario to have been sent.
+
+Neither changes the gate.
+
+**Gate B-AI verdict: FAIL** on M1, M2, M3, M9 and E1.
+
+**Explanatory breakdown (not pre-registered).** These figures count only requests that got an answer.
+
+| Measure | P0 | P2 |
+| --- | --- | --- |
+| Correct, all fields | 0.613 (n = 16) | 0.624 (n = 14) |
+| Correct, mappable | 0.755 | 0.683 |
+| Category correspondence | 0.194 | 0.355 |
+| Manual mapping operations | 10.9 | 1.5 |
+| Complete plans | 0 | 3 |
+
+On the 9 scenarios both configurations answered, mappable correctness was 0.755 for P0 against 0.690 for P2.
+
+**What this shows:**
+1. **Separating correspondence from transformation did what it was designed to do.**
+   - Invented values and invalid enum translations fell from 17 to 0.
+   - Category correspondences survived more often, without the 18A.5 collapse: unnecessary abstention was 0.075.
+   - Manual mapping work fell by about 60 % overall, and by about 86 % on answered requests.
+2. **The plan request is less reliable at the provider: HTTP 500 on 30 % of requests**, against 11 % for P0. A large constrained-decoding schema is the likely cause, but it is unproven.
+3. **Even when answered, mappable correctness is slightly below the baseline** (−0.07). It is not inferior beyond doubt, but it is outside the pre-registered bound.
+4. **No end-to-end success on either configuration.**
+   - 333 records stayed unresolved: the engine refused them.
+   - The cause is not yet traced. It may be strict handling of missing optional values, oracle coverage, or wrong correspondences.
+   - This must be investigated on the dev split or a fresh set, never on this holdout.
+
+**Decision.**
+- **The intent planner is not shipped.** The production release `c7220768` is unchanged.
+- This holdout is now **inspected**.
+- A successor needs a fresh holdout and a pre-registration. Its inputs:
+  - a smaller decoder schema or a two-step request, to cut provider errors;
+  - tracing why compiled plans leave records unresolved;
+  - mappable recall.

@@ -1,0 +1,682 @@
+[
+  {
+    "config": "P2",
+    "trial": 1,
+    "index": 0,
+    "at": "2026-11-17T17:15:37.119Z",
+    "previewSha256": "dc9c3ab9e6ffbc3034f73a1facf5e571b35b45adb716f89199aa87883e372961",
+    "proposalStatus": "Valid · 7 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 16455ms",
+    "ms": 17475,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "dc9c3ab9e6ffbc3034f73a1facf5e571b35b45adb716f89199aa87883e372961"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"member_id\",\n      \"status\": \"ready\",\n      \"from\": [\"f_01\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"first_name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_03\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"last_name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_12\"],\n      \"transform\": \"trim\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_15\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"birth_date\",\n      \"status\": \"ready\",\n      \"from\": [\"f_09\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"enrolled_on\",\n      \"status\": \"ready\",\n      \"from\": [\"f_14\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"tier\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_04\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [\"category-labels\", \"business-rule\"]\n    },\n    {\n      \"target\": \"status\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_13\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [\"category-labels\", \"business-rule\"]\n    },\n    {\n      \"target\": \"points_balance\",\n      \"status\": \"ready\",\n      \"from\": [\"f_08\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"marketing_opt_in\",\n      \"status\": \"ready\",\n      \"from\": [\"f_16\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"country\",\n      \"status\": \"ready\",\n      \"from\": [\"f_02\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"partner_consent_date\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\"],\n      \"missing\": [\"no-matching-source\"]\n    }\n  ],\n  \"summary\": \"Mapped available source fields to destination schema, leaving enum mapping and unprovided consent dates for clarification.\"\n}"
+    ]
+  },
+  {
+    "config": "P2",
+    "trial": 1,
+    "index": 1,
+    "at": "2026-11-17T17:15:54.735Z",
+    "previewSha256": "258633e130df58371845eb54dc5a7bb744f3ebfb53866e7569c45f078d7d1dd8",
+    "proposalStatus": "Valid · 3 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 16653ms",
+    "ms": 18015,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "258633e130df58371845eb54dc5a7bb744f3ebfb53866e7569c45f078d7d1dd8"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"driver_id\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_10\", \"f_12\"],\n      \"transform\": \"none\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"field-meaning\"]\n    },\n    {\n      \"target\": \"first_name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_09\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"last_name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_17\"],\n      \"transform\": \"trim\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_01\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"mobile\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"no-matching-source\"]\n    },\n    {\n      \"target\": \"birth_date\",\n      \"status\": \"ready\",\n      \"from\": [\"f_14\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"license.number\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_10\", \"f_12\", \"f_18\"],\n      \"transform\": \"none\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"field-meaning\"]\n    },\n    {\n      \"target\": \"license.expires\",\n      \"status\": \"ready\",\n      \"from\": [\"f_13\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"license.country\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"no-matching-source\"]\n    },\n    {\n      \"target\": \"tier\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_03\", \"f_05\", \"f_07\", \"f_15\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"category-labels\", \"field-meaning\"]\n    },\n    {\n      \"target\": \"status\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_02\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [\"category-labels\", \"business-rule\"]\n    },\n    {\n      \"target\": \"loyalty_points\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"no-matching-source\"]\n    }\n  ],\n  \"summary\": \"Mapping plan generated linking available source fields to destination schema with necessary clarifications for ambiguous identifiers and unlabelled enums.\"\n}"
+    ]
+  },
+  {
+    "config": "P2",
+    "trial": 1,
+    "index": 2,
+    "at": "2026-11-17T17:16:12.910Z",
+    "previewSha256": "eda3eb75c700730820ebf1c3f31755bbe229637b64911abca1a1bf3f75602b9c",
+    "proposalStatus": null,
+    "cloudError": true,
+    "origin": null,
+    "provenance": null,
+    "ms": 16935,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "eda3eb75c700730820ebf1c3f31755bbe229637b64911abca1a1bf3f75602b9c"
+    ],
+    "httpStatus": [
+      500
+    ],
+    "answers": [
+      ""
+    ]
+  },
+  {
+    "config": "P2",
+    "trial": 1,
+    "index": 3,
+    "at": "2026-11-17T17:16:29.948Z",
+    "previewSha256": "7055923b3fb485ce75358e4e080abd24e90383eb56c1d647e591edbd03cc4e17",
+    "proposalStatus": "Valid · 8 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 19047ms",
+    "ms": 19939,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "7055923b3fb485ce75358e4e080abd24e90383eb56c1d647e591edbd03cc4e17"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"badge_holder_id\",\n      \"status\": \"ready\",\n      \"from\": [\"f_03\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"holder_name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_07\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_13\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"phone\",\n      \"status\": \"ready\",\n      \"from\": [\"f_19\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"company\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_01\", \"f_05\", \"f_10\", \"f_15\"],\n      \"transform\": \"none\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"field-meaning\"]\n    },\n    {\n      \"target\": \"plan\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_14\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"badge_state\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_18\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"valid_from\",\n      \"status\": \"ready\",\n      \"from\": [\"f_02\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"DD/MM/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"valid_to\",\n      \"status\": \"ready\",\n      \"from\": [\"f_17\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"DD/MM/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"site_code\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_01\", \"f_05\", \"f_10\", \"f_15\"],\n      \"transform\": \"none\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"field-meaning\"]\n    },\n    {\n      \"target\": \"floor\",\n      \"status\": \"ready\",\n      \"from\": [\"f_12\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"vehicle_plate\",\n      \"status\": \"ready\",\n      \"from\": [\"f_16\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"format\"],\n      \"missing\": []\n    }\n  ],\n  \"summary\": \"Integration mapping proposal from source aliases to destination fields for badge management.\"\n}"
+    ]
+  },
+  {
+    "config": "P2",
+    "trial": 1,
+    "index": 4,
+    "at": "2026-11-17T17:16:50.034Z",
+    "previewSha256": "c3e2c1b2a070e41d7cd9cccb9f04bf18f2fa2e187956114d9542c7f9758f95cc",
+    "proposalStatus": null,
+    "cloudError": true,
+    "origin": null,
+    "provenance": null,
+    "ms": 27110,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "c3e2c1b2a070e41d7cd9cccb9f04bf18f2fa2e187956114d9542c7f9758f95cc"
+    ],
+    "httpStatus": [
+      500
+    ],
+    "answers": [
+      ""
+    ]
+  },
+  {
+    "config": "P2",
+    "trial": 1,
+    "index": 5,
+    "at": "2026-11-17T17:17:17.272Z",
+    "previewSha256": "ac85c29580838d80239601e307e01aec7fe8996add8d9d061ec460e910f8cf90",
+    "proposalStatus": null,
+    "cloudError": true,
+    "origin": null,
+    "provenance": null,
+    "ms": 14426,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "ac85c29580838d80239601e307e01aec7fe8996add8d9d061ec460e910f8cf90"
+    ],
+    "httpStatus": [
+      500
+    ],
+    "answers": [
+      ""
+    ]
+  },
+  {
+    "config": "P2",
+    "trial": 1,
+    "index": 6,
+    "at": "2026-11-17T17:17:31.805Z",
+    "previewSha256": "8da8b1b84d4428cbf32b44704692cd5278c01340a83ed13c4d9fe05d0373a0cd",
+    "proposalStatus": "Valid · 9 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 6275ms",
+    "ms": 7244,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "8da8b1b84d4428cbf32b44704692cd5278c01340a83ed13c4d9fe05d0373a0cd"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\"fields\":[{\"target\":\"tenant_ref\",\"status\":\"ready\",\"from\":[\"f_05\"],\"transform\":\"copy\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\"],\"missing\":[]},{\"target\":\"property_ref\",\"status\":\"ready\",\"from\":[\"f_20\"],\"transform\":\"copy\",\"confidence\":\"medium\",\"evidence\":[\"type\"],\"missing\":[]},{\"target\":\"name\",\"status\":\"ready\",\"from\":[\"f_06\"],\"transform\":\"trim\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\"],\"missing\":[]},{\"target\":\"email\",\"status\":\"ready\",\"from\":[\"f_16\"],\"transform\":\"normalize_email\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\"],\"missing\":[]},{\"target\":\"mobile\",\"status\":\"ready\",\"from\":[\"f_15\"],\"transform\":\"copy\",\"confidence\":\"medium\",\"evidence\":[\"meaning\"],\"missing\":[]},{\"target\":\"lease_start\",\"status\":\"ready\",\"from\":[\"f_17\"],\"transform\":\"parse_date\",\"inputFormat\":\"DD/MM/YYYY\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"format\"],\"missing\":[]},{\"target\":\"lease_end\",\"status\":\"ready\",\"from\":[\"f_13\"],\"transform\":\"parse_date\",\"inputFormat\":\"DD/MM/YYYY\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"format\"],\"missing\":[]},{\"target\":\"monthly_rent\",\"status\":\"ready\",\"from\":[\"f_02\"],\"transform\":\"copy\",\"confidence\":\"medium\",\"evidence\":[\"meaning\",\"type\"],\"missing\":[]},{\"target\":\"tenancy_type\",\"status\":\"needs_clarification\",\"from\":[\"f_04\"],\"transform\":\"map_enum\",\"confidence\":\"medium\",\"evidence\":[\"meaning\",\"category-labels\"],\"missing\":[\"category-labels\"]},{\"target\":\"status\",\"status\":\"needs_clarification\",\"from\":[\"f_01\"],\"transform\":\"map_enum\",\"confidence\":\"medium\",\"evidence\":[\"meaning\"],\"missing\":[\"category-labels\",\"business-rule\"]},{\"target\":\"postcode\",\"status\":\"ready\",\"from\":[\"f_18\"],\"transform\":\"copy\",\"confidence\":\"medium\",\"evidence\":[\"meaning\"],\"missing\":[]},{\"target\":\"emergency_contact\",\"status\":\"no_source\",\"from\":[],\"transform\":\"none\",\"confidence\":\"high\",\"evidence\":[],\"missing\":[\"no-matching-source\"]}],\"summary\":\"Integration plan mapping source fields to destination fields with necessary transformations and clarifications.\"}"
+    ]
+  },
+  {
+    "config": "P2",
+    "trial": 1,
+    "index": 7,
+    "at": "2026-11-17T17:17:39.173Z",
+    "previewSha256": "fd15e1275652b208a04e9dfa0465ac5fc044b3ddd1f3407f8d91788688719432",
+    "proposalStatus": null,
+    "cloudError": true,
+    "origin": null,
+    "provenance": null,
+    "ms": 6216,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "fd15e1275652b208a04e9dfa0465ac5fc044b3ddd1f3407f8d91788688719432"
+    ],
+    "httpStatus": [
+      500
+    ],
+    "answers": [
+      ""
+    ]
+  },
+  {
+    "config": "P2",
+    "trial": 1,
+    "index": 8,
+    "at": "2026-11-17T17:17:45.544Z",
+    "previewSha256": "7e3677941ff251cb799fae49174388cd9caae74418cdb5c662ce97fb7745b2c7",
+    "proposalStatus": null,
+    "cloudError": true,
+    "origin": null,
+    "provenance": null,
+    "ms": 6210,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "7e3677941ff251cb799fae49174388cd9caae74418cdb5c662ce97fb7745b2c7"
+    ],
+    "httpStatus": [
+      500
+    ],
+    "answers": [
+      ""
+    ]
+  },
+  {
+    "config": "P2",
+    "trial": 1,
+    "index": 9,
+    "at": "2026-11-17T17:17:51.880Z",
+    "previewSha256": "dc01e2f7d9fcef96e00c88692e8fe66ab582b8b3e45f94529b315008377e1243",
+    "proposalStatus": "Valid · 6 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 4108ms",
+    "ms": 5184,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "dc01e2f7d9fcef96e00c88692e8fe66ab582b8b3e45f94529b315008377e1243"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"customer_number\",\n      \"status\": \"ready\",\n      \"from\": [\"f_17\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"full_name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_16\", \"f_12\"],\n      \"transform\": \"concat\",\n      \"inputFormat\": \"ISO-8601\",\n      \"separator\": \" \",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"company\",\n      \"status\": \"ready\",\n      \"from\": [\"f_02\"],\n      \"transform\": \"trim\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"contact_email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_18\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"billing_email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_06\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"contract_start\",\n      \"status\": \"ready\",\n      \"from\": [\"f_04\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"tariff\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_15\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"meaning\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"status\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_11\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"meaning\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"payment_method\",\n      \"status\": \"needs_clarification\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"low\",\n      \"evidence\": [],\n      \"missing\": [\"no-matching-source\"]\n    },\n    {\n      \"target\": \"service_address.postal_code\",\n      \"status\": \"ready\",\n      \"from\": [\"f_13\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"service_address.city\",\n      \"status\": \"ready\",\n      \"from\": [\"f_09\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"tax_id\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"low\",\n      \"evidence\": [],\n      \"missing\": [\"no-matching-source\"]\n    }\n  ],\n  \"summary\": \"Integration mapping proposed for available source fields to destination schema.\"\n}"
+    ]
+  },
+  {
+    "config": "P2",
+    "trial": 2,
+    "index": 0,
+    "at": "2026-11-17T17:18:08.603Z",
+    "previewSha256": "dc9c3ab9e6ffbc3034f73a1facf5e571b35b45adb716f89199aa87883e372961",
+    "proposalStatus": "Valid · 7 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 4847ms",
+    "ms": 5830,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "dc9c3ab9e6ffbc3034f73a1facf5e571b35b45adb716f89199aa87883e372961"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"member_id\",\n      \"status\": \"ready\",\n      \"from\": [\"f_01\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"first_name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_03\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"last_name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_12\"],\n      \"transform\": \"trim\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_15\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"birth_date\",\n      \"status\": \"ready\",\n      \"from\": [\"f_09\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"enrolled_on\",\n      \"status\": \"ready\",\n      \"from\": [\"f_14\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"tier\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_04\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"status\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_13\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"points_balance\",\n      \"status\": \"ready\",\n      \"from\": [\"f_08\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"marketing_opt_in\",\n      \"status\": \"ready\",\n      \"from\": [\"f_16\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"country\",\n      \"status\": \"ready\",\n      \"from\": [\"f_02\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"partner_consent_date\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\"],\n      \"missing\": [\"no-matching-source\"]\n    }\n  ],\n  \"summary\": \"Integration mapping proposed for member records, identifying available source fields and highlighting enum label clarifications and missing source data.\"\n}"
+    ]
+  },
+  {
+    "config": "P2",
+    "trial": 2,
+    "index": 1,
+    "at": "2026-11-17T17:18:14.564Z",
+    "previewSha256": "258633e130df58371845eb54dc5a7bb744f3ebfb53866e7569c45f078d7d1dd8",
+    "proposalStatus": "Valid · 3 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 7171ms",
+    "ms": 8270,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "258633e130df58371845eb54dc5a7bb744f3ebfb53866e7569c45f078d7d1dd8"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"driver_id\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_10\", \"f_12\"],\n      \"transform\": \"none\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [\"field-meaning\"]\n    },\n    {\n      \"target\": \"first_name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_09\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"last_name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_17\"],\n      \"transform\": \"trim\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_01\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"mobile\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\"],\n      \"missing\": [\"no-matching-source\"]\n    },\n    {\n      \"target\": \"birth_date\",\n      \"status\": \"ready\",\n      \"from\": [\"f_14\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"license.number\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_18\", \"f_10\", \"f_12\"],\n      \"transform\": \"none\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [\"field-meaning\"]\n    },\n    {\n      \"target\": \"license.expires\",\n      \"status\": \"ready\",\n      \"from\": [\"f_13\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"license.country\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\"],\n      \"missing\": [\"no-matching-source\"]\n    },\n    {\n      \"target\": \"tier\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_02\", \"f_03\", \"f_04\", \"f_05\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"examples\"],\n      \"missing\": [\"category-labels\", \"field-meaning\"]\n    },\n    {\n      \"target\": \"status\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_02\", \"f_03\", \"f_04\", \"f_05\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [\"category-labels\", \"field-meaning\"]\n    },\n    {\n      \"target\": \"loyalty_points\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\"],\n      \"missing\": [\"no-matching-source\"]\n    }\n  ],\n  \"summary\": \"Integration mapping proposed for available fields, requiring clarification for ambiguous meaning and unlabelled enumerations.\"\n}"
+    ]
+  },
+  {
+    "config": "P2",
+    "trial": 2,
+    "index": 2,
+    "at": "2026-11-17T17:18:22.965Z",
+    "previewSha256": "eda3eb75c700730820ebf1c3f31755bbe229637b64911abca1a1bf3f75602b9c",
+    "proposalStatus": "Valid · 5 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 3231ms",
+    "ms": 4222,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "eda3eb75c700730820ebf1c3f31755bbe229637b64911abca1a1bf3f75602b9c"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"registration_id\",\n      \"status\": \"ready\",\n      \"from\": [\"f_02\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"badge_name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_07\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_16\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"organization\",\n      \"status\": \"ready\",\n      \"from\": [\"f_04\"],\n      \"transform\": \"trim\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"job_title\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_01\", \"f_05\", \"f_08\", \"f_09\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"field-meaning\"]\n    },\n    {\n      \"target\": \"badge_type\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_11\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"category-labels\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"status\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_15\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"category-labels\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"registered_on\",\n      \"status\": \"ready\",\n      \"from\": [\"f_10\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"country\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\"],\n      \"missing\": [\"no-matching-source\"]\n    },\n    {\n      \"target\": \"track\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_11\", \"f_15\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"meaning\", \"category-labels\"],\n      \"missing\": [\"category-labels\"]\n    }\n  ],\n  \"summary\": \"Integration mapping plan generated for source aliases to destination fields.\"\n}"
+    ]
+  },
+  {
+    "config": "P2",
+    "trial": 2,
+    "index": 3,
+    "at": "2026-11-17T17:18:27.320Z",
+    "previewSha256": "7055923b3fb485ce75358e4e080abd24e90383eb56c1d647e591edbd03cc4e17",
+    "proposalStatus": null,
+    "cloudError": true,
+    "origin": null,
+    "provenance": null,
+    "ms": 7174,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "7055923b3fb485ce75358e4e080abd24e90383eb56c1d647e591edbd03cc4e17"
+    ],
+    "httpStatus": [
+      500
+    ],
+    "answers": [
+      ""
+    ]
+  },
+  {
+    "config": "P2",
+    "trial": 2,
+    "index": 4,
+    "at": "2026-11-17T17:18:34.609Z",
+    "previewSha256": "c3e2c1b2a070e41d7cd9cccb9f04bf18f2fa2e187956114d9542c7f9758f95cc",
+    "proposalStatus": "Valid · 5 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 3472ms",
+    "ms": 4696,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "c3e2c1b2a070e41d7cd9cccb9f04bf18f2fa2e187956114d9542c7f9758f95cc"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"claim_reference\",\n      \"status\": \"ready\",\n      \"from\": [\"f_01\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"policy_number\",\n      \"status\": \"ready\",\n      \"from\": [\"f_07\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"claimant_name\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_03\", \"f_08\", \"f_10\", \"f_16\"],\n      \"transform\": \"none\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"field-meaning\"]\n    },\n    {\n      \"target\": \"claimant_email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_15\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"claimant_phone\",\n      \"status\": \"ready\",\n      \"from\": [\"f_06\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"incident_date\",\n      \"status\": \"ready\",\n      \"from\": [\"f_04\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"format\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"reported_on\",\n      \"status\": \"ready\",\n      \"from\": [\"f_17\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"format\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"claim_type\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_05\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"claim_status\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_05\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"business-rule\", \"category-labels\"]\n    },\n    {\n      \"target\": \"estimated_amount\",\n      \"status\": \"ready\",\n      \"from\": [\"f_14\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"adjuster_name\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_03\", \"f_08\", \"f_10\", \"f_16\"],\n      \"transform\": \"none\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"field-meaning\"]\n    },\n    {\n      \"target\": \"language\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"no-matching-source\"]\n    }\n  ],\n  \"summary\": \"Integration plan mapping available source fields to destination claim attributes with necessary clarifications for ambiguous text fields and withheld category labels.\"\n}"
+    ]
+  },
+  {
+    "config": "P2",
+    "trial": 2,
+    "index": 5,
+    "at": "2026-11-17T17:18:39.423Z",
+    "previewSha256": "ac85c29580838d80239601e307e01aec7fe8996add8d9d061ec460e910f8cf90",
+    "proposalStatus": "Valid · 8 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 4115ms",
+    "ms": 5152,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "ac85c29580838d80239601e307e01aec7fe8996add8d9d061ec460e910f8cf90"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"volunteer_id\",\n      \"status\": \"ready\",\n      \"from\": [\"f_18\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"given_name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_19\"],\n      \"transform\": \"trim\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"family_name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_09\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_01\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"phone\",\n      \"status\": \"ready\",\n      \"from\": [\"f_10\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"joined_on\",\n      \"status\": \"ready\",\n      \"from\": [\"f_04\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"DD/MM/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"program\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_03\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"availability\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_05\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"status\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_13\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"hours_logged\",\n      \"status\": \"ready\",\n      \"from\": [\"f_07\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"safeguarding_check_date\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_16\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"DD/MM/YYYY\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"format\"],\n      \"missing\": [\"business-rule\"]\n    },\n    {\n      \"target\": \"municipality\",\n      \"status\": \"ready\",\n      \"from\": [\"f_17\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    }\n  ],\n  \"summary\": \"Integration mapping plan connecting available source aliases to destination volunteer schema fields.\"\n}"
+    ]
+  },
+  {
+    "config": "P2",
+    "trial": 2,
+    "index": 6,
+    "at": "2026-11-17T17:18:44.738Z",
+    "previewSha256": "8da8b1b84d4428cbf32b44704692cd5278c01340a83ed13c4d9fe05d0373a0cd",
+    "proposalStatus": "Valid · 9 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2405ms",
+    "ms": 4238,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "8da8b1b84d4428cbf32b44704692cd5278c01340a83ed13c4d9fe05d0373a0cd"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\"fields\":[{\"target\":\"tenant_ref\",\"status\":\"ready\",\"from\":[\"f_05\"],\"transform\":\"copy\",\"confidence\":\"medium\",\"evidence\":[\"meaning\",\"type\"],\"missing\":[]},{\"target\":\"property_ref\",\"status\":\"ready\",\"from\":[\"f_20\"],\"transform\":\"copy\",\"confidence\":\"medium\",\"evidence\":[\"type\"],\"missing\":[]},{\"target\":\"name\",\"status\":\"ready\",\"from\":[\"f_06\"],\"transform\":\"trim\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"format\"],\"missing\":[]},{\"target\":\"email\",\"status\":\"ready\",\"from\":[\"f_16\"],\"transform\":\"normalize_email\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"format\"],\"missing\":[]},{\"target\":\"mobile\",\"status\":\"ready\",\"from\":[\"f_15\"],\"transform\":\"copy\",\"confidence\":\"medium\",\"evidence\":[\"meaning\"],\"missing\":[]},{\"target\":\"lease_start\",\"status\":\"ready\",\"from\":[\"f_17\"],\"transform\":\"parse_date\",\"inputFormat\":\"DD/MM/YYYY\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"format\"],\"missing\":[]},{\"target\":\"lease_end\",\"status\":\"ready\",\"from\":[\"f_13\"],\"transform\":\"parse_date\",\"inputFormat\":\"DD/MM/YYYY\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"format\"],\"missing\":[]},{\"target\":\"monthly_rent\",\"status\":\"ready\",\"from\":[\"f_02\"],\"transform\":\"copy\",\"confidence\":\"medium\",\"evidence\":[\"meaning\",\"type\"],\"missing\":[]},{\"target\":\"tenancy_type\",\"status\":\"needs_clarification\",\"from\":[\"f_04\"],\"transform\":\"map_enum\",\"confidence\":\"low\",\"evidence\":[\"meaning\"],\"missing\":[\"category-labels\"]},{\"target\":\"status\",\"status\":\"needs_clarification\",\"from\":[\"f_01\"],\"transform\":\"map_enum\",\"confidence\":\"low\",\"evidence\":[\"meaning\"],\"missing\":[\"category-labels\"]},{\"target\":\"postcode\",\"status\":\"ready\",\"from\":[\"f_18\"],\"transform\":\"copy\",\"confidence\":\"medium\",\"evidence\":[\"meaning\"],\"missing\":[]},{\"target\":\"emergency_contact\",\"status\":\"no_source\",\"from\":[],\"transform\":\"none\",\"confidence\":\"low\",\"evidence\":[],\"missing\":[\"no-matching-source\"]}],\"summary\":\"Integration plan mapping source fields to destination schema with appropriate transformations and clarification requirements.\"}"
+    ]
+  },
+  {
+    "config": "P2",
+    "trial": 2,
+    "index": 7,
+    "at": "2026-11-17T17:18:49.172Z",
+    "previewSha256": "fd15e1275652b208a04e9dfa0465ac5fc044b3ddd1f3407f8d91788688719432",
+    "proposalStatus": "Valid · 10 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 6744ms",
+    "ms": 8282,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "fd15e1275652b208a04e9dfa0465ac5fc044b3ddd1f3407f8d91788688719432"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"asset_id\",\n      \"status\": \"ready\",\n      \"from\": [\"f_02\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"customer_ref\",\n      \"status\": \"ready\",\n      \"from\": [\"f_10\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"owner_name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_13\"],\n      \"transform\": \"trim\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"owner_email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_03\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"commissioned_on\",\n      \"status\": \"ready\",\n      \"from\": [\"f_01\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"DD/MM/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"last_service\",\n      \"status\": \"ready\",\n      \"from\": [\"f_18\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"DD/MM/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"capacity_kwp\",\n      \"status\": \"ready\",\n      \"from\": [\"f_04\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"mount_type\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_05\", \"f_09\", \"f_11\", \"f_17\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"category-labels\", \"field-meaning\"]\n    },\n    {\n      \"target\": \"service_plan\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_05\", \"f_09\", \"f_11\", \"f_17\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"category-labels\", \"field-meaning\"]\n    },\n    {\n      \"target\": \"site.postal_code\",\n      \"status\": \"ready\",\n      \"from\": [\"f_15\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"site.city\",\n      \"status\": \"ready\",\n      \"from\": [\"f_06\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"warranty_expires\",\n      \"status\": \"ready\",\n      \"from\": [\"f_19\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"ISO-8601\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": []\n    }\n  ],\n  \"summary\": \"Mapping plan generated linking available source fields to destination schema with necessary clarifications for unlabelled enums.\"\n}"
+    ]
+  },
+  {
+    "config": "P2",
+    "trial": 2,
+    "index": 8,
+    "at": "2026-11-17T17:18:57.606Z",
+    "previewSha256": "7e3677941ff251cb799fae49174388cd9caae74418cdb5c662ce97fb7745b2c7",
+    "proposalStatus": "Valid · 3 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 4168ms",
+    "ms": 5270,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "7e3677941ff251cb799fae49174388cd9caae74418cdb5c662ce97fb7745b2c7"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"student_number\",\n      \"status\": \"ready\",\n      \"from\": [\"f_02\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"full_name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_05\", \"f_09\"],\n      \"transform\": \"concat\",\n      \"inputFormat\": \"ISO-8601\",\n      \"separator\": \" \",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"institutional_email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_08\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"birth_date\",\n      \"status\": \"ready\",\n      \"from\": [\"f_18\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"enrolled_on\",\n      \"status\": \"ready\",\n      \"from\": [\"f_19\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"type\", \"format\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"program_code\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"low\",\n      \"evidence\": [],\n      \"missing\": [\"no-matching-source\"]\n    },\n    {\n      \"target\": \"study_mode\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_03\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"examples\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"status\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_20\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"examples\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"year_of_study\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"low\",\n      \"evidence\": [],\n      \"missing\": [\"no-matching-source\"]\n    },\n    {\n      \"target\": \"nationality\",\n      \"status\": \"ready\",\n      \"from\": [\"f_01\"],\n      \"transform\": \"trim\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"national_id\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"low\",\n      \"evidence\": [],\n      \"missing\": [\"no-matching-source\"]\n    }\n  ],\n  \"summary\": \"Mapping plan for student records connecting available fields and flagging missing sources or enums.\"\n}"
+    ]
+  },
+  {
+    "config": "P2",
+    "trial": 2,
+    "index": 9,
+    "at": "2026-11-17T17:19:03.018Z",
+    "previewSha256": "dc01e2f7d9fcef96e00c88692e8fe66ab582b8b3e45f94529b315008377e1243",
+    "proposalStatus": "Valid · 6 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 3225ms",
+    "ms": 4204,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "dc01e2f7d9fcef96e00c88692e8fe66ab582b8b3e45f94529b315008377e1243"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"customer_number\",\n      \"status\": \"ready\",\n      \"from\": [\"f_17\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"full_name\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_16\", \"f_12\"],\n      \"transform\": \"concat\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [\"business-rule\"]\n    },\n    {\n      \"target\": \"company\",\n      \"status\": \"ready\",\n      \"from\": [\"f_02\"],\n      \"transform\": \"trim\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"contact_email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_18\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"billing_email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_06\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"contract_start\",\n      \"status\": \"ready\",\n      \"from\": [\"f_04\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"tariff\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_15\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"status\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_11\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"payment_method\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\"],\n      \"missing\": [\"no-matching-source\"]\n    },\n    {\n      \"target\": \"service_address.postal_code\",\n      \"status\": \"ready\",\n      \"from\": [\"f_13\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"service_address.city\",\n      \"status\": \"ready\",\n      \"from\": [\"f_09\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"tax_id\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\"],\n      \"missing\": [\"no-matching-source\"]\n    }\n  ],\n  \"summary\": \"Mapped available source aliases to destination fields, identifying necessary owner clarifications for enums and missing sources.\"\n}"
+    ]
+  },
+  {
+    "config": "P0",
+    "trial": 2,
+    "index": 0,
+    "at": "2026-11-17T17:19:08.980Z",
+    "previewSha256": "bb80d461f885d0d824a476293d428b1f5b6088e12cc9338b0cc573b57f30bdc0",
+    "proposalStatus": "Rejected at convert · 2 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 3544ms",
+    "ms": 4759,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "bb80d461f885d0d824a476293d428b1f5b6088e12cc9338b0cc573b57f30bdc0"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_01\",\n      \"to\": \"member_id\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_03\",\n      \"to\": \"first_name\"\n    },\n    {\n      \"op\": \"trim\",\n      \"from\": \"f_12\",\n      \"to\": \"last_name\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_15\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_09\",\n      \"to\": \"birth_date\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_14\",\n      \"to\": \"enrolled_on\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_04\",\n      \"to\": \"tier\",\n      \"params\": {\n        \"map\": {\n          \"garnet jasper\": \"base\",\n          \"amber amber\": \"silver\",\n          \"amber cobalt\": \"gold\",\n          \"indigo fjord\": \"platinum\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"base\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_13\",\n      \"to\": \"status\",\n      \"params\": {\n        \"map\": {\n          \"ember garnet\": \"active\",\n          \"harbor jasper\": \"active\",\n          \"garnet indigo\": \"suspended\",\n          \"indigo delta\": \"closed\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"active\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_08\",\n      \"to\": \"points_balance\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_16\",\n      \"to\": \"marketing_opt_in\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_02\",\n      \"to\": \"country\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_07\",\n      \"to\": \"partner_consent_date\",\n      \"params\": {\n        \"inputFormat\": \"ISO-8601\"\n      }\n    }\n  ],\n  \"rationale\": \"Mapped source fields to target schema using appropriate copy, trim, normalize_email, parse_date, and map_enum operations as specified by semantic descriptors and target formats.\"\n}"
+    ]
+  },
+  {
+    "config": "P0",
+    "trial": 2,
+    "index": 1,
+    "at": "2026-11-17T17:19:13.888Z",
+    "previewSha256": "82883e04b12bbc745c2f60f886561841f51e538a1be3f54c0cc534ba806ddb10",
+    "proposalStatus": "Valid · 7 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 3689ms",
+    "ms": 4674,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "82883e04b12bbc745c2f60f886561841f51e538a1be3f54c0cc534ba806ddb10"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_01\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"trim\",\n      \"from\": \"f_17\",\n      \"to\": \"last_name\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_09\",\n      \"to\": \"first_name\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_14\",\n      \"to\": \"birth_date\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_13\",\n      \"to\": \"license.expires\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_12\",\n      \"to\": \"license.number\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_10\",\n      \"to\": \"driver_id\"\n    }\n  ],\n  \"rationale\": \"Mapped email, first name, last name with trimming, birth date and license expiration date using MM/DD/YYYY format, license number, and driver id based on semantic similarity and synthetic data characteristics.\"\n}"
+    ]
+  },
+  {
+    "config": "P0",
+    "trial": 2,
+    "index": 2,
+    "at": "2026-11-17T17:19:18.702Z",
+    "harnessError": "build: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+    "ms": 5619,
+    "requests": 0,
+    "leakCount": 0,
+    "promptSha256": [],
+    "httpStatus": [],
+    "answers": []
+  },
+  {
+    "config": "P0",
+    "trial": 2,
+    "index": 3,
+    "at": "2026-11-17T17:19:24.431Z",
+    "previewSha256": "7365435528459591566b5b24b1aac235810d311e3e53640d4ea193f91183b04d",
+    "proposalStatus": "Valid · 10 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2447ms",
+    "ms": 3696,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "7365435528459591566b5b24b1aac235810d311e3e53640d4ea193f91183b04d"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_03\",\n      \"to\": \"badge_holder_id\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_07\",\n      \"to\": \"holder_name\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_08\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_19\",\n      \"to\": \"phone\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_01\",\n      \"to\": \"company\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_02\",\n      \"to\": \"valid_from\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_17\",\n      \"to\": \"valid_to\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_04\",\n      \"to\": \"site_code\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_12\",\n      \"to\": \"floor\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_16\",\n      \"to\": \"vehicle_plate\"\n    }\n  ],\n  \"rationale\": \"Mapped identifier f_03 to badge_holder_id, personal name f_07 to holder_name, email field f_08 to email with normalization, phone f_19 to phone, company f_01 to company, start date f_02 to valid_from using DD/MM/YYYY parsing, end date f_17 to valid_to using DD/MM/YYYY parsing, site code f_04 to site_code, floor f_12 to floor, and vehicle plate f_16 to vehicle_plate.\"\n}"
+    ]
+  },
+  {
+    "config": "P0",
+    "trial": 2,
+    "index": 4,
+    "at": "2026-11-17T17:19:28.272Z",
+    "previewSha256": "68e52efd25bdb24574e3f7f1b1bf405f36c22ceed77f6dc060f71ac20e0eba36",
+    "proposalStatus": "Rejected at convert · 2 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 3008ms",
+    "ms": 4130,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "68e52efd25bdb24574e3f7f1b1bf405f36c22ceed77f6dc060f71ac20e0eba36"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_01\",\n      \"to\": \"claim_reference\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_07\",\n      \"to\": \"policy_number\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_03\",\n      \"to\": \"claimant_name\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_15\",\n      \"to\": \"claimant_email\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_06\",\n      \"to\": \"claimant_phone\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_04\",\n      \"to\": \"incident_date\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_17\",\n      \"to\": \"reported_on\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_08\",\n      \"to\": \"claim_type\",\n      \"params\": {\n        \"map\": {\n          \"garnet jasper\": \"collision\",\n          \"garnet harbor\": \"glass\",\n          \"birch ember\": \"theft\",\n          \"jasper garnet\": \"fire\",\n          \"birch fjord\": \"weather\",\n          \"delta ember\": \"collision\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"collision\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_05\",\n      \"to\": \"claim_status\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"submitted\",\n          \"category_b\": \"in_review\",\n          \"category_c\": \"settled\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"submitted\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_14\",\n      \"to\": \"estimated_amount\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_10\",\n      \"to\": \"adjuster_name\"\n    },\n    {\n      \"op\": \"trim\",\n      \"from\": \"f_13\",\n      \"to\": \"language\"\n    }\n  ],\n  \"rationale\": \"Mapped source fields directly to the target schema based on semantics and observed sample values, applying normalization to emails, parsing dates with MM/DD/YYYY format, mapping categories for enums, and trimming whitespace for language text.\"\n}"
+    ]
+  },
+  {
+    "config": "P0",
+    "trial": 2,
+    "index": 5,
+    "at": "2026-11-17T17:19:32.539Z",
+    "previewSha256": "4508890484318e25daa485613345661dce6f6da37936b7778295dca336b9bc47",
+    "proposalStatus": "Valid · 8 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2818ms",
+    "ms": 4240,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "4508890484318e25daa485613345661dce6f6da37936b7778295dca336b9bc47"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_18\",\n      \"to\": \"volunteer_id\"\n    },\n    {\n      \"op\": \"trim\",\n      \"from\": \"f_19\",\n      \"to\": \"given_name\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_09\",\n      \"to\": \"family_name\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_01\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_10\",\n      \"to\": \"phone\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_04\",\n      \"to\": \"joined_on\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_16\",\n      \"to\": \"safeguarding_check_date\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_17\",\n      \"to\": \"municipality\"\n    }\n  ],\n  \"rationale\": \"Mapped source fields to target fields based on semantic descriptors, synthetic example analysis, and available allowed operations.\"\n}"
+    ]
+  },
+  {
+    "config": "P0",
+    "trial": 2,
+    "index": 6,
+    "at": "2026-11-17T17:19:36.919Z",
+    "previewSha256": "3a4e23a8884c00e752613ecea38c91ac2c9064c189970527143de5d64b670552",
+    "proposalStatus": "Rejected at convert · 2 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2946ms",
+    "ms": 4149,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "3a4e23a8884c00e752613ecea38c91ac2c9064c189970527143de5d64b670552"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"tenant_ref\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_20\",\n      \"to\": \"property_ref\"\n    },\n    {\n      \"op\": \"trim\",\n      \"from\": \"f_06\",\n      \"to\": \"name\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_16\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_15\",\n      \"to\": \"mobile\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_17\",\n      \"to\": \"lease_start\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_13\",\n      \"to\": \"lease_end\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_02\",\n      \"to\": \"monthly_rent\"\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_04\",\n      \"to\": \"tenancy_type\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"fixed_term\",\n          \"category_b\": \"rolling\",\n          \"category_c\": \"corporate\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"fixed_term\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_01\",\n      \"to\": \"status\",\n      \"params\": {\n        \"map\": {\n          \"amber fjord\": \"current\",\n          \"ember ember\": \"leaving\",\n          \"jasper fjord\": \"former\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"current\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_18\",\n      \"to\": \"postcode\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_03\",\n      \"to\": \"emergency_contact\"\n    }\n  ],\n  \"rationale\": \"Mapped source fields to target schema using appropriate copy, trim, normalize_email, parse_date, and map_enum operations based on semantic types and formats.\"\n}"
+    ]
+  },
+  {
+    "config": "P0",
+    "trial": 2,
+    "index": 7,
+    "at": "2026-11-17T17:19:41.208Z",
+    "previewSha256": "ec5485e959cfc51143348f960c2a0558d363475c0541e2acdc2aba2663fac366",
+    "proposalStatus": "Valid · 9 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2833ms",
+    "ms": 4368,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "ec5485e959cfc51143348f960c2a0558d363475c0541e2acdc2aba2663fac366"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_02\",\n      \"to\": \"asset_id\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_10\",\n      \"to\": \"customer_ref\"\n    },\n    {\n      \"op\": \"trim\",\n      \"from\": \"f_13\",\n      \"to\": \"owner_name\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_03\",\n      \"to\": \"owner_email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_18\",\n      \"to\": \"commissioned_on\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_01\",\n      \"to\": \"last_service\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_04\",\n      \"to\": \"capacity_kwp\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_15\",\n      \"to\": \"site.postal_code\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_06\",\n      \"to\": \"site.city\"\n    }\n  ],\n  \"rationale\": \"Mapped available source aliases to target fields based on types and semantics, applying trims, date parsing, and normalization where appropriate.\"\n}"
+    ]
+  },
+  {
+    "config": "P0",
+    "trial": 2,
+    "index": 8,
+    "at": "2026-11-17T17:19:45.749Z",
+    "previewSha256": "eedc632e68e11ebb81f5a09358850849f92438ea40642243ec56d3b82600e220",
+    "proposalStatus": null,
+    "cloudError": true,
+    "origin": null,
+    "provenance": null,
+    "ms": 20623,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "eedc632e68e11ebb81f5a09358850849f92438ea40642243ec56d3b82600e220"
+    ],
+    "httpStatus": [
+      500
+    ],
+    "answers": [
+      ""
+    ]
+  },
+  {
+    "config": "P0",
+    "trial": 2,
+    "index": 9,
+    "at": "2026-11-17T17:20:06.542Z",
+    "previewSha256": "5bf19b1d3338751e405895d6885dff05bd3dbbb59dc9117e0956795e9dccfb18",
+    "proposalStatus": "Valid · 8 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2833ms",
+    "ms": 4702,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "5bf19b1d3338751e405895d6885dff05bd3dbbb59dc9117e0956795e9dccfb18"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_17\",\n      \"to\": \"customer_number\"\n    },\n    {\n      \"op\": \"concat\",\n      \"from\": [\n        \"f_16\",\n        \"f_12\"\n      ],\n      \"to\": \"full_name\",\n      \"params\": {\n        \"separator\": \" \"\n      }\n    },\n    {\n      \"op\": \"trim\",\n      \"from\": \"f_02\",\n      \"to\": \"company\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_18\",\n      \"to\": \"contact_email\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_06\",\n      \"to\": \"billing_email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_04\",\n      \"to\": \"contract_start\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_13\",\n      \"to\": \"service_address.postal_code\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_09\",\n      \"to\": \"service_address.city\"\n    }\n  ],\n  \"rationale\": \"Mapped source fields to target schema using appropriate operations such as copy, trim, concat for names, normalize_email for email fields, and parse_date for contract dates.\"\n}"
+    ]
+  }
+]

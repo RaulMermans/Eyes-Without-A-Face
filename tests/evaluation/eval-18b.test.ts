@@ -264,7 +264,7 @@ describe.runIf(process.env.EYES_EVAL_18B_REHEARSE === "1")("EVAL-196 holdout reh
   });
 });
 
-const livePath = "docs/evidence/sprint-18b/intent-plan-live.json";
+const livePath = process.env.EYES_EVAL_18B_EVIDENCE ?? "docs/evidence/sprint-18b/intent-plan-live.json"; // path only; scoring unchanged
 const liveSummaryPath = "docs/evidence/sprint-18b/intent-plan-live-summary.json";
 
 describe.runIf(process.env.EYES_EVAL_18B_LIVE === "1")("EVAL-197 live holdout scoring (P0 vs P2)", () => {

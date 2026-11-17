@@ -1,6 +1,6 @@
 # 0018 — Integration Intent Plan: separate what connects from how to transform it
 
-Status: Accepted for implementation (Sprint 18B, Milestone 1). Shipping as the app's initial planner still depends on the pre-registered live evaluation ([sprint-18b-intent-plan.md](../evaluation/sprint-18b-intent-plan.md)).
+Status: Implemented on `sprint-18b-ai-first`; **not shipped** — the pre-registered live gate (Gate B-AI) FAILED on 2026-11-17 ([results](../evaluation/sprint-18b-intent-plan.md#run-2--resumed-and-complete-2026-11-17)). Production `c7220768` is unchanged. Original status: Accepted for implementation (Sprint 18B, Milestone 1). Shipping as the app's initial planner still depends on the pre-registered live evaluation ([sprint-18b-intent-plan.md](../evaluation/sprint-18b-intent-plan.md)).
 Date: 2026-11-16
 
 ## Context
