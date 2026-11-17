@@ -4,6 +4,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { expect, test } from "./fixtures.ts";
 import { privateTermsInBody } from "../../src/evaluation/ai-value-live.ts";
+import { buildScenario } from "../../src/evaluation/eval-18b.ts";
 
 /**
  * Sprint 18A — live AI-value run, G0 vs G1 (docs/evaluation/sprint-18a-ai-value.md).
@@ -35,12 +36,23 @@ const config = process.env.EYES_AI_VALUE_CONFIG ?? "";
 const trial = Number(process.env.EYES_AI_VALUE_TRIAL ?? "0");
 const baseURL = process.env.EYES_AI_VALUE_BASE_URL ?? "";
 const debugToken = process.env.EYES_APPCHECK_DEBUG_TOKEN ?? "";
-// Sets: 18a (G0/G1, Sprint 18A) and a5 (P0/P1, Sprint 18A.5 planner; docs/evaluation/sprint-18a5-planner.md).
-const set = process.env.EYES_AI_VALUE_SET === "a5" ? "a5" : "18a";
-const evidencePath = process.env.EYES_LIVE_EVIDENCE ?? (set === "a5" ? "docs/evidence/sprint-18a5/planner-live.json" : "docs/evidence/sprint-18a/ai-value-live.json");
+// Sets: 18a (G0/G1, Sprint 18A), a5 (P0/P1, Sprint 18A.5 planner; docs/evaluation/sprint-18a5-planner.md)
+// and b (P0/P2, Sprint 18B intent plan; docs/evaluation/sprint-18b-intent-plan.md, scored by scripts/eval-18b.mjs).
+const set = process.env.EYES_AI_VALUE_SET === "a5" ? "a5" : process.env.EYES_AI_VALUE_SET === "b" ? "b" : "18a";
+const evidencePath =
+  process.env.EYES_LIVE_EVIDENCE ??
+  (set === "a5" ? "docs/evidence/sprint-18a5/planner-live.json" : set === "b" ? "docs/evidence/sprint-18b/intent-plan-live.json" : "docs/evidence/sprint-18a/ai-value-live.json");
 // Rehearsals may use the dev split (EYES_AI_VALUE_SPLIT=dev); the real run is always the holdout.
 const split = process.env.EYES_AI_VALUE_DRY === "1" && process.env.EYES_AI_VALUE_SPLIT === "dev" ? "dev" : "holdout";
-const root = split === "dev" ? "tests/fixtures/ai-value-18a/dev" : set === "a5" ? "tests/fixtures/ai-value-18a5/holdout" : "tests/fixtures/ai-value-18a/holdout";
+const root =
+  set === "b"
+    ? `tests/fixtures/eval-18b/${split}`
+    : split === "dev"
+      ? "tests/fixtures/ai-value-18a/dev"
+      : set === "a5"
+        ? "tests/fixtures/ai-value-18a5/holdout"
+        : "tests/fixtures/ai-value-18a/holdout";
+const scenarioCount = split === "holdout" ? 10 : set === "b" ? 4 : 6;
 /** Rehearsal: run everything up to an enabled Send button, send nothing, write no evidence. */
 const dryRun = process.env.EYES_AI_VALUE_DRY === "1";
 
@@ -65,13 +77,13 @@ function append(entry: Record<string, unknown>): void {
 
 test.describe("S18A-LIVE G0/G1 holdout run", () => {
   test.beforeAll(() => {
-    expect(set === "a5" ? ["P0", "P1"] : ["G0", "G1"]).toContain(config);
+    expect(set === "a5" ? ["P0", "P1"] : set === "b" ? ["P0", "P2"] : ["G0", "G1"]).toContain(config);
     expect([1, 2]).toContain(trial);
     expect(baseURL).toMatch(/^http:\/\/127\.0\.0\.1:\d+$/);
-    expect(files.length).toBe(split === "dev" ? 6 : 10);
+    expect(files.length).toBe(scenarioCount);
   });
 
-  for (let index = 0; index < (split === "dev" ? 6 : 10); index += 1) {
+  for (let index = 0; index < scenarioCount; index += 1) {
     test(`holdout #${String(index + 1).padStart(2, "0")}`, async ({ page }) => {
       const scenario = JSON.parse(fs.readFileSync(path.join(root, files[index]!), "utf8")) as HoldoutScenario;
       const entry: Record<string, unknown> = { config, trial, index, at: new Date().toISOString() };
@@ -135,6 +147,8 @@ test.describe("S18A-LIVE G0/G1 holdout run", () => {
         if (dryRun) {
           await expect(page.getByTestId("send-cloud-request")).toBeEnabled();
           entry.dry = "ready-to-send";
+          // Set b, dev split only: prove the preview equals the scorer's reconstruction (S2) before any live run.
+          if (set === "b" && split === "dev") entry.dry += ` reconstruction=${(await buildScenario(scenario, config as "P0" | "P2"))?.promptSha256 === entry.previewSha256 ? "match" : "MISMATCH"}`;
           return;
         }
         step = "send";
