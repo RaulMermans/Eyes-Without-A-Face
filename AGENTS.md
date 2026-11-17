@@ -232,6 +232,20 @@ Decision: [ADR 0017](docs/decisions/0017-planner-prompt-v4.md) (Rejected).
 - Do not edit `MAPPING_PROPOSAL_INSTRUCTIONS` or `buildCloudPromptText`: historical replays rebuild their recorded prompts from them.
 - The 18A.5 holdout (`tests/fixtures/ai-value-18a5/holdout/`) was scored on 2026-11-16 and is **inspected**. Never tune on it.
 
+## Integration Intent Plan (Sprint 18B) — implemented, not shipped
+
+Decision: [ADR 0018](docs/decisions/0018-integration-intent-plan.md). Report: [docs/sprints/sprint-18b.md](docs/sprints/sprint-18b.md).
+
+- **Gate B-AI failed live on 2026-11-17.** Do not merge the branch as the product default or deploy it without a successor that passes a fresh pre-registered holdout. The 18B holdout (`tests/fixtures/eval-18b/holdout/`) is **inspected**.
+- **Plans compile only through `src/plan/compile.ts`.**
+  - Gemini operations always pass the frozen `convertProposal` gate.
+  - User operations come only from `fieldMatches`, `categoryMeanings` and `semanticConfirmations`.
+  - Never compile a default.
+  - Never treat a zero-operation plan as an integration.
+- **Decoder schemas sent to Gemini carry no nested array bounds.** The provider refuses them (HTTP 400 "too many states"). Bounds belong in the canonical schema.
+- **The harness legacy planner (`initialPlanner: "mapping-proposal-sprint3"`) is for planner-independent technical-view tests only.** Production never reads it.
+- **The leak scan ignores a match only inside an exact application-owned twin segment** (`src/phantom/fixed-text.ts`). Never add a word list.
+
 ## Release lifecycle and production acceptance (Sprint 14 — permanent, every sprint)
 
 **Tests passing does not mean the product works in production.** Procedure, commands, budget and evidence layout: [docs/deployment.md](docs/deployment.md#production-acceptance-standard-permanent).

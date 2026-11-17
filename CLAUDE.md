@@ -46,5 +46,7 @@ Read, in order:
 39. `docs/program/master-transformation-assessment.md` — Sprint 18 program: capability inventory, gaps, target architecture, 18A–18E increments
 40. `docs/decisions/0015-ai-integration-engineer-program.md` and `docs/decisions/0016-concept-bearing-phantom-twin.md` — gated program; concept-bearing twin
 41. `docs/evaluation/sprint-18a-ai-value.md` — pre-registered AI-value experiment and results (Gate A)
+42. `docs/decisions/0018-integration-intent-plan.md`, `docs/contracts/integration-intent-plan.md` — intent plan (implemented, not shipped)
+43. `docs/evaluation/sprint-18b-intent-plan.md` and `docs/sprints/sprint-18b.md` — Gate B-AI results (FAILED) and Sprint 18B report
 
 Every sprint ends with an evidence-backed release status (`CODE_READY`, `DEPLOYMENT_PENDING`, `DEPLOYED_UNVERIFIED`, `PRODUCTION_ACCEPTED`, `RELEASE_FAILED`); rules in `AGENTS.md`. Do not duplicate architecture here. Do not start Sprint 16 automatically.
