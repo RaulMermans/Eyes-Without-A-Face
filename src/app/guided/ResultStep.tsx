@@ -1091,7 +1091,7 @@ node run.mjs run --input ../../records.json --bindings ../../bindings.local.json
                     {output.records.slice(0, 10).map((record, index) => (
                       <tr key={index} className="border-b border-rule/50">
                         {Object.keys(output.records[0]!).map((key) => (
-                          <td key={key} className="max-w-[14rem] truncate py-1.5 pr-3 font-mono">{String(record[key] ?? "—")}</td>
+                          <td key={key} className="max-w-[14rem] truncate py-1.5 pr-3 font-mono">{shortValue(record[key])}</td>
                         ))}
                       </tr>
                     ))}
