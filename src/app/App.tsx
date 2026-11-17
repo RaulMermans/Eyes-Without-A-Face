@@ -725,9 +725,10 @@ export default function App() {
                     disabled={!stepReachable(item.id)}
                     onClick={() => goGuided(item.id)}
                     data-testid={`step-${item.id}`}
+                    aria-label={item.label}
                   >
                     <span className="step-number">{item.number}</span>
-                    {item.label}
+                    <span className="step-label">{item.label}</span>
                   </button>
                 ))}
               </nav>
