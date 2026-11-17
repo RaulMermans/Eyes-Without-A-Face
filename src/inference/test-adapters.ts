@@ -68,6 +68,8 @@ export interface TestHarness {
   cloudFailCalls?: number[];
   /** Delay before the simulated cloud answer, in ms (E2E only: pending state and Stop waiting). */
   cloudDelayMs?: number;
+  /** LEGACY-PATH REGRESSION ONLY: dev builds use the Sprint 3 initial planner (src/inference/harness-planner.ts). */
+  initialPlanner?: "mapping-proposal-sprint3";
 }
 
 export function createTestOnDeviceAdapter(

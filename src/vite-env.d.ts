@@ -47,6 +47,8 @@ interface EyesTestHarness {
   cloudRawError?: string;
   cloudFailCalls?: number[];
   cloudDelayMs?: number;
+  /** LEGACY-PATH REGRESSION ONLY: dev builds use the Sprint 3 initial planner (src/inference/harness-planner.ts). */
+  initialPlanner?: "mapping-proposal-sprint3";
 }
 
 interface Window {

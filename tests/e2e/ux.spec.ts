@@ -2,6 +2,9 @@ import { expect, test, type Page } from "@playwright/test";
 import path from "node:path";
 import { attachProviderWatch, openStage } from "./helpers.ts";
 
+/** LEGACY-PATH REGRESSION ONLY (Sprint 18B): this subject is independent of the initial planner, so it keeps the Sprint 3 Mapping Proposal path. */
+const LEGACY = { initialPlanner: "mapping-proposal-sprint3" } as const;
+
 /**
  * Sprint 6 UX acceptance (Spectral Forensics redesign). These prove observable
  * behaviour of the new interface against real application state. They are not
@@ -159,7 +162,7 @@ test.describe("E2E-053 disclosure approval stays explicit", () => {
 
 test.describe("E2E-054 mapping visualization reflects the canonical contract", () => {
   test("one connection per operation with the same op, sources, and destination; inspector shows real params", async ({ page }) => {
-    await boot(page);
+    await boot(page, { ...LEGACY, deriveProposal: true });
     await toProposal(page);
     await page.getByText("Edit the proposal locally").click();
     const text = await page.getByTestId("proposal-editor").inputValue();
@@ -191,7 +194,7 @@ test.describe("E2E-054 mapping visualization reflects the canonical contract", (
 
 test.describe("E2E-055 origin labeling", () => {
   test("simulated adapter output is never presented as Gemini; local edits become manual", async ({ page }) => {
-    await boot(page);
+    await boot(page, { ...LEGACY, deriveProposal: true });
     await toProposal(page);
     await expect(page.getByTestId("proposal-origin")).toHaveText("Simulated test adapter — not Gemini");
     await expect(page.getByTestId("ledger-transmitted")).toContainText("simulated test adapter, no network");
@@ -235,6 +238,7 @@ test.describe("E2E-056 Reality Check separates imported success from hidden fail
 test.describe("E2E-057 error states explain what happened", () => {
   test("rejected operations render as rejected with their rule, never as validated", async ({ page }) => {
     await boot(page, {
+      ...LEGACY,
       cloudOutput: {
         operations: [
           { op: "map_enum", from: "f_01", to: "status", params: { map: "active", unmapped: "fail" } },
@@ -257,7 +261,7 @@ test.describe("E2E-057 error states explain what happened", () => {
   });
 
   test("unreadable output is reported, not repaired or visualized", async ({ page }) => {
-    await boot(page, { rawCloudText: '{"operations": [{"op": "copy",' });
+    await boot(page, { ...LEGACY, rawCloudText: '{"operations": [{"op": "copy",' });
     await toApproved(page);
     await page.getByTestId("continue-to-mapping").click();
     await page.getByTestId("send-cloud-request").click();
