@@ -338,6 +338,8 @@ class LiveFirebaseRuntime {
             generationConfig: {
               responseMimeType: "application/json",
               responseJsonSchema: INTENT_PLAN_RESPONSE_SCHEMA,
+              // Sprint 18C cost and response-size control: plans observed live were ≤ 3.1 KB (~1k tokens).
+              maxOutputTokens: PLAN_MAX_OUTPUT_TOKENS,
             },
           },
         });
@@ -498,6 +500,9 @@ class LiveFirebaseRuntime {
     };
   }
 }
+
+/** Output cap of an intent-plan request (Sprint 18C). Far above any observed plan; bounds cost per request. */
+export const PLAN_MAX_OUTPUT_TOKENS = 8_192;
 
 export async function createLiveFirebaseServices(config: AppConfig): Promise<{
   onDevice: OnDeviceInferenceAdapter;

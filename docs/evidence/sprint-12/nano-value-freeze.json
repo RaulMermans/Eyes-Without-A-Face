@@ -81,7 +81,7 @@
     "src/inference/firebase-api.ts": "6721a4d32f629e0f82f1e515ffa675f7009838f7e0ce2695ba49a27c3f08de6f",
     "src/private-semantics/semantics.ts": "0e303be6f6896993d4776021d898388aeadde18ffa3c021fefdebaaf16db897b",
     "src/phantom/roles.ts": "d4b36791ecb4a14672628b80bc6970712f79550958757449281da7882f35f80f",
-    "src/phantom/generate.ts": "d76b3a20ea1838671972b00767afcaab793aed3f6204333990ee67c646b7fc76",
+    "src/phantom/generate.ts": "1ad8eba76960c4527cfb3c155385a097d475d510c2be1ddc4085268a2e5d883f",
     "src/proposal/convert.ts": "a34e00c8a2cf5c332d2a97d05243af613c54c2c27e33a6c11b8b09fd4974a7ea",
     "src/proposal/resolve.ts": "73094edeb9a3be46c623e1ddb2ded2cb11a70a7f5f783a2ca23667920e3c425d",
     "src/semantics/contract.ts": "da9efb11a4956a090c9d683eb0d5d806797a0c095b3ab8501d76af24d13f327e",
@@ -109,6 +109,10 @@
     {
       "at": "2026-11-17T17:31:23.787Z",
       "reason": "Sprint 18B: src/phantom/roles.ts describes a category as 'Category field with N distinct values' (was 'Lifecycle status category'); src/phantom/generate.ts passes TwinOptions.labelCategories. The Sprint 12 experiment is complete; EVAL-121/122 still reproduce configuration A and replay the recorded runs unchanged."
+    },
+    {
+      "at": "2026-11-17T19:57:27.728Z",
+      "reason": "Sprint 18C: generate.ts passes labelCategories=false to inferConcept as the legacy lexicon switch (category groupings, lifecycle rule); historical replays unchanged"
     }
   ]
 }

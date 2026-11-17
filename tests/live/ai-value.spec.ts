@@ -5,6 +5,7 @@ import path from "node:path";
 import { expect, test } from "./fixtures.ts";
 import { privateTermsInBody } from "../../src/evaluation/ai-value-live.ts";
 import { buildScenario } from "../../src/evaluation/eval-18b.ts";
+import { buildScenario18c } from "../../src/evaluation/eval-18c.ts";
 
 /**
  * Sprint 18A — live AI-value run, G0 vs G1 (docs/evaluation/sprint-18a-ai-value.md).
@@ -38,21 +39,27 @@ const baseURL = process.env.EYES_AI_VALUE_BASE_URL ?? "";
 const debugToken = process.env.EYES_APPCHECK_DEBUG_TOKEN ?? "";
 // Sets: 18a (G0/G1, Sprint 18A), a5 (P0/P1, Sprint 18A.5 planner; docs/evaluation/sprint-18a5-planner.md)
 // and b (P0/P2, Sprint 18B intent plan; docs/evaluation/sprint-18b-intent-plan.md, scored by scripts/eval-18b.mjs).
-const set = process.env.EYES_AI_VALUE_SET === "a5" ? "a5" : process.env.EYES_AI_VALUE_SET === "b" ? "b" : "18a";
+// Set c (P0/P1, Sprint 18C; docs/evaluation/sprint-18c-reliability.md, scored by scripts/eval-18c.mjs).
+const set = (["a5", "b", "c"] as const).find((name) => name === process.env.EYES_AI_VALUE_SET) ?? "18a";
+// Set c: 1 = the first request; 2 = the one approved recovery request, run only for the indexes in EYES_AI_VALUE_ONLY (1-based).
+const attempt = Number(process.env.EYES_AI_VALUE_ATTEMPT ?? "1");
+const only = (process.env.EYES_AI_VALUE_ONLY ?? "").split(",").filter(Boolean).map(Number);
 const evidencePath =
   process.env.EYES_LIVE_EVIDENCE ??
-  (set === "a5" ? "docs/evidence/sprint-18a5/planner-live.json" : set === "b" ? "docs/evidence/sprint-18b/intent-plan-live.json" : "docs/evidence/sprint-18a/ai-value-live.json");
+  (set === "c" ? "docs/evidence/sprint-18c/reliability-live.json" : set === "a5" ? "docs/evidence/sprint-18a5/planner-live.json" : set === "b" ? "docs/evidence/sprint-18b/intent-plan-live.json" : "docs/evidence/sprint-18a/ai-value-live.json");
 // Rehearsals may use the dev split (EYES_AI_VALUE_SPLIT=dev); the real run is always the holdout.
 const split = process.env.EYES_AI_VALUE_DRY === "1" && process.env.EYES_AI_VALUE_SPLIT === "dev" ? "dev" : "holdout";
 const root =
-  set === "b"
+  set === "c"
+    ? `tests/fixtures/eval-18c/${split}`
+    : set === "b"
     ? `tests/fixtures/eval-18b/${split}`
     : split === "dev"
       ? "tests/fixtures/ai-value-18a/dev"
       : set === "a5"
         ? "tests/fixtures/ai-value-18a5/holdout"
         : "tests/fixtures/ai-value-18a/holdout";
-const scenarioCount = split === "holdout" ? 10 : set === "b" ? 4 : 6;
+const scenarioCount = set === "c" ? (split === "holdout" ? 16 : 4) : split === "holdout" ? 10 : set === "b" ? 4 : 6;
 /** Rehearsal: run everything up to an enabled Send button, send nothing, write no evidence. */
 const dryRun = process.env.EYES_AI_VALUE_DRY === "1";
 
@@ -77,7 +84,8 @@ function append(entry: Record<string, unknown>): void {
 
 test.describe("S18A-LIVE G0/G1 holdout run", () => {
   test.beforeAll(() => {
-    expect(set === "a5" ? ["P0", "P1"] : set === "b" ? ["P0", "P2"] : ["G0", "G1"]).toContain(config);
+    expect(set === "a5" || set === "c" ? ["P0", "P1"] : set === "b" ? ["P0", "P2"] : ["G0", "G1"]).toContain(config);
+    if (set === "c") expect(attempt === 1 ? only.length === 0 : attempt === 2 && only.length > 0).toBe(true);
     expect([1, 2]).toContain(trial);
     expect(baseURL).toMatch(/^http:\/\/127\.0\.0\.1:\d+$/);
     expect(files.length).toBe(scenarioCount);
@@ -85,9 +93,10 @@ test.describe("S18A-LIVE G0/G1 holdout run", () => {
 
   for (let index = 0; index < scenarioCount; index += 1) {
     test(`holdout #${String(index + 1).padStart(2, "0")}`, async ({ page }) => {
+      test.skip(set === "c" && only.length > 0 && !only.includes(index + 1), "not selected for the recovery attempt");
       const scenario = JSON.parse(fs.readFileSync(path.join(root, files[index]!), "utf8")) as HoldoutScenario;
-      const entry: Record<string, unknown> = { config, trial, index, at: new Date().toISOString() };
-      const net = { requests: 0, leakCount: 0, promptSha256: [] as string[], answers: [] as string[], httpStatus: [] as number[] };
+      const entry: Record<string, unknown> = { config, trial, index, ...(set === "c" ? { attempt } : {}), at: new Date().toISOString() };
+      const net = { requests: 0, leakCount: 0, promptSha256: [] as string[], answers: [] as string[], httpStatus: [] as number[], usage: [] as Array<{ prompt: number; output: number }> };
       page.on("request", (request) => {
         if (!request.url().includes("generateContent")) return;
         net.requests += 1;
@@ -106,7 +115,12 @@ test.describe("S18A-LIVE G0/G1 holdout run", () => {
         if (!response.url().includes("generateContent")) return;
         net.httpStatus.push(response.status());
         try {
-          const body = (await response.json()) as { candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }> };
+          const body = (await response.json()) as {
+            candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }>;
+            usageMetadata?: { promptTokenCount?: number; candidatesTokenCount?: number; thoughtsTokenCount?: number };
+          };
+          // Token counts only (cost evidence); output includes any thinking tokens.
+          net.usage.push({ prompt: body.usageMetadata?.promptTokenCount ?? 0, output: (body.usageMetadata?.candidatesTokenCount ?? 0) + (body.usageMetadata?.thoughtsTokenCount ?? 0) });
           net.answers.push(body.candidates?.[0]?.content?.parts?.map((part) => part.text ?? "").join("") ?? "");
         } catch {
           net.answers.push(`<unreadable, HTTP ${response.status()}>`);
@@ -148,6 +162,7 @@ test.describe("S18A-LIVE G0/G1 holdout run", () => {
           await expect(page.getByTestId("send-cloud-request")).toBeEnabled();
           entry.dry = "ready-to-send";
           // Set b, dev split only: prove the preview equals the scorer's reconstruction (S2) before any live run.
+          if (set === "c" && split === "dev") entry.dry += ` reconstruction=${(await buildScenario18c(scenario, config as "P0" | "P1"))?.promptSha256 === entry.previewSha256 ? "match" : "MISMATCH"}`;
           if (set === "b" && split === "dev") entry.dry += ` reconstruction=${(await buildScenario(scenario, config as "P0" | "P2"))?.promptSha256 === entry.previewSha256 ? "match" : "MISMATCH"}`;
           return;
         }
@@ -167,6 +182,7 @@ test.describe("S18A-LIVE G0/G1 holdout run", () => {
         entry.promptSha256 = net.promptSha256;
         entry.httpStatus = net.httpStatus;
         entry.answers = net.answers;
+        if (set === "c") entry.usage = net.usage;
         if (dryRun) console.log(`dry ${config} #${index + 1} preview=${String(entry.previewSha256 ?? "").slice(0, 16)}: ${entry.dry ?? `harness error (${String(entry.harnessError ?? "").slice(0, 80)})`}, requests=${net.requests}`);
         else append(entry);
       }
