@@ -1,0 +1,1247 @@
+{
+  "scenarioId": "solar-installations-to-maintenance-scheduler",
+  "split": "holdout",
+  "industry": "solar PV installation and service",
+  "sourceLanguage": "de",
+  "description": "Installation register of a fictional solar installer (German PascalCase, nested operator, installer and site) to be loaded into a maintenance scheduling tool.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "Betriebszustand": "in Betrieb",
+      "Betreiber": {
+        "Name": "Jörg Dorfmann",
+        "Telefon": null,
+        "Email": "Jorg.Dorfmann@Web.example.net"
+      },
+      "LetzteWartung": "28/09/2020",
+      "Anlagentyp": "Aufdach",
+      "AuftragsNr": "A-036855",
+      "Installateur": {
+        "Firma": "Helion Bau & Service",
+        "Email": "service@helion.example.com"
+      },
+      "Wechselrichter": "MP-2",
+      "Wartungsvertrag": "Basis",
+      "Standort": {
+        "Strasse": "Feldweg 37",
+        "Ort": "Regensburg",
+        "PLZ": "93047",
+        "Bundesland": "Bayern"
+      },
+      "Inbetriebnahme": "28/08/2013",
+      "Erfasst": "2013-07-10T11:05:40Z",
+      "KundenNr": "K584384",
+      "Leistung_kWp": 18.1,
+      "AnlagenNr": "PV-40210"
+    },
+    {
+      "Betriebszustand": "in Betrieb",
+      "Betreiber": {
+        "Name": "Greta Lohmeyer",
+        "Telefon": "+49 761 555 5153",
+        "Email": "Greta.Lohmeyer@Web.example.net"
+      },
+      "LetzteWartung": null,
+      "Anlagentyp": "Freifläche",
+      "AuftragsNr": "A-737814",
+      "Installateur": {
+        "Firma": "Sonnwerk Montage GmbH",
+        "Email": "service@sonnwerk.example.com"
+      },
+      "Wechselrichter": "MP-2",
+      "Wartungsvertrag": "Komfort",
+      "Standort": {
+        "Strasse": "Feldweg 33",
+        "Ort": "Lüneburg",
+        "PLZ": "21335",
+        "Bundesland": "Niedersachsen"
+      },
+      "Inbetriebnahme": "15/06/2020",
+      "Erfasst": "2019-09-23T06:49:15Z",
+      "KundenNr": "K322833",
+      "Leistung_kWp": 28.5,
+      "AnlagenNr": "PV-40239"
+    },
+    {
+      "Betriebszustand": "in Betrieb",
+      "Betreiber": {
+        "Name": "  Greta Jaschke ",
+        "Telefon": null,
+        "Email": "greta.jaschke@web.example.net"
+      },
+      "LetzteWartung": "15/10/2021",
+      "Anlagentyp": "Fassade",
+      "AuftragsNr": "A-490239",
+      "Installateur": {
+        "Firma": "Sonnwerk Montage GmbH",
+        "Email": "service@sonnwerk.example.com"
+      },
+      "Wechselrichter": "HX-10",
+      "Wartungsvertrag": "Premium",
+      "Standort": {
+        "Strasse": "Sonnenhang 18",
+        "Ort": "Erfurt",
+        "PLZ": "99084",
+        "Bundesland": "Thüringen"
+      },
+      "Inbetriebnahme": "20/10/2014",
+      "Erfasst": "2021-07-18T14:37:11Z",
+      "KundenNr": "K492668",
+      "Leistung_kWp": 20.7,
+      "AnlagenNr": "PV-40268"
+    },
+    {
+      "Betriebszustand": "in Betrieb",
+      "Betreiber": {
+        "Name": "Lena Eggert",
+        "Telefon": "+49 761 555 5373",
+        "Email": "Lena.Eggert@web.example.net"
+      },
+      "LetzteWartung": "26/01/2024",
+      "Anlagentyp": "Carport",
+      "AuftragsNr": "A-462730",
+      "Installateur": {
+        "Firma": "Sonnwerk Montage GmbH",
+        "Email": "service@sonnwerk.example.com"
+      },
+      "Wechselrichter": "HX-20",
+      "Wartungsvertrag": "keiner",
+      "Standort": {
+        "Strasse": "Kirchgasse 29",
+        "Ort": "Lüneburg",
+        "PLZ": "21335",
+        "Bundesland": "Niedersachsen"
+      },
+      "Inbetriebnahme": "05/03/2014",
+      "Erfasst": "2015-02-22T13:02:38Z",
+      "KundenNr": "K846241",
+      "Leistung_kWp": 40.4,
+      "AnlagenNr": "PV-40297"
+    },
+    {
+      "Betriebszustand": "in Betrieb",
+      "Betreiber": {
+        "Name": "Theresa Haberl",
+        "Telefon": null,
+        "Email": "theresa.haberl@web.example.net"
+      },
+      "LetzteWartung": null,
+      "Anlagentyp": "Balkonkraftwerk",
+      "AuftragsNr": "A-057108",
+      "Installateur": {
+        "Firma": "Dachlicht Solartechnik",
+        "Email": "service@dachlicht.example.com"
+      },
+      "Wechselrichter": "SV-5000",
+      "Wartungsvertrag": "Kulanz (ohne Vertrag)",
+      "Standort": {
+        "Strasse": "Feldweg 10",
+        "Ort": "Erfurt",
+        "PLZ": "99084",
+        "Bundesland": "Thüringen"
+      },
+      "Inbetriebnahme": "26/11/2015",
+      "Erfasst": "2015-11-28T22:09:16Z",
+      "KundenNr": "K951937",
+      "Leistung_kWp": 44.1,
+      "AnlagenNr": "PV-40326"
+    },
+    {
+      "Betriebszustand": "in Betrieb",
+      "Betreiber": {
+        "Name": "Matthias Haberl",
+        "Telefon": "+49 761 555 5770",
+        "Email": "Matthias.Haberl@Web.example.net"
+      },
+      "LetzteWartung": "03/07/2025",
+      "Anlagentyp": "Aufdach",
+      "AuftragsNr": "A-454819",
+      "Installateur": {
+        "Firma": "Sonnwerk Montage GmbH",
+        "Email": "service@sonnwerk.example.com"
+      },
+      "Wechselrichter": "MP-2",
+      "Wartungsvertrag": "Basis",
+      "Standort": {
+        "Strasse": "Kirchgasse 11",
+        "Ort": "Regensburg",
+        "PLZ": "93047",
+        "Bundesland": "Bayern"
+      },
+      "Inbetriebnahme": "19/03/2024",
+      "Erfasst": "2023-03-16T15:04:27Z",
+      "KundenNr": "K641611",
+      "Leistung_kWp": 57.3,
+      "AnlagenNr": "PV-40355"
+    },
+    {
+      "Betriebszustand": "in Betrieb",
+      "Betreiber": {
+        "Name": "Frieda Mertens",
+        "Telefon": null,
+        "Email": "frieda.mertens@web.example.net"
+      },
+      "LetzteWartung": "20/02/2024",
+      "Anlagentyp": "Freifläche",
+      "AuftragsNr": "A-571751",
+      "Installateur": {
+        "Firma": "Helion Bau & Service",
+        "Email": "service@helion.example.com"
+      },
+      "Wechselrichter": "HX-20",
+      "Wartungsvertrag": "Komfort",
+      "Standort": {
+        "Strasse": "Sonnenhang 38",
+        "Ort": "Lüneburg",
+        "PLZ": "21335",
+        "Bundesland": "Niedersachsen"
+      },
+      "Inbetriebnahme": "26/04/2012",
+      "Erfasst": "2017-03-16T21:35:22Z",
+      "KundenNr": "K969551",
+      "Leistung_kWp": 56.1,
+      "AnlagenNr": "PV-40384"
+    },
+    {
+      "Betriebszustand": "Störung",
+      "Betreiber": {
+        "Name": "  Jonas Iffland ",
+        "Telefon": "+49 761 555 7204",
+        "Email": "jonas.iffland@web.example.net"
+      },
+      "LetzteWartung": null,
+      "Anlagentyp": "Aufdach",
+      "AuftragsNr": "A-311405",
+      "Installateur": {
+        "Firma": "Sonnwerk Montage GmbH",
+        "Email": "service@sonnwerk.example.com"
+      },
+      "Wechselrichter": "SV-5000",
+      "Wartungsvertrag": "Basis",
+      "Standort": {
+        "Strasse": "Sonnenhang 3",
+        "Ort": "Erfurt",
+        "PLZ": "99084",
+        "Bundesland": "Thüringen"
+      },
+      "Inbetriebnahme": "27/02/2022",
+      "Erfasst": "2022-10-12T11:22:54Z",
+      "KundenNr": "K722939",
+      "Leistung_kWp": 45.8,
+      "AnlagenNr": "PV-40413"
+    },
+    {
+      "Betriebszustand": "in Betrieb",
+      "Betreiber": {
+        "Name": "Theresa Jaschke",
+        "Telefon": "+49 761 555 2566",
+        "Email": "Theresa.Jaschke@Web.example.net"
+      },
+      "LetzteWartung": "25/02/2024",
+      "Anlagentyp": "Freifläche",
+      "AuftragsNr": "A-418561",
+      "Installateur": {
+        "Firma": "Helion Bau & Service",
+        "Email": "service@helion.example.com"
+      },
+      "Wechselrichter": "SV-5000",
+      "Wartungsvertrag": "Kulanz (ohne Vertrag)",
+      "Standort": {
+        "Strasse": "Sonnenhang 30",
+        "Ort": "Regensburg",
+        "PLZ": "93047",
+        "Bundesland": "Bayern"
+      },
+      "Inbetriebnahme": "21/01/2015",
+      "Erfasst": "2020-04-15T20:46:40Z",
+      "KundenNr": "K713253",
+      "Leistung_kWp": 17.7,
+      "AnlagenNr": "PV-40442"
+    },
+    {
+      "Betriebszustand": "in Betrieb",
+      "Betreiber": {
+        "Name": "Jörg Albrecht",
+        "Telefon": "+49 761 555 4959",
+        "Email": "Jorg.Albrecht@web.example.net"
+      },
+      "LetzteWartung": "19/08/2020",
+      "Anlagentyp": "Freifläche",
+      "AuftragsNr": "A-818500",
+      "Installateur": {
+        "Firma": "Sonnwerk Montage GmbH",
+        "Email": "service@sonnwerk.example.com"
+      },
+      "Wechselrichter": "MP-2",
+      "Wartungsvertrag": "Premium",
+      "Standort": {
+        "Strasse": "Feldweg 24",
+        "Ort": "Freiburg im Breisgau",
+        "PLZ": "79098",
+        "Bundesland": "Baden-Württemberg"
+      },
+      "Inbetriebnahme": "13/02/2017",
+      "Erfasst": "2021-10-24T12:54:58Z",
+      "KundenNr": "K970883",
+      "Leistung_kWp": 35.8,
+      "AnlagenNr": "PV-40471"
+    },
+    {
+      "Betriebszustand": "in Betrieb",
+      "Betreiber": {
+        "Name": "Jörg Eggert",
+        "Telefon": "+49 761 555 8041",
+        "Email": "jorg.eggert@web.example.net"
+      },
+      "LetzteWartung": null,
+      "Anlagentyp": "Carport",
+      "AuftragsNr": "A-841687",
+      "Installateur": {
+        "Firma": "Sonnwerk Montage GmbH",
+        "Email": "service@sonnwerk.example.com"
+      },
+      "Wechselrichter": "MP-2",
+      "Wartungsvertrag": "Premium",
+      "Standort": {
+        "Strasse": "Feldweg 30",
+        "Ort": "Lüneburg",
+        "PLZ": "21335",
+        "Bundesland": "Niedersachsen"
+      },
+      "Inbetriebnahme": "17/04/2016",
+      "Erfasst": "2023-10-25T10:54:15Z",
+      "KundenNr": "K632198",
+      "Leistung_kWp": 54.1,
+      "AnlagenNr": "PV-40500"
+    },
+    {
+      "Betriebszustand": "in Betrieb",
+      "Betreiber": {
+        "Name": "Ida Grünwald",
+        "Telefon": "+49 761 555 5401",
+        "Email": "ida.grunwald@web.example.net"
+      },
+      "LetzteWartung": "27/06/2021",
+      "Anlagentyp": "Balkonkraftwerk",
+      "AuftragsNr": "A-294224",
+      "Installateur": {
+        "Firma": "Helion Bau & Service",
+        "Email": "service@helion.example.com"
+      },
+      "Wechselrichter": "SV-8000",
+      "Wartungsvertrag": "Kulanz (ohne Vertrag)",
+      "Standort": {
+        "Strasse": "Am Wiesengrund 39",
+        "Ort": "Freiburg im Breisgau",
+        "PLZ": "79098",
+        "Bundesland": "Baden-Württemberg"
+      },
+      "Inbetriebnahme": "04/04/2018",
+      "Erfasst": "2015-01-05T15:56:20Z",
+      "KundenNr": "K924437",
+      "Leistung_kWp": 33.9,
+      "AnlagenNr": "PV-40529"
+    },
+    {
+      "Betriebszustand": "in Betrieb",
+      "Betreiber": {
+        "Name": "  Ida Nolte ",
+        "Telefon": "+49 761 555 9389",
+        "Email": "ida.nolte@web.example.net"
+      },
+      "LetzteWartung": "16/09/2022",
+      "Anlagentyp": "Fassade",
+      "AuftragsNr": "A-778354",
+      "Installateur": {
+        "Firma": "Dachlicht Solartechnik",
+        "Email": "service@dachlicht.example.com"
+      },
+      "Wechselrichter": "MP-2",
+      "Wartungsvertrag": "Basis",
+      "Standort": {
+        "Strasse": "Am Wiesengrund 29",
+        "Ort": "Regensburg",
+        "PLZ": "93047",
+        "Bundesland": "Bayern"
+      },
+      "Inbetriebnahme": "20/12/2021",
+      "Erfasst": "2012-07-24T14:38:59Z",
+      "KundenNr": "K531942",
+      "Leistung_kWp": 26.8,
+      "AnlagenNr": "PV-40558"
+    },
+    {
+      "Betriebszustand": "in Betrieb",
+      "Betreiber": {
+        "Name": "Greta Wöhler",
+        "Telefon": "+49 761 555 9817",
+        "Email": "Greta.Wohler@web.example.net"
+      },
+      "LetzteWartung": null,
+      "Anlagentyp": "Aufdach",
+      "AuftragsNr": "A-323437",
+      "Installateur": {
+        "Firma": "Dachlicht Solartechnik",
+        "Email": "service@dachlicht.example.com"
+      },
+      "Wechselrichter": "HX-10",
+      "Wartungsvertrag": "keiner",
+      "Standort": {
+        "Strasse": "Feldweg 35",
+        "Ort": "Erfurt",
+        "PLZ": "99084",
+        "Bundesland": "Thüringen"
+      },
+      "Inbetriebnahme": "22/07/2019",
+      "Erfasst": "2024-07-05T22:14:58Z",
+      "KundenNr": "K133663",
+      "Leistung_kWp": 62.7,
+      "AnlagenNr": "PV-40587"
+    },
+    {
+      "Betriebszustand": "in Betrieb",
+      "Betreiber": {
+        "Name": "Theresa Grünwald   ",
+        "Telefon": "+49 761 555 5611",
+        "Email": "theresa.grunwald@web.example.net"
+      },
+      "LetzteWartung": "22/09/2020",
+      "Anlagentyp": "Carport",
+      "AuftragsNr": "A-441202",
+      "Installateur": {
+        "Firma": "Helion Bau & Service",
+        "Email": "service@helion.example.com"
+      },
+      "Wechselrichter": "HX-20",
+      "Wartungsvertrag": "Premium",
+      "Standort": {
+        "Strasse": "Feldweg 7",
+        "Ort": "Freiburg im Breisgau",
+        "PLZ": "79098",
+        "Bundesland": "Baden-Württemberg"
+      },
+      "Inbetriebnahme": "08/09/2019",
+      "Erfasst": "2013-09-28T07:07:01Z",
+      "KundenNr": "K080159",
+      "Leistung_kWp": 16.1,
+      "AnlagenNr": "PV-40616"
+    },
+    {
+      "Betriebszustand": "Störung",
+      "Betreiber": {
+        "Name": "Felix Eggert",
+        "Telefon": "+49 761 555 9113",
+        "Email": "Felix.Eggert@web.example.net"
+      },
+      "LetzteWartung": "23/12/2023",
+      "Anlagentyp": "Aufdach",
+      "AuftragsNr": "A-788091",
+      "Installateur": {
+        "Firma": "Sonnwerk Montage GmbH",
+        "Email": "service@sonnwerk.example.com"
+      },
+      "Wechselrichter": "HX-10",
+      "Wartungsvertrag": "Kulanz (ohne Vertrag)",
+      "Standort": {
+        "Strasse": "Am Wiesengrund 12",
+        "Ort": "Erfurt",
+        "PLZ": "99084",
+        "Bundesland": "Thüringen"
+      },
+      "Inbetriebnahme": "22/10/2018",
+      "Erfasst": "2018-12-14T09:52:41Z",
+      "KundenNr": "K403586",
+      "Leistung_kWp": 51.6,
+      "AnlagenNr": "PV-40645"
+    },
+    {
+      "Betriebszustand": "Störung",
+      "Betreiber": {
+        "Name": "Lukas Lohmeyer",
+        "Telefon": "+49 761 555 7305",
+        "Email": "Lukas.Lohmeyer@web.example.net"
+      },
+      "LetzteWartung": null,
+      "Anlagentyp": "Aufdach",
+      "AuftragsNr": "A-352970",
+      "Installateur": {
+        "Firma": "Helion Bau & Service",
+        "Email": "service@helion.example.com"
+      },
+      "Wechselrichter": "HX-20",
+      "Wartungsvertrag": "keiner",
+      "Standort": {
+        "Strasse": "Sonnenhang 27",
+        "Ort": "Lüneburg",
+        "PLZ": "21335",
+        "Bundesland": "Niedersachsen"
+      },
+      "Inbetriebnahme": "01/11/2014",
+      "Erfasst": "2019-05-22T09:05:49Z",
+      "KundenNr": "K150160",
+      "Leistung_kWp": 29.6,
+      "AnlagenNr": "PV-40674"
+    },
+    {
+      "Betriebszustand": "in Betrieb",
+      "Betreiber": {
+        "Name": "  Moritz Kessler ",
+        "Telefon": "+49 761 555 5015",
+        "Email": "Moritz.Kessler@Web.example.net"
+      },
+      "LetzteWartung": "20/02/2023",
+      "Anlagentyp": "Aufdach",
+      "AuftragsNr": "A-588092",
+      "Installateur": {
+        "Firma": "Sonnwerk Montage GmbH",
+        "Email": "service@sonnwerk.example.com"
+      },
+      "Wechselrichter": "SV-8000",
+      "Wartungsvertrag": "Basis",
+      "Standort": {
+        "Strasse": "Feldweg 20",
+        "Ort": "Regensburg",
+        "PLZ": "93047",
+        "Bundesland": "Bayern"
+      },
+      "Inbetriebnahme": "24/08/2020",
+      "Erfasst": "2019-06-02T15:31:33Z",
+      "KundenNr": "K395214",
+      "Leistung_kWp": 43.5,
+      "AnlagenNr": "PV-40703"
+    },
+    {
+      "Betriebszustand": "in Betrieb",
+      "Betreiber": {
+        "Name": "Frieda Mertens",
+        "Telefon": null,
+        "Email": "frieda.mertens@web.example.net"
+      },
+      "LetzteWartung": "21/03/2025",
+      "Anlagentyp": "Fassade",
+      "AuftragsNr": "A-927666",
+      "Installateur": {
+        "Firma": "Dachlicht Solartechnik",
+        "Email": "service@dachlicht.example.com"
+      },
+      "Wechselrichter": "HX-20",
+      "Wartungsvertrag": "keiner",
+      "Standort": {
+        "Strasse": "Sonnenhang 49",
+        "Ort": "Freiburg im Breisgau",
+        "PLZ": "79098",
+        "Bundesland": "Baden-Württemberg"
+      },
+      "Inbetriebnahme": "21/07/2012",
+      "Erfasst": "2022-10-02T20:27:29Z",
+      "KundenNr": "K453927",
+      "Leistung_kWp": 20.1,
+      "AnlagenNr": "PV-40732"
+    },
+    {
+      "Betriebszustand": "Störung",
+      "Betreiber": {
+        "Name": "Paula Wöhler",
+        "Telefon": "+49 761 555 2063",
+        "Email": "paula.wohler@web.example.net"
+      },
+      "LetzteWartung": null,
+      "Anlagentyp": "Carport",
+      "AuftragsNr": "A-085067",
+      "Installateur": {
+        "Firma": "Dachlicht Solartechnik",
+        "Email": "service@dachlicht.example.com"
+      },
+      "Wechselrichter": "MP-2",
+      "Wartungsvertrag": "Kulanz (ohne Vertrag)",
+      "Standort": {
+        "Strasse": "Sonnenhang 43",
+        "Ort": "Regensburg",
+        "PLZ": "93047",
+        "Bundesland": "Bayern"
+      },
+      "Inbetriebnahme": "04/10/2014",
+      "Erfasst": "2023-03-06T18:22:08Z",
+      "KundenNr": "K783463",
+      "Leistung_kWp": 7,
+      "AnlagenNr": "PV-40761"
+    },
+    {
+      "Betriebszustand": "in Betrieb",
+      "Betreiber": {
+        "Name": "Theresa Albrecht",
+        "Telefon": "+49 761 555 0355",
+        "Email": "Theresa.Albrecht@Web.example.net"
+      },
+      "LetzteWartung": "07/07/2025",
+      "Anlagentyp": "Fassade",
+      "AuftragsNr": "A-847912",
+      "Installateur": {
+        "Firma": "Dachlicht Solartechnik",
+        "Email": "service@dachlicht.example.com"
+      },
+      "Wechselrichter": "MP-2",
+      "Wartungsvertrag": "Basis",
+      "Standort": {
+        "Strasse": "Am Wiesengrund 50",
+        "Ort": "Lüneburg",
+        "PLZ": "21335",
+        "Bundesland": "Niedersachsen"
+      },
+      "Inbetriebnahme": "27/01/2019",
+      "Erfasst": "2014-04-28T07:11:41Z",
+      "KundenNr": "K164620",
+      "Leistung_kWp": 60.5,
+      "AnlagenNr": "PV-40790"
+    },
+    {
+      "Betriebszustand": "in Betrieb",
+      "Betreiber": {
+        "Name": "Jonas Pfister",
+        "Telefon": "+49 761 555 1823",
+        "Email": "Jonas.Pfister@web.example.net"
+      },
+      "LetzteWartung": "25/12/2022",
+      "Anlagentyp": "Freifläche",
+      "AuftragsNr": "A-965121",
+      "Installateur": {
+        "Firma": "Sonnwerk Montage GmbH",
+        "Email": "service@sonnwerk.example.com"
+      },
+      "Wechselrichter": "HX-20",
+      "Wartungsvertrag": "Komfort",
+      "Standort": {
+        "Strasse": "Feldweg 60",
+        "Ort": "Lüneburg",
+        "PLZ": "21335",
+        "Bundesland": "Niedersachsen"
+      },
+      "Inbetriebnahme": "19/07/2014",
+      "Erfasst": "2024-04-05T17:05:07Z",
+      "KundenNr": "K147146",
+      "Leistung_kWp": 29.1,
+      "AnlagenNr": "PV-40819"
+    },
+    {
+      "Betriebszustand": "in Betrieb",
+      "Betreiber": {
+        "Name": "  Greta Lohmeyer ",
+        "Telefon": "+49 761 555 1323",
+        "Email": "greta.lohmeyer@web.example.net"
+      },
+      "LetzteWartung": null,
+      "Anlagentyp": "Aufdach",
+      "AuftragsNr": "A-993563",
+      "Installateur": {
+        "Firma": "Sonnwerk Montage GmbH",
+        "Email": "service@sonnwerk.example.com"
+      },
+      "Wechselrichter": "SV-5000",
+      "Wartungsvertrag": "Kulanz (ohne Vertrag)",
+      "Standort": {
+        "Strasse": "Am Wiesengrund 15",
+        "Ort": "Regensburg",
+        "PLZ": "93047",
+        "Bundesland": "Bayern"
+      },
+      "Inbetriebnahme": "11/03/2021",
+      "Erfasst": "2020-07-07T17:45:14Z",
+      "KundenNr": "K441637",
+      "Leistung_kWp": 46,
+      "AnlagenNr": "PV-40848"
+    },
+    {
+      "Betriebszustand": "abgeschaltet",
+      "Betreiber": {
+        "Name": "Jonas Haberl",
+        "Telefon": "+49 761 555 8336",
+        "Email": "jonas.haberl@web.example.net"
+      },
+      "LetzteWartung": "07/02/2022",
+      "Anlagentyp": "Balkonkraftwerk",
+      "AuftragsNr": "A-626016",
+      "Installateur": {
+        "Firma": "Dachlicht Solartechnik",
+        "Email": "service@dachlicht.example.com"
+      },
+      "Wechselrichter": "SV-5000",
+      "Wartungsvertrag": "keiner",
+      "Standort": {
+        "Strasse": "Feldweg 47",
+        "Ort": "Erfurt",
+        "PLZ": "99084",
+        "Bundesland": "Thüringen"
+      },
+      "Inbetriebnahme": "19/04/2018",
+      "Erfasst": "2021-09-26T14:19:08Z",
+      "KundenNr": "K101935",
+      "Leistung_kWp": 47.5,
+      "AnlagenNr": "PV-40877"
+    },
+    {
+      "Betriebszustand": "in Betrieb",
+      "Betreiber": {
+        "Name": "Paula Albrecht",
+        "Telefon": "+49 761 555 0811",
+        "Email": "paula.albrecht@web.example.net"
+      },
+      "LetzteWartung": "16/01/2022",
+      "Anlagentyp": "Carport",
+      "AuftragsNr": "A-794347",
+      "Installateur": {
+        "Firma": "Helion Bau & Service",
+        "Email": "service@helion.example.com"
+      },
+      "Wechselrichter": "SV-8000",
+      "Wartungsvertrag": "keiner",
+      "Standort": {
+        "Strasse": "Sonnenhang 25",
+        "Ort": "Erfurt",
+        "PLZ": "99084",
+        "Bundesland": "Thüringen"
+      },
+      "Inbetriebnahme": "07/06/2019",
+      "Erfasst": "2022-11-20T13:25:41Z",
+      "KundenNr": "K073144",
+      "Leistung_kWp": 32.2,
+      "AnlagenNr": "PV-40906"
+    },
+    {
+      "Betriebszustand": "in Betrieb",
+      "Betreiber": {
+        "Name": "Ida Jaschke",
+        "Telefon": "+49 761 555 3736",
+        "Email": "Ida.Jaschke@Web.example.net"
+      },
+      "LetzteWartung": null,
+      "Anlagentyp": "Balkonkraftwerk",
+      "AuftragsNr": "A-833099",
+      "Installateur": {
+        "Firma": "Dachlicht Solartechnik",
+        "Email": "service@dachlicht.example.com"
+      },
+      "Wechselrichter": "HX-20",
+      "Wartungsvertrag": "Basis",
+      "Standort": {
+        "Strasse": "Sonnenhang 52",
+        "Ort": "Freiburg im Breisgau",
+        "PLZ": "79098",
+        "Bundesland": "Baden-Württemberg"
+      },
+      "Inbetriebnahme": "16/10/2024",
+      "Erfasst": "2012-01-15T07:08:18Z",
+      "KundenNr": "K328163",
+      "Leistung_kWp": 44.7,
+      "AnlagenNr": "PV-40935"
+    },
+    {
+      "Betriebszustand": "in Betrieb",
+      "Betreiber": {
+        "Name": "Mira Pfister",
+        "Telefon": "+49 761 555 9801",
+        "Email": "mira.pfister@web.example.net"
+      },
+      "LetzteWartung": "08/02/2024",
+      "Anlagentyp": "Freifläche",
+      "AuftragsNr": "A-540127",
+      "Installateur": {
+        "Firma": "Dachlicht Solartechnik",
+        "Email": "service@dachlicht.example.com"
+      },
+      "Wechselrichter": "HX-10",
+      "Wartungsvertrag": "Basis",
+      "Standort": {
+        "Strasse": "Am Wiesengrund 36",
+        "Ort": "Regensburg",
+        "PLZ": "93047",
+        "Bundesland": "Bayern"
+      },
+      "Inbetriebnahme": "05/05/2023",
+      "Erfasst": "2019-02-22T09:07:03Z",
+      "KundenNr": "K835885",
+      "Leistung_kWp": 17,
+      "AnlagenNr": "PV-40964"
+    },
+    {
+      "Betriebszustand": "abgeschaltet",
+      "Betreiber": {
+        "Name": "  Lena Haberl ",
+        "Telefon": "+49 761 555 4633",
+        "Email": "lena.haberl@web.example.net"
+      },
+      "LetzteWartung": "24/06/2023",
+      "Anlagentyp": "Aufdach",
+      "AuftragsNr": "A-577558",
+      "Installateur": {
+        "Firma": "Dachlicht Solartechnik",
+        "Email": "service@dachlicht.example.com"
+      },
+      "Wechselrichter": "HX-10",
+      "Wartungsvertrag": "Basis",
+      "Standort": {
+        "Strasse": "Kirchgasse 20",
+        "Ort": "Regensburg",
+        "PLZ": "93047",
+        "Bundesland": "Bayern"
+      },
+      "Inbetriebnahme": "23/01/2021",
+      "Erfasst": "2012-07-10T09:44:34Z",
+      "KundenNr": "K595294",
+      "Leistung_kWp": 15.1,
+      "AnlagenNr": "PV-40993"
+    },
+    {
+      "Betriebszustand": "in Betrieb",
+      "Betreiber": {
+        "Name": "  Mira Albrecht",
+        "Telefon": "+49 761 555 4119",
+        "Email": "mira.albrecht@web.example.net"
+      },
+      "LetzteWartung": null,
+      "Anlagentyp": "Carport",
+      "AuftragsNr": "A-573535",
+      "Installateur": {
+        "Firma": "Sonnwerk Montage GmbH",
+        "Email": "service@sonnwerk.example.com"
+      },
+      "Wechselrichter": "SV-5000",
+      "Wartungsvertrag": "Kulanz (ohne Vertrag)",
+      "Standort": {
+        "Strasse": "Sonnenhang 13",
+        "Ort": "Regensburg",
+        "PLZ": "93047",
+        "Bundesland": "Bayern"
+      },
+      "Inbetriebnahme": "05/09/2018",
+      "Erfasst": "2021-02-16T13:47:38Z",
+      "KundenNr": "K992785",
+      "Leistung_kWp": 21.7,
+      "AnlagenNr": "PV-41022"
+    },
+    {
+      "Betriebszustand": "Störung",
+      "Betreiber": {
+        "Name": "  Jonas Nolte",
+        "Telefon": "+49 761 555 3970",
+        "Email": "Jonas.Nolte@web.example.net"
+      },
+      "LetzteWartung": "28/03/2023",
+      "Anlagentyp": "Balkonkraftwerk",
+      "AuftragsNr": "A-299361",
+      "Installateur": {
+        "Firma": "Helion Bau & Service",
+        "Email": "service@helion.example.com"
+      },
+      "Wechselrichter": "SV-5000",
+      "Wartungsvertrag": "Komfort",
+      "Standort": {
+        "Strasse": "Sonnenhang 46",
+        "Ort": "Regensburg",
+        "PLZ": "93047",
+        "Bundesland": "Bayern"
+      },
+      "Inbetriebnahme": "03/02/2014",
+      "Erfasst": "2018-07-14T16:07:23Z",
+      "KundenNr": "K163466",
+      "Leistung_kWp": 51.7,
+      "AnlagenNr": "PV-41051"
+    },
+    {
+      "Betriebszustand": "in Betrieb",
+      "Betreiber": {
+        "Name": "Theresa Eggert",
+        "Telefon": "+49 761 555 5459",
+        "Email": "Theresa.Eggert@Web.example.net"
+      },
+      "LetzteWartung": "16/01/2020",
+      "Anlagentyp": "Fassade",
+      "AuftragsNr": "A-246734",
+      "Installateur": {
+        "Firma": "Helion Bau & Service",
+        "Email": "service@helion.example.com"
+      },
+      "Wechselrichter": "SV-5000",
+      "Wartungsvertrag": "Kulanz (ohne Vertrag)",
+      "Standort": {
+        "Strasse": "Feldweg 29",
+        "Ort": "Lüneburg",
+        "PLZ": "21335",
+        "Bundesland": "Niedersachsen"
+      },
+      "Inbetriebnahme": "27/10/2019",
+      "Erfasst": "2011-10-06T19:29:21Z",
+      "KundenNr": "K802920",
+      "Leistung_kWp": 5.8,
+      "AnlagenNr": "PV-41080"
+    },
+    {
+      "Betriebszustand": "in Betrieb",
+      "Betreiber": {
+        "Name": "Moritz Grünwald",
+        "Telefon": "+49 761 555 5546",
+        "Email": "Moritz.Grunwald@web.example.net"
+      },
+      "LetzteWartung": null,
+      "Anlagentyp": "Aufdach",
+      "AuftragsNr": "A-016966",
+      "Installateur": {
+        "Firma": "Sonnwerk Montage GmbH",
+        "Email": "service@sonnwerk.example.com"
+      },
+      "Wechselrichter": "HX-10",
+      "Wartungsvertrag": "Kulanz (ohne Vertrag)",
+      "Standort": {
+        "Strasse": "Kirchgasse 32",
+        "Ort": "Freiburg im Breisgau",
+        "PLZ": "79098",
+        "Bundesland": "Baden-Württemberg"
+      },
+      "Inbetriebnahme": "01/01/2019",
+      "Erfasst": "2023-09-07T15:47:06Z",
+      "KundenNr": "K189956",
+      "Leistung_kWp": 56.5,
+      "AnlagenNr": "PV-41109"
+    },
+    {
+      "Betriebszustand": "in Betrieb",
+      "Betreiber": {
+        "Name": "  Paula Kessler ",
+        "Telefon": null,
+        "Email": "paula.kessler@web.example.net"
+      },
+      "LetzteWartung": "10/01/2020",
+      "Anlagentyp": "Balkonkraftwerk",
+      "AuftragsNr": "A-348493",
+      "Installateur": {
+        "Firma": "Dachlicht Solartechnik",
+        "Email": "service@dachlicht.example.com"
+      },
+      "Wechselrichter": "SV-5000",
+      "Wartungsvertrag": "Komfort",
+      "Standort": {
+        "Strasse": "Am Wiesengrund 37",
+        "Ort": "Regensburg",
+        "PLZ": "93047",
+        "Bundesland": "Bayern"
+      },
+      "Inbetriebnahme": "26/09/2017",
+      "Erfasst": "2021-11-26T21:03:23Z",
+      "KundenNr": "K514098",
+      "Leistung_kWp": 11.7,
+      "AnlagenNr": "PV-41138"
+    },
+    {
+      "Betriebszustand": "in Betrieb",
+      "Betreiber": {
+        "Name": "Moritz Pfister",
+        "Telefon": "+49 761 555 1614",
+        "Email": "Moritz.Pfister@Web.example.net"
+      },
+      "LetzteWartung": "22/06/2025",
+      "Anlagentyp": "Carport",
+      "AuftragsNr": "A-101264",
+      "Installateur": {
+        "Firma": "Dachlicht Solartechnik",
+        "Email": "service@dachlicht.example.com"
+      },
+      "Wechselrichter": "HX-10",
+      "Wartungsvertrag": "Kulanz (ohne Vertrag)",
+      "Standort": {
+        "Strasse": "Am Wiesengrund 19",
+        "Ort": "Freiburg im Breisgau",
+        "PLZ": "79098",
+        "Bundesland": "Baden-Württemberg"
+      },
+      "Inbetriebnahme": "15/07/2022",
+      "Erfasst": "2021-06-02T20:23:42Z",
+      "KundenNr": "K066111",
+      "Leistung_kWp": 10.5,
+      "AnlagenNr": "PV-41167"
+    },
+    {
+      "Betriebszustand": "in Betrieb",
+      "Betreiber": {
+        "Name": "Paula Pfister",
+        "Telefon": "+49 761 555 9329",
+        "Email": "paula.pfister@web.example.net"
+      },
+      "LetzteWartung": null,
+      "Anlagentyp": "Aufdach",
+      "AuftragsNr": "A-802043",
+      "Installateur": {
+        "Firma": "Helion Bau & Service",
+        "Email": "service@helion.example.com"
+      },
+      "Wechselrichter": "SV-8000",
+      "Wartungsvertrag": "Premium",
+      "Standort": {
+        "Strasse": "Sonnenhang 40",
+        "Ort": "Lüneburg",
+        "PLZ": "21335",
+        "Bundesland": "Niedersachsen"
+      },
+      "Inbetriebnahme": "23/01/2014",
+      "Erfasst": "2011-10-08T09:23:27Z",
+      "KundenNr": "K926119",
+      "Leistung_kWp": 57.5,
+      "AnlagenNr": "PV-41196"
+    },
+    {
+      "Betriebszustand": "abgeschaltet",
+      "Betreiber": {
+        "Name": "Theresa Dorfmann   ",
+        "Telefon": "+49 761 555 7243",
+        "Email": "Theresa.Dorfmann@Web.example.net"
+      },
+      "LetzteWartung": "23/11/2024",
+      "Anlagentyp": "Aufdach",
+      "AuftragsNr": "A-222775",
+      "Installateur": {
+        "Firma": "Sonnwerk Montage GmbH",
+        "Email": "service@sonnwerk.example.com"
+      },
+      "Wechselrichter": "SV-8000",
+      "Wartungsvertrag": "Komfort",
+      "Standort": {
+        "Strasse": "Feldweg 31",
+        "Ort": "Erfurt",
+        "PLZ": "99084",
+        "Bundesland": "Thüringen"
+      },
+      "Inbetriebnahme": "13/11/2014",
+      "Erfasst": "2012-02-16T19:24:09Z",
+      "KundenNr": "K732710",
+      "Leistung_kWp": 10,
+      "AnlagenNr": "PV-41225"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "asset_id": {
+        "type": "string"
+      },
+      "customer_ref": {
+        "type": "string"
+      },
+      "owner_name": {
+        "type": "string"
+      },
+      "owner_email": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "format": "email"
+      },
+      "commissioned_on": {
+        "type": "string",
+        "format": "date"
+      },
+      "last_service": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "format": "date"
+      },
+      "capacity_kwp": {
+        "type": "number"
+      },
+      "mount_type": {
+        "type": "string",
+        "enum": [
+          "roof",
+          "ground",
+          "facade",
+          "carport"
+        ]
+      },
+      "service_plan": {
+        "type": "string",
+        "enum": [
+          "basic",
+          "standard",
+          "premium",
+          "none"
+        ]
+      },
+      "site": {
+        "type": "object",
+        "properties": {
+          "postal_code": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
+      "warranty_expires": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "format": "date"
+      }
+    },
+    "required": [
+      "asset_id",
+      "customer_ref",
+      "owner_name",
+      "commissioned_on",
+      "service_plan"
+    ]
+  },
+  "groundTruth": {
+    "asset_id": {
+      "source": "AnlagenNr",
+      "transform": "copy",
+      "why": "installation number identifies the PV system; AuftragsNr is the original sales order"
+    },
+    "customer_ref": {
+      "source": "KundenNr",
+      "transform": "copy",
+      "why": "customer number of the operator"
+    },
+    "owner_name": {
+      "source": "Betreiber.Name",
+      "transform": "trim",
+      "why": "the operator owns the system; Installateur.Firma is the installer company"
+    },
+    "owner_email": {
+      "source": "Betreiber.Email",
+      "transform": "normalize_email",
+      "why": "operator email, mixed case; Installateur.Email is the installer's service desk"
+    },
+    "commissioned_on": {
+      "source": "Inbetriebnahme",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "commissioning date (German day-first); Erfasst is when the record was entered"
+    },
+    "last_service": {
+      "source": "LetzteWartung",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "date of the last maintenance visit, empty if never serviced"
+    },
+    "capacity_kwp": {
+      "source": "Leistung_kWp",
+      "transform": "copy",
+      "why": "peak capacity in kWp"
+    },
+    "mount_type": {
+      "source": "Anlagentyp",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Aufdach": "roof",
+        "Freifläche": "ground",
+        "Fassade": "facade",
+        "Carport": "carport",
+        "Balkonkraftwerk": null
+      },
+      "why": "mounting type; a Balkonkraftwerk is a plug-in balcony unit outside the service scope"
+    },
+    "service_plan": {
+      "source": "Wartungsvertrag",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Basis": "basic",
+        "Komfort": "standard",
+        "Premium": "premium",
+        "keiner": "none",
+        "Kulanz (ohne Vertrag)": null
+      },
+      "why": "maintenance contract tier; Kulanz goodwill visits have no contract tier and need review"
+    },
+    "site.postal_code": {
+      "source": "Standort.PLZ",
+      "transform": "copy",
+      "why": "postal code of the installation site"
+    },
+    "site.city": {
+      "source": "Standort.Ort",
+      "transform": "copy",
+      "why": "town of the installation site"
+    },
+    "warranty_expires": {
+      "source": null,
+      "transform": "none",
+      "why": "no warranty end date is exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "KundenNr",
+        "AuftragsNr"
+      ],
+      "correctFor": "customer_ref"
+    },
+    {
+      "kind": "two-email-fields",
+      "fields": [
+        "Betreiber.Email",
+        "Installateur.Email"
+      ],
+      "correctFor": "owner_email"
+    },
+    {
+      "kind": "organization-name-vs-person-name",
+      "fields": [
+        "Betreiber.Name",
+        "Installateur.Firma"
+      ],
+      "correctFor": "owner_name"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "Inbetriebnahme",
+        "Erfasst"
+      ],
+      "correctFor": "commissioned_on"
+    }
+  ],
+  "sourceConcepts": {
+    "Betriebszustand": "account-status",
+    "Betreiber.Name": "person-name",
+    "LetzteWartung": "modified-date",
+    "Anlagentyp": "category",
+    "AuftragsNr": "transaction-id",
+    "Installateur.Firma": "organization-name",
+    "Wechselrichter": "category",
+    "Wartungsvertrag": "category",
+    "Standort.Strasse": "street-address",
+    "Inbetriebnahme": "start-date",
+    "Betreiber.Telefon": "phone",
+    "Erfasst": "created-date",
+    "Installateur.Email": "email",
+    "Standort.Ort": "city",
+    "Standort.PLZ": "postal-code",
+    "KundenNr": "customer-id",
+    "Standort.Bundesland": "region",
+    "Betreiber.Email": "email",
+    "Leistung_kWp": "quantity",
+    "AnlagenNr": "product-id"
+  },
+  "destinationConcepts": {
+    "asset_id": "product-id",
+    "customer_ref": "customer-id",
+    "owner_name": "person-name",
+    "owner_email": "email",
+    "commissioned_on": "start-date",
+    "last_service": "modified-date",
+    "capacity_kwp": "quantity",
+    "mount_type": "category",
+    "service_plan": "category",
+    "site.postal_code": "postal-code",
+    "site.city": "city",
+    "warranty_expires": "end-date"
+  }
+}

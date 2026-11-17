@@ -51,6 +51,8 @@ export interface TwinOptions {
    * Default true. `false` reproduces the pre-18A twin (evaluation baseline T0).
    */
   concepts?: boolean;
+  /** Sprint 18B: false reproduces the pre-18B category descriptor (historical replays only). */
+  labelCategories?: boolean;
 }
 
 /** Local view of one twin field. Includes the private path for the local UI only. */
@@ -202,7 +204,7 @@ export function generatePhantomTwin(profile: SourceProfile, options: TwinOptions
     const labels = categoriesDisclosed ? (field.categories ?? []).map((item) => item.value) : null;
     const threshold = rareThreshold(profile.recordCount);
 
-    let descriptor = defaultDescriptor(role, field, { categoriesDisclosed });
+    let descriptor = defaultDescriptor(role, field, { categoriesDisclosed, legacyCategory: options.labelCategories === false });
     if (concept) {
       const withMeaning = withConcept(descriptor, concept, privateStrings, conceptGuardNames, labels);
       if (withMeaning) {

@@ -19,3 +19,5 @@
 | [0015](0015-ai-integration-engineer-program.md) | AI integration engineer: hybrid workflow-agent architecture, gated program 18A–18E |
 | [0016](0016-concept-bearing-phantom-twin.md) | Concept-bearing Phantom Twin: fixed business-meaning vocabulary with provenance |
 | [0017](0017-planner-prompt-v4.md) | Initial planner prompt v4 and initial response schema 2: no invented values, no map_enum without disclosed labels |
+| [0018](0018-integration-intent-plan.md) | Integration Intent Plan: correspondence separate from transformation (implemented, not shipped: Gate B-AI failed) |
+| [0019](0019-optional-destination-absent-input.md) | An absent input for an optional destination field omits the field instead of refusing the record |

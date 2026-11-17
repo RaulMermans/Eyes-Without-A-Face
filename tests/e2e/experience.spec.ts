@@ -2,6 +2,9 @@ import { expect, test, type Page } from "@playwright/test";
 import path from "node:path";
 import { attachProviderWatch, openOutcome, openStage } from "./helpers.ts";
 
+/** LEGACY-PATH REGRESSION ONLY (Sprint 18B): this subject is independent of the initial planner, so it keeps the Sprint 3 Mapping Proposal path. */
+const LEGACY = { initialPlanner: "mapping-proposal-sprint3" } as const;
+
 /**
  * Sprint 10 — CONNECT / OBSERVE / OUTCOME and the Live Intelligence Runtime.
  * The cloud adapter is the labeled deterministic TEST adapter (no network):
@@ -199,7 +202,7 @@ test.describe("E2E-102 upstream changes invalidate approvals and results", () =>
 
 test.describe("E2E-103 outcome derives from the evaluator", () => {
   test("hero scenario: before/after, quarantine not counted as success, recommendation never auto-applied", async ({ page }) => {
-    await boot(page, { cloudOutput: CRM_INITIAL });
+    await boot(page, { ...LEGACY, cloudOutput: CRM_INITIAL });
     await page.getByTestId("scenario-picker").locator("summary").click();
     await page.getByTestId("load-scenario-crm-eu-accounts").click();
     await page.getByTestId("build-integration").click();

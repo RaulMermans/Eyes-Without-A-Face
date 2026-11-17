@@ -5,6 +5,9 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { attachProviderWatch, openOutcome, openStage } from "./helpers.ts";
 
+/** LEGACY-PATH REGRESSION ONLY (Sprint 18B): this subject is independent of the initial planner, so it keeps the Sprint 3 Mapping Proposal path. */
+const LEGACY = { initialPlanner: "mapping-proposal-sprint3" } as const;
+
 /**
  * Sprint 9 Workstream A/C — Export Integration through the real UI.
  * Cloud output comes from the labeled TEST adapter (no network). Each test
@@ -32,7 +35,7 @@ test.afterAll(() => dirs.forEach((dir) => rmSync(dir, { recursive: true, force: 
 async function boot(page: Page, harness: Record<string, unknown>): Promise<void> {
   await page.addInitScript((value) => {
     window.__EYES_WITHOUT_A_FACE_TEST__ = value as Window["__EYES_WITHOUT_A_FACE_TEST__"];
-  }, { label: "test-harness", ...harness });
+  }, { label: "test-harness", ...LEGACY, ...harness });
   await page.goto("/#technical");
 }
 

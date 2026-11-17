@@ -5,6 +5,8 @@ import { assertReservedAuthorization } from "../twin/authorization-ledger.ts";
 import { classifyUnknownError, InferenceError, InferenceUnavailableError } from "./errors.ts";
 import { probeOnDeviceCapability } from "./on-device-capability.ts";
 import { deriveTestProposal, deriveTestRevision } from "./test-proposer.ts";
+import { deriveHallucinatedAliasPlan, deriveMalformedPlan, deriveTestPlan } from "./test-planner.ts";
+import { cloudResponseKind } from "./response-schemas.ts";
 import { isRevisionSchemaVersion } from "../revision/revision-payload.ts";
 import type {
   CloudInferenceAdapter,
@@ -29,6 +31,18 @@ export interface TestHarness {
   cloudOutputs?: unknown[];
   /** Build a labeled simulated proposal from the approved payload (E2E only). */
   deriveProposal?: boolean;
+  /**
+   * Sprint 18B (ADR 0018). Answer to an intent-plan (prompt v5) request, as
+   * the model's raw object; validated against the canonical plan schema like
+   * the live adapter does. Per-call `planOutputs` win over `planOutput`; then
+   * `cloudOutputs` / `cloudOutput` (a proposal-shaped object is rejected, as a
+   * live plan answer of that shape would be); otherwise the deterministic
+   * simulated planner (`deriveTestPlan`) answers. E2E only.
+   */
+  planOutput?: unknown;
+  planOutputs?: unknown[];
+  /** "malformed": a schema-invalid plan (rejected by the adapter). "hallucinated-alias": a schema-valid plan naming an undisclosed alias. */
+  planMode?: "derive" | "malformed" | "hallucinated-alias";
   /** Raw text returned for a 1.2.0 blind revision request instead of the deterministic reviser (E2E only). */
   revisionRawText?: string;
   /** Count of authorized cloud calls the test adapter served (read by E2E). */
@@ -54,6 +68,8 @@ export interface TestHarness {
   cloudFailCalls?: number[];
   /** Delay before the simulated cloud answer, in ms (E2E only: pending state and Stop waiting). */
   cloudDelayMs?: number;
+  /** LEGACY-PATH REGRESSION ONLY: dev builds use the Sprint 3 initial planner (src/inference/harness-planner.ts). */
+  initialPlanner?: "mapping-proposal-sprint3";
 }
 
 export function createTestOnDeviceAdapter(
@@ -191,6 +207,9 @@ export function createTestCloudAdapter(
       const callIndex = harness.cloudCalls ?? 0;
       harness.cloudCalls = callIndex + 1;
       const revision = isRevisionSchemaVersion(request.payload.schemaVersion);
+      // Sprint 18B: a prompt v5 request is answered with an Integration Intent Plan, as the live adapter expects.
+      const kind = cloudResponseKind(request.outboundPrompt, revision);
+      const plan = kind === "integration-intent-plan";
       if (harness.cloudDelayMs) await new Promise((resolve) => setTimeout(resolve, harness.cloudDelayMs));
       const failThisCall = !harness.cloudFailCalls || harness.cloudFailCalls.includes(callIndex);
       if (harness.cloudRawError && failThisCall) throw classifyUnknownError(new Error(harness.cloudRawError));
@@ -221,7 +240,7 @@ export function createTestCloudAdapter(
         );
       }
       if (harness.malformedCloudOutput !== undefined) {
-        const validation = validateStructuredOutput("mapping-proposal", harness.malformedCloudOutput);
+        const validation = validateStructuredOutput(kind, harness.malformedCloudOutput);
         throw new InferenceError(
           "INVALID_STRUCTURED_OUTPUT",
           validation.issues.join("; ") || "Malformed test output rejected",
@@ -245,7 +264,13 @@ export function createTestCloudAdapter(
           },
         };
       }
-      const structured = revision
+      const structured = plan
+        ? harness.planMode === "malformed"
+          ? deriveMalformedPlan(request.payload)
+          : harness.planMode === "hallucinated-alias"
+            ? deriveHallucinatedAliasPlan(request.payload)
+            : harness.planOutputs?.[callIndex] ?? harness.planOutput ?? harness.cloudOutputs?.[callIndex] ?? harness.cloudOutput ?? deriveTestPlan(request.payload)
+        : revision
         ? deriveTestRevision(request.payload)
         : harness.deriveProposal
           ? deriveTestProposal(request.payload)
@@ -255,7 +280,7 @@ export function createTestCloudAdapter(
         ],
         rationale: "Synthetic test adapter proposal; not a live Gemini response.",
       };
-      const validation = validateStructuredOutput("mapping-proposal", structured);
+      const validation = validateStructuredOutput(kind, structured);
       if (!validation.valid) {
         throw new InferenceError("INVALID_STRUCTURED_OUTPUT", validation.issues.join("; "));
       }

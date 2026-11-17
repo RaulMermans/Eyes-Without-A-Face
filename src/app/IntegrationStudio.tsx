@@ -4,7 +4,7 @@ import { Button } from "../components/ui/button.tsx";
 import { ArrowRightIcon, CrossIcon } from "../components/icons.tsx";
 import { Eyebrow, FieldToken, StatusMark, ZoneLabel, type Status } from "../components/spectral.tsx";
 import type { CloudDisclosurePayload, MappingOperation } from "../domain/contracts/types.ts";
-import type { AcceptProposalResult } from "../workflow/pipeline.ts";
+import type { ProposalResult } from "./workspace-state.ts";
 import { type Connection, type ConnectionState } from "./mapping-connections.ts";
 import { OPERATION_SUMMARY, formatSample, opNumber, unmappedTargets } from "./view-model.ts";
 
@@ -344,7 +344,7 @@ function ParamsView({ op, params }: { op: string; params: Record<string, unknown
 }
 
 /** Pipeline evidence strip for a proposal: received → validated → resolved → executed. */
-export function ProposalPipeline({ result, executed }: { result: AcceptProposalResult; executed: "pass" | "fail" | null }) {
+export function ProposalPipeline({ result, executed }: { result: ProposalResult; executed: "pass" | "fail" | null }) {
   const validated: Status = result.ok || result.stage === "resolve" ? "pass" : "fail";
   const resolved: Status = result.ok ? "pass" : result.stage === "resolve" ? "fail" : "not_evaluated";
   const run: Status = !result.ok ? "not_evaluated" : executed === null ? "pending" : executed === "pass" ? "pass" : "warn";

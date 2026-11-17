@@ -1,0 +1,452 @@
+[
+  {
+    "config": "P0",
+    "trial": 1,
+    "index": 0,
+    "at": "2026-11-17T15:19:58.063Z",
+    "previewSha256": "bb80d461f885d0d824a476293d428b1f5b6088e12cc9338b0cc573b57f30bdc0",
+    "proposalStatus": "Rejected at convert · 2 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 17724ms",
+    "ms": 19476,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "bb80d461f885d0d824a476293d428b1f5b6088e12cc9338b0cc573b57f30bdc0"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_01\",\n      \"to\": \"member_id\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_03\",\n      \"to\": \"first_name\"\n    },\n    {\n      \"op\": \"trim\",\n      \"from\": \"f_12\",\n      \"to\": \"last_name\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_17\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_09\",\n      \"to\": \"birth_date\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_14\",\n      \"to\": \"enrolled_on\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_04\",\n      \"to\": \"tier\",\n      \"params\": {\n        \"map\": {\n          \"garnet jasper\": \"base\",\n          \"amber amber\": \"silver\",\n          \"amber cobalt\": \"gold\",\n          \"indigo fjord\": \"platinum\",\n          \"birch jasper\": \"base\",\n          \"ember indigo\": \"silver\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"base\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_13\",\n      \"to\": \"status\",\n      \"params\": {\n        \"map\": {\n          \"ember garnet\": \"active\",\n          \"harbor jasper\": \"suspended\",\n          \"garnet indigo\": \"closed\",\n          \"indigo delta\": \"active\",\n          \"indigo cobalt\": \"suspended\",\n          \"delta indigo\": \"closed\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"active\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_08\",\n      \"to\": \"points_balance\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_16\",\n      \"to\": \"marketing_opt_in\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_02\",\n      \"to\": \"country\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_07\",\n      \"to\": \"partner_consent_date\",\n      \"params\": {\n        \"inputFormat\": \"ISO-8601\"\n      }\n    }\n  ],\n  \"rationale\": \"Mapped source fields to target schema using copy, trim, normalize_email, parse_date, and map_enum based on semantic descriptors and synthetic examples.\"\n}"
+    ]
+  },
+  {
+    "config": "P0",
+    "trial": 1,
+    "index": 1,
+    "at": "2026-11-17T15:20:17.782Z",
+    "previewSha256": "82883e04b12bbc745c2f60f886561841f51e538a1be3f54c0cc534ba806ddb10",
+    "proposalStatus": null,
+    "cloudError": true,
+    "origin": null,
+    "provenance": null,
+    "ms": 11309,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "82883e04b12bbc745c2f60f886561841f51e538a1be3f54c0cc534ba806ddb10"
+    ],
+    "httpStatus": [
+      500
+    ],
+    "answers": [
+      ""
+    ]
+  },
+  {
+    "config": "P0",
+    "trial": 1,
+    "index": 2,
+    "at": "2026-11-17T15:20:29.298Z",
+    "harnessError": "build: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+    "ms": 5634,
+    "requests": 0,
+    "leakCount": 0,
+    "promptSha256": [],
+    "httpStatus": [],
+    "answers": []
+  },
+  {
+    "config": "P0",
+    "trial": 1,
+    "index": 3,
+    "at": "2026-11-17T15:20:35.112Z",
+    "previewSha256": "7365435528459591566b5b24b1aac235810d311e3e53640d4ea193f91183b04d",
+    "proposalStatus": "Valid · 10 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 3797ms",
+    "ms": 5566,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "7365435528459591566b5b24b1aac235810d311e3e53640d4ea193f91183b04d"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_03\",\n      \"to\": \"badge_holder_id\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_07\",\n      \"to\": \"holder_name\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_08\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_19\",\n      \"to\": \"phone\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_01\",\n      \"to\": \"company\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_02\",\n      \"to\": \"valid_from\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_17\",\n      \"to\": \"valid_to\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_04\",\n      \"to\": \"site_code\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_12\",\n      \"to\": \"floor\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_16\",\n      \"to\": \"vehicle_plate\"\n    }\n  ],\n  \"rationale\": \"Mapped source fields to destination fields based on semantic matching of identifiers, names, dates, emails, and attributes.\"\n}"
+    ]
+  },
+  {
+    "config": "P0",
+    "trial": 1,
+    "index": 4,
+    "at": "2026-11-17T15:20:40.885Z",
+    "previewSha256": "68e52efd25bdb24574e3f7f1b1bf405f36c22ceed77f6dc060f71ac20e0eba36",
+    "proposalStatus": "Rejected at convert · 2 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 3052ms",
+    "ms": 4781,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "68e52efd25bdb24574e3f7f1b1bf405f36c22ceed77f6dc060f71ac20e0eba36"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_01\",\n      \"to\": \"claim_reference\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_07\",\n      \"to\": \"policy_number\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_03\",\n      \"to\": \"claimant_name\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_15\",\n      \"to\": \"claimant_email\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_06\",\n      \"to\": \"claimant_phone\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_04\",\n      \"to\": \"incident_date\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_17\",\n      \"to\": \"reported_on\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_08\",\n      \"to\": \"claim_type\",\n      \"params\": {\n        \"map\": {\n          \"garnet jasper\": \"collision\",\n          \"garnet harbor\": \"glass\",\n          \"birch ember\": \"theft\",\n          \"jasper garnet\": \"fire\",\n          \"birch fjord\": \"weather\",\n          \"delta ember\": \"collision\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"collision\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_05\",\n      \"to\": \"claim_status\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"submitted\",\n          \"category_b\": \"in_review\",\n          \"category_c\": \"settled\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"submitted\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_14\",\n      \"to\": \"estimated_amount\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_10\",\n      \"to\": \"adjuster_name\"\n    },\n    {\n      \"op\": \"trim\",\n      \"from\": \"f_13\",\n      \"to\": \"language\"\n    }\n  ],\n  \"rationale\": \"Mapped source fields to their corresponding target fields based on semantic descriptors, data types, and synthetic examples. Applied appropriate operations such as normalization for emails, parsing for dates, mapping for enums, and trimming for whitespace.\"\n}"
+    ]
+  },
+  {
+    "config": "P0",
+    "trial": 1,
+    "index": 5,
+    "at": "2026-11-17T15:20:45.883Z",
+    "previewSha256": "4508890484318e25daa485613345661dce6f6da37936b7778295dca336b9bc47",
+    "proposalStatus": "Rejected at convert · 3 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 3198ms",
+    "ms": 5016,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "4508890484318e25daa485613345661dce6f6da37936b7778295dca336b9bc47"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_18\",\n      \"to\": \"volunteer_id\"\n    },\n    {\n      \"op\": \"trim\",\n      \"from\": \"f_19\",\n      \"to\": \"given_name\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_09\",\n      \"to\": \"family_name\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_01\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_10\",\n      \"to\": \"phone\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_04\",\n      \"to\": \"joined_on\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_03\",\n      \"to\": \"program\",\n      \"params\": {\n        \"map\": {\n          \"amber garnet\": \"food_bank\",\n          \"indigo cobalt\": \"elder_care\",\n          \"delta jasper\": \"tutoring\",\n          \"jasper amber\": \"operations\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"food_bank\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_05\",\n      \"to\": \"availability\",\n      \"params\": {\n        \"map\": {\n          \"garnet amber\": \"weekday_morning\",\n          \"birch amber\": \"weekday_afternoon\",\n          \"jasper birch\": \"weekend\",\n          \"cobalt delta\": \"flexible\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"flexible\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_13\",\n      \"to\": \"status\",\n      \"params\": {\n        \"map\": {\n          \"ember garnet\": \"active\",\n          \"harbor jasper\": \"inactive\",\n          \"garnet indigo\": \"onboarding\",\n          \"indigo delta\": \"active\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"active\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_07\",\n      \"to\": \"hours_logged\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_16\",\n      \"to\": \"safeguarding_check_date\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_17\",\n      \"to\": \"municipality\"\n    }\n  ],\n  \"rationale\": \"Mapped source aliases to target fields using appropriate types, copying IDs, trimming given names, normalizing email fields, parsing DD/MM/YYYY dates, and mapping categorical enums while providing safe defaults for unmapped values.\"\n}"
+    ]
+  },
+  {
+    "config": "P0",
+    "trial": 1,
+    "index": 6,
+    "at": "2026-11-17T15:20:51.104Z",
+    "previewSha256": "3a4e23a8884c00e752613ecea38c91ac2c9064c189970527143de5d64b670552",
+    "proposalStatus": "Rejected at convert · 2 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 4878ms",
+    "ms": 6792,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "3a4e23a8884c00e752613ecea38c91ac2c9064c189970527143de5d64b670552"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_05\",\n      \"to\": \"tenant_ref\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_20\",\n      \"to\": \"property_ref\"\n    },\n    {\n      \"op\": \"trim\",\n      \"from\": \"f_06\",\n      \"to\": \"name\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_16\",\n      \"to\": \"email\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_15\",\n      \"to\": \"mobile\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_17\",\n      \"to\": \"lease_start\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_13\",\n      \"to\": \"lease_end\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_02\",\n      \"to\": \"monthly_rent\"\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_04\",\n      \"to\": \"tenancy_type\",\n      \"params\": {\n        \"map\": {\n          \"category_a\": \"fixed_term\",\n          \"category_b\": \"rolling\",\n          \"category_c\": \"corporate\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"fixed_term\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_01\",\n      \"to\": \"status\",\n      \"params\": {\n        \"map\": {\n          \"amber fjord\": \"current\",\n          \"ember ember\": \"leaving\",\n          \"jasper fjord\": \"former\",\n          \"birch jasper\": \"current\",\n          \"jasper birch\": \"leaving\",\n          \"amber delta\": \"former\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"current\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_18\",\n      \"to\": \"postcode\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_03\",\n      \"to\": \"emergency_contact\"\n    }\n  ],\n  \"rationale\": \"Mapped source aliases to target fields based on semantic descriptors, data types, and synthetic examples. Applied trim to name, normalize_email to email, parse_date to date fields, and map_enum for categorical statuses and tenancy types.\"\n}"
+    ]
+  },
+  {
+    "config": "P0",
+    "trial": 1,
+    "index": 7,
+    "at": "2026-11-17T15:20:58.148Z",
+    "previewSha256": "ec5485e959cfc51143348f960c2a0558d363475c0541e2acdc2aba2663fac366",
+    "proposalStatus": "Valid · 9 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2641ms",
+    "ms": 4596,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "ec5485e959cfc51143348f960c2a0558d363475c0541e2acdc2aba2663fac366"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_02\",\n      \"to\": \"asset_id\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_10\",\n      \"to\": \"customer_ref\"\n    },\n    {\n      \"op\": \"trim\",\n      \"from\": \"f_13\",\n      \"to\": \"owner_name\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_03\",\n      \"to\": \"owner_email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_18\",\n      \"to\": \"commissioned_on\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_01\",\n      \"to\": \"last_service\",\n      \"params\": {\n        \"inputFormat\": \"DD/MM/YYYY\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_04\",\n      \"to\": \"capacity_kwp\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_15\",\n      \"to\": \"site.postal_code\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_06\",\n      \"to\": \"site.city\"\n    }\n  ],\n  \"rationale\": \"Mapping source fields to target fields based on type compatibility and semantic matching, including trimming whitespace for owner names, normalizing emails, and parsing DD/MM/YYYY dates.\"\n}"
+    ]
+  },
+  {
+    "config": "P0",
+    "trial": 1,
+    "index": 8,
+    "at": "2026-11-17T15:21:02.981Z",
+    "previewSha256": "eedc632e68e11ebb81f5a09358850849f92438ea40642243ec56d3b82600e220",
+    "proposalStatus": "Rejected at convert · 2 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 4803ms",
+    "ms": 6519,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "eedc632e68e11ebb81f5a09358850849f92438ea40642243ec56d3b82600e220"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_02\",\n      \"to\": \"student_number\"\n    },\n    {\n      \"op\": \"concat\",\n      \"from\": [\n        \"f_05\",\n        \"f_09\"\n      ],\n      \"to\": \"full_name\",\n      \"params\": {\n        \"separator\": \" \"\n      }\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_08\",\n      \"to\": \"institutional_email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_18\",\n      \"to\": \"birth_date\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_19\",\n      \"to\": \"enrolled_on\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_03\",\n      \"to\": \"program_code\"\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_11\",\n      \"to\": \"study_mode\",\n      \"params\": {\n        \"map\": {\n          \"birch ember\": \"full_time\",\n          \"delta harbor\": \"part_time\",\n          \"fjord ember\": \"exchange\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"full_time\"\n      }\n    },\n    {\n      \"op\": \"map_enum\",\n      \"from\": \"f_12\",\n      \"to\": \"status\",\n      \"params\": {\n        \"map\": {\n          \"fjord indigo\": \"enrolled\",\n          \"delta birch\": \"suspended\",\n          \"harbor indigo\": \"withdrawn\",\n          \"cobalt amber\": \"graduated\"\n        },\n        \"unmapped\": \"default\",\n        \"default\": \"enrolled\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_14\",\n      \"to\": \"year_of_study\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_01\",\n      \"to\": \"nationality\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_16\",\n      \"to\": \"national_id\"\n    }\n  ],\n  \"rationale\": \"Mapping source fields to target schema using copy, concat for full name, normalize_email, parse_date for birth and enrollment dates, and map_enum for study mode and status with sensible defaults. Remaining fields mapped according to semantic descriptors.\"\n}"
+    ]
+  },
+  {
+    "config": "P0",
+    "trial": 1,
+    "index": 9,
+    "at": "2026-11-17T15:21:09.716Z",
+    "previewSha256": "5bf19b1d3338751e405895d6885dff05bd3dbbb59dc9117e0956795e9dccfb18",
+    "proposalStatus": "Valid · 8 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 3502ms",
+    "ms": 5498,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "5bf19b1d3338751e405895d6885dff05bd3dbbb59dc9117e0956795e9dccfb18"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"operations\": [\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_17\",\n      \"to\": \"customer_number\"\n    },\n    {\n      \"op\": \"concat\",\n      \"from\": [\n        \"f_16\",\n        \"f_12\"\n      ],\n      \"to\": \"full_name\",\n      \"params\": {\n        \"separator\": \" \"\n      }\n    },\n    {\n      \"op\": \"trim\",\n      \"from\": \"f_02\",\n      \"to\": \"company\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_18\",\n      \"to\": \"contact_email\"\n    },\n    {\n      \"op\": \"normalize_email\",\n      \"from\": \"f_06\",\n      \"to\": \"billing_email\"\n    },\n    {\n      \"op\": \"parse_date\",\n      \"from\": \"f_04\",\n      \"to\": \"contract_start\",\n      \"params\": {\n        \"inputFormat\": \"MM/DD/YYYY\"\n      }\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_13\",\n      \"to\": \"service_address.postal_code\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"f_09\",\n      \"to\": \"service_address.city\"\n    }\n  ],\n  \"rationale\": \"Mapped source fields to their corresponding target fields based on semantic descriptors and synthetic examples. Used concat for full name, trim for company name, normalize_email for emails, parse_date for contract start, and copy for identifiers and addresses.\"\n}"
+    ]
+  },
+  {
+    "config": "P2",
+    "trial": 1,
+    "index": 0,
+    "at": "2026-11-17T15:21:24.390Z",
+    "previewSha256": "dc9c3ab9e6ffbc3034f73a1facf5e571b35b45adb716f89199aa87883e372961",
+    "proposalStatus": null,
+    "cloudError": true,
+    "origin": null,
+    "provenance": null,
+    "ms": 3557,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "dc9c3ab9e6ffbc3034f73a1facf5e571b35b45adb716f89199aa87883e372961"
+    ],
+    "httpStatus": [
+      400
+    ],
+    "answers": [
+      ""
+    ]
+  },
+  {
+    "config": "P2",
+    "trial": 1,
+    "index": 1,
+    "at": "2026-11-17T15:21:28.164Z",
+    "previewSha256": "258633e130df58371845eb54dc5a7bb744f3ebfb53866e7569c45f078d7d1dd8",
+    "proposalStatus": null,
+    "cloudError": true,
+    "origin": null,
+    "provenance": null,
+    "ms": 5230,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "258633e130df58371845eb54dc5a7bb744f3ebfb53866e7569c45f078d7d1dd8"
+    ],
+    "httpStatus": [
+      400
+    ],
+    "answers": [
+      ""
+    ]
+  },
+  {
+    "config": "P2",
+    "trial": 1,
+    "index": 2,
+    "at": "2026-11-17T15:21:33.589Z",
+    "previewSha256": "eda3eb75c700730820ebf1c3f31755bbe229637b64911abca1a1bf3f75602b9c",
+    "proposalStatus": null,
+    "cloudError": true,
+    "origin": null,
+    "provenance": null,
+    "ms": 4314,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "eda3eb75c700730820ebf1c3f31755bbe229637b64911abca1a1bf3f75602b9c"
+    ],
+    "httpStatus": [
+      400
+    ],
+    "answers": [
+      ""
+    ]
+  },
+  {
+    "config": "P2",
+    "trial": 1,
+    "index": 3,
+    "at": "2026-11-17T15:21:38.087Z",
+    "previewSha256": "7055923b3fb485ce75358e4e080abd24e90383eb56c1d647e591edbd03cc4e17",
+    "proposalStatus": null,
+    "cloudError": true,
+    "origin": null,
+    "provenance": null,
+    "ms": 3323,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "7055923b3fb485ce75358e4e080abd24e90383eb56c1d647e591edbd03cc4e17"
+    ],
+    "httpStatus": [
+      400
+    ],
+    "answers": [
+      ""
+    ]
+  },
+  {
+    "config": "P2",
+    "trial": 1,
+    "index": 4,
+    "at": "2026-11-17T15:21:41.586Z",
+    "previewSha256": "c3e2c1b2a070e41d7cd9cccb9f04bf18f2fa2e187956114d9542c7f9758f95cc",
+    "proposalStatus": null,
+    "cloudError": true,
+    "origin": null,
+    "provenance": null,
+    "ms": 3225,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "c3e2c1b2a070e41d7cd9cccb9f04bf18f2fa2e187956114d9542c7f9758f95cc"
+    ],
+    "httpStatus": [
+      400
+    ],
+    "answers": [
+      ""
+    ]
+  },
+  {
+    "config": "P2",
+    "trial": 1,
+    "index": 5,
+    "at": "2026-11-17T15:21:45.002Z",
+    "previewSha256": "ac85c29580838d80239601e307e01aec7fe8996add8d9d061ec460e910f8cf90",
+    "proposalStatus": null,
+    "cloudError": true,
+    "origin": null,
+    "provenance": null,
+    "ms": 3415,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "ac85c29580838d80239601e307e01aec7fe8996add8d9d061ec460e910f8cf90"
+    ],
+    "httpStatus": [
+      400
+    ],
+    "answers": [
+      ""
+    ]
+  },
+  {
+    "config": "P2",
+    "trial": 1,
+    "index": 6,
+    "at": "2026-11-17T15:21:48.615Z",
+    "previewSha256": "8da8b1b84d4428cbf32b44704692cd5278c01340a83ed13c4d9fe05d0373a0cd",
+    "proposalStatus": null,
+    "cloudError": true,
+    "origin": null,
+    "provenance": null,
+    "ms": 3579,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "8da8b1b84d4428cbf32b44704692cd5278c01340a83ed13c4d9fe05d0373a0cd"
+    ],
+    "httpStatus": [
+      400
+    ],
+    "answers": [
+      ""
+    ]
+  },
+  {
+    "config": "P2",
+    "trial": 1,
+    "index": 7,
+    "at": "2026-11-17T15:21:52.380Z",
+    "previewSha256": "fd15e1275652b208a04e9dfa0465ac5fc044b3ddd1f3407f8d91788688719432",
+    "proposalStatus": null,
+    "cloudError": true,
+    "origin": null,
+    "provenance": null,
+    "ms": 3638,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "fd15e1275652b208a04e9dfa0465ac5fc044b3ddd1f3407f8d91788688719432"
+    ],
+    "httpStatus": [
+      400
+    ],
+    "answers": [
+      ""
+    ]
+  },
+  {
+    "config": "P2",
+    "trial": 1,
+    "index": 8,
+    "at": "2026-11-17T15:21:56.223Z",
+    "previewSha256": "7e3677941ff251cb799fae49174388cd9caae74418cdb5c662ce97fb7745b2c7",
+    "proposalStatus": null,
+    "cloudError": true,
+    "origin": null,
+    "provenance": null,
+    "ms": 3574,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "7e3677941ff251cb799fae49174388cd9caae74418cdb5c662ce97fb7745b2c7"
+    ],
+    "httpStatus": [
+      400
+    ],
+    "answers": [
+      ""
+    ]
+  },
+  {
+    "config": "P2",
+    "trial": 1,
+    "index": 9,
+    "at": "2026-11-17T15:22:00.003Z",
+    "previewSha256": "dc01e2f7d9fcef96e00c88692e8fe66ab582b8b3e45f94529b315008377e1243",
+    "proposalStatus": null,
+    "cloudError": true,
+    "origin": null,
+    "provenance": null,
+    "ms": 4021,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "dc01e2f7d9fcef96e00c88692e8fe66ab582b8b3e45f94529b315008377e1243"
+    ],
+    "httpStatus": [
+      400
+    ],
+    "answers": [
+      ""
+    ]
+  }
+]

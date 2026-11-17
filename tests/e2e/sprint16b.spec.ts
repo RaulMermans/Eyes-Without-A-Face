@@ -3,7 +3,7 @@ import { execFileSync, spawnSync } from "node:child_process";
 import { mkdtempSync, readdirSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { attachProviderWatch } from "./helpers.ts";
+import { attachProviderWatch, openAdvanced, toDeliver } from "./helpers.ts";
 
 /**
  * Sprint 16B — mapping integrity through the real UI (E2E-160…163). Fictional
@@ -30,16 +30,19 @@ async function customDestination(page: Page, schema: object): Promise<void> {
   await page.getByTestId("destination-custom").click();
   await page.getByTestId("destination-text").fill(JSON.stringify({ $schema: "https://json-schema.org/draft/2020-12/schema", type: "object", additionalProperties: false, ...schema }, null, 2));
   await page.getByTestId("destination-apply").click();
+  await openAdvanced(page);
   await expect(page.getByTestId("field-matches-disclosure")).toBeVisible();
   if (!(await page.getByTestId("field-matches").isVisible())) await page.getByTestId("field-matches-disclosure").locator("summary").click();
 }
 
 async function downloadJson(page: Page, testId: string): Promise<unknown> {
+  await toDeliver(page);
   const [download] = await Promise.all([page.waitForEvent("download"), page.getByTestId(testId).click()]);
   return JSON.parse(readFileSync(await download.path(), "utf8")) as unknown;
 }
 
 async function downloadZip(page: Page): Promise<string> {
+  await toDeliver(page);
   const [download] = await Promise.all([page.waitForEvent("download"), page.getByTestId("export-integration").click()]);
   const dir = mkdtempSync(path.join(tmpdir(), "s16b-zip-"));
   execFileSync("unzip", ["-q", await download.path(), "-d", dir]);
@@ -152,6 +155,7 @@ test.describe("E2E-163 D3 (S16A F1): ordinary words in an unmapped column no lon
     await page.getByTestId("guided-build-local").click();
     await expect(page.getByTestId("guided-count-transformed")).toHaveText("7");
     await expect(page.getByTestId("guided-count-attention")).toHaveText("1");
+    await toDeliver(page);
     const confirm = page.getByTestId("export-draft-confirm");
     if (await confirm.isVisible()) await confirm.check();
     const root = await downloadZip(page);

@@ -7,6 +7,10 @@ import { submitApprovedCloudInference } from "../twin/cloud-request-gate.ts";
 import { runRealityCheck } from "../verification/reality-check.ts";
 import { acceptProposal, buildDisclosureDraft, type PreparedTwin } from "../workflow/pipeline.ts";
 import type { ProposalState, WorkspaceState } from "./workspace-state.ts";
+import { isIntentPlanRequest } from "../inference/intent-prompt.ts";
+import { acceptCompiledPlan, compileIntentPlan, type CompileInput } from "../plan/compile.ts";
+import type { CompiledIntegration, PlanAnswers, PlanIssue } from "../plan/types.ts";
+import { parseIntentPlanText, validateIntentPlan } from "../plan/validate.ts";
 
 /**
  * The workflow actions shared by the guided flow (Sprint 13) and the
@@ -47,6 +51,8 @@ export function evaluateProposal(
 ): ProposalState | null {
   const review = workspace.review;
   if (!review) return null;
+  // Sprint 18B (ADR 0018): an answer to an intent-plan request is a plan, never a Mapping Proposal.
+  if (isIntentPlanRequest(review.preview.outboundPrompt)) return evaluatePlan(workspace, prepared, review, input);
   const started = performance.now();
   const result = acceptProposal({
     proposal: input.structured,
@@ -68,6 +74,78 @@ export function evaluateProposal(
     recordWorkflowEvent({ kind: "alias-resolve", ok: result.ok, code: result.ok ? undefined : result.issues[0]?.code, payloadHash: review.preview.payloadHash });
   }
   return { origin: input.origin, text: input.text, provenance: input.provenance, requestId: input.requestId, result };
+}
+
+/** The user's answers held in the workspace (the guided decision maps). Local only. */
+function planAnswers(workspace: WorkspaceState): PlanAnswers {
+  return { fieldMatches: workspace.fieldMatches, categoryMeanings: workspace.categoryMeanings, semanticConfirmations: workspace.semanticConfirmations };
+}
+
+/** Counts of a compiled plan for the workflow log (numbers only, never names). */
+function planCounts(compiled: CompiledIntegration): Record<string, number> {
+  const { fields, executable, byGemini, byUser, needsClarification, unsupported, noSource } = compiled.counts;
+  return { fields, executable, byGemini, byUser, needsClarification, unsupported, noSource, unwrittenRequired: compiled.unwrittenRequired.length };
+}
+
+/**
+ * Sprint 18B (ADR 0018): parse, validate and compile an Integration Intent
+ * Plan answer, with the user's current answers. A whole-plan rejection (or a
+ * plan answered for a different twin) is a `stage: "plan"` refusal with no
+ * receipt. Workflow events carry codes, counts and hashes only.
+ */
+function evaluatePlan(
+  workspace: WorkspaceState,
+  prepared: PreparedTwin,
+  review: NonNullable<WorkspaceState["review"]>,
+  input: { structured: unknown; text: string; origin: ProposalOrigin; requestId: string; provenance: ProposalState["provenance"] },
+): ProposalState {
+  const started = performance.now();
+  const disclosure = review.preview.payload;
+  const refuse = (issues: PlanIssue[]): ProposalState => {
+    recordWorkflowEvent({ kind: "proposal-validate", ok: false, durationMs: performance.now() - started, payloadHash: review.preview.payloadHash, code: issues[0]?.code ?? "PLAN_REJECTED" });
+    return { origin: input.origin, text: input.text, provenance: input.provenance, requestId: input.requestId, result: { ok: false, stage: "plan", issues }, plan: null };
+  };
+  let raw = input.structured;
+  if (raw === undefined) {
+    const parsed = parseIntentPlanText(input.text);
+    if (!parsed.ok) return refuse(parsed.issues);
+    raw = parsed.value;
+  }
+  if (disclosure.phantomId !== prepared.twin.phantom.phantomId) {
+    return refuse([{ code: "DISCLOSURE_MISSING_TARGET", message: "The approved disclosure belongs to a different Phantom Twin. Regenerate and re-approve." }]);
+  }
+  const validation = validateIntentPlan(raw, disclosure);
+  if (!validation.ok) return refuse(validation.issues);
+  const compileInput: CompileInput = {
+    validated: validation.value,
+    disclosure,
+    prepared,
+    records: workspace.source?.records ?? [],
+    answers: planAnswers(workspace),
+    requestId: input.requestId,
+    origin: input.origin,
+  };
+  const compiled = compileIntentPlan(compileInput);
+  const result = acceptCompiledPlan(compiled, compileInput);
+  recordWorkflowEvent({
+    kind: "proposal-validate",
+    ok: result.ok || result.stage === "resolve",
+    durationMs: performance.now() - started,
+    payloadHash: review.preview.payloadHash,
+    code: result.ok ? (compiled.complete ? "PLAN_COMPLETE" : "PLAN_PARTIAL") : result.stage === "plan" ? "PLAN_NOT_EXECUTABLE" : result.issues[0]?.code,
+    counts: planCounts(compiled),
+  });
+  if (result.ok || result.stage === "resolve") {
+    recordWorkflowEvent({ kind: "alias-resolve", ok: result.ok, code: result.ok ? undefined : result.issues[0]?.code, payloadHash: review.preview.payloadHash });
+  }
+  return {
+    origin: input.origin,
+    text: input.text,
+    provenance: input.provenance,
+    requestId: input.requestId,
+    result,
+    plan: { planVersion: validation.value.planVersion, validated: validation.value, compiled },
+  };
 }
 
 /** Mark the approval spent BEFORE the request resolves (single use). */
@@ -195,4 +273,42 @@ export async function prepareFreshReview(workspace: WorkspaceState, prepared: Pr
     recordWorkflowEvent({ kind: "cloud-recovery", ok: false, code: "FRESH_REQUEST_FAILED" });
     return { ok: false, message: caught instanceof Error ? caught.message : String(caught) };
   }
+}
+
+/**
+ * Sprint 18B (ADR 0018). OWNER: Worker B. Re-derive `proposal.plan.compiled`
+ * and `proposal.result` from the immutable validated plan and the user's
+ * current answers (`fieldMatches`, `categoryMeanings`, `semanticConfirmations`).
+ * Clears `report` / `mappingRunError` when the compiled contract changed.
+ * Never sends, never approves, never touches `review`. Returns the workspace
+ * unchanged when the active proposal is not a plan.
+ */
+export function recompilePlan(workspace: WorkspaceState, prepared: PreparedTwin | null): WorkspaceState {
+  const proposal = workspace.proposal;
+  const receipt = proposal?.plan;
+  const disclosure = workspace.review?.preview.payload;
+  if (!proposal || !receipt || !prepared || !disclosure || disclosure.phantomId !== prepared.twin.phantom.phantomId) return workspace;
+  const compileInput: CompileInput = {
+    validated: receipt.validated,
+    disclosure,
+    prepared,
+    records: workspace.source?.records ?? [],
+    answers: planAnswers(workspace),
+    requestId: proposal.requestId,
+    origin: proposal.origin,
+  };
+  const compiled = compileIntentPlan(compileInput);
+  if (JSON.stringify(compiled) === JSON.stringify(receipt.compiled)) return workspace;
+  const result = acceptCompiledPlan(compiled, compileInput);
+  const next: WorkspaceState = { ...workspace, proposal: { ...proposal, result, plan: { ...receipt, compiled } } };
+  const contractChanged = JSON.stringify(compiled.aliasContract) !== JSON.stringify(receipt.compiled.aliasContract);
+  if (!contractChanged) return next;
+  recordWorkflowEvent({ kind: "proposal-validate", ok: result.ok || result.stage === "resolve", payloadHash: workspace.review?.preview.payloadHash, code: "PLAN_RECOMPILED", counts: planCounts(compiled) });
+  // The last run and any revision were built on the old contract. A hand-written run is not this plan's.
+  return {
+    ...next,
+    ...(workspace.mappingChoice === "proposal" ? { report: null, mappingRunError: null } : {}),
+    revision: null,
+    revisionConstraintIds: [],
+  };
 }

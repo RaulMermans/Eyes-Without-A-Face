@@ -18,6 +18,7 @@ import type { RevisionDecision } from "../revision/decision.ts";
 import type { SemanticWithheld } from "../revision/semantic-feedback.ts";
 import { isLocalMapping, type CategoryMeaning, type FieldMatch } from "./guided/field-plan.ts";
 import { summarizeDestination } from "./guided/destinations.ts";
+import type { PlanIssue, PlanReceipt } from "../plan/types.ts";
 
 export interface ReviewState {
   preview: DisclosurePreview;
@@ -27,13 +28,28 @@ export interface ReviewState {
   targetNotes?: string[];
 }
 
+/**
+ * Sprint 18B (ADR 0018): the acceptance record of the active proposal. A plan
+ * with no executable field yet (or rejected as a whole) is a `stage: "plan"`
+ * refusal: valid as a planning artifact, never an integration. Kept here, not
+ * in the frozen-benchmark-facing `AcceptProposalResult`.
+ */
+export type ProposalResult = AcceptProposalResult | { ok: false; stage: "plan"; issues: PlanIssue[] };
+
 export interface ProposalState {
   origin: ProposalOrigin;
   /** Text exactly as received from the adapter (or as edited locally). */
   text: string;
   provenance: InferenceProvenance | null;
   requestId: string;
-  result: AcceptProposalResult;
+  result: ProposalResult;
+  /**
+   * Sprint 18B (ADR 0018): present when the answer was an Integration Intent
+   * Plan. `validated` is immutable; `compiled` and `result` are re-derived by
+   * `recompilePlan` whenever one of the user's answers changes. Null/absent
+   * for Mapping Proposal 1.0.0 answers (revisions, simulated legacy adapters).
+   */
+  plan?: PlanReceipt | null;
 }
 
 export type MappingChoice = "proposal" | "manual";

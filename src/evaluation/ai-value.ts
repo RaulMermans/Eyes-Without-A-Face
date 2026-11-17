@@ -63,7 +63,7 @@ export function scoreScenario(scenario: AiValueScenario, concepts: boolean, deta
     wrong: [],
     missed: [],
   };
-  const prepared = prepareTwin({ records: scenario.records, datasetLabel: "ai-value", seed: DEFAULT_TWIN_SEED, concepts });
+  const prepared = prepareTwin({ records: scenario.records, datasetLabel: "ai-value", seed: DEFAULT_TWIN_SEED, concepts, labelCategories: false });
   if (!prepared.ok) return { ...empty, failure: `twin-${prepared.stage}` };
   const draft = buildDisclosureDraft({ prepared: prepared.value, targetSchema: scenario.destination });
   if (!draft.ok) return { ...empty, failure: "disclosure" };

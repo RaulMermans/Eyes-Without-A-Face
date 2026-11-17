@@ -1,0 +1,1067 @@
+{
+  "scenarioId": "conference-registrations-to-badge-printing",
+  "split": "holdout",
+  "industry": "conference and event registration",
+  "sourceLanguage": "en",
+  "description": "Registration export of a fictional technology conference (abbreviated English snake_case, nested address) to be loaded into an on-site badge printing system.",
+  "fictional": true,
+  "completable": false,
+  "records": [
+    {
+      "order_no": "ORD-539354",
+      "buyer_email": "imogen.pemberton@ivorine.example.com",
+      "reg_status": "CONF",
+      "addr": {
+        "ctry": "IE",
+        "city": "Leeds"
+      },
+      "reg_dt": "07/27/2026",
+      "buyer_name": "Imogen Pemberton",
+      "tkt_type": "Early Bird",
+      "att_last": "Hollins",
+      "company": "  Ivorine Media",
+      "reg_id": "R560010",
+      "att_email": "imogen.hollins@ivorine.example.com",
+      "pay_status": "UNPAID",
+      "job_ttl": "UX Researcher",
+      "diet": "Vegetarian",
+      "upd_ts": "2026-11-24T17:26:16Z",
+      "att_first": "Imogen"
+    },
+    {
+      "order_no": "ORD-693026",
+      "buyer_email": "freya.greaves@emberfield.example.com",
+      "reg_status": "CXL",
+      "addr": {
+        "ctry": "US",
+        "city": "Austin"
+      },
+      "reg_dt": "05/20/2026",
+      "buyer_name": "Freya Greaves",
+      "tkt_type": "Standard",
+      "att_last": "Greaves",
+      "company": "Emberfield Ltd",
+      "reg_id": "R560013",
+      "att_email": "Freya.Greaves@emberfield.example.com",
+      "pay_status": "PAID",
+      "job_ttl": "Product Manager",
+      "diet": "None",
+      "upd_ts": "2026-05-04T13:43:32Z",
+      "att_first": "Freya"
+    },
+    {
+      "order_no": "ORD-586984",
+      "buyer_email": "leona.greaves@harrowgate.example.com",
+      "reg_status": "WL",
+      "addr": {
+        "ctry": "IE",
+        "city": "Dublin"
+      },
+      "reg_dt": "07/16/2026",
+      "buyer_name": "Leona Greaves",
+      "tkt_type": "VIP All Access",
+      "att_last": "Greaves",
+      "company": "  Harrowgate Supplies ",
+      "reg_id": "R560016",
+      "att_email": "rowan.greaves@harrowgate.example.com",
+      "pay_status": "PAID",
+      "job_ttl": "Solutions Architect",
+      "diet": "Halal",
+      "upd_ts": "2026-12-23T19:40:24Z",
+      "att_first": "Rowan"
+    },
+    {
+      "order_no": "ORD-136938",
+      "buyer_email": "saffron.ashdown@dunlace.example.com",
+      "reg_status": "PEND",
+      "addr": {
+        "ctry": "GB",
+        "city": "Rotterdam"
+      },
+      "reg_dt": "12/20/2026",
+      "buyer_name": "Saffron Ashdown",
+      "tkt_type": "Speaker Comp",
+      "att_last": "Ashdown",
+      "company": "Dunlace Partners",
+      "reg_id": "R560019",
+      "att_email": "saffron.ashdown@dunlace.example.com",
+      "pay_status": "REFUNDED",
+      "job_ttl": "Platform Engineer",
+      "diet": "Halal",
+      "upd_ts": "2026-07-13T21:19:31Z",
+      "att_first": "Saffron"
+    },
+    {
+      "order_no": "ORD-508161",
+      "buyer_email": "jasper.ingleby@lumenvale.example.com",
+      "reg_status": "PEND",
+      "addr": {
+        "ctry": "NL",
+        "city": "Dublin"
+      },
+      "reg_dt": "06/17/2026",
+      "buyer_name": "Jasper Ingleby",
+      "tkt_type": "Press",
+      "att_last": "Ingleby",
+      "company": "Lumenvale Energy",
+      "reg_id": "R560022",
+      "att_email": "Jasper.Ingleby@lumenvale.example.com",
+      "pay_status": "PAID",
+      "job_ttl": "UX Researcher",
+      "diet": "Vegetarian",
+      "upd_ts": "2026-02-19T09:43:18Z",
+      "att_first": "Jasper"
+    },
+    {
+      "order_no": "ORD-582102",
+      "buyer_email": "jasper.northcott@kestrel.example.com",
+      "reg_status": "PEND",
+      "addr": {
+        "ctry": "US",
+        "city": "Austin"
+      },
+      "reg_dt": "06/26/2026",
+      "buyer_name": "Jasper Northcott",
+      "tkt_type": "Exhibitor Staff",
+      "att_last": "Jessop",
+      "company": "Kestrel Ridge Foods",
+      "reg_id": "R560025",
+      "att_email": "Leona.Jessop@kestrel.example.com",
+      "pay_status": "COMP",
+      "job_ttl": "Head of Data",
+      "diet": "Vegetarian",
+      "upd_ts": "2026-04-26T08:54:13Z",
+      "att_first": "Leona"
+    },
+    {
+      "order_no": "ORD-763765",
+      "buyer_email": "freya.fairbank@ivorine.example.com",
+      "reg_status": "WL",
+      "addr": {
+        "ctry": "US",
+        "city": "Toronto"
+      },
+      "reg_dt": "05/24/2026",
+      "buyer_name": "Freya Fairbank",
+      "tkt_type": "Day Pass (Thu)",
+      "att_last": "Fairbank",
+      "company": null,
+      "reg_id": "R560028",
+      "att_email": "freya.fairbank@ivorine.example.com",
+      "pay_status": "PAID",
+      "job_ttl": "Head of Data",
+      "diet": "Halal",
+      "upd_ts": "2026-08-24T07:28:25Z",
+      "att_first": "Freya"
+    },
+    {
+      "order_no": "ORD-379961",
+      "buyer_email": "priya.merriman@harrowgate.example.com",
+      "reg_status": "PEND",
+      "addr": {
+        "ctry": "US",
+        "city": "Dublin"
+      },
+      "reg_dt": "06/17/2026",
+      "buyer_name": "Priya Merriman",
+      "tkt_type": "TEST - do not print",
+      "att_last": "Merriman",
+      "company": "  Harrowgate Supplies ",
+      "reg_id": "R560031",
+      "att_email": "priya.merriman@harrowgate.example.com",
+      "pay_status": "UNPAID",
+      "job_ttl": "Product Manager",
+      "diet": "None",
+      "upd_ts": "2026-08-16T14:49:04Z",
+      "att_first": "Priya"
+    },
+    {
+      "order_no": "ORD-165264",
+      "buyer_email": "declan.fairbank@brightmoor.example.com",
+      "reg_status": "WL",
+      "addr": {
+        "ctry": "NL",
+        "city": "Leeds"
+      },
+      "reg_dt": "05/22/2026",
+      "buyer_name": "Declan Fairbank",
+      "tkt_type": "Press",
+      "att_last": "Fairbank",
+      "company": "  Brightmoor Systems",
+      "reg_id": "R560034",
+      "att_email": "declan.fairbank@brightmoor.example.com",
+      "pay_status": "PAID",
+      "job_ttl": null,
+      "diet": "Vegetarian",
+      "upd_ts": "2026-02-02T16:39:44Z",
+      "att_first": "Declan"
+    },
+    {
+      "order_no": "ORD-750612",
+      "buyer_email": "ellis.kirkwood@juniper.example.com",
+      "reg_status": "CXL",
+      "addr": {
+        "ctry": "NL",
+        "city": "Toronto"
+      },
+      "reg_dt": "06/09/2026",
+      "buyer_name": "Ellis Kirkwood",
+      "tkt_type": "Day Pass (Thu)",
+      "att_last": "Kirkwood",
+      "company": "Juniper Quay Consulting",
+      "reg_id": "R560037",
+      "att_email": "Leona.Kirkwood@Juniper.example.com",
+      "pay_status": "REFUNDED",
+      "job_ttl": null,
+      "diet": "Gluten-free",
+      "upd_ts": "2026-09-19T10:34:48Z",
+      "att_first": "Leona"
+    },
+    {
+      "order_no": "ORD-572698",
+      "buyer_email": "hazel.lavery@juniper.example.com",
+      "reg_status": "CONF",
+      "addr": {
+        "ctry": "GB",
+        "city": "Austin"
+      },
+      "reg_dt": "03/14/2026",
+      "buyer_name": "Hazel Lavery",
+      "tkt_type": "Standard",
+      "att_last": "Everley",
+      "company": "Juniper Quay Consulting",
+      "reg_id": "R560040",
+      "att_email": "imogen.everley@juniper.example.com",
+      "pay_status": "PAID",
+      "job_ttl": null,
+      "diet": "None",
+      "upd_ts": "2026-03-23T07:51:36Z",
+      "att_first": "Imogen"
+    },
+    {
+      "order_no": "ORD-134086",
+      "buyer_email": "freya.calloway@harrowgate.example.com",
+      "reg_status": "PEND",
+      "addr": {
+        "ctry": "IE",
+        "city": "Rotterdam"
+      },
+      "reg_dt": "02/06/2026",
+      "buyer_name": "Freya Calloway",
+      "tkt_type": "Day Pass (Thu)",
+      "att_last": "Calloway",
+      "company": "Harrowgate Supplies",
+      "reg_id": "R560043",
+      "att_email": "freya.calloway@harrowgate.example.com",
+      "pay_status": "COMP",
+      "job_ttl": "UX Researcher",
+      "diet": "None",
+      "upd_ts": "2026-08-04T19:31:02Z",
+      "att_first": "Freya"
+    },
+    {
+      "order_no": "ORD-189990",
+      "buyer_email": "callum.pemberton@juniper.example.com",
+      "reg_status": "CONF",
+      "addr": {
+        "ctry": "GB",
+        "city": "Austin"
+      },
+      "reg_dt": "08/21/2026",
+      "buyer_name": "Callum Pemberton",
+      "tkt_type": "Standard",
+      "att_last": "Lavery",
+      "company": "  Juniper Quay Consulting ",
+      "reg_id": "R560046",
+      "att_email": "leona.lavery@juniper.example.com",
+      "pay_status": "REFUNDED",
+      "job_ttl": "Head of Data",
+      "diet": "Gluten-free",
+      "upd_ts": "2026-07-23T14:01:55Z",
+      "att_first": "Leona"
+    },
+    {
+      "order_no": "ORD-175763",
+      "buyer_email": "callum.denholm@brightmoor.example.com",
+      "reg_status": "WL",
+      "addr": {
+        "ctry": "NL",
+        "city": "Dublin"
+      },
+      "reg_dt": "02/07/2026",
+      "buyer_name": "Callum Denholm",
+      "tkt_type": "Early Bird",
+      "att_last": "Quarrie",
+      "company": null,
+      "reg_id": "R560049",
+      "att_email": "Declan.Quarrie@brightmoor.example.com",
+      "pay_status": "UNPAID",
+      "diet": "Halal",
+      "upd_ts": "2026-01-14T14:08:10Z",
+      "att_first": "Declan"
+    },
+    {
+      "order_no": "ORD-464188",
+      "buyer_email": "rowan.ingleby@lumenvale.example.com",
+      "reg_status": "CXL",
+      "addr": {
+        "ctry": "US",
+        "city": "Leeds"
+      },
+      "reg_dt": "02/20/2026",
+      "buyer_name": "Rowan Ingleby",
+      "tkt_type": "Early Bird",
+      "att_last": "Ingleby",
+      "company": "  Lumenvale Energy",
+      "reg_id": "R560052",
+      "att_email": "rowan.ingleby@lumenvale.example.com",
+      "pay_status": "UNPAID",
+      "job_ttl": null,
+      "diet": "Vegetarian",
+      "upd_ts": "2026-06-13T14:51:03Z",
+      "att_first": "Rowan"
+    },
+    {
+      "order_no": "ORD-276189",
+      "buyer_email": "owen.northcott@glenmark.example.com",
+      "reg_status": "PEND",
+      "addr": {
+        "ctry": "GB",
+        "city": "Leeds"
+      },
+      "reg_dt": "09/19/2026",
+      "buyer_name": "Owen Northcott",
+      "tkt_type": "Standard",
+      "att_last": "Lavery",
+      "company": "  Glenmark Analytics",
+      "reg_id": "R560055",
+      "att_email": "leona.lavery@glenmark.example.com",
+      "pay_status": "COMP",
+      "job_ttl": "Engineering Manager",
+      "diet": "Halal",
+      "upd_ts": "2026-06-20T16:58:42Z",
+      "att_first": "Leona"
+    },
+    {
+      "order_no": "ORD-550003",
+      "buyer_email": "imogen.quarrie@cobaltine.example.com",
+      "reg_status": "WL",
+      "addr": {
+        "ctry": "NL",
+        "city": "Leeds"
+      },
+      "reg_dt": "07/18/2026",
+      "buyer_name": "Imogen Quarrie",
+      "tkt_type": "Standard",
+      "att_last": "Pemberton",
+      "company": "Cobaltine Group",
+      "reg_id": "R560058",
+      "att_email": "imogen.pemberton@cobaltine.example.com",
+      "pay_status": "PAID",
+      "job_ttl": "UX Researcher",
+      "diet": "Halal",
+      "upd_ts": "2026-12-04T16:25:38Z",
+      "att_first": "Imogen"
+    },
+    {
+      "order_no": "ORD-630892",
+      "buyer_email": "nadia.jessop@cobaltine.example.com",
+      "reg_status": "PEND",
+      "addr": {
+        "ctry": "US",
+        "city": "Austin"
+      },
+      "reg_dt": "03/18/2026",
+      "buyer_name": "Nadia Jessop",
+      "tkt_type": "Press",
+      "att_last": "Jessop",
+      "company": "  Cobaltine Group ",
+      "reg_id": "R560061",
+      "att_email": "Nadia.Jessop@Cobaltine.example.com",
+      "pay_status": "PAID",
+      "job_ttl": null,
+      "diet": "Vegetarian",
+      "upd_ts": "2026-04-04T11:31:55Z",
+      "att_first": "Nadia"
+    },
+    {
+      "order_no": "ORD-534923",
+      "buyer_email": "marcus.fairbank@harrowgate.example.com",
+      "reg_status": "CONF",
+      "addr": {
+        "ctry": "GB",
+        "city": "Toronto"
+      },
+      "reg_dt": "03/15/2026",
+      "buyer_name": "Marcus Fairbank",
+      "tkt_type": "Standard",
+      "att_last": "Ashdown",
+      "company": "Harrowgate Supplies",
+      "reg_id": "R560064",
+      "att_email": "nadia.ashdown@harrowgate.example.com",
+      "pay_status": "PAID",
+      "job_ttl": "Product Manager",
+      "diet": "None",
+      "upd_ts": "2026-04-14T15:45:21Z",
+      "att_first": "Nadia"
+    },
+    {
+      "order_no": "ORD-418794",
+      "buyer_email": "marcus.everley@glenmark.example.com",
+      "reg_status": "CONF",
+      "addr": {
+        "ctry": "GB",
+        "city": "Leeds"
+      },
+      "reg_dt": "08/26/2026",
+      "buyer_name": "Marcus Everley",
+      "tkt_type": "Exhibitor Staff",
+      "att_last": "Merriman",
+      "company": "Glenmark Analytics   ",
+      "reg_id": "R560067",
+      "att_email": "amelia.merriman@glenmark.example.com",
+      "pay_status": "PAID",
+      "job_ttl": "Platform Engineer",
+      "diet": "None",
+      "upd_ts": "2026-02-03T18:02:47Z",
+      "att_first": "Amelia"
+    },
+    {
+      "order_no": "ORD-708474",
+      "buyer_email": "rowan.merriman@juniper.example.com",
+      "reg_status": "WL",
+      "addr": {
+        "ctry": "CA",
+        "city": "Dublin"
+      },
+      "reg_dt": "04/21/2026",
+      "buyer_name": "Rowan Merriman",
+      "tkt_type": "TEST - do not print",
+      "att_last": "Merriman",
+      "company": null,
+      "reg_id": "R560070",
+      "att_email": "rowan.merriman@juniper.example.com",
+      "pay_status": "REFUNDED",
+      "job_ttl": null,
+      "diet": "None",
+      "upd_ts": "2026-05-24T18:13:09Z",
+      "att_first": "Rowan"
+    },
+    {
+      "order_no": "ORD-939627",
+      "buyer_email": "rowan.brierley@kestrel.example.com",
+      "reg_status": "WL",
+      "addr": {
+        "ctry": "US",
+        "city": "Austin"
+      },
+      "reg_dt": "10/18/2026",
+      "buyer_name": "Rowan Brierley",
+      "tkt_type": "Early Bird",
+      "att_last": "Brierley",
+      "company": "Kestrel Ridge Foods",
+      "reg_id": "R560073",
+      "att_email": "Rowan.Brierley@Kestrel.example.com",
+      "pay_status": "PAID",
+      "job_ttl": null,
+      "diet": "Gluten-free",
+      "upd_ts": "2026-06-08T16:53:20Z",
+      "att_first": "Rowan"
+    },
+    {
+      "order_no": "ORD-145969",
+      "buyer_email": "hazel.everley@ivorine.example.com",
+      "reg_status": "CXL",
+      "addr": {
+        "ctry": "IE",
+        "city": "Dublin"
+      },
+      "reg_dt": "10/22/2026",
+      "buyer_name": "Hazel Everley",
+      "tkt_type": "TEST - do not print",
+      "att_last": "Everley",
+      "company": "  Ivorine Media ",
+      "reg_id": "R560076",
+      "att_email": "hazel.everley@ivorine.example.com",
+      "pay_status": "COMP",
+      "job_ttl": "Product Manager",
+      "diet": "None",
+      "upd_ts": "2026-07-24T22:07:36Z",
+      "att_first": "Hazel"
+    },
+    {
+      "order_no": "ORD-021597",
+      "buyer_email": "owen.merriman@harrowgate.example.com",
+      "reg_status": "CXL",
+      "addr": {
+        "ctry": "CA",
+        "city": "Toronto"
+      },
+      "reg_dt": "05/10/2026",
+      "buyer_name": "Owen Merriman",
+      "tkt_type": "Early Bird",
+      "att_last": "Merriman",
+      "company": "  Harrowgate Supplies",
+      "reg_id": "R560079",
+      "att_email": "owen.merriman@harrowgate.example.com",
+      "pay_status": "PAID",
+      "job_ttl": "Product Manager",
+      "diet": "None",
+      "upd_ts": "2026-02-21T13:52:45Z",
+      "att_first": "Owen"
+    },
+    {
+      "order_no": "ORD-860956",
+      "buyer_email": "saffron.fairbank@brightmoor.example.com",
+      "reg_status": "CONF",
+      "addr": {
+        "ctry": "US",
+        "city": "Dublin"
+      },
+      "reg_dt": "02/07/2026",
+      "buyer_name": "Saffron Fairbank",
+      "tkt_type": "Standard",
+      "att_last": "Pemberton",
+      "company": "Brightmoor Systems",
+      "reg_id": "R560082",
+      "att_email": "priya.pemberton@brightmoor.example.com",
+      "pay_status": "REFUNDED",
+      "diet": "None",
+      "upd_ts": "2026-07-21T15:43:27Z",
+      "att_first": "Priya"
+    },
+    {
+      "order_no": "ORD-419877",
+      "buyer_email": "ellis.calloway@glenmark.example.com",
+      "reg_status": "WL",
+      "addr": {
+        "ctry": "CA",
+        "city": "Dublin"
+      },
+      "reg_dt": "10/24/2026",
+      "buyer_name": "Ellis Calloway",
+      "tkt_type": "Early Bird",
+      "att_last": "Calloway",
+      "company": "Glenmark Analytics",
+      "reg_id": "R560085",
+      "att_email": "Ellis.Calloway@Glenmark.example.com",
+      "pay_status": "REFUNDED",
+      "job_ttl": "UX Researcher",
+      "diet": "Vegetarian",
+      "upd_ts": "2026-01-05T13:36:24Z",
+      "att_first": "Ellis"
+    },
+    {
+      "order_no": "ORD-207907",
+      "buyer_email": "saffron.kirkwood@dunlace.example.com",
+      "reg_status": "WL",
+      "addr": {
+        "ctry": "IE",
+        "city": "Rotterdam"
+      },
+      "reg_dt": "09/01/2026",
+      "buyer_name": "Saffron Kirkwood",
+      "tkt_type": "Standard",
+      "att_last": "Kirkwood",
+      "company": "  Dunlace Partners",
+      "reg_id": "R560088",
+      "att_email": "saffron.kirkwood@dunlace.example.com",
+      "pay_status": "PAID",
+      "job_ttl": "Platform Engineer",
+      "diet": "Halal",
+      "upd_ts": "2026-04-26T20:33:18Z",
+      "att_first": "Saffron"
+    },
+    {
+      "order_no": "ORD-279771",
+      "buyer_email": "jasper.everley@dunlace.example.com",
+      "reg_status": "CXL",
+      "addr": {
+        "ctry": "GB",
+        "city": "Toronto"
+      },
+      "reg_dt": "04/03/2026",
+      "buyer_name": "Jasper Everley",
+      "tkt_type": "Speaker Comp",
+      "att_last": "Everley",
+      "company": null,
+      "reg_id": "R560091",
+      "att_email": "Jasper.Everley@Dunlace.example.com",
+      "pay_status": "UNPAID",
+      "job_ttl": "Product Manager",
+      "diet": "None",
+      "upd_ts": "2026-01-15T11:01:19Z",
+      "att_first": "Jasper"
+    },
+    {
+      "order_no": "ORD-340991",
+      "buyer_email": "callum.hollins@kestrel.example.com",
+      "reg_status": "CONF",
+      "addr": {
+        "ctry": null,
+        "city": "Austin"
+      },
+      "reg_dt": "03/13/2026",
+      "buyer_name": "Callum Hollins",
+      "tkt_type": "Exhibitor Staff",
+      "att_last": "Ashdown",
+      "company": "Kestrel Ridge Foods",
+      "reg_id": "R560094",
+      "att_email": "callum.ashdown@kestrel.example.com",
+      "pay_status": "PAID",
+      "job_ttl": "Product Manager",
+      "diet": "Gluten-free",
+      "upd_ts": "2026-05-22T09:05:47Z",
+      "att_first": "Callum"
+    },
+    {
+      "order_no": "ORD-654358",
+      "buyer_email": "ellis.denholm@emberfield.example.com",
+      "reg_status": "WL",
+      "addr": {
+        "ctry": "GB",
+        "city": "Toronto"
+      },
+      "reg_dt": "09/20/2026",
+      "buyer_name": "Ellis Denholm",
+      "tkt_type": "Standard",
+      "att_last": "Fairbank",
+      "company": "Emberfield Ltd",
+      "reg_id": "R560097",
+      "att_email": "Freya.Fairbank@Emberfield.example.com",
+      "pay_status": "PAID",
+      "job_ttl": "UX Researcher",
+      "diet": "None",
+      "upd_ts": "2026-06-07T06:04:33Z",
+      "att_first": "Freya"
+    },
+    {
+      "order_no": "ORD-674062",
+      "buyer_email": "freya.northcott@juniper.example.com",
+      "reg_status": "CONF",
+      "addr": {
+        "ctry": "IE",
+        "city": "Austin"
+      },
+      "reg_dt": "06/27/2026",
+      "buyer_name": "Freya Northcott",
+      "tkt_type": "Early Bird",
+      "att_last": "Northcott",
+      "company": "Juniper Quay Consulting",
+      "reg_id": "R560100",
+      "att_email": "freya.northcott@juniper.example.com",
+      "pay_status": "PAID",
+      "job_ttl": "Head of Data",
+      "diet": "None",
+      "upd_ts": "2026-02-12T11:25:06Z",
+      "att_first": "Freya"
+    },
+    {
+      "order_no": "ORD-883332",
+      "buyer_email": "leona.quarrie@fernhollow.example.com",
+      "reg_status": "PEND",
+      "addr": {
+        "ctry": "NL",
+        "city": "Toronto"
+      },
+      "reg_dt": "07/11/2026",
+      "buyer_name": "Leona Quarrie",
+      "tkt_type": "VIP All Access",
+      "att_last": "Quarrie",
+      "company": "Fernhollow Design",
+      "reg_id": "R560103",
+      "att_email": "leona.quarrie@fernhollow.example.com",
+      "pay_status": "PAID",
+      "job_ttl": "UX Researcher",
+      "diet": "None",
+      "upd_ts": "2026-11-21T12:33:41Z",
+      "att_first": "Leona"
+    },
+    {
+      "order_no": "ORD-038341",
+      "buyer_email": "leona.ashdown@kestrel.example.com",
+      "reg_status": "CONF",
+      "addr": {
+        "ctry": null,
+        "city": "Dublin"
+      },
+      "reg_dt": "12/18/2026",
+      "buyer_name": "Leona Ashdown",
+      "tkt_type": "TEST - do not print",
+      "att_last": "Merriman",
+      "company": "  Kestrel Ridge Foods ",
+      "reg_id": "R560106",
+      "att_email": "priya.merriman@kestrel.example.com",
+      "pay_status": "REFUNDED",
+      "job_ttl": "Engineering Manager",
+      "diet": "Vegetarian",
+      "upd_ts": "2026-11-25T09:51:39Z",
+      "att_first": "Priya"
+    },
+    {
+      "order_no": "ORD-851552",
+      "buyer_email": "tobias.lavery@glenmark.example.com",
+      "reg_status": "CONF",
+      "addr": {
+        "ctry": "GB",
+        "city": "Leeds"
+      },
+      "reg_dt": "09/05/2026",
+      "buyer_name": "Tobias Lavery",
+      "tkt_type": "Early Bird",
+      "att_last": "Kirkwood",
+      "company": "Glenmark Analytics",
+      "reg_id": "R560109",
+      "att_email": "Rowan.Kirkwood@glenmark.example.com",
+      "pay_status": "REFUNDED",
+      "job_ttl": "Solutions Architect",
+      "diet": "None",
+      "upd_ts": "2026-09-23T21:22:44Z",
+      "att_first": "Rowan"
+    },
+    {
+      "order_no": "ORD-489071",
+      "buyer_email": "owen.brierley@emberfield.example.com",
+      "reg_status": "CONF",
+      "addr": {
+        "ctry": "NL",
+        "city": "Austin"
+      },
+      "reg_dt": "06/10/2026",
+      "buyer_name": "Owen Brierley",
+      "tkt_type": "Exhibitor Staff",
+      "att_last": "Brierley",
+      "company": null,
+      "reg_id": "R560112",
+      "att_email": "owen.brierley@emberfield.example.com",
+      "pay_status": "PAID",
+      "job_ttl": "Engineering Manager",
+      "diet": "None",
+      "upd_ts": "2026-01-19T22:56:20Z",
+      "att_first": "Owen"
+    },
+    {
+      "order_no": "ORD-253407",
+      "buyer_email": "marcus.jessop@dunlace.example.com",
+      "reg_status": "PEND",
+      "addr": {
+        "ctry": "IE",
+        "city": "Toronto"
+      },
+      "reg_dt": "07/28/2026",
+      "buyer_name": "Marcus Jessop",
+      "tkt_type": "Early Bird",
+      "att_last": "Hollins",
+      "company": "  Dunlace Partners",
+      "reg_id": "R560115",
+      "att_email": "declan.hollins@dunlace.example.com",
+      "pay_status": "PAID",
+      "diet": "Vegetarian",
+      "upd_ts": "2026-01-16T08:25:58Z",
+      "att_first": "Declan"
+    },
+    {
+      "order_no": "ORD-089292",
+      "buyer_email": "callum.calloway@kestrel.example.com",
+      "reg_status": "CONF",
+      "addr": {
+        "ctry": null,
+        "city": "Leeds"
+      },
+      "reg_dt": "05/28/2026",
+      "buyer_name": "Callum Calloway",
+      "tkt_type": "Press",
+      "att_last": "Lavery",
+      "company": "Kestrel Ridge Foods   ",
+      "reg_id": "R560118",
+      "att_email": "priya.lavery@kestrel.example.com",
+      "pay_status": "REFUNDED",
+      "job_ttl": "Solutions Architect",
+      "diet": "Gluten-free",
+      "upd_ts": "2026-01-19T11:54:16Z",
+      "att_first": "Priya"
+    },
+    {
+      "order_no": "ORD-380953",
+      "buyer_email": "tobias.brierley@glenmark.example.com",
+      "reg_status": "PEND",
+      "addr": {
+        "ctry": "US",
+        "city": "Austin"
+      },
+      "reg_dt": "05/22/2026",
+      "buyer_name": "Tobias Brierley",
+      "tkt_type": "TEST - do not print",
+      "att_last": "Brierley",
+      "company": "  Glenmark Analytics ",
+      "reg_id": "R560121",
+      "att_email": "Tobias.Brierley@glenmark.example.com",
+      "pay_status": "REFUNDED",
+      "job_ttl": "Product Manager",
+      "diet": "Vegetarian",
+      "upd_ts": "2026-12-05T17:26:35Z",
+      "att_first": "Tobias"
+    },
+    {
+      "order_no": "ORD-928668",
+      "buyer_email": "hazel.everley@glenmark.example.com",
+      "reg_status": "PEND",
+      "addr": {
+        "ctry": "NL",
+        "city": "Leeds"
+      },
+      "reg_dt": "11/08/2026",
+      "buyer_name": "Hazel Everley",
+      "tkt_type": "Early Bird",
+      "att_last": "Everley",
+      "company": "Glenmark Analytics",
+      "reg_id": "R560124",
+      "att_email": "hazel.everley@glenmark.example.com",
+      "pay_status": "REFUNDED",
+      "job_ttl": "CTO",
+      "diet": "Vegan",
+      "upd_ts": "2026-02-25T06:14:34Z",
+      "att_first": "Hazel"
+    },
+    {
+      "order_no": "ORD-324201",
+      "buyer_email": "callum.everley@dunlace.example.com",
+      "reg_status": "CONF",
+      "addr": {
+        "ctry": null,
+        "city": "Austin"
+      },
+      "reg_dt": "09/11/2026",
+      "buyer_name": "Callum Everley",
+      "tkt_type": "Press",
+      "att_last": "Everley",
+      "company": "Dunlace Partners",
+      "reg_id": "R560127",
+      "att_email": "ellis.everley@dunlace.example.com",
+      "pay_status": "PAID",
+      "job_ttl": "Product Manager",
+      "diet": "None",
+      "upd_ts": "2026-01-06T19:00:17Z",
+      "att_first": "Ellis"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "registration_id": {
+        "type": "string"
+      },
+      "badge_name": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string",
+        "format": "email"
+      },
+      "organization": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "job_title": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "badge_type": {
+        "type": "string",
+        "enum": [
+          "attendee",
+          "vip",
+          "speaker",
+          "press",
+          "exhibitor"
+        ]
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "confirmed",
+          "cancelled",
+          "waitlisted"
+        ]
+      },
+      "registered_on": {
+        "type": "string",
+        "format": "date"
+      },
+      "country": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "track": {
+        "type": "string",
+        "enum": [
+          "product",
+          "engineering",
+          "leadership"
+        ]
+      }
+    },
+    "required": [
+      "registration_id",
+      "badge_name",
+      "email",
+      "badge_type",
+      "status",
+      "track"
+    ]
+  },
+  "groundTruth": {
+    "registration_id": {
+      "source": "reg_id",
+      "transform": "copy",
+      "why": "one registration per attendee; order_no can cover several attendees"
+    },
+    "badge_name": {
+      "source": null,
+      "sources": [
+        "att_first",
+        "att_last"
+      ],
+      "transform": "concat",
+      "separator": " ",
+      "why": "badge shows the attendee first and last name, not the buyer"
+    },
+    "email": {
+      "source": "att_email",
+      "transform": "normalize_email",
+      "why": "attendee email, mixed case; buyer_email is whoever paid"
+    },
+    "organization": {
+      "source": "company",
+      "transform": "trim",
+      "why": "attendee company, padded in some rows"
+    },
+    "job_title": {
+      "source": "job_ttl",
+      "transform": "copy",
+      "why": "attendee job title"
+    },
+    "badge_type": {
+      "source": "tkt_type",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Early Bird": "attendee",
+        "Standard": "attendee",
+        "VIP All Access": "vip",
+        "Speaker Comp": "speaker",
+        "Press": "press",
+        "Exhibitor Staff": "exhibitor",
+        "Day Pass (Thu)": "attendee",
+        "TEST - do not print": null
+      },
+      "why": "ticket type decides the badge colour; the TEST ticket must never be printed"
+    },
+    "status": {
+      "source": "reg_status",
+      "transform": "map_enum",
+      "categoryMap": {
+        "CONF": "confirmed",
+        "CXL": "cancelled",
+        "WL": "waitlisted",
+        "PEND": null
+      },
+      "why": "registration state codes; PEND awaits confirmation; pay_status is payment"
+    },
+    "registered_on": {
+      "source": "reg_dt",
+      "transform": "parse_date",
+      "dateFormat": "MM/DD/YYYY",
+      "why": "registration date (US month-first); upd_ts is a modification stamp"
+    },
+    "country": {
+      "source": "addr.ctry",
+      "transform": "copy",
+      "why": "attendee country code"
+    },
+    "track": {
+      "source": null,
+      "transform": "none",
+      "why": "the export holds no track selection; diet and ticket type are not tracks"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "reg_id",
+        "order_no"
+      ],
+      "correctFor": "registration_id"
+    },
+    {
+      "kind": "two-email-fields",
+      "fields": [
+        "att_email",
+        "buyer_email"
+      ],
+      "correctFor": "email"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "att_last",
+        "buyer_name"
+      ],
+      "correctFor": "badge_name"
+    },
+    {
+      "kind": "account-status-vs-transaction-status",
+      "fields": [
+        "reg_status",
+        "pay_status"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "reg_dt",
+        "upd_ts"
+      ],
+      "correctFor": "registered_on"
+    }
+  ],
+  "sourceConcepts": {
+    "order_no": "transaction-id",
+    "buyer_email": "email",
+    "reg_status": "account-status",
+    "addr.ctry": "country",
+    "reg_dt": "created-date",
+    "buyer_name": "person-name",
+    "tkt_type": "category",
+    "att_last": "family-name",
+    "company": "organization-name",
+    "reg_id": "transaction-id",
+    "att_email": "email",
+    "pay_status": "payment-status",
+    "job_ttl": "job-title",
+    "diet": "category",
+    "addr.city": "city",
+    "upd_ts": "modified-date",
+    "att_first": "given-name"
+  },
+  "destinationConcepts": {
+    "registration_id": "transaction-id",
+    "badge_name": "person-name",
+    "email": "email",
+    "organization": "organization-name",
+    "job_title": "job-title",
+    "badge_type": "category",
+    "status": "account-status",
+    "registered_on": "created-date",
+    "country": "country",
+    "track": "category"
+  }
+}

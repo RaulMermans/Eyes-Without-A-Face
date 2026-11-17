@@ -6,6 +6,9 @@ import { PRIVATE_DATA_CANARY } from "../privacy/canaries.ts";
 import { findPrivateValueLeaks } from "../privacy/leak-scan.ts";
 import { FIREBASE_AI_LOGIC_API } from "../inference/firebase-api.ts";
 import { buildCloudPromptText, SDK_TRANSPORT_NOTE } from "../inference/prompts.ts";
+import { buildIntentPlanPromptText } from "../inference/intent-prompt.ts";
+import { INITIAL_PLANNER, type InitialPlanner } from "../inference/planner-selection.ts";
+import { effectiveInitialPlanner } from "../inference/harness-planner.ts";
 
 export const MAX_CLOUD_PAYLOAD_BYTES = 24_576;
 export const MAX_CLOUD_RESPONSE_BYTES = 65_536;
@@ -101,6 +104,21 @@ export function newRequestId(): string {
   return globalThis.crypto.randomUUID();
 }
 
+/**
+ * The outbound application prompt for one payload. Initial requests (1.1.0)
+ * carry the selected initial planner's instructions (Sprint 18B: prompt v5,
+ * ADR 0018); every other schema version keeps its frozen `buildCloudPromptText`
+ * instructions byte-for-byte.
+ */
+export function buildOutboundPromptText(
+  canonicalJson: string,
+  schemaVersion: CloudDisclosurePayload["schemaVersion"],
+  planner: InitialPlanner = INITIAL_PLANNER,
+): string {
+  if (schemaVersion === "1.1.0" && planner === "intent-plan-1") return buildIntentPlanPromptText(canonicalJson);
+  return buildCloudPromptText(canonicalJson, schemaVersion);
+}
+
 export function buildOutboundApplicationRequest(
   requestId: string,
   payload: CloudDisclosurePayload,
@@ -113,7 +131,7 @@ export function buildOutboundApplicationRequest(
     requestId,
     destination: payload.destination,
     purpose: payload.purpose,
-    prompt: buildCloudPromptText(canonicalJson, payload.schemaVersion),
+    prompt: buildOutboundPromptText(canonicalJson, payload.schemaVersion, effectiveInitialPlanner()),
     disclosurePayloadHash: payloadHash,
   };
 }

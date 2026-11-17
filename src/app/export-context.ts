@@ -20,7 +20,7 @@ import type { RealityCheckReport } from "../verification/reality-check.ts";
 import type { PreparedTwin } from "../workflow/pipeline.ts";
 import { computeWorkspaceSemantics, reportRecords } from "./semantic-context.ts";
 import { distinctLabels, guidedPolicy, isLocalMapping } from "./guided/field-plan.ts";
-import type { WorkspaceState } from "./workspace-state.ts";
+import type { ProposalState, WorkspaceState } from "./workspace-state.ts";
 
 export const APP_VERSION = "0.1.0";
 
@@ -38,6 +38,26 @@ export interface ExportCandidate {
   semanticContract: SemanticVerificationContract | null;
   revisionVerdict: RevisionVerdict | null;
   eligibility: ExportEligibility;
+  /**
+   * Sprint 18B (ADR 0018): destination fields of a plan-based mapping whose
+   * operation came from the user's answers (origin `user` or `gemini+user`).
+   * A count only; 0 or absent otherwise.
+   */
+  userDeclaredFields?: number;
+}
+
+/** Sprint 18B: destination fields of a compiled plan whose operation the user's answers completed. */
+export function userDeclaredFieldCount(proposal: ProposalState): number {
+  return proposal.plan?.compiled.fields.filter((field) => field.operationOrigin === "user" || field.operationOrigin === "gemini+user").length ?? 0;
+}
+
+/** Honest label of the active proposal-route mapping. A plan keeps its origin (Export Contract 1.1.0 is unchanged). */
+export function candidateLabel(proposal: ProposalState): string {
+  if (proposal.plan) {
+    const base = proposal.origin === "gemini-cloud" ? "Gemini plan" : proposal.origin === "manual-edit" ? "Locally edited plan" : "Simulated test plan";
+    return userDeclaredFieldCount(proposal) > 0 ? `${base}, completed with your answers` : base;
+  }
+  return proposal.origin === "gemini-cloud" ? "Gemini mapping (initial)" : proposal.origin === "manual-edit" ? "Locally edited mapping" : "Simulated test mapping";
 }
 
 /**
@@ -103,10 +123,12 @@ export function exportCandidates(workspace: WorkspaceState, prepared: PreparedTw
   if (accepted && proposal && workspace.mappingChoice === "proposal") {
     const executable = accepted.resolved.executable;
     const evidence = evidenceFor(workspace, prepared, executable, report);
+    const userDeclaredFields = userDeclaredFieldCount(proposal);
     candidates.push({
       id: "active",
       variant: "initial",
-      label: proposal.origin === "gemini-cloud" ? "Gemini mapping (initial)" : proposal.origin === "manual-edit" ? "Locally edited mapping" : "Simulated test mapping",
+      label: candidateLabel(proposal),
+      userDeclaredFields,
       origin: proposal.origin,
       aliasContract: accepted.converted.contract,
       executable,
@@ -280,5 +302,6 @@ export function packageInputFor(input: {
     privacy: privacyContext(workspace, prepared),
     app: { version: APP_VERSION, buildSha: input.buildSha },
     assets: input.assets,
+    userDeclaredFields: candidate.userDeclaredFields ?? 0,
   };
 }

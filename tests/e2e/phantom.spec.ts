@@ -2,6 +2,9 @@ import { expect, test, type Page } from "@playwright/test";
 import path from "node:path";
 import { attachProviderWatch, screenshotDir, openStage } from "./helpers.ts";
 
+/** LEGACY-PATH REGRESSION ONLY (Sprint 18B): this subject is independent of the initial planner, so it keeps the Sprint 3 Mapping Proposal path. */
+const LEGACY = { initialPlanner: "mapping-proposal-sprint3" } as const;
+
 const sprint3Shots = path.join(screenshotDir, "..", "sprint-3-screenshots");
 const PRIVATE_TERMS = [
   "PRIVATE_CANARY_PII_DO_NOT_SHARE",
@@ -281,7 +284,7 @@ test.describe("E2E-033 hidden failure", () => {
 
 test.describe("E2E-034 invalid AI proposal", () => {
   async function runWith(page: Page, harness: Record<string, unknown>): Promise<void> {
-    await boot(page, harness);
+    await boot(page, { ...LEGACY, ...harness });
     await loadSampleAndTwin(page);
     await approve(page);
     await page.getByTestId("continue-to-mapping").click();
@@ -359,7 +362,7 @@ test.describe("E2E-036 UX regression", () => {
     page.on("console", (message) => {
       if (message.type() === "error") consoleErrors.push(message.text());
     });
-    await boot(page);
+    await boot(page, { ...LEGACY, deriveProposal: true });
     await page.getByTestId("load-crm-sample").focus();
     await page.keyboard.press("Enter");
     await expect(page.getByTestId("source-profile")).toBeVisible();

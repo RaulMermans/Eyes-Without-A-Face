@@ -160,7 +160,8 @@ function detectDateFormat(values: string[]): { type: "date" | "datetime"; format
 /**
  * Profile an array of JSON records. Expected failures return `{ ok: false }`.
  */
-export function profileRecords(records: unknown): ProfileResult {
+/** `labelCategories: false` reproduces the pre-18B token-only category rule (historical replays only). */
+export function profileRecords(records: unknown, options: { labelCategories?: boolean } = {}): ProfileResult {
   if (!Array.isArray(records)) {
     return fail("NOT_AN_OBJECT", "Source must be an array of JSON objects.");
   }
@@ -172,15 +173,7 @@ export function profileRecords(records: unknown): ProfileResult {
   }
   const structural = inspectJsonValue(records, { maxDepth: PROFILE_LIMITS.maxDepth + 2 });
   if (structural.length > 0) {
-    return {
-      ok: false,
-      issues: structural.map((item) => ({
-        code: item.code,
-        severity: "error" as const,
-        path: item.path,
-        message: item.message,
-      })),
-    };
+    return { ok: false, issues: structuralIssues(structural) };
   }
   const bytes = safeJsonByteLength(records);
   if (bytes === null) {
@@ -210,7 +203,7 @@ export function profileRecords(records: unknown): ProfileResult {
 
   const fields: FieldProfile[] = [];
   for (const accumulator of [...accumulators.values()].sort((a, b) => a.path.localeCompare(b.path))) {
-    const field = finalize(accumulator, records.length, issues);
+    const field = finalize(accumulator, records.length, issues, options.labelCategories !== false);
     if (field) {
       fields.push(field);
     }
@@ -227,6 +220,42 @@ function fail(code: ProfileIssueCode, message: string): ProfileResult {
   return { ok: false, issues: [{ code, severity: "error", message }] };
 }
 
+/**
+ * Sprint 18B (source compatibility): a field named `__proto__`, `prototype`
+ * or `constructor` is refused (it could alter JavaScript objects in the
+ * engine). The refusal used to repeat once per record ("[0].constructor",
+ * "[1].constructor", … capped at 16) without saying what to do. It is now one
+ * issue per field path, naming the field and the fix. Nothing is renamed or
+ * dropped: the source stays refused until the user renames the field.
+ * Other structural issues keep their original wording.
+ */
+function structuralIssues(structural: ReturnType<typeof inspectJsonValue>): ProfileIssue[] {
+  const issues: ProfileIssue[] = [];
+  const reported = new Set<string>();
+  for (const item of structural) {
+    if (item.code !== "PROTOTYPE_POLLUTION") {
+      issues.push({ code: item.code, severity: "error", path: item.path, message: item.message });
+      continue;
+    }
+    // Structural path "[12].contact.constructor" → field path "contact.constructor" (record position dropped).
+    const fieldPath = item.path.replace(/^\[\d+\]\.?/, "");
+    const first = /^\[(\d+)\]/.exec(item.path)?.[1];
+    if (reported.has(fieldPath)) continue;
+    reported.add(fieldPath);
+    const name = fieldPath.split(".").at(-1) ?? fieldPath;
+    issues.push({
+      code: "PROTOTYPE_POLLUTION",
+      severity: "error",
+      path: fieldPath,
+      message:
+        `Field "${fieldPath}" (first seen in record ${Number(first ?? 0) + 1}) uses the reserved name "${name}". ` +
+        `EYES refuses the names __proto__, prototype and constructor because they can change how JavaScript objects behave. ` +
+        `Rename this field in your source (for example "${name.replace(/^_+|_+$/g, "")}_name") and load it again.`,
+    });
+  }
+  return issues;
+}
+
 function collect(
   record: Record<string, unknown>,
   prefix: string,
@@ -238,7 +267,11 @@ function collect(
       code: "NESTING_TOO_DEEP",
       severity: "error",
       path: prefix,
-      message: `Objects nested deeper than ${PROFILE_LIMITS.maxDepth} levels are not supported.`,
+      // Sprint 18B: say where and what to do. The record itself is level 1, so at most
+      // maxDepth - 1 nested objects fit inside a record (e.g. "a.b.c.value").
+      message:
+        `Object "${prefix}" is nested ${depth - 1} levels inside a record; at most ${PROFILE_LIMITS.maxDepth - 1} nested object levels are supported ` +
+        `(objects nested deeper than ${PROFILE_LIMITS.maxDepth} levels including the record). Move the fields of "${prefix}" up one level in your source and load it again.`,
     };
   }
   for (const key of Object.keys(record)) {
@@ -278,7 +311,7 @@ function collect(
   return null;
 }
 
-function finalize(accumulator: Accumulator, recordCount: number, issues: ProfileIssue[]): FieldProfile | null {
+function finalize(accumulator: Accumulator, recordCount: number, issues: ProfileIssue[], labelCategories: boolean): FieldProfile | null {
   const types = new Set(accumulator.types);
   types.delete("null");
   // Container-only paths (always objects) are represented by their children.
@@ -415,10 +448,14 @@ function finalize(accumulator: Accumulator, recordCount: number, issues: Profile
   for (const value of strings) {
     counts.set(value, (counts.get(value) ?? 0) + 1);
   }
+  const labels = [...counts.keys()];
+  const fewLabels = counts.size <= PROFILE_LIMITS.maxCategories && labels.every((value) => value.length <= PROFILE_LIMITS.maxCategoryLength);
+  // Sprint 18B: real exports use labels like "Marketing Qualified Lead", "Básico", "ALT-IMPORT 2019". They are
+  // categories when they repeat (≥ 2 values per label on average), which keeps names and identifiers out.
   const categoryLike =
     strings.length >= 2 &&
-    counts.size <= PROFILE_LIMITS.maxCategories &&
-    [...counts.keys()].every((value) => CATEGORY_TOKEN.test(value) && value.length <= PROFILE_LIMITS.maxCategoryLength);
+    fewLabels &&
+    (labels.every((value) => CATEGORY_TOKEN.test(value)) || (labelCategories && counts.size * 2 <= strings.length && labels.every((value) => value.trim() !== "")));
   if (categoryLike) {
     field.type = "enum";
     field.categories = [...counts.entries()]

@@ -4,7 +4,8 @@ import path from "node:path";
 import { attachProviderWatch } from "./helpers.ts";
 
 /**
- * Sprint 13 — the guided flow: Your data → Destination → Result.
+ * Sprint 13 — the guided flow. Sprint 18B (ADR 0018 §9): Connect → Destination → Generate → Verify → Deliver,
+ * with the intent planner (the labelled simulated test planner here).
  * The cloud adapter is the labeled deterministic TEST adapter (no network).
  * These tests prove the journey, the gates and that what the guided view says
  * matches canonical state — not model quality.
@@ -24,20 +25,26 @@ async function cloudCalls(page: Page): Promise<number> {
   return page.evaluate(() => window.__EYES_WITHOUT_A_FACE_TEST__?.cloudCalls ?? 0);
 }
 
+/** Sprint 18B: the user's one answer on the Helpdesk demo — what each account state means for "status". */
+async function answerStatus(page: Page): Promise<void> {
+  await expect(page.getByTestId("plan-review")).toBeVisible();
+  for (const [label, value] of Object.entries({ active_customer: "active", inactive_customer: "inactive", prospect: "prospect" })) {
+    await page.getByTestId(`translate-status-${label}`).selectOption(value);
+  }
+}
+
 async function toApproval(page: Page, demo: "csv" | "xlsx" | "json" = "csv"): Promise<void> {
   await page.getByTestId(`demo-${demo}`).click();
   await expect(page.getByTestId("source-summary")).toBeVisible();
   await page.getByTestId("data-continue").click();
   await expect(page.getByTestId("guided-destination")).toBeVisible();
-  // Sprint 17A: Helpdesk's required status needs the account states; without them the request is not
-  // offered for approval. The user opts in to share that one field's names (explicit, per field).
-  await page.getByTestId("share-categories-account_state").check();
+  // Sprint 18B (ADR 0018 §8): withheld category names no longer block the request.
   await page.getByTestId("guided-build").click();
   await expect(page.getByTestId("approval-card")).toBeVisible();
 }
 
 test.describe("E2E-130 guided journey", () => {
-  test("three moments: data, destination, result — with one contextual approval", async ({ page }) => {
+  test("five steps: connect, destination, generate, verify, deliver — with one contextual approval", async ({ page }) => {
     const providerRequests = attachProviderWatch(page);
     await boot(page);
     await expect(page.getByRole("heading", { level: 2, name: "Where is your data?" })).toBeVisible();
@@ -59,8 +66,6 @@ test.describe("E2E-130 guided journey", () => {
     await expect(page.getByTestId("destination-summary-fields")).toContainText("createdAt");
     await page.screenshot({ path: path.join(shots, "03-destination.png"), fullPage: true });
 
-    // Sprint 17A: share the status names first (explicit opt-in); otherwise the request is not offered.
-    await page.getByTestId("share-categories-account_state").check();
     await page.getByTestId("guided-build").click();
     // Build stopped at the approval: nothing approved, nothing sent.
     await expect(page.getByTestId("guided-status")).toHaveAttribute("data-status", "approval");
@@ -76,6 +81,7 @@ test.describe("E2E-130 guided journey", () => {
     await page.screenshot({ path: path.join(shots, "04-approval.png"), fullPage: true });
 
     await page.getByTestId("guided-approve").click();
+    await answerStatus(page);
     await expect(page.getByTestId("guided-outcome")).toBeVisible();
     expect(await cloudCalls(page)).toBe(1);
     const state = await page.getByTestId("guided-outcome").getAttribute("data-state");
@@ -88,7 +94,10 @@ test.describe("E2E-130 guided journey", () => {
     if (meaning !== "true") await expect(page.getByTestId("check-meaning")).toContainText("not verified");
     await page.screenshot({ path: path.join(shots, "05-result.png"), fullPage: true });
 
-    // Export: the same package and privacy scan as before.
+    // Export: the same package and privacy scan as before, in Deliver.
+    await page.getByTestId("verify-continue").click();
+    const labels = page.getByTestId("package-labels-include");
+    if ((await labels.count()) > 0) await labels.check();
     if (state === "PARTIALLY_VERIFIED") await page.getByTestId("export-draft-confirm").check();
     const downloadPromise = page.waitForEvent("download");
     await page.getByTestId("export-integration").click();
@@ -111,15 +120,16 @@ test.describe("E2E-130 guided journey", () => {
   test("transformed data is a separate, explicit download of passing records only", async ({ page }) => {
     // A fixed, correct proposal from the labeled test adapter (aliases of the JSON demo, default seed),
     // for the enum-free Billing destination.
+    const ready = (target: string, from: string, transform: string, extra: Record<string, unknown> = {}) => ({ target, status: "ready", from: [from], transform, confidence: "high", evidence: ["meaning"], missing: [], ...extra });
     await boot(page, {
-      cloudOutput: {
-        operations: [
-          { op: "copy", from: "f_05", to: "customerRef" },
-          { op: "normalize_email", from: "f_01", to: "billingEmail" },
-          { op: "trim", from: "f_02", to: "companyName" },
-          { op: "parse_date", from: "f_06", to: "customerSince", params: { inputFormat: "YYYY-MM-DD" } },
+      planOutput: {
+        fields: [
+          ready("customerRef", "f_05", "copy"),
+          ready("billingEmail", "f_01", "normalize_email"),
+          ready("companyName", "f_02", "trim"),
+          ready("customerSince", "f_06", "parse_date", { inputFormat: "YYYY-MM-DD" }),
         ],
-        rationale: "Fixed E2E proposal served by the simulated test adapter.",
+        summary: "Fixed E2E plan served by the simulated test adapter.",
       },
     });
     await page.getByTestId("demo-json").click();
@@ -129,9 +139,10 @@ test.describe("E2E-130 guided journey", () => {
     await expect(page.getByTestId("approval-card")).toBeVisible();
     await page.getByTestId("guided-approve").click();
     await expect(page.getByTestId("guided-outcome")).toBeVisible();
-    await page.getByTestId("guided-preview").locator("summary").click();
     const transformed = Number(await page.getByTestId("guided-count-transformed").innerText());
     expect(transformed).toBe(3);
+    await page.getByTestId("verify-continue").click();
+    await page.getByTestId("guided-preview").locator("summary").click();
     await page.screenshot({ path: path.join(shots, "05b-result-verified.png"), fullPage: true });
     const downloadPromise = page.waitForEvent("download");
     await page.getByTestId("download-transformed-json").click();
@@ -213,7 +224,7 @@ test.describe("E2E-132 approvals stay explicit", () => {
     const firstHash = await page.getByTestId("approval-card").getAttribute("data-payload-hash");
     await page.getByTestId("step-destination").click();
     await page.getByTestId("destination-marketing").check();
-    await page.getByTestId("step-result").isDisabled();
+    await expect(page.getByTestId("step-verify")).toBeDisabled();
     await page.getByTestId("guided-build").click();
     await expect(page.getByTestId("approval-card")).toBeVisible();
     const secondHash = await page.getByTestId("approval-card").getAttribute("data-payload-hash");
@@ -354,6 +365,7 @@ test.describe("E2E-134 accessibility and mobile", () => {
     expect(await overflow()).toBeLessThanOrEqual(1);
     await page.screenshot({ path: path.join(shots, "m02-approval.png"), fullPage: true });
     await page.getByTestId("guided-approve").click();
+    await answerStatus(page);
     await expect(page.getByTestId("guided-outcome")).toBeVisible();
     expect(await overflow()).toBeLessThanOrEqual(1);
     await page.screenshot({ path: path.join(shots, "m03-result.png"), fullPage: true });
@@ -367,6 +379,6 @@ test.describe("E2E-134 accessibility and mobile", () => {
     await expect(page.getByTestId("guided-status")).toHaveAttribute("data-status", "generating");
     const animation = await page.locator(".status-pulse").evaluate((element) => getComputedStyle(element).animationName);
     expect(animation).toBe("none");
-    await expect(page.getByTestId("guided-outcome")).toBeVisible({ timeout: 10_000 });
+    await expect(page.getByTestId("plan-review")).toBeVisible({ timeout: 10_000 });
   });
 });

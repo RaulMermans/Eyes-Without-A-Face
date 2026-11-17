@@ -27,6 +27,9 @@ interface EyesTestHarness {
   cloudOutput?: unknown;
   cloudOutputs?: unknown[];
   deriveProposal?: boolean;
+  planOutput?: unknown;
+  planOutputs?: unknown[];
+  planMode?: "derive" | "malformed" | "hallucinated-alias";
   rawCloudText?: string;
   malformedCloudOutput?: unknown;
   cloudErrorCode?:
@@ -44,6 +47,8 @@ interface EyesTestHarness {
   cloudRawError?: string;
   cloudFailCalls?: number[];
   cloudDelayMs?: number;
+  /** LEGACY-PATH REGRESSION ONLY: dev builds use the Sprint 3 initial planner (src/inference/harness-planner.ts). */
+  initialPlanner?: "mapping-proposal-sprint3";
 }
 
 interface Window {
