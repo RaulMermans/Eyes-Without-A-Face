@@ -87,6 +87,17 @@ const SETS = {
     statement:
       "Frozen before any model saw the 18D holdout. Candidate (RB + local) and baseline (A + base) fixed at the listed code hashes. The engineer never opened the holdout or the author's holdout specs; the frozen scorer emits aggregates and per-index rows only.",
   },
+  f: {
+    out: "docs/evidence/sprint-18f/freeze.json",
+    root: "tests/fixtures/eval-18f",
+    preregistration: "docs/evaluation/sprint-18f-confirmatory.md",
+    experiment: "sprint-18f-confirmatory",
+    dev: false,
+    sealedGlob: "author/specs_holdout_",
+    code: ["src/evaluation/eval-18d.ts", "src/evaluation/eval-18c.ts", "src/plan/compile.ts", "src/plan/agreement.ts", "src/matching/local-matcher.ts", "src/matching/lexicon.ts", "src/app/guided/field-plan.ts", "src/inference/intent-prompt.ts", "src/twin/target-semantics.ts", "src/semantics/verify.ts", "tests/evaluation/eval-18f.test.ts"],
+    statement:
+      "Frozen before any model saw the eval-18f holdout. Baseline (A + base) and candidate (RB + local, ADR 0022) fixed at the listed code hashes. The holdout was written by a new independent author after the ADR 0022 implementation; the engineer never opened it or the author's holdout specs.",
+  },
 };
 const setIndex = process.argv.indexOf("--set");
 const setName = setIndex >= 0 ? process.argv[setIndex + 1] : "18a";
@@ -105,8 +116,17 @@ const list = (dir) =>
     .sort()
     .map((name) => path.join(root, dir, name));
 
+function sealedFiles() {
+  const named = (SET.sealed ?? []).map((name) => path.join(root, name));
+  if (!SET.sealedGlob) return named;
+  const dir = path.join(root, path.dirname(SET.sealedGlob));
+  const prefix = path.basename(SET.sealedGlob);
+  const globbed = fs.existsSync(dir) ? fs.readdirSync(dir).filter((name) => name.startsWith(prefix)).sort().map((name) => path.join(dir, name)) : [];
+  return [...named, ...globbed];
+}
+
 export function holdoutDigest() {
-  const files = [...list("holdout"), ...(SET.sealed ?? []).map((name) => path.join(root, name))];
+  const files = [...list("holdout"), ...sealedFiles()];
   return { count: files.length, sha256: sha(files.map((file) => sha(fs.readFileSync(file))).join("\n")) };
 }
 
@@ -132,6 +152,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     preregistration: { path: preregistration, sha256AboveResults: preregistrationDigest() },
     files: Object.fromEntries([path.join(root, "README.md"), ...(SET.dev ? list("dev") : []), ...(SET.listed ?? []).map((name) => path.join(root, name)), ...(SET.code ?? [])].map((file) => [file, sha(fs.readFileSync(file))])),
     holdout: holdoutDigest(),
+    sealed: sealedFiles(),
     amendments: [...(previous?.amendments ?? [])],
   };
   if (amendIndex >= 0) manifest.amendments.push({ at: new Date().toISOString(), reason: process.argv[amendIndex + 1] ?? "unspecified" });

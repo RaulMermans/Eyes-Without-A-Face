@@ -41,20 +41,25 @@ const debugToken = process.env.EYES_APPCHECK_DEBUG_TOKEN ?? "";
 // Sets: 18a (G0/G1, Sprint 18A), a5 (P0/P1, Sprint 18A.5 planner; docs/evaluation/sprint-18a5-planner.md)
 // and b (P0/P2, Sprint 18B intent plan; docs/evaluation/sprint-18b-intent-plan.md, scored by scripts/eval-18b.mjs).
 // Set c (P0/P1, Sprint 18C; docs/evaluation/sprint-18c-reliability.md, scored by scripts/eval-18c.mjs).
-const set = (["a5", "b", "c", "d"] as const).find((name) => name === process.env.EYES_AI_VALUE_SET) ?? "18a";
+const rawSet = (["a5", "b", "c", "d", "f"] as const).find((name) => name === process.env.EYES_AI_VALUE_SET) ?? "18a";
+// Set f (Sprint 18F confirmatory) runs exactly like set d stage 2, on the fresh eval-18f holdout.
+const setF = rawSet === "f";
+const set = setF ? ("d" as const) : rawSet;
 // Set d (Sprint 18D): EYES_AI_VALUE_STAGE=1 runs the DEV pool (18B + 18C + 18D dev) live; stage 2 the 18D holdout.
-const stage = set === "d" ? (process.env.EYES_AI_VALUE_STAGE === "2" ? 2 : 1) : 0;
+const stage = set === "d" ? (setF || process.env.EYES_AI_VALUE_STAGE === "2" ? 2 : 1) : 0;
 const DEV_POOL_18D = ["tests/fixtures/eval-18b/dev", "tests/fixtures/eval-18c/dev", "tests/fixtures/eval-18d/dev"];
 // Set c: 1 = the first request; 2 = the one approved recovery request, run only for the indexes in EYES_AI_VALUE_ONLY (1-based).
 const attempt = Number(process.env.EYES_AI_VALUE_ATTEMPT ?? "1");
 const only = (process.env.EYES_AI_VALUE_ONLY ?? "").split(",").filter(Boolean).map(Number);
 const evidencePath =
   process.env.EYES_LIVE_EVIDENCE ??
-  (set === "d" ? `docs/evidence/sprint-18d/stage${stage}-live.json` : set === "c" ? "docs/evidence/sprint-18c/reliability-live.json" : set === "a5" ? "docs/evidence/sprint-18a5/planner-live.json" : set === "b" ? "docs/evidence/sprint-18b/intent-plan-live.json" : "docs/evidence/sprint-18a/ai-value-live.json");
+  (setF ? "docs/evidence/sprint-18f/live.json" : set === "d" ? `docs/evidence/sprint-18d/stage${stage}-live.json` : set === "c" ? "docs/evidence/sprint-18c/reliability-live.json" : set === "a5" ? "docs/evidence/sprint-18a5/planner-live.json" : set === "b" ? "docs/evidence/sprint-18b/intent-plan-live.json" : "docs/evidence/sprint-18a/ai-value-live.json");
 // Rehearsals may use the dev split (EYES_AI_VALUE_SPLIT=dev); the real run is always the holdout.
 const split = stage === 1 || (process.env.EYES_AI_VALUE_DRY === "1" && process.env.EYES_AI_VALUE_SPLIT === "dev") ? "dev" : "holdout";
 const root =
-  set === "d"
+  setF
+    ? "tests/fixtures/eval-18f/holdout"
+    : set === "d"
     ? `tests/fixtures/eval-18d/${split}`
     : set === "c"
     ? `tests/fixtures/eval-18c/${split}`
@@ -65,7 +70,7 @@ const root =
       : set === "a5"
         ? "tests/fixtures/ai-value-18a5/holdout"
         : "tests/fixtures/ai-value-18a/holdout";
-const scenarioCount = set === "d" ? (stage === 1 ? 14 : split === "holdout" ? 20 : 6) : set === "c" ? (split === "holdout" ? 16 : 4) : split === "holdout" ? 10 : set === "b" ? 4 : 6;
+const scenarioCount = setF ? 24 : set === "d" ? (stage === 1 ? 14 : split === "holdout" ? 20 : 6) : set === "c" ? (split === "holdout" ? 16 : 4) : split === "holdout" ? 10 : set === "b" ? 4 : 6;
 /** Rehearsal: run everything up to an enabled Send button, send nothing, write no evidence. */
 const dryRun = process.env.EYES_AI_VALUE_DRY === "1";
 
