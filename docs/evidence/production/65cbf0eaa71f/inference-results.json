@@ -1,0 +1,82 @@
+[
+  {
+    "check": "S14-REC-3",
+    "destination": "helpdesk",
+    "at": "2026-11-18T20:03:14.224Z",
+    "model": "gemini-3.5-flash-lite",
+    "baseURL": "https://eyes-without-a-face-b7281.web.app",
+    "nanoMs": 31479,
+    "nanoRows": 6,
+    "requestsAfterNano": 0,
+    "status": "draft",
+    "questionsAnswered": 1,
+    "outcomeState": "PARTIALLY_VERIFIED",
+    "origin": "· MAPPING: REAL GEMINI OUTPUT · IN_CLOUD",
+    "transformed": "3",
+    "attention": "0",
+    "structure": "true",
+    "meaning": "unknown",
+    "understanding": "nano-used",
+    "error": "locator.click: Target page, context or browser has been closed",
+    "requests": 1,
+    "leaks": [],
+    "answers": [
+      "{\"fields\":[{\"target\":\"id\",\"status\":\"ready\",\"from\":[\"f_05\"],\"transform\":\"copy\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\"],\"missing\":[],\"alternatives\":[]},{\"target\":\"email\",\"status\":\"ready\",\"from\":[\"f_01\"],\"transform\":\"normalize_email\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\",\"format\",\"examples\"],\"missing\":[],\"alternatives\":[]},{\"target\":\"status\",\"status\":\"needs_clarification\",\"from\":[\"f_03\"],\"transform\":\"map_enum\",\"confidence\":\"medium\",\"evidence\":[\"meaning\",\"type\",\"category-labels\"],\"missing\":[\"business-rule\"],\"alternatives\":[]},{\"target\":\"createdAt\",\"status\":\"ready\",\"from\":[\"f_06\"],\"transform\":\"parse_date\",\"inputFormat\":\"YYYY-MM-DD\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\",\"format\",\"examples\"],\"missing\":[],\"alternatives\":[]},{\"target\":\"organization\",\"status\":\"ready\",\"from\":[\"f_02\"],\"transform\":\"trim\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\",\"examples\"],\"missing\":[],\"alternatives\":[]}],\"summary\":\"Proposed mapping of source fields to destination schema with enum clarification needed for status.\"}"
+    ],
+    "attestation": [],
+    "cloudFailure": "page-closed"
+  },
+  {
+    "check": "S14-REC-3",
+    "destination": "helpdesk",
+    "at": "2026-11-18T20:07:48.470Z",
+    "model": "gemini-3.5-flash-lite",
+    "baseURL": "https://eyes-without-a-face-b7281.web.app",
+    "nanoMs": 29407,
+    "nanoRows": 6,
+    "requestsAfterNano": 0,
+    "status": "draft",
+    "questionsAnswered": 1,
+    "outcomeState": "PARTIALLY_VERIFIED",
+    "origin": "· MAPPING: REAL GEMINI OUTPUT · IN_CLOUD",
+    "transformed": "3",
+    "attention": "0",
+    "structure": "true",
+    "meaning": "unknown",
+    "understanding": "nano-used",
+    "error": "locator.click: Target page, context or browser has been closed",
+    "requests": 1,
+    "leaks": [],
+    "answers": [
+      "{\"fields\":[{\"target\":\"id\",\"status\":\"ready\",\"from\":[\"f_05\"],\"transform\":\"copy\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\"],\"missing\":[],\"alternatives\":[]},{\"target\":\"email\",\"status\":\"ready\",\"from\":[\"f_01\"],\"transform\":\"normalize_email\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\",\"format\"],\"missing\":[],\"alternatives\":[]},{\"target\":\"status\",\"status\":\"needs_clarification\",\"from\":[\"f_03\"],\"transform\":\"map_enum\",\"confidence\":\"medium\",\"evidence\":[\"meaning\",\"type\",\"category-labels\"],\"missing\":[\"business-rule\"],\"alternatives\":[]},{\"target\":\"createdAt\",\"status\":\"ready\",\"from\":[\"f_06\"],\"transform\":\"parse_date\",\"inputFormat\":\"YYYY-MM-DD\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\",\"format\"],\"missing\":[],\"alternatives\":[]},{\"target\":\"organization\",\"status\":\"ready\",\"from\":[\"f_02\"],\"transform\":\"trim\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\"],\"missing\":[],\"alternatives\":[]}],\"summary\":\"Proposed mapping of source fields to destination schema with enum clarification needed.\"}"
+    ],
+    "attestation": [],
+    "cloudFailure": "page-closed"
+  },
+  {
+    "check": "S14-REC-3",
+    "destination": "helpdesk",
+    "at": "2026-11-18T20:15:18.313Z",
+    "model": "gemini-3.5-flash-lite",
+    "baseURL": "https://eyes-without-a-face-b7281.web.app",
+    "nanoMs": 15230,
+    "nanoRows": 6,
+    "requestsAfterNano": 0,
+    "status": "draft",
+    "questionsAnswered": 1,
+    "outcomeState": "PARTIALLY_VERIFIED",
+    "origin": "· MAPPING: REAL GEMINI OUTPUT · IN_CLOUD",
+    "transformed": "3",
+    "attention": "0",
+    "structure": "true",
+    "meaning": "unknown",
+    "understanding": "nano-used",
+    "exportVerify": "exit 0",
+    "requests": 1,
+    "leaks": [],
+    "answers": [
+      "{\"fields\":[{\"target\":\"id\",\"status\":\"ready\",\"from\":[\"f_05\"],\"transform\":\"copy\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\"],\"missing\":[],\"alternatives\":[\"f_02\"]},{\"target\":\"email\",\"status\":\"ready\",\"from\":[\"f_01\"],\"transform\":\"normalize_email\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\",\"format\"],\"missing\":[],\"alternatives\":[\"f_04\"]},{\"target\":\"status\",\"status\":\"needs_clarification\",\"from\":[\"f_03\"],\"transform\":\"map_enum\",\"confidence\":\"medium\",\"evidence\":[\"meaning\",\"type\",\"category-labels\"],\"missing\":[\"business-rule\"],\"alternatives\":[\"f_04\"]},{\"target\":\"createdAt\",\"status\":\"ready\",\"from\":[\"f_06\"],\"transform\":\"parse_date\",\"inputFormat\":\"YYYY-MM-DD\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\",\"format\"],\"missing\":[],\"alternatives\":[\"f_04\"]},{\"target\":\"organization\",\"status\":\"ready\",\"from\":[\"f_02\"],\"transform\":\"trim\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\"],\"missing\":[],\"alternatives\":[\"f_04\"]}],\"summary\":\"Integration plan mapping source field aliases to destination schema fields with appropriate transformations.\"}"
+    ],
+    "attestation": []
+  }
+]

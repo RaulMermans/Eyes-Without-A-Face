@@ -82,7 +82,14 @@ async function settle(page: import("@playwright/test").Page): Promise<string | n
 
 /** Download the reusable integration and run `node run.mjs verify` in a clean directory with only PATH set. */
 async function exportAndVerify(page: import("@playwright/test").Page): Promise<string> {
+  // Sprint 18B: the package is downloaded on the Deliver step.
+  if ((await page.getByTestId("export-integration").count()) === 0 && (await page.getByTestId("verify-continue").count()) > 0) {
+    await page.getByTestId("verify-continue").click();
+    await expect(page.locator("#deliver-heading")).toBeVisible();
+  }
   if ((await page.getByTestId("export-draft-confirm").count()) > 0) await page.getByTestId("export-draft-confirm").check();
+  // Shared category names enter the package only after the explicit per-field opt-in (Sprint 15), as E2E-180 does.
+  if ((await page.getByTestId("package-labels-include").count()) > 0) await page.getByTestId("package-labels-include").check();
   const downloadPromise = page.waitForEvent("download");
   await page.getByTestId("export-integration").click();
   const zip = await (await downloadPromise).path();
@@ -96,6 +103,33 @@ async function exportAndVerify(page: import("@playwright/test").Page): Promise<s
   } catch (error) {
     return `exit ${(error as { status?: number }).status ?? "?"}`;
   }
+}
+
+/** Sprint 18F: answer the questions EYES asks about the helpdesk demo, truthfully (the demo's documented mapping, as P-024). */
+const DEMO_FIELDS: Record<string, string> = { id: "customer_id", email: "email_address", createdAt: "joined_at", organization: "company_name", status: "account_state" };
+const DEMO_STATUS: Record<string, string> = { active_customer: "active", inactive_customer: "inactive", prospect: "prospect" };
+async function answerDemoQuestions(page: import("@playwright/test").Page): Promise<number> {
+  let answered = 0;
+  for (let round = 0; round < 8; round += 1) {
+    if ((await page.getByTestId("guided-outcome").count()) > 0) break;
+    const ids = await page.locator('section[data-testid^="clarify-"]').evaluateAll((items) => items.map((item) => item.getAttribute("data-testid") ?? ""));
+    if (ids.length === 0) break;
+    const id = ids[0]!;
+    const target = Object.keys(DEMO_FIELDS).find((name) => id.endsWith(`-${name}`));
+    if (!target) break;
+    answered += 1;
+    if (id.startsWith("clarify-translate-categories-")) {
+      const open = page.getByTestId(`translate-open-${target}`);
+      if ((await open.count()) > 0) await open.click();
+      for (const [label, value] of Object.entries(DEMO_STATUS)) {
+        const select = page.getByTestId(`translate-${target}-${label}`);
+        if ((await select.count()) > 0) await select.selectOption(value);
+      }
+    } else if (id.startsWith("clarify-confirm-date-order-")) {
+      break; // the demo's dates are ISO; a date-order question would be unexpected — stop and report
+    } else await page.getByTestId(`clarify-pick-${target}`).selectOption(DEMO_FIELDS[target]!);
+  }
+  return answered;
 }
 
 async function outcome(page: import("@playwright/test").Page, entry: Record<string, unknown>): Promise<void> {
@@ -175,6 +209,7 @@ test("S14-REC-2 marketing: category names shared before the first request (1 req
 });
 
 test("S14-REC-3 hybrid happy path: real Gemini Nano on this device, then one approved real Gemini request (1 request)", async ({ page }) => {
+  test.setTimeout(420_000); // Sprint 18F: real Nano (~30 s), one real request, local verification and a clean-room export
   test.skip(only !== "" && only !== "3", "filtered");
   test.skip(process.env.EYES_LIVE_ON_DEVICE !== "1", "Requires EYES_LIVE_ON_DEVICE=1 and the dedicated Nano profile.");
   const net = watch(page);
@@ -203,12 +238,16 @@ test("S14-REC-3 hybrid happy path: real Gemini Nano on this device, then one app
     expect(net.requests).toBe(0);
     await page.getByTestId("data-continue").click();
     await page.getByTestId("destination-helpdesk").check();
+    // Sprint 18B: sharing category names lives in the collapsed "Advanced" section.
+    await page.getByTestId("advanced-manual").locator("summary").first().click();
     await page.getByTestId("share-categories-account_state").check();
     await page.getByTestId("guided-build").click();
     await expect(page.getByTestId("approval-card")).toBeVisible();
     expect(net.requests).toBe(0);
     await page.getByTestId("guided-approve").click();
     entry.status = await settle(page);
+    entry.questionsAnswered = await answerDemoQuestions(page);
+    if (entry.questionsAnswered) entry.status = await settle(page);
     await outcome(page, entry);
     if (entry.outcomeState) entry.exportVerify = await exportAndVerify(page);
   } catch (error) {
@@ -219,7 +258,11 @@ test("S14-REC-3 hybrid happy path: real Gemini Nano on this device, then one app
     entry.leaks = net.leaks;
     entry.answers = net.answers;
     entry.attestation = net.attestation;
-    if ((await page.getByTestId("guided-cloud-failure").count()) > 0) entry.cloudFailure = await page.getByTestId("guided-cloud-failure").getAttribute("data-code");
+    try {
+      if ((await page.getByTestId("guided-cloud-failure").count()) > 0) entry.cloudFailure = await page.getByTestId("guided-cloud-failure").getAttribute("data-code");
+    } catch {
+      entry.cloudFailure = "page-closed";
+    }
     append(entry);
   }
   expect(net.leaks).toEqual([]);

@@ -198,14 +198,19 @@ test.describe("guided journey up to the approval gate (no request is sent)", () 
     expect(state.pageErrors).toEqual([]);
   });
 
-  test("P-021 a destination that needs category names says so before anything is sent", async ({ page }) => {
+  // Updated for Sprint 18F release (the 18B rule, ADR 0018 §8, replaces the 17A rule; mirrors E2E-183): withheld
+  // category names no longer block sending — Gemini can match the field and the user translates on this device.
+  test("P-021 withheld category names do not block sending, and never appear in the request", async ({ page }) => {
     const state = guard(page);
     await loadDemo(page, "json");
     await page.getByTestId("data-continue").click();
     await page.getByTestId("destination-helpdesk").check();
-    await expect(page.getByTestId("destination-categories")).toHaveAttribute("data-blocking", "true");
     await page.getByTestId("guided-build").click();
-    await expect(page.getByTestId("guided-category-notice")).toBeVisible();
+    await expect(page.getByTestId("approval-card")).toBeVisible();
+    await expect(page.getByTestId("guided-approve")).toBeEnabled();
+    await expect(page.getByTestId("approval-blocked")).toHaveCount(0);
+    await page.getByTestId("approval-exact").locator("summary").click();
+    for (const label of ["active_customer", "inactive_customer"]) await expect(page.getByTestId("approval-prompt")).not.toContainText(label);
     expect(state.generateContent).toBe(0);
   });
 
@@ -214,6 +219,8 @@ test.describe("guided journey up to the approval gate (no request is sent)", () 
     await loadDemo(page, "json");
     await page.getByTestId("data-continue").click();
     await page.getByTestId("destination-helpdesk").check();
+    // Sprint 18B: the on-device route is an advanced, collapsed section (E2E-180).
+    await page.getByTestId("advanced-manual").locator("summary").first().click();
     await expect(page.getByTestId("question-status")).toBeVisible();
     await expect(page.locator('[data-testid^="share-categories-"]')).toHaveCount(1);
     await expect(page.getByTestId("share-categories-account_state")).not.toBeChecked();
@@ -233,6 +240,9 @@ test.describe("guided journey up to the approval gate (no request is sent)", () 
     await expect(page.getByTestId("meaning-status")).toHaveAttribute("data-tone", "pass");
     await expect(page.getByTestId("guided-before-after")).toBeVisible();
     await shot(page, "local-result", info.project.name);
+    // Sprint 18B: downloads live on the Deliver step (E2E-180).
+    await page.getByTestId("verify-continue").click();
+    await expect(page.locator("#deliver-heading")).toBeVisible();
     const [download] = await Promise.all([page.waitForEvent("download"), page.getByTestId("download-transformed-json").click()]);
     const records = JSON.parse(fs.readFileSync(await download.path(), "utf8")) as unknown[];
     note(info.title, { generateContent: state.generateContent, transformed: records.length, state: await page.getByTestId("guided-outcome").getAttribute("data-state") });

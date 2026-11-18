@@ -3,7 +3,7 @@
 | Item | Value |
 | --- | --- |
 | Branch | `sprint-18b-ai-first` |
-| Release status | **`CODE_READY` → `DEPLOYMENT_PENDING` once `build:release` passes.** Deploying needs the owner's approval of the exact SHA. Production stays `c7220768` until then |
+| Release status | **`PRODUCTION_ACCEPTED`**: `65cbf0e` deployed 2026-11-18 with the owner's approval of that SHA. Checks: 19 / 19 deterministic, plus the real hybrid path (Nano, 1 approved Gemini request, export verified). Evidence: [docs/evidence/production/65cbf0eaa71f/](../evidence/production/65cbf0eaa71f/failures.md). Rollback baseline: `c7220768` |
 | Product decision (owner, 2026-11-18) | Ship EYES as what the evidence supports: a **privacy-first assisted mapper**, not an autonomous one |
 | Milestone 1 | **Not met** (original Gate D, unchanged) |
 | Decisions | [ADR 0021](../decisions/0021-semantic-intelligence-recovery.md), [ADR 0022](../decisions/0022-answerable-questions-and-local-evidence.md) |
