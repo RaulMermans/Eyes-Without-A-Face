@@ -60,7 +60,7 @@ async function boot(page: Page, harness: Record<string, unknown>): Promise<void>
 test.describe("E2E-190 ranked plan questions (prompt v6, plan 1.1.0)", () => {
   test("an uncertain pick is asked with Gemini's pick and its alternative first; nothing pre-selected; confirming keeps Gemini's match", async ({ page }) => {
     const providerRequests = attachProviderWatch(page);
-    await boot(page, { planOutput: RANKED_PLAN, initialPlanner: "intent-plan-2", destinationSemantics: true, localPolicy: { askOnLocalDisagreement: true } });
+    await boot(page, { planOutput: RANKED_PLAN, initialPlanner: "intent-plan-2", destinationSemantics: true, localPolicy: { askOnLocalEvidence: true } });
     await page.getByTestId("guided-build").click();
     await expect(page.getByTestId("approval-card")).toBeVisible();
     await page.getByTestId("guided-approve").click();

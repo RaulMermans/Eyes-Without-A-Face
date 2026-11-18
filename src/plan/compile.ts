@@ -68,37 +68,21 @@ export interface CompileInput {
   /** Origin of the answer (`originFor`); defaults to Gemini. A simulated test-adapter plan is never labelled Gemini. */
   origin?: ProposalOrigin;
   /**
-   * Sprint 18D (ADR 0021 §C–D). LOCAL ONLY candidate evidence and the
-   * question policy. Absent = the Sprint 18C behaviour, unchanged.
-   *   localCandidates         ranked local matcher output; used to order
-   *                           choose-field candidates (never to execute).
-   *   askOnAlternatives       a high-confidence match whose plan lists
-   *                           alternatives is asked, not executed.
-   *   askOnLocalDisagreement  a high-confidence match is asked when the local
-   *                           matcher is clear about a DIFFERENT field and
-   *                           does not list Gemini's pick at all. Agreement
-   *                           never upgrades a match: both can be wrong alike.
+   * Sprint 18D (ADR 0021 §C–D, rescue). LOCAL ONLY candidate evidence.
+   * Absent = the Sprint 18C behaviour, unchanged.
+   *   localCandidates      local matcher output; orders choose-field candidates.
+   *   askOnLocalEvidence   local evidence may turn a field into ONE question
+   *                        (never into an executed match):
+   *     - Gemini's single pick is a field the local evidence contradicts
+   *       (row counter, person names, email as identifier, type/format);
+   *     - an optional field Gemini gave no source, with a clear local candidate;
+   *     - a category match awaiting translation whose clear local top-1 is
+   *       another field (asked as "which field" before the translation).
+   *   Agreement never upgrades a match: both can be wrong in the same way.
    */
   local?: {
     localCandidates?: readonly LocalCandidateSet[];
-    askOnAlternatives?: boolean;
-    askOnLocalDisagreement?: boolean;
-    /**
-     * Sprint 18D exploratory (post-Stage-1, dev-tuned): a high-confidence match is
-     * asked when the local matcher is clear and its TOP candidate is another field
-     * (Gemini's pick may still be listed lower). Pre-registered `askOnLocalDisagreement`
-     * required it to be absent from the list and never fired on dev.
-     */
-    askOnLocalTopDisagreement?: boolean;
-    /**
-     * Sprint 18D exploratory (dev-tuned): the local matcher may OPEN a question
-     * Gemini closed: an optional field Gemini gave no source, or a category match
-     * awaiting translation whose clear local top-1 is another field, is asked as
-     * choose-field (local candidates first). Never executes anything.
-     */
-    askOnLocalForUnfilled?: boolean;
-    /** Exploratory: with askOnLocalForUnfilled, any local candidate (clear or ambiguous) may open the question. */
-    openOnAmbiguous?: boolean;
+    askOnLocalEvidence?: boolean;
   };
 }
 
@@ -274,49 +258,38 @@ export function compileIntentPlan(input: CompileInput): CompiledIntegration {
     const path = single ? bindings.resolve(single) : null;
     const base = { correspondence, failures };
 
+    const set = localByTarget.get(target.name);
+    const asking = policy.askOnLocalEvidence === true && !Object.hasOwn(answers.fieldMatches, target.name);
+    const ask = (draft: Partial<Draft> = {}, why?: string): Draft => ({
+      ...base,
+      ...draft,
+      readiness: "needs_clarification",
+      operation: null,
+      origin: null,
+      missing: unique([...entry.missing.filter((code) => code !== "no-matching-source"), "field-meaning"]),
+      failures: why ? [...failures, failure("semantic-disagreement", target.name, [why])] : failures,
+    });
+
     if (entry.status === "no_source") {
-      const set = localByTarget.get(target.name);
-      if (policy.askOnLocalForUnfilled && !target.required && (set?.uncertainty === "clear" || (policy.openOnAmbiguous && set?.uncertainty === "ambiguous"))) {
-        return { ...base, readiness: "needs_clarification", operation: null, origin: null, missing: ["field-meaning"] };
-      }
+      // A clear local candidate opens one question on an optional field (a required one is already asked).
+      if (asking && !target.required && set?.uncertainty === "clear") return ask();
       return { ...base, readiness: "no_source", operation: null, origin: null, missing: [...entry.missing] };
     }
+
+    // Independent local evidence contradicts Gemini's pick: ask, never execute it silently.
+    if (asking && single && path && set?.contradicted?.includes(path)) return ask({}, "LOCAL_EVIDENCE_CONTRADICTS");
 
     // ADR 0020 §7: a single-field match Gemini is not highly confident about is a question (Gemini's pick listed first),
     // never an executed match. Sprint 18C live: high 86 % right, medium 38 %, low 21 %. Exempt: a category match still
     // awaiting the user's translation, whose question already shows that field's own values (no record runs without it).
     const awaitsTranslation = entry.transform === "map_enum" && entry.status !== "ready";
-    if (single && path && awaitsTranslation && policy.askOnLocalForUnfilled) {
-      const set = localByTarget.get(target.name);
+    if (asking && single && path && awaitsTranslation) {
       const top = set?.candidates[0];
-      if (set && set.uncertainty === "clear" && top && top.path !== path && !Object.hasOwn(answers.fieldMatches, target.name)) {
-        return { ...base, readiness: "needs_clarification", operation: null, origin: null, missing: unique([...entry.missing, "field-meaning"]), failures: [...failures, failure("semantic-disagreement", target.name, ["LOCAL_MATCHER_DISAGREES"])] };
-      }
+      if (set?.uncertainty === "clear" && top && top.path !== path) return ask({}, "LOCAL_MATCHER_DISAGREES");
     }
     const heldOperation = entry.status === "ready" && usable.verdict === "accepted" && HOLDABLE.has(entry.transform) ? (proposalOperation(entry) as unknown as MappingOperation | null) : null;
     const held = heldOperation ? { held: heldOperation } : {};
     if (single && entry.confidence !== "high" && !awaitsTranslation) return { ...base, ...held, readiness: "needs_clarification", operation: null, origin: null, missing: unique([...entry.missing, "field-meaning"]) };
-
-    // ADR 0021 §D (opt-in policies). Same exemption as above. A question, never a switch to another field.
-    if (single && !awaitsTranslation && policy.askOnAlternatives && (entry.alternatives ?? []).length > 0) {
-      return { ...base, ...held, readiness: "needs_clarification", operation: null, origin: null, missing: unique([...entry.missing, "field-meaning"]) };
-    }
-    if (single && path && !awaitsTranslation && (policy.askOnLocalDisagreement || policy.askOnLocalTopDisagreement)) {
-      const set = localByTarget.get(target.name);
-      const top = set?.candidates[0];
-      const listed = set?.candidates.some((item) => item.path === path) ?? false;
-      if (set && set.uncertainty === "clear" && top && top.path !== path && (policy.askOnLocalTopDisagreement || !listed)) {
-        return {
-          ...base,
-          ...held,
-          readiness: "needs_clarification",
-          operation: null,
-          origin: null,
-          missing: unique([...entry.missing, "field-meaning"]),
-          failures: [...failures, failure("semantic-disagreement", target.name, ["LOCAL_MATCHER_DISAGREES"])],
-        };
-      }
-    }
 
     // A complete category translation by the user for the corresponding field completes any open enum entry.
     const translated = single && path ? userTranslation(target, path, single) : null;

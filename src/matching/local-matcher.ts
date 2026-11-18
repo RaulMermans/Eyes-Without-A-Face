@@ -27,6 +27,8 @@ export const LOCAL_MATCHER_LIMITS = { maxTargets: 64, maxFields: 200, maxRecords
 const MAX_CATEGORY_LABELS = 24;
 /** Top-1 must lead the runner-up by at least this many points to be "clear". */
 const CLEAR_MARGIN = 2;
+/** Evidence about MEANING (not type or value shape) — required for a "clear" call. */
+const SEMANTIC: ReadonlySet<LocalEvidenceCode> = new Set(["name-lexical", "name-translated", "description-lexical", "concept", "label-overlap"]);
 
 /* ------------------------------------------------------------------ */
 /* Tokens                                                              */
@@ -202,6 +204,8 @@ interface Scored {
   score: number;
   evidence: Set<LocalEvidenceCode>;
   contradictions: Set<LocalContradictionCode>;
+  /** Qualifies as a candidate (specific evidence and a positive score). */
+  offered: boolean;
 }
 
 /** Evidence that can justify offering a candidate (type alone cannot, except for numeric/boolean destinations). */
@@ -311,11 +315,16 @@ function scoreField(
       score -= 2;
       contradictions.add("row-counter");
     }
+  } else if ((target.type === "integer" || target.type === "number") && stats.rowCounter) {
+    // Sprint 18D abstention fix: an export row counter is no business quantity either.
+    score -= 2;
+    contradictions.add("row-counter");
   } else if (target.type === "string" && field.allValuesUnique && !field.containsSpaces && field.type === "string" && stats.emailShare < 0.8) score -= 0.5;
   if (target.format !== "email" && !t.id && stats.emailShare >= 0.8) score -= 1;
 
   // Person-name values offered for a fixed list or an identifier.
-  if ((t.id || target.type === "enum") && stats.personNameShare >= 0.6) {
+  const contactChannel = target.format === "email" || t.toks.some((item) => item.token === "phone" || item.token === "mobile" || item.token === "email");
+  if ((t.id || target.type === "enum" || contactChannel) && stats.personNameShare >= 0.6) {
     score -= 3;
     contradictions.add("person-name-values");
   }
@@ -326,8 +335,8 @@ function scoreField(
   }
 
   const qualifies = [...evidence].some((code) => QUALIFYING.has(code)) || ((target.type === "integer" || target.type === "number" || target.type === "boolean") && !t.id);
-  if (!qualifies || score <= 0) return null;
-  return { path: field.path, score: Math.round(score * 1000) / 1000, evidence, contradictions };
+  const offered = qualifies && score > 0;
+  return { path: field.path, score: Math.round(score * 1000) / 1000, evidence, contradictions, offered };
 }
 
 const EVIDENCE_ORDER: readonly LocalEvidenceCode[] = ["name-lexical", "name-translated", "description-lexical", "type", "format", "concept", "category-shape", "label-overlap", "identifier-shape", "completeness", "embedding"];
@@ -349,9 +358,12 @@ export const matchLocally: LocalMatcher = (input) => {
       id: isIdTarget(target, name.raw, name.toks),
       enumNorm: [...new Set((target.enumValues ?? []).slice(0, LOCAL_MATCHER_LIMITS.maxEnumValues).map(normLabel))],
     };
-    const scored = fields
+    const all = fields
       .map((field) => scoreField(target, t, field, stats.get(field.path) as FieldStats, conceptOf(field.path)))
-      .filter((item): item is Scored => item !== null)
+      .filter((item): item is Scored => item !== null);
+    const contradicted = all.filter((item) => item.contradictions.size > 0).map((item) => item.path).sort();
+    const scored = all
+      .filter((item) => item.offered)
       .sort((a, b) => b.score - a.score || (a.path < b.path ? -1 : a.path > b.path ? 1 : 0))
       .slice(0, MAX_LOCAL_CANDIDATES);
     const candidates: LocalCandidate[] = scored.map((item, index) => ({
@@ -362,7 +374,9 @@ export const matchLocally: LocalMatcher = (input) => {
       contradictions: CONTRADICTION_ORDER.filter((code) => item.contradictions.has(code)),
     }));
     const [first, second] = candidates;
-    const uncertainty = !first ? "none" : !second || first.score - second.score >= CLEAR_MARGIN ? "clear" : "ambiguous";
-    return { matcherVersion: LOCAL_MATCHER_VERSION, target: target.name, candidates, uncertainty, provenance: "local-lexical-type" };
+    // Sprint 18D abstention fix: "clear" needs semantic evidence (not type or shape alone) and no contradiction.
+    const semantic = Boolean(first && first.evidence.some((code) => SEMANTIC.has(code)) && first.contradictions.length === 0);
+    const uncertainty = !first ? "none" : semantic && (!second || first.score - second.score >= CLEAR_MARGIN) ? "clear" : "ambiguous";
+    return { matcherVersion: LOCAL_MATCHER_VERSION, target: target.name, candidates, uncertainty, provenance: "local-lexical-type", contradicted: contradicted.slice(0, LOCAL_MATCHER_LIMITS.maxFields) };
   });
 };

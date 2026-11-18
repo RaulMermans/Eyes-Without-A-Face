@@ -62,29 +62,22 @@ export const ARMS_18D: Readonly<Record<string, Arm18d>> = {
 
 export interface Policy18d {
   id: string;
+  /** Local matcher candidates order the questions. */
   local: boolean;
-  askOnAlternatives: boolean;
-  askOnLocalDisagreement: boolean;
-  /** Exploratory (post-Stage-1, dev-tuned; not pre-registered). */
-  askOnLocalTopDisagreement?: boolean;
-  askOnLocalForUnfilled?: boolean;
-  openOnAmbiguous?: boolean;
+  /** Local evidence may turn a field into one question (`CompileInput.local.askOnLocalEvidence`). */
+  askOnLocalEvidence: boolean;
 }
 
+/**
+ * `base` = the Sprint 18C rule only (ADR 0020 §7). `rank` = + local ranking of question candidates.
+ * `local` = + local evidence may ask (rescue candidate). The Stage 1 exploratory variants that did not
+ * improve E1 on dev (ask on alternatives, two disagreement rules, open on ambiguous) were removed; their
+ * Stage 1 numbers are reproducible at f91124d.
+ */
 export const POLICIES_18D: Readonly<Record<string, Policy18d>> = {
-  /** The Sprint 18C rule only (ADR 0020 §7). */
-  base: { id: "base", local: false, askOnAlternatives: false, askOnLocalDisagreement: false },
-  rank: { id: "rank", local: true, askOnAlternatives: false, askOnLocalDisagreement: false },
-  alt: { id: "alt", local: true, askOnAlternatives: true, askOnLocalDisagreement: false },
-  disagree: { id: "disagree", local: true, askOnAlternatives: false, askOnLocalDisagreement: true },
-  both: { id: "both", local: true, askOnAlternatives: true, askOnLocalDisagreement: true },
-  /** Exploratory, added after Stage 1 on dev only: ask when the local top-1 is clearly another field. */
-  top: { id: "top", local: true, askOnAlternatives: false, askOnLocalDisagreement: false, askOnLocalTopDisagreement: true },
-  topAlt: { id: "topAlt", local: true, askOnAlternatives: true, askOnLocalDisagreement: false, askOnLocalTopDisagreement: true },
-  /** Exploratory, dev-tuned: the local matcher may open questions on fields Gemini left empty or matched to another category field. */
-  open: { id: "open", local: true, askOnAlternatives: false, askOnLocalDisagreement: false, askOnLocalForUnfilled: true },
-  openAll: { id: "openAll", local: true, askOnAlternatives: false, askOnLocalDisagreement: false, askOnLocalForUnfilled: true, openOnAmbiguous: true },
-  openTop: { id: "openTop", local: true, askOnAlternatives: false, askOnLocalDisagreement: false, askOnLocalTopDisagreement: true, askOnLocalForUnfilled: true },
+  base: { id: "base", local: false, askOnLocalEvidence: false },
+  rank: { id: "rank", local: true, askOnLocalEvidence: false },
+  local: { id: "local", local: true, askOnLocalEvidence: true },
 };
 
 export function armDestination(arm: Arm18d): CloudDisclosureDestination {
@@ -281,7 +274,7 @@ export function scorePlan18d(
     requestId: `eval18d-${context.arm.id}-${context.trial}-${context.index}`,
     origin: "gemini-cloud",
     ...(context.policy.local
-      ? { local: { localCandidates: sets, askOnAlternatives: context.policy.askOnAlternatives, askOnLocalDisagreement: context.policy.askOnLocalDisagreement, askOnLocalTopDisagreement: context.policy.askOnLocalTopDisagreement === true, askOnLocalForUnfilled: context.policy.askOnLocalForUnfilled === true, openOnAmbiguous: context.policy.openOnAmbiguous === true } }
+      ? { local: { localCandidates: sets, askOnLocalEvidence: context.policy.askOnLocalEvidence } }
       : {}),
   };
   const oracle = runOracle18c(base, scenario);

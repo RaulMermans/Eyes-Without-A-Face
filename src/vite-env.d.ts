@@ -52,7 +52,7 @@ interface EyesTestHarness {
   /** Sprint 18D (dev only): an allowlisted cloud model configuration (src/inference/cloud-models.ts). */
   cloudModel?: { model: string; thinkingLevel?: "MINIMAL" | "LOW" | "MEDIUM" | "HIGH" };
   destinationSemantics?: boolean;
-  localPolicy?: { askOnAlternatives?: boolean; askOnLocalDisagreement?: boolean };
+  localPolicy?: { askOnLocalEvidence?: boolean };
 }
 
 interface Window {

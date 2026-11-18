@@ -101,9 +101,8 @@ export function planMaxOutputTokens(config: CloudModelConfig, defaultCap: number
  */
 export function effectiveLocalPolicy(
   env: { dev: boolean; harness: { localPolicy?: unknown } | null | undefined } = currentEnv(),
-): { askOnAlternatives: boolean; askOnLocalDisagreement: boolean } | null {
+): { askOnLocalEvidence: boolean } | null {
   const value = env.dev && env.harness ? env.harness.localPolicy : undefined;
   if (!value || typeof value !== "object") return null;
-  const { askOnAlternatives, askOnLocalDisagreement } = value as Record<string, unknown>;
-  return { askOnAlternatives: askOnAlternatives === true, askOnLocalDisagreement: askOnLocalDisagreement === true };
+  return { askOnLocalEvidence: (value as Record<string, unknown>).askOnLocalEvidence === true };
 }

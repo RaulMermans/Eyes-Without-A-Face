@@ -220,42 +220,47 @@ describe("18D-D ranked plans and compile policies", () => {
     expect(compiled.fields.find((field) => field.target === "external_id")?.operationOrigin).toBe("gemini");
   });
 
-  it("askOnAlternatives turns a high-confidence match with alternatives into a ranked question", () => {
+  it("ranked alternatives order the question for an uncertain pick", () => {
     const { alias } = setup();
-    const entries: IntentPlanEntry[] = [{ target: "external_id", status: "ready", from: [alias("zeile")], alternatives: [alias("kundennummer")], transform: "copy", confidence: "high", evidence: ["meaning"], missing: [] }];
-    expect(compileWith(entries).fields[0]!.operation).not.toBeNull();
-    const asked = compileWith(entries, { askOnAlternatives: true });
-    expect(asked.fields[0]!.operation).toBeNull();
-    const question = asked.clarifications.find((item) => item.target === "external_id");
+    const entries: IntentPlanEntry[] = [{ target: "external_id", status: "ready", from: [alias("zeile")], alternatives: [alias("kundennummer")], transform: "copy", confidence: "medium", evidence: ["meaning"], missing: [] }];
+    const question = compileWith(entries).clarifications.find((item) => item.target === "external_id");
     expect(question?.kind).toBe("choose-field");
     expect(question?.rankedPaths).toEqual(["zeile", "kundennummer"]);
   });
 
-  const localSet = (target: string, paths: string[], uncertainty: LocalCandidateSet["uncertainty"]): LocalCandidateSet => ({
+  const localSet = (target: string, paths: string[], uncertainty: LocalCandidateSet["uncertainty"], contradicted: string[] = []): LocalCandidateSet => ({
     matcherVersion: LOCAL_MATCHER_VERSION,
     target,
     candidates: paths.map((path, index) => ({ path, rank: index + 1, score: 10 - index, evidence: ["name-lexical"], contradictions: [] })),
     uncertainty,
     provenance: "local-lexical-type",
+    contradicted,
   });
 
-  it("askOnLocalDisagreement asks only when the matcher is clear about a different field and does not list Gemini's", () => {
+  it("a confident Gemini pick that local evidence contradicts is asked, never executed", () => {
     const { alias } = setup();
     const entries: IntentPlanEntry[] = [{ target: "external_id", status: "ready", from: [alias("zeile")], transform: "copy", confidence: "high", evidence: ["meaning"], missing: [] }];
-    const disagree = compileWith(entries, { askOnLocalDisagreement: true, localCandidates: [localSet("external_id", ["kundennummer"], "clear")] });
-    expect(disagree.fields[0]!.operation).toBeNull();
-    expect(disagree.fields[0]!.failures.map((item) => item.category)).toContain("semantic-disagreement");
-    expect(disagree.clarifications[0]?.rankedPaths).toEqual(["zeile", "kundennummer"]);
-    const listed = compileWith(entries, { askOnLocalDisagreement: true, localCandidates: [localSet("external_id", ["kundennummer", "zeile"], "clear")] });
-    expect(listed.fields[0]!.operation).not.toBeNull();
-    const ambiguous = compileWith(entries, { askOnLocalDisagreement: true, localCandidates: [localSet("external_id", ["kundennummer"], "ambiguous")] });
-    expect(ambiguous.fields[0]!.operation).not.toBeNull();
+    const contradicted = compileWith(entries, { askOnLocalEvidence: true, localCandidates: [localSet("external_id", ["kundennummer"], "clear", ["zeile"])] });
+    expect(contradicted.fields[0]!.operation).toBeNull();
+    expect(contradicted.fields[0]!.failures.flatMap((item) => item.evidence)).toContain("LOCAL_EVIDENCE_CONTRADICTS");
+    expect(contradicted.clarifications[0]).toMatchObject({ kind: "choose-field", rankedPaths: ["zeile", "kundennummer"] });
+    // A mere ranking disagreement (no contradiction) does not stop a confident match.
+    expect(compileWith(entries, { askOnLocalEvidence: true, localCandidates: [localSet("external_id", ["kundennummer"], "clear")] }).fields[0]!.operation).not.toBeNull();
+    // Without the option, ranking only.
+    expect(compileWith(entries, { localCandidates: [localSet("external_id", ["kundennummer"], "clear", ["zeile"])] }).fields[0]!.operation).not.toBeNull();
+    // Once the user answered, local evidence never re-asks.
+    const { prep, disclosure } = setup();
+    const validated = validateIntentPlan(plan(entries), disclosure, { ranked: true });
+    if (!validated.ok) throw new Error("plan");
+    const answered = compileIntentPlan({ validated: validated.value, disclosure, prepared: prep, records: RECORDS, answers: { fieldMatches: { external_id: "kundennummer" }, categoryMeanings: {}, semanticConfirmations: {} }, requestId: "00000000-test", local: { askOnLocalEvidence: true, localCandidates: [localSet("external_id", ["kundennummer"], "clear", ["zeile"])] } });
+    expect(answered.fields[0]!.operation).not.toBeNull();
+    expect(answered.clarifications.find((item) => item.target === "external_id")).toBeUndefined();
   });
 
   it("agreement never upgrades an uncertain match to an executed one", () => {
     const { alias } = setup();
     const entries: IntentPlanEntry[] = [{ target: "external_id", status: "ready", from: [alias("kundennummer")], transform: "copy", confidence: "medium", evidence: ["meaning"], missing: [] }];
-    const compiled = compileWith(entries, { askOnLocalDisagreement: true, localCandidates: [localSet("external_id", ["kundennummer"], "clear")] });
+    const compiled = compileWith(entries, { askOnLocalEvidence: true, localCandidates: [localSet("external_id", ["kundennummer"], "clear")] });
     expect(compiled.fields[0]!.operation).toBeNull();
   });
 
@@ -323,7 +328,7 @@ describe("18D exploratory policy: the local matcher may open a question Gemini c
     const base = { validated: validated.value, disclosure: draft.value.payload, prepared: prep, records: RECORDS, answers: { fieldMatches: {}, categoryMeanings: {}, semanticConfirmations: {} }, requestId: "00000000-test" };
     const closed = compileIntentPlan({ ...base, local: { localCandidates: [set] } });
     expect(closed.fields.find((f) => f.target === "plan")!.readiness).toBe("no_source");
-    const opened = compileIntentPlan({ ...base, local: { localCandidates: [set], askOnLocalForUnfilled: true } });
+    const opened = compileIntentPlan({ ...base, local: { localCandidates: [set], askOnLocalEvidence: true } });
     const field = opened.fields.find((f) => f.target === "plan")!;
     expect(field.operation).toBeNull();
     expect(opened.clarifications.find((c) => c.target === "plan")).toMatchObject({ kind: "choose-field", rankedPaths: ["zahlstatus"] });

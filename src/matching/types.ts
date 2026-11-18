@@ -17,6 +17,7 @@ import type { CloudDisclosureTargetField } from "../domain/contracts/types.ts";
 import type { SourceProfile } from "../domain/profile/profile.ts";
 
 export const LOCAL_MATCHER_VERSION = "local-matcher-1";
+// local-matcher-1 revision (Sprint 18D abstention fix): "clear" needs semantic evidence and no contradiction; `contradicted` added.
 
 /** At most this many candidates per destination field. */
 export const MAX_LOCAL_CANDIDATES = 3;
@@ -84,6 +85,13 @@ export interface LocalCandidateSet {
    */
   uncertainty: "clear" | "ambiguous" | "none";
   provenance: "local-lexical-type";
+  /**
+   * Sprint 18D (Task 3): type-compatible source paths the local evidence
+   * CONTRADICTS for this destination field (row counter, person names, email
+   * as identifier, format or type mismatch), whether or not they are offered.
+   * LOCAL ONLY. Used to turn a confident Gemini pick into a question.
+   */
+  contradicted?: string[];
 }
 
 export interface LocalMatchInput {

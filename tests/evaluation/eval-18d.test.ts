@@ -5,7 +5,7 @@
  * EVAL-301  every arm builds deterministically, with the right disclosure version, and no privacy finding
  * EVAL-302  a ground-truth plan is a complete correct integration under every policy, nothing falsely verified
  * EVAL-303  a confident wrong match yields incorrect records, never success or false verification
- * EVAL-304  a ranked (v6) plan with alternatives validates; ask-on-alternatives asks and the oracle still completes
+ * EVAL-304  a ranked (v6) plan with alternatives validates; with local evidence asking, the oracle still completes
  *
  * Reads tests/fixtures/eval-18b/dev, eval-18c/dev and eval-18d/dev (when present). Never a holdout.
  */
@@ -107,7 +107,7 @@ describe("EVAL-304 ranked plans", () => {
     expect(built.prompt.startsWith("Task: plan an integration")).toBe(true);
     const text = JSON.stringify(groundTruthPlan(scenario, built, { alternatives: true }));
     const plain = scorePlan18d(scenario, built, text, { arm: ARMS_18D.RB!, policy: POLICIES_18D.rank!, trial: 1, index: 0 });
-    const asking = scorePlan18d(scenario, built, text, { arm: ARMS_18D.RB!, policy: POLICIES_18D.alt!, trial: 1, index: 0 });
+    const asking = scorePlan18d(scenario, built, text, { arm: ARMS_18D.RB!, policy: POLICIES_18D.local!, trial: 1, index: 0 });
     expect(plain.usable).toBe(true);
     expect(plain.e2eSuccess).toBe(true);
     expect(asking.e2eSuccess).toBe(true);
