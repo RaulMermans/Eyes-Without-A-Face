@@ -89,3 +89,23 @@ The model's `status` is a claim. The compiler computes the readiness in force fr
 
 - **The plan is alias-level.** Local paths and private labels appear only in `Clarification.localPaths`, in the user's answers and in user-declared operations. None of these is ever sent, logged or exported without the existing per-field label opt-in (`packageLabelSources`).
 - **Model text is never shown as evidence.** `summary` appears only as collapsed model text. Questions use application-owned copy (`CLARIFICATION_COPY`).
+
+## 1.1.0 — ranked alternatives (Sprint 18D, ADR 0021)
+
+**Plan 1.1.0** (`integration-intent-plan.v1.1.schema.json`) is the answer to **prompt v6** (`RANKED_PLAN_INSTRUCTIONS`). It adds `alternatives`:
+- up to 2 OTHER disclosed aliases that could carry the same meaning, most likely first;
+- `[]` for `no_source`.
+
+**Validator** (`validateIntentPlan(raw, disclosure, { ranked: true })`):
+- An undisclosed alternative rejects the entry (`UNKNOWN_ALIAS`).
+- An alternative that repeats `from`, or alternatives on `no_source`, reject it (`INCONSISTENT_ENTRY`).
+- Plan 1.0.0 stays exact: `alternatives` is refused there.
+
+**Compiler.**
+- Alternatives are **never executed**. They order the choose-field question's `rankedPaths`: Gemini's pick, its alternatives, then local matcher candidates, at most 3. These are local paths, local only.
+- Opt-in policies (`CompileInput.local`):
+  - `askOnAlternatives`;
+  - `askOnLocalDisagreement`. A clear local candidate for a different field, with Gemini's pick not listed, asks.
+- Agreement never upgrades a match. Without `local`, compiling is byte-identical to Sprint 18C.
+
+**Confirmation (fix).** When a question about Gemini's single pick is answered with that same field, Gemini's parameterless operation (copy, trim or normalize_email) stands. It goes through the gate, with origin `gemini+user`.

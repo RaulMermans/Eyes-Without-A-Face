@@ -1,0 +1,1016 @@
+{
+  "scenarioId": "office-coffee-machine-rentals-to-helpdesk-customers",
+  "split": "holdout",
+  "track": "wedge",
+  "industry": "office coffee machine rental customers",
+  "sourceLanguage": "it",
+  "description": "Customer export of a fictional office coffee-machine rental firm (Italian PascalCase, nested contact person and contract) to be loaded as helpdesk customers.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "Referente": {
+        "Cognome": "Giordano",
+        "Nome": "Matteo",
+        "Cellulare": "+39 360 302 8717",
+        "Email": "matteo.giordano@ufficio.example.com"
+      },
+      "RagioneSociale": "Tipografia Moderna Snc",
+      "Progressivo": 1,
+      "AmministrazioneEmail": "amministrazione.giordano0@ufficio.example.com",
+      "CodiceCliente": "CC08018",
+      "StatoPagamenti": "Regolare",
+      "StatoCliente": "Disdetto",
+      "Tecnico": "Marco Testa",
+      "IdAnagrafica": 550106,
+      "Contratto": {
+        "Codice": "NOL-12036",
+        "Decorrenza": "17/03/2022",
+        "Scadenza": "19/08/2027",
+        "Formula": "Comodato d'uso"
+      },
+      "Priorita": "Normale",
+      "ConsensoMarketing": "Sì"
+    },
+    {
+      "Priorita": "Alta",
+      "IdAnagrafica": 550112,
+      "Tecnico": "Marco Testa",
+      "CodiceCliente": "CC08040",
+      "StatoPagamenti": "Insoluto",
+      "RagioneSociale": "Studio Legale Ferri",
+      "Contratto": {
+        "Codice": "NOL-12062",
+        "Formula": "Noleggio Smart",
+        "Scadenza": "18/08/2028",
+        "Decorrenza": "27/03/2021"
+      },
+      "AmministrazioneEmail": "amministrazione.mancini1@ufficio.example.com",
+      "StatoCliente": "Disdetto",
+      "Referente": {
+        "Email": "leonardo.mancini@ufficio.example.com",
+        "Cognome": "Mancini",
+        "Cellulare": null,
+        "Nome": "Leonardo"
+      },
+      "Progressivo": 2,
+      "ConsensoMarketing": "No"
+    },
+    {
+      "Progressivo": 3,
+      "Tecnico": "Marco Testa",
+      "ConsensoMarketing": "No",
+      "Priorita": "Alta",
+      "AmministrazioneEmail": "amministrazione.russo2@ufficio.example.com",
+      "IdAnagrafica": 550120,
+      "CodiceCliente": "CC08062",
+      "StatoCliente": "Attivo",
+      "RagioneSociale": "Tipografia Moderna Snc",
+      "Referente": {
+        "Cellulare": "+39 357 019 3213",
+        "Cognome": "Russo",
+        "Nome": "Sara",
+        "Email": "sara.russo@ufficio.example.com"
+      },
+      "Contratto": {
+        "Codice": "NOL-12120",
+        "Decorrenza": "27/01/2021",
+        "Formula": "Comodato d'uso",
+        "Scadenza": "29/03/2026"
+      },
+      "StatoPagamenti": "In verifica"
+    },
+    {
+      "Referente": {
+        "Cognome": "Moretti",
+        "Nome": "Chiara",
+        "Cellulare": "+39 301 573 6094",
+        "Email": "Chiara.Moretti@Ufficio.Example.Com"
+      },
+      "ConsensoMarketing": "Sì",
+      "AmministrazioneEmail": "amministrazione.moretti3@ufficio.example.com",
+      "Progressivo": 4,
+      "Contratto": {
+        "Codice": "NOL-12136",
+        "Decorrenza": "02/07/2023",
+        "Scadenza": "05/08/2028",
+        "Formula": "Noleggio Premium"
+      },
+      "Tecnico": "Marco Testa",
+      "Priorita": "Alta",
+      "RagioneSociale": "Agenzia Viaggi Orizzonte",
+      "StatoCliente": "Bozza",
+      "StatoPagamenti": "Insoluto",
+      "IdAnagrafica": 550133,
+      "CodiceCliente": "CC08079"
+    },
+    {
+      "Contratto": {
+        "Formula": "Noleggio Smart",
+        "Decorrenza": "16/10/2022",
+        "Codice": "NOL-12178",
+        "Scadenza": "15/05/2026"
+      },
+      "IdAnagrafica": 550138,
+      "ConsensoMarketing": "No",
+      "RagioneSociale": "Agenzia Viaggi Orizzonte",
+      "Priorita": "Alta",
+      "Referente": {
+        "Nome": "Sara",
+        "Cognome": "Romano",
+        "Email": "sara.romano@ufficio.example.com",
+        "Cellulare": "+39 387 965 9630"
+      },
+      "StatoPagamenti": "Regolare",
+      "CodiceCliente": "CC08091",
+      "StatoCliente": "Disdetto",
+      "Progressivo": 5,
+      "AmministrazioneEmail": "amministrazione.romano4@ufficio.example.com",
+      "Tecnico": "Anna Fontana"
+    },
+    {
+      "CodiceCliente": "CC08104",
+      "Progressivo": 6,
+      "StatoPagamenti": "Insoluto",
+      "IdAnagrafica": 550145,
+      "Referente": {
+        "Cognome": "Gallo",
+        "Cellulare": "+39 399 036 8002",
+        "Email": "tommaso.gallo@ufficio.example.com",
+        "Nome": "Tommaso"
+      },
+      "RagioneSociale": "Studio Legale Ferri ",
+      "Tecnico": "Sergio Galli",
+      "Contratto": {
+        "Scadenza": "04/01/2026",
+        "Codice": "NOL-12231",
+        "Decorrenza": "21/01/2017",
+        "Formula": "Noleggio Premium"
+      },
+      "StatoCliente": "Sospeso",
+      "ConsensoMarketing": "Sì",
+      "Priorita": "Bassa",
+      "AmministrazioneEmail": "amministrazione.gallo5@ufficio.example.com"
+    },
+    {
+      "CodiceCliente": "CC08129",
+      "StatoCliente": "Sospeso",
+      "Priorita": "Bassa",
+      "RagioneSociale": "Officine Brambilla Srl",
+      "Progressivo": 7,
+      "Contratto": {
+        "Scadenza": "04/11/2028",
+        "Codice": "NOL-12258",
+        "Formula": "Noleggio Premium",
+        "Decorrenza": "25/06/2017"
+      },
+      "AmministrazioneEmail": "amministrazione.rizzo6@ufficio.example.com",
+      "IdAnagrafica": 550154,
+      "StatoPagamenti": "Insoluto",
+      "ConsensoMarketing": "No",
+      "Tecnico": "Anna Fontana",
+      "Referente": {
+        "Nome": "Sara",
+        "Cognome": "Rizzo",
+        "Email": "sara.rizzo@ufficio.example.com"
+      }
+    },
+    {
+      "ConsensoMarketing": "Sì",
+      "AmministrazioneEmail": "amministrazione.colombo0@ufficio.example.com",
+      "CodiceCliente": "CC08138",
+      "Contratto": {
+        "Decorrenza": "12/10/2015",
+        "Codice": "NOL-12294",
+        "Scadenza": "16/07/2027",
+        "Formula": "Comodato d'uso"
+      },
+      "Referente": {
+        "Email": "federico.colombo@ufficio.example.com",
+        "Cellulare": "+39 369 464 1096",
+        "Cognome": "Colombo",
+        "Nome": "Federico"
+      },
+      "IdAnagrafica": 550168,
+      "StatoCliente": "Attivo",
+      "Tecnico": "Marco Testa",
+      "RagioneSociale": "Ottica Valli",
+      "StatoPagamenti": "Regolare",
+      "Priorita": "Alta",
+      "Progressivo": 8
+    },
+    {
+      "RagioneSociale": "Officine Brambilla Srl",
+      "StatoCliente": "Attivo",
+      "CodiceCliente": "CC08148",
+      "Tecnico": "Anna Fontana",
+      "AmministrazioneEmail": "amministrazione.lombardi1@ufficio.example.com",
+      "Progressivo": 9,
+      "IdAnagrafica": 550172,
+      "Referente": {
+        "Cellulare": "+39 318 707 4510",
+        "Cognome": "Lombardi",
+        "Email": "Aurora.Lombardi@Ufficio.Example.Com",
+        "Nome": "Aurora"
+      },
+      "ConsensoMarketing": "Sì",
+      "StatoPagamenti": "Insoluto",
+      "Priorita": "Bassa",
+      "Contratto": {
+        "Codice": "NOL-12340",
+        "Decorrenza": "05/03/2024",
+        "Scadenza": "01/10/2028",
+        "Formula": "Noleggio Smart"
+      }
+    },
+    {
+      "StatoPagamenti": "Regolare",
+      "Priorita": "Alta",
+      "Contratto": {
+        "Formula": "Noleggio Premium",
+        "Scadenza": "23/12/2026",
+        "Codice": "NOL-12376",
+        "Decorrenza": "12/04/2025"
+      },
+      "CodiceCliente": "CC08169",
+      "Tecnico": "Anna Fontana",
+      "AmministrazioneEmail": "amministrazione.gallo2@ufficio.example.com",
+      "StatoCliente": "Sospeso",
+      "IdAnagrafica": 550186,
+      "RagioneSociale": "Ottica Valli",
+      "ConsensoMarketing": "No",
+      "Referente": {
+        "Nome": "Chiara",
+        "Cellulare": null,
+        "Email": "chiara.gallo@ufficio.example.com",
+        "Cognome": "Gallo"
+      },
+      "Progressivo": 10
+    },
+    {
+      "RagioneSociale": "Ottica Valli",
+      "StatoCliente": "Sospeso",
+      "StatoPagamenti": "Regolare",
+      "Progressivo": 11,
+      "Tecnico": "Sergio Galli",
+      "AmministrazioneEmail": "amministrazione.marino3@ufficio.example.com",
+      "CodiceCliente": "CC08198",
+      "Priorita": "Alta",
+      "IdAnagrafica": 550191,
+      "Contratto": {
+        "Decorrenza": "14/05/2024",
+        "Codice": "NOL-12424",
+        "Formula": "Comodato d'uso",
+        "Scadenza": "21/07/2027"
+      },
+      "Referente": {
+        "Nome": "Chiara",
+        "Cognome": "Marino",
+        "Email": "chiara.marino@ufficio.example.com"
+      },
+      "ConsensoMarketing": "No"
+    },
+    {
+      "Contratto": {
+        "Decorrenza": "26/01/2021",
+        "Codice": "NOL-12492",
+        "Formula": "Comodato d'uso",
+        "Scadenza": "26/01/2026"
+      },
+      "RagioneSociale": "Agenzia Viaggi Orizzonte",
+      "CodiceCliente": "CC08205",
+      "Tecnico": "Sergio Galli",
+      "Progressivo": 12,
+      "StatoCliente": "Attivo",
+      "ConsensoMarketing": "Sì",
+      "IdAnagrafica": 550202,
+      "Priorita": "Normale",
+      "StatoPagamenti": "Regolare",
+      "Referente": {
+        "Cellulare": "+39 326 943 9895",
+        "Email": "Leonardo.Bruno@Ufficio.Example.Com",
+        "Nome": "Leonardo",
+        "Cognome": "Bruno"
+      },
+      "AmministrazioneEmail": "amministrazione.bruno4@ufficio.example.com"
+    },
+    {
+      "Referente": {
+        "Cellulare": null,
+        "Email": "sara.bruno@ufficio.example.com",
+        "Nome": "Sara",
+        "Cognome": "Bruno"
+      },
+      "StatoPagamenti": "In verifica",
+      "CodiceCliente": "CC08219",
+      "Progressivo": 13,
+      "AmministrazioneEmail": "amministrazione.bruno5@ufficio.example.com",
+      "ConsensoMarketing": "No",
+      "RagioneSociale": "Officine Brambilla Srl",
+      "Tecnico": "Sergio Galli",
+      "StatoCliente": "Bozza",
+      "IdAnagrafica": 550212,
+      "Contratto": {
+        "Codice": "NOL-12494",
+        "Formula": "Noleggio Premium",
+        "Decorrenza": "09/01/2023",
+        "Scadenza": "31/01/2026"
+      },
+      "Priorita": "Alta"
+    },
+    {
+      "IdAnagrafica": 550218,
+      "Progressivo": 14,
+      "Contratto": {
+        "Scadenza": "25/10/2028",
+        "Decorrenza": "22/07/2025",
+        "Codice": "NOL-12557",
+        "Formula": "Noleggio Smart"
+      },
+      "RagioneSociale": "Ottica Valli",
+      "StatoPagamenti": "Insoluto",
+      "Referente": {
+        "Nome": "Federico",
+        "Email": "federico.bianchi@ufficio.example.com",
+        "Cognome": "Bianchi",
+        "Cellulare": "+39 391 665 3844"
+      },
+      "Priorita": "Alta",
+      "CodiceCliente": "CC08234",
+      "ConsensoMarketing": "No",
+      "Tecnico": "Anna Fontana",
+      "AmministrazioneEmail": "amministrazione.bianchi6@ufficio.example.com",
+      "StatoCliente": "Attivo"
+    },
+    {
+      "Progressivo": 15,
+      "CodiceCliente": "CC08251",
+      "RagioneSociale": " Studio Legale Ferri  ",
+      "Referente": {
+        "Email": "matteo.deluca@ufficio.example.com",
+        "Nome": "Matteo",
+        "Cognome": "De Luca"
+      },
+      "Contratto": {
+        "Codice": "NOL-12614",
+        "Decorrenza": "06/12/2019",
+        "Formula": "Noleggio Smart",
+        "Scadenza": "03/08/2028"
+      },
+      "ConsensoMarketing": "Sì",
+      "AmministrazioneEmail": "amministrazione.deluca0@ufficio.example.com",
+      "Priorita": "Alta",
+      "IdAnagrafica": 550228,
+      "StatoPagamenti": "Insoluto",
+      "StatoCliente": "Attivo",
+      "Tecnico": "Anna Fontana"
+    },
+    {
+      "Referente": {
+        "Nome": "Ginevra",
+        "Cognome": "Lombardi",
+        "Cellulare": "+39 377 497 4048",
+        "Email": "ginevra.lombardi@ufficio.example.com"
+      },
+      "IdAnagrafica": 550236,
+      "StatoPagamenti": "Insoluto",
+      "Tecnico": "Anna Fontana",
+      "Progressivo": 16,
+      "StatoCliente": "Disdetto",
+      "ConsensoMarketing": "Sì",
+      "CodiceCliente": "CC08280",
+      "AmministrazioneEmail": "amministrazione.lombardi1@ufficio.example.com",
+      "Priorita": "Alta",
+      "RagioneSociale": "Tipografia Moderna Snc",
+      "Contratto": {
+        "Formula": "Noleggio Premium",
+        "Decorrenza": "12/05/2020",
+        "Codice": "NOL-12645",
+        "Scadenza": "22/06/2028"
+      }
+    },
+    {
+      "IdAnagrafica": 550244,
+      "ConsensoMarketing": "Sì",
+      "StatoCliente": "Disdetto",
+      "Tecnico": "Sergio Galli",
+      "Progressivo": 17,
+      "RagioneSociale": "Officine Brambilla Srl",
+      "Referente": {
+        "Nome": "Ginevra",
+        "Cognome": "Greco",
+        "Cellulare": "+39 381 670 1645",
+        "Email": "ginevra.greco@ufficio.example.com"
+      },
+      "Priorita": "Normale",
+      "CodiceCliente": "CC08290",
+      "StatoPagamenti": "Regolare",
+      "Contratto": {
+        "Formula": "Noleggio Premium",
+        "Codice": "NOL-12677",
+        "Decorrenza": "02/04/2023",
+        "Scadenza": "04/05/2027"
+      },
+      "AmministrazioneEmail": "amministrazione.greco2@ufficio.example.com"
+    },
+    {
+      "Referente": {
+        "Email": "riccardo.deluca@ufficio.example.com",
+        "Cognome": "De Luca",
+        "Cellulare": "+39 333 952 3019",
+        "Nome": "Riccardo"
+      },
+      "Priorita": "Alta",
+      "RagioneSociale": "Studio Legale Ferri",
+      "Tecnico": "Sergio Galli",
+      "Contratto": {
+        "Scadenza": "30/05/2026",
+        "Formula": "Noleggio Smart",
+        "Codice": "NOL-12730",
+        "Decorrenza": "16/11/2019"
+      },
+      "CodiceCliente": "CC08314",
+      "IdAnagrafica": 550261,
+      "StatoCliente": "Sospeso",
+      "StatoPagamenti": "Regolare",
+      "ConsensoMarketing": "Sì",
+      "AmministrazioneEmail": "amministrazione.deluca3@ufficio.example.com",
+      "Progressivo": 18
+    },
+    {
+      "CodiceCliente": "CC08332",
+      "Tecnico": "Sergio Galli",
+      "RagioneSociale": "Ottica Valli",
+      "AmministrazioneEmail": "amministrazione.mancini4@ufficio.example.com",
+      "Priorita": "Alta",
+      "Progressivo": 19,
+      "StatoCliente": "Disdetto",
+      "StatoPagamenti": "Regolare",
+      "IdAnagrafica": 550262,
+      "ConsensoMarketing": "Sì",
+      "Contratto": {
+        "Formula": "Noleggio Smart",
+        "Decorrenza": "25/02/2022",
+        "Scadenza": "13/04/2026",
+        "Codice": "NOL-12742"
+      },
+      "Referente": {
+        "Nome": "Beatrice",
+        "Email": "beatrice.mancini@ufficio.example.com",
+        "Cognome": "Mancini"
+      }
+    },
+    {
+      "Referente": {
+        "Cellulare": "+39 303 705 5802",
+        "Email": "Davide.Esposito@Ufficio.Example.Com",
+        "Nome": "Davide",
+        "Cognome": "Esposito"
+      },
+      "Priorita": "Normale",
+      "ConsensoMarketing": "No",
+      "Progressivo": 20,
+      "Tecnico": "Sergio Galli",
+      "Contratto": {
+        "Decorrenza": "26/03/2017",
+        "Formula": "Noleggio Smart",
+        "Codice": "NOL-12782",
+        "Scadenza": "09/12/2027"
+      },
+      "IdAnagrafica": 550276,
+      "StatoPagamenti": "Insoluto",
+      "AmministrazioneEmail": "amministrazione.esposito5@ufficio.example.com",
+      "StatoCliente": "Disdetto",
+      "CodiceCliente": "CC08342",
+      "RagioneSociale": "Tipografia Moderna Snc"
+    },
+    {
+      "Contratto": {
+        "Scadenza": "09/07/2026",
+        "Codice": "NOL-12857",
+        "Formula": "Noleggio Premium",
+        "Decorrenza": "05/03/2023"
+      },
+      "Progressivo": 21,
+      "StatoPagamenti": "Insoluto",
+      "Priorita": "Bassa",
+      "IdAnagrafica": 550286,
+      "RagioneSociale": "Ottica Valli",
+      "CodiceCliente": "CC08363",
+      "StatoCliente": "Sospeso",
+      "Referente": {
+        "Cognome": "Rizzo",
+        "Cellulare": "+39 383 892 9361",
+        "Nome": "Beatrice",
+        "Email": "beatrice.rizzo@ufficio.example.com"
+      },
+      "ConsensoMarketing": "Sì",
+      "AmministrazioneEmail": "amministrazione.rizzo6@ufficio.example.com",
+      "Tecnico": "Marco Testa"
+    },
+    {
+      "StatoCliente": "Sospeso",
+      "Tecnico": "Anna Fontana",
+      "Progressivo": 22,
+      "CodiceCliente": "CC08383",
+      "IdAnagrafica": 550290,
+      "Contratto": {
+        "Decorrenza": "08/04/2023",
+        "Codice": "NOL-12878",
+        "Formula": "Noleggio Smart",
+        "Scadenza": "20/05/2027"
+      },
+      "ConsensoMarketing": "Sì",
+      "AmministrazioneEmail": "amministrazione.ricci0@ufficio.example.com",
+      "RagioneSociale": "Ottica Valli ",
+      "Referente": {
+        "Cellulare": "+39 398 977 5552",
+        "Email": "edoardo.ricci@ufficio.example.com",
+        "Cognome": "Ricci",
+        "Nome": "Edoardo"
+      },
+      "StatoPagamenti": "In verifica",
+      "Priorita": "Normale"
+    },
+    {
+      "Priorita": "Alta",
+      "Referente": {
+        "Nome": "Alice",
+        "Cellulare": "+39 359 544 2746",
+        "Email": "Alice.Bianchi@Ufficio.Example.Com",
+        "Cognome": "Bianchi"
+      },
+      "CodiceCliente": "CC08388",
+      "IdAnagrafica": 550306,
+      "Progressivo": 23,
+      "StatoPagamenti": "Insoluto",
+      "Contratto": {
+        "Decorrenza": "25/07/2023",
+        "Codice": "NOL-12932",
+        "Formula": "Comodato d'uso",
+        "Scadenza": "02/08/2028"
+      },
+      "StatoCliente": "Disdetto",
+      "ConsensoMarketing": "Sì",
+      "Tecnico": "Marco Testa",
+      "RagioneSociale": "Ottica Valli",
+      "AmministrazioneEmail": "amministrazione.bianchi1@ufficio.example.com"
+    },
+    {
+      "Referente": {
+        "Nome": "Tommaso",
+        "Cognome": "Russo",
+        "Cellulare": "+39 309 118 5669",
+        "Email": "tommaso.russo@ufficio.example.com"
+      },
+      "Tecnico": "Anna Fontana",
+      "AmministrazioneEmail": "amministrazione.russo2@ufficio.example.com",
+      "CodiceCliente": "CC08418",
+      "StatoPagamenti": "In verifica",
+      "Contratto": {
+        "Decorrenza": "16/10/2024",
+        "Codice": "NOL-12961",
+        "Formula": "Noleggio Smart",
+        "Scadenza": "21/02/2028"
+      },
+      "RagioneSociale": "Tipografia Moderna Snc",
+      "Priorita": "Alta",
+      "IdAnagrafica": 550311,
+      "StatoCliente": "Sospeso",
+      "ConsensoMarketing": "No",
+      "Progressivo": 24
+    },
+    {
+      "Priorita": "Alta",
+      "Progressivo": 25,
+      "AmministrazioneEmail": "amministrazione.rizzo3@ufficio.example.com",
+      "RagioneSociale": "Studio Legale Ferri",
+      "IdAnagrafica": 550323,
+      "Contratto": {
+        "Codice": "NOL-12998",
+        "Scadenza": "28/10/2028",
+        "Formula": "Comodato d'uso",
+        "Decorrenza": "12/08/2021"
+      },
+      "Referente": {
+        "Email": "leonardo.rizzo@ufficio.example.com",
+        "Cellulare": "+39 392 611 3558",
+        "Nome": "Leonardo",
+        "Cognome": "Rizzo"
+      },
+      "Tecnico": "Marco Testa",
+      "StatoCliente": "Attivo",
+      "StatoPagamenti": "Insoluto",
+      "CodiceCliente": "CC08425",
+      "ConsensoMarketing": "No"
+    },
+    {
+      "Contratto": {
+        "Formula": "Noleggio Smart",
+        "Decorrenza": "05/05/2019",
+        "Codice": "NOL-13039",
+        "Scadenza": "13/07/2026"
+      },
+      "Tecnico": "Marco Testa",
+      "CodiceCliente": "CC08444",
+      "StatoCliente": "Sospeso",
+      "RagioneSociale": "Studio Legale Ferri ",
+      "AmministrazioneEmail": "amministrazione.gallo4@ufficio.example.com",
+      "StatoPagamenti": "In verifica",
+      "Referente": {
+        "Cognome": "Gallo",
+        "Nome": "Martina",
+        "Email": "martina.gallo@ufficio.example.com",
+        "Cellulare": "+39 323 035 9913"
+      },
+      "ConsensoMarketing": "No",
+      "Progressivo": 26,
+      "IdAnagrafica": 550331,
+      "Priorita": "Normale"
+    },
+    {
+      "StatoCliente": "Sospeso",
+      "AmministrazioneEmail": "amministrazione.mancini5@ufficio.example.com",
+      "Contratto": {
+        "Decorrenza": "08/12/2022",
+        "Scadenza": "24/03/2027",
+        "Codice": "NOL-13098",
+        "Formula": "Noleggio Smart"
+      },
+      "IdAnagrafica": 550335,
+      "Progressivo": 27,
+      "Tecnico": "Sergio Galli",
+      "RagioneSociale": "Studio Legale Ferri",
+      "ConsensoMarketing": "Sì",
+      "StatoPagamenti": "Insoluto",
+      "CodiceCliente": "CC08470",
+      "Priorita": "Alta",
+      "Referente": {
+        "Nome": "Lorenzo",
+        "Email": "lorenzo.mancini@ufficio.example.com",
+        "Cognome": "Mancini",
+        "Cellulare": "+39 319 804 2439"
+      }
+    },
+    {
+      "AmministrazioneEmail": "amministrazione.costa6@ufficio.example.com",
+      "Tecnico": "Sergio Galli",
+      "StatoPagamenti": "Insoluto",
+      "CodiceCliente": "CC08482",
+      "Progressivo": 28,
+      "Contratto": {
+        "Decorrenza": "28/09/2017",
+        "Formula": "Comodato d'uso",
+        "Scadenza": "16/06/2026",
+        "Codice": "NOL-13121"
+      },
+      "StatoCliente": "Attivo",
+      "Priorita": "Alta",
+      "IdAnagrafica": 550344,
+      "ConsensoMarketing": "No",
+      "Referente": {
+        "Email": "Chiara.Costa@Ufficio.Example.Com",
+        "Cellulare": "+39 384 610 4906",
+        "Cognome": "Costa",
+        "Nome": "Chiara"
+      },
+      "RagioneSociale": "Officine Brambilla Srl   "
+    },
+    {
+      "ConsensoMarketing": "No",
+      "StatoPagamenti": "Insoluto",
+      "IdAnagrafica": 550358,
+      "StatoCliente": "Attivo",
+      "Contratto": {
+        "Scadenza": "13/11/2026",
+        "Formula": "Noleggio Smart",
+        "Codice": "NOL-13176",
+        "Decorrenza": "28/05/2024"
+      },
+      "CodiceCliente": "CC08494",
+      "Referente": {
+        "Cellulare": "+39 346 040 1196",
+        "Nome": "Ginevra",
+        "Email": "ginevra.russo@ufficio.example.com",
+        "Cognome": "Russo"
+      },
+      "Priorita": "Normale",
+      "Progressivo": 29,
+      "Tecnico": "Anna Fontana",
+      "RagioneSociale": "Tipografia Moderna Snc",
+      "AmministrazioneEmail": "amministrazione.russo0@ufficio.example.com"
+    },
+    {
+      "ConsensoMarketing": "Sì",
+      "Priorita": "Alta",
+      "StatoCliente": "Sospeso",
+      "Tecnico": "Anna Fontana",
+      "Contratto": {
+        "Decorrenza": "06/11/2020",
+        "Formula": "Noleggio Smart",
+        "Scadenza": "13/06/2027",
+        "Codice": "NOL-13220"
+      },
+      "RagioneSociale": "Tipografia Moderna Snc",
+      "IdAnagrafica": 550364,
+      "Referente": {
+        "Cellulare": "+39 355 124 3780",
+        "Email": "sara.lombardi@ufficio.example.com",
+        "Cognome": "Lombardi",
+        "Nome": "Sara"
+      },
+      "CodiceCliente": "CC08509",
+      "AmministrazioneEmail": "amministrazione.lombardi1@ufficio.example.com",
+      "Progressivo": 30,
+      "StatoPagamenti": "Regolare"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "external_id": {
+        "type": "string",
+        "description": "Identifier of the customer in your system."
+      },
+      "first_name": {
+        "type": "string",
+        "description": "Given name of the customer contact."
+      },
+      "last_name": {
+        "type": "string",
+        "description": "Family name of the customer contact."
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address of the customer contact."
+      },
+      "mobile": {
+        "type": "string",
+        "description": "Mobile phone of the customer contact."
+      },
+      "organization": {
+        "type": "string",
+        "description": "Company the customer contact works for."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "suspended",
+          "cancelled"
+        ],
+        "description": "Status."
+      },
+      "plan": {
+        "type": "string",
+        "enum": [
+          "loan",
+          "smart",
+          "premium"
+        ],
+        "description": "Rental formula of the customer's contract."
+      },
+      "priority": {
+        "type": "string",
+        "enum": [
+          "high",
+          "normal",
+          "low"
+        ],
+        "description": "Default support priority for tickets from this customer."
+      },
+      "customer_since": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the first rental contract took effect."
+      },
+      "language": {
+        "type": "string",
+        "enum": [
+          "it",
+          "en"
+        ]
+      }
+    },
+    "required": [
+      "external_id",
+      "first_name",
+      "last_name",
+      "email",
+      "organization",
+      "status",
+      "plan"
+    ]
+  },
+  "groundTruth": {
+    "external_id": {
+      "source": "CodiceCliente",
+      "transform": "copy",
+      "why": "customer code; IdAnagrafica is the CRM record key"
+    },
+    "first_name": {
+      "source": "Referente.Nome",
+      "transform": "copy",
+      "why": "contact given name; Tecnico is the service technician"
+    },
+    "last_name": {
+      "source": "Referente.Cognome",
+      "transform": "copy",
+      "why": "contact family name"
+    },
+    "email": {
+      "source": "Referente.Email",
+      "transform": "normalize_email",
+      "why": "contact email, mixed case; AmministrazioneEmail is accounts"
+    },
+    "mobile": {
+      "source": "Referente.Cellulare",
+      "transform": "copy",
+      "why": "mobile, null or missing"
+    },
+    "organization": {
+      "source": "RagioneSociale",
+      "transform": "trim",
+      "why": "company, padded"
+    },
+    "status": {
+      "source": "StatoCliente",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Attivo": "active",
+        "Sospeso": "suspended",
+        "Disdetto": "cancelled",
+        "Bozza": null
+      },
+      "why": "customer state; drafts need review"
+    },
+    "plan": {
+      "source": "Contratto.Formula",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Comodato d'uso": "loan",
+        "Noleggio Smart": "smart",
+        "Noleggio Premium": "premium"
+      },
+      "why": "contract formula"
+    },
+    "priority": {
+      "source": "Priorita",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Alta": "high",
+        "Normale": "normal",
+        "Bassa": "low"
+      },
+      "why": "priority"
+    },
+    "customer_since": {
+      "source": "Contratto.Decorrenza",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "effective date (day-first); Scadenza is the expiry"
+    },
+    "language": {
+      "source": null,
+      "transform": "none",
+      "why": "no language is exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "StatoCliente",
+        "StatoPagamenti"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "CodiceCliente",
+        "IdAnagrafica"
+      ],
+      "correctFor": "external_id"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "CodiceCliente",
+        "Contratto.Codice"
+      ],
+      "correctFor": "external_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "Referente.Email",
+        "AmministrazioneEmail"
+      ],
+      "correctFor": "email"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "Contratto.Decorrenza",
+        "Contratto.Scadenza"
+      ],
+      "correctFor": "customer_since"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "Referente.Nome",
+        "Tecnico"
+      ],
+      "correctFor": "first_name"
+    }
+  ],
+  "sourceConcepts": {
+    "CodiceCliente": "customer-id",
+    "IdAnagrafica": "other-identifier",
+    "Progressivo": "other-identifier",
+    "RagioneSociale": "organization-name",
+    "Referente.Nome": "given-name",
+    "Referente.Cognome": "family-name",
+    "Referente.Email": "email",
+    "Referente.Cellulare": "phone",
+    "AmministrazioneEmail": "email",
+    "StatoCliente": "account-status",
+    "StatoPagamenti": "payment-status",
+    "Contratto.Codice": "transaction-id",
+    "Contratto.Formula": "category",
+    "Contratto.Decorrenza": "start-date",
+    "Contratto.Scadenza": "end-date",
+    "Tecnico": "person-name",
+    "Priorita": "category",
+    "ConsensoMarketing": "consent-flag"
+  },
+  "destinationConcepts": {
+    "external_id": "customer-id",
+    "first_name": "given-name",
+    "last_name": "family-name",
+    "email": "email",
+    "mobile": "phone",
+    "organization": "organization-name",
+    "status": "account-status",
+    "plan": "category",
+    "priority": "category",
+    "customer_since": "start-date",
+    "language": "language-code"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 0,
+      "outcome": "transformed",
+      "output": {
+        "external_id": "CC08018",
+        "first_name": "Matteo",
+        "last_name": "Giordano",
+        "email": "matteo.giordano@ufficio.example.com",
+        "mobile": "+39 360 302 8717",
+        "organization": "Tipografia Moderna Snc",
+        "status": "cancelled",
+        "plan": "loan",
+        "priority": "normal",
+        "customer_since": "2022-03-17"
+      }
+    },
+    {
+      "recordIndex": 1,
+      "outcome": "transformed",
+      "output": {
+        "external_id": "CC08040",
+        "first_name": "Leonardo",
+        "last_name": "Mancini",
+        "email": "leonardo.mancini@ufficio.example.com",
+        "organization": "Studio Legale Ferri",
+        "status": "cancelled",
+        "plan": "smart",
+        "priority": "high",
+        "customer_since": "2021-03-27"
+      }
+    },
+    {
+      "recordIndex": 3,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 6,
+      "outcome": "transformed",
+      "output": {
+        "external_id": "CC08129",
+        "first_name": "Sara",
+        "last_name": "Rizzo",
+        "email": "sara.rizzo@ufficio.example.com",
+        "organization": "Officine Brambilla Srl",
+        "status": "suspended",
+        "plan": "premium",
+        "priority": "low",
+        "customer_since": "2017-06-25"
+      }
+    }
+  ]
+}

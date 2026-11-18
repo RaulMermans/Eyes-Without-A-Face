@@ -268,6 +268,26 @@ Decision: [ADR 0020](docs/decisions/0020-category-groupings-and-plan-recovery.md
 - **Plan questions offer every usable field** under "Choose another field". Never pre-select one.
 - **Provider failures are not mapping failures.** In an evaluation, a provider failure may get one re-approved request, never an automatic retry.
 
+## Semantic intelligence recovery (Sprint 18D) — implemented, not shipped
+
+Decision: [ADR 0021](docs/decisions/0021-semantic-intelligence-recovery.md). Pre-registration: [sprint-18d-semantic-intelligence.md](docs/evaluation/sprint-18d-semantic-intelligence.md).
+
+- **Model configurations come only from `CLOUD_MODELS`** (`src/inference/cloud-models.ts`).
+  - The product default is `gemini-3.5-flash-lite` at its default thinking.
+  - Another configuration only in a dev build through `__EYES_EVAL_CONFIG__`, which never switches to simulated adapters.
+  - The model and thinking level are part of the approved destination. Never fall back between models; never pick a model the approval did not name.
+- **Destination descriptions reach the cloud only in cloud-disclosure 1.4.0**, after `sanitizeTargetDescription`, shown in the review.
+  - Never forward a description verbatim, never widen the sanitizer or the leak scan to let one through.
+  - A dropped description is a local note, never an error.
+  - Never edit 1.0.0–1.3.0 schemas.
+- **The Local Semantic Matcher (`src/matching/`) is local-only ranking evidence.**
+  - Never send its candidates, scores or paths anywhere; never treat it as trusted semantic evidence; never execute a field because it agrees with Gemini.
+  - It may order question candidates and, under the opt-in policy, turn a confident Gemini match into a question.
+- **Plan 1.1.0 alternatives are candidates, never operations.** Plan 1.0.0 stays exact.
+- **Without `CompileInput.local`, compiling must stay byte-identical to Sprint 18C** (historical replays).
+- **The 18D holdout and the author's `author/specs_holdout_*.py` are sealed.** Never open them; score only through the frozen scorer. Stage 1 tunes on dev only. Every live stage needs the owner's budget approval; the default budget is zero.
+- Valentine and Transformers.js are offline benchmarks (`scripts/bench/`). Never add them to the app bundle without an ADR that beats the local matcher on fresh evidence.
+
 ## Release lifecycle and production acceptance (Sprint 14 — permanent, every sprint)
 
 **Tests passing does not mean the product works in production.** Procedure, commands, budget and evidence layout: [docs/deployment.md](docs/deployment.md#production-acceptance-standard-permanent).

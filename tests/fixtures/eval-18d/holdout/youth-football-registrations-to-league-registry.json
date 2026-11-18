@@ -1,0 +1,1018 @@
+{
+  "scenarioId": "youth-football-registrations-to-league-registry",
+  "split": "holdout",
+  "track": "general",
+  "industry": "youth football club registrations",
+  "sourceLanguage": "it",
+  "description": "Player registration export of a fictional youth football club (Italian snake_case, nested player with document and parent) to be loaded into a regional league registry.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "riga": 1,
+      "allenatore": "Fabio Nardi",
+      "categoria": "Giovanissimi",
+      "certificato_medico_scadenza": "23/11/2026",
+      "tesserato": {
+        "cognome": "Rossi",
+        "documento": {
+          "numero": "CA10282XY"
+        },
+        "matricola": "FG2203116",
+        "data_nascita": "15/02/2016",
+        "nome": "Edoardo"
+      },
+      "ruolo": "Portiere",
+      "stato_tesseramento": "Valido",
+      "genitore": {
+        "nome": "Edoardo Rossi"
+      },
+      "id_iscrizione": "ISC-0410",
+      "taglia_kit": "S",
+      "quota": "Prima rata"
+    },
+    {
+      "allenatore": "Fabio Nardi",
+      "riga": 2,
+      "tesserato": {
+        "nome": "Giulia",
+        "matricola": "FG2203167",
+        "documento": {
+          "numero": "CA10333XY"
+        },
+        "data_nascita": "23/03/2010",
+        "cognome": "Russo"
+      },
+      "id_iscrizione": "ISC-0412",
+      "certificato_medico_scadenza": "23/01/2027",
+      "quota": "Da pagare",
+      "genitore": {
+        "email": "grusso@famiglia.example.com",
+        "nome": "Giulia Russo"
+      },
+      "stato_tesseramento": "Svincolato",
+      "ruolo": "Centrocampista",
+      "taglia_kit": "XS",
+      "categoria": "Giovanissimi"
+    },
+    {
+      "ruolo": "Portiere",
+      "stato_tesseramento": "Valido",
+      "quota": "Prima rata",
+      "taglia_kit": "M",
+      "allenatore": "Fabio Nardi",
+      "categoria": "Esordienti",
+      "id_iscrizione": "ISC-0414",
+      "certificato_medico_scadenza": "27/07/2027",
+      "genitore": {
+        "nome": "Lorenzo Rizzo",
+        "email": "lrizzo@famiglia.example.com"
+      },
+      "riga": 3,
+      "tesserato": {
+        "data_nascita": "20/04/2017",
+        "cognome": "Rizzo",
+        "nome": "Lorenzo",
+        "matricola": "FG2203261",
+        "documento": {
+          "numero": "CA10464XY"
+        }
+      }
+    },
+    {
+      "certificato_medico_scadenza": "27/01/2027",
+      "id_iscrizione": "ISC-0416",
+      "categoria": "Allievi",
+      "ruolo": "Portiere",
+      "riga": 4,
+      "stato_tesseramento": "Valido",
+      "quota": "Prima rata",
+      "tesserato": {
+        "cognome": "Costa",
+        "matricola": "FG2203287",
+        "documento": {
+          "numero": "CA10513XY"
+        },
+        "nome": "Davide",
+        "data_nascita": "07/01/2014"
+      },
+      "genitore": {
+        "nome": "Davide Costa",
+        "email": "dcosta@famiglia.example.com"
+      },
+      "taglia_kit": "S",
+      "allenatore": "Fabio Nardi"
+    },
+    {
+      "ruolo": "Centrocampista",
+      "quota": "Prima rata",
+      "taglia_kit": "M",
+      "allenatore": "Fabio Nardi",
+      "stato_tesseramento": "Sospeso",
+      "tesserato": {
+        "documento": {
+          "numero": "CA10667XY"
+        },
+        "cognome": "Bruno",
+        "nome": "Francesco",
+        "data_nascita": "13/05/2018",
+        "matricola": "FG2203350"
+      },
+      "riga": 5,
+      "categoria": "Giovanissimi",
+      "genitore": {
+        "email": "fbruno@famiglia.example.com",
+        "nome": "Francesco Bruno"
+      },
+      "certificato_medico_scadenza": "22/08/2027",
+      "id_iscrizione": "ISC-0418"
+    },
+    {
+      "riga": 6,
+      "quota": "Saldata",
+      "id_iscrizione": "ISC-0421",
+      "allenatore": "Fabio Nardi",
+      "categoria": "Pulcini",
+      "certificato_medico_scadenza": "19/04/2027",
+      "ruolo": "Attaccante",
+      "taglia_kit": "XS",
+      "stato_tesseramento": "Prova",
+      "genitore": {
+        "email": "agallo@famiglia.example.com",
+        "nome": "Alice Gallo"
+      },
+      "tesserato": {
+        "documento": {
+          "numero": "CA10754XY"
+        },
+        "matricola": "FG2203420",
+        "nome": "Alice",
+        "data_nascita": "09/07/2018",
+        "cognome": "Gallo"
+      }
+    },
+    {
+      "genitore": {
+        "email": "Lmarino@Famiglia.Example.Com",
+        "nome": "Leonardo Marino"
+      },
+      "ruolo": "Difensore",
+      "stato_tesseramento": "Sospeso",
+      "quota": "Prima rata",
+      "allenatore": "Elisa Carbone",
+      "certificato_medico_scadenza": "06/09/2026",
+      "categoria": "Pulcini",
+      "taglia_kit": "S",
+      "tesserato": {
+        "nome": "Leonardo",
+        "data_nascita": "16/03/2016",
+        "matricola": "FG2203466",
+        "documento": {
+          "numero": "CA10778XY"
+        },
+        "cognome": "Marino"
+      },
+      "id_iscrizione": "ISC-0422",
+      "riga": 7
+    },
+    {
+      "tesserato": {
+        "matricola": "FG2203525",
+        "documento": {
+          "numero": "CA10906XY"
+        },
+        "nome": "Elena",
+        "data_nascita": "15/12/2016",
+        "cognome": "Greco"
+      },
+      "id_iscrizione": "ISC-0425",
+      "ruolo": "Portiere",
+      "genitore": {
+        "email": "Egreco@Famiglia.Example.Com",
+        "nome": "Elena Greco"
+      },
+      "allenatore": "Fabio Nardi",
+      "stato_tesseramento": "Svincolato",
+      "certificato_medico_scadenza": "21/11/2026",
+      "quota": "Prima rata",
+      "categoria": "Giovanissimi",
+      "taglia_kit": "XS",
+      "riga": 8
+    },
+    {
+      "allenatore": "Fabio Nardi",
+      "ruolo": null,
+      "categoria": "Allievi",
+      "quota": "Saldata",
+      "riga": 9,
+      "taglia_kit": "M",
+      "certificato_medico_scadenza": "30/09/2026",
+      "id_iscrizione": "ISC-0427",
+      "stato_tesseramento": "Sospeso",
+      "genitore": {
+        "email": "dmarino@famiglia.example.com",
+        "nome": "Davide Marino"
+      },
+      "tesserato": {
+        "matricola": "FG2203551",
+        "documento": {
+          "numero": "CA10979XY"
+        },
+        "data_nascita": "08/06/2018",
+        "cognome": "Marino",
+        "nome": "Davide"
+      }
+    },
+    {
+      "certificato_medico_scadenza": "26/10/2026",
+      "stato_tesseramento": "Valido",
+      "categoria": "Pulcini",
+      "id_iscrizione": "ISC-0428",
+      "taglia_kit": "XS",
+      "tesserato": {
+        "nome": "Beatrice",
+        "cognome": "Bianchi",
+        "data_nascita": "03/11/2012",
+        "matricola": "FG2203615",
+        "documento": {
+          "numero": "CA11062XY"
+        }
+      },
+      "ruolo": "Difensore",
+      "riga": 10,
+      "allenatore": "Fabio Nardi",
+      "genitore": {
+        "email": "bbianchi@famiglia.example.com",
+        "nome": "Beatrice Bianchi"
+      },
+      "quota": "Prima rata"
+    },
+    {
+      "ruolo": "Difensore",
+      "quota": "Saldata",
+      "id_iscrizione": "ISC-0430",
+      "certificato_medico_scadenza": "15/04/2027",
+      "categoria": "Esordienti",
+      "tesserato": {
+        "nome": "Pietro",
+        "cognome": "Conti   ",
+        "documento": {
+          "numero": "CA11179XY"
+        },
+        "matricola": "FG2203675",
+        "data_nascita": "12/12/2018"
+      },
+      "stato_tesseramento": "Svincolato",
+      "taglia_kit": "S",
+      "allenatore": "Fabio Nardi",
+      "genitore": {
+        "nome": "Pietro Conti",
+        "email": null
+      },
+      "riga": 11
+    },
+    {
+      "ruolo": "Centrocampista",
+      "certificato_medico_scadenza": "18/04/2027",
+      "taglia_kit": "M",
+      "id_iscrizione": "ISC-0433",
+      "tesserato": {
+        "cognome": "Moretti",
+        "matricola": "FG2203695",
+        "data_nascita": "25/01/2017",
+        "documento": {
+          "numero": "CA11278XY"
+        },
+        "nome": "Riccardo"
+      },
+      "genitore": {
+        "email": null,
+        "nome": "Riccardo Moretti"
+      },
+      "riga": 12,
+      "quota": "Da pagare",
+      "stato_tesseramento": "Valido",
+      "allenatore": "Fabio Nardi",
+      "categoria": "Giovanissimi"
+    },
+    {
+      "tesserato": {
+        "nome": "Tommaso",
+        "matricola": "FG2203763",
+        "data_nascita": "08/12/2015",
+        "documento": {
+          "numero": "CA11328XY"
+        },
+        "cognome": "Lombardi"
+      },
+      "ruolo": "Centrocampista",
+      "allenatore": "Fabio Nardi",
+      "riga": 13,
+      "certificato_medico_scadenza": "29/08/2027",
+      "stato_tesseramento": "Prova",
+      "id_iscrizione": "ISC-0434",
+      "categoria": "Allievi",
+      "quota": "Da pagare",
+      "taglia_kit": "XS",
+      "genitore": {
+        "nome": "Tommaso Lombardi",
+        "email": "tlombardi@famiglia.example.com"
+      }
+    },
+    {
+      "tesserato": {
+        "documento": {
+          "numero": "CA11483XY"
+        },
+        "nome": "Tommaso",
+        "cognome": "Romano",
+        "data_nascita": "26/09/2012",
+        "matricola": "FG2203839"
+      },
+      "certificato_medico_scadenza": "28/06/2027",
+      "quota": "Saldata",
+      "categoria": "Pulcini",
+      "genitore": {
+        "nome": "Tommaso Romano",
+        "email": "tromano@famiglia.example.com"
+      },
+      "stato_tesseramento": "Valido",
+      "riga": 14,
+      "taglia_kit": "M",
+      "id_iscrizione": "ISC-0437",
+      "allenatore": "Elisa Carbone"
+    },
+    {
+      "riga": 15,
+      "taglia_kit": "S",
+      "quota": "Saldata",
+      "ruolo": "Portiere",
+      "categoria": "Esordienti",
+      "genitore": {
+        "nome": "Edoardo Bianchi"
+      },
+      "tesserato": {
+        "data_nascita": "18/02/2013",
+        "documento": {
+          "numero": "CA11583XY"
+        },
+        "nome": "Edoardo",
+        "cognome": "Bianchi",
+        "matricola": "FG2203854"
+      },
+      "allenatore": "Fabio Nardi",
+      "stato_tesseramento": "Sospeso",
+      "id_iscrizione": "ISC-0439",
+      "certificato_medico_scadenza": "07/07/2027"
+    },
+    {
+      "riga": 16,
+      "allenatore": "Fabio Nardi",
+      "taglia_kit": "S",
+      "categoria": "Esordienti",
+      "id_iscrizione": "ISC-0440",
+      "tesserato": {
+        "nome": "Federico",
+        "matricola": "FG2203910",
+        "data_nascita": "10/10/2014",
+        "documento": {
+          "numero": "CA11621XY"
+        },
+        "cognome": "Bianchi"
+      },
+      "quota": "Prima rata",
+      "ruolo": "Portiere",
+      "certificato_medico_scadenza": "19/11/2026",
+      "genitore": {
+        "email": "Fbianchi@Famiglia.Example.Com",
+        "nome": "Federico Bianchi"
+      },
+      "stato_tesseramento": "Valido"
+    },
+    {
+      "categoria": "Pulcini",
+      "ruolo": "Portiere",
+      "taglia_kit": "S",
+      "quota": "Saldata",
+      "stato_tesseramento": "Valido",
+      "certificato_medico_scadenza": "07/09/2026",
+      "allenatore": "Fabio Nardi",
+      "riga": 17,
+      "tesserato": {
+        "matricola": "FG2203958",
+        "nome": "Matteo",
+        "cognome": "Ferrari",
+        "documento": {
+          "numero": "CA11719XY"
+        },
+        "data_nascita": "17/10/2013"
+      },
+      "genitore": {
+        "nome": "Matteo Ferrari",
+        "email": "mferrari@famiglia.example.com"
+      },
+      "id_iscrizione": "ISC-0442"
+    },
+    {
+      "genitore": {
+        "nome": "Francesco Russo"
+      },
+      "id_iscrizione": "ISC-0444",
+      "quota": "Prima rata",
+      "riga": 18,
+      "taglia_kit": "S",
+      "categoria": "Allievi",
+      "ruolo": "Difensore",
+      "stato_tesseramento": "Prova",
+      "certificato_medico_scadenza": "26/07/2027",
+      "allenatore": "Elisa Carbone",
+      "tesserato": {
+        "matricola": "FG2204035",
+        "documento": {
+          "numero": "CA11856XY"
+        },
+        "data_nascita": "15/05/2010",
+        "cognome": "Russo ",
+        "nome": "Francesco"
+      }
+    },
+    {
+      "ruolo": null,
+      "taglia_kit": "XS",
+      "allenatore": "Elisa Carbone",
+      "tesserato": {
+        "matricola": "FG2204086",
+        "cognome": "Gallo",
+        "nome": "Pietro",
+        "documento": {
+          "numero": "CA11858XY"
+        },
+        "data_nascita": "07/06/2013"
+      },
+      "stato_tesseramento": "Sospeso",
+      "genitore": {
+        "email": "pgallo@famiglia.example.com",
+        "nome": "Pietro Gallo"
+      },
+      "id_iscrizione": "ISC-0446",
+      "certificato_medico_scadenza": "25/04/2027",
+      "riga": 19,
+      "quota": "Saldata",
+      "categoria": "Pulcini"
+    },
+    {
+      "certificato_medico_scadenza": "22/07/2027",
+      "categoria": "Giovanissimi",
+      "allenatore": "Fabio Nardi",
+      "taglia_kit": "M",
+      "id_iscrizione": "ISC-0449",
+      "tesserato": {
+        "documento": {
+          "numero": "CA12026XY"
+        },
+        "nome": "Beatrice",
+        "matricola": "FG2204166",
+        "cognome": "Gallo ",
+        "data_nascita": "03/08/2016"
+      },
+      "genitore": {
+        "nome": "Beatrice Gallo",
+        "email": "bgallo@famiglia.example.com"
+      },
+      "riga": 20,
+      "quota": "Saldata",
+      "stato_tesseramento": "Valido",
+      "ruolo": "Portiere"
+    },
+    {
+      "quota": "Prima rata",
+      "id_iscrizione": "ISC-0451",
+      "allenatore": "Fabio Nardi",
+      "categoria": "Allievi",
+      "genitore": {
+        "email": "sgiordano@famiglia.example.com",
+        "nome": "Sara Giordano"
+      },
+      "taglia_kit": "S",
+      "ruolo": "Difensore",
+      "certificato_medico_scadenza": "15/11/2026",
+      "riga": 21,
+      "tesserato": {
+        "nome": "Sara",
+        "matricola": "FG2204209",
+        "documento": {
+          "numero": "CA12084XY"
+        },
+        "cognome": "Giordano",
+        "data_nascita": "25/05/2011"
+      },
+      "stato_tesseramento": "Valido"
+    },
+    {
+      "taglia_kit": "XS",
+      "genitore": {
+        "nome": "Chiara Marino",
+        "email": "cmarino@famiglia.example.com"
+      },
+      "tesserato": {
+        "matricola": "FG2204275",
+        "data_nascita": "06/09/2012",
+        "nome": "Chiara",
+        "documento": {
+          "numero": "CA12178XY"
+        },
+        "cognome": "Marino"
+      },
+      "id_iscrizione": "ISC-0453",
+      "stato_tesseramento": "Sospeso",
+      "categoria": "Pulcini",
+      "riga": 22,
+      "allenatore": "Fabio Nardi",
+      "quota": "Saldata",
+      "certificato_medico_scadenza": "21/02/2027",
+      "ruolo": "Attaccante"
+    },
+    {
+      "tesserato": {
+        "cognome": "Ricci",
+        "matricola": "FG2204300",
+        "data_nascita": "12/09/2018",
+        "documento": {
+          "numero": "CA12285XY"
+        },
+        "nome": "Beatrice"
+      },
+      "quota": "Saldata",
+      "id_iscrizione": "ISC-0455",
+      "genitore": {
+        "email": "bricci@famiglia.example.com",
+        "nome": "Beatrice Ricci"
+      },
+      "stato_tesseramento": "Prova",
+      "categoria": "Pulcini",
+      "taglia_kit": "M",
+      "allenatore": "Fabio Nardi",
+      "riga": 23,
+      "certificato_medico_scadenza": "11/03/2027"
+    },
+    {
+      "riga": 24,
+      "certificato_medico_scadenza": "27/11/2026",
+      "tesserato": {
+        "nome": "Matteo",
+        "documento": {
+          "numero": "CA12353XY"
+        },
+        "matricola": "FG2204335",
+        "data_nascita": "10/02/2015",
+        "cognome": "Ricci"
+      },
+      "quota": "Prima rata",
+      "ruolo": "Difensore",
+      "id_iscrizione": "ISC-0457",
+      "taglia_kit": "XS",
+      "genitore": {
+        "nome": "Matteo Ricci",
+        "email": "mricci@famiglia.example.com"
+      },
+      "stato_tesseramento": "Sospeso",
+      "allenatore": "Fabio Nardi",
+      "categoria": "Esordienti"
+    },
+    {
+      "genitore": {
+        "email": "adeluca@famiglia.example.com",
+        "nome": "Aurora De Luca"
+      },
+      "taglia_kit": "XS",
+      "ruolo": "Difensore",
+      "quota": "Prima rata",
+      "tesserato": {
+        "documento": {
+          "numero": "CA12428XY"
+        },
+        "nome": "Aurora",
+        "data_nascita": "21/05/2011",
+        "cognome": "De Luca",
+        "matricola": "FG2204420"
+      },
+      "certificato_medico_scadenza": "23/10/2026",
+      "allenatore": "Fabio Nardi",
+      "id_iscrizione": "ISC-0459",
+      "stato_tesseramento": "Svincolato",
+      "riga": 25,
+      "categoria": "Pulcini"
+    },
+    {
+      "certificato_medico_scadenza": "06/09/2026",
+      "taglia_kit": "M",
+      "id_iscrizione": "ISC-0461",
+      "allenatore": "Fabio Nardi",
+      "tesserato": {
+        "matricola": "FG2204463",
+        "cognome": "Moretti",
+        "documento": {
+          "numero": "CA12555XY"
+        },
+        "data_nascita": "11/07/2011",
+        "nome": "Matteo"
+      },
+      "categoria": "Pulcini",
+      "genitore": {
+        "nome": "Matteo Moretti",
+        "email": "mmoretti@famiglia.example.com"
+      },
+      "stato_tesseramento": "Svincolato",
+      "riga": 26,
+      "quota": "Saldata",
+      "ruolo": "Difensore"
+    },
+    {
+      "taglia_kit": "S",
+      "id_iscrizione": "ISC-0463",
+      "genitore": {
+        "email": "Gferrari@Famiglia.Example.Com",
+        "nome": "Giulia Ferrari"
+      },
+      "certificato_medico_scadenza": "19/02/2027",
+      "categoria": "Pulcini",
+      "quota": "Prima rata",
+      "stato_tesseramento": "Valido",
+      "riga": 27,
+      "tesserato": {
+        "matricola": "FG2204536",
+        "nome": "Giulia",
+        "data_nascita": "18/01/2014",
+        "documento": {
+          "numero": "CA12620XY"
+        },
+        "cognome": "Ferrari"
+      },
+      "allenatore": "Elisa Carbone",
+      "ruolo": "Centrocampista"
+    },
+    {
+      "riga": 28,
+      "id_iscrizione": "ISC-0464",
+      "genitore": {
+        "email": "mconti@famiglia.example.com",
+        "nome": "Matteo Conti"
+      },
+      "allenatore": "Fabio Nardi",
+      "ruolo": "Portiere",
+      "tesserato": {
+        "nome": "Matteo",
+        "cognome": "Conti",
+        "data_nascita": "25/07/2014",
+        "matricola": "FG2204564",
+        "documento": {
+          "numero": "CA12715XY"
+        }
+      },
+      "certificato_medico_scadenza": "20/02/2027",
+      "quota": "Da pagare",
+      "stato_tesseramento": "Prova",
+      "categoria": "Giovanissimi",
+      "taglia_kit": "XS"
+    },
+    {
+      "riga": 29,
+      "id_iscrizione": "ISC-0467",
+      "tesserato": {
+        "nome": "Elena",
+        "matricola": "FG2204603",
+        "data_nascita": "24/09/2018",
+        "cognome": "Lombardi ",
+        "documento": {
+          "numero": "CA12828XY"
+        }
+      },
+      "stato_tesseramento": "Valido",
+      "taglia_kit": "M",
+      "ruolo": "Portiere",
+      "allenatore": "Fabio Nardi",
+      "genitore": {
+        "email": "Elombardi@Famiglia.Example.Com",
+        "nome": "Elena Lombardi"
+      },
+      "certificato_medico_scadenza": "09/07/2027",
+      "categoria": "Pulcini",
+      "quota": "Prima rata"
+    },
+    {
+      "tesserato": {
+        "data_nascita": "12/03/2015",
+        "nome": "Riccardo",
+        "matricola": "FG2204648",
+        "cognome": "De Luca",
+        "documento": {
+          "numero": "CA12913XY"
+        }
+      },
+      "ruolo": "Difensore",
+      "stato_tesseramento": "Svincolato",
+      "quota": "Saldata",
+      "certificato_medico_scadenza": "08/04/2027",
+      "taglia_kit": "S",
+      "categoria": "Esordienti",
+      "genitore": {
+        "email": null,
+        "nome": "Riccardo De Luca"
+      },
+      "id_iscrizione": "ISC-0468",
+      "allenatore": "Fabio Nardi",
+      "riga": 30
+    },
+    {
+      "categoria": "Pulcini",
+      "quota": "Saldata",
+      "certificato_medico_scadenza": "26/02/2027",
+      "riga": 31,
+      "id_iscrizione": "ISC-0470",
+      "taglia_kit": "XS",
+      "stato_tesseramento": "Svincolato",
+      "ruolo": "Centrocampista",
+      "genitore": {
+        "nome": "Leonardo Mancini",
+        "email": "lmancini@famiglia.example.com"
+      },
+      "tesserato": {
+        "data_nascita": "05/10/2015",
+        "cognome": "Mancini   ",
+        "matricola": "FG2204720",
+        "nome": "Leonardo",
+        "documento": {
+          "numero": "CA13037XY"
+        }
+      },
+      "allenatore": "Fabio Nardi"
+    },
+    {
+      "ruolo": "Portiere",
+      "quota": "Prima rata",
+      "tesserato": {
+        "data_nascita": "05/04/2013",
+        "documento": {
+          "numero": "CA13043XY"
+        },
+        "nome": "Tommaso",
+        "cognome": "Bruno",
+        "matricola": "FG2204764"
+      },
+      "id_iscrizione": "ISC-0473",
+      "categoria": "Esordienti",
+      "certificato_medico_scadenza": "25/06/2027",
+      "allenatore": "Fabio Nardi",
+      "riga": 32,
+      "genitore": {
+        "nome": "Tommaso Bruno",
+        "email": "tbruno@famiglia.example.com"
+      },
+      "taglia_kit": "XS",
+      "stato_tesseramento": "Valido"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "license_no": {
+        "type": "string",
+        "description": "League licence number of the player."
+      },
+      "first_name": {
+        "type": "string",
+        "description": "Given name of the player."
+      },
+      "last_name": {
+        "type": "string",
+        "description": "Family name of the player."
+      },
+      "birth_date": {
+        "type": "string",
+        "format": "date",
+        "description": "Player's date of birth, used for age-group eligibility."
+      },
+      "age_group": {
+        "type": "string",
+        "enum": [
+          "u10",
+          "u12",
+          "u14",
+          "u16"
+        ],
+        "description": "Age group the player competes in."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "valid",
+          "suspended",
+          "released"
+        ],
+        "description": "Status."
+      },
+      "position": {
+        "type": "string",
+        "enum": [
+          "goalkeeper",
+          "defender",
+          "midfielder",
+          "forward"
+        ],
+        "description": "Playing position."
+      },
+      "guardian_email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address of the player's parent or guardian."
+      },
+      "club_code": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "license_no",
+      "first_name",
+      "last_name",
+      "birth_date",
+      "age_group",
+      "status"
+    ]
+  },
+  "groundTruth": {
+    "license_no": {
+      "source": "tesserato.matricola",
+      "transform": "copy",
+      "why": "licence number; id_iscrizione is the club enrolment"
+    },
+    "first_name": {
+      "source": "tesserato.nome",
+      "transform": "copy",
+      "why": "player given name; genitore.nome is the parent"
+    },
+    "last_name": {
+      "source": "tesserato.cognome",
+      "transform": "trim",
+      "why": "player family name, padded"
+    },
+    "birth_date": {
+      "source": "tesserato.data_nascita",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "birth date (day-first)"
+    },
+    "age_group": {
+      "source": "categoria",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Pulcini": "u10",
+        "Esordienti": "u12",
+        "Giovanissimi": "u14",
+        "Allievi": "u16"
+      },
+      "why": "Italian youth categories"
+    },
+    "status": {
+      "source": "stato_tesseramento",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Valido": "valid",
+        "Sospeso": "suspended",
+        "Svincolato": "released",
+        "Prova": null
+      },
+      "why": "registration state; trial players are not registered and need review"
+    },
+    "position": {
+      "source": "ruolo",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Portiere": "goalkeeper",
+        "Difensore": "defender",
+        "Centrocampista": "midfielder",
+        "Attaccante": "forward"
+      },
+      "why": "position, null or missing"
+    },
+    "guardian_email": {
+      "source": "genitore.email",
+      "transform": "normalize_email",
+      "why": "parent email, mixed case, null or missing"
+    },
+    "club_code": {
+      "source": null,
+      "transform": "none",
+      "why": "no club code is exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "stato_tesseramento",
+        "quota"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "tesserato.matricola",
+        "id_iscrizione"
+      ],
+      "correctFor": "license_no"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "tesserato.nome",
+        "genitore.nome"
+      ],
+      "correctFor": "first_name"
+    },
+    {
+      "kind": "birth-date-vs-start-date",
+      "fields": [
+        "tesserato.data_nascita",
+        "certificato_medico_scadenza"
+      ],
+      "correctFor": "birth_date"
+    }
+  ],
+  "sourceConcepts": {
+    "tesserato.matricola": "customer-id",
+    "id_iscrizione": "transaction-id",
+    "riga": "other-identifier",
+    "tesserato.nome": "given-name",
+    "tesserato.cognome": "family-name",
+    "tesserato.data_nascita": "birth-date",
+    "tesserato.documento.numero": "other-identifier",
+    "genitore.nome": "person-name",
+    "genitore.email": "email",
+    "categoria": "category",
+    "stato_tesseramento": "account-status",
+    "quota": "payment-status",
+    "certificato_medico_scadenza": "end-date",
+    "allenatore": "person-name",
+    "ruolo": "category",
+    "taglia_kit": "category"
+  },
+  "destinationConcepts": {
+    "license_no": "customer-id",
+    "first_name": "given-name",
+    "last_name": "family-name",
+    "birth_date": "birth-date",
+    "age_group": "category",
+    "status": "account-status",
+    "position": "category",
+    "guardian_email": "email",
+    "club_code": "other-identifier"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 0,
+      "outcome": "transformed",
+      "output": {
+        "license_no": "FG2203116",
+        "first_name": "Edoardo",
+        "last_name": "Rossi",
+        "birth_date": "2016-02-15",
+        "age_group": "u14",
+        "status": "valid",
+        "position": "goalkeeper"
+      }
+    },
+    {
+      "recordIndex": 1,
+      "outcome": "transformed",
+      "output": {
+        "license_no": "FG2203167",
+        "first_name": "Giulia",
+        "last_name": "Russo",
+        "birth_date": "2010-03-23",
+        "age_group": "u14",
+        "status": "released",
+        "position": "midfielder",
+        "guardian_email": "grusso@famiglia.example.com"
+      }
+    },
+    {
+      "recordIndex": 5,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 8,
+      "outcome": "transformed",
+      "output": {
+        "license_no": "FG2203551",
+        "first_name": "Davide",
+        "last_name": "Marino",
+        "birth_date": "2018-06-08",
+        "age_group": "u16",
+        "status": "suspended",
+        "guardian_email": "dmarino@famiglia.example.com"
+      }
+    }
+  ]
+}

@@ -1,0 +1,644 @@
+{
+  "scenarioId": "property-management-tenants-to-helpdesk-customers",
+  "split": "dev",
+  "track": "wedge",
+  "industry": "residential property management tenants",
+  "sourceLanguage": "nl",
+  "description": "Tenant export of a fictional property manager (Dutch snake_case with fld_ vendor prefix) to be loaded as helpdesk customers; the tenants' own email addresses are not exported.",
+  "fictional": true,
+  "completable": false,
+  "records": [
+    {
+      "fld_taal": "EN",
+      "fld_status": "In opzegging",
+      "fld_einddatum": "14/12/2026",
+      "fld_vve_email": "info@vve-molenhof.example.net",
+      "fld_voornaam": "Stijn",
+      "fld_betaalstatus": "Incasso",
+      "fld_complex": "Molenhof",
+      "fld_regel": 1,
+      "fld_beheerder_naam": "Ingrid Wolters",
+      "fld_telefoon": null,
+      "fld_contract_nr": "HC-204426",
+      "fld_ingangsdatum": "08/03/2021",
+      "fld_huurder_nr": "H30122",
+      "fld_achternaam": "Smit",
+      "fld_beheerder_email": "k.brink@beheer.example.org"
+    },
+    {
+      "fld_beheerder_email": "i.wolters@beheer.example.org",
+      "fld_huurder_nr": "H30126",
+      "fld_vve_email": "bestuur@vve-parkzicht.example.net",
+      "fld_taal": "PL",
+      "fld_telefoon": "06-65702157",
+      "fld_beheerder_naam": "Ingrid Wolters",
+      "fld_regel": 2,
+      "fld_achternaam": "de Wit",
+      "fld_einddatum": "27/04/2026",
+      "fld_status": "Lopend",
+      "fld_voornaam": "Sophie",
+      "fld_complex": "Parkzicht",
+      "fld_ingangsdatum": "24/06/2014",
+      "fld_contract_nr": "HC-204436",
+      "fld_betaalstatus": "Betaald"
+    },
+    {
+      "fld_einddatum": "30/10/2026",
+      "fld_beheerder_naam": "Ingrid Wolters",
+      "fld_status": "In opzegging",
+      "fld_regel": 3,
+      "fld_voornaam": "Fleur",
+      "fld_vve_email": "bestuur@vve-parkzicht.example.net",
+      "fld_taal": "NL",
+      "fld_achternaam": "van Dijk",
+      "fld_telefoon": null,
+      "fld_complex": "Parkzicht",
+      "fld_betaalstatus": "Betaald",
+      "fld_contract_nr": "HC-204445",
+      "fld_huurder_nr": "H30133",
+      "fld_ingangsdatum": "31/07/2023",
+      "fld_beheerder_email": "i.wolters@beheer.example.org"
+    },
+    {
+      "fld_achternaam": "van Dijk",
+      "fld_huurder_nr": "H30139",
+      "fld_beheerder_email": "k.brink@beheer.example.org",
+      "fld_vve_email": "info@vve-molenhof.example.net",
+      "fld_taal": "NL",
+      "fld_voornaam": "Eva",
+      "fld_telefoon": "06-87327521",
+      "fld_beheerder_naam": "Ingrid Wolters",
+      "fld_regel": 4,
+      "fld_status": "Lopend",
+      "fld_complex": "Molenhof",
+      "fld_ingangsdatum": "04/02/2024",
+      "fld_contract_nr": "HC-204474",
+      "fld_betaalstatus": "Achterstand",
+      "fld_einddatum": null
+    },
+    {
+      "fld_contract_nr": "HC-204482",
+      "fld_einddatum": null,
+      "fld_complex": "Molenhof",
+      "fld_achternaam": "Visser",
+      "fld_betaalstatus": "Achterstand",
+      "fld_telefoon": "06-74395331",
+      "fld_beheerder_naam": "Mehmet Aydin",
+      "fld_status": "Lopend",
+      "fld_beheerder_email": "k.brink@beheer.example.org",
+      "fld_taal": "PL",
+      "fld_vve_email": "info@vve-molenhof.example.net",
+      "fld_voornaam": "Julia",
+      "fld_ingangsdatum": "16/09/2023",
+      "fld_huurder_nr": "H30144",
+      "fld_regel": 5
+    },
+    {
+      "fld_ingangsdatum": "13/01/2017",
+      "fld_taal": "NL",
+      "fld_complex": "De Lindehoeve",
+      "fld_regel": 6,
+      "fld_beheerder_naam": "Mehmet Aydin",
+      "fld_contract_nr": "HC-204502",
+      "fld_beheerder_email": "m.aydin@beheer.example.org",
+      "fld_betaalstatus": "Achterstand",
+      "fld_huurder_nr": "H30147",
+      "fld_achternaam": "Dijkstra",
+      "fld_einddatum": "11/12/2025",
+      "fld_status": "Lopend",
+      "fld_voornaam": "Tess",
+      "fld_telefoon": "06-45073606",
+      "fld_vve_email": "info@vve-molenhof.example.net"
+    },
+    {
+      "fld_huurder_nr": "H30153",
+      "fld_einddatum": "18/09/2025",
+      "fld_betaalstatus": "Betaald",
+      "fld_beheerder_naam": "Mehmet Aydin",
+      "fld_ingangsdatum": "05/02/2022",
+      "fld_status": "Lopend",
+      "fld_voornaam": "Milan",
+      "fld_vve_email": "info@vve-molenhof.example.net",
+      "fld_contract_nr": "HC-204521",
+      "fld_taal": "NL",
+      "fld_regel": 7,
+      "fld_achternaam": "Brouwer",
+      "fld_beheerder_email": "m.aydin@beheer.example.org",
+      "fld_complex": "De Lindehoeve"
+    },
+    {
+      "fld_achternaam": "Meijer",
+      "fld_einddatum": null,
+      "fld_contract_nr": "HC-204531",
+      "fld_beheerder_naam": "Mehmet Aydin",
+      "fld_regel": 8,
+      "fld_beheerder_email": "k.brink@beheer.example.org",
+      "fld_ingangsdatum": "10/09/2013",
+      "fld_voornaam": "Jesse",
+      "fld_status": "In opzegging",
+      "fld_complex": "De Lindehoeve",
+      "fld_telefoon": "06-40525001",
+      "fld_vve_email": "bestuur@vve-parkzicht.example.net",
+      "fld_betaalstatus": "Betaald",
+      "fld_taal": "EN",
+      "fld_huurder_nr": "H30156"
+    },
+    {
+      "fld_voornaam": "Daan",
+      "fld_beheerder_naam": "Kees Brink",
+      "fld_achternaam": "Brouwer",
+      "fld_complex": "Parkzicht",
+      "fld_regel": 9,
+      "fld_vve_email": "info@vve-molenhof.example.net",
+      "fld_beheerder_email": "m.aydin@beheer.example.org",
+      "fld_status": "In opzegging",
+      "fld_einddatum": null,
+      "fld_taal": "NL",
+      "fld_ingangsdatum": "19/05/2010",
+      "fld_contract_nr": "HC-204556",
+      "fld_huurder_nr": "H30163",
+      "fld_telefoon": "06-94943508",
+      "fld_betaalstatus": "Betaald"
+    },
+    {
+      "fld_einddatum": "01/06/2025",
+      "fld_huurder_nr": "H30166",
+      "fld_status": "In opzegging",
+      "fld_contract_nr": "HC-204564",
+      "fld_complex": "Molenhof",
+      "fld_telefoon": "06-06326006",
+      "fld_voornaam": "Lucas",
+      "fld_beheerder_naam": "Kees Brink",
+      "fld_betaalstatus": "Betaald",
+      "fld_regel": 10,
+      "fld_vve_email": "bestuur@vve-parkzicht.example.net",
+      "fld_ingangsdatum": "27/06/2019",
+      "fld_taal": "NL",
+      "fld_achternaam": "Kok",
+      "fld_beheerder_email": "k.brink@beheer.example.org"
+    },
+    {
+      "fld_status": "In opzegging",
+      "fld_betaalstatus": "Betaald",
+      "fld_taal": "NL",
+      "fld_einddatum": "15/02/2026",
+      "fld_achternaam": "de Groot",
+      "fld_huurder_nr": "H30174",
+      "fld_beheerder_email": "i.wolters@beheer.example.org",
+      "fld_telefoon": "06-47713599",
+      "fld_contract_nr": "HC-204596",
+      "fld_vve_email": "info@vve-molenhof.example.net",
+      "fld_voornaam": "Anouk",
+      "fld_regel": 11,
+      "fld_ingangsdatum": "13/04/2014",
+      "fld_complex": "Molenhof",
+      "fld_beheerder_naam": "Kees Brink"
+    },
+    {
+      "fld_vve_email": "bestuur@vve-parkzicht.example.net",
+      "fld_huurder_nr": "H30177",
+      "fld_taal": "EN",
+      "fld_beheerder_email": "m.aydin@beheer.example.org",
+      "fld_einddatum": null,
+      "fld_regel": 12,
+      "fld_status": "Opgezegd",
+      "fld_betaalstatus": "Incasso",
+      "fld_ingangsdatum": "20/11/2020",
+      "fld_contract_nr": "HC-204607",
+      "fld_complex": "Parkzicht",
+      "fld_telefoon": "06-85900139",
+      "fld_voornaam": "Emma",
+      "fld_beheerder_naam": "Kees Brink",
+      "fld_achternaam": "de Wit"
+    },
+    {
+      "fld_beheerder_naam": "Mehmet Aydin",
+      "fld_voornaam": "Milan",
+      "fld_status": "Leegstand",
+      "fld_regel": 13,
+      "fld_huurder_nr": "H30182",
+      "fld_taal": "NL",
+      "fld_contract_nr": "HC-204626",
+      "fld_beheerder_email": "m.aydin@beheer.example.org",
+      "fld_einddatum": "09/12/2026",
+      "fld_betaalstatus": "Achterstand",
+      "fld_ingangsdatum": "25/02/2016",
+      "fld_telefoon": null,
+      "fld_vve_email": "bestuur@vve-parkzicht.example.net",
+      "fld_complex": "De Lindehoeve",
+      "fld_achternaam": "Hendriks"
+    },
+    {
+      "fld_vve_email": "info@vve-molenhof.example.net",
+      "fld_complex": "Parkzicht",
+      "fld_ingangsdatum": "28/03/2015",
+      "fld_beheerder_email": "m.aydin@beheer.example.org",
+      "fld_voornaam": "Tess",
+      "fld_beheerder_naam": "Kees Brink",
+      "fld_betaalstatus": "Incasso",
+      "fld_einddatum": "14/08/2025",
+      "fld_huurder_nr": "H30187",
+      "fld_status": "Lopend",
+      "fld_contract_nr": "HC-204638",
+      "fld_regel": 14,
+      "fld_telefoon": "06-32448359",
+      "fld_taal": "PL",
+      "fld_achternaam": "de Groot"
+    },
+    {
+      "fld_beheerder_email": "i.wolters@beheer.example.org",
+      "fld_telefoon": "06-28412005",
+      "fld_achternaam": "Dekker",
+      "fld_ingangsdatum": "18/03/2011",
+      "fld_beheerder_naam": "Mehmet Aydin",
+      "fld_vve_email": "bestuur@vve-parkzicht.example.net",
+      "fld_einddatum": "08/05/2026",
+      "fld_voornaam": "Fleur",
+      "fld_regel": 15,
+      "fld_taal": "NL",
+      "fld_status": "Lopend",
+      "fld_contract_nr": "HC-204662",
+      "fld_huurder_nr": "H30190",
+      "fld_complex": "De Lindehoeve",
+      "fld_betaalstatus": "Betaald"
+    },
+    {
+      "fld_telefoon": "06-27331596",
+      "fld_complex": "De Lindehoeve",
+      "fld_regel": 16,
+      "fld_beheerder_email": "i.wolters@beheer.example.org",
+      "fld_status": "Lopend",
+      "fld_beheerder_naam": "Kees Brink",
+      "fld_vve_email": "bestuur@vve-parkzicht.example.net",
+      "fld_achternaam": "Mulder",
+      "fld_einddatum": "14/06/2025",
+      "fld_huurder_nr": "H30198",
+      "fld_ingangsdatum": "19/11/2014",
+      "fld_taal": "NL",
+      "fld_contract_nr": "HC-204681",
+      "fld_voornaam": "Anouk",
+      "fld_betaalstatus": "Betaald"
+    },
+    {
+      "fld_status": "Lopend",
+      "fld_einddatum": "30/09/2026",
+      "fld_regel": 17,
+      "fld_voornaam": "Anouk",
+      "fld_taal": "EN",
+      "fld_ingangsdatum": "22/10/2010",
+      "fld_beheerder_email": "k.brink@beheer.example.org",
+      "fld_achternaam": "Hendriks",
+      "fld_beheerder_naam": "Ingrid Wolters",
+      "fld_huurder_nr": "H30204",
+      "fld_vve_email": "bestuur@vve-parkzicht.example.net",
+      "fld_complex": "Parkzicht",
+      "fld_contract_nr": "HC-204693",
+      "fld_betaalstatus": "Betaald"
+    },
+    {
+      "fld_beheerder_email": "k.brink@beheer.example.org",
+      "fld_regel": 18,
+      "fld_status": "Opgezegd",
+      "fld_ingangsdatum": "11/06/2023",
+      "fld_beheerder_naam": "Ingrid Wolters",
+      "fld_einddatum": null,
+      "fld_vve_email": "bestuur@vve-parkzicht.example.net",
+      "fld_telefoon": "06-97285380",
+      "fld_achternaam": "Smit",
+      "fld_taal": "NL",
+      "fld_huurder_nr": "H30205",
+      "fld_voornaam": "Emma",
+      "fld_betaalstatus": "Achterstand",
+      "fld_complex": "Molenhof",
+      "fld_contract_nr": "HC-204711"
+    },
+    {
+      "fld_betaalstatus": "Incasso",
+      "fld_contract_nr": "HC-204726",
+      "fld_voornaam": "Sem",
+      "fld_beheerder_naam": "Mehmet Aydin",
+      "fld_status": "In opzegging",
+      "fld_einddatum": null,
+      "fld_regel": 19,
+      "fld_beheerder_email": "i.wolters@beheer.example.org",
+      "fld_achternaam": "Brouwer",
+      "fld_complex": "Molenhof",
+      "fld_vve_email": "info@vve-molenhof.example.net",
+      "fld_telefoon": "06-35882755",
+      "fld_ingangsdatum": "22/08/2016",
+      "fld_taal": "NL",
+      "fld_huurder_nr": "H30211"
+    },
+    {
+      "fld_voornaam": "Daan",
+      "fld_complex": "Parkzicht",
+      "fld_status": "Opgezegd",
+      "fld_vve_email": "bestuur@vve-parkzicht.example.net",
+      "fld_beheerder_email": "m.aydin@beheer.example.org",
+      "fld_beheerder_naam": "Mehmet Aydin",
+      "fld_ingangsdatum": "10/02/2015",
+      "fld_taal": "NL",
+      "fld_einddatum": "28/05/2026",
+      "fld_contract_nr": "HC-204745",
+      "fld_telefoon": "06-00815866",
+      "fld_achternaam": "Peters",
+      "fld_regel": 20,
+      "fld_huurder_nr": "H30218",
+      "fld_betaalstatus": "Betaald"
+    },
+    {
+      "fld_vve_email": "bestuur@vve-parkzicht.example.net",
+      "fld_betaalstatus": "Achterstand",
+      "fld_einddatum": "01/04/2026",
+      "fld_huurder_nr": "H30224",
+      "fld_achternaam": "de Vries",
+      "fld_taal": "PL",
+      "fld_ingangsdatum": "11/08/2012",
+      "fld_regel": 21,
+      "fld_complex": "De Lindehoeve",
+      "fld_contract_nr": "HC-204755",
+      "fld_status": "In opzegging",
+      "fld_telefoon": "06-48734155",
+      "fld_voornaam": "Sanne",
+      "fld_beheerder_naam": "Mehmet Aydin",
+      "fld_beheerder_email": "i.wolters@beheer.example.org"
+    },
+    {
+      "fld_taal": "EN",
+      "fld_beheerder_email": "i.wolters@beheer.example.org",
+      "fld_einddatum": null,
+      "fld_ingangsdatum": "27/03/2021",
+      "fld_achternaam": "Hendriks",
+      "fld_huurder_nr": "H30227",
+      "fld_complex": "Molenhof",
+      "fld_telefoon": "06-54074667",
+      "fld_betaalstatus": "Betaald",
+      "fld_beheerder_naam": "Mehmet Aydin",
+      "fld_status": "In opzegging",
+      "fld_vve_email": "info@vve-molenhof.example.net",
+      "fld_contract_nr": "HC-204780",
+      "fld_voornaam": "Bram",
+      "fld_regel": 22
+    },
+    {
+      "fld_ingangsdatum": "27/04/2025",
+      "fld_beheerder_email": "i.wolters@beheer.example.org",
+      "fld_vve_email": "info@vve-molenhof.example.net",
+      "fld_achternaam": "Bakker",
+      "fld_beheerder_naam": "Kees Brink",
+      "fld_voornaam": "Jesse",
+      "fld_huurder_nr": "H30231",
+      "fld_einddatum": "09/05/2026",
+      "fld_telefoon": "06-79039155",
+      "fld_status": "Leegstand",
+      "fld_complex": "De Lindehoeve",
+      "fld_taal": "PL",
+      "fld_regel": 23,
+      "fld_contract_nr": "HC-204798",
+      "fld_betaalstatus": "Achterstand"
+    },
+    {
+      "fld_status": "Leegstand",
+      "fld_huurder_nr": "H30236",
+      "fld_vve_email": "bestuur@vve-parkzicht.example.net",
+      "fld_complex": "Molenhof",
+      "fld_beheerder_naam": "Kees Brink",
+      "fld_einddatum": null,
+      "fld_beheerder_email": "i.wolters@beheer.example.org",
+      "fld_taal": "EN",
+      "fld_telefoon": "06-79502162",
+      "fld_achternaam": "van Leeuwen",
+      "fld_regel": 24,
+      "fld_betaalstatus": "Achterstand",
+      "fld_ingangsdatum": "22/12/2010",
+      "fld_contract_nr": "HC-204813",
+      "fld_voornaam": "Sem"
+    },
+    {
+      "fld_status": "Lopend",
+      "fld_betaalstatus": "Achterstand",
+      "fld_beheerder_naam": "Ingrid Wolters",
+      "fld_huurder_nr": "H30241",
+      "fld_contract_nr": "HC-204823",
+      "fld_beheerder_email": "k.brink@beheer.example.org",
+      "fld_ingangsdatum": "28/06/2017",
+      "fld_einddatum": "13/12/2025",
+      "fld_regel": 25,
+      "fld_complex": "Molenhof",
+      "fld_achternaam": "Dekker",
+      "fld_telefoon": "06-56664743",
+      "fld_voornaam": "Tess",
+      "fld_taal": "PL",
+      "fld_vve_email": "bestuur@vve-parkzicht.example.net"
+    },
+    {
+      "fld_complex": "De Lindehoeve",
+      "fld_taal": "NL",
+      "fld_huurder_nr": "H30245",
+      "fld_voornaam": "Sophie",
+      "fld_beheerder_naam": "Ingrid Wolters",
+      "fld_regel": 26,
+      "fld_vve_email": "info@vve-molenhof.example.net",
+      "fld_einddatum": null,
+      "fld_status": "In opzegging",
+      "fld_achternaam": "Hendriks",
+      "fld_betaalstatus": "Incasso",
+      "fld_ingangsdatum": "22/09/2013",
+      "fld_contract_nr": "HC-204851",
+      "fld_telefoon": "06-60449040",
+      "fld_beheerder_email": "k.brink@beheer.example.org"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "customer_id": {
+        "type": "string",
+        "description": "Identifier of the tenant at the property manager."
+      },
+      "first_name": {
+        "type": "string",
+        "description": "Given name of the customer."
+      },
+      "last_name": {
+        "type": "string",
+        "description": "Family name of the customer."
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address of the customer; required to open tickets."
+      },
+      "phone": {
+        "type": "string",
+        "description": "Phone number of the customer."
+      },
+      "building": {
+        "type": "string",
+        "description": "Building complex where the customer lives."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "ending",
+          "ended"
+        ],
+        "description": "Status."
+      },
+      "language": {
+        "type": "string",
+        "enum": [
+          "nl",
+          "en",
+          "pl"
+        ],
+        "description": "Language for messages to the customer."
+      },
+      "customer_since": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the customer's tenancy began."
+      },
+      "notes": {
+        "type": "string",
+        "description": "Internal notes about the customer, visible to agents only."
+      }
+    },
+    "required": [
+      "customer_id",
+      "first_name",
+      "last_name",
+      "email",
+      "status"
+    ]
+  },
+  "groundTruth": {
+    "customer_id": {
+      "source": "fld_huurder_nr",
+      "transform": "copy",
+      "why": "tenant number; contract_nr is the lease"
+    },
+    "first_name": {
+      "source": "fld_voornaam",
+      "transform": "copy",
+      "why": "tenant given name; beheerder_naam is the property manager"
+    },
+    "last_name": {
+      "source": "fld_achternaam",
+      "transform": "copy",
+      "why": "tenant family name"
+    },
+    "email": {
+      "source": null,
+      "transform": "none",
+      "why": "the tenant's own email is not exported; beheerder_email is the manager's and vve_email the owners' association"
+    },
+    "phone": {
+      "source": "fld_telefoon",
+      "transform": "copy",
+      "why": "tenant phone"
+    },
+    "building": {
+      "source": "fld_complex",
+      "transform": "copy",
+      "why": "housing complex"
+    },
+    "status": {
+      "source": "fld_status",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Lopend": "active",
+        "In opzegging": "ending",
+        "Opgezegd": "ended",
+        "Leegstand": null
+      },
+      "why": "lease state; vacancy has no tenant and needs review"
+    },
+    "language": {
+      "source": "fld_taal",
+      "transform": "map_enum",
+      "categoryMap": {
+        "NL": "nl",
+        "EN": "en",
+        "PL": "pl"
+      },
+      "why": "preferred language"
+    },
+    "customer_since": {
+      "source": "fld_ingangsdatum",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "lease start (Dutch day-first); einddatum is the lease end"
+    },
+    "notes": {
+      "source": null,
+      "transform": "none",
+      "why": "no notes are exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "decoy-for-missing-field",
+      "fields": [
+        "fld_beheerder_email",
+        "fld_vve_email"
+      ],
+      "correctFor": "email"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "fld_status",
+        "fld_betaalstatus"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "fld_huurder_nr",
+        "fld_contract_nr"
+      ],
+      "correctFor": "customer_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "fld_voornaam",
+        "fld_beheerder_naam"
+      ],
+      "correctFor": "first_name"
+    }
+  ],
+  "sourceConcepts": {
+    "fld_huurder_nr": "customer-id",
+    "fld_contract_nr": "transaction-id",
+    "fld_regel": "other-identifier",
+    "fld_voornaam": "given-name",
+    "fld_achternaam": "family-name",
+    "fld_telefoon": "phone",
+    "fld_beheerder_naam": "person-name",
+    "fld_beheerder_email": "email",
+    "fld_vve_email": "email",
+    "fld_complex": "organization-name",
+    "fld_status": "account-status",
+    "fld_betaalstatus": "payment-status",
+    "fld_taal": "language-code",
+    "fld_ingangsdatum": "start-date",
+    "fld_einddatum": "end-date"
+  },
+  "destinationConcepts": {
+    "customer_id": "customer-id",
+    "first_name": "given-name",
+    "last_name": "family-name",
+    "email": "email",
+    "phone": "phone",
+    "building": "organization-name",
+    "status": "account-status",
+    "language": "language-code",
+    "customer_since": "start-date",
+    "notes": "other"
+  }
+}

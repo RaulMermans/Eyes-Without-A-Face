@@ -1,0 +1,681 @@
+{
+  "scenarioId": "water-cooler-delivery-subscribers-to-helpdesk-customers",
+  "split": "holdout",
+  "track": "wedge",
+  "industry": "bottled water delivery subscribers",
+  "sourceLanguage": "fr",
+  "description": "Subscriber export of a fictional Quebec water-cooler delivery service (French snake_case) to be loaded as helpdesk customers; the subscription start date is not exported.",
+  "fictional": true,
+  "completable": false,
+  "records": [
+    {
+      "date_derniere_livraison": "06/08/2026",
+      "statut_paiement": "Payé",
+      "ligne": 1,
+      "langue_pref": "Français",
+      "statut_abonnement": "Résilié",
+      "courriel": "gabriel.martin@maison.example.net",
+      "nom": "Martin",
+      "prenom": "Gabriel",
+      "secteur": "Longueuil",
+      "livreur": "Steve Gagnon",
+      "no_client": "QC-40206",
+      "forfait": "Maison 1 bonbonne",
+      "no_compte_facturation": "F1200424",
+      "telephone": null,
+      "date_prochaine_livraison": "06/12/2026"
+    },
+    {
+      "ligne": 2,
+      "date_prochaine_livraison": "05/12/2026",
+      "courriel": "elise.garcia@maison.example.net",
+      "statut_paiement": "Payé",
+      "no_compte_facturation": "F1200451",
+      "prenom": "Elise",
+      "secteur": "Laval",
+      "no_client": "QC-40207",
+      "livreur": "Mélanie Côté",
+      "langue_pref": "Anglais",
+      "statut_abonnement": "Suspendu – vacances",
+      "nom": "Garcia",
+      "telephone": "514-555-2525",
+      "date_derniere_livraison": "02/09/2026",
+      "forfait": "Bureau 2 bonbonnes"
+    },
+    {
+      "no_compte_facturation": "F1200510",
+      "prenom": "Nathan",
+      "forfait": "Maison 1 bonbonne",
+      "telephone": "514-555-6423",
+      "ligne": 3,
+      "statut_paiement": "Payé",
+      "statut_abonnement": "Suspendu – vacances",
+      "langue_pref": "Anglais",
+      "livreur": "Mélanie Côté",
+      "courriel": "nathan.laurent@maison.example.net",
+      "secteur": "Plateau",
+      "no_client": "QC-40214",
+      "date_derniere_livraison": "02/09/2026",
+      "date_prochaine_livraison": "04/01/2027",
+      "nom": "Laurent"
+    },
+    {
+      "date_derniere_livraison": "02/10/2026",
+      "livreur": "Steve Gagnon",
+      "telephone": "514-555-4024",
+      "ligne": 4,
+      "prenom": "Gabriel",
+      "secteur": "Plateau",
+      "no_client": "QC-40222",
+      "statut_abonnement": "Suspendu – vacances",
+      "langue_pref": "Français",
+      "date_prochaine_livraison": "05/01/2027",
+      "nom": "Leroy",
+      "forfait": "Commercial plus",
+      "courriel": "gabriel.leroy@maison.example.net",
+      "no_compte_facturation": "F1200536",
+      "statut_paiement": "En souffrance"
+    },
+    {
+      "telephone": "514-555-4127",
+      "statut_abonnement": "Actif",
+      "secteur": "Laval",
+      "date_derniere_livraison": "06/10/2026",
+      "prenom": "Antoine",
+      "statut_paiement": "En souffrance",
+      "courriel": "antoine.durand@maison.example.net",
+      "ligne": 5,
+      "date_prochaine_livraison": "07/12/2026",
+      "no_compte_facturation": "F1200549",
+      "livreur": "Steve Gagnon",
+      "langue_pref": "Français",
+      "nom": "Durand",
+      "no_client": "QC-40230",
+      "forfait": "Maison 1 bonbonne"
+    },
+    {
+      "forfait": "Bureau 2 bonbonnes",
+      "telephone": "514-555-1074",
+      "statut_paiement": "Payé",
+      "prenom": "Manon",
+      "no_client": "QC-40231",
+      "livreur": "Steve Gagnon",
+      "langue_pref": "Français",
+      "statut_abonnement": "Suspendu – vacances",
+      "secteur": "Plateau",
+      "date_prochaine_livraison": "10/01/2027",
+      "courriel": "manon.michel@maison.example.net",
+      "nom": "Michel",
+      "date_derniere_livraison": "09/11/2026",
+      "ligne": 6,
+      "no_compte_facturation": "F1200604"
+    },
+    {
+      "livreur": "Mélanie Côté",
+      "no_compte_facturation": "F1200632",
+      "prenom": "Raphaël",
+      "langue_pref": "Français",
+      "forfait": "Bureau 2 bonbonnes",
+      "statut_abonnement": "Actif",
+      "courriel": "raphael.moreau@maison.example.net",
+      "telephone": "514-555-9812",
+      "nom": "Moreau",
+      "ligne": 7,
+      "date_prochaine_livraison": "09/01/2027",
+      "secteur": "Longueuil",
+      "statut_paiement": "En souffrance",
+      "no_client": "QC-40238",
+      "date_derniere_livraison": "01/08/2026"
+    },
+    {
+      "langue_pref": "Français",
+      "nom": "Petit",
+      "statut_paiement": "En souffrance",
+      "forfait": "Bureau 2 bonbonnes",
+      "no_client": "QC-40245",
+      "statut_abonnement": "Actif",
+      "prenom": "Nathan",
+      "no_compte_facturation": "F1200675",
+      "secteur": "Longueuil",
+      "ligne": 8,
+      "livreur": "Mélanie Côté",
+      "date_derniere_livraison": "12/09/2026",
+      "courriel": "nathan.petit@maison.example.net",
+      "date_prochaine_livraison": "12/12/2026",
+      "telephone": "514-555-8678"
+    },
+    {
+      "statut_abonnement": "Actif",
+      "date_prochaine_livraison": null,
+      "date_derniere_livraison": "08/08/2026",
+      "no_compte_facturation": "F1200721",
+      "nom": "Moreau",
+      "langue_pref": "Anglais",
+      "prenom": "Sarah",
+      "telephone": "514-555-2266",
+      "secteur": "Laval",
+      "forfait": "Maison 1 bonbonne",
+      "ligne": 9,
+      "livreur": "Steve Gagnon",
+      "statut_paiement": "Payé",
+      "no_client": "QC-40250",
+      "courriel": "sarah.moreau@maison.example.net"
+    },
+    {
+      "nom": "Garcia",
+      "forfait": "Maison 1 bonbonne",
+      "ligne": 10,
+      "no_client": "QC-40257",
+      "courriel": "sarah.garcia@maison.example.net",
+      "langue_pref": "Français",
+      "secteur": "Laval",
+      "date_derniere_livraison": "12/10/2026",
+      "telephone": null,
+      "no_compte_facturation": "F1200748",
+      "date_prochaine_livraison": "01/12/2026",
+      "prenom": "Sarah",
+      "statut_abonnement": "Actif",
+      "livreur": "Steve Gagnon",
+      "statut_paiement": "En souffrance"
+    },
+    {
+      "no_client": "QC-40263",
+      "no_compte_facturation": "F1200791",
+      "nom": "Rousseau",
+      "ligne": 11,
+      "livreur": "Mélanie Côté",
+      "date_prochaine_livraison": "01/12/2026",
+      "telephone": "514-555-0060",
+      "langue_pref": "Français",
+      "courriel": "raphael.rousseau@maison.example.net",
+      "forfait": "Maison 1 bonbonne",
+      "date_derniere_livraison": "04/10/2026",
+      "prenom": "Raphaël",
+      "statut_paiement": "Carte refusée",
+      "secteur": "Laval",
+      "statut_abonnement": "Résilié"
+    },
+    {
+      "courriel": "pauline.lefevre@maison.example.net",
+      "forfait": "Bureau 2 bonbonnes",
+      "no_compte_facturation": "F1200843",
+      "telephone": "514-555-8645",
+      "langue_pref": "Français",
+      "statut_abonnement": "Actif",
+      "statut_paiement": "Carte refusée",
+      "date_prochaine_livraison": null,
+      "no_client": "QC-40269",
+      "ligne": 12,
+      "date_derniere_livraison": "05/10/2026",
+      "prenom": "Pauline",
+      "nom": "Lefèvre",
+      "livreur": "Steve Gagnon",
+      "secteur": "Plateau"
+    },
+    {
+      "date_derniere_livraison": "09/08/2026",
+      "forfait": "Maison 1 bonbonne",
+      "livreur": "Steve Gagnon",
+      "courriel": "hugo.laurent@maison.example.net",
+      "no_client": "QC-40278",
+      "prenom": "Hugo",
+      "no_compte_facturation": "F1200873",
+      "statut_abonnement": "Résilié",
+      "secteur": "Laval",
+      "date_prochaine_livraison": "01/12/2026",
+      "telephone": "514-555-7962",
+      "langue_pref": "Français",
+      "ligne": 13,
+      "nom": "Laurent",
+      "statut_paiement": "Payé"
+    },
+    {
+      "ligne": 14,
+      "telephone": "514-555-1658",
+      "secteur": "Longueuil",
+      "forfait": "Maison 1 bonbonne",
+      "statut_abonnement": "Actif",
+      "date_derniere_livraison": "06/09/2026",
+      "nom": "Thomas",
+      "statut_paiement": "Payé",
+      "prenom": "Margaux",
+      "no_client": "QC-40283",
+      "date_prochaine_livraison": "04/12/2026",
+      "livreur": "Mélanie Côté",
+      "no_compte_facturation": "F1200885",
+      "courriel": "margaux.thomas@maison.example.net",
+      "langue_pref": "Anglais"
+    },
+    {
+      "livreur": "Mélanie Côté",
+      "telephone": "514-555-8289",
+      "secteur": "Plateau",
+      "nom": "Bonnet",
+      "no_client": "QC-40285",
+      "statut_paiement": "Payé",
+      "forfait": "Maison 1 bonbonne",
+      "courriel": "lea.bonnet@maison.example.net",
+      "prenom": "Léa",
+      "date_derniere_livraison": "03/08/2026",
+      "no_compte_facturation": "F1200940",
+      "date_prochaine_livraison": "05/12/2026",
+      "langue_pref": "Français",
+      "ligne": 15,
+      "statut_abonnement": "Actif"
+    },
+    {
+      "date_prochaine_livraison": "03/11/2026",
+      "statut_paiement": "Carte refusée",
+      "statut_abonnement": "Essai interne",
+      "secteur": "Laval",
+      "courriel": "ines.durand@maison.example.net",
+      "prenom": "Inès",
+      "forfait": "Commercial plus",
+      "nom": "Durand",
+      "telephone": "514-555-3191",
+      "no_compte_facturation": "F1200957",
+      "date_derniere_livraison": "06/10/2026",
+      "ligne": 16,
+      "langue_pref": "Anglais",
+      "no_client": "QC-40295",
+      "livreur": "Steve Gagnon"
+    },
+    {
+      "livreur": "Steve Gagnon",
+      "date_derniere_livraison": "02/09/2026",
+      "ligne": 17,
+      "statut_abonnement": "Actif",
+      "statut_paiement": "Payé",
+      "no_compte_facturation": "F1201005",
+      "prenom": "Jules",
+      "no_client": "QC-40297",
+      "courriel": "jules.dubois@maison.example.net",
+      "secteur": "Laval",
+      "telephone": "514-555-5288",
+      "langue_pref": "Anglais",
+      "nom": "Dubois",
+      "forfait": "Maison 1 bonbonne"
+    },
+    {
+      "no_compte_facturation": "F1201042",
+      "forfait": "Maison 1 bonbonne",
+      "nom": "Robert",
+      "secteur": "Plateau",
+      "courriel": "antoine.robert@maison.example.net",
+      "langue_pref": "Français",
+      "livreur": "Steve Gagnon",
+      "telephone": "514-555-2013",
+      "prenom": "Antoine",
+      "date_prochaine_livraison": "01/01/2027",
+      "date_derniere_livraison": "06/11/2026",
+      "statut_paiement": "Payé",
+      "no_client": "QC-40306",
+      "ligne": 18,
+      "statut_abonnement": "Actif"
+    },
+    {
+      "prenom": "Camille",
+      "date_derniere_livraison": "03/08/2026",
+      "nom": "Garcia",
+      "ligne": 19,
+      "secteur": "Plateau",
+      "courriel": "camille.garcia@maison.example.net",
+      "date_prochaine_livraison": null,
+      "forfait": "Bureau 2 bonbonnes",
+      "statut_paiement": "Payé",
+      "no_compte_facturation": "F1201073",
+      "langue_pref": "Anglais",
+      "no_client": "QC-40313",
+      "statut_abonnement": "Résilié",
+      "livreur": "Steve Gagnon",
+      "telephone": "514-555-9303"
+    },
+    {
+      "langue_pref": "Anglais",
+      "statut_abonnement": "Suspendu – vacances",
+      "ligne": 20,
+      "date_prochaine_livraison": "03/11/2026",
+      "no_compte_facturation": "F1201110",
+      "statut_paiement": "Payé",
+      "prenom": "Juliette",
+      "date_derniere_livraison": "03/10/2026",
+      "nom": "Faure",
+      "secteur": "Plateau",
+      "courriel": "juliette.faure@maison.example.net",
+      "no_client": "QC-40319",
+      "livreur": "Steve Gagnon",
+      "forfait": "Commercial plus",
+      "telephone": "514-555-2378"
+    },
+    {
+      "telephone": null,
+      "livreur": "Steve Gagnon",
+      "statut_abonnement": "Suspendu – vacances",
+      "prenom": "Sarah",
+      "statut_paiement": "En souffrance",
+      "langue_pref": "Anglais",
+      "forfait": "Commercial plus",
+      "courriel": "sarah.richard@maison.example.net",
+      "no_client": "QC-40324",
+      "ligne": 21,
+      "no_compte_facturation": "F1201160",
+      "date_prochaine_livraison": "07/12/2026",
+      "date_derniere_livraison": "07/10/2026",
+      "secteur": "Longueuil",
+      "nom": "Richard"
+    },
+    {
+      "secteur": "Plateau",
+      "forfait": "Commercial plus",
+      "statut_abonnement": "Suspendu – vacances",
+      "date_prochaine_livraison": "06/11/2026",
+      "livreur": "Steve Gagnon",
+      "statut_paiement": "Payé",
+      "date_derniere_livraison": "02/11/2026",
+      "prenom": "Juliette",
+      "no_compte_facturation": "F1201213",
+      "telephone": "514-555-0493",
+      "langue_pref": "Français",
+      "courriel": "juliette.robert@maison.example.net",
+      "nom": "Robert",
+      "ligne": 22,
+      "no_client": "QC-40328"
+    },
+    {
+      "no_client": "QC-40334",
+      "langue_pref": "Français",
+      "livreur": "Steve Gagnon",
+      "secteur": "Longueuil",
+      "statut_abonnement": "Essai interne",
+      "nom": "Girard",
+      "courriel": "raphael.girard@maison.example.net",
+      "telephone": "514-555-4268",
+      "no_compte_facturation": "F1201239",
+      "forfait": "Bureau 2 bonbonnes",
+      "statut_paiement": "En souffrance",
+      "date_derniere_livraison": "11/09/2026",
+      "ligne": 23,
+      "prenom": "Raphaël"
+    },
+    {
+      "prenom": "Léa",
+      "ligne": 24,
+      "no_client": "QC-40339",
+      "courriel": "lea.girard@maison.example.net",
+      "statut_abonnement": "Suspendu – vacances",
+      "no_compte_facturation": "F1201252",
+      "statut_paiement": "Payé",
+      "langue_pref": "Français",
+      "secteur": "Plateau",
+      "nom": "Girard",
+      "livreur": "Steve Gagnon",
+      "forfait": "Commercial plus",
+      "date_prochaine_livraison": "10/11/2026",
+      "telephone": "514-555-3565",
+      "date_derniere_livraison": "04/11/2026"
+    },
+    {
+      "no_client": "QC-40348",
+      "no_compte_facturation": "F1201306",
+      "secteur": "Laval",
+      "nom": "Martin",
+      "ligne": 25,
+      "courriel": "theo.martin@maison.example.net",
+      "date_derniere_livraison": "08/10/2026",
+      "livreur": "Mélanie Côté",
+      "statut_paiement": "Payé",
+      "statut_abonnement": "Essai interne",
+      "date_prochaine_livraison": "03/12/2026",
+      "prenom": "Théo",
+      "forfait": "Commercial plus",
+      "telephone": "514-555-5909",
+      "langue_pref": "Anglais"
+    },
+    {
+      "livreur": "Steve Gagnon",
+      "no_compte_facturation": "F1201357",
+      "telephone": "514-555-2472",
+      "statut_abonnement": "Essai interne",
+      "no_client": "QC-40353",
+      "nom": "Fournier",
+      "forfait": "Commercial plus",
+      "prenom": "Arthur",
+      "ligne": 26,
+      "courriel": "arthur.fournier@maison.example.net",
+      "date_prochaine_livraison": "04/12/2026",
+      "statut_paiement": "Payé",
+      "langue_pref": "Anglais",
+      "date_derniere_livraison": "11/10/2026",
+      "secteur": "Plateau"
+    },
+    {
+      "telephone": null,
+      "prenom": "Antoine",
+      "livreur": "Mélanie Côté",
+      "date_prochaine_livraison": "08/12/2026",
+      "nom": "Leroy",
+      "ligne": 27,
+      "courriel": "antoine.leroy@maison.example.net",
+      "date_derniere_livraison": "07/10/2026",
+      "forfait": "Bureau 2 bonbonnes",
+      "statut_abonnement": "Suspendu – vacances",
+      "statut_paiement": "Carte refusée",
+      "no_compte_facturation": "F1201389",
+      "no_client": "QC-40361",
+      "langue_pref": "Anglais",
+      "secteur": "Plateau"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "customer_id": {
+        "type": "string",
+        "description": "Identifier of the customer at the delivery service."
+      },
+      "first_name": {
+        "type": "string",
+        "description": "Given name of the customer."
+      },
+      "last_name": {
+        "type": "string",
+        "description": "Family name of the customer."
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address of the customer."
+      },
+      "phone": {
+        "type": "string",
+        "description": "Phone number of the customer."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "paused",
+          "cancelled"
+        ],
+        "description": "Status."
+      },
+      "plan": {
+        "type": "string",
+        "enum": [
+          "home",
+          "office",
+          "commercial"
+        ],
+        "description": "Delivery plan the customer subscribes to."
+      },
+      "language": {
+        "type": "string",
+        "enum": [
+          "fr",
+          "en"
+        ],
+        "description": "Language in which the customer is served."
+      },
+      "customer_since": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the customer's subscription started."
+      },
+      "next_delivery": {
+        "type": "string",
+        "format": "date",
+        "description": "Date of the next scheduled delivery."
+      },
+      "organization": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "customer_id",
+      "first_name",
+      "last_name",
+      "email",
+      "status",
+      "language",
+      "customer_since"
+    ]
+  },
+  "groundTruth": {
+    "customer_id": {
+      "source": "no_client",
+      "transform": "copy",
+      "why": "client number; billing account is separate"
+    },
+    "first_name": {
+      "source": "prenom",
+      "transform": "copy",
+      "why": "given name; livreur is the driver"
+    },
+    "last_name": {
+      "source": "nom",
+      "transform": "copy",
+      "why": "family name"
+    },
+    "email": {
+      "source": "courriel",
+      "transform": "copy",
+      "why": "email"
+    },
+    "phone": {
+      "source": "telephone",
+      "transform": "copy",
+      "why": "phone, null in some rows"
+    },
+    "status": {
+      "source": "statut_abonnement",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Actif": "active",
+        "Suspendu – vacances": "paused",
+        "Résilié": "cancelled",
+        "Essai interne": null
+      },
+      "why": "subscription state; internal trials need review"
+    },
+    "plan": {
+      "source": "forfait",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Maison 1 bonbonne": "home",
+        "Bureau 2 bonbonnes": "office",
+        "Commercial plus": "commercial"
+      },
+      "why": "plan"
+    },
+    "language": {
+      "source": "langue_pref",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Français": "fr",
+        "Anglais": "en"
+      },
+      "why": "language"
+    },
+    "customer_since": {
+      "source": null,
+      "transform": "none",
+      "why": "the subscription start is not exported; delivery dates are not it"
+    },
+    "next_delivery": {
+      "source": "date_prochaine_livraison",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "next delivery (day-first), null or missing"
+    },
+    "organization": {
+      "source": null,
+      "transform": "none",
+      "why": "no company is exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "decoy-for-missing-field",
+      "fields": [
+        "date_derniere_livraison",
+        "date_prochaine_livraison"
+      ],
+      "correctFor": "customer_since"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "statut_abonnement",
+        "statut_paiement"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "no_client",
+        "no_compte_facturation"
+      ],
+      "correctFor": "customer_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "prenom",
+        "livreur"
+      ],
+      "correctFor": "first_name"
+    }
+  ],
+  "sourceConcepts": {
+    "no_client": "customer-id",
+    "no_compte_facturation": "other-identifier",
+    "ligne": "other-identifier",
+    "prenom": "given-name",
+    "nom": "family-name",
+    "courriel": "email",
+    "telephone": "phone",
+    "statut_abonnement": "account-status",
+    "statut_paiement": "payment-status",
+    "forfait": "category",
+    "langue_pref": "language-code",
+    "date_derniere_livraison": "other",
+    "date_prochaine_livraison": "other",
+    "livreur": "person-name",
+    "secteur": "city"
+  },
+  "destinationConcepts": {
+    "customer_id": "customer-id",
+    "first_name": "given-name",
+    "last_name": "family-name",
+    "email": "email",
+    "phone": "phone",
+    "status": "account-status",
+    "plan": "category",
+    "language": "language-code",
+    "customer_since": "start-date",
+    "next_delivery": "other",
+    "organization": "organization-name"
+  }
+}

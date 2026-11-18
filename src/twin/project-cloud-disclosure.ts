@@ -5,13 +5,7 @@ import type {
   PhantomContract,
 } from "../domain/contracts/types.ts";
 import { CURRENT_CONTRACT_SCHEMA_VERSION } from "../domain/contracts/kinds.ts";
-
-const DEFAULT_DESTINATION: CloudDisclosureDestination = {
-  provider: "firebase-ai-logic",
-  backend: "google-ai",
-  model: "gemini-3.5-flash-lite",
-  purpose: "mapping-proposal",
-};
+import { effectiveCloudModelConfig } from "../inference/cloud-models.ts";
 
 /**
  * Explicit allowlist projection. Does not clone the Phantom Contract and strip keys.
@@ -20,8 +14,16 @@ export const MAX_DISCLOSED_EXAMPLES = 8;
 
 export function projectCloudDisclosurePayload(
   phantom: PhantomContract,
-  destination: CloudDisclosureDestination = DEFAULT_DESTINATION,
+  destination: CloudDisclosureDestination = defaultCloudDestination(),
   target?: CloudDisclosureTarget,
+  options: {
+    /**
+     * Sprint 18D (ADR 0021): sanitized destination descriptions by field name.
+     * When given (even empty) the payload is cloud-disclosure 1.4.0. A thinking
+     * level in the destination also requires 1.4.0.
+     */
+    destinationSemantics?: Readonly<Record<string, string>>;
+  } = {},
 ): CloudDisclosurePayload {
   const shareableAliases = new Set(
     phantom.fields.filter((field) => field.shareable).map((field) => field.alias),
@@ -90,7 +92,10 @@ export function projectCloudDisclosurePayload(
 
   if (target) {
     // Schema 1.1.0: explicit field-by-field copy of the reviewed target description.
-    payload.schemaVersion = "1.1.0";
+    const semantics = options.destinationSemantics;
+    const v14 = semantics !== undefined || destination.thinkingLevel !== undefined;
+    payload.schemaVersion = v14 ? "1.4.0" : "1.1.0";
+    if (v14 && destination.thinkingLevel) payload.destination.thinkingLevel = destination.thinkingLevel;
     payload.target = {
       fields: target.fields.map((field) => {
         const projected: CloudDisclosureTarget["fields"][number] = {
@@ -101,6 +106,8 @@ export function projectCloudDisclosurePayload(
         if (field.nullable) projected.nullable = true;
         if (field.format) projected.format = field.format;
         if (field.enumValues) projected.enumValues = [...field.enumValues];
+        const description = semantics && Object.hasOwn(semantics, field.name) ? semantics[field.name] : undefined;
+        if (typeof description === "string") projected.description = description;
         return projected;
       }),
     };
@@ -115,6 +122,14 @@ export function projectCloudDisclosurePayload(
   return payload;
 }
 
+/** The destination of a new request: the effective model configuration (the product default outside dev harness runs). */
 export function defaultCloudDestination(): CloudDisclosureDestination {
-  return { ...DEFAULT_DESTINATION };
+  const config = effectiveCloudModelConfig();
+  return {
+    provider: "firebase-ai-logic",
+    backend: "google-ai",
+    model: config.model,
+    purpose: "mapping-proposal",
+    ...(config.thinkingLevel ? { thinkingLevel: config.thinkingLevel } : {}),
+  };
 }

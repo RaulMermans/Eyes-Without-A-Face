@@ -1,0 +1,900 @@
+{
+  "scenarioId": "university-thesis-deposits-to-repository",
+  "split": "holdout",
+  "track": "general",
+  "industry": "university thesis deposits",
+  "sourceLanguage": "es",
+  "description": "Thesis deposit export of a fictional university library office (Spanish camelCase, nested thesis, author and supervisor) to be loaded into an institutional repository.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "fechaDefensa": "22/07/2026",
+      "director": {
+        "nombreCompleto": "Dra. Rosa Vidal"
+      },
+      "tasasPagadas": "No",
+      "embargo": "Embargo 12 meses",
+      "idioma": "Castellano",
+      "programa": "Grado en Historia",
+      "tesis": {
+        "titulo": "Archivos parroquiales y demografía rural",
+        "idDeposito": "TFM-04411"
+      },
+      "estadoDeposito": "Aprobada",
+      "autor": {
+        "correoInstitucional": "sergio.martinez@alumnos.example.org",
+        "nombre": "Sergio",
+        "apellidos": "Martínez"
+      },
+      "fila": 1,
+      "expediente": "EXP2019364",
+      "calificacion": 9.5,
+      "fechaMatricula": "29/05/2023"
+    },
+    {
+      "tasasPagadas": "No",
+      "estadoDeposito": "Aprobada",
+      "director": {
+        "nombreCompleto": "Dr. Joaquín Prats"
+      },
+      "fechaMatricula": "25/03/2023",
+      "expediente": "EXP2019727",
+      "programa": "Grado en Historia",
+      "fechaDefensa": "17/08/2026",
+      "idioma": "Inglés",
+      "fila": 2,
+      "tesis": {
+        "titulo": "  Catalizadores de cobre para síntesis verde",
+        "idDeposito": "TFM-04413"
+      },
+      "calificacion": 10.0,
+      "autor": {
+        "apellidos": "Díaz",
+        "correoInstitucional": "paula.diaz@alumnos.example.org",
+        "nombre": "Paula"
+      }
+    },
+    {
+      "tasasPagadas": "Sí",
+      "autor": {
+        "nombre": "Irene",
+        "apellidos": "Ruiz",
+        "correoInstitucional": "irene.ruiz@alumnos.example.org"
+      },
+      "fechaMatricula": "15/04/2022",
+      "director": {
+        "nombreCompleto": "Dr. Joaquín Prats"
+      },
+      "expediente": "EXP2020176",
+      "fila": 3,
+      "calificacion": 6.4,
+      "embargo": "Sin embargo",
+      "idioma": "Inglés",
+      "tesis": {
+        "titulo": "Gestión de acuíferos en climas semiáridos",
+        "idDeposito": "TFM-04416"
+      },
+      "programa": "Máster en Ingeniería Ambiental",
+      "fechaDefensa": "20/08/2026",
+      "estadoDeposito": "Aprobada"
+    },
+    {
+      "embargo": null,
+      "autor": {
+        "nombre": "Raúl",
+        "apellidos": "Gómez",
+        "correoInstitucional": "raul.gomez@alumnos.example.org"
+      },
+      "tasasPagadas": "No",
+      "estadoDeposito": "Aprobada",
+      "idioma": "Castellano",
+      "calificacion": 7.8,
+      "fechaDefensa": "25/09/2026",
+      "tesis": {
+        "titulo": "Catalizadores de cobre para síntesis verde",
+        "idDeposito": "TFM-04420"
+      },
+      "director": {
+        "nombreCompleto": "Dra. Concha Ibarra"
+      },
+      "programa": "Grado en Historia",
+      "fechaMatricula": "16/11/2019",
+      "fila": 4,
+      "expediente": "EXP2020606"
+    },
+    {
+      "embargo": "Sin embargo",
+      "director": {
+        "nombreCompleto": "Dra. Rosa Vidal"
+      },
+      "programa": "Grado en Historia",
+      "expediente": "EXP2020663",
+      "tesis": {
+        "idDeposito": "TFM-04423",
+        "titulo": "Memoria oral del exilio"
+      },
+      "idioma": "Castellano",
+      "fechaDefensa": "20/04/2026",
+      "fechaMatricula": "15/06/2022",
+      "calificacion": 7.0,
+      "fila": 5,
+      "autor": {
+        "nombre": "Alejandro",
+        "correoInstitucional": "alejandro.hernandez@alumnos.example.org",
+        "apellidos": "Hernández"
+      },
+      "estadoDeposito": "En revisión",
+      "tasasPagadas": "Sí"
+    },
+    {
+      "programa": "Grado en Historia",
+      "fechaDefensa": "29/01/2026",
+      "calificacion": 6.3,
+      "director": {
+        "nombreCompleto": "Dra. Concha Ibarra"
+      },
+      "idioma": "Castellano",
+      "expediente": "EXP2021034",
+      "tasasPagadas": "Sí",
+      "estadoDeposito": "Aprobada",
+      "tesis": {
+        "idDeposito": "TFM-04427",
+        "titulo": "Memoria oral del exilio"
+      },
+      "fechaMatricula": "27/05/2023",
+      "fila": 6,
+      "autor": {
+        "nombre": "Martina",
+        "correoInstitucional": "martina.rodriguez@alumnos.example.org",
+        "apellidos": "Rodríguez"
+      },
+      "embargo": "Embargo 12 meses"
+    },
+    {
+      "director": {
+        "nombreCompleto": "Dra. Rosa Vidal"
+      },
+      "tesis": {
+        "titulo": "Gestión de acuíferos en climas semiáridos",
+        "idDeposito": "TFM-04430"
+      },
+      "embargo": null,
+      "estadoDeposito": "Borrador",
+      "programa": "Máster en Ingeniería Ambiental",
+      "idioma": "Inglés",
+      "calificacion": 9.5,
+      "tasasPagadas": "Sí",
+      "fila": 7,
+      "fechaDefensa": "10/02/2026",
+      "fechaMatricula": "13/02/2020",
+      "expediente": "EXP2021690",
+      "autor": {
+        "apellidos": "Fernández",
+        "nombre": "Marta",
+        "correoInstitucional": "marta.fernandez@alumnos.example.org"
+      }
+    },
+    {
+      "tesis": {
+        "titulo": "La prensa obrera en Valencia, 1900-1936",
+        "idDeposito": "TFM-04432"
+      },
+      "embargo": "Embargo 12 meses",
+      "fechaMatricula": "12/04/2022",
+      "estadoDeposito": "Aprobada",
+      "idioma": "Catalán",
+      "expediente": "EXP2021789",
+      "fechaDefensa": "03/12/2025",
+      "tasasPagadas": "Sí",
+      "programa": "Máster en Ingeniería Ambiental",
+      "director": {
+        "nombreCompleto": "Dr. Joaquín Prats"
+      },
+      "autor": {
+        "correoInstitucional": "carmen.gomez@alumnos.example.org",
+        "apellidos": "Gómez",
+        "nombre": "Carmen"
+      },
+      "fila": 8,
+      "calificacion": 7.7
+    },
+    {
+      "programa": "Grado en Historia",
+      "tesis": {
+        "titulo": "La prensa obrera en Valencia, 1900-1936",
+        "idDeposito": "TFM-04435"
+      },
+      "fechaMatricula": "29/10/2024",
+      "autor": {
+        "nombre": "Carmen",
+        "correoInstitucional": "carmen.rodriguez@alumnos.example.org",
+        "apellidos": "Rodríguez"
+      },
+      "fila": 9,
+      "idioma": "Castellano",
+      "estadoDeposito": "Aprobada",
+      "embargo": "Embargo 24 meses",
+      "fechaDefensa": "04/06/2025",
+      "tasasPagadas": "Sí",
+      "director": {
+        "nombreCompleto": "Dra. Concha Ibarra"
+      },
+      "expediente": "EXP2022291",
+      "calificacion": 7.1
+    },
+    {
+      "fechaMatricula": "23/02/2020",
+      "tesis": {
+        "idDeposito": "TFM-04438",
+        "titulo": "Movilidad urbana y calidad del aire"
+      },
+      "autor": {
+        "correoInstitucional": "javier.navarro@alumnos.example.org",
+        "nombre": "Javier",
+        "apellidos": "Navarro"
+      },
+      "estadoDeposito": "Aprobada",
+      "embargo": "Sin embargo",
+      "idioma": "Castellano",
+      "fechaDefensa": "18/06/2026",
+      "expediente": "EXP2022865",
+      "tasasPagadas": "Sí",
+      "calificacion": 9.5,
+      "fila": 10,
+      "programa": "Doctorado en Química",
+      "director": {
+        "nombreCompleto": "Dr. Joaquín Prats"
+      }
+    },
+    {
+      "calificacion": 9.9,
+      "idioma": "Castellano",
+      "tasasPagadas": "No",
+      "fechaMatricula": "01/01/2023",
+      "expediente": "EXP2023229",
+      "autor": {
+        "correoInstitucional": "diego.moreno@alumnos.example.org",
+        "apellidos": "Moreno",
+        "nombre": "Diego"
+      },
+      "programa": "Grado en Historia",
+      "director": {
+        "nombreCompleto": "Dra. Concha Ibarra"
+      },
+      "tesis": {
+        "idDeposito": "TFM-04442",
+        "titulo": "Gestión de acuíferos en climas semiáridos"
+      },
+      "fechaDefensa": "20/05/2026",
+      "fila": 11,
+      "estadoDeposito": "Rechazada",
+      "embargo": "Embargo 12 meses"
+    },
+    {
+      "fechaMatricula": "12/07/2020",
+      "estadoDeposito": "Aprobada",
+      "programa": "Grado en Historia",
+      "calificacion": 8.4,
+      "idioma": "Catalán",
+      "autor": {
+        "apellidos": "González",
+        "nombre": "Lucía",
+        "correoInstitucional": "lucia.gonzalez@alumnos.example.org"
+      },
+      "tesis": {
+        "titulo": "Gestión de acuíferos en climas semiáridos",
+        "idDeposito": "TFM-04445"
+      },
+      "expediente": "EXP2023333",
+      "fila": 12,
+      "fechaDefensa": "29/01/2026",
+      "director": {
+        "nombreCompleto": "Dra. Concha Ibarra"
+      },
+      "tasasPagadas": "Sí",
+      "embargo": "Sin embargo"
+    },
+    {
+      "tasasPagadas": "Sí",
+      "embargo": "Sin embargo",
+      "programa": "Grado en Historia",
+      "calificacion": 9.5,
+      "director": {
+        "nombreCompleto": "Dra. Concha Ibarra"
+      },
+      "expediente": "EXP2023859",
+      "fechaDefensa": "05/08/2026",
+      "idioma": "Castellano",
+      "estadoDeposito": "Aprobada",
+      "fechaMatricula": "19/08/2023",
+      "tesis": {
+        "titulo": "Archivos parroquiales y demografía rural",
+        "idDeposito": "TFM-04447"
+      },
+      "fila": 13,
+      "autor": {
+        "nombre": "Javier",
+        "apellidos": "González",
+        "correoInstitucional": "javier.gonzalez@alumnos.example.org"
+      }
+    },
+    {
+      "fechaMatricula": "10/02/2024",
+      "tasasPagadas": "No",
+      "fila": 14,
+      "calificacion": 6.5,
+      "programa": "Grado en Historia",
+      "autor": {
+        "nombre": "Mateo",
+        "apellidos": "Pérez",
+        "correoInstitucional": "mateo.perez@alumnos.example.org"
+      },
+      "expediente": "EXP2024014",
+      "estadoDeposito": "Aprobada",
+      "embargo": "Embargo 12 meses",
+      "idioma": "Inglés",
+      "tesis": {
+        "titulo": "Polímeros biodegradables a partir de residuos agrícolas",
+        "idDeposito": "TFM-04451"
+      },
+      "director": {
+        "nombreCompleto": "Dra. Rosa Vidal"
+      },
+      "fechaDefensa": "28/07/2026"
+    },
+    {
+      "autor": {
+        "correoInstitucional": "elena.alvarez@alumnos.example.org",
+        "apellidos": "Álvarez",
+        "nombre": "Elena"
+      },
+      "tesis": {
+        "titulo": " Archivos parroquiales y demografía rural  ",
+        "idDeposito": "TFM-04453"
+      },
+      "idioma": "Castellano",
+      "director": {
+        "nombreCompleto": "Dra. Concha Ibarra"
+      },
+      "estadoDeposito": "Aprobada",
+      "calificacion": 8.8,
+      "expediente": "EXP2024657",
+      "programa": "Grado en Historia",
+      "fechaDefensa": "19/06/2025",
+      "tasasPagadas": "Exento",
+      "embargo": "Embargo 12 meses",
+      "fechaMatricula": "16/11/2019",
+      "fila": 15
+    },
+    {
+      "fechaDefensa": "10/04/2026",
+      "fechaMatricula": "15/09/2021",
+      "calificacion": 7.7,
+      "idioma": "Catalán",
+      "director": {
+        "nombreCompleto": "Dra. Rosa Vidal"
+      },
+      "programa": "Grado en Historia",
+      "expediente": "EXP2025037",
+      "estadoDeposito": "Rechazada",
+      "tesis": {
+        "titulo": "Gestión de acuíferos en climas semiáridos",
+        "idDeposito": "TFM-04456"
+      },
+      "tasasPagadas": "Sí",
+      "autor": {
+        "correoInstitucional": "alejandro.ruiz@alumnos.example.org",
+        "nombre": "Alejandro",
+        "apellidos": "Ruiz"
+      },
+      "fila": 16,
+      "embargo": null
+    },
+    {
+      "autor": {
+        "nombre": "Valeria",
+        "correoInstitucional": "valeria.martin@alumnos.example.org",
+        "apellidos": "Martín"
+      },
+      "director": {
+        "nombreCompleto": "Dra. Rosa Vidal"
+      },
+      "programa": "Máster en Ingeniería Ambiental",
+      "expediente": "EXP2025389",
+      "fechaDefensa": "29/01/2026",
+      "idioma": "Castellano",
+      "tesis": {
+        "titulo": "  Movilidad urbana y calidad del aire",
+        "idDeposito": "TFM-04458"
+      },
+      "calificacion": 5.5,
+      "embargo": "Sin embargo",
+      "tasasPagadas": "No",
+      "fila": 17,
+      "estadoDeposito": "En revisión",
+      "fechaMatricula": "27/05/2021"
+    },
+    {
+      "fila": 18,
+      "idioma": "Inglés",
+      "embargo": "Embargo 24 meses",
+      "fechaDefensa": "09/12/2025",
+      "calificacion": 9.8,
+      "tesis": {
+        "titulo": "Gestión de acuíferos en climas semiáridos",
+        "idDeposito": "TFM-04461"
+      },
+      "programa": "Máster en Ingeniería Ambiental",
+      "expediente": "EXP2025554",
+      "autor": {
+        "apellidos": "Álvarez",
+        "nombre": "Javier",
+        "correoInstitucional": "javier.alvarez@alumnos.example.org"
+      },
+      "fechaMatricula": "24/04/2024",
+      "estadoDeposito": "Aprobada",
+      "tasasPagadas": "Sí",
+      "director": {
+        "nombreCompleto": "Dra. Concha Ibarra"
+      }
+    },
+    {
+      "tesis": {
+        "idDeposito": "TFM-04464",
+        "titulo": "Polímeros biodegradables a partir de residuos agrícolas"
+      },
+      "programa": "Doctorado en Química",
+      "fila": 19,
+      "autor": {
+        "correoInstitucional": "sofia.martin@alumnos.example.org",
+        "apellidos": "Martín",
+        "nombre": "Sofía"
+      },
+      "expediente": "EXP2025954",
+      "tasasPagadas": "Sí",
+      "embargo": "Embargo 12 meses",
+      "fechaDefensa": "01/07/2025",
+      "calificacion": 6.6,
+      "director": {
+        "nombreCompleto": "Dr. Joaquín Prats"
+      },
+      "idioma": "Catalán",
+      "estadoDeposito": "Borrador",
+      "fechaMatricula": "16/03/2023"
+    },
+    {
+      "tasasPagadas": "Sí",
+      "tesis": {
+        "idDeposito": "TFM-04467",
+        "titulo": "Memoria oral del exilio   "
+      },
+      "fechaMatricula": "01/08/2024",
+      "embargo": "Sin embargo",
+      "expediente": "EXP2026618",
+      "calificacion": 8.9,
+      "idioma": "Castellano",
+      "autor": {
+        "correoInstitucional": "elena.garcia@alumnos.example.org",
+        "nombre": "Elena",
+        "apellidos": "García"
+      },
+      "director": {
+        "nombreCompleto": "Dra. Concha Ibarra"
+      },
+      "estadoDeposito": "En revisión",
+      "fila": 20,
+      "programa": "Grado en Historia",
+      "fechaDefensa": "29/03/2026"
+    },
+    {
+      "estadoDeposito": "Rechazada",
+      "tesis": {
+        "titulo": "Movilidad urbana y calidad del aire",
+        "idDeposito": "TFM-04472"
+      },
+      "tasasPagadas": "Exento",
+      "director": {
+        "nombreCompleto": "Dra. Rosa Vidal"
+      },
+      "fechaMatricula": "23/11/2023",
+      "fechaDefensa": "22/07/2026",
+      "idioma": "Inglés",
+      "calificacion": 5.6,
+      "fila": 21,
+      "autor": {
+        "apellidos": "Fernández",
+        "nombre": "Paula",
+        "correoInstitucional": "paula.fernandez@alumnos.example.org"
+      },
+      "expediente": "EXP2026937",
+      "programa": "Doctorado en Química"
+    },
+    {
+      "director": {
+        "nombreCompleto": "Dr. Joaquín Prats"
+      },
+      "embargo": "Embargo 24 meses",
+      "calificacion": 6.6,
+      "estadoDeposito": "Aprobada",
+      "expediente": "EXP2027180",
+      "idioma": "Castellano",
+      "tesis": {
+        "idDeposito": "TFM-04473",
+        "titulo": "Catalizadores de cobre para síntesis verde"
+      },
+      "fechaMatricula": "13/11/2019",
+      "autor": {
+        "nombre": "Sofía",
+        "apellidos": "Álvarez",
+        "correoInstitucional": "sofia.alvarez@alumnos.example.org"
+      },
+      "fila": 22,
+      "fechaDefensa": "13/10/2025",
+      "tasasPagadas": "No",
+      "programa": "Grado en Historia"
+    },
+    {
+      "tasasPagadas": "Exento",
+      "autor": {
+        "correoInstitucional": "diego.ruiz@alumnos.example.org",
+        "nombre": "Diego",
+        "apellidos": "Ruiz"
+      },
+      "tesis": {
+        "idDeposito": "TFM-04477",
+        "titulo": "Gestión de acuíferos en climas semiáridos"
+      },
+      "expediente": "EXP2027666",
+      "idioma": "Castellano",
+      "estadoDeposito": "Aprobada",
+      "programa": "Grado en Historia",
+      "fechaMatricula": "24/05/2024",
+      "calificacion": 7.7,
+      "director": {
+        "nombreCompleto": "Dra. Rosa Vidal"
+      },
+      "embargo": "Sin embargo",
+      "fechaDefensa": "07/10/2025",
+      "fila": 23
+    },
+    {
+      "programa": "Grado en Historia",
+      "director": {
+        "nombreCompleto": "Dr. Joaquín Prats"
+      },
+      "fechaMatricula": "25/12/2021",
+      "embargo": "Embargo 12 meses",
+      "fila": 24,
+      "fechaDefensa": "10/10/2026",
+      "autor": {
+        "apellidos": "Martín",
+        "correoInstitucional": "carmen.martin@alumnos.example.org",
+        "nombre": "Carmen"
+      },
+      "tesis": {
+        "titulo": "Memoria oral del exilio",
+        "idDeposito": "TFM-04480"
+      },
+      "idioma": "Catalán",
+      "tasasPagadas": "Sí",
+      "estadoDeposito": "Aprobada",
+      "calificacion": 6.3,
+      "expediente": "EXP2027983"
+    },
+    {
+      "autor": {
+        "apellidos": "Hernández",
+        "correoInstitucional": "hugo.hernandez@alumnos.example.org",
+        "nombre": "Hugo"
+      },
+      "expediente": "EXP2028191",
+      "embargo": "Embargo 12 meses",
+      "idioma": "Castellano",
+      "fechaMatricula": "08/08/2020",
+      "fechaDefensa": "25/09/2026",
+      "tasasPagadas": "Exento",
+      "calificacion": 9.9,
+      "fila": 25,
+      "tesis": {
+        "titulo": "Polímeros biodegradables a partir de residuos agrícolas",
+        "idDeposito": "TFM-04482"
+      },
+      "programa": "Doctorado en Química",
+      "director": {
+        "nombreCompleto": "Dra. Concha Ibarra"
+      },
+      "estadoDeposito": "En revisión"
+    },
+    {
+      "tasasPagadas": "No",
+      "fila": 26,
+      "estadoDeposito": "Rechazada",
+      "tesis": {
+        "titulo": "Memoria oral del exilio",
+        "idDeposito": "TFM-04487"
+      },
+      "fechaMatricula": "20/07/2022",
+      "expediente": "EXP2028752",
+      "idioma": "Inglés",
+      "calificacion": 5.8,
+      "director": {
+        "nombreCompleto": "Dra. Rosa Vidal"
+      },
+      "programa": "Grado en Historia",
+      "fechaDefensa": "08/10/2026",
+      "autor": {
+        "nombre": "Martina",
+        "apellidos": "Álvarez",
+        "correoInstitucional": "martina.alvarez@alumnos.example.org"
+      }
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "deposit_id": {
+        "type": "string",
+        "description": "Identifier of the deposit."
+      },
+      "title": {
+        "type": "string",
+        "description": "Title of the thesis as it will appear in the catalogue."
+      },
+      "author_name": {
+        "type": "string",
+        "description": "Full name of the author, given name first."
+      },
+      "author_email": {
+        "type": "string",
+        "format": "email",
+        "description": "Institutional email address of the author."
+      },
+      "degree_level": {
+        "type": "string",
+        "enum": [
+          "bachelor",
+          "master",
+          "doctorate"
+        ],
+        "description": "Level of the degree the thesis was written for."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "approved",
+          "under_review",
+          "rejected"
+        ],
+        "description": "Status."
+      },
+      "language": {
+        "type": "string",
+        "enum": [
+          "es",
+          "en",
+          "ca"
+        ],
+        "description": "Language the thesis is written in."
+      },
+      "defense_date": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the thesis was defended."
+      },
+      "access": {
+        "type": "string",
+        "enum": [
+          "open",
+          "embargo_12m",
+          "embargo_24m"
+        ],
+        "description": "Access condition of the full text."
+      },
+      "doi": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "deposit_id",
+      "title",
+      "author_name",
+      "degree_level",
+      "status",
+      "defense_date"
+    ]
+  },
+  "groundTruth": {
+    "deposit_id": {
+      "source": "tesis.idDeposito",
+      "transform": "copy",
+      "why": "deposit id; expediente is the student file"
+    },
+    "title": {
+      "source": "tesis.titulo",
+      "transform": "trim",
+      "why": "title, padded"
+    },
+    "author_name": {
+      "source": null,
+      "sources": [
+        "autor.nombre",
+        "autor.apellidos"
+      ],
+      "transform": "concat",
+      "separator": " ",
+      "why": "author name; director is the supervisor"
+    },
+    "author_email": {
+      "source": "autor.correoInstitucional",
+      "transform": "copy",
+      "why": "institutional email"
+    },
+    "degree_level": {
+      "source": "programa",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Grado en Historia": "bachelor",
+        "Máster en Ingeniería Ambiental": "master",
+        "Doctorado en Química": "doctorate"
+      },
+      "why": "programme level"
+    },
+    "status": {
+      "source": "estadoDeposito",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Aprobada": "approved",
+        "En revisión": "under_review",
+        "Rechazada": "rejected",
+        "Borrador": null
+      },
+      "why": "deposit state; drafts need review; tasasPagadas is fees"
+    },
+    "language": {
+      "source": "idioma",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Castellano": "es",
+        "Inglés": "en",
+        "Catalán": "ca"
+      },
+      "why": "language"
+    },
+    "defense_date": {
+      "source": "fechaDefensa",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "defense date (day-first); fechaMatricula is enrolment"
+    },
+    "access": {
+      "source": "embargo",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Sin embargo": "open",
+        "Embargo 12 meses": "embargo_12m",
+        "Embargo 24 meses": "embargo_24m"
+      },
+      "why": "embargo, null or missing"
+    },
+    "doi": {
+      "source": null,
+      "transform": "none",
+      "why": "no DOI is exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "estadoDeposito",
+        "tasasPagadas"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "tesis.idDeposito",
+        "expediente"
+      ],
+      "correctFor": "deposit_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "autor.nombre",
+        "director.nombreCompleto"
+      ],
+      "correctFor": "author_name"
+    },
+    {
+      "kind": "birth-date-vs-start-date",
+      "fields": [
+        "fechaDefensa",
+        "fechaMatricula"
+      ],
+      "correctFor": "defense_date"
+    }
+  ],
+  "sourceConcepts": {
+    "tesis.idDeposito": "transaction-id",
+    "expediente": "customer-id",
+    "fila": "other-identifier",
+    "tesis.titulo": "other",
+    "autor.nombre": "given-name",
+    "autor.apellidos": "family-name",
+    "autor.correoInstitucional": "email",
+    "director.nombreCompleto": "person-name",
+    "programa": "category",
+    "estadoDeposito": "account-status",
+    "tasasPagadas": "payment-status",
+    "idioma": "language-code",
+    "fechaDefensa": "end-date",
+    "fechaMatricula": "start-date",
+    "embargo": "category",
+    "calificacion": "other"
+  },
+  "destinationConcepts": {
+    "deposit_id": "transaction-id",
+    "title": "other",
+    "author_name": "person-name",
+    "author_email": "email",
+    "degree_level": "category",
+    "status": "account-status",
+    "language": "language-code",
+    "defense_date": "end-date",
+    "access": "category",
+    "doi": "other-identifier"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 0,
+      "outcome": "transformed",
+      "output": {
+        "deposit_id": "TFM-04411",
+        "title": "Archivos parroquiales y demografía rural",
+        "author_name": "Sergio Martínez",
+        "author_email": "sergio.martinez@alumnos.example.org",
+        "degree_level": "bachelor",
+        "status": "approved",
+        "language": "es",
+        "defense_date": "2026-07-22",
+        "access": "embargo_12m"
+      }
+    },
+    {
+      "recordIndex": 1,
+      "outcome": "transformed",
+      "output": {
+        "deposit_id": "TFM-04413",
+        "title": "Catalizadores de cobre para síntesis verde",
+        "author_name": "Paula Díaz",
+        "author_email": "paula.diaz@alumnos.example.org",
+        "degree_level": "bachelor",
+        "status": "approved",
+        "language": "en",
+        "defense_date": "2026-08-17"
+      }
+    },
+    {
+      "recordIndex": 3,
+      "outcome": "transformed",
+      "output": {
+        "deposit_id": "TFM-04420",
+        "title": "Catalizadores de cobre para síntesis verde",
+        "author_name": "Raúl Gómez",
+        "author_email": "raul.gomez@alumnos.example.org",
+        "degree_level": "bachelor",
+        "status": "approved",
+        "language": "es",
+        "defense_date": "2026-09-25"
+      }
+    },
+    {
+      "recordIndex": 6,
+      "outcome": "held"
+    }
+  ]
+}

@@ -1,0 +1,993 @@
+{
+  "scenarioId": "solar-installer-customers-to-helpdesk-contacts",
+  "split": "dev",
+  "track": "wedge",
+  "industry": "residential solar installation customers",
+  "sourceLanguage": "en",
+  "description": "Customer export of a fictional solar-panel installer from a lowercase CRM (nested properties and associated company) to be loaded as helpdesk contacts.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "associated_company": {
+        "name": null
+      },
+      "legacy_id": null,
+      "record_id": 880221,
+      "customer_number": "SOL-10044",
+      "properties": {
+        "phone": "(556) 555-3404",
+        "marketing_consent": "Subscribed",
+        "firstname": "Emma",
+        "last_activity_date": "12/07/2025",
+        "contract_signed_date": "05/11/2021",
+        "email": "emma.pearce@home.example.com",
+        "service_plan": "Monitoring + Cleaning",
+        "billing_email": "billing.pearce0@accounts.example.net",
+        "segment": "Small Business",
+        "lastname": "Pearce",
+        "createdate": "2020-01-21T19:12:00Z",
+        "payment_status": "Financing - current",
+        "account_status": "Active - Installed",
+        "state": "NV"
+      },
+      "owner_name": "Derek Whitfield"
+    },
+    {
+      "record_id": 880224,
+      "legacy_id": "OLD0305",
+      "customer_number": "SOL-10047",
+      "properties": {
+        "account_status": "Active - Install Scheduled",
+        "segment": "Residential",
+        "firstname": "Zoe",
+        "payment_status": "Paid in full",
+        "service_plan": "Monitoring + Cleaning",
+        "lastname": "Holt",
+        "email": "zoe.holt@home.example.com",
+        "createdate": "2019-09-23T16:41:00Z",
+        "marketing_consent": "Subscribed",
+        "state": "NV",
+        "contract_signed_date": "09/21/2020",
+        "last_activity_date": "01/23/2025",
+        "billing_email": "billing.holt1@accounts.example.net"
+      },
+      "owner_name": "Derek Whitfield",
+      "associated_company": {
+        "name": null
+      }
+    },
+    {
+      "record_id": 880240,
+      "associated_company": {
+        "name": "Coyote Creek Vets"
+      },
+      "legacy_id": "OLD0308",
+      "properties": {
+        "createdate": "2023-04-20T08:55:00Z",
+        "payment_status": "Financing - current",
+        "email": "Lucas.Morgan@Home.Example.Com",
+        "phone": "(537) 555-6802",
+        "marketing_consent": "Unsubscribed",
+        "service_plan": "Monitoring Only",
+        "last_activity_date": "05/03/2026",
+        "account_status": "Active - Install Scheduled",
+        "billing_email": "billing.morgan2@accounts.example.net",
+        "firstname": "Lucas",
+        "segment": "Residential",
+        "state": "NV",
+        "lastname": "Morgan",
+        "contract_signed_date": "04/16/2024"
+      },
+      "owner_name": "Derek Whitfield",
+      "customer_number": "SOL-10058"
+    },
+    {
+      "customer_number": "SOL-10067",
+      "properties": {
+        "payment_status": "Financing - current",
+        "marketing_consent": "Subscribed",
+        "lastname": "Fletcher",
+        "service_plan": "Monitoring + Cleaning",
+        "last_activity_date": "12/26/2025",
+        "phone": null,
+        "segment": "Small Business",
+        "account_status": "Active - Installed",
+        "firstname": "Olivia",
+        "createdate": "2021-03-27T18:05:00Z",
+        "billing_email": "billing.fletcher3@accounts.example.net",
+        "state": "CA",
+        "contract_signed_date": "04/27/2025",
+        "email": "olivia.fletcher@home.example.com"
+      },
+      "associated_company": {
+        "name": null
+      },
+      "legacy_id": null,
+      "owner_name": "Alana Brooks",
+      "record_id": 880252
+    },
+    {
+      "properties": {
+        "email": "Lucas.Sullivan@Home.Example.Com",
+        "phone": "(226) 555-5636",
+        "lastname": "Sullivan",
+        "marketing_consent": "Subscribed",
+        "account_status": "Active - Install Scheduled",
+        "last_activity_date": "05/24/2026",
+        "segment": "Residential",
+        "createdate": "2021-03-13T16:55:00Z",
+        "state": "AZ",
+        "payment_status": "Financing - current",
+        "service_plan": "Monitoring + Cleaning",
+        "billing_email": "billing.sullivan4@accounts.example.net",
+        "firstname": "Lucas"
+      },
+      "owner_name": "Marcus Lane",
+      "legacy_id": "OLD0315",
+      "customer_number": "SOL-10074",
+      "record_id": 880271
+    },
+    {
+      "legacy_id": "OLD0318",
+      "customer_number": "SOL-10081",
+      "properties": {
+        "contract_signed_date": "01/06/2025",
+        "lastname": "Morgan",
+        "segment": "Small Business",
+        "createdate": "2024-10-26T17:20:00Z",
+        "payment_status": "Financing - overdue",
+        "service_plan": "Total Care",
+        "phone": "(190) 555-1133",
+        "email": "chloe.morgan@home.example.com",
+        "state": "CA",
+        "account_status": "Active - Installed",
+        "billing_email": "billing.morgan5@accounts.example.net",
+        "firstname": "Chloe",
+        "marketing_consent": "Subscribed",
+        "last_activity_date": "08/13/2025"
+      },
+      "owner_name": "Alana Brooks",
+      "record_id": 880278
+    },
+    {
+      "customer_number": "SOL-10088",
+      "properties": {
+        "account_status": "Cancelled",
+        "segment": "Small Business",
+        "phone": null,
+        "email": "Liam.Sutton@Home.Example.Com",
+        "contract_signed_date": "10/17/2020",
+        "billing_email": "billing.sutton6@accounts.example.net",
+        "last_activity_date": "03/31/2026",
+        "state": "NV",
+        "firstname": "Liam",
+        "lastname": "Sutton",
+        "marketing_consent": "Unsubscribed",
+        "service_plan": "Monitoring + Cleaning",
+        "payment_status": "Paid in full",
+        "createdate": "2019-08-26T10:55:00Z"
+      },
+      "owner_name": "Derek Whitfield",
+      "record_id": 880291,
+      "legacy_id": "OLD0319"
+    },
+    {
+      "properties": {
+        "lastname": "Hayes   ",
+        "last_activity_date": "03/18/2026",
+        "billing_email": "billing.hayes0@accounts.example.net",
+        "phone": "(179) 555-3041",
+        "firstname": "Zoe",
+        "contract_signed_date": null,
+        "account_status": "Cancelled",
+        "segment": "Small Business",
+        "createdate": "2022-01-06T08:34:00Z",
+        "state": "NV",
+        "marketing_consent": "Unsubscribed",
+        "service_plan": "Monitoring Only",
+        "email": "zoe.hayes@home.example.com",
+        "payment_status": "Paid in full"
+      },
+      "record_id": 880306,
+      "associated_company": {
+        "name": "Sunline Print Shop"
+      },
+      "legacy_id": "OLD0322",
+      "customer_number": "SOL-10092",
+      "owner_name": "Alana Brooks"
+    },
+    {
+      "customer_number": "SOL-10102",
+      "owner_name": "Alana Brooks",
+      "record_id": 880319,
+      "properties": {
+        "marketing_consent": "Subscribed",
+        "contract_signed_date": "06/26/2025",
+        "segment": "Small Business",
+        "firstname": "Hannah",
+        "createdate": "2022-04-20T18:00:00Z",
+        "service_plan": "Monitoring + Cleaning",
+        "billing_email": "billing.morgan1@accounts.example.net",
+        "last_activity_date": "06/18/2026",
+        "account_status": "Active - Install Scheduled",
+        "lastname": "Morgan",
+        "state": "NM",
+        "payment_status": "Financing - overdue",
+        "email": "hannah.morgan@home.example.com"
+      },
+      "legacy_id": "OLD0325"
+    },
+    {
+      "properties": {
+        "account_status": "Active - Install Scheduled",
+        "email": "leo.fletcher@home.example.com",
+        "createdate": "2018-11-23T11:20:00Z",
+        "lastname": "Fletcher",
+        "phone": "(113) 555-2681",
+        "payment_status": "Financing - overdue",
+        "firstname": "Leo",
+        "service_plan": "Monitoring + Cleaning",
+        "marketing_consent": "Subscribed",
+        "last_activity_date": "07/15/2026",
+        "state": "AZ",
+        "contract_signed_date": "03/12/2025",
+        "segment": "Residential",
+        "billing_email": "billing.fletcher2@accounts.example.net"
+      },
+      "owner_name": "Marcus Lane",
+      "customer_number": "SOL-10104",
+      "record_id": 880332,
+      "associated_company": {
+        "name": "Sunline Print Shop"
+      },
+      "legacy_id": "OLD0330"
+    },
+    {
+      "properties": {
+        "account_status": "On Hold",
+        "lastname": "Hayes",
+        "last_activity_date": "10/18/2025",
+        "segment": "Residential",
+        "firstname": "Owen",
+        "phone": "(613) 555-1532",
+        "createdate": "2019-09-14T10:34:00Z",
+        "email": "Owen.Hayes@Home.Example.Com",
+        "payment_status": "Financing - current",
+        "state": "NM",
+        "service_plan": "Monitoring Only",
+        "marketing_consent": "Subscribed",
+        "billing_email": "billing.hayes3@accounts.example.net",
+        "contract_signed_date": "04/19/2022"
+      },
+      "legacy_id": "OLD0332",
+      "customer_number": "SOL-10111",
+      "owner_name": "Derek Whitfield",
+      "associated_company": {
+        "name": null
+      },
+      "record_id": 880349
+    },
+    {
+      "associated_company": {
+        "name": null
+      },
+      "owner_name": "Derek Whitfield",
+      "properties": {
+        "billing_email": "billing.morgan4@accounts.example.net",
+        "email": "ethan.morgan@home.example.com",
+        "firstname": "Ethan",
+        "contract_signed_date": "12/14/2024",
+        "createdate": "2024-09-08T08:12:00Z",
+        "lastname": "Morgan",
+        "marketing_consent": "Subscribed",
+        "state": "NV",
+        "segment": "Residential",
+        "payment_status": "Financing - overdue",
+        "last_activity_date": "10/16/2026",
+        "account_status": "Active - Install Scheduled",
+        "service_plan": "Monitoring Only"
+      },
+      "record_id": 880358,
+      "legacy_id": "OLD0336",
+      "customer_number": "SOL-10117"
+    },
+    {
+      "legacy_id": "OLD0337",
+      "customer_number": "SOL-10127",
+      "properties": {
+        "createdate": "2020-03-01T12:00:00Z",
+        "marketing_consent": "Unsubscribed",
+        "lastname": "Bennett",
+        "payment_status": "Financing - current",
+        "last_activity_date": "11/26/2025",
+        "state": "CA",
+        "account_status": "On Hold",
+        "contract_signed_date": "05/31/2021",
+        "service_plan": "Monitoring Only",
+        "firstname": "Lucas",
+        "email": "lucas.bennett@home.example.com",
+        "phone": "(635) 555-7901",
+        "billing_email": "billing.bennett5@accounts.example.net",
+        "segment": "Residential"
+      },
+      "record_id": 880368,
+      "owner_name": "Derek Whitfield"
+    },
+    {
+      "legacy_id": "OLD0342",
+      "customer_number": "SOL-10132",
+      "record_id": 880386,
+      "properties": {
+        "createdate": "2023-12-08T11:12:00Z",
+        "state": "CA",
+        "email": "hannah.hughes@home.example.com",
+        "firstname": "Hannah",
+        "account_status": "Active - Installed",
+        "last_activity_date": "03/24/2026",
+        "marketing_consent": "Unsubscribed",
+        "service_plan": "Monitoring + Cleaning",
+        "segment": "Small Business",
+        "contract_signed_date": null,
+        "payment_status": "Financing - overdue",
+        "billing_email": "billing.hughes6@accounts.example.net",
+        "lastname": "Hughes",
+        "phone": "(245) 555-6995"
+      },
+      "owner_name": "Marcus Lane"
+    },
+    {
+      "properties": {
+        "marketing_consent": "Unsubscribed",
+        "contract_signed_date": "03/23/2019",
+        "firstname": "Ava",
+        "account_status": "Active - Installed",
+        "payment_status": "Financing - current",
+        "segment": "Small Business",
+        "billing_email": "billing.holt0@accounts.example.net",
+        "email": "ava.holt@home.example.com",
+        "service_plan": "Total Care",
+        "last_activity_date": "08/17/2026",
+        "state": "NV",
+        "createdate": "2024-03-23T17:55:00Z",
+        "phone": "(786) 555-3126",
+        "lastname": "Holt"
+      },
+      "legacy_id": "OLD0345",
+      "owner_name": "Alana Brooks",
+      "record_id": 880399,
+      "associated_company": {
+        "name": "Desert Bloom Dental"
+      },
+      "customer_number": "SOL-10139"
+    },
+    {
+      "record_id": 880411,
+      "customer_number": "SOL-10149",
+      "properties": {
+        "email": "olivia.barnes@home.example.com",
+        "phone": "(303) 555-1137",
+        "state": "NV",
+        "last_activity_date": "07/26/2026",
+        "payment_status": "Paid in full",
+        "createdate": "2018-11-22T09:20:00Z",
+        "account_status": "On Hold",
+        "firstname": "Olivia",
+        "contract_signed_date": "08/25/2020",
+        "service_plan": "Monitoring + Cleaning",
+        "segment": "Residential",
+        "marketing_consent": "Subscribed",
+        "lastname": "Barnes",
+        "billing_email": "billing.barnes1@accounts.example.net"
+      },
+      "legacy_id": "OLD0347",
+      "associated_company": {
+        "name": null
+      },
+      "owner_name": "Derek Whitfield"
+    },
+    {
+      "legacy_id": "OLD0351",
+      "owner_name": "Derek Whitfield",
+      "record_id": 880427,
+      "properties": {
+        "last_activity_date": "08/16/2025",
+        "payment_status": "Financing - overdue",
+        "firstname": "Ava",
+        "phone": "(460) 555-1320",
+        "marketing_consent": "Unsubscribed",
+        "createdate": "2019-01-24T19:05:00Z",
+        "lastname": "Doyle   ",
+        "state": "AZ",
+        "contract_signed_date": "05/31/2024",
+        "email": "ava.doyle@home.example.com",
+        "segment": "Residential",
+        "billing_email": "billing.doyle2@accounts.example.net",
+        "account_status": "Cancelled",
+        "service_plan": "Monitoring Only"
+      },
+      "associated_company": {
+        "name": "Coyote Creek Vets"
+      },
+      "customer_number": "SOL-10153"
+    },
+    {
+      "record_id": 880442,
+      "legacy_id": "OLD0353",
+      "properties": {
+        "firstname": "Ethan",
+        "segment": "Residential",
+        "phone": "(836) 555-6238",
+        "service_plan": "Monitoring + Cleaning",
+        "lastname": "Reed",
+        "email": "Ethan.Reed@Home.Example.Com",
+        "createdate": "2023-08-06T17:05:00Z",
+        "last_activity_date": "01/31/2025",
+        "account_status": "Active - Install Scheduled",
+        "billing_email": "billing.reed3@accounts.example.net",
+        "payment_status": "Financing - current",
+        "marketing_consent": "Subscribed",
+        "contract_signed_date": "05/12/2025",
+        "state": "NV"
+      },
+      "owner_name": "Derek Whitfield",
+      "customer_number": "SOL-10163",
+      "associated_company": {
+        "name": "Mesa Ridge Bakery"
+      }
+    },
+    {
+      "associated_company": {
+        "name": "Sunline Print Shop"
+      },
+      "record_id": 880447,
+      "properties": {
+        "service_plan": "Monitoring Only",
+        "createdate": "2022-02-15T19:12:00Z",
+        "billing_email": "billing.sutton4@accounts.example.net",
+        "segment": "Residential",
+        "email": "lucas.sutton@home.example.com",
+        "firstname": "Lucas",
+        "state": "AZ",
+        "payment_status": "Paid in full",
+        "last_activity_date": "08/09/2026",
+        "phone": "(001) 555-2228",
+        "account_status": "Active - Installed",
+        "marketing_consent": "Subscribed",
+        "lastname": "Sutton",
+        "contract_signed_date": "03/20/2025"
+      },
+      "legacy_id": null,
+      "owner_name": "Derek Whitfield",
+      "customer_number": "SOL-10170"
+    },
+    {
+      "legacy_id": "OLD0359",
+      "record_id": 880470,
+      "customer_number": "SOL-10173",
+      "properties": {
+        "email": "chloe.pearce@home.example.com",
+        "billing_email": "billing.pearce5@accounts.example.net",
+        "last_activity_date": "01/05/2025",
+        "account_status": "Active - Installed",
+        "marketing_consent": "Unsubscribed",
+        "createdate": "2019-07-16T10:55:00Z",
+        "firstname": "Chloe",
+        "phone": "(003) 555-0375",
+        "lastname": "Pearce",
+        "service_plan": "Total Care",
+        "state": "NV",
+        "contract_signed_date": "04/16/2025",
+        "payment_status": "Paid in full",
+        "segment": "Residential"
+      },
+      "associated_company": {
+        "name": "Sunline Print Shop"
+      },
+      "owner_name": "Derek Whitfield"
+    },
+    {
+      "associated_company": {
+        "name": null
+      },
+      "customer_number": "SOL-10182",
+      "properties": {
+        "payment_status": "Paid in full",
+        "contract_signed_date": "06/27/2020",
+        "createdate": "2018-11-10T19:41:00Z",
+        "last_activity_date": "07/23/2026",
+        "service_plan": "Monitoring Only",
+        "phone": "(810) 555-1775",
+        "firstname": "Nora",
+        "segment": "Residential",
+        "account_status": "Test record",
+        "billing_email": "billing.holt6@accounts.example.net",
+        "email": "nora.holt@home.example.com",
+        "state": "CA",
+        "marketing_consent": "Subscribed",
+        "lastname": "Holt"
+      },
+      "record_id": 880479,
+      "legacy_id": null,
+      "owner_name": "Derek Whitfield"
+    },
+    {
+      "record_id": 880495,
+      "legacy_id": null,
+      "associated_company": {
+        "name": "Sunline Print Shop"
+      },
+      "properties": {
+        "service_plan": "Monitoring + Cleaning",
+        "lastname": "Sullivan",
+        "account_status": "Test record",
+        "state": "NM",
+        "payment_status": "Paid in full",
+        "email": "ruby.sullivan@home.example.com",
+        "contract_signed_date": "10/14/2023",
+        "phone": "(931) 555-9373",
+        "marketing_consent": "Subscribed",
+        "firstname": "Ruby",
+        "last_activity_date": "09/17/2025",
+        "billing_email": "billing.sullivan0@accounts.example.net",
+        "createdate": "2018-12-29T10:20:00Z",
+        "segment": "Small Business"
+      },
+      "owner_name": "Alana Brooks",
+      "customer_number": "SOL-10193"
+    },
+    {
+      "record_id": 880508,
+      "customer_number": "SOL-10198",
+      "owner_name": "Marcus Lane",
+      "properties": {
+        "billing_email": "billing.lowe1@accounts.example.net",
+        "account_status": "Test record",
+        "segment": "Residential",
+        "phone": "(643) 555-1752",
+        "firstname": "Hannah",
+        "state": "NM",
+        "lastname": "Lowe",
+        "service_plan": "Monitoring + Cleaning",
+        "last_activity_date": "10/01/2025",
+        "contract_signed_date": "08/03/2019",
+        "email": "Hannah.Lowe@Home.Example.Com",
+        "createdate": "2019-04-16T15:34:00Z",
+        "marketing_consent": "Unsubscribed",
+        "payment_status": "Paid in full"
+      },
+      "legacy_id": "OLD0367",
+      "associated_company": {
+        "name": null
+      }
+    },
+    {
+      "legacy_id": "OLD0370",
+      "owner_name": "Alana Brooks",
+      "properties": {
+        "service_plan": "Monitoring Only",
+        "last_activity_date": "04/22/2025",
+        "lastname": "Bennett   ",
+        "segment": "Small Business",
+        "email": "liam.bennett@home.example.com",
+        "payment_status": "Financing - current",
+        "account_status": "On Hold",
+        "firstname": "Liam",
+        "state": "AZ",
+        "marketing_consent": "Unsubscribed",
+        "billing_email": "billing.bennett2@accounts.example.net",
+        "contract_signed_date": "05/03/2020",
+        "createdate": "2023-12-05T14:12:00Z",
+        "phone": "(374) 555-3467"
+      },
+      "customer_number": "SOL-10202",
+      "record_id": 880510
+    },
+    {
+      "associated_company": {
+        "name": null
+      },
+      "properties": {
+        "createdate": "2022-09-29T16:12:00Z",
+        "account_status": "Cancelled",
+        "last_activity_date": "02/26/2026",
+        "service_plan": "Monitoring + Cleaning",
+        "email": "caleb.morgan@home.example.com",
+        "segment": "Residential",
+        "billing_email": "billing.morgan3@accounts.example.net",
+        "marketing_consent": "Subscribed",
+        "firstname": "Caleb",
+        "payment_status": "Paid in full",
+        "lastname": "Morgan   ",
+        "state": "NV",
+        "phone": "(287) 555-6553",
+        "contract_signed_date": "11/20/2022"
+      },
+      "owner_name": "Derek Whitfield",
+      "customer_number": "SOL-10210",
+      "legacy_id": null,
+      "record_id": 880523
+    },
+    {
+      "owner_name": "Derek Whitfield",
+      "record_id": 880540,
+      "properties": {
+        "payment_status": "Financing - overdue",
+        "firstname": "Ruby",
+        "lastname": "Sutton",
+        "account_status": "Active - Installed",
+        "billing_email": "billing.sutton4@accounts.example.net",
+        "contract_signed_date": "10/24/2023",
+        "state": "CA",
+        "email": "ruby.sutton@home.example.com",
+        "createdate": "2023-03-01T19:00:00Z",
+        "marketing_consent": "Unsubscribed",
+        "last_activity_date": "08/27/2025",
+        "service_plan": "Monitoring + Cleaning",
+        "phone": null,
+        "segment": "Small Business"
+      },
+      "customer_number": "SOL-10221",
+      "legacy_id": "OLD0377"
+    },
+    {
+      "owner_name": "Marcus Lane",
+      "customer_number": "SOL-10228",
+      "properties": {
+        "marketing_consent": "Subscribed",
+        "state": "NM",
+        "service_plan": "Monitoring Only",
+        "phone": "(959) 555-2022",
+        "createdate": "2024-11-24T10:41:00Z",
+        "billing_email": "billing.brooks5@accounts.example.net",
+        "contract_signed_date": "06/20/2025",
+        "email": "felix.brooks@home.example.com",
+        "last_activity_date": "07/11/2026",
+        "segment": "Small Business",
+        "account_status": "Test record",
+        "firstname": "Felix",
+        "payment_status": "Paid in full",
+        "lastname": "Brooks"
+      },
+      "legacy_id": "OLD0381",
+      "record_id": 880556,
+      "associated_company": {
+        "name": "Mesa Ridge Bakery"
+      }
+    },
+    {
+      "associated_company": {
+        "name": null
+      },
+      "customer_number": "SOL-10234",
+      "properties": {
+        "lastname": "Hughes",
+        "state": "AZ",
+        "service_plan": "Total Care",
+        "account_status": "Active - Installed",
+        "phone": "(814) 555-3679",
+        "last_activity_date": "06/28/2025",
+        "segment": "Small Business",
+        "createdate": "2018-09-30T10:00:00Z",
+        "marketing_consent": "Subscribed",
+        "billing_email": "billing.hughes6@accounts.example.net",
+        "contract_signed_date": "03/11/2020",
+        "payment_status": "Financing - current",
+        "email": "felix.hughes@home.example.com",
+        "firstname": "Felix"
+      },
+      "record_id": 880573,
+      "legacy_id": "OLD0382",
+      "owner_name": "Marcus Lane"
+    },
+    {
+      "owner_name": "Marcus Lane",
+      "customer_number": "SOL-10238",
+      "associated_company": {
+        "name": null
+      },
+      "properties": {
+        "email": "liam.pearce@home.example.com",
+        "billing_email": "billing.pearce0@accounts.example.net",
+        "segment": "Residential",
+        "service_plan": "Monitoring Only",
+        "payment_status": "Financing - current",
+        "lastname": "  Pearce",
+        "account_status": "Cancelled",
+        "firstname": "Liam",
+        "marketing_consent": "Unsubscribed",
+        "phone": "(862) 555-6903",
+        "state": "NV",
+        "last_activity_date": "06/23/2025",
+        "createdate": "2019-08-14T18:12:00Z"
+      },
+      "record_id": 880587,
+      "legacy_id": "OLD0387"
+    },
+    {
+      "record_id": 880593,
+      "customer_number": "SOL-10243",
+      "owner_name": "Marcus Lane",
+      "associated_company": {
+        "name": null
+      },
+      "properties": {
+        "marketing_consent": "Subscribed",
+        "segment": "Residential",
+        "email": "emma.fletcher@home.example.com",
+        "firstname": "Emma",
+        "contract_signed_date": "04/16/2025",
+        "payment_status": "Paid in full",
+        "state": "NM",
+        "service_plan": "Monitoring Only",
+        "account_status": "Active - Installed",
+        "createdate": "2023-11-05T18:34:00Z",
+        "last_activity_date": "02/05/2026",
+        "billing_email": "billing.fletcher1@accounts.example.net",
+        "phone": "(191) 555-2826",
+        "lastname": "Fletcher"
+      },
+      "legacy_id": "OLD0389"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "external_id": {
+        "type": "string",
+        "description": "Your own identifier for the customer, used to match future imports."
+      },
+      "first_name": {
+        "type": "string",
+        "description": "Given name of the contact."
+      },
+      "last_name": {
+        "type": "string",
+        "description": "Family name of the contact."
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "description": "Primary email address of the contact; ticket replies are sent here."
+      },
+      "phone": {
+        "type": "string"
+      },
+      "organization": {
+        "type": "string",
+        "description": "Name of the company the contact belongs to, if any."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "suspended",
+          "closed"
+        ],
+        "description": "Status."
+      },
+      "plan": {
+        "type": "string",
+        "enum": [
+          "basic",
+          "plus",
+          "premium"
+        ],
+        "description": "Service plan the customer pays for, which sets what support covers."
+      },
+      "customer_since": {
+        "type": "string",
+        "format": "date",
+        "description": "Date on which the person became a paying customer."
+      },
+      "time_zone": {
+        "type": "string",
+        "description": "Time zone used to schedule callbacks to the contact."
+      }
+    },
+    "required": [
+      "external_id",
+      "first_name",
+      "last_name",
+      "email",
+      "status"
+    ]
+  },
+  "groundTruth": {
+    "external_id": {
+      "source": "customer_number",
+      "transform": "copy",
+      "why": "customer number; record_id is the CRM's internal key and legacy_id an old system key"
+    },
+    "first_name": {
+      "source": "properties.firstname",
+      "transform": "copy",
+      "why": "contact given name; owner_name is the sales rep"
+    },
+    "last_name": {
+      "source": "properties.lastname",
+      "transform": "trim",
+      "why": "contact family name, padded in some rows"
+    },
+    "email": {
+      "source": "properties.email",
+      "transform": "normalize_email",
+      "why": "personal email, mixed case; billing_email is the accounts-payable address"
+    },
+    "phone": {
+      "source": "properties.phone",
+      "transform": "copy",
+      "why": "contact phone, null or missing for some"
+    },
+    "organization": {
+      "source": "associated_company.name",
+      "transform": "copy",
+      "why": "associated company; residential customers have none"
+    },
+    "status": {
+      "source": "properties.account_status",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Active - Installed": "active",
+        "Active - Install Scheduled": "active",
+        "On Hold": "suspended",
+        "Cancelled": "closed",
+        "Test record": null
+      },
+      "why": "lifecycle state of the customer account; test records are not customers and need review"
+    },
+    "plan": {
+      "source": "properties.service_plan",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Monitoring Only": "basic",
+        "Monitoring + Cleaning": "plus",
+        "Total Care": "premium"
+      },
+      "why": "service plan; segment is a market segment, not a plan"
+    },
+    "customer_since": {
+      "source": "properties.contract_signed_date",
+      "transform": "parse_date",
+      "dateFormat": "MM/DD/YYYY",
+      "why": "contract signature date (US month-first); createdate is when the lead was created"
+    },
+    "time_zone": {
+      "source": null,
+      "transform": "none",
+      "why": "no time zone is exported; the state alone is not a supported transformation"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "properties.account_status",
+        "properties.payment_status"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "customer_number",
+        "record_id"
+      ],
+      "correctFor": "external_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "properties.email",
+        "properties.billing_email"
+      ],
+      "correctFor": "email"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "properties.contract_signed_date",
+        "properties.createdate"
+      ],
+      "correctFor": "customer_since"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "properties.service_plan",
+        "properties.segment"
+      ],
+      "correctFor": "plan"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "properties.firstname",
+        "owner_name"
+      ],
+      "correctFor": "first_name"
+    }
+  ],
+  "sourceConcepts": {
+    "record_id": "other-identifier",
+    "customer_number": "customer-id",
+    "legacy_id": "other-identifier",
+    "properties.firstname": "given-name",
+    "properties.lastname": "family-name",
+    "properties.email": "email",
+    "properties.billing_email": "email",
+    "properties.phone": "phone",
+    "properties.account_status": "account-status",
+    "properties.payment_status": "payment-status",
+    "properties.marketing_consent": "consent-flag",
+    "properties.service_plan": "category",
+    "properties.segment": "category",
+    "properties.contract_signed_date": "start-date",
+    "properties.last_activity_date": "other",
+    "properties.createdate": "created-date",
+    "properties.state": "other",
+    "associated_company.name": "organization-name",
+    "owner_name": "person-name"
+  },
+  "destinationConcepts": {
+    "external_id": "customer-id",
+    "first_name": "given-name",
+    "last_name": "family-name",
+    "email": "email",
+    "phone": "phone",
+    "organization": "organization-name",
+    "status": "account-status",
+    "plan": "category",
+    "customer_since": "start-date",
+    "time_zone": "other"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 0,
+      "outcome": "transformed",
+      "output": {
+        "external_id": "SOL-10044",
+        "first_name": "Emma",
+        "last_name": "Pearce",
+        "email": "emma.pearce@home.example.com",
+        "phone": "(556) 555-3404",
+        "status": "active",
+        "plan": "plus",
+        "customer_since": "2021-05-11"
+      }
+    },
+    {
+      "recordIndex": 1,
+      "outcome": "transformed",
+      "output": {
+        "external_id": "SOL-10047",
+        "first_name": "Zoe",
+        "last_name": "Holt",
+        "email": "zoe.holt@home.example.com",
+        "status": "active",
+        "plan": "plus",
+        "customer_since": "2020-09-21"
+      }
+    },
+    {
+      "recordIndex": 2,
+      "outcome": "transformed",
+      "output": {
+        "external_id": "SOL-10058",
+        "first_name": "Lucas",
+        "last_name": "Morgan",
+        "email": "lucas.morgan@home.example.com",
+        "phone": "(537) 555-6802",
+        "organization": "Coyote Creek Vets",
+        "status": "active",
+        "plan": "basic",
+        "customer_since": "2024-04-16"
+      }
+    },
+    {
+      "recordIndex": 20,
+      "outcome": "held"
+    }
+  ]
+}

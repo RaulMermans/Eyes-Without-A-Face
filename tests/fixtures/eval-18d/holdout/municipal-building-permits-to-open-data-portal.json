@@ -1,0 +1,914 @@
+{
+  "scenarioId": "municipal-building-permits-to-open-data-portal",
+  "split": "holdout",
+  "track": "general",
+  "industry": "municipal planning permits",
+  "sourceLanguage": "fr",
+  "description": "Planning-permit export of a fictional French intermunicipal planning office (French snake_case, nested file and plot) to be published on an open-data portal.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "surface_plancher_creee": 275.7,
+      "demandeur": {
+        "nom": "Arthur Durand"
+      },
+      "dossier": {
+        "id_interne": 88011,
+        "numero": "PC 069 123 26 00111"
+      },
+      "instructeur": "Hélène Marchand",
+      "date_decision": "29/07/2026",
+      "terrain": {
+        "surface_m2": 622,
+        "commune": "Tassin-la-Demi-Lune",
+        "parcelle": "AB 0120"
+      },
+      "taxe_statut": "Payée",
+      "date_depot": "10/08/2026",
+      "nb_logements": 11,
+      "type_demande": "Permis de démolir",
+      "n_ligne": 1,
+      "decision": "Accord tacite"
+    },
+    {
+      "demandeur": {
+        "nom": "Raphaël Thomas"
+      },
+      "n_ligne": 2,
+      "taxe_statut": "Payée",
+      "type_demande": "Déclaration préalable",
+      "decision": "En instruction",
+      "surface_plancher_creee": 146.1,
+      "date_decision": "27/07/2026",
+      "date_depot": "19/05/2026",
+      "terrain": {
+        "commune": "Écully",
+        "surface_m2": 651,
+        "parcelle": "AB 0130"
+      },
+      "nb_logements": 0,
+      "instructeur": "Bruno Lacombe",
+      "dossier": {
+        "numero": "PC 069 123 26 00115",
+        "id_interne": 88013
+      }
+    },
+    {
+      "nb_logements": 8,
+      "date_decision": "03/09/2026",
+      "surface_plancher_creee": 130.9,
+      "taxe_statut": "À émettre",
+      "type_demande": "Permis de construire",
+      "decision": "En instruction",
+      "dossier": {
+        "id_interne": 88016,
+        "numero": "PC 069 123 26 00118"
+      },
+      "terrain": {
+        "surface_m2": 2185,
+        "parcelle": "AB 0140",
+        "commune": "Tassin-la-Demi-Lune"
+      },
+      "demandeur": {
+        "nom": "Manon Lefèvre"
+      },
+      "n_ligne": 3,
+      "date_depot": "29/04/2026",
+      "instructeur": "Bruno Lacombe"
+    },
+    {
+      "demandeur": {
+        "nom": "Inès Bonnet"
+      },
+      "instructeur": "Hélène Marchand",
+      "dossier": {
+        "numero": "PC 069 123 26 00125",
+        "id_interne": 88020
+      },
+      "date_depot": "03/02/2026",
+      "decision": "Accord tacite",
+      "n_ligne": 4,
+      "terrain": {
+        "commune": "Dardilly",
+        "surface_m2": 731,
+        "parcelle": "AB 0146"
+      },
+      "type_demande": "Déclaration préalable",
+      "taxe_statut": "Payée",
+      "surface_plancher_creee": null,
+      "nb_logements": 3
+    },
+    {
+      "date_decision": null,
+      "dossier": {
+        "id_interne": 88022,
+        "numero": "PC 069 123 26 00127"
+      },
+      "nb_logements": 2,
+      "decision": "En instruction",
+      "type_demande": "Permis de construire",
+      "terrain": {
+        "surface_m2": 2121,
+        "parcelle": "AB 0148",
+        "commune": "Dardilly"
+      },
+      "surface_plancher_creee": 177.7,
+      "n_ligne": 5,
+      "demandeur": {
+        "nom": "Antoine Bonnet"
+      },
+      "date_depot": "21/06/2026",
+      "instructeur": "Hélène Marchand",
+      "taxe_statut": "À émettre"
+    },
+    {
+      "terrain": {
+        "surface_m2": 817,
+        "commune": "Tassin-la-Demi-Lune",
+        "parcelle": "AB 0159"
+      },
+      "dossier": {
+        "numero": "PC 069 123 26 00133",
+        "id_interne": 88026
+      },
+      "nb_logements": 1,
+      "date_decision": "19/10/2026",
+      "type_demande": "Dossier test formation",
+      "date_depot": "27/01/2026",
+      "decision": "Accordé",
+      "surface_plancher_creee": 410.7,
+      "instructeur": "Hélène Marchand",
+      "demandeur": {
+        "nom": "Margaux Petit"
+      },
+      "taxe_statut": "À émettre",
+      "n_ligne": 6
+    },
+    {
+      "demandeur": {
+        "nom": "Théo Simon"
+      },
+      "dossier": {
+        "id_interne": 88030,
+        "numero": "PC 069 123 26 00135"
+      },
+      "taxe_statut": "Exonérée",
+      "instructeur": "Hélène Marchand",
+      "date_depot": "02/03/2026",
+      "terrain": {
+        "commune": "Dardilly",
+        "surface_m2": 449,
+        "parcelle": "AB 0167"
+      },
+      "decision": "Refusé",
+      "date_decision": "26/07/2026",
+      "type_demande": "Permis de démolir",
+      "n_ligne": 7,
+      "nb_logements": 0
+    },
+    {
+      "n_ligne": 8,
+      "date_depot": "26/01/2026",
+      "dossier": {
+        "id_interne": 88031,
+        "numero": "PC 069 123 26 00140"
+      },
+      "date_decision": "03/11/2026",
+      "type_demande": "Permis de démolir",
+      "taxe_statut": "Payée",
+      "instructeur": "Bruno Lacombe",
+      "demandeur": {
+        "nom": "Camille Lefèvre"
+      },
+      "decision": "Accordé",
+      "surface_plancher_creee": 201.8,
+      "nb_logements": 12,
+      "terrain": {
+        "surface_m2": 465,
+        "parcelle": "AB 0170",
+        "commune": "Écully"
+      }
+    },
+    {
+      "demandeur": {
+        "nom": "Gabriel Lefèvre"
+      },
+      "decision": null,
+      "taxe_statut": "Exonérée",
+      "date_decision": "21/06/2026",
+      "nb_logements": 7,
+      "instructeur": "Hélène Marchand",
+      "n_ligne": 9,
+      "date_depot": "17/01/2026",
+      "type_demande": "Déclaration préalable",
+      "dossier": {
+        "numero": "PC 069 123 26 00145",
+        "id_interne": 88035
+      },
+      "terrain": {
+        "parcelle": "AB 0180",
+        "surface_m2": 2055,
+        "commune": "Charbonnières-les-Bains"
+      }
+    },
+    {
+      "decision": "Accord tacite",
+      "instructeur": "Bruno Lacombe",
+      "n_ligne": 10,
+      "nb_logements": 0,
+      "dossier": {
+        "id_interne": 88037,
+        "numero": "PC 069 123 26 00148"
+      },
+      "type_demande": "Déclaration préalable",
+      "date_depot": "02/02/2026",
+      "taxe_statut": "Payée",
+      "demandeur": {
+        "nom": "Pauline Durand"
+      },
+      "surface_plancher_creee": 110.7,
+      "terrain": {
+        "surface_m2": 1537,
+        "commune": "Tassin-la-Demi-Lune",
+        "parcelle": "AB 0186"
+      },
+      "date_decision": null
+    },
+    {
+      "date_depot": "10/07/2026",
+      "instructeur": "Bruno Lacombe",
+      "taxe_statut": "Payée",
+      "demandeur": {
+        "nom": "Léa Martin"
+      },
+      "decision": "Refusé",
+      "dossier": {
+        "numero": "PC 069 123 26 00150",
+        "id_interne": 88041
+      },
+      "terrain": {
+        "commune": "Écully",
+        "parcelle": "AB 0195",
+        "surface_m2": 1380
+      },
+      "n_ligne": 11,
+      "nb_logements": 1,
+      "type_demande": "Certificat d'urbanisme",
+      "date_decision": null
+    },
+    {
+      "demandeur": {
+        "nom": "Margaux Garcia"
+      },
+      "instructeur": "Hélène Marchand",
+      "taxe_statut": "À émettre",
+      "type_demande": "Certificat d'urbanisme",
+      "n_ligne": 12,
+      "date_decision": "22/08/2026",
+      "nb_logements": 5,
+      "surface_plancher_creee": 307.1,
+      "dossier": {
+        "numero": "PC 069 123 26 00157",
+        "id_interne": 88044
+      },
+      "date_depot": "05/02/2026",
+      "terrain": {
+        "commune": "Dardilly",
+        "surface_m2": 1359,
+        "parcelle": "AB 0197"
+      }
+    },
+    {
+      "date_depot": "13/07/2026",
+      "taxe_statut": "À émettre",
+      "terrain": {
+        "commune": "Écully",
+        "parcelle": "AB 0206",
+        "surface_m2": 2167
+      },
+      "demandeur": {
+        "nom": "Raphaël Richard"
+      },
+      "type_demande": "Permis de construire",
+      "n_ligne": 13,
+      "nb_logements": 3,
+      "surface_plancher_creee": 418.5,
+      "decision": "Accord tacite",
+      "dossier": {
+        "numero": "PC 069 123 26 00160",
+        "id_interne": 88047
+      },
+      "instructeur": "Hélène Marchand"
+    },
+    {
+      "surface_plancher_creee": null,
+      "dossier": {
+        "numero": "PC 069 123 26 00165",
+        "id_interne": 88050
+      },
+      "type_demande": "Permis de construire",
+      "n_ligne": 14,
+      "date_decision": "05/06/2026",
+      "nb_logements": 6,
+      "decision": "Refusé",
+      "date_depot": "21/06/2026",
+      "demandeur": {
+        "nom": "Antoine Leroy"
+      },
+      "instructeur": "Hélène Marchand",
+      "terrain": {
+        "surface_m2": 1702,
+        "parcelle": "AB 0217",
+        "commune": "Charbonnières-les-Bains"
+      },
+      "taxe_statut": "Exonérée"
+    },
+    {
+      "decision": "Accord tacite",
+      "n_ligne": 15,
+      "taxe_statut": "Payée",
+      "date_decision": "03/07/2026",
+      "date_depot": "22/08/2026",
+      "type_demande": "Permis de démolir",
+      "dossier": {
+        "numero": "PC 069 123 26 00169",
+        "id_interne": 88053
+      },
+      "surface_plancher_creee": 336.0,
+      "terrain": {
+        "surface_m2": 209,
+        "commune": "Tassin-la-Demi-Lune",
+        "parcelle": "AB 0222"
+      },
+      "nb_logements": 0,
+      "instructeur": "Hélène Marchand",
+      "demandeur": {
+        "nom": "Antoine Laurent"
+      }
+    },
+    {
+      "date_decision": "31/07/2026",
+      "instructeur": "Hélène Marchand",
+      "nb_logements": 9,
+      "surface_plancher_creee": 181.5,
+      "n_ligne": 16,
+      "decision": "Refusé",
+      "type_demande": "Déclaration préalable",
+      "taxe_statut": "Payée",
+      "demandeur": {
+        "nom": "Sarah Thomas"
+      },
+      "date_depot": "14/05/2026",
+      "dossier": {
+        "numero": "PC 069 123 26 00172",
+        "id_interne": 88055
+      },
+      "terrain": {
+        "commune": "Charbonnières-les-Bains",
+        "parcelle": "AB 0229",
+        "surface_m2": 2233
+      }
+    },
+    {
+      "instructeur": "Bruno Lacombe",
+      "date_depot": "10/08/2026",
+      "date_decision": "24/06/2026",
+      "type_demande": "Certificat d'urbanisme",
+      "demandeur": {
+        "nom": "Raphaël Lefèvre"
+      },
+      "decision": "Accord tacite",
+      "taxe_statut": "Payée",
+      "surface_plancher_creee": 27.1,
+      "terrain": {
+        "surface_m2": 806,
+        "parcelle": "AB 0237",
+        "commune": "Écully"
+      },
+      "nb_logements": 12,
+      "dossier": {
+        "numero": "PC 069 123 26 00175",
+        "id_interne": 88059
+      },
+      "n_ligne": 17
+    },
+    {
+      "instructeur": "Hélène Marchand",
+      "date_depot": "23/06/2026",
+      "n_ligne": 18,
+      "type_demande": "Déclaration préalable",
+      "nb_logements": 11,
+      "date_decision": "19/04/2026",
+      "demandeur": {
+        "nom": "Sarah Laurent"
+      },
+      "surface_plancher_creee": 90.1,
+      "terrain": {
+        "surface_m2": 1852,
+        "commune": "Écully",
+        "parcelle": "AB 0240"
+      },
+      "decision": "Accord tacite",
+      "dossier": {
+        "numero": "PC 069 123 26 00179",
+        "id_interne": 88062
+      },
+      "taxe_statut": "Exonérée"
+    },
+    {
+      "date_depot": "17/04/2026",
+      "instructeur": "Hélène Marchand",
+      "date_decision": "18/07/2026",
+      "type_demande": "Permis de construire",
+      "decision": "Accordé",
+      "nb_logements": 8,
+      "dossier": {
+        "numero": "PC 069 123 26 00184",
+        "id_interne": 88064
+      },
+      "surface_plancher_creee": 244.2,
+      "taxe_statut": "À émettre",
+      "terrain": {
+        "surface_m2": 1815,
+        "commune": "Dardilly",
+        "parcelle": "AB 0247"
+      },
+      "demandeur": {
+        "nom": "Mathis Thomas"
+      },
+      "n_ligne": 19
+    },
+    {
+      "dossier": {
+        "numero": "PC 069 123 26 00186",
+        "id_interne": 88068
+      },
+      "surface_plancher_creee": 407.0,
+      "date_decision": null,
+      "n_ligne": 20,
+      "instructeur": "Hélène Marchand",
+      "decision": "En instruction",
+      "taxe_statut": "À émettre",
+      "type_demande": "Permis de construire",
+      "demandeur": {
+        "nom": "Jules Thomas"
+      },
+      "nb_logements": 5,
+      "date_depot": "29/04/2026",
+      "terrain": {
+        "commune": "Charbonnières-les-Bains",
+        "surface_m2": 436,
+        "parcelle": "AB 0254"
+      }
+    },
+    {
+      "n_ligne": 21,
+      "date_decision": "10/04/2026",
+      "nb_logements": 6,
+      "type_demande": "Dossier test formation",
+      "surface_plancher_creee": 394.3,
+      "terrain": {
+        "parcelle": "AB 0263",
+        "commune": "Dardilly",
+        "surface_m2": 1145
+      },
+      "dossier": {
+        "numero": "PC 069 123 26 00192",
+        "id_interne": 88071
+      },
+      "taxe_statut": "Payée",
+      "decision": "Accordé",
+      "demandeur": {
+        "nom": "Gabriel Fournier"
+      },
+      "date_depot": "22/04/2026",
+      "instructeur": "Hélène Marchand"
+    },
+    {
+      "n_ligne": 22,
+      "taxe_statut": "Payée",
+      "dossier": {
+        "numero": "PC 069 123 26 00195",
+        "id_interne": 88075
+      },
+      "date_decision": "16/03/2026",
+      "surface_plancher_creee": 296.4,
+      "date_depot": "22/08/2026",
+      "demandeur": {
+        "nom": "Juliette Richard"
+      },
+      "instructeur": "Bruno Lacombe",
+      "nb_logements": 10,
+      "decision": "Refusé",
+      "type_demande": "Certificat d'urbanisme",
+      "terrain": {
+        "surface_m2": 2381,
+        "parcelle": "AB 0270",
+        "commune": "Écully"
+      }
+    },
+    {
+      "type_demande": "Déclaration préalable",
+      "surface_plancher_creee": 212.4,
+      "terrain": {
+        "commune": "Écully",
+        "parcelle": "AB 0279",
+        "surface_m2": 653
+      },
+      "demandeur": {
+        "nom": "Hugo Rousseau"
+      },
+      "date_decision": null,
+      "nb_logements": 1,
+      "n_ligne": 23,
+      "dossier": {
+        "numero": "PC 069 123 26 00198",
+        "id_interne": 88078
+      },
+      "date_depot": "23/05/2026",
+      "taxe_statut": "Exonérée",
+      "decision": "Accordé",
+      "instructeur": "Hélène Marchand"
+    },
+    {
+      "dossier": {
+        "id_interne": 88080,
+        "numero": "PC 069 123 26 00202"
+      },
+      "taxe_statut": "Payée",
+      "surface_plancher_creee": null,
+      "instructeur": "Hélène Marchand",
+      "demandeur": {
+        "nom": "Elise Michel"
+      },
+      "n_ligne": 24,
+      "nb_logements": 8,
+      "decision": "Accordé",
+      "date_decision": "04/07/2026",
+      "type_demande": "Déclaration préalable",
+      "terrain": {
+        "parcelle": "AB 0283",
+        "surface_m2": 941,
+        "commune": "Tassin-la-Demi-Lune"
+      },
+      "date_depot": "18/07/2026"
+    },
+    {
+      "type_demande": "Déclaration préalable",
+      "taxe_statut": "Payée",
+      "surface_plancher_creee": 61.0,
+      "dossier": {
+        "numero": "PC 069 123 26 00208",
+        "id_interne": 88082
+      },
+      "decision": "En instruction",
+      "terrain": {
+        "parcelle": "AB 0290",
+        "surface_m2": 2317,
+        "commune": "Dardilly"
+      },
+      "n_ligne": 25,
+      "date_depot": "22/08/2026",
+      "instructeur": "Hélène Marchand",
+      "nb_logements": 10,
+      "demandeur": {
+        "nom": "Pauline Leroy"
+      }
+    },
+    {
+      "date_depot": "06/07/2026",
+      "type_demande": "Permis de démolir",
+      "nb_logements": 2,
+      "demandeur": {
+        "nom": "Louis Martin"
+      },
+      "instructeur": "Hélène Marchand",
+      "terrain": {
+        "commune": "Écully",
+        "surface_m2": 600,
+        "parcelle": "AB 0295"
+      },
+      "date_decision": "18/07/2026",
+      "decision": null,
+      "dossier": {
+        "id_interne": 88087,
+        "numero": "PC 069 123 26 00213"
+      },
+      "taxe_statut": "À émettre",
+      "n_ligne": 26
+    },
+    {
+      "surface_plancher_creee": 307.7,
+      "date_depot": "16/05/2026",
+      "date_decision": "10/10/2026",
+      "demandeur": {
+        "nom": "Gabriel Leroy"
+      },
+      "decision": "Refusé",
+      "terrain": {
+        "commune": "Écully",
+        "surface_m2": 302,
+        "parcelle": "AB 0302"
+      },
+      "type_demande": "Permis de construire",
+      "dossier": {
+        "numero": "PC 069 123 26 00214",
+        "id_interne": 88090
+      },
+      "nb_logements": 10,
+      "instructeur": "Hélène Marchand",
+      "n_ligne": 27,
+      "taxe_statut": "À émettre"
+    },
+    {
+      "type_demande": "Déclaration préalable",
+      "decision": "Accordé",
+      "nb_logements": 7,
+      "taxe_statut": "Exonérée",
+      "date_decision": "15/05/2026",
+      "dossier": {
+        "numero": "PC 069 123 26 00220",
+        "id_interne": 88092
+      },
+      "date_depot": "15/06/2026",
+      "demandeur": {
+        "nom": "Hugo Durand"
+      },
+      "n_ligne": 28,
+      "surface_plancher_creee": 307.7,
+      "instructeur": "Hélène Marchand",
+      "terrain": {
+        "surface_m2": 1457,
+        "commune": "Écully",
+        "parcelle": "AB 0310"
+      }
+    },
+    {
+      "date_depot": "05/02/2026",
+      "demandeur": {
+        "nom": "Antoine Richard"
+      },
+      "taxe_statut": "Payée",
+      "n_ligne": 29,
+      "type_demande": "Déclaration préalable",
+      "surface_plancher_creee": null,
+      "date_decision": "04/04/2026",
+      "terrain": {
+        "parcelle": "AB 0320",
+        "surface_m2": 902,
+        "commune": "Tassin-la-Demi-Lune"
+      },
+      "nb_logements": 9,
+      "dossier": {
+        "id_interne": 88096,
+        "numero": "PC 069 123 26 00223"
+      },
+      "instructeur": "Bruno Lacombe"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "permit_id": {
+        "type": "string",
+        "description": "Official reference number of the permit application."
+      },
+      "permit_type": {
+        "type": "string",
+        "enum": [
+          "building",
+          "prior_declaration",
+          "demolition",
+          "planning_certificate"
+        ],
+        "description": "Kind of planning application."
+      },
+      "decision": {
+        "type": "string",
+        "enum": [
+          "granted",
+          "refused",
+          "tacit_approval",
+          "pending"
+        ],
+        "description": "Outcome of the application, if decided."
+      },
+      "municipality": {
+        "type": "string",
+        "description": "Municipality where the plot lies."
+      },
+      "parcel_ref": {
+        "type": "string",
+        "description": "Cadastral reference."
+      },
+      "filed_on": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the application was filed."
+      },
+      "decided_on": {
+        "type": "string",
+        "format": "date",
+        "description": "Date."
+      },
+      "floor_area_m2": {
+        "type": "number",
+        "description": "New floor area created by the project, in square metres."
+      },
+      "dwellings": {
+        "type": "integer",
+        "description": "Number of dwellings the project creates."
+      },
+      "processing_days": {
+        "type": "integer"
+      }
+    },
+    "required": [
+      "permit_id",
+      "permit_type",
+      "municipality",
+      "filed_on"
+    ]
+  },
+  "groundTruth": {
+    "permit_id": {
+      "source": "dossier.numero",
+      "transform": "copy",
+      "why": "official file number; id_interne is the software key"
+    },
+    "permit_type": {
+      "source": "type_demande",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Permis de construire": "building",
+        "Déclaration préalable": "prior_declaration",
+        "Permis de démolir": "demolition",
+        "Certificat d'urbanisme": "planning_certificate",
+        "Dossier test formation": null
+      },
+      "why": "application type; training files are not real and need review"
+    },
+    "decision": {
+      "source": "decision",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Accordé": "granted",
+        "Refusé": "refused",
+        "Accord tacite": "tacit_approval",
+        "En instruction": "pending"
+      },
+      "why": "decision; taxe_statut is tax"
+    },
+    "municipality": {
+      "source": "terrain.commune",
+      "transform": "copy",
+      "why": "commune"
+    },
+    "parcel_ref": {
+      "source": "terrain.parcelle",
+      "transform": "copy",
+      "why": "parcel"
+    },
+    "filed_on": {
+      "source": "date_depot",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "filing date (day-first)"
+    },
+    "decided_on": {
+      "source": "date_decision",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "decision date, null or missing"
+    },
+    "floor_area_m2": {
+      "source": "surface_plancher_creee",
+      "transform": "copy",
+      "why": "created floor area; terrain.surface_m2 is the plot"
+    },
+    "dwellings": {
+      "source": "nb_logements",
+      "transform": "copy",
+      "why": "dwellings"
+    },
+    "processing_days": {
+      "source": null,
+      "transform": "none",
+      "why": "not exported",
+      "unsupportedReason": "would need date_decision minus date_depot"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "decision",
+        "taxe_statut"
+      ],
+      "correctFor": "decision"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "dossier.numero",
+        "dossier.id_interne"
+      ],
+      "correctFor": "permit_id"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "date_depot",
+        "date_decision"
+      ],
+      "correctFor": "filed_on"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "type_demande",
+        "decision"
+      ],
+      "correctFor": "permit_type"
+    }
+  ],
+  "sourceConcepts": {
+    "dossier.numero": "transaction-id",
+    "dossier.id_interne": "other-identifier",
+    "n_ligne": "other-identifier",
+    "demandeur.nom": "person-name",
+    "type_demande": "category",
+    "decision": "account-status",
+    "taxe_statut": "payment-status",
+    "instructeur": "person-name",
+    "terrain.commune": "city",
+    "terrain.parcelle": "other-identifier",
+    "terrain.surface_m2": "quantity",
+    "surface_plancher_creee": "quantity",
+    "date_depot": "created-date",
+    "date_decision": "end-date",
+    "nb_logements": "quantity"
+  },
+  "destinationConcepts": {
+    "permit_id": "transaction-id",
+    "permit_type": "category",
+    "decision": "account-status",
+    "municipality": "city",
+    "parcel_ref": "other-identifier",
+    "filed_on": "created-date",
+    "decided_on": "end-date",
+    "floor_area_m2": "quantity",
+    "dwellings": "quantity",
+    "processing_days": "quantity"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 0,
+      "outcome": "transformed",
+      "output": {
+        "permit_id": "PC 069 123 26 00111",
+        "permit_type": "demolition",
+        "decision": "tacit_approval",
+        "municipality": "Tassin-la-Demi-Lune",
+        "parcel_ref": "AB 0120",
+        "filed_on": "2026-08-10",
+        "decided_on": "2026-07-29",
+        "floor_area_m2": 275.7,
+        "dwellings": 11
+      }
+    },
+    {
+      "recordIndex": 3,
+      "outcome": "transformed",
+      "output": {
+        "permit_id": "PC 069 123 26 00125",
+        "permit_type": "prior_declaration",
+        "decision": "tacit_approval",
+        "municipality": "Dardilly",
+        "parcel_ref": "AB 0146",
+        "filed_on": "2026-02-03",
+        "dwellings": 3
+      }
+    },
+    {
+      "recordIndex": 5,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 6,
+      "outcome": "transformed",
+      "output": {
+        "permit_id": "PC 069 123 26 00135",
+        "permit_type": "demolition",
+        "decision": "refused",
+        "municipality": "Dardilly",
+        "parcel_ref": "AB 0167",
+        "filed_on": "2026-03-02",
+        "decided_on": "2026-07-26",
+        "dwellings": 0
+      }
+    }
+  ]
+}

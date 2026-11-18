@@ -14,6 +14,12 @@ export interface TargetDescription {
   target: CloudDisclosureTarget;
   /** Structural notes about constructs that were not projected. Safe to show locally. */
   notes: string[];
+  /**
+   * LOCAL ONLY (Sprint 18D): the schema's raw `description` (else `title`) per
+   * described field. Never projected as is; a 1.4.0 disclosure carries only
+   * what `sanitizeTargetDescription` lets through.
+   */
+  localDescriptions: Record<string, string>;
 }
 
 export type TargetDescriptionResult =
@@ -40,14 +46,15 @@ export function describeTargetSchema(schema: unknown): TargetDescriptionResult {
   }
   const fields: CloudDisclosureTargetField[] = [];
   const notes: string[] = [];
-  walk(root, "", 1, fields, notes);
+  const localDescriptions: Record<string, string> = Object.create(null) as Record<string, string>;
+  walk(root, "", 1, fields, notes, localDescriptions);
   if (fields.length === 0) {
     return { ok: false, issues: ["Destination schema has no primitive properties that can be described."] };
   }
   if (fields.length > MAX_FIELDS) {
     return { ok: false, issues: [`Destination schema exposes more than ${MAX_FIELDS} fields.`] };
   }
-  return { ok: true, value: { target: { fields }, notes } };
+  return { ok: true, value: { target: { fields }, notes, localDescriptions } };
 }
 
 function walk(
@@ -56,6 +63,7 @@ function walk(
   depth: number,
   fields: CloudDisclosureTargetField[],
   notes: string[],
+  localDescriptions: Record<string, string>,
 ): void {
   const properties = node.properties as Record<string, unknown>;
   const required = new Set(Array.isArray(node.required) ? node.required.filter((item) => typeof item === "string") : []);
@@ -77,7 +85,7 @@ function walk(
         notes.push(`Nested object "${path}" is deeper than ${MAX_DEPTH} levels and was not described.`);
         continue;
       }
-      walk(property, path, depth + 1, fields, notes);
+      walk(property, path, depth + 1, fields, notes, localDescriptions);
       continue;
     }
     if (types.unsupported) {
@@ -105,6 +113,8 @@ function walk(
       field.type = "enum";
       field.enumValues = [property.const.slice(0, 64)];
     }
+    const raw = typeof property.description === "string" ? property.description : typeof property.title === "string" ? property.title : undefined;
+    if (raw !== undefined) localDescriptions[path] = raw;
     fields.push(field);
   }
 }

@@ -7,7 +7,9 @@ import { submitApprovedCloudInference } from "../twin/cloud-request-gate.ts";
 import { runRealityCheck } from "../verification/reality-check.ts";
 import { acceptProposal, buildDisclosureDraft, type PreparedTwin } from "../workflow/pipeline.ts";
 import type { ProposalState, WorkspaceState } from "./workspace-state.ts";
-import { isIntentPlanRequest } from "../inference/intent-prompt.ts";
+import { isIntentPlanRequest, isRankedPlanRequest } from "../inference/intent-prompt.ts";
+import { effectiveLocalPolicy } from "../inference/cloud-models.ts";
+import { localCandidatesForDestination } from "../matching/destination-candidates.ts";
 import { acceptCompiledPlan, compileIntentPlan, type CompileInput } from "../plan/compile.ts";
 import type { CompiledIntegration, PlanAnswers, PlanIssue } from "../plan/types.ts";
 import { parseIntentPlanText, validateIntentPlan } from "../plan/validate.ts";
@@ -76,6 +78,22 @@ export function evaluateProposal(
   return { origin: input.origin, text: input.text, provenance: input.provenance, requestId: input.requestId, result };
 }
 
+/**
+ * Sprint 18D: local candidate evidence and the question policy, or undefined
+ * (the Sprint 18C behaviour) unless a dev harness selected a policy. Local only.
+ */
+function withLocalEvidence(workspace: WorkspaceState, prepared: PreparedTwin): Pick<CompileInput, "local"> {
+  const policy = effectiveLocalPolicy();
+  if (!policy) return {};
+  let schema: unknown;
+  try {
+    schema = JSON.parse(workspace.destinationText);
+  } catch {
+    return {};
+  }
+  return { local: { localCandidates: localCandidatesForDestination(schema, prepared, workspace.source?.records ?? []), ...policy } };
+}
+
 /** The user's answers held in the workspace (the guided decision maps). Local only. */
 function planAnswers(workspace: WorkspaceState): PlanAnswers {
   return { fieldMatches: workspace.fieldMatches, categoryMeanings: workspace.categoryMeanings, semanticConfirmations: workspace.semanticConfirmations };
@@ -114,7 +132,7 @@ function evaluatePlan(
   if (disclosure.phantomId !== prepared.twin.phantom.phantomId) {
     return refuse([{ code: "DISCLOSURE_MISSING_TARGET", message: "The approved disclosure belongs to a different Phantom Twin. Regenerate and re-approve." }]);
   }
-  const validation = validateIntentPlan(raw, disclosure);
+  const validation = validateIntentPlan(raw, disclosure, { ranked: isRankedPlanRequest(review.preview.outboundPrompt) });
   if (!validation.ok) return refuse(validation.issues);
   const compileInput: CompileInput = {
     validated: validation.value,
@@ -124,6 +142,7 @@ function evaluatePlan(
     answers: planAnswers(workspace),
     requestId: input.requestId,
     origin: input.origin,
+    ...withLocalEvidence(workspace, prepared),
   };
   const compiled = compileIntentPlan(compileInput);
   const result = acceptCompiledPlan(compiled, compileInput);
@@ -296,6 +315,7 @@ export function recompilePlan(workspace: WorkspaceState, prepared: PreparedTwin 
     answers: planAnswers(workspace),
     requestId: proposal.requestId,
     origin: proposal.origin,
+    ...withLocalEvidence(workspace, prepared),
   };
   const compiled = compileIntentPlan(compileInput);
   if (JSON.stringify(compiled) === JSON.stringify(receipt.compiled)) return workspace;

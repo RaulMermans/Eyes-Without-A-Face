@@ -18,6 +18,7 @@ import { validateStructuredOutput } from "../domain/inference-output/validate-ou
 import { findExecutableTransformations } from "../domain/mapping/safety.ts";
 import {
   INTENT_PLAN_VERSION,
+  RANKED_PLAN_VERSION,
   type IntentPlan,
   type IntentPlanEntry,
   type PlanIssue,
@@ -73,14 +74,20 @@ export function parseIntentPlanText(text: string): { ok: true; value: unknown } 
   }
 }
 
-export function validateIntentPlan(raw: unknown, disclosure: CloudDisclosurePayload): PlanValidation {
-  if (disclosure.schemaVersion !== "1.1.0" || !disclosure.target) {
+/**
+ * `ranked` (Sprint 18D): the request used prompt v6, so the answer is judged
+ * against plan 1.1.0 (`alternatives` allowed); otherwise plan 1.0.0 exactly.
+ * Disclosures 1.1.0 and 1.4.0 (1.1.0 + destination semantics) are both initial.
+ */
+export function validateIntentPlan(raw: unknown, disclosure: CloudDisclosurePayload, options: { ranked?: boolean } = {}): PlanValidation {
+  const ranked = options.ranked === true;
+  if ((disclosure.schemaVersion !== "1.1.0" && disclosure.schemaVersion !== "1.4.0") || !disclosure.target) {
     return {
       ok: false,
       issues: [
         {
           code: "DISCLOSURE_MISSING_TARGET",
-          message: "A plan can only be validated against an approved 1.1.0 disclosure with a destination target.",
+          message: "A plan can only be validated against an approved 1.1.0 or 1.4.0 disclosure with a destination target.",
         },
       ],
     };
@@ -106,11 +113,11 @@ export function validateIntentPlan(raw: unknown, disclosure: CloudDisclosurePayl
       issues: executable.map((item) => malformed(`Executable content at ${clipPath(item.path)}. Plans are never executed.`)),
     };
   }
-  const structured = validateStructuredOutput("integration-intent-plan", raw);
+  const structured = validateStructuredOutput(ranked ? "integration-intent-plan-ranked" : "integration-intent-plan", raw);
   if (!structured.valid) {
     return {
       ok: false,
-      issues: [malformed("The plan does not match Integration Intent Plan 1.0.0.")].concat(
+      issues: [malformed(`The plan does not match Integration Intent Plan ${ranked ? RANKED_PLAN_VERSION : INTENT_PLAN_VERSION}.`)].concat(
         structured.issues.slice(0, 16).map((issue) => malformed(`Schema: ${clipIssue(issue)}`)),
       ),
     };
@@ -132,7 +139,7 @@ export function validateIntentPlan(raw: unknown, disclosure: CloudDisclosurePayl
   return {
     ok: true,
     value: {
-      planVersion: INTENT_PLAN_VERSION,
+      planVersion: ranked ? RANKED_PLAN_VERSION : INTENT_PLAN_VERSION,
       plan,
       entries,
       unaddressed,
@@ -160,6 +167,10 @@ function judgeEntry(
 
   for (const alias of entry.from) {
     if (!aliases.has(alias)) add("UNKNOWN_ALIAS", `source alias ${quote(alias)} was not disclosed.`);
+  }
+
+  for (const alias of entry.alternatives ?? []) {
+    if (!aliases.has(alias)) add("UNKNOWN_ALIAS", `alternative source alias ${quote(alias)} was not disclosed.`);
   }
 
   for (const reason of inconsistencies(entry)) add("INCONSISTENT_ENTRY", reason);
@@ -205,6 +216,8 @@ function inconsistencies(entry: IntentPlanEntry): string[] {
   if (entry.inputFormat !== undefined && transform !== "parse_date") out.push("inputFormat is only meaningful for parse_date.");
   if (entry.separator !== undefined && transform !== "concat") out.push("separator is only meaningful for concat.");
   if (entry.valueMap !== undefined && transform !== "map_enum") out.push("valueMap is only meaningful for map_enum.");
+  if ((entry.alternatives ?? []).some((alias) => from.includes(alias))) out.push("an alternative repeats an alias of from.");
+  if (status === "no_source" && (entry.alternatives ?? []).length > 0) out.push("a no_source field cannot name alternatives.");
 
   switch (status) {
     case "ready": {

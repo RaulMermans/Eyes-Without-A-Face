@@ -1,0 +1,10 @@
+{
+  "name": "eyes-bench-embeddings",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "module",
+  "description": "Sprint 18D offline embedding prototype. NOT part of the app bundle; install into a scratch directory.",
+  "dependencies": {
+    "@huggingface/transformers": "4.3.2"
+  }
+}

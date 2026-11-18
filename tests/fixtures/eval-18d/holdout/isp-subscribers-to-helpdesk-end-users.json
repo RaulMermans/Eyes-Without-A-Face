@@ -1,0 +1,917 @@
+{
+  "scenarioId": "isp-subscribers-to-helpdesk-end-users",
+  "split": "holdout",
+  "track": "wedge",
+  "industry": "regional internet provider subscribers",
+  "sourceLanguage": "pt",
+  "description": "Subscriber export of a fictional Brazilian internet provider (Portuguese camelCase, nested address) to be loaded as helpdesk end users.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "dataAtivacao": "03/12/2023",
+      "emailSecundario": null,
+      "plano": "Fibra 600 Mega",
+      "idContrato": "CT-3300152",
+      "endereco": {
+        "uf": "MG",
+        "bairro": "Centro"
+      },
+      "nomeCompleto": "Rodrigo Oliveira",
+      "consentimentoMarketing": "Sim",
+      "linhaPlanilha": 2,
+      "situacaoFinanceira": "Em dia",
+      "situacaoCadastro": "Ativo",
+      "vendedor": "Renata Lima",
+      "celular": "+55 11 94283-6044",
+      "dataUltimoAtendimento": "05/02/2025",
+      "email": "rodrigo.oliveira@net.example.com",
+      "codigoAssinante": "AS208150"
+    },
+    {
+      "nomeCompleto": "Camila Marques",
+      "endereco": {
+        "bairro": "Centro",
+        "uf": "SP"
+      },
+      "plano": "Empresarial 1 Giga",
+      "idContrato": "CT-3300249",
+      "vendedor": "Fábio Nunes",
+      "linhaPlanilha": 3,
+      "dataAtivacao": "03/06/2019",
+      "emailSecundario": "cmarques@trabalho.example.org",
+      "dataUltimoAtendimento": "12/08/2026",
+      "consentimentoMarketing": "Não",
+      "email": "camila.marques@net.example.com",
+      "codigoAssinante": "AS208154",
+      "celular": "+55 11 97361-8570",
+      "situacaoFinanceira": "Inadimplente",
+      "situacaoCadastro": "Suspenso"
+    },
+    {
+      "dataUltimoAtendimento": "04/04/2025",
+      "vendedor": "Renata Lima",
+      "email": "goncalo.pereira@net.example.com",
+      "situacaoFinanceira": "Inadimplente",
+      "consentimentoMarketing": "Não",
+      "situacaoCadastro": "Pré-cadastro",
+      "idContrato": "CT-3300284",
+      "linhaPlanilha": 4,
+      "nomeCompleto": "Gonçalo Pereira",
+      "endereco": {
+        "bairro": "Centro",
+        "uf": "SP"
+      },
+      "plano": "Fibra 600 Mega",
+      "codigoAssinante": "AS208169",
+      "dataAtivacao": "07/02/2019",
+      "emailSecundario": "gpereira@trabalho.example.org"
+    },
+    {
+      "idContrato": "CT-3300350",
+      "emailSecundario": "mgoncalves@trabalho.example.org",
+      "vendedor": "Caio Batista",
+      "endereco": {
+        "bairro": "Jardim América",
+        "uf": "MG"
+      },
+      "dataUltimoAtendimento": "12/06/2026",
+      "codigoAssinante": "AS208185",
+      "situacaoCadastro": "Ativo",
+      "nomeCompleto": "Mariana Gonçalves ",
+      "consentimentoMarketing": "Sim",
+      "plano": "Fibra 300 Mega",
+      "email": "mariana.goncalves@net.example.com",
+      "linhaPlanilha": 5,
+      "celular": "+55 11 95741-3511",
+      "dataAtivacao": "04/07/2025",
+      "situacaoFinanceira": "Em dia"
+    },
+    {
+      "consentimentoMarketing": "Sim",
+      "situacaoCadastro": "Ativo",
+      "idContrato": "CT-3300443",
+      "plano": "Fibra 1 Giga",
+      "endereco": {
+        "uf": "SP",
+        "bairro": "Vila Nova"
+      },
+      "linhaPlanilha": 6,
+      "dataUltimoAtendimento": "12/06/2025",
+      "vendedor": "Fábio Nunes",
+      "celular": "+55 11 92895-4974",
+      "situacaoFinanceira": "Em dia",
+      "codigoAssinante": "AS208192",
+      "email": "lucas.lopes@net.example.com",
+      "dataAtivacao": "01/02/2017",
+      "emailSecundario": "llopes@trabalho.example.org",
+      "nomeCompleto": "Lucas Lopes"
+    },
+    {
+      "plano": "Fibra 300 Mega",
+      "endereco": {
+        "uf": "MG",
+        "bairro": "Centro"
+      },
+      "situacaoCadastro": "Pré-cadastro",
+      "dataUltimoAtendimento": "01/04/2025",
+      "consentimentoMarketing": "Sim",
+      "nomeCompleto": "Inês Gomes",
+      "situacaoFinanceira": "Inadimplente",
+      "codigoAssinante": "AS208207",
+      "linhaPlanilha": 7,
+      "idContrato": "CT-3300486",
+      "vendedor": "Renata Lima",
+      "dataAtivacao": "09/03/2020",
+      "emailSecundario": null,
+      "email": "ines.gomes@net.example.com",
+      "celular": "+55 11 94291-1122"
+    },
+    {
+      "vendedor": "Fábio Nunes",
+      "plano": "Fibra 300 Mega",
+      "dataAtivacao": "04/05/2024",
+      "celular": "+55 11 92214-7959",
+      "situacaoFinanceira": "Inadimplente",
+      "email": "camila.pinto@net.example.com",
+      "consentimentoMarketing": "Não",
+      "situacaoCadastro": "Ativo",
+      "codigoAssinante": "AS208220",
+      "emailSecundario": null,
+      "linhaPlanilha": 8,
+      "idContrato": "CT-3300550",
+      "nomeCompleto": "Camila Pinto",
+      "endereco": {
+        "bairro": "Centro",
+        "uf": "RJ"
+      },
+      "dataUltimoAtendimento": "07/01/2025"
+    },
+    {
+      "dataUltimoAtendimento": "11/09/2026",
+      "idContrato": "CT-3300653",
+      "linhaPlanilha": 9,
+      "endereco": {
+        "bairro": "Jardim América",
+        "uf": "AM"
+      },
+      "celular": "+55 11 97694-5136",
+      "codigoAssinante": "AS208233",
+      "consentimentoMarketing": "Sim",
+      "situacaoCadastro": "Suspenso",
+      "email": "rodrigo.carvalho@net.example.com",
+      "nomeCompleto": "Rodrigo Carvalho",
+      "emailSecundario": "rcarvalho@trabalho.example.org",
+      "dataAtivacao": "12/06/2018",
+      "plano": "Fibra 300 Mega",
+      "situacaoFinanceira": "Em dia",
+      "vendedor": "Renata Lima"
+    },
+    {
+      "situacaoCadastro": "Suspenso",
+      "linhaPlanilha": 10,
+      "plano": "Fibra 300 Mega",
+      "nomeCompleto": "Inês Martins",
+      "celular": "+55 11 99779-8014",
+      "idContrato": "CT-3300732",
+      "dataAtivacao": "09/02/2025",
+      "email": "ines.martins@net.example.com",
+      "emailSecundario": null,
+      "dataUltimoAtendimento": "11/05/2025",
+      "endereco": {
+        "bairro": "Jardim América",
+        "uf": "SP"
+      },
+      "situacaoFinanceira": "Inadimplente",
+      "codigoAssinante": "AS208254",
+      "vendedor": "Renata Lima",
+      "consentimentoMarketing": "Sim"
+    },
+    {
+      "dataAtivacao": "11/04/2022",
+      "situacaoCadastro": "Ativo",
+      "nomeCompleto": "Carolina Costa",
+      "dataUltimoAtendimento": "09/07/2026",
+      "vendedor": "Caio Batista",
+      "codigoAssinante": "AS208261",
+      "plano": "Fibra 300 Mega",
+      "endereco": {
+        "uf": "SP",
+        "bairro": "Vila Nova"
+      },
+      "linhaPlanilha": 11,
+      "emailSecundario": "ccosta@trabalho.example.org",
+      "situacaoFinanceira": "Em dia",
+      "email": "carolina.costa@net.example.com",
+      "idContrato": "CT-3300818",
+      "consentimentoMarketing": "Não",
+      "celular": "+55 11 97089-7954"
+    },
+    {
+      "plano": "Fibra 300 Mega",
+      "email": "diogo.sousa@net.example.com",
+      "codigoAssinante": "AS208273",
+      "situacaoCadastro": "Ativo",
+      "endereco": {
+        "bairro": "Jardim América",
+        "uf": "AM"
+      },
+      "vendedor": "Fábio Nunes",
+      "linhaPlanilha": 12,
+      "emailSecundario": "dsousa@trabalho.example.org",
+      "nomeCompleto": "Diogo Sousa",
+      "situacaoFinanceira": "Em dia",
+      "dataUltimoAtendimento": "11/09/2025",
+      "consentimentoMarketing": "Sim",
+      "idContrato": "CT-3300865",
+      "dataAtivacao": "01/01/2019"
+    },
+    {
+      "codigoAssinante": "AS208288",
+      "email": "carolina.almeida@net.example.com",
+      "nomeCompleto": "Carolina Almeida",
+      "plano": "Fibra 600 Mega",
+      "dataUltimoAtendimento": "01/08/2025",
+      "endereco": {
+        "uf": "MG",
+        "bairro": "Centro"
+      },
+      "celular": "+55 11 90239-2849",
+      "situacaoCadastro": "Ativo",
+      "vendedor": "Caio Batista",
+      "consentimentoMarketing": "Não",
+      "idContrato": "CT-3300919",
+      "emailSecundario": null,
+      "linhaPlanilha": 13,
+      "situacaoFinanceira": "Inadimplente",
+      "dataAtivacao": "12/10/2017"
+    },
+    {
+      "nomeCompleto": "Camila Martins",
+      "situacaoCadastro": "Ativo",
+      "dataAtivacao": "11/11/2019",
+      "endereco": {
+        "uf": "AM",
+        "bairro": "Boa Vista"
+      },
+      "idContrato": "CT-3300980",
+      "linhaPlanilha": 14,
+      "email": "camila.martins@net.example.com",
+      "vendedor": "Fábio Nunes",
+      "consentimentoMarketing": "Não",
+      "codigoAssinante": "AS208300",
+      "plano": "Fibra 1 Giga",
+      "dataUltimoAtendimento": "10/05/2026",
+      "emailSecundario": "cmartins@trabalho.example.org",
+      "situacaoFinanceira": "Inadimplente"
+    },
+    {
+      "vendedor": "Renata Lima",
+      "endereco": {
+        "bairro": "Vila Nova",
+        "uf": "MG"
+      },
+      "codigoAssinante": "AS208316",
+      "plano": "Fibra 300 Mega",
+      "dataAtivacao": "06/10/2022",
+      "situacaoCadastro": "Ativo",
+      "idContrato": "CT-3301091",
+      "situacaoFinanceira": "Inadimplente",
+      "dataUltimoAtendimento": "10/07/2026",
+      "email": "Leonor.Fernandes@Net.Example.Com",
+      "emailSecundario": "lfernandes@trabalho.example.org",
+      "linhaPlanilha": 15,
+      "nomeCompleto": "Leonor Fernandes",
+      "consentimentoMarketing": "Sim",
+      "celular": "+55 11 98020-1053"
+    },
+    {
+      "codigoAssinante": "AS208324",
+      "email": "Goncalo.Goncalves@Net.Example.Com",
+      "nomeCompleto": "Gonçalo Gonçalves",
+      "situacaoFinanceira": "Em dia",
+      "emailSecundario": "ggoncalves@trabalho.example.org",
+      "dataUltimoAtendimento": "06/03/2026",
+      "consentimentoMarketing": "Sim",
+      "dataAtivacao": "08/04/2022",
+      "celular": null,
+      "endereco": {
+        "uf": "AM",
+        "bairro": "Centro"
+      },
+      "plano": "Fibra 600 Mega",
+      "idContrato": "CT-3301139",
+      "linhaPlanilha": 16,
+      "vendedor": "Fábio Nunes",
+      "situacaoCadastro": "Ativo"
+    },
+    {
+      "idContrato": "CT-3301218",
+      "dataAtivacao": "04/01/2021",
+      "situacaoCadastro": "Cancelado",
+      "codigoAssinante": "AS208338",
+      "emailSecundario": "mpinto@trabalho.example.org",
+      "celular": "+55 11 94552-4867",
+      "endereco": {
+        "uf": "SP",
+        "bairro": "Boa Vista"
+      },
+      "nomeCompleto": " Mariana Pinto  ",
+      "situacaoFinanceira": "Boleto pendente",
+      "consentimentoMarketing": "Não",
+      "linhaPlanilha": 17,
+      "dataUltimoAtendimento": "11/10/2025",
+      "plano": "Fibra 1 Giga",
+      "email": "Mariana.Pinto@Net.Example.Com",
+      "vendedor": "Caio Batista"
+    },
+    {
+      "nomeCompleto": "  Mariana Carvalho",
+      "situacaoFinanceira": "Em dia",
+      "emailSecundario": null,
+      "email": "mariana.carvalho@net.example.com",
+      "dataAtivacao": "03/04/2022",
+      "plano": "Empresarial 1 Giga",
+      "consentimentoMarketing": "Sim",
+      "vendedor": "Fábio Nunes",
+      "situacaoCadastro": "Pré-cadastro",
+      "endereco": {
+        "bairro": "Vila Nova",
+        "uf": "RJ"
+      },
+      "codigoAssinante": "AS208358",
+      "idContrato": "CT-3301321",
+      "dataUltimoAtendimento": "07/04/2026",
+      "linhaPlanilha": 18,
+      "celular": "+55 11 92624-9467"
+    },
+    {
+      "plano": "Fibra 600 Mega",
+      "dataUltimoAtendimento": "01/08/2025",
+      "idContrato": "CT-3301393",
+      "celular": "+55 11 92245-5278",
+      "consentimentoMarketing": "Sim",
+      "situacaoFinanceira": "Em dia",
+      "situacaoCadastro": "Suspenso",
+      "email": "camila.ferreira@net.example.com",
+      "linhaPlanilha": 19,
+      "dataAtivacao": "08/08/2018",
+      "endereco": {
+        "bairro": "Vila Nova",
+        "uf": "SP"
+      },
+      "codigoAssinante": "AS208371",
+      "emailSecundario": null,
+      "vendedor": "Fábio Nunes",
+      "nomeCompleto": "Camila Ferreira"
+    },
+    {
+      "endereco": {
+        "bairro": "Jardim América",
+        "uf": "AM"
+      },
+      "plano": "Fibra 300 Mega",
+      "nomeCompleto": "Rodrigo Lopes",
+      "email": "Rodrigo.Lopes@Net.Example.Com",
+      "situacaoFinanceira": "Inadimplente",
+      "situacaoCadastro": "Cancelado",
+      "emailSecundario": "rlopes@trabalho.example.org",
+      "idContrato": "CT-3301449",
+      "consentimentoMarketing": "Sim",
+      "linhaPlanilha": 20,
+      "celular": "+55 11 93311-8159",
+      "dataUltimoAtendimento": "11/11/2025",
+      "codigoAssinante": "AS208383",
+      "dataAtivacao": "09/12/2022",
+      "vendedor": "Renata Lima"
+    },
+    {
+      "idContrato": "CT-3301499",
+      "dataAtivacao": "09/10/2019",
+      "email": "andre.teixeira@net.example.com",
+      "nomeCompleto": "André Teixeira",
+      "plano": "Fibra 300 Mega",
+      "dataUltimoAtendimento": "02/05/2025",
+      "linhaPlanilha": 21,
+      "consentimentoMarketing": "Sim",
+      "codigoAssinante": "AS208392",
+      "celular": "+55 11 97572-3885",
+      "situacaoFinanceira": "Inadimplente",
+      "situacaoCadastro": "Pré-cadastro",
+      "vendedor": "Caio Batista",
+      "emailSecundario": null,
+      "endereco": {
+        "uf": "AM",
+        "bairro": "Vila Nova"
+      }
+    },
+    {
+      "situacaoFinanceira": "Inadimplente",
+      "linhaPlanilha": 22,
+      "dataAtivacao": "01/04/2020",
+      "celular": "+55 11 90469-4110",
+      "idContrato": "CT-3301581",
+      "nomeCompleto": "André Carvalho ",
+      "vendedor": "Caio Batista",
+      "emailSecundario": "acarvalho@trabalho.example.org",
+      "email": "Andre.Carvalho@Net.Example.Com",
+      "dataUltimoAtendimento": "06/09/2026",
+      "plano": "Fibra 300 Mega",
+      "codigoAssinante": "AS208404",
+      "endereco": {
+        "uf": "SP",
+        "bairro": "Jardim América"
+      },
+      "situacaoCadastro": "Suspenso",
+      "consentimentoMarketing": "Sim"
+    },
+    {
+      "vendedor": "Fábio Nunes",
+      "idContrato": "CT-3301659",
+      "situacaoFinanceira": "Boleto pendente",
+      "celular": "+55 11 95693-9722",
+      "consentimentoMarketing": "Não",
+      "situacaoCadastro": "Cancelado",
+      "dataAtivacao": "06/08/2025",
+      "linhaPlanilha": 23,
+      "nomeCompleto": "Beatriz Rodrigues",
+      "dataUltimoAtendimento": "01/08/2025",
+      "emailSecundario": "brodrigues@trabalho.example.org",
+      "endereco": {
+        "uf": "AM",
+        "bairro": "Centro"
+      },
+      "plano": "Fibra 300 Mega",
+      "codigoAssinante": "AS208417",
+      "email": "beatriz.rodrigues@net.example.com"
+    },
+    {
+      "endereco": {
+        "uf": "MG",
+        "bairro": "Jardim América"
+      },
+      "idContrato": "CT-3301694",
+      "emailSecundario": "apinto@trabalho.example.org",
+      "celular": "+55 11 93476-5976",
+      "email": "andre.pinto@net.example.com",
+      "consentimentoMarketing": "Sim",
+      "situacaoFinanceira": "Boleto pendente",
+      "dataUltimoAtendimento": "11/01/2026",
+      "codigoAssinante": "AS208435",
+      "linhaPlanilha": 24,
+      "plano": "Fibra 600 Mega",
+      "situacaoCadastro": "Pré-cadastro",
+      "nomeCompleto": "André Pinto",
+      "dataAtivacao": "03/12/2020",
+      "vendedor": "Renata Lima"
+    },
+    {
+      "email": "lucas.gomes@net.example.com",
+      "dataUltimoAtendimento": "07/01/2026",
+      "vendedor": "Renata Lima",
+      "endereco": {
+        "bairro": "Jardim América",
+        "uf": "SP"
+      },
+      "celular": null,
+      "situacaoFinanceira": "Em dia",
+      "dataAtivacao": "01/06/2023",
+      "consentimentoMarketing": "Sim",
+      "linhaPlanilha": 25,
+      "codigoAssinante": "AS208444",
+      "emailSecundario": null,
+      "situacaoCadastro": "Ativo",
+      "plano": "Fibra 1 Giga",
+      "nomeCompleto": "Lucas Gomes",
+      "idContrato": "CT-3301757"
+    },
+    {
+      "vendedor": "Fábio Nunes",
+      "email": "ana.almeida@net.example.com",
+      "celular": "+55 11 93061-7623",
+      "linhaPlanilha": 26,
+      "situacaoCadastro": "Suspenso",
+      "dataUltimoAtendimento": "07/03/2026",
+      "dataAtivacao": "03/08/2020",
+      "endereco": {
+        "bairro": "Centro",
+        "uf": "MG"
+      },
+      "consentimentoMarketing": "Sim",
+      "idContrato": "CT-3301878",
+      "emailSecundario": "aalmeida@trabalho.example.org",
+      "situacaoFinanceira": "Em dia",
+      "plano": "Fibra 300 Mega",
+      "codigoAssinante": "AS208457",
+      "nomeCompleto": "Ana Almeida"
+    },
+    {
+      "endereco": {
+        "uf": "AM",
+        "bairro": "Jardim América"
+      },
+      "linhaPlanilha": 27,
+      "codigoAssinante": "AS208474",
+      "vendedor": "Fábio Nunes",
+      "dataAtivacao": "09/03/2021",
+      "nomeCompleto": "Beatriz Martins",
+      "consentimentoMarketing": "Sim",
+      "email": "Beatriz.Martins@Net.Example.Com",
+      "emailSecundario": "bmartins@trabalho.example.org",
+      "dataUltimoAtendimento": "07/05/2025",
+      "situacaoFinanceira": "Em dia",
+      "idContrato": "CT-3301924",
+      "situacaoCadastro": "Pré-cadastro",
+      "celular": null,
+      "plano": "Fibra 300 Mega"
+    },
+    {
+      "codigoAssinante": "AS208485",
+      "dataUltimoAtendimento": "02/03/2026",
+      "nomeCompleto": "Camila Silva",
+      "email": "camila.silva@net.example.com",
+      "dataAtivacao": "10/02/2020",
+      "consentimentoMarketing": "Sim",
+      "emailSecundario": "csilva@trabalho.example.org",
+      "endereco": {
+        "uf": "SP",
+        "bairro": "Jardim América"
+      },
+      "situacaoFinanceira": "Em dia",
+      "situacaoCadastro": "Ativo",
+      "idContrato": "CT-3301983",
+      "linhaPlanilha": 28,
+      "vendedor": "Renata Lima",
+      "celular": "+55 11 90834-2048",
+      "plano": "Fibra 300 Mega"
+    },
+    {
+      "situacaoFinanceira": "Inadimplente",
+      "vendedor": "Fábio Nunes",
+      "nomeCompleto": "João Teixeira",
+      "email": "joao.teixeira@net.example.com",
+      "plano": "Fibra 600 Mega",
+      "linhaPlanilha": 29,
+      "emailSecundario": null,
+      "codigoAssinante": "AS208502",
+      "situacaoCadastro": "Pré-cadastro",
+      "dataUltimoAtendimento": "01/11/2025",
+      "idContrato": "CT-3302090",
+      "endereco": {
+        "uf": "SP",
+        "bairro": "Jardim América"
+      },
+      "celular": "+55 11 95184-2854",
+      "consentimentoMarketing": "Não",
+      "dataAtivacao": "05/07/2022"
+    },
+    {
+      "plano": "Fibra 1 Giga",
+      "codigoAssinante": "AS208504",
+      "celular": "+55 11 94089-1781",
+      "idContrato": "CT-3302143",
+      "linhaPlanilha": 30,
+      "email": "ines.fernandes@net.example.com",
+      "vendedor": "Caio Batista",
+      "situacaoFinanceira": "Em dia",
+      "situacaoCadastro": "Pré-cadastro",
+      "consentimentoMarketing": "Não",
+      "dataUltimoAtendimento": "03/11/2025",
+      "dataAtivacao": "03/07/2021",
+      "endereco": {
+        "uf": "RJ",
+        "bairro": "Boa Vista"
+      },
+      "nomeCompleto": " Inês Fernandes  ",
+      "emailSecundario": null
+    },
+    {
+      "emailSecundario": "jsantos@trabalho.example.org",
+      "situacaoFinanceira": "Boleto pendente",
+      "celular": "+55 11 98771-4841",
+      "email": "joao.santos@net.example.com",
+      "plano": "Fibra 300 Mega",
+      "nomeCompleto": "João Santos",
+      "situacaoCadastro": "Ativo",
+      "linhaPlanilha": 31,
+      "idContrato": "CT-3302229",
+      "endereco": {
+        "bairro": "Jardim América",
+        "uf": "MG"
+      },
+      "consentimentoMarketing": "Sim",
+      "dataUltimoAtendimento": "10/10/2025",
+      "codigoAssinante": "AS208518",
+      "dataAtivacao": "10/07/2022",
+      "vendedor": "Caio Batista"
+    },
+    {
+      "email": "sofia.teixeira@net.example.com",
+      "situacaoFinanceira": "Em dia",
+      "idContrato": "CT-3302300",
+      "consentimentoMarketing": "Sim",
+      "linhaPlanilha": 32,
+      "dataUltimoAtendimento": "12/08/2025",
+      "emailSecundario": "steixeira@trabalho.example.org",
+      "nomeCompleto": "Sofia Teixeira",
+      "dataAtivacao": "05/11/2021",
+      "celular": "+55 11 99716-7806",
+      "vendedor": "Fábio Nunes",
+      "situacaoCadastro": "Ativo",
+      "codigoAssinante": "AS208530",
+      "endereco": {
+        "bairro": "Jardim América",
+        "uf": "SP"
+      },
+      "plano": "Fibra 600 Mega"
+    },
+    {
+      "plano": "Fibra 300 Mega",
+      "consentimentoMarketing": "Sim",
+      "linhaPlanilha": 33,
+      "endereco": {
+        "bairro": "Boa Vista",
+        "uf": "RJ"
+      },
+      "celular": "+55 11 97891-4466",
+      "situacaoCadastro": "Ativo",
+      "codigoAssinante": "AS208555",
+      "vendedor": "Fábio Nunes",
+      "email": "goncalo.carvalho@net.example.com",
+      "dataAtivacao": "12/09/2020",
+      "idContrato": "CT-3302378",
+      "situacaoFinanceira": "Boleto pendente",
+      "emailSecundario": null,
+      "nomeCompleto": "Gonçalo Carvalho",
+      "dataUltimoAtendimento": "06/03/2026"
+    },
+    {
+      "idContrato": "CT-3302415",
+      "situacaoFinanceira": "Em dia",
+      "linhaPlanilha": 34,
+      "codigoAssinante": "AS208568",
+      "vendedor": "Caio Batista",
+      "email": "larissa.sousa@net.example.com",
+      "dataAtivacao": "04/07/2025",
+      "endereco": {
+        "bairro": "Centro",
+        "uf": "RJ"
+      },
+      "situacaoCadastro": "Ativo",
+      "plano": "Fibra 1 Giga",
+      "emailSecundario": "lsousa@trabalho.example.org",
+      "dataUltimoAtendimento": "06/02/2025",
+      "nomeCompleto": "Larissa Sousa",
+      "consentimentoMarketing": "Não",
+      "celular": "+55 11 93798-5464"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "externalId": {
+        "type": "string",
+        "description": "Identifier of the end user in the provider's systems."
+      },
+      "name": {
+        "type": "string",
+        "description": "Full name of the end user."
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address of the end user."
+      },
+      "phone": {
+        "type": "string",
+        "description": "Mobile number of the end user."
+      },
+      "plan": {
+        "type": "string",
+        "enum": [
+          "basic",
+          "plus",
+          "ultra",
+          "business"
+        ],
+        "description": "Internet plan the end user subscribes to."
+      },
+      "accountStatus": {
+        "type": "string",
+        "enum": [
+          "active",
+          "suspended",
+          "cancelled"
+        ],
+        "description": "Status."
+      },
+      "timezone": {
+        "type": "string",
+        "enum": [
+          "America/Sao_Paulo",
+          "America/Manaus"
+        ],
+        "description": "Time zone of the end user's service address."
+      },
+      "customerSince": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the service was first activated."
+      },
+      "companyName": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "externalId",
+      "name",
+      "email",
+      "plan",
+      "accountStatus"
+    ]
+  },
+  "groundTruth": {
+    "externalId": {
+      "source": "codigoAssinante",
+      "transform": "copy",
+      "why": "subscriber code; idContrato is a contract"
+    },
+    "name": {
+      "source": "nomeCompleto",
+      "transform": "trim",
+      "why": "full name, padded; vendedor is the salesperson"
+    },
+    "email": {
+      "source": "email",
+      "transform": "normalize_email",
+      "why": "main email, mixed case"
+    },
+    "phone": {
+      "source": "celular",
+      "transform": "copy",
+      "why": "mobile, null or missing"
+    },
+    "plan": {
+      "source": "plano",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Fibra 300 Mega": "basic",
+        "Fibra 600 Mega": "plus",
+        "Fibra 1 Giga": "ultra",
+        "Empresarial 1 Giga": "business"
+      },
+      "why": "plan"
+    },
+    "accountStatus": {
+      "source": "situacaoCadastro",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Ativo": "active",
+        "Suspenso": "suspended",
+        "Cancelado": "cancelled",
+        "Pré-cadastro": null
+      },
+      "why": "account state; pre-registrations need review"
+    },
+    "timezone": {
+      "source": "endereco.uf",
+      "transform": "map_enum",
+      "categoryMap": {
+        "SP": "America/Sao_Paulo",
+        "MG": "America/Sao_Paulo",
+        "RJ": "America/Sao_Paulo",
+        "AM": "America/Manaus"
+      },
+      "why": "state determines the time zone"
+    },
+    "customerSince": {
+      "source": "dataAtivacao",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "activation date (day-first); last support contact is not it"
+    },
+    "companyName": {
+      "source": null,
+      "transform": "none",
+      "why": "no company name is exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "situacaoCadastro",
+        "situacaoFinanceira"
+      ],
+      "correctFor": "accountStatus"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "codigoAssinante",
+        "idContrato"
+      ],
+      "correctFor": "externalId"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "email",
+        "emailSecundario"
+      ],
+      "correctFor": "email"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "dataAtivacao",
+        "dataUltimoAtendimento"
+      ],
+      "correctFor": "customerSince"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "nomeCompleto",
+        "vendedor"
+      ],
+      "correctFor": "name"
+    }
+  ],
+  "sourceConcepts": {
+    "codigoAssinante": "customer-id",
+    "idContrato": "transaction-id",
+    "linhaPlanilha": "other-identifier",
+    "nomeCompleto": "person-name",
+    "email": "email",
+    "emailSecundario": "email",
+    "celular": "phone",
+    "plano": "category",
+    "situacaoCadastro": "account-status",
+    "situacaoFinanceira": "payment-status",
+    "consentimentoMarketing": "consent-flag",
+    "dataAtivacao": "start-date",
+    "dataUltimoAtendimento": "other",
+    "vendedor": "person-name",
+    "endereco.bairro": "other",
+    "endereco.uf": "other"
+  },
+  "destinationConcepts": {
+    "externalId": "customer-id",
+    "name": "person-name",
+    "email": "email",
+    "phone": "phone",
+    "plan": "category",
+    "accountStatus": "account-status",
+    "timezone": "other",
+    "customerSince": "start-date",
+    "companyName": "organization-name"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 0,
+      "outcome": "transformed",
+      "output": {
+        "externalId": "AS208150",
+        "name": "Rodrigo Oliveira",
+        "email": "rodrigo.oliveira@net.example.com",
+        "phone": "+55 11 94283-6044",
+        "plan": "plus",
+        "accountStatus": "active",
+        "timezone": "America/Sao_Paulo",
+        "customerSince": "2023-12-03"
+      }
+    },
+    {
+      "recordIndex": 2,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 10,
+      "outcome": "transformed",
+      "output": {
+        "externalId": "AS208273",
+        "name": "Diogo Sousa",
+        "email": "diogo.sousa@net.example.com",
+        "plan": "basic",
+        "accountStatus": "active",
+        "timezone": "America/Manaus",
+        "customerSince": "2019-01-01"
+      }
+    },
+    {
+      "recordIndex": 14,
+      "outcome": "transformed",
+      "output": {
+        "externalId": "AS208324",
+        "name": "Gonçalo Gonçalves",
+        "email": "goncalo.goncalves@net.example.com",
+        "plan": "plus",
+        "accountStatus": "active",
+        "timezone": "America/Manaus",
+        "customerSince": "2022-04-08"
+      }
+    }
+  ]
+}

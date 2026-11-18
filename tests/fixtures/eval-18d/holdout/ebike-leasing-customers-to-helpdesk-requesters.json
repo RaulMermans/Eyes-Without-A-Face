@@ -1,0 +1,979 @@
+{
+  "scenarioId": "ebike-leasing-customers-to-helpdesk-requesters",
+  "split": "holdout",
+  "track": "wedge",
+  "industry": "employer e-bike leasing customers",
+  "sourceLanguage": "de",
+  "description": "Leasing customer export of a fictional Austrian e-bike leasing firm (German snake_case, nested customer, employer and contract) to be loaded as helpdesk requesters.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "export_zeile": 1,
+      "fahrrad_marke": "Trekking",
+      "arbeitgeber": {
+        "firmenname": "Alpenmetall GmbH",
+        "ansprechpartner": "Andreas Huber"
+      },
+      "kunde": {
+        "nachname": "Richter",
+        "vorname": "Sophie",
+        "sprache": "Deutsch",
+        "kundennummer": "K-520037",
+        "email": "sophie.richter@privat.example.net",
+        "telefon": "+43 664 1572068"
+      },
+      "leasingvertrag": {
+        "vertragsnummer": "LV-091061",
+        "zahlungsstatus": "Rückstand",
+        "paket": "Komfort",
+        "status": "Rückgabe angefordert",
+        "beginn": "19/01/2023",
+        "ende": "01/08/2027"
+      },
+      "vertriebsmitarbeiter": "Florian Steiner"
+    },
+    {
+      "leasingvertrag": {
+        "ende": "27/11/2027",
+        "zahlungsstatus": "Abgerechnet",
+        "vertragsnummer": "LV-091082",
+        "beginn": "14/07/2025",
+        "status": "Rückgabe angefordert",
+        "paket": "Rundum-Sorglos"
+      },
+      "kunde": {
+        "vorname": "Lea",
+        "email": "lea.vogel@privat.example.net",
+        "nachname": "Vogel",
+        "kundennummer": "K-520053",
+        "telefon": null,
+        "sprache": "Deutsch"
+      },
+      "vertriebsmitarbeiter": "Markus Eder",
+      "fahrrad_marke": "City",
+      "arbeitgeber": {
+        "firmenname": "Alpenmetall GmbH",
+        "ansprechpartner": "Andreas Huber"
+      },
+      "export_zeile": 2
+    },
+    {
+      "fahrrad_marke": "Lastenrad",
+      "vertriebsmitarbeiter": "Markus Eder",
+      "leasingvertrag": {
+        "beginn": "22/11/2022",
+        "paket": "Komfort",
+        "ende": "18/04/2028",
+        "status": "Beendet",
+        "zahlungsstatus": "Gehaltsumwandlung läuft",
+        "vertragsnummer": "LV-091169"
+      },
+      "kunde": {
+        "nachname": "Richter",
+        "vorname": "Niklas",
+        "kundennummer": "K-520078",
+        "telefon": "+43 664 5667161",
+        "sprache": "Deutsch",
+        "email": "niklas.richter@privat.example.net"
+      },
+      "export_zeile": 3,
+      "arbeitgeber": {
+        "ansprechpartner": "Andreas Huber",
+        "firmenname": "Bäckerei Moser KG"
+      }
+    },
+    {
+      "fahrrad_marke": "Mountainbike",
+      "kunde": {
+        "telefon": "+43 664 1161277",
+        "kundennummer": "K-520106",
+        "sprache": "Deutsch",
+        "nachname": "Müller",
+        "vorname": "Simon",
+        "email": "simon.muller@privat.example.net"
+      },
+      "leasingvertrag": {
+        "zahlungsstatus": "Gehaltsumwandlung läuft",
+        "status": "Storniert vor Übergabe",
+        "ende": "06/05/2027",
+        "vertragsnummer": "LV-091231",
+        "beginn": "23/10/2021",
+        "paket": "Komfort"
+      },
+      "export_zeile": 4,
+      "vertriebsmitarbeiter": "Julia Wimmer",
+      "arbeitgeber": {
+        "ansprechpartner": "Sabine Leitner",
+        "firmenname": "Donau Logistik AG"
+      }
+    },
+    {
+      "export_zeile": 5,
+      "kunde": {
+        "nachname": "Wolf",
+        "kundennummer": "K-520108",
+        "telefon": "+43 664 5440527",
+        "email": "theresa.wolf@privat.example.net",
+        "vorname": "Theresa",
+        "sprache": "Englisch"
+      },
+      "leasingvertrag": {
+        "status": "Beendet",
+        "vertragsnummer": "LV-091262",
+        "paket": "Basis",
+        "beginn": "23/01/2024",
+        "ende": "25/11/2027",
+        "zahlungsstatus": "Gehaltsumwandlung läuft"
+      },
+      "fahrrad_marke": "Trekking",
+      "arbeitgeber": {
+        "ansprechpartner": "Petra Gruber",
+        "firmenname": null
+      },
+      "vertriebsmitarbeiter": "Markus Eder"
+    },
+    {
+      "leasingvertrag": {
+        "zahlungsstatus": "Rückstand",
+        "ende": "30/08/2026",
+        "vertragsnummer": "LV-091310",
+        "paket": "Rundum-Sorglos",
+        "beginn": "01/06/2020",
+        "status": "Aktiv"
+      },
+      "arbeitgeber": {
+        "ansprechpartner": "Sabine Leitner",
+        "firmenname": "Bäckerei Moser KG"
+      },
+      "export_zeile": 6,
+      "kunde": {
+        "vorname": "Paul",
+        "telefon": "+43 664 2597812",
+        "kundennummer": "K-520131",
+        "sprache": "Deutsch",
+        "nachname": "Koch",
+        "email": "paul.koch@privat.example.net"
+      },
+      "fahrrad_marke": "City",
+      "vertriebsmitarbeiter": "Florian Steiner"
+    },
+    {
+      "kunde": {
+        "email": "katharina.vogel@privat.example.net",
+        "sprache": null,
+        "nachname": "Vogel ",
+        "kundennummer": "K-520163",
+        "telefon": "+43 664 1360446",
+        "vorname": "Katharina"
+      },
+      "leasingvertrag": {
+        "beginn": "30/03/2020",
+        "zahlungsstatus": "Gehaltsumwandlung läuft",
+        "vertragsnummer": "LV-091376",
+        "status": "Rückgabe angefordert",
+        "paket": "Basis",
+        "ende": "28/12/2026"
+      },
+      "fahrrad_marke": "Trekking",
+      "export_zeile": 7,
+      "vertriebsmitarbeiter": "Florian Steiner",
+      "arbeitgeber": {
+        "firmenname": "Donau Logistik AG",
+        "ansprechpartner": "Sabine Leitner"
+      }
+    },
+    {
+      "kunde": {
+        "telefon": "+43 664 1887038",
+        "kundennummer": "K-520166",
+        "vorname": "Lukas",
+        "email": "lukas.wolf@privat.example.net",
+        "sprache": "Englisch",
+        "nachname": "Wolf"
+      },
+      "vertriebsmitarbeiter": "Julia Wimmer",
+      "arbeitgeber": {
+        "ansprechpartner": "Petra Gruber",
+        "firmenname": "Alpenmetall GmbH"
+      },
+      "export_zeile": 8,
+      "fahrrad_marke": "City",
+      "leasingvertrag": {
+        "vertragsnummer": "LV-091397",
+        "paket": "Basis",
+        "ende": "18/06/2029",
+        "status": "Rückgabe angefordert",
+        "zahlungsstatus": "Rückstand",
+        "beginn": "24/07/2022"
+      }
+    },
+    {
+      "fahrrad_marke": "Mountainbike",
+      "kunde": {
+        "kundennummer": "K-520184",
+        "vorname": "Anna",
+        "sprache": "Deutsch",
+        "telefon": "+43 664 6272945",
+        "email": "anna.koch@privat.example.net",
+        "nachname": "Koch"
+      },
+      "leasingvertrag": {
+        "ende": "18/10/2028",
+        "status": "Beendet",
+        "paket": "Komfort",
+        "zahlungsstatus": "Gehaltsumwandlung läuft",
+        "vertragsnummer": "LV-091446",
+        "beginn": "07/05/2024"
+      },
+      "arbeitgeber": {
+        "firmenname": "Bäckerei Moser KG",
+        "ansprechpartner": "Petra Gruber"
+      },
+      "export_zeile": 9,
+      "vertriebsmitarbeiter": "Markus Eder"
+    },
+    {
+      "leasingvertrag": {
+        "zahlungsstatus": "Gehaltsumwandlung läuft",
+        "ende": "26/10/2026",
+        "status": "Aktiv",
+        "beginn": "09/01/2022",
+        "paket": "Basis",
+        "vertragsnummer": "LV-091504"
+      },
+      "kunde": {
+        "kundennummer": "K-520217",
+        "vorname": "Katharina",
+        "email": "katharina.koch@privat.example.net",
+        "nachname": "Koch",
+        "sprache": "Deutsch",
+        "telefon": "+43 664 4168593"
+      },
+      "fahrrad_marke": "Trekking",
+      "arbeitgeber": {
+        "ansprechpartner": "Sabine Leitner",
+        "firmenname": "Bäckerei Moser KG"
+      },
+      "vertriebsmitarbeiter": "Florian Steiner",
+      "export_zeile": 10
+    },
+    {
+      "arbeitgeber": {
+        "ansprechpartner": "Petra Gruber",
+        "firmenname": "Bäckerei Moser KG"
+      },
+      "vertriebsmitarbeiter": "Julia Wimmer",
+      "fahrrad_marke": "Trekking",
+      "kunde": {
+        "email": "theresa.neumann@privat.example.net",
+        "kundennummer": "K-520228",
+        "sprache": "Deutsch",
+        "vorname": "Theresa",
+        "nachname": "Neumann",
+        "telefon": "+43 664 2559552"
+      },
+      "leasingvertrag": {
+        "vertragsnummer": "LV-091560",
+        "ende": "11/12/2026",
+        "zahlungsstatus": "Gehaltsumwandlung läuft",
+        "paket": "Basis",
+        "status": "Aktiv",
+        "beginn": "17/02/2023"
+      },
+      "export_zeile": 11
+    },
+    {
+      "leasingvertrag": {
+        "ende": "17/08/2029",
+        "status": "Aktiv",
+        "zahlungsstatus": "Gehaltsumwandlung läuft",
+        "vertragsnummer": "LV-091647",
+        "beginn": "27/11/2023",
+        "paket": "Komfort"
+      },
+      "arbeitgeber": {
+        "firmenname": "Bäckerei Moser KG",
+        "ansprechpartner": "Sabine Leitner"
+      },
+      "kunde": {
+        "nachname": "Krüger",
+        "sprache": "Deutsch",
+        "vorname": "Maximilian",
+        "telefon": "+43 664 5918776",
+        "email": "maximilian.kruger@privat.example.net",
+        "kundennummer": "K-520254"
+      },
+      "vertriebsmitarbeiter": "Julia Wimmer",
+      "export_zeile": 12,
+      "fahrrad_marke": "Trekking"
+    },
+    {
+      "fahrrad_marke": "Lastenrad",
+      "export_zeile": 13,
+      "kunde": {
+        "telefon": "+43 664 3357086",
+        "kundennummer": "K-520275",
+        "vorname": "Anna",
+        "email": "anna.wolf@privat.example.net",
+        "nachname": "Wolf",
+        "sprache": "Englisch"
+      },
+      "leasingvertrag": {
+        "paket": "Basis",
+        "vertragsnummer": "LV-091658",
+        "status": "Storniert vor Übergabe",
+        "ende": "18/11/2027",
+        "beginn": "08/05/2023",
+        "zahlungsstatus": "Gehaltsumwandlung läuft"
+      },
+      "vertriebsmitarbeiter": "Florian Steiner",
+      "arbeitgeber": {
+        "firmenname": "Bäckerei Moser KG",
+        "ansprechpartner": "Andreas Huber"
+      }
+    },
+    {
+      "vertriebsmitarbeiter": "Florian Steiner",
+      "leasingvertrag": {
+        "vertragsnummer": "LV-091751",
+        "beginn": "04/08/2022",
+        "status": "Rückgabe angefordert",
+        "zahlungsstatus": "Rückstand",
+        "ende": "10/05/2027",
+        "paket": "Rundum-Sorglos"
+      },
+      "kunde": {
+        "nachname": "Hartmann",
+        "sprache": "Englisch",
+        "vorname": "Anna",
+        "kundennummer": "K-520284",
+        "email": "anna.hartmann@privat.example.net",
+        "telefon": "+43 664 6704425"
+      },
+      "export_zeile": 14,
+      "fahrrad_marke": "Trekking",
+      "arbeitgeber": {
+        "ansprechpartner": "Andreas Huber"
+      }
+    },
+    {
+      "arbeitgeber": {
+        "firmenname": "Stadtwerke Kufstein",
+        "ansprechpartner": "Andreas Huber"
+      },
+      "vertriebsmitarbeiter": "Julia Wimmer",
+      "kunde": {
+        "telefon": null,
+        "nachname": "Hoffmann",
+        "vorname": "Sophie",
+        "sprache": "Englisch",
+        "kundennummer": "K-520308",
+        "email": "sophie.hoffmann@privat.example.net"
+      },
+      "export_zeile": 15,
+      "leasingvertrag": {
+        "status": "Aktiv",
+        "paket": "Komfort",
+        "beginn": "23/11/2020",
+        "vertragsnummer": "LV-091764",
+        "zahlungsstatus": "Gehaltsumwandlung läuft",
+        "ende": "20/03/2027"
+      },
+      "fahrrad_marke": "Trekking"
+    },
+    {
+      "leasingvertrag": {
+        "paket": "Rundum-Sorglos",
+        "status": "Aktiv",
+        "beginn": "31/07/2021",
+        "ende": "12/11/2026",
+        "vertragsnummer": "LV-091861",
+        "zahlungsstatus": "Abgerechnet"
+      },
+      "vertriebsmitarbeiter": "Markus Eder",
+      "fahrrad_marke": "Mountainbike",
+      "kunde": {
+        "email": "paul.wolf@privat.example.net",
+        "kundennummer": "K-520316",
+        "vorname": "Paul",
+        "sprache": "Englisch",
+        "telefon": "+43 664 8922455",
+        "nachname": " Wolf  "
+      },
+      "export_zeile": 16,
+      "arbeitgeber": {
+        "ansprechpartner": "Petra Gruber",
+        "firmenname": null
+      }
+    },
+    {
+      "fahrrad_marke": "Trekking",
+      "export_zeile": 17,
+      "leasingvertrag": {
+        "vertragsnummer": "LV-091913",
+        "paket": "Komfort",
+        "ende": "09/01/2027",
+        "beginn": "15/02/2022",
+        "status": "Beendet",
+        "zahlungsstatus": "Abgerechnet"
+      },
+      "vertriebsmitarbeiter": "Florian Steiner",
+      "kunde": {
+        "nachname": "Hoffmann",
+        "email": "maximilian.hoffmann@privat.example.net",
+        "telefon": null,
+        "vorname": "Maximilian",
+        "sprache": "Deutsch",
+        "kundennummer": "K-520337"
+      },
+      "arbeitgeber": {
+        "firmenname": "Donau Logistik AG",
+        "ansprechpartner": "Sabine Leitner"
+      }
+    },
+    {
+      "fahrrad_marke": "City",
+      "vertriebsmitarbeiter": "Florian Steiner",
+      "arbeitgeber": {
+        "firmenname": "Donau Logistik AG",
+        "ansprechpartner": "Andreas Huber"
+      },
+      "export_zeile": 18,
+      "leasingvertrag": {
+        "ende": "04/12/2028",
+        "beginn": "18/12/2023",
+        "status": "Aktiv",
+        "zahlungsstatus": "Gehaltsumwandlung läuft",
+        "vertragsnummer": "LV-091941",
+        "paket": "Basis"
+      },
+      "kunde": {
+        "kundennummer": "K-520361",
+        "vorname": "Paul",
+        "email": "paul.weber@privat.example.net",
+        "sprache": "Englisch",
+        "telefon": "+43 664 9917048",
+        "nachname": " Weber  "
+      }
+    },
+    {
+      "export_zeile": 19,
+      "vertriebsmitarbeiter": "Florian Steiner",
+      "leasingvertrag": {
+        "zahlungsstatus": "Abgerechnet",
+        "status": "Aktiv",
+        "beginn": "06/08/2024",
+        "ende": "05/04/2026",
+        "vertragsnummer": "LV-092004",
+        "paket": "Rundum-Sorglos"
+      },
+      "arbeitgeber": {
+        "firmenname": "Donau Logistik AG",
+        "ansprechpartner": "Sabine Leitner"
+      },
+      "fahrrad_marke": "Trekking",
+      "kunde": {
+        "telefon": "+43 664 9541834",
+        "email": "lea.lange@privat.example.net",
+        "nachname": "Lange",
+        "vorname": "Lea",
+        "kundennummer": "K-520378"
+      }
+    },
+    {
+      "arbeitgeber": {
+        "ansprechpartner": "Andreas Huber"
+      },
+      "export_zeile": 20,
+      "leasingvertrag": {
+        "beginn": "06/09/2023",
+        "vertragsnummer": "LV-092034",
+        "paket": "Basis",
+        "ende": "29/12/2026",
+        "status": "Aktiv",
+        "zahlungsstatus": "Gehaltsumwandlung läuft"
+      },
+      "kunde": {
+        "telefon": "+43 664 2846320",
+        "kundennummer": "K-520393",
+        "email": "sophie.schneider@privat.example.net",
+        "sprache": "Deutsch",
+        "nachname": "Schneider",
+        "vorname": "Sophie"
+      },
+      "fahrrad_marke": "City",
+      "vertriebsmitarbeiter": "Florian Steiner"
+    },
+    {
+      "vertriebsmitarbeiter": "Markus Eder",
+      "kunde": {
+        "vorname": "Paul",
+        "telefon": "+43 664 8232207",
+        "nachname": "Müller",
+        "email": "paul.muller@privat.example.net",
+        "kundennummer": "K-520411"
+      },
+      "export_zeile": 21,
+      "fahrrad_marke": "City",
+      "arbeitgeber": {
+        "ansprechpartner": "Andreas Huber"
+      },
+      "leasingvertrag": {
+        "ende": "28/12/2028",
+        "vertragsnummer": "LV-092110",
+        "zahlungsstatus": "Gehaltsumwandlung läuft",
+        "status": "Rückgabe angefordert",
+        "beginn": "23/01/2022",
+        "paket": "Komfort"
+      }
+    },
+    {
+      "arbeitgeber": {
+        "ansprechpartner": "Andreas Huber",
+        "firmenname": null
+      },
+      "export_zeile": 22,
+      "fahrrad_marke": "Mountainbike",
+      "vertriebsmitarbeiter": "Florian Steiner",
+      "kunde": {
+        "sprache": "Englisch",
+        "email": "lea.klein@privat.example.net",
+        "nachname": "Klein",
+        "vorname": "Lea",
+        "telefon": "+43 664 5294864",
+        "kundennummer": "K-520448"
+      },
+      "leasingvertrag": {
+        "ende": "17/09/2028",
+        "status": "Rückgabe angefordert",
+        "beginn": "13/06/2022",
+        "paket": "Komfort",
+        "vertragsnummer": "LV-092145",
+        "zahlungsstatus": "Gehaltsumwandlung läuft"
+      }
+    },
+    {
+      "export_zeile": 23,
+      "vertriebsmitarbeiter": "Markus Eder",
+      "arbeitgeber": {
+        "ansprechpartner": "Andreas Huber",
+        "firmenname": null
+      },
+      "kunde": {
+        "nachname": "Neumann",
+        "vorname": "Niklas",
+        "email": "niklas.neumann@privat.example.net",
+        "telefon": "+43 664 8327883",
+        "sprache": "Englisch",
+        "kundennummer": "K-520459"
+      },
+      "fahrrad_marke": "Mountainbike",
+      "leasingvertrag": {
+        "beginn": "29/06/2023",
+        "vertragsnummer": "LV-092191",
+        "zahlungsstatus": "Rückstand",
+        "status": "Beendet",
+        "paket": "Basis",
+        "ende": "06/10/2028"
+      }
+    },
+    {
+      "export_zeile": 24,
+      "kunde": {
+        "nachname": "Schröder ",
+        "vorname": "Lukas",
+        "kundennummer": "K-520474",
+        "email": "lukas.schroder@privat.example.net",
+        "telefon": "+43 664 1457876"
+      },
+      "fahrrad_marke": "Trekking",
+      "vertriebsmitarbeiter": "Florian Steiner",
+      "arbeitgeber": {
+        "ansprechpartner": "Sabine Leitner",
+        "firmenname": null
+      },
+      "leasingvertrag": {
+        "status": "Rückgabe angefordert",
+        "vertragsnummer": "LV-092250",
+        "paket": "Basis",
+        "beginn": "09/05/2022",
+        "zahlungsstatus": "Gehaltsumwandlung läuft",
+        "ende": "04/09/2027"
+      }
+    },
+    {
+      "export_zeile": 25,
+      "vertriebsmitarbeiter": "Julia Wimmer",
+      "arbeitgeber": {
+        "firmenname": "Alpenmetall GmbH",
+        "ansprechpartner": "Andreas Huber"
+      },
+      "fahrrad_marke": "Lastenrad",
+      "leasingvertrag": {
+        "beginn": "27/08/2024",
+        "paket": "Komfort",
+        "vertragsnummer": "LV-092321",
+        "status": "Aktiv",
+        "zahlungsstatus": "Abgerechnet",
+        "ende": "28/06/2029"
+      },
+      "kunde": {
+        "sprache": "Deutsch",
+        "kundennummer": "K-520497",
+        "vorname": "Katharina",
+        "email": "katharina.richter@privat.example.net",
+        "telefon": "+43 664 7830245",
+        "nachname": "Richter"
+      }
+    },
+    {
+      "leasingvertrag": {
+        "paket": "Basis",
+        "beginn": "22/03/2024",
+        "zahlungsstatus": "Rückstand",
+        "vertragsnummer": "LV-092366",
+        "ende": "10/11/2027",
+        "status": "Beendet"
+      },
+      "export_zeile": 26,
+      "kunde": {
+        "telefon": "+43 664 3506815",
+        "nachname": "Vogel",
+        "kundennummer": "K-520511",
+        "vorname": "Niklas",
+        "sprache": "Deutsch",
+        "email": "niklas.vogel@privat.example.net"
+      },
+      "vertriebsmitarbeiter": "Markus Eder",
+      "arbeitgeber": {
+        "ansprechpartner": "Andreas Huber",
+        "firmenname": "Stadtwerke Kufstein"
+      },
+      "fahrrad_marke": "Trekking"
+    },
+    {
+      "kunde": {
+        "nachname": "Wagner",
+        "vorname": "Simon",
+        "kundennummer": "K-520542",
+        "email": "simon.wagner@privat.example.net",
+        "sprache": null,
+        "telefon": "+43 664 1976132"
+      },
+      "fahrrad_marke": "Lastenrad",
+      "export_zeile": 27,
+      "vertriebsmitarbeiter": "Florian Steiner",
+      "leasingvertrag": {
+        "beginn": "17/04/2023",
+        "status": "Storniert vor Übergabe",
+        "vertragsnummer": "LV-092429",
+        "paket": "Komfort",
+        "zahlungsstatus": "Gehaltsumwandlung läuft",
+        "ende": "09/04/2027"
+      },
+      "arbeitgeber": {
+        "ansprechpartner": "Sabine Leitner",
+        "firmenname": "Alpenmetall GmbH"
+      }
+    },
+    {
+      "arbeitgeber": {
+        "ansprechpartner": "Sabine Leitner"
+      },
+      "export_zeile": 28,
+      "leasingvertrag": {
+        "zahlungsstatus": "Gehaltsumwandlung läuft",
+        "paket": "Rundum-Sorglos",
+        "beginn": "09/08/2025",
+        "vertragsnummer": "LV-092457",
+        "ende": "28/01/2028",
+        "status": "Rückgabe angefordert"
+      },
+      "fahrrad_marke": "Lastenrad",
+      "kunde": {
+        "nachname": "Schneider",
+        "sprache": "Englisch",
+        "kundennummer": "K-520545",
+        "email": "felix.schneider@privat.example.net",
+        "telefon": "+43 664 6345615",
+        "vorname": "Felix"
+      },
+      "vertriebsmitarbeiter": "Julia Wimmer"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "requester_id": {
+        "type": "string",
+        "description": "Identifier of the requester in the leasing system."
+      },
+      "first_name": {
+        "type": "string",
+        "description": "Given name."
+      },
+      "last_name": {
+        "type": "string",
+        "description": "Family name of the requester."
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address of the requester."
+      },
+      "phone": {
+        "type": "string",
+        "description": "Phone number of the requester."
+      },
+      "company": {
+        "type": "string",
+        "description": "Employer through which the bike is leased."
+      },
+      "account_status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "returning",
+          "ended"
+        ],
+        "description": "Lifecycle state of the requester's lease."
+      },
+      "service_tier": {
+        "type": "string",
+        "enum": [
+          "basic",
+          "comfort",
+          "full"
+        ],
+        "description": "Service package included with the lease."
+      },
+      "language": {
+        "type": "string",
+        "enum": [
+          "de",
+          "en"
+        ],
+        "description": "Preferred language for replies."
+      },
+      "customer_since": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the first lease started."
+      },
+      "remaining_term_months": {
+        "type": "integer"
+      }
+    },
+    "required": [
+      "requester_id",
+      "first_name",
+      "last_name",
+      "email",
+      "account_status",
+      "service_tier",
+      "customer_since"
+    ]
+  },
+  "groundTruth": {
+    "requester_id": {
+      "source": "kunde.kundennummer",
+      "transform": "copy",
+      "why": "customer number; vertragsnummer is the lease"
+    },
+    "first_name": {
+      "source": "kunde.vorname",
+      "transform": "copy",
+      "why": "customer given name; ansprechpartner is the employer HR contact"
+    },
+    "last_name": {
+      "source": "kunde.nachname",
+      "transform": "trim",
+      "why": "family name, padded"
+    },
+    "email": {
+      "source": "kunde.email",
+      "transform": "copy",
+      "why": "customer email"
+    },
+    "phone": {
+      "source": "kunde.telefon",
+      "transform": "copy",
+      "why": "phone, null in some rows"
+    },
+    "company": {
+      "source": "arbeitgeber.firmenname",
+      "transform": "copy",
+      "why": "employer, null or missing for private leases"
+    },
+    "account_status": {
+      "source": "leasingvertrag.status",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Aktiv": "active",
+        "Rückgabe angefordert": "returning",
+        "Beendet": "ended",
+        "Storniert vor Übergabe": null
+      },
+      "why": "lease state; cancelled before handover needs review"
+    },
+    "service_tier": {
+      "source": "leasingvertrag.paket",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Basis": "basic",
+        "Komfort": "comfort",
+        "Rundum-Sorglos": "full"
+      },
+      "why": "service package; fahrrad_marke is the bike type"
+    },
+    "language": {
+      "source": "kunde.sprache",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Deutsch": "de",
+        "Englisch": "en"
+      },
+      "why": "language, null or missing"
+    },
+    "customer_since": {
+      "source": "leasingvertrag.beginn",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "lease start (day-first); ende is the lease end"
+    },
+    "remaining_term_months": {
+      "source": null,
+      "transform": "none",
+      "why": "not exported",
+      "unsupportedReason": "would need months between today and leasingvertrag.ende"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "leasingvertrag.status",
+        "leasingvertrag.zahlungsstatus"
+      ],
+      "correctFor": "account_status"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "kunde.kundennummer",
+        "leasingvertrag.vertragsnummer"
+      ],
+      "correctFor": "requester_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "kunde.vorname",
+        "arbeitgeber.ansprechpartner"
+      ],
+      "correctFor": "first_name"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "leasingvertrag.beginn",
+        "leasingvertrag.ende"
+      ],
+      "correctFor": "customer_since"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "kunde.nachname",
+        "vertriebsmitarbeiter"
+      ],
+      "correctFor": "last_name"
+    }
+  ],
+  "sourceConcepts": {
+    "kunde.kundennummer": "customer-id",
+    "leasingvertrag.vertragsnummer": "transaction-id",
+    "export_zeile": "other-identifier",
+    "kunde.vorname": "given-name",
+    "kunde.nachname": "family-name",
+    "kunde.email": "email",
+    "kunde.telefon": "phone",
+    "kunde.sprache": "language-code",
+    "arbeitgeber.firmenname": "organization-name",
+    "arbeitgeber.ansprechpartner": "person-name",
+    "leasingvertrag.status": "account-status",
+    "leasingvertrag.zahlungsstatus": "payment-status",
+    "leasingvertrag.paket": "category",
+    "leasingvertrag.beginn": "start-date",
+    "leasingvertrag.ende": "end-date",
+    "vertriebsmitarbeiter": "person-name",
+    "fahrrad_marke": "category"
+  },
+  "destinationConcepts": {
+    "requester_id": "customer-id",
+    "first_name": "given-name",
+    "last_name": "family-name",
+    "email": "email",
+    "phone": "phone",
+    "company": "organization-name",
+    "account_status": "account-status",
+    "service_tier": "category",
+    "language": "language-code",
+    "customer_since": "start-date",
+    "remaining_term_months": "quantity"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 0,
+      "outcome": "transformed",
+      "output": {
+        "requester_id": "K-520037",
+        "first_name": "Sophie",
+        "last_name": "Richter",
+        "email": "sophie.richter@privat.example.net",
+        "phone": "+43 664 1572068",
+        "company": "Alpenmetall GmbH",
+        "account_status": "returning",
+        "service_tier": "comfort",
+        "language": "de",
+        "customer_since": "2023-01-19"
+      }
+    },
+    {
+      "recordIndex": 1,
+      "outcome": "transformed",
+      "output": {
+        "requester_id": "K-520053",
+        "first_name": "Lea",
+        "last_name": "Vogel",
+        "email": "lea.vogel@privat.example.net",
+        "company": "Alpenmetall GmbH",
+        "account_status": "returning",
+        "service_tier": "full",
+        "language": "de",
+        "customer_since": "2025-07-14"
+      }
+    },
+    {
+      "recordIndex": 3,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 13,
+      "outcome": "transformed",
+      "output": {
+        "requester_id": "K-520284",
+        "first_name": "Anna",
+        "last_name": "Hartmann",
+        "email": "anna.hartmann@privat.example.net",
+        "phone": "+43 664 6704425",
+        "account_status": "returning",
+        "service_tier": "full",
+        "language": "en",
+        "customer_since": "2022-08-04"
+      }
+    }
+  ]
+}

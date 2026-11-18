@@ -1,0 +1,810 @@
+{
+  "scenarioId": "bus-fleet-repairs-to-workshop-planner",
+  "split": "holdout",
+  "track": "general",
+  "industry": "urban bus fleet maintenance",
+  "sourceLanguage": "pt",
+  "description": "Flat repair-order export of a fictional municipal bus operator (Portuguese snake_case) to be loaded into a workshop planning tool.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "os_numero": "OS-22012",
+      "matricula": "AF-11-KL",
+      "motorista_reportou": "Hugo Rocha",
+      "tipo_intervencao": "Revisão 30 000 km",
+      "oficina": "Oficina Sul",
+      "data_prevista_saida": "06/11/2026",
+      "prioridade": "Urgente",
+      "n_frota": "FR-261",
+      "custo_pecas_eur": 1301.56,
+      "mecanico": "Rui Tavares",
+      "estado_os": "Concluída",
+      "linha_export": 1,
+      "estado_faturacao": "A faturar",
+      "km_atuais": 62437,
+      "data_entrada": "11/10/2026"
+    },
+    {
+      "motorista_reportou": "Sandra Faria",
+      "custo_pecas_eur": 1295.98,
+      "estado_os": "Concluída",
+      "matricula": "AC-56-EF",
+      "n_frota": "FR-230",
+      "mecanico": "Rui Tavares",
+      "os_numero": "OS-22018",
+      "oficina": "Oficina Norte",
+      "data_prevista_saida": "05/10/2026",
+      "data_entrada": "07/10/2026",
+      "prioridade": "Urgente",
+      "linha_export": 2,
+      "tipo_intervencao": "Avaria motor",
+      "km_atuais": null,
+      "estado_faturacao": "A faturar"
+    },
+    {
+      "estado_faturacao": "Garantia",
+      "custo_pecas_eur": 273.55,
+      "n_frota": "FR-214",
+      "motorista_reportou": "Jorge Cunha",
+      "km_atuais": 48060,
+      "os_numero": "OS-22022",
+      "data_prevista_saida": "07/10/2026",
+      "prioridade": "Normal",
+      "mecanico": "Rui Tavares",
+      "linha_export": 3,
+      "matricula": "AB-34-CD",
+      "data_entrada": "10/10/2026",
+      "estado_os": "Em curso",
+      "oficina": "Oficina Sul",
+      "tipo_intervencao": "Revisão 30 000 km"
+    },
+    {
+      "estado_os": "Aberta",
+      "linha_export": 4,
+      "oficina": "Oficina Norte",
+      "motorista_reportou": "Hugo Rocha",
+      "prioridade": "Urgente",
+      "km_atuais": 489124,
+      "mecanico": "Rui Tavares",
+      "estado_faturacao": "Garantia",
+      "data_prevista_saida": "07/11/2026",
+      "custo_pecas_eur": 1005.97,
+      "n_frota": "FR-261",
+      "matricula": "AD-78-GH",
+      "tipo_intervencao": "Revisão 30 000 km",
+      "data_entrada": "05/10/2026",
+      "os_numero": "OS-22029"
+    },
+    {
+      "linha_export": 5,
+      "n_frota": "FR-245",
+      "data_entrada": "05/10/2026",
+      "matricula": "AD-78-GH",
+      "custo_pecas_eur": 185.9,
+      "mecanico": "Rui Tavares",
+      "tipo_intervencao": "Avaria motor",
+      "oficina": "Oficina Norte",
+      "estado_faturacao": "Garantia",
+      "data_prevista_saida": "10/11/2026",
+      "prioridade": "Urgente",
+      "km_atuais": null,
+      "motorista_reportou": "Hugo Rocha",
+      "os_numero": "OS-22034",
+      "estado_os": "Aberta"
+    },
+    {
+      "matricula": "AF-11-KL",
+      "motorista_reportou": "Jorge Cunha",
+      "mecanico": "Rui Tavares",
+      "linha_export": 6,
+      "estado_faturacao": "Garantia",
+      "custo_pecas_eur": 1207.05,
+      "data_prevista_saida": "08/11/2026",
+      "km_atuais": 597890,
+      "os_numero": "OS-22037",
+      "data_entrada": "11/11/2026",
+      "prioridade": "Pode esperar",
+      "estado_os": "Em curso",
+      "tipo_intervencao": "Lavagem interna",
+      "oficina": "Oficina Norte",
+      "n_frota": "FR-245"
+    },
+    {
+      "estado_os": "Em curso",
+      "km_atuais": 57688,
+      "matricula": "AF-11-KL",
+      "motorista_reportou": "Hugo Rocha",
+      "custo_pecas_eur": 2193.73,
+      "data_entrada": "10/11/2026",
+      "mecanico": "Paulo Mendes",
+      "n_frota": "FR-279",
+      "linha_export": 7,
+      "estado_faturacao": "Faturado",
+      "prioridade": "Urgente",
+      "data_prevista_saida": "11/10/2026",
+      "os_numero": "OS-22040",
+      "tipo_intervencao": "Lavagem interna",
+      "oficina": "Oficina Norte"
+    },
+    {
+      "estado_os": "Em curso",
+      "n_frota": "FR-261",
+      "data_entrada": "12/11/2026",
+      "motorista_reportou": "Jorge Cunha",
+      "os_numero": "OS-22047",
+      "estado_faturacao": "A faturar",
+      "prioridade": "Pode esperar",
+      "oficina": "Oficina Norte",
+      "km_atuais": 645410,
+      "matricula": "AC-56-EF",
+      "linha_export": 8,
+      "mecanico": "Rui Tavares",
+      "data_prevista_saida": "04/11/2026",
+      "custo_pecas_eur": 1266.18,
+      "tipo_intervencao": "Travões"
+    },
+    {
+      "tipo_intervencao": "Pneus",
+      "os_numero": "OS-22051",
+      "estado_os": "Concluída",
+      "motorista_reportou": "Jorge Cunha",
+      "linha_export": 9,
+      "n_frota": "FR-214",
+      "data_entrada": "09/11/2026",
+      "estado_faturacao": "Garantia",
+      "custo_pecas_eur": 578.24,
+      "mecanico": "Rui Tavares",
+      "oficina": "Oficina Norte",
+      "prioridade": "Urgente",
+      "km_atuais": 258362,
+      "data_prevista_saida": "09/12/2026",
+      "matricula": "AA-12-BC"
+    },
+    {
+      "km_atuais": 395378,
+      "n_frota": "FR-214",
+      "os_numero": "OS-22058",
+      "data_entrada": "08/11/2026",
+      "mecanico": "Rui Tavares",
+      "prioridade": "Normal",
+      "data_prevista_saida": "04/10/2026",
+      "oficina": "Oficina Norte",
+      "tipo_intervencao": "Pneus",
+      "estado_os": "Em curso",
+      "matricula": "AE-90-IJ",
+      "motorista_reportou": "Jorge Cunha",
+      "linha_export": 10,
+      "custo_pecas_eur": 365.09,
+      "estado_faturacao": "Garantia"
+    },
+    {
+      "data_prevista_saida": "12/12/2026",
+      "mecanico": "Rui Tavares",
+      "oficina": "Oficina Norte",
+      "km_atuais": 266815,
+      "os_numero": "OS-22063",
+      "prioridade": "Normal",
+      "custo_pecas_eur": 2386.24,
+      "linha_export": 11,
+      "estado_os": "Em curso",
+      "n_frota": "FR-230",
+      "matricula": "AA-12-BC",
+      "data_entrada": "03/11/2026",
+      "estado_faturacao": "Garantia",
+      "tipo_intervencao": "Revisão 30 000 km",
+      "motorista_reportou": "Hugo Rocha"
+    },
+    {
+      "motorista_reportou": "Sandra Faria",
+      "estado_os": "Aberta",
+      "tipo_intervencao": "Travões",
+      "n_frota": "FR-279",
+      "data_entrada": "02/10/2026",
+      "prioridade": "Normal",
+      "km_atuais": 232553,
+      "estado_faturacao": "A faturar",
+      "linha_export": 12,
+      "custo_pecas_eur": 1912.32,
+      "mecanico": "Rui Tavares",
+      "data_prevista_saida": "08/12/2026",
+      "os_numero": "OS-22068",
+      "oficina": "Oficina Norte",
+      "matricula": "AE-90-IJ"
+    },
+    {
+      "oficina": "Oficina Norte",
+      "prioridade": "Pode esperar",
+      "matricula": "AE-90-IJ",
+      "n_frota": "FR-261",
+      "motorista_reportou": "Hugo Rocha",
+      "mecanico": "Rui Tavares",
+      "estado_faturacao": "Garantia",
+      "data_entrada": "07/11/2026",
+      "data_prevista_saida": "04/10/2026",
+      "km_atuais": 191033,
+      "estado_os": "Aberta",
+      "os_numero": "OS-22071",
+      "linha_export": 13,
+      "tipo_intervencao": "Revisão 30 000 km",
+      "custo_pecas_eur": 1683.79
+    },
+    {
+      "n_frota": "FR-261",
+      "data_prevista_saida": "06/12/2026",
+      "prioridade": "Normal",
+      "os_numero": "OS-22076",
+      "custo_pecas_eur": 1212.9,
+      "data_entrada": "11/11/2026",
+      "linha_export": 14,
+      "matricula": "AA-12-BC",
+      "tipo_intervencao": "Revisão 30 000 km",
+      "oficina": "Oficina Sul",
+      "estado_faturacao": "Garantia",
+      "motorista_reportou": "Hugo Rocha",
+      "mecanico": "Paulo Mendes",
+      "estado_os": "Aberta"
+    },
+    {
+      "linha_export": 15,
+      "n_frota": "FR-201",
+      "custo_pecas_eur": 2196.63,
+      "data_prevista_saida": "02/10/2026",
+      "mecanico": "Rui Tavares",
+      "motorista_reportou": "Jorge Cunha",
+      "matricula": "AD-78-GH",
+      "os_numero": "OS-22082",
+      "data_entrada": "09/10/2026",
+      "km_atuais": 358296,
+      "estado_faturacao": "A faturar",
+      "tipo_intervencao": "Pneus",
+      "oficina": "Oficina Norte",
+      "estado_os": "Em curso",
+      "prioridade": "Pode esperar"
+    },
+    {
+      "linha_export": 16,
+      "estado_faturacao": "Garantia",
+      "n_frota": "FR-245",
+      "mecanico": "Rui Tavares",
+      "custo_pecas_eur": 2213.63,
+      "tipo_intervencao": "Avaria motor",
+      "estado_os": "Concluída",
+      "matricula": "AC-56-EF",
+      "data_entrada": "07/11/2026",
+      "oficina": "Oficina Norte",
+      "motorista_reportou": "Sandra Faria",
+      "prioridade": "Normal",
+      "data_prevista_saida": "10/11/2026",
+      "os_numero": "OS-22089",
+      "km_atuais": 643588
+    },
+    {
+      "n_frota": "FR-279",
+      "km_atuais": 683340,
+      "oficina": "Oficina Norte",
+      "data_prevista_saida": "08/11/2026",
+      "estado_os": "Aberta",
+      "mecanico": "Paulo Mendes",
+      "os_numero": "OS-22094",
+      "matricula": "AD-78-GH",
+      "tipo_intervencao": "Travões",
+      "estado_faturacao": "A faturar",
+      "motorista_reportou": "Hugo Rocha",
+      "linha_export": 17,
+      "prioridade": "Pode esperar",
+      "data_entrada": "06/10/2026",
+      "custo_pecas_eur": 1000.95
+    },
+    {
+      "prioridade": "Normal",
+      "matricula": "AB-34-CD",
+      "km_atuais": 296239,
+      "data_prevista_saida": "05/11/2026",
+      "n_frota": "FR-261",
+      "motorista_reportou": "Hugo Rocha",
+      "oficina": "Oficina Norte",
+      "estado_os": "Aberta",
+      "tipo_intervencao": "Revisão 30 000 km",
+      "mecanico": "Rui Tavares",
+      "data_entrada": "06/11/2026",
+      "estado_faturacao": "Garantia",
+      "linha_export": 18,
+      "custo_pecas_eur": 1771.35,
+      "os_numero": "OS-22095"
+    },
+    {
+      "oficina": "Oficina Sul",
+      "estado_faturacao": "Faturado",
+      "km_atuais": 410417,
+      "estado_os": "Concluída",
+      "linha_export": 19,
+      "custo_pecas_eur": 680.24,
+      "tipo_intervencao": "Pneus",
+      "motorista_reportou": "Sandra Faria",
+      "data_entrada": "11/10/2026",
+      "mecanico": "Paulo Mendes",
+      "matricula": "AB-34-CD",
+      "prioridade": "Normal",
+      "n_frota": "FR-245",
+      "os_numero": "OS-22102",
+      "data_prevista_saida": "04/11/2026"
+    },
+    {
+      "matricula": "AE-90-IJ",
+      "mecanico": "Rui Tavares",
+      "motorista_reportou": "Jorge Cunha",
+      "os_numero": "OS-22106",
+      "linha_export": 20,
+      "custo_pecas_eur": 1450.12,
+      "oficina": "Oficina Sul",
+      "prioridade": "Pode esperar",
+      "estado_os": "Em curso",
+      "tipo_intervencao": "Travões",
+      "n_frota": "FR-261",
+      "data_entrada": "01/10/2026",
+      "data_prevista_saida": "08/10/2026",
+      "estado_faturacao": "Faturado"
+    },
+    {
+      "oficina": "Oficina Norte",
+      "estado_os": "Em curso",
+      "mecanico": "Rui Tavares",
+      "matricula": "AA-12-BC",
+      "linha_export": 21,
+      "data_prevista_saida": "11/10/2026",
+      "prioridade": "Pode esperar",
+      "motorista_reportou": "Sandra Faria",
+      "tipo_intervencao": "Travões",
+      "data_entrada": "11/11/2026",
+      "custo_pecas_eur": 730.18,
+      "km_atuais": 160952,
+      "n_frota": "FR-201",
+      "os_numero": "OS-22113",
+      "estado_faturacao": "A faturar"
+    },
+    {
+      "oficina": "Oficina Norte",
+      "mecanico": "Rui Tavares",
+      "data_prevista_saida": "01/10/2026",
+      "motorista_reportou": "Jorge Cunha",
+      "prioridade": "Urgente",
+      "data_entrada": "10/10/2026",
+      "n_frota": "FR-261",
+      "custo_pecas_eur": 1522.83,
+      "estado_faturacao": "Garantia",
+      "os_numero": "OS-22118",
+      "km_atuais": 208060,
+      "matricula": "AD-78-GH",
+      "linha_export": 22,
+      "tipo_intervencao": "Travões",
+      "estado_os": "Em curso"
+    },
+    {
+      "data_prevista_saida": "11/11/2026",
+      "estado_os": "Em curso",
+      "estado_faturacao": "Faturado",
+      "os_numero": "OS-22124",
+      "prioridade": "Urgente",
+      "motorista_reportou": "Hugo Rocha",
+      "data_entrada": "05/10/2026",
+      "oficina": "Oficina Norte",
+      "custo_pecas_eur": 381.78,
+      "n_frota": "FR-261",
+      "km_atuais": 215224,
+      "linha_export": 23,
+      "matricula": "AE-90-IJ",
+      "mecanico": "Paulo Mendes",
+      "tipo_intervencao": "Avaria motor"
+    },
+    {
+      "matricula": "AD-78-GH",
+      "linha_export": 24,
+      "mecanico": "Rui Tavares",
+      "custo_pecas_eur": 1490.96,
+      "oficina": "Oficina Norte",
+      "tipo_intervencao": "Travões",
+      "data_entrada": "01/11/2026",
+      "os_numero": "OS-22127",
+      "prioridade": "Pode esperar",
+      "motorista_reportou": "Hugo Rocha",
+      "n_frota": "FR-214",
+      "estado_faturacao": "Garantia",
+      "estado_os": "Em curso",
+      "data_prevista_saida": "03/11/2026"
+    },
+    {
+      "prioridade": "Urgente",
+      "custo_pecas_eur": 1083.18,
+      "km_atuais": 269349,
+      "mecanico": "Rui Tavares",
+      "estado_faturacao": "Garantia",
+      "data_entrada": "12/11/2026",
+      "n_frota": "FR-201",
+      "data_prevista_saida": "09/10/2026",
+      "motorista_reportou": "Sandra Faria",
+      "oficina": "Oficina Norte",
+      "os_numero": "OS-22134",
+      "linha_export": 25,
+      "matricula": "AD-78-GH",
+      "tipo_intervencao": "Lavagem interna",
+      "estado_os": "Em curso"
+    },
+    {
+      "estado_faturacao": "A faturar",
+      "mecanico": "Rui Tavares",
+      "motorista_reportou": "Hugo Rocha",
+      "oficina": "Oficina Norte",
+      "tipo_intervencao": "Revisão 30 000 km",
+      "os_numero": "OS-22135",
+      "data_entrada": "03/11/2026",
+      "custo_pecas_eur": 1797.71,
+      "estado_os": "Em curso",
+      "n_frota": "FR-230",
+      "km_atuais": 296869,
+      "matricula": "AC-56-EF",
+      "prioridade": "Urgente",
+      "linha_export": 26,
+      "data_prevista_saida": "03/10/2026"
+    },
+    {
+      "n_frota": "FR-279",
+      "motorista_reportou": "Jorge Cunha",
+      "prioridade": "Pode esperar",
+      "linha_export": 27,
+      "estado_os": "Concluída",
+      "custo_pecas_eur": 1020.36,
+      "estado_faturacao": "Garantia",
+      "os_numero": "OS-22140",
+      "data_entrada": "08/11/2026",
+      "oficina": "Oficina Norte",
+      "data_prevista_saida": "03/11/2026",
+      "km_atuais": 210939,
+      "matricula": "AA-12-BC",
+      "tipo_intervencao": "Lavagem interna",
+      "mecanico": "Paulo Mendes"
+    },
+    {
+      "custo_pecas_eur": 2035.62,
+      "km_atuais": 637157,
+      "n_frota": "FR-261",
+      "estado_faturacao": "A faturar",
+      "data_entrada": "05/11/2026",
+      "data_prevista_saida": "08/11/2026",
+      "os_numero": "OS-22148",
+      "linha_export": 28,
+      "prioridade": "Pode esperar",
+      "motorista_reportou": "Sandra Faria",
+      "estado_os": "Aberta",
+      "oficina": "Oficina Norte",
+      "matricula": "AA-12-BC",
+      "tipo_intervencao": "Travões",
+      "mecanico": "Rui Tavares"
+    },
+    {
+      "custo_pecas_eur": 1458.11,
+      "mecanico": "Rui Tavares",
+      "data_entrada": "10/10/2026",
+      "data_prevista_saida": "01/12/2026",
+      "oficina": "Oficina Sul",
+      "motorista_reportou": "Jorge Cunha",
+      "os_numero": "OS-22153",
+      "linha_export": 29,
+      "matricula": "AB-34-CD",
+      "tipo_intervencao": "Pneus",
+      "prioridade": "Urgente",
+      "estado_os": "Aberta",
+      "n_frota": "FR-201",
+      "km_atuais": 58655,
+      "estado_faturacao": "Faturado"
+    },
+    {
+      "data_entrada": "03/10/2026",
+      "prioridade": "Urgente",
+      "custo_pecas_eur": 2307.57,
+      "km_atuais": 636390,
+      "n_frota": "FR-245",
+      "linha_export": 30,
+      "data_prevista_saida": "04/11/2026",
+      "oficina": "Oficina Norte",
+      "estado_os": "Em curso",
+      "tipo_intervencao": "Travões",
+      "estado_faturacao": "Garantia",
+      "mecanico": "Rui Tavares",
+      "motorista_reportou": "Sandra Faria",
+      "matricula": "AE-90-IJ",
+      "os_numero": "OS-22157"
+    },
+    {
+      "km_atuais": 649507,
+      "motorista_reportou": "Sandra Faria",
+      "data_entrada": "01/11/2026",
+      "linha_export": 31,
+      "prioridade": "Urgente",
+      "matricula": "AD-78-GH",
+      "mecanico": "Rui Tavares",
+      "os_numero": "OS-22163",
+      "n_frota": "FR-279",
+      "oficina": "Oficina Norte",
+      "estado_os": "Aberta",
+      "custo_pecas_eur": 1276.8,
+      "data_prevista_saida": "01/10/2026",
+      "tipo_intervencao": "Pneus",
+      "estado_faturacao": "Garantia"
+    },
+    {
+      "matricula": "AF-11-KL",
+      "data_entrada": "04/10/2026",
+      "prioridade": "Normal",
+      "estado_os": "Aberta",
+      "motorista_reportou": "Hugo Rocha",
+      "km_atuais": null,
+      "os_numero": "OS-22167",
+      "oficina": "Oficina Sul",
+      "data_prevista_saida": "10/10/2026",
+      "custo_pecas_eur": 1493.6,
+      "tipo_intervencao": "Revisão 30 000 km",
+      "n_frota": "FR-279",
+      "estado_faturacao": "A faturar",
+      "mecanico": "Rui Tavares",
+      "linha_export": 32
+    },
+    {
+      "estado_os": "Em curso",
+      "tipo_intervencao": "Revisão 30 000 km",
+      "matricula": "AF-11-KL",
+      "os_numero": "OS-22174",
+      "mecanico": "Paulo Mendes",
+      "prioridade": "Pode esperar",
+      "n_frota": "FR-201",
+      "data_prevista_saida": "09/11/2026",
+      "linha_export": 33,
+      "motorista_reportou": "Hugo Rocha",
+      "estado_faturacao": "A faturar",
+      "custo_pecas_eur": 631.87,
+      "km_atuais": 234082,
+      "oficina": "Oficina Norte",
+      "data_entrada": "08/11/2026"
+    },
+    {
+      "data_prevista_saida": "04/10/2026",
+      "data_entrada": "04/11/2026",
+      "motorista_reportou": "Hugo Rocha",
+      "estado_os": "Aberta",
+      "km_atuais": 439419,
+      "custo_pecas_eur": 1561.48,
+      "mecanico": "Rui Tavares",
+      "tipo_intervencao": "Revisão 30 000 km",
+      "os_numero": "OS-22176",
+      "matricula": "AE-90-IJ",
+      "oficina": "Oficina Sul",
+      "n_frota": "FR-279",
+      "estado_faturacao": "A faturar",
+      "linha_export": 34,
+      "prioridade": "Normal"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "work_order": {
+        "type": "string",
+        "description": "Identifier of the repair order."
+      },
+      "vehicle_id": {
+        "type": "string",
+        "description": "Fleet number painted on the bus."
+      },
+      "job_type": {
+        "type": "string",
+        "enum": [
+          "scheduled_service",
+          "brakes",
+          "tyres",
+          "engine_fault"
+        ],
+        "description": "Kind of repair or service."
+      },
+      "priority": {
+        "type": "string",
+        "enum": [
+          "urgent",
+          "normal",
+          "low"
+        ],
+        "description": "Priority."
+      },
+      "workshop": {
+        "type": "string",
+        "enum": [
+          "north",
+          "south"
+        ],
+        "description": "Workshop where the bus is repaired."
+      },
+      "check_in_date": {
+        "type": "string",
+        "format": "date",
+        "description": "Day the bus entered the workshop."
+      },
+      "odometer_km": {
+        "type": "integer",
+        "description": "Odometer reading on arrival."
+      },
+      "next_service_km": {
+        "type": "integer"
+      }
+    },
+    "required": [
+      "work_order",
+      "vehicle_id",
+      "job_type",
+      "check_in_date"
+    ]
+  },
+  "groundTruth": {
+    "work_order": {
+      "source": "os_numero",
+      "transform": "copy",
+      "why": "order number"
+    },
+    "vehicle_id": {
+      "source": "n_frota",
+      "transform": "copy",
+      "why": "fleet number; matricula is the licence plate"
+    },
+    "job_type": {
+      "source": "tipo_intervencao",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Revisão 30 000 km": "scheduled_service",
+        "Travões": "brakes",
+        "Pneus": "tyres",
+        "Avaria motor": "engine_fault",
+        "Lavagem interna": null
+      },
+      "why": "job type; internal cleaning is not a repair"
+    },
+    "priority": {
+      "source": "prioridade",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Urgente": "urgent",
+        "Normal": "normal",
+        "Pode esperar": "low"
+      },
+      "why": "priority"
+    },
+    "workshop": {
+      "source": "oficina",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Oficina Norte": "north",
+        "Oficina Sul": "south"
+      },
+      "why": "workshop; estado_faturacao is billing"
+    },
+    "check_in_date": {
+      "source": "data_entrada",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "check-in (day-first); data_prevista_saida is the planned exit"
+    },
+    "odometer_km": {
+      "source": "km_atuais",
+      "transform": "copy",
+      "why": "odometer, null or missing"
+    },
+    "next_service_km": {
+      "source": null,
+      "transform": "none",
+      "why": "not exported",
+      "unsupportedReason": "would need km_atuais plus a service interval"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "tipo_intervencao",
+        "estado_os"
+      ],
+      "correctFor": "job_type"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "n_frota",
+        "matricula"
+      ],
+      "correctFor": "vehicle_id"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "os_numero",
+        "linha_export"
+      ],
+      "correctFor": "work_order"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "data_entrada",
+        "data_prevista_saida"
+      ],
+      "correctFor": "check_in_date"
+    }
+  ],
+  "sourceConcepts": {
+    "os_numero": "transaction-id",
+    "linha_export": "other-identifier",
+    "n_frota": "other-identifier",
+    "matricula": "other-identifier",
+    "tipo_intervencao": "category",
+    "prioridade": "category",
+    "estado_os": "account-status",
+    "estado_faturacao": "payment-status",
+    "oficina": "category",
+    "data_entrada": "start-date",
+    "data_prevista_saida": "end-date",
+    "km_atuais": "quantity",
+    "mecanico": "person-name",
+    "motorista_reportou": "person-name",
+    "custo_pecas_eur": "amount"
+  },
+  "destinationConcepts": {
+    "work_order": "transaction-id",
+    "vehicle_id": "other-identifier",
+    "job_type": "category",
+    "priority": "category",
+    "workshop": "category",
+    "check_in_date": "start-date",
+    "odometer_km": "quantity",
+    "next_service_km": "quantity"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 0,
+      "outcome": "transformed",
+      "output": {
+        "work_order": "OS-22012",
+        "vehicle_id": "FR-261",
+        "job_type": "scheduled_service",
+        "priority": "urgent",
+        "workshop": "south",
+        "check_in_date": "2026-10-11",
+        "odometer_km": 62437
+      }
+    },
+    {
+      "recordIndex": 1,
+      "outcome": "transformed",
+      "output": {
+        "work_order": "OS-22018",
+        "vehicle_id": "FR-230",
+        "job_type": "engine_fault",
+        "priority": "urgent",
+        "workshop": "north",
+        "check_in_date": "2026-10-07"
+      }
+    },
+    {
+      "recordIndex": 5,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 13,
+      "outcome": "transformed",
+      "output": {
+        "work_order": "OS-22076",
+        "vehicle_id": "FR-261",
+        "job_type": "scheduled_service",
+        "priority": "normal",
+        "workshop": "south",
+        "check_in_date": "2026-11-11"
+      }
+    }
+  ]
+}

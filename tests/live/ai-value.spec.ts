@@ -6,6 +6,7 @@ import { expect, test } from "./fixtures.ts";
 import { privateTermsInBody } from "../../src/evaluation/ai-value-live.ts";
 import { buildScenario } from "../../src/evaluation/eval-18b.ts";
 import { buildScenario18c } from "../../src/evaluation/eval-18c.ts";
+import { ARMS_18D, armDestination, buildScenario18d } from "../../src/evaluation/eval-18d.ts";
 
 /**
  * Sprint 18A — live AI-value run, G0 vs G1 (docs/evaluation/sprint-18a-ai-value.md).
@@ -40,17 +41,22 @@ const debugToken = process.env.EYES_APPCHECK_DEBUG_TOKEN ?? "";
 // Sets: 18a (G0/G1, Sprint 18A), a5 (P0/P1, Sprint 18A.5 planner; docs/evaluation/sprint-18a5-planner.md)
 // and b (P0/P2, Sprint 18B intent plan; docs/evaluation/sprint-18b-intent-plan.md, scored by scripts/eval-18b.mjs).
 // Set c (P0/P1, Sprint 18C; docs/evaluation/sprint-18c-reliability.md, scored by scripts/eval-18c.mjs).
-const set = (["a5", "b", "c"] as const).find((name) => name === process.env.EYES_AI_VALUE_SET) ?? "18a";
+const set = (["a5", "b", "c", "d"] as const).find((name) => name === process.env.EYES_AI_VALUE_SET) ?? "18a";
+// Set d (Sprint 18D): EYES_AI_VALUE_STAGE=1 runs the DEV pool (18B + 18C + 18D dev) live; stage 2 the 18D holdout.
+const stage = set === "d" ? (process.env.EYES_AI_VALUE_STAGE === "2" ? 2 : 1) : 0;
+const DEV_POOL_18D = ["tests/fixtures/eval-18b/dev", "tests/fixtures/eval-18c/dev", "tests/fixtures/eval-18d/dev"];
 // Set c: 1 = the first request; 2 = the one approved recovery request, run only for the indexes in EYES_AI_VALUE_ONLY (1-based).
 const attempt = Number(process.env.EYES_AI_VALUE_ATTEMPT ?? "1");
 const only = (process.env.EYES_AI_VALUE_ONLY ?? "").split(",").filter(Boolean).map(Number);
 const evidencePath =
   process.env.EYES_LIVE_EVIDENCE ??
-  (set === "c" ? "docs/evidence/sprint-18c/reliability-live.json" : set === "a5" ? "docs/evidence/sprint-18a5/planner-live.json" : set === "b" ? "docs/evidence/sprint-18b/intent-plan-live.json" : "docs/evidence/sprint-18a/ai-value-live.json");
+  (set === "d" ? `docs/evidence/sprint-18d/stage${stage}-live.json` : set === "c" ? "docs/evidence/sprint-18c/reliability-live.json" : set === "a5" ? "docs/evidence/sprint-18a5/planner-live.json" : set === "b" ? "docs/evidence/sprint-18b/intent-plan-live.json" : "docs/evidence/sprint-18a/ai-value-live.json");
 // Rehearsals may use the dev split (EYES_AI_VALUE_SPLIT=dev); the real run is always the holdout.
-const split = process.env.EYES_AI_VALUE_DRY === "1" && process.env.EYES_AI_VALUE_SPLIT === "dev" ? "dev" : "holdout";
+const split = stage === 1 || (process.env.EYES_AI_VALUE_DRY === "1" && process.env.EYES_AI_VALUE_SPLIT === "dev") ? "dev" : "holdout";
 const root =
-  set === "c"
+  set === "d"
+    ? `tests/fixtures/eval-18d/${split}`
+    : set === "c"
     ? `tests/fixtures/eval-18c/${split}`
     : set === "b"
     ? `tests/fixtures/eval-18b/${split}`
@@ -59,7 +65,7 @@ const root =
       : set === "a5"
         ? "tests/fixtures/ai-value-18a5/holdout"
         : "tests/fixtures/ai-value-18a/holdout";
-const scenarioCount = set === "c" ? (split === "holdout" ? 16 : 4) : split === "holdout" ? 10 : set === "b" ? 4 : 6;
+const scenarioCount = set === "d" ? (stage === 1 ? 14 : split === "holdout" ? 20 : 6) : set === "c" ? (split === "holdout" ? 16 : 4) : split === "holdout" ? 10 : set === "b" ? 4 : 6;
 /** Rehearsal: run everything up to an enabled Send button, send nothing, write no evidence. */
 const dryRun = process.env.EYES_AI_VALUE_DRY === "1";
 
@@ -68,12 +74,8 @@ interface HoldoutScenario {
   destination: Record<string, unknown>;
 }
 
-const files = fs.existsSync(root)
-  ? fs
-      .readdirSync(root)
-      .filter((name) => name.endsWith(".json"))
-      .sort()
-  : [];
+const listJson = (dir: string) => (fs.existsSync(dir) ? fs.readdirSync(dir).filter((name) => name.endsWith(".json")).sort().map((name) => path.join(dir, name)) : []);
+const files = set === "d" && stage === 1 ? DEV_POOL_18D.flatMap(listJson) : listJson(root);
 
 function append(entry: Record<string, unknown>): void {
   fs.mkdirSync(path.dirname(evidencePath), { recursive: true });
@@ -84,8 +86,8 @@ function append(entry: Record<string, unknown>): void {
 
 test.describe("S18A-LIVE G0/G1 holdout run", () => {
   test.beforeAll(() => {
-    expect(set === "a5" || set === "c" ? ["P0", "P1"] : set === "b" ? ["P0", "P2"] : ["G0", "G1"]).toContain(config);
-    if (set === "c") expect(attempt === 1 ? only.length === 0 : attempt === 2 && only.length > 0).toBe(true);
+    expect(set === "d" ? Object.keys(ARMS_18D) : set === "a5" || set === "c" ? ["P0", "P1"] : set === "b" ? ["P0", "P2"] : ["G0", "G1"]).toContain(config);
+    if (set === "c" || set === "d") expect(attempt === 1 ? only.length === 0 : attempt === 2 && only.length > 0).toBe(true);
     expect([1, 2]).toContain(trial);
     expect(baseURL).toMatch(/^http:\/\/127\.0\.0\.1:\d+$/);
     expect(files.length).toBe(scenarioCount);
@@ -93,9 +95,17 @@ test.describe("S18A-LIVE G0/G1 holdout run", () => {
 
   for (let index = 0; index < scenarioCount; index += 1) {
     test(`holdout #${String(index + 1).padStart(2, "0")}`, async ({ page }) => {
-      test.skip(set === "c" && only.length > 0 && !only.includes(index + 1), "not selected for the recovery attempt");
-      const scenario = JSON.parse(fs.readFileSync(path.join(root, files[index]!), "utf8")) as HoldoutScenario;
-      const entry: Record<string, unknown> = { config, trial, index, ...(set === "c" ? { attempt } : {}), at: new Date().toISOString() };
+      test.skip((set === "c" || set === "d") && only.length > 0 && !only.includes(index + 1), "not selected for the recovery attempt");
+      const scenario = JSON.parse(fs.readFileSync(files[index]!, "utf8")) as HoldoutScenario;
+      const arm = set === "d" ? ARMS_18D[config]! : null;
+      const entry: Record<string, unknown> = {
+        config,
+        trial,
+        index,
+        ...(set === "c" || set === "d" ? { attempt } : {}),
+        ...(arm ? { stage, model: arm.model.model, thinkingLevel: arm.model.thinkingLevel ?? null, semantics: arm.semantics, planner: arm.planner } : {}),
+        at: new Date().toISOString(),
+      };
       const net = { requests: 0, leakCount: 0, promptSha256: [] as string[], answers: [] as string[], httpStatus: [] as number[], usage: [] as Array<{ prompt: number; output: number }> };
       page.on("request", (request) => {
         if (!request.url().includes("generateContent")) return;
@@ -134,6 +144,12 @@ test.describe("S18A-LIVE G0/G1 holdout run", () => {
             (self as unknown as { FIREBASE_APPCHECK_DEBUG_TOKEN?: string }).FIREBASE_APPCHECK_DEBUG_TOKEN = token;
           }, debugToken);
         }
+        if (arm) {
+          // Dev build only: selects the arm WITHOUT switching to the simulated adapters (src/inference/cloud-models.ts).
+          await page.addInitScript((value) => {
+            (self as unknown as { __EYES_EVAL_CONFIG__?: unknown }).__EYES_EVAL_CONFIG__ = value;
+          }, { cloudModel: arm.model, destinationSemantics: arm.semantics, initialPlanner: arm.planner === "intent-plan-2" ? "intent-plan-2" : undefined });
+        }
         step = "goto";
         await page.goto(`${baseURL}/#technical`);
         const dir = fs.mkdtempSync(path.join(tmpdir(), "eyes-s18a-"));
@@ -162,6 +178,10 @@ test.describe("S18A-LIVE G0/G1 holdout run", () => {
           await expect(page.getByTestId("send-cloud-request")).toBeEnabled();
           entry.dry = "ready-to-send";
           // Set b, dev split only: prove the preview equals the scorer's reconstruction (S2) before any live run.
+          if (arm) {
+            const rebuilt = await buildScenario18d(scenario, arm);
+            entry.dry += ` reconstruction=${rebuilt?.promptSha256 === entry.previewSha256 ? "match" : "MISMATCH"} destination=${rebuilt ? JSON.stringify(armDestination(arm)) === JSON.stringify(rebuilt.payload.destination) : false}`;
+          }
           if (set === "c" && split === "dev") entry.dry += ` reconstruction=${(await buildScenario18c(scenario, config as "P0" | "P1"))?.promptSha256 === entry.previewSha256 ? "match" : "MISMATCH"}`;
           if (set === "b" && split === "dev") entry.dry += ` reconstruction=${(await buildScenario(scenario, config as "P0" | "P2"))?.promptSha256 === entry.previewSha256 ? "match" : "MISMATCH"}`;
           return;
@@ -182,7 +202,7 @@ test.describe("S18A-LIVE G0/G1 holdout run", () => {
         entry.promptSha256 = net.promptSha256;
         entry.httpStatus = net.httpStatus;
         entry.answers = net.answers;
-        if (set === "c") entry.usage = net.usage;
+        if (set === "c" || set === "d") entry.usage = net.usage;
         if (dryRun) console.log(`dry ${config} #${index + 1} preview=${String(entry.previewSha256 ?? "").slice(0, 16)}: ${entry.dry ?? `harness error (${String(entry.harnessError ?? "").slice(0, 80)})`}, requests=${net.requests}`);
         else append(entry);
       }

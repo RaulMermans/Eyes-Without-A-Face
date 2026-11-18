@@ -1,0 +1,887 @@
+{
+  "scenarioId": "fastener-distributor-erp-customers-to-helpdesk-orgs",
+  "split": "holdout",
+  "track": "wedge",
+  "industry": "industrial fastener distributor trade accounts",
+  "sourceLanguage": "en",
+  "description": "Flat customer-ledger export of a fictional homegrown ERP at an industrial fastener distributor (English ALL-CAPS abbreviations) to be loaded as helpdesk organizations.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "LAST_ORD_DATE": "02/08/2026",
+      "CTRY": "IE",
+      "ACCTS_EMAIL": "accounts.bennett0@trade.example.com",
+      "CUST_NAME": "Brindley Fabrications",
+      "OPEN_DATE": "12/06/2011",
+      "TEL": "01769 486261",
+      "SEQ": 1,
+      "PRICE_GRP": "TRADE",
+      "REGION": "MID",
+      "CONTACT": "Ava Bennett",
+      "SALES_REP": "S. Akhtar",
+      "CUST_NO": "C40113",
+      "CREDIT_STAT": "REVIEW",
+      "CNTCT_EMAIL": "ava.bennett@trade.example.com",
+      "ACCT_STAT": "X",
+      "ACCT_ID": 900402,
+      "LEGACY_REF": "L/1002"
+    },
+    {
+      "CUST_NO": "C40128",
+      "SALES_REP": "S. Akhtar",
+      "ACCT_STAT": "X",
+      "ACCT_ID": 900410,
+      "OPEN_DATE": "16/10/2009",
+      "SEQ": 2,
+      "ACCTS_EMAIL": "accounts.lowe1@trade.example.com",
+      "REGION": "SW",
+      "PRICE_GRP": "TRADE",
+      "LAST_ORD_DATE": "13/06/2026",
+      "LEGACY_REF": null,
+      "CNTCT_EMAIL": "felix.lowe@trade.example.com",
+      "CTRY": "IE",
+      "TEL": "01613 521537",
+      "CREDIT_STAT": "STOP",
+      "CONTACT": "Felix Lowe",
+      "CUST_NAME": "Brindley Fabrications"
+    },
+    {
+      "CTRY": "GB",
+      "CNTCT_EMAIL": "grace.pearce@trade.example.com",
+      "LEGACY_REF": null,
+      "CUST_NAME": "Severn Pumps Ltd",
+      "CREDIT_STAT": "OK",
+      "LAST_ORD_DATE": "31/07/2026",
+      "REGION": "NW",
+      "SALES_REP": "S. Akhtar",
+      "ACCT_ID": 900414,
+      "TEL": "01702 659960",
+      "SEQ": 3,
+      "CUST_NO": "C40145",
+      "ACCT_STAT": "A",
+      "PRICE_GRP": "KEY ACC",
+      "CONTACT": "Grace Pearce",
+      "OPEN_DATE": "13/07/2017",
+      "ACCTS_EMAIL": "accounts.pearce2@trade.example.com"
+    },
+    {
+      "REGION": "EXP",
+      "TEL": "01402 193238",
+      "OPEN_DATE": "29/12/2004",
+      "LAST_ORD_DATE": "13/10/2026",
+      "CUST_NO": "C40155",
+      "ACCT_STAT": "C",
+      "CUST_NAME": "Ashby Marine Services",
+      "SALES_REP": "G. Pickering",
+      "CTRY": "GB",
+      "CNTCT_EMAIL": "isaac.morgan@trade.example.com",
+      "ACCT_ID": 900421,
+      "CREDIT_STAT": "OK",
+      "LEGACY_REF": "L/1018",
+      "ACCTS_EMAIL": "accounts.morgan3@trade.example.com",
+      "PRICE_GRP": "DISTRIB",
+      "CONTACT": "Isaac Morgan",
+      "SEQ": 4
+    },
+    {
+      "ACCT_ID": 900430,
+      "SALES_REP": "D. Mellor",
+      "ACCTS_EMAIL": "accounts.marsh4@trade.example.com",
+      "REGION": "SW",
+      "CREDIT_STAT": "STOP",
+      "LAST_ORD_DATE": "25/01/2026",
+      "CTRY": "IE",
+      "PRICE_GRP": "KEY ACC",
+      "CNTCT_EMAIL": "isaac.marsh@trade.example.com",
+      "TEL": "01904 027531",
+      "CUST_NAME": "Severn Pumps Ltd",
+      "LEGACY_REF": null,
+      "OPEN_DATE": "25/06/2001",
+      "ACCT_STAT": "H",
+      "SEQ": 5,
+      "CUST_NO": "C40173",
+      "CONTACT": "Isaac Marsh"
+    },
+    {
+      "CUST_NO": "C40186",
+      "LEGACY_REF": "L/1026",
+      "ACCTS_EMAIL": "accounts.morgan5@trade.example.com",
+      "SALES_REP": "S. Akhtar",
+      "CONTACT": "Ethan Morgan",
+      "TEL": "01669 678695",
+      "OPEN_DATE": "17/06/2022",
+      "PRICE_GRP": "DISTRIB",
+      "CNTCT_EMAIL": "Ethan.Morgan@Trade.Example.Com",
+      "ACCT_STAT": "X",
+      "CTRY": "GB",
+      "CUST_NAME": "Severn Pumps Ltd",
+      "SEQ": 6,
+      "CREDIT_STAT": "OK",
+      "LAST_ORD_DATE": "17/01/2026",
+      "REGION": "NW",
+      "ACCT_ID": 900436
+    },
+    {
+      "PRICE_GRP": "TRADE",
+      "SALES_REP": "S. Akhtar",
+      "ACCTS_EMAIL": "accounts.lowe6@trade.example.com",
+      "LEGACY_REF": "L/1035",
+      "CNTCT_EMAIL": "noah.lowe@trade.example.com",
+      "REGION": "EXP",
+      "OPEN_DATE": "29/05/2013",
+      "TEL": "01201 021643",
+      "CUST_NAME": "Ashby Marine Services",
+      "CTRY": "IE",
+      "SEQ": 7,
+      "CREDIT_STAT": "REVIEW",
+      "ACCT_ID": 900445,
+      "CONTACT": "Noah Lowe",
+      "LAST_ORD_DATE": "13/02/2026",
+      "ACCT_STAT": "H",
+      "CUST_NO": "C40195"
+    },
+    {
+      "CUST_NO": "C40202",
+      "REGION": "MID",
+      "CTRY": "IE",
+      "PRICE_GRP": "DISTRIB",
+      "CREDIT_STAT": "REVIEW",
+      "LAST_ORD_DATE": "06/01/2026",
+      "CNTCT_EMAIL": "Ethan.Barnes@Trade.Example.Com",
+      "ACCT_STAT": "H",
+      "TEL": null,
+      "CUST_NAME": "  Severn Pumps Ltd",
+      "ACCT_ID": 900455,
+      "LEGACY_REF": "L/1039",
+      "ACCTS_EMAIL": "accounts.barnes0@trade.example.com",
+      "OPEN_DATE": "20/05/2014",
+      "SALES_REP": "G. Pickering",
+      "SEQ": 8,
+      "CONTACT": "Ethan Barnes"
+    },
+    {
+      "CONTACT": "Felix Quinn",
+      "CREDIT_STAT": "OK",
+      "OPEN_DATE": "08/03/2003",
+      "CUST_NO": "C40223",
+      "ACCT_ID": 900456,
+      "CTRY": "FR",
+      "PRICE_GRP": "TRADE",
+      "TEL": "01663 212099",
+      "LAST_ORD_DATE": "11/03/2026",
+      "SALES_REP": "D. Mellor",
+      "CUST_NAME": "Brindley Fabrications",
+      "ACCTS_EMAIL": "accounts.quinn1@trade.example.com",
+      "LEGACY_REF": "L/1044",
+      "REGION": "MID",
+      "ACCT_STAT": "H",
+      "SEQ": 9,
+      "CNTCT_EMAIL": "felix.quinn@trade.example.com"
+    },
+    {
+      "CONTACT": "Isaac Bennett",
+      "CUST_NO": "C40229",
+      "REGION": "NW",
+      "LAST_ORD_DATE": "01/05/2026",
+      "OPEN_DATE": "24/04/2001",
+      "ACCTS_EMAIL": "accounts.bennett2@trade.example.com",
+      "CREDIT_STAT": "OK",
+      "ACCT_ID": 900468,
+      "SEQ": 10,
+      "ACCT_STAT": "C",
+      "LEGACY_REF": null,
+      "TEL": "01700 446381",
+      "PRICE_GRP": "DISTRIB",
+      "CNTCT_EMAIL": "isaac.bennett@trade.example.com",
+      "SALES_REP": "G. Pickering",
+      "CUST_NAME": "Northgate Joinery",
+      "CTRY": "GB"
+    },
+    {
+      "LAST_ORD_DATE": "30/05/2026",
+      "CNTCT_EMAIL": "hannah.price@trade.example.com",
+      "CONTACT": "Hannah Price",
+      "SEQ": 11,
+      "ACCT_ID": 900473,
+      "SALES_REP": "S. Akhtar",
+      "CUST_NO": "C40246",
+      "REGION": "MID",
+      "CREDIT_STAT": "STOP",
+      "LEGACY_REF": null,
+      "OPEN_DATE": "17/08/2015",
+      "CUST_NAME": "  Ashby Marine Services",
+      "PRICE_GRP": "KEY ACC",
+      "ACCT_STAT": "X",
+      "ACCTS_EMAIL": "accounts.price3@trade.example.com",
+      "TEL": "01674 682594"
+    },
+    {
+      "ACCT_STAT": "A",
+      "OPEN_DATE": "24/11/2005",
+      "ACCT_ID": 900483,
+      "LEGACY_REF": "L/1056",
+      "PRICE_GRP": "CASH",
+      "SALES_REP": "S. Akhtar",
+      "CUST_NAME": "Ashby Marine Services",
+      "TEL": "01206 528804",
+      "CNTCT_EMAIL": "emma.ward@trade.example.com",
+      "CTRY": "FR",
+      "CONTACT": "Emma Ward",
+      "ACCTS_EMAIL": "accounts.ward4@trade.example.com",
+      "CREDIT_STAT": "REVIEW",
+      "SEQ": 12,
+      "LAST_ORD_DATE": "26/08/2026",
+      "CUST_NO": "C40264",
+      "REGION": "NW"
+    },
+    {
+      "SEQ": 13,
+      "CONTACT": "Owen Hayes",
+      "CTRY": "IE",
+      "CUST_NAME": "Calder Agricultural",
+      "CREDIT_STAT": "OK",
+      "ACCT_ID": 900486,
+      "LEGACY_REF": "L/1061",
+      "CNTCT_EMAIL": "Owen.Hayes@Trade.Example.Com",
+      "CUST_NO": "C40277",
+      "SALES_REP": "S. Akhtar",
+      "PRICE_GRP": "TRADE",
+      "ACCTS_EMAIL": "accounts.hayes5@trade.example.com",
+      "OPEN_DATE": "04/02/2002",
+      "REGION": "MID",
+      "LAST_ORD_DATE": "30/04/2026",
+      "ACCT_STAT": "A"
+    },
+    {
+      "REGION": "NW",
+      "CREDIT_STAT": "OK",
+      "SALES_REP": "S. Akhtar",
+      "CNTCT_EMAIL": "Owen.Marsh@Trade.Example.Com",
+      "LEGACY_REF": "L/1069",
+      "SEQ": 14,
+      "CUST_NO": "C40280",
+      "ACCT_ID": 900494,
+      "OPEN_DATE": "21/12/2024",
+      "PRICE_GRP": "TRADE",
+      "TEL": "01416 841612",
+      "ACCT_STAT": "C",
+      "LAST_ORD_DATE": "21/05/2026",
+      "ACCTS_EMAIL": "accounts.marsh6@trade.example.com",
+      "CONTACT": "Owen Marsh",
+      "CUST_NAME": "Northgate Joinery",
+      "CTRY": "GB"
+    },
+    {
+      "REGION": "NW",
+      "OPEN_DATE": "23/10/2023",
+      "CONTACT": "Zoe Sutton",
+      "SEQ": 15,
+      "TEL": "01180 703439",
+      "ACCT_ID": 900499,
+      "ACCTS_EMAIL": "accounts.sutton0@trade.example.com",
+      "SALES_REP": "D. Mellor",
+      "CUST_NAME": " Brindley Fabrications  ",
+      "CUST_NO": "C40293",
+      "PRICE_GRP": "DISTRIB",
+      "CREDIT_STAT": "OK",
+      "LAST_ORD_DATE": "06/01/2026",
+      "CTRY": "IE",
+      "CNTCT_EMAIL": "zoe.sutton@trade.example.com",
+      "ACCT_STAT": "H",
+      "LEGACY_REF": null
+    },
+    {
+      "ACCTS_EMAIL": "accounts.sullivan1@trade.example.com",
+      "CONTACT": "Ruby Sullivan",
+      "ACCT_STAT": "A",
+      "OPEN_DATE": "06/04/2011",
+      "SEQ": 16,
+      "LEGACY_REF": null,
+      "CUST_NAME": "Brindley Fabrications",
+      "CNTCT_EMAIL": "ruby.sullivan@trade.example.com",
+      "SALES_REP": "D. Mellor",
+      "PRICE_GRP": "CASH",
+      "CREDIT_STAT": "OK",
+      "LAST_ORD_DATE": "05/09/2026",
+      "ACCT_ID": 900508,
+      "REGION": "SW",
+      "CUST_NO": "C40305",
+      "CTRY": "IE"
+    },
+    {
+      "CUST_NO": "C40325",
+      "LEGACY_REF": "L/1084",
+      "REGION": "NW",
+      "CNTCT_EMAIL": "grace.price@trade.example.com",
+      "LAST_ORD_DATE": "03/05/2026",
+      "CONTACT": "Grace Price",
+      "ACCT_ID": 900514,
+      "ACCT_STAT": "A",
+      "PRICE_GRP": "CASH",
+      "SALES_REP": "G. Pickering",
+      "CREDIT_STAT": "OK",
+      "ACCTS_EMAIL": "accounts.price2@trade.example.com",
+      "CUST_NAME": "Ashby Marine Services",
+      "SEQ": 17,
+      "CTRY": null,
+      "OPEN_DATE": "29/01/2006",
+      "TEL": "01002 777840"
+    },
+    {
+      "SALES_REP": "D. Mellor",
+      "ACCT_STAT": "H",
+      "CONTACT": "Chloe Ward",
+      "LAST_ORD_DATE": "24/08/2026",
+      "LEGACY_REF": "L/1090",
+      "ACCT_ID": 900524,
+      "PRICE_GRP": "CASH",
+      "CUST_NO": "C40336",
+      "SEQ": 18,
+      "CNTCT_EMAIL": "chloe.ward@trade.example.com",
+      "CTRY": "GB",
+      "REGION": "NW",
+      "OPEN_DATE": "16/12/2015",
+      "CUST_NAME": "Hartley Engineering Ltd",
+      "ACCTS_EMAIL": "accounts.ward3@trade.example.com",
+      "CREDIT_STAT": "REVIEW",
+      "TEL": "01011 918588"
+    },
+    {
+      "CTRY": "FR",
+      "ACCT_ID": 900532,
+      "OPEN_DATE": "14/07/2024",
+      "SEQ": 19,
+      "CUST_NO": "C40349",
+      "LEGACY_REF": "L/1092",
+      "SALES_REP": "G. Pickering",
+      "LAST_ORD_DATE": "08/05/2026",
+      "CUST_NAME": "Northgate Joinery",
+      "ACCTS_EMAIL": "accounts.foster4@trade.example.com",
+      "TEL": "01363 786450",
+      "CNTCT_EMAIL": "henry.foster@trade.example.com",
+      "PRICE_GRP": "KEY ACC",
+      "ACCT_STAT": "C",
+      "CREDIT_STAT": "OK",
+      "REGION": "NW",
+      "CONTACT": "Henry Foster"
+    },
+    {
+      "PRICE_GRP": "DISTRIB",
+      "CNTCT_EMAIL": "grace.ward@trade.example.com",
+      "LEGACY_REF": "L/1099",
+      "REGION": "SW",
+      "CONTACT": "Grace Ward",
+      "CUST_NAME": "Severn Pumps Ltd",
+      "SALES_REP": "G. Pickering",
+      "CUST_NO": "C40359",
+      "OPEN_DATE": "11/05/2011",
+      "CTRY": "GB",
+      "ACCT_ID": 900534,
+      "ACCT_STAT": "C",
+      "TEL": "01463 272429",
+      "LAST_ORD_DATE": "05/03/2026",
+      "SEQ": 20,
+      "CREDIT_STAT": "REVIEW",
+      "ACCTS_EMAIL": "accounts.ward5@trade.example.com"
+    },
+    {
+      "CTRY": "GB",
+      "LEGACY_REF": "L/1102",
+      "TEL": "01544 298784",
+      "REGION": "MID",
+      "SALES_REP": "D. Mellor",
+      "PRICE_GRP": "TRADE",
+      "CREDIT_STAT": "STOP",
+      "CNTCT_EMAIL": "Olivia.Quinn@Trade.Example.Com",
+      "CUST_NO": "C40374",
+      "ACCT_ID": 900541,
+      "ACCT_STAT": "A",
+      "CONTACT": "Olivia Quinn",
+      "OPEN_DATE": "21/05/2016",
+      "CUST_NAME": "Ashby Marine Services",
+      "LAST_ORD_DATE": "17/04/2026",
+      "SEQ": 21,
+      "ACCTS_EMAIL": "accounts.quinn6@trade.example.com"
+    },
+    {
+      "CTRY": "GB",
+      "OPEN_DATE": "31/03/2010",
+      "CNTCT_EMAIL": "isaac.sullivan@trade.example.com",
+      "PRICE_GRP": "TRADE",
+      "CREDIT_STAT": "OK",
+      "CONTACT": "Isaac Sullivan",
+      "CUST_NAME": "Brindley Fabrications",
+      "ACCT_STAT": "A",
+      "LEGACY_REF": "L/1109",
+      "ACCTS_EMAIL": "accounts.sullivan0@trade.example.com",
+      "CUST_NO": "C40391",
+      "REGION": "SW",
+      "ACCT_ID": 900547,
+      "SALES_REP": "D. Mellor",
+      "TEL": "01625 434964",
+      "LAST_ORD_DATE": "25/10/2026",
+      "SEQ": 22
+    },
+    {
+      "OPEN_DATE": "21/09/2001",
+      "ACCTS_EMAIL": "accounts.price1@trade.example.com",
+      "CONTACT": "Liam Price",
+      "LAST_ORD_DATE": "24/06/2026",
+      "PRICE_GRP": "TRADE",
+      "CUST_NAME": "Calder Agricultural",
+      "LEGACY_REF": "L/1114",
+      "CREDIT_STAT": "OK",
+      "TEL": "01500 723847",
+      "SALES_REP": "D. Mellor",
+      "SEQ": 23,
+      "ACCT_ID": 900559,
+      "REGION": "SW",
+      "CNTCT_EMAIL": "Liam.Price@Trade.Example.Com",
+      "ACCT_STAT": "C",
+      "CTRY": "GB",
+      "CUST_NO": "C40397"
+    },
+    {
+      "ACCT_ID": 900564,
+      "CTRY": "GB",
+      "ACCT_STAT": "A",
+      "REGION": "EXP",
+      "CNTCT_EMAIL": "ava.quinn@trade.example.com",
+      "LAST_ORD_DATE": "26/01/2026",
+      "SALES_REP": "G. Pickering",
+      "CUST_NAME": "Ashby Marine Services",
+      "LEGACY_REF": null,
+      "CREDIT_STAT": "REVIEW",
+      "CONTACT": "Ava Quinn",
+      "SEQ": 24,
+      "ACCTS_EMAIL": "accounts.quinn2@trade.example.com",
+      "CUST_NO": "C40420",
+      "PRICE_GRP": "KEY ACC",
+      "OPEN_DATE": "09/04/2014"
+    },
+    {
+      "CUST_NAME": "Ashby Marine Services",
+      "CUST_NO": "C40434",
+      "SEQ": 25,
+      "ACCT_ID": 900571,
+      "REGION": "MID",
+      "LEGACY_REF": null,
+      "SALES_REP": "G. Pickering",
+      "CTRY": "IE",
+      "CONTACT": "Zoe Carter",
+      "CREDIT_STAT": "STOP",
+      "TEL": "01181 478017",
+      "OPEN_DATE": "11/04/2006",
+      "ACCT_STAT": "H",
+      "ACCTS_EMAIL": "accounts.carter3@trade.example.com",
+      "PRICE_GRP": "TRADE",
+      "CNTCT_EMAIL": "zoe.carter@trade.example.com",
+      "LAST_ORD_DATE": "17/04/2026"
+    },
+    {
+      "CONTACT": "Caleb Bennett",
+      "TEL": "01711 985152",
+      "CUST_NO": "C40446",
+      "ACCT_STAT": "H",
+      "CUST_NAME": "Severn Pumps Ltd",
+      "LAST_ORD_DATE": "11/04/2026",
+      "SALES_REP": "G. Pickering",
+      "ACCTS_EMAIL": "accounts.bennett4@trade.example.com",
+      "CTRY": "FR",
+      "OPEN_DATE": "17/09/2021",
+      "REGION": "EXP",
+      "ACCT_ID": 900580,
+      "CREDIT_STAT": "STOP",
+      "CNTCT_EMAIL": "caleb.bennett@trade.example.com",
+      "PRICE_GRP": "KEY ACC",
+      "SEQ": 26,
+      "LEGACY_REF": null
+    },
+    {
+      "OPEN_DATE": "09/10/2022",
+      "REGION": "SW",
+      "TEL": "01204 811947",
+      "CUST_NAME": "Hartley Engineering Ltd",
+      "LAST_ORD_DATE": "26/09/2026",
+      "SEQ": 27,
+      "SALES_REP": "G. Pickering",
+      "PRICE_GRP": "DISTRIB",
+      "ACCT_ID": 900585,
+      "CNTCT_EMAIL": "noah.barnes@trade.example.com",
+      "LEGACY_REF": null,
+      "CTRY": "GB",
+      "CUST_NO": "C40453",
+      "ACCT_STAT": "X",
+      "CONTACT": "Noah Barnes",
+      "CREDIT_STAT": "OK",
+      "ACCTS_EMAIL": "accounts.barnes5@trade.example.com"
+    },
+    {
+      "CUST_NAME": " Severn Pumps Ltd  ",
+      "REGION": "MID",
+      "PRICE_GRP": "CASH",
+      "CNTCT_EMAIL": "emma.reed@trade.example.com",
+      "ACCT_ID": 900593,
+      "ACCTS_EMAIL": "accounts.reed6@trade.example.com",
+      "CONTACT": "Emma Reed",
+      "CREDIT_STAT": "STOP",
+      "LEGACY_REF": "L/1137",
+      "CUST_NO": "C40467",
+      "SEQ": 28,
+      "SALES_REP": "S. Akhtar",
+      "TEL": null,
+      "CTRY": "IE",
+      "ACCT_STAT": "A",
+      "LAST_ORD_DATE": "08/10/2026",
+      "OPEN_DATE": "27/01/2003"
+    },
+    {
+      "OPEN_DATE": "18/12/2023",
+      "LEGACY_REF": "L/1142",
+      "TEL": "01481 788537",
+      "SEQ": 29,
+      "PRICE_GRP": "KEY ACC",
+      "REGION": "NW",
+      "ACCTS_EMAIL": "accounts.price0@trade.example.com",
+      "SALES_REP": "S. Akhtar",
+      "CREDIT_STAT": "STOP",
+      "CTRY": "GB",
+      "CONTACT": "Isaac Price",
+      "LAST_ORD_DATE": "07/06/2026",
+      "CUST_NAME": "Ashby Marine Services",
+      "ACCT_ID": 900599,
+      "ACCT_STAT": "X",
+      "CNTCT_EMAIL": "isaac.price@trade.example.com",
+      "CUST_NO": "C40479"
+    },
+    {
+      "CNTCT_EMAIL": "emma.hayes@trade.example.com",
+      "REGION": "NW",
+      "ACCT_ID": 900609,
+      "ACCTS_EMAIL": "accounts.hayes1@trade.example.com",
+      "OPEN_DATE": "11/11/2017",
+      "SEQ": 30,
+      "CONTACT": "Emma Hayes",
+      "CUST_NO": "C40487",
+      "ACCT_STAT": "H",
+      "PRICE_GRP": "CASH",
+      "LAST_ORD_DATE": "10/01/2026",
+      "CTRY": null,
+      "LEGACY_REF": "L/1149",
+      "CUST_NAME": "Ashby Marine Services",
+      "SALES_REP": "G. Pickering",
+      "CREDIT_STAT": "STOP",
+      "TEL": "01908 927653"
+    },
+    {
+      "SALES_REP": "G. Pickering",
+      "REGION": "SW",
+      "PRICE_GRP": "TRADE",
+      "CONTACT": "Olivia Pearce",
+      "OPEN_DATE": "20/05/2021",
+      "ACCT_ID": 900613,
+      "CREDIT_STAT": "REVIEW",
+      "SEQ": 31,
+      "LAST_ORD_DATE": "03/01/2026",
+      "TEL": "01555 321143",
+      "ACCT_STAT": "A",
+      "CUST_NO": "C40511",
+      "CNTCT_EMAIL": "olivia.pearce@trade.example.com",
+      "CUST_NAME": "Hartley Engineering Ltd",
+      "ACCTS_EMAIL": "accounts.pearce2@trade.example.com",
+      "LEGACY_REF": "L/1151"
+    },
+    {
+      "CNTCT_EMAIL": "ava.fletcher@trade.example.com",
+      "ACCT_STAT": "H",
+      "OPEN_DATE": "07/12/2020",
+      "SALES_REP": "S. Akhtar",
+      "CTRY": "FR",
+      "CUST_NO": "C40516",
+      "TEL": null,
+      "ACCTS_EMAIL": "accounts.fletcher3@trade.example.com",
+      "REGION": "SW",
+      "SEQ": 32,
+      "CUST_NAME": "Northgate Joinery   ",
+      "ACCT_ID": 900618,
+      "LEGACY_REF": "L/1160",
+      "LAST_ORD_DATE": "29/05/2026",
+      "CREDIT_STAT": "STOP",
+      "PRICE_GRP": "KEY ACC",
+      "CONTACT": "Ava Fletcher"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "external_id": {
+        "type": "string",
+        "description": "Identifier of the organization in the system of record."
+      },
+      "name": {
+        "type": "string",
+        "description": "Name of the organization."
+      },
+      "contact_name": {
+        "type": "string",
+        "description": "Full name of the main contact at the organization."
+      },
+      "contact_email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address of the main contact."
+      },
+      "phone": {
+        "type": "string",
+        "description": "Main phone line of the organization."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "on_hold",
+          "closed"
+        ],
+        "description": "Status."
+      },
+      "tier": {
+        "type": "string",
+        "enum": [
+          "standard",
+          "key_account",
+          "partner"
+        ],
+        "description": "Commercial tier of the organization."
+      },
+      "customer_since": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the organization opened its account."
+      },
+      "country": {
+        "type": "string",
+        "enum": [
+          "GB",
+          "IE",
+          "FR"
+        ],
+        "description": "Country of the organization's head office."
+      },
+      "sla_level": {
+        "type": "string",
+        "enum": [
+          "standard",
+          "premium"
+        ]
+      }
+    },
+    "required": [
+      "external_id",
+      "name",
+      "contact_email",
+      "status"
+    ]
+  },
+  "groundTruth": {
+    "external_id": {
+      "source": "CUST_NO",
+      "transform": "copy",
+      "why": "customer number; ACCT_ID is the ERP's internal key"
+    },
+    "name": {
+      "source": "CUST_NAME",
+      "transform": "trim",
+      "why": "company name, padded; CONTACT is a person"
+    },
+    "contact_name": {
+      "source": "CONTACT",
+      "transform": "copy",
+      "why": "contact person; SALES_REP is the account owner"
+    },
+    "contact_email": {
+      "source": "CNTCT_EMAIL",
+      "transform": "normalize_email",
+      "why": "contact email, mixed case; ACCTS_EMAIL is the ledger mailbox"
+    },
+    "phone": {
+      "source": "TEL",
+      "transform": "copy",
+      "why": "phone, null or missing"
+    },
+    "status": {
+      "source": "ACCT_STAT",
+      "transform": "map_enum",
+      "categoryMap": {
+        "A": "active",
+        "H": "on_hold",
+        "C": "closed",
+        "X": null
+      },
+      "why": "account code; X marks deleted records that need review; CREDIT_STAT is credit control"
+    },
+    "tier": {
+      "source": "PRICE_GRP",
+      "transform": "map_enum",
+      "categoryMap": {
+        "TRADE": "standard",
+        "KEY ACC": "key_account",
+        "DISTRIB": "partner",
+        "CASH": "standard"
+      },
+      "why": "price group"
+    },
+    "customer_since": {
+      "source": "OPEN_DATE",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "account open date (UK day-first)"
+    },
+    "country": {
+      "source": "CTRY",
+      "transform": "map_enum",
+      "categoryMap": {
+        "GB": "GB",
+        "IE": "IE",
+        "FR": "FR"
+      },
+      "why": "country code, null or missing"
+    },
+    "sla_level": {
+      "source": null,
+      "transform": "none",
+      "why": "no SLA is exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "ACCT_STAT",
+        "CREDIT_STAT"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "CUST_NO",
+        "ACCT_ID"
+      ],
+      "correctFor": "external_id"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "CUST_NO",
+        "LEGACY_REF"
+      ],
+      "correctFor": "external_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "CUST_NAME",
+        "CONTACT"
+      ],
+      "correctFor": "name"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "CNTCT_EMAIL",
+        "ACCTS_EMAIL"
+      ],
+      "correctFor": "contact_email"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "OPEN_DATE",
+        "LAST_ORD_DATE"
+      ],
+      "correctFor": "customer_since"
+    }
+  ],
+  "sourceConcepts": {
+    "CUST_NO": "customer-id",
+    "ACCT_ID": "other-identifier",
+    "SEQ": "other-identifier",
+    "LEGACY_REF": "other-identifier",
+    "CUST_NAME": "organization-name",
+    "CONTACT": "person-name",
+    "CNTCT_EMAIL": "email",
+    "ACCTS_EMAIL": "email",
+    "TEL": "phone",
+    "ACCT_STAT": "account-status",
+    "CREDIT_STAT": "payment-status",
+    "PRICE_GRP": "category",
+    "SALES_REP": "person-name",
+    "OPEN_DATE": "start-date",
+    "LAST_ORD_DATE": "other",
+    "CTRY": "other",
+    "REGION": "other"
+  },
+  "destinationConcepts": {
+    "external_id": "customer-id",
+    "name": "organization-name",
+    "contact_name": "person-name",
+    "contact_email": "email",
+    "phone": "phone",
+    "status": "account-status",
+    "tier": "category",
+    "customer_since": "start-date",
+    "country": "other",
+    "sla_level": "category"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 0,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 2,
+      "outcome": "transformed",
+      "output": {
+        "external_id": "C40145",
+        "name": "Severn Pumps Ltd",
+        "contact_name": "Grace Pearce",
+        "contact_email": "grace.pearce@trade.example.com",
+        "phone": "01702 659960",
+        "status": "active",
+        "tier": "key_account",
+        "customer_since": "2017-07-13",
+        "country": "GB"
+      }
+    },
+    {
+      "recordIndex": 7,
+      "outcome": "transformed",
+      "output": {
+        "external_id": "C40202",
+        "name": "Severn Pumps Ltd",
+        "contact_name": "Ethan Barnes",
+        "contact_email": "ethan.barnes@trade.example.com",
+        "status": "on_hold",
+        "tier": "partner",
+        "customer_since": "2014-05-20",
+        "country": "IE"
+      }
+    },
+    {
+      "recordIndex": 12,
+      "outcome": "transformed",
+      "output": {
+        "external_id": "C40277",
+        "name": "Calder Agricultural",
+        "contact_name": "Owen Hayes",
+        "contact_email": "owen.hayes@trade.example.com",
+        "status": "active",
+        "tier": "standard",
+        "customer_since": "2002-02-04",
+        "country": "IE"
+      }
+    }
+  ]
+}

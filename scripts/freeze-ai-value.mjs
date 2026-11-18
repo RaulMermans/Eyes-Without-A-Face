@@ -17,7 +17,10 @@
  * fresh holdout only, docs/evaluation/sprint-18a5-planner.md) and `b` (Sprint 18B
  * intent plan, dev + fresh holdout, docs/evaluation/sprint-18b-intent-plan.md).
  *
- * Usage: node scripts/freeze-ai-value.mjs [--set a5|b|c] [--amend "reason"]
+ * Set `d` (Sprint 18D, docs/evaluation/sprint-18d-semantic-intelligence.md): the author's holdout spec
+ * scripts contain holdout ground truth, so they are SEALED with the holdout (one digest, never listed).
+ *
+ * Usage: node scripts/freeze-ai-value.mjs [--set a5|b|c|d] [--amend "reason"]
  */
 import { createHash } from "node:crypto";
 import { execSync } from "node:child_process";
@@ -61,6 +64,17 @@ const SETS = {
     statement:
       "Frozen before any model saw this evaluation set and before the live run. The set was written by an independent author without access to the implementation, prompts or earlier holdouts. The engineer never opened the holdout; the frozen harness and scorer read it and emit aggregates and per-index rows only.",
   },
+  d: {
+    out: "docs/evidence/sprint-18d/semantic-freeze.json",
+    root: "tests/fixtures/eval-18d",
+    preregistration: "docs/evaluation/sprint-18d-semantic-intelligence.md",
+    experiment: "sprint-18d-semantic-intelligence",
+    dev: true,
+    sealed: ["author/specs_holdout_wedge.py", "author/specs_holdout_general.py"],
+    listed: ["author/lib.py", "author/specs_dev.py", "author/build.py", "author/check.mjs"],
+    statement:
+      "Frozen before any model saw this evaluation set. The set was written by an independent author without access to the implementation, prompts or earlier holdouts. The engineer never opened the holdout or the author's holdout spec scripts (sealed in the holdout digest); the frozen harness and scorer read the holdout and emit aggregates and per-index rows only.",
+  },
 };
 const setIndex = process.argv.indexOf("--set");
 const setName = setIndex >= 0 ? process.argv[setIndex + 1] : "18a";
@@ -80,7 +94,7 @@ const list = (dir) =>
     .map((name) => path.join(root, dir, name));
 
 export function holdoutDigest() {
-  const files = list("holdout");
+  const files = [...list("holdout"), ...(SET.sealed ?? []).map((name) => path.join(root, name))];
   return { count: files.length, sha256: sha(files.map((file) => sha(fs.readFileSync(file))).join("\n")) };
 }
 
@@ -104,7 +118,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     frozenFromCommit: previous?.frozenFromCommit ?? execSync("git rev-parse HEAD").toString().trim(),
     statement: SET.statement,
     preregistration: { path: preregistration, sha256AboveResults: preregistrationDigest() },
-    files: Object.fromEntries([path.join(root, "README.md"), ...(SET.dev ? list("dev") : [])].map((file) => [file, sha(fs.readFileSync(file))])),
+    files: Object.fromEntries([path.join(root, "README.md"), ...(SET.dev ? list("dev") : []), ...(SET.listed ?? []).map((name) => path.join(root, name))].map((file) => [file, sha(fs.readFileSync(file))])),
     holdout: holdoutDigest(),
     amendments: [...(previous?.amendments ?? [])],
   };

@@ -105,6 +105,10 @@ export function findPrivateValueLeaks(
       findings.push({ location: `/entities/${index}` });
     }
   });
+  // Sprint 18D (1.4.0): destination descriptions are sanitized before projection; scan them again here.
+  (payload.target?.fields ?? []).forEach((field, index) => {
+    if (field.description !== undefined && containsPrivate(field.description)) findings.push({ location: `/target/fields/${index}/description` });
+  });
   (payload.disclosureConstraints ?? []).forEach((constraint, index) => {
     if (containsPrivate(constraint, ownedWholeSpan(constraint))) findings.push({ location: `/disclosureConstraints/${index}` });
   });

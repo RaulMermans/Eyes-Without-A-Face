@@ -1,0 +1,721 @@
+{
+  "scenarioId": "home-alarm-subscribers-to-support-contacts",
+  "split": "holdout",
+  "track": "wedge",
+  "industry": "home alarm monitoring subscribers",
+  "sourceLanguage": "nl",
+  "description": "Subscriber export of a fictional alarm-monitoring company (Dutch PascalCase, nested keyholder) to be loaded as support contacts; the subscriber's own phone number is not exported.",
+  "fictional": true,
+  "completable": false,
+  "records": [
+    {
+      "LaatsteAlarm": "12/05/2025",
+      "MeldkamerTelefoon": "088 555 0199",
+      "Voornaam": "Sanne",
+      "Abonnementsnummer": "ABO-300224",
+      "Taal": "Nederlands",
+      "Klantnummer": "AB70426",
+      "StartDatum": "11/08/2021",
+      "Regelnr": 1,
+      "Sleutelhouder": {
+        "Naam": "Sanne Brouwer",
+        "Telefoon": "06-25502431"
+      },
+      "Pakket": "Bewaking + Camera",
+      "AbonnementStatus": "Opgezegd",
+      "Installateur": "Fatima Ouali",
+      "Betaalstatus": "Incasso mislukt",
+      "Email": "Sanne.Brouwer@Thuis.Example.Net",
+      "Achternaam": "Brouwer"
+    },
+    {
+      "Email": "noor.brouwer@thuis.example.net",
+      "Voornaam": "Noor",
+      "AbonnementStatus": "Actief",
+      "StartDatum": "01/01/2018",
+      "Sleutelhouder": {
+        "Telefoon": "06-01127655",
+        "Naam": "Noor Brouwer"
+      },
+      "Taal": "Engels",
+      "Betaalstatus": "Betaald",
+      "Pakket": "Bedrijfspand Plus",
+      "Achternaam": "Brouwer",
+      "Installateur": "Wim Timmer",
+      "MeldkamerTelefoon": "088 555 0100",
+      "Klantnummer": "AB70433",
+      "LaatsteAlarm": "04/04/2025",
+      "Abonnementsnummer": "ABO-300255",
+      "Regelnr": 2
+    },
+    {
+      "Installateur": "Fatima Ouali",
+      "StartDatum": "10/01/2022",
+      "Email": "jesse.vandijk@thuis.example.net",
+      "Betaalstatus": "Betaald",
+      "Voornaam": "Jesse",
+      "AbonnementStatus": "Opgeschort",
+      "Pakket": "Bewaking + Camera",
+      "Achternaam": "van Dijk",
+      "Taal": "Nederlands",
+      "Klantnummer": "AB70443",
+      "LaatsteAlarm": "10/10/2026",
+      "Abonnementsnummer": "ABO-300285",
+      "Regelnr": 3,
+      "Sleutelhouder": {
+        "Telefoon": "06-84418555",
+        "Naam": "Jesse van Dijk"
+      },
+      "MeldkamerTelefoon": "088 555 0199"
+    },
+    {
+      "Betaalstatus": "Herinnering",
+      "Pakket": "Basis Bewaking",
+      "Regelnr": 4,
+      "Sleutelhouder": {
+        "Telefoon": "06-88974493",
+        "Naam": "Noor de Boer"
+      },
+      "Abonnementsnummer": "ABO-300317",
+      "StartDatum": "11/08/2016",
+      "Achternaam": "de Boer",
+      "Installateur": "Fatima Ouali",
+      "MeldkamerTelefoon": "088 555 0100",
+      "Voornaam": "Noor",
+      "Email": "noor.deboer@thuis.example.net",
+      "LaatsteAlarm": "02/09/2025",
+      "AbonnementStatus": "Opgeschort",
+      "Klantnummer": "AB70444",
+      "Taal": "Nederlands"
+    },
+    {
+      "Installateur": "Gerrit Hoekstra",
+      "Regelnr": 5,
+      "AbonnementStatus": "Opgeschort",
+      "StartDatum": "11/09/2013",
+      "Klantnummer": "AB70456",
+      "Pakket": "Bewaking + Camera",
+      "Taal": "Nederlands",
+      "Betaalstatus": "Betaald",
+      "Email": "thijs.brouwer@thuis.example.net",
+      "Voornaam": "Thijs",
+      "MeldkamerTelefoon": "088 555 0199",
+      "Achternaam": "Brouwer",
+      "Abonnementsnummer": "ABO-300354",
+      "LaatsteAlarm": "01/07/2025",
+      "Sleutelhouder": {
+        "Naam": "Thijs Brouwer",
+        "Telefoon": "06-83326026"
+      }
+    },
+    {
+      "Klantnummer": "AB70467",
+      "Pakket": "Basis Bewaking",
+      "StartDatum": "06/04/2023",
+      "Abonnementsnummer": "ABO-300379",
+      "Betaalstatus": "Herinnering",
+      "Regelnr": 6,
+      "Email": "daan.vandijk@thuis.example.net",
+      "Voornaam": "Daan",
+      "AbonnementStatus": "Opgeschort",
+      "Taal": "Nederlands",
+      "Achternaam": "van Dijk",
+      "Sleutelhouder": {
+        "Telefoon": "06-36150288",
+        "Naam": "Daan van Dijk"
+      },
+      "MeldkamerTelefoon": "088 555 0199",
+      "LaatsteAlarm": "04/12/2025",
+      "Installateur": "Wim Timmer"
+    },
+    {
+      "MeldkamerTelefoon": "088 555 0100",
+      "Email": "jesse.vanleeuwen@thuis.example.net",
+      "Klantnummer": "AB70473",
+      "Voornaam": "Jesse",
+      "Pakket": "Bedrijfspand Plus",
+      "Achternaam": "van Leeuwen",
+      "StartDatum": "05/05/2018",
+      "Taal": "Nederlands",
+      "Abonnementsnummer": "ABO-300386",
+      "LaatsteAlarm": "02/03/2026",
+      "Regelnr": 7,
+      "Sleutelhouder": {
+        "Naam": "Jesse van Leeuwen",
+        "Telefoon": "06-59881412"
+      },
+      "Installateur": "Gerrit Hoekstra",
+      "Betaalstatus": "Betaald",
+      "AbonnementStatus": "Opgeschort"
+    },
+    {
+      "Email": "Ruben.Peters@Thuis.Example.Net",
+      "StartDatum": "03/09/2024",
+      "LaatsteAlarm": "05/09/2026",
+      "Voornaam": "Ruben",
+      "Taal": "Nederlands",
+      "Achternaam": "Peters",
+      "MeldkamerTelefoon": "088 555 0100",
+      "AbonnementStatus": "Opgezegd",
+      "Klantnummer": "AB70481",
+      "Installateur": "Wim Timmer",
+      "Pakket": "Bewaking + Camera",
+      "Regelnr": 8,
+      "Abonnementsnummer": "ABO-300436",
+      "Betaalstatus": "Incasso mislukt",
+      "Sleutelhouder": {
+        "Telefoon": "06-10842880",
+        "Naam": "Ruben Peters"
+      }
+    },
+    {
+      "Achternaam": "Bakker",
+      "Voornaam": "Ruben",
+      "MeldkamerTelefoon": "088 555 0199",
+      "Email": "ruben.bakker@thuis.example.net",
+      "StartDatum": "08/03/2025",
+      "LaatsteAlarm": "02/11/2025",
+      "Installateur": "Gerrit Hoekstra",
+      "Taal": "Engels",
+      "Regelnr": 9,
+      "Pakket": "Basis Bewaking",
+      "Abonnementsnummer": "ABO-300447",
+      "Sleutelhouder": {
+        "Naam": "Ruben Bakker",
+        "Telefoon": "06-10718263"
+      },
+      "Klantnummer": "AB70486",
+      "AbonnementStatus": "Actief",
+      "Betaalstatus": "Herinnering"
+    },
+    {
+      "Achternaam": "de Groot",
+      "Taal": "Engels",
+      "Voornaam": "Sophie",
+      "MeldkamerTelefoon": "088 555 0199",
+      "LaatsteAlarm": "04/08/2026",
+      "Betaalstatus": "Betaald",
+      "Email": "sophie.degroot@thuis.example.net",
+      "Sleutelhouder": {
+        "Telefoon": "06-50024205",
+        "Naam": "Sophie de Groot"
+      },
+      "Regelnr": 10,
+      "Klantnummer": "AB70494",
+      "StartDatum": "10/05/2019",
+      "Abonnementsnummer": "ABO-300481",
+      "AbonnementStatus": "Opgeschort",
+      "Installateur": "Fatima Ouali",
+      "Pakket": "Bedrijfspand Plus"
+    },
+    {
+      "LaatsteAlarm": "02/06/2025",
+      "Sleutelhouder": {
+        "Telefoon": "06-63235803",
+        "Naam": "Noor Vos"
+      },
+      "AbonnementStatus": "Proefperiode intern",
+      "Klantnummer": "AB70504",
+      "Voornaam": "Noor",
+      "Abonnementsnummer": "ABO-300509",
+      "Achternaam": "Vos",
+      "StartDatum": "07/01/2013",
+      "Regelnr": 11,
+      "Email": "noor.vos@thuis.example.net",
+      "Installateur": "Gerrit Hoekstra",
+      "Betaalstatus": "Incasso mislukt",
+      "MeldkamerTelefoon": "088 555 0100",
+      "Taal": "Nederlands",
+      "Pakket": "Bedrijfspand Plus"
+    },
+    {
+      "Email": "Sem.Vos@Thuis.Example.Net",
+      "Voornaam": "Sem",
+      "Klantnummer": "AB70513",
+      "Betaalstatus": "Herinnering",
+      "Achternaam": "Vos",
+      "Abonnementsnummer": "ABO-300530",
+      "AbonnementStatus": "Actief",
+      "Regelnr": 12,
+      "Taal": "Nederlands",
+      "Installateur": "Gerrit Hoekstra",
+      "StartDatum": "08/08/2024",
+      "LaatsteAlarm": "12/11/2025",
+      "Sleutelhouder": {
+        "Telefoon": "06-29200471",
+        "Naam": "Sem Vos"
+      },
+      "MeldkamerTelefoon": "088 555 0100",
+      "Pakket": "Basis Bewaking"
+    },
+    {
+      "AbonnementStatus": "Opgeschort",
+      "Voornaam": "Lars",
+      "Abonnementsnummer": "ABO-300583",
+      "Achternaam": "Bos",
+      "StartDatum": "05/10/2022",
+      "Email": "lars.bos@thuis.example.net",
+      "Betaalstatus": "Betaald",
+      "Pakket": "Bewaking + Camera",
+      "MeldkamerTelefoon": "088 555 0199",
+      "LaatsteAlarm": null,
+      "Klantnummer": "AB70516",
+      "Regelnr": 13,
+      "Taal": "Nederlands",
+      "Sleutelhouder": {
+        "Telefoon": "06-41623584",
+        "Naam": "Lars Bos"
+      },
+      "Installateur": "Fatima Ouali"
+    },
+    {
+      "AbonnementStatus": "Proefperiode intern",
+      "Achternaam": "Visser",
+      "Installateur": "Gerrit Hoekstra",
+      "Voornaam": "Thijs",
+      "Sleutelhouder": {
+        "Naam": "Thijs Visser",
+        "Telefoon": "06-82691656"
+      },
+      "Klantnummer": "AB70526",
+      "StartDatum": "08/01/2023",
+      "MeldkamerTelefoon": "088 555 0199",
+      "LaatsteAlarm": "08/01/2026",
+      "Pakket": "Basis Bewaking",
+      "Betaalstatus": "Herinnering",
+      "Email": "thijs.visser@thuis.example.net",
+      "Regelnr": 14,
+      "Abonnementsnummer": "ABO-300602",
+      "Taal": "Nederlands"
+    },
+    {
+      "Pakket": "Basis Bewaking",
+      "Betaalstatus": "Betaald",
+      "Achternaam": "Bakker",
+      "Voornaam": "Lars",
+      "LaatsteAlarm": "12/02/2026",
+      "AbonnementStatus": "Opgezegd",
+      "Email": "lars.bakker@thuis.example.net",
+      "Regelnr": 15,
+      "Klantnummer": "AB70534",
+      "Taal": "Nederlands",
+      "Sleutelhouder": {
+        "Telefoon": "06-27199115",
+        "Naam": "Lars Bakker"
+      },
+      "Abonnementsnummer": "ABO-300641",
+      "StartDatum": "03/12/2013",
+      "Installateur": "Fatima Ouali",
+      "MeldkamerTelefoon": "088 555 0199"
+    },
+    {
+      "Email": "lucas.hendriks@thuis.example.net",
+      "StartDatum": "08/08/2020",
+      "Abonnementsnummer": "ABO-300646",
+      "Taal": "Nederlands",
+      "Achternaam": "Hendriks",
+      "Sleutelhouder": {
+        "Telefoon": "06-78723215",
+        "Naam": "Lucas Hendriks"
+      },
+      "Voornaam": "Lucas",
+      "Installateur": "Wim Timmer",
+      "Klantnummer": "AB70541",
+      "LaatsteAlarm": null,
+      "MeldkamerTelefoon": "088 555 0199",
+      "AbonnementStatus": "Actief",
+      "Regelnr": 16,
+      "Betaalstatus": "Herinnering",
+      "Pakket": "Basis Bewaking"
+    },
+    {
+      "LaatsteAlarm": "01/07/2025",
+      "Abonnementsnummer": "ABO-300686",
+      "Sleutelhouder": {
+        "Telefoon": "06-47995580",
+        "Naam": "Fleur van Leeuwen"
+      },
+      "Betaalstatus": "Betaald",
+      "AbonnementStatus": "Actief",
+      "Pakket": "Basis Bewaking",
+      "Achternaam": "van Leeuwen",
+      "Email": "fleur.vanleeuwen@thuis.example.net",
+      "Regelnr": 17,
+      "StartDatum": "05/01/2023",
+      "Taal": "Engels",
+      "Voornaam": "Fleur",
+      "Installateur": "Wim Timmer",
+      "MeldkamerTelefoon": "088 555 0100",
+      "Klantnummer": "AB70549"
+    },
+    {
+      "Taal": "Nederlands",
+      "Betaalstatus": "Herinnering",
+      "Email": "sophie.vanleeuwen@thuis.example.net",
+      "Installateur": "Wim Timmer",
+      "Regelnr": 18,
+      "AbonnementStatus": "Opgeschort",
+      "Abonnementsnummer": "ABO-300709",
+      "Sleutelhouder": {
+        "Telefoon": "06-22269472",
+        "Naam": "Sophie van Leeuwen"
+      },
+      "Pakket": "Bewaking + Camera",
+      "Klantnummer": "AB70560",
+      "Achternaam": "van Leeuwen",
+      "MeldkamerTelefoon": "088 555 0100",
+      "Voornaam": "Sophie",
+      "StartDatum": "07/03/2015",
+      "LaatsteAlarm": "10/05/2026"
+    },
+    {
+      "Betaalstatus": "Incasso mislukt",
+      "AbonnementStatus": "Actief",
+      "MeldkamerTelefoon": "088 555 0100",
+      "Taal": "Nederlands",
+      "Voornaam": "Noor",
+      "Sleutelhouder": {
+        "Telefoon": "06-28744249",
+        "Naam": "Noor Mulder"
+      },
+      "Abonnementsnummer": "ABO-300744",
+      "Klantnummer": "AB70568",
+      "Achternaam": "Mulder",
+      "Regelnr": 19,
+      "LaatsteAlarm": "09/03/2025",
+      "Email": "noor.mulder@thuis.example.net",
+      "Installateur": "Wim Timmer",
+      "Pakket": "Basis Bewaking",
+      "StartDatum": "09/01/2021"
+    },
+    {
+      "Achternaam": "Mulder",
+      "LaatsteAlarm": "08/10/2025",
+      "Voornaam": "Lotte",
+      "Abonnementsnummer": "ABO-300772",
+      "Taal": "Engels",
+      "Installateur": "Gerrit Hoekstra",
+      "AbonnementStatus": "Opgeschort",
+      "Regelnr": 20,
+      "StartDatum": "04/05/2019",
+      "MeldkamerTelefoon": "088 555 0199",
+      "Klantnummer": "AB70578",
+      "Betaalstatus": "Betaald",
+      "Sleutelhouder": {
+        "Naam": "Lotte Mulder",
+        "Telefoon": "06-00925431"
+      },
+      "Email": "lotte.mulder@thuis.example.net",
+      "Pakket": "Bewaking + Camera"
+    },
+    {
+      "Klantnummer": "AB70586",
+      "Sleutelhouder": {
+        "Naam": "Sem van Leeuwen",
+        "Telefoon": "06-97442033"
+      },
+      "Regelnr": 21,
+      "Voornaam": "Sem",
+      "LaatsteAlarm": null,
+      "Email": "sem.vanleeuwen@thuis.example.net",
+      "StartDatum": "03/07/2023",
+      "Pakket": "Bedrijfspand Plus",
+      "Betaalstatus": "Betaald",
+      "Installateur": "Gerrit Hoekstra",
+      "Taal": "Engels",
+      "Abonnementsnummer": "ABO-300798",
+      "Achternaam": "van Leeuwen",
+      "AbonnementStatus": "Actief",
+      "MeldkamerTelefoon": "088 555 0100"
+    },
+    {
+      "Achternaam": "de Wit",
+      "MeldkamerTelefoon": "088 555 0100",
+      "Sleutelhouder": {
+        "Telefoon": "06-41500700",
+        "Naam": "Lucas de Wit"
+      },
+      "AbonnementStatus": "Actief",
+      "LaatsteAlarm": null,
+      "Regelnr": 22,
+      "Installateur": "Gerrit Hoekstra",
+      "Email": "Lucas.Dewit@Thuis.Example.Net",
+      "StartDatum": "06/07/2013",
+      "Taal": "Nederlands",
+      "Betaalstatus": "Incasso mislukt",
+      "Klantnummer": "AB70595",
+      "Pakket": "Basis Bewaking",
+      "Abonnementsnummer": "ABO-300820",
+      "Voornaam": "Lucas"
+    },
+    {
+      "Email": "lars.meijer@thuis.example.net",
+      "StartDatum": "03/03/2013",
+      "LaatsteAlarm": "05/05/2026",
+      "Sleutelhouder": {
+        "Naam": "Lars Meijer",
+        "Telefoon": "06-42384429"
+      },
+      "MeldkamerTelefoon": "088 555 0199",
+      "Klantnummer": "AB70601",
+      "AbonnementStatus": "Proefperiode intern",
+      "Betaalstatus": "Herinnering",
+      "Pakket": "Bewaking + Camera",
+      "Voornaam": "Lars",
+      "Installateur": "Wim Timmer",
+      "Taal": "Nederlands",
+      "Abonnementsnummer": "ABO-300852",
+      "Achternaam": "Meijer",
+      "Regelnr": 23
+    },
+    {
+      "Sleutelhouder": {
+        "Telefoon": "06-46814073",
+        "Naam": "Sanne de Boer"
+      },
+      "Achternaam": "de Boer",
+      "MeldkamerTelefoon": "088 555 0100",
+      "StartDatum": "01/07/2013",
+      "Klantnummer": "AB70606",
+      "AbonnementStatus": "Actief",
+      "Abonnementsnummer": "ABO-300892",
+      "Regelnr": 24,
+      "Pakket": "Bedrijfspand Plus",
+      "LaatsteAlarm": null,
+      "Taal": "Engels",
+      "Installateur": "Fatima Ouali",
+      "Voornaam": "Sanne",
+      "Email": "sanne.deboer@thuis.example.net",
+      "Betaalstatus": "Incasso mislukt"
+    },
+    {
+      "LaatsteAlarm": null,
+      "Klantnummer": "AB70614",
+      "Email": "Jesse.Smit@Thuis.Example.Net",
+      "Sleutelhouder": {
+        "Telefoon": "06-81413162",
+        "Naam": "Jesse Smit"
+      },
+      "MeldkamerTelefoon": "088 555 0100",
+      "Betaalstatus": "Herinnering",
+      "Installateur": "Gerrit Hoekstra",
+      "Pakket": "Bewaking + Camera",
+      "Achternaam": "Smit",
+      "Taal": "Nederlands",
+      "Abonnementsnummer": "ABO-300921",
+      "AbonnementStatus": "Opgezegd",
+      "StartDatum": "05/05/2015",
+      "Voornaam": "Jesse",
+      "Regelnr": 25
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "customer_id": {
+        "type": "string",
+        "description": "Identifier of the contact at the monitoring company."
+      },
+      "first_name": {
+        "type": "string",
+        "description": "Given name of the contact."
+      },
+      "last_name": {
+        "type": "string",
+        "description": "Family name of the contact."
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address of the contact."
+      },
+      "phone": {
+        "type": "string",
+        "description": "The contact's own phone number, used for callbacks after an alarm."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "suspended",
+          "cancelled"
+        ],
+        "description": "Status."
+      },
+      "plan": {
+        "type": "string",
+        "enum": [
+          "basic",
+          "camera",
+          "business"
+        ],
+        "description": "Monitoring package of the contact."
+      },
+      "language": {
+        "type": "string",
+        "enum": [
+          "nl",
+          "en"
+        ],
+        "description": "Language for messages."
+      },
+      "customer_since": {
+        "type": "string",
+        "format": "date",
+        "description": "Date monitoring started for the contact."
+      },
+      "organization": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "customer_id",
+      "first_name",
+      "last_name",
+      "email",
+      "phone",
+      "status"
+    ]
+  },
+  "groundTruth": {
+    "customer_id": {
+      "source": "Klantnummer",
+      "transform": "copy",
+      "why": "customer number; Abonnementsnummer is the subscription"
+    },
+    "first_name": {
+      "source": "Voornaam",
+      "transform": "copy",
+      "why": "given name; Installateur is the technician"
+    },
+    "last_name": {
+      "source": "Achternaam",
+      "transform": "copy",
+      "why": "family name"
+    },
+    "email": {
+      "source": "Email",
+      "transform": "normalize_email",
+      "why": "email, mixed case"
+    },
+    "phone": {
+      "source": null,
+      "transform": "none",
+      "why": "not exported; MeldkamerTelefoon is the control room and Sleutelhouder.Telefoon belongs to the keyholder"
+    },
+    "status": {
+      "source": "AbonnementStatus",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Actief": "active",
+        "Opgeschort": "suspended",
+        "Opgezegd": "cancelled",
+        "Proefperiode intern": null
+      },
+      "why": "subscription state; internal trials need review"
+    },
+    "plan": {
+      "source": "Pakket",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Basis Bewaking": "basic",
+        "Bewaking + Camera": "camera",
+        "Bedrijfspand Plus": "business"
+      },
+      "why": "package"
+    },
+    "language": {
+      "source": "Taal",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Nederlands": "nl",
+        "Engels": "en"
+      },
+      "why": "language"
+    },
+    "customer_since": {
+      "source": "StartDatum",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "start date (Dutch day-first)"
+    },
+    "organization": {
+      "source": null,
+      "transform": "none",
+      "why": "no company is exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "decoy-for-missing-field",
+      "fields": [
+        "MeldkamerTelefoon",
+        "Sleutelhouder.Telefoon"
+      ],
+      "correctFor": "phone"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "AbonnementStatus",
+        "Betaalstatus"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "Klantnummer",
+        "Abonnementsnummer"
+      ],
+      "correctFor": "customer_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "Voornaam",
+        "Sleutelhouder.Naam"
+      ],
+      "correctFor": "first_name"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "StartDatum",
+        "LaatsteAlarm"
+      ],
+      "correctFor": "customer_since"
+    }
+  ],
+  "sourceConcepts": {
+    "Klantnummer": "customer-id",
+    "Abonnementsnummer": "transaction-id",
+    "Regelnr": "other-identifier",
+    "Voornaam": "given-name",
+    "Achternaam": "family-name",
+    "Email": "email",
+    "MeldkamerTelefoon": "phone",
+    "Sleutelhouder.Naam": "person-name",
+    "Sleutelhouder.Telefoon": "phone",
+    "AbonnementStatus": "account-status",
+    "Betaalstatus": "payment-status",
+    "Pakket": "category",
+    "Taal": "language-code",
+    "StartDatum": "start-date",
+    "LaatsteAlarm": "other",
+    "Installateur": "person-name"
+  },
+  "destinationConcepts": {
+    "customer_id": "customer-id",
+    "first_name": "given-name",
+    "last_name": "family-name",
+    "email": "email",
+    "phone": "phone",
+    "status": "account-status",
+    "plan": "category",
+    "language": "language-code",
+    "customer_since": "start-date",
+    "organization": "organization-name"
+  }
+}

@@ -14,7 +14,7 @@
  * EVAL-090 replays the archived real outputs against both schemas.
  */
 import { MAPPING_REVISION_JSON_SCHEMA } from "./prompts.ts";
-import { INTENT_PLAN_JSON_SCHEMA, isIntentPlanRequest } from "./intent-prompt.ts";
+import { INTENT_PLAN_JSON_SCHEMA, isIntentPlanRequest, isRankedPlanRequest, RANKED_PLAN_JSON_SCHEMA } from "./intent-prompt.ts";
 import { INTENT_PLAN_RESPONSE_SCHEMA_ID } from "../plan/types.ts";
 
 /** Schema for initial requests built with the frozen Sprint 3 instructions (planner "mapping-proposal-sprint3"). */
@@ -38,4 +38,13 @@ export type CloudResponseKind = "integration-intent-plan" | "mapping-proposal";
 /** Which answer an outbound prompt asks for. A revision is never a plan request. */
 export function cloudResponseKind(outboundPrompt: string, revision: boolean): CloudResponseKind {
   return !revision && isIntentPlanRequest(outboundPrompt) ? "integration-intent-plan" : "mapping-proposal";
+}
+
+/** Sprint 18D (ADR 0021): prompt v6 is answered with plan 1.1.0 (ranked `alternatives`). */
+export const RANKED_PLAN_RESPONSE_SCHEMA_ID = "integration-intent-plan-2";
+export const RANKED_PLAN_RESPONSE_SCHEMA = RANKED_PLAN_JSON_SCHEMA;
+
+/** The decoder schema for a plan request's prompt. */
+export function planResponseSchemaFor(outboundPrompt: string): typeof INTENT_PLAN_JSON_SCHEMA | typeof RANKED_PLAN_JSON_SCHEMA {
+  return isRankedPlanRequest(outboundPrompt) ? RANKED_PLAN_RESPONSE_SCHEMA : INTENT_PLAN_RESPONSE_SCHEMA;
 }

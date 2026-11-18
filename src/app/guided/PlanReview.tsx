@@ -157,8 +157,8 @@ function Question({
   const target = plan?.targets.find((item) => item.target.name === question.target) ?? null;
   const path = question.localPaths[0] ?? null;
   const candidate = target && path ? (target.candidates.find((item) => item.path === path) ?? null) : null;
-  // Gemini's candidates first, then any other compatible field (local ranking).
-  const options = [...new Set([...question.localPaths, ...(target?.candidates.map((item) => item.path) ?? [])])];
+  // Gemini's candidates first (Sprint 18D: its ranked alternatives and local matcher candidates, ≤ 3), then any other compatible field.
+  const options = [...new Set([...(question.rankedPaths ?? []), ...question.localPaths, ...(target?.candidates.map((item) => item.path) ?? [])])];
   // "Choose another field" (Sprint 15 rule): every other usable field, so the user is never limited to EYES's ranking.
   const others = prepared.profile.fields.filter((field) => field.type !== "unsupported" && !options.includes(field.path)).map((field) => field.path);
 

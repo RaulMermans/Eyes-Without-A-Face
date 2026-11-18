@@ -1,0 +1,29 @@
+# Sprint 18D offline Valentine benchmark. Exact pins (uv pip freeze, CPython 3.12.16). NOT an app dependency.
+# Install into a scratch venv: uv venv -p 3.12 <dir> && VIRTUAL_ENV=<dir> uv pip install -r scripts/bench/valentine/requirements.txt
+annotated-types==0.8.0
+anytree==2.13.0
+cbcbox==2.929
+chardet==7.7.0
+click==8.5.1
+cloudpickle==3.1.2
+cpsat-logutils==1.0.0
+defusedxml==0.7.1
+joblib==1.6.0
+networkx==3.7
+nltk==3.10.4
+numpy==2.5.5
+orloge==1.0.0
+pandas==3.1.1
+pot==0.9.7.post1
+pulp==4.2.0
+pydantic==2.14.3
+pydantic-core==2.50.4
+python-dateutil==4.0.0
+rapidfuzz==3.14.6
+regex==2026.11.18
+scipy==1.18.1
+tqdm==4.70.1
+typing-extensions==4.16.0
+typing-inspection==0.4.5
+tzdata==2026.6
+valentine==1.1.1

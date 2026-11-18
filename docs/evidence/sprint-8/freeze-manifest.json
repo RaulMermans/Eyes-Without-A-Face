@@ -44,7 +44,7 @@
     "src/inference/firebase-api.ts": "6721a4d32f629e0f82f1e515ffa675f7009838f7e0ce2695ba49a27c3f08de6f",
     "src/proposal/convert.ts": "a34e00c8a2cf5c332d2a97d05243af613c54c2c27e33a6c11b8b09fd4974a7ea",
     "src/proposal/resolve.ts": "73094edeb9a3be46c623e1ddb2ded2cb11a70a7f5f783a2ca23667920e3c425d",
-    "src/semantics/contract.ts": "da9efb11a4956a090c9d683eb0d5d806797a0c095b3ab8501d76af24d13f327e",
+    "src/semantics/contract.ts": "41c58a14be127184de66863fd4d47c7eb6c1468ad420d955a5db0536e217d12e",
     "src/semantics/observe.ts": "adec6ccf95c576909034c64a3aca3a2bd6cda95c4f6962e62430fc072e5e9c3f",
     "src/semantics/verify.ts": "9fed4af27699b535b903d926aa2eb916dd6ffe9cc83e4115d569c69760cb54fd",
     "src/revision/feedback.ts": "d4f6dc4e51dfab0f5bd5f7b9d0cd02844246578baf89028832357922a102ef78",
@@ -64,5 +64,11 @@
     "src/examples/scenarios/support-tickets.json": "ee374b3e624b6a1c5aa4659cc1bd39aeb9d27c45a0a0974a77ab8c0c8ca51ba6",
     "src/examples/scenarios/billing-subscriptions.json": "3080e42f43ef2f9ef40792f42e50a9a0793bb0961357029675eb7b6fa2812dd5"
   },
-  "amendments": []
+  "amendments": [
+    {
+      "at": "2026-11-18T06:41:38.516Z",
+      "reason": "Sprint 18D (ADR 0021): destinationEnums reads nested destination enum fields by dotted path; a correct user translation of a nested enum (e.g. profile.locale) was reported as SEMANTIC_POLICY_CONFLICT (TARGET_NOT_IN_DESTINATION). Top-level behaviour unchanged.",
+      "commit": "947f57944dd7ea21c37b6eef17d9a8e782e7567c"
+    }
+  ]
 }

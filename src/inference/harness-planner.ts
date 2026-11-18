@@ -1,4 +1,5 @@
 import { INITIAL_PLANNER, type InitialPlanner } from "./planner-selection.ts";
+import { evaluationHarness } from "./cloud-models.ts";
 
 /**
  * LEGACY-PATH REGRESSION ONLY (Sprint 18B, lead-approved).
@@ -16,11 +17,10 @@ export function effectiveInitialPlanner(
   env: { dev: boolean; harness: { initialPlanner?: unknown } | null | undefined } = currentEnv(),
 ): InitialPlanner {
   if (!env.dev || !env.harness) return INITIAL_PLANNER;
-  return env.harness.initialPlanner === "mapping-proposal-sprint3" ? "mapping-proposal-sprint3" : INITIAL_PLANNER;
+  const asked = env.harness.initialPlanner;
+  return asked === "mapping-proposal-sprint3" || asked === "intent-plan-2" ? asked : INITIAL_PLANNER;
 }
 
 function currentEnv(): { dev: boolean; harness: { initialPlanner?: unknown } | null } {
-  const dev = Boolean(import.meta.env?.DEV);
-  const harness = typeof window === "undefined" ? null : ((window as { __EYES_WITHOUT_A_FACE_TEST__?: { initialPlanner?: unknown } }).__EYES_WITHOUT_A_FACE_TEST__ ?? null);
-  return { dev, harness };
+  return { dev: Boolean(import.meta.env?.DEV), harness: evaluationHarness() };
 }

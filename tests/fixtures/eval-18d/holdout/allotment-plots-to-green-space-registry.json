@@ -1,0 +1,769 @@
+{
+  "scenarioId": "allotment-plots-to-green-space-registry",
+  "split": "holdout",
+  "track": "general",
+  "industry": "allotment garden association plot leases",
+  "sourceLanguage": "nl",
+  "description": "Plot lease export of a fictional allotment garden association (Dutch snake_case, nested plot and tenant) to be loaded into a municipal green-space registry; the plot area is not exported.",
+  "fictional": true,
+  "completable": false,
+  "records": [
+    {
+      "tuintype": "Siertuin",
+      "tuin": {
+        "schuur_m2": 4.6,
+        "breedte_m": 8.7,
+        "nummer": "T-014",
+        "complex": "Complex West",
+        "kas_m2": 11.1,
+        "lengte_m": 23.1
+      },
+      "contributie": "Herinnering",
+      "regel_nr": 1,
+      "status_huur": "Opgezegd",
+      "tuincommissie": "Henk Bos",
+      "startdatum": "04/11/2007",
+      "huurder": {
+        "telefoon": null,
+        "email": null,
+        "lidnummer": "L2102",
+        "naam": "Lucas de Boer   "
+      },
+      "laatste_inspectie": "04/06/2026"
+    },
+    {
+      "contributie": "Herinnering",
+      "tuin": {
+        "kas_m2": 8.2,
+        "schuur_m2": 4.6,
+        "breedte_m": 10.1,
+        "complex": "Complex West",
+        "nummer": "T-016",
+        "lengte_m": 14.5
+      },
+      "startdatum": "05/10/2005",
+      "laatste_inspectie": "07/07/2026",
+      "status_huur": "Opgezegd",
+      "tuintype": "Moestuin",
+      "tuincommissie": "Ria Mulder",
+      "huurder": {
+        "telefoon": "06-21966910",
+        "lidnummer": "L2110",
+        "email": "lotte.dewit@tuinders.example.net",
+        "naam": "Lotte de Wit"
+      },
+      "regel_nr": 2
+    },
+    {
+      "tuincommissie": "Henk Bos",
+      "laatste_inspectie": "10/08/2026",
+      "tuintype": "Siertuin",
+      "tuin": {
+        "nummer": "T-019",
+        "lengte_m": 23.2,
+        "breedte_m": 11.9,
+        "complex": "Complex Zuid",
+        "schuur_m2": 3.7,
+        "kas_m2": 0.3
+      },
+      "status_huur": "Opgezegd",
+      "contributie": "Achterstallig",
+      "huurder": {
+        "email": "Sem.Jansen@Tuinders.Example.Net",
+        "telefoon": "06-74103929",
+        "lidnummer": "L2118",
+        "naam": " Sem Jansen  "
+      },
+      "startdatum": "02/12/2018",
+      "regel_nr": 3
+    },
+    {
+      "status_huur": "Wachtlijst",
+      "regel_nr": 4,
+      "laatste_inspectie": "07/10/2026",
+      "startdatum": "02/04/2019",
+      "contributie": "Achterstallig",
+      "tuincommissie": "Ria Mulder",
+      "tuintype": "Gemengd",
+      "tuin": {
+        "schuur_m2": 5.6,
+        "nummer": "T-023",
+        "kas_m2": 2.3,
+        "complex": "Complex Zuid",
+        "breedte_m": 9.9,
+        "lengte_m": 13.2
+      },
+      "huurder": {
+        "naam": "Fleur Mulder",
+        "lidnummer": "L2127",
+        "email": "fleur.mulder@tuinders.example.net",
+        "telefoon": null
+      }
+    },
+    {
+      "startdatum": "02/11/2012",
+      "laatste_inspectie": "02/07/2026",
+      "huurder": {
+        "naam": "Sem de Groot",
+        "telefoon": "06-15824020",
+        "lidnummer": "L2128",
+        "email": "sem.degroot@tuinders.example.net"
+      },
+      "status_huur": "Verhuurd",
+      "tuintype": "Siertuin",
+      "regel_nr": 5,
+      "contributie": "Herinnering",
+      "tuin": {
+        "kas_m2": 6.1,
+        "breedte_m": 10.4,
+        "lengte_m": 11.1,
+        "nummer": "T-024",
+        "schuur_m2": 4.3,
+        "complex": "Complex West"
+      },
+      "tuincommissie": "Henk Bos"
+    },
+    {
+      "tuintype": "Moestuin",
+      "huurder": {
+        "lidnummer": "L2137",
+        "telefoon": "06-42069852",
+        "naam": "Daan Jansen"
+      },
+      "contributie": "Achterstallig",
+      "regel_nr": 6,
+      "startdatum": "04/02/2016",
+      "laatste_inspectie": "05/04/2026",
+      "status_huur": "Verhuurd",
+      "tuin": {
+        "lengte_m": 20.6,
+        "breedte_m": 11.5,
+        "kas_m2": 2.2,
+        "nummer": "T-028",
+        "complex": "Complex Polder",
+        "schuur_m2": 4.0
+      },
+      "tuincommissie": "Henk Bos"
+    },
+    {
+      "status_huur": "Verhuurd",
+      "huurder": {
+        "lidnummer": "L2146",
+        "email": "sem.peters@tuinders.example.net",
+        "telefoon": "06-58560434",
+        "naam": "Sem Peters"
+      },
+      "laatste_inspectie": "09/10/2026",
+      "tuincommissie": "Henk Bos",
+      "regel_nr": 7,
+      "tuin": {
+        "schuur_m2": 5.1,
+        "lengte_m": 17.4,
+        "breedte_m": 10.2,
+        "kas_m2": 8.7,
+        "complex": "Complex Zuid",
+        "nummer": "T-031"
+      },
+      "contributie": "Voldaan",
+      "tuintype": "Siertuin",
+      "startdatum": "09/12/2008"
+    },
+    {
+      "status_huur": "Verhuurd",
+      "contributie": "Achterstallig",
+      "tuin": {
+        "breedte_m": 12.0,
+        "complex": "Complex West",
+        "kas_m2": 1.9,
+        "lengte_m": 8.4,
+        "schuur_m2": 3.2,
+        "nummer": "T-035"
+      },
+      "huurder": {
+        "telefoon": "06-07942797",
+        "email": "Lucas.Dekker@Tuinders.Example.Net",
+        "lidnummer": "L2154",
+        "naam": "Lucas Dekker"
+      },
+      "regel_nr": 8,
+      "startdatum": "03/04/2006",
+      "tuintype": "Moestuin",
+      "tuincommissie": "Henk Bos",
+      "laatste_inspectie": "08/10/2026"
+    },
+    {
+      "huurder": {
+        "email": "julia.brouwer@tuinders.example.net",
+        "naam": "Julia Brouwer",
+        "telefoon": "06-92105457",
+        "lidnummer": "L2156"
+      },
+      "startdatum": "08/02/2010",
+      "laatste_inspectie": "07/04/2026",
+      "regel_nr": 9,
+      "tuintype": "Gemengd",
+      "contributie": "Voldaan",
+      "tuin": {
+        "lengte_m": 15.8,
+        "complex": "Complex Zuid",
+        "nummer": "T-038",
+        "breedte_m": 6.3,
+        "kas_m2": 7.1,
+        "schuur_m2": 5.7
+      },
+      "tuincommissie": "Henk Bos",
+      "status_huur": "Verhuurd"
+    },
+    {
+      "laatste_inspectie": "10/05/2026",
+      "tuintype": "Moestuin",
+      "tuincommissie": "Henk Bos",
+      "huurder": {
+        "lidnummer": "L2167",
+        "naam": "Sem van Leeuwen",
+        "telefoon": "06-91181712",
+        "email": "sem.vanleeuwen@tuinders.example.net"
+      },
+      "contributie": "Achterstallig",
+      "tuin": {
+        "kas_m2": 3.3,
+        "nummer": "T-041",
+        "complex": "Complex West",
+        "schuur_m2": 5.1,
+        "lengte_m": 10.1,
+        "breedte_m": 9.3
+      },
+      "startdatum": "03/03/2012",
+      "regel_nr": 10,
+      "status_huur": "Opgezegd"
+    },
+    {
+      "startdatum": "05/03/2009",
+      "tuin": {
+        "complex": "Complex Zuid",
+        "nummer": "T-042",
+        "breedte_m": 8.0,
+        "kas_m2": 10.3,
+        "schuur_m2": 5.9,
+        "lengte_m": 20.1
+      },
+      "tuintype": "Moestuin",
+      "huurder": {
+        "telefoon": "06-80697207",
+        "lidnummer": "L2174",
+        "naam": "Julia Kok",
+        "email": "julia.kok@tuinders.example.net"
+      },
+      "regel_nr": 11,
+      "laatste_inspectie": "06/09/2026",
+      "status_huur": "Proeftuin vereniging",
+      "tuincommissie": "Henk Bos",
+      "contributie": "Achterstallig"
+    },
+    {
+      "huurder": {
+        "email": "lars.bakker@tuinders.example.net",
+        "naam": "Lars Bakker",
+        "lidnummer": "L2179",
+        "telefoon": "06-34715824"
+      },
+      "tuin": {
+        "nummer": "T-046",
+        "kas_m2": 5.9,
+        "breedte_m": 10.8,
+        "lengte_m": 14.4,
+        "schuur_m2": 2.8,
+        "complex": "Complex Polder"
+      },
+      "contributie": "Voldaan",
+      "status_huur": "Verhuurd",
+      "tuintype": "Moestuin",
+      "laatste_inspectie": "11/05/2026",
+      "tuincommissie": "Ria Mulder",
+      "regel_nr": 12,
+      "startdatum": "12/05/2008"
+    },
+    {
+      "regel_nr": 13,
+      "startdatum": "06/02/2010",
+      "contributie": "Voldaan",
+      "tuincommissie": "Henk Bos",
+      "status_huur": "Opgezegd",
+      "tuin": {
+        "nummer": "T-048",
+        "schuur_m2": 6.9,
+        "complex": "Complex West",
+        "lengte_m": 15.5,
+        "kas_m2": 6.5,
+        "breedte_m": 11.4
+      },
+      "laatste_inspectie": "03/05/2026",
+      "tuintype": "Siertuin",
+      "huurder": {
+        "naam": "Emma Dekker",
+        "email": "emma.dekker@tuinders.example.net",
+        "lidnummer": "L2184",
+        "telefoon": "06-29753406"
+      }
+    },
+    {
+      "tuin": {
+        "complex": "Complex West",
+        "kas_m2": 9.1,
+        "lengte_m": 9.5,
+        "nummer": "T-052",
+        "schuur_m2": 7.2,
+        "breedte_m": 11.9
+      },
+      "tuincommissie": "Ria Mulder",
+      "huurder": {
+        "telefoon": "06-07376818",
+        "naam": "  Lotte Meijer",
+        "lidnummer": "L2192",
+        "email": "lotte.meijer@tuinders.example.net"
+      },
+      "startdatum": "10/10/2023",
+      "laatste_inspectie": "02/09/2026",
+      "tuintype": "Gemengd",
+      "regel_nr": 14,
+      "contributie": "Voldaan",
+      "status_huur": "Opgezegd"
+    },
+    {
+      "huurder": {
+        "lidnummer": "L2198",
+        "email": "tess.hendriks@tuinders.example.net",
+        "telefoon": "06-26452297",
+        "naam": "Tess Hendriks"
+      },
+      "regel_nr": 15,
+      "startdatum": "01/01/2006",
+      "laatste_inspectie": "05/05/2026",
+      "tuincommissie": "Ria Mulder",
+      "contributie": "Voldaan",
+      "status_huur": "Verhuurd",
+      "tuintype": "Gemengd",
+      "tuin": {
+        "lengte_m": 23.7,
+        "schuur_m2": 3.3,
+        "breedte_m": 11.5,
+        "kas_m2": 7.2,
+        "complex": "Complex West",
+        "nummer": "T-055"
+      }
+    },
+    {
+      "laatste_inspectie": "06/04/2026",
+      "contributie": "Voldaan",
+      "regel_nr": 16,
+      "tuincommissie": "Henk Bos",
+      "tuintype": "Siertuin",
+      "startdatum": "03/10/2021",
+      "tuin": {
+        "kas_m2": 7.2,
+        "schuur_m2": 3.6,
+        "complex": "Complex West",
+        "nummer": "T-057",
+        "breedte_m": 8.2,
+        "lengte_m": 20.3
+      },
+      "huurder": {
+        "email": "Sanne.Deboer@Tuinders.Example.Net",
+        "telefoon": "06-45156096",
+        "naam": "Sanne de Boer   ",
+        "lidnummer": "L2207"
+      },
+      "status_huur": "Proeftuin vereniging"
+    },
+    {
+      "tuin": {
+        "complex": "Complex Zuid",
+        "nummer": "T-062",
+        "schuur_m2": 5.7,
+        "lengte_m": 17.4,
+        "breedte_m": 8.6,
+        "kas_m2": 6.6
+      },
+      "regel_nr": 17,
+      "tuintype": "Moestuin",
+      "huurder": {
+        "lidnummer": "L2218",
+        "telefoon": "06-04791344",
+        "naam": "Ruben Visser"
+      },
+      "startdatum": "04/08/2014",
+      "tuincommissie": "Ria Mulder",
+      "status_huur": "Verhuurd",
+      "contributie": "Achterstallig",
+      "laatste_inspectie": "10/05/2026"
+    },
+    {
+      "tuincommissie": "Henk Bos",
+      "regel_nr": 18,
+      "laatste_inspectie": "12/09/2026",
+      "status_huur": "Opgezegd",
+      "huurder": {
+        "telefoon": "06-03447017",
+        "naam": "Julia Dekker",
+        "email": "julia.dekker@tuinders.example.net",
+        "lidnummer": "L2221"
+      },
+      "tuin": {
+        "complex": "Complex Polder",
+        "lengte_m": 18.7,
+        "breedte_m": 10.0,
+        "nummer": "T-065",
+        "schuur_m2": 5.6,
+        "kas_m2": 4.4
+      },
+      "contributie": "Herinnering",
+      "startdatum": "08/07/2015",
+      "tuintype": "Gemengd"
+    },
+    {
+      "regel_nr": 19,
+      "contributie": "Herinnering",
+      "status_huur": "Wachtlijst",
+      "tuin": {
+        "complex": "Complex West",
+        "nummer": "T-068",
+        "lengte_m": 20.1,
+        "schuur_m2": 4.7,
+        "breedte_m": 9.5,
+        "kas_m2": 8.4
+      },
+      "startdatum": "04/11/2013",
+      "tuintype": "Gemengd",
+      "laatste_inspectie": "12/08/2026",
+      "tuincommissie": "Henk Bos",
+      "huurder": {
+        "naam": "Sophie Brouwer",
+        "email": "sophie.brouwer@tuinders.example.net",
+        "lidnummer": "L2228",
+        "telefoon": "06-59458126"
+      }
+    },
+    {
+      "regel_nr": 20,
+      "huurder": {
+        "lidnummer": "L2235",
+        "telefoon": "06-67820841",
+        "naam": "Stijn Dekker",
+        "email": "stijn.dekker@tuinders.example.net"
+      },
+      "laatste_inspectie": "07/04/2026",
+      "tuin": {
+        "schuur_m2": 3.4,
+        "lengte_m": 10.3,
+        "complex": "Complex Zuid",
+        "kas_m2": 9.4,
+        "nummer": "T-069",
+        "breedte_m": 11.6
+      },
+      "tuincommissie": "Henk Bos",
+      "tuintype": "Siertuin",
+      "startdatum": "09/08/2016",
+      "status_huur": "Wachtlijst",
+      "contributie": "Voldaan"
+    },
+    {
+      "regel_nr": 21,
+      "huurder": {
+        "email": "jesse.bos@tuinders.example.net",
+        "naam": "Jesse Bos",
+        "lidnummer": "L2241",
+        "telefoon": "06-59207087"
+      },
+      "tuincommissie": "Henk Bos",
+      "status_huur": "Proeftuin vereniging",
+      "contributie": "Voldaan",
+      "startdatum": "07/10/2017",
+      "tuin": {
+        "complex": "Complex Zuid",
+        "schuur_m2": 4.0,
+        "breedte_m": 11.4,
+        "kas_m2": 11.3,
+        "nummer": "T-073",
+        "lengte_m": 12.4
+      },
+      "tuintype": "Moestuin",
+      "laatste_inspectie": "06/07/2026"
+    },
+    {
+      "tuintype": "Moestuin",
+      "tuin": {
+        "schuur_m2": 4.0,
+        "lengte_m": 21.9,
+        "breedte_m": 11.4,
+        "complex": "Complex West",
+        "nummer": "T-077",
+        "kas_m2": 2.3
+      },
+      "regel_nr": 22,
+      "tuincommissie": "Ria Mulder",
+      "startdatum": "09/06/2013",
+      "status_huur": "Proeftuin vereniging",
+      "laatste_inspectie": "04/06/2026",
+      "huurder": {
+        "lidnummer": "L2251",
+        "telefoon": null,
+        "naam": "Sophie de Wit",
+        "email": null
+      },
+      "contributie": "Herinnering"
+    },
+    {
+      "tuincommissie": "Ria Mulder",
+      "laatste_inspectie": "01/10/2026",
+      "tuin": {
+        "schuur_m2": 4.6,
+        "complex": "Complex Zuid",
+        "kas_m2": 9.6,
+        "nummer": "T-079",
+        "breedte_m": 10.7,
+        "lengte_m": 17.5
+      },
+      "huurder": {
+        "telefoon": "06-52135252",
+        "naam": "Stijn Vos",
+        "email": "stijn.vos@tuinders.example.net",
+        "lidnummer": "L2259"
+      },
+      "contributie": "Voldaan",
+      "regel_nr": 23,
+      "status_huur": "Verhuurd",
+      "tuintype": "Moestuin",
+      "startdatum": "09/04/2006"
+    },
+    {
+      "tuintype": "Moestuin",
+      "tuin": {
+        "kas_m2": 9.3,
+        "complex": "Complex Zuid",
+        "schuur_m2": 7.3,
+        "nummer": "T-082",
+        "breedte_m": 7.5,
+        "lengte_m": 20.5
+      },
+      "huurder": {
+        "telefoon": "06-46856890",
+        "lidnummer": "L2263",
+        "email": "bram.kok@tuinders.example.net",
+        "naam": "Bram Kok"
+      },
+      "status_huur": "Wachtlijst",
+      "contributie": "Voldaan",
+      "laatste_inspectie": "02/05/2026",
+      "startdatum": "02/02/2022",
+      "tuincommissie": "Henk Bos",
+      "regel_nr": 24
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "plot_id": {
+        "type": "string",
+        "description": "Identifier of the garden plot."
+      },
+      "member_id": {
+        "type": "string",
+        "description": "Membership number of the tenant."
+      },
+      "tenant_name": {
+        "type": "string",
+        "description": "Full name of the tenant."
+      },
+      "tenant_email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address of the tenant."
+      },
+      "site": {
+        "type": "string",
+        "enum": [
+          "south",
+          "west",
+          "polder"
+        ],
+        "description": "Allotment site the plot belongs to."
+      },
+      "plot_use": {
+        "type": "string",
+        "enum": [
+          "vegetables",
+          "ornamental",
+          "mixed"
+        ],
+        "description": "Use."
+      },
+      "lease_status": {
+        "type": "string",
+        "enum": [
+          "leased",
+          "terminated",
+          "waiting"
+        ],
+        "description": "State of the plot lease."
+      },
+      "lease_start": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the current lease began."
+      },
+      "plot_area_m2": {
+        "type": "number",
+        "description": "Total area of the plot in square metres."
+      },
+      "notes": {
+        "type": "string",
+        "description": "Free-text remarks about the plot for the registry."
+      }
+    },
+    "required": [
+      "plot_id",
+      "member_id",
+      "tenant_name",
+      "site",
+      "lease_status",
+      "lease_start",
+      "plot_area_m2"
+    ]
+  },
+  "groundTruth": {
+    "plot_id": {
+      "source": "tuin.nummer",
+      "transform": "copy",
+      "why": "plot number"
+    },
+    "member_id": {
+      "source": "huurder.lidnummer",
+      "transform": "copy",
+      "why": "member number"
+    },
+    "tenant_name": {
+      "source": "huurder.naam",
+      "transform": "trim",
+      "why": "tenant, padded; tuincommissie is the inspector"
+    },
+    "tenant_email": {
+      "source": "huurder.email",
+      "transform": "normalize_email",
+      "why": "email, mixed case, null or missing"
+    },
+    "site": {
+      "source": "tuin.complex",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Complex Zuid": "south",
+        "Complex West": "west",
+        "Complex Polder": "polder"
+      },
+      "why": "site"
+    },
+    "plot_use": {
+      "source": "tuintype",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Moestuin": "vegetables",
+        "Siertuin": "ornamental",
+        "Gemengd": "mixed"
+      },
+      "why": "garden type"
+    },
+    "lease_status": {
+      "source": "status_huur",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Verhuurd": "leased",
+        "Opgezegd": "terminated",
+        "Wachtlijst": "waiting",
+        "Proeftuin vereniging": null
+      },
+      "why": "lease state; the association's own trial plot needs review"
+    },
+    "lease_start": {
+      "source": "startdatum",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "lease start (Dutch day-first)"
+    },
+    "plot_area_m2": {
+      "source": null,
+      "transform": "none",
+      "why": "no plot area is exported; kas_m2 and schuur_m2 are buildings on the plot",
+      "unsupportedReason": "would need tuin.lengte_m multiplied by tuin.breedte_m"
+    },
+    "notes": {
+      "source": null,
+      "transform": "none",
+      "why": "no remarks are exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "decoy-for-missing-field",
+      "fields": [
+        "tuin.kas_m2",
+        "tuin.schuur_m2"
+      ],
+      "correctFor": "plot_area_m2"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "status_huur",
+        "contributie"
+      ],
+      "correctFor": "lease_status"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "tuin.nummer",
+        "regel_nr"
+      ],
+      "correctFor": "plot_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "huurder.naam",
+        "tuincommissie"
+      ],
+      "correctFor": "tenant_name"
+    }
+  ],
+  "sourceConcepts": {
+    "tuin.nummer": "other-identifier",
+    "regel_nr": "other-identifier",
+    "tuin.lengte_m": "quantity",
+    "tuin.breedte_m": "quantity",
+    "tuin.kas_m2": "quantity",
+    "tuin.schuur_m2": "quantity",
+    "tuin.complex": "category",
+    "huurder.lidnummer": "customer-id",
+    "huurder.naam": "person-name",
+    "huurder.email": "email",
+    "huurder.telefoon": "phone",
+    "status_huur": "account-status",
+    "contributie": "payment-status",
+    "tuintype": "category",
+    "startdatum": "start-date",
+    "laatste_inspectie": "other",
+    "tuincommissie": "person-name"
+  },
+  "destinationConcepts": {
+    "plot_id": "other-identifier",
+    "member_id": "customer-id",
+    "tenant_name": "person-name",
+    "tenant_email": "email",
+    "site": "category",
+    "plot_use": "category",
+    "lease_status": "account-status",
+    "lease_start": "start-date",
+    "plot_area_m2": "quantity",
+    "notes": "other"
+  }
+}
