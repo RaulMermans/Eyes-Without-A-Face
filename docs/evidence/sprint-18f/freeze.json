@@ -1,0 +1,34 @@
+{
+  "manifestVersion": "1.0.0",
+  "experiment": "sprint-18f-confirmatory",
+  "frozenAt": "2026-11-18T18:05:34.474Z",
+  "frozenFromCommit": "c9aa4a9e97c7348ba576383a6fff472c68aefb9f",
+  "statement": "Frozen before any model saw the eval-18f holdout. Baseline (A + base) and candidate (RB + local, ADR 0022) fixed at the listed code hashes. The holdout was written by a new independent author after the ADR 0022 implementation; the engineer never opened it or the author's holdout specs.",
+  "preregistration": {
+    "path": "docs/evaluation/sprint-18f-confirmatory.md",
+    "sha256AboveResults": "9eae9923188fdbcf52a62d8adadd122daa6795560f568fb576b0e6152e2b3bf4"
+  },
+  "files": {
+    "tests/fixtures/eval-18f/README.md": "3751248a49c21b2b4c83517610a6ae858df00d495d4ad2aa316cdddafe8e34c2",
+    "src/evaluation/eval-18d.ts": "7cc606098672fe88ff08d21e7231234f1a45000ec8996b02b71eb1f59fb4194c",
+    "src/evaluation/eval-18c.ts": "2117fffca0ad01d38571b20993721771ce43d9362db640c83edd78e2eb50b84d",
+    "src/plan/compile.ts": "812ec0fe21aa5e8fb26facae5e568e5e02f4ecaadeeefc236bd9672ce9a01a73",
+    "src/plan/agreement.ts": "eb76ac6bb175a822a5677a0fcffa76e12970fbeb53bb76beaff19ee4234e4671",
+    "src/matching/local-matcher.ts": "d87065f823422a44b82ffd65031bd48f98aeb3e0cbf883c2ef08274416149b2c",
+    "src/matching/lexicon.ts": "1ba4cd8157cc8bcd094dbb59b72e9e32551547116b7aa4a2a50b6763a68b1a24",
+    "src/app/guided/field-plan.ts": "27ff3450c67639b016290939d11fec56834f7c45a73584c64eaeac57ad76c579",
+    "src/inference/intent-prompt.ts": "1e58ba49a50bad59c6ed2b7346cd865cba90f7fe2be9e704a1adc699da45db11",
+    "src/twin/target-semantics.ts": "f75ccc8072fa011268718fb6c16fdd4d4739f617f588d5cc693be24c22941b2c",
+    "src/semantics/verify.ts": "7c628990c79d7ef653a057c975bf130dc2551712e50bc125dc567340f3124fed",
+    "tests/evaluation/eval-18f.test.ts": "224ad7be3511f0305b38140d16abe6de16b3264b3c1761308f91f546ca213d24"
+  },
+  "holdout": {
+    "count": 26,
+    "sha256": "f61033ad0b0003c3999c1a4e25f299e7060608126e1b28830bac7b99b89335b8"
+  },
+  "sealed": [
+    "tests/fixtures/eval-18f/author/specs_holdout_general.py",
+    "tests/fixtures/eval-18f/author/specs_holdout_wedge.py"
+  ],
+  "amendments": []
+}
