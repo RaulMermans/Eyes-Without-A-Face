@@ -87,7 +87,9 @@ function append(entry: Record<string, unknown>): void {
 test.describe("S18A-LIVE G0/G1 holdout run", () => {
   test.beforeAll(() => {
     expect(set === "d" ? Object.keys(ARMS_18D) : set === "a5" || set === "c" ? ["P0", "P1"] : set === "b" ? ["P0", "P2"] : ["G0", "G1"]).toContain(config);
-    if (set === "c" || set === "d") expect(attempt === 1 ? only.length === 0 : attempt === 2 && only.length > 0).toBe(true);
+    // Set d interleaves arms per scenario (pre-registration), so a first attempt may select one index too.
+    if (set === "c") expect(attempt === 1 ? only.length === 0 : attempt === 2 && only.length > 0).toBe(true);
+    if (set === "d") expect(attempt === 1 || (attempt === 2 && only.length > 0)).toBe(true);
     expect([1, 2]).toContain(trial);
     expect(baseURL).toMatch(/^http:\/\/127\.0\.0\.1:\d+$/);
     expect(files.length).toBe(scenarioCount);

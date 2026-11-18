@@ -286,6 +286,8 @@ Decision: [ADR 0021](docs/decisions/0021-semantic-intelligence-recovery.md). Pre
 - **Plan 1.1.0 alternatives are candidates, never operations.** Plan 1.0.0 stays exact.
 - **Without `CompileInput.local`, compiling must stay byte-identical to Sprint 18C** (historical replays).
 - **The 18D holdout and the author's `author/specs_holdout_*.py` are sealed.** Never open them; score only through the frozen scorer. Stage 1 tunes on dev only. Every live stage needs the owner's budget approval; the default budget is zero.
+- **A field is `SEMANTIC_PASS` only when a passing constraint was established by the user, a source contract or a local rule** (`verify.ts`, Stage 1 safety fix). A deterministic observation verifies how a value is read, never that it is the right source. Never relax this to raise coverage.
+- **Stage 1 (dev, live) ran on 2026-11-18; Stage 2 was not run.** The exploratory options `askOnLocalForUnfilled`, `askOnLocalTopDisagreement` and `openOnAmbiguous` were tuned on dev: they are not evidence and stay off in the product. `gemini-3.8-flash` timed out or was rate-limited; never raise `CLOUD_TIMEOUT_MS` or add retries to work around it without an ADR and the owner's approval.
 - Valentine and Transformers.js are offline benchmarks (`scripts/bench/`). Never add them to the app bundle without an ADR that beats the local matcher on fresh evidence.
 
 ## Release lifecycle and production acceptance (Sprint 14 — permanent, every sprint)

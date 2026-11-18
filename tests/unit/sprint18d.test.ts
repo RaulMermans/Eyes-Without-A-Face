@@ -291,3 +291,41 @@ describe("18D semantic contract: nested destination enums", () => {
     expect(enums.has("profile")).toBe(true);
   });
 });
+
+describe("18D verifier: an observed date order verifies the reading, not the field", () => {
+  it("observation-only → SEMANTIC_UNVERIFIED; the user's confirmation → SEMANTIC_PASS", async () => {
+    const { buildSemanticContract } = await import("../../src/semantics/observe.ts");
+    const { verifySemantics } = await import("../../src/semantics/verify.ts");
+    const { evaluateMapping } = await import("../../src/evaluation/evaluate.ts");
+    const { confirmationConstraints } = await import("../../src/app/semantic-context.ts");
+    const { guidedPolicy } = await import("../../src/app/guided/field-plan.ts");
+    const records = Array.from({ length: 6 }, (_, i) => ({ code: `C-${100 + i}`, issued: `${String(13 + i).padStart(2, "0")}/03/2024` }));
+    const prep = prepareTwin({ records, datasetLabel: "imported.json", seed: 3 });
+    if (!prep.ok) throw new Error("twin");
+    const destination = { type: "object", properties: { valid_from: { type: "string", format: "date" } }, required: ["valid_from"] };
+    const executable = { contractKind: "mapping", schemaVersion: "1.0.0", mappingId: "m", mappingVersion: "1", phantomId: "p", destinationSchemaId: "d", operations: [{ op: "parse_date", from: "issued", to: "valid_from", params: { inputFormat: "DD/MM/YYYY" } }] } as const;
+    const evaluation = evaluateMapping({ executable: executable as never, targetSchema: destination, bindings: prep.value.twin.bindings, records, policy: guidedPolicy({}) });
+    const run = (declared: Parameters<typeof buildSemanticContract>[0]["declared"]) =>
+      verifySemantics({ contract: buildSemanticContract({ contractId: "t", declared, profile: prep.value.profile, records }), executable: executable as never, report: evaluation.report, records, destinationSchema: destination }).fields[0]!.status;
+    expect(run([])).toBe("SEMANTIC_UNVERIFIED");
+    expect(run(confirmationConstraints({ issued: "DD/MM/YYYY" }))).toBe("SEMANTIC_PASS");
+  });
+});
+
+describe("18D exploratory policy: the local matcher may open a question Gemini closed", () => {
+  it("an optional no_source field with a clear local candidate is asked; required behaviour unchanged; never executed", () => {
+    const prep = prepared();
+    const draft = buildDisclosureDraft({ prepared: prep, targetSchema: DESTINATION, destinationSemantics: false });
+    if (!draft.ok) throw new Error("draft");
+    const validated = validateIntentPlan({ fields: [{ target: "plan", status: "no_source", from: [], transform: "none", confidence: "high", evidence: [], missing: ["no-matching-source"] }], summary: "x" }, draft.value.payload);
+    if (!validated.ok) throw new Error("plan");
+    const set: LocalCandidateSet = { matcherVersion: LOCAL_MATCHER_VERSION, target: "plan", candidates: [{ path: "zahlstatus", rank: 1, score: 5, evidence: ["name-translated"], contradictions: [] }], uncertainty: "clear", provenance: "local-lexical-type" };
+    const base = { validated: validated.value, disclosure: draft.value.payload, prepared: prep, records: RECORDS, answers: { fieldMatches: {}, categoryMeanings: {}, semanticConfirmations: {} }, requestId: "00000000-test" };
+    const closed = compileIntentPlan({ ...base, local: { localCandidates: [set] } });
+    expect(closed.fields.find((f) => f.target === "plan")!.readiness).toBe("no_source");
+    const opened = compileIntentPlan({ ...base, local: { localCandidates: [set], askOnLocalForUnfilled: true } });
+    const field = opened.fields.find((f) => f.target === "plan")!;
+    expect(field.operation).toBeNull();
+    expect(opened.clarifications.find((c) => c.target === "plan")).toMatchObject({ kind: "choose-field", rankedPaths: ["zahlstatus"] });
+  });
+});

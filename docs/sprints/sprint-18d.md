@@ -4,7 +4,7 @@
 | --- | --- |
 | Branch | `sprint-18b-ai-first` |
 | Release status | **CODE_READY**. Not a release candidate. Production `c7220768` is unchanged and nothing was deployed or pushed |
-| Milestone verdict | **BLOCKED ON LIVE EVALUATION.** Stage 1 (dev, live) awaits the owner's budget approval; Stage 2 (holdout) follows it |
+| Milestone verdict | **NOT ACCEPTED: blocked on evidence.** Stage 1 ran live on dev (owner-approved, 112 requests, $0.40 recorded). No configuration reaches the Stage 2 gate on dev, so Stage 2 was not run and the holdout stays sealed |
 | Decision | [ADR 0021](../decisions/0021-semantic-intelligence-recovery.md) |
 | Pre-registration | [sprint-18d-semantic-intelligence.md](../evaluation/sprint-18d-semantic-intelligence.md), frozen in `docs/evidence/sprint-18d/semantic-freeze.json` |
 | Local matching | [sprint-18d-local-matching.md](../evaluation/sprint-18d-local-matching.md) |
@@ -47,25 +47,55 @@
    - Rescoring the historical 18C answers with today's tree could differ from the recorded results; the recorded 18C results stand as historical.
 3. **Ranked answers would have been rejected.** Both adapters validated every plan as 1.0.0, so every v6 answer would have been rejected (this would have wasted the live RB/RD requests). The browser E2E caught it before any spend.
 
+4. **A wrong source was reported as verified** (found live, Stage 1). A date field's `SEMANTIC_PASS` came from an observed date order of the wrong source. Fixed in `verify.ts` (field PASS needs a user, source-contract or local-rule constraint), with freeze amendments.
+
 ## Checks
 
 | Check | Result |
 | --- | --- |
 | lint, typecheck | PASS |
-| unit | 694 PASS |
+| unit | 696 PASS |
 | contracts | 100 PASS (runtime bundle regenerated, EXP-007) |
 | privacy | 105 PASS |
-| evaluation | 217 PASS, 5 skipped by design (env-gated) + EVAL-305 freeze PASS |
+| evaluation | 220 PASS, 7 skipped by design (env-gated; EVAL-306 rehearsal and EVAL-307 Stage 1 scoring pass when enabled) |
 | build | PASS |
 | E2E | 170 / 170 PASS (adds E2E-190 ranked questions, E2E-191 1.4.0 review) |
 | Holdout rehearsal (`node scripts/eval-18d.mjs --rehearse`, zero requests, counts only) | 8 arms × 20 built, 0 leaks, 0 sample mismatches |
 | UI dry rehearsal (Stage 1 dev pool, zero requests) | 8 arms × 14 ready to send, preview = reconstruction, destination = arm, 0 requests |
 
-## Not done (needs approval or evidence)
+## Stage 1 (live, dev) — results
 
-- **Stage 1 live run (dev):** NOT RUN. It needs the owner's approval of at most 128 requests (≈ $2 expected, ≤ $9 worst case).
-- **Stage 2 live run (holdout):** NOT RUN. It depends on Stage 1.
-- **Model availability for our project:** unverified until a live request succeeds.
+[Full results](../evaluation/sprint-18d-semantic-intelligence.md#results).
+
+**Provider:**
+- flash-lite: 56 / 56 HTTP 200.
+- `gemini-3.8-flash`: 2 / 56. 18 exceeded the 45 s client timeout and 36 returned HTTP 429, so the model comparison is unresolved.
+
+**Correspondence:**
+- Gemini top-1 is 0.66–0.68 and the local matcher's top-1 is 0.83, on the same scenarios.
+- Destination descriptions did not raise M1 (−0.02).
+- Ranked v6 raised Gemini top-3 to 0.78.
+
+**Pre-registered selection:** the 18C configuration, with no eligible policy (every policy on A has a false complete).
+
+**Safety finding, fixed (defect 4).** The verifier reported a wrong date source as `SEMANTIC_PASS` from an observed date order. S5 is now 0 in every arm.
+
+**Root causes (aggregate):**
+- the largest is optional fields Gemini left empty with no question;
+- then required category fields with the wrong source;
+- then wrong sources executed;
+- then `trim`/`copy`.
+
+**Exploratory (dev-tuned, not evidence):** letting the local matcher open questions Gemini closed (RB + `open`) gives 5 / 11 complete, E2 0.25, S5 0, E3 0, and answers within the bound. The Stage 2 gate is 0.70, so **Stage 2 was not run.**
+
+## Not done
+
+- **Stage 2 (holdout):** NOT RUN, deliberately. The holdout is sealed for a candidate that can plausibly pass.
+- **Next blockers, in order of dev impact:**
+  1. Concatenated required fields: no single-field question can supply them. A question kind for "combine these fields" is needed.
+  2. Whitespace: Gemini cannot see padding in the twin, so it chooses `copy`, not `trim`. This needs a disclosed fixed fact, or an ADR-approved rule.
+  3. Category-source errors that the local matcher ranks only as ambiguous.
+  4. `gemini-3.8-flash` availability: timeout and quota are owner decisions.
 - **Usability sessions:** not run.
 - **Browser (WebGPU/WASM) behaviour of Transformers.js:** not measured. It is not used.
 

@@ -175,3 +175,117 @@ describe.runIf(process.env.EYES_EVAL_18D_REHEARSE === "1")("EVAL-306 holdout reh
     }
   });
 });
+
+/* EVAL-307: Stage 1 (dev, live) scoring — EYES_EVAL_18D_STAGE1=1. Dev only: the evidence names no holdout. */
+import { summarize18d, type Score18d, type Summary18d } from "../../src/evaluation/eval-18d.ts";
+
+interface StageEntry {
+  config: string;
+  index: number;
+  attempt: number;
+  requests: number;
+  httpStatus: number[];
+  answers: string[];
+  promptSha256: string[];
+  leakCount: number;
+  ms: number;
+  usage?: Array<{ prompt: number; output: number }>;
+}
+
+const PRICE: Record<string, { input: number; output: number }> = {
+  "gemini-3.5-flash-lite": { input: 0.3, output: 2.5 },
+  "gemini-3.8-flash": { input: 0.75, output: 3.75 },
+};
+
+describe.runIf(process.env.EYES_EVAL_18D_STAGE1 === "1")("EVAL-307 Stage 1 dev scoring", () => {
+  it("scores every arm × policy and applies the pre-registered decision rules", async () => {
+    const entries = JSON.parse(fs.readFileSync("docs/evidence/sprint-18d/stage1-live.json", "utf8")) as StageEntry[];
+    // The last attempt of each (arm, index) decides; every request counts towards R1.
+    const final = new Map<string, StageEntry>();
+    for (const entry of entries) {
+      const key = `${entry.config}:${entry.index}`;
+      const previous = final.get(key);
+      if (!previous || entry.attempt >= previous.attempt) final.set(key, entry);
+    }
+    const described = (scenario: Eval18dScenario) => Object.values((scenario.destination as { properties?: Record<string, { description?: unknown }> }).properties ?? {}).some((p) => typeof p.description === "string");
+    const out: Record<string, unknown> = {};
+    const scoresBy: Record<string, Score18d[]> = {};
+    const provider: Record<string, { requests: number; ok: number; http400: number; http5xx: number; ms: number[]; prompt: number; output: number; mismatches: number; leaks: number }> = {};
+    for (const arm of Object.values(ARMS_18D)) {
+      const p = { requests: 0, ok: 0, http400: 0, http5xx: 0, ms: [] as number[], prompt: 0, output: 0, mismatches: 0, leaks: 0 };
+      for (const entry of entries.filter((item) => item.config === arm.id)) {
+        p.requests += entry.requests;
+        p.leaks += entry.leakCount;
+        for (const code of entry.httpStatus) {
+          if (code === 200) p.ok += 1;
+          if (code === 400) p.http400 += 1;
+          if (code >= 500) p.http5xx += 1;
+        }
+        p.ms.push(entry.ms);
+        for (const usage of entry.usage ?? []) {
+          p.prompt += usage.prompt;
+          p.output += usage.output;
+        }
+      }
+      provider[arm.id] = p;
+      for (const policy of Object.values(POLICIES_18D)) scoresBy[`${arm.id}/${policy.id}`] = [];
+      for (let index = 0; index < dev.length; index += 1) {
+        const scenario = dev[index]!;
+        const entry = final.get(`${arm.id}:${index}`);
+        if (!entry) continue;
+        const built = (await buildScenario18d(scenario, arm))!;
+        if (entry.promptSha256[0] && entry.promptSha256[0] !== built.promptSha256) p.mismatches += 1;
+        const text = entry.httpStatus.at(-1) === 200 ? (entry.answers.at(-1) ?? "") : "";
+        for (const policy of Object.values(POLICIES_18D)) {
+          const score = text
+            ? scorePlan18d(scenario, built, text, { arm, policy, trial: 1, index })
+            : { ...scorePlan18d(scenario, built, "{}", { arm, policy, trial: 1, index }), answered: false };
+          scoresBy[`${arm.id}/${policy.id}`]!.push({ ...score, track: described(scenario) ? score.track : score.track });
+        }
+      }
+    }
+    const summaries: Record<string, Summary18d & { describedSubset: Summary18d }> = {};
+    for (const [key, scores] of Object.entries(scoresBy)) {
+      const describedIdx = new Set(dev.map((s, i) => (described(s) ? i : -1)).filter((i) => i >= 0));
+      summaries[key] = { ...summarize18d(scores), describedSubset: summarize18d(scores.filter((s) => describedIdx.has(s.index))) };
+    }
+    const cost = Object.fromEntries(
+      Object.values(ARMS_18D).map((arm) => {
+        const p = provider[arm.id]!;
+        const price = PRICE[arm.model.model]!;
+        const usd = (p.prompt * price.input + p.output * price.output) / 1_000_000;
+        const sorted = [...p.ms].sort((a, b) => a - b);
+        return [arm.id, { usd: Math.round(usd * 10000) / 10000, perRequest: p.requests ? Math.round((usd / p.requests) * 100000) / 100000 : 0, medianMs: sorted[Math.floor(sorted.length / 2)] ?? 0, promptTokens: p.prompt, outputTokens: p.output }];
+      }),
+    );
+
+    // Pre-registered decision rules (docs/evaluation/sprint-18d-semantic-intelligence.md, Stage 1).
+    const s = (arm: string, policy = "base") => summaries[`${arm}/${policy}`]!;
+    const material = (a: Summary18d, b: Summary18d) => b.mappable - a.mappable >= 0.1 || b.e2eSuccess - a.e2eSuccess >= 2;
+    const flashBoth = material(s("A"), s("C")) && material(s("B"), s("D"));
+    const flashOne = material(s("A"), s("C")) || material(s("B"), s("D"));
+    const model = flashBoth ? "gemini-3.8-flash" : "gemini-3.5-flash-lite";
+    const ctx = (a: Summary18d, b: Summary18d) => b.correspondence - a.correspondence;
+    const ctxPairs = [ctx(s("A").describedSubset, s("B").describedSubset), ctx(s("C").describedSubset, s("D").describedSubset)];
+    const semantics = ctxPairs.every((d) => d >= 0) && ctxPairs.some((d) => d >= 0.05) && ctxPairs.every((d) => d > -0.05);
+    const flash = model === "gemini-3.8-flash";
+    const defaultArm = flash ? (semantics ? "D" : "C") : semantics ? "B" : "A";
+    const highArm = flash ? "DH" : "BH";
+    const thinkingHigh = semantics && material(s(defaultArm), s(highArm)) && cost[highArm]!.perRequest <= 3 * cost[defaultArm]!.perRequest;
+    const baseArm = thinkingHigh ? highArm : defaultArm;
+    const rankedArm = flash ? "RD" : "RB";
+    const bestE1 = (arm: string) => Math.max(...Object.keys(POLICIES_18D).map((policy) => s(arm, policy).e2eSuccess));
+    const rankedOk = semantics && !thinkingHigh && s(rankedArm, "rank").geminiTop3 - s(rankedArm, "rank").geminiTop1 >= 0.1 && bestE1(rankedArm) >= bestE1(baseArm);
+    const chosenArm = rankedOk ? rankedArm : baseArm;
+    const eligible = Object.keys(POLICIES_18D)
+      .map((policy) => ({ policy, summary: s(chosenArm, policy) }))
+      .filter(({ summary }) => summary.falseVerified === 0 && summary.falseComplete === 0 && summary.answersPerTrial <= 0.6 * summary.baselineAnswersPerTrial);
+    eligible.sort((a, b) => b.summary.e2eSuccess - a.summary.e2eSuccess || a.summary.answersPerTrial - b.summary.answersPerTrial);
+    const decision = { flashMaterialInBothPairs: flashBoth, flashMaterialInOnePair: flashOne, model, contextDeltas: ctxPairs, semantics, thinkingHigh, rankedOk, chosenArm, chosenPolicy: eligible[0]?.policy ?? null };
+
+    Object.assign(out, { scoredAt: new Date().toISOString(), devScenarios: dev.length, provider, cost, summaries, decision });
+    fs.writeFileSync("docs/evidence/sprint-18d/stage1-summary.json", `${JSON.stringify(out, null, 2)}\n`);
+    console.log(JSON.stringify({ decision, provider, cost }, null, 1));
+    for (const leak of Object.values(provider)) expect(leak.leaks).toBe(0);
+  }, 300_000);
+});

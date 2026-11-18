@@ -86,7 +86,7 @@
     "src/proposal/resolve.ts": "73094edeb9a3be46c623e1ddb2ded2cb11a70a7f5f783a2ca23667920e3c425d",
     "src/semantics/contract.ts": "41c58a14be127184de66863fd4d47c7eb6c1468ad420d955a5db0536e217d12e",
     "src/semantics/observe.ts": "adec6ccf95c576909034c64a3aca3a2bd6cda95c4f6962e62430fc072e5e9c3f",
-    "src/semantics/verify.ts": "9fed4af27699b535b903d926aa2eb916dd6ffe9cc83e4115d569c69760cb54fd",
+    "src/semantics/verify.ts": "7c628990c79d7ef653a057c975bf130dc2551712e50bc125dc567340f3124fed",
     "src/verification/outcomes.ts": "1d00072787df2b8bc273001e401734a3757328da59199b5af0c075649b2e8e48",
     "src/evaluation/evaluate.ts": "a464b4679fbe9f31939304e927abd649b4408dc463c182611d8e40456526a5b8",
     "src/evaluation/benchmark.ts": "2c31b81ff7783c6993a208219730da21003b9d64f05890fbaed5300dc15b81a0",
@@ -117,6 +117,10 @@
     {
       "at": "2026-11-18T06:41:38.563Z",
       "reason": "Sprint 18D (ADR 0021): src/semantics/contract.ts destinationEnums now includes nested enum fields (dotted paths). Top-level behaviour unchanged."
+    },
+    {
+      "at": "2026-11-18T07:32:00.372Z",
+      "reason": "Sprint 18D (ADR 0021, S5 trace): a field is SEMANTIC_PASS only when a passing constraint was established by the user, a source contract or a local rule; a deterministic observation alone (e.g. an unambiguous date order) verifies how a value is read, not the field correspondence, so the field is SEMANTIC_UNVERIFIED. Found live on dev: a wrong date source reported as verified."
     }
   ]
 }

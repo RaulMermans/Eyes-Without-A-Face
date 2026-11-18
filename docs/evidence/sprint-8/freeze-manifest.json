@@ -46,7 +46,7 @@
     "src/proposal/resolve.ts": "73094edeb9a3be46c623e1ddb2ded2cb11a70a7f5f783a2ca23667920e3c425d",
     "src/semantics/contract.ts": "41c58a14be127184de66863fd4d47c7eb6c1468ad420d955a5db0536e217d12e",
     "src/semantics/observe.ts": "adec6ccf95c576909034c64a3aca3a2bd6cda95c4f6962e62430fc072e5e9c3f",
-    "src/semantics/verify.ts": "9fed4af27699b535b903d926aa2eb916dd6ffe9cc83e4115d569c69760cb54fd",
+    "src/semantics/verify.ts": "7c628990c79d7ef653a057c975bf130dc2551712e50bc125dc567340f3124fed",
     "src/revision/feedback.ts": "d4f6dc4e51dfab0f5bd5f7b9d0cd02844246578baf89028832357922a102ef78",
     "src/revision/semantic-feedback.ts": "4ba0b60fc987c382d3dbb8426fac8394261eb888dbffc727b8261c475cdb0789",
     "src/revision/revision-payload.ts": "517b83a4425a9eea41291544a383a5e060f9c03646521962662ff4d580f68684",
@@ -69,6 +69,11 @@
       "at": "2026-11-18T06:41:38.516Z",
       "reason": "Sprint 18D (ADR 0021): destinationEnums reads nested destination enum fields by dotted path; a correct user translation of a nested enum (e.g. profile.locale) was reported as SEMANTIC_POLICY_CONFLICT (TARGET_NOT_IN_DESTINATION). Top-level behaviour unchanged.",
       "commit": "947f57944dd7ea21c37b6eef17d9a8e782e7567c"
+    },
+    {
+      "at": "2026-11-18T07:32:00.322Z",
+      "reason": "Sprint 18D (ADR 0021, S5 trace): a field is SEMANTIC_PASS only when a passing constraint was established by the user, a source contract or a local rule; a deterministic observation alone (e.g. an unambiguous date order) verifies how a value is read, not the field correspondence, so the field is SEMANTIC_UNVERIFIED. Found live on dev: a wrong date source reported as verified.",
+      "commit": "1d258a6f23a875ffa28296e3d1f5b8495f06bb3f"
     }
   ]
 }

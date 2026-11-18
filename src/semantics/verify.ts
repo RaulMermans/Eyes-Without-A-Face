@@ -419,10 +419,18 @@ export function verifySemantics(input: {
     });
   });
 
+  // Sprint 18D (S5 trace): a deterministic observation verifies how a source value is READ (e.g. its date
+  // order), never that it is the right source for the destination field (AGENTS.md Sprint 17A). A field is
+  // SEMANTIC_PASS only when a passing constraint was established by the user, a source contract or a local rule.
+  const evidenceOf = new Map(input.contract.constraints.map((constraint) => [constraint.id, constraint.evidence.kind]));
   const fields: FieldSemanticStatus[] = targets.map((target) => {
     const operationIndex = operations.findIndex((operation) => operation.to === target);
     const relevant = results.filter((result) => result.target === target || result.operations.includes(operationIndex + 1));
-    const status = relevant.length > 0 ? worst(relevant.map((result) => result.status)) : "SEMANTIC_UNVERIFIED";
+    let status: SemanticStatus = relevant.length > 0 ? worst(relevant.map((result) => result.status)) : "SEMANTIC_UNVERIFIED";
+    const correspondenceEstablished = relevant.some(
+      (result) => result.status === "SEMANTIC_PASS" && result.constraintId !== null && evidenceOf.get(result.constraintId) !== "deterministic-observation",
+    );
+    if (status === "SEMANTIC_PASS" && !correspondenceEstablished) status = "SEMANTIC_UNVERIFIED";
     return {
       target,
       status,

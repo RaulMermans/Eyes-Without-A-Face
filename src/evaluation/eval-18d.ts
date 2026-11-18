@@ -26,7 +26,7 @@ import type { ValidatedIntentPlan } from "../plan/types.ts";
 import type { CloudModelConfig } from "../inference/cloud-models.ts";
 import { localCandidatesForDestination } from "../matching/destination-candidates.ts";
 import type { LocalCandidateSet } from "../matching/types.ts";
-import { classifyTarget, correspondenceCorrect, expectedOutcomes, gtPaths, p2Correspondences, planEffort, sha256Hex, type Built18b } from "./eval-18b.ts";
+import { baselineEffort, classifyTarget, correspondenceCorrect, expectedOutcomes, gtPaths, p2Correspondences, planEffort, sha256Hex, type Built18b } from "./eval-18b.ts";
 import { e2eSuccess18c, runEndToEnd18c, runOracle18c, type EndToEnd18c, type Eval18cScenario } from "./eval-18c.ts";
 
 export interface Eval18dScenario extends Eval18cScenario {
@@ -65,6 +65,10 @@ export interface Policy18d {
   local: boolean;
   askOnAlternatives: boolean;
   askOnLocalDisagreement: boolean;
+  /** Exploratory (post-Stage-1, dev-tuned; not pre-registered). */
+  askOnLocalTopDisagreement?: boolean;
+  askOnLocalForUnfilled?: boolean;
+  openOnAmbiguous?: boolean;
 }
 
 export const POLICIES_18D: Readonly<Record<string, Policy18d>> = {
@@ -74,6 +78,13 @@ export const POLICIES_18D: Readonly<Record<string, Policy18d>> = {
   alt: { id: "alt", local: true, askOnAlternatives: true, askOnLocalDisagreement: false },
   disagree: { id: "disagree", local: true, askOnAlternatives: false, askOnLocalDisagreement: true },
   both: { id: "both", local: true, askOnAlternatives: true, askOnLocalDisagreement: true },
+  /** Exploratory, added after Stage 1 on dev only: ask when the local top-1 is clearly another field. */
+  top: { id: "top", local: true, askOnAlternatives: false, askOnLocalDisagreement: false, askOnLocalTopDisagreement: true },
+  topAlt: { id: "topAlt", local: true, askOnAlternatives: true, askOnLocalDisagreement: false, askOnLocalTopDisagreement: true },
+  /** Exploratory, dev-tuned: the local matcher may open questions on fields Gemini left empty or matched to another category field. */
+  open: { id: "open", local: true, askOnAlternatives: false, askOnLocalDisagreement: false, askOnLocalForUnfilled: true },
+  openAll: { id: "openAll", local: true, askOnAlternatives: false, askOnLocalDisagreement: false, askOnLocalForUnfilled: true, openOnAmbiguous: true },
+  openTop: { id: "openTop", local: true, askOnAlternatives: false, askOnLocalDisagreement: false, askOnLocalTopDisagreement: true, askOnLocalForUnfilled: true },
 };
 
 export function armDestination(arm: Arm18d): CloudDisclosureDestination {
@@ -169,12 +180,14 @@ export interface Score18d {
   local: Recall;
   combined: Recall;
   /** High-confidence executable single-field matches, split by local agreement, and how many were wrong. */
-  disagreement: { agreeN: number; agreeWrong: number; disagreeN: number; disagreeWrong: number };
+  disagreement: { agreeN: number; agreeWrong: number; disagreeN: number; disagreeWrong: number; topDisagreeN: number; topDisagreeWrong: number };
   e2e: EndToEnd18c;
   e2eSuccess: boolean;
   falseComplete: boolean;
   effort: { manualOps: number; allAnswers: number; unnecessary: number; offList: number };
   baselineManualOps: number;
+  /** All answers the baseline guided flow (Sprint 16B rules) needs for this scenario. */
+  baselineAnswers: number;
 }
 
 export function scorePlan18d(
@@ -206,12 +219,13 @@ export function scorePlan18d(
     gemini: emptyRecall(),
     local: localRecall(scenario, sets),
     combined: emptyRecall(),
-    disagreement: { agreeN: 0, agreeWrong: 0, disagreeN: 0, disagreeWrong: 0 },
+    disagreement: { agreeN: 0, agreeWrong: 0, disagreeN: 0, disagreeWrong: 0, topDisagreeN: 0, topDisagreeWrong: 0 },
     e2e: { ran: false, complete: false, records: scenario.records.length, transformed: 0, correctTransformed: 0, incorrectTransformed: 0, incorrectAccepted: 0, falseVerified: 0, quarantined: 0, quarantinedCorrect: 0, unresolved: 0, recordsOk: 0, semanticMismatch: false },
     e2eSuccess: false,
     falseComplete: false,
     effort: { manualOps: 0, allAnswers: 0, unnecessary: 0, offList: 0 },
-    baselineManualOps: 0,
+    baselineManualOps: baselineEffort(scenario, built.prepared).manualOps,
+    baselineAnswers: baselineEffort(scenario, built.prepared).allAnswers,
   };
   const parsed = parseIntentPlanText(answerText);
   const validation = parsed.ok ? validateIntentPlan(parsed.value, built.payload, { ranked: context.arm.planner === "intent-plan-2" }) : parsed;
@@ -246,6 +260,10 @@ export function scorePlan18d(
     const top = set?.candidates[0];
     const disagrees = Boolean(set && set.uncertainty === "clear" && top && top.path !== path && !set.candidates.some((candidate) => candidate.path === path));
     const wrong = !correspondenceCorrect(path ? [path] : null, truth);
+    if (set && set.uncertainty === "clear" && top && top.path !== path) {
+      score.disagreement.topDisagreeN += 1;
+      if (wrong) score.disagreement.topDisagreeWrong += 1;
+    }
     if (disagrees) {
       score.disagreement.disagreeN += 1;
       if (wrong) score.disagreement.disagreeWrong += 1;
@@ -263,7 +281,7 @@ export function scorePlan18d(
     requestId: `eval18d-${context.arm.id}-${context.trial}-${context.index}`,
     origin: "gemini-cloud",
     ...(context.policy.local
-      ? { local: { localCandidates: sets, askOnAlternatives: context.policy.askOnAlternatives, askOnLocalDisagreement: context.policy.askOnLocalDisagreement } }
+      ? { local: { localCandidates: sets, askOnAlternatives: context.policy.askOnAlternatives, askOnLocalDisagreement: context.policy.askOnLocalDisagreement, askOnLocalTopDisagreement: context.policy.askOnLocalTopDisagreement === true, askOnLocalForUnfilled: context.policy.askOnLocalForUnfilled === true, openOnAmbiguous: context.policy.openOnAmbiguous === true } }
       : {}),
   };
   const oracle = runOracle18c(base, scenario);
@@ -326,6 +344,8 @@ export interface Summary18d {
   answersPerTrial: number;
   unnecessaryPerTrial: number;
   offListPerTrial: number;
+  baselineManualOpsPerTrial: number;
+  baselineAnswersPerTrial: number;
   disagreement: Score18d["disagreement"];
 }
 
@@ -362,11 +382,15 @@ export function summarize18d(scores: readonly Score18d[]): Summary18d {
     answersPerTrial: rate(sum((score) => score.effort.allAnswers), scores.length),
     unnecessaryPerTrial: rate(sum((score) => score.effort.unnecessary), scores.length),
     offListPerTrial: rate(sum((score) => score.effort.offList), scores.length),
+    baselineManualOpsPerTrial: rate(sum((score) => score.baselineManualOps), scores.length),
+    baselineAnswersPerTrial: rate(sum((score) => score.baselineAnswers), scores.length),
     disagreement: {
       agreeN: sum((score) => score.disagreement.agreeN),
       agreeWrong: sum((score) => score.disagreement.agreeWrong),
       disagreeN: sum((score) => score.disagreement.disagreeN),
       disagreeWrong: sum((score) => score.disagreement.disagreeWrong),
+      topDisagreeN: sum((score) => score.disagreement.topDisagreeN),
+      topDisagreeWrong: sum((score) => score.disagreement.topDisagreeWrong),
     },
   };
 }

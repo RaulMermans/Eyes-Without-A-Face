@@ -174,4 +174,85 @@ Output includes thinking. Prompt size is about 2.7 k tokens, as observed in 18C,
 
 ## Results
 
-(none yet)
+### Stage 1 — dev, live (2026-11-18, owner-approved)
+
+**Run.**
+- 112 first requests: 14 dev scenarios × 8 arms, arms rotated per scenario.
+- No recovery requests were sent: each needs a fresh owner approval.
+- Evidence (alias-level answers, hashes, statuses, tokens): [stage1-live.json](../evidence/sprint-18d/stage1-live.json). Scored: [stage1-summary.json](../evidence/sprint-18d/stage1-summary.json) (EVAL-307).
+- Privacy: 0 findings. 0 requests beyond one per scenario-trial. Every sent prompt equals the scorer's reconstruction.
+
+**Provider (R1–R3):**
+
+| Arms | HTTP 200 | Failures | Median latency | Measured cost |
+| --- | --- | --- | --- | --- |
+| A, B, RB (flash-lite) | 42 / 42 | 0 | 5.1–5.7 s | $0.12 |
+| BH (flash-lite HIGH) | 14 / 14 | 0 | 19.4 s | $0.25 (6 × per request) |
+| C, D, DH, RD (3.8-flash) | **2 / 56** | 18 client timeouts (> 45 s, the app's fixed `CLOUD_TIMEOUT_MS`), 36 × HTTP 429 | — | $0.03 recorded |
+
+- Timed-out requests report no usage, so their cost is unknown. Total recorded spend is **$0.40**.
+- **Q1 (model) and Q3 for Flash are NOT ANSWERED.** `gemini-3.8-flash` is not usable on this project within the product's 45 s limit and its current rate limit. The stop rule covered HTTP 400 only, so each planned Flash request was sent once (no retries; 429s are not billed).
+
+**Correspondence and recall (`base` policy):**
+
+| Arm | M1 | M2 | M3 | Gemini T1 | Gemini T3 | Local T1 | Local T3 | Combined T3 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| A | 0.619 | 0.633 | 0.606 | 0.661 | 0.693 | 0.827 | 0.937 | 0.953 |
+| B | 0.612 | 0.622 | 0.576 | 0.661 | 0.724 | 0.827 | 0.937 | 0.937 |
+| BH | 0.585 | 0.592 | 0.515 | 0.677 | 0.764 | 0.827 | 0.937 | 0.929 |
+| RB | 0.639 | 0.653 | 0.576 | 0.677 | 0.780 | 0.827 | 0.937 | 0.921 |
+
+- Q2: descriptions did not raise M1. On the described subset the change was −0.02 (A→B).
+- Q4: v6 raised Gemini T3 − T1 to 0.10 (RB), with M1 +0.02.
+- Q5: **the local matcher's top-1 (0.83) beats Gemini's (0.66–0.68) on the same scenarios.** It reads real field names, which Gemini never sees.
+
+**Pre-registered decision rules (mechanical), and why they cannot pick a candidate:**
+- model: flash-lite (Flash not measurable);
+- descriptions: no;
+- thinking: no;
+- ranked: no;
+- chosen arm: **A**;
+- chosen policy: **none**. Every pre-registered policy on A has a false complete (E3 = 1), so none is eligible.
+
+The pre-registered disagreement policy never fired (0 cases). Its "pick not listed at all" condition is too strict when local T3 is 0.94.
+
+**Safety trace (found and fixed during scoring; not tuning).**
+- Arms B and BH first scored S5 = 23 on one dev scenario. Gemini had mapped a date field to the wrong (but unambiguous) date source, and the verifier marked that field `SEMANTIC_PASS` from a deterministic observation of its date order.
+- Fix: a field is `SEMANTIC_PASS` only when a passing constraint was established by the user, a source contract or a local rule. Freeze amendments are recorded.
+- After the fix, S5 = 0 in every arm, and E1 is unchanged.
+
+**Failure causes (arm A, completable dev scenarios, aggregate):**
+
+| Cause | Count |
+| --- | --- |
+| Optional field with a real source left empty (Gemini abstained, nothing asked) | 9 |
+| Required category field left empty (wrong category source, so the translation is unanswerable) | 5 |
+| Wrong source executed | 5 |
+| Right source, wrong operation (`trim`/`copy`) | 3 |
+| Other | 3 |
+
+**Exploratory policies (added AFTER seeing Stage 1, tuned on dev only; not evidence):**
+
+| Arm + policy | E1 | E2 | S5 | E3 | U1 | U2 (≤ 7.41) |
+| --- | --- | --- | --- | --- | --- | --- |
+| A `base` (the 18C configuration) | 1 / 11 | 0.734 | 0 | 1 | 2.93 | 6.14 |
+| A `open` | 3 / 11 | 0.510 | 0 | 1 | 3.71 | 6.93 |
+| RB `base` | 2 / 11 | 0.615 | 0 | 0 | 2.64 | 5.79 |
+| **RB `open`** | **5 / 11** | **0.250** | **0** | **0** | 3.57 | 6.71 |
+| BH `open` | 5 / 11 | 0.346 | 0 | 0 | 4.71 | 7.79 |
+
+`open` = the local matcher may OPEN a choose-field question that Gemini closed. This covers an optional field Gemini gave no source but with a clear local candidate, and a category match whose clear local top-1 is another field. It never executes anything.
+
+Relaxing `open` to ambiguous candidates, and asking on local top-1 disagreement, added questions without adding completions.
+
+**What remains on dev under RB `open`:**
+- concatenated required fields that no single-field question can supply (3 scenarios);
+- `trim` versus `copy`, because padded whitespace is invisible in the twin (2 scenarios);
+- wrong category or date sources the local matcher ranks only as ambiguous.
+
+### Stage 1 verdict
+
+- The pre-registered rules select the 18C configuration with **no eligible policy**.
+- The best dev configuration (RB + `open`, exploratory) reaches 0.45, against the Stage 2 gate's 0.70.
+- **Stage 2 was not run.** Spending the one-shot holdout now would most likely confirm a Gate D failure and consume the set. The holdout stays sealed.
+

@@ -1,6 +1,6 @@
 # 0021 — Semantic intelligence recovery: model configurations, destination semantics, local matching, ranked plans
 
-Status: Accepted (implementation). **Not shipped.** Every new behaviour is off in the product until a pre-registered live comparison selects it. Stage 1 (live, dev) awaits the owner's budget approval
+Status: Accepted (implementation). **Not shipped.** Every new behaviour is off in the product. Stage 1 ran live on dev on 2026-11-18 (§F); Stage 2 was not run
 Date: 2026-11-18
 Builds on: [ADR 0018](0018-integration-intent-plan.md), [ADR 0020](0020-category-groupings-and-plan-recovery.md)
 
@@ -101,6 +101,22 @@ Builds on: [ADR 0018](0018-integration-intent-plan.md), [ADR 0020](0020-category
 - **Arms** fix what is sent. A is the 18C P1 configuration, byte-identical (EVAL-300).
 - **Policies** fix what the compiler does. They are scored on the same recorded answers, so they cost no extra requests.
 - **Stage 1** runs live on dev only. **Stage 2** runs on the independent 18D holdout, which is never opened by engineers.
+
+**F. After Stage 1** ([results](../evaluation/sprint-18d-semantic-intelligence.md#results)):
+
+1. **Verifier (safety fix).** A field is `SEMANTIC_PASS` only when a passing constraint was established by the user, a source contract or a local rule.
+   - A deterministic observation alone (for example an unambiguous date order) verifies how a value is read, not that the field is the right source. The field is then `SEMANTIC_UNVERIFIED`.
+   - Found live on dev: a wrong date source was reported as verified (S5 = 23 in two arms). After the fix S5 is 0.
+   - Freeze amendments are recorded (Sprint 8, Sprint 12).
+2. **Exploratory compile options** (opt-in, off; tuned on dev, not evidence):
+   - `askOnLocalForUnfilled`: the local matcher may open a choose-field question Gemini closed;
+   - `askOnLocalTopDisagreement`;
+   - `openOnAmbiguous`.
+   
+   On dev, RB + `askOnLocalForUnfilled` raised complete integrations from 2 / 11 to 5 / 11, with 0 false verifications and answers within the bound.
+3. **`gemini-3.8-flash` is not usable on this project as configured.**
+   - 18 of 56 requests exceeded the 45 s client timeout; 36 returned HTTP 429.
+   - The model decision is unresolved. Do not raise the timeout or retry to work around it without an ADR and the owner's approval.
 
 ## Not changed
 
