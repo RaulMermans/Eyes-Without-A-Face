@@ -4,7 +4,7 @@
 | --- | --- |
 | Branch | `sprint-18b-ai-first` |
 | Release status | **CODE_READY**. Not a release candidate. Production `c7220768` is unchanged and nothing was deployed or pushed |
-| Milestone verdict | **NOT ACCEPTED: blocked on evidence.** Stage 1 ran live on dev (owner-approved, 112 requests, $0.40 recorded). No configuration reaches the Stage 2 gate on dev, so Stage 2 was not run and the holdout stays sealed |
+| Milestone verdict | **FAILED (confirmatory run, 2026-11-18): rescue not confirmed, Milestone 1 not met.** Earlier status: **NOT ACCEPTED: blocked on evidence.** Stage 1 ran live on dev (owner-approved, 112 requests, $0.40 recorded). No configuration reaches the Stage 2 gate on dev, so Stage 2 was not run and the holdout stays sealed |
 | Decision | [ADR 0021](../decisions/0021-semantic-intelligence-recovery.md) |
 | Pre-registration | [sprint-18d-semantic-intelligence.md](../evaluation/sprint-18d-semantic-intelligence.md), frozen in `docs/evidence/sprint-18d/semantic-freeze.json` |
 | Local matching | [sprint-18d-local-matching.md](../evaluation/sprint-18d-local-matching.md) |
@@ -100,3 +100,25 @@
 - **Browser (WebGPU/WASM) behaviour of Transformers.js:** not measured. It is not used.
 
 **Milestone 1 is not accepted.** There is no fresh end-to-end evidence yet.
+
+## Rescue sprint (second brief) — outcome
+
+**Changes** (`105c600`):
+- Local no-source abstention: "clear" needs semantic evidence and no contradiction; row counters and person names are contradictions.
+- A confident Gemini pick that local evidence contradicts becomes one question.
+- Five exploratory options without dev benefit were replaced by one opt-in policy.
+
+**Dev (paired, Stage 1 answers rescored):** complete integrations 1 / 11 → 5 / 11; wrong records 0.73 → 0.25.
+
+**Confirmatory holdout run** ([results](../evaluation/sprint-18d-rescue-confirmatory.md#results); 45 owner-approved requests, ≈ $0.10):
+- Complete integrations: **0 / 15 → 1 / 15** (G1 needs +0.20: FAIL).
+- Wedge: 0 / 9 → 0 / 9 (FAIL).
+- Provider success: 0.78 (HTTP 500s; FAIL).
+- **Passed:** 0 false verifications, 0 false completes, 0 invented values, wrong records 0.93 → 0.75, answers within the bound, 0 privacy findings.
+
+**Verdict: rescue not confirmed; Milestone 1 not met.** The 18D holdout is inspected.
+
+**Single highest-impact remaining cause:** confident wrong source fields executed without a question (8 of 13 failed scenarios). The local matcher ranks better than Gemini (top-1 0.75 vs 0.60) but rarely contradicts those picks.
+
+**Release status: CODE_READY** (unqualified). Nothing was deployed or pushed; production stays `c7220768`.
+

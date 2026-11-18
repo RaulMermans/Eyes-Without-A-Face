@@ -1,0 +1,1617 @@
+[
+  {
+    "config": "A",
+    "trial": 1,
+    "index": 0,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": false,
+    "planner": "intent-plan-1",
+    "at": "2026-11-18T14:54:43.733Z",
+    "previewSha256": "34d82d8026f913942ca295317d70a9d8f9b9c11c2f72a0d2bc5293d4ec79bfe4",
+    "proposalStatus": "Valid · 4 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 6191ms",
+    "ms": 7239,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "34d82d8026f913942ca295317d70a9d8f9b9c11c2f72a0d2bc5293d4ec79bfe4"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"organization.external_id\",\n      \"status\": \"ready\",\n      \"from\": [\"f_05\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"organization.name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_03\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"contact_name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_12\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_17\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"phone\",\n      \"status\": \"ready\",\n      \"from\": [\"f_06\"],\n      \"transform\": \"trim\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"status\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_04\", \"f_08\", \"f_13\", \"f_15\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"service\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_04\", \"f_08\", \"f_13\", \"f_15\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"language\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_01\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"customer_since\",\n      \"status\": \"ready\",\n      \"from\": [\"f_14\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"DD/MM/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"format\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"priority\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_04\", \"f_08\", \"f_13\", \"f_15\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\"]\n    }\n  ],\n  \"summary\": \"Integration mapping proposed for available source attributes to destination schema.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 2845,
+        "output": 817
+      }
+    ]
+  },
+  {
+    "config": "RB",
+    "trial": 1,
+    "index": 0,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": true,
+    "planner": "intent-plan-2",
+    "at": "2026-11-18T14:54:54.328Z",
+    "previewSha256": "a227de90c747dff40772e22ece4fc5a0c748f8995384491e9abca772c2737901",
+    "proposalStatus": "Valid · 6 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 16020ms",
+    "ms": 16976,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "a227de90c747dff40772e22ece4fc5a0c748f8995384491e9abca772c2737901"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\"fields\":[{\"target\":\"organization.external_id\",\"status\":\"ready\",\"from\":[\"f_05\"],\"transform\":\"copy\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\"],\"missing\":[],\"alternatives\":[\"f_03\"]},{\"target\":\"organization.name\",\"status\":\"ready\",\"from\":[\"f_03\"],\"transform\":\"copy\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\"],\"missing\":[],\"alternatives\":[\"f_05\"]},{\"target\":\"contact_name\",\"status\":\"ready\",\"from\":[\"f_12\"],\"transform\":\"copy\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\"],\"missing\":[],\"alternatives\":[\"f_16\"]},{\"target\":\"email\",\"status\":\"ready\",\"from\":[\"f_17\"],\"transform\":\"normalize_email\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\",\"format\",\"examples\"],\"missing\":[],\"alternatives\":[\"f_07\"]},{\"target\":\"phone\",\"status\":\"ready\",\"from\":[\"f_06\"],\"transform\":\"trim\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\",\"examples\"],\"missing\":[],\"alternatives\":[]},{\"target\":\"status\",\"status\":\"needs_clarification\",\"from\":[\"f_04\",\"f_08\",\"f_10\",\"f_13\"],\"transform\":\"map_enum\",\"confidence\":\"low\",\"evidence\":[\"type\",\"category-labels\"],\"missing\":[\"category-labels\",\"field-meaning\"],\"alternatives\":[\"f_02\",\"f_15\"]},{\"target\":\"service\",\"status\":\"needs_clarification\",\"from\":[\"f_04\",\"f_08\",\"f_10\",\"f_13\"],\"transform\":\"map_enum\",\"confidence\":\"low\",\"evidence\":[\"type\",\"category-labels\"],\"missing\":[\"category-labels\",\"field-meaning\"],\"alternatives\":[\"f_02\",\"f_15\"]},{\"target\":\"language\",\"status\":\"needs_clarification\",\"from\":[\"f_01\"],\"transform\":\"map_enum\",\"confidence\":\"medium\",\"evidence\":[\"meaning\",\"type\",\"category-labels\"],\"missing\":[\"category-labels\"],\"alternatives\":[\"f_02\",\"f_04\"]},{\"target\":\"customer_since\",\"status\":\"ready\",\"from\":[\"f_14\"],\"transform\":\"parse_date\",\"inputFormat\":\"DD/MM/YYYY\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\",\"format\",\"examples\"],\"missing\":[],\"alternatives\":[\"f_09\"]},{\"target\":\"priority\",\"status\":\"needs_clarification\",\"from\":[\"f_08\",\"f_10\",\"f_15\"],\"transform\":\"map_enum\",\"confidence\":\"low\",\"evidence\":[\"type\",\"category-labels\"],\"missing\":[\"category-labels\",\"field-meaning\"],\"alternatives\":[\"f_04\",\"f_13\"]}],\"summary\":\"Integration plan mapping source field aliases to destination fields for CRM alignment.\"}"
+    ],
+    "usage": [
+      {
+        "prompt": 3035,
+        "output": 564
+      }
+    ]
+  },
+  {
+    "config": "A",
+    "trial": 1,
+    "index": 1,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": false,
+    "planner": "intent-plan-1",
+    "at": "2026-11-18T14:55:14.752Z",
+    "previewSha256": "05dfd40dbf1a67d522222c5d12a618e6bb86ad95f043a4e1c7d4cc8fbaad28f6",
+    "proposalStatus": "Valid · 2 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 9374ms",
+    "ms": 10310,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "05dfd40dbf1a67d522222c5d12a618e6bb86ad95f043a4e1c7d4cc8fbaad28f6"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"plot_id\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_02\", \"f_16\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"type\", \"meaning\"],\n      \"missing\": [\"field-meaning\"]\n    },\n    {\n      \"target\": \"member_id\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_02\", \"f_16\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"type\", \"meaning\"],\n      \"missing\": [\"field-meaning\"]\n    },\n    {\n      \"target\": \"tenant_name\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\"],\n      \"missing\": [\"no-matching-source\"]\n    },\n    {\n      \"target\": \"tenant_email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_12\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"site\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_01\", \"f_03\", \"f_05\", \"f_06\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"category-labels\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"plot_use\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_01\", \"f_03\", \"f_05\", \"f_06\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"category-labels\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"lease_status\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_13\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"category-labels\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"lease_start\",\n      \"status\": \"ready\",\n      \"from\": [\"f_04\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"plot_area_m2\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_08\", \"f_10\", \"f_11\", \"f_15\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"field-meaning\"]\n    },\n    {\n      \"target\": \"notes\",\n      \"status\": \"ready\",\n      \"from\": [\"f_14\"],\n      \"transform\": \"trim\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"type\", \"examples\"],\n      \"missing\": []\n    }\n  ],\n  \"summary\": \"Integration plan mapping available fields with necessary clarifications for ambiguous fields and missing sources.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 2781,
+        "output": 840
+      }
+    ]
+  },
+  {
+    "config": "RB",
+    "trial": 1,
+    "index": 1,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": true,
+    "planner": "intent-plan-2",
+    "at": "2026-11-18T14:55:28.431Z",
+    "previewSha256": "ed56a2fca442172e7da7146ee79fc1afc0f492b7ea4a51c3f6bf16e996b3c50f",
+    "proposalStatus": "Valid · 3 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 14293ms",
+    "ms": 15383,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "ed56a2fca442172e7da7146ee79fc1afc0f492b7ea4a51c3f6bf16e996b3c50f"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"plot_id\",\n      \"status\": \"ready\",\n      \"from\": [\"f_02\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_16\", \"f_09\"]\n    },\n    {\n      \"target\": \"member_id\",\n      \"status\": \"ready\",\n      \"from\": [\"f_16\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_02\", \"f_09\"]\n    },\n    {\n      \"target\": \"tenant_name\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\"],\n      \"missing\": [\"no-matching-source\"],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"tenant_email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_12\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_09\"]\n    },\n    {\n      \"target\": \"site\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_01\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\"],\n      \"alternatives\": [\"f_03\", \"f_05\"]\n    },\n    {\n      \"target\": \"plot_use\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_03\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\"],\n      \"alternatives\": [\"f_05\", \"f_06\"]\n    },\n    {\n      \"target\": \"lease_status\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_05\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\"],\n      \"alternatives\": [\"f_06\", \"f_13\"]\n    },\n    {\n      \"target\": \"lease_start\",\n      \"status\": \"ready\",\n      \"from\": [\"f_04\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_17\"]\n    },\n    {\n      \"target\": \"plot_area_m2\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_07\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"field-meaning\"],\n      \"alternatives\": [\"f_08\", \"f_10\"]\n    },\n    {\n      \"target\": \"notes\",\n      \"status\": \"ready\",\n      \"from\": [\"f_14\"],\n      \"transform\": \"trim\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"type\", \"format\"],\n      \"missing\": [],\n      \"alternatives\": []\n    }\n  ],\n  \"summary\": \"Integration mapping proposed for garden plot registry fields based on semantic types and descriptors.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 2964,
+        "output": 918
+      }
+    ]
+  },
+  {
+    "config": "A",
+    "trial": 1,
+    "index": 2,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": false,
+    "planner": "intent-plan-1",
+    "at": "2026-11-18T14:55:47.327Z",
+    "previewSha256": "defe772d41d808e031e6ab7467deb273f241691a9a09e94cda4c214417b27874",
+    "proposalStatus": "Rejected at plan · 0 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 2937ms",
+    "ms": 4238,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "defe772d41d808e031e6ab7467deb273f241691a9a09e94cda4c214417b27874"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"work_order\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_08\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"field-meaning\"]\n    },\n    {\n      \"target\": \"vehicle_id\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_08\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"field-meaning\"]\n    },\n    {\n      \"target\": \"job_type\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_15\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"meaning\", \"category-labels\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"priority\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_02\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"meaning\", \"category-labels\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"workshop\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_11\", \"f_13\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"category-labels\"],\n      \"missing\": [\"field-meaning\", \"category-labels\"]\n    },\n    {\n      \"target\": \"check_in_date\",\n      \"status\": \"ready\",\n      \"from\": [\"f_04\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"type\", \"format\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"odometer_km\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_05\", \"f_06\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"field-meaning\"]\n    },\n    {\n      \"target\": \"next_service_km\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_05\", \"f_06\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"field-meaning\"]\n    }\n  ],\n  \"summary\": \"Proposed integration mapping with required clarifications for ambiguous source fields and withheld category labels.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 2527,
+        "output": 665
+      }
+    ]
+  },
+  {
+    "config": "RB",
+    "trial": 1,
+    "index": 2,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": true,
+    "planner": "intent-plan-2",
+    "at": "2026-11-18T14:55:54.994Z",
+    "previewSha256": "214df3dda02c782c44d87846ea817a469a41906969787274d1f2b9841cca289b",
+    "proposalStatus": null,
+    "cloudError": true,
+    "origin": null,
+    "provenance": null,
+    "ms": 19086,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "214df3dda02c782c44d87846ea817a469a41906969787274d1f2b9841cca289b"
+    ],
+    "httpStatus": [
+      500
+    ],
+    "answers": [
+      ""
+    ],
+    "usage": [
+      {
+        "prompt": 0,
+        "output": 0
+      }
+    ]
+  },
+  {
+    "config": "A",
+    "trial": 1,
+    "index": 3,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": false,
+    "planner": "intent-plan-1",
+    "at": "2026-11-18T14:56:17.614Z",
+    "previewSha256": "23e6843adeb6ffea8a9cab48c87fcd322e2a1367f83d0678350bb0ca0f115bcb",
+    "proposalStatus": "Valid · 5 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 11201ms",
+    "ms": 12414,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "23e6843adeb6ffea8a9cab48c87fcd322e2a1367f83d0678350bb0ca0f115bcb"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"requester.external_id\",\n      \"status\": \"ready\",\n      \"from\": [\"f_05\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"requester.name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_13\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"requester.email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_09\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"requester.phone\",\n      \"status\": \"ready\",\n      \"from\": [\"f_14\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"organization.name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_11\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"organization.account_status\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_01\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"organization.tier\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_03\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"organization.customer_since\",\n      \"status\": \"ready\",\n      \"from\": [\"f_18\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"DD/MM/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"time_zone\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"no-matching-source\"]\n    },\n    {\n      \"target\": \"notes\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"no-matching-source\"]\n    }\n  ],\n  \"summary\": \"Integration plan mapping available source fields to destination attributes with necessary clarifications.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 2985,
+        "output": 764
+      }
+    ]
+  },
+  {
+    "config": "RB",
+    "trial": 1,
+    "index": 3,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": true,
+    "planner": "intent-plan-2",
+    "at": "2026-11-18T14:56:35.168Z",
+    "previewSha256": "ae6726f17794790edb5c9b4ce398ff0e30bbc57d38b7e6dd2a824e06c17d300d",
+    "proposalStatus": "Valid · 6 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 9086ms",
+    "ms": 10361,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "ae6726f17794790edb5c9b4ce398ff0e30bbc57d38b7e6dd2a824e06c17d300d"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"requester.external_id\",\n      \"status\": \"ready\",\n      \"from\": [\"f_05\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_08\", \"f_15\"]\n    },\n    {\n      \"target\": \"requester.name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_13\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_10\", \"f_17\"]\n    },\n    {\n      \"target\": \"requester.email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_09\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\", \"examples\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_12\"]\n    },\n    {\n      \"target\": \"requester.phone\",\n      \"status\": \"ready\",\n      \"from\": [\"f_14\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"organization.name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_11\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_10\"]\n    },\n    {\n      \"target\": \"organization.account_status\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_01\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\", \"business-rule\"],\n      \"alternatives\": [\"f_03\", \"f_04\"]\n    },\n    {\n      \"target\": \"organization.tier\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_06\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\", \"business-rule\"],\n      \"alternatives\": [\"f_01\", \"f_03\"]\n    },\n    {\n      \"target\": \"organization.customer_since\",\n      \"status\": \"ready\",\n      \"from\": [\"f_18\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"DD/MM/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_02\"]\n    },\n    {\n      \"target\": \"time_zone\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [],\n      \"missing\": [\"no-matching-source\"],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"notes\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [],\n      \"missing\": [\"no-matching-source\"],\n      \"alternatives\": []\n    }\n  ],\n  \"summary\": \"Mapped available source fields to corresponding target fields while flagging unmapped or ambiguous fields for clarification.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 3177,
+        "output": 907
+      }
+    ]
+  },
+  {
+    "config": "A",
+    "trial": 1,
+    "index": 4,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": false,
+    "planner": "intent-plan-1",
+    "at": "2026-11-18T14:56:49.934Z",
+    "previewSha256": "1cdfd8bb7175878001cc165a22375f9522fd1bdae7dbd73a39e1abac1e6d7d86",
+    "proposalStatus": "Valid · 2 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 7966ms",
+    "ms": 9441,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "1cdfd8bb7175878001cc165a22375f9522fd1bdae7dbd73a39e1abac1e6d7d86"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\"fields\":[{\"target\":\"id\",\"status\":\"needs_clarification\",\"from\":[\"f_01\",\"f_14\"],\"transform\":\"copy\",\"confidence\":\"medium\",\"evidence\":[\"meaning\"],\"missing\":[\"field-meaning\"]},{\"target\":\"name\",\"status\":\"ready\",\"from\":[\"f_11\",\"f_08\"],\"transform\":\"concat\",\"separator\":\" \",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"examples\"],\"missing\":[]},{\"target\":\"email\",\"status\":\"ready\",\"from\":[\"f_03\"],\"transform\":\"normalize_email\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\"],\"missing\":[]},{\"target\":\"phone\",\"status\":\"no_source\",\"from\":[],\"transform\":\"none\",\"confidence\":\"high\",\"evidence\":[\"meaning\"],\"missing\":[\"no-matching-source\"]},{\"target\":\"company\",\"status\":\"ready\",\"from\":[\"f_12\"],\"transform\":\"map_enum\",\"confidence\":\"medium\",\"evidence\":[\"meaning\",\"type\"],\"missing\":[\"category-labels\"]},{\"target\":\"status\",\"status\":\"needs_clarification\",\"from\":[\"f_13\"],\"transform\":\"map_enum\",\"confidence\":\"medium\",\"evidence\":[\"meaning\",\"type\"],\"missing\":[\"category-labels\",\"business-rule\"]},{\"target\":\"plan\",\"status\":\"needs_clarification\",\"from\":[\"f_09\"],\"transform\":\"map_enum\",\"confidence\":\"medium\",\"evidence\":[\"meaning\",\"type\"],\"missing\":[\"category-labels\"]},{\"target\":\"language\",\"status\":\"needs_clarification\",\"from\":[\"f_02\"],\"transform\":\"map_enum\",\"confidence\":\"medium\",\"evidence\":[\"meaning\",\"type\"],\"missing\":[\"category-labels\"]},{\"target\":\"customer_since\",\"status\":\"ready\",\"from\":[\"f_16\"],\"transform\":\"parse_date\",\"inputFormat\":\"MM/DD/YYYY\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"format\"],\"missing\":[]},{\"target\":\"time_zone\",\"status\":\"no_source\",\"from\":[],\"transform\":\"none\",\"confidence\":\"high\",\"evidence\":[\"meaning\"],\"missing\":[\"no-matching-source\"]}],\"summary\":\"Integration plan mapping source aliases to destination fields with necessary clarification and transformations.\"}"
+    ],
+    "usage": [
+      {
+        "prompt": 2935,
+        "output": 413
+      }
+    ]
+  },
+  {
+    "config": "RB",
+    "trial": 1,
+    "index": 4,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": true,
+    "planner": "intent-plan-2",
+    "at": "2026-11-18T14:57:02.841Z",
+    "previewSha256": "44eba1041fba6fc4ac0e474762013f7de35c1d983aa8a123f04077988e39dbe0",
+    "proposalStatus": "Valid · 2 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 7509ms",
+    "ms": 8969,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "44eba1041fba6fc4ac0e474762013f7de35c1d983aa8a123f04077988e39dbe0"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\"fields\":[{\"target\":\"id\",\"status\":\"ready\",\"from\":[\"f_01\"],\"transform\":\"copy\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\"],\"missing\":[],\"alternatives\":[\"f_14\"]},{\"target\":\"name\",\"status\":\"unsupported\",\"from\":[\"f_11\",\"f_08\"],\"transform\":\"none\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\",\"examples\"],\"missing\":[\"unsupported-transform\"],\"alternatives\":[]},{\"target\":\"email\",\"status\":\"ready\",\"from\":[\"f_03\"],\"transform\":\"normalize_email\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\"],\"missing\":[],\"alternatives\":[\"f_17\"]},{\"target\":\"phone\",\"status\":\"no_source\",\"from\":[],\"transform\":\"none\",\"confidence\":\"high\",\"evidence\":[\"type\"],\"missing\":[\"no-matching-source\"],\"alternatives\":[]},{\"target\":\"company\",\"status\":\"ready\",\"from\":[\"f_12\"],\"transform\":\"map_enum\",\"confidence\":\"medium\",\"evidence\":[\"meaning\"],\"missing\":[],\"alternatives\":[]},{\"target\":\"status\",\"status\":\"needs_clarification\",\"from\":[\"f_13\"],\"transform\":\"map_enum\",\"confidence\":\"medium\",\"evidence\":[\"meaning\",\"type\"],\"missing\":[\"category-labels\"],\"alternatives\":[\"f_05\",\"f_09\"]},{\"target\":\"plan\",\"status\":\"needs_clarification\",\"from\":[\"f_09\"],\"transform\":\"map_enum\",\"confidence\":\"medium\",\"evidence\":[\"meaning\",\"type\"],\"missing\":[\"category-labels\"],\"alternatives\":[\"f_05\",\"f_13\"]},{\"target\":\"language\",\"status\":\"needs_clarification\",\"from\":[\"f_02\"],\"transform\":\"map_enum\",\"confidence\":\"medium\",\"evidence\":[\"meaning\",\"type\"],\"missing\":[\"category-labels\"],\"alternatives\":[]},{\"target\":\"customer_since\",\"status\":\"ready\",\"from\":[\"f_16\"],\"transform\":\"parse_date\",\"inputFormat\":\"MM/DD/YYYY\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\",\"format\"],\"missing\":[],\"alternatives\":[\"f_15\"]},{\"target\":\"time_zone\",\"status\":\"no_source\",\"from\":[],\"transform\":\"none\",\"confidence\":\"high\",\"evidence\":[\"type\"],\"missing\":[\"no-matching-source\"],\"alternatives\":[]}],\"summary\":\"Integration plan mapping source fields to the target schema with required transformations and status flags.\"}"
+    ],
+    "usage": [
+      {
+        "prompt": 3104,
+        "output": 474
+      }
+    ]
+  },
+  {
+    "config": "A",
+    "trial": 1,
+    "index": 5,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": false,
+    "planner": "intent-plan-1",
+    "at": "2026-11-18T14:57:15.466Z",
+    "previewSha256": "1e9714cfe0b7436841077a782e59f14c37a9b29120e84551573539f7d4c3222b",
+    "proposalStatus": "Valid · 5 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 21100ms",
+    "ms": 22156,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "1e9714cfe0b7436841077a782e59f14c37a9b29120e84551573539f7d4c3222b"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"requester_id\",\n      \"status\": \"ready\",\n      \"from\": [\"f_17\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"first_name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_08\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"last_name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_07\"],\n      \"transform\": \"trim\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_09\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"phone\",\n      \"status\": \"ready\",\n      \"from\": [\"f_01\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"company\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [],\n      \"missing\": [\"no-matching-source\"]\n    },\n    {\n      \"target\": \"account_status\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_02\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"service_tier\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_10\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"language\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_04\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"customer_since\",\n      \"status\": \"ready\",\n      \"from\": [\"f_03\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"DD/MM/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"remaining_term_months\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [],\n      \"missing\": [\"no-matching-source\"]\n    }\n  ],\n  \"summary\": \"Integration mapping proposal mapping available source aliases to target fields with necessary clarifications.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 2901,
+        "output": 836
+      }
+    ]
+  },
+  {
+    "config": "RB",
+    "trial": 1,
+    "index": 5,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": true,
+    "planner": "intent-plan-2",
+    "at": "2026-11-18T14:57:41.221Z",
+    "previewSha256": "5f37eeac1a7f9d9153aa5a7ec45a41189b21e1154f8d590dddea5cdc3cd9de16",
+    "proposalStatus": "Valid · 5 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 9895ms",
+    "ms": 10844,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "5f37eeac1a7f9d9153aa5a7ec45a41189b21e1154f8d590dddea5cdc3cd9de16"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"requester_id\",\n      \"status\": \"ready\",\n      \"from\": [\n        \"f_17\"\n      ],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\n        \"meaning\",\n        \"type\"\n      ],\n      \"missing\": [],\n      \"alternatives\": [\n        \"f_15\"\n      ]\n    },\n    {\n      \"target\": \"first_name\",\n      \"status\": \"ready\",\n      \"from\": [\n        \"f_08\"\n      ],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\n        \"meaning\",\n        \"type\"\n      ],\n      \"missing\": [],\n      \"alternatives\": [\n        \"f_05\"\n      ]\n    },\n    {\n      \"target\": \"last_name\",\n      \"status\": \"ready\",\n      \"from\": [\n        \"f_07\"\n      ],\n      \"transform\": \"trim\",\n      \"confidence\": \"high\",\n      \"evidence\": [\n        \"meaning\",\n        \"format\"\n      ],\n      \"missing\": [],\n      \"alternatives\": [\n        \"f_01\"\n      ]\n    },\n    {\n      \"target\": \"email\",\n      \"status\": \"ready\",\n      \"from\": [\n        \"f_09\"\n      ],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\n        \"meaning\",\n        \"type\"\n      ],\n      \"missing\": [],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"phone\",\n      \"status\": \"ready\",\n      \"from\": [\n        \"f_01\"\n      ],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\n        \"meaning\",\n        \"type\"\n      ],\n      \"missing\": [],\n      \"alternatives\": [\n        \"f_07\"\n      ]\n    },\n    {\n      \"target\": \"company\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\n        \"meaning\"\n      ],\n      \"missing\": [\n        \"no-matching-source\"\n      ],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"account_status\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\n        \"f_02\"\n      ],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\n        \"meaning\",\n        \"category-labels\"\n      ],\n      \"missing\": [\n        \"category-labels\",\n        \"business-rule\"\n      ],\n      \"alternatives\": [\n        \"f_13\"\n      ]\n    },\n    {\n      \"target\": \"service_tier\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\n        \"f_10\"\n      ],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\n        \"meaning\",\n        \"category-labels\"\n      ],\n      \"missing\": [\n        \"category-labels\",\n        \"business-rule\"\n      ],\n      \"alternatives\": [\n        \"f_06\"\n      ]\n    },\n    {\n      \"target\": \"language\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\n        \"f_04\"\n      ],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\n        \"meaning\",\n        \"category-labels\"\n      ],\n      \"missing\": [\n        \"category-labels\",\n        \"business-rule\"\n      ],\n      \"alternatives\": [\n        \"f_12\"\n      ]\n    },\n    {\n      \"target\": \"customer_since\",\n      \"status\": \"ready\",\n      \"from\": [\n        \"f_03\"\n      ],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"DD/MM/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\n        \"meaning\",\n        \"format\"\n      ],\n      \"missing\": [],\n      \"alternatives\": [\n        \"f_11\"\n      ]\n    },\n    {\n      \"target\": \"remaining_term_months\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\n        \"meaning\"\n      ],\n      \"missing\": [\n        \"no-matching-source\"\n      ],\n      \"alternatives\": []\n    }\n  ],\n  \"summary\": \"Integration mapping plan connecting available source aliases to destination fields with necessary clarification steps.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 3082,
+        "output": 1180
+      }
+    ]
+  },
+  {
+    "config": "A",
+    "trial": 1,
+    "index": 6,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": false,
+    "planner": "intent-plan-1",
+    "at": "2026-11-18T14:57:55.604Z",
+    "previewSha256": "7e7f4af23329a1546c70d8b3f9a60488a5e499f3c32d72dd3a7c65cdb1727604",
+    "proposalStatus": "Valid · 2 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 27237ms",
+    "ms": 28162,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "7e7f4af23329a1546c70d8b3f9a60488a5e499f3c32d72dd3a7c65cdb1727604"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"work_order_id\",\n      \"status\": \"ready\",\n      \"from\": [\"f_07\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"unit_id\",\n      \"status\": \"ready\",\n      \"from\": [\"f_10\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"type\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"job_type\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_01\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"priority\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_08\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"scheduled_date\",\n      \"status\": \"ready\",\n      \"from\": [\"f_15\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"format\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"site_city\",\n      \"status\": \"ready\",\n      \"from\": [\"f_03\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"technician\",\n      \"status\": \"ready\",\n      \"from\": [\"f_09\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"reporter_phone\",\n      \"status\": \"ready\",\n      \"from\": [\"f_11\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"estimated_hours\",\n      \"status\": \"ready\",\n      \"from\": [\"f_12\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"type\", \"examples\"],\n      \"missing\": []\n    }\n  ],\n  \"summary\": \"Integration mapping plan connects source aliases to target work order fields with enum clarification needed.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 2576,
+        "output": 694
+      }
+    ]
+  },
+  {
+    "config": "RB",
+    "trial": 1,
+    "index": 6,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": true,
+    "planner": "intent-plan-2",
+    "at": "2026-11-18T14:58:27.338Z",
+    "previewSha256": "11b8d8655091175a37774365e77316362c0cf2446d99cab219635d25df60d891",
+    "proposalStatus": "Valid · 3 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 9644ms",
+    "ms": 10812,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "11b8d8655091175a37774365e77316362c0cf2446d99cab219635d25df60d891"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"work_order_id\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_07\", \"f_10\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": [\"field-meaning\"],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"unit_id\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_10\", \"f_07\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": [\"field-meaning\"],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"job_type\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_01\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [\"category-labels\"],\n      \"alternatives\": [\"f_04\", \"f_14\"]\n    },\n    {\n      \"target\": \"priority\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_08\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [\"category-labels\"],\n      \"alternatives\": [\"f_01\", \"f_14\"]\n    },\n    {\n      \"target\": \"scheduled_date\",\n      \"status\": \"ready\",\n      \"from\": [\"f_15\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"format\"],\n      \"missing\": [],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"site_city\",\n      \"status\": \"ready\",\n      \"from\": [\"f_03\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_01\", \"f_04\"]\n    },\n    {\n      \"target\": \"technician\",\n      \"status\": \"ready\",\n      \"from\": [\"f_09\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_02\", \"f_05\"]\n    },\n    {\n      \"target\": \"reporter_phone\",\n      \"status\": \"ready\",\n      \"from\": [\"f_11\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_02\", \"f_05\"]\n    },\n    {\n      \"target\": \"estimated_hours\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_06\", \"f_12\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [\"field-meaning\"],\n      \"alternatives\": []\n    }\n  ],\n  \"summary\": \"Integration mapping plan connecting available source aliases to target fields with necessary clarifications.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 2753,
+        "output": 840
+      }
+    ]
+  },
+  {
+    "config": "A",
+    "trial": 1,
+    "index": 7,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": false,
+    "planner": "intent-plan-1",
+    "at": "2026-11-18T14:58:41.665Z",
+    "previewSha256": "9e2386aa5610d3fa818e12a69df658ce0ed8e9a8e064beefce015f30f5593672",
+    "proposalStatus": "Valid · 4 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 10061ms",
+    "ms": 11270,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "9e2386aa5610d3fa818e12a69df658ce0ed8e9a8e064beefce015f30f5593672"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"external_id\",\n      \"status\": \"ready\",\n      \"from\": [\"f_11\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"full_name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_04\"],\n      \"transform\": \"trim\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"format\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_03\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"phone\",\n      \"status\": \"ready\",\n      \"from\": [\"f_06\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"status\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_15\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"category-labels\"],\n      \"missing\": [\"category-labels\", \"business-rule\"]\n    },\n    {\n      \"target\": \"product\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_02\", \"f_05\", \"f_08\", \"f_12\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"field-meaning\", \"category-labels\", \"business-rule\"]\n    },\n    {\n      \"target\": \"support_level\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_05\", \"f_08\", \"f_13\", \"f_02\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"field-meaning\", \"category-labels\", \"business-rule\"]\n    },\n    {\n      \"target\": \"customer_since\",\n      \"status\": \"ready\",\n      \"from\": [\"f_09\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"DD/MM/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"format\", \"meaning\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"country\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_10\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"category-labels\"],\n      \"missing\": [\"category-labels\", \"business-rule\"]\n    }\n  ],\n  \"summary\": \"Integration mapping plan generated for source aliases to target fields, pending data owner clarifications on enums and business rules.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 2872,
+        "output": 769
+      }
+    ]
+  },
+  {
+    "config": "RB",
+    "trial": 1,
+    "index": 7,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": true,
+    "planner": "intent-plan-2",
+    "at": "2026-11-18T14:58:56.420Z",
+    "previewSha256": "8f11809e3b5737f35a244e04f49995f0df363482faa7dc956efa3bc65b8d6c6b",
+    "proposalStatus": "Valid · 4 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 19973ms",
+    "ms": 21028,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "8f11809e3b5737f35a244e04f49995f0df363482faa7dc956efa3bc65b8d6c6b"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"external_id\",\n      \"status\": \"ready\",\n      \"from\": [\n        \"f_16\"\n      ],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\n        \"meaning\",\n        \"type\"\n      ],\n      \"missing\": [],\n      \"alternatives\": [\n        \"f_11\"\n      ]\n    },\n    {\n      \"target\": \"full_name\",\n      \"status\": \"ready\",\n      \"from\": [\n        \"f_04\"\n      ],\n      \"transform\": \"trim\",\n      \"confidence\": \"high\",\n      \"evidence\": [\n        \"type\",\n        \"format\"\n      ],\n      \"missing\": [],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"email\",\n      \"status\": \"ready\",\n      \"from\": [\n        \"f_07\"\n      ],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\n        \"meaning\",\n        \"type\"\n      ],\n      \"missing\": [],\n      \"alternatives\": [\n        \"f_03\"\n      ]\n    },\n    {\n      \"target\": \"phone\",\n      \"status\": \"ready\",\n      \"from\": [\n        \"f_06\"\n      ],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\n        \"meaning\",\n        \"type\"\n      ],\n      \"missing\": [],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"status\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\n        \"f_15\"\n      ],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\n        \"meaning\",\n        \"category-labels\"\n      ],\n      \"missing\": [\n        \"category-labels\",\n        \"business-rule\"\n      ],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"product\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\n        \"f_02\",\n        \"f_05\",\n        \"f_08\",\n        \"f_12\"\n      ],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\n        \"meaning\",\n        \"category-labels\"\n      ],\n      \"missing\": [\n        \"field-meaning\",\n        \"category-labels\"\n      ],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"support_level\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\n        \"f_02\",\n        \"f_05\",\n        \"f_08\",\n        \"f_13\"\n      ],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\n        \"meaning\",\n        \"category-labels\"\n      ],\n      \"missing\": [\n        \"field-meaning\",\n        \"category-labels\"\n      ],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"customer_since\",\n      \"status\": \"ready\",\n      \"from\": [\n        \"f_17\"\n      ],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"DD/MM/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\n        \"format\",\n        \"type\"\n      ],\n      \"missing\": [],\n      \"alternatives\": [\n        \"f_09\"\n      ]\n    },\n    {\n      \"target\": \"country\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\n        \"f_10\"\n      ],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\n        \"meaning\",\n        \"category-labels\"\n      ],\n      \"missing\": [\n        \"category-labels\"\n      ],\n      \"alternatives\": []\n    }\n  ],\n  \"summary\": \"Integration plan mapping available source fields to destination targets with necessary clarification flags for withheld category labels and ambiguous fields.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 3045,
+        "output": 1018
+      }
+    ]
+  },
+  {
+    "config": "A",
+    "trial": 1,
+    "index": 8,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": false,
+    "planner": "intent-plan-1",
+    "at": "2026-11-18T14:59:21.004Z",
+    "previewSha256": "c3be4946271989cd445725efb579006083c94cc9182c84c1330501256ffea487",
+    "proposalStatus": null,
+    "cloudError": true,
+    "origin": null,
+    "provenance": null,
+    "ms": 20018,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "c3be4946271989cd445725efb579006083c94cc9182c84c1330501256ffea487"
+    ],
+    "httpStatus": [
+      500
+    ],
+    "answers": [
+      ""
+    ],
+    "usage": [
+      {
+        "prompt": 0,
+        "output": 0
+      }
+    ]
+  },
+  {
+    "config": "RB",
+    "trial": 1,
+    "index": 8,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": true,
+    "planner": "intent-plan-2",
+    "at": "2026-11-18T14:59:44.931Z",
+    "previewSha256": "78b676045b2df78880fa0801cee776d480ffb9e35d74ea4a1d5d2340448155bb",
+    "proposalStatus": null,
+    "cloudError": true,
+    "origin": null,
+    "provenance": null,
+    "ms": 15150,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "78b676045b2df78880fa0801cee776d480ffb9e35d74ea4a1d5d2340448155bb"
+    ],
+    "httpStatus": [
+      500
+    ],
+    "answers": [
+      ""
+    ],
+    "usage": [
+      {
+        "prompt": 0,
+        "output": 0
+      }
+    ]
+  },
+  {
+    "config": "A",
+    "trial": 1,
+    "index": 9,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": false,
+    "planner": "intent-plan-1",
+    "at": "2026-11-18T15:00:03.690Z",
+    "previewSha256": "84f51334bba71ca8917a974e150b84860fcf10c57de73d251cbd4e890099677a",
+    "proposalStatus": null,
+    "cloudError": true,
+    "origin": null,
+    "provenance": null,
+    "ms": 14426,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "84f51334bba71ca8917a974e150b84860fcf10c57de73d251cbd4e890099677a"
+    ],
+    "httpStatus": [
+      500
+    ],
+    "answers": [
+      ""
+    ],
+    "usage": [
+      {
+        "prompt": 0,
+        "output": 0
+      }
+    ]
+  },
+  {
+    "config": "RB",
+    "trial": 1,
+    "index": 9,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": true,
+    "planner": "intent-plan-2",
+    "at": "2026-11-18T15:00:21.589Z",
+    "previewSha256": "b099ec5a1b318381745427d3aa11a6fbcc0b1bc4f11c6fad4c297a92a940b696",
+    "proposalStatus": "Valid · 4 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 13714ms",
+    "ms": 14839,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "b099ec5a1b318381745427d3aa11a6fbcc0b1bc4f11c6fad4c297a92a940b696"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"ticket_id\",\n      \"status\": \"ready\",\n      \"from\": [\n        \"f_06\"\n      ],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\n        \"meaning\",\n        \"type\"\n      ],\n      \"missing\": [],\n      \"alternatives\": [\n        \"f_07\"\n      ]\n    },\n    {\n      \"target\": \"attendee_name\",\n      \"status\": \"ready\",\n      \"from\": [\n        \"f_05\"\n      ],\n      \"transform\": \"trim\",\n      \"confidence\": \"high\",\n      \"evidence\": [\n        \"meaning\",\n        \"type\",\n        \"examples\"\n      ],\n      \"missing\": [],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"ticket_type\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\n        \"f_09\",\n        \"f_03\",\n        \"f_04\",\n        \"f_14\"\n      ],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\n        \"type\",\n        \"category-labels\"\n      ],\n      \"missing\": [\n        \"category-labels\",\n        \"field-meaning\"\n      ],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"gate\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\n        \"f_03\",\n        \"f_04\",\n        \"f_13\",\n        \"f_14\"\n      ],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\n        \"type\",\n        \"category-labels\"\n      ],\n      \"missing\": [\n        \"category-labels\",\n        \"field-meaning\"\n      ],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"valid_from\",\n      \"status\": \"ready\",\n      \"from\": [\n        \"f_11\"\n      ],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"DD/MM/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\n        \"meaning\",\n        \"format\",\n        \"examples\"\n      ],\n      \"missing\": [],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"contact_email\",\n      \"status\": \"ready\",\n      \"from\": [\n        \"f_08\"\n      ],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\n        \"meaning\",\n        \"format\",\n        \"examples\"\n      ],\n      \"missing\": [],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"access_requirement\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\n        \"meaning\"\n      ],\n      \"missing\": [\n        \"no-matching-source\"\n      ],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"days_until_event\",\n      \"status\": \"unsupported\",\n      \"from\": [\n        \"f_10\",\n        \"f_11\"\n      ],\n      \"transform\": \"none\",\n      \"confidence\": \"low\",\n      \"evidence\": [\n        \"type\",\n        \"format\"\n      ],\n      \"missing\": [\n        \"unsupported-transform\"\n      ],\n      \"alternatives\": []\n    }\n  ],\n  \"summary\": \"Mapping plan generated linking available source fields to ticket destination fields with necessary clarifications.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 2705,
+        "output": 903
+      }
+    ]
+  },
+  {
+    "config": "A",
+    "trial": 1,
+    "index": 10,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": false,
+    "planner": "intent-plan-1",
+    "at": "2026-11-18T15:00:44.781Z",
+    "previewSha256": "7e1e14d344691a592e26eca05078fc5b44cb5b7d8a2759af6a47ae36579094c5",
+    "proposalStatus": "Valid · 5 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 10124ms",
+    "ms": 12415,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "7e1e14d344691a592e26eca05078fc5b44cb5b7d8a2759af6a47ae36579094c5"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"customer_id\",\n      \"status\": \"ready\",\n      \"from\": [\"f_14\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"first_name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_03\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"last_name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_05\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_08\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"phone\",\n      \"status\": \"ready\",\n      \"from\": [\"f_11\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"status\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_13\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\", \"business-rule\"]\n    },\n    {\n      \"target\": \"plan\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_02\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\", \"business-rule\"]\n    },\n    {\n      \"target\": \"language\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_01\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\", \"business-rule\"]\n    },\n    {\n      \"target\": \"customer_since\",\n      \"status\": \"ready\",\n      \"from\": [\"f_16\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"organization\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\"],\n      \"missing\": [\"no-matching-source\"]\n    }\n  ],\n  \"summary\": \"Integration mapping proposed for available customer source fields with necessary clarifications for category mappings.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 2809,
+        "output": 799
+      }
+    ]
+  },
+  {
+    "config": "RB",
+    "trial": 1,
+    "index": 10,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": true,
+    "planner": "intent-plan-2",
+    "at": "2026-11-18T15:01:00.805Z",
+    "previewSha256": "d8d1e6c6527396115911f5db43aa4ce2cf39768138ab230d1c1dde972de25e43",
+    "proposalStatus": null,
+    "cloudError": true,
+    "origin": null,
+    "provenance": null,
+    "ms": 21560,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "d8d1e6c6527396115911f5db43aa4ce2cf39768138ab230d1c1dde972de25e43"
+    ],
+    "httpStatus": [
+      500
+    ],
+    "answers": [
+      ""
+    ],
+    "usage": [
+      {
+        "prompt": 0,
+        "output": 0
+      }
+    ]
+  },
+  {
+    "config": "A",
+    "trial": 1,
+    "index": 11,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": false,
+    "planner": "intent-plan-1",
+    "at": "2026-11-18T15:01:26.031Z",
+    "previewSha256": "e4439905d10cb96a8c16f9b01734f832b564a595ec7311f076348411cc4699e1",
+    "proposalStatus": "Valid · 4 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 5277ms",
+    "ms": 6227,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "e4439905d10cb96a8c16f9b01734f832b564a595ec7311f076348411cc4699e1"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"externalId\",\n      \"status\": \"ready\",\n      \"from\": [\"f_02\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_03\"],\n      \"transform\": \"trim\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_07\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"phone\",\n      \"status\": \"ready\",\n      \"from\": [\"f_13\"],\n      \"transform\": \"trim\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"plan\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_06\", \"f_11\", \"f_15\", \"f_16\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\", \"field-meaning\"]\n    },\n    {\n      \"target\": \"accountStatus\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_01\", \"f_05\", \"f_09\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\", \"field-meaning\"]\n    },\n    {\n      \"target\": \"timezone\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"no-matching-source\"]\n    },\n    {\n      \"target\": \"customerSince\",\n      \"status\": \"ready\",\n      \"from\": [\"f_04\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"type\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"companyName\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"no-matching-source\"]\n    }\n  ],\n  \"summary\": \"Mapping plan generated addressing all available target fields with required transformations, status classifications, and missing metadata flags.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 2711,
+        "output": 715
+      }
+    ]
+  },
+  {
+    "config": "RB",
+    "trial": 1,
+    "index": 11,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": true,
+    "planner": "intent-plan-2",
+    "at": "2026-11-18T15:01:35.834Z",
+    "previewSha256": "51875eec79533539a47a98de124143ba2d1bbef255dd5d28f9b7e8c3ece31720",
+    "proposalStatus": "Valid · 3 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 14838ms",
+    "ms": 15924,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "51875eec79533539a47a98de124143ba2d1bbef255dd5d28f9b7e8c3ece31720"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"externalId\",\n      \"status\": \"ready\",\n      \"from\": [\"f_02\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_10\"]\n    },\n    {\n      \"target\": \"name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_03\"],\n      \"transform\": \"trim\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"examples\"],\n      \"missing\": [],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_07\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\", \"examples\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_14\"]\n    },\n    {\n      \"target\": \"phone\",\n      \"status\": \"ready\",\n      \"from\": [\"f_13\"],\n      \"transform\": \"trim\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"plan\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_06\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\"],\n      \"alternatives\": [\"f_11\", \"f_15\"]\n    },\n    {\n      \"target\": \"accountStatus\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_01\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\"],\n      \"alternatives\": [\"f_05\", \"f_09\"]\n    },\n    {\n      \"target\": \"timezone\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [],\n      \"missing\": [\"no-matching-source\"],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"customerSince\",\n      \"status\": \"ready\",\n      \"from\": [\"f_04\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_08\"]\n    },\n    {\n      \"target\": \"companyName\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [],\n      \"missing\": [\"no-matching-source\"],\n      \"alternatives\": []\n    }\n  ],\n  \"summary\": \"Integration mapping proposed for user identity, communication, status, and activity timeline fields.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 2882,
+        "output": 785
+      }
+    ]
+  },
+  {
+    "config": "A",
+    "trial": 1,
+    "index": 12,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": false,
+    "planner": "intent-plan-1",
+    "at": "2026-11-18T15:01:55.619Z",
+    "previewSha256": "7828721c4c618fae86acdedfc3ca29530e5540fb41a805d16e473bd74b183c57",
+    "proposalStatus": "Valid · 2 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 15491ms",
+    "ms": 16462,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "7828721c4c618fae86acdedfc3ca29530e5540fb41a805d16e473bd74b183c57"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"externalId\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_01\", \"f_06\", \"f_02\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [\"field-meaning\"]\n    },\n    {\n      \"target\": \"fullName\",\n      \"status\": \"ready\",\n      \"from\": [\"f_05\", \"f_07\"],\n      \"transform\": \"concat\",\n      \"separator\": \" \",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_12\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"type\", \"format\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"phone\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"no-matching-source\"]\n    },\n    {\n      \"target\": \"status\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_16\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"category-labels\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"plan\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_03\", \"f_10\", \"f_14\", \"f_18\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\", \"field-meaning\"]\n    },\n    {\n      \"target\": \"contactChannel\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"no-matching-source\"]\n    },\n    {\n      \"target\": \"customerSince\",\n      \"status\": \"ready\",\n      \"from\": [\"f_09\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"format\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"loyaltyTier\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"no-matching-source\"]\n    }\n  ],\n  \"summary\": \"Integration plan mapped available source fields to corresponding targets where sources were identifiable.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 2922,
+        "output": 734
+      }
+    ]
+  },
+  {
+    "config": "RB",
+    "trial": 1,
+    "index": 12,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": true,
+    "planner": "intent-plan-2",
+    "at": "2026-11-18T15:02:15.687Z",
+    "previewSha256": "0e9f5dde0ef24d4cced38fef26001ebf086ae17e7ce83863beea591eb440dfc2",
+    "proposalStatus": "Valid · 2 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 30611ms",
+    "ms": 31796,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "0e9f5dde0ef24d4cced38fef26001ebf086ae17e7ce83863beea591eb440dfc2"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"externalId\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_01\", \"f_06\", \"f_11\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [\"field-meaning\"],\n      \"alternatives\": [\"f_02\"]\n    },\n    {\n      \"target\": \"fullName\",\n      \"status\": \"ready\",\n      \"from\": [\"f_05\", \"f_07\"],\n      \"transform\": \"concat\",\n      \"separator\": \" \",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_04\"]\n    },\n    {\n      \"target\": \"email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_12\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_13\"]\n    },\n    {\n      \"target\": \"phone\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"no-matching-source\"],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"status\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_16\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\"],\n      \"alternatives\": [\"f_03\", \"f_10\"]\n    },\n    {\n      \"target\": \"plan\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_03\", \"f_10\", \"f_18\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"field-meaning\", \"category-labels\"],\n      \"alternatives\": [\"f_14\"]\n    },\n    {\n      \"target\": \"contactChannel\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"no-matching-source\"],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"customerSince\",\n      \"status\": \"ready\",\n      \"from\": [\"f_09\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_17\"]\n    },\n    {\n      \"target\": \"loyaltyTier\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_14\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"field-meaning\", \"category-labels\"],\n      \"alternatives\": [\"f_02\", \"f_18\"]\n    }\n  ],\n  \"summary\": \"Integration plan mapping available fields with necessary clarifications for ambiguous sources and withheld categories.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 3088,
+        "output": 856
+      }
+    ]
+  },
+  {
+    "config": "A",
+    "trial": 1,
+    "index": 13,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": false,
+    "planner": "intent-plan-1",
+    "at": "2026-11-18T15:02:50.978Z",
+    "previewSha256": "5a650e3224b0166f06876e0d764e3d5e2463548fb12e73946cec614ed3026501",
+    "proposalStatus": "Valid · 2 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 11558ms",
+    "ms": 13134,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "5a650e3224b0166f06876e0d764e3d5e2463548fb12e73946cec614ed3026501"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"permit_id\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_03\", \"f_06\", \"f_08\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"field-meaning\"]\n    },\n    {\n      \"target\": \"permit_type\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_04\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"decision\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_05\", \"f_09\", \"f_11\", \"f_15\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"municipality\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_03\", \"f_06\", \"f_08\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"field-meaning\"]\n    },\n    {\n      \"target\": \"parcel_ref\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_03\", \"f_06\", \"f_08\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"field-meaning\"]\n    },\n    {\n      \"target\": \"filed_on\",\n      \"status\": \"ready\",\n      \"from\": [\"f_01\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"DD/MM/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"type\", \"format\", \"meaning\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"decided_on\",\n      \"status\": \"ready\",\n      \"from\": [\"f_10\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"DD/MM/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"type\", \"format\", \"meaning\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"floor_area_m2\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_12\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"type\", \"format\", \"meaning\"],\n      \"missing\": [\"field-meaning\"]\n    },\n    {\n      \"target\": \"dwellings\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_02\", \"f_07\", \"f_13\", \"f_14\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"field-meaning\"]\n    },\n    {\n      \"target\": \"processing_days\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_02\", \"f_07\", \"f_13\", \"f_14\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"field-meaning\"]\n    }\n  ],\n  \"summary\": \"Integration mapping proposed with source-to-target field alignments and identified areas requiring data owner clarification.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 2405,
+        "output": 896
+      }
+    ]
+  },
+  {
+    "config": "RB",
+    "trial": 1,
+    "index": 13,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": true,
+    "planner": "intent-plan-2",
+    "at": "2026-11-18T15:03:09.925Z",
+    "previewSha256": "b6d1858ddc6439718e66a79fcdb53c7712dbfe2d516a51d139a2c57a981d23d8",
+    "proposalStatus": "Valid · 2 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 12553ms",
+    "ms": 13861,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "b6d1858ddc6439718e66a79fcdb53c7712dbfe2d516a51d139a2c57a981d23d8"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"permit_id\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_03\", \"f_06\", \"f_08\"],\n      \"transform\": \"none\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [\"field-meaning\"],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"permit_type\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_15\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\"],\n      \"alternatives\": [\"f_04\", \"f_11\"]\n    },\n    {\n      \"target\": \"decision\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_04\", \"f_09\", \"f_11\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\"],\n      \"alternatives\": [\"f_05\"]\n    },\n    {\n      \"target\": \"municipality\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_03\", \"f_06\", \"f_08\"],\n      \"transform\": \"none\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [\"field-meaning\"],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"parcel_ref\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_03\", \"f_06\", \"f_08\"],\n      \"transform\": \"none\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [\"field-meaning\"],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"filed_on\",\n      \"status\": \"ready\",\n      \"from\": [\"f_01\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"DD/MM/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"format\", \"type\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_10\"]\n    },\n    {\n      \"target\": \"decided_on\",\n      \"status\": \"ready\",\n      \"from\": [\"f_10\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"DD/MM/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"format\", \"type\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_01\"]\n    },\n    {\n      \"target\": \"floor_area_m2\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_12\", \"f_02\", \"f_07\"],\n      \"transform\": \"none\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"field-meaning\"],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"dwellings\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_13\", \"f_14\", \"f_02\"],\n      \"transform\": \"none\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"field-meaning\"],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"processing_days\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_02\", \"f_07\", \"f_13\", \"f_14\"],\n      \"transform\": \"none\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"field-meaning\"],\n      \"alternatives\": []\n    }\n  ],\n  \"summary\": \"Integration mapping proposed with date fields ready and text/numeric fields requiring business clarification.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 2588,
+        "output": 995
+      }
+    ]
+  },
+  {
+    "config": "A",
+    "trial": 1,
+    "index": 14,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": false,
+    "planner": "intent-plan-1",
+    "at": "2026-11-18T15:03:27.955Z",
+    "harnessError": "destination: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+    "ms": 5638,
+    "requests": 0,
+    "leakCount": 0,
+    "promptSha256": [],
+    "httpStatus": [],
+    "answers": [],
+    "usage": []
+  },
+  {
+    "config": "RB",
+    "trial": 1,
+    "index": 14,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": true,
+    "planner": "intent-plan-2",
+    "at": "2026-11-18T15:03:36.942Z",
+    "previewSha256": "3248e3d3789f58f959654e2849ecfcb5471ec47d9e02f408be4c0239e6f0fa29",
+    "proposalStatus": "Valid · 5 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 10175ms",
+    "ms": 11918,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "3248e3d3789f58f959654e2849ecfcb5471ec47d9e02f408be4c0239e6f0fa29"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"external_id\",\n      \"status\": \"ready\",\n      \"from\": [\"f_09\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"type\", \"format\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_10\"]\n    },\n    {\n      \"target\": \"first_name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_18\"],\n      \"transform\": \"trim\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_08\"]\n    },\n    {\n      \"target\": \"last_name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_08\"],\n      \"transform\": \"trim\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_18\"]\n    },\n    {\n      \"target\": \"email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_03\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_07\"]\n    },\n    {\n      \"target\": \"mobile\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [],\n      \"missing\": [\"no-matching-source\"],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"organization\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_11\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"field-meaning\"],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"status\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_02\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"category-labels\"],\n      \"missing\": [\"category-labels\"],\n      \"alternatives\": [\"f_13\", \"f_15\"]\n    },\n    {\n      \"target\": \"plan\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_04\", \"f_05\", \"f_13\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"category-labels\"],\n      \"missing\": [\"field-meaning\", \"category-labels\"],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"priority\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_06\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"category-labels\"],\n      \"missing\": [\"category-labels\"],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"customer_since\",\n      \"status\": \"ready\",\n      \"from\": [\"f_12\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"DD/MM/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"format\", \"meaning\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_14\"]\n    },\n    {\n      \"target\": \"language\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_17\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"category-labels\"],\n      \"missing\": [\"field-meaning\", \"category-labels\"],\n      \"alternatives\": []\n    }\n  ],\n  \"summary\": \"Integration mapping plan connecting available source fields to corresponding destination fields with required clarifications.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 3084,
+        "output": 953
+      }
+    ]
+  },
+  {
+    "config": "A",
+    "trial": 1,
+    "index": 15,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": false,
+    "planner": "intent-plan-1",
+    "at": "2026-11-18T15:03:52.448Z",
+    "harnessError": "destination: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+    "ms": 5514,
+    "requests": 0,
+    "leakCount": 0,
+    "promptSha256": [],
+    "httpStatus": [],
+    "answers": [],
+    "usage": []
+  },
+  {
+    "config": "RB",
+    "trial": 1,
+    "index": 15,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": true,
+    "planner": "intent-plan-2",
+    "at": "2026-11-18T15:04:01.942Z",
+    "previewSha256": "24d1984bb993f518cdb9b2a3f87b32274ed7fb2c157fff4deefbf86637e83cf6",
+    "proposalStatus": "Valid · 5 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 25859ms",
+    "ms": 27167,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "24d1984bb993f518cdb9b2a3f87b32274ed7fb2c157fff4deefbf86637e83cf6"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"external_id\",\n      \"status\": \"ready\",\n      \"from\": [\"f_09\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_01\", \"f_04\"]\n    },\n    {\n      \"target\": \"first_name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_07\"],\n      \"transform\": \"trim\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_08\"]\n    },\n    {\n      \"target\": \"last_name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_08\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_07\"]\n    },\n    {\n      \"target\": \"email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_12\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_17\"]\n    },\n    {\n      \"target\": \"phone\",\n      \"status\": \"ready\",\n      \"from\": [\"f_14\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"status\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_16\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"category-labels\"],\n      \"missing\": [\"category-labels\"],\n      \"alternatives\": [\"f_05\"]\n    },\n    {\n      \"target\": \"plan\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_11\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"category-labels\"],\n      \"missing\": [\"category-labels\"],\n      \"alternatives\": [\"f_02\"]\n    },\n    {\n      \"target\": \"preferred_channel\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\"],\n      \"missing\": [\"no-matching-source\"],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"customer_since\",\n      \"status\": \"ready\",\n      \"from\": [\"f_06\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"format\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_03\"]\n    },\n    {\n      \"target\": \"company\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\"],\n      \"missing\": [\"no-matching-source\"],\n      \"alternatives\": []\n    }\n  ],\n  \"summary\": \"Integration mapping proposed for available fields, with necessary clarifications identified for enum mappings.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 3088,
+        "output": 853
+      }
+    ]
+  },
+  {
+    "config": "A",
+    "trial": 1,
+    "index": 16,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": false,
+    "planner": "intent-plan-1",
+    "at": "2026-11-18T15:04:32.716Z",
+    "previewSha256": "fb78b13c01c5dadb201b900661716ad33ddf3a38258d25e177bb88f9257b8846",
+    "proposalStatus": "Valid · 5 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 11065ms",
+    "ms": 12452,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "fb78b13c01c5dadb201b900661716ad33ddf3a38258d25e177bb88f9257b8846"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"deposit_id\",\n      \"status\": \"ready\",\n      \"from\": [\"f_01\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"title\",\n      \"status\": \"ready\",\n      \"from\": [\"f_09\"],\n      \"transform\": \"trim\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"author_name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_05\", \"f_13\"],\n      \"transform\": \"concat\",\n      \"separator\": \" \",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"author_email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_10\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"degree_level\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_11\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"status\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_07\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"language\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_03\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"defense_date\",\n      \"status\": \"ready\",\n      \"from\": [\"f_02\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"DD/MM/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\", \"examples\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"access\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_14\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"doi\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\"],\n      \"missing\": [\"no-matching-source\"]\n    }\n  ],\n  \"summary\": \"Integration mapping plan generated for source fields to destination schema.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 2715,
+        "output": 803
+      }
+    ]
+  },
+  {
+    "config": "RB",
+    "trial": 1,
+    "index": 16,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": true,
+    "planner": "intent-plan-2",
+    "at": "2026-11-18T15:04:48.521Z",
+    "previewSha256": "9dc2408615b4a941a8bee82433071e935a7bd9f8919956cedeaf9cfc2ca2ce50",
+    "proposalStatus": "Valid · 3 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 10824ms",
+    "ms": 11815,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "9dc2408615b4a941a8bee82433071e935a7bd9f8919956cedeaf9cfc2ca2ce50"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"deposit_id\",\n      \"status\": \"ready\",\n      \"from\": [\"f_01\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"type\", \"format\", \"examples\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_15\"]\n    },\n    {\n      \"target\": \"title\",\n      \"status\": \"ready\",\n      \"from\": [\"f_09\"],\n      \"transform\": \"trim\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"type\", \"examples\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_05\", \"f_13\"]\n    },\n    {\n      \"target\": \"author_name\",\n      \"status\": \"unsupported\",\n      \"from\": [\"f_05\", \"f_13\"],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"examples\"],\n      \"missing\": [\"unsupported-transform\"],\n      \"alternatives\": [\"f_09\"]\n    },\n    {\n      \"target\": \"author_email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_10\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\", \"examples\"],\n      \"missing\": [],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"degree_level\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_11\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\"],\n      \"alternatives\": [\"f_03\", \"f_14\"]\n    },\n    {\n      \"target\": \"status\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_14\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\", \"business-rule\"],\n      \"alternatives\": [\"f_07\", \"f_16\"]\n    },\n    {\n      \"target\": \"language\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_03\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\"],\n      \"alternatives\": [\"f_11\", \"f_16\"]\n    },\n    {\n      \"target\": \"defense_date\",\n      \"status\": \"ready\",\n      \"from\": [\"f_02\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"DD/MM/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"type\", \"format\", \"examples\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_06\"]\n    },\n    {\n      \"target\": \"access\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_07\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\", \"business-rule\"],\n      \"alternatives\": [\"f_16\", \"f_14\"]\n    },\n    {\n      \"target\": \"doi\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [],\n      \"missing\": [\"no-matching-source\"],\n      \"alternatives\": []\n    }\n  ],\n  \"summary\": \"Integration plan mapping available source fields to destination thesis repository fields with necessary clarifications.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 2903,
+        "output": 946
+      }
+    ]
+  },
+  {
+    "config": "A",
+    "trial": 1,
+    "index": 17,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": false,
+    "planner": "intent-plan-1",
+    "at": "2026-11-18T15:05:03.815Z",
+    "previewSha256": "482db7156538aec5d8f281944fe4e2a22f12074f0d2e3b6856666db19715210b",
+    "proposalStatus": "Valid · 4 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 9936ms",
+    "ms": 11382,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "482db7156538aec5d8f281944fe4e2a22f12074f0d2e3b6856666db19715210b"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\"fields\":[{\"target\":\"customer_id\",\"status\":\"ready\",\"from\":[\"f_14\"],\"transform\":\"copy\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\"],\"missing\":[]},{\"target\":\"first_name\",\"status\":\"ready\",\"from\":[\"f_09\"],\"transform\":\"copy\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\"],\"missing\":[]},{\"target\":\"last_name\",\"status\":\"no_source\",\"from\":[],\"transform\":\"none\",\"confidence\":\"high\",\"evidence\":[\"meaning\"],\"missing\":[\"no-matching-source\"]},{\"target\":\"email\",\"status\":\"ready\",\"from\":[\"f_01\"],\"transform\":\"normalize_email\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\",\"format\"],\"missing\":[]},{\"target\":\"phone\",\"status\":\"ready\",\"from\":[\"f_15\"],\"transform\":\"copy\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\",\"format\"],\"missing\":[]},{\"target\":\"status\",\"status\":\"needs_clarification\",\"from\":[\"f_08\"],\"transform\":\"map_enum\",\"confidence\":\"medium\",\"evidence\":[\"meaning\",\"category-labels\"],\"missing\":[\"category-labels\",\"business-rule\"]},{\"target\":\"plan\",\"status\":\"needs_clarification\",\"from\":[\"f_02\",\"f_03\",\"f_11\"],\"transform\":\"map_enum\",\"confidence\":\"low\",\"evidence\":[\"meaning\",\"category-labels\"],\"missing\":[\"field-meaning\",\"category-labels\",\"business-rule\"]},{\"target\":\"language\",\"status\":\"needs_clarification\",\"from\":[\"f_07\"],\"transform\":\"map_enum\",\"confidence\":\"medium\",\"evidence\":[\"meaning\",\"category-labels\"],\"missing\":[\"category-labels\"]},{\"target\":\"customer_since\",\"status\":\"ready\",\"from\":[\"f_10\"],\"transform\":\"parse_date\",\"inputFormat\":\"MM/DD/YYYY\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\",\"format\"],\"missing\":[]},{\"target\":\"next_delivery\",\"status\":\"ready\",\"from\":[\"f_04\"],\"transform\":\"parse_date\",\"inputFormat\":\"MM/DD/YYYY\",\"confidence\":\"high\",\"evidence\":[\"meaning\",\"type\",\"format\"],\"missing\":[]},{\"target\":\"organization\",\"status\":\"no_source\",\"from\":[],\"transform\":\"none\",\"confidence\":\"high\",\"evidence\":[\"meaning\"],\"missing\":[\"no-matching-source\"]}],\"summary\":\"Integration plan mapping available source fields to destination fields with appropriate transformations and clarifications.\"}"
+    ],
+    "usage": [
+      {
+        "prompt": 2667,
+        "output": 477
+      }
+    ]
+  },
+  {
+    "config": "RB",
+    "trial": 1,
+    "index": 17,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": true,
+    "planner": "intent-plan-2",
+    "at": "2026-11-18T15:05:18.700Z",
+    "previewSha256": "84a12581f6a48e6ca0d3f67ef4fc03eb336e2fdc22c0c7dd040e11990284d820",
+    "proposalStatus": "Valid · 4 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 9709ms",
+    "ms": 10805,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "84a12581f6a48e6ca0d3f67ef4fc03eb336e2fdc22c0c7dd040e11990284d820"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"customer_id\",\n      \"status\": \"ready\",\n      \"from\": [\"f_14\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_13\"]\n    },\n    {\n      \"target\": \"first_name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_09\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_12\"]\n    },\n    {\n      \"target\": \"last_name\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [],\n      \"missing\": [\"no-matching-source\"],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_01\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": [],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"phone\",\n      \"status\": \"ready\",\n      \"from\": [\"f_15\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": [],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"status\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_08\", \"f_02\", \"f_03\", \"f_11\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"category-labels\"],\n      \"missing\": [\"category-labels\", \"business-rule\", \"field-meaning\"],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"plan\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_02\", \"f_03\", \"f_05\", \"f_11\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\", \"business-rule\", \"field-meaning\"],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"language\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_07\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"category-labels\"],\n      \"missing\": [\"category-labels\"],\n      \"alternatives\": [\"f_05\"]\n    },\n    {\n      \"target\": \"customer_since\",\n      \"status\": \"ready\",\n      \"from\": [\"f_04\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_10\"]\n    },\n    {\n      \"target\": \"next_delivery\",\n      \"status\": \"ready\",\n      \"from\": [\"f_10\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_04\"]\n    },\n    {\n      \"target\": \"organization\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [],\n      \"missing\": [\"no-matching-source\"],\n      \"alternatives\": []\n    }\n  ],\n  \"summary\": \"Integration mapping plan addresses source aliases to target attributes with applicable transforms and necessary owner clarifications.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 2858,
+        "output": 1002
+      }
+    ]
+  },
+  {
+    "config": "A",
+    "trial": 1,
+    "index": 18,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": false,
+    "planner": "intent-plan-1",
+    "at": "2026-11-18T15:05:33.055Z",
+    "previewSha256": "4f8937bee87e86190af100ac83988fc21f02b73bb63c709bb2d6a3e8352d4c12",
+    "proposalStatus": "Valid · 6 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 5102ms",
+    "ms": 6189,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "4f8937bee87e86190af100ac83988fc21f02b73bb63c709bb2d6a3e8352d4c12"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"sample_id\",\n      \"status\": \"ready\",\n      \"from\": [\"f_03\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"site_code\",\n      \"status\": \"ready\",\n      \"from\": [\"f_08\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"matrix\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_01\", \"f_02\", \"f_04\", \"f_05\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\", \"field-meaning\"]\n    },\n    {\n      \"target\": \"test_panel\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_10\", \"f_12\", \"f_13\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\", \"field-meaning\"]\n    },\n    {\n      \"target\": \"collected_at\",\n      \"status\": \"ready\",\n      \"from\": [\"f_09\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"format\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"report_due\",\n      \"status\": \"ready\",\n      \"from\": [\"f_07\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"receipt_temp_c\",\n      \"status\": \"ready\",\n      \"from\": [\"f_15\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"type\", \"meaning\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"holding_time_hours\",\n      \"status\": \"ready\",\n      \"from\": [\"f_11\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"type\", \"meaning\"],\n      \"missing\": []\n    }\n  ],\n  \"summary\": \"Integration mapping proposed for all target fields with necessary clarifications noted.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 2619,
+        "output": 668
+      }
+    ]
+  },
+  {
+    "config": "RB",
+    "trial": 1,
+    "index": 18,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": true,
+    "planner": "intent-plan-2",
+    "at": "2026-11-18T15:05:42.688Z",
+    "previewSha256": "5e0f5d0d469622196f2370944d326f4bee863e99450973946f1388eed3963f50",
+    "proposalStatus": "Valid · 1 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 10814ms",
+    "ms": 11821,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "5e0f5d0d469622196f2370944d326f4bee863e99450973946f1388eed3963f50"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"sample_id\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_03\", \"f_08\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [\"field-meaning\"],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"site_code\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [],\n      \"missing\": [\"no-matching-source\"],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"matrix\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_01\", \"f_02\", \"f_04\", \"f_05\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\", \"field-meaning\"],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"test_panel\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_10\", \"f_12\", \"f_13\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\", \"category-labels\"],\n      \"missing\": [\"category-labels\", \"field-meaning\"],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"collected_at\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_09\", \"f_14\"],\n      \"transform\": \"parse_date\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"format\", \"type\"],\n      \"missing\": [\"field-meaning\"],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"report_due\",\n      \"status\": \"ready\",\n      \"from\": [\"f_07\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"format\", \"type\", \"examples\"],\n      \"missing\": [],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"receipt_temp_c\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [],\n      \"missing\": [\"no-matching-source\"],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"holding_time_hours\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_11\", \"f_15\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"field-meaning\"],\n      \"alternatives\": []\n    }\n  ],\n  \"summary\": \"Mapping integration plan proposed for target fields using available source disclosures and field properties.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 2785,
+        "output": 755
+      }
+    ]
+  },
+  {
+    "config": "A",
+    "trial": 1,
+    "index": 19,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": false,
+    "planner": "intent-plan-1",
+    "at": "2026-11-18T15:06:00.777Z",
+    "previewSha256": "c340b977350cace10dcad8e065fb06d6bd4b7a437c9dad37c67f089dde816f1b",
+    "proposalStatus": "Valid · 3 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 22437ms",
+    "ms": 24651,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "c340b977350cace10dcad8e065fb06d6bd4b7a437c9dad37c67f089dde816f1b"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"license_no\",\n      \"status\": \"ready\",\n      \"from\": [\"f_01\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"first_name\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_08\", \"f_09\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [\"field-meaning\"]\n    },\n    {\n      \"target\": \"last_name\",\n      \"status\": \"ready\",\n      \"from\": [\"f_03\"],\n      \"transform\": \"trim\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"birth_date\",\n      \"status\": \"ready\",\n      \"from\": [\"f_11\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"DD/MM/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"age_group\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_02\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"meaning\", \"category-labels\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"status\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_12\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"meaning\", \"category-labels\"],\n      \"missing\": [\"category-labels\", \"business-rule\"]\n    },\n    {\n      \"target\": \"position\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_06\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"meaning\", \"category-labels\"],\n      \"missing\": [\"category-labels\"]\n    },\n    {\n      \"target\": \"guardian_email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_04\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\", \"format\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"club_code\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\"],\n      \"missing\": [\"no-matching-source\"]\n    }\n  ],\n  \"summary\": \"Mapped available source fields to destination schema with necessary clarifications for ambiguous names and withheld category labels.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 2720,
+        "output": 721
+      }
+    ]
+  },
+  {
+    "config": "RB",
+    "trial": 1,
+    "index": 19,
+    "attempt": 1,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": true,
+    "planner": "intent-plan-2",
+    "at": "2026-11-18T15:06:30.168Z",
+    "previewSha256": "876cbd490b9cfbb07f5d5689ee89c7e6333db33a818dac65180c8cfee69f3576",
+    "proposalStatus": "Valid · 4 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 3556ms",
+    "ms": 4682,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "876cbd490b9cfbb07f5d5689ee89c7e6333db33a818dac65180c8cfee69f3576"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"license_no\",\n      \"status\": \"ready\",\n      \"from\": [\n        \"f_01\"\n      ],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\n        \"type\",\n        \"name-pattern\"\n      ],\n      \"missing\": [],\n      \"alternatives\": [\n        \"f_07\",\n        \"f_16\"\n      ]\n    },\n    {\n      \"target\": \"first_name\",\n      \"status\": \"ready\",\n      \"from\": [\n        \"f_08\"\n      ],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\n        \"meaning\",\n        \"type\"\n      ],\n      \"missing\": [],\n      \"alternatives\": [\n        \"f_09\"\n      ]\n    },\n    {\n      \"target\": \"last_name\",\n      \"status\": \"ready\",\n      \"from\": [\n        \"f_03\"\n      ],\n      \"transform\": \"trim\",\n      \"confidence\": \"high\",\n      \"evidence\": [\n        \"meaning\",\n        \"type\"\n      ],\n      \"missing\": [],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"birth_date\",\n      \"status\": \"ready\",\n      \"from\": [\n        \"f_11\"\n      ],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"DD/MM/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\n        \"meaning\",\n        \"format\"\n      ],\n      \"missing\": [],\n      \"alternatives\": [\n        \"f_05\"\n      ]\n    },\n    {\n      \"target\": \"age_group\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\n        \"f_02\"\n      ],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\n        \"type\",\n        \"category-labels\"\n      ],\n      \"missing\": [\n        \"category-labels\"\n      ],\n      \"alternatives\": [\n        \"f_10\",\n        \"f_12\"\n      ]\n    },\n    {\n      \"target\": \"status\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\n        \"f_13\"\n      ],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\n        \"type\",\n        \"category-labels\"\n      ],\n      \"missing\": [\n        \"category-labels\",\n        \"business-rule\"\n      ],\n      \"alternatives\": [\n        \"f_12\",\n        \"f_14\"\n      ]\n    },\n    {\n      \"target\": \"position\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\n        \"f_06\"\n      ],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\n        \"meaning\",\n        \"category-labels\"\n      ],\n      \"missing\": [\n        \"category-labels\"\n      ],\n      \"alternatives\": [\n        \"f_10\"\n      ]\n    },\n    {\n      \"target\": \"guardian_email\",\n      \"status\": \"ready\",\n      \"from\": [\n        \"f_04\"\n      ],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\n        \"meaning\",\n        \"format\"\n      ],\n      \"missing\": [],\n      \"alternatives\": []\n    },\n    {\n      \"target\": \"club_code\",\n      \"status\": \"no_source\",\n      \"from\": [],\n      \"transform\": \"none\",\n      \"confidence\": \"high\",\n      \"evidence\": [\n        \"meaning\"\n      ],\n      \"missing\": [\n        \"no-matching-source\"\n      ],\n      \"alternatives\": []\n    }\n  ],\n  \"summary\": \"Mapping plan created mapping 9 target fields to source aliases with necessary transformations and clarifications.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 2881,
+        "output": 997
+      }
+    ]
+  },
+  {
+    "config": "RB",
+    "trial": 1,
+    "index": 2,
+    "attempt": 2,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": true,
+    "planner": "intent-plan-2",
+    "at": "2026-11-18T15:06:36.800Z",
+    "previewSha256": "214df3dda02c782c44d87846ea817a469a41906969787274d1f2b9841cca289b",
+    "proposalStatus": "Rejected at plan · 0 issue(s)",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 16693ms",
+    "ms": 17958,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "214df3dda02c782c44d87846ea817a469a41906969787274d1f2b9841cca289b"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"work_order\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_08\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"field-meaning\"],\n      \"alternatives\": [\"f_01\"]\n    },\n    {\n      \"target\": \"vehicle_id\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_08\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"field-meaning\"],\n      \"alternatives\": [\"f_01\"]\n    },\n    {\n      \"target\": \"job_type\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_15\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [\"category-labels\"],\n      \"alternatives\": [\"f_09\", \"f_14\"]\n    },\n    {\n      \"target\": \"priority\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_02\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": [\"category-labels\"],\n      \"alternatives\": [\"f_07\", \"f_11\"]\n    },\n    {\n      \"target\": \"workshop\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_07\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"category-labels\", \"field-meaning\"],\n      \"alternatives\": [\"f_02\", \"f_11\"]\n    },\n    {\n      \"target\": \"check_in_date\",\n      \"status\": \"ready\",\n      \"from\": [\"f_04\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"MM/DD/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"format\", \"type\"],\n      \"missing\": [],\n      \"alternatives\": [\"f_10\"]\n    },\n    {\n      \"target\": \"odometer_km\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_05\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"field-meaning\"],\n      \"alternatives\": [\"f_06\", \"f_01\"]\n    },\n    {\n      \"target\": \"next_service_km\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_06\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"field-meaning\"],\n      \"alternatives\": [\"f_05\", \"f_01\"]\n    }\n  ],\n  \"summary\": \"Integration plan mapping available source fields to target schema with required clarifications.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 2684,
+        "output": 762
+      }
+    ]
+  },
+  {
+    "config": "A",
+    "trial": 1,
+    "index": 8,
+    "attempt": 2,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": false,
+    "planner": "intent-plan-1",
+    "at": "2026-11-18T15:06:58.807Z",
+    "previewSha256": "c3be4946271989cd445725efb579006083c94cc9182c84c1330501256ffea487",
+    "proposalStatus": "Valid · 3 operations · aliases resolved locally",
+    "cloudError": false,
+    "origin": "Real Gemini output · IN_CLOUD",
+    "provenance": "source=IN_CLOUD mode=ONLY_IN_CLOUD simulated=false 16174ms",
+    "ms": 17457,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "c3be4946271989cd445725efb579006083c94cc9182c84c1330501256ffea487"
+    ],
+    "httpStatus": [
+      200
+    ],
+    "answers": [
+      "{\n  \"fields\": [\n    {\n      \"target\": \"external_id\",\n      \"status\": \"ready\",\n      \"from\": [\"f_01\"],\n      \"transform\": \"copy\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"name\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_09\", \"f_06\"],\n      \"transform\": \"none\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"field-meaning\"]\n    },\n    {\n      \"target\": \"contact_name\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_09\", \"f_06\"],\n      \"transform\": \"none\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"type\"],\n      \"missing\": [\"field-meaning\"]\n    },\n    {\n      \"target\": \"contact_email\",\n      \"status\": \"ready\",\n      \"from\": [\"f_14\"],\n      \"transform\": \"normalize_email\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"phone\",\n      \"status\": \"ready\",\n      \"from\": [\"f_06\"],\n      \"transform\": \"trim\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"status\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_16\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"category-labels\"],\n      \"missing\": [\"category-labels\", \"business-rule\"]\n    },\n    {\n      \"target\": \"tier\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_04\", \"f_10\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"category-labels\"],\n      \"missing\": [\"category-labels\", \"field-meaning\", \"business-rule\"]\n    },\n    {\n      \"target\": \"customer_since\",\n      \"status\": \"ready\",\n      \"from\": [\"f_08\"],\n      \"transform\": \"parse_date\",\n      \"inputFormat\": \"DD/MM/YYYY\",\n      \"confidence\": \"high\",\n      \"evidence\": [\"format\", \"type\"],\n      \"missing\": []\n    },\n    {\n      \"target\": \"country\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_02\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"medium\",\n      \"evidence\": [\"meaning\", \"category-labels\"],\n      \"missing\": [\"category-labels\", \"business-rule\"]\n    },\n    {\n      \"target\": \"sla_level\",\n      \"status\": \"needs_clarification\",\n      \"from\": [\"f_10\", \"f_04\"],\n      \"transform\": \"map_enum\",\n      \"confidence\": \"low\",\n      \"evidence\": [\"category-labels\"],\n      \"missing\": [\"category-labels\", \"field-meaning\", \"business-rule\"]\n    }\n  ],\n  \"summary\": \"Mapped available source aliases to destination fields based on inferred semantics, categories, and formats while flagging ambiguous mappings for owner review.\"\n}"
+    ],
+    "usage": [
+      {
+        "prompt": 2795,
+        "output": 829
+      }
+    ]
+  },
+  {
+    "config": "RB",
+    "trial": 1,
+    "index": 8,
+    "attempt": 2,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": true,
+    "planner": "intent-plan-2",
+    "at": "2026-11-18T15:07:19.772Z",
+    "previewSha256": "78b676045b2df78880fa0801cee776d480ffb9e35d74ea4a1d5d2340448155bb",
+    "proposalStatus": null,
+    "cloudError": true,
+    "origin": null,
+    "provenance": null,
+    "ms": 22112,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "78b676045b2df78880fa0801cee776d480ffb9e35d74ea4a1d5d2340448155bb"
+    ],
+    "httpStatus": [
+      500
+    ],
+    "answers": [
+      ""
+    ],
+    "usage": [
+      {
+        "prompt": 0,
+        "output": 0
+      }
+    ]
+  },
+  {
+    "config": "A",
+    "trial": 1,
+    "index": 9,
+    "attempt": 2,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": false,
+    "planner": "intent-plan-1",
+    "at": "2026-11-18T15:07:45.433Z",
+    "previewSha256": "84f51334bba71ca8917a974e150b84860fcf10c57de73d251cbd4e890099677a",
+    "proposalStatus": null,
+    "cloudError": true,
+    "origin": null,
+    "provenance": null,
+    "ms": 16375,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "84f51334bba71ca8917a974e150b84860fcf10c57de73d251cbd4e890099677a"
+    ],
+    "httpStatus": [
+      500
+    ],
+    "answers": [
+      ""
+    ],
+    "usage": [
+      {
+        "prompt": 0,
+        "output": 0
+      }
+    ]
+  },
+  {
+    "config": "RB",
+    "trial": 1,
+    "index": 10,
+    "attempt": 2,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": true,
+    "planner": "intent-plan-2",
+    "at": "2026-11-18T15:08:05.459Z",
+    "previewSha256": "d8d1e6c6527396115911f5db43aa4ce2cf39768138ab230d1c1dde972de25e43",
+    "proposalStatus": null,
+    "cloudError": true,
+    "origin": null,
+    "provenance": null,
+    "ms": 7695,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "d8d1e6c6527396115911f5db43aa4ce2cf39768138ab230d1c1dde972de25e43"
+    ],
+    "httpStatus": [
+      500
+    ],
+    "answers": [
+      ""
+    ],
+    "usage": [
+      {
+        "prompt": 0,
+        "output": 0
+      }
+    ]
+  },
+  {
+    "config": "A",
+    "trial": 1,
+    "index": 14,
+    "attempt": 2,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": false,
+    "planner": "intent-plan-1",
+    "at": "2026-11-18T15:08:57.500Z",
+    "previewSha256": "89392567ff37161504e95f61549f37aaa678ded44e676398179364d8881fc464",
+    "proposalStatus": null,
+    "cloudError": true,
+    "origin": null,
+    "provenance": null,
+    "ms": 23646,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "89392567ff37161504e95f61549f37aaa678ded44e676398179364d8881fc464"
+    ],
+    "httpStatus": [
+      500
+    ],
+    "answers": [
+      ""
+    ],
+    "usage": [
+      {
+        "prompt": 0,
+        "output": 0
+      }
+    ]
+  },
+  {
+    "config": "A",
+    "trial": 1,
+    "index": 15,
+    "attempt": 2,
+    "stage": 2,
+    "model": "gemini-3.5-flash-lite",
+    "thinkingLevel": null,
+    "semantics": false,
+    "planner": "intent-plan-1",
+    "at": "2026-11-18T15:09:24.831Z",
+    "previewSha256": "27155bb954d813a01d7fe3ed30eb86e4ab6ad341d4c7d32d989a83b8f36865e6",
+    "proposalStatus": null,
+    "cloudError": true,
+    "origin": null,
+    "provenance": null,
+    "ms": 15993,
+    "requests": 1,
+    "leakCount": 0,
+    "promptSha256": [
+      "27155bb954d813a01d7fe3ed30eb86e4ab6ad341d4c7d32d989a83b8f36865e6"
+    ],
+    "httpStatus": [
+      500
+    ],
+    "answers": [
+      ""
+    ],
+    "usage": [
+      {
+        "prompt": 0,
+        "output": 0
+      }
+    ]
+  }
+]

@@ -80,4 +80,69 @@ Unit: one scenario-trial. **Bold rows are the gate.** An unrecovered provider fa
 
 ## Results
 
-(none yet)
+### Confirmatory run (2026-11-18, owner-approved, amendment 1)
+
+**Requests: 45 of 50.**
+- 40 first requests, interleaved per scenario.
+- 5 recovery requests after HTTP 500: 2 recovered, 3 did not.
+- 2 harness re-runs. Baseline scenarios #15 and #16 sent **no** request on their first attempt: the destination step's UI check failed before Send, although both had passed the zero-request rehearsal. They were re-run once each through the recovery slot; both were sent, and both returned HTTP 500.
+- No stop rule fired.
+- Evidence: [stage2-live.json](../evidence/sprint-18d/stage2-live.json) (alias-level answers, hashes, statuses, tokens). Scored: [stage2-summary.json](../evidence/sprint-18d/stage2-summary.json) (EVAL-308, aggregates and per-index rows).
+- Recorded cost: **≈ $0.10** (A 46.8 k in / 12.4 k out; RB 52.7 k in / 15.7 k out tokens).
+
+| ID | Metric | Baseline A / `base` | Candidate RB / `local` | Pass condition | Verdict |
+| --- | --- | --- | --- | --- | --- |
+| **G1** | E1, completable | 0 / 15 | **1 / 15** (+0.067) | ≥ +0.20 | **FAIL** |
+| **G2** | E1, wedge | 0 / 9 | 0 / 9 | candidate > baseline | **FAIL** |
+| E1-G | E1, general | 0 / 6 | 1 / 6 | reported | — |
+| **S5** | Falsely verified records | 0 | **0** | = 0 | pass |
+| **E3** | False completes | 2 | **0** | = 0 | pass |
+| **M4** | Invented values | 0 | **0** | = 0 | pass |
+| **E2** | Incorrect among transformed | 112 / 121 (0.926) | **126 / 168 (0.750)** | < baseline | pass |
+| **U2** | Answers per scenario-trial | 5.05 | **6.25** (baseline flow 11.65; ≤ 6.99) | ≤ 0.6 × | pass |
+| U1 / U3 | Manual choices / unnecessary questions | 2.25 / 0.55 | 3.25 / 0.80 | reported | — |
+| **R1** | Provider success, candidate requests | 17 / 22 | **18 / 23 (0.78)** | ≥ 0.90 | **FAIL** (HTTP 500, clustered in time) |
+| **S1 / S2 / S3** | Privacy / prompt proof / unauthorized | 0 / 0 mismatches / 0 | 0 / 0 mismatches / 0 | 0 / every one / 0 | pass |
+| M1 / M2 / M3 | Correspondence: all / mappable / category | 0.443 / 0.518 / 0.333 | 0.469 / 0.564 / 0.351 | reported | — |
+| T1 / T3 | Gemini top-1 / top-3 | 0.566 / 0.662 | 0.600 / **0.800** | reported | — |
+| T1 / T3 | Local matcher top-1 / top-3 | 0.747 / 0.852 | 0.747 / 0.852 | reported | — |
+| R3 | Median time per scenario (UI), median | 12.5 s | 14.8 s | reported | — |
+| **Milestone 1** | E1-W ≥ 0.70 and E1-G ≥ 0.70 | — | 0 / 9, 1 / 6 | — | **NOT MET** |
+
+**Verdict: rescue not confirmed** (G1, G2 and R1 fail). The holdout is now **inspected**.
+
+**What held:**
+- no false verification;
+- no false complete (the baseline had 2);
+- no invented values;
+- fewer wrong records (0.75 vs 0.93);
+- question load within the bound;
+- 0 privacy findings.
+
+**What did not:** complete integrations stayed near zero. The dev result (5 / 11) did not generalize.
+
+### Trace (aggregate only, after scoring; codes and counts, no names, fields or values)
+
+Candidate, 15 completable scenarios:
+- 1 had no answer (HTTP 500 after recovery);
+- 13 failed with an answer;
+- 1 succeeded.
+
+Blockers, counted as scenarios containing them:
+
+| Blocker | Scenarios |
+| --- | --- |
+| **Wrong source executed: value fields** | **6** |
+| Wrong source executed: date fields | 3 |
+| Wrong source executed: concatenated fields | 2 |
+| Wrong operation | 4 |
+| Required category field left unfilled | 4 |
+| Required date field left unfilled | 2 |
+| Optional category / value field left unfilled | 2 / 2 |
+| Concatenated field unfillable | 2 |
+| `copy` instead of `trim` | 1 |
+
+- 3 scenarios have a single blocker: 2 are a wrong value source, 1 an unfilled required date.
+- **Single highest-impact remaining cause: confident wrong source fields executed without a question**, in 8 of 13 scenarios (value, date or concatenated).
+- Unlike on dev, the local matcher's evidence rarely *contradicts* these picks, so the candidate rule does not ask. The local matcher's top-1 (0.75) is still well above Gemini's (0.60). Trusting it more is a hypothesis that needs a fresh holdout, not a conclusion.
+
