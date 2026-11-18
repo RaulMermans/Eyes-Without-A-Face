@@ -1,0 +1,1060 @@
+{
+  "scenarioId": "insurance-brokerage-clients-to-service-desk-users",
+  "split": "dev",
+  "track": "wedge",
+  "industry": "insurance brokerage policyholder clients",
+  "sourceLanguage": "es",
+  "description": "Client export of a fictional insurance brokerage (Spanish PascalCase, nested contact with email sub-object) to be loaded as service-desk users.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "Empresa": {
+        "RazonSocial": null,
+        "CIF": "B81231685"
+      },
+      "IdCliente": "CLI-20416",
+      "FechaRenovacion": "25/01/2027",
+      "EstadoCuenta": "Baja voluntaria",
+      "Agente": "Pilar Ortega",
+      "EstadoPago": "Recibo devuelto",
+      "NumeroPoliza": "POL-55102399",
+      "Segmento": "Particulares",
+      "Contacto": {
+        "Telefono": "+34 665 866 778",
+        "Apellidos": "López",
+        "Correo": {
+          "Principal": "javier.lopez@correo.example.org",
+          "Facturacion": "facturas.lopez0@pagos.example.net"
+        },
+        "Nombre": "Javier"
+      },
+      "UltimaActividad": "2026-10-22T17:34:00Z",
+      "Idioma": "Español",
+      "FechaAlta": "15/12/2024",
+      "NivelServicio": "Oro",
+      "IdRegistro": 7001
+    },
+    {
+      "UltimaActividad": "2025-08-31T18:20:00Z",
+      "Empresa": {
+        "RazonSocial": null,
+        "CIF": "B81232418"
+      },
+      "Contacto": {
+        "Apellidos": "Díaz",
+        "Telefono": "+34 682 811 914",
+        "Nombre": "Alejandro",
+        "Correo": {
+          "Principal": "alejandro.diaz@correo.example.org",
+          "Facturacion": "facturas.diaz1@pagos.example.net"
+        }
+      },
+      "IdRegistro": 7002,
+      "NivelServicio": "Bronce",
+      "Agente": "Nuria Castells",
+      "EstadoPago": "Al corriente",
+      "NumeroPoliza": "POL-55102445",
+      "Idioma": "Inglés",
+      "FechaAlta": "20/04/2015",
+      "FechaRenovacion": "14/03/2026",
+      "IdCliente": "CLI-20429",
+      "EstadoCuenta": "Prospecto",
+      "Segmento": "Particulares"
+    },
+    {
+      "Segmento": "Pymes",
+      "UltimaActividad": "2026-09-24T10:05:00Z",
+      "EstadoPago": "Pendiente",
+      "Idioma": "Español",
+      "Contacto": {
+        "Nombre": "Andrés",
+        "Telefono": "+34 607 301 546",
+        "Apellidos": "Muñoz",
+        "Correo": {
+          "Principal": "andres.munoz@correo.example.org",
+          "Facturacion": "facturas.munoz2@pagos.example.net"
+        }
+      },
+      "NumeroPoliza": "POL-55102547",
+      "NivelServicio": "Oro",
+      "Empresa": {
+        "RazonSocial": "Panadería La Espiga",
+        "CIF": "B81233721"
+      },
+      "FechaRenovacion": "27/03/2027",
+      "FechaAlta": "26/06/2024",
+      "IdRegistro": 7003,
+      "EstadoCuenta": "Activo",
+      "Agente": "Nuria Castells",
+      "IdCliente": "CLI-20435"
+    },
+    {
+      "UltimaActividad": "2026-10-22T09:00:00Z",
+      "EstadoPago": "Recibo devuelto",
+      "IdCliente": "CLI-20452",
+      "NumeroPoliza": "POL-55102654",
+      "NivelServicio": "VIP Dirección",
+      "IdRegistro": 7004,
+      "Empresa": {
+        "CIF": "B81235521",
+        "RazonSocial": null
+      },
+      "EstadoCuenta": "Suspendido por impago",
+      "Contacto": {
+        "Apellidos": "Díaz",
+        "Correo": {
+          "Facturacion": "facturas.diaz3@pagos.example.net",
+          "Principal": "javier.diaz@correo.example.org"
+        },
+        "Telefono": "+34 602 100 127",
+        "Nombre": "Javier"
+      },
+      "Segmento": "Pymes",
+      "Agente": "Pilar Ortega",
+      "Idioma": "Español",
+      "FechaRenovacion": "04/07/2026",
+      "FechaAlta": "30/05/2013"
+    },
+    {
+      "IdCliente": "CLI-20454",
+      "NumeroPoliza": "POL-55102736",
+      "EstadoPago": "Pendiente",
+      "EstadoCuenta": "Suspendido por impago",
+      "Contacto": {
+        "Apellidos": "Muñoz   ",
+        "Telefono": "+34 678 584 236",
+        "Correo": {
+          "Principal": "irene.munoz@correo.example.org",
+          "Facturacion": "facturas.munoz4@pagos.example.net"
+        },
+        "Nombre": "Irene"
+      },
+      "Empresa": {
+        "RazonSocial": "Clínica Dental Sol",
+        "CIF": "B81236726"
+      },
+      "Idioma": "Español",
+      "FechaRenovacion": "23/09/2026",
+      "FechaAlta": "14/05/2021",
+      "IdRegistro": 7005,
+      "UltimaActividad": "2025-04-06T09:05:00Z",
+      "Segmento": "Particulares",
+      "NivelServicio": "Bronce",
+      "Agente": "Pilar Ortega"
+    },
+    {
+      "NivelServicio": "Oro",
+      "EstadoPago": "Al corriente",
+      "NumeroPoliza": "POL-55102820",
+      "FechaAlta": "19/09/2017",
+      "Idioma": "Inglés",
+      "Empresa": {
+        "CIF": "B81238176",
+        "RazonSocial": "Talleres Ebro SL"
+      },
+      "UltimaActividad": "2026-01-02T08:00:00Z",
+      "EstadoCuenta": "Activo",
+      "Segmento": "Particulares",
+      "IdRegistro": 7006,
+      "Contacto": {
+        "Correo": {
+          "Principal": "sergio.munoz@correo.example.org",
+          "Facturacion": "facturas.munoz5@pagos.example.net"
+        },
+        "Telefono": "+34 668 483 536",
+        "Apellidos": "Muñoz",
+        "Nombre": "Sergio"
+      },
+      "IdCliente": "CLI-20466",
+      "Agente": "Óscar Villanueva",
+      "FechaRenovacion": "22/01/2026"
+    },
+    {
+      "EstadoPago": "Al corriente",
+      "IdCliente": "CLI-20479",
+      "IdRegistro": 7007,
+      "Segmento": "Pymes",
+      "NumeroPoliza": "POL-55103004",
+      "FechaAlta": "18/05/2012",
+      "FechaRenovacion": "20/05/2027",
+      "Empresa": {
+        "RazonSocial": "Clínica Dental Sol",
+        "CIF": "B81238595"
+      },
+      "Agente": "Pilar Ortega",
+      "EstadoCuenta": "Baja voluntaria",
+      "Contacto": {
+        "Apellidos": "Pérez   ",
+        "Telefono": "+34 677 200 204",
+        "Nombre": "Marta",
+        "Correo": {
+          "Principal": "marta.perez@correo.example.org",
+          "Facturacion": "facturas.perez6@pagos.example.net"
+        }
+      },
+      "NivelServicio": "Plata",
+      "Idioma": "Español",
+      "UltimaActividad": "2025-01-14T18:55:00Z"
+    },
+    {
+      "FechaAlta": "18/07/2025",
+      "Contacto": {
+        "Correo": {
+          "Principal": "pablo.romero@correo.example.org",
+          "Facturacion": "facturas.romero0@pagos.example.net"
+        },
+        "Nombre": "Pablo",
+        "Apellidos": "Romero",
+        "Telefono": "+34 611 148 914"
+      },
+      "NivelServicio": "Plata",
+      "FechaRenovacion": "15/08/2026",
+      "Empresa": {
+        "CIF": "B81240615"
+      },
+      "NumeroPoliza": "POL-55103067",
+      "EstadoCuenta": "Baja voluntaria",
+      "Idioma": "Catalán",
+      "IdRegistro": 7008,
+      "Agente": "Nuria Castells",
+      "Segmento": "Pymes",
+      "EstadoPago": "Recibo devuelto",
+      "UltimaActividad": "2026-08-18T18:00:00Z",
+      "IdCliente": "CLI-20487"
+    },
+    {
+      "IdCliente": "CLI-20501",
+      "EstadoPago": "Recibo devuelto",
+      "FechaAlta": "12/07/2024",
+      "Segmento": "Particulares",
+      "Contacto": {
+        "Apellidos": "Torres",
+        "Nombre": "Mateo",
+        "Telefono": "+34 641 100 927",
+        "Correo": {
+          "Principal": "mateo.torres@correo.example.org",
+          "Facturacion": "facturas.torres1@pagos.example.net"
+        }
+      },
+      "Empresa": {
+        "CIF": "B81241852",
+        "RazonSocial": null
+      },
+      "Agente": "Nuria Castells",
+      "Idioma": "Catalán",
+      "NivelServicio": "Plata",
+      "IdRegistro": 7009,
+      "EstadoCuenta": "Baja voluntaria",
+      "NumeroPoliza": "POL-55103115",
+      "FechaRenovacion": "20/05/2027",
+      "UltimaActividad": "2026-02-22T08:41:00Z"
+    },
+    {
+      "Segmento": "Particulares",
+      "Idioma": "Inglés",
+      "EstadoCuenta": "Activo",
+      "FechaRenovacion": "30/05/2027",
+      "FechaAlta": "06/04/2023",
+      "Agente": "Pilar Ortega",
+      "NumeroPoliza": "POL-55103234",
+      "Contacto": {
+        "Apellidos": "Álvarez",
+        "Correo": {
+          "Facturacion": "facturas.alvarez2@pagos.example.net",
+          "Principal": "hugo.alvarez@correo.example.org"
+        },
+        "Nombre": "Hugo"
+      },
+      "EstadoPago": "Pendiente",
+      "IdCliente": "CLI-20513",
+      "Empresa": {
+        "CIF": "B81242829",
+        "RazonSocial": "Transportes Duero SA"
+      },
+      "NivelServicio": "Oro",
+      "IdRegistro": 7010,
+      "UltimaActividad": "2025-04-24T16:34:00Z"
+    },
+    {
+      "Idioma": "Catalán",
+      "EstadoCuenta": "Baja voluntaria",
+      "UltimaActividad": "2026-03-09T11:00:00Z",
+      "NumeroPoliza": "POL-55103358",
+      "Segmento": "Pymes",
+      "Empresa": {
+        "RazonSocial": null,
+        "CIF": "B81243993"
+      },
+      "IdRegistro": 7011,
+      "Agente": "Pilar Ortega",
+      "Contacto": {
+        "Correo": {
+          "Facturacion": "facturas.gonzalez3@pagos.example.net",
+          "Principal": "lucia.gonzalez@correo.example.org"
+        },
+        "Apellidos": "González",
+        "Telefono": "+34 685 212 697",
+        "Nombre": "Lucía"
+      },
+      "FechaRenovacion": "07/06/2026",
+      "NivelServicio": "VIP Dirección",
+      "FechaAlta": "17/04/2015",
+      "EstadoPago": "Recibo devuelto",
+      "IdCliente": "CLI-20528"
+    },
+    {
+      "FechaAlta": "27/01/2017",
+      "EstadoPago": "Recibo devuelto",
+      "Idioma": "Español",
+      "FechaRenovacion": "20/03/2027",
+      "IdRegistro": 7012,
+      "Agente": "Nuria Castells",
+      "Contacto": {
+        "Telefono": "+34 645 877 035",
+        "Correo": {
+          "Principal": "diego.moreno@correo.example.org",
+          "Facturacion": "facturas.moreno4@pagos.example.net"
+        },
+        "Apellidos": "  Moreno",
+        "Nombre": "Diego"
+      },
+      "IdCliente": "CLI-20540",
+      "NumeroPoliza": "POL-55103411",
+      "Empresa": {
+        "CIF": "B81245424",
+        "RazonSocial": "Panadería La Espiga"
+      },
+      "Segmento": "Grandes cuentas",
+      "NivelServicio": "Bronce",
+      "EstadoCuenta": "Activo",
+      "UltimaActividad": "2025-10-09T19:55:00Z"
+    },
+    {
+      "Segmento": "Particulares",
+      "Empresa": {
+        "CIF": "B81247262",
+        "RazonSocial": null
+      },
+      "UltimaActividad": "2025-10-30T16:12:00Z",
+      "EstadoPago": "Al corriente",
+      "Agente": "Nuria Castells",
+      "EstadoCuenta": "Activo",
+      "IdRegistro": 7013,
+      "Contacto": {
+        "Nombre": "Lucía",
+        "Correo": {
+          "Principal": "lucia.jimenez@correo.example.org",
+          "Facturacion": "facturas.jimenez5@pagos.example.net"
+        },
+        "Telefono": "+34 667 295 027",
+        "Apellidos": "Jiménez"
+      },
+      "IdCliente": "CLI-20552",
+      "NivelServicio": "Oro",
+      "FechaAlta": "18/01/2017",
+      "Idioma": "Catalán",
+      "NumeroPoliza": "POL-55103562",
+      "FechaRenovacion": "25/04/2027"
+    },
+    {
+      "Segmento": "Particulares",
+      "EstadoCuenta": "Suspendido por impago",
+      "UltimaActividad": "2025-04-06T13:05:00Z",
+      "Idioma": "Inglés",
+      "Agente": "Nuria Castells",
+      "NivelServicio": "Bronce",
+      "IdRegistro": 7014,
+      "IdCliente": "CLI-20558",
+      "FechaAlta": "29/04/2014",
+      "NumeroPoliza": "POL-55103594",
+      "FechaRenovacion": "11/11/2026",
+      "Contacto": {
+        "Nombre": "Hugo",
+        "Apellidos": "Navarro",
+        "Telefono": "+34 612 443 823",
+        "Correo": {
+          "Facturacion": "facturas.navarro6@pagos.example.net",
+          "Principal": "hugo.navarro@correo.example.org"
+        }
+      },
+      "Empresa": {
+        "RazonSocial": "Clínica Dental Sol",
+        "CIF": "B81248397"
+      },
+      "EstadoPago": "Al corriente"
+    },
+    {
+      "EstadoCuenta": "Prospecto",
+      "Empresa": {
+        "CIF": "B81249187"
+      },
+      "IdRegistro": 7015,
+      "EstadoPago": "Pendiente",
+      "Contacto": {
+        "Nombre": "Paula",
+        "Apellidos": "Martínez",
+        "Telefono": "+34 673 650 536",
+        "Correo": {
+          "Principal": "paula.martinez@correo.example.org",
+          "Facturacion": "facturas.martinez0@pagos.example.net"
+        }
+      },
+      "NumeroPoliza": "POL-55103733",
+      "Agente": "Nuria Castells",
+      "Idioma": "Español",
+      "NivelServicio": "Oro",
+      "IdCliente": "CLI-20572",
+      "UltimaActividad": "2025-01-15T10:55:00Z",
+      "FechaAlta": "15/03/2015",
+      "FechaRenovacion": "03/01/2026",
+      "Segmento": "Particulares"
+    },
+    {
+      "Idioma": "Catalán",
+      "Agente": "Óscar Villanueva",
+      "UltimaActividad": "2026-01-16T12:00:00Z",
+      "Empresa": {
+        "CIF": "B81250556",
+        "RazonSocial": "Clínica Dental Sol"
+      },
+      "Contacto": {
+        "Apellidos": "Ruiz",
+        "Nombre": "Sofía",
+        "Correo": {
+          "Principal": "sofia.ruiz@correo.example.org",
+          "Facturacion": "facturas.ruiz1@pagos.example.net"
+        },
+        "Telefono": "+34 644 430 399"
+      },
+      "IdCliente": "CLI-20582",
+      "NumeroPoliza": "POL-55103837",
+      "NivelServicio": "VIP Dirección",
+      "EstadoPago": "Al corriente",
+      "EstadoCuenta": "Suspendido por impago",
+      "Segmento": "Particulares",
+      "IdRegistro": 7016,
+      "FechaAlta": "07/04/2013",
+      "FechaRenovacion": "11/03/2026"
+    },
+    {
+      "Contacto": {
+        "Nombre": "Daniel",
+        "Apellidos": "Díaz",
+        "Correo": {
+          "Facturacion": "facturas.diaz2@pagos.example.net",
+          "Principal": "daniel.diaz@correo.example.org"
+        }
+      },
+      "IdRegistro": 7017,
+      "FechaAlta": "27/10/2021",
+      "Empresa": {
+        "CIF": "B81252073",
+        "RazonSocial": null
+      },
+      "UltimaActividad": "2026-01-28T14:05:00Z",
+      "NumeroPoliza": "POL-55103895",
+      "FechaRenovacion": "08/01/2027",
+      "Agente": "Óscar Villanueva",
+      "IdCliente": "CLI-20586",
+      "EstadoPago": "Recibo devuelto",
+      "NivelServicio": "Plata",
+      "EstadoCuenta": "Activo",
+      "Idioma": "Inglés",
+      "Segmento": "Particulares"
+    },
+    {
+      "FechaRenovacion": "27/09/2026",
+      "Contacto": {
+        "Apellidos": "Pérez",
+        "Correo": {
+          "Facturacion": "facturas.perez3@pagos.example.net",
+          "Principal": "hugo.perez@correo.example.org"
+        },
+        "Telefono": "+34 676 526 329",
+        "Nombre": "Hugo"
+      },
+      "Idioma": "Catalán",
+      "EstadoCuenta": "Baja voluntaria",
+      "EstadoPago": "Al corriente",
+      "NumeroPoliza": "POL-55104017",
+      "Agente": "Nuria Castells",
+      "NivelServicio": "Bronce",
+      "UltimaActividad": "2025-04-15T14:41:00Z",
+      "Empresa": {
+        "RazonSocial": "Panadería La Espiga",
+        "CIF": "B81252631"
+      },
+      "FechaAlta": "17/09/2013",
+      "Segmento": "Pymes",
+      "IdRegistro": 7018,
+      "IdCliente": "CLI-20604"
+    },
+    {
+      "Agente": "Pilar Ortega",
+      "FechaAlta": "03/11/2017",
+      "Empresa": {
+        "RazonSocial": "Clínica Dental Sol",
+        "CIF": "B81254143"
+      },
+      "IdCliente": "CLI-20616",
+      "NivelServicio": "Oro",
+      "EstadoCuenta": "Prospecto",
+      "EstadoPago": "Al corriente",
+      "Contacto": {
+        "Telefono": "+34 662 261 280",
+        "Apellidos": "Romero",
+        "Nombre": "Irene",
+        "Correo": {
+          "Facturacion": "facturas.romero4@pagos.example.net",
+          "Principal": "irene.romero@correo.example.org"
+        }
+      },
+      "Segmento": "Pymes",
+      "UltimaActividad": "2025-01-01T12:00:00Z",
+      "FechaRenovacion": "16/04/2026",
+      "NumeroPoliza": "POL-55104169",
+      "IdRegistro": 7019,
+      "Idioma": "Catalán"
+    },
+    {
+      "FechaAlta": "02/06/2017",
+      "Contacto": {
+        "Telefono": "+34 699 623 354",
+        "Nombre": "Valeria",
+        "Correo": {
+          "Principal": "valeria.garcia@correo.example.org",
+          "Facturacion": "facturas.garcia5@pagos.example.net"
+        },
+        "Apellidos": "García"
+      },
+      "NumeroPoliza": "POL-55104252",
+      "FechaRenovacion": "01/04/2027",
+      "EstadoCuenta": "Baja voluntaria",
+      "EstadoPago": "Recibo devuelto",
+      "Segmento": "Grandes cuentas",
+      "Idioma": "Español",
+      "NivelServicio": "VIP Dirección",
+      "Empresa": {
+        "CIF": "B81255359",
+        "RazonSocial": "Transportes Duero SA"
+      },
+      "UltimaActividad": "2026-06-04T11:00:00Z",
+      "IdCliente": "CLI-20629",
+      "Agente": "Pilar Ortega",
+      "IdRegistro": 7020
+    },
+    {
+      "Empresa": {
+        "CIF": "B81257542",
+        "RazonSocial": null
+      },
+      "EstadoCuenta": "Suspendido por impago",
+      "UltimaActividad": "2025-12-16T08:55:00Z",
+      "Idioma": "Catalán",
+      "Segmento": "Grandes cuentas",
+      "IdRegistro": 7021,
+      "FechaRenovacion": "15/05/2026",
+      "EstadoPago": "Pendiente",
+      "NumeroPoliza": "POL-55104365",
+      "Agente": "Pilar Ortega",
+      "IdCliente": "CLI-20630",
+      "NivelServicio": "VIP Dirección",
+      "Contacto": {
+        "Apellidos": "Díaz",
+        "Telefono": "+34 682 748 115",
+        "Correo": {
+          "Facturacion": "facturas.diaz6@pagos.example.net",
+          "Principal": "diego.diaz@correo.example.org"
+        },
+        "Nombre": "Diego"
+      },
+      "FechaAlta": "20/08/2013"
+    },
+    {
+      "Agente": "Nuria Castells",
+      "UltimaActividad": "2026-10-08T19:05:00Z",
+      "Idioma": "Español",
+      "Empresa": {
+        "CIF": "B81257927"
+      },
+      "Contacto": {
+        "Telefono": null,
+        "Correo": {
+          "Principal": "mateo.fernandez@correo.example.org",
+          "Facturacion": "facturas.fernandez0@pagos.example.net"
+        },
+        "Apellidos": "Fernández ",
+        "Nombre": "Mateo"
+      },
+      "IdCliente": "CLI-20648",
+      "NivelServicio": "Plata",
+      "EstadoPago": "Pendiente",
+      "FechaAlta": "02/07/2016",
+      "IdRegistro": 7022,
+      "EstadoCuenta": "Suspendido por impago",
+      "Segmento": "Grandes cuentas",
+      "NumeroPoliza": "POL-55104410",
+      "FechaRenovacion": "10/08/2026"
+    },
+    {
+      "Idioma": "Catalán",
+      "Segmento": "Pymes",
+      "EstadoCuenta": "Baja voluntaria",
+      "NivelServicio": "Oro",
+      "Empresa": {
+        "CIF": "B81259274"
+      },
+      "EstadoPago": "Al corriente",
+      "FechaRenovacion": "31/07/2026",
+      "NumeroPoliza": "POL-55104520",
+      "Agente": "Nuria Castells",
+      "FechaAlta": "27/02/2024",
+      "UltimaActividad": "2026-05-26T10:34:00Z",
+      "Contacto": {
+        "Correo": {
+          "Principal": "alejandro.gomez@correo.example.org",
+          "Facturacion": "facturas.gomez1@pagos.example.net"
+        },
+        "Nombre": "Alejandro",
+        "Apellidos": "Gómez",
+        "Telefono": "+34 666 920 967"
+      },
+      "IdCliente": "CLI-20657",
+      "IdRegistro": 7023
+    },
+    {
+      "FechaAlta": "08/10/2022",
+      "NivelServicio": "Plata",
+      "EstadoCuenta": "Baja voluntaria",
+      "UltimaActividad": "2026-08-01T12:34:00Z",
+      "IdRegistro": 7024,
+      "Idioma": "Catalán",
+      "FechaRenovacion": "17/05/2027",
+      "Empresa": {
+        "CIF": "B81260816"
+      },
+      "Agente": "Nuria Castells",
+      "EstadoPago": "Recibo devuelto",
+      "NumeroPoliza": "POL-55104604",
+      "Contacto": {
+        "Telefono": null,
+        "Nombre": "Diego",
+        "Apellidos": "González",
+        "Correo": {
+          "Principal": "diego.gonzalez@correo.example.org",
+          "Facturacion": "facturas.gonzalez2@pagos.example.net"
+        }
+      },
+      "Segmento": "Particulares",
+      "IdCliente": "CLI-20666"
+    },
+    {
+      "IdCliente": "CLI-20680",
+      "FechaAlta": "07/03/2025",
+      "EstadoPago": "Al corriente",
+      "NivelServicio": "Bronce",
+      "EstadoCuenta": "Activo",
+      "FechaRenovacion": "19/07/2026",
+      "UltimaActividad": "2025-12-26T07:20:00Z",
+      "Empresa": {
+        "RazonSocial": "Talleres Ebro SL",
+        "CIF": "B81262893"
+      },
+      "Idioma": "Inglés",
+      "IdRegistro": 7025,
+      "NumeroPoliza": "POL-55104664",
+      "Segmento": "Particulares",
+      "Agente": "Nuria Castells",
+      "Contacto": {
+        "Telefono": "+34 664 227 681",
+        "Apellidos": "Moreno",
+        "Correo": {
+          "Facturacion": "facturas.moreno3@pagos.example.net",
+          "Principal": "mateo.moreno@correo.example.org"
+        },
+        "Nombre": "Mateo"
+      }
+    },
+    {
+      "Agente": "Pilar Ortega",
+      "NumeroPoliza": "POL-55104812",
+      "IdRegistro": 7026,
+      "FechaRenovacion": "13/05/2027",
+      "Contacto": {
+        "Nombre": "Alejandro",
+        "Correo": {
+          "Facturacion": "facturas.sanchez4@pagos.example.net",
+          "Principal": "alejandro.sanchez@correo.example.org"
+        },
+        "Telefono": "+34 633 693 564",
+        "Apellidos": "Sánchez"
+      },
+      "Empresa": {
+        "CIF": "B81263855",
+        "RazonSocial": "Transportes Duero SA"
+      },
+      "IdCliente": "CLI-20688",
+      "Idioma": "Español",
+      "NivelServicio": "Plata",
+      "EstadoPago": "Al corriente",
+      "EstadoCuenta": "Activo",
+      "UltimaActividad": "2025-12-08T19:05:00Z",
+      "Segmento": "Particulares",
+      "FechaAlta": "28/10/2021"
+    },
+    {
+      "IdCliente": "CLI-20703",
+      "FechaAlta": "29/04/2014",
+      "NivelServicio": "Oro",
+      "IdRegistro": 7027,
+      "Agente": "Nuria Castells",
+      "Empresa": {
+        "CIF": "B81264335"
+      },
+      "Segmento": "Pymes",
+      "EstadoPago": "Pendiente",
+      "UltimaActividad": "2026-04-10T07:41:00Z",
+      "Idioma": "Catalán",
+      "NumeroPoliza": "POL-55104867",
+      "FechaRenovacion": "17/03/2027",
+      "EstadoCuenta": "Suspendido por impago",
+      "Contacto": {
+        "Apellidos": "Ruiz",
+        "Nombre": "Elena",
+        "Telefono": null,
+        "Correo": {
+          "Principal": "elena.ruiz@correo.example.org",
+          "Facturacion": "facturas.ruiz5@pagos.example.net"
+        }
+      }
+    },
+    {
+      "Idioma": "Inglés",
+      "Empresa": {
+        "CIF": "B81265971",
+        "RazonSocial": null
+      },
+      "FechaAlta": "29/11/2021",
+      "NumeroPoliza": "POL-55104977",
+      "IdCliente": "CLI-20711",
+      "FechaRenovacion": "04/06/2027",
+      "Agente": "Nuria Castells",
+      "EstadoCuenta": "Baja voluntaria",
+      "NivelServicio": "Oro",
+      "IdRegistro": 7028,
+      "UltimaActividad": "2025-03-17T17:41:00Z",
+      "EstadoPago": "Recibo devuelto",
+      "Contacto": {
+        "Apellidos": "Navarro",
+        "Correo": {
+          "Facturacion": "facturas.navarro6@pagos.example.net",
+          "Principal": "raul.navarro@correo.example.org"
+        },
+        "Telefono": "+34 650 803 818",
+        "Nombre": "Raúl"
+      },
+      "Segmento": "Particulares"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "external_id": {
+        "type": "string",
+        "description": "Identifier of the user in the system of record."
+      },
+      "profile": {
+        "type": "object",
+        "description": "Personal details of the user.",
+        "properties": {
+          "first_name": {
+            "type": "string",
+            "description": "Given name of the user."
+          },
+          "last_name": {
+            "type": "string",
+            "description": "Family name or names of the user."
+          },
+          "locale": {
+            "type": "string",
+            "enum": [
+              "es-ES",
+              "ca-ES",
+              "en-GB"
+            ],
+            "description": "Locale used for notifications to the user."
+          }
+        },
+        "required": [
+          "first_name",
+          "last_name"
+        ]
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "description": "Main email address of the user."
+      },
+      "phone": {
+        "type": "string",
+        "description": "Phone number of the user."
+      },
+      "organization": {
+        "type": "string",
+        "description": "Name."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "suspended",
+          "closed"
+        ],
+        "description": "Whether the customer relationship is active, suspended or closed."
+      },
+      "support_tier": {
+        "type": "string",
+        "enum": [
+          "gold",
+          "silver",
+          "bronze"
+        ],
+        "description": "Service level agreed with the client, which sets response targets."
+      },
+      "customer_since": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the client relationship started."
+      },
+      "notes": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "external_id",
+      "profile",
+      "email",
+      "status",
+      "support_tier"
+    ]
+  },
+  "groundTruth": {
+    "external_id": {
+      "source": "IdCliente",
+      "transform": "copy",
+      "why": "client number; NumeroPoliza is one of the client's policies"
+    },
+    "profile.first_name": {
+      "source": "Contacto.Nombre",
+      "transform": "copy",
+      "why": "given name; Agente is the broker"
+    },
+    "profile.last_name": {
+      "source": "Contacto.Apellidos",
+      "transform": "trim",
+      "why": "family names, padded"
+    },
+    "profile.locale": {
+      "source": "Idioma",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Español": "es-ES",
+        "Catalán": "ca-ES",
+        "Inglés": "en-GB"
+      },
+      "why": "preferred language as locale"
+    },
+    "email": {
+      "source": "Contacto.Correo.Principal",
+      "transform": "copy",
+      "why": "main email; Facturacion is the billing address"
+    },
+    "phone": {
+      "source": "Contacto.Telefono",
+      "transform": "copy",
+      "why": "phone, null or missing for some"
+    },
+    "organization": {
+      "source": "Empresa.RazonSocial",
+      "transform": "copy",
+      "why": "company name for business clients; null or missing for private clients"
+    },
+    "status": {
+      "source": "EstadoCuenta",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Activo": "active",
+        "Baja voluntaria": "closed",
+        "Suspendido por impago": "suspended",
+        "Prospecto": null
+      },
+      "why": "relationship state; prospects are not clients and need review; EstadoPago is the premium payment state"
+    },
+    "support_tier": {
+      "source": "NivelServicio",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Oro": "gold",
+        "Plata": "silver",
+        "Bronce": "bronze",
+        "VIP Dirección": "gold"
+      },
+      "why": "service level; Segmento is a market segment"
+    },
+    "customer_since": {
+      "source": "FechaAlta",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "sign-up date (Spanish day-first); FechaRenovacion is the next renewal"
+    },
+    "notes": {
+      "source": null,
+      "transform": "none",
+      "why": "no free-text notes are exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "EstadoCuenta",
+        "EstadoPago"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "IdCliente",
+        "NumeroPoliza"
+      ],
+      "correctFor": "external_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "Contacto.Correo.Principal",
+        "Contacto.Correo.Facturacion"
+      ],
+      "correctFor": "email"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "FechaAlta",
+        "FechaRenovacion"
+      ],
+      "correctFor": "customer_since"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "NivelServicio",
+        "Segmento"
+      ],
+      "correctFor": "support_tier"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "Contacto.Nombre",
+        "Agente"
+      ],
+      "correctFor": "profile.first_name"
+    }
+  ],
+  "sourceConcepts": {
+    "IdCliente": "customer-id",
+    "NumeroPoliza": "transaction-id",
+    "IdRegistro": "other-identifier",
+    "Contacto.Nombre": "given-name",
+    "Contacto.Apellidos": "family-name",
+    "Contacto.Correo.Principal": "email",
+    "Contacto.Correo.Facturacion": "email",
+    "Contacto.Telefono": "phone",
+    "Empresa.RazonSocial": "organization-name",
+    "Empresa.CIF": "other-identifier",
+    "EstadoCuenta": "account-status",
+    "EstadoPago": "payment-status",
+    "NivelServicio": "category",
+    "Segmento": "category",
+    "Idioma": "language-code",
+    "FechaAlta": "start-date",
+    "FechaRenovacion": "end-date",
+    "UltimaActividad": "other",
+    "Agente": "person-name"
+  },
+  "destinationConcepts": {
+    "external_id": "customer-id",
+    "profile.first_name": "given-name",
+    "profile.last_name": "family-name",
+    "profile.locale": "language-code",
+    "email": "email",
+    "phone": "phone",
+    "organization": "organization-name",
+    "status": "account-status",
+    "support_tier": "category",
+    "customer_since": "start-date",
+    "notes": "other"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 0,
+      "outcome": "transformed",
+      "output": {
+        "external_id": "CLI-20416",
+        "profile": {
+          "first_name": "Javier",
+          "last_name": "López",
+          "locale": "es-ES"
+        },
+        "email": "javier.lopez@correo.example.org",
+        "phone": "+34 665 866 778",
+        "status": "closed",
+        "support_tier": "gold",
+        "customer_since": "2024-12-15"
+      }
+    },
+    {
+      "recordIndex": 1,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 2,
+      "outcome": "transformed",
+      "output": {
+        "external_id": "CLI-20435",
+        "profile": {
+          "first_name": "Andrés",
+          "last_name": "Muñoz",
+          "locale": "es-ES"
+        },
+        "email": "andres.munoz@correo.example.org",
+        "phone": "+34 607 301 546",
+        "organization": "Panadería La Espiga",
+        "status": "active",
+        "support_tier": "gold",
+        "customer_since": "2024-06-26"
+      }
+    },
+    {
+      "recordIndex": 7,
+      "outcome": "transformed",
+      "output": {
+        "external_id": "CLI-20487",
+        "profile": {
+          "first_name": "Pablo",
+          "last_name": "Romero",
+          "locale": "ca-ES"
+        },
+        "email": "pablo.romero@correo.example.org",
+        "phone": "+34 611 148 914",
+        "status": "closed",
+        "support_tier": "silver",
+        "customer_since": "2025-07-18"
+      }
+    }
+  ]
+}

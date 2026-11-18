@@ -1,0 +1,778 @@
+{
+  "scenarioId": "pool-service-clients-to-ticketing-requesters",
+  "split": "holdout",
+  "track": "wedge",
+  "industry": "residential pool maintenance clients",
+  "sourceLanguage": "en",
+  "description": "Flat spreadsheet export of a fictional pool-maintenance company's clients (Title_Case headers) to be loaded as ticketing requesters.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "Row": 1,
+      "Invoice_Acct_No": "INV-740033",
+      "Plan": "Weekly Full Service",
+      "Last_Name": "Morgan",
+      "Last_Visit": "08/10/2026",
+      "Service_Address_City": "Scottsdale",
+      "Cell": "(480) 555-5508",
+      "Email": "hannah.morgan@inbox.example.com",
+      "Start_Date": "03/05/2016",
+      "Billing_Status": "Past Due",
+      "Preferred_Contact": "Text",
+      "First_Name": "Hannah",
+      "Alt_Email": "hmorgan@work.example.org",
+      "Route_Tech": "Brady Collins",
+      "Client_ID": "PS-1180",
+      "Account_Status": "Seasonal Hold",
+      "Gate_Code": "66204"
+    },
+    {
+      "Start_Date": "07/01/2025",
+      "Plan": "Weekly Full Service",
+      "Cell": "(480) 555-8033",
+      "Route_Tech": "Hector Ruiz",
+      "Last_Name": "Hayes",
+      "First_Name": "Grace",
+      "Service_Address_City": "Tempe",
+      "Email": "grace.hayes@inbox.example.com",
+      "Preferred_Contact": "Call",
+      "Gate_Code": "11898",
+      "Last_Visit": "10/09/2026",
+      "Invoice_Acct_No": "INV-740048",
+      "Client_ID": "PS-1186",
+      "Alt_Email": "ghayes@work.example.org",
+      "Account_Status": "Active",
+      "Row": 2,
+      "Billing_Status": "Autopay"
+    },
+    {
+      "First_Name": "Nora",
+      "Last_Visit": "09/05/2026",
+      "Route_Tech": "Tasha Greene",
+      "Start_Date": "11/03/2021",
+      "Plan": "Weekly Full Service",
+      "Service_Address_City": "Scottsdale",
+      "Preferred_Contact": "Text",
+      "Gate_Code": "49773",
+      "Cell": null,
+      "Row": 3,
+      "Billing_Status": "Past Due",
+      "Account_Status": "Active",
+      "Alt_Email": null,
+      "Invoice_Acct_No": "INV-740061",
+      "Client_ID": "PS-1192",
+      "Last_Name": "Bennett",
+      "Email": "Nora.Bennett@Inbox.Example.Com"
+    },
+    {
+      "Client_ID": "PS-1201",
+      "First_Name": "Isaac",
+      "Alt_Email": null,
+      "Start_Date": "06/05/2022",
+      "Row": 4,
+      "Billing_Status": "Autopay",
+      "Last_Visit": "10/10/2026",
+      "Gate_Code": "32164",
+      "Email": "isaac.reed@inbox.example.com",
+      "Account_Status": "Active",
+      "Last_Name": "Reed",
+      "Invoice_Acct_No": "INV-740099",
+      "Preferred_Contact": null,
+      "Plan": "Opening/Closing Only",
+      "Service_Address_City": "Tempe",
+      "Route_Tech": "Tasha Greene"
+    },
+    {
+      "Invoice_Acct_No": "INV-740122",
+      "Last_Visit": "11/02/2026",
+      "Preferred_Contact": "Email",
+      "Last_Name": "Sullivan",
+      "Start_Date": "03/05/2015",
+      "Email": "isaac.sullivan@inbox.example.com",
+      "Cell": "(480) 555-1172",
+      "Billing_Status": "Past Due",
+      "Account_Status": "Active",
+      "Row": 5,
+      "Gate_Code": "43452",
+      "Client_ID": "PS-1204",
+      "Alt_Email": "isullivan@work.example.org",
+      "Route_Tech": "Tasha Greene",
+      "Service_Address_City": "Tempe",
+      "First_Name": "Isaac",
+      "Plan": "Weekly Full Service"
+    },
+    {
+      "Plan": "Bi-Weekly Chem Only",
+      "Row": 6,
+      "Billing_Status": "Net 30",
+      "Start_Date": "04/12/2017",
+      "Gate_Code": "05762",
+      "Account_Status": "Seasonal Hold",
+      "Route_Tech": "Hector Ruiz",
+      "First_Name": "Liam",
+      "Client_ID": "PS-1212",
+      "Cell": "(480) 555-6430",
+      "Email": "liam.quinn@inbox.example.com",
+      "Service_Address_City": "Scottsdale",
+      "Last_Visit": "08/08/2026",
+      "Preferred_Contact": "Text",
+      "Alt_Email": "lquinn@work.example.org",
+      "Last_Name": "Quinn",
+      "Invoice_Acct_No": "INV-740130"
+    },
+    {
+      "Invoice_Acct_No": "INV-740160",
+      "Preferred_Contact": "Text",
+      "Cell": "(480) 555-2753",
+      "First_Name": "  Ava",
+      "Gate_Code": "32045",
+      "Last_Name": "Doyle",
+      "Start_Date": "07/11/2016",
+      "Alt_Email": "adoyle@work.example.org",
+      "Row": 7,
+      "Email": "ava.doyle@inbox.example.com",
+      "Last_Visit": "08/04/2026",
+      "Plan": "Weekly Full Service",
+      "Account_Status": "Active",
+      "Client_ID": "PS-1219",
+      "Route_Tech": "Hector Ruiz",
+      "Service_Address_City": "Tempe",
+      "Billing_Status": "Autopay"
+    },
+    {
+      "Alt_Email": "nfletcher@work.example.org",
+      "Account_Status": "Active",
+      "Row": 8,
+      "Billing_Status": "Autopay",
+      "Gate_Code": "14239",
+      "Plan": "Opening/Closing Only",
+      "Email": "Noah.Fletcher@Inbox.Example.Com",
+      "Service_Address_City": "Scottsdale",
+      "Invoice_Acct_No": "INV-740184",
+      "Last_Visit": "08/12/2026",
+      "Client_ID": "PS-1227",
+      "Preferred_Contact": "Call",
+      "First_Name": "Noah",
+      "Cell": "(480) 555-6707",
+      "Route_Tech": "Hector Ruiz",
+      "Start_Date": "06/08/2020",
+      "Last_Name": "Fletcher"
+    },
+    {
+      "Gate_Code": "49407",
+      "Service_Address_City": "Mesa",
+      "Plan": "Weekly Full Service",
+      "Last_Name": "Foster",
+      "Start_Date": "12/05/2015",
+      "Cell": "(480) 555-7671",
+      "Last_Visit": "09/04/2026",
+      "Route_Tech": "Hector Ruiz",
+      "Alt_Email": null,
+      "Billing_Status": "Autopay",
+      "Row": 9,
+      "Preferred_Contact": "Call",
+      "Account_Status": "Cancelled",
+      "Invoice_Acct_No": "INV-740202",
+      "First_Name": "Ruby",
+      "Email": "ruby.foster@inbox.example.com",
+      "Client_ID": "PS-1228"
+    },
+    {
+      "Route_Tech": "Brady Collins",
+      "Client_ID": "PS-1235",
+      "Billing_Status": "Autopay",
+      "First_Name": "Nora   ",
+      "Account_Status": "Seasonal Hold",
+      "Alt_Email": "nreed@work.example.org",
+      "Last_Name": "Reed",
+      "Last_Visit": "10/05/2026",
+      "Email": "nora.reed@inbox.example.com",
+      "Row": 10,
+      "Start_Date": "10/01/2022",
+      "Invoice_Acct_No": "INV-740240",
+      "Gate_Code": "78832",
+      "Plan": "Weekly Full Service",
+      "Service_Address_City": "Chandler"
+    },
+    {
+      "First_Name": "Caleb",
+      "Alt_Email": "cpearce@work.example.org",
+      "Cell": "(480) 555-9653",
+      "Client_ID": "PS-1245",
+      "Billing_Status": "Past Due",
+      "Gate_Code": "94778",
+      "Last_Visit": "10/12/2026",
+      "Service_Address_City": "Scottsdale",
+      "Email": "caleb.pearce@inbox.example.com",
+      "Plan": "Bi-Weekly Chem Only",
+      "Invoice_Acct_No": "INV-740251",
+      "Start_Date": "06/05/2019",
+      "Route_Tech": "Hector Ruiz",
+      "Account_Status": "Seasonal Hold",
+      "Row": 11,
+      "Last_Name": "Pearce"
+    },
+    {
+      "Client_ID": "PS-1249",
+      "Last_Name": "Lowe",
+      "Invoice_Acct_No": "INV-740270",
+      "Alt_Email": "olowe@work.example.org",
+      "Billing_Status": "Past Due",
+      "Email": "olivia.lowe@inbox.example.com",
+      "Start_Date": "10/11/2020",
+      "Service_Address_City": "Mesa",
+      "Account_Status": "Active",
+      "Row": 12,
+      "Cell": "(480) 555-0071",
+      "Route_Tech": "Hector Ruiz",
+      "Gate_Code": "57922",
+      "First_Name": "Olivia",
+      "Plan": "Opening/Closing Only",
+      "Last_Visit": "08/11/2026"
+    },
+    {
+      "Client_ID": "PS-1253",
+      "Invoice_Acct_No": "INV-740289",
+      "Last_Visit": "10/10/2026",
+      "Cell": "(480) 555-2122",
+      "Gate_Code": "00815",
+      "Start_Date": "05/09/2023",
+      "Last_Name": "Pearce",
+      "First_Name": "Hannah",
+      "Alt_Email": null,
+      "Service_Address_City": "Scottsdale",
+      "Plan": "Weekly Full Service",
+      "Email": "hannah.pearce@inbox.example.com",
+      "Billing_Status": "Autopay",
+      "Row": 13,
+      "Preferred_Contact": "Text",
+      "Account_Status": "Cancelled",
+      "Route_Tech": "Hector Ruiz"
+    },
+    {
+      "Billing_Status": "Autopay",
+      "First_Name": "  Nora",
+      "Preferred_Contact": "Text",
+      "Last_Visit": "09/04/2026",
+      "Plan": "Opening/Closing Only",
+      "Start_Date": "11/10/2018",
+      "Row": 14,
+      "Invoice_Acct_No": "INV-740319",
+      "Cell": null,
+      "Client_ID": "PS-1260",
+      "Account_Status": "Active",
+      "Last_Name": "Brooks",
+      "Gate_Code": "32410",
+      "Route_Tech": "Hector Ruiz",
+      "Email": "nora.brooks@inbox.example.com",
+      "Service_Address_City": "Scottsdale",
+      "Alt_Email": null
+    },
+    {
+      "Client_ID": "PS-1265",
+      "Last_Visit": "08/02/2026",
+      "Plan": "Weekly Full Service",
+      "Service_Address_City": "Tempe",
+      "First_Name": "Caleb",
+      "Cell": "(480) 555-8271",
+      "Row": 15,
+      "Start_Date": "12/03/2016",
+      "Last_Name": "Sullivan",
+      "Email": "caleb.sullivan@inbox.example.com",
+      "Alt_Email": "csullivan@work.example.org",
+      "Preferred_Contact": "Call",
+      "Gate_Code": "46942",
+      "Route_Tech": "Hector Ruiz",
+      "Account_Status": "Seasonal Hold",
+      "Invoice_Acct_No": "INV-740353",
+      "Billing_Status": "Net 30"
+    },
+    {
+      "First_Name": " Liam  ",
+      "Last_Visit": "10/07/2026",
+      "Invoice_Acct_No": "INV-740373",
+      "Account_Status": "Seasonal Hold",
+      "Service_Address_City": "Scottsdale",
+      "Preferred_Contact": "Text",
+      "Billing_Status": "Autopay",
+      "Email": "liam.pearce@inbox.example.com",
+      "Route_Tech": "Brady Collins",
+      "Start_Date": "07/07/2016",
+      "Cell": "(480) 555-6310",
+      "Client_ID": "PS-1271",
+      "Plan": "Bi-Weekly Chem Only",
+      "Last_Name": "Pearce",
+      "Row": 16,
+      "Gate_Code": "55622",
+      "Alt_Email": "lpearce@work.example.org"
+    },
+    {
+      "Plan": "Weekly Full Service",
+      "Email": "Grace.Sutton@Inbox.Example.Com",
+      "Last_Visit": "08/11/2026",
+      "Alt_Email": null,
+      "Billing_Status": "Net 30",
+      "Invoice_Acct_No": "INV-740386",
+      "Last_Name": "Sutton",
+      "Start_Date": "01/07/2019",
+      "Gate_Code": "26439",
+      "Route_Tech": "Hector Ruiz",
+      "Row": 17,
+      "Cell": "(480) 555-8207",
+      "Preferred_Contact": "Text",
+      "First_Name": "Grace",
+      "Service_Address_City": "Chandler",
+      "Account_Status": "Seasonal Hold",
+      "Client_ID": "PS-1278"
+    },
+    {
+      "Billing_Status": "Autopay",
+      "Row": 18,
+      "Client_ID": "PS-1283",
+      "Last_Visit": "11/10/2026",
+      "Email": "ava.ward@inbox.example.com",
+      "Account_Status": "Seasonal Hold",
+      "First_Name": "Ava",
+      "Plan": "Bi-Weekly Chem Only",
+      "Invoice_Acct_No": "INV-740418",
+      "Alt_Email": null,
+      "Route_Tech": "Hector Ruiz",
+      "Gate_Code": "88227",
+      "Cell": "(480) 555-4237",
+      "Last_Name": "Ward",
+      "Preferred_Contact": null,
+      "Service_Address_City": "Scottsdale",
+      "Start_Date": "05/01/2023"
+    },
+    {
+      "First_Name": "Olivia",
+      "Route_Tech": "Tasha Greene",
+      "Last_Visit": "08/02/2026",
+      "Preferred_Contact": "Email",
+      "Alt_Email": "oward@work.example.org",
+      "Plan": "Opening/Closing Only",
+      "Cell": "(480) 555-4381",
+      "Billing_Status": "Autopay",
+      "Gate_Code": "19878",
+      "Last_Name": "Ward",
+      "Email": "olivia.ward@inbox.example.com",
+      "Invoice_Acct_No": "INV-740428",
+      "Service_Address_City": "Mesa",
+      "Start_Date": "06/07/2019",
+      "Row": 19,
+      "Account_Status": "Seasonal Hold",
+      "Client_ID": "PS-1292"
+    },
+    {
+      "Last_Visit": "08/08/2026",
+      "Billing_Status": "Net 30",
+      "Alt_Email": "cbarnes@work.example.org",
+      "Invoice_Acct_No": "INV-740451",
+      "Start_Date": "08/03/2019",
+      "Cell": "(480) 555-3398",
+      "Account_Status": "Active",
+      "Route_Tech": "Hector Ruiz",
+      "Gate_Code": "42358",
+      "Client_ID": "PS-1299",
+      "Service_Address_City": "Chandler",
+      "Row": 20,
+      "Plan": "Opening/Closing Only",
+      "First_Name": "Chloe",
+      "Last_Name": "Barnes",
+      "Preferred_Contact": "Call",
+      "Email": "Chloe.Barnes@Inbox.Example.Com"
+    },
+    {
+      "Account_Status": "Active",
+      "Billing_Status": "Net 30",
+      "Email": "leo.sullivan@inbox.example.com",
+      "Plan": "Bi-Weekly Chem Only",
+      "Invoice_Acct_No": "INV-740488",
+      "Client_ID": "PS-1305",
+      "Gate_Code": "48307",
+      "Row": 21,
+      "Alt_Email": null,
+      "Preferred_Contact": "Call",
+      "Route_Tech": "Hector Ruiz",
+      "Last_Name": "Sullivan",
+      "Last_Visit": "10/11/2026",
+      "Start_Date": "03/09/2017",
+      "Service_Address_City": "Tempe",
+      "First_Name": "Leo"
+    },
+    {
+      "First_Name": "Ava",
+      "Cell": "(480) 555-8324",
+      "Alt_Email": "aquinn@work.example.org",
+      "Row": 22,
+      "Invoice_Acct_No": "INV-740513",
+      "Last_Visit": "10/01/2026",
+      "Gate_Code": "23532",
+      "Preferred_Contact": "Text",
+      "Billing_Status": "Past Due",
+      "Client_ID": "PS-1307",
+      "Account_Status": "Active",
+      "Route_Tech": "Tasha Greene",
+      "Email": "Ava.Quinn@Inbox.Example.Com",
+      "Start_Date": "02/05/2019",
+      "Last_Name": "Quinn",
+      "Plan": "Opening/Closing Only",
+      "Service_Address_City": "Scottsdale"
+    },
+    {
+      "Plan": "Bi-Weekly Chem Only",
+      "Route_Tech": "Hector Ruiz",
+      "Billing_Status": "Past Due",
+      "Invoice_Acct_No": "INV-740522",
+      "Last_Visit": "10/07/2026",
+      "Email": "chloe.price@inbox.example.com",
+      "Service_Address_City": "Tempe",
+      "Row": 23,
+      "Alt_Email": null,
+      "Preferred_Contact": "Text",
+      "Cell": "(480) 555-9277",
+      "Start_Date": "01/03/2020",
+      "First_Name": "Chloe",
+      "Last_Name": "Price",
+      "Account_Status": "Cancelled",
+      "Gate_Code": "71123",
+      "Client_ID": "PS-1316"
+    },
+    {
+      "First_Name": "Emma",
+      "Email": "emma.sullivan@inbox.example.com",
+      "Preferred_Contact": "Call",
+      "Alt_Email": "esullivan@work.example.org",
+      "Plan": "Weekly Full Service",
+      "Cell": "(480) 555-8752",
+      "Last_Visit": "08/08/2026",
+      "Start_Date": "07/11/2023",
+      "Route_Tech": "Tasha Greene",
+      "Row": 24,
+      "Invoice_Acct_No": "INV-740544",
+      "Service_Address_City": "Mesa",
+      "Gate_Code": "88700",
+      "Account_Status": "Cancelled",
+      "Billing_Status": "Autopay",
+      "Client_ID": "PS-1318",
+      "Last_Name": "Sullivan"
+    },
+    {
+      "First_Name": "Olivia",
+      "Start_Date": "02/08/2017",
+      "Last_Visit": "11/09/2026",
+      "Plan": "Weekly Full Service",
+      "Invoice_Acct_No": "INV-740574",
+      "Cell": "(480) 555-1093",
+      "Client_ID": "PS-1328",
+      "Service_Address_City": "Scottsdale",
+      "Account_Status": "DUPLICATE - see other row",
+      "Row": 25,
+      "Route_Tech": "Tasha Greene",
+      "Billing_Status": "Autopay",
+      "Email": "olivia.price@inbox.example.com",
+      "Gate_Code": "17835",
+      "Alt_Email": "oprice@work.example.org",
+      "Last_Name": "Price",
+      "Preferred_Contact": "Call"
+    },
+    {
+      "Alt_Email": null,
+      "Cell": "(480) 555-0931",
+      "Email": "leo.hayes@inbox.example.com",
+      "First_Name": "Leo",
+      "Service_Address_City": "Mesa",
+      "Client_ID": "PS-1335",
+      "Plan": "Opening/Closing Only",
+      "Route_Tech": "Brady Collins",
+      "Gate_Code": "53346",
+      "Start_Date": "01/07/2025",
+      "Row": 26,
+      "Preferred_Contact": "Call",
+      "Invoice_Acct_No": "INV-740605",
+      "Last_Visit": "08/04/2026",
+      "Billing_Status": "Autopay",
+      "Account_Status": "Active",
+      "Last_Name": "Hayes"
+    },
+    {
+      "Email": "henry.carter@inbox.example.com",
+      "Client_ID": "PS-1336",
+      "Route_Tech": "Brady Collins",
+      "Start_Date": "12/02/2019",
+      "Account_Status": "DUPLICATE - see other row",
+      "Preferred_Contact": "Call",
+      "Plan": "Weekly Full Service",
+      "Gate_Code": "37772",
+      "First_Name": "Henry",
+      "Last_Visit": "10/10/2026",
+      "Alt_Email": "hcarter@work.example.org",
+      "Cell": null,
+      "Invoice_Acct_No": "INV-740610",
+      "Last_Name": "Carter",
+      "Service_Address_City": "Mesa",
+      "Billing_Status": "Past Due",
+      "Row": 27
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "external_id": {
+        "type": "string",
+        "description": "Identifier of the requester in your own records."
+      },
+      "first_name": {
+        "type": "string",
+        "description": "Given name of the requester."
+      },
+      "last_name": {
+        "type": "string",
+        "description": "Family name of the requester."
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "description": "Primary email address; replies to tickets go here."
+      },
+      "phone": {
+        "type": "string",
+        "description": "Mobile phone number for text updates."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "paused",
+          "cancelled"
+        ],
+        "description": "Status."
+      },
+      "plan": {
+        "type": "string",
+        "enum": [
+          "full_service",
+          "chemicals_only",
+          "seasonal"
+        ],
+        "description": "Service plan the requester subscribes to."
+      },
+      "preferred_channel": {
+        "type": "string",
+        "enum": [
+          "sms",
+          "phone",
+          "email"
+        ],
+        "description": "How the requester prefers to be contacted."
+      },
+      "customer_since": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the requester became a customer."
+      },
+      "company": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "external_id",
+      "first_name",
+      "last_name",
+      "email",
+      "status"
+    ]
+  },
+  "groundTruth": {
+    "external_id": {
+      "source": "Client_ID",
+      "transform": "copy",
+      "why": "client id; Invoice_Acct_No is the billing account"
+    },
+    "first_name": {
+      "source": "First_Name",
+      "transform": "trim",
+      "why": "given name, padded; Route_Tech is the technician"
+    },
+    "last_name": {
+      "source": "Last_Name",
+      "transform": "copy",
+      "why": "family name"
+    },
+    "email": {
+      "source": "Email",
+      "transform": "normalize_email",
+      "why": "primary email, mixed case; Alt_Email is secondary"
+    },
+    "phone": {
+      "source": "Cell",
+      "transform": "copy",
+      "why": "cell phone, null or missing"
+    },
+    "status": {
+      "source": "Account_Status",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Active": "active",
+        "Seasonal Hold": "paused",
+        "Cancelled": "cancelled",
+        "DUPLICATE - see other row": null
+      },
+      "why": "account state; duplicates need review"
+    },
+    "plan": {
+      "source": "Plan",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Weekly Full Service": "full_service",
+        "Bi-Weekly Chem Only": "chemicals_only",
+        "Opening/Closing Only": "seasonal"
+      },
+      "why": "service plan"
+    },
+    "preferred_channel": {
+      "source": "Preferred_Contact",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Text": "sms",
+        "Call": "phone",
+        "Email": "email"
+      },
+      "why": "preferred contact channel, null or missing"
+    },
+    "customer_since": {
+      "source": "Start_Date",
+      "transform": "parse_date",
+      "dateFormat": "MM/DD/YYYY",
+      "why": "service start (US month-first); Last_Visit is the latest visit"
+    },
+    "company": {
+      "source": null,
+      "transform": "none",
+      "why": "residential clients; no company is exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "Account_Status",
+        "Billing_Status"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "Client_ID",
+        "Invoice_Acct_No"
+      ],
+      "correctFor": "external_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "Email",
+        "Alt_Email"
+      ],
+      "correctFor": "email"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "Start_Date",
+        "Last_Visit"
+      ],
+      "correctFor": "customer_since"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "First_Name",
+        "Route_Tech"
+      ],
+      "correctFor": "first_name"
+    }
+  ],
+  "sourceConcepts": {
+    "Client_ID": "customer-id",
+    "Invoice_Acct_No": "other-identifier",
+    "Row": "other-identifier",
+    "First_Name": "given-name",
+    "Last_Name": "family-name",
+    "Email": "email",
+    "Alt_Email": "email",
+    "Cell": "phone",
+    "Service_Address_City": "city",
+    "Account_Status": "account-status",
+    "Billing_Status": "payment-status",
+    "Plan": "category",
+    "Preferred_Contact": "category",
+    "Route_Tech": "person-name",
+    "Start_Date": "start-date",
+    "Last_Visit": "other",
+    "Gate_Code": "other"
+  },
+  "destinationConcepts": {
+    "external_id": "customer-id",
+    "first_name": "given-name",
+    "last_name": "family-name",
+    "email": "email",
+    "phone": "phone",
+    "status": "account-status",
+    "plan": "category",
+    "preferred_channel": "category",
+    "customer_since": "start-date",
+    "company": "organization-name"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 0,
+      "outcome": "transformed",
+      "output": {
+        "external_id": "PS-1180",
+        "first_name": "Hannah",
+        "last_name": "Morgan",
+        "email": "hannah.morgan@inbox.example.com",
+        "phone": "(480) 555-5508",
+        "status": "paused",
+        "plan": "full_service",
+        "preferred_channel": "sms",
+        "customer_since": "2016-03-05"
+      }
+    },
+    {
+      "recordIndex": 2,
+      "outcome": "transformed",
+      "output": {
+        "external_id": "PS-1192",
+        "first_name": "Nora",
+        "last_name": "Bennett",
+        "email": "nora.bennett@inbox.example.com",
+        "status": "active",
+        "plan": "full_service",
+        "preferred_channel": "sms",
+        "customer_since": "2021-11-03"
+      }
+    },
+    {
+      "recordIndex": 3,
+      "outcome": "transformed",
+      "output": {
+        "external_id": "PS-1201",
+        "first_name": "Isaac",
+        "last_name": "Reed",
+        "email": "isaac.reed@inbox.example.com",
+        "status": "active",
+        "plan": "seasonal",
+        "customer_since": "2022-06-05"
+      }
+    },
+    {
+      "recordIndex": 24,
+      "outcome": "held"
+    }
+  ]
+}

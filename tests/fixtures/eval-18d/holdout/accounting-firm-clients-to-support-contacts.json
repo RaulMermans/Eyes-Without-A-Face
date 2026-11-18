@@ -1,0 +1,867 @@
+{
+  "scenarioId": "accounting-firm-clients-to-support-contacts",
+  "split": "holdout",
+  "track": "wedge",
+  "industry": "accounting firm client files",
+  "sourceLanguage": "fr",
+  "description": "Flat client-file export of a fictional Belgian accounting firm (French snake_case with c_ prefix) to be loaded as support contacts with their organization.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "c_date_entree": "25/12/2017",
+      "c_expert_comptable": "Olivier Lambert",
+      "c_contact_prenom": "Elise",
+      "c_contact_nom": "Richard",
+      "c_num_ligne": 1,
+      "c_regime_tva": "Exempté",
+      "c_date_cloture": "16/07/2026",
+      "c_tel": "+32 456 89 63 05",
+      "c_langue": "EN",
+      "c_num_entreprise": "0456101072",
+      "c_mission": "Tenue comptable",
+      "c_statut_dossier": "Prospect",
+      "c_email_contact": "elise.richard@pme.example.net",
+      "c_email_facturation": "compta.richard0@pme.example.net",
+      "c_raison_sociale": "Garage du Centre SRL",
+      "c_code_client": "CL01211",
+      "c_statut_reglement": "À jour"
+    },
+    {
+      "c_mission": "Tenue comptable",
+      "c_date_entree": "16/02/2017",
+      "c_email_contact": "pauline.robert@pme.example.net",
+      "c_raison_sociale": "Cabinet Dentaire Moreau",
+      "c_contact_nom": "Robert",
+      "c_date_cloture": "23/02/2026",
+      "c_email_facturation": "compta.robert1@pme.example.net",
+      "c_regime_tva": "Assujetti",
+      "c_langue": null,
+      "c_num_entreprise": "0456106653",
+      "c_code_client": "CL01221",
+      "c_statut_reglement": "Relance 2",
+      "c_tel": "+32 437 27 89 25",
+      "c_contact_prenom": "Pauline",
+      "c_num_ligne": 2,
+      "c_expert_comptable": "Nadia Benali",
+      "c_statut_dossier": "Résilié"
+    },
+    {
+      "c_langue": "FR",
+      "c_contact_prenom": "Inès",
+      "c_code_client": "CL01227",
+      "c_expert_comptable": "Olivier Lambert",
+      "c_regime_tva": "Franchise",
+      "c_email_facturation": "compta.faure2@pme.example.net",
+      "c_num_entreprise": "0456109960",
+      "c_statut_reglement": "À jour",
+      "c_date_entree": "10/03/2010",
+      "c_contact_nom": "Faure",
+      "c_mission": "Révision",
+      "c_raison_sociale": "Cabinet Dentaire Moreau",
+      "c_email_contact": "ines.faure@pme.example.net",
+      "c_statut_dossier": "En cours",
+      "c_num_ligne": 3,
+      "c_tel": "+32 468 46 04 46",
+      "c_date_cloture": "21/12/2026"
+    },
+    {
+      "c_email_contact": "mathis.garcia@pme.example.net",
+      "c_mission": "Révision",
+      "c_email_facturation": "compta.garcia3@pme.example.net",
+      "c_contact_nom": "Garcia",
+      "c_date_cloture": "23/02/2026",
+      "c_raison_sociale": "Fleurs & Co SRL",
+      "c_contact_prenom": "Mathis",
+      "c_statut_dossier": "Résilié",
+      "c_statut_reglement": "Contentieux",
+      "c_regime_tva": "Assujetti",
+      "c_num_ligne": 4,
+      "c_tel": null,
+      "c_expert_comptable": "Martine Delvaux",
+      "c_date_entree": "31/01/2008",
+      "c_langue": "NL",
+      "c_code_client": "CL01239",
+      "c_num_entreprise": "0456110838"
+    },
+    {
+      "c_statut_dossier": "Suspendu",
+      "c_email_facturation": "compta.durand4@pme.example.net",
+      "c_regime_tva": "Assujetti",
+      "c_tel": "+32 401 05 42 18",
+      "c_statut_reglement": "Relance 2",
+      "c_contact_prenom": "Sarah",
+      "c_contact_nom": "Durand",
+      "c_num_ligne": 5,
+      "c_num_entreprise": "0456114665",
+      "c_date_entree": "25/04/2020",
+      "c_raison_sociale": "Atelier Verlaine",
+      "c_date_cloture": "28/04/2026",
+      "c_email_contact": "sarah.durand@pme.example.net",
+      "c_expert_comptable": "Nadia Benali",
+      "c_code_client": "CL01243",
+      "c_mission": "Juridique annuel"
+    },
+    {
+      "c_date_entree": "25/11/2013",
+      "c_tel": "+32 415 72 25 20",
+      "c_raison_sociale": "Fleurs & Co SRL",
+      "c_expert_comptable": "Olivier Lambert",
+      "c_regime_tva": "Assujetti",
+      "c_langue": "NL",
+      "c_email_contact": "ines.leroy@pme.example.net",
+      "c_statut_dossier": "Suspendu",
+      "c_contact_nom": "Leroy",
+      "c_email_facturation": "compta.leroy5@pme.example.net",
+      "c_code_client": "CL01256",
+      "c_contact_prenom": "Inès",
+      "c_mission": "Tenue comptable",
+      "c_num_entreprise": "0456117313",
+      "c_statut_reglement": "À jour",
+      "c_date_cloture": "09/07/2026",
+      "c_num_ligne": 6
+    },
+    {
+      "c_date_cloture": "16/09/2026",
+      "c_email_contact": "juliette.fournier@pme.example.net",
+      "c_contact_nom": "Fournier",
+      "c_num_ligne": 7,
+      "c_statut_dossier": "En cours",
+      "c_contact_prenom": "Juliette",
+      "c_date_entree": "09/02/2013",
+      "c_expert_comptable": "Martine Delvaux",
+      "c_statut_reglement": "À jour",
+      "c_code_client": "CL01264",
+      "c_tel": "+32 478 46 62 01",
+      "c_num_entreprise": "0456121741",
+      "c_langue": "FR",
+      "c_mission": "Juridique annuel",
+      "c_regime_tva": "Assujetti",
+      "c_email_facturation": "compta.fournier6@pme.example.net",
+      "c_raison_sociale": "Garage du Centre SRL"
+    },
+    {
+      "c_num_entreprise": "0456124596",
+      "c_expert_comptable": "Martine Delvaux",
+      "c_email_contact": "lea.rousseau@pme.example.net",
+      "c_tel": "+32 492 63 32 10",
+      "c_email_facturation": "compta.rousseau0@pme.example.net",
+      "c_num_ligne": 8,
+      "c_regime_tva": "Assujetti",
+      "c_contact_prenom": "Léa",
+      "c_date_entree": "27/07/2014",
+      "c_raison_sociale": " Cabinet Dentaire Moreau  ",
+      "c_code_client": "CL01274",
+      "c_contact_nom": "Rousseau",
+      "c_statut_reglement": "Contentieux",
+      "c_date_cloture": "29/07/2026",
+      "c_langue": "FR",
+      "c_mission": "Juridique annuel",
+      "c_statut_dossier": "Suspendu"
+    },
+    {
+      "c_email_facturation": "compta.thomas1@pme.example.net",
+      "c_statut_dossier": "Suspendu",
+      "c_langue": "FR",
+      "c_date_entree": "23/09/2021",
+      "c_contact_prenom": "Nathan",
+      "c_statut_reglement": "À jour",
+      "c_code_client": "CL01282",
+      "c_expert_comptable": "Olivier Lambert",
+      "c_date_cloture": "05/01/2026",
+      "c_mission": "Tenue comptable",
+      "c_num_entreprise": "0456129144",
+      "c_regime_tva": "Assujetti",
+      "c_tel": "+32 478 92 92 84",
+      "c_num_ligne": 9,
+      "c_email_contact": "nathan.thomas@pme.example.net",
+      "c_raison_sociale": "Cabinet Dentaire Moreau   ",
+      "c_contact_nom": "Thomas"
+    },
+    {
+      "c_mission": "Social / paie",
+      "c_expert_comptable": "Nadia Benali",
+      "c_num_ligne": 10,
+      "c_regime_tva": "Franchise",
+      "c_date_cloture": "14/08/2026",
+      "c_email_facturation": "compta.girard2@pme.example.net",
+      "c_date_entree": "09/08/2020",
+      "c_num_entreprise": "0456130496",
+      "c_code_client": "CL01286",
+      "c_statut_dossier": "Suspendu",
+      "c_tel": "+32 404 48 43 49",
+      "c_langue": "FR",
+      "c_email_contact": "hugo.girard@pme.example.net",
+      "c_contact_nom": "Girard",
+      "c_contact_prenom": "Hugo",
+      "c_raison_sociale": "Atelier Verlaine",
+      "c_statut_reglement": "Relance 2"
+    },
+    {
+      "c_langue": "NL",
+      "c_contact_prenom": "Inès",
+      "c_expert_comptable": "Olivier Lambert",
+      "c_date_cloture": "27/01/2026",
+      "c_code_client": "CL01302",
+      "c_regime_tva": "Franchise",
+      "c_num_entreprise": "0456135901",
+      "c_mission": "Social / paie",
+      "c_email_facturation": "compta.dubois3@pme.example.net",
+      "c_contact_nom": "Dubois",
+      "c_tel": "+32 425 49 75 74",
+      "c_email_contact": "ines.dubois@pme.example.net",
+      "c_statut_dossier": "En cours",
+      "c_num_ligne": 11,
+      "c_statut_reglement": "À jour",
+      "c_raison_sociale": "Imprimerie Lys",
+      "c_date_entree": "09/01/2015"
+    },
+    {
+      "c_statut_reglement": "À jour",
+      "c_tel": "+32 463 22 48 51",
+      "c_contact_nom": "Moreau",
+      "c_email_facturation": "compta.moreau4@pme.example.net",
+      "c_langue": "FR",
+      "c_statut_dossier": "En cours",
+      "c_num_ligne": 12,
+      "c_date_cloture": "31/05/2026",
+      "c_num_entreprise": "0456139211",
+      "c_contact_prenom": "Gabriel",
+      "c_regime_tva": "Exempté",
+      "c_email_contact": "gabriel.moreau@pme.example.net",
+      "c_raison_sociale": "Imprimerie Lys",
+      "c_code_client": "CL01304",
+      "c_expert_comptable": "Olivier Lambert",
+      "c_date_entree": "18/11/2018",
+      "c_mission": "Social / paie"
+    },
+    {
+      "c_raison_sociale": "Cabinet Dentaire Moreau",
+      "c_statut_dossier": "En cours",
+      "c_regime_tva": "Franchise",
+      "c_num_ligne": 13,
+      "c_date_cloture": "08/08/2026",
+      "c_langue": "FR",
+      "c_email_contact": "nathan.garcia@pme.example.net",
+      "c_contact_prenom": "Nathan",
+      "c_tel": "+32 446 44 84 24",
+      "c_contact_nom": "Garcia",
+      "c_num_entreprise": "0456140051",
+      "c_expert_comptable": "Nadia Benali",
+      "c_statut_reglement": "À jour",
+      "c_date_entree": "24/06/2022",
+      "c_email_facturation": "compta.garcia5@pme.example.net",
+      "c_mission": "Révision",
+      "c_code_client": "CL01320"
+    },
+    {
+      "c_expert_comptable": "Nadia Benali",
+      "c_contact_prenom": "Manon",
+      "c_statut_reglement": "À jour",
+      "c_mission": "Tenue comptable",
+      "c_raison_sociale": "Boulangerie Lemaire",
+      "c_statut_dossier": "Suspendu",
+      "c_regime_tva": "Franchise",
+      "c_email_contact": "manon.robert@pme.example.net",
+      "c_date_cloture": "17/05/2026",
+      "c_date_entree": "29/07/2015",
+      "c_tel": "+32 416 71 90 51",
+      "c_code_client": "CL01325",
+      "c_langue": "FR",
+      "c_num_ligne": 14,
+      "c_email_facturation": "compta.robert6@pme.example.net",
+      "c_contact_nom": "Robert",
+      "c_num_entreprise": "0456146626"
+    },
+    {
+      "c_email_contact": "hugo.lefevre@pme.example.net",
+      "c_email_facturation": "compta.lefevre0@pme.example.net",
+      "c_date_cloture": "07/11/2026",
+      "c_contact_nom": "Lefèvre",
+      "c_contact_prenom": "Hugo",
+      "c_expert_comptable": "Nadia Benali",
+      "c_num_entreprise": "0456147374",
+      "c_statut_reglement": "Relance 2",
+      "c_langue": "NL",
+      "c_raison_sociale": " Atelier Verlaine  ",
+      "c_date_entree": "12/05/2010",
+      "c_num_ligne": 15,
+      "c_code_client": "CL01331",
+      "c_statut_dossier": "Prospect",
+      "c_tel": "+32 490 70 57 82",
+      "c_regime_tva": "Franchise",
+      "c_mission": "Révision"
+    },
+    {
+      "c_code_client": "CL01341",
+      "c_num_entreprise": "0456150167",
+      "c_num_ligne": 16,
+      "c_email_facturation": "compta.robert1@pme.example.net",
+      "c_langue": "NL",
+      "c_email_contact": "hugo.robert@pme.example.net",
+      "c_raison_sociale": "Garage du Centre SRL",
+      "c_date_entree": "06/10/2021",
+      "c_contact_nom": "Robert",
+      "c_statut_dossier": "En cours",
+      "c_tel": "+32 493 80 46 61",
+      "c_expert_comptable": "Olivier Lambert",
+      "c_mission": "Tenue comptable",
+      "c_contact_prenom": "Hugo",
+      "c_statut_reglement": "À jour",
+      "c_date_cloture": "24/03/2026",
+      "c_regime_tva": "Franchise"
+    },
+    {
+      "c_expert_comptable": "Nadia Benali",
+      "c_code_client": "CL01348",
+      "c_raison_sociale": "Garage du Centre SRL",
+      "c_contact_prenom": "Raphaël",
+      "c_date_cloture": "20/08/2026",
+      "c_email_facturation": "compta.laurent2@pme.example.net",
+      "c_mission": "Social / paie",
+      "c_contact_nom": "Laurent",
+      "c_num_ligne": 17,
+      "c_regime_tva": "Assujetti",
+      "c_email_contact": "raphael.laurent@pme.example.net",
+      "c_langue": "FR",
+      "c_date_entree": "25/05/2011",
+      "c_statut_reglement": "Relance 2",
+      "c_tel": "+32 402 97 60 85",
+      "c_num_entreprise": "0456156383",
+      "c_statut_dossier": "Prospect"
+    },
+    {
+      "c_email_contact": "mathis.durand@pme.example.net",
+      "c_code_client": "CL01357",
+      "c_contact_nom": "Durand",
+      "c_contact_prenom": "Mathis",
+      "c_statut_reglement": "Relance 2",
+      "c_mission": "Tenue comptable",
+      "c_tel": "+32 440 27 83 29",
+      "c_date_entree": "17/04/2008",
+      "c_langue": "EN",
+      "c_expert_comptable": "Martine Delvaux",
+      "c_num_entreprise": "0456159055",
+      "c_date_cloture": "09/02/2026",
+      "c_regime_tva": "Exempté",
+      "c_raison_sociale": "Cabinet Dentaire Moreau",
+      "c_num_ligne": 18,
+      "c_email_facturation": "compta.durand3@pme.example.net",
+      "c_statut_dossier": "Résilié"
+    },
+    {
+      "c_date_entree": "03/05/2009",
+      "c_raison_sociale": "Boulangerie Lemaire",
+      "c_mission": "Tenue comptable",
+      "c_statut_dossier": "Suspendu",
+      "c_expert_comptable": "Martine Delvaux",
+      "c_num_entreprise": "0456162664",
+      "c_contact_nom": "Girard",
+      "c_regime_tva": "Franchise",
+      "c_date_cloture": "30/08/2026",
+      "c_email_facturation": "compta.girard4@pme.example.net",
+      "c_statut_reglement": "À jour",
+      "c_email_contact": "juliette.girard@pme.example.net",
+      "c_contact_prenom": "Juliette",
+      "c_tel": "+32 435 58 91 89",
+      "c_num_ligne": 19,
+      "c_code_client": "CL01369"
+    },
+    {
+      "c_mission": "Social / paie",
+      "c_langue": "FR",
+      "c_contact_prenom": "Margaux",
+      "c_regime_tva": "Franchise",
+      "c_raison_sociale": "Cabinet Dentaire Moreau ",
+      "c_statut_dossier": "En cours",
+      "c_date_cloture": "17/06/2026",
+      "c_num_entreprise": "0456166083",
+      "c_date_entree": "06/02/2010",
+      "c_statut_reglement": "À jour",
+      "c_code_client": "CL01376",
+      "c_expert_comptable": "Olivier Lambert",
+      "c_tel": null,
+      "c_email_contact": "margaux.rousseau@pme.example.net",
+      "c_contact_nom": "Rousseau",
+      "c_num_ligne": 20,
+      "c_email_facturation": "compta.rousseau5@pme.example.net"
+    },
+    {
+      "c_tel": "+32 487 12 48 71",
+      "c_num_ligne": 21,
+      "c_code_client": "CL01388",
+      "c_contact_nom": "Martin",
+      "c_raison_sociale": " Fleurs & Co SRL  ",
+      "c_mission": "Social / paie",
+      "c_statut_reglement": "À jour",
+      "c_num_entreprise": "0456168280",
+      "c_regime_tva": "Assujetti",
+      "c_langue": "FR",
+      "c_contact_prenom": "Inès",
+      "c_statut_dossier": "En cours",
+      "c_date_entree": "06/01/2020",
+      "c_email_contact": "ines.martin@pme.example.net",
+      "c_email_facturation": "compta.martin6@pme.example.net",
+      "c_expert_comptable": "Olivier Lambert",
+      "c_date_cloture": "30/05/2026"
+    },
+    {
+      "c_tel": "+32 474 56 02 86",
+      "c_email_contact": "pauline.dubois@pme.example.net",
+      "c_statut_reglement": "À jour",
+      "c_mission": "Révision",
+      "c_date_entree": "23/02/2009",
+      "c_num_entreprise": "0456172098",
+      "c_contact_prenom": "Pauline",
+      "c_expert_comptable": "Nadia Benali",
+      "c_contact_nom": "Dubois",
+      "c_regime_tva": "Franchise",
+      "c_code_client": "CL01395",
+      "c_date_cloture": "08/03/2026",
+      "c_email_facturation": "compta.dubois0@pme.example.net",
+      "c_langue": "EN",
+      "c_num_ligne": 22,
+      "c_statut_dossier": "Suspendu",
+      "c_raison_sociale": "Cabinet Dentaire Moreau"
+    },
+    {
+      "c_raison_sociale": "Garage du Centre SRL",
+      "c_statut_dossier": "Prospect",
+      "c_email_facturation": "compta.faure1@pme.example.net",
+      "c_tel": "+32 424 54 04 83",
+      "c_contact_nom": "Faure",
+      "c_mission": "Juridique annuel",
+      "c_statut_reglement": "À jour",
+      "c_langue": null,
+      "c_email_contact": "raphael.faure@pme.example.net",
+      "c_contact_prenom": "Raphaël",
+      "c_regime_tva": "Exempté",
+      "c_num_entreprise": "0456173452",
+      "c_code_client": "CL01402",
+      "c_date_cloture": "23/10/2026",
+      "c_date_entree": "31/03/2016",
+      "c_num_ligne": 23,
+      "c_expert_comptable": "Nadia Benali"
+    },
+    {
+      "c_code_client": "CL01418",
+      "c_contact_nom": "Leroy",
+      "c_statut_dossier": "En cours",
+      "c_tel": "+32 464 84 19 14",
+      "c_email_facturation": "compta.leroy2@pme.example.net",
+      "c_contact_prenom": "Mathis",
+      "c_regime_tva": "Assujetti",
+      "c_date_cloture": "05/05/2026",
+      "c_statut_reglement": "À jour",
+      "c_mission": "Social / paie",
+      "c_date_entree": "08/07/2013",
+      "c_num_ligne": 24,
+      "c_expert_comptable": "Nadia Benali",
+      "c_langue": "FR",
+      "c_raison_sociale": "Imprimerie Lys",
+      "c_num_entreprise": "0456177020",
+      "c_email_contact": "mathis.leroy@pme.example.net"
+    },
+    {
+      "c_mission": "Tenue comptable",
+      "c_raison_sociale": "Atelier Verlaine",
+      "c_code_client": "CL01420",
+      "c_regime_tva": "Franchise",
+      "c_statut_dossier": "Prospect",
+      "c_tel": "+32 462 20 33 19",
+      "c_langue": "FR",
+      "c_expert_comptable": "Olivier Lambert",
+      "c_date_cloture": "10/06/2026",
+      "c_email_contact": "theo.martin@pme.example.net",
+      "c_num_entreprise": "0456181424",
+      "c_num_ligne": 25,
+      "c_contact_nom": "Martin",
+      "c_email_facturation": "compta.martin3@pme.example.net",
+      "c_contact_prenom": "Théo",
+      "c_statut_reglement": "À jour",
+      "c_date_entree": "17/10/2011"
+    },
+    {
+      "c_date_entree": "10/04/2023",
+      "c_contact_nom": "Dubois",
+      "c_regime_tva": "Assujetti",
+      "c_email_contact": "raphael.dubois@pme.example.net",
+      "c_mission": "Révision",
+      "c_raison_sociale": "Fleurs & Co SRL",
+      "c_expert_comptable": "Nadia Benali",
+      "c_statut_dossier": "Prospect",
+      "c_num_ligne": 26,
+      "c_email_facturation": "compta.dubois4@pme.example.net",
+      "c_contact_prenom": "Raphaël",
+      "c_tel": "+32 466 65 09 12",
+      "c_langue": "EN",
+      "c_code_client": "CL01437",
+      "c_date_cloture": "28/07/2026",
+      "c_num_entreprise": "0456186374",
+      "c_statut_reglement": "À jour"
+    },
+    {
+      "c_num_ligne": 27,
+      "c_contact_nom": "Thomas",
+      "c_date_cloture": "16/07/2026",
+      "c_langue": "FR",
+      "c_code_client": "CL01445",
+      "c_date_entree": "26/02/2017",
+      "c_tel": "+32 452 51 04 33",
+      "c_statut_reglement": "Relance 2",
+      "c_expert_comptable": "Nadia Benali",
+      "c_statut_dossier": "En cours",
+      "c_mission": "Tenue comptable",
+      "c_email_contact": "chloe.thomas@pme.example.net",
+      "c_num_entreprise": "0456188639",
+      "c_contact_prenom": "Chloé",
+      "c_raison_sociale": "Boulangerie Lemaire",
+      "c_regime_tva": "Assujetti",
+      "c_email_facturation": "compta.thomas5@pme.example.net"
+    },
+    {
+      "c_email_contact": "louis.dubois@pme.example.net",
+      "c_code_client": "CL01448",
+      "c_mission": "Juridique annuel",
+      "c_num_ligne": 28,
+      "c_date_entree": "27/08/2012",
+      "c_statut_reglement": "Relance 2",
+      "c_statut_dossier": "Prospect",
+      "c_expert_comptable": "Nadia Benali",
+      "c_contact_nom": "Dubois",
+      "c_num_entreprise": "0456192389",
+      "c_date_cloture": "12/10/2026",
+      "c_regime_tva": "Assujetti",
+      "c_tel": null,
+      "c_contact_prenom": "Louis",
+      "c_raison_sociale": "Garage du Centre SRL",
+      "c_email_facturation": "compta.dubois6@pme.example.net"
+    },
+    {
+      "c_num_entreprise": "0456196263",
+      "c_date_cloture": "02/09/2026",
+      "c_num_ligne": 29,
+      "c_regime_tva": "Assujetti",
+      "c_contact_nom": "Dubois",
+      "c_expert_comptable": "Martine Delvaux",
+      "c_email_facturation": "compta.dubois0@pme.example.net",
+      "c_code_client": "CL01464",
+      "c_langue": "NL",
+      "c_statut_dossier": "Résilié",
+      "c_mission": "Social / paie",
+      "c_tel": "+32 471 80 34 81",
+      "c_contact_prenom": "Manon",
+      "c_date_entree": "15/01/2009",
+      "c_email_contact": "manon.dubois@pme.example.net",
+      "c_raison_sociale": "Cabinet Dentaire Moreau",
+      "c_statut_reglement": "À jour"
+    },
+    {
+      "c_num_entreprise": "0456199239",
+      "c_contact_nom": "Robert",
+      "c_regime_tva": "Assujetti",
+      "c_date_entree": "04/02/2016",
+      "c_mission": "Révision",
+      "c_code_client": "CL01465",
+      "c_statut_reglement": "Contentieux",
+      "c_statut_dossier": "Suspendu",
+      "c_email_facturation": "compta.robert1@pme.example.net",
+      "c_tel": null,
+      "c_raison_sociale": "Fleurs & Co SRL",
+      "c_num_ligne": 30,
+      "c_expert_comptable": "Martine Delvaux",
+      "c_date_cloture": "17/04/2026",
+      "c_langue": null,
+      "c_contact_prenom": "Gabriel",
+      "c_email_contact": "gabriel.robert@pme.example.net"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "organization": {
+        "type": "object",
+        "description": "Organization the contact belongs to.",
+        "properties": {
+          "external_id": {
+            "type": "string",
+            "description": "Identifier of the client organization in the firm's records."
+          },
+          "name": {
+            "type": "string",
+            "description": "Registered name of the client organization."
+          }
+        },
+        "required": [
+          "external_id",
+          "name"
+        ]
+      },
+      "contact_name": {
+        "type": "string",
+        "description": "Full name of the contact person, given name first."
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address of the contact person."
+      },
+      "phone": {
+        "type": "string",
+        "description": "Phone."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "on_hold",
+          "terminated"
+        ],
+        "description": "Current state of the client engagement."
+      },
+      "service": {
+        "type": "string",
+        "enum": [
+          "bookkeeping",
+          "audit",
+          "payroll",
+          "legal"
+        ],
+        "description": "Main service the firm provides to this client."
+      },
+      "language": {
+        "type": "string",
+        "enum": [
+          "fr",
+          "nl",
+          "en"
+        ],
+        "description": "Language used to answer the contact."
+      },
+      "customer_since": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the client engagement started."
+      },
+      "priority": {
+        "type": "string",
+        "enum": [
+          "low",
+          "normal",
+          "high"
+        ]
+      }
+    },
+    "required": [
+      "organization",
+      "contact_name",
+      "email",
+      "status",
+      "customer_since"
+    ]
+  },
+  "groundTruth": {
+    "organization.external_id": {
+      "source": "c_code_client",
+      "transform": "copy",
+      "why": "client code; num_entreprise is the company registry number"
+    },
+    "organization.name": {
+      "source": "c_raison_sociale",
+      "transform": "trim",
+      "why": "company name, padded"
+    },
+    "contact_name": {
+      "source": null,
+      "sources": [
+        "c_contact_prenom",
+        "c_contact_nom"
+      ],
+      "transform": "concat",
+      "separator": " ",
+      "why": "contact given and family name; expert_comptable is the firm's accountant"
+    },
+    "email": {
+      "source": "c_email_contact",
+      "transform": "copy",
+      "why": "contact email; email_facturation is the invoicing mailbox"
+    },
+    "phone": {
+      "source": "c_tel",
+      "transform": "copy",
+      "why": "phone, null in some rows"
+    },
+    "status": {
+      "source": "c_statut_dossier",
+      "transform": "map_enum",
+      "categoryMap": {
+        "En cours": "active",
+        "Suspendu": "on_hold",
+        "Résilié": "terminated",
+        "Prospect": null
+      },
+      "why": "engagement state; prospects need review; statut_reglement is payment"
+    },
+    "service": {
+      "source": "c_mission",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Tenue comptable": "bookkeeping",
+        "Révision": "audit",
+        "Social / paie": "payroll",
+        "Juridique annuel": "legal"
+      },
+      "why": "engagement type; regime_tva is a VAT regime"
+    },
+    "language": {
+      "source": "c_langue",
+      "transform": "map_enum",
+      "categoryMap": {
+        "FR": "fr",
+        "NL": "nl",
+        "EN": "en"
+      },
+      "why": "language, null or missing"
+    },
+    "customer_since": {
+      "source": "c_date_entree",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "engagement start (day-first); date_cloture is the fiscal year end"
+    },
+    "priority": {
+      "source": null,
+      "transform": "none",
+      "why": "no support priority is exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "c_statut_dossier",
+        "c_statut_reglement"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "c_code_client",
+        "c_num_entreprise"
+      ],
+      "correctFor": "organization.external_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "c_email_contact",
+        "c_email_facturation"
+      ],
+      "correctFor": "email"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "c_contact_nom",
+        "c_expert_comptable"
+      ],
+      "correctFor": "contact_name"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "c_date_entree",
+        "c_date_cloture"
+      ],
+      "correctFor": "customer_since"
+    }
+  ],
+  "sourceConcepts": {
+    "c_code_client": "customer-id",
+    "c_num_entreprise": "other-identifier",
+    "c_num_ligne": "other-identifier",
+    "c_raison_sociale": "organization-name",
+    "c_contact_prenom": "given-name",
+    "c_contact_nom": "family-name",
+    "c_expert_comptable": "person-name",
+    "c_email_contact": "email",
+    "c_email_facturation": "email",
+    "c_tel": "phone",
+    "c_mission": "category",
+    "c_statut_dossier": "account-status",
+    "c_statut_reglement": "payment-status",
+    "c_regime_tva": "category",
+    "c_date_entree": "start-date",
+    "c_date_cloture": "end-date",
+    "c_langue": "language-code"
+  },
+  "destinationConcepts": {
+    "organization.external_id": "customer-id",
+    "organization.name": "organization-name",
+    "contact_name": "person-name",
+    "email": "email",
+    "phone": "phone",
+    "status": "account-status",
+    "service": "category",
+    "language": "language-code",
+    "customer_since": "start-date",
+    "priority": "category"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 0,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 1,
+      "outcome": "transformed",
+      "output": {
+        "organization": {
+          "external_id": "CL01221",
+          "name": "Cabinet Dentaire Moreau"
+        },
+        "contact_name": "Pauline Robert",
+        "email": "pauline.robert@pme.example.net",
+        "phone": "+32 437 27 89 25",
+        "status": "terminated",
+        "service": "bookkeeping",
+        "customer_since": "2017-02-16"
+      }
+    },
+    {
+      "recordIndex": 2,
+      "outcome": "transformed",
+      "output": {
+        "organization": {
+          "external_id": "CL01227",
+          "name": "Cabinet Dentaire Moreau"
+        },
+        "contact_name": "Inès Faure",
+        "email": "ines.faure@pme.example.net",
+        "phone": "+32 468 46 04 46",
+        "status": "active",
+        "service": "audit",
+        "language": "fr",
+        "customer_since": "2010-03-10"
+      }
+    },
+    {
+      "recordIndex": 4,
+      "outcome": "transformed",
+      "output": {
+        "organization": {
+          "external_id": "CL01243",
+          "name": "Atelier Verlaine"
+        },
+        "contact_name": "Sarah Durand",
+        "email": "sarah.durand@pme.example.net",
+        "phone": "+32 401 05 42 18",
+        "status": "on_hold",
+        "service": "legal",
+        "customer_since": "2020-04-25"
+      }
+    }
+  ]
+}

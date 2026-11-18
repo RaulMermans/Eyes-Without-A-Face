@@ -1,0 +1,784 @@
+{
+  "scenarioId": "digital-agency-clients-to-support-portal",
+  "split": "holdout",
+  "track": "wedge",
+  "industry": "web agency retainer clients",
+  "sourceLanguage": "mixed",
+  "description": "Client database of a fictional web agency with mixed English and German field names (nested contact) to be loaded into a support portal.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "Status": "Retainer aktiv",
+      "kontakt": {
+        "first_name": "Anna",
+        "phone": "+49 89 667390",
+        "Nachname": "Müller",
+        "email_primary": "anna.muller@kunde.example.org"
+      },
+      "Paket": "Care S",
+      "client_id": "WA-120",
+      "language": "Deutsch",
+      "account_manager": "Jasper Klein",
+      "Kunde_seit": "03/01/2024",
+      "Rechnungs_Email": "rechnung.muller0@kunde.example.org",
+      "row_no": 1,
+      "payment_state": "paid",
+      "Firma": "Holzwerk Schreiner",
+      "Branche": "Handwerk",
+      "Kundennummer_alt": "10222",
+      "last_contact": "2026-04-20T17:05:00Z"
+    },
+    {
+      "Firma": "Lindner Architekten",
+      "language": "Deutsch",
+      "Status": "Projekt abgeschlossen",
+      "Paket": "Care M",
+      "payment_state": "paid",
+      "Kunde_seit": "11/09/2017",
+      "kontakt": {
+        "email_primary": "ava.richter@kunde.example.org",
+        "phone": null,
+        "first_name": "Ava",
+        "Nachname": "Richter"
+      },
+      "row_no": 2,
+      "last_contact": "2026-05-17T14:00:00Z",
+      "Rechnungs_Email": "rechnung.richter1@kunde.example.org",
+      "account_manager": "Mila Novak",
+      "Kundennummer_alt": "10223",
+      "Branche": "Gastronomie",
+      "client_id": "WA-122"
+    },
+    {
+      "Firma": "Gartenbau Weiss",
+      "language": "Deutsch",
+      "payment_state": "overdue",
+      "Status": "Projekt abgeschlossen",
+      "Kundennummer_alt": "10227",
+      "Paket": "Care M",
+      "client_id": "WA-129",
+      "kontakt": {
+        "phone": "+49 89 475418",
+        "first_name": "Mia",
+        "Nachname": "Schneider",
+        "email_primary": "mia.schneider@kunde.example.org"
+      },
+      "Kunde_seit": "01/10/2022",
+      "Branche": "Gastronomie",
+      "Rechnungs_Email": "rechnung.schneider2@kunde.example.org",
+      "account_manager": "Mila Novak",
+      "last_contact": "2026-07-25T14:55:00Z",
+      "row_no": 3
+    },
+    {
+      "Firma": "Northwind Studios",
+      "Paket": "Care S",
+      "payment_state": "overdue",
+      "row_no": 4,
+      "Rechnungs_Email": "rechnung.wagner3@kunde.example.org",
+      "kontakt": {
+        "Nachname": "Wagner",
+        "email_primary": "felix.wagner@kunde.example.org",
+        "phone": "+49 89 494950",
+        "first_name": "Felix"
+      },
+      "Kunde_seit": "12/04/2022",
+      "client_id": "WA-132",
+      "last_contact": "2026-09-14T08:34:00Z",
+      "Kundennummer_alt": null,
+      "account_manager": "Jasper Klein",
+      "Branche": "Gesundheit",
+      "Status": "Retainer aktiv",
+      "language": "English"
+    },
+    {
+      "kontakt": {
+        "Nachname": "Hoffmann",
+        "email_primary": "anna.hoffmann@kunde.example.org",
+        "first_name": "Anna"
+      },
+      "Kundennummer_alt": "10234",
+      "Rechnungs_Email": "rechnung.hoffmann4@kunde.example.org",
+      "Branche": "Handwerk",
+      "account_manager": "Jasper Klein",
+      "payment_state": "invoiced",
+      "Firma": "Northwind Studios",
+      "Status": "Paused",
+      "Paket": "Care S",
+      "row_no": 5,
+      "last_contact": "2026-11-01T09:20:00Z",
+      "Kunde_seit": "06/08/2022",
+      "client_id": "WA-137"
+    },
+    {
+      "client_id": "WA-139",
+      "Paket": "Care S",
+      "payment_state": "invoiced",
+      "Rechnungs_Email": "rechnung.weber5@kunde.example.org",
+      "Firma": "Lindner Architekten",
+      "Kundennummer_alt": null,
+      "Branche": "Gesundheit",
+      "language": "Français",
+      "kontakt": {
+        "Nachname": "Weber",
+        "email_primary": "lea.weber@kunde.example.org",
+        "first_name": "Lea",
+        "phone": null
+      },
+      "Kunde_seit": "05/02/2018",
+      "Status": "Projekt abgeschlossen",
+      "row_no": 6,
+      "account_manager": "Mila Novak",
+      "last_contact": "2026-07-20T10:12:00Z"
+    },
+    {
+      "Status": "Projekt abgeschlossen",
+      "row_no": 7,
+      "payment_state": "paid",
+      "Rechnungs_Email": "rechnung.wagner6@kunde.example.org",
+      "Branche": "Handwerk",
+      "Kundennummer_alt": "10238",
+      "client_id": "WA-143",
+      "last_contact": "2026-03-10T10:00:00Z",
+      "kontakt": {
+        "Nachname": "Wagner",
+        "first_name": "Owen",
+        "phone": "+49 89 724471",
+        "email_primary": "owen.wagner@kunde.example.org"
+      },
+      "account_manager": "Mila Novak",
+      "Firma": "Brightside Physio",
+      "Paket": "Care S",
+      "language": "Deutsch",
+      "Kunde_seit": "09/09/2019"
+    },
+    {
+      "Kunde_seit": "08/10/2024",
+      "kontakt": {
+        "phone": "+49 89 243481",
+        "email_primary": "lukas.foster@kunde.example.org",
+        "first_name": "Lukas",
+        "Nachname": "Foster"
+      },
+      "account_manager": "Mila Novak",
+      "Branche": "Gastronomie",
+      "Kundennummer_alt": "10242",
+      "Paket": "Care XL",
+      "last_contact": "2026-05-20T09:41:00Z",
+      "Status": "Lead",
+      "Rechnungs_Email": "rechnung.foster0@kunde.example.org",
+      "client_id": "WA-149",
+      "Firma": "Gartenbau Weiss",
+      "row_no": 8,
+      "language": "English",
+      "payment_state": "paid"
+    },
+    {
+      "last_contact": "2026-09-29T07:20:00Z",
+      "Kunde_seit": "03/10/2023",
+      "Paket": "Care M",
+      "Status": "Paused",
+      "payment_state": "paid",
+      "Rechnungs_Email": "rechnung.bennett1@kunde.example.org",
+      "Kundennummer_alt": "10244",
+      "Firma": "Gartenbau Weiss",
+      "account_manager": "Mila Novak",
+      "language": "Deutsch",
+      "row_no": 9,
+      "Branche": "Medien",
+      "client_id": "WA-151",
+      "kontakt": {
+        "Nachname": "Bennett",
+        "phone": "+49 89 411926",
+        "first_name": "Emma",
+        "email_primary": "emma.bennett@kunde.example.org"
+      }
+    },
+    {
+      "Paket": "Care S",
+      "row_no": 10,
+      "Status": "Retainer aktiv",
+      "payment_state": "overdue",
+      "Kundennummer_alt": null,
+      "Branche": "Medien",
+      "Firma": "Holzwerk Schreiner",
+      "Rechnungs_Email": "rechnung.bennett2@kunde.example.org",
+      "account_manager": "Jasper Klein",
+      "language": "Français",
+      "Kunde_seit": "05/09/2019",
+      "kontakt": {
+        "email_primary": "marie.bennett@kunde.example.org",
+        "phone": "+49 89 790632",
+        "Nachname": "Bennett",
+        "first_name": "Marie"
+      },
+      "last_contact": "2026-03-04T11:12:00Z",
+      "client_id": "WA-154"
+    },
+    {
+      "kontakt": {
+        "email_primary": "lukas.sullivan@kunde.example.org",
+        "first_name": "Lukas",
+        "Nachname": "Sullivan",
+        "phone": "+49 89 221185"
+      },
+      "last_contact": "2026-06-28T09:55:00Z",
+      "client_id": "WA-161",
+      "Status": "Paused",
+      "Rechnungs_Email": "rechnung.sullivan3@kunde.example.org",
+      "payment_state": "overdue",
+      "Kunde_seit": "02/05/2016",
+      "account_manager": "Mila Novak",
+      "Paket": "Care M",
+      "Branche": "Gastronomie",
+      "Firma": "Kaffeerösterei Bohne",
+      "row_no": 11,
+      "language": "English",
+      "Kundennummer_alt": "10252"
+    },
+    {
+      "Paket": "Care M",
+      "account_manager": "Jasper Klein",
+      "payment_state": "overdue",
+      "row_no": 12,
+      "language": "Deutsch",
+      "client_id": "WA-165",
+      "last_contact": "2026-10-01T09:12:00Z",
+      "Rechnungs_Email": "rechnung.richter4@kunde.example.org",
+      "Branche": "Gastronomie",
+      "kontakt": {
+        "first_name": "Liam",
+        "Nachname": "Richter",
+        "email_primary": "liam.richter@kunde.example.org",
+        "phone": "+49 89 847630"
+      },
+      "Firma": "Gartenbau Weiss",
+      "Kunde_seit": "10/02/2017",
+      "Status": "Projekt abgeschlossen",
+      "Kundennummer_alt": "10254"
+    },
+    {
+      "account_manager": "Jasper Klein",
+      "Branche": "Gesundheit",
+      "last_contact": "2026-08-21T18:12:00Z",
+      "Rechnungs_Email": "rechnung.schafer5@kunde.example.org",
+      "language": "Deutsch",
+      "kontakt": {
+        "Nachname": "Schäfer",
+        "email_primary": "owen.schafer@kunde.example.org",
+        "first_name": "Owen",
+        "phone": "+49 89 160649"
+      },
+      "Paket": "Care M",
+      "row_no": 13,
+      "client_id": "WA-169",
+      "Kundennummer_alt": "10258",
+      "payment_state": "paid",
+      "Status": "Paused",
+      "Firma": "Brightside Physio",
+      "Kunde_seit": "01/02/2021"
+    },
+    {
+      "Paket": "Care M",
+      "Kundennummer_alt": "10261",
+      "client_id": "WA-170",
+      "payment_state": "invoiced",
+      "Kunde_seit": "10/04/2025",
+      "Status": "Retainer aktiv",
+      "Firma": "Holzwerk Schreiner",
+      "Rechnungs_Email": "rechnung.foster6@kunde.example.org",
+      "row_no": 14,
+      "account_manager": "Jasper Klein",
+      "last_contact": "2026-09-03T10:12:00Z",
+      "Branche": "Gesundheit",
+      "language": "English",
+      "kontakt": {
+        "phone": "+49 89 892815",
+        "first_name": "Ethan",
+        "email_primary": "ethan.foster@kunde.example.org",
+        "Nachname": "Foster"
+      }
+    },
+    {
+      "client_id": "WA-174",
+      "row_no": 15,
+      "Kunde_seit": "05/06/2022",
+      "last_contact": "2026-10-09T09:00:00Z",
+      "Rechnungs_Email": "rechnung.wagner0@kunde.example.org",
+      "Paket": "Care XL",
+      "account_manager": "Jasper Klein",
+      "Branche": "Medien",
+      "kontakt": {
+        "Nachname": "Wagner",
+        "phone": "+49 89 775109",
+        "first_name": "Olivia",
+        "email_primary": "olivia.wagner@kunde.example.org"
+      },
+      "language": "English",
+      "payment_state": "invoiced",
+      "Status": "Paused",
+      "Kundennummer_alt": "10262",
+      "Firma": "Brightside Physio"
+    },
+    {
+      "client_id": "WA-181",
+      "Branche": "Gesundheit",
+      "Rechnungs_Email": "rechnung.brooks1@kunde.example.org",
+      "last_contact": "2026-08-27T11:05:00Z",
+      "account_manager": "Jasper Klein",
+      "Paket": "Care XL",
+      "Kundennummer_alt": null,
+      "language": null,
+      "Firma": "Northwind Studios",
+      "Kunde_seit": "02/11/2023",
+      "Status": "Retainer aktiv",
+      "payment_state": "paid",
+      "row_no": 16,
+      "kontakt": {
+        "email_primary": "sophie.brooks@kunde.example.org",
+        "Nachname": "Brooks",
+        "phone": "+49 89 552647",
+        "first_name": "Sophie"
+      }
+    },
+    {
+      "account_manager": "Jasper Klein",
+      "Paket": "Care S",
+      "client_id": "WA-184",
+      "Status": "Retainer aktiv",
+      "Firma": "Gartenbau Weiss",
+      "row_no": 17,
+      "payment_state": "overdue",
+      "Rechnungs_Email": "rechnung.morgan2@kunde.example.org",
+      "kontakt": {
+        "email_primary": "paul.morgan@kunde.example.org",
+        "phone": "+49 89 993190",
+        "Nachname": "Morgan",
+        "first_name": "Paul"
+      },
+      "last_contact": "2026-10-27T12:41:00Z",
+      "language": "English",
+      "Branche": "Handwerk",
+      "Kundennummer_alt": "10268",
+      "Kunde_seit": "05/06/2025"
+    },
+    {
+      "client_id": "WA-187",
+      "account_manager": "Jasper Klein",
+      "Paket": "Care S",
+      "Status": "Projekt abgeschlossen",
+      "Rechnungs_Email": "rechnung.wagner3@kunde.example.org",
+      "Kunde_seit": "03/09/2023",
+      "payment_state": "paid",
+      "kontakt": {
+        "Nachname": "Wagner",
+        "email_primary": "liam.wagner@kunde.example.org",
+        "first_name": "Liam",
+        "phone": null
+      },
+      "row_no": 18,
+      "language": "English",
+      "Firma": "Gartenbau Weiss",
+      "Branche": "Gastronomie",
+      "last_contact": "2026-06-04T18:05:00Z",
+      "Kundennummer_alt": "10272"
+    },
+    {
+      "language": null,
+      "last_contact": "2026-05-13T17:12:00Z",
+      "Status": "Retainer aktiv",
+      "Paket": "Care XL",
+      "Kunde_seit": "09/11/2020",
+      "Firma": "Kaffeerösterei Bohne",
+      "row_no": 19,
+      "payment_state": "overdue",
+      "Kundennummer_alt": "10275",
+      "kontakt": {
+        "phone": "+49 89 965212",
+        "first_name": "Lucas",
+        "email_primary": "lucas.schafer@kunde.example.org",
+        "Nachname": "Schäfer"
+      },
+      "account_manager": "Jasper Klein",
+      "Rechnungs_Email": "rechnung.schafer4@kunde.example.org",
+      "client_id": "WA-191",
+      "Branche": "Gesundheit"
+    },
+    {
+      "Paket": "Care M",
+      "kontakt": {
+        "phone": "+49 89 611269",
+        "email_primary": "maximilian.hoffmann@kunde.example.org",
+        "Nachname": "Hoffmann",
+        "first_name": "Maximilian"
+      },
+      "Rechnungs_Email": "rechnung.hoffmann5@kunde.example.org",
+      "Kunde_seit": "10/12/2024",
+      "Firma": "Gartenbau Weiss",
+      "account_manager": "Jasper Klein",
+      "row_no": 20,
+      "Status": "Paused",
+      "Branche": "Gesundheit",
+      "Kundennummer_alt": null,
+      "language": "Deutsch",
+      "last_contact": "2026-10-06T18:20:00Z",
+      "payment_state": "paid",
+      "client_id": "WA-196"
+    },
+    {
+      "last_contact": "2026-04-28T12:55:00Z",
+      "row_no": 21,
+      "client_id": "WA-200",
+      "Rechnungs_Email": "rechnung.weber6@kunde.example.org",
+      "Firma": "Brightside Physio",
+      "Paket": "Care XL",
+      "Status": "Paused",
+      "account_manager": "Mila Novak",
+      "kontakt": {
+        "phone": "+49 89 207074",
+        "first_name": "Sophie",
+        "Nachname": "Weber",
+        "email_primary": "sophie.weber@kunde.example.org"
+      },
+      "Kundennummer_alt": "10280",
+      "Branche": "Medien",
+      "Kunde_seit": "08/02/2022",
+      "payment_state": "invoiced"
+    },
+    {
+      "language": "Deutsch",
+      "client_id": "WA-202",
+      "Firma": "Gartenbau Weiss",
+      "Paket": "Care XL",
+      "account_manager": "Mila Novak",
+      "payment_state": "invoiced",
+      "Branche": "Handwerk",
+      "Rechnungs_Email": "rechnung.hoffmann0@kunde.example.org",
+      "row_no": 22,
+      "Kunde_seit": "09/05/2024",
+      "last_contact": "2026-04-14T09:55:00Z",
+      "kontakt": {
+        "email_primary": "lena.hoffmann@kunde.example.org",
+        "phone": "+49 89 632196",
+        "Nachname": "Hoffmann",
+        "first_name": "Lena"
+      },
+      "Kundennummer_alt": "10285",
+      "Status": "Lead"
+    },
+    {
+      "Kundennummer_alt": null,
+      "last_contact": "2026-04-03T08:00:00Z",
+      "payment_state": "overdue",
+      "account_manager": "Jasper Klein",
+      "client_id": "WA-207",
+      "Status": "Paused",
+      "Kunde_seit": "10/04/2017",
+      "Branche": "Gastronomie",
+      "Rechnungs_Email": "rechnung.morgan1@kunde.example.org",
+      "kontakt": {
+        "Nachname": "Morgan",
+        "email_primary": "felix.morgan@kunde.example.org",
+        "first_name": "Felix"
+      },
+      "Firma": "Lindner Architekten",
+      "Paket": "Care S",
+      "language": "English",
+      "row_no": 23
+    },
+    {
+      "Branche": "Gastronomie",
+      "payment_state": "paid",
+      "row_no": 24,
+      "Status": "Projekt abgeschlossen",
+      "kontakt": {
+        "first_name": "Jonas",
+        "phone": "+49 89 687997",
+        "email_primary": "jonas.fischer@kunde.example.org",
+        "Nachname": "Fischer"
+      },
+      "Rechnungs_Email": "rechnung.fischer2@kunde.example.org",
+      "Kundennummer_alt": null,
+      "last_contact": "2026-10-19T15:00:00Z",
+      "client_id": "WA-210",
+      "language": "English",
+      "Paket": "Care S",
+      "account_manager": "Jasper Klein",
+      "Kunde_seit": "03/06/2021",
+      "Firma": "Brightside Physio"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "Identifier of the customer in the agency's database."
+      },
+      "name": {
+        "type": "string",
+        "description": "Full name of the contact, given name first."
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address of the contact."
+      },
+      "phone": {
+        "type": "string",
+        "description": "Phone."
+      },
+      "company": {
+        "type": "string",
+        "description": "Company the contact works for."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "paused",
+          "former"
+        ],
+        "description": "Lifecycle state of the customer relationship."
+      },
+      "plan": {
+        "type": "string",
+        "enum": [
+          "small",
+          "medium",
+          "large"
+        ],
+        "description": "Support plan purchased by the customer."
+      },
+      "language": {
+        "type": "string",
+        "enum": [
+          "de",
+          "en",
+          "fr"
+        ],
+        "description": "Language of correspondence."
+      },
+      "customer_since": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the customer relationship began."
+      },
+      "time_zone": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "id",
+      "name",
+      "email",
+      "company",
+      "status"
+    ]
+  },
+  "groundTruth": {
+    "id": {
+      "source": "client_id",
+      "transform": "copy",
+      "why": "client id; Kundennummer_alt is a legacy number"
+    },
+    "name": {
+      "source": null,
+      "sources": [
+        "kontakt.first_name",
+        "kontakt.Nachname"
+      ],
+      "transform": "concat",
+      "separator": " ",
+      "why": "given and family name; account_manager is staff"
+    },
+    "email": {
+      "source": "kontakt.email_primary",
+      "transform": "copy",
+      "why": "primary email; Rechnungs_Email is invoicing"
+    },
+    "phone": {
+      "source": "kontakt.phone",
+      "transform": "copy",
+      "why": "phone, null or missing"
+    },
+    "company": {
+      "source": "Firma",
+      "transform": "copy",
+      "why": "company name"
+    },
+    "status": {
+      "source": "Status",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Retainer aktiv": "active",
+        "Paused": "paused",
+        "Projekt abgeschlossen": "former",
+        "Lead": null
+      },
+      "why": "relationship state; leads need review; payment_state is billing"
+    },
+    "plan": {
+      "source": "Paket",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Care S": "small",
+        "Care M": "medium",
+        "Care XL": "large"
+      },
+      "why": "care package; Branche is industry"
+    },
+    "language": {
+      "source": "language",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Deutsch": "de",
+        "English": "en",
+        "Français": "fr"
+      },
+      "why": "language, null or missing"
+    },
+    "customer_since": {
+      "source": "Kunde_seit",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "customer-since (German day-first); last_contact is activity"
+    },
+    "time_zone": {
+      "source": null,
+      "transform": "none",
+      "why": "no time zone is exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "Status",
+        "payment_state"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "Paket",
+        "Branche"
+      ],
+      "correctFor": "plan"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "client_id",
+        "Kundennummer_alt"
+      ],
+      "correctFor": "id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "kontakt.email_primary",
+        "Rechnungs_Email"
+      ],
+      "correctFor": "email"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "kontakt.first_name",
+        "account_manager"
+      ],
+      "correctFor": "name"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "Kunde_seit",
+        "last_contact"
+      ],
+      "correctFor": "customer_since"
+    }
+  ],
+  "sourceConcepts": {
+    "client_id": "customer-id",
+    "Kundennummer_alt": "other-identifier",
+    "row_no": "other-identifier",
+    "Firma": "organization-name",
+    "kontakt.first_name": "given-name",
+    "kontakt.Nachname": "family-name",
+    "kontakt.email_primary": "email",
+    "Rechnungs_Email": "email",
+    "kontakt.phone": "phone",
+    "Status": "account-status",
+    "payment_state": "payment-status",
+    "Paket": "category",
+    "language": "language-code",
+    "account_manager": "person-name",
+    "Kunde_seit": "start-date",
+    "last_contact": "other",
+    "Branche": "category"
+  },
+  "destinationConcepts": {
+    "id": "customer-id",
+    "name": "person-name",
+    "email": "email",
+    "phone": "phone",
+    "company": "organization-name",
+    "status": "account-status",
+    "plan": "category",
+    "language": "language-code",
+    "customer_since": "start-date",
+    "time_zone": "other"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 0,
+      "outcome": "transformed",
+      "output": {
+        "id": "WA-120",
+        "name": "Anna Müller",
+        "email": "anna.muller@kunde.example.org",
+        "phone": "+49 89 667390",
+        "company": "Holzwerk Schreiner",
+        "status": "active",
+        "plan": "small",
+        "language": "de",
+        "customer_since": "2024-01-03"
+      }
+    },
+    {
+      "recordIndex": 1,
+      "outcome": "transformed",
+      "output": {
+        "id": "WA-122",
+        "name": "Ava Richter",
+        "email": "ava.richter@kunde.example.org",
+        "company": "Lindner Architekten",
+        "status": "former",
+        "plan": "medium",
+        "language": "de",
+        "customer_since": "2017-09-11"
+      }
+    },
+    {
+      "recordIndex": 4,
+      "outcome": "transformed",
+      "output": {
+        "id": "WA-137",
+        "name": "Anna Hoffmann",
+        "email": "anna.hoffmann@kunde.example.org",
+        "company": "Northwind Studios",
+        "status": "paused",
+        "plan": "small",
+        "customer_since": "2022-08-06"
+      }
+    },
+    {
+      "recordIndex": 7,
+      "outcome": "held"
+    }
+  ]
+}

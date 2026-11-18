@@ -32,6 +32,8 @@ import type { CloudDisclosureTargetField, MappingContract, MappingOperation } fr
 import type { DateInputFormat } from "../domain/profile/profile.ts";
 
 export const INTENT_PLAN_VERSION = "1.0.0";
+/** Sprint 18D (ADR 0021): plan 1.1.0 = 1.0.0 + ranked `alternatives`, the answer to prompt v6. */
+export const RANKED_PLAN_VERSION = "1.1.0";
 /** Response-schema id sent with the intent-plan prompt (src/inference/intent-prompt.ts). */
 export const INTENT_PLAN_RESPONSE_SCHEMA_ID = "integration-intent-plan-1";
 /** Prefix of every mapping id compiled from a plan. */
@@ -70,6 +72,11 @@ export interface IntentPlanEntry {
    * no_source: empty.
    */
   from: string[];
+  /**
+   * Plan 1.1.0 only: up to two OTHER disclosed aliases that could carry this
+   * meaning, most likely first. Candidates for a question; never executed.
+   */
+  alternatives?: string[];
   transform: PlanTransform;
   inputFormat?: Extract<DateInputFormat, "ISO-8601" | "YYYY-MM-DD" | "MM/DD/YYYY" | "DD/MM/YYYY">;
   separator?: string;
@@ -131,7 +138,7 @@ export interface ValidatedEntry {
 }
 
 export interface ValidatedIntentPlan {
-  planVersion: typeof INTENT_PLAN_VERSION;
+  planVersion: typeof INTENT_PLAN_VERSION | typeof RANKED_PLAN_VERSION;
   /** The plan as received (schema-valid). */
   plan: IntentPlan;
   entries: ValidatedEntry[];
@@ -171,6 +178,13 @@ export interface Clarification {
   localPaths: string[];
   /** Why this is asked, as a closed code (UI words come from the clarification copy table). */
   reason: MissingCode | "semantic-disagreement" | "rejected-entry" | "unaddressed";
+  /**
+   * Sprint 18D (ADR 0021): LOCAL ONLY ranked candidate paths for a choose-field
+   * question, best first: Gemini's pick and alternatives, then local matcher
+   * candidates, deduplicated, at most 3. Shown first in the picker; "Choose
+   * another field" still lists every usable field. Never pre-selected.
+   */
+  rankedPaths?: string[];
 }
 
 /* ------------------------------------------------------------------ */
@@ -236,6 +250,8 @@ export interface CompiledField {
   /** What still blocks this field. Empty when `operation` is set. */
   missing: MissingCode[];
   failures: ClassifiedFailure[];
+  /** ADR 0022: Gemini's `copy` compiled as `trim` because the local profile observed padded whitespace. Shown, never hidden. */
+  refinement?: "trim-padded-whitespace";
 }
 
 export interface CompiledIntegration {
@@ -263,7 +279,7 @@ export interface CompiledIntegration {
 /* ------------------------------------------------------------------ */
 
 export interface PlanReceipt {
-  planVersion: typeof INTENT_PLAN_VERSION;
+  planVersion: typeof INTENT_PLAN_VERSION | typeof RANKED_PLAN_VERSION;
   /** Validator output for the received plan. Immutable after receipt. */
   validated: ValidatedIntentPlan;
   /** Derived from `validated` + the user's answers; recomputed by `recompilePlan` whenever an answer changes. */
@@ -306,4 +322,6 @@ export interface PlanAnswers {
   categoryMeanings: Readonly<Record<string, { source: string; values: Record<string, string | null> }>>;
   /** local source path → the confirmed slash-date order. */
   semanticConfirmations: Readonly<Record<string, Extract<DateInputFormat, "MM/DD/YYYY" | "DD/MM/YYYY">>>;
+  /** Sprint 18F: destination text field → the user's "combine these fields" answer (overrides fieldMatches for that field). */
+  fieldCombinations?: Readonly<Record<string, { paths: readonly string[]; separator: string }>>;
 }

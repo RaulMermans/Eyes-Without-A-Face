@@ -31,7 +31,7 @@ import { isIntentPlanRequest } from "../inference/intent-prompt.ts";
 import { planRequestBudget } from "../plan/compare.ts";
 import { GUIDED_STEPS, initialView, viewHash, type GuidedStep, type View } from "./experience.ts";
 import { applyFieldDecision, initialWorkspaceState, invalidateDownstream, withDestination, type WorkspaceState } from "./workspace-state.ts";
-import { localContract, isLocalMapping, planFields, type CategoryMeaning } from "./guided/field-plan.ts";
+import { localContract, isLocalMapping, planFields, type CategoryMeaning, type FieldCombination } from "./guided/field-plan.ts";
 import type { SlashOrder } from "./guided/FieldQuestions.tsx";
 import { WORKFLOW_STEPS, type WorkflowStepId } from "./workflow.ts";
 import { HowItWorks, ProductHero } from "./Landing.tsx";
@@ -476,7 +476,19 @@ export default function App() {
     const fieldMatches = { ...workspaceRef.current.fieldMatches };
     if (source === undefined) delete fieldMatches[target];
     else fieldMatches[target] = source;
-    guidedDecision({ fieldMatches });
+    // A single-field answer replaces a combination for the same destination field.
+    const fieldCombinations = { ...(workspaceRef.current.fieldCombinations ?? {}) };
+    delete fieldCombinations[target];
+    guidedDecision({ fieldMatches, fieldCombinations });
+  }
+
+  function guidedCombine(target: string, combination: FieldCombination | null): void {
+    const fieldCombinations = { ...(workspaceRef.current.fieldCombinations ?? {}) };
+    if (combination) fieldCombinations[target] = combination;
+    else delete fieldCombinations[target];
+    const fieldMatches = { ...workspaceRef.current.fieldMatches };
+    delete fieldMatches[target];
+    guidedDecision({ fieldMatches, fieldCombinations });
   }
 
   function guidedMeaning(target: string, meaning: CategoryMeaning | null): void {
@@ -799,6 +811,7 @@ export default function App() {
                 newRequestAllowed={newRequestAllowed}
                 onGenerate={() => void guidedBuild()}
                 onMatch={guidedMatch}
+                onCombine={guidedCombine}
                 onMapManually={mapManually}
                 onToVerify={() => goGuided("verify")}
                 onToDeliver={() => goGuided("deliver")}

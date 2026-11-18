@@ -34,10 +34,11 @@ import { classifyUnknownError, InferenceError, InferenceUnavailableError } from 
 import {
   cloudResponseKind,
   INITIAL_MAPPING_RESPONSE_SCHEMA,
-  INTENT_PLAN_RESPONSE_SCHEMA,
+  planResponseSchemaFor,
   REVISION_MAPPING_RESPONSE_SCHEMA,
 } from "./response-schemas.ts";
-import { FIREBASE_AI_LOGIC_API } from "./firebase-api.ts";
+import { isAllowedCloudModelConfig, planMaxOutputTokens, type CloudModelId } from "./cloud-models.ts";
+import { isRankedPlanRequest } from "./intent-prompt.ts";
 import { probeOnDeviceCapability } from "./on-device-capability.ts";
 import {
   buildCloudPrompt,
@@ -130,11 +131,13 @@ class LiveFirebaseRuntime {
    */
   private onDeviceCreateOptions: LanguageModelCreateOptions | null = null;
   private onDevicePromptOptions: (LanguageModelPromptOptions & { signal?: AbortSignal }) | null = null;
-  private cloudModel: GenerativeModel | null = null;
-  /** Same model and ONLY_IN_CLOUD mode; per-operation response schema for 1.2.0 revision requests. */
-  private cloudRevisionModel: GenerativeModel | null = null;
-  /** Same model and ONLY_IN_CLOUD mode; Integration Intent Plan schema for prompt v5 initial requests (ADR 0018). */
-  private cloudPlanModel: GenerativeModel | null = null;
+  /**
+   * Cloud models by (response kind, decoder schema, model, thinking level). The
+   * model and thinking level come from the APPROVED destination, which
+   * `assertEffectiveDestination` has already matched to the effective
+   * configuration; nothing here can pick a different model (ADR 0021 §A).
+   */
+  private readonly cloudModels = new Map<string, GenerativeModel>();
   private initializingOnDevice: Promise<void> | null = null;
   private onDeviceBusy = false;
   private cloudBusy = false;
@@ -330,47 +333,33 @@ class LiveFirebaseRuntime {
       await this.requireAppCheckToken();
       const revision = isRevisionSchemaVersion(request.payload.schemaVersion);
       const plan = cloudResponseKind(request.outboundPrompt, revision) === "integration-intent-plan";
-      if (plan && !this.cloudPlanModel) {
-        this.cloudPlanModel = getGenerativeModel(this.ai(), {
-          mode: InferenceMode.ONLY_IN_CLOUD,
-          inCloudParams: {
-            model: FIREBASE_AI_LOGIC_API.defaultCloudModel,
-            generationConfig: {
-              responseMimeType: "application/json",
-              responseJsonSchema: INTENT_PLAN_RESPONSE_SCHEMA,
-              // Sprint 18C cost and response-size control: plans observed live were ≤ 3.1 KB (~1k tokens).
-              maxOutputTokens: PLAN_MAX_OUTPUT_TOKENS,
-            },
-          },
-        });
+      const { model: modelId, thinkingLevel } = request.payload.destination;
+      if (!isAllowedCloudModelConfig({ model: modelId, ...(thinkingLevel ? { thinkingLevel } : {}) })) {
+        throw new InferenceUnavailableError("The approved model configuration is not allowlisted.", "MODEL_UNAVAILABLE");
       }
-      if (!plan && !revision && !this.cloudModel) {
-        this.cloudModel = getGenerativeModel(this.ai(), {
-          mode: InferenceMode.ONLY_IN_CLOUD,
-          inCloudParams: {
-            model: FIREBASE_AI_LOGIC_API.defaultCloudModel,
-            generationConfig: {
-              responseMimeType: "application/json",
-              responseJsonSchema: INITIAL_MAPPING_RESPONSE_SCHEMA,
-            },
-          },
-        });
-      }
-      if (revision && !this.cloudRevisionModel) {
-        this.cloudRevisionModel = getGenerativeModel(this.ai(), {
-          mode: InferenceMode.ONLY_IN_CLOUD,
-          inCloudParams: {
-            model: FIREBASE_AI_LOGIC_API.defaultCloudModel,
-            generationConfig: {
-              responseMimeType: "application/json",
-              responseJsonSchema: REVISION_MAPPING_RESPONSE_SCHEMA,
-            },
-          },
-        });
-      }
-      const cloudModel = plan ? this.cloudPlanModel : revision ? this.cloudRevisionModel : this.cloudModel;
+      const responseJsonSchema = plan
+        ? planResponseSchemaFor(request.outboundPrompt)
+        : revision
+          ? REVISION_MAPPING_RESPONSE_SCHEMA
+          : INITIAL_MAPPING_RESPONSE_SCHEMA;
+      const schemaKey = plan ? (isRankedPlanRequest(request.outboundPrompt) ? "ranked-plan" : "plan") : revision ? "revision" : "initial";
+      const modelKey = `${schemaKey}:${modelId}:${thinkingLevel ?? "default"}`;
+      let cloudModel = this.cloudModels.get(modelKey) ?? null;
       if (!cloudModel) {
-        throw new InferenceUnavailableError("Cloud model was not initialized.", "MODEL_UNAVAILABLE");
+        cloudModel = getGenerativeModel(this.ai(), {
+          mode: InferenceMode.ONLY_IN_CLOUD,
+          inCloudParams: {
+            model: modelId,
+            generationConfig: {
+              responseMimeType: "application/json",
+              responseJsonSchema,
+              // Sprint 18C cost and response-size control: plans observed live were ≤ 3.1 KB (~1k tokens).
+              ...(plan ? { maxOutputTokens: planMaxOutputTokens({ model: modelId as CloudModelId, ...(thinkingLevel ? { thinkingLevel } : {}) }, PLAN_MAX_OUTPUT_TOKENS) } : {}),
+              ...(thinkingLevel ? { thinkingConfig: { thinkingLevel } } : {}),
+            },
+          },
+        });
+        this.cloudModels.set(modelKey, cloudModel);
       }
       const prompt = buildCloudPrompt(request);
       if (prompt !== request.outboundPrompt) {
@@ -378,12 +367,13 @@ class LiveFirebaseRuntime {
       }
       const result = await raceAbort(cloudModel.generateContent(prompt, { signal: controller.signal }), controller.signal);
       return this.finishStructuredResult({
-        kind: plan ? "integration-intent-plan" : "mapping-proposal",
+        // Sprint 18D: a prompt v6 answer is plan 1.1.0 (ranked alternatives).
+        kind: plan ? (isRankedPlanRequest(request.outboundPrompt) ? "integration-intent-plan-ranked" : "integration-intent-plan") : "mapping-proposal",
         text: result.response.text(),
         requestedMode: "ONLY_IN_CLOUD",
         reportedSource: result.response.inferenceSource,
         started,
-        model: FIREBASE_AI_LOGIC_API.defaultCloudModel,
+        model: modelId,
       });
     } catch (error) {
       const classified = this.classifyGenerateError(error, controller, CLOUD_TIMEOUT_MS, "cloud");
@@ -475,7 +465,7 @@ class LiveFirebaseRuntime {
       resultKind: resolved.actualSource === "ON_DEVICE" ? ("real-on-device" as const) : ("real-cloud" as const),
     };
     recordDiagnostic({
-      kind: input.kind === "mapping-proposal" || input.kind === "integration-intent-plan" ? "cloud-inference" : "on-device-inference",
+      kind: input.kind === "mapping-proposal" || input.kind === "integration-intent-plan" || input.kind === "integration-intent-plan-ranked" ? "cloud-inference" : "on-device-inference",
       durationMs: provenance.durationMs,
       requestedMode: input.requestedMode,
       actualSource: provenance.actualSource,

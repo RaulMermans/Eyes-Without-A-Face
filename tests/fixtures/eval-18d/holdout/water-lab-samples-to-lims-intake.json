@@ -1,0 +1,713 @@
+{
+  "scenarioId": "water-lab-samples-to-lims-intake",
+  "split": "holdout",
+  "track": "general",
+  "industry": "environmental water testing laboratory samples",
+  "sourceLanguage": "en",
+  "description": "Sample log export of a fictional environmental water-testing lab (English snake_case, nested client site) to be loaded into a laboratory information system; the field collection date is not exported.",
+  "fictional": true,
+  "completable": false,
+  "records": [
+    {
+      "temp_on_receipt_c": 2.5,
+      "coc_number": "COC-07710",
+      "lab_tech": "Evan Cole",
+      "sample_no": "WQ26-01811",
+      "client_site": {
+        "code": "SITE-031",
+        "name": "Cedar Falls Municipal Well 3"
+      },
+      "received_date": "09/21/2026",
+      "matrix": "Drinking water",
+      "due_by": "11/12/2026",
+      "row": 1,
+      "invoice_status": "Billed",
+      "preservative": "HNO3",
+      "analysis_pkg": "Metals panel",
+      "sampler": "Bill Novak",
+      "logged_at": "2026-09-24T10:55:00Z"
+    },
+    {
+      "preservative": "None",
+      "received_date": "09/22/2026",
+      "coc_number": "COC-07711",
+      "matrix": "Drinking water",
+      "client_site": {
+        "code": "SITE-014",
+        "name": "Pine Lake Campground"
+      },
+      "sample_no": "WQ26-01813",
+      "sampler": "Bill Novak",
+      "analysis_pkg": "Nutrients",
+      "lab_tech": "Evan Cole",
+      "logged_at": "2026-10-22T10:20:00Z",
+      "temp_on_receipt_c": 3.0,
+      "due_by": "10/19/2026",
+      "row": 2,
+      "invoice_status": "Not billed"
+    },
+    {
+      "lab_tech": "Priya Shah",
+      "received_date": "10/19/2026",
+      "row": 3,
+      "coc_number": "COC-07712",
+      "invoice_status": "Billed",
+      "sample_no": "WQ26-01816",
+      "due_by": "09/13/2026",
+      "sampler": "Cora Jensen",
+      "matrix": "Wastewater influent",
+      "logged_at": "2026-10-19T08:34:00Z",
+      "analysis_pkg": "Metals panel",
+      "client_site": {
+        "name": "Cedar Falls Municipal Well 3",
+        "code": "SITE-014"
+      },
+      "temp_on_receipt_c": 3.7,
+      "preservative": "H2SO4"
+    },
+    {
+      "preservative": "HNO3",
+      "logged_at": "2026-10-21T19:34:00Z",
+      "invoice_status": "Not billed",
+      "lab_tech": "Priya Shah",
+      "row": 4,
+      "analysis_pkg": "Microbiology",
+      "client_site": {
+        "code": "SITE-014",
+        "name": "Cedar Falls Municipal Well 3"
+      },
+      "matrix": "Wastewater influent",
+      "coc_number": "COC-07713",
+      "temp_on_receipt_c": 7.8,
+      "received_date": "09/08/2026",
+      "sampler": "Bill Novak",
+      "sample_no": "WQ26-01820",
+      "due_by": "10/31/2026"
+    },
+    {
+      "invoice_status": "Billed",
+      "lab_tech": "Priya Shah",
+      "due_by": "11/22/2026",
+      "logged_at": "2026-10-24T13:12:00Z",
+      "row": 5,
+      "matrix": "QC blank",
+      "client_site": {
+        "code": "SITE-047",
+        "name": "Oak Hollow School"
+      },
+      "sample_no": "WQ26-01823",
+      "received_date": "09/18/2026",
+      "sampler": "Cora Jensen",
+      "preservative": "H2SO4",
+      "temp_on_receipt_c": 6.2,
+      "coc_number": "COC-07714",
+      "analysis_pkg": "Metals panel"
+    },
+    {
+      "due_by": "09/15/2026",
+      "coc_number": "COC-07715",
+      "row": 6,
+      "temp_on_receipt_c": null,
+      "received_date": "09/06/2026",
+      "analysis_pkg": "Microbiology",
+      "logged_at": "2026-09-21T18:05:00Z",
+      "sampler": "Bill Novak",
+      "matrix": "Groundwater",
+      "sample_no": "WQ26-01825",
+      "lab_tech": "Evan Cole",
+      "preservative": "HNO3",
+      "invoice_status": "Billed",
+      "client_site": {
+        "code": "SITE-047",
+        "name": "Oak Hollow School"
+      }
+    },
+    {
+      "matrix": "Drinking water",
+      "invoice_status": "Billed",
+      "analysis_pkg": "Metals panel",
+      "lab_tech": "Evan Cole",
+      "coc_number": "COC-07716",
+      "logged_at": "2026-10-29T17:05:00Z",
+      "received_date": "10/31/2026",
+      "temp_on_receipt_c": 4.7,
+      "client_site": {
+        "code": "SITE-031",
+        "name": "Pine Lake Campground"
+      },
+      "sample_no": "WQ26-01829",
+      "preservative": "Na2S2O3",
+      "sampler": "Bill Novak",
+      "row": 7,
+      "due_by": "11/30/2026"
+    },
+    {
+      "due_by": "10/08/2026",
+      "coc_number": "COC-07717",
+      "row": 8,
+      "invoice_status": "Billed",
+      "lab_tech": "Evan Cole",
+      "analysis_pkg": "Metals panel",
+      "received_date": "09/24/2026",
+      "logged_at": "2026-10-20T14:34:00Z",
+      "preservative": "None",
+      "sampler": "Bill Novak",
+      "sample_no": "WQ26-01832",
+      "matrix": "Groundwater",
+      "client_site": {
+        "name": "Pine Lake Campground",
+        "code": "SITE-031"
+      }
+    },
+    {
+      "temp_on_receipt_c": 2.5,
+      "due_by": "10/03/2026",
+      "matrix": "Wastewater influent",
+      "sample_no": "WQ26-01834",
+      "preservative": "HNO3",
+      "analysis_pkg": "Metals panel",
+      "client_site": {
+        "name": "Oak Hollow School",
+        "code": "SITE-031"
+      },
+      "row": 9,
+      "invoice_status": "Billed",
+      "lab_tech": "Evan Cole",
+      "logged_at": "2026-09-21T13:00:00Z",
+      "received_date": "09/21/2026",
+      "sampler": "Bill Novak",
+      "coc_number": "COC-07718"
+    },
+    {
+      "sampler": "Bill Novak",
+      "coc_number": "COC-07719",
+      "row": 10,
+      "lab_tech": "Evan Cole",
+      "sample_no": "WQ26-01838",
+      "logged_at": "2026-11-05T12:55:00Z",
+      "preservative": "None",
+      "analysis_pkg": "Microbiology",
+      "invoice_status": "Prepaid",
+      "temp_on_receipt_c": 5.4,
+      "received_date": "09/10/2026",
+      "due_by": "10/26/2026",
+      "matrix": "Drinking water",
+      "client_site": {
+        "code": "SITE-014",
+        "name": "Riverbend WWTP"
+      }
+    },
+    {
+      "analysis_pkg": "Nutrients",
+      "preservative": "HNO3",
+      "client_site": {
+        "name": "Oak Hollow School",
+        "code": "SITE-014"
+      },
+      "logged_at": "2026-10-03T13:05:00Z",
+      "received_date": "09/09/2026",
+      "lab_tech": "Priya Shah",
+      "sample_no": "WQ26-01840",
+      "sampler": "Bill Novak",
+      "matrix": "Drinking water",
+      "coc_number": "COC-07720",
+      "row": 11,
+      "due_by": "09/25/2026",
+      "invoice_status": "Billed"
+    },
+    {
+      "preservative": "None",
+      "invoice_status": "Not billed",
+      "received_date": "11/04/2026",
+      "row": 12,
+      "analysis_pkg": "Metals panel",
+      "temp_on_receipt_c": 6.6,
+      "sampler": "Bill Novak",
+      "sample_no": "WQ26-01845",
+      "due_by": "10/02/2026",
+      "coc_number": "COC-07721",
+      "lab_tech": "Evan Cole",
+      "matrix": "Wastewater influent",
+      "client_site": {
+        "code": "SITE-047",
+        "name": "Pine Lake Campground"
+      },
+      "logged_at": "2026-11-04T14:00:00Z"
+    },
+    {
+      "preservative": "None",
+      "temp_on_receipt_c": 6.7,
+      "due_by": "10/10/2026",
+      "client_site": {
+        "name": "Cedar Falls Municipal Well 3",
+        "code": "SITE-022"
+      },
+      "coc_number": "COC-07722",
+      "sample_no": "WQ26-01847",
+      "row": 13,
+      "sampler": "Bill Novak",
+      "received_date": "09/04/2026",
+      "logged_at": "2026-09-13T19:34:00Z",
+      "analysis_pkg": "Metals panel",
+      "lab_tech": "Evan Cole",
+      "matrix": "Wastewater influent",
+      "invoice_status": "Not billed"
+    },
+    {
+      "sample_no": "WQ26-01849",
+      "coc_number": "COC-07723",
+      "client_site": {
+        "code": "SITE-031",
+        "name": "Oak Hollow School"
+      },
+      "logged_at": "2026-10-29T15:20:00Z",
+      "sampler": "Bill Novak",
+      "temp_on_receipt_c": 1.8,
+      "row": 14,
+      "matrix": "Groundwater",
+      "lab_tech": "Evan Cole",
+      "due_by": "10/17/2026",
+      "invoice_status": "Not billed",
+      "received_date": "10/13/2026",
+      "preservative": "H2SO4",
+      "analysis_pkg": "Metals panel"
+    },
+    {
+      "client_site": {
+        "name": "Riverbend WWTP",
+        "code": "SITE-052"
+      },
+      "sampler": "Bill Novak",
+      "logged_at": "2026-10-16T13:00:00Z",
+      "sample_no": "WQ26-01853",
+      "coc_number": "COC-07724",
+      "lab_tech": "Priya Shah",
+      "received_date": "10/29/2026",
+      "row": 15,
+      "invoice_status": "Billed",
+      "temp_on_receipt_c": null,
+      "preservative": "Na2S2O3",
+      "due_by": "11/23/2026",
+      "matrix": "QC blank",
+      "analysis_pkg": "Metals panel"
+    },
+    {
+      "lab_tech": "Priya Shah",
+      "coc_number": "COC-07725",
+      "preservative": "H2SO4",
+      "row": 16,
+      "matrix": "Wastewater influent",
+      "sampler": "Bill Novak",
+      "due_by": "11/16/2026",
+      "analysis_pkg": "Metals panel",
+      "logged_at": "2026-10-14T13:34:00Z",
+      "invoice_status": "Billed",
+      "temp_on_receipt_c": 4.1,
+      "sample_no": "WQ26-01856",
+      "received_date": "09/17/2026",
+      "client_site": {
+        "name": "Pine Lake Campground",
+        "code": "SITE-052"
+      }
+    },
+    {
+      "logged_at": "2026-09-10T15:12:00Z",
+      "preservative": "H2SO4",
+      "temp_on_receipt_c": null,
+      "due_by": "11/26/2026",
+      "client_site": {
+        "code": "SITE-031",
+        "name": "Pine Lake Campground"
+      },
+      "received_date": "10/02/2026",
+      "row": 17,
+      "lab_tech": "Evan Cole",
+      "sample_no": "WQ26-01858",
+      "invoice_status": "Prepaid",
+      "sampler": "Bill Novak",
+      "analysis_pkg": "Nutrients",
+      "coc_number": "COC-07726",
+      "matrix": "Wastewater influent"
+    },
+    {
+      "logged_at": "2026-10-26T10:55:00Z",
+      "row": 18,
+      "preservative": "HNO3",
+      "received_date": "11/06/2026",
+      "client_site": {
+        "name": "Oak Hollow School",
+        "code": "SITE-022"
+      },
+      "invoice_status": "Not billed",
+      "due_by": "11/08/2026",
+      "matrix": "Drinking water",
+      "coc_number": "COC-07727",
+      "analysis_pkg": "Nutrients",
+      "lab_tech": "Evan Cole",
+      "sample_no": "WQ26-01862",
+      "sampler": "Bill Novak"
+    },
+    {
+      "coc_number": "COC-07728",
+      "preservative": "Na2S2O3",
+      "temp_on_receipt_c": 1.6,
+      "due_by": "11/05/2026",
+      "row": 19,
+      "lab_tech": "Priya Shah",
+      "received_date": "11/03/2026",
+      "matrix": "Groundwater",
+      "sample_no": "WQ26-01864",
+      "client_site": {
+        "code": "SITE-047",
+        "name": "Oak Hollow School"
+      },
+      "logged_at": "2026-09-05T10:20:00Z",
+      "analysis_pkg": "Nutrients",
+      "sampler": "Bill Novak",
+      "invoice_status": "Prepaid"
+    },
+    {
+      "sample_no": "WQ26-01869",
+      "due_by": "10/23/2026",
+      "analysis_pkg": "Microbiology",
+      "invoice_status": "Billed",
+      "client_site": {
+        "name": "Riverbend WWTP",
+        "code": "SITE-052"
+      },
+      "lab_tech": "Evan Cole",
+      "logged_at": "2026-09-12T08:55:00Z",
+      "received_date": "10/26/2026",
+      "matrix": "Wastewater influent",
+      "sampler": "Bill Novak",
+      "preservative": "H2SO4",
+      "coc_number": "COC-07729",
+      "row": 20,
+      "temp_on_receipt_c": 2.2
+    },
+    {
+      "sample_no": "WQ26-01871",
+      "temp_on_receipt_c": 2.3,
+      "logged_at": "2026-09-11T17:05:00Z",
+      "client_site": {
+        "name": "Oak Hollow School",
+        "code": "SITE-052"
+      },
+      "sampler": "Bill Novak",
+      "matrix": "QC blank",
+      "invoice_status": "Prepaid",
+      "lab_tech": "Priya Shah",
+      "analysis_pkg": "Metals panel",
+      "received_date": "10/12/2026",
+      "row": 21,
+      "due_by": "11/19/2026",
+      "coc_number": "COC-07730",
+      "preservative": "H2SO4"
+    },
+    {
+      "lab_tech": "Evan Cole",
+      "received_date": "09/28/2026",
+      "row": 22,
+      "due_by": "11/18/2026",
+      "logged_at": "2026-09-14T09:12:00Z",
+      "client_site": {
+        "code": "SITE-014",
+        "name": "Pine Lake Campground"
+      },
+      "preservative": "HNO3",
+      "invoice_status": "Prepaid",
+      "sample_no": "WQ26-01873",
+      "sampler": "Bill Novak",
+      "coc_number": "COC-07731",
+      "analysis_pkg": "Metals panel",
+      "matrix": "Groundwater",
+      "temp_on_receipt_c": 2.6
+    },
+    {
+      "matrix": "QC blank",
+      "temp_on_receipt_c": 1.5,
+      "row": 23,
+      "sampler": "Cora Jensen",
+      "logged_at": "2026-10-09T10:34:00Z",
+      "lab_tech": "Evan Cole",
+      "analysis_pkg": "Microbiology",
+      "preservative": "None",
+      "client_site": {
+        "name": "Oak Hollow School",
+        "code": "SITE-031"
+      },
+      "received_date": "09/06/2026",
+      "coc_number": "COC-07732",
+      "sample_no": "WQ26-01877",
+      "invoice_status": "Prepaid",
+      "due_by": "10/22/2026"
+    },
+    {
+      "lab_tech": "Priya Shah",
+      "preservative": "HNO3",
+      "sampler": "Bill Novak",
+      "received_date": "09/18/2026",
+      "analysis_pkg": "Nutrients",
+      "matrix": "Drinking water",
+      "invoice_status": "Billed",
+      "coc_number": "COC-07733",
+      "due_by": "10/09/2026",
+      "sample_no": "WQ26-01880",
+      "client_site": {
+        "code": "SITE-052",
+        "name": "Pine Lake Campground"
+      },
+      "row": 24,
+      "logged_at": "2026-10-28T07:00:00Z",
+      "temp_on_receipt_c": 7.8
+    },
+    {
+      "received_date": "09/24/2026",
+      "client_site": {
+        "code": "SITE-052",
+        "name": "Oak Hollow School"
+      },
+      "temp_on_receipt_c": 3.7,
+      "invoice_status": "Not billed",
+      "lab_tech": "Priya Shah",
+      "due_by": "10/29/2026",
+      "preservative": "H2SO4",
+      "analysis_pkg": "Microbiology",
+      "logged_at": "2026-10-10T13:41:00Z",
+      "sample_no": "WQ26-01884",
+      "sampler": "Bill Novak",
+      "matrix": "QC blank",
+      "coc_number": "COC-07734",
+      "row": 25
+    },
+    {
+      "sample_no": "WQ26-01886",
+      "lab_tech": "Priya Shah",
+      "logged_at": "2026-09-27T13:12:00Z",
+      "row": 26,
+      "received_date": "11/10/2026",
+      "coc_number": "COC-07735",
+      "preservative": "H2SO4",
+      "client_site": {
+        "code": "SITE-052",
+        "name": "Pine Lake Campground"
+      },
+      "invoice_status": "Prepaid",
+      "due_by": "11/18/2026",
+      "temp_on_receipt_c": 6.8,
+      "analysis_pkg": "Microbiology",
+      "matrix": "Groundwater",
+      "sampler": "Cora Jensen"
+    },
+    {
+      "coc_number": "COC-07736",
+      "received_date": "10/21/2026",
+      "due_by": "10/10/2026",
+      "analysis_pkg": "Microbiology",
+      "preservative": "None",
+      "lab_tech": "Priya Shah",
+      "sample_no": "WQ26-01888",
+      "row": 27,
+      "client_site": {
+        "code": "SITE-047",
+        "name": "Cedar Falls Municipal Well 3"
+      },
+      "logged_at": "2026-09-30T19:55:00Z",
+      "sampler": "Bill Novak",
+      "invoice_status": "Not billed",
+      "temp_on_receipt_c": 5.5,
+      "matrix": "Wastewater influent"
+    },
+    {
+      "logged_at": "2026-09-25T18:05:00Z",
+      "temp_on_receipt_c": 1.5,
+      "lab_tech": "Evan Cole",
+      "due_by": "09/15/2026",
+      "preservative": "H2SO4",
+      "received_date": "09/23/2026",
+      "row": 28,
+      "matrix": "Wastewater influent",
+      "coc_number": "COC-07737",
+      "invoice_status": "Prepaid",
+      "analysis_pkg": "Metals panel",
+      "sampler": "Bill Novak",
+      "client_site": {
+        "name": "Cedar Falls Municipal Well 3",
+        "code": "SITE-031"
+      },
+      "sample_no": "WQ26-01892"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "sample_id": {
+        "type": "string",
+        "description": "Laboratory identifier of the sample."
+      },
+      "site_code": {
+        "type": "string",
+        "description": "Code of the sampling site."
+      },
+      "matrix": {
+        "type": "string",
+        "enum": [
+          "drinking",
+          "wastewater",
+          "groundwater"
+        ],
+        "description": "Kind of water the sample consists of."
+      },
+      "test_panel": {
+        "type": "string",
+        "enum": [
+          "metals",
+          "micro",
+          "nutrients"
+        ],
+        "description": "Panel."
+      },
+      "collected_at": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the sample was taken in the field; holding times start here."
+      },
+      "report_due": {
+        "type": "string",
+        "format": "date",
+        "description": "Date by which results must be reported to the client."
+      },
+      "receipt_temp_c": {
+        "type": "number",
+        "description": "Sample temperature on arrival at the lab, in degrees Celsius."
+      },
+      "holding_time_hours": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "sample_id",
+      "site_code",
+      "matrix",
+      "test_panel",
+      "collected_at"
+    ]
+  },
+  "groundTruth": {
+    "sample_id": {
+      "source": "sample_no",
+      "transform": "copy",
+      "why": "sample number; coc_number is the custody form"
+    },
+    "site_code": {
+      "source": "client_site.code",
+      "transform": "copy",
+      "why": "site code"
+    },
+    "matrix": {
+      "source": "matrix",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Drinking water": "drinking",
+        "Wastewater influent": "wastewater",
+        "Groundwater": "groundwater",
+        "QC blank": null
+      },
+      "why": "matrix; QC blanks are not client samples"
+    },
+    "test_panel": {
+      "source": "analysis_pkg",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Metals panel": "metals",
+        "Microbiology": "micro",
+        "Nutrients": "nutrients"
+      },
+      "why": "analysis package"
+    },
+    "collected_at": {
+      "source": null,
+      "transform": "none",
+      "why": "the field collection date is not exported; received_date and logged_at are lab-side dates"
+    },
+    "report_due": {
+      "source": "due_by",
+      "transform": "parse_date",
+      "dateFormat": "MM/DD/YYYY",
+      "why": "report due date (US month-first)"
+    },
+    "receipt_temp_c": {
+      "source": "temp_on_receipt_c",
+      "transform": "copy",
+      "why": "temperature, null or missing"
+    },
+    "holding_time_hours": {
+      "source": null,
+      "transform": "none",
+      "why": "not exported",
+      "unsupportedReason": "would need a difference between two timestamps"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "decoy-for-missing-field",
+      "fields": [
+        "received_date",
+        "logged_at"
+      ],
+      "correctFor": "collected_at"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "matrix",
+        "preservative"
+      ],
+      "correctFor": "matrix"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "sample_no",
+        "coc_number"
+      ],
+      "correctFor": "sample_id"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "analysis_pkg",
+        "invoice_status"
+      ],
+      "correctFor": "test_panel"
+    }
+  ],
+  "sourceConcepts": {
+    "sample_no": "transaction-id",
+    "coc_number": "other-identifier",
+    "row": "other-identifier",
+    "client_site.code": "customer-id",
+    "client_site.name": "organization-name",
+    "matrix": "category",
+    "analysis_pkg": "category",
+    "invoice_status": "payment-status",
+    "received_date": "other",
+    "logged_at": "created-date",
+    "due_by": "end-date",
+    "temp_on_receipt_c": "quantity",
+    "preservative": "category",
+    "sampler": "person-name",
+    "lab_tech": "person-name"
+  },
+  "destinationConcepts": {
+    "sample_id": "transaction-id",
+    "site_code": "customer-id",
+    "matrix": "category",
+    "test_panel": "category",
+    "collected_at": "start-date",
+    "report_due": "end-date",
+    "receipt_temp_c": "quantity",
+    "holding_time_hours": "quantity"
+  }
+}

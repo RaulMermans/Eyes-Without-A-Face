@@ -1,0 +1,1028 @@
+{
+  "scenarioId": "meal-kit-subscribers-to-support-requesters",
+  "split": "holdout",
+  "track": "wedge",
+  "industry": "meal kit subscription customers",
+  "sourceLanguage": "pt",
+  "description": "Subscriber export of a fictional Portuguese meal-kit service (Portuguese snake_case abbreviations, nested address) to be loaded as support requesters.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "estado_conta": "Ativa",
+      "id_enc_ult": "E7700137",
+      "email_fatura": "faturas.gomes0@correio.example.com",
+      "apelido": "Gomes",
+      "primeiro_nome": "Miguel",
+      "consentimento_rgpd": "Aceite",
+      "n_linha": 1,
+      "preferencia_contacto": "E-mail",
+      "data_ultima_entrega": "01/10/2026",
+      "email": "miguel.gomes@correio.example.com",
+      "plano": "Clássico 2 pessoas",
+      "nutricionista": "Dr. Nuno Brito",
+      "id_cli": "MK100312",
+      "data_registo": null,
+      "telemovel": "+351 935 626 392",
+      "estado_pagamento": "Falhou cobrança",
+      "morada": {
+        "cidade": "Porto",
+        "codigo_postal": "4604-518"
+      }
+    },
+    {
+      "estado_pagamento": "Falhou cobrança",
+      "id_cli": "MK100326",
+      "apelido": "Rodrigues",
+      "nutricionista": "Dra. Helena Vaz",
+      "data_registo": "04/09/2025",
+      "plano": "Família 4 pessoas",
+      "n_linha": 2,
+      "estado_conta": "Ativa",
+      "id_enc_ult": "E7700436",
+      "email_fatura": "faturas.rodrigues1@correio.example.com",
+      "email": "ana.rodrigues@correio.example.com",
+      "primeiro_nome": "Ana",
+      "morada": {
+        "cidade": "Porto",
+        "codigo_postal": "5915-861"
+      },
+      "data_ultima_entrega": "11/11/2026",
+      "preferencia_contacto": "E-mail",
+      "consentimento_rgpd": "Recusado"
+    },
+    {
+      "morada": {
+        "codigo_postal": "7751-277",
+        "cidade": "Coimbra"
+      },
+      "nutricionista": "Dr. Nuno Brito",
+      "n_linha": 3,
+      "estado_pagamento": "Falhou cobrança",
+      "preferencia_contacto": "E-mail",
+      "email_fatura": "faturas.alves2@correio.example.com",
+      "apelido": "Alves",
+      "email": "sofia.alves@correio.example.com",
+      "primeiro_nome": "Sofia",
+      "data_ultima_entrega": "03/10/2026",
+      "id_enc_ult": "E7700705",
+      "telemovel": "+351 907 380 528",
+      "id_cli": "MK100336",
+      "plano": "Família 4 pessoas",
+      "consentimento_rgpd": "Aceite",
+      "estado_conta": "Ativa",
+      "data_registo": "08/01/2024"
+    },
+    {
+      "preferencia_contacto": "Telefone",
+      "estado_pagamento": "Pago",
+      "consentimento_rgpd": "Recusado",
+      "plano": "Família 4 pessoas",
+      "estado_conta": "Cancelada",
+      "data_registo": "01/07/2019",
+      "telemovel": "+351 994 822 668",
+      "id_enc_ult": "E7700864",
+      "nutricionista": "Dra. Helena Vaz",
+      "morada": {
+        "cidade": "Coimbra",
+        "codigo_postal": "4911-506"
+      },
+      "email_fatura": "faturas.costa3@correio.example.com",
+      "id_cli": "MK100344",
+      "n_linha": 4,
+      "data_ultima_entrega": "03/09/2026",
+      "primeiro_nome": "Rafael",
+      "apelido": "Costa",
+      "email": "rafael.costa@correio.example.com"
+    },
+    {
+      "data_registo": "06/11/2021",
+      "id_cli": "MK100356",
+      "estado_conta": "Ativa",
+      "consentimento_rgpd": "Recusado",
+      "nutricionista": "Dra. Helena Vaz",
+      "plano": "Clássico 2 pessoas",
+      "apelido": "Pereira",
+      "morada": {
+        "codigo_postal": "2826-650",
+        "cidade": "Lisboa"
+      },
+      "email": "pedro.pereira@correio.example.com",
+      "primeiro_nome": "Pedro",
+      "id_enc_ult": "E7701070",
+      "telemovel": "+351 980 435 759",
+      "n_linha": 5,
+      "data_ultima_entrega": "01/10/2026",
+      "preferencia_contacto": "SMS",
+      "email_fatura": "faturas.pereira4@correio.example.com",
+      "estado_pagamento": "Pendente MB Way"
+    },
+    {
+      "consentimento_rgpd": "Aceite",
+      "nutricionista": "Dra. Helena Vaz",
+      "estado_conta": "Ativa",
+      "preferencia_contacto": "E-mail",
+      "telemovel": "+351 988 996 482",
+      "email_fatura": "faturas.sousa5@correio.example.com",
+      "estado_pagamento": "Pago",
+      "apelido": "Sousa",
+      "plano": "Família 4 pessoas",
+      "morada": {
+        "codigo_postal": "3283-845",
+        "cidade": "Lisboa"
+      },
+      "id_cli": "MK100365",
+      "id_enc_ult": "E7701359",
+      "email": "Sofia.Sousa@Correio.Example.Com",
+      "data_registo": "03/10/2020",
+      "primeiro_nome": "Sofia",
+      "n_linha": 6,
+      "data_ultima_entrega": "02/10/2026"
+    },
+    {
+      "consentimento_rgpd": "Aceite",
+      "data_ultima_entrega": "02/11/2026",
+      "telemovel": "+351 926 988 623",
+      "email_fatura": "faturas.pereira6@correio.example.com",
+      "email": "ines.pereira@correio.example.com",
+      "morada": {
+        "cidade": "Braga",
+        "codigo_postal": "4074-482"
+      },
+      "id_cli": "MK100385",
+      "preferencia_contacto": "E-mail",
+      "estado_pagamento": "Pago",
+      "apelido": "Pereira",
+      "data_registo": "10/11/2021",
+      "primeiro_nome": "Inês",
+      "id_enc_ult": "E7701439",
+      "nutricionista": "Dra. Helena Vaz",
+      "estado_conta": "Pausada",
+      "n_linha": 7,
+      "plano": "Clássico 2 pessoas"
+    },
+    {
+      "email_fatura": "faturas.oliveira0@correio.example.com",
+      "primeiro_nome": "Ana",
+      "email": "ana.oliveira@correio.example.com",
+      "id_cli": "MK100388",
+      "plano": "Família 4 pessoas",
+      "apelido": "Oliveira",
+      "morada": {
+        "codigo_postal": "2911-302",
+        "cidade": "Porto"
+      },
+      "n_linha": 8,
+      "data_ultima_entrega": "08/10/2026",
+      "id_enc_ult": "E7701716",
+      "consentimento_rgpd": "Recusado",
+      "preferencia_contacto": "SMS",
+      "estado_pagamento": "Pendente MB Way",
+      "estado_conta": "Conta de teste",
+      "telemovel": "+351 917 566 759",
+      "nutricionista": "Dra. Helena Vaz",
+      "data_registo": "02/03/2023"
+    },
+    {
+      "data_ultima_entrega": "02/10/2026",
+      "email": "diogo.almeida@correio.example.com",
+      "telemovel": null,
+      "estado_pagamento": "Falhou cobrança",
+      "id_cli": "MK100401",
+      "nutricionista": "Dr. Nuno Brito",
+      "preferencia_contacto": "Telefone",
+      "data_registo": "08/01/2025",
+      "morada": {
+        "codigo_postal": "0582-602",
+        "cidade": "Porto"
+      },
+      "apelido": "Almeida",
+      "id_enc_ult": "E7701810",
+      "estado_conta": "Pausada",
+      "primeiro_nome": "Diogo",
+      "email_fatura": "faturas.almeida1@correio.example.com",
+      "plano": "Clássico 2 pessoas",
+      "n_linha": 9,
+      "consentimento_rgpd": "Aceite"
+    },
+    {
+      "n_linha": 10,
+      "email_fatura": "faturas.marques2@correio.example.com",
+      "data_ultima_entrega": "08/10/2026",
+      "estado_conta": "Cancelada",
+      "morada": {
+        "codigo_postal": "7185-452",
+        "cidade": "Braga"
+      },
+      "id_cli": "MK100412",
+      "data_registo": "04/12/2024",
+      "plano": "Clássico 2 pessoas",
+      "email": "rafael.marques@correio.example.com",
+      "apelido": "Marques",
+      "id_enc_ult": "E7702049",
+      "estado_pagamento": "Pago",
+      "primeiro_nome": "Rafael",
+      "preferencia_contacto": "SMS",
+      "telemovel": "+351 951 235 388",
+      "nutricionista": "Dr. Nuno Brito",
+      "consentimento_rgpd": "Recusado"
+    },
+    {
+      "morada": {
+        "cidade": "Braga",
+        "codigo_postal": "2982-199"
+      },
+      "data_registo": "06/12/2024",
+      "id_cli": "MK100422",
+      "email_fatura": "faturas.ferreira3@correio.example.com",
+      "telemovel": null,
+      "plano": "Família 4 pessoas",
+      "primeiro_nome": "João",
+      "apelido": "Ferreira",
+      "estado_conta": "Pausada",
+      "consentimento_rgpd": "Aceite",
+      "estado_pagamento": "Pago",
+      "id_enc_ult": "E7702376",
+      "nutricionista": "Dra. Helena Vaz",
+      "data_ultima_entrega": "03/09/2026",
+      "email": "joao.ferreira@correio.example.com",
+      "n_linha": 11,
+      "preferencia_contacto": "SMS"
+    },
+    {
+      "data_registo": "08/05/2022",
+      "preferencia_contacto": "E-mail",
+      "apelido": "Lopes",
+      "id_cli": "MK100436",
+      "n_linha": 12,
+      "morada": {
+        "codigo_postal": "7512-278",
+        "cidade": "Coimbra"
+      },
+      "id_enc_ult": "E7702421",
+      "data_ultima_entrega": "09/09/2026",
+      "plano": "Vegetariano 2 pessoas",
+      "nutricionista": "Dra. Helena Vaz",
+      "email": "ines.lopes@correio.example.com",
+      "email_fatura": "faturas.lopes4@correio.example.com",
+      "estado_pagamento": "Pago",
+      "estado_conta": "Ativa",
+      "primeiro_nome": "Inês",
+      "telemovel": "+351 941 509 291",
+      "consentimento_rgpd": "Recusado"
+    },
+    {
+      "primeiro_nome": "Tiago",
+      "plano": "Família 4 pessoas",
+      "estado_conta": "Cancelada",
+      "apelido": "Carvalho",
+      "estado_pagamento": "Pago",
+      "consentimento_rgpd": "Recusado",
+      "preferencia_contacto": "Telefone",
+      "data_registo": "04/05/2023",
+      "morada": {
+        "cidade": "Porto",
+        "codigo_postal": "8499-407"
+      },
+      "n_linha": 13,
+      "id_cli": "MK100443",
+      "email_fatura": "faturas.carvalho5@correio.example.com",
+      "telemovel": "+351 951 373 264",
+      "data_ultima_entrega": "09/11/2026",
+      "nutricionista": "Dra. Helena Vaz",
+      "id_enc_ult": "E7702786",
+      "email": "tiago.carvalho@correio.example.com"
+    },
+    {
+      "data_registo": "01/01/2019",
+      "nutricionista": "Dra. Helena Vaz",
+      "telemovel": "+351 970 932 751",
+      "consentimento_rgpd": "Aceite",
+      "plano": "Clássico 2 pessoas",
+      "estado_pagamento": "Pago",
+      "id_enc_ult": "E7702851",
+      "primeiro_nome": "Gonçalo",
+      "email": "goncalo.alves@correio.example.com",
+      "morada": {
+        "cidade": "Lisboa",
+        "codigo_postal": "4121-841"
+      },
+      "apelido": "Alves",
+      "data_ultima_entrega": "08/10/2026",
+      "preferencia_contacto": "E-mail",
+      "email_fatura": "faturas.alves6@correio.example.com",
+      "estado_conta": "Conta de teste",
+      "n_linha": 14,
+      "id_cli": "MK100460"
+    },
+    {
+      "id_enc_ult": "E7703106",
+      "morada": {
+        "codigo_postal": "4071-873",
+        "cidade": "Braga"
+      },
+      "estado_pagamento": "Pago",
+      "nutricionista": "Dra. Helena Vaz",
+      "email": "Lucas.Santos@Correio.Example.Com",
+      "data_registo": "09/02/2020",
+      "apelido": "Santos",
+      "n_linha": 15,
+      "data_ultima_entrega": "01/10/2026",
+      "email_fatura": "faturas.santos0@correio.example.com",
+      "id_cli": "MK100466",
+      "consentimento_rgpd": "Recusado",
+      "telemovel": "+351 959 698 801",
+      "estado_conta": "Pausada",
+      "preferencia_contacto": "SMS",
+      "primeiro_nome": "Lucas",
+      "plano": "Clássico 2 pessoas"
+    },
+    {
+      "n_linha": 16,
+      "data_ultima_entrega": "10/10/2026",
+      "morada": {
+        "cidade": "Lisboa",
+        "codigo_postal": "7860-821"
+      },
+      "id_enc_ult": "E7703376",
+      "data_registo": "02/11/2019",
+      "apelido": "Carvalho",
+      "primeiro_nome": "Pedro",
+      "nutricionista": "Dr. Nuno Brito",
+      "id_cli": "MK100485",
+      "telemovel": "+351 914 584 808",
+      "email_fatura": "faturas.carvalho1@correio.example.com",
+      "estado_conta": "Cancelada",
+      "plano": "Vegetariano 2 pessoas",
+      "email": "pedro.carvalho@correio.example.com",
+      "consentimento_rgpd": "Aceite",
+      "preferencia_contacto": "SMS",
+      "estado_pagamento": "Pago"
+    },
+    {
+      "id_cli": "MK100489",
+      "telemovel": "+351 905 749 530",
+      "email_fatura": "faturas.santos2@correio.example.com",
+      "data_registo": "06/02/2019",
+      "estado_pagamento": "Pendente MB Way",
+      "nutricionista": "Dr. Nuno Brito",
+      "primeiro_nome": "Pedro",
+      "morada": {
+        "codigo_postal": "4050-803",
+        "cidade": "Lisboa"
+      },
+      "id_enc_ult": "E7703506",
+      "data_ultima_entrega": "03/10/2026",
+      "email": "pedro.santos@correio.example.com",
+      "n_linha": 17,
+      "consentimento_rgpd": "Aceite",
+      "estado_conta": "Ativa",
+      "apelido": "Santos",
+      "preferencia_contacto": "SMS",
+      "plano": "Família 4 pessoas"
+    },
+    {
+      "plano": "Clássico 2 pessoas",
+      "preferencia_contacto": "SMS",
+      "n_linha": 18,
+      "morada": {
+        "codigo_postal": "8143-879",
+        "cidade": "Braga"
+      },
+      "data_ultima_entrega": "07/10/2026",
+      "apelido": "Pereira",
+      "id_cli": "MK100503",
+      "email": "Beatriz.Pereira@Correio.Example.Com",
+      "estado_conta": "Cancelada",
+      "estado_pagamento": "Pago",
+      "email_fatura": "faturas.pereira3@correio.example.com",
+      "id_enc_ult": "E7703733",
+      "nutricionista": "Dra. Helena Vaz",
+      "data_registo": "08/04/2024",
+      "consentimento_rgpd": "Aceite",
+      "telemovel": "+351 946 048 120",
+      "primeiro_nome": "Beatriz"
+    },
+    {
+      "data_ultima_entrega": "12/11/2026",
+      "morada": {
+        "cidade": "Porto",
+        "codigo_postal": "2652-835"
+      },
+      "data_registo": "12/10/2020",
+      "email": "carolina.fernandes@correio.example.com",
+      "primeiro_nome": "Carolina",
+      "apelido": "Fernandes",
+      "estado_pagamento": "Pago",
+      "email_fatura": "faturas.fernandes4@correio.example.com",
+      "preferencia_contacto": "SMS",
+      "consentimento_rgpd": "Aceite",
+      "n_linha": 19,
+      "plano": "Família 4 pessoas",
+      "estado_conta": "Pausada",
+      "id_enc_ult": "E7704080",
+      "nutricionista": "Dr. Nuno Brito",
+      "id_cli": "MK100514"
+    },
+    {
+      "id_cli": "MK100528",
+      "email_fatura": "faturas.gomes5@correio.example.com",
+      "plano": "Clássico 2 pessoas",
+      "nutricionista": "Dr. Nuno Brito",
+      "data_registo": "10/05/2020",
+      "preferencia_contacto": "E-mail",
+      "primeiro_nome": "Leonor",
+      "telemovel": "+351 979 578 579",
+      "estado_pagamento": "Falhou cobrança",
+      "id_enc_ult": "E7704318",
+      "consentimento_rgpd": "Recusado",
+      "apelido": "Gomes",
+      "n_linha": 20,
+      "email": "leonor.gomes@correio.example.com",
+      "morada": {
+        "codigo_postal": "2393-217",
+        "cidade": "Coimbra"
+      },
+      "data_ultima_entrega": "09/10/2026",
+      "estado_conta": "Ativa"
+    },
+    {
+      "id_cli": "MK100534",
+      "morada": {
+        "cidade": "Coimbra",
+        "codigo_postal": "1420-475"
+      },
+      "consentimento_rgpd": "Aceite",
+      "primeiro_nome": "Rodrigo",
+      "nutricionista": "Dra. Helena Vaz",
+      "telemovel": "+351 955 670 596",
+      "apelido": "Martins",
+      "plano": "Vegetariano 2 pessoas",
+      "data_registo": "12/12/2020",
+      "email_fatura": "faturas.martins6@correio.example.com",
+      "id_enc_ult": "E7704331",
+      "estado_conta": "Pausada",
+      "estado_pagamento": "Pago",
+      "n_linha": 21,
+      "email": "rodrigo.martins@correio.example.com",
+      "preferencia_contacto": "SMS",
+      "data_ultima_entrega": "05/09/2026"
+    },
+    {
+      "estado_conta": "Pausada",
+      "consentimento_rgpd": "Aceite",
+      "id_cli": "MK100543",
+      "email_fatura": "faturas.teixeira0@correio.example.com",
+      "plano": "Vegetariano 2 pessoas",
+      "nutricionista": "Dra. Helena Vaz",
+      "telemovel": "+351 997 549 730",
+      "primeiro_nome": "Leonor",
+      "morada": {
+        "cidade": "Braga",
+        "codigo_postal": "4952-741"
+      },
+      "apelido": "Teixeira",
+      "data_ultima_entrega": "12/09/2026",
+      "preferencia_contacto": "Telefone",
+      "n_linha": 22,
+      "data_registo": "04/05/2021",
+      "estado_pagamento": "Falhou cobrança",
+      "id_enc_ult": "E7704732",
+      "email": "leonor.teixeira@correio.example.com"
+    },
+    {
+      "data_ultima_entrega": "02/10/2026",
+      "data_registo": "02/07/2025",
+      "id_cli": "MK100560",
+      "email": "Sofia.Costa@Correio.Example.Com",
+      "primeiro_nome": "Sofia",
+      "consentimento_rgpd": "Aceite",
+      "estado_pagamento": "Pago",
+      "id_enc_ult": "E7704849",
+      "email_fatura": "faturas.costa1@correio.example.com",
+      "morada": {
+        "codigo_postal": "5979-228",
+        "cidade": "Coimbra"
+      },
+      "preferencia_contacto": "E-mail",
+      "apelido": "Costa",
+      "telemovel": "+351 942 868 861",
+      "n_linha": 23,
+      "estado_conta": "Conta de teste",
+      "nutricionista": "Dra. Helena Vaz",
+      "plano": "Família 4 pessoas"
+    },
+    {
+      "id_cli": "MK100571",
+      "preferencia_contacto": "E-mail",
+      "id_enc_ult": "E7705129",
+      "consentimento_rgpd": "Aceite",
+      "plano": "Clássico 2 pessoas",
+      "apelido": "Almeida",
+      "estado_conta": "Pausada",
+      "estado_pagamento": "Pendente MB Way",
+      "data_registo": "11/02/2025",
+      "email": "pedro.almeida@correio.example.com",
+      "n_linha": 24,
+      "telemovel": null,
+      "morada": {
+        "codigo_postal": "3010-563",
+        "cidade": "Lisboa"
+      },
+      "primeiro_nome": "Pedro",
+      "email_fatura": "faturas.almeida2@correio.example.com",
+      "nutricionista": "Dra. Helena Vaz",
+      "data_ultima_entrega": "06/10/2026"
+    },
+    {
+      "apelido": "Marques",
+      "data_registo": "01/04/2025",
+      "data_ultima_entrega": "09/09/2026",
+      "morada": {
+        "cidade": "Lisboa",
+        "codigo_postal": "7950-261"
+      },
+      "telemovel": "+351 943 097 841",
+      "preferencia_contacto": "SMS",
+      "n_linha": 25,
+      "email_fatura": "faturas.marques3@correio.example.com",
+      "id_enc_ult": "E7705172",
+      "primeiro_nome": "Carolina",
+      "estado_pagamento": "Falhou cobrança",
+      "plano": "Família 4 pessoas",
+      "email": "carolina.marques@correio.example.com",
+      "id_cli": "MK100584",
+      "estado_conta": "Pausada",
+      "nutricionista": "Dra. Helena Vaz",
+      "consentimento_rgpd": "Aceite"
+    },
+    {
+      "email": "beatriz.santos@correio.example.com",
+      "id_enc_ult": "E7705486",
+      "primeiro_nome": "Beatriz",
+      "email_fatura": "faturas.santos4@correio.example.com",
+      "estado_pagamento": "Pago",
+      "morada": {
+        "codigo_postal": "8089-118",
+        "cidade": "Braga"
+      },
+      "nutricionista": "Dra. Helena Vaz",
+      "apelido": "Santos",
+      "data_registo": "02/04/2023",
+      "data_ultima_entrega": "10/10/2026",
+      "id_cli": "MK100589",
+      "plano": "Vegetariano 2 pessoas",
+      "telemovel": "+351 974 158 937",
+      "estado_conta": "Ativa",
+      "preferencia_contacto": "E-mail",
+      "n_linha": 26,
+      "consentimento_rgpd": "Aceite"
+    },
+    {
+      "nutricionista": "Dra. Helena Vaz",
+      "morada": {
+        "cidade": "Braga",
+        "codigo_postal": "2527-798"
+      },
+      "preferencia_contacto": "SMS",
+      "email_fatura": "faturas.oliveira5@correio.example.com",
+      "data_ultima_entrega": "05/10/2026",
+      "consentimento_rgpd": "Recusado",
+      "primeiro_nome": "Camila",
+      "n_linha": 27,
+      "plano": "Clássico 2 pessoas",
+      "email": "camila.oliveira@correio.example.com",
+      "id_enc_ult": "E7705701",
+      "estado_pagamento": "Falhou cobrança",
+      "telemovel": "+351 995 971 189",
+      "id_cli": "MK100598",
+      "estado_conta": "Cancelada",
+      "apelido": "Oliveira",
+      "data_registo": "10/06/2021"
+    },
+    {
+      "id_cli": "MK100607",
+      "nutricionista": "Dra. Helena Vaz",
+      "data_registo": "08/06/2020",
+      "consentimento_rgpd": "Aceite",
+      "estado_conta": "Ativa",
+      "plano": "Família 4 pessoas",
+      "morada": {
+        "cidade": "Coimbra",
+        "codigo_postal": "3341-492"
+      },
+      "primeiro_nome": "Leonor",
+      "telemovel": "+351 990 918 936",
+      "email": "Leonor.Carvalho@Correio.Example.Com",
+      "apelido": "Carvalho",
+      "data_ultima_entrega": "04/11/2026",
+      "n_linha": 28,
+      "preferencia_contacto": "E-mail",
+      "email_fatura": "faturas.carvalho6@correio.example.com",
+      "estado_pagamento": "Pendente MB Way",
+      "id_enc_ult": "E7705851"
+    },
+    {
+      "email_fatura": "faturas.lopes0@correio.example.com",
+      "id_enc_ult": "E7706112",
+      "email": "andre.lopes@correio.example.com",
+      "nutricionista": "Dra. Helena Vaz",
+      "preferencia_contacto": "SMS",
+      "estado_conta": "Conta de teste",
+      "id_cli": "MK100621",
+      "morada": {
+        "cidade": "Porto",
+        "codigo_postal": "5435-623"
+      },
+      "apelido": "Lopes",
+      "data_ultima_entrega": "03/09/2026",
+      "telemovel": "+351 926 204 934",
+      "plano": "Família 4 pessoas",
+      "primeiro_nome": "André",
+      "estado_pagamento": "Falhou cobrança",
+      "data_registo": null,
+      "consentimento_rgpd": "Aceite",
+      "n_linha": 29
+    },
+    {
+      "email": "mariana.ribeiro@correio.example.com",
+      "n_linha": 30,
+      "nutricionista": "Dra. Helena Vaz",
+      "morada": {
+        "cidade": "Braga",
+        "codigo_postal": "9874-686"
+      },
+      "primeiro_nome": "Mariana",
+      "plano": "Clássico 2 pessoas",
+      "id_cli": "MK100637",
+      "apelido": "Ribeiro",
+      "estado_conta": "Cancelada",
+      "data_ultima_entrega": "10/11/2026",
+      "estado_pagamento": "Pago",
+      "preferencia_contacto": "SMS",
+      "telemovel": "+351 948 702 232",
+      "data_registo": "09/01/2019",
+      "consentimento_rgpd": "Aceite",
+      "email_fatura": "faturas.ribeiro1@correio.example.com",
+      "id_enc_ult": "E7706315"
+    },
+    {
+      "estado_pagamento": "Falhou cobrança",
+      "n_linha": 31,
+      "nutricionista": "Dr. Nuno Brito",
+      "email_fatura": "faturas.gomes2@correio.example.com",
+      "id_enc_ult": "E7706615",
+      "data_ultima_entrega": "04/09/2026",
+      "plano": "Clássico 2 pessoas",
+      "preferencia_contacto": "SMS",
+      "id_cli": "MK100649",
+      "data_registo": "04/08/2020",
+      "telemovel": null,
+      "consentimento_rgpd": "Recusado",
+      "morada": {
+        "codigo_postal": "6821-724",
+        "cidade": "Braga"
+      },
+      "email": "matilde.gomes@correio.example.com",
+      "apelido": "Gomes",
+      "primeiro_nome": "Matilde",
+      "estado_conta": "Ativa"
+    },
+    {
+      "preferencia_contacto": "SMS",
+      "estado_conta": "Cancelada",
+      "id_enc_ult": "E7706804",
+      "n_linha": 32,
+      "morada": {
+        "cidade": "Lisboa",
+        "codigo_postal": "9514-086"
+      },
+      "email": "miguel.rodrigues@correio.example.com",
+      "consentimento_rgpd": "Recusado",
+      "data_registo": "09/04/2024",
+      "email_fatura": "faturas.rodrigues3@correio.example.com",
+      "primeiro_nome": "Miguel",
+      "nutricionista": "Dr. Nuno Brito",
+      "plano": "Clássico 2 pessoas",
+      "id_cli": "MK100655",
+      "data_ultima_entrega": "08/09/2026",
+      "apelido": "Rodrigues",
+      "estado_pagamento": "Pendente MB Way"
+    },
+    {
+      "n_linha": 33,
+      "morada": {
+        "cidade": "Coimbra",
+        "codigo_postal": "5113-073"
+      },
+      "id_cli": "MK100666",
+      "plano": "Vegetariano 2 pessoas",
+      "email": "rafael.oliveira@correio.example.com",
+      "data_registo": "09/12/2021",
+      "consentimento_rgpd": "Recusado",
+      "nutricionista": "Dra. Helena Vaz",
+      "id_enc_ult": "E7706972",
+      "preferencia_contacto": "SMS",
+      "primeiro_nome": "Rafael",
+      "telemovel": "+351 976 811 418",
+      "estado_conta": "Cancelada",
+      "data_ultima_entrega": "05/09/2026",
+      "email_fatura": "faturas.oliveira4@correio.example.com",
+      "apelido": "Oliveira",
+      "estado_pagamento": "Falhou cobrança"
+    },
+    {
+      "data_ultima_entrega": "03/09/2026",
+      "nutricionista": "Dra. Helena Vaz",
+      "id_cli": "MK100675",
+      "morada": {
+        "codigo_postal": "8732-226",
+        "cidade": "Lisboa"
+      },
+      "plano": "Clássico 2 pessoas",
+      "estado_conta": "Conta de teste",
+      "n_linha": 34,
+      "telemovel": "+351 908 291 116",
+      "data_registo": "10/01/2025",
+      "estado_pagamento": "Pago",
+      "email_fatura": "faturas.silva5@correio.example.com",
+      "apelido": "Silva",
+      "id_enc_ult": "E7707258",
+      "primeiro_nome": "Diogo",
+      "email": "Diogo.Silva@Correio.Example.Com",
+      "consentimento_rgpd": "Recusado",
+      "preferencia_contacto": "Telefone"
+    },
+    {
+      "nutricionista": "Dra. Helena Vaz",
+      "n_linha": 35,
+      "primeiro_nome": "Beatriz",
+      "consentimento_rgpd": "Recusado",
+      "morada": {
+        "codigo_postal": "6231-765",
+        "cidade": "Lisboa"
+      },
+      "email_fatura": "faturas.silva6@correio.example.com",
+      "data_registo": "08/06/2023",
+      "data_ultima_entrega": "11/10/2026",
+      "id_enc_ult": "E7707333",
+      "apelido": "Silva",
+      "telemovel": "+351 990 537 520",
+      "id_cli": "MK100687",
+      "estado_pagamento": "Pendente MB Way",
+      "plano": "Vegetariano 2 pessoas",
+      "estado_conta": "Ativa",
+      "preferencia_contacto": "SMS",
+      "email": "Beatriz.Silva@Correio.Example.Com"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "externalId": {
+        "type": "string",
+        "description": "Identifier of the requester in the subscription platform."
+      },
+      "fullName": {
+        "type": "string",
+        "description": "Full name of the requester, given name first."
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address of the requester."
+      },
+      "phone": {
+        "type": "string",
+        "description": "Mobile."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "paused",
+          "cancelled"
+        ],
+        "description": "Lifecycle state of the requester's account."
+      },
+      "plan": {
+        "type": "string",
+        "enum": [
+          "classic_2",
+          "family_4",
+          "veggie_2"
+        ],
+        "description": "Meal plan of the requester."
+      },
+      "contactChannel": {
+        "type": "string",
+        "enum": [
+          "sms",
+          "email",
+          "phone"
+        ],
+        "description": "Channel the requester prefers for proactive contact."
+      },
+      "customerSince": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the requester signed up."
+      },
+      "loyaltyTier": {
+        "type": "string",
+        "enum": [
+          "bronze",
+          "silver",
+          "gold"
+        ]
+      }
+    },
+    "required": [
+      "externalId",
+      "fullName",
+      "email",
+      "status",
+      "plan",
+      "customerSince"
+    ]
+  },
+  "groundTruth": {
+    "externalId": {
+      "source": "id_cli",
+      "transform": "copy",
+      "why": "customer id; id_enc_ult is the last order"
+    },
+    "fullName": {
+      "source": null,
+      "sources": [
+        "primeiro_nome",
+        "apelido"
+      ],
+      "transform": "concat",
+      "separator": " ",
+      "why": "given name and surname; nutricionista is staff"
+    },
+    "email": {
+      "source": "email",
+      "transform": "normalize_email",
+      "why": "email, mixed case; email_fatura is invoicing"
+    },
+    "phone": {
+      "source": "telemovel",
+      "transform": "copy",
+      "why": "mobile, null or missing"
+    },
+    "status": {
+      "source": "estado_conta",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Ativa": "active",
+        "Pausada": "paused",
+        "Cancelada": "cancelled",
+        "Conta de teste": null
+      },
+      "why": "account state; test accounts need review"
+    },
+    "plan": {
+      "source": "plano",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Clássico 2 pessoas": "classic_2",
+        "Família 4 pessoas": "family_4",
+        "Vegetariano 2 pessoas": "veggie_2"
+      },
+      "why": "plan"
+    },
+    "contactChannel": {
+      "source": "preferencia_contacto",
+      "transform": "map_enum",
+      "categoryMap": {
+        "SMS": "sms",
+        "E-mail": "email",
+        "Telefone": "phone"
+      },
+      "why": "contact preference"
+    },
+    "customerSince": {
+      "source": "data_registo",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "sign-up date (day-first); null in a few rows, which are held"
+    },
+    "loyaltyTier": {
+      "source": null,
+      "transform": "none",
+      "why": "no loyalty tier is exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "estado_conta",
+        "estado_pagamento"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "id_cli",
+        "id_enc_ult"
+      ],
+      "correctFor": "externalId"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "email",
+        "email_fatura"
+      ],
+      "correctFor": "email"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "data_registo",
+        "data_ultima_entrega"
+      ],
+      "correctFor": "customerSince"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "primeiro_nome",
+        "nutricionista"
+      ],
+      "correctFor": "fullName"
+    }
+  ],
+  "sourceConcepts": {
+    "id_cli": "customer-id",
+    "id_enc_ult": "transaction-id",
+    "n_linha": "other-identifier",
+    "primeiro_nome": "given-name",
+    "apelido": "family-name",
+    "email": "email",
+    "email_fatura": "email",
+    "telemovel": "phone",
+    "estado_conta": "account-status",
+    "estado_pagamento": "payment-status",
+    "plano": "category",
+    "consentimento_rgpd": "consent-flag",
+    "preferencia_contacto": "category",
+    "data_registo": "start-date",
+    "data_ultima_entrega": "other",
+    "nutricionista": "person-name",
+    "morada.cidade": "city",
+    "morada.codigo_postal": "other"
+  },
+  "destinationConcepts": {
+    "externalId": "customer-id",
+    "fullName": "person-name",
+    "email": "email",
+    "phone": "phone",
+    "status": "account-status",
+    "plan": "category",
+    "contactChannel": "category",
+    "customerSince": "start-date",
+    "loyaltyTier": "category"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 0,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 1,
+      "outcome": "transformed",
+      "output": {
+        "externalId": "MK100326",
+        "fullName": "Ana Rodrigues",
+        "email": "ana.rodrigues@correio.example.com",
+        "status": "active",
+        "plan": "family_4",
+        "contactChannel": "email",
+        "customerSince": "2025-09-04"
+      }
+    },
+    {
+      "recordIndex": 7,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 8,
+      "outcome": "transformed",
+      "output": {
+        "externalId": "MK100401",
+        "fullName": "Diogo Almeida",
+        "email": "diogo.almeida@correio.example.com",
+        "status": "paused",
+        "plan": "classic_2",
+        "contactChannel": "phone",
+        "customerSince": "2025-01-08"
+      }
+    }
+  ]
+}

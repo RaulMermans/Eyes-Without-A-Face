@@ -1,0 +1,889 @@
+{
+  "scenarioId": "car-repair-workshop-customers-to-helpdesk-users",
+  "split": "holdout",
+  "track": "wedge",
+  "industry": "independent car repair workshop customer register",
+  "sourceLanguage": "sv",
+  "description": "Customer register export of a fictional car repair workshop (Swedish camelCase, nested customer and company) to be loaded as helpdesk users.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "kund": {
+        "mobil": "076-555 43 61",
+        "epost": "ida.svensson@post.example.net",
+        "efternamn": "Svensson",
+        "fornamn": "Ida"
+      },
+      "kundSedan": "07/06/2020",
+      "registreringsnummer": "OOM 644",
+      "nyhetsbrev": "Ja",
+      "radnr": 1,
+      "kundnummer": "BV-11802",
+      "senasteBesok": "2026-09-12",
+      "kundstatus": "Spärrad",
+      "betalstatus": "Betald",
+      "kundtyp": "Leasingbil",
+      "foretag": {
+        "namn": "Ekholms Trädgård AB"
+      },
+      "verkstadsradgivare": "Patrik Sjöberg",
+      "bilmodell": "Sedan Elektrisk"
+    },
+    {
+      "kundstatus": "Spärrad",
+      "foretag": {
+        "namn": null
+      },
+      "kund": {
+        "mobil": null,
+        "fornamn": "Tove",
+        "epost": "Tove.Lindberg@Post.Example.Net",
+        "efternamn": "Lindberg"
+      },
+      "registreringsnummer": "TRY 394",
+      "kundnummer": "BV-11811",
+      "verkstadsradgivare": "Patrik Sjöberg",
+      "radnr": 2,
+      "senasteBesok": "2025-11-28",
+      "kundSedan": "04/05/2011",
+      "betalstatus": "Betald",
+      "nyhetsbrev": "Nej",
+      "kundtyp": "Intern",
+      "bilmodell": "Skåpbil 2.2"
+    },
+    {
+      "betalstatus": "Betald",
+      "kundtyp": "Privat",
+      "radnr": 3,
+      "registreringsnummer": "DDN 146",
+      "kundstatus": "Vilande",
+      "senasteBesok": "2025-10-13",
+      "foretag": {
+        "namn": null
+      },
+      "nyhetsbrev": "Nej",
+      "verkstadsradgivare": "Lena Wallin",
+      "kundSedan": "07/05/2022",
+      "kund": {
+        "epost": "Linnea.Aberg@Post.Example.Net",
+        "efternamn": "Åberg",
+        "mobil": "076-418 82 99",
+        "fornamn": "Linnea"
+      },
+      "bilmodell": "Kompakt 1.5",
+      "kundnummer": "BV-11825"
+    },
+    {
+      "registreringsnummer": "WPL 267",
+      "kund": {
+        "fornamn": "Maja",
+        "efternamn": "Lindberg",
+        "mobil": "079-818 29 13",
+        "epost": "maja.lindberg@post.example.net"
+      },
+      "nyhetsbrev": "Ja",
+      "bilmodell": "Sedan Elektrisk",
+      "foretag": {
+        "namn": "Lövsta Bygg AB"
+      },
+      "betalstatus": "Betald",
+      "senasteBesok": "2025-07-30",
+      "kundnummer": "BV-11831",
+      "radnr": 4,
+      "kundSedan": "03/04/2018",
+      "kundtyp": "Företag",
+      "kundstatus": "Spärrad",
+      "verkstadsradgivare": "Patrik Sjöberg"
+    },
+    {
+      "betalstatus": "Betald",
+      "registreringsnummer": "UET 996",
+      "kundnummer": "BV-11836",
+      "kundtyp": "Privat",
+      "kund": {
+        "efternamn": "Persson",
+        "mobil": "074-185 10 79",
+        "epost": "Maja.Persson@Post.Example.Net",
+        "fornamn": "Maja"
+      },
+      "kundSedan": "04/05/2012",
+      "radnr": 5,
+      "verkstadsradgivare": "Lena Wallin",
+      "senasteBesok": "2026-09-07",
+      "kundstatus": "Aktiv",
+      "bilmodell": "Kombi 2.0 TDI",
+      "nyhetsbrev": "Ja"
+    },
+    {
+      "bilmodell": "Skåpbil 2.2",
+      "registreringsnummer": "AUY 619",
+      "kundSedan": "08/01/2021",
+      "kundtyp": "Privat",
+      "betalstatus": "Betald",
+      "kund": {
+        "mobil": "077-294 36 68",
+        "epost": "klara.andersson@post.example.net",
+        "efternamn": "Andersson",
+        "fornamn": "Klara"
+      },
+      "senasteBesok": "2025-11-14",
+      "kundnummer": "BV-11851",
+      "nyhetsbrev": "Nej",
+      "verkstadsradgivare": "Patrik Sjöberg",
+      "radnr": 6,
+      "kundstatus": "Aktiv"
+    },
+    {
+      "foretag": {
+        "namn": "Norrby Trädgård AB"
+      },
+      "verkstadsradgivare": "Lena Wallin",
+      "registreringsnummer": "HPA 29A",
+      "kundstatus": "Aktiv",
+      "radnr": 7,
+      "nyhetsbrev": "Ja",
+      "bilmodell": "Kombi 2.0 TDI",
+      "betalstatus": "Betald",
+      "kundnummer": "BV-11861",
+      "kundtyp": "Leasingbil",
+      "senasteBesok": "2025-11-29",
+      "kund": {
+        "fornamn": "Elsa",
+        "epost": " elsa.nilsson@post.example.net  ",
+        "efternamn": "Nilsson"
+      }
+    },
+    {
+      "senasteBesok": "2026-07-29",
+      "kund": {
+        "epost": "nils.karlsson@post.example.net",
+        "mobil": "076-951 25 83",
+        "efternamn": "Karlsson",
+        "fornamn": "Nils"
+      },
+      "verkstadsradgivare": "Mattias Öberg",
+      "kundnummer": "BV-11865",
+      "kundtyp": "Företag",
+      "foretag": {
+        "namn": "Bergviks Trädgård AB"
+      },
+      "betalstatus": "Betald",
+      "kundSedan": "13/04/2015",
+      "radnr": 8,
+      "registreringsnummer": "ZZF 336",
+      "kundstatus": "Aktiv",
+      "bilmodell": "Skåpbil 2.2",
+      "nyhetsbrev": "Ja"
+    },
+    {
+      "kundtyp": "Leasingbil",
+      "senasteBesok": "2026-11-12",
+      "kundSedan": "07/03/2021",
+      "kundnummer": "BV-11879",
+      "registreringsnummer": "TEP 349",
+      "kund": {
+        "epost": "viktor.persson@post.example.net",
+        "efternamn": "Persson",
+        "mobil": "079-557 93 32",
+        "fornamn": "Viktor"
+      },
+      "verkstadsradgivare": "Lena Wallin",
+      "radnr": 9,
+      "foretag": {
+        "namn": "Strands El & VVS"
+      },
+      "nyhetsbrev": "Ja",
+      "betalstatus": "Betald",
+      "bilmodell": "Sedan Elektrisk",
+      "kundstatus": "Aktiv"
+    },
+    {
+      "kundtyp": "Privat",
+      "betalstatus": "Inkasso",
+      "radnr": 10,
+      "bilmodell": "Sedan Elektrisk",
+      "kund": {
+        "mobil": "074-622 71 20",
+        "efternamn": "Olsson",
+        "fornamn": "Nils",
+        "epost": "nils.olsson@post.example.net"
+      },
+      "nyhetsbrev": "Ja",
+      "kundSedan": "08/06/2009",
+      "registreringsnummer": "RXL 79C",
+      "senasteBesok": "2026-08-03",
+      "verkstadsradgivare": "Lena Wallin",
+      "kundstatus": "Spärrad",
+      "kundnummer": "BV-11885"
+    },
+    {
+      "verkstadsradgivare": "Mattias Öberg",
+      "kundnummer": "BV-11891",
+      "kund": {
+        "efternamn": "Sandberg",
+        "fornamn": "Måns",
+        "epost": "mans.sandberg@post.example.net",
+        "mobil": "072-290 81 47"
+      },
+      "kundSedan": null,
+      "kundstatus": "Aktiv",
+      "senasteBesok": "2026-03-01",
+      "nyhetsbrev": "Ja",
+      "registreringsnummer": "GCB 194",
+      "radnr": 11,
+      "betalstatus": "Betald",
+      "kundtyp": "Leasingbil",
+      "bilmodell": "Sedan Elektrisk",
+      "foretag": {
+        "namn": "Strands Trädgård AB"
+      }
+    },
+    {
+      "radnr": 12,
+      "senasteBesok": "2025-09-01",
+      "kund": {
+        "efternamn": "Lindqvist",
+        "fornamn": "Ebba",
+        "epost": "Ebba.Lindqvist@Post.Example.Net",
+        "mobil": "077-800 26 86"
+      },
+      "kundstatus": "Aktiv",
+      "registreringsnummer": "UNN 54A",
+      "verkstadsradgivare": "Lena Wallin",
+      "bilmodell": "SUV Hybrid",
+      "kundnummer": "BV-11905",
+      "kundtyp": "Privat",
+      "betalstatus": "Betald",
+      "nyhetsbrev": "Ja",
+      "foretag": {
+        "namn": null
+      },
+      "kundSedan": "24/08/2018"
+    },
+    {
+      "verkstadsradgivare": "Lena Wallin",
+      "betalstatus": "Faktura obetald",
+      "kundnummer": "BV-11915",
+      "foretag": {
+        "namn": "Hagby Taxi AB"
+      },
+      "registreringsnummer": "NNC 458",
+      "nyhetsbrev": "Ja",
+      "kundstatus": "Vilande",
+      "kundSedan": null,
+      "senasteBesok": "2026-10-14",
+      "kund": {
+        "mobil": "074-116 63 80",
+        "fornamn": "Wilma",
+        "efternamn": "Svensson",
+        "epost": "wilma.svensson@post.example.net"
+      },
+      "radnr": 13,
+      "kundtyp": "Leasingbil",
+      "bilmodell": "Kombi 2.0 TDI"
+    },
+    {
+      "nyhetsbrev": "Ja",
+      "kundnummer": "BV-11919",
+      "kundstatus": "Aktiv",
+      "verkstadsradgivare": "Mattias Öberg",
+      "kund": {
+        "efternamn": "Gustafsson",
+        "epost": "henrik.gustafsson@post.example.net",
+        "mobil": "071-118 70 96",
+        "fornamn": "Henrik"
+      },
+      "radnr": 14,
+      "bilmodell": "Sedan Elektrisk",
+      "kundSedan": "27/03/2018",
+      "kundtyp": "Intern",
+      "senasteBesok": "2026-02-24",
+      "registreringsnummer": "GPK 374",
+      "betalstatus": "Faktura obetald"
+    },
+    {
+      "verkstadsradgivare": "Mattias Öberg",
+      "bilmodell": "SUV Hybrid",
+      "kund": {
+        "mobil": "070-480 14 15",
+        "efternamn": "Sandberg",
+        "fornamn": "Ida",
+        "epost": "Ida.Sandberg@Post.Example.Net"
+      },
+      "kundnummer": "BV-11933",
+      "senasteBesok": "2026-04-06",
+      "nyhetsbrev": "Nej",
+      "betalstatus": "Betald",
+      "foretag": {
+        "namn": "Bergviks Taxi AB"
+      },
+      "radnr": 15,
+      "kundtyp": "Företag",
+      "kundstatus": "Aktiv",
+      "registreringsnummer": "CZY 478",
+      "kundSedan": "06/10/2023"
+    },
+    {
+      "nyhetsbrev": "Ja",
+      "senasteBesok": "2025-09-14",
+      "registreringsnummer": "WLA 544",
+      "verkstadsradgivare": "Mattias Öberg",
+      "kundtyp": "Företag",
+      "kundSedan": "26/11/2015",
+      "foretag": {
+        "namn": "Hagby Måleri HB"
+      },
+      "radnr": 16,
+      "kundnummer": "BV-11941",
+      "betalstatus": "Betald",
+      "kundstatus": "Aktiv",
+      "kund": {
+        "efternamn": "Lundgren",
+        "fornamn": "Anton",
+        "mobil": null,
+        "epost": "ANTON.LUNDGREN@POST.EXAMPLE.NET"
+      },
+      "bilmodell": "SUV Hybrid"
+    },
+    {
+      "nyhetsbrev": "Ja",
+      "kund": {
+        "fornamn": "Viktor",
+        "epost": "viktor.andersson@post.example.net",
+        "efternamn": "Andersson",
+        "mobil": "076-163 59 64"
+      },
+      "verkstadsradgivare": "Lena Wallin",
+      "radnr": 17,
+      "kundSedan": "19/07/2010",
+      "senasteBesok": "2026-02-21",
+      "bilmodell": "Sedan Elektrisk",
+      "kundtyp": "Privat",
+      "kundnummer": "BV-11944",
+      "betalstatus": "Betald",
+      "kundstatus": "Aktiv",
+      "registreringsnummer": "FTG 405"
+    },
+    {
+      "bilmodell": "Kompakt 1.5",
+      "nyhetsbrev": "Ja",
+      "kund": {
+        "epost": "Gustav.Andersson@Post.Example.Net",
+        "efternamn": "Andersson",
+        "mobil": "074-208 40 42",
+        "fornamn": "Gustav"
+      },
+      "kundnummer": "BV-11958",
+      "kundSedan": "21/09/2011",
+      "kundtyp": "Privat",
+      "senasteBesok": "2025-11-16",
+      "registreringsnummer": "AFZ 13C",
+      "verkstadsradgivare": "Mattias Öberg",
+      "kundstatus": "Vilande",
+      "radnr": 18,
+      "betalstatus": "Betald"
+    },
+    {
+      "kundtyp": "Företag",
+      "nyhetsbrev": "Ja",
+      "radnr": 19,
+      "betalstatus": "Betald",
+      "kundnummer": "BV-11966",
+      "senasteBesok": "2026-03-05",
+      "kundSedan": "21/10/2021",
+      "registreringsnummer": "RGJ 163",
+      "kundstatus": "Vilande",
+      "kund": {
+        "efternamn": "Olsson",
+        "mobil": "079-661 98 54",
+        "epost": " oskar.olsson@post.example.net",
+        "fornamn": "Oskar"
+      },
+      "verkstadsradgivare": "Patrik Sjöberg",
+      "foretag": {
+        "namn": "Bergviks El & VVS"
+      },
+      "bilmodell": "Sedan Elektrisk"
+    },
+    {
+      "kundnummer": "BV-11977",
+      "kund": {
+        "mobil": "077-338 69 28",
+        "epost": "Maja.Lundgren@Post.Example.Net",
+        "fornamn": "Maja",
+        "efternamn": "Lundgren"
+      },
+      "nyhetsbrev": "Nej",
+      "radnr": 20,
+      "kundtyp": "Företag",
+      "senasteBesok": "2025-10-11",
+      "kundstatus": "Aktiv",
+      "verkstadsradgivare": "Patrik Sjöberg",
+      "bilmodell": "Sedan Elektrisk",
+      "betalstatus": "Faktura obetald",
+      "foretag": {
+        "namn": "Strands Måleri HB"
+      },
+      "registreringsnummer": "BJP 318"
+    },
+    {
+      "foretag": {
+        "namn": "Norrby Måleri HB"
+      },
+      "radnr": 21,
+      "kundtyp": "Företag",
+      "verkstadsradgivare": "Patrik Sjöberg",
+      "kund": {
+        "mobil": null,
+        "fornamn": "Ebba",
+        "efternamn": "Ekström",
+        "epost": "ebba.ekstrom@post.example.net"
+      },
+      "senasteBesok": "2025-06-20",
+      "kundstatus": "Vilande",
+      "kundnummer": "BV-11987",
+      "kundSedan": "20/11/2019",
+      "betalstatus": "Faktura obetald",
+      "bilmodell": "Kombi 2.0 TDI",
+      "nyhetsbrev": "Ja",
+      "registreringsnummer": "MFK 43B"
+    },
+    {
+      "radnr": 22,
+      "verkstadsradgivare": "Patrik Sjöberg",
+      "registreringsnummer": "MMF 63C",
+      "kund": {
+        "fornamn": "Erik",
+        "epost": "ERIK.GUSTAFSSON@POST.EXAMPLE.NET",
+        "efternamn": "Gustafsson"
+      },
+      "senasteBesok": "2025-07-19",
+      "bilmodell": "Sedan Elektrisk",
+      "betalstatus": "Faktura obetald",
+      "kundstatus": "Aktiv",
+      "kundnummer": "BV-11993",
+      "kundtyp": "Leasingbil",
+      "nyhetsbrev": "Nej",
+      "foretag": {
+        "namn": null
+      },
+      "kundSedan": "13/03/2013"
+    },
+    {
+      "registreringsnummer": "MDG 76B",
+      "senasteBesok": "2026-11-01",
+      "kundtyp": "Företag",
+      "verkstadsradgivare": "Mattias Öberg",
+      "bilmodell": "Sedan Elektrisk",
+      "radnr": 23,
+      "kund": {
+        "epost": "Axel.Nilsson@Post.Example.Net",
+        "efternamn": "Nilsson",
+        "mobil": "077-706 34 56",
+        "fornamn": "Axel"
+      },
+      "kundstatus": "Aktiv",
+      "betalstatus": "Inkasso",
+      "nyhetsbrev": "Nej",
+      "foretag": {
+        "namn": "Bergviks Måleri HB"
+      },
+      "kundnummer": "BV-11998",
+      "kundSedan": "04/04/2022"
+    },
+    {
+      "betalstatus": "Betald",
+      "registreringsnummer": "MFZ 65A",
+      "kundSedan": "09/04/2019",
+      "kund": {
+        "fornamn": "Klara",
+        "efternamn": "Åberg",
+        "mobil": "073-704 28 57",
+        "epost": "klara.aberg@post.example.net"
+      },
+      "senasteBesok": "2025-11-10",
+      "kundstatus": "Vilande",
+      "bilmodell": "Kombi 2.0 TDI",
+      "kundtyp": "Intern",
+      "kundnummer": "BV-12007",
+      "verkstadsradgivare": "Patrik Sjöberg",
+      "nyhetsbrev": "Nej",
+      "radnr": 24
+    },
+    {
+      "nyhetsbrev": "Nej",
+      "kundSedan": "24/09/2016",
+      "senasteBesok": "2026-02-23",
+      "verkstadsradgivare": "Patrik Sjöberg",
+      "kundnummer": "BV-12019",
+      "betalstatus": "Inkasso",
+      "kundtyp": "Privat",
+      "registreringsnummer": "ZEF 131",
+      "kund": {
+        "mobil": "072-303 96 69",
+        "epost": "nils.eriksson@post.example.net",
+        "fornamn": "Nils",
+        "efternamn": "Eriksson"
+      },
+      "radnr": 25,
+      "bilmodell": "Kombi 2.0 TDI",
+      "kundstatus": "Aktiv"
+    },
+    {
+      "senasteBesok": "2025-09-19",
+      "kundtyp": "Privat",
+      "radnr": 26,
+      "kundSedan": "26/12/2023",
+      "betalstatus": "Faktura obetald",
+      "registreringsnummer": "DYH 60C",
+      "bilmodell": "Kombi 2.0 TDI",
+      "kundnummer": "BV-12029",
+      "nyhetsbrev": "Nej",
+      "verkstadsradgivare": "Lena Wallin",
+      "kundstatus": "Aktiv",
+      "kund": {
+        "mobil": "075-345 82 35",
+        "epost": "wilma.lundgren@post.example.net",
+        "efternamn": "Lundgren",
+        "fornamn": "Wilma"
+      }
+    },
+    {
+      "registreringsnummer": "NZN 583",
+      "foretag": {
+        "namn": "Ekholms Bygg AB"
+      },
+      "betalstatus": "Betald",
+      "kundstatus": "Aktiv",
+      "nyhetsbrev": "Ja",
+      "bilmodell": "Kompakt 1.5",
+      "kund": {
+        "mobil": "070-892 49 31",
+        "efternamn": "Lundgren",
+        "epost": "henrik.lundgren@post.example.net",
+        "fornamn": "Henrik"
+      },
+      "kundSedan": "30/10/2017",
+      "kundtyp": "Företag",
+      "kundnummer": "BV-12040",
+      "senasteBesok": "2026-03-09",
+      "verkstadsradgivare": "Mattias Öberg",
+      "radnr": 27
+    },
+    {
+      "kundnummer": "BV-12044",
+      "senasteBesok": "2025-06-21",
+      "kundstatus": "Aktiv",
+      "bilmodell": "Kompakt 1.5",
+      "nyhetsbrev": "Nej",
+      "kundSedan": "14/11/2009",
+      "kund": {
+        "epost": "wilma.nilsson@post.example.net",
+        "efternamn": "Nilsson",
+        "fornamn": "Wilma",
+        "mobil": "071-158 70 48"
+      },
+      "kundtyp": "Privat",
+      "betalstatus": "Betald",
+      "registreringsnummer": "JHT 771",
+      "radnr": 28,
+      "verkstadsradgivare": "Lena Wallin"
+    },
+    {
+      "radnr": 29,
+      "kund": {
+        "epost": "oskar.larsson@post.example.net",
+        "efternamn": "Larsson",
+        "fornamn": "Oskar",
+        "mobil": "074-725 92 34"
+      },
+      "foretag": {
+        "namn": null
+      },
+      "verkstadsradgivare": "Mattias Öberg",
+      "kundtyp": "Privat",
+      "nyhetsbrev": "Nej",
+      "kundstatus": "Aktiv",
+      "registreringsnummer": "HDZ 11B",
+      "kundSedan": "23/04/2025",
+      "kundnummer": "BV-12054",
+      "bilmodell": "Kompakt 1.5",
+      "senasteBesok": "2025-09-04",
+      "betalstatus": "Betald"
+    },
+    {
+      "kundSedan": "01/02/2022",
+      "verkstadsradgivare": "Patrik Sjöberg",
+      "kund": {
+        "epost": "gustav.johansson@post.example.net",
+        "efternamn": "Johansson",
+        "mobil": null,
+        "fornamn": "Gustav"
+      },
+      "foretag": {
+        "namn": null
+      },
+      "betalstatus": "Betald",
+      "senasteBesok": "2025-06-15",
+      "kundstatus": "Aktiv",
+      "radnr": 30,
+      "registreringsnummer": "ROM 865",
+      "nyhetsbrev": "Ja",
+      "kundnummer": "BV-12067",
+      "kundtyp": "Privat",
+      "bilmodell": "Kompakt 1.5"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "user_external_id": {
+        "type": "string",
+        "description": "Identifier of the customer at the workshop."
+      },
+      "user_name": {
+        "type": "string",
+        "description": "Full name of the customer, given name first."
+      },
+      "user_email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address the customer uses for bookings."
+      },
+      "user_phone": {
+        "type": "string",
+        "description": "Mobile number for when the car is ready."
+      },
+      "user_organization": {
+        "type": "string",
+        "description": "Company the customer drives for, if any."
+      },
+      "user_segment": {
+        "type": "string",
+        "enum": [
+          "private",
+          "business"
+        ],
+        "description": "Whether the customer is a private person or a business."
+      },
+      "user_status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "dormant",
+          "blocked"
+        ],
+        "description": "Account state of the customer."
+      },
+      "user_since": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the person became a customer of the workshop."
+      },
+      "user_locale": {
+        "type": "string",
+        "description": "Locale."
+      },
+      "user_next_service_due": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the customer's car is next due for service."
+      }
+    },
+    "required": [
+      "user_external_id",
+      "user_name",
+      "user_email",
+      "user_status"
+    ]
+  },
+  "groundTruth": {
+    "user_external_id": {
+      "source": "kundnummer",
+      "transform": "copy",
+      "why": "customer number; registreringsnummer is a car plate and radnr the export row"
+    },
+    "user_name": {
+      "source": null,
+      "sources": [
+        "kund.fornamn",
+        "kund.efternamn"
+      ],
+      "transform": "concat",
+      "separator": " ",
+      "why": "customer names; verkstadsradgivare is the service advisor"
+    },
+    "user_email": {
+      "source": "kund.epost",
+      "transform": "normalize_email",
+      "why": "customer email, mixed case and padded"
+    },
+    "user_phone": {
+      "source": "kund.mobil",
+      "transform": "copy",
+      "why": "mobile, null or missing for some"
+    },
+    "user_organization": {
+      "source": "foretag.namn",
+      "transform": "copy",
+      "why": "company, null or missing for private customers"
+    },
+    "user_segment": {
+      "source": "kundtyp",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Privat": "private",
+        "Företag": "business",
+        "Leasingbil": "business",
+        "Intern": null
+      },
+      "why": "customer type; internal workshop cars are not customers and need review"
+    },
+    "user_status": {
+      "source": "kundstatus",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Aktiv": "active",
+        "Vilande": "dormant",
+        "Spärrad": "blocked"
+      },
+      "why": "account state; betalstatus is payment"
+    },
+    "user_since": {
+      "source": "kundSedan",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "customer-since date (day-first), null or missing for some; senasteBesok is the last visit"
+    },
+    "user_locale": {
+      "source": null,
+      "transform": "none",
+      "why": "not exported"
+    },
+    "user_next_service_due": {
+      "source": null,
+      "transform": "none",
+      "why": "not exported",
+      "unsupportedReason": "would need the last visit date plus a service interval"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "kundnummer",
+        "registreringsnummer"
+      ],
+      "correctFor": "user_external_id"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "kundnummer",
+        "radnr"
+      ],
+      "correctFor": "user_external_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "kund.fornamn",
+        "verkstadsradgivare"
+      ],
+      "correctFor": "user_name"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "kundstatus",
+        "betalstatus"
+      ],
+      "correctFor": "user_status"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "kundSedan",
+        "senasteBesok"
+      ],
+      "correctFor": "user_since"
+    }
+  ],
+  "sourceConcepts": {
+    "kundnummer": "customer-id",
+    "registreringsnummer": "other-identifier",
+    "radnr": "other-identifier",
+    "kund.fornamn": "given-name",
+    "kund.efternamn": "family-name",
+    "kund.epost": "email",
+    "kund.mobil": "phone",
+    "foretag.namn": "organization-name",
+    "kundtyp": "category",
+    "kundstatus": "account-status",
+    "betalstatus": "payment-status",
+    "verkstadsradgivare": "person-name",
+    "senasteBesok": "other",
+    "kundSedan": "start-date",
+    "nyhetsbrev": "consent-flag",
+    "bilmodell": "other"
+  },
+  "destinationConcepts": {
+    "user_external_id": "customer-id",
+    "user_name": "person-name",
+    "user_email": "email",
+    "user_phone": "phone",
+    "user_organization": "organization-name",
+    "user_segment": "category",
+    "user_status": "account-status",
+    "user_since": "start-date",
+    "user_locale": "language-code",
+    "user_next_service_due": "other"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 18,
+      "outcome": "transformed",
+      "output": {
+        "user_external_id": "BV-11966",
+        "user_name": "Oskar Olsson",
+        "user_email": "oskar.olsson@post.example.net",
+        "user_phone": "079-661 98 54",
+        "user_organization": "Bergviks El & VVS",
+        "user_segment": "business",
+        "user_status": "dormant",
+        "user_since": "2021-10-21"
+      }
+    },
+    {
+      "recordIndex": 23,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 24,
+      "outcome": "transformed",
+      "output": {
+        "user_external_id": "BV-12019",
+        "user_name": "Nils Eriksson",
+        "user_email": "nils.eriksson@post.example.net",
+        "user_phone": "072-303 96 69",
+        "user_segment": "private",
+        "user_status": "active",
+        "user_since": "2016-09-24"
+      }
+    },
+    {
+      "recordIndex": 29,
+      "outcome": "transformed",
+      "output": {
+        "user_external_id": "BV-12067",
+        "user_name": "Gustav Johansson",
+        "user_email": "gustav.johansson@post.example.net",
+        "user_segment": "private",
+        "user_status": "active",
+        "user_since": "2022-02-01"
+      }
+    }
+  ]
+}

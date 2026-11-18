@@ -38,9 +38,13 @@ import type { PreparedTwin } from "../workflow/pipeline.ts";
 import type { ProposalResult } from "../app/workspace-state.ts";
 import { deriveRule, rankCandidates } from "../app/guided/field-plan.ts";
 import { buildClarifications } from "./clarify.ts";
+import { classifyAgreement, noSourceNeedsQuestion } from "./agreement.ts";
+import type { LocalCandidateSet } from "../matching/types.ts";
 import { classifyPlanIssue, nextActionFor } from "./failures.ts";
 import {
   PLAN_MAPPING_PREFIX,
+  RANKED_PLAN_VERSION,
+  type Clarification,
   type ClassifiedFailure,
   type CompiledField,
   type CompiledIntegration,
@@ -64,6 +68,23 @@ export interface CompileInput {
   requestId: string;
   /** Origin of the answer (`originFor`); defaults to Gemini. A simulated test-adapter plan is never labelled Gemini. */
   origin?: ProposalOrigin;
+  /**
+   * Sprint 18D (ADR 0021 §C–D, rescue). LOCAL ONLY candidate evidence.
+   * Absent = the Sprint 18C behaviour, unchanged.
+   *   localCandidates      local matcher output; orders choose-field candidates.
+   *   askOnLocalEvidence   local evidence may turn a field into ONE question
+   *                        (never into an executed match), by `classifyAgreement`
+   *                        (src/plan/agreement.ts, Sprint 18E):
+   *     - significant disagreement with Gemini's single pick (contradicted, local
+   *       clear about another field, or the pick not listed): asked whatever
+   *       Gemini's confidence, also before a category translation;
+   *     - an optional field Gemini gave no source, with a clear local candidate.
+   *   Agreement never upgrades a match: both can be wrong in the same way.
+   */
+  local?: {
+    localCandidates?: readonly LocalCandidateSet[];
+    askOnLocalEvidence?: boolean;
+  };
 }
 
 /** Fixed rationale of every gate check (application-owned; model text never enters it). */
@@ -81,7 +102,19 @@ interface Draft {
   origin: OperationOrigin | null;
   missing: MissingCode[];
   failures: ClassifiedFailure[];
+  /**
+   * Sprint 18D: Gemini's own parameterless operation (copy / trim /
+   * normalize_email) for a single-field match that was ASKED instead of
+   * executed. Used only if the user then picks exactly that field, so a
+   * confirmation never silently replaces Gemini's transformation with the
+   * local rule (found in 18D: trim → copy).
+   */
+  held?: MappingOperation;
+  /** ADR 0022: a local, labelled refinement of Gemini's operation. */
+  refinement?: "trim-padded-whitespace";
 }
+
+const HOLDABLE = new Set(["copy", "trim", "normalize_email"]);
 
 function failure(category: FailureCategory, target: string, evidence: string[]): ClassifiedFailure {
   return { category, target, next: nextActionFor(category), evidence };
@@ -127,9 +160,26 @@ function proposalOperation(entry: IntentPlanEntry, inputFormat?: DateInputFormat
   }
 }
 
+/**
+ * The frozen gate judges against a 1.1.0 disclosure. A 1.4.0 disclosure
+ * (ADR 0021) is the same request plus destination descriptions and a thinking
+ * level, neither of which the gate reads; it is judged through this exact
+ * 1.1.0 view (same aliases, labels and target fields). The gate is unchanged.
+ */
+export function gateDisclosureView(disclosure: CloudDisclosurePayload): CloudDisclosurePayload {
+  if (disclosure.schemaVersion !== "1.4.0" || !disclosure.target) return disclosure;
+  const { thinkingLevel: _thinking, ...destination } = disclosure.destination;
+  return {
+    ...disclosure,
+    schemaVersion: "1.1.0",
+    destination,
+    target: { fields: disclosure.target.fields.map(({ description: _description, ...field }) => field) },
+  };
+}
+
 /** Run operations through the unchanged gate as one proposal. */
 function gate(operations: Array<Record<string, unknown>>, disclosure: CloudDisclosurePayload, mappingId: string) {
-  return convertProposal({ operations, rationale: GATE_RATIONALE }, { disclosure, mappingId, origin: "gemini-cloud" });
+  return convertProposal({ operations, rationale: GATE_RATIONALE }, { disclosure: gateDisclosureView(disclosure), mappingId, origin: "gemini-cloud" });
 }
 
 /** Alias-level copy of a local-path operation from `deriveRule` (aliases only; map_enum keeps the user's labels). */
@@ -159,6 +209,23 @@ export function compileIntentPlan(input: CompileInput): CompiledIntegration {
   const usableAlias = (alias: string) => disclosed.has(alias) && shareable.has(alias) && bindings.resolve(alias) !== null;
   const profileFor = (path: string): FieldProfile | undefined => prepared.profile.fields.find((field) => field.path === path);
   const unaddressed = new Set(validated.unaddressed);
+
+  /**
+   * ADR 0022 (Sprint 18F): Gemini cannot see padded whitespace in the twin, so it writes `copy` where the
+   * value needs `trim`. EYES's own local rule (Sprint 15 `deriveRule`) already trims a padded string
+   * source; the same rule now applies to a Gemini `copy` into a plain text destination. Only `copy` →
+   * `trim`, only when the local profile observed padding; the field is labelled `trim-padded-whitespace`.
+   */
+  const refinePadding = (target: CloudDisclosureTargetField, draft: Draft): Draft => {
+    const operation = draft.operation;
+    if (!operation || operation.op !== "copy" || target.type !== "string" || target.format) return draft;
+    const path = bindings.resolve(operation.from);
+    const field = path ? profileFor(path) : undefined;
+    if (!field || (field.type !== "string" && field.type !== "enum") || !field.hasPaddedWhitespace) return draft;
+    return { ...draft, operation: { op: "trim", from: operation.from, to: operation.to }, refinement: "trim-padded-whitespace" };
+  };
+  const policy = input.local ?? {};
+  const localByTarget = new Map((policy.localCandidates ?? []).map((set) => [set.target, set]));
 
   /** Check one operation through the gate (gate-able ops) or the contract validator (user map_enum with local labels). */
   const checkOperation = (operation: MappingOperation, viaGate: boolean): ProposalIssue[] => {
@@ -209,13 +276,43 @@ export function compileIntentPlan(input: CompileInput): CompiledIntegration {
     const path = single ? bindings.resolve(single) : null;
     const base = { correspondence, failures };
 
-    if (entry.status === "no_source") return { ...base, readiness: "no_source", operation: null, origin: null, missing: [...entry.missing] };
+    const set = localByTarget.get(target.name);
+    const asking = policy.askOnLocalEvidence === true && !Object.hasOwn(answers.fieldMatches, target.name);
+    const ask = (draft: Partial<Draft> = {}, why?: string): Draft => ({
+      ...base,
+      ...draft,
+      readiness: "needs_clarification",
+      operation: null,
+      origin: null,
+      missing: unique([...entry.missing.filter((code) => code !== "no-matching-source"), "field-meaning"]),
+      failures: why ? [...failures, failure("semantic-disagreement", target.name, [why])] : failures,
+    });
+
+    if (entry.status === "no_source") {
+      // Class 4 (no valid source) stands unless the local matcher is clear; a required field is already asked.
+      if (asking && !target.required && noSourceNeedsQuestion(set)) return ask();
+      return { ...base, readiness: "no_source", operation: null, origin: null, missing: [...entry.missing] };
+    }
+
+    // Sprint 18F: a question must be answerable. A category translation for a free-text destination, or a REQUIRED
+    // field Gemini called unsupported, becomes "which field gives X?" (Gemini's pick first); the user's choice builds
+    // the Sprint 15 rule. Nothing of Gemini's is repaired; "none of them" stays available.
+    if (single && path && target.type !== "enum" && entry.transform === "map_enum") return ask({}, "TRANSLATION_FOR_TEXT_FIELD");
+    if (single && path && target.required && entry.status === "unsupported") return ask();
+
+    // Sprint 18E: a significant, evidence-backed disagreement is one question, whatever Gemini's confidence (also
+    // before a category translation). Never a switch to the local candidate; agreement never upgrades a match.
+    if (asking && single && path && classifyAgreement(path, set) === "significant-disagreement") return ask({}, "LOCAL_EVIDENCE_DISAGREES");
+    // Sprint 18F: a combination that includes a contradicted part (another party's name, a row counter) is asked too.
+    if (asking && entry.from.length > 1 && entry.from.some((alias) => { const part = bindings.resolve(alias); return part !== null && Boolean(set?.contradicted?.includes(part)); })) return ask({}, "LOCAL_EVIDENCE_DISAGREES");
 
     // ADR 0020 §7: a single-field match Gemini is not highly confident about is a question (Gemini's pick listed first),
     // never an executed match. Sprint 18C live: high 86 % right, medium 38 %, low 21 %. Exempt: a category match still
     // awaiting the user's translation, whose question already shows that field's own values (no record runs without it).
     const awaitsTranslation = entry.transform === "map_enum" && entry.status !== "ready";
-    if (single && entry.confidence !== "high" && !awaitsTranslation) return { ...base, readiness: "needs_clarification", operation: null, origin: null, missing: unique([...entry.missing, "field-meaning"]) };
+    const heldOperation = entry.status === "ready" && usable.verdict === "accepted" && HOLDABLE.has(entry.transform) ? (proposalOperation(entry) as unknown as MappingOperation | null) : null;
+    const held = heldOperation ? { held: heldOperation } : {};
+    if (single && entry.confidence !== "high" && !awaitsTranslation) return { ...base, ...held, readiness: "needs_clarification", operation: null, origin: null, missing: unique([...entry.missing, "field-meaning"]) };
 
     // A complete category translation by the user for the corresponding field completes any open enum entry.
     const translated = single && path ? userTranslation(target, path, single) : null;
@@ -278,7 +375,7 @@ export function compileIntentPlan(input: CompileInput): CompiledIntegration {
 
     if (entry.status === "ready" && usable.verdict === "accepted") {
       const operation = proposalOperation(entry);
-      if (operation) return { ...base, readiness: "ready", operation: operation as unknown as MappingOperation, origin: "gemini", missing: [] };
+      if (operation) return refinePadding(target, { ...base, readiness: "ready", operation: operation as unknown as MappingOperation, origin: "gemini", missing: [] });
       return { ...base, readiness: "unsupported", operation: null, origin: null, missing: ["unsupported-transform"] };
     }
     return { ...base, readiness: entry.status === "ready" ? "needs_clarification" : entry.status, operation: null, origin: null, missing: [...entry.missing] };
@@ -329,7 +426,15 @@ export function compileIntentPlan(input: CompileInput): CompiledIntegration {
     const claimed = unaddressed.has(target.name) || entries.length === 0 ? null : entries[0]!.entry.status;
     let draft = checked(target, planDraft(target, entries));
 
-    if (Object.hasOwn(answers.fieldMatches, target.name)) {
+    const combination = answers.fieldCombinations && Object.hasOwn(answers.fieldCombinations, target.name) ? answers.fieldCombinations[target.name] : undefined;
+    if (combination) {
+      // Sprint 18F: the user's explicit combination — the existing concat operation, through the unchanged gate.
+      const aliases = combination.paths.map((path) => bindings.aliasForPath(path));
+      const usable = target.type === "string" && combination.paths.length >= 2 && combination.paths.length <= 4 && aliases.every((alias): alias is string => typeof alias === "string" && usableAlias(alias));
+      draft = usable
+        ? checked(target, { readiness: "ready", correspondence: { aliases: aliases as string[], by: "user" }, operation: { op: "concat", from: aliases as string[], to: target.name, params: { separator: combination.separator } } as MappingOperation, origin: "user", missing: [], failures: draft.failures })
+        : { readiness: "unsupported", correspondence: null, operation: null, origin: null, missing: ["unsupported-transform"], failures: [...draft.failures, failure("privacy-blocker", target.name, ["FIELD_NOT_DISCLOSED"])] };
+    } else if (Object.hasOwn(answers.fieldMatches, target.name)) {
       const picked = answers.fieldMatches[target.name];
       if (picked === null) {
         draft = { readiness: "no_source", correspondence: null, operation: null, origin: null, missing: ["no-matching-source"], failures: draft.failures };
@@ -337,7 +442,12 @@ export function compileIntentPlan(input: CompileInput): CompiledIntegration {
         // The user picked the very field whose plan operation is executable: they agree, and the plan operation stands.
         const pickedAlias = bindings.aliasForPath(picked);
         const agrees = draft.operation !== null && draft.correspondence?.aliases.length === 1 && draft.correspondence.aliases[0] === pickedAlias;
-        if (!agrees) draft = checked(target, userDraft(target, picked, draft.failures));
+        const confirmsHeld = draft.held !== undefined && draft.correspondence?.aliases.length === 1 && draft.correspondence.aliases[0] === pickedAlias;
+        if (confirmsHeld) {
+          // The user confirmed the field Gemini proposed: Gemini's transformation stands, through the gate.
+          const confirmed = checked(target, refinePadding(target, { ...draft, readiness: "ready", operation: draft.held!, origin: "gemini+user", missing: [], correspondence: { aliases: [pickedAlias!], by: "user" } }));
+          draft = confirmed.operation ? confirmed : checked(target, userDraft(target, picked, draft.failures));
+        } else if (!agrees) draft = checked(target, userDraft(target, picked, draft.failures));
       }
     }
 
@@ -352,6 +462,7 @@ export function compileIntentPlan(input: CompileInput): CompiledIntegration {
       operationOrigin: draft.operation ? draft.origin : null,
       missing: draft.operation ? [] : draft.missing,
       failures: draft.failures,
+      ...(draft.operation && draft.refinement ? { refinement: draft.refinement } : {}),
     };
   });
 
@@ -394,9 +505,43 @@ export function compileIntentPlan(input: CompileInput): CompiledIntegration {
     aliasContract,
     complete: aliasContract !== null && unwrittenRequired.length === 0,
     unwrittenRequired,
-    clarifications: buildClarifications(fields, (alias) => bindings.resolve(alias)),
+    clarifications: withRankedPaths(
+      buildClarifications(fields, (alias) => bindings.resolve(alias)),
+      validated,
+      localByTarget,
+      (alias) => (usableAlias(alias) ? bindings.resolve(alias) : null),
+      Boolean(input.local),
+    ),
     counts,
   };
+}
+
+/** At most this many ranked candidates are shown first in a choose-field question. */
+export const MAX_RANKED_CANDIDATES = 3;
+
+/**
+ * Sprint 18D: ranked candidates for choose-field questions — Gemini's pick and
+ * alternatives first, then local matcher candidates, deduplicated, ≤ 3. Only
+ * when ranked evidence exists (plan 1.1.0 alternatives or `local`); otherwise
+ * the questions are exactly the Sprint 18C ones.
+ */
+function withRankedPaths(
+  clarifications: Clarification[],
+  validated: ValidatedIntentPlan,
+  localByTarget: ReadonlyMap<string, LocalCandidateSet>,
+  pathFor: (alias: string) => string | null,
+  localEnabled: boolean,
+): Clarification[] {
+  const ranked = validated.planVersion === RANKED_PLAN_VERSION;
+  if (!ranked && !localEnabled) return clarifications;
+  return clarifications.map((item) => {
+    if (item.kind !== "choose-field") return item;
+    const entry = validated.entries.find((candidate) => candidate.verdict !== "rejected" && candidate.entry.target === item.target)?.entry;
+    const gemini = entry ? [...entry.from, ...(entry.alternatives ?? [])].map(pathFor).filter((path): path is string => typeof path === "string") : [];
+    const local = (localByTarget.get(item.target)?.candidates ?? []).map((candidate) => candidate.path);
+    const rankedPaths = unique([...gemini, ...local]).slice(0, MAX_RANKED_CANDIDATES);
+    return rankedPaths.length > 0 ? { ...item, rankedPaths } : item;
+  });
 }
 
 /**

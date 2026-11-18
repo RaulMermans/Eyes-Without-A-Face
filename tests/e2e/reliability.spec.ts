@@ -125,7 +125,8 @@ test.describe("E2E-095 honest pending state and Stop waiting", () => {
 
 test.describe("E2E-096 a failed revision keeps the initial mapping and its export", () => {
   test("revision TIMEOUT: classified, budget spent, initial mapping still exportable with its own status", async ({ page }) => {
-    await boot(page, { cloudErrorCode: "TIMEOUT", cloudFailCalls: [1] });
+    // Blind revision needs a 1.1.0 base (byte-for-byte rule); the shipped 1.4.0 flow does not offer it (Sprint 18F).
+    await boot(page, { cloudErrorCode: "TIMEOUT", cloudFailCalls: [1], initialPlanner: "intent-plan-1", destinationSemantics: false, localPolicy: false });
     await toMapping(page);
     await page.getByTestId("send-cloud-request").click();
     await expect(page.getByTestId("proposal-status")).toContainText("Valid");

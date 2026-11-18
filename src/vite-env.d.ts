@@ -48,13 +48,19 @@ interface EyesTestHarness {
   cloudFailCalls?: number[];
   cloudDelayMs?: number;
   /** LEGACY-PATH REGRESSION ONLY: dev builds use the Sprint 3 initial planner (src/inference/harness-planner.ts). */
-  initialPlanner?: "mapping-proposal-sprint3";
+  initialPlanner?: "mapping-proposal-sprint3" | "intent-plan-1" | "intent-plan-2";
+  /** Sprint 18D (dev only): an allowlisted cloud model configuration (src/inference/cloud-models.ts). */
+  cloudModel?: { model: string; thinkingLevel?: "MINIMAL" | "LOW" | "MEDIUM" | "HIGH" };
+  destinationSemantics?: boolean;
+  localPolicy?: { askOnLocalEvidence?: boolean } | false;
 }
 
 interface Window {
   LanguageModel?: LanguageModelAvailability;
   FIREBASE_APPCHECK_DEBUG_TOKEN?: boolean | string;
   __EYES_WITHOUT_A_FACE_TEST__?: EyesTestHarness;
+  /** Sprint 18D (dev only): selects a live evaluation arm WITHOUT the simulated adapters. */
+  __EYES_EVAL_CONFIG__?: Pick<EyesTestHarness, "initialPlanner" | "cloudModel" | "destinationSemantics" | "localPolicy">;
 }
 
 interface ImportMetaEnv {

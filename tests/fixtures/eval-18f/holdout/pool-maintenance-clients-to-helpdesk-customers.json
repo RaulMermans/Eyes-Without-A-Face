@@ -1,0 +1,948 @@
+{
+  "scenarioId": "pool-maintenance-clients-to-helpdesk-customers",
+  "split": "holdout",
+  "track": "wedge",
+  "industry": "swimming pool maintenance service clients",
+  "sourceLanguage": "pt",
+  "description": "Client export of a fictional pool maintenance company (Portuguese camelCase, nested client block) to be loaded as helpdesk customers.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "nifCliente": "185283173",
+      "estadoConta": "Ativo - época alta",
+      "linha": 1,
+      "volumeM3": 60.0,
+      "plano": "Visita quinzenal",
+      "codigoCliente": "PSC-2202",
+      "tecnico": "Vasco Nunes",
+      "dataProximaVisita": "19/12/2026",
+      "cliente": {
+        "nomeCompleto": " Rita Teixeira  ",
+        "email": "rita.teixeira@casa.example.org",
+        "telemovel": "931 630 989",
+        "emailFaturacao": "faturas.teixeira@contas.example.net"
+      },
+      "estadoPagamento": "Débito direto falhado",
+      "consentimentoRGPD": "Sim",
+      "dataAdesao": "24/07/2020"
+    },
+    {
+      "linha": 2,
+      "dataProximaVisita": "29/12/2026",
+      "volumeM3": 75.5,
+      "dataAdesao": "13/08/2016",
+      "estadoConta": "Ativo",
+      "tipoPiscina": "Condomínio",
+      "consentimentoRGPD": "Sim",
+      "estadoPagamento": "Débito direto falhado",
+      "tecnico": "Filipe Araújo",
+      "nifCliente": "289281389",
+      "cliente": {
+        "emailFaturacao": "faturas.mendes@contas.example.net",
+        "nomeCompleto": "Miguel Mendes",
+        "telemovel": "912 102 207",
+        "email": "Miguel.Mendes@Casa.Example.Org"
+      },
+      "plano": "Visita quinzenal",
+      "codigoCliente": "PSC-2207"
+    },
+    {
+      "dataAdesao": "22/09/2021",
+      "estadoPagamento": "Pago",
+      "cliente": {
+        "nomeCompleto": "Pedro Costa",
+        "emailFaturacao": "faturas.costa@contas.example.net",
+        "email": "pedro.costa@casa.example.org"
+      },
+      "tipoPiscina": "Interior aquecida",
+      "dataProximaVisita": "14/12/2026",
+      "volumeM3": 60.0,
+      "plano": "Visita quinzenal",
+      "linha": 3,
+      "estadoConta": "Ativo",
+      "codigoCliente": "PSC-2212",
+      "nifCliente": "236524863",
+      "tecnico": "Hugo Fonseca",
+      "consentimentoRGPD": "Não"
+    },
+    {
+      "tecnico": "Hugo Fonseca",
+      "tipoPiscina": "Interior aquecida",
+      "consentimentoRGPD": "Não",
+      "nifCliente": "235792224",
+      "dataProximaVisita": "29/11/2026",
+      "plano": "Visita quinzenal",
+      "estadoConta": "Ativo",
+      "linha": 4,
+      "estadoPagamento": "Pago",
+      "volumeM3": 48.0,
+      "codigoCliente": "PSC-2216",
+      "cliente": {
+        "email": "pedro.rodrigues@casa.example.org",
+        "emailFaturacao": "faturas.rodrigues@contas.example.net",
+        "telemovel": "922 954 868",
+        "nomeCompleto": "Pedro Rodrigues"
+      },
+      "dataAdesao": "09/06/2016"
+    },
+    {
+      "cliente": {
+        "emailFaturacao": "faturas.silva@contas.example.net",
+        "telemovel": "932 868 639",
+        "email": "  tiago.silva@casa.example.org ",
+        "nomeCompleto": "Tiago Silva"
+      },
+      "dataAdesao": "30/09/2020",
+      "estadoConta": "Ativo - época alta",
+      "codigoCliente": "PSC-2220",
+      "consentimentoRGPD": "Sim",
+      "plano": "Visita quinzenal",
+      "nifCliente": "110054380",
+      "estadoPagamento": "Pago",
+      "dataProximaVisita": "03/12/2026",
+      "linha": 5,
+      "volumeM3": 32.5,
+      "tecnico": "Hugo Fonseca"
+    },
+    {
+      "linha": 6,
+      "nifCliente": "295772209",
+      "volumeM3": 32.5,
+      "tipoPiscina": "Exterior",
+      "plano": "Visita semanal",
+      "tecnico": "Filipe Araújo",
+      "estadoConta": "Suspenso",
+      "estadoPagamento": "Pago",
+      "dataAdesao": "08/05/2016",
+      "dataProximaVisita": "27/12/2026",
+      "consentimentoRGPD": "Não",
+      "codigoCliente": "PSC-2225",
+      "cliente": {
+        "telemovel": null,
+        "emailFaturacao": "faturas.marques@contas.example.net",
+        "nomeCompleto": "Rita Marques   ",
+        "email": "rita.marques@casa.example.org"
+      }
+    },
+    {
+      "tecnico": "Filipe Araújo",
+      "consentimentoRGPD": "Não",
+      "dataProximaVisita": "22/12/2026",
+      "codigoCliente": "PSC-2230",
+      "cliente": {
+        "emailFaturacao": "faturas.silva@contas.example.net",
+        "email": "Joana.Silva@Casa.Example.Org",
+        "nomeCompleto": "Joana Silva",
+        "telemovel": "936 482 457"
+      },
+      "linha": 7,
+      "tipoPiscina": "Condomínio",
+      "dataAdesao": "14/05/2023",
+      "estadoConta": "Ativo - época alta",
+      "nifCliente": "105928602",
+      "volumeM3": 75.5,
+      "estadoPagamento": "Pago",
+      "plano": "Visita quinzenal"
+    },
+    {
+      "linha": 8,
+      "dataProximaVisita": "12/12/2026",
+      "cliente": {
+        "emailFaturacao": "faturas.pinto@contas.example.net",
+        "telemovel": "937 263 889",
+        "email": "mariana.pinto@casa.example.org",
+        "nomeCompleto": "Mariana Pinto   "
+      },
+      "plano": "Visita quinzenal",
+      "tipoPiscina": "Exterior",
+      "codigoCliente": "PSC-2235",
+      "tecnico": "Filipe Araújo",
+      "estadoConta": "Ativo",
+      "dataAdesao": "20/01/2023",
+      "nifCliente": "188255569",
+      "consentimentoRGPD": "Não",
+      "volumeM3": 75.5,
+      "estadoPagamento": "Em atraso"
+    },
+    {
+      "estadoConta": "Ativo - época alta",
+      "tipoPiscina": "Condomínio",
+      "codigoCliente": "PSC-2240",
+      "tecnico": "Hugo Fonseca",
+      "consentimentoRGPD": "Não",
+      "plano": "Só inverno",
+      "nifCliente": "112503059",
+      "dataAdesao": "21/11/2017",
+      "volumeM3": 60.0,
+      "cliente": {
+        "email": "marta.martins@casa.example.org",
+        "telemovel": "924 371 506",
+        "nomeCompleto": " Marta Martins  ",
+        "emailFaturacao": "faturas.martins@contas.example.net"
+      },
+      "linha": 9,
+      "dataProximaVisita": "04/12/2026",
+      "estadoPagamento": "Débito direto falhado"
+    },
+    {
+      "codigoCliente": "PSC-2247",
+      "volumeM3": 75.5,
+      "dataProximaVisita": "22/11/2026",
+      "nifCliente": "288040276",
+      "tecnico": "Hugo Fonseca",
+      "estadoConta": "Ativo",
+      "dataAdesao": "20/02/2025",
+      "consentimentoRGPD": "Não",
+      "linha": 10,
+      "tipoPiscina": "Exterior",
+      "plano": "Só inverno",
+      "estadoPagamento": "Pago",
+      "cliente": {
+        "emailFaturacao": "faturas.correia@contas.example.net",
+        "email": "joana.correia@casa.example.org",
+        "nomeCompleto": "Joana Correia",
+        "telemovel": "915 550 834"
+      }
+    },
+    {
+      "dataAdesao": "06/06/2018",
+      "consentimentoRGPD": "Não",
+      "nifCliente": "169383470",
+      "estadoConta": "Ativo",
+      "tipoPiscina": "Exterior",
+      "estadoPagamento": "Pago",
+      "dataProximaVisita": "15/12/2026",
+      "linha": 11,
+      "codigoCliente": "PSC-2252",
+      "volumeM3": 60.0,
+      "tecnico": "Hugo Fonseca",
+      "cliente": {
+        "email": "goncalo.lopes@casa.example.org",
+        "telemovel": "955 625 628",
+        "emailFaturacao": "faturas.lopes@contas.example.net",
+        "nomeCompleto": "Gonçalo Lopes"
+      },
+      "plano": "Visita semanal"
+    },
+    {
+      "estadoPagamento": "Pago",
+      "nifCliente": "119664640",
+      "volumeM3": 48.0,
+      "linha": 12,
+      "estadoConta": "Suspenso",
+      "tipoPiscina": "Exterior",
+      "dataProximaVisita": "29/11/2026",
+      "plano": "Visita quinzenal",
+      "consentimentoRGPD": "Não",
+      "codigoCliente": "PSC-2257",
+      "tecnico": "Hugo Fonseca",
+      "dataAdesao": "26/09/2017",
+      "cliente": {
+        "telemovel": "938 633 894",
+        "emailFaturacao": "faturas.almeida@contas.example.net",
+        "nomeCompleto": "Ana Almeida",
+        "email": "ana.almeida@casa.example.org"
+      }
+    },
+    {
+      "linha": 13,
+      "volumeM3": 60.0,
+      "tipoPiscina": "Interior aquecida",
+      "consentimentoRGPD": "Não",
+      "estadoConta": "Ativo",
+      "plano": "Visita quinzenal",
+      "nifCliente": "247403088",
+      "estadoPagamento": "Em atraso",
+      "dataAdesao": "27/01/2016",
+      "tecnico": "Vasco Nunes",
+      "dataProximaVisita": "30/11/2026",
+      "codigoCliente": "PSC-2263",
+      "cliente": {
+        "nomeCompleto": "Rui Lopes",
+        "emailFaturacao": "faturas.lopes@contas.example.net",
+        "telemovel": "934 403 446",
+        "email": "rui.lopes@casa.example.org"
+      }
+    },
+    {
+      "tipoPiscina": "Exterior",
+      "dataAdesao": "19/07/2022",
+      "consentimentoRGPD": "Não",
+      "codigoCliente": "PSC-2267",
+      "estadoConta": "Ativo",
+      "estadoPagamento": "Pago",
+      "tecnico": "Hugo Fonseca",
+      "dataProximaVisita": "12/12/2026",
+      "plano": "Visita quinzenal",
+      "linha": 14,
+      "volumeM3": 48.0,
+      "nifCliente": "171801942",
+      "cliente": {
+        "emailFaturacao": "faturas.correia@contas.example.net",
+        "email": "miguel.correia@casa.example.org",
+        "nomeCompleto": " Miguel Correia",
+        "telemovel": "942 630 359"
+      }
+    },
+    {
+      "codigoCliente": "PSC-2270",
+      "cliente": {
+        "nomeCompleto": "Gonçalo Moreira",
+        "email": "goncalo.moreira@casa.example.org",
+        "telemovel": "959 486 471",
+        "emailFaturacao": "faturas.moreira@contas.example.net"
+      },
+      "consentimentoRGPD": "Sim",
+      "nifCliente": "232885771",
+      "linha": 15,
+      "dataAdesao": "28/04/2022",
+      "plano": "Visita semanal",
+      "estadoConta": "Orçamento",
+      "dataProximaVisita": "08/12/2026",
+      "tipoPiscina": "Exterior",
+      "estadoPagamento": "Em atraso",
+      "volumeM3": 40.0,
+      "tecnico": "Filipe Araújo"
+    },
+    {
+      "linha": 16,
+      "dataAdesao": "23/04/2019",
+      "estadoPagamento": "Pago",
+      "tecnico": "Filipe Araújo",
+      "cliente": {
+        "email": "Rui.Marques@Casa.Example.Org",
+        "nomeCompleto": "Rui Marques",
+        "emailFaturacao": "faturas.marques@contas.example.net",
+        "telemovel": "952 158 543"
+      },
+      "plano": "Visita semanal",
+      "codigoCliente": "PSC-2278",
+      "estadoConta": "Ativo - época alta",
+      "nifCliente": "185172516",
+      "dataProximaVisita": "20/12/2026",
+      "tipoPiscina": "Exterior",
+      "consentimentoRGPD": "Não",
+      "volumeM3": 48.0
+    },
+    {
+      "tipoPiscina": "Exterior",
+      "dataProximaVisita": "19/12/2026",
+      "cliente": {
+        "telemovel": "952 487 962",
+        "nomeCompleto": "Bruno Teixeira",
+        "email": "bruno.teixeira@casa.example.org",
+        "emailFaturacao": "faturas.teixeira@contas.example.net"
+      },
+      "plano": "Visita quinzenal",
+      "estadoPagamento": "Pago",
+      "volumeM3": 40.0,
+      "estadoConta": "Ativo",
+      "consentimentoRGPD": "Sim",
+      "tecnico": "Filipe Araújo",
+      "codigoCliente": "PSC-2283",
+      "dataAdesao": "19/06/2024",
+      "linha": 17,
+      "nifCliente": "268895462"
+    },
+    {
+      "cliente": {
+        "email": "Ines.Ribeiro@Casa.Example.Org",
+        "nomeCompleto": "Inês Ribeiro",
+        "telemovel": "939 561 656",
+        "emailFaturacao": "faturas.ribeiro@contas.example.net"
+      },
+      "tipoPiscina": "Exterior",
+      "codigoCliente": "PSC-2285",
+      "volumeM3": 48.0,
+      "dataProximaVisita": "04/12/2026",
+      "linha": 18,
+      "tecnico": "Vasco Nunes",
+      "consentimentoRGPD": "Não",
+      "nifCliente": "108211348",
+      "plano": "Visita quinzenal",
+      "estadoConta": "Ativo",
+      "dataAdesao": "02/12/2022",
+      "estadoPagamento": "Pago"
+    },
+    {
+      "consentimentoRGPD": "Não",
+      "tipoPiscina": null,
+      "dataProximaVisita": "19/12/2026",
+      "volumeM3": 60.0,
+      "nifCliente": "162659704",
+      "dataAdesao": "17/10/2020",
+      "cliente": {
+        "emailFaturacao": "faturas.ferreira@contas.example.net",
+        "email": "Tiago.Ferreira@Casa.Example.Org",
+        "telemovel": "929 467 405",
+        "nomeCompleto": "Tiago Ferreira"
+      },
+      "plano": "Visita quinzenal",
+      "tecnico": "Hugo Fonseca",
+      "linha": 19,
+      "codigoCliente": "PSC-2292",
+      "estadoConta": "Ativo",
+      "estadoPagamento": "Pago"
+    },
+    {
+      "cliente": {
+        "telemovel": "934 675 823",
+        "nomeCompleto": "Pedro Pinto",
+        "email": "Pedro.Pinto@Casa.Example.Org",
+        "emailFaturacao": "faturas.pinto@contas.example.net"
+      },
+      "estadoConta": "Cancelado",
+      "tecnico": "Filipe Araújo",
+      "volumeM3": 75.5,
+      "plano": "Visita semanal",
+      "dataProximaVisita": "20/11/2026",
+      "codigoCliente": "PSC-2296",
+      "estadoPagamento": "Pago",
+      "nifCliente": "219549313",
+      "tipoPiscina": "Exterior",
+      "linha": 20,
+      "dataAdesao": "20/09/2018",
+      "consentimentoRGPD": "Sim"
+    },
+    {
+      "tipoPiscina": "Exterior",
+      "dataAdesao": "16/03/2019",
+      "consentimentoRGPD": "Não",
+      "dataProximaVisita": "14/12/2026",
+      "plano": "Visita quinzenal",
+      "estadoConta": "Ativo - época alta",
+      "codigoCliente": "PSC-2300",
+      "tecnico": "Hugo Fonseca",
+      "estadoPagamento": "Pago",
+      "cliente": {
+        "emailFaturacao": "faturas.mendes@contas.example.net",
+        "telemovel": "916 362 870",
+        "nomeCompleto": "Beatriz Mendes",
+        "email": "beatriz.mendes@casa.example.org"
+      },
+      "volumeM3": 75.5,
+      "linha": 21,
+      "nifCliente": "155268248"
+    },
+    {
+      "tecnico": "Vasco Nunes",
+      "dataAdesao": "12/04/2021",
+      "volumeM3": 32.5,
+      "nifCliente": "174535291",
+      "estadoConta": "Ativo",
+      "dataProximaVisita": "17/12/2026",
+      "tipoPiscina": "Condomínio",
+      "linha": 22,
+      "codigoCliente": "PSC-2305",
+      "estadoPagamento": "Pago",
+      "consentimentoRGPD": "Sim",
+      "plano": "Só inverno",
+      "cliente": {
+        "emailFaturacao": "faturas.pereira@contas.example.net",
+        "nomeCompleto": "Tiago Pereira",
+        "telemovel": "937 557 914",
+        "email": "tiago.pereira@casa.example.org"
+      }
+    },
+    {
+      "tecnico": "Filipe Araújo",
+      "volumeM3": 24.0,
+      "estadoConta": "Orçamento",
+      "dataProximaVisita": "19/11/2026",
+      "nifCliente": "168888386",
+      "cliente": {
+        "emailFaturacao": "faturas.almeida@contas.example.net",
+        "nomeCompleto": "Gonçalo Almeida",
+        "email": "goncalo.almeida@casa.example.org"
+      },
+      "linha": 23,
+      "plano": "Visita quinzenal",
+      "estadoPagamento": "Em atraso",
+      "dataAdesao": "24/01/2014",
+      "consentimentoRGPD": "Não",
+      "tipoPiscina": "Exterior",
+      "codigoCliente": "PSC-2313"
+    },
+    {
+      "nifCliente": "159735540",
+      "plano": "Visita semanal",
+      "codigoCliente": "PSC-2316",
+      "tipoPiscina": "Exterior",
+      "estadoPagamento": "Pago",
+      "volumeM3": 48.0,
+      "dataAdesao": "11/05/2020",
+      "tecnico": "Filipe Araújo",
+      "cliente": {
+        "nomeCompleto": "Tiago Ribeiro",
+        "emailFaturacao": "faturas.ribeiro@contas.example.net",
+        "email": "tiago.ribeiro@casa.example.org"
+      },
+      "consentimentoRGPD": "Não",
+      "estadoConta": "Cancelado",
+      "linha": 24,
+      "dataProximaVisita": "31/12/2026"
+    },
+    {
+      "consentimentoRGPD": "Sim",
+      "estadoConta": "Suspenso",
+      "codigoCliente": "PSC-2323",
+      "tecnico": "Hugo Fonseca",
+      "volumeM3": 75.5,
+      "linha": 25,
+      "dataProximaVisita": "12/12/2026",
+      "tipoPiscina": "Interior aquecida",
+      "dataAdesao": "24/09/2021",
+      "estadoPagamento": "Pago",
+      "plano": "Visita semanal",
+      "nifCliente": "128009284",
+      "cliente": {
+        "telemovel": "937 692 192",
+        "email": "catarina.teixeira@casa.example.org",
+        "nomeCompleto": " Catarina Teixeira",
+        "emailFaturacao": "faturas.teixeira@contas.example.net"
+      }
+    },
+    {
+      "codigoCliente": "PSC-2328",
+      "tecnico": "Vasco Nunes",
+      "volumeM3": 24.0,
+      "linha": 26,
+      "nifCliente": "259492370",
+      "cliente": {
+        "telemovel": null,
+        "nomeCompleto": "Leonor Moreira",
+        "email": "leonor.moreira@casa.example.org",
+        "emailFaturacao": "faturas.moreira@contas.example.net"
+      },
+      "tipoPiscina": "Exterior",
+      "consentimentoRGPD": "Não",
+      "estadoPagamento": "Em atraso",
+      "estadoConta": "Cancelado",
+      "dataProximaVisita": "08/12/2026",
+      "plano": "Visita quinzenal",
+      "dataAdesao": "27/02/2018"
+    },
+    {
+      "tipoPiscina": null,
+      "estadoPagamento": "Em atraso",
+      "nifCliente": "289918364",
+      "linha": 27,
+      "volumeM3": 24.0,
+      "consentimentoRGPD": "Sim",
+      "cliente": {
+        "telemovel": "926 768 987",
+        "email": "  miguel.pereira@casa.example.org ",
+        "emailFaturacao": "faturas.pereira@contas.example.net",
+        "nomeCompleto": "Miguel Pereira"
+      },
+      "dataProximaVisita": "10/12/2026",
+      "estadoConta": "Ativo",
+      "tecnico": "Filipe Araújo",
+      "codigoCliente": "PSC-2333",
+      "plano": "Visita quinzenal",
+      "dataAdesao": "19/06/2014"
+    },
+    {
+      "volumeM3": 24.0,
+      "dataAdesao": "14/06/2022",
+      "linha": 28,
+      "tipoPiscina": "Interior aquecida",
+      "cliente": {
+        "email": "beatriz.ribeiro@casa.example.org",
+        "nomeCompleto": "Beatriz Ribeiro",
+        "telemovel": "957 961 424",
+        "emailFaturacao": "faturas.ribeiro@contas.example.net"
+      },
+      "consentimentoRGPD": "Sim",
+      "dataProximaVisita": "24/11/2026",
+      "nifCliente": "282045513",
+      "codigoCliente": "PSC-2336",
+      "estadoPagamento": "Pago",
+      "estadoConta": "Ativo",
+      "plano": "Visita quinzenal",
+      "tecnico": "Filipe Araújo"
+    },
+    {
+      "cliente": {
+        "emailFaturacao": "faturas.moreira@contas.example.net",
+        "telemovel": "959 616 712",
+        "nomeCompleto": "Mariana Moreira",
+        "email": "Mariana.Moreira@Casa.Example.Org"
+      },
+      "tecnico": "Filipe Araújo",
+      "dataAdesao": "02/10/2016",
+      "tipoPiscina": "Exterior",
+      "estadoPagamento": "Pago",
+      "plano": "Só inverno",
+      "dataProximaVisita": "01/12/2026",
+      "nifCliente": "191956524",
+      "consentimentoRGPD": "Sim",
+      "codigoCliente": "PSC-2340",
+      "estadoConta": "Orçamento",
+      "linha": 29,
+      "volumeM3": 40.0
+    },
+    {
+      "plano": "Só inverno",
+      "estadoConta": "Ativo",
+      "consentimentoRGPD": "Sim",
+      "tecnico": "Hugo Fonseca",
+      "dataProximaVisita": "24/11/2026",
+      "codigoCliente": "PSC-2347",
+      "nifCliente": "241092361",
+      "dataAdesao": "10/09/2022",
+      "volumeM3": 48.0,
+      "estadoPagamento": "Pago",
+      "linha": 30,
+      "cliente": {
+        "emailFaturacao": "faturas.sousa@contas.example.net",
+        "telemovel": "927 966 431",
+        "email": "mariana.sousa@casa.example.org",
+        "nomeCompleto": " Mariana Sousa"
+      },
+      "tipoPiscina": "Condomínio"
+    },
+    {
+      "tipoPiscina": "Interior aquecida",
+      "plano": "Visita semanal",
+      "dataAdesao": "25/05/2021",
+      "linha": 31,
+      "estadoPagamento": "Pago",
+      "nifCliente": "259510792",
+      "estadoConta": "Suspenso",
+      "cliente": {
+        "nomeCompleto": "Joana Lopes",
+        "emailFaturacao": "faturas.lopes@contas.example.net",
+        "email": "Joana.Lopes@Casa.Example.Org",
+        "telemovel": null
+      },
+      "consentimentoRGPD": "Sim",
+      "volumeM3": 75.5,
+      "dataProximaVisita": "20/11/2026",
+      "codigoCliente": "PSC-2350",
+      "tecnico": "Vasco Nunes"
+    },
+    {
+      "tecnico": "Filipe Araújo",
+      "plano": "Visita semanal",
+      "linha": 32,
+      "dataAdesao": "26/10/2018",
+      "estadoConta": "Ativo",
+      "nifCliente": "132468779",
+      "codigoCliente": "PSC-2357",
+      "cliente": {
+        "telemovel": "957 696 528",
+        "email": "Marta.Lopes@Casa.Example.Org",
+        "nomeCompleto": "Marta Lopes",
+        "emailFaturacao": "faturas.lopes@contas.example.net"
+      },
+      "estadoPagamento": "Pago",
+      "volumeM3": 75.5,
+      "tipoPiscina": "Interior aquecida",
+      "dataProximaVisita": "05/12/2026",
+      "consentimentoRGPD": "Sim"
+    },
+    {
+      "estadoConta": "Cancelado",
+      "estadoPagamento": "Pago",
+      "codigoCliente": "PSC-2361",
+      "tecnico": "Hugo Fonseca",
+      "dataProximaVisita": "19/11/2026",
+      "plano": "Visita semanal",
+      "cliente": {
+        "email": "rui.ribeiro@casa.example.org",
+        "telemovel": "941 963 440",
+        "emailFaturacao": "faturas.ribeiro@contas.example.net",
+        "nomeCompleto": "Rui Ribeiro"
+      },
+      "tipoPiscina": "Condomínio",
+      "consentimentoRGPD": "Sim",
+      "linha": 33,
+      "nifCliente": "232903523",
+      "volumeM3": 48.0,
+      "dataAdesao": "04/02/2019"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "externalId": {
+        "type": "string",
+        "description": "Identifier of the customer in the company's own records."
+      },
+      "name": {
+        "type": "string",
+        "description": "Full name of the customer."
+      },
+      "contact": {
+        "type": "object",
+        "description": "How to reach the customer.",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "Personal email address of the customer."
+          },
+          "phone": {
+            "type": "string",
+            "description": "Mobile number of the customer."
+          }
+        },
+        "required": [
+          "email"
+        ]
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "paused",
+          "cancelled"
+        ],
+        "description": "Account state of the customer."
+      },
+      "plan": {
+        "type": "string",
+        "enum": [
+          "biweekly",
+          "weekly",
+          "winter_only"
+        ],
+        "description": "Visit plan the customer subscribes to."
+      },
+      "poolType": {
+        "type": "string",
+        "enum": [
+          "outdoor",
+          "indoor",
+          "shared"
+        ],
+        "description": "Kind of pool that is maintained."
+      },
+      "customerSince": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the customer joined."
+      },
+      "preferredVisitDay": {
+        "type": "string"
+      },
+      "poolVolumeLitres": {
+        "type": "number",
+        "description": "Volume."
+      }
+    },
+    "required": [
+      "externalId",
+      "name",
+      "contact",
+      "status",
+      "plan"
+    ]
+  },
+  "groundTruth": {
+    "externalId": {
+      "source": "codigoCliente",
+      "transform": "copy",
+      "why": "client code; nifCliente is the tax number and linha the export row"
+    },
+    "name": {
+      "source": "cliente.nomeCompleto",
+      "transform": "trim",
+      "why": "full name, padded; tecnico is the technician"
+    },
+    "contact.email": {
+      "source": "cliente.email",
+      "transform": "normalize_email",
+      "why": "personal email, mixed case and padded; emailFaturacao is for invoices"
+    },
+    "contact.phone": {
+      "source": "cliente.telemovel",
+      "transform": "copy",
+      "why": "mobile, null or missing for some"
+    },
+    "status": {
+      "source": "estadoConta",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Ativo": "active",
+        "Ativo - época alta": "active",
+        "Suspenso": "paused",
+        "Cancelado": "cancelled",
+        "Orçamento": null
+      },
+      "why": "account state; a quote is not a customer yet; estadoPagamento is payment"
+    },
+    "plan": {
+      "source": "plano",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Visita quinzenal": "biweekly",
+        "Visita semanal": "weekly",
+        "Só inverno": "winter_only"
+      },
+      "why": "visit plan"
+    },
+    "poolType": {
+      "source": "tipoPiscina",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Exterior": "outdoor",
+        "Interior aquecida": "indoor",
+        "Condomínio": "shared"
+      },
+      "why": "pool type, null or missing for some"
+    },
+    "customerSince": {
+      "source": "dataAdesao",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "join date (Portuguese day-first); dataProximaVisita is the next visit"
+    },
+    "preferredVisitDay": {
+      "source": null,
+      "transform": "none",
+      "why": "not exported"
+    },
+    "poolVolumeLitres": {
+      "source": null,
+      "transform": "none",
+      "why": "only cubic metres are exported",
+      "unsupportedReason": "would need volumeM3 multiplied by 1000"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "codigoCliente",
+        "nifCliente"
+      ],
+      "correctFor": "externalId"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "codigoCliente",
+        "linha"
+      ],
+      "correctFor": "externalId"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "cliente.email",
+        "cliente.emailFaturacao"
+      ],
+      "correctFor": "contact.email"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "cliente.nomeCompleto",
+        "tecnico"
+      ],
+      "correctFor": "name"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "estadoConta",
+        "estadoPagamento"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "dataAdesao",
+        "dataProximaVisita"
+      ],
+      "correctFor": "customerSince"
+    }
+  ],
+  "sourceConcepts": {
+    "codigoCliente": "customer-id",
+    "nifCliente": "other-identifier",
+    "linha": "other-identifier",
+    "cliente.nomeCompleto": "person-name",
+    "cliente.email": "email",
+    "cliente.emailFaturacao": "email",
+    "cliente.telemovel": "phone",
+    "tecnico": "person-name",
+    "estadoConta": "account-status",
+    "estadoPagamento": "payment-status",
+    "tipoPiscina": "category",
+    "plano": "category",
+    "dataAdesao": "start-date",
+    "dataProximaVisita": "other",
+    "volumeM3": "quantity",
+    "consentimentoRGPD": "consent-flag"
+  },
+  "destinationConcepts": {
+    "externalId": "customer-id",
+    "name": "person-name",
+    "contact.email": "email",
+    "contact.phone": "phone",
+    "status": "account-status",
+    "plan": "category",
+    "poolType": "category",
+    "customerSince": "start-date",
+    "preferredVisitDay": "other",
+    "poolVolumeLitres": "quantity"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 5,
+      "outcome": "transformed",
+      "output": {
+        "externalId": "PSC-2225",
+        "name": "Rita Marques",
+        "contact": {
+          "email": "rita.marques@casa.example.org"
+        },
+        "status": "paused",
+        "plan": "weekly",
+        "poolType": "outdoor",
+        "customerSince": "2016-05-08"
+      }
+    },
+    {
+      "recordIndex": 13,
+      "outcome": "transformed",
+      "output": {
+        "externalId": "PSC-2267",
+        "name": "Miguel Correia",
+        "contact": {
+          "email": "miguel.correia@casa.example.org",
+          "phone": "942 630 359"
+        },
+        "status": "active",
+        "plan": "biweekly",
+        "poolType": "outdoor",
+        "customerSince": "2022-07-19"
+      }
+    },
+    {
+      "recordIndex": 14,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 26,
+      "outcome": "transformed",
+      "output": {
+        "externalId": "PSC-2333",
+        "name": "Miguel Pereira",
+        "contact": {
+          "email": "miguel.pereira@casa.example.org",
+          "phone": "926 768 987"
+        },
+        "status": "active",
+        "plan": "biweekly",
+        "customerSince": "2014-06-19"
+      }
+    }
+  ]
+}

@@ -17,7 +17,10 @@
  * fresh holdout only, docs/evaluation/sprint-18a5-planner.md) and `b` (Sprint 18B
  * intent plan, dev + fresh holdout, docs/evaluation/sprint-18b-intent-plan.md).
  *
- * Usage: node scripts/freeze-ai-value.mjs [--set a5|b|c] [--amend "reason"]
+ * Set `d` (Sprint 18D, docs/evaluation/sprint-18d-semantic-intelligence.md): the author's holdout spec
+ * scripts contain holdout ground truth, so they are SEALED with the holdout (one digest, never listed).
+ *
+ * Usage: node scripts/freeze-ai-value.mjs [--set a5|b|c|d] [--amend "reason"]
  */
 import { createHash } from "node:crypto";
 import { execSync } from "node:child_process";
@@ -61,6 +64,40 @@ const SETS = {
     statement:
       "Frozen before any model saw this evaluation set and before the live run. The set was written by an independent author without access to the implementation, prompts or earlier holdouts. The engineer never opened the holdout; the frozen harness and scorer read it and emit aggregates and per-index rows only.",
   },
+  d: {
+    out: "docs/evidence/sprint-18d/semantic-freeze.json",
+    root: "tests/fixtures/eval-18d",
+    preregistration: "docs/evaluation/sprint-18d-semantic-intelligence.md",
+    experiment: "sprint-18d-semantic-intelligence",
+    dev: true,
+    sealed: ["author/specs_holdout_wedge.py", "author/specs_holdout_general.py"],
+    listed: ["author/lib.py", "author/specs_dev.py", "author/build.py", "author/check.mjs"],
+    statement:
+      "Frozen before any model saw this evaluation set. The set was written by an independent author without access to the implementation, prompts or earlier holdouts. The engineer never opened the holdout or the author's holdout spec scripts (sealed in the holdout digest); the frozen harness and scorer read the holdout and emit aggregates and per-index rows only.",
+  },
+  d2: {
+    out: "docs/evidence/sprint-18d/rescue-confirmatory-freeze.json",
+    root: "tests/fixtures/eval-18d",
+    preregistration: "docs/evaluation/sprint-18d-rescue-confirmatory.md",
+    experiment: "sprint-18d-rescue-confirmatory",
+    dev: true,
+    sealed: ["author/specs_holdout_wedge.py", "author/specs_holdout_general.py"],
+    listed: ["author/lib.py", "author/specs_dev.py", "author/build.py", "author/check.mjs"],
+    code: ["src/evaluation/eval-18d.ts", "src/plan/compile.ts", "src/matching/local-matcher.ts", "src/matching/lexicon.ts", "src/inference/intent-prompt.ts", "src/twin/target-semantics.ts", "src/semantics/verify.ts", "tests/evaluation/eval-18d.test.ts"],
+    statement:
+      "Frozen before any model saw the 18D holdout. Candidate (RB + local) and baseline (A + base) fixed at the listed code hashes. The engineer never opened the holdout or the author's holdout specs; the frozen scorer emits aggregates and per-index rows only.",
+  },
+  f: {
+    out: "docs/evidence/sprint-18f/freeze.json",
+    root: "tests/fixtures/eval-18f",
+    preregistration: "docs/evaluation/sprint-18f-confirmatory.md",
+    experiment: "sprint-18f-confirmatory",
+    dev: false,
+    sealedGlob: "author/specs_holdout_",
+    code: ["src/evaluation/eval-18d.ts", "src/evaluation/eval-18c.ts", "src/plan/compile.ts", "src/plan/agreement.ts", "src/matching/local-matcher.ts", "src/matching/lexicon.ts", "src/app/guided/field-plan.ts", "src/inference/intent-prompt.ts", "src/twin/target-semantics.ts", "src/semantics/verify.ts", "tests/evaluation/eval-18f.test.ts"],
+    statement:
+      "Frozen before any model saw the eval-18f holdout. Baseline (A + base) and candidate (RB + local, ADR 0022) fixed at the listed code hashes. The holdout was written by a new independent author after the ADR 0022 implementation; the engineer never opened it or the author's holdout specs.",
+  },
 };
 const setIndex = process.argv.indexOf("--set");
 const setName = setIndex >= 0 ? process.argv[setIndex + 1] : "18a";
@@ -79,8 +116,17 @@ const list = (dir) =>
     .sort()
     .map((name) => path.join(root, dir, name));
 
+function sealedFiles() {
+  const named = (SET.sealed ?? []).map((name) => path.join(root, name));
+  if (!SET.sealedGlob) return named;
+  const dir = path.join(root, path.dirname(SET.sealedGlob));
+  const prefix = path.basename(SET.sealedGlob);
+  const globbed = fs.existsSync(dir) ? fs.readdirSync(dir).filter((name) => name.startsWith(prefix)).sort().map((name) => path.join(dir, name)) : [];
+  return [...named, ...globbed];
+}
+
 export function holdoutDigest() {
-  const files = list("holdout");
+  const files = [...list("holdout"), ...sealedFiles()];
   return { count: files.length, sha256: sha(files.map((file) => sha(fs.readFileSync(file))).join("\n")) };
 }
 
@@ -104,8 +150,9 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     frozenFromCommit: previous?.frozenFromCommit ?? execSync("git rev-parse HEAD").toString().trim(),
     statement: SET.statement,
     preregistration: { path: preregistration, sha256AboveResults: preregistrationDigest() },
-    files: Object.fromEntries([path.join(root, "README.md"), ...(SET.dev ? list("dev") : [])].map((file) => [file, sha(fs.readFileSync(file))])),
+    files: Object.fromEntries([path.join(root, "README.md"), ...(SET.dev ? list("dev") : []), ...(SET.listed ?? []).map((name) => path.join(root, name)), ...(SET.code ?? [])].map((file) => [file, sha(fs.readFileSync(file))])),
     holdout: holdoutDigest(),
+    sealed: sealedFiles(),
     amendments: [...(previous?.amendments ?? [])],
   };
   if (amendIndex >= 0) manifest.amendments.push({ at: new Date().toISOString(), reason: process.argv[amendIndex + 1] ?? "unspecified" });

@@ -1,0 +1,959 @@
+{
+  "scenarioId": "fire-extinguisher-inspections-to-maintenance-system",
+  "split": "holdout",
+  "track": "general",
+  "industry": "volunteer fire brigade extinguisher inspection service",
+  "sourceLanguage": "pt",
+  "description": "Extinguisher inspection export of a fictional volunteer fire brigade's inspection service (Portuguese camelCase, nested site with nested address) to be loaded into a maintenance system.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "numSerie": "CD739234",
+      "piso": "R/C",
+      "local": {
+        "cliente": "Pavilhão Municipal ",
+        "morada": {
+          "localidade": "Paredes",
+          "codigoPostal": "4575-190"
+        }
+      },
+      "numExtintor": "EXT-04410",
+      "resultadoInspecao": "Conforme",
+      "estadoFaturacao": "Faturado",
+      "dataFabrico": "01/08/2014",
+      "proximaInspecao": "21/05/2027",
+      "dataInspecao": "18/01/2026",
+      "capacidade": 2.0,
+      "tipoAgente": "Pó químico ABC",
+      "emailResponsavel": "bruno.teixeira@seguranca.example.org",
+      "linha": 1,
+      "responsavelSeguranca": "Bruno Teixeira",
+      "inspetor": "Paulo Rocha"
+    },
+    {
+      "numExtintor": "EXT-04413",
+      "piso": "Cave",
+      "linha": 2,
+      "proximaInspecao": null,
+      "inspetor": "Sérgio Vaz",
+      "responsavelSeguranca": "Gonçalo Martins",
+      "resultadoInspecao": "Conforme c/ recarga",
+      "local": {
+        "cliente": " Lar Santa Clara  ",
+        "morada": {
+          "localidade": "Penafiel",
+          "codigoPostal": "4560-410"
+        }
+      },
+      "tipoAgente": "CO2",
+      "dataFabrico": "07/10/2022",
+      "dataInspecao": "28/04/2026",
+      "capacidade": 2.0,
+      "estadoFaturacao": "Faturado",
+      "numSerie": "CD285923",
+      "emailResponsavel": "goncalo.martins@seguranca.example.org"
+    },
+    {
+      "numSerie": "PQ205632",
+      "resultadoInspecao": "Conforme",
+      "capacidade": 5.0,
+      "proximaInspecao": "06/08/2027",
+      "dataInspecao": "22/02/2026",
+      "emailResponsavel": "leonor.martins@seguranca.example.org",
+      "responsavelSeguranca": "Leonor Martins",
+      "inspetor": "Sérgio Vaz",
+      "linha": 3,
+      "piso": "Cave",
+      "dataFabrico": "21/01/2014",
+      "estadoFaturacao": "Faturado",
+      "tipoAgente": "CO2",
+      "local": {
+        "cliente": "Supermercado Avenida",
+        "morada": {
+          "localidade": "Paredes",
+          "codigoPostal": "4575-022"
+        }
+      },
+      "numExtintor": "EXT-04416"
+    },
+    {
+      "estadoFaturacao": "Faturado",
+      "resultadoInspecao": "Conforme c/ recarga",
+      "linha": 4,
+      "inspetor": "Armando Lima",
+      "local": {
+        "morada": {
+          "codigoPostal": "4575-022",
+          "localidade": "Paredes"
+        },
+        "cliente": "Supermercado Avenida"
+      },
+      "numSerie": "AA511168",
+      "emailResponsavel": "Leonor.Martins@Seguranca.Example.Org",
+      "dataInspecao": "27/08/2026",
+      "dataFabrico": "11/06/2017",
+      "responsavelSeguranca": "Leonor Martins",
+      "numExtintor": "EXT-04419",
+      "tipoAgente": "Pó químico ABC",
+      "piso": "R/C",
+      "proximaInspecao": "17/08/2027",
+      "capacidade": 6.0
+    },
+    {
+      "piso": "R/C",
+      "estadoFaturacao": "Faturado",
+      "dataFabrico": "24/12/2017",
+      "capacidade": 6.0,
+      "inspetor": "Paulo Rocha",
+      "tipoAgente": "Espuma",
+      "numSerie": "CD377580",
+      "dataInspecao": "25/03/2026",
+      "local": {
+        "cliente": "Lar Santa Clara ",
+        "morada": {
+          "localidade": "Penafiel",
+          "codigoPostal": "4560-410"
+        }
+      },
+      "numExtintor": "EXT-04422",
+      "resultadoInspecao": "Conforme",
+      "emailResponsavel": "Goncalo.Martins@Seguranca.Example.Org",
+      "linha": 5,
+      "responsavelSeguranca": "Gonçalo Martins",
+      "proximaInspecao": "10/06/2027"
+    },
+    {
+      "piso": "Cave",
+      "dataFabrico": "26/04/2024",
+      "estadoFaturacao": "Faturado",
+      "inspetor": "Armando Lima",
+      "local": {
+        "cliente": " Junta de Freguesia de Vilar",
+        "morada": {
+          "codigoPostal": "4560-870",
+          "localidade": "Penafiel"
+        }
+      },
+      "emailResponsavel": "sofia.costa@seguranca.example.org",
+      "numExtintor": "EXT-04425",
+      "numSerie": "CD563515",
+      "linha": 6,
+      "dataInspecao": "26/03/2026",
+      "responsavelSeguranca": "Sofia Costa",
+      "capacidade": 6.0,
+      "resultadoInspecao": "Conforme",
+      "tipoAgente": "Água aditivada",
+      "proximaInspecao": null
+    },
+    {
+      "tipoAgente": "Pó químico ABC",
+      "responsavelSeguranca": "Nuno Martins",
+      "inspetor": "Armando Lima",
+      "capacidade": 9.0,
+      "local": {
+        "cliente": "Fábrica de Calçado Sá & Filhos",
+        "morada": {
+          "codigoPostal": "4580-301",
+          "localidade": "Paredes"
+        }
+      },
+      "estadoFaturacao": "Por faturar",
+      "proximaInspecao": "26/02/2027",
+      "numSerie": "CD573698",
+      "piso": "2.º",
+      "dataFabrico": "29/04/2020",
+      "resultadoInspecao": "Conforme",
+      "numExtintor": "EXT-04428",
+      "linha": 7,
+      "emailResponsavel": "nuno.martins@seguranca.example.org",
+      "dataInspecao": "13/05/2026"
+    },
+    {
+      "local": {
+        "morada": {
+          "localidade": "Paredes",
+          "codigoPostal": "4575-022"
+        },
+        "cliente": "Supermercado Avenida"
+      },
+      "numSerie": "CD626127",
+      "inspetor": "Paulo Rocha",
+      "numExtintor": "EXT-04431",
+      "tipoAgente": "Água aditivada",
+      "capacidade": 9.0,
+      "dataFabrico": "25/11/2022",
+      "resultadoInspecao": "Conforme c/ recarga",
+      "piso": "2.º",
+      "dataInspecao": "16/09/2026",
+      "responsavelSeguranca": "Leonor Martins",
+      "linha": 8,
+      "estadoFaturacao": "Por faturar",
+      "proximaInspecao": null,
+      "emailResponsavel": "Leonor.Martins@Seguranca.Example.Org"
+    },
+    {
+      "estadoFaturacao": "Por faturar",
+      "emailResponsavel": "leonor.martins@seguranca.example.org",
+      "dataInspecao": "17/05/2026",
+      "capacidade": 2.0,
+      "local": {
+        "cliente": "Supermercado Avenida",
+        "morada": {
+          "codigoPostal": "4575-022",
+          "localidade": "Paredes"
+        }
+      },
+      "responsavelSeguranca": "Leonor Martins",
+      "resultadoInspecao": "Conforme",
+      "numExtintor": "EXT-04434",
+      "numSerie": "CD572131",
+      "dataFabrico": "27/11/2021",
+      "tipoAgente": "CO2",
+      "piso": "1.º",
+      "inspetor": "Paulo Rocha",
+      "linha": 9
+    },
+    {
+      "local": {
+        "cliente": " Junta de Freguesia de Vilar",
+        "morada": {
+          "codigoPostal": "4560-870",
+          "localidade": "Penafiel"
+        }
+      },
+      "linha": 10,
+      "resultadoInspecao": "Conforme",
+      "inspetor": "Paulo Rocha",
+      "responsavelSeguranca": "Sofia Costa",
+      "estadoFaturacao": "Por faturar",
+      "tipoAgente": "Espuma",
+      "piso": "1.º",
+      "dataFabrico": "26/12/2019",
+      "dataInspecao": "03/05/2026",
+      "proximaInspecao": "31/07/2027",
+      "numSerie": "PQ844569",
+      "emailResponsavel": "sofia.costa@seguranca.example.org",
+      "capacidade": 6.0,
+      "numExtintor": "EXT-04437"
+    },
+    {
+      "numSerie": "CD736925",
+      "emailResponsavel": "bruno.teixeira@seguranca.example.org",
+      "capacidade": 6.0,
+      "numExtintor": "EXT-04440",
+      "inspetor": "Armando Lima",
+      "local": {
+        "morada": {
+          "codigoPostal": "4575-190",
+          "localidade": "Paredes"
+        },
+        "cliente": " Pavilhão Municipal"
+      },
+      "responsavelSeguranca": "Bruno Teixeira",
+      "resultadoInspecao": "Não conforme",
+      "dataFabrico": "04/01/2014",
+      "linha": 11,
+      "proximaInspecao": "22/05/2027",
+      "estadoFaturacao": "Faturado",
+      "piso": "Cave",
+      "dataInspecao": "20/07/2026",
+      "tipoAgente": "Pó químico ABC"
+    },
+    {
+      "emailResponsavel": "Goncalo.Martins@Seguranca.Example.Org",
+      "resultadoInspecao": "Conforme",
+      "local": {
+        "morada": {
+          "localidade": "Penafiel",
+          "codigoPostal": "4560-410"
+        },
+        "cliente": "Lar Santa Clara"
+      },
+      "proximaInspecao": "06/02/2027",
+      "estadoFaturacao": "Por faturar",
+      "inspetor": "Paulo Rocha",
+      "responsavelSeguranca": "Gonçalo Martins",
+      "dataInspecao": "08/10/2026",
+      "capacidade": 2.0,
+      "dataFabrico": "27/01/2020",
+      "numSerie": "AA318327",
+      "piso": "1.º",
+      "tipoAgente": "Pó químico ABC",
+      "linha": 12,
+      "numExtintor": "EXT-04443"
+    },
+    {
+      "piso": "R/C",
+      "dataInspecao": "18/02/2026",
+      "numExtintor": "EXT-04446",
+      "capacidade": 6.0,
+      "local": {
+        "cliente": "Supermercado Avenida",
+        "morada": {
+          "codigoPostal": "4575-022",
+          "localidade": "Paredes"
+        }
+      },
+      "responsavelSeguranca": "Leonor Martins",
+      "estadoFaturacao": "Faturado",
+      "linha": 13,
+      "numSerie": "PQ402899",
+      "emailResponsavel": "Leonor.Martins@Seguranca.Example.Org",
+      "proximaInspecao": "01/10/2027",
+      "resultadoInspecao": "Conforme c/ recarga",
+      "dataFabrico": "23/03/2013",
+      "tipoAgente": "Pó químico ABC",
+      "inspetor": "Sérgio Vaz"
+    },
+    {
+      "piso": "Cave",
+      "capacidade": 6.0,
+      "tipoAgente": "Água aditivada",
+      "inspetor": "Paulo Rocha",
+      "numExtintor": "EXT-04449",
+      "resultadoInspecao": "Abate",
+      "linha": 14,
+      "emailResponsavel": "leonor.martins@seguranca.example.org",
+      "dataInspecao": "02/02/2026",
+      "local": {
+        "morada": {
+          "codigoPostal": "4575-022",
+          "localidade": "Paredes"
+        },
+        "cliente": "Supermercado Avenida"
+      },
+      "dataFabrico": "30/12/2024",
+      "estadoFaturacao": "Por faturar",
+      "numSerie": "CD799128",
+      "responsavelSeguranca": "Leonor Martins",
+      "proximaInspecao": "11/07/2027"
+    },
+    {
+      "linha": 15,
+      "numSerie": "PQ230983",
+      "inspetor": "Paulo Rocha",
+      "estadoFaturacao": "Por faturar",
+      "responsavelSeguranca": "Leonor Martins",
+      "resultadoInspecao": "Conforme",
+      "numExtintor": "EXT-04452",
+      "local": {
+        "morada": {
+          "localidade": "Paredes",
+          "codigoPostal": "4575-022"
+        },
+        "cliente": "Supermercado Avenida"
+      },
+      "piso": "2.º",
+      "tipoAgente": "Pó químico ABC",
+      "capacidade": 9.0,
+      "dataFabrico": "11/12/2018",
+      "emailResponsavel": "leonor.martins@seguranca.example.org",
+      "dataInspecao": "16/02/2026",
+      "proximaInspecao": "14/04/2027"
+    },
+    {
+      "dataFabrico": "24/01/2023",
+      "piso": "R/C",
+      "linha": 16,
+      "local": {
+        "morada": {
+          "codigoPostal": "4575-190",
+          "localidade": "Paredes"
+        },
+        "cliente": "Pavilhão Municipal"
+      },
+      "dataInspecao": "03/04/2026",
+      "capacidade": 2.0,
+      "responsavelSeguranca": "Bruno Teixeira",
+      "numExtintor": "EXT-04455",
+      "estadoFaturacao": "Faturado",
+      "numSerie": "CD884984",
+      "resultadoInspecao": "Conforme",
+      "inspetor": "Armando Lima",
+      "proximaInspecao": "13/04/2027",
+      "emailResponsavel": "Bruno.Teixeira@Seguranca.Example.Org",
+      "tipoAgente": "CO2"
+    },
+    {
+      "inspetor": "Armando Lima",
+      "responsavelSeguranca": "Gonçalo Martins",
+      "estadoFaturacao": "Por faturar",
+      "resultadoInspecao": "Abate",
+      "tipoAgente": "Pó químico ABC",
+      "piso": "R/C",
+      "numExtintor": "EXT-04458",
+      "dataInspecao": "27/04/2026",
+      "linha": 17,
+      "emailResponsavel": "Goncalo.Martins@Seguranca.Example.Org",
+      "local": {
+        "cliente": "  Lar Santa Clara ",
+        "morada": {
+          "codigoPostal": "4560-410",
+          "localidade": "Penafiel"
+        }
+      },
+      "proximaInspecao": "29/06/2027",
+      "numSerie": "AA287850",
+      "capacidade": 6.0,
+      "dataFabrico": "15/04/2016"
+    },
+    {
+      "linha": 18,
+      "piso": "R/C",
+      "proximaInspecao": "03/04/2027",
+      "local": {
+        "cliente": "Junta de Freguesia de Vilar",
+        "morada": {
+          "codigoPostal": "4560-870",
+          "localidade": "Penafiel"
+        }
+      },
+      "inspetor": "Paulo Rocha",
+      "resultadoInspecao": "Não conforme",
+      "capacidade": 5.0,
+      "responsavelSeguranca": "Sofia Costa",
+      "emailResponsavel": "sofia.costa@seguranca.example.org",
+      "numSerie": "CD904463",
+      "numExtintor": "EXT-04461",
+      "dataFabrico": "07/12/2013",
+      "estadoFaturacao": "Faturado",
+      "dataInspecao": "31/08/2026",
+      "tipoAgente": "CO2"
+    },
+    {
+      "estadoFaturacao": "Por faturar",
+      "numSerie": "CD446752",
+      "emailResponsavel": "bruno.teixeira@seguranca.example.org",
+      "responsavelSeguranca": "Bruno Teixeira",
+      "numExtintor": "EXT-04464",
+      "capacidade": 5.0,
+      "resultadoInspecao": "Conforme",
+      "linha": 19,
+      "tipoAgente": "CO2",
+      "dataInspecao": "14/10/2026",
+      "local": {
+        "morada": {
+          "codigoPostal": "4575-190",
+          "localidade": "Paredes"
+        },
+        "cliente": "Pavilhão Municipal"
+      },
+      "piso": "2.º",
+      "proximaInspecao": "04/02/2027",
+      "dataFabrico": "24/04/2019",
+      "inspetor": "Sérgio Vaz"
+    },
+    {
+      "numExtintor": "EXT-04467",
+      "emailResponsavel": "goncalo.martins@seguranca.example.org",
+      "linha": 20,
+      "proximaInspecao": "22/01/2027",
+      "local": {
+        "morada": {
+          "localidade": "Penafiel",
+          "codigoPostal": "4560-410"
+        },
+        "cliente": "Lar Santa Clara"
+      },
+      "numSerie": "PQ777234",
+      "estadoFaturacao": "Faturado",
+      "inspetor": "Armando Lima",
+      "piso": "2.º",
+      "responsavelSeguranca": "Gonçalo Martins",
+      "tipoAgente": "Pó químico ABC",
+      "resultadoInspecao": "Conforme",
+      "capacidade": 6.0,
+      "dataInspecao": "04/03/2026",
+      "dataFabrico": "17/04/2015"
+    },
+    {
+      "linha": 21,
+      "piso": "2.º",
+      "capacidade": 6.0,
+      "numSerie": "PQ872686",
+      "proximaInspecao": "20/08/2027",
+      "tipoAgente": "Espuma",
+      "local": {
+        "cliente": "Fábrica de Calçado Sá & Filhos",
+        "morada": {
+          "codigoPostal": "4580-301",
+          "localidade": "Paredes"
+        }
+      },
+      "emailResponsavel": "nuno.martins@seguranca.example.org",
+      "estadoFaturacao": "Faturado",
+      "responsavelSeguranca": "Nuno Martins",
+      "dataInspecao": "19/05/2026",
+      "dataFabrico": "09/11/2018",
+      "resultadoInspecao": "Conforme",
+      "numExtintor": "EXT-04470",
+      "inspetor": "Sérgio Vaz"
+    },
+    {
+      "responsavelSeguranca": "Nuno Martins",
+      "inspetor": "Armando Lima",
+      "resultadoInspecao": "Conforme",
+      "dataInspecao": "15/09/2026",
+      "numSerie": "AA729770",
+      "proximaInspecao": null,
+      "dataFabrico": "12/07/2023",
+      "tipoAgente": "CO2",
+      "emailResponsavel": "nuno.martins@seguranca.example.org",
+      "numExtintor": "EXT-04473",
+      "piso": "1.º",
+      "capacidade": 5.0,
+      "local": {
+        "morada": {
+          "codigoPostal": "4580-301",
+          "localidade": "Paredes"
+        },
+        "cliente": "Fábrica de Calçado Sá & Filhos"
+      },
+      "linha": 22,
+      "estadoFaturacao": "Faturado"
+    },
+    {
+      "tipoAgente": "Água aditivada",
+      "dataFabrico": "18/02/2020",
+      "local": {
+        "cliente": "Escola Básica da Ribeira",
+        "morada": {
+          "codigoPostal": "4560-123",
+          "localidade": "Penafiel"
+        }
+      },
+      "responsavelSeguranca": "Beatriz Sousa",
+      "linha": 23,
+      "numSerie": "AA409544",
+      "numExtintor": "EXT-04476",
+      "dataInspecao": "08/07/2026",
+      "estadoFaturacao": "Faturado",
+      "emailResponsavel": "Beatriz.Sousa@Seguranca.Example.Org",
+      "inspetor": "Sérgio Vaz",
+      "resultadoInspecao": "Abate",
+      "piso": "2.º",
+      "capacidade": 9.0
+    },
+    {
+      "responsavelSeguranca": "Leonor Martins",
+      "numSerie": "CD596645",
+      "local": {
+        "cliente": "Supermercado Avenida",
+        "morada": {
+          "codigoPostal": "4575-022",
+          "localidade": "Paredes"
+        }
+      },
+      "piso": "Cave",
+      "dataFabrico": "20/02/2019",
+      "tipoAgente": "Espuma",
+      "resultadoInspecao": "Conforme c/ recarga",
+      "dataInspecao": "25/09/2026",
+      "inspetor": "Sérgio Vaz",
+      "proximaInspecao": "20/06/2027",
+      "linha": 24,
+      "numExtintor": "EXT-04479",
+      "capacidade": 6.0,
+      "estadoFaturacao": "Faturado",
+      "emailResponsavel": "leonor.martins@seguranca.example.org"
+    },
+    {
+      "estadoFaturacao": "Faturado",
+      "dataFabrico": "20/06/2017",
+      "linha": 25,
+      "local": {
+        "cliente": "Supermercado Avenida",
+        "morada": {
+          "codigoPostal": "4575-022",
+          "localidade": "Paredes"
+        }
+      },
+      "responsavelSeguranca": "Leonor Martins",
+      "emailResponsavel": "leonor.martins@seguranca.example.org",
+      "capacidade": 9.0,
+      "piso": "Cave",
+      "dataInspecao": "16/04/2026",
+      "numExtintor": "EXT-04482",
+      "tipoAgente": "Espuma",
+      "resultadoInspecao": "Não conforme",
+      "numSerie": "CD232256",
+      "inspetor": "Armando Lima"
+    },
+    {
+      "responsavelSeguranca": "Bruno Teixeira",
+      "inspetor": "Sérgio Vaz",
+      "resultadoInspecao": "Não conforme",
+      "numSerie": "AA432392",
+      "dataFabrico": "27/06/2012",
+      "local": {
+        "morada": {
+          "localidade": "Paredes",
+          "codigoPostal": "4575-190"
+        },
+        "cliente": "Pavilhão Municipal"
+      },
+      "dataInspecao": "18/04/2026",
+      "piso": "1.º",
+      "proximaInspecao": "01/03/2027",
+      "emailResponsavel": "bruno.teixeira@seguranca.example.org",
+      "tipoAgente": "Água aditivada",
+      "capacidade": 9.0,
+      "linha": 26,
+      "numExtintor": "EXT-04485",
+      "estadoFaturacao": "Faturado"
+    },
+    {
+      "responsavelSeguranca": "Leonor Martins",
+      "local": {
+        "cliente": "Supermercado Avenida",
+        "morada": {
+          "localidade": "Paredes",
+          "codigoPostal": "4575-022"
+        }
+      },
+      "dataInspecao": "17/02/2026",
+      "inspetor": "Sérgio Vaz",
+      "dataFabrico": "09/04/2016",
+      "tipoAgente": "CO2",
+      "emailResponsavel": "LEONOR.MARTINS@SEGURANCA.EXAMPLE.ORG",
+      "capacidade": 5.0,
+      "proximaInspecao": "17/01/2027",
+      "resultadoInspecao": "Conforme c/ recarga",
+      "linha": 27,
+      "piso": "R/C",
+      "estadoFaturacao": "Por faturar",
+      "numExtintor": "EXT-04488",
+      "numSerie": "AA170424"
+    },
+    {
+      "emailResponsavel": "bruno.teixeira@seguranca.example.org",
+      "numExtintor": "EXT-04491",
+      "estadoFaturacao": "Faturado",
+      "piso": "Cave",
+      "proximaInspecao": "28/10/2027",
+      "responsavelSeguranca": "Bruno Teixeira",
+      "capacidade": 5.0,
+      "dataFabrico": "19/01/2012",
+      "inspetor": "Sérgio Vaz",
+      "linha": 28,
+      "resultadoInspecao": "Conforme",
+      "dataInspecao": "20/06/2026",
+      "numSerie": "AA920910",
+      "tipoAgente": "CO2",
+      "local": {
+        "cliente": "Pavilhão Municipal",
+        "morada": {
+          "codigoPostal": "4575-190",
+          "localidade": "Paredes"
+        }
+      }
+    },
+    {
+      "piso": "1.º",
+      "numSerie": "PQ521221",
+      "capacidade": 9.0,
+      "numExtintor": "EXT-04494",
+      "estadoFaturacao": "Por faturar",
+      "responsavelSeguranca": "Gonçalo Martins",
+      "emailResponsavel": "goncalo.martins@seguranca.example.org",
+      "dataInspecao": "26/08/2026",
+      "resultadoInspecao": "Conforme c/ recarga",
+      "local": {
+        "morada": {
+          "codigoPostal": "4560-410",
+          "localidade": "Penafiel"
+        },
+        "cliente": "Lar Santa Clara"
+      },
+      "linha": 29,
+      "proximaInspecao": "29/03/2027",
+      "dataFabrico": "16/10/2012",
+      "inspetor": "Paulo Rocha",
+      "tipoAgente": "Água aditivada"
+    },
+    {
+      "emailResponsavel": "LEONOR.MARTINS@SEGURANCA.EXAMPLE.ORG",
+      "local": {
+        "morada": {
+          "codigoPostal": "4575-022",
+          "localidade": "Paredes"
+        },
+        "cliente": "Supermercado Avenida"
+      },
+      "numSerie": "AA218375",
+      "tipoAgente": "Pó químico ABC",
+      "numExtintor": "EXT-04497",
+      "responsavelSeguranca": "Leonor Martins",
+      "linha": 30,
+      "estadoFaturacao": "Faturado",
+      "proximaInspecao": "23/04/2027",
+      "capacidade": 9.0,
+      "inspetor": "Sérgio Vaz",
+      "dataFabrico": "13/12/2012",
+      "dataInspecao": "12/10/2026",
+      "piso": "2.º",
+      "resultadoInspecao": "Conforme c/ recarga"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "extinguisher_id": {
+        "type": "string",
+        "description": "Identifier of the extinguisher on its inspection label."
+      },
+      "site_owner": {
+        "type": "string",
+        "description": "Organisation responsible for the site where the extinguisher hangs."
+      },
+      "postal_code": {
+        "type": "string",
+        "description": "Postal code of the site."
+      },
+      "agent": {
+        "type": "string",
+        "enum": [
+          "abc_powder",
+          "co2",
+          "water_additive",
+          "foam"
+        ],
+        "description": "Extinguishing agent in the unit."
+      },
+      "capacity_kg": {
+        "type": "number",
+        "description": "Capacity."
+      },
+      "result": {
+        "type": "string",
+        "enum": [
+          "pass",
+          "pass_recharged",
+          "fail"
+        ],
+        "description": "Outcome of the inspection."
+      },
+      "inspected_on": {
+        "type": "string",
+        "format": "date",
+        "description": "Date of the inspection."
+      },
+      "next_inspection_on": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the next inspection is scheduled."
+      },
+      "age_years": {
+        "type": "integer",
+        "description": "Age of the extinguisher in years."
+      },
+      "floor_plan_ref": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "extinguisher_id",
+      "site_owner",
+      "agent",
+      "result",
+      "inspected_on"
+    ]
+  },
+  "groundTruth": {
+    "extinguisher_id": {
+      "source": "numExtintor",
+      "transform": "copy",
+      "why": "label number; numSerie is the manufacturer serial and linha the row"
+    },
+    "site_owner": {
+      "source": "local.cliente",
+      "transform": "trim",
+      "why": "site organisation, padded; responsavelSeguranca is its safety officer and inspetor the inspector"
+    },
+    "postal_code": {
+      "source": "local.morada.codigoPostal",
+      "transform": "copy",
+      "why": "postal code; localidade is the town"
+    },
+    "agent": {
+      "source": "tipoAgente",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Pó químico ABC": "abc_powder",
+        "CO2": "co2",
+        "Água aditivada": "water_additive",
+        "Espuma": "foam"
+      },
+      "why": "agent"
+    },
+    "capacity_kg": {
+      "source": "capacidade",
+      "transform": "copy",
+      "why": "capacity in kg"
+    },
+    "result": {
+      "source": "resultadoInspecao",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Conforme": "pass",
+        "Conforme c/ recarga": "pass_recharged",
+        "Não conforme": "fail",
+        "Abate": null
+      },
+      "why": "result; scrapped units need review; estadoFaturacao is invoicing"
+    },
+    "inspected_on": {
+      "source": "dataInspecao",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "inspection date (Portuguese day-first); dataFabrico is the manufacture date"
+    },
+    "next_inspection_on": {
+      "source": "proximaInspecao",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "next inspection, null or missing for some"
+    },
+    "age_years": {
+      "source": null,
+      "transform": "none",
+      "why": "not exported",
+      "unsupportedReason": "would need the years between dataFabrico and the inspection date"
+    },
+    "floor_plan_ref": {
+      "source": null,
+      "transform": "none",
+      "why": "not exported; piso is only the floor"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "numExtintor",
+        "numSerie"
+      ],
+      "correctFor": "extinguisher_id"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "numExtintor",
+        "linha"
+      ],
+      "correctFor": "extinguisher_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "local.cliente",
+        "responsavelSeguranca"
+      ],
+      "correctFor": "site_owner"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "resultadoInspecao",
+        "estadoFaturacao"
+      ],
+      "correctFor": "result"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "dataInspecao",
+        "dataFabrico"
+      ],
+      "correctFor": "inspected_on"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "proximaInspecao",
+        "dataInspecao"
+      ],
+      "correctFor": "next_inspection_on"
+    }
+  ],
+  "sourceConcepts": {
+    "numExtintor": "customer-id",
+    "numSerie": "other-identifier",
+    "linha": "other-identifier",
+    "local.cliente": "organization-name",
+    "local.morada.codigoPostal": "other",
+    "local.morada.localidade": "city",
+    "tipoAgente": "category",
+    "capacidade": "quantity",
+    "resultadoInspecao": "account-status",
+    "estadoFaturacao": "payment-status",
+    "inspetor": "person-name",
+    "responsavelSeguranca": "person-name",
+    "emailResponsavel": "email",
+    "dataInspecao": "start-date",
+    "dataFabrico": "created-date",
+    "proximaInspecao": "end-date",
+    "piso": "category"
+  },
+  "destinationConcepts": {
+    "extinguisher_id": "customer-id",
+    "site_owner": "organization-name",
+    "postal_code": "other",
+    "agent": "category",
+    "capacity_kg": "quantity",
+    "result": "account-status",
+    "inspected_on": "start-date",
+    "next_inspection_on": "end-date",
+    "age_years": "quantity",
+    "floor_plan_ref": "other"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 1,
+      "outcome": "transformed",
+      "output": {
+        "extinguisher_id": "EXT-04413",
+        "site_owner": "Lar Santa Clara",
+        "postal_code": "4560-410",
+        "agent": "co2",
+        "capacity_kg": 2.0,
+        "result": "pass_recharged",
+        "inspected_on": "2026-04-28"
+      }
+    },
+    {
+      "recordIndex": 22,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 23,
+      "outcome": "transformed",
+      "output": {
+        "extinguisher_id": "EXT-04479",
+        "site_owner": "Supermercado Avenida",
+        "postal_code": "4575-022",
+        "agent": "foam",
+        "capacity_kg": 6.0,
+        "result": "pass_recharged",
+        "inspected_on": "2026-09-25",
+        "next_inspection_on": "2027-06-20"
+      }
+    },
+    {
+      "recordIndex": 29,
+      "outcome": "transformed",
+      "output": {
+        "extinguisher_id": "EXT-04497",
+        "site_owner": "Supermercado Avenida",
+        "postal_code": "4575-022",
+        "agent": "abc_powder",
+        "capacity_kg": 9.0,
+        "result": "pass_recharged",
+        "inspected_on": "2026-10-12",
+        "next_inspection_on": "2027-04-23"
+      }
+    }
+  ]
+}

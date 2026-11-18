@@ -1,0 +1,1050 @@
+{
+  "scenarioId": "car-rental-corporate-accounts-to-service-desk",
+  "split": "holdout",
+  "track": "wedge",
+  "industry": "car rental corporate account contacts",
+  "sourceLanguage": "es",
+  "description": "Corporate account contact export of a fictional Mexican car-rental company (Spanish snake_case abbreviations, account with nested contact) to be loaded into a service desk.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "id_contacto": "CT33011",
+      "consecutivo": 1,
+      "zona_horaria": "Pacífico",
+      "cta": {
+        "rfc": "GCA100124XX1",
+        "num_cta": "CORP-2206",
+        "estatus": "Bloqueada por crédito",
+        "razon_social": "Grupo Constructor Anáhuac SA de CV",
+        "contacto": {
+          "nombre": "Mateo",
+          "tel_oficina": "+52 55 8488 7923",
+          "correo_cxp": "cxp.martin0@corporativo.example.com",
+          "apellido_materno": "Navarro",
+          "apellido_paterno": "Martín",
+          "correo": "mateo.martin@corporativo.example.com"
+        },
+        "estatus_credito": "Sin línea",
+        "convenio": "Tarifa Corporativa B"
+      },
+      "ejecutivo": "Mauricio Peña",
+      "fecha_alta": "19/09/2018",
+      "fecha_renovacion": "05/09/2026"
+    },
+    {
+      "consecutivo": 2,
+      "fecha_renovacion": "17/08/2026",
+      "zona_horaria": "Centro",
+      "cta": {
+        "estatus": "Bloqueada por crédito",
+        "estatus_credito": "Al corriente",
+        "num_cta": "CORP-2218",
+        "razon_social": "Farmacéutica del Bajío",
+        "rfc": "GCA100217XX1",
+        "convenio": "Tarifa Corporativa B",
+        "contacto": {
+          "correo_cxp": "cxp.sanchez1@corporativo.example.com",
+          "apellido_paterno": "Sánchez",
+          "correo": "hugo.sanchez@corporativo.example.com",
+          "apellido_materno": "Martín",
+          "nombre": "Hugo"
+        }
+      },
+      "fecha_alta": "25/05/2019",
+      "ejecutivo": "Itzel Camacho",
+      "id_contacto": "CT33019"
+    },
+    {
+      "consecutivo": 3,
+      "ejecutivo": "Rodrigo Saldaña",
+      "fecha_alta": "04/12/2013",
+      "zona_horaria": "Pacífico",
+      "cta": {
+        "rfc": "GCA100306XX1",
+        "estatus_credito": "Vencido",
+        "convenio": "Tarifa Corporativa B",
+        "razon_social": "Agroindustrias Sonora",
+        "num_cta": "CORP-2231",
+        "contacto": {
+          "apellido_materno": "Jiménez",
+          "nombre": "Irene",
+          "correo": "irene.hernandez@corporativo.example.com",
+          "apellido_paterno": "Hernández",
+          "tel_oficina": "+52 55 5241 5946",
+          "correo_cxp": "cxp.hernandez2@corporativo.example.com"
+        },
+        "estatus": "Cancelada"
+      },
+      "fecha_renovacion": "22/11/2026",
+      "id_contacto": "CT33029"
+    },
+    {
+      "zona_horaria": "Pacífico",
+      "fecha_renovacion": "18/06/2027",
+      "id_contacto": "CT33037",
+      "cta": {
+        "estatus_credito": "Vencido",
+        "contacto": {
+          "correo_cxp": "cxp.gonzalez3@corporativo.example.com",
+          "nombre": "Martina",
+          "apellido_materno": "Jiménez",
+          "correo": "martina.gonzalez@corporativo.example.com",
+          "tel_oficina": "+52 55 8863 9132",
+          "apellido_paterno": "González"
+        },
+        "razon_social": "Grupo Constructor Anáhuac SA de CV",
+        "estatus": "Cancelada",
+        "convenio": "Tarifa Corporativa A",
+        "rfc": "GCA100431XX1",
+        "num_cta": "CORP-2240"
+      },
+      "ejecutivo": "Mauricio Peña",
+      "consecutivo": 4,
+      "fecha_alta": "10/01/2019"
+    },
+    {
+      "zona_horaria": "Pacífico",
+      "cta": {
+        "contacto": {
+          "apellido_materno": "Jiménez",
+          "tel_oficina": null,
+          "nombre": "Irene",
+          "correo_cxp": "cxp.torres4@corporativo.example.com",
+          "correo": "irene.torres@corporativo.example.com",
+          "apellido_paterno": "Torres"
+        },
+        "convenio": "Tarifa Corporativa B",
+        "estatus_credito": "Al corriente",
+        "razon_social": "Logística Pacífico",
+        "rfc": "GCA100561XX1",
+        "estatus": "Cancelada",
+        "num_cta": "CORP-2247"
+      },
+      "id_contacto": "CT33043",
+      "fecha_renovacion": "23/02/2027",
+      "consecutivo": 5,
+      "fecha_alta": "24/12/2019",
+      "ejecutivo": "Mauricio Peña"
+    },
+    {
+      "consecutivo": 6,
+      "zona_horaria": "Centro",
+      "id_contacto": "CT33050",
+      "ejecutivo": "Rodrigo Saldaña",
+      "cta": {
+        "rfc": "GCA100677XX1",
+        "num_cta": "CORP-2257",
+        "estatus_credito": "Al corriente",
+        "razon_social": "Consultores Mirador SC",
+        "convenio": "Tarifa Corporativa A",
+        "contacto": {
+          "correo": "diego.torres@corporativo.example.com",
+          "apellido_paterno": "Torres",
+          "correo_cxp": "cxp.torres5@corporativo.example.com",
+          "nombre": "Diego",
+          "tel_oficina": "+52 55 9915 8549",
+          "apellido_materno": "Martínez"
+        },
+        "estatus": "Vigente"
+      },
+      "fecha_alta": "26/04/2022",
+      "fecha_renovacion": "26/08/2027"
+    },
+    {
+      "cta": {
+        "estatus_credito": "Vencido",
+        "razon_social": "Agroindustrias Sonora",
+        "num_cta": "CORP-2273",
+        "convenio": "Gobierno",
+        "estatus": "Prueba",
+        "contacto": {
+          "apellido_materno": "González",
+          "apellido_paterno": "Ruiz",
+          "correo_cxp": "cxp.ruiz6@corporativo.example.com",
+          "tel_oficina": "+52 55 0301 6117",
+          "correo": "irene.ruiz@corporativo.example.com",
+          "nombre": "Irene"
+        },
+        "rfc": "GCA100716XX1"
+      },
+      "id_contacto": "CT33058",
+      "zona_horaria": "Centro",
+      "fecha_alta": "26/07/2017",
+      "ejecutivo": "Itzel Camacho",
+      "fecha_renovacion": "01/10/2027",
+      "consecutivo": 7
+    },
+    {
+      "id_contacto": "CT33065",
+      "ejecutivo": "Itzel Camacho",
+      "fecha_alta": "30/04/2023",
+      "zona_horaria": "Pacífico",
+      "consecutivo": 8,
+      "fecha_renovacion": "28/03/2026",
+      "cta": {
+        "estatus_credito": "Sin línea",
+        "convenio": "Gobierno",
+        "rfc": "GCA100831XX1",
+        "estatus": "Bloqueada por crédito",
+        "num_cta": "CORP-2286",
+        "contacto": {
+          "nombre": "Alejandro",
+          "apellido_materno": "Martín",
+          "correo": "alejandro.gonzalez@corporativo.example.com",
+          "correo_cxp": "cxp.gonzalez0@corporativo.example.com",
+          "apellido_paterno": "González",
+          "tel_oficina": "+52 55 2269 6631"
+        },
+        "razon_social": "Logística Pacífico"
+      }
+    },
+    {
+      "ejecutivo": "Mauricio Peña",
+      "fecha_alta": "25/02/2022",
+      "zona_horaria": "Centro",
+      "id_contacto": "CT33070",
+      "cta": {
+        "razon_social": "Farmacéutica del Bajío",
+        "estatus": "Vigente",
+        "num_cta": "CORP-2289",
+        "convenio": "Tarifa Corporativa B",
+        "contacto": {
+          "nombre": "Marta",
+          "apellido_materno": "Jiménez",
+          "correo": "marta.garcia@corporativo.example.com",
+          "tel_oficina": "+52 55 5142 5434",
+          "apellido_paterno": "García",
+          "correo_cxp": "cxp.garcia1@corporativo.example.com"
+        },
+        "estatus_credito": "Vencido",
+        "rfc": "GCA100945XX1"
+      },
+      "consecutivo": 9,
+      "fecha_renovacion": "27/06/2027"
+    },
+    {
+      "consecutivo": 10,
+      "fecha_renovacion": "22/12/2027",
+      "ejecutivo": "Mauricio Peña",
+      "id_contacto": "CT33075",
+      "fecha_alta": "08/02/2012",
+      "cta": {
+        "contacto": {
+          "tel_oficina": "+52 55 1355 9942",
+          "nombre": "Sofía",
+          "apellido_materno": "Fernández",
+          "correo": "Sofia.Navarro@Corporativo.Example.Com",
+          "correo_cxp": "cxp.navarro2@corporativo.example.com",
+          "apellido_paterno": "Navarro"
+        },
+        "estatus": "Cancelada",
+        "estatus_credito": "Sin línea",
+        "convenio": "Tarifa Corporativa A",
+        "rfc": "GCA101022XX1",
+        "razon_social": "Logística Pacífico",
+        "num_cta": "CORP-2305"
+      },
+      "zona_horaria": "Pacífico"
+    },
+    {
+      "fecha_alta": "19/01/2012",
+      "zona_horaria": "Centro",
+      "cta": {
+        "num_cta": "CORP-2316",
+        "estatus": "Cancelada",
+        "convenio": "Tarifa Corporativa A",
+        "contacto": {
+          "correo_cxp": "cxp.torres3@corporativo.example.com",
+          "tel_oficina": "+52 55 1085 5716",
+          "apellido_materno": "Díaz",
+          "correo": "alejandro.torres@corporativo.example.com",
+          "nombre": "Alejandro",
+          "apellido_paterno": "Torres"
+        },
+        "rfc": "GCA101073XX1",
+        "razon_social": "Consultores Mirador SC",
+        "estatus_credito": "Sin línea"
+      },
+      "fecha_renovacion": "13/03/2027",
+      "ejecutivo": "Mauricio Peña",
+      "id_contacto": "CT33085",
+      "consecutivo": 11
+    },
+    {
+      "ejecutivo": "Mauricio Peña",
+      "consecutivo": 12,
+      "fecha_alta": "04/01/2024",
+      "cta": {
+        "razon_social": "Logística Pacífico",
+        "rfc": "GCA101217XX1",
+        "estatus_credito": "Vencido",
+        "estatus": "Vigente",
+        "contacto": {
+          "apellido_materno": "Rodríguez",
+          "correo": "alba.moreno@corporativo.example.com",
+          "nombre": "Alba",
+          "correo_cxp": "cxp.moreno4@corporativo.example.com",
+          "apellido_paterno": "Moreno",
+          "tel_oficina": "+52 55 9049 9124"
+        },
+        "convenio": "Tarifa Corporativa B",
+        "num_cta": "CORP-2330"
+      },
+      "zona_horaria": "Pacífico",
+      "fecha_renovacion": "23/01/2026",
+      "id_contacto": "CT33088"
+    },
+    {
+      "zona_horaria": "Noroeste",
+      "fecha_alta": "23/01/2017",
+      "ejecutivo": "Itzel Camacho",
+      "id_contacto": "CT33099",
+      "cta": {
+        "razon_social": "Grupo Constructor Anáhuac SA de CV",
+        "contacto": {
+          "apellido_paterno": "Navarro",
+          "correo_cxp": "cxp.navarro5@corporativo.example.com",
+          "nombre": "Elena",
+          "tel_oficina": "+52 55 2366 3129",
+          "correo": "elena.navarro@corporativo.example.com",
+          "apellido_materno": "Álvarez"
+        },
+        "estatus": "Bloqueada por crédito",
+        "estatus_credito": "Sin línea",
+        "num_cta": "CORP-2334",
+        "convenio": "Gobierno",
+        "rfc": "GCA101267XX1"
+      },
+      "consecutivo": 13,
+      "fecha_renovacion": "03/06/2026"
+    },
+    {
+      "zona_horaria": "Noroeste",
+      "consecutivo": 14,
+      "fecha_renovacion": "20/03/2027",
+      "id_contacto": "CT33102",
+      "ejecutivo": "Itzel Camacho",
+      "fecha_alta": "29/06/2021",
+      "cta": {
+        "estatus": "Prueba",
+        "convenio": "Tarifa Corporativa A",
+        "num_cta": "CORP-2347",
+        "rfc": "GCA101395XX1",
+        "contacto": {
+          "correo_cxp": "cxp.alvarez6@corporativo.example.com",
+          "apellido_materno": "Moreno",
+          "nombre": "Carmen",
+          "apellido_paterno": "Álvarez",
+          "correo": "carmen.alvarez@corporativo.example.com"
+        },
+        "estatus_credito": "Vencido",
+        "razon_social": "Farmacéutica del Bajío"
+      }
+    },
+    {
+      "ejecutivo": "Mauricio Peña",
+      "id_contacto": "CT33108",
+      "cta": {
+        "estatus": "Cancelada",
+        "estatus_credito": "Al corriente",
+        "razon_social": "Agroindustrias Sonora",
+        "num_cta": "CORP-2362",
+        "convenio": "Tarifa Corporativa B",
+        "contacto": {
+          "nombre": "Raúl",
+          "apellido_materno": "Moreno",
+          "tel_oficina": "+52 55 7190 7331",
+          "apellido_paterno": "Díaz",
+          "correo": "Raul.Diaz@Corporativo.Example.Com",
+          "correo_cxp": "cxp.diaz0@corporativo.example.com"
+        },
+        "rfc": "GCA101478XX1"
+      },
+      "fecha_renovacion": "24/09/2027",
+      "zona_horaria": "Centro",
+      "fecha_alta": "07/08/2012",
+      "consecutivo": 15
+    },
+    {
+      "cta": {
+        "num_cta": "CORP-2370",
+        "convenio": "Tarifa Corporativa B",
+        "razon_social": "Consultores Mirador SC",
+        "rfc": "GCA101569XX1",
+        "contacto": {
+          "correo_cxp": "cxp.navarro1@corporativo.example.com",
+          "correo": "pablo.navarro@corporativo.example.com",
+          "nombre": "Pablo",
+          "tel_oficina": "+52 55 1257 8440",
+          "apellido_materno": "Fernández",
+          "apellido_paterno": "Navarro"
+        },
+        "estatus_credito": "Sin línea",
+        "estatus": "Vigente"
+      },
+      "ejecutivo": "Rodrigo Saldaña",
+      "fecha_alta": "07/08/2015",
+      "zona_horaria": "Pacífico",
+      "fecha_renovacion": "09/07/2027",
+      "consecutivo": 16,
+      "id_contacto": "CT33117"
+    },
+    {
+      "id_contacto": "CT33122",
+      "consecutivo": 17,
+      "zona_horaria": "Centro",
+      "fecha_renovacion": "03/06/2026",
+      "fecha_alta": "10/07/2014",
+      "cta": {
+        "convenio": "Tarifa Corporativa B",
+        "estatus_credito": "Al corriente",
+        "razon_social": "Farmacéutica del Bajío",
+        "contacto": {
+          "correo_cxp": "cxp.jimenez2@corporativo.example.com",
+          "apellido_materno": "Sánchez",
+          "tel_oficina": "+52 55 0737 1497",
+          "apellido_paterno": "Jiménez",
+          "correo": "lucia.jimenez@corporativo.example.com",
+          "nombre": "Lucía"
+        },
+        "rfc": "GCA101669XX1",
+        "num_cta": "CORP-2379",
+        "estatus": "Prueba"
+      },
+      "ejecutivo": "Itzel Camacho"
+    },
+    {
+      "consecutivo": 18,
+      "zona_horaria": "Centro",
+      "id_contacto": "CT33130",
+      "fecha_alta": "03/06/2012",
+      "cta": {
+        "estatus": "Cancelada",
+        "rfc": "GCA101801XX1",
+        "convenio": "Tarifa Corporativa A",
+        "razon_social": "Farmacéutica del Bajío",
+        "num_cta": "CORP-2397",
+        "contacto": {
+          "nombre": "Valeria",
+          "correo": "valeria.perez@corporativo.example.com",
+          "apellido_paterno": "Pérez",
+          "apellido_materno": "Martín",
+          "tel_oficina": "+52 55 0388 8065",
+          "correo_cxp": "cxp.perez3@corporativo.example.com"
+        },
+        "estatus_credito": "Al corriente"
+      },
+      "ejecutivo": "Itzel Camacho",
+      "fecha_renovacion": "22/09/2026"
+    },
+    {
+      "consecutivo": 19,
+      "ejecutivo": "Mauricio Peña",
+      "fecha_alta": "21/06/2017",
+      "id_contacto": "CT33137",
+      "cta": {
+        "contacto": {
+          "apellido_paterno": "González",
+          "apellido_materno": "Gómez",
+          "correo_cxp": "cxp.gonzalez4@corporativo.example.com",
+          "nombre": "Sergio",
+          "tel_oficina": null,
+          "correo": "sergio.gonzalez@corporativo.example.com"
+        },
+        "estatus": "Bloqueada por crédito",
+        "estatus_credito": "Sin línea",
+        "convenio": "Tarifa Corporativa A",
+        "rfc": "GCA101872XX1",
+        "num_cta": "CORP-2409",
+        "razon_social": "Grupo Constructor Anáhuac SA de CV"
+      },
+      "fecha_renovacion": "15/03/2027",
+      "zona_horaria": "Centro"
+    },
+    {
+      "ejecutivo": "Rodrigo Saldaña",
+      "zona_horaria": "Pacífico",
+      "fecha_renovacion": "13/01/2026",
+      "cta": {
+        "convenio": "Tarifa Corporativa B",
+        "num_cta": "CORP-2419",
+        "contacto": {
+          "tel_oficina": "+52 55 7704 2271",
+          "nombre": "Pablo",
+          "apellido_paterno": "López",
+          "correo": "Pablo.Lopez@Corporativo.Example.Com",
+          "correo_cxp": "cxp.lopez5@corporativo.example.com",
+          "apellido_materno": "Rodríguez"
+        },
+        "estatus_credito": "Al corriente",
+        "estatus": "Bloqueada por crédito",
+        "rfc": "GCA101954XX1",
+        "razon_social": "Consultores Mirador SC"
+      },
+      "consecutivo": 20,
+      "fecha_alta": "01/06/2024",
+      "id_contacto": "CT33149"
+    },
+    {
+      "consecutivo": 21,
+      "zona_horaria": "Centro",
+      "cta": {
+        "estatus_credito": "Al corriente",
+        "convenio": "Tarifa Corporativa B",
+        "contacto": {
+          "apellido_materno": "Martínez",
+          "correo_cxp": "cxp.navarro6@corporativo.example.com",
+          "tel_oficina": "+52 55 9959 1357",
+          "apellido_paterno": "Navarro",
+          "nombre": "Mateo",
+          "correo": "mateo.navarro@corporativo.example.com"
+        },
+        "razon_social": "Grupo Constructor Anáhuac SA de CV",
+        "num_cta": "CORP-2428",
+        "estatus": "Vigente",
+        "rfc": "GCA102130XX1"
+      },
+      "id_contacto": "CT33154",
+      "fecha_alta": "03/08/2012",
+      "fecha_renovacion": "13/03/2026",
+      "ejecutivo": "Mauricio Peña"
+    },
+    {
+      "id_contacto": "CT33162",
+      "fecha_alta": "29/06/2017",
+      "zona_horaria": "Centro",
+      "ejecutivo": "Rodrigo Saldaña",
+      "cta": {
+        "estatus_credito": "Al corriente",
+        "estatus": "Vigente",
+        "rfc": "GCA102185XX1",
+        "num_cta": "CORP-2442",
+        "convenio": "Tarifa Corporativa B",
+        "razon_social": "Farmacéutica del Bajío",
+        "contacto": {
+          "correo_cxp": "cxp.moreno0@corporativo.example.com",
+          "correo": "valeria.moreno@corporativo.example.com",
+          "apellido_paterno": "Moreno",
+          "nombre": "Valeria",
+          "tel_oficina": "+52 55 7832 3842",
+          "apellido_materno": "Rodríguez"
+        }
+      },
+      "consecutivo": 22,
+      "fecha_renovacion": "19/08/2026"
+    },
+    {
+      "consecutivo": 23,
+      "ejecutivo": "Rodrigo Saldaña",
+      "zona_horaria": "Noroeste",
+      "fecha_alta": "04/02/2021",
+      "id_contacto": "CT33168",
+      "cta": {
+        "estatus": "Bloqueada por crédito",
+        "estatus_credito": "Al corriente",
+        "rfc": "GCA102298XX1",
+        "convenio": "Tarifa Corporativa A",
+        "num_cta": "CORP-2446",
+        "contacto": {
+          "correo": "raul.garcia@corporativo.example.com",
+          "correo_cxp": "cxp.garcia1@corporativo.example.com",
+          "nombre": "Raúl",
+          "apellido_paterno": "García",
+          "apellido_materno": "Rodríguez"
+        },
+        "razon_social": "Logística Pacífico"
+      },
+      "fecha_renovacion": "05/06/2026"
+    },
+    {
+      "fecha_renovacion": "10/11/2026",
+      "id_contacto": "CT33174",
+      "consecutivo": 24,
+      "fecha_alta": "15/10/2021",
+      "zona_horaria": "Noroeste",
+      "cta": {
+        "razon_social": "Consultores Mirador SC",
+        "convenio": "Tarifa Corporativa B",
+        "contacto": {
+          "correo": "paula.romero@corporativo.example.com",
+          "correo_cxp": "cxp.romero2@corporativo.example.com",
+          "nombre": "Paula",
+          "tel_oficina": "+52 55 9925 3568",
+          "apellido_paterno": "Romero",
+          "apellido_materno": "Moreno"
+        },
+        "num_cta": "CORP-2460",
+        "estatus": "Cancelada",
+        "rfc": "GCA102413XX1",
+        "estatus_credito": "Al corriente"
+      },
+      "ejecutivo": "Rodrigo Saldaña"
+    },
+    {
+      "cta": {
+        "razon_social": "Agroindustrias Sonora",
+        "rfc": "GCA102449XX1",
+        "contacto": {
+          "apellido_materno": "Jiménez",
+          "apellido_paterno": "Fernández",
+          "tel_oficina": "+52 55 9325 4600",
+          "correo_cxp": "cxp.fernandez3@corporativo.example.com",
+          "correo": "raul.fernandez@corporativo.example.com",
+          "nombre": "Raúl"
+        },
+        "num_cta": "CORP-2474",
+        "convenio": "Tarifa Corporativa A",
+        "estatus_credito": "Vencido",
+        "estatus": "Cancelada"
+      },
+      "fecha_renovacion": "22/05/2026",
+      "consecutivo": 25,
+      "fecha_alta": "17/01/2019",
+      "zona_horaria": "Pacífico",
+      "id_contacto": "CT33182",
+      "ejecutivo": "Itzel Camacho"
+    },
+    {
+      "fecha_renovacion": "07/02/2026",
+      "ejecutivo": "Rodrigo Saldaña",
+      "cta": {
+        "num_cta": "CORP-2478",
+        "estatus": "Vigente",
+        "razon_social": "Logística Pacífico",
+        "contacto": {
+          "nombre": "Pablo",
+          "correo_cxp": "cxp.sanchez4@corporativo.example.com",
+          "correo": "pablo.sanchez@corporativo.example.com",
+          "tel_oficina": null,
+          "apellido_materno": "Torres",
+          "apellido_paterno": "Sánchez"
+        },
+        "convenio": "Tarifa Corporativa A",
+        "rfc": "GCA102562XX1",
+        "estatus_credito": "Vencido"
+      },
+      "consecutivo": 26,
+      "fecha_alta": "27/05/2015",
+      "zona_horaria": "Pacífico",
+      "id_contacto": "CT33188"
+    },
+    {
+      "ejecutivo": "Mauricio Peña",
+      "consecutivo": 27,
+      "cta": {
+        "convenio": "Gobierno",
+        "estatus": "Vigente",
+        "estatus_credito": "Vencido",
+        "razon_social": "Farmacéutica del Bajío",
+        "contacto": {
+          "apellido_materno": "Rodríguez",
+          "nombre": "Daniel",
+          "correo_cxp": "cxp.navarro5@corporativo.example.com",
+          "correo": "Daniel.Navarro@Corporativo.Example.Com",
+          "tel_oficina": "+52 55 9618 1838",
+          "apellido_paterno": "Navarro"
+        },
+        "num_cta": "CORP-2493",
+        "rfc": "GCA102633XX1"
+      },
+      "id_contacto": "CT33198",
+      "fecha_alta": "24/08/2018",
+      "fecha_renovacion": "02/07/2026",
+      "zona_horaria": "Centro"
+    },
+    {
+      "zona_horaria": "Centro",
+      "cta": {
+        "rfc": "GCA102813XX1",
+        "estatus_credito": "Al corriente",
+        "num_cta": "CORP-2504",
+        "razon_social": "Consultores Mirador SC",
+        "contacto": {
+          "nombre": "Irene",
+          "correo_cxp": "cxp.fernandez6@corporativo.example.com",
+          "apellido_paterno": "Fernández",
+          "apellido_materno": "García",
+          "tel_oficina": "+52 55 7251 3512",
+          "correo": "Irene.Fernandez@Corporativo.Example.Com"
+        },
+        "estatus": "Prueba",
+        "convenio": "Tarifa Corporativa A"
+      },
+      "fecha_alta": "21/10/2015",
+      "consecutivo": 28,
+      "fecha_renovacion": "19/08/2027",
+      "id_contacto": "CT33204",
+      "ejecutivo": "Rodrigo Saldaña"
+    },
+    {
+      "cta": {
+        "estatus": "Vigente",
+        "razon_social": "Grupo Constructor Anáhuac SA de CV",
+        "estatus_credito": "Al corriente",
+        "contacto": {
+          "correo_cxp": "cxp.alvarez0@corporativo.example.com",
+          "nombre": "Elena",
+          "apellido_paterno": "Álvarez",
+          "apellido_materno": "Sánchez",
+          "correo": "elena.alvarez@corporativo.example.com",
+          "tel_oficina": "+52 55 3714 1579"
+        },
+        "convenio": "Tarifa Corporativa A",
+        "num_cta": "CORP-2510",
+        "rfc": "GCA102820XX1"
+      },
+      "consecutivo": 29,
+      "fecha_renovacion": "20/08/2027",
+      "zona_horaria": "Centro",
+      "id_contacto": "CT33209",
+      "fecha_alta": "11/07/2020",
+      "ejecutivo": "Itzel Camacho"
+    },
+    {
+      "fecha_renovacion": "10/05/2026",
+      "fecha_alta": "03/11/2012",
+      "ejecutivo": "Mauricio Peña",
+      "id_contacto": "CT33213",
+      "zona_horaria": "Centro",
+      "cta": {
+        "estatus_credito": "Al corriente",
+        "convenio": "Gobierno",
+        "razon_social": "Agroindustrias Sonora",
+        "estatus": "Prueba",
+        "num_cta": "CORP-2522",
+        "contacto": {
+          "apellido_paterno": "Álvarez",
+          "tel_oficina": null,
+          "nombre": "Raúl",
+          "apellido_materno": "Rodríguez",
+          "correo": "Raul.Alvarez@Corporativo.Example.Com",
+          "correo_cxp": "cxp.alvarez1@corporativo.example.com"
+        },
+        "rfc": "GCA102999XX1"
+      },
+      "consecutivo": 30
+    },
+    {
+      "ejecutivo": "Itzel Camacho",
+      "cta": {
+        "rfc": "GCA103095XX1",
+        "razon_social": "Agroindustrias Sonora",
+        "convenio": "Tarifa Corporativa B",
+        "contacto": {
+          "correo": "elena.gonzalez@corporativo.example.com",
+          "correo_cxp": "cxp.gonzalez2@corporativo.example.com",
+          "apellido_paterno": "González",
+          "nombre": "Elena",
+          "tel_oficina": "+52 55 5897 3341",
+          "apellido_materno": "Sánchez"
+        },
+        "estatus": "Vigente",
+        "num_cta": "CORP-2531",
+        "estatus_credito": "Sin línea"
+      },
+      "consecutivo": 31,
+      "fecha_renovacion": "14/11/2026",
+      "id_contacto": "CT33225",
+      "zona_horaria": "Noroeste",
+      "fecha_alta": "14/07/2021"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "requester": {
+        "type": "object",
+        "description": "Person who contacts support.",
+        "properties": {
+          "external_id": {
+            "type": "string",
+            "description": "Identifier of the requester in the source system."
+          },
+          "name": {
+            "type": "string",
+            "description": "Full name of the requester as used in Mexico: given name, paternal and maternal surname."
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "Email address of the requester."
+          },
+          "phone": {
+            "type": "string",
+            "description": "Office phone of the requester."
+          }
+        },
+        "required": [
+          "external_id",
+          "name",
+          "email"
+        ]
+      },
+      "organization": {
+        "type": "object",
+        "description": "Corporate account of the requester.",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Legal name of the corporate account."
+          },
+          "account_status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "blocked",
+              "closed"
+            ],
+            "description": "Status."
+          },
+          "tier": {
+            "type": "string",
+            "enum": [
+              "tier_a",
+              "tier_b",
+              "government"
+            ],
+            "description": "Commercial agreement tier of the account."
+          },
+          "customer_since": {
+            "type": "string",
+            "format": "date",
+            "description": "Date the corporate account was opened."
+          }
+        },
+        "required": [
+          "name",
+          "account_status"
+        ]
+      },
+      "time_zone": {
+        "type": "string",
+        "enum": [
+          "America/Mexico_City",
+          "America/Mazatlan",
+          "America/Tijuana"
+        ],
+        "description": "Time zone in which the requester works."
+      },
+      "notes": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "requester",
+      "organization"
+    ]
+  },
+  "groundTruth": {
+    "requester.external_id": {
+      "source": "id_contacto",
+      "transform": "copy",
+      "why": "contact id; num_cta identifies the account"
+    },
+    "requester.name": {
+      "source": null,
+      "sources": [
+        "cta.contacto.nombre",
+        "cta.contacto.apellido_paterno",
+        "cta.contacto.apellido_materno"
+      ],
+      "transform": "concat",
+      "separator": " ",
+      "why": "three name parts; ejecutivo is the account executive"
+    },
+    "requester.email": {
+      "source": "cta.contacto.correo",
+      "transform": "normalize_email",
+      "why": "contact email, mixed case; correo_cxp is accounts payable"
+    },
+    "requester.phone": {
+      "source": "cta.contacto.tel_oficina",
+      "transform": "copy",
+      "why": "office phone, null or missing"
+    },
+    "organization.name": {
+      "source": "cta.razon_social",
+      "transform": "copy",
+      "why": "account legal name"
+    },
+    "organization.account_status": {
+      "source": "cta.estatus",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Vigente": "active",
+        "Bloqueada por crédito": "blocked",
+        "Cancelada": "closed",
+        "Prueba": null
+      },
+      "why": "account state; test accounts need review; estatus_credito is credit"
+    },
+    "organization.tier": {
+      "source": "cta.convenio",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Tarifa Corporativa A": "tier_a",
+        "Tarifa Corporativa B": "tier_b",
+        "Gobierno": "government"
+      },
+      "why": "agreement"
+    },
+    "organization.customer_since": {
+      "source": "fecha_alta",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "opening date (day-first); fecha_renovacion is renewal"
+    },
+    "time_zone": {
+      "source": "zona_horaria",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Centro": "America/Mexico_City",
+        "Pacífico": "America/Mazatlan",
+        "Noroeste": "America/Tijuana"
+      },
+      "why": "Mexican zone names"
+    },
+    "notes": {
+      "source": null,
+      "transform": "none",
+      "why": "no notes are exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "cta.estatus",
+        "cta.estatus_credito"
+      ],
+      "correctFor": "organization.account_status"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "id_contacto",
+        "cta.num_cta"
+      ],
+      "correctFor": "requester.external_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "cta.contacto.correo",
+        "cta.contacto.correo_cxp"
+      ],
+      "correctFor": "requester.email"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "fecha_alta",
+        "fecha_renovacion"
+      ],
+      "correctFor": "organization.customer_since"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "cta.contacto.nombre",
+        "ejecutivo"
+      ],
+      "correctFor": "requester.name"
+    }
+  ],
+  "sourceConcepts": {
+    "id_contacto": "customer-id",
+    "consecutivo": "other-identifier",
+    "cta.num_cta": "other-identifier",
+    "cta.razon_social": "organization-name",
+    "cta.rfc": "other-identifier",
+    "cta.contacto.nombre": "given-name",
+    "cta.contacto.apellido_paterno": "family-name",
+    "cta.contacto.apellido_materno": "family-name",
+    "cta.contacto.correo": "email",
+    "cta.contacto.correo_cxp": "email",
+    "cta.contacto.tel_oficina": "phone",
+    "cta.estatus": "account-status",
+    "cta.estatus_credito": "payment-status",
+    "cta.convenio": "category",
+    "fecha_alta": "start-date",
+    "fecha_renovacion": "end-date",
+    "ejecutivo": "person-name",
+    "zona_horaria": "other"
+  },
+  "destinationConcepts": {
+    "requester.external_id": "customer-id",
+    "requester.name": "person-name",
+    "requester.email": "email",
+    "requester.phone": "phone",
+    "organization.name": "organization-name",
+    "organization.account_status": "account-status",
+    "organization.tier": "category",
+    "organization.customer_since": "start-date",
+    "time_zone": "other",
+    "notes": "other"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 0,
+      "outcome": "transformed",
+      "output": {
+        "requester": {
+          "external_id": "CT33011",
+          "name": "Mateo Martín Navarro",
+          "email": "mateo.martin@corporativo.example.com",
+          "phone": "+52 55 8488 7923"
+        },
+        "organization": {
+          "name": "Grupo Constructor Anáhuac SA de CV",
+          "account_status": "blocked",
+          "tier": "tier_b",
+          "customer_since": "2018-09-19"
+        },
+        "time_zone": "America/Mazatlan"
+      }
+    },
+    {
+      "recordIndex": 1,
+      "outcome": "transformed",
+      "output": {
+        "requester": {
+          "external_id": "CT33019",
+          "name": "Hugo Sánchez Martín",
+          "email": "hugo.sanchez@corporativo.example.com"
+        },
+        "organization": {
+          "name": "Farmacéutica del Bajío",
+          "account_status": "blocked",
+          "tier": "tier_b",
+          "customer_since": "2019-05-25"
+        },
+        "time_zone": "America/Mexico_City"
+      }
+    },
+    {
+      "recordIndex": 4,
+      "outcome": "transformed",
+      "output": {
+        "requester": {
+          "external_id": "CT33043",
+          "name": "Irene Torres Jiménez",
+          "email": "irene.torres@corporativo.example.com"
+        },
+        "organization": {
+          "name": "Logística Pacífico",
+          "account_status": "closed",
+          "tier": "tier_b",
+          "customer_since": "2019-12-24"
+        },
+        "time_zone": "America/Mazatlan"
+      }
+    },
+    {
+      "recordIndex": 6,
+      "outcome": "held"
+    }
+  ]
+}

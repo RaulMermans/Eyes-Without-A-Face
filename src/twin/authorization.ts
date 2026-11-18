@@ -4,11 +4,11 @@ import { findForbiddenCloudSubstrings } from "../privacy/forbidden-cloud-fields.
 import { fingerprintCanonicalPayload } from "../privacy/fingerprint.ts";
 import { PRIVATE_DATA_CANARY } from "../privacy/canaries.ts";
 import { findPrivateValueLeaks } from "../privacy/leak-scan.ts";
-import { FIREBASE_AI_LOGIC_API } from "../inference/firebase-api.ts";
 import { buildCloudPromptText, SDK_TRANSPORT_NOTE } from "../inference/prompts.ts";
-import { buildIntentPlanPromptText } from "../inference/intent-prompt.ts";
+import { buildIntentPlanPromptText, buildRankedPlanPromptText } from "../inference/intent-prompt.ts";
 import { INITIAL_PLANNER, type InitialPlanner } from "../inference/planner-selection.ts";
 import { effectiveInitialPlanner } from "../inference/harness-planner.ts";
+import { defaultCloudDestination } from "./project-cloud-disclosure.ts";
 
 export const MAX_CLOUD_PAYLOAD_BYTES = 24_576;
 export const MAX_CLOUD_RESPONSE_BYTES = 65_536;
@@ -87,17 +87,14 @@ export class DisclosureRejectedError extends Error {
   }
 }
 
+/** The approved destination. A thinking level (1.4.0) is part of it, so approving one configuration never authorizes another. */
 export function destinationKey(destination: CloudDisclosureDestination): string {
-  return `${destination.provider}:${destination.backend}:${destination.model}:${destination.purpose}`;
+  const base = `${destination.provider}:${destination.backend}:${destination.model}:${destination.purpose}`;
+  return destination.thinkingLevel ? `${base}:thinking=${destination.thinkingLevel}` : base;
 }
 
 export function effectiveCloudDestination(): CloudDisclosureDestination {
-  return {
-    provider: "firebase-ai-logic",
-    backend: "google-ai",
-    model: FIREBASE_AI_LOGIC_API.defaultCloudModel,
-    purpose: "mapping-proposal",
-  };
+  return defaultCloudDestination();
 }
 
 export function newRequestId(): string {
@@ -115,7 +112,11 @@ export function buildOutboundPromptText(
   schemaVersion: CloudDisclosurePayload["schemaVersion"],
   planner: InitialPlanner = INITIAL_PLANNER,
 ): string {
-  if (schemaVersion === "1.1.0" && planner === "intent-plan-1") return buildIntentPlanPromptText(canonicalJson);
+  if (schemaVersion === "1.1.0" || schemaVersion === "1.4.0") {
+    if (planner === "intent-plan-2") return buildRankedPlanPromptText(canonicalJson);
+    // 1.4.0 (ADR 0021) is a plan request only; it never takes the frozen Sprint 3 instructions.
+    if (planner === "intent-plan-1" || schemaVersion === "1.4.0") return buildIntentPlanPromptText(canonicalJson);
+  }
   return buildCloudPromptText(canonicalJson, schemaVersion);
 }
 
@@ -238,6 +239,7 @@ export function assertEffectiveDestination(request: AuthorizedCloudRequest): voi
     dest.provider !== effective.provider ||
     dest.backend !== effective.backend ||
     dest.model !== effective.model ||
+    dest.thinkingLevel !== effective.thinkingLevel ||
     dest.purpose !== effective.purpose
   ) {
     throw new DisclosureRejectedError("EFFECTIVE_DESTINATION_MISMATCH", [

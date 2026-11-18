@@ -1,0 +1,42 @@
+{
+  "manifestVersion": "1.0.0",
+  "experiment": "sprint-18d-rescue-confirmatory",
+  "frozenAt": "2026-11-18T14:42:16.639Z",
+  "frozenFromCommit": "d8ca7f77005b4cec8b8e1c6bfa68b06741c1dee4",
+  "statement": "Frozen before any model saw the 18D holdout. Candidate (RB + local) and baseline (A + base) fixed at the listed code hashes. The engineer never opened the holdout or the author's holdout specs; the frozen scorer emits aggregates and per-index rows only.",
+  "preregistration": {
+    "path": "docs/evaluation/sprint-18d-rescue-confirmatory.md",
+    "sha256AboveResults": "309548406e2a1b5c4e482a574ba50db0bc9dcaf40e998709553d97c421aba5c6"
+  },
+  "files": {
+    "tests/fixtures/eval-18d/README.md": "d289fa2f5772a11858453232da4b0b2595f3080ce9d50f72ac6d0a24f38abfb3",
+    "tests/fixtures/eval-18d/dev/fibre-telecom-subscribers-to-support-requesters.json": "894d435156ee5e8de3338fd8322bf6a58fe12761c58cb01583bb956cc407708b",
+    "tests/fixtures/eval-18d/dev/insurance-brokerage-clients-to-service-desk-users.json": "411034d700f966899accdaa9e922d4839c2d2927ca644521bd245aff6f8e2e0b",
+    "tests/fixtures/eval-18d/dev/orchard-harvest-lots-to-cold-storage-intake.json": "3f66547316f6d4ef1ec941e3c67295138324161782d82b76a9c8adecd3aee833",
+    "tests/fixtures/eval-18d/dev/property-management-tenants-to-helpdesk-customers.json": "4b4cc010059c05a8ad415a7ddaa0929dfd341701d5b5cb038f497f159b2da468",
+    "tests/fixtures/eval-18d/dev/solar-installer-customers-to-helpdesk-contacts.json": "8c054c7c0d4e888402a60196629fd15b2b4db5559adff91378043fddd1a94ef5",
+    "tests/fixtures/eval-18d/dev/trail-race-entries-to-timing-system.json": "a812adc989240958e7c873068c7032b439d5d7b85eba33f83ce41d43cc77e2a4",
+    "tests/fixtures/eval-18d/author/lib.py": "f0a089afbf655b3239f904e46cdad54cb41dd359dae27589ac6b64a6b567a6b3",
+    "tests/fixtures/eval-18d/author/specs_dev.py": "ae906f96955b48866c4a13d342ac059805de61645551b9a1df147c202a2aca20",
+    "tests/fixtures/eval-18d/author/build.py": "946a21d3d3526ee28f303fe08e0f429fcbd201deb93e3812914548eb15b33abb",
+    "tests/fixtures/eval-18d/author/check.mjs": "934f0fbf25222168c48495b7f44de8249694c372abf262715d69398563b41475",
+    "src/evaluation/eval-18d.ts": "beb48a02c927ae5750101f3e3697a414c1bfa71880f48d4f42354e3e36dd5db7",
+    "src/plan/compile.ts": "2b50e8b4274397ad7cf84a4976a09f46e3b7194ad080086e38c4c403701c61cd",
+    "src/matching/local-matcher.ts": "10de115e4f0559fb7641b57286f12550b65b749828bcb57249713312e4c8457e",
+    "src/matching/lexicon.ts": "0c9ad3b0f281d4d9789e8b7650f44176ca3094f033d6dfef205065ae8b9d6a18",
+    "src/inference/intent-prompt.ts": "1e58ba49a50bad59c6ed2b7346cd865cba90f7fe2be9e704a1adc699da45db11",
+    "src/twin/target-semantics.ts": "f75ccc8072fa011268718fb6c16fdd4d4739f617f588d5cc693be24c22941b2c",
+    "src/semantics/verify.ts": "7c628990c79d7ef653a057c975bf130dc2551712e50bc125dc567340f3124fed",
+    "tests/evaluation/eval-18d.test.ts": "4df562e78eb67f0d26932248218f7e0345d9a01321f1e81b2dd9da1d02ab856d"
+  },
+  "holdout": {
+    "count": 22,
+    "sha256": "d47296f48b9e97bbd4df1134b24932bfe7943f0afc8bf8ede203dfe5b8a39611"
+  },
+  "amendments": [
+    {
+      "at": "2026-11-18T14:54:23.163Z",
+      "reason": "Amendment 1 (owner, 2026-11-18, before any holdout request): one trial per configuration (40 first requests, ≤ 10 recovery, ≤ 50 total, ≤ $1.10); G1/G2 denominators 15 and 9; scorer scores trial 1 and checks 40 first attempts."
+    }
+  ]
+}

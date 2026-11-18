@@ -50,4 +50,12 @@ Read, in order:
 43. `docs/evaluation/sprint-18b-intent-plan.md` and `docs/sprints/sprint-18b.md` — Gate B-AI results (FAILED) and Sprint 18B report
 44. `docs/decisions/0020-category-groupings-and-plan-recovery.md`, `docs/evaluation/sprint-18c-reliability.md`, `docs/sprints/sprint-18c.md` — Sprint 18C: Gate C results (FAILED), confidence gate, next blocker
 
+45. `docs/decisions/0021-semantic-intelligence-recovery.md`, `docs/evaluation/sprint-18d-semantic-intelligence.md`, `docs/evaluation/sprint-18d-local-matching.md`, `docs/sprints/sprint-18d.md` — Sprint 18D: model configurations, destination semantics, local matching, ranked plans, pre-registration
+
+46. `docs/evaluation/sprint-18e-disagreement.md` — Sprint 18E: disagreement statistics, agreement classes, counterfactual replay, provider diagnosis
+
+47. `docs/decisions/0022-answerable-questions-and-local-evidence.md` — Sprint 18F: what fixed the failures, replay results, residuals
+
+48. `docs/sprints/sprint-18f.md` — Sprint 18F release candidate: shipped defaults, evidence, known limitations
+
 Every sprint ends with an evidence-backed release status (`CODE_READY`, `DEPLOYMENT_PENDING`, `DEPLOYED_UNVERIFIED`, `PRODUCTION_ACCEPTED`, `RELEASE_FAILED`); rules in `AGENTS.md`. Do not duplicate architecture here. Do not start Sprint 16 automatically.

@@ -217,6 +217,8 @@ export interface CloudDisclosureDestination {
   backend: "google-ai";
   model: string;
   purpose: "mapping-proposal";
+  /** Cloud-disclosure 1.4.0 only (ADR 0021): the approved thinking level. Absent = the model's default. */
+  thinkingLevel?: "MINIMAL" | "LOW" | "MEDIUM" | "HIGH";
 }
 
 export interface CloudDisclosureField {
@@ -234,6 +236,12 @@ export interface CloudDisclosureTargetField {
   nullable?: boolean;
   format?: "email" | "date" | "date-time" | "uri" | "uuid";
   enumValues?: string[];
+  /**
+   * Cloud-disclosure 1.4.0 only (ADR 0021): the destination schema's own
+   * description after `sanitizeTargetDescription`, shown in the review. Never
+   * a source value, a source field name, an identifier or instruction-like text.
+   */
+  description?: string;
 }
 
 export interface CloudDisclosureTarget {
@@ -350,8 +358,8 @@ export interface BlindRevisionFeedback {
 
 export interface CloudDisclosurePayload {
   contractKind: "cloud-disclosure";
-  schemaVersion: "1.0.0" | "1.1.0" | "1.2.0" | "1.3.0";
-  /** Present (and required) in schema 1.1.0 and 1.2.0. */
+  schemaVersion: "1.0.0" | "1.1.0" | "1.2.0" | "1.3.0" | "1.4.0";
+  /** Present (and required) in schema 1.1.0, 1.2.0 and 1.4.0 (1.4.0 = 1.1.0 + destination semantics, ADR 0021). */
   target?: CloudDisclosureTarget;
   /** Present (and required) only in schema 1.2.0 (feedback 1.0.0) and 1.3.0 (feedback 1.1.0): one blind revision request. */
   revision?: { feedback: BlindRevisionFeedback };

@@ -1,0 +1,1129 @@
+{
+  "scenarioId": "museum-object-loans-to-exhibition-loan-tracker",
+  "split": "holdout",
+  "track": "general",
+  "industry": "museum inward object loans",
+  "sourceLanguage": "en",
+  "description": "Inward loan export of a fictional regional museum registrar (UK snake_case, nested object with nested dimensions and lender) to be loaded into an exhibition loan tracker.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "indemnity_cover": "Government Indemnity",
+      "export_row": 1,
+      "loan_end": "15/12/2026",
+      "object": {
+        "dimensions": {
+          "height_cm": 44.9,
+          "width_cm": 47.4
+        },
+        "title": "View of the Old Mill",
+        "accession_no": "2008.156.5"
+      },
+      "courier_required": "No",
+      "lender": {
+        "contact_name": "Natalie Gibson",
+        "institution": "Museum of the Western Isles",
+        "contact_email": "natalie.gibson@westernisles-museum.example.org"
+      },
+      "condition_checked": "2025-12-09T08:36:00Z",
+      "acquisition_price_gbp": 22000.0,
+      "loan_start": "23/11/2025",
+      "insurance_value_gbp": 120000.0,
+      "registrar": "Harriet Lomax",
+      "loan_ref": "LN-25-0117",
+      "loan_status": "On display"
+    },
+    {
+      "registrar": "Harriet Lomax",
+      "loan_ref": "LN-24-0120",
+      "loan_start": "23/11/2025",
+      "acquisition_price_gbp": 1200.0,
+      "condition_checked": "2025-09-18T20:29:00Z",
+      "loan_end": "27/01/2027",
+      "indemnity_cover": "Commercial policy",
+      "export_row": 2,
+      "loan_status": "Agreement sent",
+      "courier_required": "No",
+      "object": {
+        "accession_no": "1978.303.6",
+        "dimensions": {
+          "height_cm": 125.5,
+          "width_cm": 32.1
+        },
+        "title": "View of Winter Fields"
+      },
+      "lender": {
+        "institution": "Northgate City Art Gallery",
+        "contact_name": "Aaron Morris",
+        "contact_email": "aaron.morris@northgate-gallery.example.org"
+      }
+    },
+    {
+      "acquisition_price_gbp": 1200.0,
+      "courier_required": "No",
+      "condition_checked": "2025-09-21T06:43:00Z",
+      "object": {
+        "title": "  Sketch of the Old Mill ",
+        "accession_no": "2003.240.1",
+        "dimensions": {
+          "height_cm": 153.5,
+          "width_cm": 51.9
+        }
+      },
+      "loan_start": "21/01/2025",
+      "loan_ref": "LN-25-0123",
+      "loan_status": "Agreement sent",
+      "indemnity_cover": "Commercial policy",
+      "registrar": "Colin Ferris",
+      "insurance_value_gbp": 25000.0,
+      "export_row": 3,
+      "lender": {
+        "institution": "Fenwick Hall Trust",
+        "contact_email": "Olivia.Doyle@Fenwickhall.Example.Org",
+        "contact_name": "Olivia Doyle"
+      },
+      "loan_end": "08/07/2027"
+    },
+    {
+      "loan_end": "06/06/2027",
+      "export_row": 4,
+      "loan_status": "Withdrawn",
+      "object": {
+        "accession_no": "2015.82.5",
+        "title": "Still Life with Lilies ",
+        "dimensions": {
+          "height_cm": 157.0,
+          "width_cm": 129.0
+        }
+      },
+      "acquisition_price_gbp": 60000.0,
+      "indemnity_cover": "Government Indemnity",
+      "loan_start": "16/06/2025",
+      "lender": {
+        "institution": "Northgate City Art Gallery",
+        "contact_email": "aaron.morris@northgate-gallery.example.org",
+        "contact_name": "Aaron Morris"
+      },
+      "insurance_value_gbp": 25000.0,
+      "loan_ref": "LN-25-0126",
+      "courier_required": "Yes",
+      "condition_checked": "2025-12-03T06:50:00Z",
+      "registrar": "Colin Ferris"
+    },
+    {
+      "loan_start": "05/06/2026",
+      "registrar": "Harriet Lomax",
+      "courier_required": "Yes",
+      "condition_checked": "2025-11-25T07:55:00Z",
+      "insurance_value_gbp": 85000.0,
+      "loan_end": "07/10/2027",
+      "acquisition_price_gbp": 9800.0,
+      "loan_ref": "LN-24-0129",
+      "loan_status": "Withdrawn",
+      "lender": {
+        "contact_name": "James Collins",
+        "contact_email": "james.collins@ashby-collection.example.net",
+        "institution": "Ashby Private Collection"
+      },
+      "object": {
+        "dimensions": {
+          "width_cm": 217.5,
+          "height_cm": null
+        },
+        "title": "Study of a Young Woman",
+        "accession_no": "1993.120.8"
+      },
+      "indemnity_cover": "Government Indemnity",
+      "export_row": 5
+    },
+    {
+      "registrar": "Colin Ferris",
+      "condition_checked": "2024-11-12T09:22:00Z",
+      "indemnity_cover": "Commercial policy",
+      "object": {
+        "dimensions": {
+          "height_cm": 167.3,
+          "width_cm": 107.1
+        },
+        "title": "  View of the Harbour at Dusk ",
+        "accession_no": "1963.205.6"
+      },
+      "courier_required": "No",
+      "loan_ref": "LN-25-0132",
+      "loan_start": "31/01/2025",
+      "acquisition_price_gbp": 9800.0,
+      "insurance_value_gbp": 85000.0,
+      "lender": {
+        "contact_name": "James Collins",
+        "contact_email": "James.Collins@Ashby-collection.Example.Net",
+        "institution": "Ashby Private Collection"
+      },
+      "export_row": 6,
+      "loan_end": "14/05/2027",
+      "loan_status": "In transit"
+    },
+    {
+      "condition_checked": "2025-05-12T16:26:00Z",
+      "loan_end": "05/10/2026",
+      "loan_status": "Agreement sent",
+      "lender": {
+        "institution": "Royal Borough Archive",
+        "contact_name": "Grace Griffin",
+        "contact_email": "grace.griffin@rb-archive.example.org"
+      },
+      "registrar": "Harriet Lomax",
+      "courier_required": "No",
+      "loan_ref": "LN-24-0135",
+      "indemnity_cover": "Commercial policy",
+      "insurance_value_gbp": null,
+      "loan_start": "24/08/2025",
+      "object": {
+        "dimensions": {
+          "width_cm": 137.7,
+          "height_cm": null
+        },
+        "title": " Portrait of a Fisherman  ",
+        "accession_no": "1967.23.8"
+      },
+      "acquisition_price_gbp": 60000.0,
+      "export_row": 7
+    },
+    {
+      "loan_start": "08/11/2025",
+      "insurance_value_gbp": 25000.0,
+      "condition_checked": "2024-10-04T19:32:00Z",
+      "registrar": "Colin Ferris",
+      "loan_end": "16/03/2027",
+      "acquisition_price_gbp": 9800.0,
+      "courier_required": "No",
+      "export_row": 8,
+      "loan_ref": "LN-24-0138",
+      "indemnity_cover": "Government Indemnity",
+      "object": {
+        "dimensions": {
+          "width_cm": 192.5,
+          "height_cm": 81.6
+        },
+        "accession_no": "2009.12.8",
+        "title": "Study of Lilies"
+      },
+      "loan_status": "On display",
+      "lender": {
+        "contact_name": "Grace Griffin",
+        "institution": "Royal Borough Archive",
+        "contact_email": "grace.griffin@rb-archive.example.org"
+      }
+    },
+    {
+      "lender": {
+        "institution": "Royal Borough Archive",
+        "contact_name": "Grace Griffin",
+        "contact_email": "Grace.Griffin@Rb-archive.Example.Org"
+      },
+      "indemnity_cover": "Government Indemnity",
+      "loan_ref": "LN-24-0141",
+      "loan_start": "16/03/2026",
+      "loan_end": "27/10/2026",
+      "loan_status": "Agreed",
+      "courier_required": "No",
+      "acquisition_price_gbp": 4500.0,
+      "object": {
+        "dimensions": {
+          "height_cm": 152.3,
+          "width_cm": 165.6
+        },
+        "accession_no": "2011.318.2",
+        "title": " Still Life with a Young Woman"
+      },
+      "export_row": 9,
+      "insurance_value_gbp": null,
+      "condition_checked": "2025-03-18T16:02:00Z",
+      "registrar": "Colin Ferris"
+    },
+    {
+      "acquisition_price_gbp": 1200.0,
+      "indemnity_cover": "Commercial policy",
+      "loan_ref": "LN-25-0144",
+      "condition_checked": "2025-12-26T16:58:00Z",
+      "object": {
+        "dimensions": {
+          "width_cm": 151.4,
+          "height_cm": 157.1
+        },
+        "accession_no": "1993.111.9",
+        "title": "Study of the Harbour at Dusk"
+      },
+      "registrar": "Harriet Lomax",
+      "courier_required": "No",
+      "lender": {
+        "contact_email": "grace.griffin@rb-archive.example.org",
+        "institution": "Royal Borough Archive",
+        "contact_name": "Grace Griffin"
+      },
+      "loan_end": "07/05/2027",
+      "loan_start": "05/01/2025",
+      "loan_status": "Agreed",
+      "export_row": 10
+    },
+    {
+      "registrar": "Colin Ferris",
+      "indemnity_cover": "Government Indemnity",
+      "loan_status": "In transit",
+      "acquisition_price_gbp": 4500.0,
+      "object": {
+        "dimensions": {
+          "height_cm": 59.2,
+          "width_cm": 149.3
+        },
+        "accession_no": "1965.9.2",
+        "title": "Still Life with the Harbour at Dusk"
+      },
+      "lender": {
+        "institution": "Museum of the Western Isles",
+        "contact_name": "Natalie Gibson",
+        "contact_email": "natalie.gibson@westernisles-museum.example.org"
+      },
+      "export_row": 11,
+      "loan_end": "29/07/2027",
+      "loan_start": "26/09/2025",
+      "condition_checked": "2025-02-07T06:07:00Z",
+      "insurance_value_gbp": 600000.0,
+      "loan_ref": "LN-24-0147",
+      "courier_required": "No"
+    },
+    {
+      "condition_checked": "2024-10-20T09:18:00Z",
+      "export_row": 12,
+      "object": {
+        "title": "Still Life with a Merchant",
+        "accession_no": "2001.10.3",
+        "dimensions": {
+          "height_cm": 150.2,
+          "width_cm": 131.6
+        }
+      },
+      "acquisition_price_gbp": 22000.0,
+      "loan_end": "12/05/2027",
+      "loan_start": "02/08/2026",
+      "loan_ref": "LN-25-0150",
+      "registrar": "Colin Ferris",
+      "courier_required": "Yes",
+      "lender": {
+        "contact_name": "Olivia Doyle",
+        "contact_email": "olivia.doyle@fenwickhall.example.org",
+        "institution": "Fenwick Hall Trust"
+      },
+      "insurance_value_gbp": 250000.0,
+      "loan_status": "Agreement sent",
+      "indemnity_cover": "Government Indemnity"
+    },
+    {
+      "loan_start": "06/01/2025",
+      "object": {
+        "accession_no": "1992.95.9",
+        "title": "Portrait of a Young Woman",
+        "dimensions": {
+          "height_cm": 78.1,
+          "width_cm": 168.4
+        }
+      },
+      "export_row": 13,
+      "condition_checked": "2025-10-04T14:29:00Z",
+      "loan_ref": "LN-24-0153",
+      "loan_end": "19/11/2027",
+      "insurance_value_gbp": 120000.0,
+      "registrar": "Harriet Lomax",
+      "courier_required": "Yes",
+      "indemnity_cover": "Lender's own",
+      "acquisition_price_gbp": 15000.0,
+      "lender": {
+        "contact_email": "james.collins@ashby-collection.example.net",
+        "institution": "Ashby Private Collection",
+        "contact_name": "James Collins"
+      },
+      "loan_status": "Agreement sent"
+    },
+    {
+      "acquisition_price_gbp": 15000.0,
+      "lender": {
+        "contact_email": "aaron.morris@northgate-gallery.example.org",
+        "institution": "Northgate City Art Gallery",
+        "contact_name": "Aaron Morris"
+      },
+      "loan_status": "On display",
+      "condition_checked": "2025-05-13T08:40:00Z",
+      "indemnity_cover": "Commercial policy",
+      "loan_end": "21/10/2026",
+      "loan_start": "14/09/2026",
+      "registrar": "Priya Natarajan",
+      "export_row": 14,
+      "object": {
+        "accession_no": "1973.337.8",
+        "title": "Portrait of Two Pears",
+        "dimensions": {
+          "width_cm": 19.5,
+          "height_cm": 175.1
+        }
+      },
+      "insurance_value_gbp": 25000.0,
+      "courier_required": "Yes",
+      "loan_ref": "LN-24-0156"
+    },
+    {
+      "insurance_value_gbp": 25000.0,
+      "loan_ref": "LN-24-0159",
+      "indemnity_cover": "Government Indemnity",
+      "registrar": "Priya Natarajan",
+      "lender": {
+        "institution": "Ashby Private Collection",
+        "contact_email": "James.Collins@Ashby-collection.Example.Net",
+        "contact_name": "James Collins"
+      },
+      "condition_checked": "2025-11-23T17:50:00Z",
+      "acquisition_price_gbp": 15000.0,
+      "courier_required": "Yes",
+      "loan_start": "15/10/2025",
+      "loan_end": "24/09/2027",
+      "loan_status": "Returned",
+      "object": {
+        "title": "Sketch of a Fisherman",
+        "accession_no": "1996.189.3",
+        "dimensions": {
+          "height_cm": 46.6,
+          "width_cm": 164.2
+        }
+      },
+      "export_row": 15
+    },
+    {
+      "registrar": "Priya Natarajan",
+      "condition_checked": "2025-08-16T15:38:00Z",
+      "loan_status": "On display",
+      "loan_ref": "LN-24-0162",
+      "loan_end": "14/01/2027",
+      "insurance_value_gbp": 25000.0,
+      "lender": {
+        "institution": "Royal Borough Archive",
+        "contact_email": "grace.griffin@rb-archive.example.org",
+        "contact_name": "Grace Griffin"
+      },
+      "object": {
+        "accession_no": "1983.342.6",
+        "title": "Portrait of the Old Mill",
+        "dimensions": {
+          "width_cm": 68.5,
+          "height_cm": 128.6
+        }
+      },
+      "export_row": 16,
+      "loan_start": "31/08/2025",
+      "indemnity_cover": "Government Indemnity",
+      "acquisition_price_gbp": 4500.0,
+      "courier_required": "No"
+    },
+    {
+      "object": {
+        "accession_no": "1954.171.3",
+        "dimensions": {
+          "width_cm": 37.3,
+          "height_cm": 159.0
+        },
+        "title": "Study of Winter Fields"
+      },
+      "loan_ref": "LN-24-0165",
+      "indemnity_cover": "Lender's own",
+      "insurance_value_gbp": 600000.0,
+      "loan_end": "21/01/2027",
+      "courier_required": "No",
+      "condition_checked": "2025-02-12T12:30:00Z",
+      "lender": {
+        "contact_email": "Olivia.Doyle@Fenwickhall.Example.Org",
+        "contact_name": "Olivia Doyle",
+        "institution": "Fenwick Hall Trust"
+      },
+      "registrar": "Harriet Lomax",
+      "loan_status": "On display",
+      "loan_start": "21/10/2025",
+      "acquisition_price_gbp": 60000.0,
+      "export_row": 17
+    },
+    {
+      "lender": {
+        "contact_name": "Aaron Morris",
+        "institution": "Northgate City Art Gallery",
+        "contact_email": "aaron.morris@northgate-gallery.example.org"
+      },
+      "export_row": 18,
+      "acquisition_price_gbp": 4500.0,
+      "loan_ref": "LN-25-0168",
+      "registrar": "Colin Ferris",
+      "indemnity_cover": "Commercial policy",
+      "courier_required": "No",
+      "loan_start": "02/02/2026",
+      "loan_status": "Returned",
+      "condition_checked": "2025-10-10T07:22:00Z",
+      "object": {
+        "accession_no": "1981.241.5",
+        "dimensions": {
+          "width_cm": 36.6,
+          "height_cm": null
+        },
+        "title": "Sketch of a Merchant"
+      },
+      "loan_end": "05/08/2027",
+      "insurance_value_gbp": 600000.0
+    },
+    {
+      "acquisition_price_gbp": 9800.0,
+      "loan_ref": "LN-24-0171",
+      "indemnity_cover": "Commercial policy",
+      "loan_start": "11/08/2025",
+      "lender": {
+        "institution": "Ashby Private Collection",
+        "contact_email": "James.Collins@Ashby-collection.Example.Net",
+        "contact_name": "James Collins"
+      },
+      "object": {
+        "title": "Portrait of a Merchant",
+        "accession_no": "1977.82.2",
+        "dimensions": {
+          "height_cm": 33.1,
+          "width_cm": 150.1
+        }
+      },
+      "loan_status": "On display",
+      "export_row": 19,
+      "loan_end": "20/11/2026",
+      "insurance_value_gbp": 85000.0,
+      "condition_checked": "2025-12-21T07:37:00Z",
+      "courier_required": "Yes",
+      "registrar": "Colin Ferris"
+    },
+    {
+      "loan_status": "In transit",
+      "loan_end": "15/05/2027",
+      "lender": {
+        "contact_name": "Olivia Doyle",
+        "contact_email": "olivia.doyle@fenwickhall.example.org",
+        "institution": "Fenwick Hall Trust"
+      },
+      "acquisition_price_gbp": 22000.0,
+      "registrar": "Priya Natarajan",
+      "condition_checked": "2025-01-10T09:32:00Z",
+      "object": {
+        "title": "Sketch of Lilies",
+        "dimensions": {
+          "height_cm": 60.8,
+          "width_cm": 108.3
+        },
+        "accession_no": "1963.236.3"
+      },
+      "courier_required": "No",
+      "insurance_value_gbp": 600000.0,
+      "indemnity_cover": "Government Indemnity",
+      "export_row": 20,
+      "loan_ref": "LN-24-0174",
+      "loan_start": "18/06/2025"
+    },
+    {
+      "registrar": "Colin Ferris",
+      "insurance_value_gbp": null,
+      "condition_checked": "2025-08-04T12:01:00Z",
+      "indemnity_cover": "Lender's own",
+      "acquisition_price_gbp": 22000.0,
+      "loan_status": "Agreed",
+      "lender": {
+        "contact_name": "Natalie Gibson",
+        "institution": "Museum of the Western Isles",
+        "contact_email": "natalie.gibson@westernisles-museum.example.org"
+      },
+      "loan_ref": "LN-25-0177",
+      "courier_required": "Yes",
+      "loan_end": "10/11/2026",
+      "loan_start": "30/10/2025",
+      "export_row": 21,
+      "object": {
+        "accession_no": "1989.363.7",
+        "dimensions": {
+          "height_cm": 136.7,
+          "width_cm": 36.0
+        },
+        "title": "View of a Fisherman"
+      }
+    },
+    {
+      "lender": {
+        "contact_email": "JAMES.COLLINS@ASHBY-COLLECTION.EXAMPLE.NET",
+        "contact_name": "James Collins",
+        "institution": "Ashby Private Collection"
+      },
+      "courier_required": "No",
+      "object": {
+        "title": "View of Lilies",
+        "dimensions": {
+          "height_cm": 164.4,
+          "width_cm": 95.2
+        },
+        "accession_no": "1952.20.1"
+      },
+      "loan_end": "05/06/2027",
+      "insurance_value_gbp": 250000.0,
+      "loan_status": "Agreed",
+      "indemnity_cover": "Government Indemnity",
+      "loan_start": "14/09/2025",
+      "condition_checked": "2024-10-16T18:30:00Z",
+      "export_row": 22,
+      "registrar": "Harriet Lomax",
+      "loan_ref": "LN-24-0180",
+      "acquisition_price_gbp": 1200.0
+    },
+    {
+      "object": {
+        "title": "Study of the Old Mill",
+        "dimensions": {
+          "width_cm": 26.1,
+          "height_cm": 110.6
+        },
+        "accession_no": "1957.294.1"
+      },
+      "courier_required": "Yes",
+      "export_row": 23,
+      "insurance_value_gbp": 40000.0,
+      "loan_end": "01/10/2027",
+      "registrar": "Colin Ferris",
+      "lender": {
+        "institution": "Northgate City Art Gallery",
+        "contact_email": "Aaron.Morris@Northgate-gallery.Example.Org",
+        "contact_name": "Aaron Morris"
+      },
+      "loan_ref": "LN-24-0183",
+      "acquisition_price_gbp": 22000.0,
+      "loan_start": "21/04/2025",
+      "condition_checked": "2025-02-17T12:12:00Z",
+      "indemnity_cover": "Government Indemnity",
+      "loan_status": "On display"
+    },
+    {
+      "indemnity_cover": "Lender's own",
+      "loan_status": "Withdrawn",
+      "export_row": 24,
+      "condition_checked": "2025-08-15T10:09:00Z",
+      "insurance_value_gbp": 120000.0,
+      "courier_required": "Yes",
+      "object": {
+        "accession_no": "1954.55.4",
+        "title": "View of a Merchant",
+        "dimensions": {
+          "width_cm": 111.0,
+          "height_cm": 40.6
+        }
+      },
+      "loan_end": "26/12/2026",
+      "registrar": "Priya Natarajan",
+      "loan_ref": "LN-25-0186",
+      "loan_start": "26/06/2025",
+      "acquisition_price_gbp": 60000.0,
+      "lender": {
+        "contact_email": "Olivia.Doyle@Fenwickhall.Example.Org",
+        "institution": "Fenwick Hall Trust",
+        "contact_name": "Olivia Doyle"
+      }
+    },
+    {
+      "loan_ref": "LN-25-0189",
+      "export_row": 25,
+      "loan_end": "07/10/2027",
+      "indemnity_cover": "Government Indemnity",
+      "insurance_value_gbp": null,
+      "object": {
+        "accession_no": "1998.367.8",
+        "title": "  View of Two Pears ",
+        "dimensions": {
+          "height_cm": 97.0,
+          "width_cm": 167.5
+        }
+      },
+      "lender": {
+        "institution": "Northgate City Art Gallery",
+        "contact_email": "aaron.morris@northgate-gallery.example.org",
+        "contact_name": "Aaron Morris"
+      },
+      "registrar": "Harriet Lomax",
+      "loan_status": "Agreed",
+      "condition_checked": "2025-01-29T20:57:00Z",
+      "courier_required": "Yes",
+      "acquisition_price_gbp": 15000.0,
+      "loan_start": "15/04/2025"
+    },
+    {
+      "export_row": 26,
+      "loan_end": "19/12/2026",
+      "lender": {
+        "contact_name": "James Collins",
+        "institution": "Ashby Private Collection",
+        "contact_email": "james.collins@ashby-collection.example.net"
+      },
+      "loan_status": "Returned",
+      "indemnity_cover": "Commercial policy",
+      "loan_start": "01/05/2026",
+      "loan_ref": "LN-25-0192",
+      "object": {
+        "title": "View of a Young Woman",
+        "accession_no": "1960.372.9",
+        "dimensions": {
+          "height_cm": 69.2,
+          "width_cm": 19.8
+        }
+      },
+      "registrar": "Colin Ferris",
+      "acquisition_price_gbp": 22000.0,
+      "condition_checked": "2025-03-04T11:29:00Z",
+      "courier_required": "No",
+      "insurance_value_gbp": 250000.0
+    },
+    {
+      "loan_status": "Agreed",
+      "loan_ref": "LN-25-0195",
+      "registrar": "Harriet Lomax",
+      "condition_checked": "2025-04-02T12:45:00Z",
+      "lender": {
+        "institution": "Northgate City Art Gallery",
+        "contact_name": "Aaron Morris",
+        "contact_email": "aaron.morris@northgate-gallery.example.org"
+      },
+      "insurance_value_gbp": 25000.0,
+      "object": {
+        "accession_no": "2002.14.7",
+        "title": "Still Life with Two Pears",
+        "dimensions": {
+          "height_cm": 76.9,
+          "width_cm": 183.0
+        }
+      },
+      "export_row": 27,
+      "indemnity_cover": "Lender's own",
+      "courier_required": "No",
+      "loan_start": "10/11/2025",
+      "acquisition_price_gbp": 1200.0,
+      "loan_end": "19/05/2027"
+    },
+    {
+      "lender": {
+        "contact_email": "natalie.gibson@westernisles-museum.example.org",
+        "contact_name": "Natalie Gibson",
+        "institution": "Museum of the Western Isles"
+      },
+      "condition_checked": "2024-06-13T18:51:00Z",
+      "registrar": "Priya Natarajan",
+      "loan_status": "Agreed",
+      "loan_start": "18/03/2025",
+      "export_row": 28,
+      "loan_ref": "LN-25-0198",
+      "courier_required": "Yes",
+      "indemnity_cover": "Government Indemnity",
+      "object": {
+        "accession_no": "2012.91.5",
+        "title": " Sketch of a Young Woman",
+        "dimensions": {
+          "width_cm": 91.7,
+          "height_cm": 75.6
+        }
+      },
+      "loan_end": "15/07/2027",
+      "acquisition_price_gbp": 15000.0
+    },
+    {
+      "insurance_value_gbp": 40000.0,
+      "loan_end": "10/10/2026",
+      "condition_checked": "2025-07-30T15:18:00Z",
+      "acquisition_price_gbp": 60000.0,
+      "loan_ref": "LN-25-0201",
+      "loan_start": "16/09/2026",
+      "indemnity_cover": "Commercial policy",
+      "courier_required": "Yes",
+      "lender": {
+        "contact_email": "olivia.doyle@fenwickhall.example.org",
+        "institution": "Fenwick Hall Trust",
+        "contact_name": "Olivia Doyle"
+      },
+      "object": {
+        "accession_no": "1958.143.1",
+        "dimensions": {
+          "height_cm": 90.9,
+          "width_cm": 66.2
+        },
+        "title": "Study of a Merchant"
+      },
+      "loan_status": "Agreement sent",
+      "export_row": 29,
+      "registrar": "Colin Ferris"
+    },
+    {
+      "loan_ref": "LN-25-0204",
+      "indemnity_cover": "Government Indemnity",
+      "registrar": "Priya Natarajan",
+      "courier_required": "No",
+      "condition_checked": "2024-11-14T10:28:00Z",
+      "lender": {
+        "institution": "Ashby Private Collection",
+        "contact_email": "JAMES.COLLINS@ASHBY-COLLECTION.EXAMPLE.NET",
+        "contact_name": "James Collins"
+      },
+      "loan_end": "24/12/2026",
+      "object": {
+        "dimensions": {
+          "height_cm": 60.6,
+          "width_cm": 174.1
+        },
+        "accession_no": "1972.356.6",
+        "title": "Still Life with the Old Mill"
+      },
+      "insurance_value_gbp": 40000.0,
+      "export_row": 30,
+      "loan_start": "15/06/2025",
+      "loan_status": "In transit",
+      "acquisition_price_gbp": 9800.0
+    },
+    {
+      "registrar": "Priya Natarajan",
+      "indemnity_cover": "Government Indemnity",
+      "courier_required": "Yes",
+      "condition_checked": "2025-11-17T13:49:00Z",
+      "loan_end": "28/11/2026",
+      "loan_status": "In transit",
+      "export_row": 31,
+      "object": {
+        "title": "Still Life with Winter Fields",
+        "accession_no": "1966.271.3",
+        "dimensions": {
+          "height_cm": 126.5,
+          "width_cm": 64.5
+        }
+      },
+      "loan_ref": "LN-24-0207",
+      "loan_start": "05/10/2025",
+      "acquisition_price_gbp": 22000.0,
+      "lender": {
+        "contact_name": "James Collins",
+        "institution": "Ashby Private Collection",
+        "contact_email": "James.Collins@Ashby-collection.Example.Net"
+      },
+      "insurance_value_gbp": 250000.0
+    },
+    {
+      "loan_end": "28/03/2027",
+      "export_row": 32,
+      "lender": {
+        "contact_email": "natalie.gibson@westernisles-museum.example.org",
+        "institution": "Museum of the Western Isles",
+        "contact_name": "Natalie Gibson"
+      },
+      "insurance_value_gbp": 600000.0,
+      "loan_ref": "LN-25-0210",
+      "condition_checked": "2024-10-24T10:18:00Z",
+      "object": {
+        "accession_no": "1988.270.2",
+        "dimensions": {
+          "height_cm": 147.2,
+          "width_cm": 142.8
+        },
+        "title": "Portrait of the Harbour at Dusk"
+      },
+      "loan_start": "20/01/2026",
+      "registrar": "Harriet Lomax",
+      "indemnity_cover": "Lender's own",
+      "courier_required": "Yes",
+      "loan_status": "Returned",
+      "acquisition_price_gbp": 4500.0
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "loan_id": {
+        "type": "string",
+        "description": "Identifier of the loan agreement."
+      },
+      "object_number": {
+        "type": "string",
+        "description": "Lender's catalogue number of the borrowed object."
+      },
+      "object_title": {
+        "type": "string",
+        "description": "Title of the borrowed object."
+      },
+      "lender": {
+        "type": "string",
+        "description": "Institution or collection lending the object."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "requested",
+          "confirmed",
+          "on_site",
+          "returned"
+        ],
+        "description": "Stage the loan has reached."
+      },
+      "cover_type": {
+        "type": "string",
+        "enum": [
+          "indemnity",
+          "commercial",
+          "lender"
+        ],
+        "description": "How the object is insured while on loan."
+      },
+      "insured_value": {
+        "type": "number",
+        "description": "Value."
+      },
+      "start_date": {
+        "type": "string",
+        "format": "date",
+        "description": "First day of the loan period."
+      },
+      "end_date": {
+        "type": "string",
+        "format": "date",
+        "description": "Last day of the loan period."
+      },
+      "height_cm": {
+        "type": "number",
+        "description": "Height of the object in centimetres."
+      },
+      "loan_days": {
+        "type": "integer",
+        "description": "Length of the loan period in days."
+      },
+      "gallery": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "loan_id",
+      "object_number",
+      "object_title",
+      "lender",
+      "status",
+      "cover_type",
+      "start_date"
+    ]
+  },
+  "groundTruth": {
+    "loan_id": {
+      "source": "loan_ref",
+      "transform": "copy",
+      "why": "loan reference; export_row is the row counter"
+    },
+    "object_number": {
+      "source": "object.accession_no",
+      "transform": "copy",
+      "why": "lender's accession number"
+    },
+    "object_title": {
+      "source": "object.title",
+      "transform": "trim",
+      "why": "object title, padded"
+    },
+    "lender": {
+      "source": "lender.institution",
+      "transform": "copy",
+      "why": "lending institution; lender.contact_name is a person there and registrar is staff"
+    },
+    "status": {
+      "source": "loan_status",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Agreement sent": "requested",
+        "Agreed": "confirmed",
+        "In transit": "confirmed",
+        "On display": "on_site",
+        "Returned": "returned",
+        "Withdrawn": null
+      },
+      "why": "loan stage; withdrawn loans need review"
+    },
+    "cover_type": {
+      "source": "indemnity_cover",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Government Indemnity": "indemnity",
+        "Commercial policy": "commercial",
+        "Lender's own": "lender"
+      },
+      "why": "insurance cover; courier_required is a different yes/no category"
+    },
+    "insured_value": {
+      "source": "insurance_value_gbp",
+      "transform": "copy",
+      "why": "insurance value, null or missing for some; acquisition_price_gbp is what the lender paid"
+    },
+    "start_date": {
+      "source": "loan_start",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "loan start (UK day-first); condition_checked is the last condition report"
+    },
+    "end_date": {
+      "source": "loan_end",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "loan end (UK day-first)"
+    },
+    "height_cm": {
+      "source": "object.dimensions.height_cm",
+      "transform": "copy",
+      "why": "height; width_cm is the width"
+    },
+    "loan_days": {
+      "source": null,
+      "transform": "none",
+      "why": "not exported",
+      "unsupportedReason": "would need the number of days between loan_start and loan_end"
+    },
+    "gallery": {
+      "source": null,
+      "transform": "none",
+      "why": "no gallery is exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "loan_ref",
+        "export_row"
+      ],
+      "correctFor": "loan_id"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "loan_ref",
+        "object.accession_no"
+      ],
+      "correctFor": "loan_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "lender.institution",
+        "lender.contact_name"
+      ],
+      "correctFor": "lender"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "indemnity_cover",
+        "courier_required"
+      ],
+      "correctFor": "cover_type"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "loan_start",
+        "condition_checked"
+      ],
+      "correctFor": "start_date"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "object.dimensions.height_cm",
+        "object.dimensions.width_cm"
+      ],
+      "correctFor": "height_cm"
+    }
+  ],
+  "sourceConcepts": {
+    "export_row": "other-identifier",
+    "loan_ref": "transaction-id",
+    "object.accession_no": "other-identifier",
+    "object.title": "other",
+    "object.dimensions.height_cm": "quantity",
+    "object.dimensions.width_cm": "quantity",
+    "lender.institution": "organization-name",
+    "lender.contact_name": "person-name",
+    "lender.contact_email": "email",
+    "registrar": "person-name",
+    "loan_status": "account-status",
+    "insurance_value_gbp": "amount",
+    "acquisition_price_gbp": "amount",
+    "indemnity_cover": "category",
+    "courier_required": "category",
+    "loan_start": "start-date",
+    "loan_end": "end-date",
+    "condition_checked": "other"
+  },
+  "destinationConcepts": {
+    "loan_id": "transaction-id",
+    "object_number": "other-identifier",
+    "object_title": "other",
+    "lender": "organization-name",
+    "status": "account-status",
+    "cover_type": "category",
+    "insured_value": "amount",
+    "start_date": "start-date",
+    "end_date": "end-date",
+    "height_cm": "quantity",
+    "loan_days": "quantity",
+    "gallery": "other"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 6,
+      "outcome": "transformed",
+      "output": {
+        "loan_id": "LN-24-0135",
+        "object_number": "1967.23.8",
+        "object_title": "Portrait of a Fisherman",
+        "lender": "Royal Borough Archive",
+        "status": "requested",
+        "cover_type": "commercial",
+        "start_date": "2025-08-24",
+        "end_date": "2026-10-05"
+      }
+    },
+    {
+      "recordIndex": 8,
+      "outcome": "transformed",
+      "output": {
+        "loan_id": "LN-24-0141",
+        "object_number": "2011.318.2",
+        "object_title": "Still Life with a Young Woman",
+        "lender": "Royal Borough Archive",
+        "status": "confirmed",
+        "cover_type": "indemnity",
+        "start_date": "2026-03-16",
+        "end_date": "2026-10-27",
+        "height_cm": 152.3
+      }
+    },
+    {
+      "recordIndex": 14,
+      "outcome": "transformed",
+      "output": {
+        "loan_id": "LN-24-0159",
+        "object_number": "1996.189.3",
+        "object_title": "Sketch of a Fisherman",
+        "lender": "Ashby Private Collection",
+        "status": "returned",
+        "cover_type": "indemnity",
+        "insured_value": 25000.0,
+        "start_date": "2025-10-15",
+        "end_date": "2027-09-24",
+        "height_cm": 46.6
+      }
+    },
+    {
+      "recordIndex": 23,
+      "outcome": "held"
+    }
+  ]
+}

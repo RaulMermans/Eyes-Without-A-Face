@@ -1,0 +1,867 @@
+{
+  "scenarioId": "corporate-catering-clients-to-helpdesk-requesters",
+  "split": "holdout",
+  "track": "wedge",
+  "industry": "corporate catering company business clients",
+  "sourceLanguage": "it",
+  "description": "Flat client export of a fictional corporate catering company (Italian snake_case with a cf_ custom-field prefix) to be loaded as helpdesk requesters with their organization.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "ragione_sociale": "Farmaceutica Ruggeri S.r.l.",
+      "stato_cliente": "Attivo",
+      "tipo_servizio": "Mensa aziendale",
+      "id_riga": 1,
+      "data_ultimo_ordine": "09/10/2026",
+      "commerciale": "Gianni Ferraro",
+      "consenso_marketing": "No",
+      "partita_iva": "IT06383549720",
+      "referente_tel": "348 3486972",
+      "stato_pagamenti": "Regolare",
+      "referente_cognome": "Ferrari",
+      "n_coperti": 242,
+      "data_attivazione": "07/12/2018",
+      "cf_codice_cliente": "CAT-0870",
+      "referente_email": null,
+      "email_pec": "amministrazione@pec.ruggeri.example.net",
+      "referente_nome": "Silvia"
+    },
+    {
+      "ragione_sociale": "Cartiera Bassi S.r.l.",
+      "partita_iva": "IT04192340934",
+      "id_riga": 2,
+      "tipo_servizio": "Buoni pasto",
+      "referente_tel": null,
+      "n_coperti": 286,
+      "referente_nome": "Marco",
+      "consenso_marketing": "No",
+      "data_ultimo_ordine": "02/08/2026",
+      "data_attivazione": "08/06/2020",
+      "stato_cliente": "Prova gratuita",
+      "stato_pagamenti": "Insoluto",
+      "cf_codice_cliente": "CAT-0873",
+      "commerciale": "Gianni Ferraro",
+      "referente_cognome": "Galli",
+      "email_pec": "amministrazione@pec.bassi.example.net",
+      "referente_email": "marco.galli@bassi.example.com"
+    },
+    {
+      "consenso_marketing": "Sì",
+      "data_ultimo_ordine": "01/08/2026",
+      "referente_tel": "329 8804657",
+      "partita_iva": "IT09411829282",
+      "referente_cognome": "Greco",
+      "email_pec": "amministrazione@pec.valli.example.net",
+      "id_riga": 3,
+      "tipo_servizio": "Mensa aziendale",
+      "stato_pagamenti": "Regolare",
+      "stato_cliente": "Attivo",
+      "referente_nome": "Federica",
+      "cf_codice_cliente": "CAT-0876",
+      "referente_email": "federica.greco@valli.example.com",
+      "data_attivazione": "22/01/2017",
+      "n_coperti": 210,
+      "commerciale": "Stefano Cattaneo",
+      "ragione_sociale": "Studio Valli S.p.A."
+    },
+    {
+      "tipo_servizio": "Mensa aziendale",
+      "data_ultimo_ordine": "06/11/2026",
+      "referente_tel": "321 7103578",
+      "email_pec": "amministrazione@pec.orsini.example.net",
+      "partita_iva": "IT05288604250",
+      "consenso_marketing": "Sì",
+      "referente_nome": "Davide",
+      "stato_pagamenti": "Regolare",
+      "id_riga": 4,
+      "n_coperti": 196,
+      "referente_email": "davide.costa@orsini.example.com",
+      "ragione_sociale": "Meccanica Orsini S.r.l.",
+      "stato_cliente": "Da verificare",
+      "referente_cognome": "Costa",
+      "data_attivazione": "31/03/2025",
+      "cf_codice_cliente": "CAT-0879",
+      "commerciale": "Gianni Ferraro"
+    },
+    {
+      "stato_cliente": "Prova gratuita",
+      "commerciale": "Stefano Cattaneo",
+      "tipo_servizio": "Mensa aziendale",
+      "data_ultimo_ordine": "07/07/2026",
+      "referente_email": "andrea.colombo@pellegrini.example.com",
+      "stato_pagamenti": "Insoluto",
+      "consenso_marketing": "No",
+      "ragione_sociale": "Cartiera Pellegrini S.p.A.",
+      "referente_cognome": "Colombo",
+      "partita_iva": "IT05343998265",
+      "cf_codice_cliente": "CAT-0882",
+      "data_attivazione": "14/07/2017",
+      "referente_tel": null,
+      "email_pec": "amministrazione@pec.pellegrini.example.net",
+      "id_riga": 5,
+      "n_coperti": 131,
+      "referente_nome": "Andrea"
+    },
+    {
+      "referente_email": "luca.gallo@fabbri.example.com",
+      "stato_pagamenti": "Regolare",
+      "commerciale": "Stefano Cattaneo",
+      "stato_cliente": "Cessato",
+      "data_attivazione": "01/02/2017",
+      "tipo_servizio": "Mensa aziendale",
+      "cf_codice_cliente": "CAT-0885",
+      "referente_nome": "Luca",
+      "id_riga": 6,
+      "ragione_sociale": "Officine Fabbri S.n.c.",
+      "consenso_marketing": "Sì",
+      "data_ultimo_ordine": "13/07/2026",
+      "email_pec": "amministrazione@pec.fabbri.example.net",
+      "n_coperti": 138,
+      "partita_iva": "IT07385978194",
+      "referente_cognome": "Gallo"
+    },
+    {
+      "referente_email": "francesca.galli@fabbri.example.com",
+      "n_coperti": 81,
+      "stato_cliente": "Sospeso",
+      "tipo_servizio": "Mensa aziendale",
+      "id_riga": 7,
+      "consenso_marketing": "No",
+      "referente_nome": "Francesca",
+      "data_attivazione": "15/10/2022",
+      "partita_iva": "IT09130258457",
+      "referente_cognome": "Galli",
+      "ragione_sociale": " Studio Fabbri S.n.c.",
+      "commerciale": "Gianni Ferraro",
+      "data_ultimo_ordine": "21/06/2026",
+      "referente_tel": "348 6654564",
+      "cf_codice_cliente": "CAT-0888",
+      "email_pec": "amministrazione@pec.fabbri.example.net",
+      "stato_pagamenti": "Regolare"
+    },
+    {
+      "n_coperti": 146,
+      "commerciale": "Stefano Cattaneo",
+      "tipo_servizio": "Mensa aziendale",
+      "partita_iva": "IT02369186707",
+      "ragione_sociale": "Tessitura Bassi S.r.l.",
+      "cf_codice_cliente": "CAT-0891",
+      "id_riga": 8,
+      "referente_email": "Giulia.Fontana@Bassi.Example.Com",
+      "referente_cognome": "Fontana",
+      "data_attivazione": "21/11/2016",
+      "stato_pagamenti": "RID respinto",
+      "email_pec": "amministrazione@pec.bassi.example.net",
+      "data_ultimo_ordine": "27/09/2026",
+      "referente_nome": "Giulia",
+      "consenso_marketing": "Sì",
+      "stato_cliente": "Attivo",
+      "referente_tel": "344 6034714"
+    },
+    {
+      "tipo_servizio": "Buoni pasto",
+      "consenso_marketing": "No",
+      "email_pec": "amministrazione@pec.bassi.example.net",
+      "data_ultimo_ordine": "17/07/2026",
+      "commerciale": "Laura Benedetti",
+      "referente_tel": "338 4910425",
+      "id_riga": 9,
+      "n_coperti": 307,
+      "cf_codice_cliente": "CAT-0894",
+      "stato_cliente": "Attivo",
+      "referente_email": "Tommaso.Ferrari@Bassi.Example.Com",
+      "partita_iva": "IT01180599753",
+      "stato_pagamenti": "Regolare",
+      "data_attivazione": "15/03/2017",
+      "ragione_sociale": " Farmaceutica Bassi S.r.l.",
+      "referente_cognome": "Ferrari",
+      "referente_nome": "Tommaso"
+    },
+    {
+      "stato_cliente": "Prova gratuita",
+      "email_pec": "amministrazione@pec.ruggeri.example.net",
+      "commerciale": "Stefano Cattaneo",
+      "referente_tel": null,
+      "cf_codice_cliente": "CAT-0897",
+      "stato_pagamenti": "Regolare",
+      "data_ultimo_ordine": "02/08/2026",
+      "referente_cognome": "Longo",
+      "id_riga": 10,
+      "referente_email": "sara.longo@ruggeri.example.com",
+      "ragione_sociale": "Logistica Ruggeri S.r.l.",
+      "n_coperti": 326,
+      "consenso_marketing": "Sì",
+      "partita_iva": "IT09842073761",
+      "tipo_servizio": "Buoni pasto",
+      "data_attivazione": "26/11/2020",
+      "referente_nome": "Sara"
+    },
+    {
+      "stato_cliente": "Prova gratuita",
+      "tipo_servizio": "Mensa aziendale",
+      "cf_codice_cliente": "CAT-0900",
+      "consenso_marketing": "No",
+      "id_riga": 11,
+      "commerciale": "Laura Benedetti",
+      "stato_pagamenti": "Regolare",
+      "email_pec": "amministrazione@pec.ruggeri.example.net",
+      "n_coperti": 69,
+      "partita_iva": "IT04977125837",
+      "referente_email": "Matteo.Ferrari@Ruggeri.Example.Com",
+      "data_attivazione": "24/06/2023",
+      "data_ultimo_ordine": "22/06/2026",
+      "ragione_sociale": "Meccanica Ruggeri S.r.l.",
+      "referente_nome": "Matteo",
+      "referente_cognome": "Ferrari"
+    },
+    {
+      "data_attivazione": "27/04/2024",
+      "commerciale": "Laura Benedetti",
+      "referente_email": "giulia.barbieri@fabbri.example.com",
+      "partita_iva": "IT07652034313",
+      "referente_nome": "Giulia",
+      "referente_tel": "324 4831999",
+      "n_coperti": 198,
+      "id_riga": 12,
+      "cf_codice_cliente": "CAT-0903",
+      "stato_pagamenti": "Regolare",
+      "email_pec": "amministrazione@pec.fabbri.example.net",
+      "tipo_servizio": "Coffee break & eventi",
+      "referente_cognome": "Barbieri",
+      "data_ultimo_ordine": "08/08/2026",
+      "consenso_marketing": "No",
+      "stato_cliente": "Attivo",
+      "ragione_sociale": "Logistica Fabbri S.n.c."
+    },
+    {
+      "ragione_sociale": "Studio Ruggeri S.r.l.",
+      "referente_email": "silvia.barbieri@ruggeri.example.com",
+      "referente_nome": "Silvia",
+      "referente_cognome": "Barbieri",
+      "n_coperti": 284,
+      "data_ultimo_ordine": "15/07/2026",
+      "partita_iva": "IT02551097108",
+      "email_pec": "amministrazione@pec.ruggeri.example.net",
+      "stato_pagamenti": "Regolare",
+      "consenso_marketing": "No",
+      "cf_codice_cliente": "CAT-0906",
+      "id_riga": 13,
+      "commerciale": "Laura Benedetti",
+      "referente_tel": null,
+      "tipo_servizio": "Coffee break & eventi",
+      "data_attivazione": "02/08/2021",
+      "stato_cliente": "Attivo"
+    },
+    {
+      "referente_email": "Irene.Fontana@Fabbri.Example.Com",
+      "stato_cliente": "Attivo",
+      "id_riga": 14,
+      "partita_iva": "IT06594194249",
+      "referente_tel": "322 5827560",
+      "n_coperti": 21,
+      "data_ultimo_ordine": "24/10/2026",
+      "tipo_servizio": "Coffee break & eventi",
+      "cf_codice_cliente": "CAT-0909",
+      "email_pec": "amministrazione@pec.fabbri.example.net",
+      "commerciale": "Stefano Cattaneo",
+      "referente_cognome": "Fontana",
+      "ragione_sociale": " Tessitura Fabbri S.n.c.",
+      "consenso_marketing": "No",
+      "referente_nome": "Irene",
+      "data_attivazione": "15/09/2018",
+      "stato_pagamenti": "Regolare"
+    },
+    {
+      "ragione_sociale": "Officine Ruggeri S.r.l.",
+      "n_coperti": 16,
+      "referente_email": "Marco.Bruno@Ruggeri.Example.Com",
+      "data_ultimo_ordine": "26/09/2026",
+      "partita_iva": "IT08174120053",
+      "commerciale": "Stefano Cattaneo",
+      "cf_codice_cliente": "CAT-0912",
+      "email_pec": "amministrazione@pec.ruggeri.example.net",
+      "consenso_marketing": "No",
+      "tipo_servizio": "Mensa aziendale",
+      "referente_cognome": "Bruno",
+      "referente_tel": "332 6237055",
+      "id_riga": 15,
+      "stato_pagamenti": "Regolare",
+      "referente_nome": "Marco",
+      "data_attivazione": "09/12/2017",
+      "stato_cliente": "Cessato"
+    },
+    {
+      "ragione_sociale": "Tessitura Ruggeri S.r.l.",
+      "referente_nome": "Sara",
+      "id_riga": 16,
+      "stato_cliente": "Sospeso",
+      "referente_cognome": "Bruno",
+      "referente_email": "Sara.Bruno@Ruggeri.Example.Com",
+      "partita_iva": "IT02577666990",
+      "tipo_servizio": "Mensa aziendale",
+      "consenso_marketing": "No",
+      "email_pec": "amministrazione@pec.ruggeri.example.net",
+      "stato_pagamenti": "Regolare",
+      "cf_codice_cliente": "CAT-0915",
+      "commerciale": "Stefano Cattaneo",
+      "data_attivazione": "28/05/2024",
+      "data_ultimo_ordine": "14/08/2026",
+      "referente_tel": "341 2799507",
+      "n_coperti": 123
+    },
+    {
+      "referente_tel": "323 5098482",
+      "data_ultimo_ordine": "10/07/2026",
+      "commerciale": "Gianni Ferraro",
+      "cf_codice_cliente": "CAT-0918",
+      "email_pec": "amministrazione@pec.fabbri.example.net",
+      "partita_iva": "IT02791221432",
+      "consenso_marketing": "No",
+      "stato_cliente": "Attivo",
+      "tipo_servizio": "Coffee break & eventi",
+      "stato_pagamenti": "Regolare",
+      "ragione_sociale": "Meccanica Fabbri S.n.c.",
+      "n_coperti": 197,
+      "referente_cognome": "Bianchi",
+      "data_attivazione": "14/10/2017",
+      "id_riga": 17,
+      "referente_nome": "Riccardo",
+      "referente_email": "riccardo.bianchi@fabbri.example.com"
+    },
+    {
+      "ragione_sociale": "Farmaceutica Orsini S.r.l.",
+      "tipo_servizio": "Mensa aziendale",
+      "data_attivazione": "20/05/2019",
+      "referente_nome": "Paolo",
+      "referente_tel": "340 8214207",
+      "consenso_marketing": "No",
+      "referente_cognome": "Gallo",
+      "referente_email": "Paolo.Gallo@Orsini.Example.Com",
+      "email_pec": "amministrazione@pec.orsini.example.net",
+      "id_riga": 18,
+      "data_ultimo_ordine": "30/09/2026",
+      "n_coperti": 125,
+      "stato_cliente": "Attivo",
+      "partita_iva": "IT06936036549",
+      "cf_codice_cliente": "CAT-0921",
+      "stato_pagamenti": "Regolare",
+      "commerciale": "Laura Benedetti"
+    },
+    {
+      "referente_nome": "Martina",
+      "referente_tel": "327 6273061",
+      "data_attivazione": "03/12/2018",
+      "partita_iva": "IT07004138208",
+      "email_pec": "amministrazione@pec.valli.example.net",
+      "commerciale": "Stefano Cattaneo",
+      "cf_codice_cliente": "CAT-0924",
+      "n_coperti": 155,
+      "tipo_servizio": "Mensa aziendale",
+      "data_ultimo_ordine": "30/07/2026",
+      "stato_pagamenti": "Regolare",
+      "id_riga": 19,
+      "consenso_marketing": "Sì",
+      "stato_cliente": "Da verificare",
+      "ragione_sociale": "Tessitura Valli S.p.A.",
+      "referente_email": "martina.lombardi@valli.example.com",
+      "referente_cognome": "Lombardi"
+    },
+    {
+      "cf_codice_cliente": "CAT-0927",
+      "referente_cognome": "Bianchi",
+      "ragione_sociale": "  Tessitura Pellegrini S.p.A. ",
+      "tipo_servizio": "Mensa aziendale",
+      "stato_pagamenti": "Regolare",
+      "data_ultimo_ordine": "18/06/2026",
+      "partita_iva": "IT04067263869",
+      "email_pec": "amministrazione@pec.pellegrini.example.net",
+      "referente_nome": "Paolo",
+      "id_riga": 20,
+      "data_attivazione": "31/03/2017",
+      "consenso_marketing": "Sì",
+      "n_coperti": 17,
+      "referente_email": null,
+      "stato_cliente": "Attivo",
+      "commerciale": "Stefano Cattaneo"
+    },
+    {
+      "consenso_marketing": "No",
+      "n_coperti": 47,
+      "referente_email": "martina.barbieri@bassi.example.com",
+      "stato_pagamenti": "Regolare",
+      "tipo_servizio": "Buoni pasto",
+      "email_pec": "amministrazione@pec.bassi.example.net",
+      "referente_tel": "343 1448662",
+      "referente_cognome": "Barbieri",
+      "stato_cliente": "Attivo",
+      "cf_codice_cliente": "CAT-0930",
+      "partita_iva": "IT08651000162",
+      "ragione_sociale": " Meccanica Bassi S.r.l.",
+      "data_ultimo_ordine": "16/09/2026",
+      "referente_nome": "Martina",
+      "id_riga": 21,
+      "commerciale": "Gianni Ferraro",
+      "data_attivazione": "17/02/2024"
+    },
+    {
+      "id_riga": 22,
+      "tipo_servizio": "Buoni pasto",
+      "stato_cliente": "Sospeso",
+      "data_ultimo_ordine": "05/06/2026",
+      "referente_email": "silvia.ricci@ruggeri.example.com",
+      "partita_iva": "IT06612037488",
+      "referente_tel": "326 1887366",
+      "cf_codice_cliente": "CAT-0933",
+      "data_attivazione": "21/11/2022",
+      "n_coperti": 29,
+      "consenso_marketing": "No",
+      "referente_cognome": "Ricci",
+      "email_pec": "amministrazione@pec.ruggeri.example.net",
+      "stato_pagamenti": "Regolare",
+      "ragione_sociale": "Cartiera Ruggeri S.r.l.",
+      "commerciale": "Stefano Cattaneo",
+      "referente_nome": "Silvia"
+    },
+    {
+      "stato_pagamenti": "Regolare",
+      "referente_tel": "347 8410128",
+      "stato_cliente": "Attivo",
+      "cf_codice_cliente": "CAT-0936",
+      "referente_nome": "Federica",
+      "data_attivazione": "11/04/2025",
+      "consenso_marketing": "Sì",
+      "referente_cognome": "Fontana",
+      "email_pec": "amministrazione@pec.valli.example.net",
+      "partita_iva": "IT07850248124",
+      "ragione_sociale": "Cartiera Valli S.p.A.",
+      "data_ultimo_ordine": "23/08/2026",
+      "tipo_servizio": "Buoni pasto",
+      "referente_email": "federica.fontana@valli.example.com",
+      "commerciale": "Stefano Cattaneo",
+      "n_coperti": 124,
+      "id_riga": 23
+    },
+    {
+      "consenso_marketing": "No",
+      "n_coperti": 397,
+      "data_attivazione": "19/11/2017",
+      "data_ultimo_ordine": "02/10/2026",
+      "referente_cognome": "Gallo",
+      "stato_pagamenti": "Insoluto",
+      "stato_cliente": "Cessato",
+      "referente_tel": "326 2951250",
+      "ragione_sociale": "Meccanica Valli S.p.A.",
+      "email_pec": "amministrazione@pec.valli.example.net",
+      "partita_iva": "IT05885715815",
+      "referente_nome": "Francesca",
+      "referente_email": "FRANCESCA.GALLO@VALLI.EXAMPLE.COM",
+      "tipo_servizio": "Coffee break & eventi",
+      "cf_codice_cliente": "CAT-0939",
+      "id_riga": 24,
+      "commerciale": "Laura Benedetti"
+    },
+    {
+      "data_ultimo_ordine": "10/10/2026",
+      "email_pec": "amministrazione@pec.bassi.example.net",
+      "commerciale": "Laura Benedetti",
+      "partita_iva": "IT09412929589",
+      "stato_cliente": "Da verificare",
+      "n_coperti": 340,
+      "cf_codice_cliente": "CAT-0942",
+      "ragione_sociale": " Officine Bassi S.r.l.  ",
+      "stato_pagamenti": "Regolare",
+      "data_attivazione": "19/10/2017",
+      "referente_nome": "Chiara",
+      "referente_cognome": "Mancini",
+      "referente_email": "chiara.mancini@bassi.example.com",
+      "id_riga": 25,
+      "consenso_marketing": "No",
+      "tipo_servizio": "Mensa aziendale",
+      "referente_tel": "325 8312639"
+    },
+    {
+      "referente_nome": "Giulia",
+      "referente_tel": "324 4058232",
+      "consenso_marketing": "No",
+      "data_attivazione": "25/12/2020",
+      "stato_pagamenti": "Regolare",
+      "tipo_servizio": "Mensa aziendale",
+      "referente_email": "giulia.ferrari@orsini.example.com",
+      "partita_iva": "IT09176987191",
+      "email_pec": "amministrazione@pec.orsini.example.net",
+      "data_ultimo_ordine": "13/06/2026",
+      "commerciale": "Laura Benedetti",
+      "n_coperti": 333,
+      "ragione_sociale": "Tessitura Orsini S.r.l.",
+      "id_riga": 26,
+      "referente_cognome": "Ferrari",
+      "stato_cliente": "Cessato",
+      "cf_codice_cliente": "CAT-0945"
+    },
+    {
+      "referente_nome": "Andrea",
+      "referente_cognome": "Bruno",
+      "consenso_marketing": "Sì",
+      "commerciale": "Stefano Cattaneo",
+      "ragione_sociale": " Officine Orsini S.r.l.  ",
+      "id_riga": 27,
+      "partita_iva": "IT01641107408",
+      "referente_tel": "338 4016088",
+      "stato_cliente": "Attivo",
+      "cf_codice_cliente": "CAT-0948",
+      "tipo_servizio": "Mensa aziendale",
+      "referente_email": "andrea.bruno@orsini.example.com",
+      "data_ultimo_ordine": "22/09/2026",
+      "email_pec": "amministrazione@pec.orsini.example.net",
+      "n_coperti": 357,
+      "stato_pagamenti": "Insoluto",
+      "data_attivazione": "16/08/2022"
+    },
+    {
+      "referente_tel": "325 3854151",
+      "data_ultimo_ordine": "23/06/2026",
+      "partita_iva": "IT07171913882",
+      "cf_codice_cliente": "CAT-0951",
+      "id_riga": 28,
+      "referente_email": "ELISA.LOMBARDI@ORSINI.EXAMPLE.COM",
+      "referente_nome": "Elisa",
+      "data_attivazione": "20/09/2018",
+      "ragione_sociale": "Cartiera Orsini S.r.l.",
+      "n_coperti": 94,
+      "email_pec": "amministrazione@pec.orsini.example.net",
+      "consenso_marketing": "No",
+      "tipo_servizio": "Mensa aziendale",
+      "stato_pagamenti": "RID respinto",
+      "commerciale": "Gianni Ferraro",
+      "referente_cognome": "Lombardi",
+      "stato_cliente": "Sospeso"
+    },
+    {
+      "tipo_servizio": "Buoni pasto",
+      "referente_email": "marco.moretti@pellegrini.example.com",
+      "data_ultimo_ordine": "20/06/2026",
+      "referente_tel": "347 5964968",
+      "data_attivazione": "30/07/2024",
+      "partita_iva": "IT02178195241",
+      "cf_codice_cliente": "CAT-0954",
+      "email_pec": "amministrazione@pec.pellegrini.example.net",
+      "referente_cognome": "Moretti",
+      "commerciale": "Stefano Cattaneo",
+      "stato_cliente": "Attivo",
+      "id_riga": 29,
+      "referente_nome": "Marco",
+      "consenso_marketing": "No",
+      "stato_pagamenti": "Regolare",
+      "ragione_sociale": "Studio Pellegrini S.p.A.",
+      "n_coperti": 152
+    },
+    {
+      "stato_pagamenti": "Insoluto",
+      "tipo_servizio": "Buoni pasto",
+      "referente_tel": "325 5142136",
+      "referente_nome": "Martina",
+      "cf_codice_cliente": "CAT-0957",
+      "email_pec": "amministrazione@pec.bassi.example.net",
+      "referente_email": "Martina.Galli@Bassi.Example.Com",
+      "ragione_sociale": "Studio Bassi S.r.l.",
+      "consenso_marketing": "Sì",
+      "referente_cognome": "Galli",
+      "partita_iva": "IT01035816372",
+      "stato_cliente": "Attivo",
+      "data_attivazione": "10/02/2025",
+      "data_ultimo_ordine": "06/06/2026",
+      "commerciale": "Stefano Cattaneo",
+      "id_riga": 30,
+      "n_coperti": 330
+    },
+    {
+      "n_coperti": 268,
+      "referente_nome": "Federica",
+      "referente_email": "federica.rizzo@pellegrini.example.com",
+      "stato_pagamenti": "RID respinto",
+      "id_riga": 31,
+      "consenso_marketing": "No",
+      "data_attivazione": "02/10/2018",
+      "commerciale": "Laura Benedetti",
+      "partita_iva": "IT09761576855",
+      "cf_codice_cliente": "CAT-0960",
+      "stato_cliente": "Attivo",
+      "email_pec": "amministrazione@pec.pellegrini.example.net",
+      "ragione_sociale": "Farmaceutica Pellegrini S.p.A.",
+      "referente_cognome": "Rizzo",
+      "tipo_servizio": "Mensa aziendale",
+      "data_ultimo_ordine": "07/10/2026",
+      "referente_tel": "325 1309596"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "external_ref": {
+        "type": "string",
+        "description": "Reference of the client in the caterer's own records."
+      },
+      "name": {
+        "type": "string",
+        "description": "Full name of the client's contact person."
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "description": "Personal work email of the contact person."
+      },
+      "phone": {
+        "type": "string",
+        "description": "Phone number of the contact person."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Client company.",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Registered name of the client company."
+          },
+          "service": {
+            "type": "string",
+            "enum": [
+              "canteen",
+              "vouchers",
+              "events"
+            ],
+            "description": "Catering service the client buys."
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "suspended",
+          "churned"
+        ],
+        "description": "Status."
+      },
+      "customer_since": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the client's first service was activated."
+      },
+      "annual_value_eur": {
+        "type": "number",
+        "description": "Expected yearly revenue from the client in euros."
+      }
+    },
+    "required": [
+      "external_ref",
+      "name",
+      "email",
+      "organization",
+      "status"
+    ]
+  },
+  "groundTruth": {
+    "external_ref": {
+      "source": "cf_codice_cliente",
+      "transform": "copy",
+      "why": "client code; partita_iva is the VAT number and id_riga the export row"
+    },
+    "name": {
+      "source": null,
+      "sources": [
+        "referente_nome",
+        "referente_cognome"
+      ],
+      "transform": "concat",
+      "separator": " ",
+      "why": "contact person; commerciale is the caterer's sales rep"
+    },
+    "email": {
+      "source": "referente_email",
+      "transform": "normalize_email",
+      "why": "contact email, mixed case; null in a few rows, which are held; email_pec is the company's certified mailbox"
+    },
+    "phone": {
+      "source": "referente_tel",
+      "transform": "copy",
+      "why": "phone, null or missing for some"
+    },
+    "organization.name": {
+      "source": "ragione_sociale",
+      "transform": "trim",
+      "why": "company name, padded"
+    },
+    "organization.service": {
+      "source": "tipo_servizio",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Mensa aziendale": "canteen",
+        "Buoni pasto": "vouchers",
+        "Coffee break & eventi": "events"
+      },
+      "why": "service type"
+    },
+    "status": {
+      "source": "stato_cliente",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Attivo": "active",
+        "Prova gratuita": "active",
+        "Sospeso": "suspended",
+        "Cessato": "churned",
+        "Da verificare": null
+      },
+      "why": "client state; rows to verify need review; stato_pagamenti is payment"
+    },
+    "customer_since": {
+      "source": "data_attivazione",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "activation date (Italian day-first); data_ultimo_ordine is the last order"
+    },
+    "annual_value_eur": {
+      "source": null,
+      "transform": "none",
+      "why": "not exported",
+      "unsupportedReason": "would need covers per day multiplied by a price per cover and the number of working days"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "cf_codice_cliente",
+        "partita_iva"
+      ],
+      "correctFor": "external_ref"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "cf_codice_cliente",
+        "id_riga"
+      ],
+      "correctFor": "external_ref"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "referente_email",
+        "email_pec"
+      ],
+      "correctFor": "email"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "referente_nome",
+        "commerciale"
+      ],
+      "correctFor": "name"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "stato_cliente",
+        "stato_pagamenti"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "data_attivazione",
+        "data_ultimo_ordine"
+      ],
+      "correctFor": "customer_since"
+    }
+  ],
+  "sourceConcepts": {
+    "cf_codice_cliente": "customer-id",
+    "id_riga": "other-identifier",
+    "partita_iva": "other-identifier",
+    "ragione_sociale": "organization-name",
+    "referente_nome": "given-name",
+    "referente_cognome": "family-name",
+    "referente_email": "email",
+    "email_pec": "email",
+    "referente_tel": "phone",
+    "commerciale": "person-name",
+    "stato_cliente": "account-status",
+    "stato_pagamenti": "payment-status",
+    "tipo_servizio": "category",
+    "n_coperti": "quantity",
+    "data_attivazione": "start-date",
+    "data_ultimo_ordine": "other",
+    "consenso_marketing": "consent-flag"
+  },
+  "destinationConcepts": {
+    "external_ref": "customer-id",
+    "name": "person-name",
+    "email": "email",
+    "phone": "phone",
+    "organization.name": "organization-name",
+    "organization.service": "category",
+    "status": "account-status",
+    "customer_since": "start-date",
+    "annual_value_eur": "amount"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 1,
+      "outcome": "transformed",
+      "output": {
+        "external_ref": "CAT-0873",
+        "name": "Marco Galli",
+        "email": "marco.galli@bassi.example.com",
+        "organization": {
+          "name": "Cartiera Bassi S.r.l.",
+          "service": "vouchers"
+        },
+        "status": "active",
+        "customer_since": "2020-06-08"
+      }
+    },
+    {
+      "recordIndex": 3,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 17,
+      "outcome": "transformed",
+      "output": {
+        "external_ref": "CAT-0921",
+        "name": "Paolo Gallo",
+        "email": "paolo.gallo@orsini.example.com",
+        "phone": "340 8214207",
+        "organization": {
+          "name": "Farmaceutica Orsini S.r.l.",
+          "service": "canteen"
+        },
+        "status": "active",
+        "customer_since": "2019-05-20"
+      }
+    },
+    {
+      "recordIndex": 30,
+      "outcome": "transformed",
+      "output": {
+        "external_ref": "CAT-0960",
+        "name": "Federica Rizzo",
+        "email": "federica.rizzo@pellegrini.example.com",
+        "phone": "325 1309596",
+        "organization": {
+          "name": "Farmaceutica Pellegrini S.p.A.",
+          "service": "canteen"
+        },
+        "status": "active",
+        "customer_since": "2018-10-02"
+      }
+    }
+  ]
+}

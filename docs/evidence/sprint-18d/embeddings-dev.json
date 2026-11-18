@@ -1,0 +1,742 @@
+{
+  "generatedBy": "scripts/bench/embeddings/run.mjs",
+  "split": "dev",
+  "scenarios": 14,
+  "runtime": "node v22.23.4 (onnxruntime-node, CPU)",
+  "transformersVersion": "4.3.2",
+  "browserMeasured": false,
+  "models": {
+    "Xenova/multilingual-e5-small": {
+      "dtype": "q8",
+      "downloadBytes": 135392016,
+      "downloadedThisRun": false,
+      "loadMs": 1008,
+      "perScenarioEmbedMs": {
+        "median": 153,
+        "max": 177
+      },
+      "overall": {
+        "embedding": {
+          "sourced": 131,
+          "top1": 77,
+          "top3": 109,
+          "noSource": 16,
+          "offered": 16,
+          "top1Rate": 0.588,
+          "top3Rate": 0.832,
+          "falseOfferRate": 1
+        },
+        "fusion": {
+          "sourced": 131,
+          "top1": 98,
+          "top3": 118,
+          "noSource": 16,
+          "offered": 7,
+          "top1Rate": 0.748,
+          "top3Rate": 0.901,
+          "falseOfferRate": 0.438
+        },
+        "local": {
+          "sourced": 131,
+          "top1": 107,
+          "top3": 122,
+          "noSource": 16,
+          "offered": 7,
+          "top1Rate": 0.817,
+          "top3Rate": 0.931,
+          "falseOfferRate": 0.438
+        }
+      },
+      "bySet": {
+        "eval-18b": {
+          "embedding": {
+            "sourced": 42,
+            "top1": 25,
+            "top3": 32,
+            "noSource": 4,
+            "offered": 4,
+            "top1Rate": 0.595,
+            "top3Rate": 0.762,
+            "falseOfferRate": 1
+          },
+          "fusion": {
+            "sourced": 42,
+            "top1": 32,
+            "top3": 37,
+            "noSource": 4,
+            "offered": 0,
+            "top1Rate": 0.762,
+            "top3Rate": 0.881,
+            "falseOfferRate": 0
+          },
+          "local": {
+            "sourced": 42,
+            "top1": 35,
+            "top3": 40,
+            "noSource": 4,
+            "offered": 0,
+            "top1Rate": 0.833,
+            "top3Rate": 0.952,
+            "falseOfferRate": 0
+          }
+        },
+        "eval-18c": {
+          "embedding": {
+            "sourced": 38,
+            "top1": 26,
+            "top3": 34,
+            "noSource": 5,
+            "offered": 5,
+            "top1Rate": 0.684,
+            "top3Rate": 0.895,
+            "falseOfferRate": 1
+          },
+          "fusion": {
+            "sourced": 38,
+            "top1": 28,
+            "top3": 34,
+            "noSource": 5,
+            "offered": 4,
+            "top1Rate": 0.737,
+            "top3Rate": 0.895,
+            "falseOfferRate": 0.8
+          },
+          "local": {
+            "sourced": 38,
+            "top1": 32,
+            "top3": 35,
+            "noSource": 5,
+            "offered": 4,
+            "top1Rate": 0.842,
+            "top3Rate": 0.921,
+            "falseOfferRate": 0.8
+          }
+        },
+        "eval-18d": {
+          "embedding": {
+            "sourced": 51,
+            "top1": 26,
+            "top3": 43,
+            "noSource": 7,
+            "offered": 7,
+            "top1Rate": 0.51,
+            "top3Rate": 0.843,
+            "falseOfferRate": 1
+          },
+          "fusion": {
+            "sourced": 51,
+            "top1": 38,
+            "top3": 47,
+            "noSource": 7,
+            "offered": 3,
+            "top1Rate": 0.745,
+            "top3Rate": 0.922,
+            "falseOfferRate": 0.429
+          },
+          "local": {
+            "sourced": 51,
+            "top1": 40,
+            "top3": 47,
+            "noSource": 7,
+            "offered": 3,
+            "top1Rate": 0.784,
+            "top3Rate": 0.922,
+            "falseOfferRate": 0.429
+          }
+        }
+      },
+      "byTransform": {
+        "concat": {
+          "embedding": {
+            "sourced": 4,
+            "top1": 4,
+            "top3": 4,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 1,
+            "top3Rate": 1,
+            "falseOfferRate": null
+          },
+          "fusion": {
+            "sourced": 4,
+            "top1": 4,
+            "top3": 4,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 1,
+            "top3Rate": 1,
+            "falseOfferRate": null
+          },
+          "local": {
+            "sourced": 4,
+            "top1": 4,
+            "top3": 4,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 1,
+            "top3Rate": 1,
+            "falseOfferRate": null
+          }
+        },
+        "copy": {
+          "embedding": {
+            "sourced": 53,
+            "top1": 28,
+            "top3": 43,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 0.528,
+            "top3Rate": 0.811,
+            "falseOfferRate": null
+          },
+          "fusion": {
+            "sourced": 53,
+            "top1": 41,
+            "top3": 49,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 0.774,
+            "top3Rate": 0.925,
+            "falseOfferRate": null
+          },
+          "local": {
+            "sourced": 53,
+            "top1": 45,
+            "top3": 51,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 0.849,
+            "top3Rate": 0.962,
+            "falseOfferRate": null
+          }
+        },
+        "map_enum": {
+          "embedding": {
+            "sourced": 33,
+            "top1": 20,
+            "top3": 28,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 0.606,
+            "top3Rate": 0.848,
+            "falseOfferRate": null
+          },
+          "fusion": {
+            "sourced": 33,
+            "top1": 23,
+            "top3": 29,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 0.697,
+            "top3Rate": 0.879,
+            "falseOfferRate": null
+          },
+          "local": {
+            "sourced": 33,
+            "top1": 26,
+            "top3": 29,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 0.788,
+            "top3Rate": 0.879,
+            "falseOfferRate": null
+          }
+        },
+        "none": {
+          "embedding": {
+            "sourced": 0,
+            "top1": 0,
+            "top3": 0,
+            "noSource": 16,
+            "offered": 16,
+            "top1Rate": null,
+            "top3Rate": null,
+            "falseOfferRate": 1
+          },
+          "fusion": {
+            "sourced": 0,
+            "top1": 0,
+            "top3": 0,
+            "noSource": 16,
+            "offered": 7,
+            "top1Rate": null,
+            "top3Rate": null,
+            "falseOfferRate": 0.438
+          },
+          "local": {
+            "sourced": 0,
+            "top1": 0,
+            "top3": 0,
+            "noSource": 16,
+            "offered": 7,
+            "top1Rate": null,
+            "top3Rate": null,
+            "falseOfferRate": 0.438
+          }
+        },
+        "normalize_email": {
+          "embedding": {
+            "sourced": 11,
+            "top1": 10,
+            "top3": 11,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 0.909,
+            "top3Rate": 1,
+            "falseOfferRate": null
+          },
+          "fusion": {
+            "sourced": 11,
+            "top1": 11,
+            "top3": 11,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 1,
+            "top3Rate": 1,
+            "falseOfferRate": null
+          },
+          "local": {
+            "sourced": 11,
+            "top1": 11,
+            "top3": 11,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 1,
+            "top3Rate": 1,
+            "falseOfferRate": null
+          }
+        },
+        "parse_date": {
+          "embedding": {
+            "sourced": 19,
+            "top1": 9,
+            "top3": 15,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 0.474,
+            "top3Rate": 0.789,
+            "falseOfferRate": null
+          },
+          "fusion": {
+            "sourced": 19,
+            "top1": 12,
+            "top3": 17,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 0.632,
+            "top3Rate": 0.895,
+            "falseOfferRate": null
+          },
+          "local": {
+            "sourced": 19,
+            "top1": 13,
+            "top3": 19,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 0.684,
+            "top3Rate": 1,
+            "falseOfferRate": null
+          }
+        },
+        "trim": {
+          "embedding": {
+            "sourced": 11,
+            "top1": 6,
+            "top3": 8,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 0.545,
+            "top3Rate": 0.727,
+            "falseOfferRate": null
+          },
+          "fusion": {
+            "sourced": 11,
+            "top1": 7,
+            "top3": 8,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 0.636,
+            "top3Rate": 0.727,
+            "falseOfferRate": null
+          },
+          "local": {
+            "sourced": 11,
+            "top1": 8,
+            "top3": 8,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 0.727,
+            "top3Rate": 0.727,
+            "falseOfferRate": null
+          }
+        }
+      }
+    },
+    "Xenova/paraphrase-multilingual-MiniLM-L12-v2": {
+      "dtype": "q8",
+      "downloadBytes": 135392208,
+      "downloadedThisRun": false,
+      "loadMs": 932,
+      "perScenarioEmbedMs": {
+        "median": 112,
+        "max": 180
+      },
+      "overall": {
+        "embedding": {
+          "sourced": 131,
+          "top1": 63,
+          "top3": 93,
+          "noSource": 16,
+          "offered": 16,
+          "top1Rate": 0.481,
+          "top3Rate": 0.71,
+          "falseOfferRate": 1
+        },
+        "fusion": {
+          "sourced": 131,
+          "top1": 81,
+          "top3": 118,
+          "noSource": 16,
+          "offered": 7,
+          "top1Rate": 0.618,
+          "top3Rate": 0.901,
+          "falseOfferRate": 0.438
+        },
+        "local": {
+          "sourced": 131,
+          "top1": 107,
+          "top3": 122,
+          "noSource": 16,
+          "offered": 7,
+          "top1Rate": 0.817,
+          "top3Rate": 0.931,
+          "falseOfferRate": 0.438
+        }
+      },
+      "bySet": {
+        "eval-18b": {
+          "embedding": {
+            "sourced": 42,
+            "top1": 20,
+            "top3": 26,
+            "noSource": 4,
+            "offered": 4,
+            "top1Rate": 0.476,
+            "top3Rate": 0.619,
+            "falseOfferRate": 1
+          },
+          "fusion": {
+            "sourced": 42,
+            "top1": 25,
+            "top3": 38,
+            "noSource": 4,
+            "offered": 0,
+            "top1Rate": 0.595,
+            "top3Rate": 0.905,
+            "falseOfferRate": 0
+          },
+          "local": {
+            "sourced": 42,
+            "top1": 35,
+            "top3": 40,
+            "noSource": 4,
+            "offered": 0,
+            "top1Rate": 0.833,
+            "top3Rate": 0.952,
+            "falseOfferRate": 0
+          }
+        },
+        "eval-18c": {
+          "embedding": {
+            "sourced": 38,
+            "top1": 22,
+            "top3": 31,
+            "noSource": 5,
+            "offered": 5,
+            "top1Rate": 0.579,
+            "top3Rate": 0.816,
+            "falseOfferRate": 1
+          },
+          "fusion": {
+            "sourced": 38,
+            "top1": 27,
+            "top3": 35,
+            "noSource": 5,
+            "offered": 4,
+            "top1Rate": 0.711,
+            "top3Rate": 0.921,
+            "falseOfferRate": 0.8
+          },
+          "local": {
+            "sourced": 38,
+            "top1": 32,
+            "top3": 35,
+            "noSource": 5,
+            "offered": 4,
+            "top1Rate": 0.842,
+            "top3Rate": 0.921,
+            "falseOfferRate": 0.8
+          }
+        },
+        "eval-18d": {
+          "embedding": {
+            "sourced": 51,
+            "top1": 21,
+            "top3": 36,
+            "noSource": 7,
+            "offered": 7,
+            "top1Rate": 0.412,
+            "top3Rate": 0.706,
+            "falseOfferRate": 1
+          },
+          "fusion": {
+            "sourced": 51,
+            "top1": 29,
+            "top3": 45,
+            "noSource": 7,
+            "offered": 3,
+            "top1Rate": 0.569,
+            "top3Rate": 0.882,
+            "falseOfferRate": 0.429
+          },
+          "local": {
+            "sourced": 51,
+            "top1": 40,
+            "top3": 47,
+            "noSource": 7,
+            "offered": 3,
+            "top1Rate": 0.784,
+            "top3Rate": 0.922,
+            "falseOfferRate": 0.429
+          }
+        }
+      },
+      "byTransform": {
+        "concat": {
+          "embedding": {
+            "sourced": 4,
+            "top1": 2,
+            "top3": 3,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 0.5,
+            "top3Rate": 0.75,
+            "falseOfferRate": null
+          },
+          "fusion": {
+            "sourced": 4,
+            "top1": 3,
+            "top3": 4,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 0.75,
+            "top3Rate": 1,
+            "falseOfferRate": null
+          },
+          "local": {
+            "sourced": 4,
+            "top1": 4,
+            "top3": 4,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 1,
+            "top3Rate": 1,
+            "falseOfferRate": null
+          }
+        },
+        "copy": {
+          "embedding": {
+            "sourced": 53,
+            "top1": 23,
+            "top3": 38,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 0.434,
+            "top3Rate": 0.717,
+            "falseOfferRate": null
+          },
+          "fusion": {
+            "sourced": 53,
+            "top1": 34,
+            "top3": 49,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 0.642,
+            "top3Rate": 0.925,
+            "falseOfferRate": null
+          },
+          "local": {
+            "sourced": 53,
+            "top1": 45,
+            "top3": 51,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 0.849,
+            "top3Rate": 0.962,
+            "falseOfferRate": null
+          }
+        },
+        "map_enum": {
+          "embedding": {
+            "sourced": 33,
+            "top1": 12,
+            "top3": 19,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 0.364,
+            "top3Rate": 0.576,
+            "falseOfferRate": null
+          },
+          "fusion": {
+            "sourced": 33,
+            "top1": 16,
+            "top3": 28,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 0.485,
+            "top3Rate": 0.848,
+            "falseOfferRate": null
+          },
+          "local": {
+            "sourced": 33,
+            "top1": 26,
+            "top3": 29,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 0.788,
+            "top3Rate": 0.879,
+            "falseOfferRate": null
+          }
+        },
+        "none": {
+          "embedding": {
+            "sourced": 0,
+            "top1": 0,
+            "top3": 0,
+            "noSource": 16,
+            "offered": 16,
+            "top1Rate": null,
+            "top3Rate": null,
+            "falseOfferRate": 1
+          },
+          "fusion": {
+            "sourced": 0,
+            "top1": 0,
+            "top3": 0,
+            "noSource": 16,
+            "offered": 7,
+            "top1Rate": null,
+            "top3Rate": null,
+            "falseOfferRate": 0.438
+          },
+          "local": {
+            "sourced": 0,
+            "top1": 0,
+            "top3": 0,
+            "noSource": 16,
+            "offered": 7,
+            "top1Rate": null,
+            "top3Rate": null,
+            "falseOfferRate": 0.438
+          }
+        },
+        "normalize_email": {
+          "embedding": {
+            "sourced": 11,
+            "top1": 10,
+            "top3": 11,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 0.909,
+            "top3Rate": 1,
+            "falseOfferRate": null
+          },
+          "fusion": {
+            "sourced": 11,
+            "top1": 10,
+            "top3": 11,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 0.909,
+            "top3Rate": 1,
+            "falseOfferRate": null
+          },
+          "local": {
+            "sourced": 11,
+            "top1": 11,
+            "top3": 11,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 1,
+            "top3Rate": 1,
+            "falseOfferRate": null
+          }
+        },
+        "parse_date": {
+          "embedding": {
+            "sourced": 19,
+            "top1": 10,
+            "top3": 15,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 0.526,
+            "top3Rate": 0.789,
+            "falseOfferRate": null
+          },
+          "fusion": {
+            "sourced": 19,
+            "top1": 12,
+            "top3": 18,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 0.632,
+            "top3Rate": 0.947,
+            "falseOfferRate": null
+          },
+          "local": {
+            "sourced": 19,
+            "top1": 13,
+            "top3": 19,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 0.684,
+            "top3Rate": 1,
+            "falseOfferRate": null
+          }
+        },
+        "trim": {
+          "embedding": {
+            "sourced": 11,
+            "top1": 6,
+            "top3": 7,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 0.545,
+            "top3Rate": 0.636,
+            "falseOfferRate": null
+          },
+          "fusion": {
+            "sourced": 11,
+            "top1": 6,
+            "top3": 8,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 0.545,
+            "top3Rate": 0.727,
+            "falseOfferRate": null
+          },
+          "local": {
+            "sourced": 11,
+            "top1": 8,
+            "top3": 8,
+            "noSource": 0,
+            "offered": 0,
+            "top1Rate": 0.727,
+            "top3Rate": 0.727,
+            "falseOfferRate": null
+          }
+        }
+      }
+    }
+  }
+}

@@ -5,6 +5,7 @@ import cloudDisclosureSchema from "../contracts/schemas/cloud-disclosure.v1.sche
 import cloudDisclosureSchemaV11 from "../contracts/schemas/cloud-disclosure.v1.1.schema.json" with { type: "json" };
 import cloudDisclosureSchemaV12 from "../contracts/schemas/cloud-disclosure.v1.2.schema.json" with { type: "json" };
 import cloudDisclosureSchemaV13 from "../contracts/schemas/cloud-disclosure.v1.3.schema.json" with { type: "json" };
+import cloudDisclosureSchemaV14 from "../contracts/schemas/cloud-disclosure.v1.4.schema.json" with { type: "json" };
 import blindRevisionFeedbackSchema from "../contracts/schemas/blind-revision-feedback.v1.schema.json" with { type: "json" };
 import blindRevisionFeedbackSchemaV11 from "../contracts/schemas/blind-revision-feedback.v1.1.schema.json" with { type: "json" };
 import semanticVerificationSchema from "../contracts/schemas/semantic-verification.v1.schema.json" with { type: "json" };
@@ -55,6 +56,7 @@ const validators: Record<string, ValidateFunction> = {
   "cloud-disclosure@1.1.0": ajv.compile(cloudDisclosureSchemaV11),
   "cloud-disclosure@1.2.0": ajv.compile(cloudDisclosureSchemaV12),
   "cloud-disclosure@1.3.0": ajv.compile(cloudDisclosureSchemaV13),
+  "cloud-disclosure@1.4.0": ajv.compile(cloudDisclosureSchemaV14),
 };
 
 function issueFromAjv(error: ErrorObject): ContractIssue {

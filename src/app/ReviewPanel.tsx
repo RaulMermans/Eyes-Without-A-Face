@@ -146,6 +146,18 @@ export function ReviewPanel({
                   <li>
                     <p className="font-medium">{payload.target?.fields.length ?? 0} destination fields</p>
                     <p className="text-xs text-mute">{(payload.target?.fields ?? []).map((field) => field.name).join(", ")} — names, types, required flags, formats, enum values.</p>
+                    {(payload.target?.fields ?? []).some((field) => field.description) ? (
+                      <ul className="mt-1 text-xs text-mute" data-testid="review-target-descriptions">
+                        {(payload.target?.fields ?? [])
+                          .filter((field) => field.description)
+                          .map((field) => (
+                            <li key={field.name}>
+                              {field.name}: {field.description}
+                            </li>
+                          ))}
+                      </ul>
+                    ) : null}
+                    {payload.destination.thinkingLevel ? <p className="text-xs text-mute">Model {payload.destination.model}, thinking level {payload.destination.thinkingLevel}.</p> : null}
                   </li>
                   <li>
                     <p className="font-medium">Fixed instructions</p>

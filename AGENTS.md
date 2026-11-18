@@ -268,6 +268,38 @@ Decision: [ADR 0020](docs/decisions/0020-category-groupings-and-plan-recovery.md
 - **Plan questions offer every usable field** under "Choose another field". Never pre-select one.
 - **Provider failures are not mapping failures.** In an evaluation, a provider failure may get one re-approved request, never an automatic retry.
 
+## Semantic intelligence recovery (Sprint 18D) — implemented, not shipped
+
+Decision: [ADR 0021](docs/decisions/0021-semantic-intelligence-recovery.md). Pre-registration: [sprint-18d-semantic-intelligence.md](docs/evaluation/sprint-18d-semantic-intelligence.md).
+
+- **Model configurations come only from `CLOUD_MODELS`** (`src/inference/cloud-models.ts`).
+  - The product default is `gemini-3.5-flash-lite` at its default thinking.
+  - Another configuration only in a dev build through `__EYES_EVAL_CONFIG__`, which never switches to simulated adapters.
+  - The model and thinking level are part of the approved destination. Never fall back between models; never pick a model the approval did not name.
+- **Destination descriptions reach the cloud only in cloud-disclosure 1.4.0**, after `sanitizeTargetDescription`, shown in the review.
+  - Never forward a description verbatim, never widen the sanitizer or the leak scan to let one through.
+  - A dropped description is a local note, never an error.
+  - Never edit 1.0.0–1.3.0 schemas.
+- **The Local Semantic Matcher (`src/matching/`) is local-only ranking evidence.**
+  - Never send its candidates, scores or paths anywhere; never treat it as trusted semantic evidence; never execute a field because it agrees with Gemini.
+  - It may order question candidates and, under the opt-in policy, turn a confident Gemini match into a question.
+- **Plan 1.1.0 alternatives are candidates, never operations.** Plan 1.0.0 stays exact.
+- **ADR 0022 corrections apply to every compile** (answerable questions, "Not the right field", "Combine several fields" via `fieldCombinations`, the labelled `trim-padded-whitespace` refinement). Everything else without `CompileInput.local` is the Sprint 18C behaviour. A user combination compiles only as the existing `concat` through the gate; never infer or pre-fill one.
+- **The 18D holdout and the author's `author/specs_holdout_*.py` are sealed.** Never open them; score only through the frozen scorer. Stage 1 tunes on dev only. Every live stage needs the owner's budget approval; the default budget is zero.
+- **A field is `SEMANTIC_PASS` only when a passing constraint was established by the user, a source contract or a local rule** (`verify.ts`, Stage 1 safety fix). A deterministic observation verifies how a value is read, never that it is the right source. Never relax this to raise coverage.
+- **The rescue confirmatory run FAILED on 2026-11-18** (E1 1 / 15 vs 0 / 15; R1 0.78). The 18D holdout (`tests/fixtures/eval-18d/holdout/`) and its author specs are **inspected**: never tune on them, never reuse them for a success claim.
+- **Stage 1 (dev, live) ran on 2026-11-18.** The exploratory options `askOnLocalForUnfilled`, `askOnLocalTopDisagreement` and `openOnAmbiguous` were tuned on dev: they are not evidence and stay off in the product. `gemini-3.8-flash` timed out or was rate-limited; never raise `CLOUD_TIMEOUT_MS` or add retries to work around it without an ADR and the owner's approval.
+- **Sprint 18F release defaults (owner decision: assisted mapper).** In the running app:
+  - **On by default:** disclosure 1.4.0, prompt v6, local evidence that asks (`effectiveDestinationSemantics`, `PRODUCT_INITIAL_PLANNER`, `effectiveLocalPolicy`).
+  - **Off in library calls outside the app** (`app: false`), so replays and scorers keep their historical defaults. Never change the library defaults to move the product.
+  - A dev harness may switch each one off (`destinationSemantics: false`, `initialPlanner: "intent-plan-1"`, `localPolicy: false`). Tests written for an earlier sprint pin their configuration.
+  - Blind revision is not offered from a 1.4.0 base; never weaken the byte-for-byte base rule to bring it back.
+- **Sprint 18F confirmatory run (2026-11-18): improvement confirmed (complete 1 / 18 → 9 / 18, 0 false verification, 0 false complete, 0 invented), Milestone 1 not met** ([results](docs/evaluation/sprint-18f-confirmatory.md#results)). The eval-18f holdout and its author specs are **inspected**: never tune on them, never reuse them for a claim.
+- **An over-long candidate list rejects only its entry** (`validateIntentPlan`); never widen the canonical bounds and never repair the list.
+- **Sprint 18F (ADR 0022): every disagreement with the local top-1, every contradicted pick and every "no source" with a local candidate is asked** under the dev-only local policy. Never execute a match because the matcher agrees; that variant was measured and rejected. Replay numbers on the consumed sets are exploratory.
+- **Sprint 18E: Gemini/local disagreement is decided only by `classifyAgreement` (`src/plan/agreement.ts`)** ([report](docs/evaluation/sprint-18e-disagreement.md)). A significant disagreement is one question, never a switch to the local candidate; model confidence is never an input; agreement never upgrades a match. Off in the product until a fresh holdout confirms it. The replay over recorded answers is exploratory; the 18C and 18D holdouts are development data now and never proof.
+- Valentine and Transformers.js are offline benchmarks (`scripts/bench/`). Never add them to the app bundle without an ADR that beats the local matcher on fresh evidence.
+
 ## Release lifecycle and production acceptance (Sprint 14 — permanent, every sprint)
 
 **Tests passing does not mean the product works in production.** Procedure, commands, budget and evidence layout: [docs/deployment.md](docs/deployment.md#production-acceptance-standard-permanent).

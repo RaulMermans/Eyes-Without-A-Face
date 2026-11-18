@@ -1,0 +1,984 @@
+{
+  "scenarioId": "elevator-service-orders-to-dispatch-board",
+  "split": "holdout",
+  "track": "general",
+  "industry": "elevator field service work orders",
+  "sourceLanguage": "de",
+  "description": "Work-order export of a fictional elevator maintenance company (German snake_case, nested order, unit with 3-level site) to be loaded into a technician dispatch board.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "techniker": "Jan Neumann",
+      "meldender": {
+        "name": "Jan Neumann",
+        "telefon": "0621 387991"
+      },
+      "prioritaet": "P2 - heute",
+      "gemeldet_am": "2026-10-16T18:55:00Z",
+      "geplante_minuten": 307,
+      "auftrag": {
+        "nr": "WA-26-01143",
+        "zeile": 1
+      },
+      "termin": "09/12/2026",
+      "anlage": {
+        "standort": {
+          "ort": "Ludwigshafen",
+          "objekt": "Rathaus-Galerie"
+        },
+        "nr": "AZ-30111"
+      },
+      "auftragsart": "Befreiung eingeschlossener Personen",
+      "abrechnungsstatus": "nach Aufwand",
+      "disponent": "Uwe Sommer"
+    },
+    {
+      "auftrag": {
+        "nr": "WA-26-01151",
+        "zeile": 2
+      },
+      "prioritaet": "P3 - geplant",
+      "abrechnungsstatus": "im Wartungsvertrag",
+      "anlage": {
+        "standort": {
+          "ort": "Mannheim",
+          "objekt": "Ärztehaus Mitte"
+        },
+        "nr": "AZ-30151"
+      },
+      "auftragsart": "Wartung",
+      "disponent": "Heike Brandl",
+      "techniker": "Simon Wolf ",
+      "meldender": {
+        "name": "Simon Wolf",
+        "telefon": "0621 290378"
+      },
+      "geplante_minuten": 405,
+      "termin": "05/12/2026",
+      "gemeldet_am": "2026-10-07T13:34:00Z"
+    },
+    {
+      "techniker": "Johanna Zimmermann ",
+      "gemeldet_am": "2026-11-05T13:41:00Z",
+      "meldender": {
+        "name": "Johanna Zimmermann",
+        "telefon": "0621 723804"
+      },
+      "prioritaet": "P2 - heute",
+      "geplante_minuten": 390,
+      "auftragsart": "Wartung",
+      "anlage": {
+        "nr": "AZ-30164",
+        "standort": {
+          "ort": "Heidelberg",
+          "objekt": "Rathaus-Galerie"
+        }
+      },
+      "disponent": "Heike Brandl",
+      "termin": "02/12/2026",
+      "auftrag": {
+        "zeile": 3,
+        "nr": "WA-26-01157"
+      },
+      "abrechnungsstatus": "im Wartungsvertrag"
+    },
+    {
+      "termin": "12/11/2026",
+      "prioritaet": "P2 - heute",
+      "abrechnungsstatus": "nach Aufwand",
+      "gemeldet_am": "2026-11-05T17:12:00Z",
+      "geplante_minuten": 444,
+      "anlage": {
+        "nr": "AZ-30201",
+        "standort": {
+          "objekt": "Ärztehaus Mitte",
+          "ort": "Speyer"
+        }
+      },
+      "auftrag": {
+        "nr": "WA-26-01161",
+        "zeile": 4
+      },
+      "techniker": "Simon Zimmermann",
+      "meldender": {
+        "name": "Simon Zimmermann",
+        "telefon": "0621 928491"
+      },
+      "auftragsart": "Schulung intern",
+      "disponent": "Heike Brandl"
+    },
+    {
+      "auftragsart": "Befreiung eingeschlossener Personen",
+      "disponent": "Uwe Sommer",
+      "termin": "06/12/2026",
+      "auftrag": {
+        "nr": "WA-26-01172",
+        "zeile": 5
+      },
+      "meldender": {
+        "telefon": "0621 716712",
+        "name": "Moritz Klein"
+      },
+      "prioritaet": "P1 - sofort",
+      "abrechnungsstatus": "nach Aufwand",
+      "geplante_minuten": 186,
+      "anlage": {
+        "nr": "AZ-30237",
+        "standort": {
+          "ort": "Ludwigshafen",
+          "objekt": "Wohnpark Rheinblick"
+        }
+      },
+      "gemeldet_am": "2026-10-06T15:05:00Z",
+      "techniker": "Moritz Klein"
+    },
+    {
+      "auftrag": {
+        "zeile": 6,
+        "nr": "WA-26-01179"
+      },
+      "termin": "02/11/2026",
+      "prioritaet": "P2 - heute",
+      "abrechnungsstatus": "nach Aufwand",
+      "techniker": null,
+      "disponent": "Uwe Sommer",
+      "geplante_minuten": 213,
+      "anlage": {
+        "standort": {
+          "objekt": "Wohnpark Rheinblick",
+          "ort": "Mannheim"
+        },
+        "nr": "AZ-30259"
+      },
+      "auftragsart": "Störung",
+      "gemeldet_am": "2026-10-30T17:05:00Z",
+      "meldender": {
+        "telefon": null,
+        "name": "Simon Weber"
+      }
+    },
+    {
+      "geplante_minuten": 62,
+      "prioritaet": "P2 - heute",
+      "gemeldet_am": "2026-10-08T17:00:00Z",
+      "auftrag": {
+        "zeile": 7,
+        "nr": "WA-26-01185"
+      },
+      "auftragsart": "Wartung",
+      "disponent": "Uwe Sommer",
+      "abrechnungsstatus": "abgerechnet",
+      "termin": "02/12/2026",
+      "anlage": {
+        "standort": {
+          "objekt": "Parkhaus Nord",
+          "ort": "Ludwigshafen"
+        },
+        "nr": "AZ-30301"
+      },
+      "meldender": {
+        "name": "Lea Wolf",
+        "telefon": "0621 518841"
+      }
+    },
+    {
+      "prioritaet": "P2 - heute",
+      "auftragsart": "Modernisierung",
+      "abrechnungsstatus": "im Wartungsvertrag",
+      "gemeldet_am": "2026-10-08T13:05:00Z",
+      "geplante_minuten": 103,
+      "meldender": {
+        "name": "Simon Neumann",
+        "telefon": null
+      },
+      "techniker": "Simon Neumann",
+      "auftrag": {
+        "zeile": 8,
+        "nr": "WA-26-01189"
+      },
+      "disponent": "Heike Brandl",
+      "anlage": {
+        "nr": "AZ-30313",
+        "standort": {
+          "objekt": "Ärztehaus Mitte",
+          "ort": "Mannheim"
+        }
+      },
+      "termin": "09/12/2026"
+    },
+    {
+      "geplante_minuten": 360,
+      "auftrag": {
+        "zeile": 9,
+        "nr": "WA-26-01201"
+      },
+      "prioritaet": "P1 - sofort",
+      "techniker": "Lena Klein",
+      "abrechnungsstatus": "nach Aufwand",
+      "auftragsart": "Schulung intern",
+      "meldender": {
+        "name": "Lena Klein",
+        "telefon": "0621 671781"
+      },
+      "disponent": "Heike Brandl",
+      "anlage": {
+        "nr": "AZ-30354",
+        "standort": {
+          "ort": "Heidelberg",
+          "objekt": "Parkhaus Nord"
+        }
+      },
+      "gemeldet_am": "2026-10-09T16:12:00Z",
+      "termin": "03/11/2026"
+    },
+    {
+      "anlage": {
+        "standort": {
+          "ort": "Speyer",
+          "objekt": "Parkhaus Nord"
+        },
+        "nr": "AZ-30378"
+      },
+      "disponent": "Heike Brandl",
+      "prioritaet": "P1 - sofort",
+      "geplante_minuten": 57,
+      "gemeldet_am": "2026-11-15T17:05:00Z",
+      "auftrag": {
+        "zeile": 10,
+        "nr": "WA-26-01206"
+      },
+      "termin": "06/12/2026",
+      "auftragsart": "Störung",
+      "meldender": {
+        "name": "Moritz Richter"
+      },
+      "abrechnungsstatus": "im Wartungsvertrag",
+      "techniker": "Moritz Richter "
+    },
+    {
+      "disponent": "Heike Brandl",
+      "geplante_minuten": 185,
+      "auftrag": {
+        "zeile": 11,
+        "nr": "WA-26-01210"
+      },
+      "abrechnungsstatus": "im Wartungsvertrag",
+      "auftragsart": "Modernisierung",
+      "techniker": null,
+      "termin": "07/11/2026",
+      "gemeldet_am": "2026-11-10T09:34:00Z",
+      "meldender": {
+        "telefon": "0621 702474",
+        "name": "Paul Neumann"
+      },
+      "prioritaet": "P2 - heute",
+      "anlage": {
+        "nr": "AZ-30399",
+        "standort": {
+          "ort": "Speyer",
+          "objekt": "Ärztehaus Mitte"
+        }
+      }
+    },
+    {
+      "gemeldet_am": "2026-11-13T17:55:00Z",
+      "auftrag": {
+        "zeile": 12,
+        "nr": "WA-26-01223"
+      },
+      "anlage": {
+        "nr": "AZ-30422",
+        "standort": {
+          "objekt": "Rathaus-Galerie",
+          "ort": "Heidelberg"
+        }
+      },
+      "disponent": "Heike Brandl",
+      "abrechnungsstatus": "im Wartungsvertrag",
+      "geplante_minuten": 212,
+      "prioritaet": "P2 - heute",
+      "termin": "11/12/2026",
+      "auftragsart": "Wartung",
+      "techniker": "Theresa Zimmermann",
+      "meldender": {
+        "name": "Theresa Zimmermann",
+        "telefon": "0621 211351"
+      }
+    },
+    {
+      "termin": "03/12/2026",
+      "gemeldet_am": "2026-10-10T13:00:00Z",
+      "meldender": {
+        "name": "Felix Müller",
+        "telefon": "0621 622562"
+      },
+      "anlage": {
+        "standort": {
+          "objekt": "Wohnpark Rheinblick",
+          "ort": "Mannheim"
+        },
+        "nr": "AZ-30449"
+      },
+      "auftragsart": "Wartung",
+      "techniker": null,
+      "geplante_minuten": 408,
+      "auftrag": {
+        "zeile": 13,
+        "nr": "WA-26-01226"
+      },
+      "prioritaet": "P2 - heute",
+      "disponent": "Uwe Sommer",
+      "abrechnungsstatus": "nach Aufwand"
+    },
+    {
+      "auftrag": {
+        "nr": "WA-26-01235",
+        "zeile": 14
+      },
+      "techniker": "Marie Braun",
+      "auftragsart": "Wartung",
+      "geplante_minuten": 170,
+      "prioritaet": "P2 - heute",
+      "abrechnungsstatus": "im Wartungsvertrag",
+      "gemeldet_am": "2026-10-19T10:05:00Z",
+      "termin": "01/12/2026",
+      "anlage": {
+        "standort": {
+          "objekt": "Wohnpark Rheinblick",
+          "ort": "Heidelberg"
+        },
+        "nr": "AZ-30486"
+      },
+      "meldender": {
+        "name": "Marie Braun",
+        "telefon": "0621 448717"
+      },
+      "disponent": "Uwe Sommer"
+    },
+    {
+      "auftrag": {
+        "nr": "WA-26-01238",
+        "zeile": 15
+      },
+      "disponent": "Heike Brandl",
+      "geplante_minuten": 177,
+      "prioritaet": "P2 - heute",
+      "anlage": {
+        "standort": {
+          "ort": "Heidelberg",
+          "objekt": "Ärztehaus Mitte"
+        },
+        "nr": "AZ-30524"
+      },
+      "gemeldet_am": "2026-10-16T11:41:00Z",
+      "abrechnungsstatus": "nach Aufwand",
+      "auftragsart": "Befreiung eingeschlossener Personen",
+      "termin": "03/12/2026",
+      "meldender": {
+        "telefon": "0621 555175",
+        "name": "Niklas Schneider"
+      },
+      "techniker": "Niklas Schneider"
+    },
+    {
+      "anlage": {
+        "standort": {
+          "ort": "Ludwigshafen",
+          "objekt": "Ärztehaus Mitte"
+        },
+        "nr": "AZ-30546"
+      },
+      "gemeldet_am": "2026-10-02T07:34:00Z",
+      "abrechnungsstatus": "nach Aufwand",
+      "auftragsart": "Wartung",
+      "geplante_minuten": 378,
+      "termin": "09/11/2026",
+      "meldender": {
+        "telefon": "0621 702081",
+        "name": "Lea Krüger"
+      },
+      "disponent": "Heike Brandl",
+      "auftrag": {
+        "zeile": 16,
+        "nr": "WA-26-01246"
+      },
+      "prioritaet": "P3 - geplant"
+    },
+    {
+      "geplante_minuten": 343,
+      "termin": "03/12/2026",
+      "abrechnungsstatus": "abgerechnet",
+      "gemeldet_am": "2026-10-15T19:00:00Z",
+      "prioritaet": "P1 - sofort",
+      "anlage": {
+        "nr": "AZ-30591",
+        "standort": {
+          "ort": "Ludwigshafen",
+          "objekt": "Wohnpark Rheinblick"
+        }
+      },
+      "auftrag": {
+        "zeile": 17,
+        "nr": "WA-26-01253"
+      },
+      "techniker": "Niklas Lange",
+      "disponent": "Heike Brandl",
+      "meldender": {
+        "telefon": "0621 515425",
+        "name": "Niklas Lange"
+      },
+      "auftragsart": "Modernisierung"
+    },
+    {
+      "gemeldet_am": "2026-10-18T10:20:00Z",
+      "meldender": {
+        "name": "Lukas Hoffmann"
+      },
+      "termin": "06/11/2026",
+      "anlage": {
+        "nr": "AZ-30612",
+        "standort": {
+          "ort": "Ludwigshafen",
+          "objekt": "Ärztehaus Mitte"
+        }
+      },
+      "techniker": "Lukas Hoffmann",
+      "auftrag": {
+        "nr": "WA-26-01261",
+        "zeile": 18
+      },
+      "disponent": "Heike Brandl",
+      "prioritaet": "P3 - geplant",
+      "geplante_minuten": 244,
+      "abrechnungsstatus": "nach Aufwand",
+      "auftragsart": "Störung"
+    },
+    {
+      "auftrag": {
+        "nr": "WA-26-01270",
+        "zeile": 19
+      },
+      "meldender": {
+        "name": "Jan Krüger",
+        "telefon": "0621 427362"
+      },
+      "techniker": "Jan Krüger",
+      "geplante_minuten": 379,
+      "abrechnungsstatus": "im Wartungsvertrag",
+      "anlage": {
+        "standort": {
+          "ort": "Ludwigshafen",
+          "objekt": "Rathaus-Galerie"
+        },
+        "nr": "AZ-30626"
+      },
+      "prioritaet": "P2 - heute",
+      "termin": "02/11/2026",
+      "gemeldet_am": "2026-10-15T11:20:00Z",
+      "auftragsart": "Wartung",
+      "disponent": "Heike Brandl"
+    },
+    {
+      "meldender": {
+        "name": "Sophie Schröder",
+        "telefon": "0621 387729"
+      },
+      "geplante_minuten": 123,
+      "anlage": {
+        "nr": "AZ-30675",
+        "standort": {
+          "objekt": "Wohnpark Rheinblick",
+          "ort": "Ludwigshafen"
+        }
+      },
+      "disponent": "Heike Brandl",
+      "prioritaet": "P3 - geplant",
+      "termin": "04/12/2026",
+      "abrechnungsstatus": "im Wartungsvertrag",
+      "auftragsart": "Wartung",
+      "gemeldet_am": "2026-10-22T16:00:00Z",
+      "auftrag": {
+        "zeile": 20,
+        "nr": "WA-26-01274"
+      },
+      "techniker": "Sophie Schröder"
+    },
+    {
+      "auftragsart": "Schulung intern",
+      "geplante_minuten": 353,
+      "abrechnungsstatus": "nach Aufwand",
+      "anlage": {
+        "nr": "AZ-30702",
+        "standort": {
+          "ort": "Mannheim",
+          "objekt": "Rathaus-Galerie"
+        }
+      },
+      "disponent": "Heike Brandl",
+      "prioritaet": "P1 - sofort",
+      "gemeldet_am": "2026-10-12T09:20:00Z",
+      "termin": "01/11/2026",
+      "meldender": {
+        "name": "Moritz Neumann",
+        "telefon": null
+      },
+      "techniker": "Moritz Neumann   ",
+      "auftrag": {
+        "nr": "WA-26-01280",
+        "zeile": 21
+      }
+    },
+    {
+      "gemeldet_am": "2026-10-29T07:12:00Z",
+      "disponent": "Uwe Sommer",
+      "auftragsart": "Wartung",
+      "abrechnungsstatus": "nach Aufwand",
+      "termin": "02/12/2026",
+      "prioritaet": "P3 - geplant",
+      "geplante_minuten": 260,
+      "meldender": {
+        "name": "Sophie Vogel"
+      },
+      "anlage": {
+        "nr": "AZ-30737",
+        "standort": {
+          "objekt": "Wohnpark Rheinblick",
+          "ort": "Speyer"
+        }
+      },
+      "auftrag": {
+        "nr": "WA-26-01288",
+        "zeile": 22
+      },
+      "techniker": "Sophie Vogel"
+    },
+    {
+      "auftragsart": "Modernisierung",
+      "termin": "05/12/2026",
+      "auftrag": {
+        "nr": "WA-26-01298",
+        "zeile": 23
+      },
+      "geplante_minuten": 474,
+      "abrechnungsstatus": "im Wartungsvertrag",
+      "prioritaet": "P2 - heute",
+      "gemeldet_am": "2026-10-29T09:12:00Z",
+      "meldender": {
+        "name": "Lea Richter",
+        "telefon": "0621 248831"
+      },
+      "anlage": {
+        "nr": "AZ-30763",
+        "standort": {
+          "objekt": "Wohnpark Rheinblick",
+          "ort": "Speyer"
+        }
+      },
+      "techniker": "Lea Richter",
+      "disponent": "Heike Brandl"
+    },
+    {
+      "auftrag": {
+        "zeile": 24,
+        "nr": "WA-26-01301"
+      },
+      "geplante_minuten": 393,
+      "techniker": "Sophie Schneider",
+      "abrechnungsstatus": "abgerechnet",
+      "auftragsart": "Wartung",
+      "meldender": {
+        "name": "Sophie Schneider"
+      },
+      "disponent": "Heike Brandl",
+      "prioritaet": "P2 - heute",
+      "gemeldet_am": "2026-10-07T15:12:00Z",
+      "anlage": {
+        "nr": "AZ-30787",
+        "standort": {
+          "objekt": "Wohnpark Rheinblick",
+          "ort": "Ludwigshafen"
+        }
+      },
+      "termin": "12/11/2026"
+    },
+    {
+      "techniker": "Jan Schäfer",
+      "termin": "09/12/2026",
+      "gemeldet_am": "2026-11-11T17:12:00Z",
+      "anlage": {
+        "nr": "AZ-30819",
+        "standort": {
+          "ort": "Heidelberg",
+          "objekt": "Wohnpark Rheinblick"
+        }
+      },
+      "prioritaet": "P1 - sofort",
+      "meldender": {
+        "telefon": "0621 887614",
+        "name": "Jan Schäfer"
+      },
+      "disponent": "Heike Brandl",
+      "auftragsart": "Wartung",
+      "auftrag": {
+        "zeile": 25,
+        "nr": "WA-26-01311"
+      },
+      "geplante_minuten": 313,
+      "abrechnungsstatus": "im Wartungsvertrag"
+    },
+    {
+      "abrechnungsstatus": "nach Aufwand",
+      "techniker": "Simon Schröder",
+      "auftragsart": "Störung",
+      "geplante_minuten": 193,
+      "auftrag": {
+        "nr": "WA-26-01320",
+        "zeile": 26
+      },
+      "disponent": "Heike Brandl",
+      "anlage": {
+        "standort": {
+          "ort": "Speyer",
+          "objekt": "Rathaus-Galerie"
+        },
+        "nr": "AZ-30832"
+      },
+      "prioritaet": "P1 - sofort",
+      "gemeldet_am": "2026-10-16T09:34:00Z",
+      "meldender": {
+        "name": "Simon Schröder",
+        "telefon": null
+      },
+      "termin": "10/11/2026"
+    },
+    {
+      "prioritaet": "P3 - geplant",
+      "gemeldet_am": "2026-11-03T11:20:00Z",
+      "auftrag": {
+        "nr": "WA-26-01325",
+        "zeile": 27
+      },
+      "anlage": {
+        "nr": "AZ-30860",
+        "standort": {
+          "ort": "Heidelberg",
+          "objekt": "Parkhaus Nord"
+        }
+      },
+      "disponent": "Heike Brandl",
+      "termin": "07/11/2026",
+      "abrechnungsstatus": "abgerechnet",
+      "geplante_minuten": 144,
+      "meldender": {
+        "name": "Lukas Lange",
+        "telefon": "0621 983105"
+      },
+      "techniker": "Lukas Lange",
+      "auftragsart": "Befreiung eingeschlossener Personen"
+    },
+    {
+      "termin": "10/11/2026",
+      "geplante_minuten": 224,
+      "disponent": "Uwe Sommer",
+      "anlage": {
+        "nr": "AZ-30909",
+        "standort": {
+          "ort": "Speyer",
+          "objekt": "Parkhaus Nord"
+        }
+      },
+      "techniker": "Maximilian Zimmermann",
+      "auftragsart": "Störung",
+      "auftrag": {
+        "zeile": 28,
+        "nr": "WA-26-01333"
+      },
+      "prioritaet": "P1 - sofort",
+      "gemeldet_am": "2026-11-08T13:05:00Z",
+      "abrechnungsstatus": "nach Aufwand",
+      "meldender": {
+        "telefon": "0621 969043",
+        "name": "Maximilian Zimmermann"
+      }
+    },
+    {
+      "prioritaet": "P2 - heute",
+      "anlage": {
+        "standort": {
+          "objekt": "Wohnpark Rheinblick",
+          "ort": "Speyer"
+        },
+        "nr": "AZ-30934"
+      },
+      "auftragsart": "Befreiung eingeschlossener Personen",
+      "gemeldet_am": "2026-10-09T10:41:00Z",
+      "disponent": "Heike Brandl",
+      "meldender": {
+        "name": "Johanna Schneider",
+        "telefon": "0621 692814"
+      },
+      "geplante_minuten": 127,
+      "termin": "12/11/2026",
+      "abrechnungsstatus": "im Wartungsvertrag",
+      "auftrag": {
+        "zeile": 29,
+        "nr": "WA-26-01338"
+      },
+      "techniker": " Johanna Schneider  "
+    },
+    {
+      "abrechnungsstatus": "im Wartungsvertrag",
+      "gemeldet_am": "2026-11-13T12:12:00Z",
+      "termin": "05/12/2026",
+      "disponent": "Heike Brandl",
+      "auftragsart": "Modernisierung",
+      "prioritaet": "P1 - sofort",
+      "geplante_minuten": 188,
+      "techniker": "Niklas Neumann",
+      "anlage": {
+        "standort": {
+          "ort": "Heidelberg",
+          "objekt": "Ärztehaus Mitte"
+        },
+        "nr": "AZ-30967"
+      },
+      "auftrag": {
+        "nr": "WA-26-01347",
+        "zeile": 30
+      },
+      "meldender": {
+        "telefon": "0621 832674",
+        "name": "Niklas Neumann"
+      }
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "work_order_id": {
+        "type": "string",
+        "description": "Identifier of the work order."
+      },
+      "unit_id": {
+        "type": "string",
+        "description": "Identifier of the elevator unit to be serviced."
+      },
+      "job_type": {
+        "type": "string",
+        "enum": [
+          "maintenance",
+          "breakdown",
+          "entrapment",
+          "modernization"
+        ],
+        "description": "Kind of job to be carried out."
+      },
+      "priority": {
+        "type": "string",
+        "enum": [
+          "immediate",
+          "same_day",
+          "planned"
+        ],
+        "description": "Urgency of the job."
+      },
+      "scheduled_date": {
+        "type": "string",
+        "format": "date",
+        "description": "Day the visit is scheduled."
+      },
+      "site_city": {
+        "type": "string",
+        "description": "City."
+      },
+      "technician": {
+        "type": "string",
+        "description": "Technician assigned to the job, if already assigned."
+      },
+      "reporter_phone": {
+        "type": "string",
+        "description": "Phone number of the person who reported the issue."
+      },
+      "estimated_hours": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "work_order_id",
+      "unit_id",
+      "job_type",
+      "priority",
+      "scheduled_date"
+    ]
+  },
+  "groundTruth": {
+    "work_order_id": {
+      "source": "auftrag.nr",
+      "transform": "copy",
+      "why": "order number; zeile is the export row"
+    },
+    "unit_id": {
+      "source": "anlage.nr",
+      "transform": "copy",
+      "why": "unit number"
+    },
+    "job_type": {
+      "source": "auftragsart",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Wartung": "maintenance",
+        "Störung": "breakdown",
+        "Befreiung eingeschlossener Personen": "entrapment",
+        "Modernisierung": "modernization",
+        "Schulung intern": null
+      },
+      "why": "order type; internal training is not a customer job and needs review"
+    },
+    "priority": {
+      "source": "prioritaet",
+      "transform": "map_enum",
+      "categoryMap": {
+        "P1 - sofort": "immediate",
+        "P2 - heute": "same_day",
+        "P3 - geplant": "planned"
+      },
+      "why": "priority; abrechnungsstatus is billing"
+    },
+    "scheduled_date": {
+      "source": "termin",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "appointment (German day-first); gemeldet_am is when it was reported"
+    },
+    "site_city": {
+      "source": "anlage.standort.ort",
+      "transform": "copy",
+      "why": "site city"
+    },
+    "technician": {
+      "source": "techniker",
+      "transform": "trim",
+      "why": "assigned technician, padded, null or missing; disponent is the dispatcher"
+    },
+    "reporter_phone": {
+      "source": "meldender.telefon",
+      "transform": "copy",
+      "why": "reporter phone, null or missing"
+    },
+    "estimated_hours": {
+      "source": null,
+      "transform": "none",
+      "why": "not exported in hours",
+      "unsupportedReason": "would need geplante_minuten divided by sixty"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "auftragsart",
+        "abrechnungsstatus"
+      ],
+      "correctFor": "job_type"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "auftrag.nr",
+        "auftrag.zeile"
+      ],
+      "correctFor": "work_order_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "techniker",
+        "disponent"
+      ],
+      "correctFor": "technician"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "termin",
+        "gemeldet_am"
+      ],
+      "correctFor": "scheduled_date"
+    }
+  ],
+  "sourceConcepts": {
+    "auftrag.nr": "transaction-id",
+    "auftrag.zeile": "other-identifier",
+    "anlage.nr": "other-identifier",
+    "anlage.standort.ort": "city",
+    "anlage.standort.objekt": "organization-name",
+    "auftragsart": "category",
+    "prioritaet": "category",
+    "abrechnungsstatus": "payment-status",
+    "techniker": "person-name",
+    "disponent": "person-name",
+    "gemeldet_am": "created-date",
+    "termin": "start-date",
+    "meldender.name": "person-name",
+    "meldender.telefon": "phone",
+    "geplante_minuten": "quantity"
+  },
+  "destinationConcepts": {
+    "work_order_id": "transaction-id",
+    "unit_id": "other-identifier",
+    "job_type": "category",
+    "priority": "category",
+    "scheduled_date": "start-date",
+    "site_city": "city",
+    "technician": "person-name",
+    "reporter_phone": "phone",
+    "estimated_hours": "quantity"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 0,
+      "outcome": "transformed",
+      "output": {
+        "work_order_id": "WA-26-01143",
+        "unit_id": "AZ-30111",
+        "job_type": "entrapment",
+        "priority": "same_day",
+        "scheduled_date": "2026-12-09",
+        "site_city": "Ludwigshafen",
+        "technician": "Jan Neumann",
+        "reporter_phone": "0621 387991"
+      }
+    },
+    {
+      "recordIndex": 3,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 5,
+      "outcome": "transformed",
+      "output": {
+        "work_order_id": "WA-26-01179",
+        "unit_id": "AZ-30259",
+        "job_type": "breakdown",
+        "priority": "same_day",
+        "scheduled_date": "2026-11-02",
+        "site_city": "Mannheim"
+      }
+    },
+    {
+      "recordIndex": 6,
+      "outcome": "transformed",
+      "output": {
+        "work_order_id": "WA-26-01185",
+        "unit_id": "AZ-30301",
+        "job_type": "maintenance",
+        "priority": "same_day",
+        "scheduled_date": "2026-12-02",
+        "site_city": "Ludwigshafen",
+        "reporter_phone": "0621 518841"
+      }
+    }
+  ]
+}

@@ -45,3 +45,18 @@ Approval of a synthetic payload is not anonymization. Aliases, constraints, rare
 ## 1.2.0 — blind revision request (Sprint 7)
 
 The approved 1.1.0 payload, repeated byte-for-byte, plus a required `revision.feedback` (Blind Revision Feedback 1.0.0). It uses the same gate, approval, ledger and destination checks as 1.1.0. See [blind-revision-feedback.md](blind-revision-feedback.md) and [ADR 0008](../decisions/0008-blind-revision.md).
+
+## 1.4.0 — destination semantics (Sprint 18D, ADR 0021)
+
+Schema: `src/domain/contracts/schemas/cloud-disclosure.v1.4.schema.json`. An **initial planning request**, identical to 1.1.0 plus:
+
+| Addition | Rule |
+| --- | --- |
+| `target.fields[].description` (optional, ≤ 160) | The destination schema's own `description` (else `title`) after `sanitizeTargetDescription` (`src/twin/target-semantics.ts`). Fail closed: a description with characters outside letters, spaces and `. , ; : ' ( ) - / &`, `//`, 3+ digits, a word > 24 characters, instruction or credential vocabulary, a private source value, or a source field-name segment (≥ 4 characters) is dropped and listed as a local note with its reason code |
+| `destination.thinkingLevel` (optional) | MINIMAL, LOW, MEDIUM or HIGH. Part of `destinationKey` (`…:thinking=<level>`), so an approval binds the model **and** its thinking level |
+
+- **Defence in depth.** The leak scan re-checks every projected description (`/target/fields/<i>/description`).
+- **Review.** The review lists every description and the thinking level before approval.
+- **Off by default.** Disclosures 1.0.0–1.3.0 are unchanged. A dev evaluation harness may turn 1.4.0 on (`__EYES_EVAL_CONFIG__`); the product stays on 1.1.0 until a pre-registered comparison selects it.
+- **Plan requests only.** A 1.4.0 request is always a plan request (prompt v5 or v6), never the Sprint 3 instructions. Blind revision stays 1.1.0-only.
+- **The gate is unchanged.** The frozen `convertProposal` judges a 1.4.0 plan through `gateDisclosureView`, an exact 1.1.0 view.

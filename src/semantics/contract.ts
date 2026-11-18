@@ -106,14 +106,26 @@ export interface SemanticContractValidation {
 }
 
 /** Destination enum values per top-level property (JSON Schema `enum`), if any. */
+/**
+ * Destination fields by dotted path (nested objects included, ≤ 4 levels, as
+ * the target projection), with their enum values or null. Sprint 18D fix:
+ * nested fields such as "profile.locale" were missing, so a correct, user-
+ * declared translation of a nested enum always read as a policy conflict.
+ */
 export function destinationEnums(destinationSchema: unknown): Map<string, string[] | null> {
   const out = new Map<string, string[] | null>();
-  const properties = (destinationSchema as { properties?: Record<string, { enum?: unknown[] }> } | null)?.properties;
-  if (!properties || typeof properties !== "object") return out;
-  for (const [name, property] of Object.entries(properties)) {
-    const values = Array.isArray(property?.enum) ? property.enum.filter((value): value is string => typeof value === "string") : null;
-    out.set(name, values);
-  }
+  type Node = { properties?: Record<string, { enum?: unknown[]; properties?: unknown }> } | null;
+  const walk = (node: Node, prefix: string, depth: number) => {
+    const properties = node?.properties;
+    if (!properties || typeof properties !== "object" || depth > 4) return;
+    for (const [name, property] of Object.entries(properties)) {
+      const path = prefix ? `${prefix}.${name}` : name;
+      const values = Array.isArray(property?.enum) ? property.enum.filter((value): value is string => typeof value === "string") : null;
+      out.set(path, values);
+      if (property && typeof property === "object" && property.properties && typeof property.properties === "object") walk(property as Node, path, depth + 1);
+    }
+  };
+  walk(destinationSchema as Node, "", 1);
   return out;
 }
 

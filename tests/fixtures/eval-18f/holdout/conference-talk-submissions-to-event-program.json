@@ -1,0 +1,844 @@
+{
+  "scenarioId": "conference-talk-submissions-to-event-program",
+  "split": "holdout",
+  "track": "general",
+  "industry": "developer conference talk submissions",
+  "sourceLanguage": "mixed",
+  "description": "Talk submission export of a fictional bilingual developer conference (mixed French and English field names and labels, nested speaker) to be loaded into an event programme tool; the language the talk will be given in is not exported.",
+  "fictional": true,
+  "completable": false,
+  "records": [
+    {
+      "submission_id": "SUB-412",
+      "date_soumission": "16/03/2026",
+      "titre": "Testing event pipelines",
+      "format": "Talk 30 min",
+      "track": "Sécurité",
+      "statut_paiement": "Payé",
+      "review_status": "Accepted",
+      "ticket_no": "TK-25280",
+      "date_session": "25/11/2026",
+      "ligne": 1,
+      "chair_name": "Mathilde Coste",
+      "langue_interface": "fr",
+      "speaker": {
+        "nom": "Marchand",
+        "email": "nicolas.marchand@speakers.example.org",
+        "pays": "Suisse",
+        "prenom": "Nicolas"
+      }
+    },
+    {
+      "date_soumission": "26/02/2026",
+      "statut_paiement": "Payé",
+      "review_status": "Rejected",
+      "langue_interface": "en",
+      "speaker": {
+        "email": "james.marsh@speakers.example.org",
+        "prenom": "James",
+        "pays": "France",
+        "nom": "Marsh"
+      },
+      "chair_name": "Sophie Tremblay",
+      "titre": "Observing event pipelines",
+      "submission_id": "SUB-417",
+      "ligne": 2,
+      "date_session": "24/11/2026",
+      "format": "Atelier 90 min",
+      "track": "Data & IA",
+      "ticket_no": "TK-23589"
+    },
+    {
+      "langue_interface": "en",
+      "submission_id": "SUB-422",
+      "date_session": "25/11/2026",
+      "statut_paiement": "Payé",
+      "chair_name": "Sophie Tremblay",
+      "format": "Talk 30 min",
+      "ligne": 3,
+      "titre": "Migrating onboarding flows",
+      "speaker": {
+        "pays": "United Kingdom",
+        "prenom": "Noah",
+        "nom": "Reed",
+        "email": "Noah.Reed@Speakers.Example.Org"
+      },
+      "review_status": "Rejected",
+      "track": "Sécurité",
+      "ticket_no": "TK-26831",
+      "date_soumission": "28/02/2026"
+    },
+    {
+      "format": "Atelier 90 min",
+      "submission_id": "SUB-427",
+      "chair_name": "Sophie Tremblay",
+      "ligne": 4,
+      "statut_paiement": "Payé",
+      "langue_interface": "fr",
+      "track": "Design produit",
+      "ticket_no": "TK-20361",
+      "review_status": "Waitlist",
+      "date_session": "23/11/2026",
+      "date_soumission": "02/02/2026",
+      "titre": "Observing onboarding flows",
+      "speaker": {
+        "nom": "Bernard",
+        "pays": "France",
+        "prenom": "Hugo",
+        "email": "Hugo.Bernard@Speakers.Example.Org"
+      }
+    },
+    {
+      "ticket_no": "TK-24226",
+      "statut_paiement": "Payé",
+      "speaker": {
+        "prenom": "Chloe",
+        "nom": "Gibson",
+        "email": "chloe.gibson@speakers.example.org",
+        "pays": "Canada"
+      },
+      "date_session": "23/11/2026",
+      "track": "Design produit",
+      "chair_name": "Sophie Tremblay",
+      "titre": " Testing onboarding flows  ",
+      "ligne": 5,
+      "date_soumission": "03/04/2026",
+      "format": "Talk 30 min",
+      "review_status": "Accepted",
+      "langue_interface": "fr",
+      "submission_id": "SUB-432"
+    },
+    {
+      "ticket_no": "TK-26870",
+      "ligne": 6,
+      "review_status": "Rejected",
+      "statut_paiement": "Exonéré",
+      "track": "Sécurité",
+      "submission_id": "SUB-437",
+      "langue_interface": "fr",
+      "date_soumission": "11/02/2026",
+      "speaker": {
+        "nom": "Hayes",
+        "prenom": "Hannah",
+        "pays": "Suisse",
+        "email": "hannah.hayes@speakers.example.org"
+      },
+      "titre": "Testing edge clusters ",
+      "chair_name": "Mathilde Coste",
+      "format": "Atelier 90 min",
+      "date_session": "24/11/2026"
+    },
+    {
+      "chair_name": "Mathilde Coste",
+      "review_status": "Waitlist",
+      "langue_interface": "fr",
+      "date_session": "24/11/2026",
+      "format": "Talk 30 min",
+      "titre": "Scaling feature flags",
+      "date_soumission": "01/02/2026",
+      "submission_id": "SUB-442",
+      "track": "Data & IA",
+      "ticket_no": "TK-28649",
+      "speaker": {
+        "email": "ryan.fisher@speakers.example.org",
+        "prenom": "Ryan",
+        "nom": "Fisher",
+        "pays": "Canada"
+      },
+      "statut_paiement": "Payé",
+      "ligne": 7
+    },
+    {
+      "langue_interface": "fr",
+      "chair_name": "Mathilde Coste",
+      "format": "Keynote",
+      "track": "Cloud native",
+      "ligne": 8,
+      "date_soumission": "26/03/2026",
+      "speaker": {
+        "email": "julien.moreau@speakers.example.org",
+        "nom": "Moreau",
+        "pays": "France",
+        "prenom": "Julien"
+      },
+      "ticket_no": "TK-27147",
+      "titre": "Designing event pipelines",
+      "submission_id": "SUB-447",
+      "date_session": "25/11/2026",
+      "review_status": "Accepted",
+      "statut_paiement": "Exonéré"
+    },
+    {
+      "date_session": "24/11/2026",
+      "format": "Keynote",
+      "review_status": "Withdrawn",
+      "ticket_no": "TK-29865",
+      "langue_interface": "fr",
+      "chair_name": "Mathilde Coste",
+      "submission_id": "SUB-452",
+      "ligne": 9,
+      "track": "Sécurité",
+      "date_soumission": "02/05/2026",
+      "speaker": {
+        "nom": "Dupuis",
+        "pays": "Suisse",
+        "prenom": "Elise",
+        "email": "Elise.Dupuis@Speakers.Example.Org"
+      },
+      "statut_paiement": "Payé",
+      "titre": " Securing feature flags  "
+    },
+    {
+      "langue_interface": "fr",
+      "speaker": {
+        "nom": "Girard",
+        "email": "Lucas.Girard@Speakers.Example.Org",
+        "pays": "Suisse",
+        "prenom": "Lucas"
+      },
+      "chair_name": "Sophie Tremblay",
+      "submission_id": "SUB-457",
+      "review_status": "Accepted",
+      "format": "Talk 30 min",
+      "statut_paiement": "En attente",
+      "ligne": 10,
+      "titre": "Testing feature flags",
+      "date_session": "23/11/2026",
+      "track": "Sécurité",
+      "date_soumission": "24/02/2026",
+      "ticket_no": "TK-28264"
+    },
+    {
+      "speaker": {
+        "pays": "Suisse",
+        "email": "ethan.collins@speakers.example.org",
+        "prenom": "Ethan",
+        "nom": "Collins"
+      },
+      "date_session": "23/11/2026",
+      "format": "Talk 30 min",
+      "statut_paiement": "Exonéré",
+      "ligne": 11,
+      "langue_interface": "fr",
+      "ticket_no": "TK-29779",
+      "track": "Cloud native",
+      "review_status": "Rejected",
+      "date_soumission": "20/04/2026",
+      "submission_id": "SUB-462",
+      "titre": "Observing data contracts",
+      "chair_name": "Sophie Tremblay"
+    },
+    {
+      "speaker": {
+        "pays": "France",
+        "nom": "Harper",
+        "prenom": "Owen",
+        "email": "Owen.Harper@Speakers.Example.Org"
+      },
+      "date_soumission": "30/04/2026",
+      "date_session": "23/11/2026",
+      "statut_paiement": "Payé",
+      "ticket_no": "TK-20328",
+      "titre": "Scaling event pipelines",
+      "track": "Data & IA",
+      "langue_interface": "en",
+      "review_status": "Accepted",
+      "ligne": 12,
+      "chair_name": "Kevin Ashworth",
+      "submission_id": "SUB-467",
+      "format": "Talk 30 min"
+    },
+    {
+      "langue_interface": "fr",
+      "track": "Sécurité",
+      "speaker": {
+        "prenom": "Camille",
+        "pays": "Belgique",
+        "email": "camille.faure@speakers.example.org",
+        "nom": "Faure"
+      },
+      "ligne": 13,
+      "review_status": "Rejected",
+      "chair_name": "Mathilde Coste",
+      "format": "Lightning 5 min",
+      "ticket_no": "TK-22604",
+      "titre": "Scaling edge clusters",
+      "statut_paiement": "Exonéré",
+      "date_soumission": "28/05/2026",
+      "date_session": "23/11/2026",
+      "submission_id": "SUB-472"
+    },
+    {
+      "statut_paiement": "Payé",
+      "ligne": 14,
+      "date_soumission": "16/02/2026",
+      "review_status": "Waitlist",
+      "submission_id": "SUB-477",
+      "ticket_no": "TK-28393",
+      "track": "Data & IA",
+      "format": "Talk 30 min",
+      "titre": "Securing data contracts",
+      "chair_name": "Sophie Tremblay",
+      "langue_interface": "en",
+      "date_session": "24/11/2026",
+      "speaker": {
+        "nom": "Masson",
+        "email": "SARAH.MASSON@SPEAKERS.EXAMPLE.ORG",
+        "prenom": "Sarah",
+        "pays": "United Kingdom"
+      }
+    },
+    {
+      "chair_name": "Mathilde Coste",
+      "submission_id": "SUB-482",
+      "date_soumission": "26/02/2026",
+      "ligne": 15,
+      "format": "Talk 30 min",
+      "titre": "Scaling legacy APIs",
+      "speaker": {
+        "email": "elise.perrin@speakers.example.org",
+        "pays": "Suisse",
+        "prenom": "Elise",
+        "nom": "Perrin"
+      },
+      "track": "Sécurité",
+      "ticket_no": "TK-20912",
+      "statut_paiement": "Payé",
+      "langue_interface": "en",
+      "review_status": "Waitlist",
+      "date_session": "24/11/2026"
+    },
+    {
+      "submission_id": "SUB-487",
+      "langue_interface": "en",
+      "speaker": {
+        "email": "camille.morel@speakers.example.org",
+        "nom": "Morel",
+        "prenom": "Camille",
+        "pays": "United Kingdom"
+      },
+      "chair_name": "Sophie Tremblay",
+      "statut_paiement": "Payé",
+      "ligne": 16,
+      "date_soumission": "09/03/2026",
+      "date_session": "25/11/2026",
+      "review_status": "Accepted",
+      "titre": "Designing legacy APIs",
+      "track": "Cloud native",
+      "format": "Talk 30 min",
+      "ticket_no": "TK-25205"
+    },
+    {
+      "chair_name": "Mathilde Coste",
+      "review_status": "Accepted",
+      "date_session": "24/11/2026",
+      "speaker": {
+        "pays": "United Kingdom",
+        "nom": "Hayes",
+        "email": "abigail.hayes@speakers.example.org",
+        "prenom": "Abigail"
+      },
+      "date_soumission": "11/04/2026",
+      "ticket_no": "TK-23383",
+      "titre": "Testing data contracts",
+      "track": "Data & IA",
+      "ligne": 17,
+      "submission_id": "SUB-492",
+      "statut_paiement": "En attente",
+      "format": "Talk 30 min",
+      "langue_interface": "en"
+    },
+    {
+      "titre": "Observing edge clusters",
+      "format": "Talk 30 min",
+      "speaker": {
+        "email": "remi.gauthier@speakers.example.org",
+        "prenom": "Rémi",
+        "pays": "France",
+        "nom": "Gauthier"
+      },
+      "statut_paiement": "Payé",
+      "ticket_no": "TK-27241",
+      "review_status": "Accepted",
+      "ligne": 18,
+      "date_soumission": "17/03/2026",
+      "track": "Design produit",
+      "date_session": "25/11/2026",
+      "submission_id": "SUB-497",
+      "chair_name": "Sophie Tremblay",
+      "langue_interface": "en"
+    },
+    {
+      "titre": "Observing feature flags",
+      "track": "Sécurité",
+      "statut_paiement": "Exonéré",
+      "date_soumission": "06/03/2026",
+      "date_session": "24/11/2026",
+      "speaker": {
+        "email": "Logan.Fisher@Speakers.Example.Org",
+        "pays": "Belgique",
+        "nom": "Fisher",
+        "prenom": "Logan"
+      },
+      "ligne": 19,
+      "langue_interface": "fr",
+      "format": "Talk 30 min",
+      "submission_id": "SUB-502",
+      "ticket_no": "TK-25475",
+      "chair_name": "Kevin Ashworth",
+      "review_status": "Accepted"
+    },
+    {
+      "langue_interface": "fr",
+      "date_soumission": "13/05/2026",
+      "track": "Cloud native",
+      "review_status": "Waitlist",
+      "titre": "  Migrating data contracts ",
+      "format": "Talk 30 min",
+      "date_session": "25/11/2026",
+      "submission_id": "SUB-507",
+      "chair_name": "Kevin Ashworth",
+      "ligne": 20,
+      "statut_paiement": "Payé",
+      "speaker": {
+        "prenom": "Noah",
+        "nom": "Griffin",
+        "email": "noah.griffin@speakers.example.org",
+        "pays": "Belgique"
+      },
+      "ticket_no": "TK-27117"
+    },
+    {
+      "track": "Cloud native",
+      "submission_id": "SUB-512",
+      "speaker": {
+        "prenom": "Mathis",
+        "email": "MATHIS.LEFEVRE@SPEAKERS.EXAMPLE.ORG",
+        "nom": "Lefèvre",
+        "pays": "United Kingdom"
+      },
+      "langue_interface": "en",
+      "ticket_no": "TK-22145",
+      "review_status": "Rejected",
+      "format": "Lightning 5 min",
+      "chair_name": "Mathilde Coste",
+      "date_session": "24/11/2026",
+      "titre": " Securing legacy APIs  ",
+      "statut_paiement": "En attente",
+      "ligne": 21,
+      "date_soumission": "11/04/2026"
+    },
+    {
+      "speaker": {
+        "pays": "Suisse",
+        "nom": "Reed",
+        "email": "olivia.reed@speakers.example.org",
+        "prenom": "Olivia"
+      },
+      "statut_paiement": "En attente",
+      "date_soumission": "15/03/2026",
+      "ticket_no": "TK-29572",
+      "date_session": "24/11/2026",
+      "format": "Lightning 5 min",
+      "ligne": 22,
+      "titre": "Designing onboarding flows",
+      "submission_id": "SUB-517",
+      "chair_name": "Sophie Tremblay",
+      "track": "Cloud native",
+      "langue_interface": "fr",
+      "review_status": "Withdrawn"
+    },
+    {
+      "submission_id": "SUB-522",
+      "speaker": {
+        "nom": "Marsh",
+        "email": "Natalie.Marsh@Speakers.Example.Org",
+        "pays": "Canada",
+        "prenom": "Natalie"
+      },
+      "statut_paiement": "En attente",
+      "track": "Cloud native",
+      "ligne": 23,
+      "date_session": "25/11/2026",
+      "review_status": "Accepted",
+      "date_soumission": "30/03/2026",
+      "format": "Lightning 5 min",
+      "langue_interface": "en",
+      "titre": "Securing onboarding flows",
+      "chair_name": "Mathilde Coste",
+      "ticket_no": "TK-20173"
+    },
+    {
+      "speaker": {
+        "nom": "Perrin",
+        "email": "ines.perrin@speakers.example.org",
+        "prenom": "Inès",
+        "pays": "Belgique"
+      },
+      "format": "Atelier 90 min",
+      "ticket_no": "TK-29244",
+      "chair_name": "Mathilde Coste",
+      "langue_interface": "en",
+      "titre": "Securing event pipelines",
+      "track": "Data & IA",
+      "ligne": 24,
+      "review_status": "Accepted",
+      "date_soumission": "10/05/2026",
+      "date_session": "25/11/2026",
+      "statut_paiement": "Payé",
+      "submission_id": "SUB-527"
+    },
+    {
+      "format": "Lightning 5 min",
+      "date_soumission": "29/03/2026",
+      "statut_paiement": "Exonéré",
+      "chair_name": "Mathilde Coste",
+      "ticket_no": "TK-22264",
+      "titre": "Designing batch jobs",
+      "submission_id": "SUB-532",
+      "ligne": 25,
+      "review_status": "Waitlist",
+      "track": "Data & IA",
+      "date_session": "24/11/2026",
+      "speaker": {
+        "pays": "Canada",
+        "nom": "Garnier",
+        "email": "sarah.garnier@speakers.example.org",
+        "prenom": "Sarah"
+      },
+      "langue_interface": "fr"
+    },
+    {
+      "date_session": "23/11/2026",
+      "titre": "Observing legacy APIs",
+      "date_soumission": "29/04/2026",
+      "format": "Atelier 90 min",
+      "ligne": 26,
+      "submission_id": "SUB-537",
+      "review_status": "Accepted",
+      "langue_interface": "fr",
+      "chair_name": "Sophie Tremblay",
+      "track": "Design produit",
+      "statut_paiement": "Exonéré",
+      "ticket_no": "TK-20367",
+      "speaker": {
+        "prenom": "Megan",
+        "nom": "Walsh",
+        "email": "Megan.Walsh@Speakers.Example.Org",
+        "pays": "United Kingdom"
+      }
+    },
+    {
+      "titre": "  Scaling onboarding flows ",
+      "review_status": "Accepted",
+      "format": "Talk 30 min",
+      "track": "Data & IA",
+      "date_soumission": "02/02/2026",
+      "statut_paiement": "En attente",
+      "date_session": "24/11/2026",
+      "submission_id": "SUB-542",
+      "speaker": {
+        "nom": "Dubois",
+        "email": "chloe.dubois@speakers.example.org",
+        "pays": "Suisse",
+        "prenom": "Chloé"
+      },
+      "ticket_no": "TK-28767",
+      "chair_name": "Sophie Tremblay",
+      "ligne": 27,
+      "langue_interface": "fr"
+    },
+    {
+      "ligne": 28,
+      "track": "Design produit",
+      "date_soumission": "03/04/2026",
+      "titre": "Designing edge clusters",
+      "speaker": {
+        "pays": "United Kingdom",
+        "prenom": "Ryan",
+        "nom": "Walsh",
+        "email": "ryan.walsh@speakers.example.org"
+      },
+      "review_status": "Accepted",
+      "format": "Atelier 90 min",
+      "submission_id": "SUB-547",
+      "date_session": "25/11/2026",
+      "ticket_no": "TK-27501",
+      "statut_paiement": "Exonéré",
+      "chair_name": "Kevin Ashworth",
+      "langue_interface": "fr"
+    },
+    {
+      "submission_id": "SUB-552",
+      "review_status": "Rejected",
+      "ticket_no": "TK-21214",
+      "format": "Lightning 5 min",
+      "date_session": "23/11/2026",
+      "ligne": 29,
+      "track": "Cloud native",
+      "langue_interface": "en",
+      "speaker": {
+        "pays": "United Kingdom",
+        "email": "james.doyle@speakers.example.org",
+        "nom": "Doyle",
+        "prenom": "James"
+      },
+      "date_soumission": "12/04/2026",
+      "titre": " Scaling data contracts  ",
+      "statut_paiement": "Payé",
+      "chair_name": "Sophie Tremblay"
+    },
+    {
+      "ticket_no": "TK-23404",
+      "date_soumission": "13/02/2026",
+      "titre": "Testing legacy APIs",
+      "date_session": "24/11/2026",
+      "speaker": {
+        "pays": "United Kingdom",
+        "prenom": "Léa",
+        "nom": "Perrin",
+        "email": "Lea.Perrin@Speakers.Example.Org"
+      },
+      "langue_interface": "en",
+      "submission_id": "SUB-557",
+      "ligne": 30,
+      "track": "Data & IA",
+      "chair_name": "Sophie Tremblay",
+      "review_status": "Accepted",
+      "format": "Talk 30 min",
+      "statut_paiement": "Payé"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "submission_id": {
+        "type": "string",
+        "description": "Identifier of the talk submission."
+      },
+      "title": {
+        "type": "string",
+        "description": "Title of the talk."
+      },
+      "speaker_name": {
+        "type": "string",
+        "description": "Full name of the speaker, given name first."
+      },
+      "speaker_email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address of the speaker."
+      },
+      "track": {
+        "type": "string",
+        "enum": [
+          "data_ai",
+          "security",
+          "cloud",
+          "product_design"
+        ],
+        "description": "Programme track the talk belongs to."
+      },
+      "format": {
+        "type": "string",
+        "enum": [
+          "talk",
+          "workshop",
+          "lightning"
+        ],
+        "description": "Format."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "accepted",
+          "waitlisted",
+          "rejected"
+        ],
+        "description": "Programme committee decision on the submission."
+      },
+      "session_language": {
+        "type": "string",
+        "enum": [
+          "fr",
+          "en"
+        ],
+        "description": "Language in which the talk will be delivered, used for interpretation planning."
+      },
+      "submitted_on": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the talk was submitted."
+      },
+      "abstract": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "submission_id",
+      "title",
+      "speaker_name",
+      "track",
+      "format",
+      "status",
+      "session_language"
+    ]
+  },
+  "groundTruth": {
+    "submission_id": {
+      "source": "submission_id",
+      "transform": "copy",
+      "why": "submission id; ticket_no is the speaker ticket and ligne the row"
+    },
+    "title": {
+      "source": "titre",
+      "transform": "trim",
+      "why": "talk title, padded"
+    },
+    "speaker_name": {
+      "source": null,
+      "sources": [
+        "speaker.prenom",
+        "speaker.nom"
+      ],
+      "transform": "concat",
+      "separator": " ",
+      "why": "speaker; chair_name is the session chair"
+    },
+    "speaker_email": {
+      "source": "speaker.email",
+      "transform": "normalize_email",
+      "why": "speaker email, mixed case"
+    },
+    "track": {
+      "source": "track",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Data & IA": "data_ai",
+        "Sécurité": "security",
+        "Cloud native": "cloud",
+        "Design produit": "product_design"
+      },
+      "why": "track"
+    },
+    "format": {
+      "source": "format",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Talk 30 min": "talk",
+        "Atelier 90 min": "workshop",
+        "Lightning 5 min": "lightning",
+        "Keynote": null
+      },
+      "why": "format; keynotes are invited and need review"
+    },
+    "status": {
+      "source": "review_status",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Accepted": "accepted",
+        "Waitlist": "waitlisted",
+        "Rejected": "rejected",
+        "Withdrawn": null
+      },
+      "why": "review decision; withdrawn talks need review; statut_paiement is the ticket payment"
+    },
+    "session_language": {
+      "source": null,
+      "transform": "none",
+      "why": "not exported; langue_interface is the submission portal's interface language and speaker.pays the speaker's country"
+    },
+    "submitted_on": {
+      "source": "date_soumission",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "submission date (day-first); date_session is the session day"
+    },
+    "abstract": {
+      "source": null,
+      "transform": "none",
+      "why": "not exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "decoy-for-missing-field",
+      "fields": [
+        "langue_interface",
+        "speaker.pays"
+      ],
+      "correctFor": "session_language"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "submission_id",
+        "ticket_no"
+      ],
+      "correctFor": "submission_id"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "submission_id",
+        "ligne"
+      ],
+      "correctFor": "submission_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "speaker.prenom",
+        "chair_name"
+      ],
+      "correctFor": "speaker_name"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "review_status",
+        "statut_paiement"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "date_soumission",
+        "date_session"
+      ],
+      "correctFor": "submitted_on"
+    }
+  ],
+  "sourceConcepts": {
+    "submission_id": "transaction-id",
+    "ticket_no": "other-identifier",
+    "ligne": "other-identifier",
+    "speaker.prenom": "given-name",
+    "speaker.nom": "family-name",
+    "speaker.email": "email",
+    "speaker.pays": "other",
+    "chair_name": "person-name",
+    "titre": "other",
+    "track": "category",
+    "format": "category",
+    "review_status": "account-status",
+    "statut_paiement": "payment-status",
+    "langue_interface": "language-code",
+    "date_soumission": "created-date",
+    "date_session": "start-date"
+  },
+  "destinationConcepts": {
+    "submission_id": "transaction-id",
+    "title": "other",
+    "speaker_name": "person-name",
+    "speaker_email": "email",
+    "track": "category",
+    "format": "category",
+    "status": "account-status",
+    "session_language": "language-code",
+    "submitted_on": "created-date",
+    "abstract": "other"
+  }
+}

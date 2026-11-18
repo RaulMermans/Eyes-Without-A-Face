@@ -1,0 +1,1132 @@
+{
+  "scenarioId": "food-festival-tickets-to-gate-scanner",
+  "split": "holdout",
+  "track": "general",
+  "industry": "food festival ticketing",
+  "sourceLanguage": "en",
+  "description": "Ticket export of a fictional weekend food festival (English snake_case, nested order, ticket, buyer and attendee) to be loaded into a gate-scanning app.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "order": {
+        "line_no": 1,
+        "placed_at": "2026-03-05T07:05:00Z",
+        "payment_status": "Paid",
+        "ref": "ORD-220144"
+      },
+      "ticket": {
+        "type": "Sunday Only",
+        "barcode": "TK4878896837",
+        "valid_from": "24/07/2026",
+        "price_gbp": 84.93,
+        "entry_gate": "North Gate"
+      },
+      "box_office_agent": "Dee Hammond",
+      "buyer": {
+        "name": "Rhys Owen",
+        "email": "Ruby.Quinn@Tickets.Example.Org"
+      },
+      "attendee": {
+        "name": "Ruby Quinn"
+      }
+    },
+    {
+      "order": {
+        "payment_status": "Chargeback",
+        "line_no": 2,
+        "ref": "ORD-220165",
+        "placed_at": "2026-03-12T09:05:00Z"
+      },
+      "attendee": {
+        "name": "Nora Reed"
+      },
+      "ticket": {
+        "entry_gate": "River Gate",
+        "valid_from": "14/07/2026",
+        "type": "VIP Weekend",
+        "barcode": "TK3444564853",
+        "price_gbp": 133.11,
+        "access_need": "Wheelchair space"
+      },
+      "box_office_agent": "Dee Hammond",
+      "buyer": {
+        "name": "Sophie Danvers",
+        "email": null
+      }
+    },
+    {
+      "box_office_agent": "Tom Riley",
+      "ticket": {
+        "valid_from": "25/07/2026",
+        "barcode": "TK7555223297",
+        "access_need": null,
+        "price_gbp": 98.86,
+        "type": "Weekend Pass",
+        "entry_gate": "North Gate"
+      },
+      "order": {
+        "ref": "ORD-220185",
+        "line_no": 3,
+        "placed_at": "2026-06-03T11:20:00Z",
+        "payment_status": "Chargeback"
+      },
+      "attendee": {
+        "name": "Leo Ward"
+      },
+      "buyer": {
+        "name": "Martin Ellery",
+        "email": "leo.ward@tickets.example.org"
+      }
+    },
+    {
+      "attendee": {
+        "name": "Caleb Carter"
+      },
+      "order": {
+        "placed_at": "2026-06-19T12:41:00Z",
+        "ref": "ORD-220202",
+        "line_no": 4,
+        "payment_status": "Chargeback"
+      },
+      "ticket": {
+        "access_need": null,
+        "type": "Saturday Only",
+        "entry_gate": "River Gate",
+        "barcode": "TK7480434321",
+        "valid_from": "16/07/2026",
+        "price_gbp": 81.52
+      },
+      "box_office_agent": "Dee Hammond",
+      "buyer": {
+        "email": "caleb.carter@tickets.example.org",
+        "name": "Martin Ellery"
+      }
+    },
+    {
+      "buyer": {
+        "name": "Rhys Owen",
+        "email": "felix.morgan@tickets.example.org"
+      },
+      "ticket": {
+        "entry_gate": "North Gate",
+        "barcode": "TK5189800221",
+        "valid_from": "17/07/2026",
+        "type": "Saturday Only",
+        "access_need": "Companion ticket",
+        "price_gbp": 60.58
+      },
+      "order": {
+        "payment_status": "Paid",
+        "line_no": 5,
+        "ref": "ORD-220208",
+        "placed_at": "2026-05-15T07:34:00Z"
+      },
+      "box_office_agent": "Dee Hammond",
+      "attendee": {
+        "name": "Felix Morgan"
+      }
+    },
+    {
+      "buyer": {
+        "name": "Martin Ellery"
+      },
+      "box_office_agent": "Dee Hammond",
+      "attendee": {
+        "name": "Nora Morgan"
+      },
+      "ticket": {
+        "type": "Saturday Only",
+        "valid_from": "14/07/2026",
+        "barcode": "TK9539022479",
+        "price_gbp": 76.33,
+        "entry_gate": "North Gate"
+      },
+      "order": {
+        "placed_at": "2026-03-29T17:05:00Z",
+        "payment_status": "Refunded",
+        "ref": "ORD-220237",
+        "line_no": 6
+      }
+    },
+    {
+      "order": {
+        "ref": "ORD-220244",
+        "placed_at": "2026-06-30T07:20:00Z",
+        "payment_status": "Paid",
+        "line_no": 7
+      },
+      "buyer": {
+        "email": "Liam.Reed@Tickets.Example.Org",
+        "name": "Kwame Asante"
+      },
+      "ticket": {
+        "entry_gate": "River Gate",
+        "access_need": "Wheelchair space",
+        "type": "Sunday Only",
+        "valid_from": "25/07/2026",
+        "barcode": "TK4843395354",
+        "price_gbp": 67.58
+      },
+      "attendee": {
+        "name": "Liam Reed"
+      },
+      "box_office_agent": "Tom Riley"
+    },
+    {
+      "order": {
+        "line_no": 8,
+        "payment_status": "Refunded",
+        "placed_at": "2026-01-17T13:20:00Z",
+        "ref": "ORD-220270"
+      },
+      "attendee": {
+        "name": "Emma Marsh"
+      },
+      "buyer": {
+        "name": "Rhys Owen",
+        "email": null
+      },
+      "box_office_agent": "Dee Hammond",
+      "ticket": {
+        "entry_gate": "VIP Lane",
+        "valid_from": "12/07/2026",
+        "barcode": "TK1990347033",
+        "type": "Saturday Only",
+        "price_gbp": 128.02
+      }
+    },
+    {
+      "order": {
+        "ref": "ORD-220287",
+        "payment_status": "Paid",
+        "line_no": 9,
+        "placed_at": "2026-06-16T19:34:00Z"
+      },
+      "ticket": {
+        "price_gbp": 66.54,
+        "type": "VIP Weekend",
+        "entry_gate": "VIP Lane",
+        "barcode": "TK6104552669",
+        "valid_from": "20/07/2026",
+        "access_need": "Step-free route"
+      },
+      "attendee": {
+        "name": "Ruby Marsh"
+      },
+      "box_office_agent": "Dee Hammond",
+      "buyer": {
+        "name": "Martin Ellery",
+        "email": "ruby.marsh@tickets.example.org"
+      }
+    },
+    {
+      "order": {
+        "line_no": 10,
+        "payment_status": "Refunded",
+        "ref": "ORD-220293",
+        "placed_at": "2026-05-30T12:20:00Z"
+      },
+      "attendee": {
+        "name": "Zoe Carter   "
+      },
+      "buyer": {
+        "name": "Martin Ellery",
+        "email": "zoe.carter@tickets.example.org"
+      },
+      "box_office_agent": "Dee Hammond",
+      "ticket": {
+        "access_need": "Companion ticket",
+        "barcode": "TK4137675454",
+        "valid_from": "21/07/2026",
+        "type": "Weekend Pass",
+        "price_gbp": 98.24,
+        "entry_gate": "VIP Lane"
+      }
+    },
+    {
+      "attendee": {
+        "name": "Grace Brooks"
+      },
+      "ticket": {
+        "barcode": "TK4200280699",
+        "type": "Weekend Pass",
+        "entry_gate": "River Gate",
+        "access_need": "Step-free route",
+        "valid_from": "12/07/2026",
+        "price_gbp": 71.51
+      },
+      "order": {
+        "line_no": 11,
+        "payment_status": "Refunded",
+        "ref": "ORD-220326",
+        "placed_at": "2026-06-27T12:05:00Z"
+      },
+      "buyer": {
+        "email": "Grace.Brooks@Tickets.Example.Org",
+        "name": "Kwame Asante"
+      },
+      "box_office_agent": "Dee Hammond"
+    },
+    {
+      "box_office_agent": "Dee Hammond",
+      "ticket": {
+        "entry_gate": "River Gate",
+        "access_need": "Companion ticket",
+        "price_gbp": 59.25,
+        "barcode": "TK1409020076",
+        "valid_from": "15/07/2026",
+        "type": "Sunday Only"
+      },
+      "buyer": {
+        "email": "olivia.pearce@tickets.example.org",
+        "name": "Lucy Pryce"
+      },
+      "order": {
+        "placed_at": "2026-04-17T13:55:00Z",
+        "payment_status": "Refunded",
+        "ref": "ORD-220335",
+        "line_no": 12
+      },
+      "attendee": {
+        "name": "Olivia Pearce"
+      }
+    },
+    {
+      "order": {
+        "line_no": 13,
+        "payment_status": "Refunded",
+        "placed_at": "2026-01-16T18:41:00Z",
+        "ref": "ORD-220345"
+      },
+      "buyer": {
+        "email": "ava.bennett@tickets.example.org",
+        "name": "Martin Ellery"
+      },
+      "box_office_agent": "Dee Hammond",
+      "attendee": {
+        "name": "Ava Bennett"
+      },
+      "ticket": {
+        "entry_gate": "North Gate",
+        "type": "VIP Weekend",
+        "access_need": "Companion ticket",
+        "valid_from": "26/07/2026",
+        "barcode": "TK8963903113",
+        "price_gbp": 120.37
+      }
+    },
+    {
+      "attendee": {
+        "name": "Ethan Foster"
+      },
+      "ticket": {
+        "type": "Weekend Pass",
+        "price_gbp": 73.7,
+        "valid_from": "14/07/2026",
+        "entry_gate": "North Gate",
+        "barcode": "TK9920788339"
+      },
+      "order": {
+        "placed_at": "2026-04-18T13:41:00Z",
+        "ref": "ORD-220376",
+        "payment_status": "Refunded",
+        "line_no": 14
+      },
+      "buyer": {
+        "email": "ethan.foster@tickets.example.org",
+        "name": "Lucy Pryce"
+      },
+      "box_office_agent": "Tom Riley"
+    },
+    {
+      "order": {
+        "payment_status": "Paid",
+        "placed_at": "2026-02-28T12:00:00Z",
+        "ref": "ORD-220383",
+        "line_no": 15
+      },
+      "box_office_agent": "Dee Hammond",
+      "attendee": {
+        "name": "Lucas Doyle"
+      },
+      "ticket": {
+        "valid_from": "26/07/2026",
+        "entry_gate": "River Gate",
+        "price_gbp": 89.26,
+        "barcode": "TK5218279289",
+        "type": "Weekend Pass"
+      },
+      "buyer": {
+        "name": "Sophie Danvers",
+        "email": "lucas.doyle@tickets.example.org"
+      }
+    },
+    {
+      "buyer": {
+        "email": "emma.hayes@tickets.example.org",
+        "name": "Rhys Owen"
+      },
+      "ticket": {
+        "valid_from": "16/07/2026",
+        "barcode": "TK2754906073",
+        "type": "Sunday Only",
+        "entry_gate": "River Gate",
+        "access_need": null,
+        "price_gbp": 143.09
+      },
+      "order": {
+        "placed_at": "2026-06-17T16:00:00Z",
+        "line_no": 16,
+        "payment_status": "Refunded",
+        "ref": "ORD-220405"
+      },
+      "box_office_agent": "Tom Riley",
+      "attendee": {
+        "name": "Emma Hayes"
+      }
+    },
+    {
+      "buyer": {
+        "name": "Martin Ellery",
+        "email": "liam.ward@tickets.example.org"
+      },
+      "box_office_agent": "Dee Hammond",
+      "order": {
+        "payment_status": "Paid",
+        "ref": "ORD-220423",
+        "placed_at": "2026-04-10T13:20:00Z",
+        "line_no": 17
+      },
+      "ticket": {
+        "barcode": "TK5466016218",
+        "price_gbp": 21.05,
+        "access_need": "Wheelchair space",
+        "valid_from": "20/07/2026",
+        "entry_gate": "VIP Lane",
+        "type": "Sunday Only"
+      },
+      "attendee": {
+        "name": "Liam Ward"
+      }
+    },
+    {
+      "attendee": {
+        "name": "Zoe Bennett"
+      },
+      "ticket": {
+        "entry_gate": "North Gate",
+        "access_need": null,
+        "barcode": "TK1258789655",
+        "price_gbp": 25.33,
+        "type": "Crew Wristband",
+        "valid_from": "13/07/2026"
+      },
+      "order": {
+        "payment_status": "Refunded",
+        "ref": "ORD-220439",
+        "placed_at": "2026-02-03T13:12:00Z",
+        "line_no": 18
+      },
+      "buyer": {
+        "name": "Martin Ellery",
+        "email": "Zoe.Bennett@Tickets.Example.Org"
+      },
+      "box_office_agent": "Tom Riley"
+    },
+    {
+      "box_office_agent": "Tom Riley",
+      "buyer": {
+        "name": "Lucy Pryce",
+        "email": "grace.ward@tickets.example.org"
+      },
+      "order": {
+        "payment_status": "Paid",
+        "line_no": 19,
+        "ref": "ORD-220446",
+        "placed_at": "2026-05-24T18:20:00Z"
+      },
+      "attendee": {
+        "name": "Grace Ward "
+      },
+      "ticket": {
+        "valid_from": "23/07/2026",
+        "barcode": "TK4529358962",
+        "entry_gate": "North Gate",
+        "price_gbp": 128.86,
+        "type": "Weekend Pass"
+      }
+    },
+    {
+      "buyer": {
+        "name": "Rhys Owen",
+        "email": "Liam.Quinn@Tickets.Example.Org"
+      },
+      "ticket": {
+        "price_gbp": 19.32,
+        "type": "Weekend Pass",
+        "access_need": "Companion ticket",
+        "barcode": "TK7525748119",
+        "valid_from": "13/07/2026",
+        "entry_gate": "River Gate"
+      },
+      "order": {
+        "line_no": 20,
+        "ref": "ORD-220467",
+        "placed_at": "2026-04-10T17:12:00Z",
+        "payment_status": "Paid"
+      },
+      "box_office_agent": "Tom Riley",
+      "attendee": {
+        "name": "Liam Quinn"
+      }
+    },
+    {
+      "box_office_agent": "Tom Riley",
+      "buyer": {
+        "name": "Lucy Pryce",
+        "email": "ethan.hughes@tickets.example.org"
+      },
+      "order": {
+        "placed_at": "2026-05-02T07:00:00Z",
+        "payment_status": "Refunded",
+        "ref": "ORD-220493",
+        "line_no": 21
+      },
+      "ticket": {
+        "entry_gate": "VIP Lane",
+        "price_gbp": 120.68,
+        "valid_from": "14/07/2026",
+        "barcode": "TK6977416180",
+        "type": "VIP Weekend"
+      },
+      "attendee": {
+        "name": "Ethan Hughes"
+      }
+    },
+    {
+      "ticket": {
+        "valid_from": "23/07/2026",
+        "price_gbp": 102.95,
+        "type": "Crew Wristband",
+        "barcode": "TK2003075825",
+        "entry_gate": "North Gate",
+        "access_need": null
+      },
+      "order": {
+        "payment_status": "Paid",
+        "ref": "ORD-220508",
+        "line_no": 22,
+        "placed_at": "2026-06-11T14:34:00Z"
+      },
+      "box_office_agent": "Dee Hammond",
+      "attendee": {
+        "name": "Noah Carter"
+      },
+      "buyer": {
+        "name": "Kwame Asante",
+        "email": "noah.carter@tickets.example.org"
+      }
+    },
+    {
+      "box_office_agent": "Dee Hammond",
+      "order": {
+        "placed_at": "2026-01-10T13:41:00Z",
+        "payment_status": "Refunded",
+        "ref": "ORD-220521",
+        "line_no": 23
+      },
+      "buyer": {
+        "name": "Rhys Owen",
+        "email": "hannah.carter@tickets.example.org"
+      },
+      "attendee": {
+        "name": "Hannah Carter"
+      },
+      "ticket": {
+        "entry_gate": "VIP Lane",
+        "valid_from": "25/07/2026",
+        "barcode": "TK3942933017",
+        "type": "Crew Wristband",
+        "price_gbp": 82.09,
+        "access_need": null
+      }
+    },
+    {
+      "attendee": {
+        "name": "Grace Price"
+      },
+      "box_office_agent": "Dee Hammond",
+      "order": {
+        "payment_status": "Paid",
+        "placed_at": "2026-05-21T15:20:00Z",
+        "ref": "ORD-220542",
+        "line_no": 24
+      },
+      "ticket": {
+        "price_gbp": 42.19,
+        "entry_gate": "River Gate",
+        "valid_from": "14/07/2026",
+        "barcode": "TK1034379884",
+        "access_need": null,
+        "type": "Sunday Only"
+      },
+      "buyer": {
+        "name": "Lucy Pryce",
+        "email": "Grace.Price@Tickets.Example.Org"
+      }
+    },
+    {
+      "attendee": {
+        "name": "Ruby Foster"
+      },
+      "ticket": {
+        "price_gbp": 106.48,
+        "entry_gate": "North Gate",
+        "barcode": "TK2683511931",
+        "type": "VIP Weekend",
+        "valid_from": "17/07/2026"
+      },
+      "order": {
+        "line_no": 25,
+        "payment_status": "Paid",
+        "ref": "ORD-220551",
+        "placed_at": "2026-02-26T09:12:00Z"
+      },
+      "box_office_agent": "Dee Hammond",
+      "buyer": {
+        "name": "Martin Ellery",
+        "email": "ruby.foster@tickets.example.org"
+      }
+    },
+    {
+      "buyer": {
+        "name": "Martin Ellery",
+        "email": null
+      },
+      "box_office_agent": "Dee Hammond",
+      "ticket": {
+        "entry_gate": "River Gate",
+        "barcode": "TK8089633701",
+        "valid_from": "17/07/2026",
+        "price_gbp": 70.41,
+        "type": "VIP Weekend"
+      },
+      "attendee": {
+        "name": "Ava Reed"
+      },
+      "order": {
+        "ref": "ORD-220577",
+        "line_no": 26,
+        "payment_status": "Refunded",
+        "placed_at": "2026-05-27T16:41:00Z"
+      }
+    },
+    {
+      "box_office_agent": "Tom Riley",
+      "order": {
+        "placed_at": "2026-02-18T07:12:00Z",
+        "ref": "ORD-220597",
+        "payment_status": "Paid",
+        "line_no": 27
+      },
+      "attendee": {
+        "name": "Liam Carter"
+      },
+      "buyer": {
+        "name": "Lucy Pryce",
+        "email": "liam.carter@tickets.example.org"
+      },
+      "ticket": {
+        "barcode": "TK9987511161",
+        "valid_from": "22/07/2026",
+        "entry_gate": "VIP Lane",
+        "access_need": null,
+        "type": "Sunday Only",
+        "price_gbp": 128.34
+      }
+    },
+    {
+      "order": {
+        "placed_at": "2026-02-10T15:12:00Z",
+        "line_no": 28,
+        "payment_status": "Chargeback",
+        "ref": "ORD-220601"
+      },
+      "box_office_agent": "Dee Hammond",
+      "buyer": {
+        "email": "chloe.hughes@tickets.example.org",
+        "name": "Kwame Asante"
+      },
+      "attendee": {
+        "name": " Chloe Hughes  "
+      },
+      "ticket": {
+        "barcode": "TK7433160047",
+        "entry_gate": "North Gate",
+        "type": "Crew Wristband",
+        "valid_from": "12/07/2026",
+        "price_gbp": 105.0
+      }
+    },
+    {
+      "order": {
+        "placed_at": "2026-03-19T09:12:00Z",
+        "payment_status": "Paid",
+        "ref": "ORD-220630",
+        "line_no": 29
+      },
+      "ticket": {
+        "barcode": "TK8071045654",
+        "valid_from": "25/07/2026",
+        "entry_gate": "North Gate",
+        "price_gbp": 32.46,
+        "type": "Sunday Only"
+      },
+      "buyer": {
+        "name": "Martin Ellery",
+        "email": "isaac.marsh@tickets.example.org"
+      },
+      "box_office_agent": "Tom Riley",
+      "attendee": {
+        "name": "Isaac Marsh"
+      }
+    },
+    {
+      "attendee": {
+        "name": "Ruby Bennett"
+      },
+      "order": {
+        "placed_at": "2026-06-14T07:12:00Z",
+        "line_no": 30,
+        "ref": "ORD-220649",
+        "payment_status": "Paid"
+      },
+      "ticket": {
+        "valid_from": "16/07/2026",
+        "price_gbp": 101.29,
+        "barcode": "TK2228469577",
+        "type": "Weekend Pass",
+        "access_need": null,
+        "entry_gate": "River Gate"
+      },
+      "box_office_agent": "Dee Hammond",
+      "buyer": {
+        "email": "ruby.bennett@tickets.example.org",
+        "name": "Sophie Danvers"
+      }
+    },
+    {
+      "order": {
+        "payment_status": "Refunded",
+        "line_no": 31,
+        "ref": "ORD-220653",
+        "placed_at": "2026-06-22T07:20:00Z"
+      },
+      "ticket": {
+        "barcode": "TK6217889025",
+        "price_gbp": 104.85,
+        "valid_from": "18/07/2026",
+        "entry_gate": "North Gate",
+        "type": "Sunday Only"
+      },
+      "attendee": {
+        "name": "Felix Hughes"
+      },
+      "buyer": {
+        "email": "felix.hughes@tickets.example.org",
+        "name": "Martin Ellery"
+      },
+      "box_office_agent": "Dee Hammond"
+    },
+    {
+      "box_office_agent": "Tom Riley",
+      "order": {
+        "placed_at": "2026-01-29T16:05:00Z",
+        "ref": "ORD-220675",
+        "line_no": 32,
+        "payment_status": "Chargeback"
+      },
+      "ticket": {
+        "valid_from": "16/07/2026",
+        "entry_gate": "North Gate",
+        "barcode": "TK1926054654",
+        "price_gbp": 67.81,
+        "type": "Sunday Only"
+      },
+      "attendee": {
+        "name": " Lucas Bennett  "
+      },
+      "buyer": {
+        "email": "lucas.bennett@tickets.example.org",
+        "name": "Sophie Danvers"
+      }
+    },
+    {
+      "attendee": {
+        "name": "Olivia Morgan   "
+      },
+      "buyer": {
+        "name": "Lucy Pryce",
+        "email": "Olivia.Morgan@Tickets.Example.Org"
+      },
+      "order": {
+        "line_no": 33,
+        "ref": "ORD-220694",
+        "placed_at": "2026-05-03T12:00:00Z",
+        "payment_status": "Chargeback"
+      },
+      "box_office_agent": "Dee Hammond",
+      "ticket": {
+        "valid_from": "17/07/2026",
+        "type": "Saturday Only",
+        "price_gbp": 116.65,
+        "entry_gate": "North Gate",
+        "barcode": "TK6180992892"
+      }
+    },
+    {
+      "box_office_agent": "Dee Hammond",
+      "attendee": {
+        "name": "Nora Sutton"
+      },
+      "order": {
+        "payment_status": "Refunded",
+        "line_no": 34,
+        "ref": "ORD-220705",
+        "placed_at": "2026-01-19T14:00:00Z"
+      },
+      "ticket": {
+        "valid_from": "22/07/2026",
+        "access_need": null,
+        "barcode": "TK9663156513",
+        "price_gbp": 69.62,
+        "type": "Weekend Pass",
+        "entry_gate": "North Gate"
+      },
+      "buyer": {
+        "email": "nora.sutton@tickets.example.org",
+        "name": "Martin Ellery"
+      }
+    },
+    {
+      "attendee": {
+        "name": "Chloe Brooks"
+      },
+      "ticket": {
+        "access_need": "Step-free route",
+        "entry_gate": "North Gate",
+        "barcode": "TK8746143669",
+        "price_gbp": 99.51,
+        "type": "Sunday Only",
+        "valid_from": "24/07/2026"
+      },
+      "buyer": {
+        "name": "Martin Ellery"
+      },
+      "box_office_agent": "Dee Hammond",
+      "order": {
+        "ref": "ORD-220732",
+        "payment_status": "Paid",
+        "placed_at": "2026-05-01T14:20:00Z",
+        "line_no": 35
+      }
+    },
+    {
+      "attendee": {
+        "name": "Felix Brooks"
+      },
+      "buyer": {
+        "email": "felix.brooks@tickets.example.org",
+        "name": "Martin Ellery"
+      },
+      "order": {
+        "ref": "ORD-220743",
+        "payment_status": "Paid",
+        "line_no": 36,
+        "placed_at": "2026-04-17T17:20:00Z"
+      },
+      "ticket": {
+        "type": "Saturday Only",
+        "barcode": "TK1162171140",
+        "access_need": null,
+        "price_gbp": 114.97,
+        "valid_from": "17/07/2026",
+        "entry_gate": "River Gate"
+      },
+      "box_office_agent": "Tom Riley"
+    },
+    {
+      "box_office_agent": "Tom Riley",
+      "order": {
+        "placed_at": "2026-05-29T13:00:00Z",
+        "payment_status": "Refunded",
+        "ref": "ORD-220761",
+        "line_no": 37
+      },
+      "attendee": {
+        "name": "Ethan Price"
+      },
+      "ticket": {
+        "valid_from": "18/07/2026",
+        "barcode": "TK8652989450",
+        "type": "Saturday Only",
+        "price_gbp": 108.45,
+        "entry_gate": "North Gate",
+        "access_need": "Companion ticket"
+      },
+      "buyer": {
+        "email": "ethan.price@tickets.example.org",
+        "name": "Rhys Owen"
+      }
+    },
+    {
+      "order": {
+        "ref": "ORD-220775",
+        "line_no": 38,
+        "payment_status": "Refunded",
+        "placed_at": "2026-02-18T14:05:00Z"
+      },
+      "buyer": {
+        "name": "Kwame Asante",
+        "email": "nora.barnes@tickets.example.org"
+      },
+      "box_office_agent": "Tom Riley",
+      "attendee": {
+        "name": "  Nora Barnes"
+      },
+      "ticket": {
+        "valid_from": "26/07/2026",
+        "barcode": "TK5495253103",
+        "access_need": null,
+        "price_gbp": 45.25,
+        "entry_gate": "VIP Lane",
+        "type": "Crew Wristband"
+      }
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "ticket_id": {
+        "type": "string",
+        "description": "Unique code printed on the ticket and read at the gate."
+      },
+      "attendee_name": {
+        "type": "string",
+        "description": "Name of the person who will use the ticket."
+      },
+      "ticket_type": {
+        "type": "string",
+        "enum": [
+          "weekend",
+          "saturday",
+          "sunday",
+          "vip_weekend"
+        ],
+        "description": "Kind of admission the ticket grants."
+      },
+      "gate": {
+        "type": "string",
+        "enum": [
+          "north",
+          "river",
+          "vip"
+        ],
+        "description": "Gate."
+      },
+      "valid_from": {
+        "type": "string",
+        "format": "date",
+        "description": "First day on which the ticket admits entry."
+      },
+      "contact_email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email for urgent event updates about this ticket."
+      },
+      "access_requirement": {
+        "type": "string",
+        "enum": [
+          "wheelchair",
+          "companion",
+          "step_free"
+        ],
+        "description": "Accessibility arrangement booked with the ticket, if any."
+      },
+      "days_until_event": {
+        "type": "integer"
+      }
+    },
+    "required": [
+      "ticket_id",
+      "attendee_name",
+      "ticket_type",
+      "valid_from"
+    ]
+  },
+  "groundTruth": {
+    "ticket_id": {
+      "source": "ticket.barcode",
+      "transform": "copy",
+      "why": "ticket barcode; order.ref covers several tickets"
+    },
+    "attendee_name": {
+      "source": "attendee.name",
+      "transform": "trim",
+      "why": "attendee name, padded; buyer.name bought it"
+    },
+    "ticket_type": {
+      "source": "ticket.type",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Weekend Pass": "weekend",
+        "Saturday Only": "saturday",
+        "Sunday Only": "sunday",
+        "VIP Weekend": "vip_weekend",
+        "Crew Wristband": null
+      },
+      "why": "ticket type; crew passes are not tickets and need review"
+    },
+    "gate": {
+      "source": "ticket.entry_gate",
+      "transform": "map_enum",
+      "categoryMap": {
+        "North Gate": "north",
+        "River Gate": "river",
+        "VIP Lane": "vip"
+      },
+      "why": "assigned gate"
+    },
+    "valid_from": {
+      "source": "ticket.valid_from",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "valid-from (UK day-first); placed_at is the order time"
+    },
+    "contact_email": {
+      "source": "buyer.email",
+      "transform": "normalize_email",
+      "why": "buyer email, mixed case, null or missing"
+    },
+    "access_requirement": {
+      "source": "ticket.access_need",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Wheelchair space": "wheelchair",
+        "Companion ticket": "companion",
+        "Step-free route": "step_free"
+      },
+      "why": "access need, null or missing"
+    },
+    "days_until_event": {
+      "source": null,
+      "transform": "none",
+      "why": "not exported",
+      "unsupportedReason": "would need the difference between valid_from and today"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "attendee.name",
+        "buyer.name"
+      ],
+      "correctFor": "attendee_name"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "ticket.barcode",
+        "order.ref"
+      ],
+      "correctFor": "ticket_id"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "ticket.type",
+        "ticket.entry_gate"
+      ],
+      "correctFor": "ticket_type"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "ticket.valid_from",
+        "order.placed_at"
+      ],
+      "correctFor": "valid_from"
+    }
+  ],
+  "sourceConcepts": {
+    "order.ref": "transaction-id",
+    "order.line_no": "other-identifier",
+    "ticket.barcode": "other-identifier",
+    "buyer.name": "person-name",
+    "buyer.email": "email",
+    "attendee.name": "person-name",
+    "ticket.type": "category",
+    "ticket.entry_gate": "category",
+    "order.payment_status": "payment-status",
+    "order.placed_at": "created-date",
+    "ticket.valid_from": "start-date",
+    "ticket.access_need": "category",
+    "ticket.price_gbp": "amount",
+    "box_office_agent": "person-name"
+  },
+  "destinationConcepts": {
+    "ticket_id": "other-identifier",
+    "attendee_name": "person-name",
+    "ticket_type": "category",
+    "gate": "category",
+    "valid_from": "start-date",
+    "contact_email": "email",
+    "access_requirement": "category",
+    "days_until_event": "quantity"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 0,
+      "outcome": "transformed",
+      "output": {
+        "ticket_id": "TK4878896837",
+        "attendee_name": "Ruby Quinn",
+        "ticket_type": "sunday",
+        "gate": "north",
+        "valid_from": "2026-07-24",
+        "contact_email": "ruby.quinn@tickets.example.org"
+      }
+    },
+    {
+      "recordIndex": 1,
+      "outcome": "transformed",
+      "output": {
+        "ticket_id": "TK3444564853",
+        "attendee_name": "Nora Reed",
+        "ticket_type": "vip_weekend",
+        "gate": "river",
+        "valid_from": "2026-07-14",
+        "access_requirement": "wheelchair"
+      }
+    },
+    {
+      "recordIndex": 2,
+      "outcome": "transformed",
+      "output": {
+        "ticket_id": "TK7555223297",
+        "attendee_name": "Leo Ward",
+        "ticket_type": "weekend",
+        "gate": "north",
+        "valid_from": "2026-07-25",
+        "contact_email": "leo.ward@tickets.example.org"
+      }
+    },
+    {
+      "recordIndex": 17,
+      "outcome": "held"
+    }
+  ]
+}

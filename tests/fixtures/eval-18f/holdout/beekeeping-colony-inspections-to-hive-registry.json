@@ -1,0 +1,1227 @@
+{
+  "scenarioId": "beekeeping-colony-inspections-to-hive-registry",
+  "split": "holdout",
+  "track": "general",
+  "industry": "beekeepers' association colony inspections",
+  "sourceLanguage": "de",
+  "description": "Colony inspection export of a fictional regional beekeepers' association (German camelCase, nested keeper, honey yield and queen) to be loaded into a hive registry.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "varroaBefall": 1.0,
+      "behandlung": "Oxalsäure",
+      "volkNr": "V-0401",
+      "koenigin": {
+        "jahrgang": 2023,
+        "markierung": "weiß"
+      },
+      "volksstaerke": "mittel",
+      "bienenrasse": "Buckfast",
+      "sanftmut": "2",
+      "kontrollId": 72106,
+      "standNr": "ST-02",
+      "kontrolldatum": "07/07/2026",
+      "zeile": 1,
+      "imker": {
+        "nachname": "Lehmann",
+        "email": "Sophie.Lehmann@Imkerei.Example.Net",
+        "vorname": "Sophie"
+      },
+      "naechsteKontrolle": "04/10/2026",
+      "kontrolleur": "Walter Brenner",
+      "honigertrag": {
+        "brutto_kg": 35.8,
+        "netto_kg": 29.4
+      }
+    },
+    {
+      "kontrollId": 70943,
+      "imker": {
+        "nachname": "Werner",
+        "vorname": "Stefan",
+        "email": "stefan.werner@imkerei.example.net"
+      },
+      "kontrolleur": "Uwe Stamm",
+      "kontrolldatum": "09/05/2026",
+      "volkNr": "V-0403",
+      "zeile": 2,
+      "naechsteKontrolle": "01/03/2027",
+      "standNr": "ST-06",
+      "behandlung": "Ameisensäure",
+      "koenigin": {
+        "markierung": "weiß",
+        "jahrgang": 2024
+      },
+      "varroaBefall": 1.0,
+      "sanftmut": "4",
+      "honigertrag": {
+        "netto_kg": 18.8,
+        "brutto_kg": 22.9
+      },
+      "volksstaerke": "stark",
+      "bienenrasse": "Carnica"
+    },
+    {
+      "koenigin": {
+        "markierung": "gelb",
+        "jahrgang": 2022
+      },
+      "naechsteKontrolle": "12/02/2027",
+      "kontrollId": 74276,
+      "bienenrasse": "Carnica",
+      "sanftmut": "4",
+      "kontrolldatum": "09/07/2026",
+      "behandlung": "Ameisensäure",
+      "volkNr": "V-0405",
+      "standNr": "ST-04",
+      "varroaBefall": 1.0,
+      "kontrolleur": "Uwe Stamm",
+      "imker": {
+        "nachname": "Richter",
+        "vorname": "Lukas",
+        "email": "LUKAS.RICHTER@IMKEREI.EXAMPLE.NET"
+      },
+      "honigertrag": {
+        "brutto_kg": 23.6,
+        "netto_kg": 19.4
+      },
+      "zeile": 3,
+      "volksstaerke": "mittel"
+    },
+    {
+      "zeile": 4,
+      "bienenrasse": "Carnica",
+      "kontrollId": 73636,
+      "koenigin": {
+        "markierung": "weiß",
+        "jahrgang": 2026
+      },
+      "behandlung": "Oxalsäure",
+      "kontrolleur": "Gisela Hahn",
+      "honigertrag": {
+        "brutto_kg": 26.2,
+        "netto_kg": 21.5
+      },
+      "volksstaerke": "weisellos",
+      "volkNr": "V-0406",
+      "sanftmut": "4",
+      "naechsteKontrolle": "04/10/2026",
+      "kontrolldatum": "06/06/2026",
+      "imker": {
+        "email": "LUKAS.RICHTER@IMKEREI.EXAMPLE.NET",
+        "vorname": "Lukas",
+        "nachname": "Richter"
+      },
+      "varroaBefall": 0.5,
+      "standNr": "ST-04"
+    },
+    {
+      "koenigin": {
+        "markierung": "blau",
+        "jahrgang": 2023
+      },
+      "volkNr": "V-0408",
+      "imker": {
+        "vorname": "Lukas",
+        "email": "LUKAS.RICHTER@IMKEREI.EXAMPLE.NET",
+        "nachname": "Richter"
+      },
+      "volksstaerke": "mittel",
+      "honigertrag": {
+        "brutto_kg": 25.2,
+        "netto_kg": 20.7
+      },
+      "kontrolleur": "Uwe Stamm",
+      "varroaBefall": 0.5,
+      "standNr": " ST-04  ",
+      "bienenrasse": "Carnica",
+      "kontrolldatum": "09/08/2026",
+      "kontrollId": 72589,
+      "sanftmut": "3",
+      "naechsteKontrolle": "07/05/2027",
+      "zeile": 5,
+      "behandlung": "Ameisensäure"
+    },
+    {
+      "kontrolleur": "Uwe Stamm",
+      "koenigin": {
+        "markierung": "rot",
+        "jahrgang": 2023
+      },
+      "kontrolldatum": "03/09/2026",
+      "sanftmut": "4",
+      "imker": {
+        "vorname": "Lena",
+        "email": "Lena.Neumann@Imkerei.Example.Net",
+        "nachname": "Neumann"
+      },
+      "naechsteKontrolle": "01/03/2027",
+      "standNr": "ST-05",
+      "kontrollId": 71432,
+      "behandlung": "Oxalsäure",
+      "bienenrasse": "Carnica",
+      "honigertrag": {
+        "netto_kg": 27.9,
+        "brutto_kg": 34.0
+      },
+      "volksstaerke": "stark",
+      "zeile": 6,
+      "volkNr": "V-0411"
+    },
+    {
+      "imker": {
+        "vorname": "Tobias",
+        "nachname": "Zimmermann",
+        "email": "Tobias.Zimmermann@Imkerei.Example.Net"
+      },
+      "naechsteKontrolle": "12/12/2026",
+      "bienenrasse": "Carnica",
+      "volksstaerke": "stark",
+      "kontrolleur": "Gisela Hahn",
+      "standNr": "ST-07",
+      "honigertrag": {
+        "brutto_kg": 9.6,
+        "netto_kg": 7.9
+      },
+      "koenigin": {
+        "markierung": "rot",
+        "jahrgang": 2022
+      },
+      "sanftmut": "2",
+      "kontrollId": 71256,
+      "behandlung": "keine",
+      "kontrolldatum": "10/09/2026",
+      "varroaBefall": null,
+      "zeile": 7,
+      "volkNr": "V-0413"
+    },
+    {
+      "bienenrasse": "Buckfast",
+      "kontrollId": 73572,
+      "volksstaerke": "mittel",
+      "kontrolleur": "Uwe Stamm",
+      "kontrolldatum": "02/06/2026",
+      "imker": {
+        "nachname": "Neumann",
+        "email": "Lena.Neumann@Imkerei.Example.Net",
+        "vorname": "Lena"
+      },
+      "koenigin": {
+        "jahrgang": 2024,
+        "markierung": "gelb"
+      },
+      "naechsteKontrolle": "12/03/2027",
+      "standNr": "ST-05",
+      "sanftmut": "4",
+      "zeile": 8,
+      "varroaBefall": 2.0,
+      "honigertrag": {
+        "brutto_kg": 32.3,
+        "netto_kg": 26.5
+      },
+      "behandlung": "Oxalsäure",
+      "volkNr": "V-0414"
+    },
+    {
+      "imker": {
+        "nachname": "Werner",
+        "email": "stefan.werner@imkerei.example.net",
+        "vorname": "Stefan"
+      },
+      "standNr": "ST-06",
+      "volkNr": "V-0417",
+      "behandlung": null,
+      "sanftmut": "1",
+      "naechsteKontrolle": "08/05/2027",
+      "koenigin": {
+        "markierung": "blau",
+        "jahrgang": 2023
+      },
+      "kontrolldatum": "03/07/2026",
+      "zeile": 9,
+      "volksstaerke": "stark",
+      "honigertrag": {
+        "brutto_kg": 11.6,
+        "netto_kg": 9.5
+      },
+      "bienenrasse": "Carnica",
+      "kontrollId": 71572,
+      "kontrolleur": "Walter Brenner"
+    },
+    {
+      "volkNr": "V-0419",
+      "bienenrasse": "Buckfast",
+      "zeile": 10,
+      "koenigin": {
+        "jahrgang": 2022,
+        "markierung": "rot"
+      },
+      "behandlung": "keine",
+      "kontrolldatum": "05/09/2026",
+      "kontrollId": 79022,
+      "honigertrag": {
+        "brutto_kg": 11.2,
+        "netto_kg": 9.2
+      },
+      "imker": {
+        "email": "LUKAS.RICHTER@IMKEREI.EXAMPLE.NET",
+        "vorname": "Lukas",
+        "nachname": "Richter"
+      },
+      "standNr": "ST-04",
+      "sanftmut": "2",
+      "varroaBefall": 1.0,
+      "volksstaerke": "weisellos",
+      "naechsteKontrolle": "05/05/2027",
+      "kontrolleur": "Walter Brenner"
+    },
+    {
+      "sanftmut": "2",
+      "behandlung": "keine",
+      "kontrolleur": "Uwe Stamm",
+      "standNr": "ST-03",
+      "honigertrag": {
+        "brutto_kg": 37.7,
+        "netto_kg": 30.9
+      },
+      "varroaBefall": null,
+      "kontrolldatum": "12/08/2026",
+      "naechsteKontrolle": "07/11/2026",
+      "zeile": 11,
+      "volkNr": "V-0421",
+      "imker": {
+        "email": "paul.neumann@imkerei.example.net",
+        "vorname": "Paul",
+        "nachname": "Neumann"
+      },
+      "kontrollId": 72887,
+      "koenigin": {
+        "jahrgang": 2023,
+        "markierung": "weiß"
+      },
+      "volksstaerke": "stark",
+      "bienenrasse": "Mischling"
+    },
+    {
+      "koenigin": {
+        "markierung": "grün",
+        "jahrgang": 2025
+      },
+      "behandlung": "keine",
+      "kontrolleur": "Uwe Stamm",
+      "kontrolldatum": "05/09/2026",
+      "imker": {
+        "email": "LUKAS.RICHTER@IMKEREI.EXAMPLE.NET",
+        "vorname": "Lukas",
+        "nachname": "Richter"
+      },
+      "kontrollId": 73844,
+      "sanftmut": "2",
+      "volksstaerke": "stark",
+      "bienenrasse": "Carnica",
+      "honigertrag": {
+        "netto_kg": 14.8,
+        "brutto_kg": 18.1
+      },
+      "naechsteKontrolle": "02/10/2026",
+      "standNr": "ST-04",
+      "zeile": 12,
+      "volkNr": "V-0422",
+      "varroaBefall": 8.0
+    },
+    {
+      "zeile": 13,
+      "kontrolleur": "Gisela Hahn",
+      "behandlung": "Ameisensäure",
+      "sanftmut": "2",
+      "kontrollId": 72759,
+      "koenigin": {
+        "jahrgang": 2025,
+        "markierung": "weiß"
+      },
+      "kontrolldatum": "10/07/2026",
+      "volkNr": "V-0425",
+      "bienenrasse": "Carnica",
+      "varroaBefall": 0.5,
+      "standNr": "ST-03",
+      "imker": {
+        "email": "paul.neumann@imkerei.example.net",
+        "nachname": "Neumann",
+        "vorname": "Paul"
+      },
+      "honigertrag": {
+        "brutto_kg": 17.9,
+        "netto_kg": 14.7
+      },
+      "volksstaerke": "stark",
+      "naechsteKontrolle": "11/01/2027"
+    },
+    {
+      "zeile": 14,
+      "sanftmut": "1",
+      "behandlung": "keine",
+      "standNr": "ST-07",
+      "naechsteKontrolle": "11/12/2026",
+      "koenigin": {
+        "markierung": "blau",
+        "jahrgang": 2024
+      },
+      "volkNr": "V-0426",
+      "kontrolleur": "Gisela Hahn",
+      "honigertrag": {
+        "brutto_kg": 31.9,
+        "netto_kg": 26.2
+      },
+      "imker": {
+        "nachname": "Zimmermann",
+        "vorname": "Tobias",
+        "email": "Tobias.Zimmermann@Imkerei.Example.Net"
+      },
+      "volksstaerke": "schwach",
+      "kontrollId": 72819,
+      "kontrolldatum": "04/07/2026",
+      "bienenrasse": "Dunkle Biene"
+    },
+    {
+      "standNr": "ST-05",
+      "honigertrag": {
+        "netto_kg": 27.3,
+        "brutto_kg": 33.3
+      },
+      "imker": {
+        "email": "Lena.Neumann@Imkerei.Example.Net",
+        "vorname": "Lena",
+        "nachname": "Neumann"
+      },
+      "naechsteKontrolle": "10/02/2027",
+      "sanftmut": "3",
+      "bienenrasse": "Buckfast",
+      "varroaBefall": null,
+      "volksstaerke": "mittel",
+      "zeile": 15,
+      "behandlung": "Oxalsäure",
+      "koenigin": {
+        "jahrgang": 2025,
+        "markierung": "rot"
+      },
+      "kontrollId": 74521,
+      "volkNr": "V-0428",
+      "kontrolldatum": "06/08/2026",
+      "kontrolleur": "Uwe Stamm"
+    },
+    {
+      "volksstaerke": "weisellos",
+      "koenigin": {
+        "markierung": "gelb",
+        "jahrgang": 2025
+      },
+      "varroaBefall": 5.0,
+      "zeile": 16,
+      "behandlung": "keine",
+      "standNr": "ST-07   ",
+      "kontrolldatum": "12/05/2026",
+      "naechsteKontrolle": "06/12/2026",
+      "imker": {
+        "nachname": "Zimmermann",
+        "vorname": "Tobias",
+        "email": "Tobias.Zimmermann@Imkerei.Example.Net"
+      },
+      "sanftmut": "4",
+      "honigertrag": {
+        "netto_kg": 20.4,
+        "brutto_kg": 24.9
+      },
+      "volkNr": "V-0430",
+      "kontrollId": 71761,
+      "kontrolleur": "Gisela Hahn",
+      "bienenrasse": "Mischling"
+    },
+    {
+      "honigertrag": {
+        "netto_kg": 21.3,
+        "brutto_kg": 26.0
+      },
+      "koenigin": {
+        "jahrgang": 2022,
+        "markierung": "blau"
+      },
+      "sanftmut": "3",
+      "varroaBefall": 5.0,
+      "bienenrasse": "Mischling",
+      "kontrollId": 75881,
+      "naechsteKontrolle": "07/03/2027",
+      "kontrolleur": "Walter Brenner",
+      "volkNr": "V-0433",
+      "kontrolldatum": "04/08/2026",
+      "zeile": 17,
+      "standNr": "  ST-03 ",
+      "volksstaerke": "schwach",
+      "imker": {
+        "email": "paul.neumann@imkerei.example.net",
+        "vorname": "Paul",
+        "nachname": "Neumann"
+      },
+      "behandlung": "Oxalsäure"
+    },
+    {
+      "naechsteKontrolle": "05/04/2027",
+      "zeile": 18,
+      "bienenrasse": "Carnica",
+      "sanftmut": "3",
+      "kontrolldatum": "09/08/2026",
+      "volkNr": "V-0434",
+      "koenigin": {
+        "jahrgang": 2022,
+        "markierung": "weiß"
+      },
+      "kontrollId": 72989,
+      "standNr": "ST-05",
+      "volksstaerke": "schwach",
+      "honigertrag": {
+        "netto_kg": 13.0,
+        "brutto_kg": 15.9
+      },
+      "varroaBefall": 0.5,
+      "kontrolleur": "Gisela Hahn",
+      "imker": {
+        "email": "Lena.Neumann@Imkerei.Example.Net",
+        "nachname": "Neumann",
+        "vorname": "Lena"
+      },
+      "behandlung": "Ameisensäure"
+    },
+    {
+      "kontrolldatum": "03/08/2026",
+      "volkNr": "V-0436",
+      "koenigin": {
+        "jahrgang": 2025,
+        "markierung": "gelb"
+      },
+      "honigertrag": {
+        "brutto_kg": 16.1,
+        "netto_kg": 13.2
+      },
+      "volksstaerke": "mittel",
+      "kontrolleur": "Gisela Hahn",
+      "varroaBefall": 1.0,
+      "zeile": 19,
+      "sanftmut": "1",
+      "kontrollId": 72694,
+      "bienenrasse": "Carnica",
+      "behandlung": "keine",
+      "imker": {
+        "vorname": "Tobias",
+        "email": "Tobias.Zimmermann@Imkerei.Example.Net",
+        "nachname": "Zimmermann"
+      },
+      "naechsteKontrolle": "04/12/2026",
+      "standNr": " ST-07  "
+    },
+    {
+      "volkNr": "V-0438",
+      "kontrollId": 79387,
+      "kontrolleur": "Uwe Stamm",
+      "kontrolldatum": "04/08/2026",
+      "sanftmut": "4",
+      "volksstaerke": "schwach",
+      "bienenrasse": "Carnica",
+      "naechsteKontrolle": "11/02/2027",
+      "imker": {
+        "vorname": "Lukas",
+        "email": "LUKAS.RICHTER@IMKEREI.EXAMPLE.NET",
+        "nachname": "Richter"
+      },
+      "varroaBefall": 12.0,
+      "honigertrag": {
+        "brutto_kg": 37.6,
+        "netto_kg": 30.8
+      },
+      "behandlung": "keine",
+      "koenigin": {
+        "jahrgang": 2024,
+        "markierung": "rot"
+      },
+      "zeile": 20,
+      "standNr": "ST-04"
+    },
+    {
+      "sanftmut": "2",
+      "bienenrasse": "Dunkle Biene",
+      "kontrolleur": "Uwe Stamm",
+      "kontrollId": 78741,
+      "zeile": 21,
+      "koenigin": {
+        "markierung": "gelb",
+        "jahrgang": 2026
+      },
+      "imker": {
+        "email": "Tobias.Zimmermann@Imkerei.Example.Net",
+        "nachname": "Zimmermann",
+        "vorname": "Tobias"
+      },
+      "honigertrag": {
+        "netto_kg": 12.5,
+        "brutto_kg": 15.2
+      },
+      "naechsteKontrolle": "01/10/2026",
+      "behandlung": "Ameisensäure",
+      "volkNr": "V-0440",
+      "standNr": "ST-07",
+      "volksstaerke": "mittel",
+      "varroaBefall": 3.5,
+      "kontrolldatum": "01/06/2026"
+    },
+    {
+      "varroaBefall": 1.0,
+      "naechsteKontrolle": "02/01/2027",
+      "kontrollId": 79243,
+      "volkNr": "V-0443",
+      "koenigin": {
+        "jahrgang": 2022,
+        "markierung": "grün"
+      },
+      "standNr": "ST-06",
+      "kontrolldatum": "06/06/2026",
+      "imker": {
+        "nachname": "Werner",
+        "vorname": "Stefan",
+        "email": "stefan.werner@imkerei.example.net"
+      },
+      "bienenrasse": "Buckfast",
+      "sanftmut": "1",
+      "volksstaerke": "stark",
+      "zeile": 22,
+      "honigertrag": {
+        "brutto_kg": 34.4,
+        "netto_kg": 28.2
+      },
+      "kontrolleur": "Gisela Hahn",
+      "behandlung": "Ameisensäure"
+    },
+    {
+      "varroaBefall": null,
+      "koenigin": {
+        "markierung": "gelb",
+        "jahrgang": 2024
+      },
+      "kontrollId": 76727,
+      "zeile": 23,
+      "behandlung": "Oxalsäure",
+      "standNr": "ST-02",
+      "sanftmut": "3",
+      "bienenrasse": "Buckfast",
+      "kontrolldatum": "11/08/2026",
+      "volksstaerke": "stark",
+      "kontrolleur": "Walter Brenner",
+      "naechsteKontrolle": "01/03/2027",
+      "volkNr": "V-0445",
+      "honigertrag": {
+        "brutto_kg": 29.5,
+        "netto_kg": 24.2
+      },
+      "imker": {
+        "nachname": "Lehmann",
+        "vorname": "Sophie",
+        "email": "Sophie.Lehmann@Imkerei.Example.Net"
+      }
+    },
+    {
+      "varroaBefall": 3.5,
+      "koenigin": {
+        "jahrgang": 2023,
+        "markierung": "weiß"
+      },
+      "kontrolleur": "Uwe Stamm",
+      "honigertrag": {
+        "netto_kg": 17.9,
+        "brutto_kg": 21.8
+      },
+      "kontrolldatum": "07/09/2026",
+      "zeile": 24,
+      "volksstaerke": "stark",
+      "kontrollId": 73554,
+      "behandlung": "Ameisensäure",
+      "imker": {
+        "vorname": "Lukas",
+        "nachname": "Richter",
+        "email": "LUKAS.RICHTER@IMKEREI.EXAMPLE.NET"
+      },
+      "standNr": "ST-04",
+      "naechsteKontrolle": "05/05/2027",
+      "sanftmut": "1",
+      "volkNr": "V-0447",
+      "bienenrasse": "Carnica"
+    },
+    {
+      "honigertrag": {
+        "brutto_kg": 18.3,
+        "netto_kg": 15.0
+      },
+      "kontrolldatum": "01/08/2026",
+      "koenigin": {
+        "jahrgang": 2023,
+        "markierung": "weiß"
+      },
+      "volksstaerke": "schwach",
+      "sanftmut": "2",
+      "kontrolleur": "Uwe Stamm",
+      "varroaBefall": 3.5,
+      "bienenrasse": "Buckfast",
+      "volkNr": "V-0449",
+      "behandlung": "Ameisensäure",
+      "standNr": "ST-02",
+      "naechsteKontrolle": "07/12/2026",
+      "kontrollId": 74864,
+      "zeile": 25,
+      "imker": {
+        "nachname": "Lehmann",
+        "vorname": "Sophie",
+        "email": "Sophie.Lehmann@Imkerei.Example.Net"
+      }
+    },
+    {
+      "imker": {
+        "email": "Lena.Neumann@Imkerei.Example.Net",
+        "nachname": "Neumann",
+        "vorname": "Lena"
+      },
+      "zeile": 26,
+      "kontrollId": 73518,
+      "kontrolleur": "Gisela Hahn",
+      "standNr": "ST-05   ",
+      "kontrolldatum": "01/07/2026",
+      "naechsteKontrolle": "05/03/2027",
+      "behandlung": null,
+      "honigertrag": {
+        "brutto_kg": 33.8,
+        "netto_kg": 27.7
+      },
+      "volkNr": "V-0450",
+      "sanftmut": "3",
+      "koenigin": {
+        "markierung": "weiß",
+        "jahrgang": 2026
+      },
+      "volksstaerke": "stark",
+      "varroaBefall": 0.5,
+      "bienenrasse": "Buckfast"
+    },
+    {
+      "kontrolleur": "Uwe Stamm",
+      "varroaBefall": 5.0,
+      "koenigin": {
+        "markierung": "blau",
+        "jahrgang": 2023
+      },
+      "kontrolldatum": "05/07/2026",
+      "volksstaerke": "stark",
+      "behandlung": "Ameisensäure",
+      "zeile": 27,
+      "sanftmut": "1",
+      "imker": {
+        "vorname": "Lena",
+        "email": "Lena.Neumann@Imkerei.Example.Net",
+        "nachname": "Neumann"
+      },
+      "kontrollId": 73276,
+      "volkNr": "V-0452",
+      "honigertrag": {
+        "brutto_kg": 34.0,
+        "netto_kg": 27.9
+      },
+      "standNr": " ST-05  ",
+      "naechsteKontrolle": "12/04/2027",
+      "bienenrasse": "Dunkle Biene"
+    },
+    {
+      "kontrolleur": "Walter Brenner",
+      "sanftmut": "4",
+      "naechsteKontrolle": "10/12/2026",
+      "kontrollId": 79997,
+      "zeile": 28,
+      "kontrolldatum": "11/04/2026",
+      "honigertrag": {
+        "brutto_kg": 19.8,
+        "netto_kg": 16.2
+      },
+      "volkNr": "V-0455",
+      "volksstaerke": "mittel",
+      "standNr": "ST-06",
+      "bienenrasse": "Carnica",
+      "koenigin": {
+        "markierung": "weiß",
+        "jahrgang": 2024
+      },
+      "behandlung": "Ameisensäure",
+      "varroaBefall": 0.5,
+      "imker": {
+        "email": "stefan.werner@imkerei.example.net",
+        "nachname": "Werner",
+        "vorname": "Stefan"
+      }
+    },
+    {
+      "koenigin": {
+        "markierung": "gelb",
+        "jahrgang": 2022
+      },
+      "kontrolldatum": "10/05/2026",
+      "kontrolleur": "Gisela Hahn",
+      "naechsteKontrolle": "05/05/2027",
+      "volkNr": "V-0457",
+      "imker": {
+        "email": "Sophie.Lehmann@Imkerei.Example.Net",
+        "vorname": "Sophie",
+        "nachname": "Lehmann"
+      },
+      "kontrollId": 71511,
+      "sanftmut": "1",
+      "varroaBefall": 3.5,
+      "zeile": 29,
+      "volksstaerke": "stark",
+      "bienenrasse": "Carnica",
+      "standNr": "ST-02",
+      "honigertrag": {
+        "netto_kg": 7.4,
+        "brutto_kg": 9.0
+      },
+      "behandlung": "Oxalsäure"
+    },
+    {
+      "kontrolleur": "Uwe Stamm",
+      "bienenrasse": "Dunkle Biene",
+      "zeile": 30,
+      "honigertrag": {
+        "netto_kg": 20.2,
+        "brutto_kg": 24.6
+      },
+      "kontrollId": 71400,
+      "koenigin": {
+        "markierung": "rot",
+        "jahrgang": 2026
+      },
+      "volkNr": "V-0458",
+      "kontrolldatum": "08/07/2026",
+      "varroaBefall": 1.0,
+      "volksstaerke": "mittel",
+      "imker": {
+        "nachname": "Lehmann",
+        "vorname": "Sophie",
+        "email": "Sophie.Lehmann@Imkerei.Example.Net"
+      },
+      "sanftmut": "3",
+      "standNr": "ST-02",
+      "naechsteKontrolle": "01/04/2027"
+    },
+    {
+      "imker": {
+        "nachname": "Neumann",
+        "vorname": "Lena",
+        "email": "Lena.Neumann@Imkerei.Example.Net"
+      },
+      "standNr": "ST-05",
+      "naechsteKontrolle": "09/05/2027",
+      "zeile": 31,
+      "varroaBefall": 8.0,
+      "koenigin": {
+        "markierung": "weiß",
+        "jahrgang": 2026
+      },
+      "kontrollId": 79998,
+      "volksstaerke": "mittel",
+      "bienenrasse": "Mischling",
+      "honigertrag": {
+        "brutto_kg": 28.0,
+        "netto_kg": 23.0
+      },
+      "kontrolleur": "Walter Brenner",
+      "volkNr": "V-0461",
+      "sanftmut": "3",
+      "kontrolldatum": "12/08/2026"
+    },
+    {
+      "imker": {
+        "vorname": "Sophie",
+        "email": "Sophie.Lehmann@Imkerei.Example.Net",
+        "nachname": "Lehmann"
+      },
+      "sanftmut": "4",
+      "honigertrag": {
+        "netto_kg": 5.7,
+        "brutto_kg": 6.9
+      },
+      "koenigin": {
+        "jahrgang": 2023,
+        "markierung": "grün"
+      },
+      "zeile": 32,
+      "varroaBefall": 0.5,
+      "volkNr": "V-0463",
+      "behandlung": "Oxalsäure",
+      "standNr": "ST-02",
+      "kontrollId": 77946,
+      "volksstaerke": "schwach",
+      "kontrolleur": "Walter Brenner",
+      "naechsteKontrolle": "09/10/2026",
+      "kontrolldatum": "09/06/2026",
+      "bienenrasse": "Buckfast"
+    },
+    {
+      "kontrollId": 74930,
+      "imker": {
+        "email": "Sophie.Lehmann@Imkerei.Example.Net",
+        "nachname": "Lehmann",
+        "vorname": "Sophie"
+      },
+      "behandlung": "Ameisensäure",
+      "sanftmut": "3",
+      "volksstaerke": "stark",
+      "kontrolleur": "Uwe Stamm",
+      "bienenrasse": "Dunkle Biene",
+      "naechsteKontrolle": "08/01/2027",
+      "kontrolldatum": "06/09/2026",
+      "zeile": 33,
+      "honigertrag": {
+        "brutto_kg": 23.2,
+        "netto_kg": 19.0
+      },
+      "varroaBefall": 3.5,
+      "koenigin": {
+        "markierung": "blau",
+        "jahrgang": 2026
+      },
+      "standNr": "ST-02",
+      "volkNr": "V-0464"
+    },
+    {
+      "volkNr": "V-0466",
+      "imker": {
+        "vorname": "Lukas",
+        "email": "LUKAS.RICHTER@IMKEREI.EXAMPLE.NET",
+        "nachname": "Richter"
+      },
+      "behandlung": null,
+      "kontrollId": 77180,
+      "kontrolleur": "Walter Brenner",
+      "kontrolldatum": "04/05/2026",
+      "sanftmut": "2",
+      "honigertrag": {
+        "netto_kg": 15.9,
+        "brutto_kg": 19.4
+      },
+      "naechsteKontrolle": "10/04/2027",
+      "varroaBefall": 2.0,
+      "standNr": "ST-04",
+      "bienenrasse": "Mischling",
+      "koenigin": {
+        "markierung": "rot",
+        "jahrgang": 2025
+      },
+      "zeile": 34,
+      "volksstaerke": "stark"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "colony_id": {
+        "type": "string",
+        "description": "Identifier of the bee colony."
+      },
+      "apiary_code": {
+        "type": "string",
+        "description": "Code of the apiary site where the colony stands."
+      },
+      "keeper_name": {
+        "type": "string",
+        "description": "Full name of the beekeeper who owns the colony, given name first."
+      },
+      "keeper_email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address of the beekeeper."
+      },
+      "breed": {
+        "type": "string",
+        "enum": [
+          "carnica",
+          "buckfast",
+          "mellifera",
+          "mixed"
+        ],
+        "description": "Honey bee breed of the colony."
+      },
+      "strength": {
+        "type": "string",
+        "enum": [
+          "strong",
+          "medium",
+          "weak"
+        ],
+        "description": "Strength."
+      },
+      "treatment": {
+        "type": "string",
+        "enum": [
+          "formic_acid",
+          "oxalic_acid",
+          "none"
+        ],
+        "description": "Mite treatment applied at the inspection."
+      },
+      "varroa_mites_per_day": {
+        "type": "number",
+        "description": "Natural mite drop counted per day."
+      },
+      "honey_net_kg": {
+        "type": "number",
+        "description": "Honey harvested from the colony in kilograms, without frames and containers."
+      },
+      "inspected_on": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the colony was inspected."
+      },
+      "queen_age_years": {
+        "type": "integer",
+        "description": "Age of the queen in years at the inspection."
+      },
+      "hive_weight_kg": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "colony_id",
+      "apiary_code",
+      "keeper_name",
+      "breed",
+      "strength",
+      "inspected_on"
+    ]
+  },
+  "groundTruth": {
+    "colony_id": {
+      "source": "volkNr",
+      "transform": "copy",
+      "why": "colony number; kontrollId is the inspection and zeile the row"
+    },
+    "apiary_code": {
+      "source": "standNr",
+      "transform": "trim",
+      "why": "apiary site, padded in some rows"
+    },
+    "keeper_name": {
+      "source": null,
+      "sources": [
+        "imker.vorname",
+        "imker.nachname"
+      ],
+      "transform": "concat",
+      "separator": " ",
+      "why": "owner; kontrolleur is the inspector"
+    },
+    "keeper_email": {
+      "source": "imker.email",
+      "transform": "normalize_email",
+      "why": "keeper email, mixed case"
+    },
+    "breed": {
+      "source": "bienenrasse",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Carnica": "carnica",
+        "Buckfast": "buckfast",
+        "Dunkle Biene": "mellifera",
+        "Mischling": "mixed"
+      },
+      "why": "breed"
+    },
+    "strength": {
+      "source": "volksstaerke",
+      "transform": "map_enum",
+      "categoryMap": {
+        "stark": "strong",
+        "mittel": "medium",
+        "schwach": "weak",
+        "weisellos": null
+      },
+      "why": "colony strength; queenless colonies need review; sanftmut is temper"
+    },
+    "treatment": {
+      "source": "behandlung",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Ameisensäure": "formic_acid",
+        "Oxalsäure": "oxalic_acid",
+        "keine": "none"
+      },
+      "why": "treatment, null or missing for some"
+    },
+    "varroa_mites_per_day": {
+      "source": "varroaBefall",
+      "transform": "copy",
+      "why": "mite drop, null or missing for some"
+    },
+    "honey_net_kg": {
+      "source": "honigertrag.netto_kg",
+      "transform": "copy",
+      "why": "net honey; brutto_kg includes frames"
+    },
+    "inspected_on": {
+      "source": "kontrolldatum",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "inspection date (German day-first); naechsteKontrolle is the next one"
+    },
+    "queen_age_years": {
+      "source": null,
+      "transform": "none",
+      "why": "only the queen's year is exported",
+      "unsupportedReason": "would need the inspection year minus koenigin.jahrgang"
+    },
+    "hive_weight_kg": {
+      "source": null,
+      "transform": "none",
+      "why": "not exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "volkNr",
+        "kontrollId"
+      ],
+      "correctFor": "colony_id"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "volkNr",
+        "zeile"
+      ],
+      "correctFor": "colony_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "imker.vorname",
+        "kontrolleur"
+      ],
+      "correctFor": "keeper_name"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "volksstaerke",
+        "sanftmut"
+      ],
+      "correctFor": "strength"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "honigertrag.netto_kg",
+        "honigertrag.brutto_kg"
+      ],
+      "correctFor": "honey_net_kg"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "kontrolldatum",
+        "naechsteKontrolle"
+      ],
+      "correctFor": "inspected_on"
+    }
+  ],
+  "sourceConcepts": {
+    "volkNr": "customer-id",
+    "standNr": "other-identifier",
+    "zeile": "other-identifier",
+    "kontrollId": "transaction-id",
+    "imker.vorname": "given-name",
+    "imker.nachname": "family-name",
+    "imker.email": "email",
+    "kontrolleur": "person-name",
+    "bienenrasse": "category",
+    "volksstaerke": "account-status",
+    "sanftmut": "category",
+    "varroaBefall": "quantity",
+    "honigertrag.brutto_kg": "quantity",
+    "honigertrag.netto_kg": "quantity",
+    "kontrolldatum": "start-date",
+    "naechsteKontrolle": "other",
+    "koenigin.jahrgang": "other",
+    "koenigin.markierung": "category",
+    "behandlung": "category"
+  },
+  "destinationConcepts": {
+    "colony_id": "customer-id",
+    "apiary_code": "other-identifier",
+    "keeper_name": "person-name",
+    "keeper_email": "email",
+    "breed": "category",
+    "strength": "account-status",
+    "treatment": "category",
+    "varroa_mites_per_day": "quantity",
+    "honey_net_kg": "quantity",
+    "inspected_on": "start-date",
+    "queen_age_years": "quantity",
+    "hive_weight_kg": "quantity"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 7,
+      "outcome": "transformed",
+      "output": {
+        "colony_id": "V-0414",
+        "apiary_code": "ST-05",
+        "keeper_name": "Lena Neumann",
+        "keeper_email": "lena.neumann@imkerei.example.net",
+        "breed": "buckfast",
+        "strength": "medium",
+        "treatment": "oxalic_acid",
+        "varroa_mites_per_day": 2.0,
+        "honey_net_kg": 26.5,
+        "inspected_on": "2026-06-02"
+      }
+    },
+    {
+      "recordIndex": 10,
+      "outcome": "transformed",
+      "output": {
+        "colony_id": "V-0421",
+        "apiary_code": "ST-03",
+        "keeper_name": "Paul Neumann",
+        "keeper_email": "paul.neumann@imkerei.example.net",
+        "breed": "mixed",
+        "strength": "strong",
+        "treatment": "none",
+        "honey_net_kg": 30.9,
+        "inspected_on": "2026-08-12"
+      }
+    },
+    {
+      "recordIndex": 15,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 33,
+      "outcome": "transformed",
+      "output": {
+        "colony_id": "V-0466",
+        "apiary_code": "ST-04",
+        "keeper_name": "Lukas Richter",
+        "keeper_email": "lukas.richter@imkerei.example.net",
+        "breed": "mixed",
+        "strength": "strong",
+        "varroa_mites_per_day": 2.0,
+        "honey_net_kg": 15.9,
+        "inspected_on": "2026-05-04"
+      }
+    }
+  ]
+}

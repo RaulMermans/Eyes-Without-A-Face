@@ -57,7 +57,9 @@ const LIFECYCLE: Record<string, string> = {
 async function boot(page: Page, harness: Record<string, unknown>): Promise<void> {
   await page.addInitScript((value) => {
     window.__EYES_WITHOUT_A_FACE_TEST__ = { label: "test-harness", ...value } as Window["__EYES_WITHOUT_A_FACE_TEST__"];
-  }, harness);
+    // These tests pin the Sprint 18B/18C configuration they were written for; the shipped
+    // configuration (Sprint 18F) is covered by tests/e2e/sprint18d.spec.ts (E2E-193).
+  }, { initialPlanner: "intent-plan-1", destinationSemantics: false, localPolicy: false, ...harness });
   await page.goto("/");
   await page.getByTestId("source-file-input").setInputFiles({ name: "crm-contacts.json", mimeType: "application/json", buffer: RECORDS });
   await expect(page.getByTestId("source-record-count")).toHaveText(String(FIXTURE.records.length));

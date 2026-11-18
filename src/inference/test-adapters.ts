@@ -7,6 +7,7 @@ import { probeOnDeviceCapability } from "./on-device-capability.ts";
 import { deriveTestProposal, deriveTestRevision } from "./test-proposer.ts";
 import { deriveHallucinatedAliasPlan, deriveMalformedPlan, deriveTestPlan } from "./test-planner.ts";
 import { cloudResponseKind } from "./response-schemas.ts";
+import { isRankedPlanRequest } from "./intent-prompt.ts";
 import { isRevisionSchemaVersion } from "../revision/revision-payload.ts";
 import type {
   CloudInferenceAdapter,
@@ -69,7 +70,7 @@ export interface TestHarness {
   /** Delay before the simulated cloud answer, in ms (E2E only: pending state and Stop waiting). */
   cloudDelayMs?: number;
   /** LEGACY-PATH REGRESSION ONLY: dev builds use the Sprint 3 initial planner (src/inference/harness-planner.ts). */
-  initialPlanner?: "mapping-proposal-sprint3";
+  initialPlanner?: "mapping-proposal-sprint3" | "intent-plan-1" | "intent-plan-2";
 }
 
 export function createTestOnDeviceAdapter(
@@ -208,8 +209,10 @@ export function createTestCloudAdapter(
       harness.cloudCalls = callIndex + 1;
       const revision = isRevisionSchemaVersion(request.payload.schemaVersion);
       // Sprint 18B: a prompt v5 request is answered with an Integration Intent Plan, as the live adapter expects.
-      const kind = cloudResponseKind(request.outboundPrompt, revision);
-      const plan = kind === "integration-intent-plan";
+      const responseKind = cloudResponseKind(request.outboundPrompt, revision);
+      const plan = responseKind === "integration-intent-plan";
+      // Sprint 18D: a prompt v6 answer is validated as plan 1.1.0, exactly as the live adapter does.
+      const kind = plan && isRankedPlanRequest(request.outboundPrompt) ? ("integration-intent-plan-ranked" as const) : responseKind;
       if (harness.cloudDelayMs) await new Promise((resolve) => setTimeout(resolve, harness.cloudDelayMs));
       const failThisCall = !harness.cloudFailCalls || harness.cloudFailCalls.includes(callIndex);
       if (harness.cloudRawError && failThisCall) throw classifyUnknownError(new Error(harness.cloudRawError));

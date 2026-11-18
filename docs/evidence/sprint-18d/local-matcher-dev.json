@@ -1,0 +1,370 @@
+{
+  "generatedBy": "tests/evaluation/local-matcher-bench.test.ts",
+  "split": "dev",
+  "scoring": "top-1/top-3: a destination field with a ground-truth source (or any of `sources` for concat) is a hit when that path is the first / among the first three candidates. falseOfferRate: share of fields WITHOUT a ground-truth source for which the ranker offers any candidate. baseline = rankCandidates (all compatible fields, top 3 shown); baselineSuggested = the product's single suggestion (top candidate only when `specific`).",
+  "scenarios": 14,
+  "overall": {
+    "baseline": {
+      "sourced": 131,
+      "top1": 65,
+      "top3": 105,
+      "noSource": 16,
+      "offered": 16,
+      "top1Rate": 0.496,
+      "top3Rate": 0.802,
+      "falseOfferRate": 1
+    },
+    "baselineSuggested": {
+      "sourced": 131,
+      "top1": 50,
+      "top3": 50,
+      "noSource": 16,
+      "offered": 6,
+      "top1Rate": 0.382,
+      "top3Rate": 0.382,
+      "falseOfferRate": 0.375
+    },
+    "local": {
+      "sourced": 131,
+      "top1": 110,
+      "top3": 122,
+      "noSource": 16,
+      "offered": 5,
+      "top1Rate": 0.84,
+      "top3Rate": 0.931,
+      "falseOfferRate": 0.313
+    }
+  },
+  "bySet": {
+    "eval-18b": {
+      "scenarios": 4,
+      "baseline": {
+        "sourced": 42,
+        "top1": 18,
+        "top3": 32,
+        "noSource": 4,
+        "offered": 4,
+        "top1Rate": 0.429,
+        "top3Rate": 0.762,
+        "falseOfferRate": 1
+      },
+      "baselineSuggested": {
+        "sourced": 42,
+        "top1": 12,
+        "top3": 12,
+        "noSource": 4,
+        "offered": 0,
+        "top1Rate": 0.286,
+        "top3Rate": 0.286,
+        "falseOfferRate": 0
+      },
+      "local": {
+        "sourced": 42,
+        "top1": 35,
+        "top3": 40,
+        "noSource": 4,
+        "offered": 0,
+        "top1Rate": 0.833,
+        "top3Rate": 0.952,
+        "falseOfferRate": 0
+      }
+    },
+    "eval-18c": {
+      "scenarios": 4,
+      "baseline": {
+        "sourced": 38,
+        "top1": 24,
+        "top3": 35,
+        "noSource": 5,
+        "offered": 5,
+        "top1Rate": 0.632,
+        "top3Rate": 0.921,
+        "falseOfferRate": 1
+      },
+      "baselineSuggested": {
+        "sourced": 38,
+        "top1": 20,
+        "top3": 20,
+        "noSource": 5,
+        "offered": 3,
+        "top1Rate": 0.526,
+        "top3Rate": 0.526,
+        "falseOfferRate": 0.6
+      },
+      "local": {
+        "sourced": 38,
+        "top1": 33,
+        "top3": 35,
+        "noSource": 5,
+        "offered": 3,
+        "top1Rate": 0.868,
+        "top3Rate": 0.921,
+        "falseOfferRate": 0.6
+      }
+    },
+    "eval-18d": {
+      "scenarios": 6,
+      "baseline": {
+        "sourced": 51,
+        "top1": 23,
+        "top3": 38,
+        "noSource": 7,
+        "offered": 7,
+        "top1Rate": 0.451,
+        "top3Rate": 0.745,
+        "falseOfferRate": 1
+      },
+      "baselineSuggested": {
+        "sourced": 51,
+        "top1": 18,
+        "top3": 18,
+        "noSource": 7,
+        "offered": 3,
+        "top1Rate": 0.353,
+        "top3Rate": 0.353,
+        "falseOfferRate": 0.429
+      },
+      "local": {
+        "sourced": 51,
+        "top1": 42,
+        "top3": 47,
+        "noSource": 7,
+        "offered": 2,
+        "top1Rate": 0.824,
+        "top3Rate": 0.922,
+        "falseOfferRate": 0.286
+      }
+    }
+  },
+  "byTransform": {
+    "concat": {
+      "baseline": {
+        "sourced": 4,
+        "top1": 2,
+        "top3": 4,
+        "noSource": 0,
+        "offered": 0,
+        "top1Rate": 0.5,
+        "top3Rate": 1,
+        "falseOfferRate": null
+      },
+      "baselineSuggested": {
+        "sourced": 4,
+        "top1": 0,
+        "top3": 0,
+        "noSource": 0,
+        "offered": 0,
+        "top1Rate": 0,
+        "top3Rate": 0,
+        "falseOfferRate": null
+      },
+      "local": {
+        "sourced": 4,
+        "top1": 4,
+        "top3": 4,
+        "noSource": 0,
+        "offered": 0,
+        "top1Rate": 1,
+        "top3Rate": 1,
+        "falseOfferRate": null
+      }
+    },
+    "copy": {
+      "baseline": {
+        "sourced": 53,
+        "top1": 21,
+        "top3": 39,
+        "noSource": 0,
+        "offered": 0,
+        "top1Rate": 0.396,
+        "top3Rate": 0.736,
+        "falseOfferRate": null
+      },
+      "baselineSuggested": {
+        "sourced": 53,
+        "top1": 19,
+        "top3": 19,
+        "noSource": 0,
+        "offered": 0,
+        "top1Rate": 0.358,
+        "top3Rate": 0.358,
+        "falseOfferRate": null
+      },
+      "local": {
+        "sourced": 53,
+        "top1": 47,
+        "top3": 51,
+        "noSource": 0,
+        "offered": 0,
+        "top1Rate": 0.887,
+        "top3Rate": 0.962,
+        "falseOfferRate": null
+      }
+    },
+    "map_enum": {
+      "baseline": {
+        "sourced": 33,
+        "top1": 17,
+        "top3": 24,
+        "noSource": 0,
+        "offered": 0,
+        "top1Rate": 0.515,
+        "top3Rate": 0.727,
+        "falseOfferRate": null
+      },
+      "baselineSuggested": {
+        "sourced": 33,
+        "top1": 10,
+        "top3": 10,
+        "noSource": 0,
+        "offered": 0,
+        "top1Rate": 0.303,
+        "top3Rate": 0.303,
+        "falseOfferRate": null
+      },
+      "local": {
+        "sourced": 33,
+        "top1": 26,
+        "top3": 29,
+        "noSource": 0,
+        "offered": 0,
+        "top1Rate": 0.788,
+        "top3Rate": 0.879,
+        "falseOfferRate": null
+      }
+    },
+    "none": {
+      "baseline": {
+        "sourced": 0,
+        "top1": 0,
+        "top3": 0,
+        "noSource": 16,
+        "offered": 16,
+        "top1Rate": null,
+        "top3Rate": null,
+        "falseOfferRate": 1
+      },
+      "baselineSuggested": {
+        "sourced": 0,
+        "top1": 0,
+        "top3": 0,
+        "noSource": 16,
+        "offered": 6,
+        "top1Rate": null,
+        "top3Rate": null,
+        "falseOfferRate": 0.375
+      },
+      "local": {
+        "sourced": 0,
+        "top1": 0,
+        "top3": 0,
+        "noSource": 16,
+        "offered": 5,
+        "top1Rate": null,
+        "top3Rate": null,
+        "falseOfferRate": 0.313
+      }
+    },
+    "normalize_email": {
+      "baseline": {
+        "sourced": 11,
+        "top1": 10,
+        "top3": 11,
+        "noSource": 0,
+        "offered": 0,
+        "top1Rate": 0.909,
+        "top3Rate": 1,
+        "falseOfferRate": null
+      },
+      "baselineSuggested": {
+        "sourced": 11,
+        "top1": 10,
+        "top3": 10,
+        "noSource": 0,
+        "offered": 0,
+        "top1Rate": 0.909,
+        "top3Rate": 0.909,
+        "falseOfferRate": null
+      },
+      "local": {
+        "sourced": 11,
+        "top1": 11,
+        "top3": 11,
+        "noSource": 0,
+        "offered": 0,
+        "top1Rate": 1,
+        "top3Rate": 1,
+        "falseOfferRate": null
+      }
+    },
+    "parse_date": {
+      "baseline": {
+        "sourced": 19,
+        "top1": 9,
+        "top3": 19,
+        "noSource": 0,
+        "offered": 0,
+        "top1Rate": 0.474,
+        "top3Rate": 1,
+        "falseOfferRate": null
+      },
+      "baselineSuggested": {
+        "sourced": 19,
+        "top1": 9,
+        "top3": 9,
+        "noSource": 0,
+        "offered": 0,
+        "top1Rate": 0.474,
+        "top3Rate": 0.474,
+        "falseOfferRate": null
+      },
+      "local": {
+        "sourced": 19,
+        "top1": 14,
+        "top3": 19,
+        "noSource": 0,
+        "offered": 0,
+        "top1Rate": 0.737,
+        "top3Rate": 1,
+        "falseOfferRate": null
+      }
+    },
+    "trim": {
+      "baseline": {
+        "sourced": 11,
+        "top1": 6,
+        "top3": 8,
+        "noSource": 0,
+        "offered": 0,
+        "top1Rate": 0.545,
+        "top3Rate": 0.727,
+        "falseOfferRate": null
+      },
+      "baselineSuggested": {
+        "sourced": 11,
+        "top1": 2,
+        "top3": 2,
+        "noSource": 0,
+        "offered": 0,
+        "top1Rate": 0.182,
+        "top3Rate": 0.182,
+        "falseOfferRate": null
+      },
+      "local": {
+        "sourced": 11,
+        "top1": 8,
+        "top3": 8,
+        "noSource": 0,
+        "offered": 0,
+        "top1Rate": 0.727,
+        "top3Rate": 0.727,
+        "falseOfferRate": null
+      }
+    }
+  },
+  "localMatcherLatencyMs": {
+    "scenarios": 14,
+    "median": 1.26,
+    "max": 5.11
+  }
+}

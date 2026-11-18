@@ -1,0 +1,492 @@
+{
+  "generatedBy": "scripts/bench/valentine/run_valentine.py",
+  "split": "dev",
+  "scenarios": 14,
+  "python": "3.12.16",
+  "matchers": {
+    "Cupid": {
+      "overall": {
+        "sourced": 131,
+        "top1": 8,
+        "top3": 8,
+        "noSource": 16,
+        "offered": 0,
+        "top1Rate": 0.061,
+        "top3Rate": 0.061,
+        "falseOfferRate": 0.0
+      },
+      "bySet": {
+        "eval-18b": {
+          "sourced": 42,
+          "top1": 3,
+          "top3": 3,
+          "noSource": 4,
+          "offered": 0,
+          "top1Rate": 0.071,
+          "top3Rate": 0.071,
+          "falseOfferRate": 0.0
+        },
+        "eval-18c": {
+          "sourced": 38,
+          "top1": 3,
+          "top3": 3,
+          "noSource": 5,
+          "offered": 0,
+          "top1Rate": 0.079,
+          "top3Rate": 0.079,
+          "falseOfferRate": 0.0
+        },
+        "eval-18d": {
+          "sourced": 51,
+          "top1": 2,
+          "top3": 2,
+          "noSource": 7,
+          "offered": 0,
+          "top1Rate": 0.039,
+          "top3Rate": 0.039,
+          "falseOfferRate": 0.0
+        }
+      },
+      "byTransform": {
+        "concat": {
+          "sourced": 4,
+          "top1": 1,
+          "top3": 1,
+          "noSource": 0,
+          "offered": 0,
+          "top1Rate": 0.25,
+          "top3Rate": 0.25,
+          "falseOfferRate": null
+        },
+        "copy": {
+          "sourced": 53,
+          "top1": 2,
+          "top3": 2,
+          "noSource": 0,
+          "offered": 0,
+          "top1Rate": 0.038,
+          "top3Rate": 0.038,
+          "falseOfferRate": null
+        },
+        "map_enum": {
+          "sourced": 33,
+          "top1": 4,
+          "top3": 4,
+          "noSource": 0,
+          "offered": 0,
+          "top1Rate": 0.121,
+          "top3Rate": 0.121,
+          "falseOfferRate": null
+        },
+        "none": {
+          "sourced": 0,
+          "top1": 0,
+          "top3": 0,
+          "noSource": 16,
+          "offered": 0,
+          "top1Rate": null,
+          "top3Rate": null,
+          "falseOfferRate": 0.0
+        },
+        "normalize_email": {
+          "sourced": 11,
+          "top1": 0,
+          "top3": 0,
+          "noSource": 0,
+          "offered": 0,
+          "top1Rate": 0.0,
+          "top3Rate": 0.0,
+          "falseOfferRate": null
+        },
+        "parse_date": {
+          "sourced": 19,
+          "top1": 0,
+          "top3": 0,
+          "noSource": 0,
+          "offered": 0,
+          "top1Rate": 0.0,
+          "top3Rate": 0.0,
+          "falseOfferRate": null
+        },
+        "trim": {
+          "sourced": 11,
+          "top1": 1,
+          "top3": 1,
+          "noSource": 0,
+          "offered": 0,
+          "top1Rate": 0.091,
+          "top3Rate": 0.091,
+          "falseOfferRate": null
+        }
+      },
+      "errors": 0,
+      "latencyMs": {
+        "median": 125.0,
+        "max": 4355.4
+      }
+    },
+    "SimilarityFlooding": {
+      "overall": {
+        "sourced": 131,
+        "top1": 53,
+        "top3": 77,
+        "noSource": 16,
+        "offered": 16,
+        "top1Rate": 0.405,
+        "top3Rate": 0.588,
+        "falseOfferRate": 1.0
+      },
+      "bySet": {
+        "eval-18b": {
+          "sourced": 42,
+          "top1": 18,
+          "top3": 26,
+          "noSource": 4,
+          "offered": 4,
+          "top1Rate": 0.429,
+          "top3Rate": 0.619,
+          "falseOfferRate": 1.0
+        },
+        "eval-18c": {
+          "sourced": 38,
+          "top1": 21,
+          "top3": 27,
+          "noSource": 5,
+          "offered": 5,
+          "top1Rate": 0.553,
+          "top3Rate": 0.711,
+          "falseOfferRate": 1.0
+        },
+        "eval-18d": {
+          "sourced": 51,
+          "top1": 14,
+          "top3": 24,
+          "noSource": 7,
+          "offered": 7,
+          "top1Rate": 0.275,
+          "top3Rate": 0.471,
+          "falseOfferRate": 1.0
+        }
+      },
+      "byTransform": {
+        "concat": {
+          "sourced": 4,
+          "top1": 1,
+          "top3": 3,
+          "noSource": 0,
+          "offered": 0,
+          "top1Rate": 0.25,
+          "top3Rate": 0.75,
+          "falseOfferRate": null
+        },
+        "copy": {
+          "sourced": 53,
+          "top1": 23,
+          "top3": 35,
+          "noSource": 0,
+          "offered": 0,
+          "top1Rate": 0.434,
+          "top3Rate": 0.66,
+          "falseOfferRate": null
+        },
+        "map_enum": {
+          "sourced": 33,
+          "top1": 16,
+          "top3": 18,
+          "noSource": 0,
+          "offered": 0,
+          "top1Rate": 0.485,
+          "top3Rate": 0.545,
+          "falseOfferRate": null
+        },
+        "none": {
+          "sourced": 0,
+          "top1": 0,
+          "top3": 0,
+          "noSource": 16,
+          "offered": 16,
+          "top1Rate": null,
+          "top3Rate": null,
+          "falseOfferRate": 1.0
+        },
+        "normalize_email": {
+          "sourced": 11,
+          "top1": 7,
+          "top3": 10,
+          "noSource": 0,
+          "offered": 0,
+          "top1Rate": 0.636,
+          "top3Rate": 0.909,
+          "falseOfferRate": null
+        },
+        "parse_date": {
+          "sourced": 19,
+          "top1": 4,
+          "top3": 4,
+          "noSource": 0,
+          "offered": 0,
+          "top1Rate": 0.211,
+          "top3Rate": 0.211,
+          "falseOfferRate": null
+        },
+        "trim": {
+          "sourced": 11,
+          "top1": 2,
+          "top3": 7,
+          "noSource": 0,
+          "offered": 0,
+          "top1Rate": 0.182,
+          "top3Rate": 0.636,
+          "falseOfferRate": null
+        }
+      },
+      "errors": 0,
+      "latencyMs": {
+        "median": 192.0,
+        "max": 256.2
+      }
+    },
+    "ComaSchema": {
+      "overall": {
+        "sourced": 131,
+        "top1": 50,
+        "top3": 63,
+        "noSource": 16,
+        "offered": 3,
+        "top1Rate": 0.382,
+        "top3Rate": 0.481,
+        "falseOfferRate": 0.188
+      },
+      "bySet": {
+        "eval-18b": {
+          "sourced": 42,
+          "top1": 15,
+          "top3": 19,
+          "noSource": 4,
+          "offered": 0,
+          "top1Rate": 0.357,
+          "top3Rate": 0.452,
+          "falseOfferRate": 0.0
+        },
+        "eval-18c": {
+          "sourced": 38,
+          "top1": 21,
+          "top3": 25,
+          "noSource": 5,
+          "offered": 1,
+          "top1Rate": 0.553,
+          "top3Rate": 0.658,
+          "falseOfferRate": 0.2
+        },
+        "eval-18d": {
+          "sourced": 51,
+          "top1": 14,
+          "top3": 19,
+          "noSource": 7,
+          "offered": 2,
+          "top1Rate": 0.275,
+          "top3Rate": 0.373,
+          "falseOfferRate": 0.286
+        }
+      },
+      "byTransform": {
+        "concat": {
+          "sourced": 4,
+          "top1": 1,
+          "top3": 3,
+          "noSource": 0,
+          "offered": 0,
+          "top1Rate": 0.25,
+          "top3Rate": 0.75,
+          "falseOfferRate": null
+        },
+        "copy": {
+          "sourced": 53,
+          "top1": 21,
+          "top3": 25,
+          "noSource": 0,
+          "offered": 0,
+          "top1Rate": 0.396,
+          "top3Rate": 0.472,
+          "falseOfferRate": null
+        },
+        "map_enum": {
+          "sourced": 33,
+          "top1": 13,
+          "top3": 17,
+          "noSource": 0,
+          "offered": 0,
+          "top1Rate": 0.394,
+          "top3Rate": 0.515,
+          "falseOfferRate": null
+        },
+        "none": {
+          "sourced": 0,
+          "top1": 0,
+          "top3": 0,
+          "noSource": 16,
+          "offered": 3,
+          "top1Rate": null,
+          "top3Rate": null,
+          "falseOfferRate": 0.188
+        },
+        "normalize_email": {
+          "sourced": 11,
+          "top1": 9,
+          "top3": 9,
+          "noSource": 0,
+          "offered": 0,
+          "top1Rate": 0.818,
+          "top3Rate": 0.818,
+          "falseOfferRate": null
+        },
+        "parse_date": {
+          "sourced": 19,
+          "top1": 5,
+          "top3": 6,
+          "noSource": 0,
+          "offered": 0,
+          "top1Rate": 0.263,
+          "top3Rate": 0.316,
+          "falseOfferRate": null
+        },
+        "trim": {
+          "sourced": 11,
+          "top1": 1,
+          "top3": 3,
+          "noSource": 0,
+          "offered": 0,
+          "top1Rate": 0.091,
+          "top3Rate": 0.273,
+          "falseOfferRate": null
+        }
+      },
+      "errors": 0,
+      "latencyMs": {
+        "median": 6.8,
+        "max": 9.1
+      }
+    },
+    "JaccardDistance": {
+      "overall": {
+        "sourced": 131,
+        "top1": 0,
+        "top3": 0,
+        "noSource": 16,
+        "offered": 0,
+        "top1Rate": 0.0,
+        "top3Rate": 0.0,
+        "falseOfferRate": 0.0
+      },
+      "bySet": {
+        "eval-18b": {
+          "sourced": 42,
+          "top1": 0,
+          "top3": 0,
+          "noSource": 4,
+          "offered": 0,
+          "top1Rate": 0.0,
+          "top3Rate": 0.0,
+          "falseOfferRate": 0.0
+        },
+        "eval-18c": {
+          "sourced": 38,
+          "top1": 0,
+          "top3": 0,
+          "noSource": 5,
+          "offered": 0,
+          "top1Rate": 0.0,
+          "top3Rate": 0.0,
+          "falseOfferRate": 0.0
+        },
+        "eval-18d": {
+          "sourced": 51,
+          "top1": 0,
+          "top3": 0,
+          "noSource": 7,
+          "offered": 0,
+          "top1Rate": 0.0,
+          "top3Rate": 0.0,
+          "falseOfferRate": 0.0
+        }
+      },
+      "byTransform": {
+        "concat": {
+          "sourced": 4,
+          "top1": 0,
+          "top3": 0,
+          "noSource": 0,
+          "offered": 0,
+          "top1Rate": 0.0,
+          "top3Rate": 0.0,
+          "falseOfferRate": null
+        },
+        "copy": {
+          "sourced": 53,
+          "top1": 0,
+          "top3": 0,
+          "noSource": 0,
+          "offered": 0,
+          "top1Rate": 0.0,
+          "top3Rate": 0.0,
+          "falseOfferRate": null
+        },
+        "map_enum": {
+          "sourced": 33,
+          "top1": 0,
+          "top3": 0,
+          "noSource": 0,
+          "offered": 0,
+          "top1Rate": 0.0,
+          "top3Rate": 0.0,
+          "falseOfferRate": null
+        },
+        "none": {
+          "sourced": 0,
+          "top1": 0,
+          "top3": 0,
+          "noSource": 16,
+          "offered": 0,
+          "top1Rate": null,
+          "top3Rate": null,
+          "falseOfferRate": 0.0
+        },
+        "normalize_email": {
+          "sourced": 11,
+          "top1": 0,
+          "top3": 0,
+          "noSource": 0,
+          "offered": 0,
+          "top1Rate": 0.0,
+          "top3Rate": 0.0,
+          "falseOfferRate": null
+        },
+        "parse_date": {
+          "sourced": 19,
+          "top1": 0,
+          "top3": 0,
+          "noSource": 0,
+          "offered": 0,
+          "top1Rate": 0.0,
+          "top3Rate": 0.0,
+          "falseOfferRate": null
+        },
+        "trim": {
+          "sourced": 11,
+          "top1": 0,
+          "top3": 0,
+          "noSource": 0,
+          "offered": 0,
+          "top1Rate": 0.0,
+          "top3Rate": 0.0,
+          "falseOfferRate": null
+        }
+      },
+      "errors": 0,
+      "latencyMs": {
+        "median": 3.3,
+        "max": 4.3
+      }
+    }
+  }
+}

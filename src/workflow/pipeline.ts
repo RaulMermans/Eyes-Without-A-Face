@@ -14,6 +14,8 @@ import { convertProposal, parseProposalText, type ConvertedProposal, type Propos
 import { resolveAliases, type ResolutionIssue, type ResolvedMapping } from "../proposal/resolve.ts";
 import { evaluateCloudDisclosure } from "../twin/disclosure-gate.ts";
 import { defaultCloudDestination, projectCloudDisclosurePayload } from "../twin/project-cloud-disclosure.ts";
+import { sanitizeTargetDescription } from "../twin/target-semantics.ts";
+import { effectiveDestinationSemantics } from "../inference/cloud-models.ts";
 import { describeTargetSchema } from "../twin/target-disclosure.ts";
 import { findPrivateValueLeaks } from "../privacy/leak-scan.ts";
 
@@ -84,6 +86,12 @@ export function buildDisclosureDraft(input: {
   prepared: PreparedTwin;
   targetSchema: unknown;
   destination?: CloudDisclosureDestination;
+  /**
+   * Sprint 18D (ADR 0021 §B): project sanitized destination descriptions
+   * (cloud-disclosure 1.4.0). Defaults to the effective setting (off in the
+   * product). Dropped descriptions are reported as local notes, never sent.
+   */
+  destinationSemantics?: boolean;
 }): DisclosureDraftResult {
   const described = describeTargetSchema(input.targetSchema);
   if (!described.ok) {
@@ -94,12 +102,23 @@ export function buildDisclosureDraft(input: {
   if (!gate.allowed) {
     return { ok: false, issues: gate.reasons };
   }
-  const payload = projectCloudDisclosurePayload(phantom, input.destination ?? defaultCloudDestination(), described.value.target);
+  const notes = [...described.value.notes];
+  let semantics: Record<string, string> | undefined;
+  if (input.destinationSemantics ?? effectiveDestinationSemantics()) {
+    semantics = Object.create(null) as Record<string, string>;
+    const guards = { privateStrings: input.prepared.privateStrings, sourcePaths: input.prepared.profile.fields.map((field) => field.path) };
+    for (const [name, raw] of Object.entries(described.value.localDescriptions)) {
+      const sanitized = sanitizeTargetDescription(raw, guards);
+      if (sanitized.ok) semantics[name] = sanitized.text;
+      else notes.push(`The description of "${name}" was not shared (${sanitized.reason}).`);
+    }
+  }
+  const payload = projectCloudDisclosurePayload(phantom, input.destination ?? defaultCloudDestination(), described.value.target, semantics ? { destinationSemantics: semantics } : {});
   const leaks = findPrivateValueLeaks(payload, input.prepared.privateStrings);
   if (leaks.length > 0) {
     return { ok: false, issues: leaks.map((leak) => `Private value reproduced at ${leak.location}`) };
   }
-  return { ok: true, value: { payload, targetNotes: described.value.notes } };
+  return { ok: true, value: { payload, targetNotes: notes } };
 }
 
 export interface AcceptedProposal {

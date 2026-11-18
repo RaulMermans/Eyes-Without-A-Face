@@ -1,0 +1,890 @@
+{
+  "scenarioId": "calibration-lab-certificates-to-asset-register",
+  "split": "holdout",
+  "track": "general",
+  "industry": "instrument calibration laboratory certificates",
+  "sourceLanguage": "es",
+  "description": "Calibration certificate export of a fictional instrument calibration laboratory (Spanish camelCase, nested instrument and client) to be loaded into a customer's asset register; the next due date is not exported.",
+  "fictional": true,
+  "completable": false,
+  "records": [
+    {
+      "resultado": "No apto",
+      "intervaloMeses": 24,
+      "fechaEmision": "27/10/2026",
+      "equipo": {
+        "tipo": "Pie de rey",
+        "codigoActivo": "ACT-3476",
+        "fabricante": "Termotec",
+        "numSerie": "SN644807"
+      },
+      "tecnico": "Óscar Mendizábal",
+      "fechaCalibracion": "18/06/2026",
+      "numCertificado": "CC-26-0800",
+      "cliente": {
+        "email": "alba.fernandez@urdaneta.example.net",
+        "razonSocial": "Plásticos Urdaneta S.A.",
+        "contacto": "Alba Fernández"
+      },
+      "fila": 1,
+      "estadoFactura": "Pagada",
+      "acreditacion": "No acreditada",
+      "incertidumbre": "±0,02 mm"
+    },
+    {
+      "intervaloMeses": 12,
+      "estadoFactura": "Pagada",
+      "cliente": {
+        "contacto": "Alba Fernández",
+        "razonSocial": "Plásticos Urdaneta S.A.   ",
+        "email": "alba.fernandez@urdaneta.example.net"
+      },
+      "resultado": "Apto con ajuste",
+      "fechaEmision": "19/01/2026",
+      "incertidumbre": "±0,2 g",
+      "numCertificado": "CC-26-0803",
+      "fila": 2,
+      "fechaCalibracion": "13/01/2026",
+      "equipo": {
+        "codigoActivo": "ACT-3562",
+        "tipo": "Balanza",
+        "fabricante": "Metrolab Sur",
+        "numSerie": "SN366310"
+      },
+      "acreditacion": "Acreditada",
+      "tecnico": "Rocío Salas"
+    },
+    {
+      "incertidumbre": "±0,1 °C",
+      "numCertificado": "CC-26-0806",
+      "resultado": "No apto",
+      "fila": 3,
+      "estadoFactura": "Pagada",
+      "tecnico": "Rocío Salas",
+      "fechaEmision": "21/05/2026",
+      "equipo": {
+        "fabricante": "Termotec",
+        "tipo": "Termómetro",
+        "codigoActivo": "ACT-3803",
+        "numSerie": "SN536481"
+      },
+      "cliente": {
+        "razonSocial": "Talleres Ibarra S.L.",
+        "contacto": "Marta Delgado",
+        "email": "Marta.Delgado@Talleres-ibarra.Example.Com"
+      },
+      "fechaCalibracion": "12/04/2026",
+      "intervaloMeses": 12,
+      "acreditacion": "Acreditada"
+    },
+    {
+      "resultado": "Apto",
+      "intervaloMeses": 24,
+      "acreditacion": "Acreditada",
+      "estadoFactura": "Pagada",
+      "fechaEmision": "18/10/2025",
+      "incertidumbre": "±0,05 bar",
+      "cliente": {
+        "email": "hugo.soler@conservas.example.com",
+        "contacto": "Hugo Soler",
+        "razonSocial": "Conservas del Cantábrico S.A."
+      },
+      "numCertificado": "CC-25-0809",
+      "equipo": {
+        "numSerie": "SN802874",
+        "tipo": "Manómetro",
+        "codigoActivo": "ACT-3480",
+        "fabricante": "Termotec"
+      },
+      "tecnico": "Rocío Salas",
+      "fila": 4,
+      "fechaCalibracion": "17/10/2025"
+    },
+    {
+      "resultado": "No apto",
+      "incertidumbre": "±0,02 mm",
+      "fila": 5,
+      "acreditacion": "Acreditada",
+      "estadoFactura": "Pagada",
+      "cliente": {
+        "contacto": "Sara Molina",
+        "email": "sara.molina@galena.example.com",
+        "razonSocial": "  Laboratorios Galena S.L. "
+      },
+      "tecnico": "Óscar Mendizábal",
+      "intervaloMeses": 6,
+      "fechaCalibracion": "24/05/2026",
+      "numCertificado": "CC-26-0812",
+      "fechaEmision": "14/07/2026",
+      "equipo": {
+        "tipo": "Pie de rey",
+        "codigoActivo": "ACT-3545",
+        "numSerie": null,
+        "fabricante": "Precisa Ibérica"
+      }
+    },
+    {
+      "fechaCalibracion": "29/09/2025",
+      "acreditacion": "No acreditada",
+      "cliente": {
+        "razonSocial": "Plásticos Urdaneta S.A.",
+        "contacto": "Alba Fernández",
+        "email": "alba.fernandez@urdaneta.example.net"
+      },
+      "intervaloMeses": 6,
+      "fechaEmision": "12/06/2026",
+      "resultado": "Apto",
+      "incertidumbre": "±0,2 g",
+      "equipo": {
+        "codigoActivo": "ACT-3799",
+        "tipo": "Balanza",
+        "fabricante": "Balanzas Duero",
+        "numSerie": null
+      },
+      "tecnico": "Ignacio Beltrán",
+      "fila": 6,
+      "estadoFactura": "Pagada",
+      "numCertificado": "CC-25-0815"
+    },
+    {
+      "intervaloMeses": 12,
+      "acreditacion": "Acreditada",
+      "incertidumbre": "±0,05 bar",
+      "fila": 7,
+      "estadoFactura": "Pendiente",
+      "equipo": {
+        "numSerie": "SN254772",
+        "fabricante": "Termotec",
+        "codigoActivo": "ACT-3562",
+        "tipo": "Manómetro"
+      },
+      "resultado": "Apto",
+      "tecnico": "Óscar Mendizábal",
+      "fechaCalibracion": "28/03/2026",
+      "fechaEmision": "29/07/2026",
+      "numCertificado": "CC-26-0818",
+      "cliente": {
+        "razonSocial": "Conservas del Cantábrico S.A.",
+        "contacto": "Hugo Soler",
+        "email": "Hugo.Soler@Conservas.Example.Com"
+      }
+    },
+    {
+      "equipo": {
+        "codigoActivo": "ACT-3304",
+        "numSerie": "SN439100",
+        "tipo": "Manómetro",
+        "fabricante": "Termotec"
+      },
+      "fechaEmision": "10/07/2026",
+      "cliente": {
+        "contacto": "Hugo Soler",
+        "email": "hugo.soler@conservas.example.com",
+        "razonSocial": "Conservas del Cantábrico S.A."
+      },
+      "incertidumbre": "±0,05 bar",
+      "acreditacion": "No acreditada",
+      "estadoFactura": "Pagada",
+      "fila": 8,
+      "numCertificado": "CC-26-0821",
+      "resultado": "Pendiente de revisión",
+      "tecnico": "Óscar Mendizábal",
+      "fechaCalibracion": "17/01/2026",
+      "intervaloMeses": 24
+    },
+    {
+      "acreditacion": "Acreditada",
+      "numCertificado": "CC-26-0824",
+      "equipo": {
+        "fabricante": "Balanzas Duero",
+        "codigoActivo": "ACT-3844",
+        "tipo": "Pie de rey"
+      },
+      "fechaEmision": "19/09/2026",
+      "cliente": {
+        "razonSocial": "Plásticos Urdaneta S.A.",
+        "contacto": "Alba Fernández",
+        "email": "alba.fernandez@urdaneta.example.net"
+      },
+      "fila": 9,
+      "intervaloMeses": 12,
+      "incertidumbre": "±0,02 mm",
+      "resultado": "Apto",
+      "tecnico": "Óscar Mendizábal",
+      "estadoFactura": "Pendiente",
+      "fechaCalibracion": "07/05/2026"
+    },
+    {
+      "fechaEmision": "29/06/2026",
+      "incertidumbre": "±0,2 g",
+      "acreditacion": "No acreditada",
+      "tecnico": "Ignacio Beltrán",
+      "intervaloMeses": 12,
+      "estadoFactura": "Pendiente",
+      "equipo": {
+        "numSerie": "SN267407",
+        "tipo": "Balanza",
+        "fabricante": "Metrolab Sur",
+        "codigoActivo": "ACT-3332"
+      },
+      "numCertificado": "CC-25-0827",
+      "fechaCalibracion": "19/11/2025",
+      "resultado": "Apto con ajuste",
+      "fila": 10,
+      "cliente": {
+        "email": "marta.delgado@talleres-ibarra.example.com",
+        "razonSocial": "Talleres Ibarra S.L.",
+        "contacto": "Marta Delgado"
+      }
+    },
+    {
+      "estadoFactura": "Pagada",
+      "tecnico": "Ignacio Beltrán",
+      "fechaEmision": "14/11/2026",
+      "acreditacion": "Acreditada",
+      "incertidumbre": "±0,1 °C",
+      "numCertificado": "CC-26-0830",
+      "fila": 11,
+      "fechaCalibracion": "25/04/2026",
+      "equipo": {
+        "codigoActivo": "ACT-3799",
+        "fabricante": "Termotec",
+        "tipo": "Termómetro",
+        "numSerie": "SN287427"
+      },
+      "cliente": {
+        "email": "lucia.jimenez@hvnorte.example.org",
+        "razonSocial": "Hospital Veterinario Norte",
+        "contacto": "Lucía Jiménez"
+      },
+      "resultado": "Apto con ajuste",
+      "intervaloMeses": 12
+    },
+    {
+      "equipo": {
+        "tipo": "Manómetro",
+        "numSerie": "SN964866",
+        "codigoActivo": "ACT-3614",
+        "fabricante": "Precisa Ibérica"
+      },
+      "resultado": "No apto",
+      "cliente": {
+        "contacto": "Lucía Jiménez",
+        "razonSocial": "Hospital Veterinario Norte",
+        "email": "lucia.jimenez@hvnorte.example.org"
+      },
+      "acreditacion": "Acreditada",
+      "intervaloMeses": 12,
+      "incertidumbre": "±0,05 bar",
+      "tecnico": "Rocío Salas",
+      "fila": 12,
+      "fechaCalibracion": "10/11/2025",
+      "numCertificado": "CC-25-0833",
+      "estadoFactura": "Pagada",
+      "fechaEmision": "21/12/2025"
+    },
+    {
+      "incertidumbre": "±0,2 g",
+      "fila": 13,
+      "cliente": {
+        "contacto": "Lucía Jiménez",
+        "razonSocial": "Hospital Veterinario Norte",
+        "email": "lucia.jimenez@hvnorte.example.org"
+      },
+      "resultado": "Apto",
+      "estadoFactura": "Pagada",
+      "tecnico": "Óscar Mendizábal",
+      "numCertificado": "CC-26-0836",
+      "intervaloMeses": 12,
+      "fechaCalibracion": "06/03/2026",
+      "acreditacion": "Acreditada",
+      "fechaEmision": "14/11/2026",
+      "equipo": {
+        "fabricante": "Balanzas Duero",
+        "numSerie": "SN752270",
+        "tipo": "Balanza",
+        "codigoActivo": "ACT-3814"
+      }
+    },
+    {
+      "fechaEmision": "13/05/2026",
+      "resultado": "Apto",
+      "acreditacion": "Acreditada",
+      "tecnico": "Óscar Mendizábal",
+      "fila": 14,
+      "incertidumbre": "±0,2 g",
+      "estadoFactura": "Pagada",
+      "intervaloMeses": 12,
+      "cliente": {
+        "email": "Marta.Delgado@Talleres-ibarra.Example.Com",
+        "razonSocial": "  Talleres Ibarra S.L. ",
+        "contacto": "Marta Delgado"
+      },
+      "numCertificado": "CC-26-0839",
+      "equipo": {
+        "fabricante": "Termotec",
+        "codigoActivo": "ACT-3318",
+        "numSerie": "SN514706",
+        "tipo": "Balanza"
+      },
+      "fechaCalibracion": "14/01/2026"
+    },
+    {
+      "incertidumbre": "±0,2 g",
+      "cliente": {
+        "email": "alba.fernandez@urdaneta.example.net",
+        "contacto": "Alba Fernández",
+        "razonSocial": "Plásticos Urdaneta S.A."
+      },
+      "fila": 15,
+      "numCertificado": "CC-26-0842",
+      "acreditacion": "No acreditada",
+      "intervaloMeses": 12,
+      "tecnico": "Óscar Mendizábal",
+      "equipo": {
+        "fabricante": "Metrolab Sur",
+        "tipo": "Balanza",
+        "codigoActivo": "ACT-3450",
+        "numSerie": "SN885976"
+      },
+      "fechaEmision": "07/06/2026",
+      "estadoFactura": "Pagada",
+      "resultado": "Apto",
+      "fechaCalibracion": "06/04/2026"
+    },
+    {
+      "incertidumbre": "±0,2 g",
+      "fechaCalibracion": "09/01/2026",
+      "fila": 16,
+      "acreditacion": "Acreditada",
+      "intervaloMeses": 6,
+      "resultado": "Apto",
+      "numCertificado": "CC-26-0845",
+      "equipo": {
+        "tipo": "Balanza",
+        "numSerie": "SN761075",
+        "fabricante": "Termotec",
+        "codigoActivo": "ACT-3790"
+      },
+      "tecnico": "Óscar Mendizábal",
+      "estadoFactura": "Pendiente",
+      "cliente": {
+        "razonSocial": "Laboratorios Galena S.L.",
+        "contacto": "Sara Molina",
+        "email": "sara.molina@galena.example.com"
+      },
+      "fechaEmision": "04/11/2026"
+    },
+    {
+      "acreditacion": "Acreditada",
+      "numCertificado": "CC-26-0848",
+      "intervaloMeses": 12,
+      "fechaCalibracion": "14/03/2026",
+      "tecnico": "Óscar Mendizábal",
+      "cliente": {
+        "razonSocial": "Hospital Veterinario Norte",
+        "contacto": "Lucía Jiménez",
+        "email": "Lucia.Jimenez@Hvnorte.Example.Org"
+      },
+      "estadoFactura": "Pendiente",
+      "equipo": {
+        "fabricante": "Metrolab Sur",
+        "codigoActivo": "ACT-3392",
+        "tipo": "Termómetro",
+        "numSerie": "SN155664"
+      },
+      "incertidumbre": "±0,1 °C",
+      "fila": 17,
+      "fechaEmision": "30/05/2026",
+      "resultado": "Apto con ajuste"
+    },
+    {
+      "fechaCalibracion": "12/11/2025",
+      "cliente": {
+        "contacto": "Lucía Jiménez",
+        "razonSocial": "Hospital Veterinario Norte   ",
+        "email": "lucia.jimenez@hvnorte.example.org"
+      },
+      "incertidumbre": "±0,1 °C",
+      "fechaEmision": "24/06/2026",
+      "fila": 18,
+      "acreditacion": "Acreditada",
+      "equipo": {
+        "tipo": "Termómetro",
+        "codigoActivo": "ACT-3680",
+        "numSerie": "SN869343",
+        "fabricante": "Metrolab Sur"
+      },
+      "resultado": "Apto",
+      "intervaloMeses": 12,
+      "estadoFactura": "Pendiente",
+      "tecnico": "Ignacio Beltrán",
+      "numCertificado": "CC-25-0851"
+    },
+    {
+      "fechaCalibracion": "11/04/2026",
+      "cliente": {
+        "razonSocial": "Plásticos Urdaneta S.A.",
+        "contacto": "Alba Fernández",
+        "email": "ALBA.FERNANDEZ@URDANETA.EXAMPLE.NET"
+      },
+      "equipo": {
+        "fabricante": "Precisa Ibérica",
+        "numSerie": "SN609344",
+        "codigoActivo": "ACT-3033",
+        "tipo": "Termómetro"
+      },
+      "tecnico": "Óscar Mendizábal",
+      "resultado": "Apto",
+      "incertidumbre": "±0,1 °C",
+      "intervaloMeses": 24,
+      "estadoFactura": "Pagada",
+      "acreditacion": "Acreditada",
+      "fila": 19,
+      "fechaEmision": "11/05/2026",
+      "numCertificado": "CC-26-0854"
+    },
+    {
+      "tecnico": "Ignacio Beltrán",
+      "numCertificado": "CC-26-0857",
+      "intervaloMeses": 12,
+      "fechaCalibracion": "06/02/2026",
+      "resultado": "Apto",
+      "incertidumbre": "±0,05 bar",
+      "equipo": {
+        "codigoActivo": "ACT-3850",
+        "numSerie": "SN517680",
+        "fabricante": "Metrolab Sur",
+        "tipo": "Manómetro"
+      },
+      "acreditacion": "No acreditada",
+      "cliente": {
+        "email": "marta.delgado@talleres-ibarra.example.com",
+        "razonSocial": "Talleres Ibarra S.L.",
+        "contacto": "Marta Delgado"
+      },
+      "estadoFactura": "Pagada",
+      "fila": 20,
+      "fechaEmision": "14/06/2026"
+    },
+    {
+      "fechaCalibracion": "06/09/2026",
+      "incertidumbre": "±0,05 bar",
+      "numCertificado": "CC-26-0860",
+      "fila": 21,
+      "estadoFactura": "Pagada",
+      "equipo": {
+        "tipo": "Manómetro",
+        "codigoActivo": "ACT-3902",
+        "fabricante": "Termotec"
+      },
+      "tecnico": "Rocío Salas",
+      "acreditacion": "Acreditada",
+      "fechaEmision": "09/11/2026",
+      "resultado": "Apto",
+      "cliente": {
+        "email": "lucia.jimenez@hvnorte.example.org",
+        "razonSocial": "Hospital Veterinario Norte",
+        "contacto": "Lucía Jiménez"
+      },
+      "intervaloMeses": 24
+    },
+    {
+      "fechaEmision": "11/07/2026",
+      "numCertificado": "CC-25-0863",
+      "equipo": {
+        "numSerie": "SN330899",
+        "fabricante": "Balanzas Duero",
+        "tipo": "Termómetro",
+        "codigoActivo": "ACT-3925"
+      },
+      "fechaCalibracion": "21/10/2025",
+      "incertidumbre": "±0,1 °C",
+      "estadoFactura": "Pagada",
+      "acreditacion": "No acreditada",
+      "intervaloMeses": 12,
+      "cliente": {
+        "razonSocial": "Conservas del Cantábrico S.A.",
+        "email": "Hugo.Soler@Conservas.Example.Com",
+        "contacto": "Hugo Soler"
+      },
+      "fila": 22,
+      "resultado": "Pendiente de revisión",
+      "tecnico": "Óscar Mendizábal"
+    },
+    {
+      "acreditacion": "No acreditada",
+      "intervaloMeses": 12,
+      "incertidumbre": "±0,1 °C",
+      "numCertificado": "CC-26-0866",
+      "cliente": {
+        "email": "lucia.jimenez@hvnorte.example.org",
+        "razonSocial": "Hospital Veterinario Norte",
+        "contacto": "Lucía Jiménez"
+      },
+      "fila": 23,
+      "estadoFactura": "Pagada",
+      "resultado": "Apto",
+      "fechaEmision": "03/10/2026",
+      "fechaCalibracion": "12/09/2026",
+      "tecnico": "Rocío Salas",
+      "equipo": {
+        "fabricante": "Precisa Ibérica",
+        "tipo": "Termómetro",
+        "numSerie": "SN795567",
+        "codigoActivo": "ACT-3069"
+      }
+    },
+    {
+      "acreditacion": "Acreditada",
+      "fechaEmision": "26/02/2026",
+      "cliente": {
+        "razonSocial": " Plásticos Urdaneta S.A.  ",
+        "contacto": "Alba Fernández",
+        "email": "alba.fernandez@urdaneta.example.net"
+      },
+      "equipo": {
+        "fabricante": "Balanzas Duero",
+        "codigoActivo": "ACT-3464",
+        "tipo": "Balanza"
+      },
+      "resultado": "Apto con ajuste",
+      "tecnico": "Ignacio Beltrán",
+      "fechaCalibracion": "16/10/2025",
+      "numCertificado": "CC-25-0869",
+      "incertidumbre": "±0,2 g",
+      "fila": 24,
+      "intervaloMeses": 6,
+      "estadoFactura": "Pendiente"
+    },
+    {
+      "intervaloMeses": 12,
+      "tecnico": "Ignacio Beltrán",
+      "fila": 25,
+      "fechaEmision": "04/10/2026",
+      "resultado": "Apto",
+      "numCertificado": "CC-26-0872",
+      "acreditacion": "Acreditada",
+      "estadoFactura": "Pendiente",
+      "incertidumbre": "±0,02 mm",
+      "equipo": {
+        "fabricante": "Balanzas Duero",
+        "numSerie": "SN470649",
+        "tipo": "Pie de rey",
+        "codigoActivo": "ACT-3796"
+      },
+      "cliente": {
+        "contacto": "Lucía Jiménez",
+        "email": "LUCIA.JIMENEZ@HVNORTE.EXAMPLE.ORG",
+        "razonSocial": "Hospital Veterinario Norte"
+      },
+      "fechaCalibracion": "05/09/2026"
+    },
+    {
+      "fechaEmision": "24/10/2026",
+      "incertidumbre": "±0,2 g",
+      "equipo": {
+        "numSerie": null,
+        "tipo": "Balanza",
+        "codigoActivo": "ACT-3049",
+        "fabricante": "Precisa Ibérica"
+      },
+      "tecnico": "Óscar Mendizábal",
+      "fechaCalibracion": "28/08/2026",
+      "acreditacion": "Acreditada",
+      "intervaloMeses": 6,
+      "resultado": "Pendiente de revisión",
+      "numCertificado": "CC-26-0875",
+      "estadoFactura": "Pagada",
+      "fila": 26,
+      "cliente": {
+        "razonSocial": "Conservas del Cantábrico S.A.",
+        "contacto": "Hugo Soler",
+        "email": "hugo.soler@conservas.example.com"
+      }
+    },
+    {
+      "equipo": {
+        "codigoActivo": "ACT-3102",
+        "tipo": "Pie de rey",
+        "fabricante": "Balanzas Duero",
+        "numSerie": "SN119560"
+      },
+      "fila": 27,
+      "resultado": "Apto con ajuste",
+      "numCertificado": "CC-25-0878",
+      "cliente": {
+        "contacto": "Alba Fernández",
+        "razonSocial": " Plásticos Urdaneta S.A.  ",
+        "email": "Alba.Fernandez@Urdaneta.Example.Net"
+      },
+      "estadoFactura": "Pagada",
+      "incertidumbre": "±0,02 mm",
+      "intervaloMeses": 12,
+      "fechaEmision": "14/10/2026",
+      "fechaCalibracion": "26/12/2025",
+      "tecnico": "Ignacio Beltrán",
+      "acreditacion": "No acreditada"
+    },
+    {
+      "tecnico": "Rocío Salas",
+      "acreditacion": "Acreditada",
+      "equipo": {
+        "tipo": "Pie de rey",
+        "numSerie": "SN984184",
+        "codigoActivo": "ACT-3080",
+        "fabricante": "Balanzas Duero"
+      },
+      "resultado": "Apto con ajuste",
+      "incertidumbre": "±0,02 mm",
+      "fila": 28,
+      "fechaCalibracion": "12/06/2026",
+      "cliente": {
+        "contacto": "Marta Delgado",
+        "email": "Marta.Delgado@Talleres-ibarra.Example.Com",
+        "razonSocial": "Talleres Ibarra S.L."
+      },
+      "fechaEmision": "10/10/2026",
+      "intervaloMeses": 12,
+      "estadoFactura": "Pendiente",
+      "numCertificado": "CC-26-0881"
+    },
+    {
+      "fechaEmision": "13/03/2026",
+      "incertidumbre": "±0,1 °C",
+      "cliente": {
+        "contacto": "Sara Molina",
+        "razonSocial": "Laboratorios Galena S.L.",
+        "email": "Sara.Molina@Galena.Example.Com"
+      },
+      "equipo": {
+        "numSerie": "SN509104",
+        "fabricante": "Metrolab Sur",
+        "tipo": "Termómetro",
+        "codigoActivo": "ACT-3492"
+      },
+      "resultado": "Apto",
+      "fechaCalibracion": "10/12/2025",
+      "tecnico": "Óscar Mendizábal",
+      "numCertificado": "CC-25-0884",
+      "acreditacion": "Acreditada",
+      "fila": 29,
+      "intervaloMeses": 6,
+      "estadoFactura": "Pendiente"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "asset_tag": {
+        "type": "string",
+        "description": "Owner's asset tag on the instrument."
+      },
+      "certificate_number": {
+        "type": "string",
+        "description": "Number of the calibration certificate."
+      },
+      "serial_number": {
+        "type": "string",
+        "description": "Manufacturer's serial number of the instrument."
+      },
+      "instrument_type": {
+        "type": "string",
+        "enum": [
+          "pressure_gauge",
+          "scale",
+          "thermometer",
+          "caliper"
+        ],
+        "description": "Kind of measuring instrument."
+      },
+      "owner_company": {
+        "type": "string",
+        "description": "Company that owns the instrument."
+      },
+      "owner_email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address of the owner's contact for calibration matters."
+      },
+      "result": {
+        "type": "string",
+        "enum": [
+          "pass",
+          "pass_adjusted",
+          "fail"
+        ],
+        "description": "Result."
+      },
+      "calibrated_on": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the instrument was calibrated."
+      },
+      "next_due_date": {
+        "type": "string",
+        "format": "date",
+        "description": "Date by which the instrument must be calibrated again."
+      },
+      "location": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "asset_tag",
+      "certificate_number",
+      "instrument_type",
+      "result",
+      "calibrated_on",
+      "next_due_date"
+    ]
+  },
+  "groundTruth": {
+    "asset_tag": {
+      "source": "equipo.codigoActivo",
+      "transform": "copy",
+      "why": "asset tag; fila is the row"
+    },
+    "certificate_number": {
+      "source": "numCertificado",
+      "transform": "copy",
+      "why": "certificate number"
+    },
+    "serial_number": {
+      "source": "equipo.numSerie",
+      "transform": "copy",
+      "why": "serial, null or missing for some"
+    },
+    "instrument_type": {
+      "source": "equipo.tipo",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Manómetro": "pressure_gauge",
+        "Balanza": "scale",
+        "Termómetro": "thermometer",
+        "Pie de rey": "caliper"
+      },
+      "why": "instrument type"
+    },
+    "owner_company": {
+      "source": "cliente.razonSocial",
+      "transform": "trim",
+      "why": "client company, padded; equipo.fabricante is the manufacturer"
+    },
+    "owner_email": {
+      "source": "cliente.email",
+      "transform": "normalize_email",
+      "why": "client contact email, mixed case"
+    },
+    "result": {
+      "source": "resultado",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Apto": "pass",
+        "Apto con ajuste": "pass_adjusted",
+        "No apto": "fail",
+        "Pendiente de revisión": null
+      },
+      "why": "calibration result; pending rows need review; estadoFactura is invoicing"
+    },
+    "calibrated_on": {
+      "source": "fechaCalibracion",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "calibration date (Spanish day-first); fechaEmision is when the certificate was issued"
+    },
+    "next_due_date": {
+      "source": null,
+      "transform": "none",
+      "why": "not exported; fechaEmision is the issue date and fechaCalibracion the last calibration",
+      "unsupportedReason": "would need fechaCalibracion plus intervaloMeses months"
+    },
+    "location": {
+      "source": null,
+      "transform": "none",
+      "why": "no location is exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "decoy-for-missing-field",
+      "fields": [
+        "fechaEmision",
+        "fechaCalibracion"
+      ],
+      "correctFor": "next_due_date"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "equipo.codigoActivo",
+        "equipo.numSerie"
+      ],
+      "correctFor": "asset_tag"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "equipo.codigoActivo",
+        "fila"
+      ],
+      "correctFor": "asset_tag"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "cliente.razonSocial",
+        "equipo.fabricante"
+      ],
+      "correctFor": "owner_company"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "resultado",
+        "estadoFactura"
+      ],
+      "correctFor": "result"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "fechaCalibracion",
+        "fechaEmision"
+      ],
+      "correctFor": "calibrated_on"
+    }
+  ],
+  "sourceConcepts": {
+    "numCertificado": "transaction-id",
+    "fila": "other-identifier",
+    "equipo.numSerie": "other-identifier",
+    "equipo.codigoActivo": "customer-id",
+    "equipo.tipo": "category",
+    "equipo.fabricante": "organization-name",
+    "cliente.razonSocial": "organization-name",
+    "cliente.contacto": "person-name",
+    "cliente.email": "email",
+    "tecnico": "person-name",
+    "resultado": "account-status",
+    "estadoFactura": "payment-status",
+    "fechaCalibracion": "start-date",
+    "fechaEmision": "other",
+    "intervaloMeses": "quantity",
+    "incertidumbre": "other",
+    "acreditacion": "category"
+  },
+  "destinationConcepts": {
+    "asset_tag": "customer-id",
+    "certificate_number": "transaction-id",
+    "serial_number": "other-identifier",
+    "instrument_type": "category",
+    "owner_company": "organization-name",
+    "owner_email": "email",
+    "result": "account-status",
+    "calibrated_on": "start-date",
+    "next_due_date": "end-date",
+    "location": "other"
+  }
+}

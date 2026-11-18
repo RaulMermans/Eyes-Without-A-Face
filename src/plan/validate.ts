@@ -18,6 +18,7 @@ import { validateStructuredOutput } from "../domain/inference-output/validate-ou
 import { findExecutableTransformations } from "../domain/mapping/safety.ts";
 import {
   INTENT_PLAN_VERSION,
+  RANKED_PLAN_VERSION,
   type IntentPlan,
   type IntentPlanEntry,
   type PlanIssue,
@@ -73,14 +74,20 @@ export function parseIntentPlanText(text: string): { ok: true; value: unknown } 
   }
 }
 
-export function validateIntentPlan(raw: unknown, disclosure: CloudDisclosurePayload): PlanValidation {
-  if (disclosure.schemaVersion !== "1.1.0" || !disclosure.target) {
+/**
+ * `ranked` (Sprint 18D): the request used prompt v6, so the answer is judged
+ * against plan 1.1.0 (`alternatives` allowed); otherwise plan 1.0.0 exactly.
+ * Disclosures 1.1.0 and 1.4.0 (1.1.0 + destination semantics) are both initial.
+ */
+export function validateIntentPlan(raw: unknown, disclosure: CloudDisclosurePayload, options: { ranked?: boolean } = {}): PlanValidation {
+  const ranked = options.ranked === true;
+  if ((disclosure.schemaVersion !== "1.1.0" && disclosure.schemaVersion !== "1.4.0") || !disclosure.target) {
     return {
       ok: false,
       issues: [
         {
           code: "DISCLOSURE_MISSING_TARGET",
-          message: "A plan can only be validated against an approved 1.1.0 disclosure with a destination target.",
+          message: "A plan can only be validated against an approved 1.1.0 or 1.4.0 disclosure with a destination target.",
         },
       ],
     };
@@ -106,11 +113,26 @@ export function validateIntentPlan(raw: unknown, disclosure: CloudDisclosurePayl
       issues: executable.map((item) => malformed(`Executable content at ${clipPath(item.path)}. Plans are never executed.`)),
     };
   }
-  const structured = validateStructuredOutput("integration-intent-plan", raw);
+  const kind = ranked ? "integration-intent-plan-ranked" : "integration-intent-plan";
+  let structured = validateStructuredOutput(kind, raw);
+  // Sprint 18F (recorded live failure: 7 whole plans lost to one over-long candidate list). The decoder cannot carry
+  // array bounds (ADR 0018), so a list longer than the canonical bound is an ENTRY problem: that entry is rejected,
+  // its field gets a normal question, and nothing is repaired. Any other schema violation still rejects the plan.
+  const overLong = new Set<number>();
+  if (!structured.valid && raw && typeof raw === "object" && Array.isArray((raw as { fields?: unknown }).fields)) {
+    const bound = /^\/fields\/(\d+)\/(from|alternatives|evidence|missing): must NOT have more than \d+ items$/;
+    const matches = structured.issues.map((issue) => bound.exec(issue));
+    if (matches.every((match) => match !== null)) {
+      for (const match of matches) overLong.add(Number(match![1]));
+      const fields = (raw as { fields: unknown[] }).fields;
+      const rest = { ...(raw as object), fields: fields.filter((_, index) => !overLong.has(index)) };
+      if (rest.fields.length > 0) structured = validateStructuredOutput(kind, rest);
+    }
+  }
   if (!structured.valid) {
     return {
       ok: false,
-      issues: [malformed("The plan does not match Integration Intent Plan 1.0.0.")].concat(
+      issues: [malformed(`The plan does not match Integration Intent Plan ${ranked ? RANKED_PLAN_VERSION : INTENT_PLAN_VERSION}.`)].concat(
         structured.issues.slice(0, 16).map((issue) => malformed(`Schema: ${clipIssue(issue)}`)),
       ),
     };
@@ -123,7 +145,14 @@ export function validateIntentPlan(raw: unknown, disclosure: CloudDisclosurePayl
   for (const entry of plan.fields) perTarget.set(entry.target, (perTarget.get(entry.target) ?? 0) + 1);
 
   const entries: ValidatedEntry[] = plan.fields.map((entry, entryIndex) =>
-    judgeEntry(entry, entryIndex, targets.get(entry.target), (perTarget.get(entry.target) ?? 0) > 1, aliases),
+    overLong.has(entryIndex)
+      ? {
+          entryIndex,
+          entry,
+          verdict: "rejected" as const,
+          issues: [{ code: "INCONSISTENT_ENTRY" as const, entryIndex, ...(targets.has(entry.target) ? { target: entry.target } : {}), message: `Entry ${entryIndex + 1}: more candidate fields than a plan entry allows; this entry was set aside and its field will be asked.` }],
+        }
+      : judgeEntry(entry, entryIndex, targets.get(entry.target), (perTarget.get(entry.target) ?? 0) > 1, aliases),
   );
 
   const addressed = new Set(entries.filter((item) => item.verdict !== "rejected").map((item) => item.entry.target));
@@ -132,7 +161,7 @@ export function validateIntentPlan(raw: unknown, disclosure: CloudDisclosurePayl
   return {
     ok: true,
     value: {
-      planVersion: INTENT_PLAN_VERSION,
+      planVersion: ranked ? RANKED_PLAN_VERSION : INTENT_PLAN_VERSION,
       plan,
       entries,
       unaddressed,
@@ -160,6 +189,10 @@ function judgeEntry(
 
   for (const alias of entry.from) {
     if (!aliases.has(alias)) add("UNKNOWN_ALIAS", `source alias ${quote(alias)} was not disclosed.`);
+  }
+
+  for (const alias of entry.alternatives ?? []) {
+    if (!aliases.has(alias)) add("UNKNOWN_ALIAS", `alternative source alias ${quote(alias)} was not disclosed.`);
   }
 
   for (const reason of inconsistencies(entry)) add("INCONSISTENT_ENTRY", reason);
@@ -205,6 +238,8 @@ function inconsistencies(entry: IntentPlanEntry): string[] {
   if (entry.inputFormat !== undefined && transform !== "parse_date") out.push("inputFormat is only meaningful for parse_date.");
   if (entry.separator !== undefined && transform !== "concat") out.push("separator is only meaningful for concat.");
   if (entry.valueMap !== undefined && transform !== "map_enum") out.push("valueMap is only meaningful for map_enum.");
+  if ((entry.alternatives ?? []).some((alias) => from.includes(alias))) out.push("an alternative repeats an alias of from.");
+  if (status === "no_source" && (entry.alternatives ?? []).length > 0) out.push("a no_source field cannot name alternatives.");
 
   switch (status) {
     case "ready": {

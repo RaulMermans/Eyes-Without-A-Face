@@ -1,0 +1,1043 @@
+{
+  "scenarioId": "orchard-harvest-lots-to-cold-storage-intake",
+  "split": "dev",
+  "track": "general",
+  "industry": "apple orchard cooperative harvest lots",
+  "sourceLanguage": "it",
+  "description": "Harvest lot export of a fictional apple growers' cooperative (Italian snake_case, nested lot and member) to be loaded into a cold-storage intake system.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "numero_bins": 8,
+      "varieta": "Campione interno",
+      "data_conferimento": "12/10/2025",
+      "cella": null,
+      "data_raccolta": "10/10/2025",
+      "peso_netto_kg": 3027.6,
+      "riga": 1,
+      "calibro": "65-70",
+      "socio": {
+        "ragione_sociale": "Melinda Rossa Snc",
+        "codice": "SOC-013",
+        "referente": "Ginevra Greco"
+      },
+      "peso_lordo_kg": 9470.0,
+      "categoria_qualita": "Extra",
+      "caposquadra": "Ivo Dallapè",
+      "prezzo_kg": 0.53,
+      "trattamento": "1-MCP",
+      "lotto": {
+        "bolla_n": "DDT 08121",
+        "codice": "LT25-0313"
+      },
+      "stato_fattura": "Da fatturare"
+    },
+    {
+      "calibro": "70-75",
+      "data_conferimento": "10/10/2025",
+      "peso_lordo_kg": 9579.4,
+      "trattamento": "1-MCP",
+      "numero_bins": 24,
+      "lotto": {
+        "bolla_n": "DDT 08124",
+        "codice": "LT25-0314"
+      },
+      "peso_netto_kg": 6301.1,
+      "socio": {
+        "ragione_sociale": "Melinda Rossa Snc",
+        "codice": "SOC-020",
+        "referente": "Beatrice De Luca"
+      },
+      "caposquadra": "Marta Zanon",
+      "prezzo_kg": 0.62,
+      "categoria_qualita": "II cat.",
+      "stato_fattura": "Pagata",
+      "varieta": "Gala",
+      "riga": 2,
+      "data_raccolta": "03/09/2025"
+    },
+    {
+      "lotto": {
+        "bolla_n": "DDT 08126",
+        "codice": "LT25-0320"
+      },
+      "numero_bins": 27,
+      "stato_fattura": "Pagata",
+      "data_raccolta": "04/09/2025",
+      "caposquadra": "Ivo Dallapè",
+      "calibro": "75-80",
+      "riga": 3,
+      "peso_lordo_kg": 7112.1,
+      "socio": {
+        "referente": "Sara Lombardi",
+        "codice": "SOC-027",
+        "ragione_sociale": "Az. Agr. Pomaria"
+      },
+      "prezzo_kg": 0.29,
+      "categoria_qualita": "Extra",
+      "trattamento": "Nessuno",
+      "peso_netto_kg": 2378.1,
+      "data_conferimento": "11/09/2025",
+      "cella": "C-04",
+      "varieta": "Fuji"
+    },
+    {
+      "peso_lordo_kg": 9776.2,
+      "data_raccolta": "08/10/2025",
+      "numero_bins": 11,
+      "stato_fattura": "Pagata",
+      "categoria_qualita": "Industria",
+      "socio": {
+        "codice": "SOC-033",
+        "ragione_sociale": "Frutteti Val di Non",
+        "referente": "Leonardo Rizzo"
+      },
+      "trattamento": "1-MCP",
+      "data_conferimento": "02/08/2025",
+      "caposquadra": "Ivo Dallapè",
+      "varieta": "Fuji",
+      "prezzo_kg": 0.32,
+      "calibro": "70-75",
+      "lotto": {
+        "bolla_n": "DDT 08130",
+        "codice": "LT25-0325"
+      },
+      "cella": "C-01",
+      "peso_netto_kg": 8084.2,
+      "riga": 4
+    },
+    {
+      "calibro": "65-70",
+      "lotto": {
+        "codice": "LT25-0328",
+        "bolla_n": "DDT 08134"
+      },
+      "caposquadra": "Ivo Dallapè",
+      "peso_lordo_kg": 8167.1,
+      "peso_netto_kg": 9603.4,
+      "varieta": "Fuji",
+      "prezzo_kg": 0.36,
+      "trattamento": "1-MCP",
+      "categoria_qualita": "Extra",
+      "socio": {
+        "codice": "SOC-037",
+        "referente": "Beatrice Rizzo",
+        "ragione_sociale": "Melinda Rossa Snc"
+      },
+      "data_conferimento": "04/11/2025",
+      "numero_bins": 20,
+      "riga": 5,
+      "stato_fattura": "Da fatturare",
+      "data_raccolta": "06/10/2025"
+    },
+    {
+      "caposquadra": "Ivo Dallapè",
+      "trattamento": "Nessuno",
+      "peso_netto_kg": 3431.2,
+      "numero_bins": 17,
+      "prezzo_kg": 0.33,
+      "stato_fattura": "Da fatturare",
+      "varieta": "Golden Delicious",
+      "socio": {
+        "referente": "Riccardo Mancini",
+        "codice": "SOC-045",
+        "ragione_sociale": "Frutteti Val di Non"
+      },
+      "categoria_qualita": "Extra",
+      "lotto": {
+        "codice": "LT25-0333",
+        "bolla_n": "DDT 08135"
+      },
+      "data_raccolta": "09/10/2025",
+      "calibro": "70-75",
+      "peso_lordo_kg": 4266.4,
+      "data_conferimento": "04/10/2025",
+      "cella": "C-12",
+      "riga": 6
+    },
+    {
+      "trattamento": "1-MCP",
+      "prezzo_kg": 0.41,
+      "cella": "C-04",
+      "peso_netto_kg": 5767.6,
+      "stato_fattura": "Pagata",
+      "categoria_qualita": "Extra",
+      "caposquadra": "Bruno Pellegrini",
+      "numero_bins": 28,
+      "data_raccolta": "05/09/2025",
+      "data_conferimento": "03/09/2025",
+      "peso_lordo_kg": 4872.0,
+      "calibro": "70-75",
+      "lotto": {
+        "bolla_n": "DDT 08140",
+        "codice": "LT25-0335"
+      },
+      "socio": {
+        "ragione_sociale": "Az. Agr. Pomaria",
+        "codice": "SOC-049",
+        "referente": "Federico De Luca"
+      },
+      "riga": 7,
+      "varieta": "Fuji"
+    },
+    {
+      "peso_netto_kg": 2135.5,
+      "numero_bins": 29,
+      "stato_fattura": "Da fatturare",
+      "data_raccolta": "02/10/2025",
+      "varieta": "Gala",
+      "riga": 8,
+      "cella": "C-07",
+      "caposquadra": "Ivo Dallapè",
+      "data_conferimento": "03/10/2025",
+      "lotto": {
+        "codice": "LT25-0339",
+        "bolla_n": "DDT 08143"
+      },
+      "categoria_qualita": "II cat.",
+      "prezzo_kg": 0.41,
+      "calibro": "70-75",
+      "socio": {
+        "codice": "SOC-057",
+        "ragione_sociale": "Agricola Sole Alto",
+        "referente": "Martina Moretti"
+      },
+      "trattamento": "Nessuno",
+      "peso_lordo_kg": 4946.8
+    },
+    {
+      "trattamento": "1-MCP",
+      "calibro": "75-80",
+      "cella": null,
+      "data_raccolta": "11/10/2025",
+      "categoria_qualita": "II cat.",
+      "stato_fattura": "Anticipo versato",
+      "varieta": "Fuji",
+      "peso_netto_kg": 7524.8,
+      "prezzo_kg": 0.52,
+      "socio": {
+        "codice": "SOC-064",
+        "ragione_sociale": "Cascina dei Meli",
+        "referente": "Elena Bianchi"
+      },
+      "numero_bins": 14,
+      "riga": 9,
+      "lotto": {
+        "codice": "LT25-0343",
+        "bolla_n": "DDT 08146"
+      },
+      "caposquadra": "Ivo Dallapè",
+      "data_conferimento": "07/09/2025",
+      "peso_lordo_kg": 7724.9
+    },
+    {
+      "stato_fattura": "Pagata",
+      "prezzo_kg": 0.35,
+      "calibro": "65-70",
+      "peso_lordo_kg": 9024.2,
+      "cella": "C-01",
+      "peso_netto_kg": 3103.8,
+      "data_conferimento": "12/09/2025",
+      "riga": 10,
+      "numero_bins": 23,
+      "trattamento": "Nessuno",
+      "socio": {
+        "referente": "Davide Colombo",
+        "codice": "SOC-070",
+        "ragione_sociale": "Az. Agr. Pomaria"
+      },
+      "data_raccolta": "05/09/2025",
+      "lotto": {
+        "codice": "LT25-0346",
+        "bolla_n": "DDT 08149"
+      },
+      "caposquadra": "Bruno Pellegrini",
+      "categoria_qualita": "Extra",
+      "varieta": "Renetta Canada"
+    },
+    {
+      "trattamento": "1-MCP",
+      "socio": {
+        "referente": "Sara Moretti",
+        "ragione_sociale": "Frutteti Val di Non",
+        "codice": "SOC-073"
+      },
+      "prezzo_kg": 0.57,
+      "stato_fattura": "Anticipo versato",
+      "caposquadra": "Marta Zanon",
+      "varieta": "Renetta Canada",
+      "numero_bins": 32,
+      "categoria_qualita": "Industria",
+      "peso_lordo_kg": 2283.1,
+      "lotto": {
+        "bolla_n": "DDT 08151",
+        "codice": "LT25-0351"
+      },
+      "data_conferimento": "01/10/2025",
+      "data_raccolta": "05/09/2025",
+      "cella": "C-07",
+      "riga": 11,
+      "calibro": "65-70",
+      "peso_netto_kg": 9506.5
+    },
+    {
+      "socio": {
+        "ragione_sociale": "Az. Agr. Pomaria",
+        "referente": "Aurora Russo",
+        "codice": "SOC-080"
+      },
+      "data_conferimento": "09/09/2025",
+      "cella": "C-01",
+      "lotto": {
+        "codice": "LT25-0356",
+        "bolla_n": "DDT 08154"
+      },
+      "numero_bins": 24,
+      "caposquadra": "Ivo Dallapè",
+      "peso_netto_kg": 6152.4,
+      "trattamento": "Nessuno",
+      "varieta": "Campione interno",
+      "data_raccolta": "04/10/2025",
+      "prezzo_kg": 0.58,
+      "categoria_qualita": "II cat.",
+      "stato_fattura": "Pagata",
+      "calibro": "75-80",
+      "riga": 12,
+      "peso_lordo_kg": 8372.7
+    },
+    {
+      "peso_netto_kg": 3039.1,
+      "peso_lordo_kg": 9474.8,
+      "calibro": "70-75",
+      "cella": "C-07",
+      "prezzo_kg": 0.35,
+      "lotto": {
+        "bolla_n": "DDT 08156",
+        "codice": "LT25-0359"
+      },
+      "numero_bins": 26,
+      "trattamento": "Nessuno",
+      "categoria_qualita": "Industria",
+      "varieta": "Fuji",
+      "riga": 13,
+      "data_conferimento": "11/10/2025",
+      "data_raccolta": "06/09/2025",
+      "socio": {
+        "codice": "SOC-086",
+        "referente": "Matteo Marino",
+        "ragione_sociale": "Agricola Sole Alto"
+      },
+      "caposquadra": "Bruno Pellegrini",
+      "stato_fattura": "Pagata"
+    },
+    {
+      "data_raccolta": "12/09/2025",
+      "stato_fattura": "Da fatturare",
+      "caposquadra": "Marta Zanon",
+      "cella": "C-12",
+      "riga": 14,
+      "varieta": "Gala",
+      "numero_bins": 7,
+      "peso_netto_kg": 5330.9,
+      "lotto": {
+        "bolla_n": "DDT 08159",
+        "codice": "LT25-0363"
+      },
+      "categoria_qualita": "I cat.",
+      "peso_lordo_kg": 2374.5,
+      "trattamento": "1-MCP",
+      "prezzo_kg": 0.35,
+      "socio": {
+        "referente": "Davide Conti",
+        "codice": "SOC-092",
+        "ragione_sociale": "Frutteti Val di Non"
+      },
+      "calibro": "65-70",
+      "data_conferimento": "11/10/2025"
+    },
+    {
+      "calibro": "65-70",
+      "categoria_qualita": "II cat.",
+      "lotto": {
+        "codice": "LT25-0366",
+        "bolla_n": "DDT 08162"
+      },
+      "varieta": "Gala",
+      "riga": 15,
+      "stato_fattura": "Anticipo versato",
+      "trattamento": "1-MCP",
+      "data_raccolta": "06/10/2025",
+      "numero_bins": 23,
+      "peso_lordo_kg": 8586.4,
+      "data_conferimento": "08/10/2025",
+      "prezzo_kg": 0.38,
+      "peso_netto_kg": 2909.3,
+      "socio": {
+        "ragione_sociale": "Az. Agr. Pomaria   ",
+        "referente": "Sofia Moretti",
+        "codice": "SOC-097"
+      },
+      "cella": "C-07",
+      "caposquadra": "Marta Zanon"
+    },
+    {
+      "prezzo_kg": 0.59,
+      "socio": {
+        "codice": "SOC-106",
+        "ragione_sociale": "Melinda Rossa Snc",
+        "referente": "Elena Ferrari"
+      },
+      "lotto": {
+        "bolla_n": "DDT 08167",
+        "codice": "LT25-0371"
+      },
+      "peso_netto_kg": 8453.2,
+      "caposquadra": "Bruno Pellegrini",
+      "data_conferimento": "02/08/2025",
+      "calibro": "65-70",
+      "peso_lordo_kg": 5407.6,
+      "categoria_qualita": "I cat.",
+      "data_raccolta": "02/09/2025",
+      "riga": 16,
+      "stato_fattura": "Anticipo versato",
+      "numero_bins": 6,
+      "trattamento": "Nessuno",
+      "varieta": "Gala",
+      "cella": "C-04"
+    },
+    {
+      "stato_fattura": "Pagata",
+      "peso_netto_kg": 6313.5,
+      "cella": "C-12",
+      "varieta": "Renetta Canada",
+      "prezzo_kg": 0.56,
+      "riga": 17,
+      "caposquadra": "Ivo Dallapè",
+      "data_raccolta": "07/09/2025",
+      "lotto": {
+        "bolla_n": "DDT 08170",
+        "codice": "LT25-0374"
+      },
+      "trattamento": "1-MCP",
+      "calibro": "65-70",
+      "peso_lordo_kg": 6271.0,
+      "categoria_qualita": "II cat.",
+      "numero_bins": 23,
+      "data_conferimento": "12/10/2025",
+      "socio": {
+        "ragione_sociale": "Melinda Rossa Snc",
+        "referente": "Giulia Russo",
+        "codice": "SOC-112"
+      }
+    },
+    {
+      "calibro": "70-75",
+      "data_raccolta": "01/10/2025",
+      "trattamento": "1-MCP",
+      "data_conferimento": "04/10/2025",
+      "peso_netto_kg": 4693.0,
+      "socio": {
+        "codice": "SOC-114",
+        "ragione_sociale": "Cascina dei Meli   ",
+        "referente": "Francesco Moretti"
+      },
+      "numero_bins": 7,
+      "categoria_qualita": "I cat.",
+      "cella": "C-01",
+      "peso_lordo_kg": 9728.7,
+      "prezzo_kg": 0.38,
+      "caposquadra": "Ivo Dallapè",
+      "stato_fattura": "Pagata",
+      "riga": 18,
+      "lotto": {
+        "bolla_n": "DDT 08173",
+        "codice": "LT25-0381"
+      },
+      "varieta": "Renetta Canada"
+    },
+    {
+      "peso_netto_kg": 5658.9,
+      "peso_lordo_kg": 6865.5,
+      "prezzo_kg": 0.47,
+      "stato_fattura": "Pagata",
+      "caposquadra": "Ivo Dallapè",
+      "numero_bins": 8,
+      "trattamento": "1-MCP",
+      "socio": {
+        "ragione_sociale": " Az. Agr. Pomaria  ",
+        "referente": "Francesco Costa",
+        "codice": "SOC-123"
+      },
+      "varieta": "Golden Delicious",
+      "riga": 19,
+      "cella": "C-01",
+      "data_raccolta": "08/10/2025",
+      "calibro": "65-70",
+      "lotto": {
+        "bolla_n": "DDT 08175",
+        "codice": "LT25-0382"
+      },
+      "data_conferimento": "09/10/2025"
+    },
+    {
+      "caposquadra": "Bruno Pellegrini",
+      "stato_fattura": "Anticipo versato",
+      "calibro": "65-70",
+      "peso_lordo_kg": 4897.0,
+      "cella": "C-12",
+      "numero_bins": 10,
+      "peso_netto_kg": 3422.4,
+      "categoria_qualita": "II cat.",
+      "riga": 20,
+      "varieta": "Fuji",
+      "data_conferimento": "12/09/2025",
+      "trattamento": "1-MCP",
+      "lotto": {
+        "codice": "LT25-0386",
+        "bolla_n": "DDT 08177"
+      },
+      "prezzo_kg": 0.33,
+      "data_raccolta": "01/09/2025",
+      "socio": {
+        "referente": "Beatrice Bruno",
+        "codice": "SOC-127",
+        "ragione_sociale": "Az. Agr. Pomaria"
+      }
+    },
+    {
+      "data_conferimento": "07/11/2025",
+      "socio": {
+        "ragione_sociale": "  Az. Agr. Pomaria",
+        "codice": "SOC-134",
+        "referente": "Lorenzo Ricci"
+      },
+      "caposquadra": "Ivo Dallapè",
+      "cella": "C-04",
+      "riga": 21,
+      "numero_bins": 11,
+      "trattamento": "1-MCP",
+      "prezzo_kg": 0.41,
+      "calibro": "75-80",
+      "categoria_qualita": "I cat.",
+      "stato_fattura": "Da fatturare",
+      "data_raccolta": "05/09/2025",
+      "peso_netto_kg": 2793.4,
+      "lotto": {
+        "codice": "LT25-0391",
+        "bolla_n": "DDT 08181"
+      },
+      "varieta": "Renetta Canada",
+      "peso_lordo_kg": 10243.5
+    },
+    {
+      "stato_fattura": "Anticipo versato",
+      "peso_lordo_kg": 7206.7,
+      "prezzo_kg": 0.42,
+      "numero_bins": 12,
+      "riga": 22,
+      "data_conferimento": "01/10/2025",
+      "caposquadra": "Marta Zanon",
+      "categoria_qualita": "II cat.",
+      "peso_netto_kg": 6943.1,
+      "trattamento": "Nessuno",
+      "cella": null,
+      "calibro": "70-75",
+      "lotto": {
+        "codice": "LT25-0397",
+        "bolla_n": "DDT 08185"
+      },
+      "data_raccolta": "09/08/2025",
+      "socio": {
+        "referente": "Alice Russo",
+        "ragione_sociale": "Agricola Sole Alto",
+        "codice": "SOC-143"
+      },
+      "varieta": "Campione interno"
+    },
+    {
+      "stato_fattura": "Pagata",
+      "numero_bins": 10,
+      "categoria_qualita": "II cat.",
+      "cella": "C-01",
+      "peso_lordo_kg": 6492.6,
+      "riga": 23,
+      "trattamento": "Nessuno",
+      "lotto": {
+        "bolla_n": "DDT 08186",
+        "codice": "LT25-0400"
+      },
+      "calibro": "70-75",
+      "socio": {
+        "ragione_sociale": "Agricola Sole Alto",
+        "codice": "SOC-147",
+        "referente": "Giulia Greco"
+      },
+      "data_raccolta": "04/10/2025",
+      "caposquadra": "Ivo Dallapè",
+      "data_conferimento": "04/09/2025",
+      "peso_netto_kg": 8721.9,
+      "prezzo_kg": 0.52,
+      "varieta": "Campione interno"
+    },
+    {
+      "calibro": "70-75",
+      "caposquadra": "Ivo Dallapè",
+      "peso_netto_kg": 7293.6,
+      "cella": "C-07",
+      "data_raccolta": "04/09/2025",
+      "stato_fattura": "Pagata",
+      "numero_bins": 7,
+      "varieta": "Fuji",
+      "trattamento": "1-MCP",
+      "data_conferimento": "01/10/2025",
+      "riga": 24,
+      "socio": {
+        "referente": "Federico Moretti",
+        "codice": "SOC-152",
+        "ragione_sociale": "Cascina dei Meli"
+      },
+      "lotto": {
+        "bolla_n": "DDT 08189",
+        "codice": "LT25-0405"
+      },
+      "categoria_qualita": "I cat.",
+      "peso_lordo_kg": 9933.6,
+      "prezzo_kg": 0.44
+    },
+    {
+      "categoria_qualita": "I cat.",
+      "prezzo_kg": 0.33,
+      "varieta": "Fuji",
+      "calibro": "65-70",
+      "trattamento": "1-MCP",
+      "stato_fattura": "Da fatturare",
+      "socio": {
+        "ragione_sociale": "Agricola Sole Alto",
+        "codice": "SOC-160",
+        "referente": "Aurora Lombardi"
+      },
+      "peso_netto_kg": 3153.4,
+      "numero_bins": 19,
+      "caposquadra": "Ivo Dallapè",
+      "peso_lordo_kg": 5964.0,
+      "riga": 25,
+      "data_raccolta": "02/09/2025",
+      "cella": "C-12",
+      "lotto": {
+        "codice": "LT25-0407",
+        "bolla_n": "DDT 08192"
+      },
+      "data_conferimento": "03/10/2025"
+    },
+    {
+      "prezzo_kg": 0.3,
+      "data_raccolta": "05/10/2025",
+      "peso_netto_kg": 8229.1,
+      "varieta": "Fuji",
+      "numero_bins": 7,
+      "socio": {
+        "ragione_sociale": "Frutteti Val di Non",
+        "referente": "Sofia De Luca",
+        "codice": "SOC-164"
+      },
+      "caposquadra": "Bruno Pellegrini",
+      "trattamento": "1-MCP",
+      "riga": 26,
+      "calibro": "65-70",
+      "lotto": {
+        "codice": "LT25-0413",
+        "bolla_n": "DDT 08197"
+      },
+      "stato_fattura": "Da fatturare",
+      "categoria_qualita": "I cat.",
+      "data_conferimento": "12/11/2025",
+      "peso_lordo_kg": 7158.8
+    },
+    {
+      "data_raccolta": "10/10/2025",
+      "lotto": {
+        "bolla_n": "DDT 08200",
+        "codice": "LT25-0414"
+      },
+      "prezzo_kg": 0.51,
+      "peso_netto_kg": 2070.8,
+      "categoria_qualita": null,
+      "stato_fattura": "Da fatturare",
+      "calibro": "65-70",
+      "numero_bins": 23,
+      "trattamento": "1-MCP",
+      "varieta": "Gala",
+      "peso_lordo_kg": 8169.8,
+      "data_conferimento": "06/08/2025",
+      "caposquadra": "Bruno Pellegrini",
+      "riga": 27,
+      "socio": {
+        "codice": "SOC-169",
+        "ragione_sociale": " Cascina dei Meli  ",
+        "referente": "Francesco Ferrari"
+      },
+      "cella": "C-04"
+    },
+    {
+      "peso_lordo_kg": 5144.7,
+      "prezzo_kg": 0.55,
+      "trattamento": "1-MCP",
+      "caposquadra": "Ivo Dallapè",
+      "calibro": "65-70",
+      "data_conferimento": "04/11/2025",
+      "riga": 28,
+      "lotto": {
+        "codice": "LT25-0421",
+        "bolla_n": "DDT 08201"
+      },
+      "stato_fattura": "Pagata",
+      "peso_netto_kg": 7826.6,
+      "socio": {
+        "ragione_sociale": "Cascina dei Meli",
+        "codice": "SOC-175",
+        "referente": "Riccardo Gallo"
+      },
+      "data_raccolta": "10/10/2025",
+      "cella": "C-12",
+      "varieta": "Gala",
+      "numero_bins": 11
+    },
+    {
+      "riga": 29,
+      "peso_lordo_kg": 9660.1,
+      "cella": null,
+      "stato_fattura": "Pagata",
+      "varieta": "Golden Delicious",
+      "prezzo_kg": 0.47,
+      "trattamento": "1-MCP",
+      "categoria_qualita": "I cat.",
+      "data_raccolta": "03/09/2025",
+      "lotto": {
+        "codice": "LT25-0423",
+        "bolla_n": "DDT 08206"
+      },
+      "socio": {
+        "ragione_sociale": "Cascina dei Meli",
+        "referente": "Francesco Giordano",
+        "codice": "SOC-182"
+      },
+      "data_conferimento": "07/11/2025",
+      "calibro": "70-75",
+      "peso_netto_kg": 3601.2,
+      "caposquadra": "Ivo Dallapè",
+      "numero_bins": 15
+    },
+    {
+      "lotto": {
+        "bolla_n": "DDT 08207",
+        "codice": "LT25-0428"
+      },
+      "prezzo_kg": 0.46,
+      "peso_netto_kg": 6211.2,
+      "caposquadra": "Bruno Pellegrini",
+      "calibro": "65-70",
+      "varieta": "Gala",
+      "riga": 30,
+      "categoria_qualita": "Industria",
+      "numero_bins": 23,
+      "data_conferimento": "12/11/2025",
+      "peso_lordo_kg": 10107.6,
+      "cella": "C-04",
+      "stato_fattura": "Pagata",
+      "socio": {
+        "codice": "SOC-189",
+        "ragione_sociale": "Frutteti Val di Non",
+        "referente": "Sara Greco"
+      },
+      "data_raccolta": "10/09/2025",
+      "trattamento": "Nessuno"
+    },
+    {
+      "stato_fattura": "Da fatturare",
+      "caposquadra": "Marta Zanon",
+      "data_raccolta": "05/09/2025",
+      "numero_bins": 13,
+      "varieta": "Fuji",
+      "prezzo_kg": 0.38,
+      "cella": "C-12",
+      "trattamento": "Nessuno",
+      "riga": 31,
+      "peso_lordo_kg": 8085.7,
+      "lotto": {
+        "bolla_n": "DDT 08212",
+        "codice": "LT25-0432"
+      },
+      "calibro": "70-75",
+      "categoria_qualita": null,
+      "peso_netto_kg": 1943.8,
+      "data_conferimento": "06/08/2025",
+      "socio": {
+        "referente": "Ginevra Giordano",
+        "ragione_sociale": "Az. Agr. Pomaria",
+        "codice": "SOC-197"
+      }
+    },
+    {
+      "varieta": "Golden Delicious",
+      "peso_netto_kg": 2173.5,
+      "prezzo_kg": 0.48,
+      "trattamento": "Nessuno",
+      "cella": "C-01",
+      "numero_bins": 12,
+      "riga": 32,
+      "categoria_qualita": "II cat.",
+      "peso_lordo_kg": 6507.4,
+      "data_conferimento": "08/10/2025",
+      "socio": {
+        "ragione_sociale": "Cascina dei Meli",
+        "codice": "SOC-200",
+        "referente": "Aurora Greco"
+      },
+      "data_raccolta": "11/10/2025",
+      "calibro": "65-70",
+      "caposquadra": "Marta Zanon",
+      "lotto": {
+        "codice": "LT25-0436",
+        "bolla_n": "DDT 08214"
+      },
+      "stato_fattura": "Da fatturare"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "lot_id": {
+        "type": "string",
+        "description": "Identifier of the harvest lot, printed on every bin label."
+      },
+      "grower_code": {
+        "type": "string",
+        "description": "Member code of the grower who delivered the lot."
+      },
+      "grower_name": {
+        "type": "string",
+        "description": "Registered name of the growing farm."
+      },
+      "variety": {
+        "type": "string",
+        "enum": [
+          "golden",
+          "fuji",
+          "gala",
+          "renetta"
+        ],
+        "description": "Apple variety of the lot."
+      },
+      "quality_grade": {
+        "type": "string",
+        "enum": [
+          "extra",
+          "class_1",
+          "class_2",
+          "processing"
+        ],
+        "description": "Grade."
+      },
+      "harvested_on": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the fruit was picked."
+      },
+      "net_weight_kg": {
+        "type": "number",
+        "description": "Net weight of the fruit in kilograms, without bins."
+      },
+      "storage_room": {
+        "type": "string",
+        "description": "Cold room the lot is assigned to, when already known."
+      },
+      "estimated_value_eur": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "lot_id",
+      "grower_code",
+      "grower_name",
+      "variety",
+      "harvested_on",
+      "net_weight_kg"
+    ]
+  },
+  "groundTruth": {
+    "lot_id": {
+      "source": "lotto.codice",
+      "transform": "copy",
+      "why": "lot code; bolla_n is the delivery note, riga the row"
+    },
+    "grower_code": {
+      "source": "socio.codice",
+      "transform": "copy",
+      "why": "member code"
+    },
+    "grower_name": {
+      "source": "socio.ragione_sociale",
+      "transform": "trim",
+      "why": "farm name, padded; referente is a person"
+    },
+    "variety": {
+      "source": "varieta",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Golden Delicious": "golden",
+        "Fuji": "fuji",
+        "Gala": "gala",
+        "Renetta Canada": "renetta",
+        "Campione interno": null
+      },
+      "why": "variety; internal samples are not member lots and need review"
+    },
+    "quality_grade": {
+      "source": "categoria_qualita",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Extra": "extra",
+        "I cat.": "class_1",
+        "II cat.": "class_2",
+        "Industria": "processing"
+      },
+      "why": "quality class; calibro is a size class"
+    },
+    "harvested_on": {
+      "source": "data_raccolta",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "harvest date (Italian day-first); conferimento is the delivery date"
+    },
+    "net_weight_kg": {
+      "source": "peso_netto_kg",
+      "transform": "copy",
+      "why": "net weight; lordo includes bins"
+    },
+    "storage_room": {
+      "source": "cella",
+      "transform": "copy",
+      "why": "cold room, null or missing"
+    },
+    "estimated_value_eur": {
+      "source": null,
+      "transform": "none",
+      "why": "not exported",
+      "unsupportedReason": "would need net weight multiplied by prezzo_kg"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "categoria_qualita",
+        "calibro"
+      ],
+      "correctFor": "quality_grade"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "lotto.codice",
+        "lotto.bolla_n"
+      ],
+      "correctFor": "lot_id"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "data_raccolta",
+        "data_conferimento"
+      ],
+      "correctFor": "harvested_on"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "socio.ragione_sociale",
+        "socio.referente"
+      ],
+      "correctFor": "grower_name"
+    }
+  ],
+  "sourceConcepts": {
+    "lotto.codice": "transaction-id",
+    "lotto.bolla_n": "other-identifier",
+    "riga": "other-identifier",
+    "socio.codice": "customer-id",
+    "socio.ragione_sociale": "organization-name",
+    "socio.referente": "person-name",
+    "varieta": "category",
+    "calibro": "category",
+    "categoria_qualita": "category",
+    "stato_fattura": "payment-status",
+    "data_raccolta": "start-date",
+    "data_conferimento": "other",
+    "peso_netto_kg": "quantity",
+    "peso_lordo_kg": "quantity",
+    "numero_bins": "quantity",
+    "cella": "other-identifier",
+    "trattamento": "category",
+    "caposquadra": "person-name",
+    "prezzo_kg": "amount"
+  },
+  "destinationConcepts": {
+    "lot_id": "transaction-id",
+    "grower_code": "customer-id",
+    "grower_name": "organization-name",
+    "variety": "category",
+    "quality_grade": "category",
+    "harvested_on": "start-date",
+    "net_weight_kg": "quantity",
+    "storage_room": "other-identifier",
+    "estimated_value_eur": "amount"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 0,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 1,
+      "outcome": "transformed",
+      "output": {
+        "lot_id": "LT25-0314",
+        "grower_code": "SOC-020",
+        "grower_name": "Melinda Rossa Snc",
+        "variety": "gala",
+        "quality_grade": "class_2",
+        "harvested_on": "2025-09-03",
+        "net_weight_kg": 6301.1
+      }
+    },
+    {
+      "recordIndex": 2,
+      "outcome": "transformed",
+      "output": {
+        "lot_id": "LT25-0320",
+        "grower_code": "SOC-027",
+        "grower_name": "Az. Agr. Pomaria",
+        "variety": "fuji",
+        "quality_grade": "extra",
+        "harvested_on": "2025-09-04",
+        "net_weight_kg": 2378.1,
+        "storage_room": "C-04"
+      }
+    },
+    {
+      "recordIndex": 8,
+      "outcome": "transformed",
+      "output": {
+        "lot_id": "LT25-0343",
+        "grower_code": "SOC-064",
+        "grower_name": "Cascina dei Meli",
+        "variety": "fuji",
+        "quality_grade": "class_2",
+        "harvested_on": "2025-10-11",
+        "net_weight_kg": 7524.8
+      }
+    }
+  ]
+}

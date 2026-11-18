@@ -2740,29 +2740,29 @@ var require_compile = /* @__PURE__ */ __commonJSMin(((exports) => {
 }));
 // node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/refs/data.json
 var data_exports = /* @__PURE__ */ __exportAll({
-	$id: () => $id$22,
+	$id: () => $id$23,
 	additionalProperties: () => false,
 	default: () => data_default,
-	description: () => description$13,
-	properties: () => properties$22,
-	required: () => required$13,
-	type: () => type$22
-}), $id$22, description$13, type$22, required$13, properties$22, data_default;
+	description: () => description$14,
+	properties: () => properties$23,
+	required: () => required$14,
+	type: () => type$23
+}), $id$23, description$14, type$23, required$14, properties$23, data_default;
 var init_data = __esmMin((() => {
-	$id$22 = "https://raw.githubusercontent.com/ajv-validator/ajv/master/lib/refs/data.json#";
-	description$13 = "Meta-schema for $data reference (JSON AnySchema extension proposal)";
-	type$22 = "object";
-	required$13 = ["$data"];
-	properties$22 = { "$data": {
+	$id$23 = "https://raw.githubusercontent.com/ajv-validator/ajv/master/lib/refs/data.json#";
+	description$14 = "Meta-schema for $data reference (JSON AnySchema extension proposal)";
+	type$23 = "object";
+	required$14 = ["$data"];
+	properties$23 = { "$data": {
 		"type": "string",
 		"anyOf": [{ "format": "relative-json-pointer" }, { "format": "json-pointer" }]
 	} };
 	data_default = {
-		$id: $id$22,
-		description: description$13,
-		type: type$22,
-		required: required$13,
-		properties: properties$22,
+		$id: $id$23,
+		description: description$14,
+		type: type$23,
+		required: required$14,
+		properties: properties$23,
 		additionalProperties: false
 	};
 }));
@@ -6400,19 +6400,19 @@ var require_discriminator = /* @__PURE__ */ __commonJSMin(((exports) => {
 var schema_exports = /* @__PURE__ */ __exportAll({
 	$comment: () => $comment,
 	$dynamicAnchor: () => $dynamicAnchor$7,
-	$id: () => $id$21,
-	$schema: () => $schema$21,
+	$id: () => $id$22,
+	$schema: () => $schema$22,
 	$vocabulary: () => $vocabulary$7,
 	allOf: () => allOf$1,
 	default: () => schema_default,
-	properties: () => properties$21,
-	title: () => title$21,
-	type: () => type$21
+	properties: () => properties$22,
+	title: () => title$22,
+	type: () => type$22
 });
-var $schema$21, $id$21, $vocabulary$7, $dynamicAnchor$7, title$21, allOf$1, type$21, $comment, properties$21, schema_default;
+var $schema$22, $id$22, $vocabulary$7, $dynamicAnchor$7, title$22, allOf$1, type$22, $comment, properties$22, schema_default;
 var init_schema = __esmMin((() => {
-	$schema$21 = "https://json-schema.org/draft/2020-12/schema";
-	$id$21 = "https://json-schema.org/draft/2020-12/schema";
+	$schema$22 = "https://json-schema.org/draft/2020-12/schema";
+	$id$22 = "https://json-schema.org/draft/2020-12/schema";
 	$vocabulary$7 = {
 		"https://json-schema.org/draft/2020-12/vocab/core": true,
 		"https://json-schema.org/draft/2020-12/vocab/applicator": true,
@@ -6423,7 +6423,7 @@ var init_schema = __esmMin((() => {
 		"https://json-schema.org/draft/2020-12/vocab/content": true
 	};
 	$dynamicAnchor$7 = "meta";
-	title$21 = "Core and Validation specifications meta-schema";
+	title$22 = "Core and Validation specifications meta-schema";
 	allOf$1 = [
 		{ "$ref": "meta/core" },
 		{ "$ref": "meta/applicator" },
@@ -6433,9 +6433,9 @@ var init_schema = __esmMin((() => {
 		{ "$ref": "meta/format-annotation" },
 		{ "$ref": "meta/content" }
 	];
-	type$21 = ["object", "boolean"];
+	type$22 = ["object", "boolean"];
 	$comment = "This meta-schema also defines keywords that have appeared in previous drafts in order to prevent incompatible extensions as they remain in common use.";
-	properties$21 = {
+	properties$22 = {
 		"definitions": {
 			"$comment": "\"definitions\" has been replaced by \"$defs\".",
 			"type": "object",
@@ -6462,38 +6462,38 @@ var init_schema = __esmMin((() => {
 		}
 	};
 	schema_default = {
-		$schema: $schema$21,
-		$id: $id$21,
+		$schema: $schema$22,
+		$id: $id$22,
 		$vocabulary: $vocabulary$7,
 		$dynamicAnchor: $dynamicAnchor$7,
-		title: title$21,
+		title: title$22,
 		allOf: allOf$1,
-		type: type$21,
+		type: type$22,
 		$comment,
-		properties: properties$21
+		properties: properties$22
 	};
 }));
 // node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/refs/json-schema-2020-12/meta/applicator.json
 var applicator_exports = /* @__PURE__ */ __exportAll({
-	$defs: () => $defs$14,
+	$defs: () => $defs$15,
 	$dynamicAnchor: () => $dynamicAnchor$6,
-	$id: () => $id$20,
-	$schema: () => $schema$20,
+	$id: () => $id$21,
+	$schema: () => $schema$21,
 	$vocabulary: () => $vocabulary$6,
 	default: () => applicator_default,
-	properties: () => properties$20,
-	title: () => title$20,
-	type: () => type$20
+	properties: () => properties$21,
+	title: () => title$21,
+	type: () => type$21
 });
-var $schema$20, $id$20, $vocabulary$6, $dynamicAnchor$6, title$20, type$20, properties$20, $defs$14, applicator_default;
+var $schema$21, $id$21, $vocabulary$6, $dynamicAnchor$6, title$21, type$21, properties$21, $defs$15, applicator_default;
 var init_applicator = __esmMin((() => {
-	$schema$20 = "https://json-schema.org/draft/2020-12/schema";
-	$id$20 = "https://json-schema.org/draft/2020-12/meta/applicator";
+	$schema$21 = "https://json-schema.org/draft/2020-12/schema";
+	$id$21 = "https://json-schema.org/draft/2020-12/meta/applicator";
 	$vocabulary$6 = { "https://json-schema.org/draft/2020-12/vocab/applicator": true };
 	$dynamicAnchor$6 = "meta";
-	title$20 = "Applicator vocabulary meta-schema";
-	type$20 = ["object", "boolean"];
-	properties$20 = {
+	title$21 = "Applicator vocabulary meta-schema";
+	type$21 = ["object", "boolean"];
+	properties$21 = {
 		"prefixItems": { "$ref": "#/$defs/schemaArray" },
 		"items": { "$dynamicRef": "#meta" },
 		"contains": { "$dynamicRef": "#meta" },
@@ -6523,110 +6523,110 @@ var init_applicator = __esmMin((() => {
 		"oneOf": { "$ref": "#/$defs/schemaArray" },
 		"not": { "$dynamicRef": "#meta" }
 	};
-	$defs$14 = { "schemaArray": {
+	$defs$15 = { "schemaArray": {
 		"type": "array",
 		"minItems": 1,
 		"items": { "$dynamicRef": "#meta" }
 	} };
 	applicator_default = {
-		$schema: $schema$20,
-		$id: $id$20,
+		$schema: $schema$21,
+		$id: $id$21,
 		$vocabulary: $vocabulary$6,
 		$dynamicAnchor: $dynamicAnchor$6,
-		title: title$20,
-		type: type$20,
-		properties: properties$20,
-		$defs: $defs$14
+		title: title$21,
+		type: type$21,
+		properties: properties$21,
+		$defs: $defs$15
 	};
 }));
 // node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/refs/json-schema-2020-12/meta/unevaluated.json
 var unevaluated_exports = /* @__PURE__ */ __exportAll({
 	$dynamicAnchor: () => $dynamicAnchor$5,
-	$id: () => $id$19,
-	$schema: () => $schema$19,
+	$id: () => $id$20,
+	$schema: () => $schema$20,
 	$vocabulary: () => $vocabulary$5,
 	default: () => unevaluated_default,
-	properties: () => properties$19,
-	title: () => title$19,
-	type: () => type$19
+	properties: () => properties$20,
+	title: () => title$20,
+	type: () => type$20
 });
-var $schema$19, $id$19, $vocabulary$5, $dynamicAnchor$5, title$19, type$19, properties$19, unevaluated_default;
+var $schema$20, $id$20, $vocabulary$5, $dynamicAnchor$5, title$20, type$20, properties$20, unevaluated_default;
 var init_unevaluated = __esmMin((() => {
-	$schema$19 = "https://json-schema.org/draft/2020-12/schema";
-	$id$19 = "https://json-schema.org/draft/2020-12/meta/unevaluated";
+	$schema$20 = "https://json-schema.org/draft/2020-12/schema";
+	$id$20 = "https://json-schema.org/draft/2020-12/meta/unevaluated";
 	$vocabulary$5 = { "https://json-schema.org/draft/2020-12/vocab/unevaluated": true };
 	$dynamicAnchor$5 = "meta";
-	title$19 = "Unevaluated applicator vocabulary meta-schema";
-	type$19 = ["object", "boolean"];
-	properties$19 = {
+	title$20 = "Unevaluated applicator vocabulary meta-schema";
+	type$20 = ["object", "boolean"];
+	properties$20 = {
 		"unevaluatedItems": { "$dynamicRef": "#meta" },
 		"unevaluatedProperties": { "$dynamicRef": "#meta" }
 	};
 	unevaluated_default = {
-		$schema: $schema$19,
-		$id: $id$19,
+		$schema: $schema$20,
+		$id: $id$20,
 		$vocabulary: $vocabulary$5,
 		$dynamicAnchor: $dynamicAnchor$5,
-		title: title$19,
-		type: type$19,
-		properties: properties$19
+		title: title$20,
+		type: type$20,
+		properties: properties$20
 	};
 }));
 // node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/refs/json-schema-2020-12/meta/content.json
 var content_exports = /* @__PURE__ */ __exportAll({
 	$dynamicAnchor: () => $dynamicAnchor$4,
-	$id: () => $id$18,
-	$schema: () => $schema$18,
+	$id: () => $id$19,
+	$schema: () => $schema$19,
 	$vocabulary: () => $vocabulary$4,
 	default: () => content_default,
-	properties: () => properties$18,
-	title: () => title$18,
-	type: () => type$18
+	properties: () => properties$19,
+	title: () => title$19,
+	type: () => type$19
 });
-var $schema$18, $id$18, $vocabulary$4, $dynamicAnchor$4, title$18, type$18, properties$18, content_default;
+var $schema$19, $id$19, $vocabulary$4, $dynamicAnchor$4, title$19, type$19, properties$19, content_default;
 var init_content = __esmMin((() => {
-	$schema$18 = "https://json-schema.org/draft/2020-12/schema";
-	$id$18 = "https://json-schema.org/draft/2020-12/meta/content";
+	$schema$19 = "https://json-schema.org/draft/2020-12/schema";
+	$id$19 = "https://json-schema.org/draft/2020-12/meta/content";
 	$vocabulary$4 = { "https://json-schema.org/draft/2020-12/vocab/content": true };
 	$dynamicAnchor$4 = "meta";
-	title$18 = "Content vocabulary meta-schema";
-	type$18 = ["object", "boolean"];
-	properties$18 = {
+	title$19 = "Content vocabulary meta-schema";
+	type$19 = ["object", "boolean"];
+	properties$19 = {
 		"contentEncoding": { "type": "string" },
 		"contentMediaType": { "type": "string" },
 		"contentSchema": { "$dynamicRef": "#meta" }
 	};
 	content_default = {
-		$schema: $schema$18,
-		$id: $id$18,
+		$schema: $schema$19,
+		$id: $id$19,
 		$vocabulary: $vocabulary$4,
 		$dynamicAnchor: $dynamicAnchor$4,
-		title: title$18,
-		type: type$18,
-		properties: properties$18
+		title: title$19,
+		type: type$19,
+		properties: properties$19
 	};
 }));
 // node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/refs/json-schema-2020-12/meta/core.json
 var core_exports = /* @__PURE__ */ __exportAll({
-	$defs: () => $defs$13,
+	$defs: () => $defs$14,
 	$dynamicAnchor: () => $dynamicAnchor$3,
-	$id: () => $id$17,
-	$schema: () => $schema$17,
+	$id: () => $id$18,
+	$schema: () => $schema$18,
 	$vocabulary: () => $vocabulary$3,
 	default: () => core_default,
-	properties: () => properties$17,
-	title: () => title$17,
-	type: () => type$17
+	properties: () => properties$18,
+	title: () => title$18,
+	type: () => type$18
 });
-var $schema$17, $id$17, $vocabulary$3, $dynamicAnchor$3, title$17, type$17, properties$17, $defs$13, core_default;
+var $schema$18, $id$18, $vocabulary$3, $dynamicAnchor$3, title$18, type$18, properties$18, $defs$14, core_default;
 var init_core = __esmMin((() => {
-	$schema$17 = "https://json-schema.org/draft/2020-12/schema";
-	$id$17 = "https://json-schema.org/draft/2020-12/meta/core";
+	$schema$18 = "https://json-schema.org/draft/2020-12/schema";
+	$id$18 = "https://json-schema.org/draft/2020-12/meta/core";
 	$vocabulary$3 = { "https://json-schema.org/draft/2020-12/vocab/core": true };
 	$dynamicAnchor$3 = "meta";
-	title$17 = "Core vocabulary meta-schema";
-	type$17 = ["object", "boolean"];
-	properties$17 = {
+	title$18 = "Core vocabulary meta-schema";
+	type$18 = ["object", "boolean"];
+	properties$18 = {
 		"$id": {
 			"$ref": "#/$defs/uriReferenceString",
 			"$comment": "Non-empty fragments not allowed.",
@@ -6648,7 +6648,7 @@ var init_core = __esmMin((() => {
 			"additionalProperties": { "$dynamicRef": "#meta" }
 		}
 	};
-	$defs$13 = {
+	$defs$14 = {
 		"anchorString": {
 			"type": "string",
 			"pattern": "^[A-Za-z_][-A-Za-z0-9._]*$"
@@ -6663,66 +6663,66 @@ var init_core = __esmMin((() => {
 		}
 	};
 	core_default = {
-		$schema: $schema$17,
-		$id: $id$17,
+		$schema: $schema$18,
+		$id: $id$18,
 		$vocabulary: $vocabulary$3,
 		$dynamicAnchor: $dynamicAnchor$3,
-		title: title$17,
-		type: type$17,
-		properties: properties$17,
-		$defs: $defs$13
+		title: title$18,
+		type: type$18,
+		properties: properties$18,
+		$defs: $defs$14
 	};
 }));
 // node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/refs/json-schema-2020-12/meta/format-annotation.json
 var format_annotation_exports = /* @__PURE__ */ __exportAll({
 	$dynamicAnchor: () => $dynamicAnchor$2,
-	$id: () => $id$16,
-	$schema: () => $schema$16,
+	$id: () => $id$17,
+	$schema: () => $schema$17,
 	$vocabulary: () => $vocabulary$2,
 	default: () => format_annotation_default,
-	properties: () => properties$16,
-	title: () => title$16,
-	type: () => type$16
+	properties: () => properties$17,
+	title: () => title$17,
+	type: () => type$17
 });
-var $schema$16, $id$16, $vocabulary$2, $dynamicAnchor$2, title$16, type$16, properties$16, format_annotation_default;
+var $schema$17, $id$17, $vocabulary$2, $dynamicAnchor$2, title$17, type$17, properties$17, format_annotation_default;
 var init_format_annotation = __esmMin((() => {
-	$schema$16 = "https://json-schema.org/draft/2020-12/schema";
-	$id$16 = "https://json-schema.org/draft/2020-12/meta/format-annotation";
+	$schema$17 = "https://json-schema.org/draft/2020-12/schema";
+	$id$17 = "https://json-schema.org/draft/2020-12/meta/format-annotation";
 	$vocabulary$2 = { "https://json-schema.org/draft/2020-12/vocab/format-annotation": true };
 	$dynamicAnchor$2 = "meta";
-	title$16 = "Format vocabulary meta-schema for annotation results";
-	type$16 = ["object", "boolean"];
-	properties$16 = { "format": { "type": "string" } };
+	title$17 = "Format vocabulary meta-schema for annotation results";
+	type$17 = ["object", "boolean"];
+	properties$17 = { "format": { "type": "string" } };
 	format_annotation_default = {
-		$schema: $schema$16,
-		$id: $id$16,
+		$schema: $schema$17,
+		$id: $id$17,
 		$vocabulary: $vocabulary$2,
 		$dynamicAnchor: $dynamicAnchor$2,
-		title: title$16,
-		type: type$16,
-		properties: properties$16
+		title: title$17,
+		type: type$17,
+		properties: properties$17
 	};
 }));
 // node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/refs/json-schema-2020-12/meta/meta-data.json
 var meta_data_exports = /* @__PURE__ */ __exportAll({
 	$dynamicAnchor: () => $dynamicAnchor$1,
-	$id: () => $id$15,
-	$schema: () => $schema$15,
+	$id: () => $id$16,
+	$schema: () => $schema$16,
 	$vocabulary: () => $vocabulary$1,
 	default: () => meta_data_default,
-	properties: () => properties$15,
-	title: () => title$15,
-	type: () => type$15
+	properties: () => properties$16,
+	title: () => title$16,
+	type: () => type$16
 });
-var $schema$15, $id$15, $vocabulary$1, $dynamicAnchor$1, title$15, type$15, properties$15, meta_data_default;
+var $schema$16, $id$16, $vocabulary$1, $dynamicAnchor$1, title$16, type$16, properties$16, meta_data_default;
 var init_meta_data = __esmMin((() => {
-	$schema$15 = "https://json-schema.org/draft/2020-12/schema";
-	$id$15 = "https://json-schema.org/draft/2020-12/meta/meta-data";
+	$schema$16 = "https://json-schema.org/draft/2020-12/schema";
+	$id$16 = "https://json-schema.org/draft/2020-12/meta/meta-data";
 	$vocabulary$1 = { "https://json-schema.org/draft/2020-12/vocab/meta-data": true };
 	$dynamicAnchor$1 = "meta";
-	title$15 = "Meta-data vocabulary meta-schema";
-	type$15 = ["object", "boolean"];
-	properties$15 = {
+	title$16 = "Meta-data vocabulary meta-schema";
+	type$16 = ["object", "boolean"];
+	properties$16 = {
 		"title": { "type": "string" },
 		"description": { "type": "string" },
 		"default": true,
@@ -6744,36 +6744,36 @@ var init_meta_data = __esmMin((() => {
 		}
 	};
 	meta_data_default = {
-		$schema: $schema$15,
-		$id: $id$15,
+		$schema: $schema$16,
+		$id: $id$16,
 		$vocabulary: $vocabulary$1,
 		$dynamicAnchor: $dynamicAnchor$1,
-		title: title$15,
-		type: type$15,
-		properties: properties$15
+		title: title$16,
+		type: type$16,
+		properties: properties$16
 	};
 }));
 // node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json
 var validation_exports = /* @__PURE__ */ __exportAll({
-	$defs: () => $defs$12,
+	$defs: () => $defs$13,
 	$dynamicAnchor: () => $dynamicAnchor,
-	$id: () => $id$14,
-	$schema: () => $schema$14,
+	$id: () => $id$15,
+	$schema: () => $schema$15,
 	$vocabulary: () => $vocabulary,
 	default: () => validation_default,
-	properties: () => properties$14,
-	title: () => title$14,
-	type: () => type$14
+	properties: () => properties$15,
+	title: () => title$15,
+	type: () => type$15
 });
-var $schema$14, $id$14, $vocabulary, $dynamicAnchor, title$14, type$14, properties$14, $defs$12, validation_default;
+var $schema$15, $id$15, $vocabulary, $dynamicAnchor, title$15, type$15, properties$15, $defs$13, validation_default;
 var init_validation = __esmMin((() => {
-	$schema$14 = "https://json-schema.org/draft/2020-12/schema";
-	$id$14 = "https://json-schema.org/draft/2020-12/meta/validation";
+	$schema$15 = "https://json-schema.org/draft/2020-12/schema";
+	$id$15 = "https://json-schema.org/draft/2020-12/meta/validation";
 	$vocabulary = { "https://json-schema.org/draft/2020-12/vocab/validation": true };
 	$dynamicAnchor = "meta";
-	title$14 = "Validation vocabulary meta-schema";
-	type$14 = ["object", "boolean"];
-	properties$14 = {
+	title$15 = "Validation vocabulary meta-schema";
+	type$15 = ["object", "boolean"];
+	properties$15 = {
 		"type": { "anyOf": [{ "$ref": "#/$defs/simpleTypes" }, {
 			"type": "array",
 			"items": { "$ref": "#/$defs/simpleTypes" },
@@ -6818,7 +6818,7 @@ var init_validation = __esmMin((() => {
 			"additionalProperties": { "$ref": "#/$defs/stringArray" }
 		}
 	};
-	$defs$12 = {
+	$defs$13 = {
 		"nonNegativeInteger": {
 			"type": "integer",
 			"minimum": 0
@@ -6844,14 +6844,14 @@ var init_validation = __esmMin((() => {
 		}
 	};
 	validation_default = {
-		$schema: $schema$14,
-		$id: $id$14,
+		$schema: $schema$15,
+		$id: $id$15,
 		$vocabulary,
 		$dynamicAnchor,
-		title: title$14,
-		type: type$14,
-		properties: properties$14,
-		$defs: $defs$12
+		title: title$15,
+		type: type$15,
+		properties: properties$15,
+		$defs: $defs$13
 	};
 }));
 // node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/refs/json-schema-2020-12/index.js
@@ -7188,19 +7188,19 @@ var require_draft7 = /* @__PURE__ */ __commonJSMin(((exports) => {
 }));
 // node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/refs/json-schema-draft-07.json
 var json_schema_draft_07_exports = /* @__PURE__ */ __exportAll({
-	$id: () => $id$13,
-	$schema: () => $schema$13,
+	$id: () => $id$14,
+	$schema: () => $schema$14,
 	default: () => json_schema_draft_07_default,
 	definitions: () => definitions,
-	properties: () => properties$13,
-	title: () => title$13,
-	type: () => type$13
+	properties: () => properties$14,
+	title: () => title$14,
+	type: () => type$14
 });
-var $schema$13, $id$13, title$13, definitions, type$13, properties$13, json_schema_draft_07_default;
+var $schema$14, $id$14, title$14, definitions, type$14, properties$14, json_schema_draft_07_default;
 var init_json_schema_draft_07 = __esmMin((() => {
-	$schema$13 = "http://json-schema.org/draft-07/schema#";
-	$id$13 = "http://json-schema.org/draft-07/schema#";
-	title$13 = "Core schema meta-schema";
+	$schema$14 = "http://json-schema.org/draft-07/schema#";
+	$id$14 = "http://json-schema.org/draft-07/schema#";
+	title$14 = "Core schema meta-schema";
 	definitions = {
 		"schemaArray": {
 			"type": "array",
@@ -7228,8 +7228,8 @@ var init_json_schema_draft_07 = __esmMin((() => {
 			"default": []
 		}
 	};
-	type$13 = ["object", "boolean"];
-	properties$13 = {
+	type$14 = ["object", "boolean"];
+	properties$14 = {
 		"$id": {
 			"type": "string",
 			"format": "uri-reference"
@@ -7330,12 +7330,12 @@ var init_json_schema_draft_07 = __esmMin((() => {
 		"not": { "$ref": "#" }
 	};
 	json_schema_draft_07_default = {
-		$schema: $schema$13,
-		$id: $id$13,
-		title: title$13,
+		$schema: $schema$14,
+		$id: $id$14,
+		title: title$14,
 		definitions,
-		type: type$13,
-		properties: properties$13,
+		type: type$14,
+		properties: properties$14,
 		"default": true
 	};
 }));
@@ -8420,6 +8420,252 @@ var cloud_disclosure_v1_3_schema_default = {
 						"type": "string",
 						"maxLength": 64
 					}
+				}
+			}
+		}
+	}
+};
+var cloud_disclosure_v1_4_schema_default = {
+	$schema: "https://json-schema.org/draft/2020-12/schema",
+	$id: "https://eyes-without-a-face.dev/schemas/cloud-disclosure/1.4.0",
+	title: "Cloud Disclosure Payload (1.4.0, with destination semantics)",
+	description: "Initial planning request (ADR 0021). Identical to 1.1.0 plus an optional sanitized description per destination field and an optional approved thinking level in the destination. Constructed by projection; descriptions pass sanitizeTargetDescription and are shown in the review before approval.",
+	type: "object",
+	additionalProperties: false,
+	required: [
+		"contractKind",
+		"schemaVersion",
+		"payloadId",
+		"phantomId",
+		"destination",
+		"purpose",
+		"entities",
+		"fields",
+		"syntheticExamples",
+		"target"
+	],
+	properties: {
+		"contractKind": { "const": "cloud-disclosure" },
+		"schemaVersion": {
+			"type": "string",
+			"const": "1.4.0"
+		},
+		"payloadId": {
+			"type": "string",
+			"minLength": 1,
+			"maxLength": 128
+		},
+		"phantomId": {
+			"type": "string",
+			"minLength": 1,
+			"maxLength": 128,
+			"description": "Twin identifier only. Must not be a private source dataset id field."
+		},
+		"destination": { "$ref": "#/$defs/destination" },
+		"purpose": {
+			"type": "string",
+			"const": "mapping-proposal"
+		},
+		"entities": {
+			"type": "array",
+			"minItems": 1,
+			"items": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["id", "label"],
+				"properties": {
+					"id": {
+						"type": "string",
+						"minLength": 1,
+						"maxLength": 128
+					},
+					"label": {
+						"type": "string",
+						"minLength": 1,
+						"maxLength": 128
+					},
+					"description": {
+						"type": "string",
+						"maxLength": 280
+					}
+				}
+			}
+		},
+		"fields": {
+			"type": "array",
+			"minItems": 1,
+			"items": { "$ref": "#/$defs/disclosureField" }
+		},
+		"syntheticExamples": {
+			"type": "array",
+			"minItems": 1,
+			"maxItems": 8,
+			"items": {
+				"type": "object",
+				"additionalProperties": { "type": [
+					"string",
+					"number",
+					"boolean",
+					"null"
+				] }
+			}
+		},
+		"disclosureConstraints": {
+			"type": "array",
+			"maxItems": 12,
+			"items": {
+				"type": "string",
+				"maxLength": 280
+			}
+		},
+		"target": { "$ref": "#/$defs/target" }
+	},
+	$defs: {
+		"destination": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": [
+				"provider",
+				"backend",
+				"model",
+				"purpose"
+			],
+			"properties": {
+				"provider": {
+					"type": "string",
+					"const": "firebase-ai-logic"
+				},
+				"backend": {
+					"type": "string",
+					"const": "google-ai"
+				},
+				"model": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 128
+				},
+				"purpose": {
+					"type": "string",
+					"const": "mapping-proposal"
+				},
+				"thinkingLevel": {
+					"type": "string",
+					"enum": [
+						"MINIMAL",
+						"LOW",
+						"MEDIUM",
+						"HIGH"
+					]
+				}
+			}
+		},
+		"disclosureField": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": [
+				"alias",
+				"entityId",
+				"type",
+				"semanticDescriptor"
+			],
+			"properties": {
+				"alias": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 128
+				},
+				"entityId": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 128
+				},
+				"type": {
+					"type": "string",
+					"enum": [
+						"string",
+						"number",
+						"integer",
+						"boolean",
+						"date",
+						"datetime",
+						"enum"
+					]
+				},
+				"semanticDescriptor": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 280
+				},
+				"enumValues": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"maxLength": 64
+					},
+					"maxItems": 32
+				}
+			}
+		},
+		"target": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["fields"],
+			"properties": { "fields": {
+				"type": "array",
+				"minItems": 1,
+				"maxItems": 64,
+				"items": { "$ref": "#/$defs/targetField" }
+			} }
+		},
+		"targetField": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": [
+				"name",
+				"type",
+				"required"
+			],
+			"properties": {
+				"name": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 128,
+					"pattern": "^[A-Za-z_][A-Za-z0-9_]*(\\.[A-Za-z_][A-Za-z0-9_]*){0,3}$"
+				},
+				"type": {
+					"type": "string",
+					"enum": [
+						"string",
+						"number",
+						"integer",
+						"boolean",
+						"enum"
+					]
+				},
+				"required": { "type": "boolean" },
+				"nullable": { "type": "boolean" },
+				"format": {
+					"type": "string",
+					"enum": [
+						"email",
+						"date",
+						"date-time",
+						"uri",
+						"uuid"
+					]
+				},
+				"enumValues": {
+					"type": "array",
+					"maxItems": 32,
+					"items": {
+						"type": "string",
+						"maxLength": 64
+					}
+				},
+				"description": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 160
 				}
 			}
 		}
@@ -10386,7 +10632,8 @@ var SUPPORTED_SCHEMA_VERSIONS = {
 		"1.0.0",
 		"1.1.0",
 		"1.2.0",
-		"1.3.0"
+		"1.3.0",
+		"1.4.0"
 	]
 };
 var MAPPING_OPERATIONS = [
@@ -10464,7 +10711,8 @@ var validators = {
 	"cloud-disclosure@1.0.0": ajv$1.compile(cloud_disclosure_v1_schema_default),
 	"cloud-disclosure@1.1.0": ajv$1.compile(cloud_disclosure_v1_1_schema_default),
 	"cloud-disclosure@1.2.0": ajv$1.compile(cloud_disclosure_v1_2_schema_default),
-	"cloud-disclosure@1.3.0": ajv$1.compile(cloud_disclosure_v1_3_schema_default)
+	"cloud-disclosure@1.3.0": ajv$1.compile(cloud_disclosure_v1_3_schema_default),
+	"cloud-disclosure@1.4.0": ajv$1.compile(cloud_disclosure_v1_4_schema_default)
 };
 function issueFromAjv$1(error) {
 	return {

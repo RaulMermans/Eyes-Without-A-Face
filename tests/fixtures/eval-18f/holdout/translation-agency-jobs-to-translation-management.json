@@ -1,0 +1,1049 @@
+{
+  "scenarioId": "translation-agency-jobs-to-translation-management",
+  "split": "holdout",
+  "track": "general",
+  "industry": "translation agency jobs",
+  "sourceLanguage": "it",
+  "description": "Job export of a fictional translation agency (Italian snake_case, nested client and amounts) to be loaded into a translation management system.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "servizio": "Test interno",
+      "importi": {
+        "totale_ivato": 1434.72,
+        "imponibile": 1176.0
+      },
+      "cliente": {
+        "ragione_sociale": "Ortopedia Lazzari S.r.l.",
+        "email_referente": "giulia.colombo@lazzari.example.com",
+        "referente": "Giulia Colombo"
+      },
+      "project_manager": "Nicoletta Riva",
+      "stato_pagamento": "Acconto",
+      "coppia_lingue": "IT>EN",
+      "riga": 1,
+      "n_commessa": "COM-26-0410",
+      "n_preventivo": "PRV-1042",
+      "traduttore": "Marco Pini",
+      "data_ordine": "17/04/2026",
+      "data_consegna": "28/08/2026",
+      "tipo_testo": "Marketing",
+      "n_parole": 9800
+    },
+    {
+      "tipo_testo": "Tecnico",
+      "riga": 2,
+      "importi": {
+        "totale_ivato": 385.52,
+        "imponibile": 316.0
+      },
+      "traduttore": "Marco Pini",
+      "n_preventivo": "PRV-1797",
+      "cliente": {
+        "ragione_sociale": "Ortopedia Lazzari S.r.l.",
+        "email_referente": "GIULIA.COLOMBO@LAZZARI.EXAMPLE.COM",
+        "referente": "Giulia Colombo"
+      },
+      "data_ordine": "06/08/2026",
+      "project_manager": "Fabio Testa",
+      "coppia_lingue": "DE>IT",
+      "n_commessa": "COM-26-0413",
+      "servizio": "Traduzione",
+      "stato_pagamento": "Acconto",
+      "data_consegna": "07/12/2026",
+      "n_parole": 2300
+    },
+    {
+      "project_manager": "Valentina Sala",
+      "importi": {
+        "imponibile": 98.8,
+        "totale_ivato": 120.54
+      },
+      "n_parole": 820,
+      "tipo_testo": null,
+      "n_commessa": "COM-26-0416",
+      "data_consegna": "08/09/2026",
+      "traduttore": "Claire Dumas",
+      "cliente": {
+        "ragione_sociale": "Ortopedia Lazzari S.r.l.",
+        "referente": "Giulia Colombo",
+        "email_referente": "giulia.colombo@lazzari.example.com"
+      },
+      "data_ordine": "06/09/2026",
+      "coppia_lingue": "IT>DE",
+      "stato_pagamento": "Saldato",
+      "n_preventivo": "PRV-1854",
+      "riga": 3,
+      "servizio": "Traduzione + revisione"
+    },
+    {
+      "project_manager": "Fabio Testa",
+      "tipo_testo": "Marketing",
+      "coppia_lingue": "EN>IT",
+      "data_consegna": "23/09/2026",
+      "servizio": "Asseverazione",
+      "importi": {
+        "imponibile": 283.5,
+        "totale_ivato": 345.87
+      },
+      "riga": 4,
+      "cliente": {
+        "referente": "Chiara Marino",
+        "email_referente": "chiara.marino@ferri-legale.example.com",
+        "ragione_sociale": " Studio Legale Ferri  "
+      },
+      "traduttore": "Helen Burke",
+      "n_preventivo": "PRV-1993",
+      "data_ordine": "09/09/2026",
+      "stato_pagamento": "Saldato",
+      "n_commessa": "COM-26-0419",
+      "n_parole": 3150
+    },
+    {
+      "cliente": {
+        "ragione_sociale": "  Cantine Moro ",
+        "email_referente": "simone.conti@cantinemoro.example.org",
+        "referente": "Simone Conti"
+      },
+      "project_manager": "Valentina Sala",
+      "data_consegna": "06/12/2026",
+      "stato_pagamento": "Da fatturare",
+      "traduttore": "Claire Dumas",
+      "n_commessa": "COM-26-0422",
+      "coppia_lingue": "EN>IT",
+      "n_parole": 5400,
+      "riga": 5,
+      "servizio": "Traduzione",
+      "data_ordine": "02/06/2026",
+      "n_preventivo": "PRV-1900",
+      "importi": {
+        "totale_ivato": 724.68,
+        "imponibile": 594.0
+      }
+    },
+    {
+      "coppia_lingue": "DE>IT",
+      "data_ordine": "12/04/2026",
+      "n_parole": 5400,
+      "stato_pagamento": "Da fatturare",
+      "project_manager": "Fabio Testa",
+      "riga": 6,
+      "tipo_testo": null,
+      "n_commessa": "COM-26-0425",
+      "servizio": "Traduzione",
+      "importi": {
+        "totale_ivato": 755.18,
+        "imponibile": 619.0
+      },
+      "n_preventivo": "PRV-1561",
+      "cliente": {
+        "ragione_sociale": "Edizioni Arcobaleno",
+        "referente": "Chiara Greco",
+        "email_referente": "chiara.greco@arcobaleno.example.net"
+      },
+      "data_consegna": "07/09/2026",
+      "traduttore": "Claire Dumas"
+    },
+    {
+      "n_preventivo": "PRV-1350",
+      "riga": 7,
+      "n_parole": 2300,
+      "stato_pagamento": "Saldato",
+      "data_ordine": "13/08/2026",
+      "traduttore": "Marco Pini",
+      "data_consegna": "07/12/2026",
+      "importi": {
+        "totale_ivato": 336.72,
+        "imponibile": 276.0
+      },
+      "coppia_lingue": "IT>EN",
+      "project_manager": "Nicoletta Riva",
+      "servizio": "Traduzione + revisione",
+      "cliente": {
+        "referente": "Tommaso Lombardi",
+        "email_referente": "tommaso.lombardi@zanetti.example.com",
+        "ragione_sociale": "Macchine Agricole Zanetti S.p.A."
+      },
+      "tipo_testo": "Legale",
+      "n_commessa": "COM-26-0428"
+    },
+    {
+      "riga": 8,
+      "tipo_testo": "Medico",
+      "cliente": {
+        "referente": "Silvia Barbieri",
+        "ragione_sociale": "Hotel Miramonti Group",
+        "email_referente": "silvia.barbieri@miramonti.example.com"
+      },
+      "data_consegna": "22/10/2026",
+      "n_commessa": "COM-26-0431",
+      "servizio": "Test interno",
+      "n_parole": 450,
+      "importi": {
+        "totale_ivato": 90.89,
+        "imponibile": 74.5
+      },
+      "data_ordine": "30/08/2026",
+      "coppia_lingue": "IT>DE",
+      "n_preventivo": "PRV-1637",
+      "stato_pagamento": "Da fatturare",
+      "traduttore": "Anna Weber",
+      "project_manager": "Fabio Testa"
+    },
+    {
+      "tipo_testo": "Marketing",
+      "servizio": "Traduzione",
+      "cliente": {
+        "referente": "Silvia Barbieri",
+        "ragione_sociale": "Hotel Miramonti Group",
+        "email_referente": "silvia.barbieri@miramonti.example.com"
+      },
+      "stato_pagamento": "Acconto",
+      "n_commessa": "COM-26-0434",
+      "data_ordine": "16/09/2026",
+      "data_consegna": "04/10/2026",
+      "project_manager": "Nicoletta Riva",
+      "n_preventivo": "PRV-1452",
+      "n_parole": 450,
+      "coppia_lingue": "DE>IT",
+      "riga": 9,
+      "importi": {
+        "imponibile": 40.5,
+        "totale_ivato": 49.41
+      },
+      "traduttore": "Marco Pini"
+    },
+    {
+      "cliente": {
+        "ragione_sociale": "Macchine Agricole Zanetti S.p.A.",
+        "referente": "Tommaso Lombardi",
+        "email_referente": "Tommaso.Lombardi@Zanetti.Example.Com"
+      },
+      "riga": 10,
+      "coppia_lingue": "IT>DE",
+      "tipo_testo": "Marketing",
+      "traduttore": "Anna Weber",
+      "project_manager": "Valentina Sala",
+      "stato_pagamento": "Acconto",
+      "n_preventivo": "PRV-1182",
+      "n_commessa": "COM-26-0437",
+      "data_ordine": "31/08/2026",
+      "importi": {
+        "totale_ivato": 114.68,
+        "imponibile": 94.0
+      },
+      "data_consegna": "29/10/2026",
+      "n_parole": null,
+      "servizio": "Traduzione"
+    },
+    {
+      "data_consegna": "16/12/2026",
+      "riga": 11,
+      "cliente": {
+        "referente": "Simone Conti",
+        "ragione_sociale": "Cantine Moro",
+        "email_referente": "SIMONE.CONTI@CANTINEMORO.EXAMPLE.ORG"
+      },
+      "servizio": "Asseverazione",
+      "importi": {
+        "imponibile": 441.0,
+        "totale_ivato": 538.02
+      },
+      "stato_pagamento": "Saldato",
+      "tipo_testo": "Legale",
+      "n_commessa": "COM-26-0440",
+      "project_manager": "Fabio Testa",
+      "n_preventivo": "PRV-1413",
+      "traduttore": "Anna Weber",
+      "n_parole": 3150,
+      "data_ordine": "09/09/2026",
+      "coppia_lingue": "IT>EN"
+    },
+    {
+      "data_consegna": "21/07/2026",
+      "stato_pagamento": "Da fatturare",
+      "traduttore": "Claire Dumas",
+      "coppia_lingue": "FR>IT",
+      "tipo_testo": "Marketing",
+      "n_parole": null,
+      "importi": {
+        "imponibile": 114.8,
+        "totale_ivato": 140.06
+      },
+      "cliente": {
+        "referente": "Silvia Barbieri",
+        "ragione_sociale": "Hotel Miramonti Group",
+        "email_referente": "silvia.barbieri@miramonti.example.com"
+      },
+      "riga": 12,
+      "servizio": "Traduzione + revisione",
+      "n_commessa": "COM-26-0443",
+      "data_ordine": "24/05/2026",
+      "n_preventivo": "PRV-1926",
+      "project_manager": "Fabio Testa"
+    },
+    {
+      "tipo_testo": "Legale",
+      "data_consegna": "18/11/2026",
+      "importi": {
+        "totale_ivato": 367.22,
+        "imponibile": 301.0
+      },
+      "stato_pagamento": "Saldato",
+      "servizio": "Traduzione",
+      "data_ordine": "03/08/2026",
+      "n_commessa": "COM-26-0446",
+      "project_manager": "Nicoletta Riva",
+      "cliente": {
+        "email_referente": "Simone.Conti@Cantinemoro.Example.Org",
+        "referente": "Simone Conti",
+        "ragione_sociale": "Cantine Moro"
+      },
+      "coppia_lingue": "IT>EN",
+      "n_parole": 2300,
+      "n_preventivo": "PRV-1891",
+      "riga": 13,
+      "traduttore": "Marco Pini"
+    },
+    {
+      "data_consegna": "14/11/2026",
+      "data_ordine": "03/09/2026",
+      "servizio": "Asseverazione",
+      "stato_pagamento": "Saldato",
+      "coppia_lingue": "IT>EN",
+      "n_parole": 820,
+      "importi": {
+        "imponibile": 90.2,
+        "totale_ivato": 110.04
+      },
+      "riga": 14,
+      "n_preventivo": "PRV-1227",
+      "traduttore": "Claire Dumas",
+      "project_manager": "Fabio Testa",
+      "cliente": {
+        "email_referente": "giulia.colombo@lazzari.example.com",
+        "referente": "Giulia Colombo",
+        "ragione_sociale": "Ortopedia Lazzari S.r.l."
+      },
+      "n_commessa": "COM-26-0449",
+      "tipo_testo": "Tecnico"
+    },
+    {
+      "traduttore": "Marco Pini",
+      "n_commessa": "COM-26-0452",
+      "tipo_testo": "Tecnico",
+      "n_parole": 9800,
+      "cliente": {
+        "referente": "Giulia Colombo",
+        "ragione_sociale": "Ortopedia Lazzari S.r.l.",
+        "email_referente": "giulia.colombo@lazzari.example.com"
+      },
+      "stato_pagamento": "Da fatturare",
+      "n_preventivo": "PRV-1694",
+      "data_ordine": "21/05/2026",
+      "project_manager": "Valentina Sala",
+      "servizio": "Traduzione + revisione",
+      "data_consegna": "20/08/2026",
+      "riga": 15,
+      "coppia_lingue": "FR>IT",
+      "importi": {
+        "imponibile": 1216.0,
+        "totale_ivato": 1483.52
+      }
+    },
+    {
+      "cliente": {
+        "email_referente": "simone.conti@cantinemoro.example.org",
+        "referente": "Simone Conti",
+        "ragione_sociale": "Cantine Moro   "
+      },
+      "data_consegna": "10/06/2026",
+      "data_ordine": "10/05/2026",
+      "n_commessa": "COM-26-0455",
+      "n_parole": 5400,
+      "traduttore": "Claire Dumas",
+      "servizio": "Traduzione + revisione",
+      "stato_pagamento": "Acconto",
+      "project_manager": "Nicoletta Riva",
+      "importi": {
+        "imponibile": 673.0,
+        "totale_ivato": 821.06
+      },
+      "n_preventivo": "PRV-1521",
+      "riga": 16,
+      "coppia_lingue": "IT>EN"
+    },
+    {
+      "stato_pagamento": "Saldato",
+      "data_consegna": "01/09/2026",
+      "servizio": "Traduzione",
+      "riga": 17,
+      "n_commessa": "COM-26-0458",
+      "project_manager": "Valentina Sala",
+      "traduttore": "Anna Weber",
+      "n_parole": 9800,
+      "cliente": {
+        "referente": "Chiara Greco",
+        "ragione_sociale": "Edizioni Arcobaleno",
+        "email_referente": "chiara.greco@arcobaleno.example.net"
+      },
+      "coppia_lingue": "EN>IT",
+      "tipo_testo": "Legale",
+      "n_preventivo": "PRV-1141",
+      "importi": {
+        "imponibile": 907.0,
+        "totale_ivato": 1106.54
+      },
+      "data_ordine": "05/03/2026"
+    },
+    {
+      "cliente": {
+        "referente": "Tommaso Lombardi",
+        "ragione_sociale": " Macchine Agricole Zanetti S.p.A.  ",
+        "email_referente": "tommaso.lombardi@zanetti.example.com"
+      },
+      "tipo_testo": "Legale",
+      "data_ordine": "04/07/2026",
+      "traduttore": "Marco Pini",
+      "stato_pagamento": "Saldato",
+      "project_manager": "Nicoletta Riva",
+      "coppia_lingue": "EN>IT",
+      "n_preventivo": "PRV-1652",
+      "n_commessa": "COM-26-0461",
+      "importi": {
+        "imponibile": 63.0,
+        "totale_ivato": 76.86
+      },
+      "riga": 18,
+      "n_parole": 450,
+      "data_consegna": "02/08/2026",
+      "servizio": "Traduzione"
+    },
+    {
+      "riga": 19,
+      "data_ordine": "05/04/2026",
+      "tipo_testo": "Legale",
+      "coppia_lingue": "IT>EN",
+      "stato_pagamento": "Da fatturare",
+      "traduttore": "Anna Weber",
+      "n_preventivo": "PRV-1863",
+      "data_consegna": "10/04/2026",
+      "project_manager": "Valentina Sala",
+      "importi": {
+        "totale_ivato": 1722.64,
+        "imponibile": 1412.0
+      },
+      "cliente": {
+        "referente": "Simone Conti",
+        "email_referente": "simone.conti@cantinemoro.example.org",
+        "ragione_sociale": "Cantine Moro"
+      },
+      "servizio": "Traduzione + revisione",
+      "n_parole": 9800,
+      "n_commessa": "COM-26-0464"
+    },
+    {
+      "servizio": "Traduzione",
+      "n_preventivo": "PRV-1880",
+      "stato_pagamento": "Da fatturare",
+      "project_manager": "Nicoletta Riva",
+      "n_parole": 450,
+      "n_commessa": "COM-26-0467",
+      "data_ordine": "15/09/2026",
+      "data_consegna": "29/09/2026",
+      "traduttore": "Claire Dumas",
+      "riga": 20,
+      "cliente": {
+        "referente": "Chiara Marino",
+        "ragione_sociale": "Studio Legale Ferri",
+        "email_referente": "Chiara.Marino@Ferri-legale.Example.Com"
+      },
+      "importi": {
+        "totale_ivato": 65.88,
+        "imponibile": 54.0
+      },
+      "tipo_testo": "Marketing",
+      "coppia_lingue": "IT>DE"
+    },
+    {
+      "servizio": "Traduzione",
+      "cliente": {
+        "ragione_sociale": "Studio Legale Ferri",
+        "email_referente": "Chiara.Marino@Ferri-legale.Example.Com",
+        "referente": "Chiara Marino"
+      },
+      "n_parole": 3150,
+      "n_preventivo": "PRV-1861",
+      "stato_pagamento": "Da fatturare",
+      "tipo_testo": "Tecnico",
+      "importi": {
+        "totale_ivato": 461.16,
+        "imponibile": 378.0
+      },
+      "riga": 21,
+      "data_ordine": "18/05/2026",
+      "data_consegna": "02/07/2026",
+      "traduttore": "Claire Dumas",
+      "coppia_lingue": "IT>EN",
+      "project_manager": "Valentina Sala",
+      "n_commessa": "COM-26-0470"
+    },
+    {
+      "importi": {
+        "totale_ivato": 90.89,
+        "imponibile": 74.5
+      },
+      "cliente": {
+        "email_referente": "Silvia.Barbieri@Miramonti.Example.Com",
+        "referente": "Silvia Barbieri",
+        "ragione_sociale": "Hotel Miramonti Group"
+      },
+      "traduttore": "Marco Pini",
+      "n_commessa": "COM-26-0473",
+      "servizio": "Traduzione",
+      "data_ordine": "02/09/2026",
+      "riga": 22,
+      "data_consegna": "05/10/2026",
+      "n_preventivo": "PRV-1682",
+      "project_manager": "Fabio Testa",
+      "tipo_testo": "Tecnico",
+      "coppia_lingue": "EN>IT",
+      "n_parole": 450,
+      "stato_pagamento": "Saldato"
+    },
+    {
+      "cliente": {
+        "ragione_sociale": "Ortopedia Lazzari S.r.l.",
+        "referente": "Giulia Colombo",
+        "email_referente": "giulia.colombo@lazzari.example.com"
+      },
+      "stato_pagamento": "Saldato",
+      "project_manager": "Valentina Sala",
+      "traduttore": "Claire Dumas",
+      "tipo_testo": "Medico",
+      "data_ordine": "27/03/2026",
+      "n_preventivo": "PRV-1830",
+      "coppia_lingue": "EN>IT",
+      "n_parole": 3150,
+      "servizio": "Traduzione + revisione",
+      "importi": {
+        "imponibile": 466.0,
+        "totale_ivato": 568.52
+      },
+      "n_commessa": "COM-26-0476",
+      "riga": 23,
+      "data_consegna": "01/09/2026"
+    },
+    {
+      "data_ordine": "28/03/2026",
+      "servizio": "Traduzione",
+      "project_manager": "Nicoletta Riva",
+      "tipo_testo": "Medico",
+      "importi": {
+        "imponibile": 1176.0,
+        "totale_ivato": 1434.72
+      },
+      "riga": 24,
+      "n_parole": 9800,
+      "stato_pagamento": "Saldato",
+      "cliente": {
+        "referente": "Chiara Greco",
+        "email_referente": "Chiara.Greco@Arcobaleno.Example.Net",
+        "ragione_sociale": "Edizioni Arcobaleno   "
+      },
+      "n_commessa": "COM-26-0479",
+      "coppia_lingue": "FR>IT",
+      "traduttore": "Helen Burke",
+      "data_consegna": "24/07/2026",
+      "n_preventivo": "PRV-1502"
+    },
+    {
+      "servizio": "Asseverazione",
+      "coppia_lingue": "IT>DE",
+      "n_preventivo": "PRV-1667",
+      "n_parole": 3150,
+      "project_manager": "Fabio Testa",
+      "tipo_testo": "Legale",
+      "traduttore": "Claire Dumas",
+      "riga": 25,
+      "data_consegna": "27/11/2026",
+      "importi": {
+        "totale_ivato": 376.37,
+        "imponibile": 308.5
+      },
+      "cliente": {
+        "ragione_sociale": "Edizioni Arcobaleno",
+        "email_referente": "chiara.greco@arcobaleno.example.net",
+        "referente": "Chiara Greco"
+      },
+      "data_ordine": "09/09/2026",
+      "stato_pagamento": "Saldato",
+      "n_commessa": "COM-26-0482"
+    },
+    {
+      "n_commessa": "COM-26-0485",
+      "data_ordine": "10/04/2026",
+      "servizio": "Test interno",
+      "riga": 26,
+      "cliente": {
+        "ragione_sociale": "Macchine Agricole Zanetti S.p.A.",
+        "email_referente": "tommaso.lombardi@zanetti.example.com",
+        "referente": "Tommaso Lombardi"
+      },
+      "tipo_testo": "Medico",
+      "project_manager": "Valentina Sala",
+      "n_parole": 1200,
+      "importi": {
+        "imponibile": 193.0,
+        "totale_ivato": 235.46
+      },
+      "n_preventivo": "PRV-1712",
+      "data_consegna": "19/08/2026",
+      "traduttore": "Claire Dumas",
+      "coppia_lingue": "DE>IT",
+      "stato_pagamento": "Saldato"
+    },
+    {
+      "cliente": {
+        "referente": "Simone Conti",
+        "email_referente": "simone.conti@cantinemoro.example.org",
+        "ragione_sociale": "Cantine Moro"
+      },
+      "n_commessa": "COM-26-0488",
+      "data_ordine": "07/10/2026",
+      "tipo_testo": "Tecnico",
+      "stato_pagamento": "Saldato",
+      "data_consegna": "10/11/2026",
+      "traduttore": "Anna Weber",
+      "n_parole": 3150,
+      "importi": {
+        "imponibile": 378.0,
+        "totale_ivato": 461.16
+      },
+      "n_preventivo": "PRV-1039",
+      "project_manager": "Valentina Sala",
+      "servizio": "Traduzione",
+      "coppia_lingue": "DE>IT",
+      "riga": 27
+    },
+    {
+      "servizio": "Asseverazione",
+      "traduttore": "Claire Dumas",
+      "n_preventivo": "PRV-1860",
+      "project_manager": "Fabio Testa",
+      "coppia_lingue": "EN>IT",
+      "data_consegna": "23/11/2026",
+      "n_parole": 1200,
+      "tipo_testo": "Legale",
+      "data_ordine": "15/09/2026",
+      "n_commessa": "COM-26-0491",
+      "cliente": {
+        "referente": "Simone Conti",
+        "ragione_sociale": "  Cantine Moro ",
+        "email_referente": "simone.conti@cantinemoro.example.org"
+      },
+      "riga": 28,
+      "importi": {
+        "imponibile": 208.0,
+        "totale_ivato": 253.76
+      },
+      "stato_pagamento": "Saldato"
+    },
+    {
+      "tipo_testo": null,
+      "stato_pagamento": "Da fatturare",
+      "coppia_lingue": "FR>IT",
+      "traduttore": "Anna Weber",
+      "n_commessa": "COM-26-0494",
+      "data_ordine": "15/09/2026",
+      "cliente": {
+        "referente": "Silvia Barbieri",
+        "ragione_sociale": "Hotel Miramonti Group",
+        "email_referente": "Silvia.Barbieri@Miramonti.Example.Com"
+      },
+      "riga": 29,
+      "servizio": "Traduzione",
+      "n_parole": 9800,
+      "n_preventivo": "PRV-1184",
+      "importi": {
+        "imponibile": 1118.0,
+        "totale_ivato": 1363.96
+      },
+      "project_manager": "Valentina Sala",
+      "data_consegna": "09/12/2026"
+    },
+    {
+      "riga": 30,
+      "n_commessa": "COM-26-0497",
+      "n_preventivo": "PRV-1184",
+      "coppia_lingue": "EN>IT",
+      "importi": {
+        "imponibile": 157.0,
+        "totale_ivato": 191.54
+      },
+      "servizio": "Traduzione + revisione",
+      "n_parole": 1200,
+      "cliente": {
+        "email_referente": "silvia.barbieri@miramonti.example.com",
+        "ragione_sociale": "Hotel Miramonti Group",
+        "referente": "Silvia Barbieri"
+      },
+      "data_consegna": "26/10/2026",
+      "project_manager": "Nicoletta Riva",
+      "stato_pagamento": "Da fatturare",
+      "traduttore": "Claire Dumas",
+      "data_ordine": "28/03/2026"
+    },
+    {
+      "n_preventivo": "PRV-1721",
+      "coppia_lingue": "IT>DE",
+      "n_parole": 5400,
+      "stato_pagamento": "Acconto",
+      "riga": 31,
+      "cliente": {
+        "ragione_sociale": "Edizioni Arcobaleno",
+        "referente": "Chiara Greco",
+        "email_referente": "Chiara.Greco@Arcobaleno.Example.Net"
+      },
+      "data_ordine": "20/08/2026",
+      "tipo_testo": "Tecnico",
+      "data_consegna": "18/12/2026",
+      "project_manager": "Valentina Sala",
+      "n_commessa": "COM-26-0500",
+      "servizio": "Traduzione + revisione",
+      "importi": {
+        "imponibile": 781.0,
+        "totale_ivato": 952.82
+      },
+      "traduttore": "Marco Pini"
+    },
+    {
+      "tipo_testo": "Tecnico",
+      "servizio": "Traduzione",
+      "data_ordine": "19/05/2026",
+      "riga": 32,
+      "project_manager": "Fabio Testa",
+      "traduttore": "Helen Burke",
+      "data_consegna": "07/11/2026",
+      "n_parole": 820,
+      "stato_pagamento": "Acconto",
+      "cliente": {
+        "referente": "Simone Conti",
+        "email_referente": "simone.conti@cantinemoro.example.org",
+        "ragione_sociale": "Cantine Moro"
+      },
+      "importi": {
+        "totale_ivato": 90.04,
+        "imponibile": 73.8
+      },
+      "n_preventivo": "PRV-1046",
+      "coppia_lingue": "IT>EN",
+      "n_commessa": "COM-26-0503"
+    },
+    {
+      "data_ordine": "26/08/2026",
+      "cliente": {
+        "email_referente": "chiara.marino@ferri-legale.example.com",
+        "referente": "Chiara Marino",
+        "ragione_sociale": "Studio Legale Ferri "
+      },
+      "stato_pagamento": "Acconto",
+      "tipo_testo": "Tecnico",
+      "traduttore": "Claire Dumas",
+      "servizio": "Traduzione + revisione",
+      "project_manager": "Valentina Sala",
+      "n_preventivo": "PRV-1615",
+      "importi": {
+        "imponibile": 232.0,
+        "totale_ivato": 283.04
+      },
+      "coppia_lingue": "IT>EN",
+      "n_parole": 2300,
+      "n_commessa": "COM-26-0506",
+      "data_consegna": "02/12/2026",
+      "riga": 33
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "jobId": {
+        "type": "string",
+        "description": "Identifier of the translation job."
+      },
+      "client": {
+        "type": "string",
+        "description": "Company that ordered the translation."
+      },
+      "languagePair": {
+        "type": "string",
+        "enum": [
+          "it-en",
+          "en-it",
+          "it-de",
+          "de-it",
+          "fr-it"
+        ],
+        "description": "Source and target language of the job."
+      },
+      "subjectDomain": {
+        "type": "string",
+        "enum": [
+          "legal",
+          "technical",
+          "marketing",
+          "medical"
+        ],
+        "description": "Subject area of the text, used to pick a specialised translator."
+      },
+      "serviceLevel": {
+        "type": "string",
+        "enum": [
+          "translation",
+          "translation_review",
+          "sworn"
+        ],
+        "description": "Service."
+      },
+      "wordCount": {
+        "type": "integer",
+        "description": "Number of source words to translate."
+      },
+      "netAmountEur": {
+        "type": "number",
+        "description": "Price of the job in euros, excluding VAT."
+      },
+      "dueDate": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the translation must be delivered to the client."
+      },
+      "pricePerWord": {
+        "type": "number",
+        "description": "Net price charged per source word."
+      },
+      "rushJob": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "jobId",
+      "client",
+      "languagePair",
+      "serviceLevel",
+      "wordCount",
+      "dueDate"
+    ]
+  },
+  "groundTruth": {
+    "jobId": {
+      "source": "n_commessa",
+      "transform": "copy",
+      "why": "job number; n_preventivo is the quote and riga the row"
+    },
+    "client": {
+      "source": "cliente.ragione_sociale",
+      "transform": "trim",
+      "why": "client company, padded; cliente.referente is a person there"
+    },
+    "languagePair": {
+      "source": "coppia_lingue",
+      "transform": "map_enum",
+      "categoryMap": {
+        "IT>EN": "it-en",
+        "EN>IT": "en-it",
+        "IT>DE": "it-de",
+        "DE>IT": "de-it",
+        "FR>IT": "fr-it"
+      },
+      "why": "language pair"
+    },
+    "subjectDomain": {
+      "source": "tipo_testo",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Legale": "legal",
+        "Tecnico": "technical",
+        "Marketing": "marketing",
+        "Medico": "medical"
+      },
+      "why": "text type, null or missing for some"
+    },
+    "serviceLevel": {
+      "source": "servizio",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Traduzione": "translation",
+        "Traduzione + revisione": "translation_review",
+        "Asseverazione": "sworn",
+        "Test interno": null
+      },
+      "why": "service; internal tests need review; stato_pagamento is payment"
+    },
+    "wordCount": {
+      "source": "n_parole",
+      "transform": "copy",
+      "why": "word count; null in a few rows, which are held"
+    },
+    "netAmountEur": {
+      "source": "importi.imponibile",
+      "transform": "copy",
+      "why": "net amount; totale_ivato includes VAT"
+    },
+    "dueDate": {
+      "source": "data_consegna",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "delivery date (Italian day-first); data_ordine is the order date"
+    },
+    "pricePerWord": {
+      "source": null,
+      "transform": "none",
+      "why": "not exported",
+      "unsupportedReason": "would need importi.imponibile divided by n_parole"
+    },
+    "rushJob": {
+      "source": null,
+      "transform": "none",
+      "why": "not exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "n_commessa",
+        "n_preventivo"
+      ],
+      "correctFor": "jobId"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "n_commessa",
+        "riga"
+      ],
+      "correctFor": "jobId"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "cliente.ragione_sociale",
+        "cliente.referente"
+      ],
+      "correctFor": "client"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "servizio",
+        "tipo_testo"
+      ],
+      "correctFor": "serviceLevel"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "servizio",
+        "stato_pagamento"
+      ],
+      "correctFor": "serviceLevel"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "importi.imponibile",
+        "importi.totale_ivato"
+      ],
+      "correctFor": "netAmountEur"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "data_consegna",
+        "data_ordine"
+      ],
+      "correctFor": "dueDate"
+    }
+  ],
+  "sourceConcepts": {
+    "n_commessa": "transaction-id",
+    "n_preventivo": "other-identifier",
+    "riga": "other-identifier",
+    "cliente.ragione_sociale": "organization-name",
+    "cliente.referente": "person-name",
+    "cliente.email_referente": "email",
+    "project_manager": "person-name",
+    "traduttore": "person-name",
+    "coppia_lingue": "language-code",
+    "tipo_testo": "category",
+    "servizio": "category",
+    "stato_pagamento": "payment-status",
+    "n_parole": "quantity",
+    "importi.imponibile": "amount",
+    "importi.totale_ivato": "amount",
+    "data_ordine": "created-date",
+    "data_consegna": "end-date"
+  },
+  "destinationConcepts": {
+    "jobId": "transaction-id",
+    "client": "organization-name",
+    "languagePair": "language-code",
+    "subjectDomain": "category",
+    "serviceLevel": "category",
+    "wordCount": "quantity",
+    "netAmountEur": "amount",
+    "dueDate": "end-date",
+    "pricePerWord": "amount",
+    "rushJob": "other"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 7,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 10,
+      "outcome": "transformed",
+      "output": {
+        "jobId": "COM-26-0440",
+        "client": "Cantine Moro",
+        "languagePair": "it-en",
+        "subjectDomain": "legal",
+        "serviceLevel": "sworn",
+        "wordCount": 3150,
+        "netAmountEur": 441.0,
+        "dueDate": "2026-12-16"
+      }
+    },
+    {
+      "recordIndex": 29,
+      "outcome": "transformed",
+      "output": {
+        "jobId": "COM-26-0497",
+        "client": "Hotel Miramonti Group",
+        "languagePair": "en-it",
+        "serviceLevel": "translation_review",
+        "wordCount": 1200,
+        "netAmountEur": 157.0,
+        "dueDate": "2026-10-26"
+      }
+    },
+    {
+      "recordIndex": 31,
+      "outcome": "transformed",
+      "output": {
+        "jobId": "COM-26-0503",
+        "client": "Cantine Moro",
+        "languagePair": "it-en",
+        "subjectDomain": "technical",
+        "serviceLevel": "translation",
+        "wordCount": 820,
+        "netAmountEur": 73.8,
+        "dueDate": "2026-11-07"
+      }
+    }
+  ]
+}

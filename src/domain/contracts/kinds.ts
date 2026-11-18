@@ -25,7 +25,7 @@ export const SUPPORTED_SCHEMA_VERSIONS = {
   mapping: ["1.0.0"],
   validation: ["1.0.0"],
   export: ["1.0.0", "1.1.0"],
-  "cloud-disclosure": ["1.0.0", "1.1.0", "1.2.0", "1.3.0"],
+  "cloud-disclosure": ["1.0.0", "1.1.0", "1.2.0", "1.3.0", "1.4.0"],
 } as const satisfies Record<(typeof CONTRACT_KINDS)[number], readonly string[]>;
 
 export const MAPPING_OPERATIONS = [
