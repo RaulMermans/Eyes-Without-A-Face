@@ -1,0 +1,990 @@
+{
+  "scenarioId": "wind-turbine-service-visits-to-maintenance-system",
+  "split": "holdout",
+  "track": "general",
+  "industry": "wind turbine service visits",
+  "sourceLanguage": "da",
+  "description": "Service-visit export of a fictional wind turbine service company (Danish snake_case, nested turbine and owner) to be loaded into a maintenance management system.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "besoegsdato": "09/03/2026",
+      "raekke": 1,
+      "type": "Fejlretning",
+      "tekniker": "Lasse Bak",
+      "ejer": {
+        "kontaktperson": "Jesper Møller",
+        "email": "jesper.mller@vestkyst-energi.example.com",
+        "navn": "Vestkyst Energi A/S"
+      },
+      "registreret": "06/04/2026",
+      "timer_brugt": 4.5,
+      "status": "Afsluttet",
+      "prioritet": "Normal",
+      "stilstand_timer": 26.0,
+      "moelle": {
+        "id": "WTG-002",
+        "park": "Vestkyst Nord",
+        "model": "V-3.6 MW"
+      },
+      "serviceordre": "SO-26-7700"
+    },
+    {
+      "stilstand_timer": 5.5,
+      "tekniker": "Kim Skov",
+      "timer_brugt": 12.0,
+      "status": "Igangværende",
+      "serviceordre": "SO-26-7704",
+      "registreret": "10/03/2026",
+      "type": "Fejlretning",
+      "prioritet": "Høj",
+      "ejer": {
+        "navn": "Fjordvind I/S",
+        "kontaktperson": "Cecilie Nielsen",
+        "email": "CECILIE.NIELSEN@FJORDVIND.EXAMPLE.NET"
+      },
+      "raekke": 2,
+      "besoegsdato": "03/11/2026",
+      "moelle": {
+        "model": "S-4.2 MW",
+        "id": "WTG-036",
+        "park": "Hedeparken"
+      }
+    },
+    {
+      "besoegsdato": "03/01/2026",
+      "raekke": 3,
+      "stilstand_timer": 5.5,
+      "tekniker": "Lasse Bak",
+      "ejer": {
+        "kontaktperson": "Jesper Møller",
+        "email": "jesper.mller@vestkyst-energi.example.com",
+        "navn": "Vestkyst Energi A/S"
+      },
+      "type": "Inspektion",
+      "serviceordre": "SO-26-7708",
+      "prioritet": "Normal",
+      "moelle": {
+        "id": "WTG-047",
+        "park": "Fjordvind",
+        "model": "N-2.5 MW"
+      },
+      "registreret": "05/09/2026",
+      "status": "Afsluttet",
+      "timer_brugt": 3.0
+    },
+    {
+      "timer_brugt": 1.5,
+      "besoegsdato": "10/07/2026",
+      "prioritet": "Normal",
+      "status": "Afsluttet",
+      "type": "Oplæring",
+      "raekke": 4,
+      "tekniker": "Lasse Bak",
+      "registreret": "03/09/2026",
+      "ejer": {
+        "kontaktperson": "Rasmus Madsen",
+        "email": "RASMUS.MADSEN@NORDLYS.EXAMPLE.COM",
+        "navn": "Nordlys Kapital ApS"
+      },
+      "serviceordre": "SO-26-7712",
+      "stilstand_timer": 26.0,
+      "moelle": {
+        "model": "N-2.5 MW",
+        "park": "Hedeparken",
+        "id": "WTG-045"
+      }
+    },
+    {
+      "raekke": 5,
+      "timer_brugt": 4.5,
+      "ejer": {
+        "kontaktperson": "Rasmus Madsen",
+        "email": "rasmus.madsen@nordlys.example.com",
+        "navn": "Nordlys Kapital ApS"
+      },
+      "serviceordre": "SO-26-7716",
+      "stilstand_timer": 2.0,
+      "registreret": "10/06/2026",
+      "moelle": {
+        "park": "Fjordvind",
+        "id": "WTG-021",
+        "model": "S-4.2 MW"
+      },
+      "type": "Planlagt service",
+      "besoegsdato": "05/11/2026",
+      "prioritet": null,
+      "tekniker": "Lasse Bak",
+      "status": "Afsluttet"
+    },
+    {
+      "ejer": {
+        "kontaktperson": "Jesper Møller",
+        "email": "jesper.mller@vestkyst-energi.example.com",
+        "navn": "Vestkyst Energi A/S"
+      },
+      "besoegsdato": "08/11/2026",
+      "raekke": 6,
+      "registreret": "12/05/2026",
+      "tekniker": "Lasse Bak",
+      "status": "Afsluttet",
+      "serviceordre": "SO-26-7720",
+      "moelle": {
+        "model": "S-4.2 MW",
+        "id": "WTG-042",
+        "park": "Vestkyst Nord"
+      },
+      "prioritet": "Lav",
+      "type": "Planlagt service",
+      "timer_brugt": 12.0,
+      "stilstand_timer": 26.0
+    },
+    {
+      "tekniker": "Kim Skov",
+      "timer_brugt": null,
+      "serviceordre": "SO-26-7724",
+      "raekke": 7,
+      "type": "Fejlretning",
+      "prioritet": "Lav",
+      "stilstand_timer": 0.0,
+      "ejer": {
+        "kontaktperson": "Rasmus Madsen",
+        "navn": "Nordlys Kapital ApS",
+        "email": "rasmus.madsen@nordlys.example.com"
+      },
+      "moelle": {
+        "id": "WTG-044",
+        "model": "V-3.6 MW",
+        "park": "Fjordvind"
+      },
+      "besoegsdato": "12/11/2026",
+      "registreret": "10/07/2026",
+      "status": "Afventer reservedel"
+    },
+    {
+      "serviceordre": "SO-26-7728",
+      "stilstand_timer": 48.0,
+      "tekniker": "Pernille Holst",
+      "raekke": 8,
+      "besoegsdato": "06/01/2026",
+      "status": "Afventer reservedel",
+      "ejer": {
+        "email": "jesper.mller@vestkyst-energi.example.com",
+        "navn": "  Vestkyst Energi A/S ",
+        "kontaktperson": "Jesper Møller"
+      },
+      "registreret": "04/12/2025",
+      "moelle": {
+        "id": "WTG-021",
+        "park": "Hedeparken",
+        "model": "S-4.2 MW"
+      },
+      "type": "Fejlretning",
+      "prioritet": "Normal"
+    },
+    {
+      "type": "Inspektion",
+      "raekke": 9,
+      "tekniker": "Lasse Bak",
+      "stilstand_timer": 5.5,
+      "timer_brugt": 6.0,
+      "besoegsdato": "04/04/2026",
+      "registreret": "07/11/2025",
+      "serviceordre": "SO-26-7732",
+      "ejer": {
+        "navn": "Fjordvind I/S",
+        "kontaktperson": "Cecilie Nielsen",
+        "email": "Cecilie.Nielsen@Fjordvind.Example.Net"
+      },
+      "status": "Annulleret",
+      "moelle": {
+        "id": "WTG-016",
+        "park": "Vestkyst Nord",
+        "model": "V-3.6 MW"
+      },
+      "prioritet": "Normal"
+    },
+    {
+      "besoegsdato": "04/03/2026",
+      "raekke": 10,
+      "stilstand_timer": 2.0,
+      "moelle": {
+        "model": "S-4.2 MW",
+        "id": "WTG-032",
+        "park": "Hedeparken"
+      },
+      "tekniker": "Pernille Holst",
+      "serviceordre": "SO-26-7736",
+      "timer_brugt": 12.0,
+      "registreret": "08/10/2026",
+      "prioritet": null,
+      "type": "Planlagt service",
+      "ejer": {
+        "kontaktperson": "Rasmus Madsen",
+        "email": "rasmus.madsen@nordlys.example.com",
+        "navn": "Nordlys Kapital ApS"
+      },
+      "status": "Afsluttet"
+    },
+    {
+      "type": "Oplæring",
+      "moelle": {
+        "id": "WTG-006",
+        "model": "N-2.5 MW",
+        "park": "Hedeparken"
+      },
+      "prioritet": "Normal",
+      "timer_brugt": 7.5,
+      "ejer": {
+        "email": "cecilie.nielsen@fjordvind.example.net",
+        "kontaktperson": "Cecilie Nielsen",
+        "navn": "Fjordvind I/S"
+      },
+      "registreret": "11/03/2026",
+      "besoegsdato": "10/04/2026",
+      "tekniker": "Pernille Holst",
+      "raekke": 11,
+      "status": "Afventer reservedel",
+      "serviceordre": "SO-26-7740",
+      "stilstand_timer": 5.5
+    },
+    {
+      "raekke": 12,
+      "stilstand_timer": 2.0,
+      "moelle": {
+        "park": "Hedeparken",
+        "id": "WTG-009",
+        "model": "S-4.2 MW"
+      },
+      "registreret": "10/11/2025",
+      "ejer": {
+        "kontaktperson": "Rasmus Madsen",
+        "navn": " Nordlys Kapital ApS  ",
+        "email": "rasmus.madsen@nordlys.example.com"
+      },
+      "type": "Inspektion",
+      "status": "Afventer reservedel",
+      "tekniker": "Lasse Bak",
+      "timer_brugt": 7.5,
+      "serviceordre": "SO-26-7744",
+      "prioritet": "Lav",
+      "besoegsdato": "06/10/2026"
+    },
+    {
+      "prioritet": "Lav",
+      "tekniker": "Pernille Holst",
+      "ejer": {
+        "email": "Signe.Petersen@Hedenslaug.Example.Org",
+        "navn": " Hedens Vindmøllelaug",
+        "kontaktperson": "Signe Petersen"
+      },
+      "moelle": {
+        "id": "WTG-020",
+        "park": "Vestkyst Nord",
+        "model": "N-2.5 MW"
+      },
+      "raekke": 13,
+      "registreret": "11/02/2026",
+      "besoegsdato": "05/03/2026",
+      "type": "Inspektion",
+      "stilstand_timer": 26.0,
+      "serviceordre": "SO-26-7748",
+      "status": "Afsluttet"
+    },
+    {
+      "raekke": 14,
+      "ejer": {
+        "navn": "Nordlys Kapital ApS",
+        "kontaktperson": "Rasmus Madsen",
+        "email": "rasmus.madsen@nordlys.example.com"
+      },
+      "timer_brugt": 3.0,
+      "status": "Afsluttet",
+      "besoegsdato": "08/11/2026",
+      "type": "Planlagt service",
+      "moelle": {
+        "model": "S-4.2 MW",
+        "park": "Fjordvind",
+        "id": "WTG-010"
+      },
+      "prioritet": "Normal",
+      "stilstand_timer": 5.5,
+      "serviceordre": "SO-26-7752",
+      "registreret": "04/06/2026",
+      "tekniker": "Lasse Bak"
+    },
+    {
+      "serviceordre": "SO-26-7756",
+      "stilstand_timer": 14.0,
+      "status": "Igangværende",
+      "prioritet": "Normal",
+      "timer_brugt": 6.0,
+      "besoegsdato": "07/11/2026",
+      "ejer": {
+        "kontaktperson": "Jesper Møller",
+        "navn": "Vestkyst Energi A/S",
+        "email": "Jesper.Mller@Vestkyst-energi.Example.Com"
+      },
+      "moelle": {
+        "id": "WTG-047",
+        "model": "N-2.5 MW",
+        "park": "Fjordvind"
+      },
+      "type": "Planlagt service",
+      "raekke": 15,
+      "tekniker": "Lasse Bak",
+      "registreret": "12/05/2026"
+    },
+    {
+      "registreret": "07/07/2026",
+      "stilstand_timer": 14.0,
+      "status": "Afsluttet",
+      "type": "Planlagt service",
+      "raekke": 16,
+      "moelle": {
+        "park": "Vestkyst Nord",
+        "id": "WTG-034",
+        "model": "S-4.2 MW"
+      },
+      "timer_brugt": 1.5,
+      "serviceordre": "SO-26-7760",
+      "tekniker": "Lasse Bak",
+      "besoegsdato": "11/02/2026",
+      "prioritet": "Høj",
+      "ejer": {
+        "navn": "Fjordvind I/S ",
+        "kontaktperson": "Cecilie Nielsen",
+        "email": "cecilie.nielsen@fjordvind.example.net"
+      }
+    },
+    {
+      "timer_brugt": null,
+      "registreret": "07/05/2026",
+      "tekniker": "Lasse Bak",
+      "type": "Inspektion",
+      "prioritet": "Normal",
+      "status": "Afsluttet",
+      "raekke": 17,
+      "moelle": {
+        "id": "WTG-009",
+        "model": "S-4.2 MW",
+        "park": "Fjordvind"
+      },
+      "serviceordre": "SO-26-7764",
+      "stilstand_timer": 48.0,
+      "besoegsdato": "12/08/2026",
+      "ejer": {
+        "navn": "Hedens Vindmøllelaug",
+        "kontaktperson": "Signe Petersen",
+        "email": "Signe.Petersen@Hedenslaug.Example.Org"
+      }
+    },
+    {
+      "stilstand_timer": 5.5,
+      "ejer": {
+        "kontaktperson": "Cecilie Nielsen",
+        "navn": "Fjordvind I/S",
+        "email": "cecilie.nielsen@fjordvind.example.net"
+      },
+      "timer_brugt": null,
+      "status": "Afsluttet",
+      "registreret": "01/08/2026",
+      "prioritet": "Høj",
+      "type": "Fejlretning",
+      "serviceordre": "SO-26-7768",
+      "moelle": {
+        "park": "Fjordvind",
+        "model": "S-4.2 MW",
+        "id": "WTG-015"
+      },
+      "besoegsdato": "12/07/2026",
+      "tekniker": "Lasse Bak",
+      "raekke": 18
+    },
+    {
+      "besoegsdato": "08/11/2026",
+      "prioritet": "Høj",
+      "tekniker": "Kim Skov",
+      "serviceordre": "SO-26-7772",
+      "stilstand_timer": 2.0,
+      "registreret": "08/07/2026",
+      "type": "Fejlretning",
+      "status": "Afsluttet",
+      "moelle": {
+        "model": "N-2.5 MW",
+        "id": "WTG-009",
+        "park": "Vestkyst Nord"
+      },
+      "ejer": {
+        "kontaktperson": "Rasmus Madsen",
+        "email": "rasmus.madsen@nordlys.example.com",
+        "navn": " Nordlys Kapital ApS"
+      },
+      "timer_brugt": 7.5,
+      "raekke": 19
+    },
+    {
+      "ejer": {
+        "navn": "Nordlys Kapital ApS",
+        "kontaktperson": "Rasmus Madsen",
+        "email": "Rasmus.Madsen@Nordlys.Example.Com"
+      },
+      "serviceordre": "SO-26-7776",
+      "moelle": {
+        "park": "Vestkyst Nord",
+        "id": "WTG-021",
+        "model": "N-2.5 MW"
+      },
+      "stilstand_timer": 5.5,
+      "besoegsdato": "08/01/2026",
+      "status": "Igangværende",
+      "raekke": 20,
+      "prioritet": "Høj",
+      "type": "Planlagt service",
+      "registreret": "04/11/2025",
+      "tekniker": "Pernille Holst",
+      "timer_brugt": 1.5
+    },
+    {
+      "stilstand_timer": 14.0,
+      "serviceordre": "SO-26-7780",
+      "status": "Annulleret",
+      "type": "Fejlretning",
+      "raekke": 21,
+      "moelle": {
+        "model": "N-2.5 MW",
+        "park": "Fjordvind",
+        "id": "WTG-037"
+      },
+      "registreret": "08/06/2026",
+      "ejer": {
+        "kontaktperson": "Rasmus Madsen",
+        "navn": "Nordlys Kapital ApS",
+        "email": "rasmus.madsen@nordlys.example.com"
+      },
+      "timer_brugt": 6.0,
+      "prioritet": "Høj",
+      "tekniker": "Lasse Bak",
+      "besoegsdato": "09/08/2026"
+    },
+    {
+      "registreret": "02/04/2026",
+      "status": "Afsluttet",
+      "raekke": 22,
+      "tekniker": "Pernille Holst",
+      "type": "Planlagt service",
+      "moelle": {
+        "park": "Hedeparken",
+        "model": "N-2.5 MW",
+        "id": "WTG-038"
+      },
+      "serviceordre": "SO-26-7784",
+      "prioritet": "Normal",
+      "timer_brugt": 3.0,
+      "stilstand_timer": 0.0,
+      "ejer": {
+        "kontaktperson": "Signe Petersen",
+        "email": "Signe.Petersen@Hedenslaug.Example.Org",
+        "navn": "Hedens Vindmøllelaug"
+      },
+      "besoegsdato": "05/02/2026"
+    },
+    {
+      "besoegsdato": "07/11/2026",
+      "tekniker": "Pernille Holst",
+      "registreret": "12/03/2026",
+      "status": "Afsluttet",
+      "stilstand_timer": 14.0,
+      "ejer": {
+        "email": "rasmus.madsen@nordlys.example.com",
+        "navn": "Nordlys Kapital ApS",
+        "kontaktperson": "Rasmus Madsen"
+      },
+      "prioritet": "Lav",
+      "type": "Planlagt service",
+      "timer_brugt": 4.5,
+      "serviceordre": "SO-26-7788",
+      "moelle": {
+        "park": "Vestkyst Nord",
+        "id": "WTG-040",
+        "model": "S-4.2 MW"
+      },
+      "raekke": 23
+    },
+    {
+      "type": "Fejlretning",
+      "besoegsdato": "10/11/2026",
+      "ejer": {
+        "email": "rasmus.madsen@nordlys.example.com",
+        "navn": " Nordlys Kapital ApS",
+        "kontaktperson": "Rasmus Madsen"
+      },
+      "stilstand_timer": 5.5,
+      "tekniker": "Kim Skov",
+      "serviceordre": "SO-26-7792",
+      "raekke": 24,
+      "timer_brugt": 7.5,
+      "status": "Afventer reservedel",
+      "moelle": {
+        "park": "Fjordvind",
+        "model": "V-3.6 MW",
+        "id": "WTG-014"
+      },
+      "prioritet": "Normal",
+      "registreret": "07/05/2026"
+    },
+    {
+      "besoegsdato": "09/04/2026",
+      "stilstand_timer": 2.0,
+      "moelle": {
+        "park": "Vestkyst Nord",
+        "id": "WTG-027",
+        "model": "S-4.2 MW"
+      },
+      "raekke": 25,
+      "prioritet": "Høj",
+      "serviceordre": "SO-26-7796",
+      "timer_brugt": null,
+      "tekniker": "Lasse Bak",
+      "status": "Afsluttet",
+      "type": "Oplæring",
+      "registreret": "08/03/2026",
+      "ejer": {
+        "navn": "Vestkyst Energi A/S",
+        "email": "jesper.mller@vestkyst-energi.example.com",
+        "kontaktperson": "Jesper Møller"
+      }
+    },
+    {
+      "type": "Inspektion",
+      "status": "Afsluttet",
+      "ejer": {
+        "email": "rasmus.madsen@nordlys.example.com",
+        "kontaktperson": "Rasmus Madsen",
+        "navn": "Nordlys Kapital ApS"
+      },
+      "moelle": {
+        "id": "WTG-045",
+        "park": "Fjordvind",
+        "model": "V-3.6 MW"
+      },
+      "raekke": 26,
+      "serviceordre": "SO-26-7800",
+      "tekniker": "Pernille Holst",
+      "prioritet": "Lav",
+      "stilstand_timer": 48.0,
+      "registreret": "08/06/2026",
+      "besoegsdato": "12/07/2026"
+    },
+    {
+      "timer_brugt": 1.5,
+      "tekniker": "Pernille Holst",
+      "prioritet": "Normal",
+      "raekke": 27,
+      "registreret": "01/02/2026",
+      "serviceordre": "SO-26-7804",
+      "moelle": {
+        "id": "WTG-043",
+        "park": "Fjordvind",
+        "model": "S-4.2 MW"
+      },
+      "type": "Planlagt service",
+      "status": "Igangværende",
+      "ejer": {
+        "kontaktperson": "Cecilie Nielsen",
+        "navn": "Fjordvind I/S",
+        "email": "cecilie.nielsen@fjordvind.example.net"
+      },
+      "stilstand_timer": 14.0,
+      "besoegsdato": "03/10/2026"
+    },
+    {
+      "moelle": {
+        "model": "N-2.5 MW",
+        "park": "Hedeparken",
+        "id": "WTG-010"
+      },
+      "raekke": 28,
+      "prioritet": "Lav",
+      "tekniker": "Pernille Holst",
+      "type": "Fejlretning",
+      "timer_brugt": 12.0,
+      "stilstand_timer": 48.0,
+      "ejer": {
+        "navn": "Nordlys Kapital ApS",
+        "kontaktperson": "Rasmus Madsen",
+        "email": "Rasmus.Madsen@Nordlys.Example.Com"
+      },
+      "registreret": "04/10/2026",
+      "besoegsdato": "01/11/2026",
+      "serviceordre": "SO-26-7808",
+      "status": "Igangværende"
+    },
+    {
+      "besoegsdato": "03/06/2026",
+      "moelle": {
+        "park": "Hedeparken",
+        "model": "S-4.2 MW",
+        "id": "WTG-014"
+      },
+      "raekke": 29,
+      "type": "Planlagt service",
+      "ejer": {
+        "email": "signe.petersen@hedenslaug.example.org",
+        "navn": "Hedens Vindmøllelaug",
+        "kontaktperson": "Signe Petersen"
+      },
+      "status": "Afsluttet",
+      "registreret": "06/05/2026",
+      "timer_brugt": 6.0,
+      "serviceordre": "SO-26-7812",
+      "tekniker": "Lasse Bak",
+      "stilstand_timer": 2.0,
+      "prioritet": "Normal"
+    },
+    {
+      "stilstand_timer": 5.5,
+      "timer_brugt": 4.5,
+      "moelle": {
+        "model": "N-2.5 MW",
+        "id": "WTG-006",
+        "park": "Vestkyst Nord"
+      },
+      "registreret": "06/01/2026",
+      "prioritet": "Høj",
+      "serviceordre": "SO-26-7816",
+      "ejer": {
+        "navn": "Hedens Vindmøllelaug",
+        "email": "signe.petersen@hedenslaug.example.org",
+        "kontaktperson": "Signe Petersen"
+      },
+      "tekniker": "Lasse Bak",
+      "type": "Fejlretning",
+      "raekke": 30,
+      "besoegsdato": "07/10/2026",
+      "status": "Annulleret"
+    },
+    {
+      "registreret": "11/04/2026",
+      "timer_brugt": 6.0,
+      "tekniker": "Pernille Holst",
+      "stilstand_timer": 48.0,
+      "ejer": {
+        "kontaktperson": "Signe Petersen",
+        "email": "Signe.Petersen@Hedenslaug.Example.Org",
+        "navn": "Hedens Vindmøllelaug"
+      },
+      "prioritet": "Normal",
+      "besoegsdato": "06/03/2026",
+      "moelle": {
+        "park": "Vestkyst Nord",
+        "model": "V-3.6 MW",
+        "id": "WTG-004"
+      },
+      "status": "Afsluttet",
+      "type": "Planlagt service",
+      "serviceordre": "SO-26-7820",
+      "raekke": 31
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "work_order": {
+        "type": "string",
+        "description": "Number of the service work order."
+      },
+      "turbine_id": {
+        "type": "string",
+        "description": "Identifier of the turbine that was visited."
+      },
+      "wind_farm": {
+        "type": "string",
+        "enum": [
+          "north_coast",
+          "fjord",
+          "heath"
+        ],
+        "description": "Wind farm the turbine belongs to."
+      },
+      "owner": {
+        "type": "string",
+        "description": "Company or cooperative that owns the turbine."
+      },
+      "visit_type": {
+        "type": "string",
+        "enum": [
+          "scheduled",
+          "corrective",
+          "inspection"
+        ],
+        "description": "Reason for the visit."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "done",
+          "in_progress",
+          "waiting_parts",
+          "cancelled"
+        ],
+        "description": "Progress of the work order."
+      },
+      "priority": {
+        "type": "string",
+        "enum": [
+          "high",
+          "normal",
+          "low"
+        ],
+        "description": "Urgency of the work order."
+      },
+      "visit_date": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the technicians visited the turbine."
+      },
+      "hours_spent": {
+        "type": "number",
+        "description": "Technician hours spent on the visit."
+      },
+      "energy_lost_mwh": {
+        "type": "number",
+        "description": "Energy production lost during the stop, in megawatt hours."
+      },
+      "weather_notes": {
+        "type": "string",
+        "description": "Notes."
+      }
+    },
+    "required": [
+      "work_order",
+      "turbine_id",
+      "wind_farm",
+      "visit_type",
+      "status",
+      "visit_date"
+    ]
+  },
+  "groundTruth": {
+    "work_order": {
+      "source": "serviceordre",
+      "transform": "copy",
+      "why": "work order; raekke is the row"
+    },
+    "turbine_id": {
+      "source": "moelle.id",
+      "transform": "copy",
+      "why": "turbine id"
+    },
+    "wind_farm": {
+      "source": "moelle.park",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Vestkyst Nord": "north_coast",
+        "Fjordvind": "fjord",
+        "Hedeparken": "heath"
+      },
+      "why": "wind farm; moelle.model is the turbine model"
+    },
+    "owner": {
+      "source": "ejer.navn",
+      "transform": "trim",
+      "why": "owner, padded; ejer.kontaktperson is a person and tekniker the technician"
+    },
+    "visit_type": {
+      "source": "type",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Planlagt service": "scheduled",
+        "Fejlretning": "corrective",
+        "Inspektion": "inspection",
+        "Oplæring": null
+      },
+      "why": "visit type; training visits need review"
+    },
+    "status": {
+      "source": "status",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Afsluttet": "done",
+        "Igangværende": "in_progress",
+        "Afventer reservedel": "waiting_parts",
+        "Annulleret": "cancelled"
+      },
+      "why": "work order state"
+    },
+    "priority": {
+      "source": "prioritet",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Høj": "high",
+        "Normal": "normal",
+        "Lav": "low"
+      },
+      "why": "priority, null for some"
+    },
+    "visit_date": {
+      "source": "besoegsdato",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "visit date (Danish day-first); registreret is when the order was logged"
+    },
+    "hours_spent": {
+      "source": "timer_brugt",
+      "transform": "copy",
+      "why": "technician hours, null or missing for some; stilstand_timer is downtime"
+    },
+    "energy_lost_mwh": {
+      "source": null,
+      "transform": "none",
+      "why": "not exported",
+      "unsupportedReason": "would need stilstand_timer multiplied by the turbine's rated power"
+    },
+    "weather_notes": {
+      "source": null,
+      "transform": "none",
+      "why": "not exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "serviceordre",
+        "raekke"
+      ],
+      "correctFor": "work_order"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "moelle.id",
+        "serviceordre"
+      ],
+      "correctFor": "turbine_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "ejer.navn",
+        "ejer.kontaktperson"
+      ],
+      "correctFor": "owner"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "type",
+        "prioritet"
+      ],
+      "correctFor": "visit_type"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "status",
+        "type"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "besoegsdato",
+        "registreret"
+      ],
+      "correctFor": "visit_date"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "timer_brugt",
+        "stilstand_timer"
+      ],
+      "correctFor": "hours_spent"
+    }
+  ],
+  "sourceConcepts": {
+    "serviceordre": "transaction-id",
+    "raekke": "other-identifier",
+    "moelle.id": "customer-id",
+    "moelle.park": "category",
+    "moelle.model": "category",
+    "tekniker": "person-name",
+    "ejer.navn": "organization-name",
+    "ejer.kontaktperson": "person-name",
+    "ejer.email": "email",
+    "type": "category",
+    "status": "account-status",
+    "prioritet": "category",
+    "besoegsdato": "start-date",
+    "registreret": "created-date",
+    "timer_brugt": "quantity",
+    "stilstand_timer": "quantity"
+  },
+  "destinationConcepts": {
+    "work_order": "transaction-id",
+    "turbine_id": "customer-id",
+    "wind_farm": "category",
+    "owner": "organization-name",
+    "visit_type": "category",
+    "status": "account-status",
+    "priority": "category",
+    "visit_date": "start-date",
+    "hours_spent": "quantity",
+    "energy_lost_mwh": "quantity",
+    "weather_notes": "other"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 4,
+      "outcome": "transformed",
+      "output": {
+        "work_order": "SO-26-7716",
+        "turbine_id": "WTG-021",
+        "wind_farm": "fjord",
+        "owner": "Nordlys Kapital ApS",
+        "visit_type": "scheduled",
+        "status": "done",
+        "visit_date": "2026-11-05",
+        "hours_spent": 4.5
+      }
+    },
+    {
+      "recordIndex": 15,
+      "outcome": "transformed",
+      "output": {
+        "work_order": "SO-26-7760",
+        "turbine_id": "WTG-034",
+        "wind_farm": "north_coast",
+        "owner": "Fjordvind I/S",
+        "visit_type": "scheduled",
+        "status": "done",
+        "priority": "high",
+        "visit_date": "2026-02-11",
+        "hours_spent": 1.5
+      }
+    },
+    {
+      "recordIndex": 17,
+      "outcome": "transformed",
+      "output": {
+        "work_order": "SO-26-7768",
+        "turbine_id": "WTG-015",
+        "wind_farm": "fjord",
+        "owner": "Fjordvind I/S",
+        "visit_type": "corrective",
+        "status": "done",
+        "priority": "high",
+        "visit_date": "2026-07-12"
+      }
+    },
+    {
+      "recordIndex": 24,
+      "outcome": "held"
+    }
+  ]
+}

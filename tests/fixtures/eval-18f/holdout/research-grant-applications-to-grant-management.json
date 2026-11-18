@@ -1,0 +1,1091 @@
+{
+  "scenarioId": "research-grant-applications-to-grant-management",
+  "split": "holdout",
+  "track": "general",
+  "industry": "research funding agency grant applications",
+  "sourceLanguage": "pl",
+  "description": "Grant application export of a fictional research funding programme (Polish snake_case, nested principal investigator and institution) to be loaded into a grant management system.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "czas_trwania_mies": 24,
+      "kierownik": {
+        "email": "joanna.zielinski@uczelnia.example.org",
+        "nazwisko": "Zieliński",
+        "imie": "Joanna"
+      },
+      "lp": 1,
+      "data_rozpoczecia": "24/03/2027",
+      "jednostka": {
+        "wydzial": "Wydział Historii",
+        "nazwa": "Instytut Badawczy Kujawski   "
+      },
+      "nr_wniosku": "WN/2026/0410",
+      "recenzent": "dr Barbara Jasińska",
+      "data_zlozenia": "11/01/2026",
+      "kwota_wnioskowana": 480000.0,
+      "kwota_przyznana": null,
+      "id_systemowe": 918147,
+      "status_umowy": "Niepodpisana",
+      "panel": "Nauki ścisłe",
+      "status_wniosku": "W ocenie"
+    },
+    {
+      "czas_trwania_mies": 12,
+      "lp": 2,
+      "status_umowy": "Podpisana",
+      "id_systemowe": 909921,
+      "data_zlozenia": "20/04/2026",
+      "kierownik": {
+        "email": "jakub.wojcik@uczelnia.example.org",
+        "imie": "Jakub",
+        "nazwisko": "Wójcik"
+      },
+      "recenzent": "prof. Halina Wróbel",
+      "data_rozpoczecia": "30/10/2026",
+      "kwota_wnioskowana": 1200000.0,
+      "status_wniosku": "Złożony",
+      "jednostka": {
+        "nazwa": "Instytut Badawczy Warmiński",
+        "wydzial": "Wydział Historii"
+      },
+      "panel": "Nauki humanistyczne",
+      "kwota_przyznana": null,
+      "nr_wniosku": "WN/2026/0413"
+    },
+    {
+      "czas_trwania_mies": 36,
+      "data_rozpoczecia": "25/02/2027",
+      "id_systemowe": 903239,
+      "nr_wniosku": "WN/2026/0416",
+      "status_wniosku": "Złożony",
+      "lp": 3,
+      "kierownik": {
+        "imie": "Wojciech",
+        "nazwisko": "Nowak",
+        "email": "Wojciech.Nowak@Uczelnia.Example.Org"
+      },
+      "kwota_wnioskowana": 750000.0,
+      "panel": "Nauki o życiu",
+      "recenzent": "dr hab. Marek Sikora",
+      "data_zlozenia": "29/03/2026",
+      "status_umowy": "Niepodpisana",
+      "jednostka": {
+        "nazwa": "Instytut Badawczy Sudecki",
+        "wydzial": "Wydział Biologii"
+      }
+    },
+    {
+      "data_zlozenia": "16/04/2026",
+      "status_wniosku": "Złożony",
+      "czas_trwania_mies": 48,
+      "status_umowy": "Niepodpisana",
+      "jednostka": {
+        "wydzial": "Wydział Fizyki",
+        "nazwa": "Instytut Badawczy Śląski"
+      },
+      "panel": "Nauki humanistyczne",
+      "kierownik": {
+        "imie": "Krzysztof",
+        "email": "krzysztof.jankowski@uczelnia.example.org",
+        "nazwisko": "Jankowski"
+      },
+      "nr_wniosku": "WN/2026/0419",
+      "kwota_wnioskowana": 320000.0,
+      "data_rozpoczecia": "15/12/2026",
+      "id_systemowe": 920910,
+      "recenzent": "prof. Halina Wróbel",
+      "lp": 4
+    },
+    {
+      "czas_trwania_mies": 48,
+      "status_umowy": "Niepodpisana",
+      "status_wniosku": "Odrzucony",
+      "jednostka": {
+        "wydzial": "Wydział Fizyki",
+        "nazwa": "Politechnika Podlaski"
+      },
+      "kierownik": {
+        "email": "natalia.lewandowski@uczelnia.example.org",
+        "nazwisko": "Lewandowski",
+        "imie": "Natalia"
+      },
+      "recenzent": "dr hab. Marek Sikora",
+      "data_zlozenia": "27/03/2026",
+      "nr_wniosku": "WN/2026/0422",
+      "panel": "Nauki humanistyczne",
+      "kwota_wnioskowana": 480000.0,
+      "id_systemowe": 927291,
+      "lp": 5,
+      "data_rozpoczecia": "03/01/2027"
+    },
+    {
+      "kwota_przyznana": null,
+      "data_zlozenia": "18/03/2026",
+      "status_umowy": "Podpisana",
+      "kwota_wnioskowana": 320000.0,
+      "czas_trwania_mies": 36,
+      "jednostka": {
+        "wydzial": "Wydział Chemii",
+        "nazwa": " Politechnika Nadwiślański  "
+      },
+      "nr_wniosku": "WN/2026/0425",
+      "panel": "Nauki o życiu",
+      "recenzent": "prof. Halina Wróbel",
+      "data_rozpoczecia": "19/11/2026",
+      "lp": 6,
+      "status_wniosku": "Odrzucony",
+      "kierownik": {
+        "imie": "Łukasz",
+        "email": "ukasz.piotrowski@uczelnia.example.org",
+        "nazwisko": "Piotrowski"
+      },
+      "id_systemowe": 941044
+    },
+    {
+      "kierownik": {
+        "nazwisko": "Jankowski",
+        "email": "Monika.Jankowski@Uczelnia.Example.Org",
+        "imie": "Monika"
+      },
+      "czas_trwania_mies": 48,
+      "data_rozpoczecia": "25/11/2026",
+      "jednostka": {
+        "nazwa": "Politechnika Warmiński",
+        "wydzial": "Wydział Biologii"
+      },
+      "nr_wniosku": "WN/2026/0428",
+      "status_umowy": "Niepodpisana",
+      "recenzent": "dr Barbara Jasińska",
+      "status_wniosku": "Wycofany",
+      "kwota_wnioskowana": 150000.0,
+      "data_zlozenia": "18/01/2026",
+      "panel": "Nauki humanistyczne",
+      "id_systemowe": 922289,
+      "lp": 7
+    },
+    {
+      "czas_trwania_mies": 48,
+      "status_umowy": "Niepodpisana",
+      "kwota_wnioskowana": 320000.0,
+      "panel": "Nauki humanistyczne",
+      "nr_wniosku": "WN/2026/0431",
+      "jednostka": {
+        "nazwa": "Uniwersytet Mazowiecki",
+        "wydzial": "Wydział Historii"
+      },
+      "status_wniosku": "W ocenie",
+      "kierownik": {
+        "imie": "Joanna",
+        "email": "joanna.wojcik@uczelnia.example.org",
+        "nazwisko": "Wójcik"
+      },
+      "recenzent": "dr Barbara Jasińska",
+      "lp": 8,
+      "data_rozpoczecia": "30/01/2027",
+      "id_systemowe": 976445,
+      "data_zlozenia": "12/05/2026"
+    },
+    {
+      "czas_trwania_mies": 48,
+      "id_systemowe": 996951,
+      "status_umowy": "Niepodpisana",
+      "nr_wniosku": "WN/2026/0434",
+      "panel": "Nauki ścisłe",
+      "data_rozpoczecia": "25/01/2027",
+      "kwota_wnioskowana": 150000.0,
+      "status_wniosku": "W ocenie",
+      "lp": 9,
+      "data_zlozenia": "14/03/2026",
+      "recenzent": "dr hab. Marek Sikora",
+      "jednostka": {
+        "nazwa": "Politechnika Mazowiecki",
+        "wydzial": "Wydział Fizyki"
+      },
+      "kierownik": {
+        "nazwisko": "Lewandowski",
+        "imie": "Zofia",
+        "email": "zofia.lewandowski@uczelnia.example.org"
+      }
+    },
+    {
+      "nr_wniosku": "WN/2026/0437",
+      "lp": 10,
+      "recenzent": "prof. Halina Wróbel",
+      "kierownik": {
+        "imie": "Aleksandra",
+        "email": "aleksandra.piotrowski@uczelnia.example.org",
+        "nazwisko": "Piotrowski"
+      },
+      "kwota_wnioskowana": 150000.0,
+      "data_zlozenia": "03/04/2026",
+      "czas_trwania_mies": 36,
+      "data_rozpoczecia": "31/03/2027",
+      "status_wniosku": "Złożony",
+      "jednostka": {
+        "nazwa": "Uniwersytet Warmiński",
+        "wydzial": "Wydział Biologii"
+      },
+      "status_umowy": "Niepodpisana",
+      "id_systemowe": 941686,
+      "panel": "Nauki humanistyczne",
+      "kwota_przyznana": null
+    },
+    {
+      "kwota_przyznana": null,
+      "czas_trwania_mies": 48,
+      "nr_wniosku": "WN/2026/0440",
+      "lp": 11,
+      "data_zlozenia": "04/05/2026",
+      "status_umowy": "Niepodpisana",
+      "recenzent": "prof. Halina Wróbel",
+      "data_rozpoczecia": "31/10/2026",
+      "kierownik": {
+        "email": "Ewa.Nowak@Uczelnia.Example.Org",
+        "imie": "Ewa",
+        "nazwisko": "Nowak"
+      },
+      "id_systemowe": 978792,
+      "jednostka": {
+        "nazwa": "Politechnika Sudecki",
+        "wydzial": "Wydział Historii"
+      },
+      "status_wniosku": "W ocenie",
+      "panel": "Nauki ścisłe",
+      "kwota_wnioskowana": 320000.0
+    },
+    {
+      "id_systemowe": 907051,
+      "status_umowy": "Niepodpisana",
+      "panel": "Nauki o życiu",
+      "data_zlozenia": "27/09/2025",
+      "kierownik": {
+        "imie": "Adam",
+        "email": "Adam.Kowalski@Uczelnia.Example.Org",
+        "nazwisko": "Kowalski"
+      },
+      "nr_wniosku": "WN/2026/0443",
+      "czas_trwania_mies": 36,
+      "kwota_wnioskowana": 750000.0,
+      "data_rozpoczecia": "02/03/2027",
+      "lp": 12,
+      "jednostka": {
+        "wydzial": "Wydział Chemii",
+        "nazwa": "Instytut Badawczy Opolski"
+      },
+      "recenzent": "dr hab. Marek Sikora",
+      "kwota_przyznana": 675000.0,
+      "status_wniosku": "Przyznany"
+    },
+    {
+      "data_zlozenia": "17/12/2025",
+      "czas_trwania_mies": 36,
+      "id_systemowe": 910134,
+      "kwota_wnioskowana": 480000.0,
+      "status_wniosku": "Złożony",
+      "data_rozpoczecia": "11/02/2027",
+      "panel": "Nauki humanistyczne",
+      "recenzent": "dr Barbara Jasińska",
+      "status_umowy": "Niepodpisana",
+      "nr_wniosku": "WN/2026/0446",
+      "jednostka": {
+        "wydzial": "Wydział Chemii",
+        "nazwa": "Instytut Badawczy Podlaski"
+      },
+      "kwota_przyznana": null,
+      "kierownik": {
+        "nazwisko": "Kozłowski",
+        "imie": "Piotr",
+        "email": "piotr.kozowski@uczelnia.example.org"
+      },
+      "lp": 13
+    },
+    {
+      "status_wniosku": "Odrzucony",
+      "recenzent": "dr Barbara Jasińska",
+      "jednostka": {
+        "nazwa": "Uniwersytet Karpacki",
+        "wydzial": "Wydział Fizyki"
+      },
+      "data_zlozenia": "10/01/2026",
+      "id_systemowe": 961874,
+      "status_umowy": "Podpisana",
+      "nr_wniosku": "WN/2026/0449",
+      "panel": "Nauki ścisłe",
+      "kwota_wnioskowana": 480000.0,
+      "czas_trwania_mies": 12,
+      "lp": 14,
+      "kierownik": {
+        "imie": "Jakub",
+        "nazwisko": "Nowak",
+        "email": "jakub.nowak@uczelnia.example.org"
+      },
+      "data_rozpoczecia": "05/12/2026"
+    },
+    {
+      "kierownik": {
+        "imie": "Paweł",
+        "nazwisko": "Nowak",
+        "email": "pawe.nowak@uczelnia.example.org"
+      },
+      "data_rozpoczecia": "10/01/2027",
+      "czas_trwania_mies": 12,
+      "jednostka": {
+        "nazwa": "Instytut Badawczy Pomorski",
+        "wydzial": "Wydział Fizyki"
+      },
+      "recenzent": "dr hab. Marek Sikora",
+      "nr_wniosku": "WN/2026/0452",
+      "status_wniosku": "Odrzucony",
+      "lp": 15,
+      "id_systemowe": 980058,
+      "panel": "Nauki o życiu",
+      "data_zlozenia": "12/10/2025",
+      "status_umowy": "Podpisana",
+      "kwota_wnioskowana": 1200000.0
+    },
+    {
+      "jednostka": {
+        "wydzial": "Wydział Historii",
+        "nazwa": " Uniwersytet Opolski  "
+      },
+      "status_wniosku": "Złożony",
+      "kwota_wnioskowana": 320000.0,
+      "lp": 16,
+      "data_zlozenia": "17/05/2026",
+      "recenzent": "dr Barbara Jasińska",
+      "status_umowy": "Podpisana",
+      "kierownik": {
+        "email": "natalia.nowak@uczelnia.example.org",
+        "imie": "Natalia",
+        "nazwisko": "Nowak"
+      },
+      "data_rozpoczecia": "28/03/2027",
+      "panel": "Nauki ścisłe",
+      "nr_wniosku": "WN/2026/0455",
+      "czas_trwania_mies": 48,
+      "id_systemowe": 967417
+    },
+    {
+      "data_zlozenia": "10/06/2026",
+      "czas_trwania_mies": 48,
+      "id_systemowe": 901346,
+      "lp": 17,
+      "kwota_wnioskowana": 750000.0,
+      "panel": "Nauki ścisłe",
+      "kierownik": {
+        "imie": "Jakub",
+        "email": "jakub.wisniewski@uczelnia.example.org",
+        "nazwisko": "Wiśniewski"
+      },
+      "jednostka": {
+        "nazwa": "Politechnika Lubuski",
+        "wydzial": "Wydział Chemii"
+      },
+      "recenzent": "dr Barbara Jasińska",
+      "data_rozpoczecia": "16/03/2027",
+      "nr_wniosku": "WN/2026/0458",
+      "status_umowy": "Niepodpisana",
+      "status_wniosku": "W ocenie"
+    },
+    {
+      "id_systemowe": 925405,
+      "lp": 18,
+      "panel": "Nauki humanistyczne",
+      "kwota_przyznana": null,
+      "czas_trwania_mies": 24,
+      "data_zlozenia": "09/10/2025",
+      "status_wniosku": "Wycofany",
+      "kierownik": {
+        "imie": "Tomasz",
+        "nazwisko": "Kowalski",
+        "email": "TOMASZ.KOWALSKI@UCZELNIA.EXAMPLE.ORG"
+      },
+      "status_umowy": "Podpisana",
+      "nr_wniosku": "WN/2026/0461",
+      "data_rozpoczecia": "02/12/2026",
+      "recenzent": "dr hab. Marek Sikora",
+      "jednostka": {
+        "nazwa": "Instytut Badawczy Mazowiecki",
+        "wydzial": "Wydział Fizyki"
+      },
+      "kwota_wnioskowana": 150000.0
+    },
+    {
+      "status_wniosku": "Złożony",
+      "kierownik": {
+        "imie": "Katarzyna",
+        "email": "katarzyna.wisniewski@uczelnia.example.org",
+        "nazwisko": "Wiśniewski"
+      },
+      "czas_trwania_mies": 36,
+      "kwota_wnioskowana": 1200000.0,
+      "nr_wniosku": "WN/2026/0464",
+      "lp": 19,
+      "panel": "Nauki o życiu",
+      "data_rozpoczecia": "17/10/2026",
+      "status_umowy": "Podpisana",
+      "jednostka": {
+        "wydzial": "Wydział Historii",
+        "nazwa": "Uniwersytet Śląski"
+      },
+      "data_zlozenia": "03/01/2026",
+      "id_systemowe": 914210,
+      "recenzent": "dr hab. Marek Sikora"
+    },
+    {
+      "status_wniosku": "W ocenie",
+      "recenzent": "dr Barbara Jasińska",
+      "czas_trwania_mies": 48,
+      "lp": 20,
+      "kierownik": {
+        "nazwisko": "Szymański",
+        "email": "JOANNA.SZYMANSKI@UCZELNIA.EXAMPLE.ORG",
+        "imie": "Joanna"
+      },
+      "data_rozpoczecia": "25/12/2026",
+      "nr_wniosku": "WN/2026/0467",
+      "jednostka": {
+        "nazwa": "Politechnika Morski",
+        "wydzial": "Wydział Chemii"
+      },
+      "data_zlozenia": "24/01/2026",
+      "panel": "Nauki o życiu",
+      "kwota_wnioskowana": 320000.0,
+      "id_systemowe": 970311,
+      "status_umowy": "Niepodpisana"
+    },
+    {
+      "data_rozpoczecia": "21/11/2026",
+      "kwota_wnioskowana": 480000.0,
+      "kierownik": {
+        "email": "Anna.Krol@Uczelnia.Example.Org",
+        "imie": "Anna",
+        "nazwisko": "Król"
+      },
+      "data_zlozenia": "30/09/2025",
+      "czas_trwania_mies": 36,
+      "recenzent": "prof. Halina Wróbel",
+      "status_umowy": "Niepodpisana",
+      "status_wniosku": "Przyznany",
+      "kwota_przyznana": null,
+      "lp": 21,
+      "nr_wniosku": "WN/2026/0470",
+      "id_systemowe": 992378,
+      "panel": "Nauki ścisłe",
+      "jednostka": {
+        "nazwa": "Instytut Badawczy Nadwiślański",
+        "wydzial": "Wydział Historii"
+      }
+    },
+    {
+      "id_systemowe": 926584,
+      "status_wniosku": "Przyznany",
+      "kwota_przyznana": 135000.0,
+      "panel": "Nauki o życiu",
+      "kierownik": {
+        "imie": "Marcin",
+        "nazwisko": "Szymański",
+        "email": "  marcin.szymanski@uczelnia.example.org "
+      },
+      "nr_wniosku": "WN/2026/0473",
+      "status_umowy": "Niepodpisana",
+      "data_rozpoczecia": "27/02/2027",
+      "data_zlozenia": "11/02/2026",
+      "lp": 22,
+      "recenzent": "prof. Halina Wróbel",
+      "czas_trwania_mies": 48,
+      "kwota_wnioskowana": 150000.0,
+      "jednostka": {
+        "nazwa": "Instytut Badawczy Morski",
+        "wydzial": "Wydział Chemii"
+      }
+    },
+    {
+      "panel": "Nauki humanistyczne",
+      "recenzent": "prof. Halina Wróbel",
+      "lp": 23,
+      "data_zlozenia": "18/11/2025",
+      "czas_trwania_mies": 48,
+      "kwota_wnioskowana": 150000.0,
+      "nr_wniosku": "WN/2026/0476",
+      "id_systemowe": 945654,
+      "kierownik": {
+        "email": "marcin.wisniewski@uczelnia.example.org",
+        "imie": "Marcin",
+        "nazwisko": "Wiśniewski"
+      },
+      "kwota_przyznana": null,
+      "status_wniosku": "Przyznany",
+      "status_umowy": "Niepodpisana",
+      "jednostka": {
+        "wydzial": "Wydział Biologii",
+        "nazwa": "Politechnika Karpacki"
+      },
+      "data_rozpoczecia": "27/03/2027"
+    },
+    {
+      "panel": "Nauki humanistyczne",
+      "status_wniosku": "W ocenie",
+      "jednostka": {
+        "nazwa": "Instytut Badawczy Lubuski",
+        "wydzial": "Wydział Historii"
+      },
+      "status_umowy": "Niepodpisana",
+      "nr_wniosku": "WN/2026/0479",
+      "czas_trwania_mies": 36,
+      "data_zlozenia": "23/12/2025",
+      "recenzent": "dr Barbara Jasińska",
+      "id_systemowe": 908324,
+      "kwota_wnioskowana": 750000.0,
+      "kierownik": {
+        "email": "  tomasz.kozowski@uczelnia.example.org ",
+        "nazwisko": "Kozłowski",
+        "imie": "Tomasz"
+      },
+      "lp": 24,
+      "data_rozpoczecia": "25/02/2027"
+    },
+    {
+      "lp": 25,
+      "czas_trwania_mies": 48,
+      "kwota_wnioskowana": 750000.0,
+      "id_systemowe": 989134,
+      "jednostka": {
+        "nazwa": "Instytut Badawczy Karpacki",
+        "wydzial": "Wydział Biologii"
+      },
+      "nr_wniosku": "WN/2026/0482",
+      "panel": "Nauki humanistyczne",
+      "kierownik": {
+        "nazwisko": "Kowalski",
+        "email": "jakub.kowalski@uczelnia.example.org",
+        "imie": "Jakub"
+      },
+      "status_wniosku": "Złożony",
+      "status_umowy": "Podpisana",
+      "recenzent": "dr Barbara Jasińska",
+      "data_zlozenia": "28/10/2025",
+      "data_rozpoczecia": "02/11/2026"
+    },
+    {
+      "kierownik": {
+        "imie": "Łukasz",
+        "email": "Ukasz.Kowalski@Uczelnia.Example.Org",
+        "nazwisko": "Kowalski"
+      },
+      "status_umowy": "Niepodpisana",
+      "lp": 26,
+      "data_rozpoczecia": "24/10/2026",
+      "id_systemowe": 944294,
+      "status_wniosku": "Przyznany",
+      "kwota_wnioskowana": 480000.0,
+      "panel": "Nauki o życiu",
+      "nr_wniosku": "WN/2026/0485",
+      "kwota_przyznana": 432000.0,
+      "data_zlozenia": "04/09/2025",
+      "recenzent": "prof. Halina Wróbel",
+      "jednostka": {
+        "nazwa": "Uniwersytet Pomorski",
+        "wydzial": "Wydział Fizyki"
+      },
+      "czas_trwania_mies": 24
+    },
+    {
+      "status_umowy": "Niepodpisana",
+      "kwota_wnioskowana": 1200000.0,
+      "kwota_przyznana": 1200000.0,
+      "jednostka": {
+        "wydzial": "Wydział Biologii",
+        "nazwa": "Politechnika Pomorski"
+      },
+      "nr_wniosku": "WN/2026/0488",
+      "data_zlozenia": "07/01/2026",
+      "czas_trwania_mies": 36,
+      "recenzent": "dr Barbara Jasińska",
+      "data_rozpoczecia": "27/01/2027",
+      "id_systemowe": 924776,
+      "panel": "Nauki ścisłe",
+      "lp": 27,
+      "kierownik": {
+        "email": "natalia.kaminski@uczelnia.example.org",
+        "nazwisko": "Kamiński",
+        "imie": "Natalia"
+      },
+      "status_wniosku": "Przyznany"
+    },
+    {
+      "lp": 28,
+      "kwota_wnioskowana": 480000.0,
+      "jednostka": {
+        "wydzial": "Wydział Biologii",
+        "nazwa": "Uniwersytet Kujawski"
+      },
+      "czas_trwania_mies": 24,
+      "id_systemowe": 989043,
+      "status_wniosku": "Odrzucony",
+      "nr_wniosku": "WN/2026/0491",
+      "recenzent": "dr Barbara Jasińska",
+      "data_zlozenia": "06/03/2026",
+      "data_rozpoczecia": "04/01/2027",
+      "status_umowy": "Niepodpisana",
+      "kierownik": {
+        "email": "agnieszka.grabowski@uczelnia.example.org",
+        "imie": "Agnieszka",
+        "nazwisko": "Grabowski"
+      },
+      "panel": "Nauki o życiu"
+    },
+    {
+      "lp": 29,
+      "jednostka": {
+        "nazwa": "Uniwersytet Lubuski",
+        "wydzial": "Wydział Fizyki"
+      },
+      "data_zlozenia": "17/03/2026",
+      "panel": "Nauki ścisłe",
+      "kwota_przyznana": null,
+      "status_wniosku": "Odrzucony",
+      "id_systemowe": 958365,
+      "recenzent": "dr hab. Marek Sikora",
+      "data_rozpoczecia": "12/10/2026",
+      "kwota_wnioskowana": 750000.0,
+      "status_umowy": "Niepodpisana",
+      "kierownik": {
+        "imie": "Natalia",
+        "email": "natalia.grabowski@uczelnia.example.org",
+        "nazwisko": "Grabowski"
+      },
+      "nr_wniosku": "WN/2026/0494",
+      "czas_trwania_mies": 12
+    },
+    {
+      "recenzent": "dr Barbara Jasińska",
+      "data_rozpoczecia": "19/02/2027",
+      "id_systemowe": 968221,
+      "status_wniosku": "Złożony",
+      "panel": "Nauki ścisłe",
+      "data_zlozenia": "30/01/2026",
+      "jednostka": {
+        "nazwa": "Uniwersytet Podlaski ",
+        "wydzial": "Wydział Fizyki"
+      },
+      "kwota_wnioskowana": 320000.0,
+      "czas_trwania_mies": 36,
+      "kierownik": {
+        "imie": "Anna",
+        "email": "anna.wisniewski@uczelnia.example.org",
+        "nazwisko": "Wiśniewski"
+      },
+      "status_umowy": "Niepodpisana",
+      "lp": 30,
+      "nr_wniosku": "WN/2026/0497"
+    },
+    {
+      "kwota_wnioskowana": 320000.0,
+      "nr_wniosku": "WN/2026/0500",
+      "status_wniosku": "W ocenie",
+      "id_systemowe": 965059,
+      "status_umowy": "Niepodpisana",
+      "jednostka": {
+        "nazwa": " Politechnika Opolski",
+        "wydzial": "Wydział Fizyki"
+      },
+      "data_zlozenia": "22/01/2026",
+      "data_rozpoczecia": "26/11/2026",
+      "czas_trwania_mies": 24,
+      "lp": 31,
+      "panel": "Nauki humanistyczne",
+      "recenzent": "dr hab. Marek Sikora",
+      "kierownik": {
+        "nazwisko": "Kwiatkowski",
+        "imie": "Tomasz",
+        "email": "Tomasz.Kwiatkowski@Uczelnia.Example.Org"
+      }
+    },
+    {
+      "jednostka": {
+        "nazwa": "Uniwersytet Nadwiślański",
+        "wydzial": "Wydział Historii"
+      },
+      "czas_trwania_mies": 48,
+      "status_wniosku": "Wycofany",
+      "recenzent": "dr hab. Marek Sikora",
+      "kwota_wnioskowana": 1200000.0,
+      "status_umowy": "Niepodpisana",
+      "kierownik": {
+        "email": "krzysztof.lewandowski@uczelnia.example.org",
+        "nazwisko": "Lewandowski",
+        "imie": "Krzysztof"
+      },
+      "panel": "Nauki ścisłe",
+      "kwota_przyznana": null,
+      "nr_wniosku": "WN/2026/0503",
+      "id_systemowe": 973675,
+      "lp": 32,
+      "data_rozpoczecia": "07/12/2026",
+      "data_zlozenia": "28/06/2026"
+    },
+    {
+      "status_wniosku": "Przyznany",
+      "kwota_wnioskowana": 1200000.0,
+      "data_rozpoczecia": "15/12/2026",
+      "kierownik": {
+        "email": "Natalia.Krol@Uczelnia.Example.Org",
+        "nazwisko": "Król",
+        "imie": "Natalia"
+      },
+      "jednostka": {
+        "wydzial": "Wydział Historii",
+        "nazwa": "  Politechnika Śląski "
+      },
+      "data_zlozenia": "08/11/2025",
+      "status_umowy": "Niepodpisana",
+      "kwota_przyznana": 1080000.0,
+      "recenzent": "prof. Halina Wróbel",
+      "panel": "Nauki o życiu",
+      "lp": 33,
+      "id_systemowe": 933072,
+      "nr_wniosku": "WN/2026/0506",
+      "czas_trwania_mies": 36
+    },
+    {
+      "id_systemowe": 982736,
+      "kwota_wnioskowana": 750000.0,
+      "czas_trwania_mies": 24,
+      "data_rozpoczecia": "29/01/2027",
+      "jednostka": {
+        "nazwa": " Politechnika Kujawski",
+        "wydzial": "Wydział Biologii"
+      },
+      "panel": "Nauki humanistyczne",
+      "data_zlozenia": "08/10/2025",
+      "status_umowy": "Niepodpisana",
+      "nr_wniosku": "WN/2026/0509",
+      "lp": 34,
+      "status_wniosku": "Złożony",
+      "kierownik": {
+        "email": "tomasz.pawowski@uczelnia.example.org",
+        "imie": "Tomasz",
+        "nazwisko": "Pawłowski"
+      },
+      "recenzent": "prof. Halina Wróbel"
+    },
+    {
+      "czas_trwania_mies": 12,
+      "kwota_wnioskowana": 1200000.0,
+      "kwota_przyznana": 960000.0,
+      "lp": 35,
+      "status_wniosku": "Przyznany",
+      "data_zlozenia": "02/06/2026",
+      "kierownik": {
+        "imie": "Krzysztof",
+        "email": "Krzysztof.Michalski@Uczelnia.Example.Org",
+        "nazwisko": "Michalski"
+      },
+      "status_umowy": "Niepodpisana",
+      "id_systemowe": 939332,
+      "recenzent": "dr hab. Marek Sikora",
+      "nr_wniosku": "WN/2026/0512",
+      "jednostka": {
+        "nazwa": "Uniwersytet Morski",
+        "wydzial": "Wydział Biologii"
+      },
+      "panel": "Nauki ścisłe",
+      "data_rozpoczecia": "10/02/2027"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "application_id": {
+        "type": "string",
+        "description": "Reference number of the grant application."
+      },
+      "principal_investigator": {
+        "type": "string",
+        "description": "Full name of the project leader, given name first."
+      },
+      "pi_email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address of the project leader."
+      },
+      "institution": {
+        "type": "string",
+        "description": "Research institution that hosts the project."
+      },
+      "panel": {
+        "type": "string",
+        "enum": [
+          "hs",
+          "st",
+          "ls"
+        ],
+        "description": "Review panel that assesses the application."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "submitted",
+          "under_review",
+          "awarded",
+          "rejected"
+        ],
+        "description": "Stage of the application in the funding decision."
+      },
+      "requested_amount_pln": {
+        "type": "number",
+        "description": "Budget the applicant asked for, in zloty."
+      },
+      "awarded_amount_pln": {
+        "type": "number",
+        "description": "Budget granted by the funder, in zloty."
+      },
+      "submitted_on": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the application was submitted."
+      },
+      "duration_months": {
+        "type": "integer",
+        "description": "Duration."
+      },
+      "project_end_date": {
+        "type": "string",
+        "format": "date",
+        "description": "Planned end date of the funded project."
+      },
+      "keywords": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "application_id",
+      "principal_investigator",
+      "institution",
+      "panel",
+      "status",
+      "requested_amount_pln",
+      "submitted_on"
+    ]
+  },
+  "groundTruth": {
+    "application_id": {
+      "source": "nr_wniosku",
+      "transform": "copy",
+      "why": "application number; id_systemowe is a system key and lp the row"
+    },
+    "principal_investigator": {
+      "source": null,
+      "sources": [
+        "kierownik.imie",
+        "kierownik.nazwisko"
+      ],
+      "transform": "concat",
+      "separator": " ",
+      "why": "project leader; recenzent is the reviewer"
+    },
+    "pi_email": {
+      "source": "kierownik.email",
+      "transform": "normalize_email",
+      "why": "leader email, mixed case and padded"
+    },
+    "institution": {
+      "source": "jednostka.nazwa",
+      "transform": "trim",
+      "why": "institution, padded; wydzial is the faculty"
+    },
+    "panel": {
+      "source": "panel",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Nauki humanistyczne": "hs",
+        "Nauki ścisłe": "st",
+        "Nauki o życiu": "ls"
+      },
+      "why": "panel"
+    },
+    "status": {
+      "source": "status_wniosku",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Złożony": "submitted",
+        "W ocenie": "under_review",
+        "Przyznany": "awarded",
+        "Odrzucony": "rejected",
+        "Wycofany": null
+      },
+      "why": "application state; withdrawn applications need review; status_umowy is the contract"
+    },
+    "requested_amount_pln": {
+      "source": "kwota_wnioskowana",
+      "transform": "copy",
+      "why": "requested amount"
+    },
+    "awarded_amount_pln": {
+      "source": "kwota_przyznana",
+      "transform": "copy",
+      "why": "awarded amount, null or missing when not (yet) awarded"
+    },
+    "submitted_on": {
+      "source": "data_zlozenia",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "submission date (Polish day-first); data_rozpoczecia is the planned start"
+    },
+    "duration_months": {
+      "source": "czas_trwania_mies",
+      "transform": "copy",
+      "why": "duration in months"
+    },
+    "project_end_date": {
+      "source": null,
+      "transform": "none",
+      "why": "not exported",
+      "unsupportedReason": "would need data_rozpoczecia plus czas_trwania_mies months"
+    },
+    "keywords": {
+      "source": null,
+      "transform": "none",
+      "why": "not exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "nr_wniosku",
+        "id_systemowe"
+      ],
+      "correctFor": "application_id"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "nr_wniosku",
+        "lp"
+      ],
+      "correctFor": "application_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "kierownik.imie",
+        "recenzent"
+      ],
+      "correctFor": "principal_investigator"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "status_wniosku",
+        "status_umowy"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "kwota_wnioskowana",
+        "kwota_przyznana"
+      ],
+      "correctFor": "requested_amount_pln"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "data_zlozenia",
+        "data_rozpoczecia"
+      ],
+      "correctFor": "submitted_on"
+    }
+  ],
+  "sourceConcepts": {
+    "nr_wniosku": "transaction-id",
+    "id_systemowe": "other-identifier",
+    "lp": "other-identifier",
+    "kierownik.imie": "given-name",
+    "kierownik.nazwisko": "family-name",
+    "kierownik.email": "email",
+    "recenzent": "person-name",
+    "jednostka.nazwa": "organization-name",
+    "jednostka.wydzial": "organization-name",
+    "panel": "category",
+    "status_wniosku": "account-status",
+    "status_umowy": "category",
+    "kwota_wnioskowana": "amount",
+    "kwota_przyznana": "amount",
+    "data_zlozenia": "created-date",
+    "data_rozpoczecia": "start-date",
+    "czas_trwania_mies": "quantity"
+  },
+  "destinationConcepts": {
+    "application_id": "transaction-id",
+    "principal_investigator": "person-name",
+    "pi_email": "email",
+    "institution": "organization-name",
+    "panel": "category",
+    "status": "account-status",
+    "requested_amount_pln": "amount",
+    "awarded_amount_pln": "amount",
+    "submitted_on": "created-date",
+    "duration_months": "quantity",
+    "project_end_date": "end-date",
+    "keywords": "other"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 17,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 21,
+      "outcome": "transformed",
+      "output": {
+        "application_id": "WN/2026/0473",
+        "principal_investigator": "Marcin Szymański",
+        "pi_email": "marcin.szymanski@uczelnia.example.org",
+        "institution": "Instytut Badawczy Morski",
+        "panel": "ls",
+        "status": "awarded",
+        "requested_amount_pln": 150000.0,
+        "awarded_amount_pln": 135000.0,
+        "submitted_on": "2026-02-11",
+        "duration_months": 48
+      }
+    },
+    {
+      "recordIndex": 22,
+      "outcome": "transformed",
+      "output": {
+        "application_id": "WN/2026/0476",
+        "principal_investigator": "Marcin Wiśniewski",
+        "pi_email": "marcin.wisniewski@uczelnia.example.org",
+        "institution": "Politechnika Karpacki",
+        "panel": "hs",
+        "status": "awarded",
+        "requested_amount_pln": 150000.0,
+        "submitted_on": "2025-11-18",
+        "duration_months": 48
+      }
+    },
+    {
+      "recordIndex": 23,
+      "outcome": "transformed",
+      "output": {
+        "application_id": "WN/2026/0479",
+        "principal_investigator": "Tomasz Kozłowski",
+        "pi_email": "tomasz.kozowski@uczelnia.example.org",
+        "institution": "Instytut Badawczy Lubuski",
+        "panel": "hs",
+        "status": "under_review",
+        "requested_amount_pln": 750000.0,
+        "submitted_on": "2025-12-23",
+        "duration_months": 36
+      }
+    }
+  ]
+}

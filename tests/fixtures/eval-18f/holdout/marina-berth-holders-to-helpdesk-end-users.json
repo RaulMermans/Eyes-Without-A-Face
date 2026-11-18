@@ -1,0 +1,837 @@
+{
+  "scenarioId": "marina-berth-holders-to-helpdesk-end-users",
+  "split": "holdout",
+  "track": "wedge",
+  "industry": "coastal marina berth holder accounts",
+  "sourceLanguage": "en",
+  "description": "Flat berth-holder export of a fictional coastal marina (UK PascalCase CRM) to be loaded as helpdesk end users.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "RenewalDue": "23/09/2026",
+      "EmailAddress": "natalie.sutton@post.example.org",
+      "BerthStart": "14/10/2023",
+      "RowNo": 1,
+      "MemberRef": "BH-0410",
+      "Title": "Ms",
+      "Marketing": "Opted out",
+      "AltEmail": "n.sutton@work.example.net",
+      "VesselName": "Kittiwake",
+      "VesselType": "Sailing Yacht",
+      "PaymentStatus": "Instalments",
+      "LegacyRef": "M8467",
+      "BerthStatus": "Annual Berth",
+      "Forename": "Natalie",
+      "HarbourMaster": "Ian McBride",
+      "Surname": "Sutton"
+    },
+    {
+      "BerthStart": "19/08/2017",
+      "RowNo": 2,
+      "AltEmail": "n.walsh@work.example.net",
+      "Surname": "Walsh",
+      "Marketing": "Opted out",
+      "VesselName": "Sea Breeze",
+      "LegacyRef": null,
+      "Forename": "Natalie",
+      "HarbourMaster": "Gareth Pryce",
+      "MobileTel": "07700 939792",
+      "VesselType": "Sailing Yacht",
+      "EmailAddress": "natalie.walsh@post.example.org",
+      "RenewalDue": "24/05/2026",
+      "MemberRef": "BH-0413",
+      "BerthStatus": "Left Marina",
+      "Title": "Dr",
+      "PaymentStatus": "Instalments"
+    },
+    {
+      "LegacyRef": "M7064",
+      "BerthStart": "07/05/2016",
+      "EmailAddress": "grace.reed@post.example.org",
+      "AltEmail": "g.reed@work.example.net",
+      "VesselName": "Blue Heron",
+      "RowNo": 3,
+      "MobileTel": "07700 952400",
+      "Surname": "Reed",
+      "HarbourMaster": "Fiona Lockhart",
+      "VesselType": "Sailing Yacht",
+      "PaymentStatus": "Paid",
+      "RenewalDue": "21/12/2026",
+      "MemberRef": "BH-0416",
+      "Marketing": "Opted in",
+      "BerthStatus": "Annual Berth",
+      "Forename": "Grace",
+      "Title": "Ms"
+    },
+    {
+      "Title": "Dr",
+      "BerthStart": "01/08/2012",
+      "HarbourMaster": "Gareth Pryce",
+      "BerthStatus": "Waiting List",
+      "RowNo": 4,
+      "MemberRef": "BH-0419",
+      "VesselName": "Tern",
+      "AltEmail": "o.hughes@work.example.net",
+      "Marketing": "Opted in",
+      "EmailAddress": "owen.hughes@post.example.org",
+      "VesselType": "Narrowboat",
+      "MobileTel": "07700 975025",
+      "LegacyRef": "M1476",
+      "Forename": "Owen",
+      "PaymentStatus": "Paid",
+      "Surname": "Hughes",
+      "RenewalDue": "04/05/2026"
+    },
+    {
+      "BerthStart": "21/04/2018",
+      "RowNo": 5,
+      "MemberRef": "BH-0422",
+      "HarbourMaster": "Fiona Lockhart",
+      "Surname": "Collins",
+      "MobileTel": "07700 935065",
+      "VesselType": "Motor Cruiser",
+      "Title": "Mr",
+      "AltEmail": "l.collins@work.example.net",
+      "PaymentStatus": "Paid",
+      "EmailAddress": "LOGAN.COLLINS@POST.EXAMPLE.ORG",
+      "RenewalDue": "30/07/2026",
+      "VesselName": "Moonraker",
+      "BerthStatus": "Winter Lay-up",
+      "LegacyRef": "M4870",
+      "Marketing": "Opted in",
+      "Forename": "Logan"
+    },
+    {
+      "Surname": "Lowe",
+      "RenewalDue": "01/02/2027",
+      "Forename": "Abigail",
+      "PaymentStatus": "Instalments",
+      "AltEmail": "a.lowe@work.example.net",
+      "VesselType": "Motor Cruiser",
+      "BerthStart": "27/03/2022",
+      "BerthStatus": "Annual Berth",
+      "RowNo": 6,
+      "MobileTel": "07700 925636",
+      "EmailAddress": "Abigail.Lowe@Post.Example.Org",
+      "Title": "Mrs",
+      "MemberRef": "BH-0425",
+      "VesselName": "Saltwind",
+      "HarbourMaster": "Fiona Lockhart",
+      "Marketing": "Opted out",
+      "LegacyRef": "M2433"
+    },
+    {
+      "HarbourMaster": "Ian McBride",
+      "Title": "Mrs",
+      "VesselType": "Sailing Yacht",
+      "Surname": " Griffin  ",
+      "EmailAddress": "owen.griffin@post.example.org",
+      "VesselName": "Curlew",
+      "BerthStatus": "Annual Berth",
+      "Marketing": "Opted out",
+      "RenewalDue": "14/08/2026",
+      "Forename": "Owen",
+      "AltEmail": "o.griffin@work.example.net",
+      "MemberRef": "BH-0428",
+      "BerthStart": "08/11/2023",
+      "RowNo": 7,
+      "PaymentStatus": "Paid",
+      "MobileTel": "07700 969332",
+      "LegacyRef": null
+    },
+    {
+      "BerthStart": "11/04/2017",
+      "VesselType": "Motor Cruiser",
+      "Surname": "Gibson",
+      "MobileTel": "07700 931824",
+      "PaymentStatus": "Paid",
+      "BerthStatus": "Left Marina",
+      "LegacyRef": "M1767",
+      "VesselName": "Halcyon",
+      "HarbourMaster": "Gareth Pryce",
+      "RenewalDue": "22/04/2026",
+      "MemberRef": "BH-0431",
+      "Forename": "Lauren",
+      "Marketing": "Opted in",
+      "Title": "Ms",
+      "AltEmail": "l.gibson@work.example.net",
+      "RowNo": 8,
+      "EmailAddress": "lauren.gibson@post.example.org"
+    },
+    {
+      "AltEmail": "o.ellis@work.example.net",
+      "RenewalDue": "18/01/2026",
+      "EmailAddress": "owen.ellis@post.example.org",
+      "HarbourMaster": "Gareth Pryce",
+      "MemberRef": "BH-0434",
+      "MobileTel": "07700 996690",
+      "LegacyRef": null,
+      "Marketing": "Opted in",
+      "VesselType": "Sailing Yacht",
+      "BerthStart": "08/02/2023",
+      "RowNo": 9,
+      "PaymentStatus": "Arrears",
+      "Surname": "Ellis",
+      "Title": "Ms",
+      "Forename": "Owen",
+      "VesselName": "Osprey",
+      "BerthStatus": "Visitor - Seasonal"
+    },
+    {
+      "BerthStart": "22/02/2017",
+      "VesselType": "Sailing Yacht",
+      "Marketing": "Opted in",
+      "Surname": "Sutton",
+      "PaymentStatus": "Arrears",
+      "MobileTel": "07700 950734",
+      "RowNo": 10,
+      "Forename": "Dylan",
+      "HarbourMaster": "Fiona Lockhart",
+      "BerthStatus": "Left Marina",
+      "LegacyRef": "M7630",
+      "EmailAddress": "Dylan.Sutton@Post.Example.Org",
+      "RenewalDue": "04/11/2026",
+      "AltEmail": "d.sutton@work.example.net",
+      "MemberRef": "BH-0437",
+      "VesselName": "Swallow",
+      "Title": "Dr"
+    },
+    {
+      "BerthStart": "22/08/2012",
+      "VesselName": "Dawn Treader",
+      "LegacyRef": "M4606",
+      "Surname": "Foster",
+      "Forename": "Tyler",
+      "EmailAddress": null,
+      "BerthStatus": "Winter Lay-up",
+      "HarbourMaster": "Gareth Pryce",
+      "RowNo": 11,
+      "VesselType": "Narrowboat",
+      "PaymentStatus": "Instalments",
+      "Marketing": "Opted in",
+      "RenewalDue": "18/01/2026",
+      "MobileTel": "07700 950588",
+      "AltEmail": "t.foster@work.example.net",
+      "MemberRef": "BH-0440",
+      "Title": "Ms"
+    },
+    {
+      "BerthStart": "07/07/2016",
+      "AltEmail": "o.hayes@work.example.net",
+      "HarbourMaster": "Gareth Pryce",
+      "Surname": "Hayes   ",
+      "RowNo": 12,
+      "LegacyRef": "M8266",
+      "MobileTel": "07700 984818",
+      "EmailAddress": "olivia.hayes@post.example.org",
+      "MemberRef": "BH-0443",
+      "Forename": "Olivia",
+      "PaymentStatus": "Instalments",
+      "VesselName": "Merlin",
+      "VesselType": "Sailing Yacht",
+      "RenewalDue": "29/01/2026",
+      "Title": "Ms",
+      "BerthStatus": "Annual Berth",
+      "Marketing": "Opted out"
+    },
+    {
+      "RenewalDue": "25/09/2026",
+      "BerthStart": "20/08/2014",
+      "MemberRef": "BH-0446",
+      "Forename": "Brooke",
+      "LegacyRef": "M7787",
+      "PaymentStatus": "Paid",
+      "AltEmail": "b.fisher@work.example.net",
+      "Title": "Mr",
+      "RowNo": 13,
+      "Surname": "Fisher",
+      "BerthStatus": "Annual Berth",
+      "VesselName": "Puffin",
+      "HarbourMaster": "Fiona Lockhart",
+      "EmailAddress": "Brooke.Fisher@Post.Example.Org",
+      "Marketing": "Opted out",
+      "MobileTel": "07700 974391",
+      "VesselType": "Sailing Yacht"
+    },
+    {
+      "MobileTel": "07700 911880",
+      "RenewalDue": "15/09/2026",
+      "VesselType": "Sailing Yacht",
+      "BerthStart": "09/05/2021",
+      "RowNo": 14,
+      "VesselName": "Shearwater",
+      "Forename": "Abigail",
+      "MemberRef": "BH-0449",
+      "Marketing": "Opted in",
+      "AltEmail": "a.barker@work.example.net",
+      "HarbourMaster": "Ian McBride",
+      "BerthStatus": "Winter Lay-up",
+      "PaymentStatus": "Paid",
+      "Title": "Mrs",
+      "LegacyRef": null,
+      "EmailAddress": "abigail.barker@post.example.org",
+      "Surname": "Barker"
+    },
+    {
+      "BerthStatus": "Left Marina",
+      "PaymentStatus": "Paid",
+      "BerthStart": "27/10/2015",
+      "LegacyRef": null,
+      "Title": "Mrs",
+      "HarbourMaster": "Gareth Pryce",
+      "VesselType": "RIB",
+      "VesselName": "Avocet",
+      "RenewalDue": "17/10/2026",
+      "RowNo": 15,
+      "Marketing": "Opted in",
+      "MemberRef": "BH-0452",
+      "EmailAddress": "NATALIE.PALMER@POST.EXAMPLE.ORG",
+      "Surname": "Palmer",
+      "AltEmail": "n.palmer@work.example.net",
+      "Forename": "Natalie",
+      "MobileTel": "07700 916980"
+    },
+    {
+      "Forename": "Grace",
+      "Title": "Mr",
+      "LegacyRef": "M4255",
+      "AltEmail": "g.foster@work.example.net",
+      "PaymentStatus": "Instalments",
+      "VesselType": "RIB",
+      "RowNo": 16,
+      "Surname": "Foster",
+      "VesselName": "Spindrift",
+      "Marketing": "Opted out",
+      "MobileTel": "07700 925837",
+      "HarbourMaster": "Ian McBride",
+      "RenewalDue": "03/07/2026",
+      "MemberRef": "BH-0455",
+      "BerthStart": "08/06/2020",
+      "BerthStatus": "Visitor - Seasonal",
+      "EmailAddress": "grace.foster@post.example.org"
+    },
+    {
+      "RenewalDue": "16/02/2026",
+      "VesselType": "Narrowboat",
+      "MemberRef": "BH-0458",
+      "RowNo": 17,
+      "Surname": "Ellis",
+      "MobileTel": "07700 946629",
+      "Title": "Mrs",
+      "HarbourMaster": "Fiona Lockhart",
+      "Forename": "Megan",
+      "BerthStatus": "Winter Lay-up",
+      "BerthStart": "27/03/2015",
+      "PaymentStatus": "Paid",
+      "AltEmail": "m.ellis@work.example.net",
+      "EmailAddress": "megan.ellis@post.example.org",
+      "VesselName": "Wren",
+      "LegacyRef": "M1850",
+      "Marketing": "Opted out"
+    },
+    {
+      "Forename": "Noah",
+      "Marketing": "Opted out",
+      "MobileTel": "07700 998446",
+      "PaymentStatus": "Paid",
+      "Surname": "Hughes",
+      "HarbourMaster": "Ian McBride",
+      "LegacyRef": "M4134",
+      "RowNo": 18,
+      "VesselName": "Petrel",
+      "VesselType": "Motor Cruiser",
+      "EmailAddress": "noah.hughes@post.example.org",
+      "MemberRef": "BH-0461",
+      "BerthStatus": "Waiting List",
+      "RenewalDue": "25/02/2027",
+      "BerthStart": "09/10/2019",
+      "Title": "Ms",
+      "AltEmail": "n.hughes@work.example.net"
+    },
+    {
+      "MobileTel": null,
+      "RenewalDue": "15/01/2027",
+      "Forename": "Tyler",
+      "BerthStatus": "Annual Berth",
+      "AltEmail": "t.doyle@work.example.net",
+      "RowNo": 19,
+      "HarbourMaster": "Gareth Pryce",
+      "Title": "Mrs",
+      "Marketing": "Opted out",
+      "MemberRef": "BH-0464",
+      "VesselName": "Marlin",
+      "Surname": "Doyle",
+      "EmailAddress": "tyler.doyle@post.example.org",
+      "BerthStart": "01/11/2014",
+      "PaymentStatus": "Arrears",
+      "VesselType": "Narrowboat",
+      "LegacyRef": "M6420"
+    },
+    {
+      "HarbourMaster": "Fiona Lockhart",
+      "AltEmail": "h.palmer@work.example.net",
+      "PaymentStatus": "Instalments",
+      "Surname": "Palmer",
+      "VesselName": "Seraph",
+      "MemberRef": "BH-0467",
+      "LegacyRef": null,
+      "RowNo": 20,
+      "Marketing": "Opted in",
+      "VesselType": "RIB",
+      "Title": "Mr",
+      "BerthStart": "25/04/2019",
+      "RenewalDue": "16/03/2026",
+      "Forename": "Hannah",
+      "EmailAddress": "hannah.palmer@post.example.org",
+      "BerthStatus": "Winter Lay-up",
+      "MobileTel": null
+    },
+    {
+      "EmailAddress": "Tyler.Bennett@Post.Example.Org",
+      "VesselName": "Gannet",
+      "MemberRef": "BH-0470",
+      "Surname": "  Bennett ",
+      "RenewalDue": "16/03/2027",
+      "Forename": "Tyler",
+      "AltEmail": "t.bennett@work.example.net",
+      "VesselType": "Sailing Yacht",
+      "RowNo": 21,
+      "BerthStart": "03/05/2018",
+      "PaymentStatus": "Paid",
+      "Title": "Ms",
+      "Marketing": "Opted out",
+      "BerthStatus": "Annual Berth",
+      "HarbourMaster": "Gareth Pryce",
+      "LegacyRef": null
+    },
+    {
+      "BerthStatus": "Annual Berth",
+      "HarbourMaster": "Gareth Pryce",
+      "MemberRef": "BH-0473",
+      "RenewalDue": "31/01/2026",
+      "Marketing": "Opted out",
+      "Title": "Mr",
+      "RowNo": 22,
+      "PaymentStatus": "Paid",
+      "VesselType": "Motor Cruiser",
+      "AltEmail": "e.sutton@work.example.net",
+      "BerthStart": "16/07/2013",
+      "LegacyRef": "M9726",
+      "VesselName": "Selkie",
+      "EmailAddress": "Emily.Sutton@Post.Example.Org",
+      "Surname": "Sutton",
+      "Forename": "Emily"
+    },
+    {
+      "AltEmail": "l.collins@work.example.net",
+      "EmailAddress": "Lauren.Collins@Post.Example.Org",
+      "VesselName": "Corrie",
+      "MemberRef": "BH-0476",
+      "LegacyRef": null,
+      "Surname": "Collins",
+      "MobileTel": "07700 956359",
+      "HarbourMaster": "Ian McBride",
+      "BerthStatus": "Visitor - Seasonal",
+      "Title": "Mr",
+      "BerthStart": "25/08/2012",
+      "RowNo": 23,
+      "Marketing": "Opted out",
+      "RenewalDue": "13/01/2027",
+      "PaymentStatus": "Paid",
+      "Forename": "Lauren",
+      "VesselType": "Sailing Yacht"
+    },
+    {
+      "Marketing": "Opted out",
+      "RenewalDue": "21/01/2026",
+      "RowNo": 24,
+      "BerthStart": "05/11/2024",
+      "Forename": "Logan",
+      "BerthStatus": "Annual Berth",
+      "LegacyRef": "M9689",
+      "Title": "Mr",
+      "Surname": " Ellis",
+      "HarbourMaster": "Fiona Lockhart",
+      "MobileTel": "07700 976667",
+      "AltEmail": "l.ellis@work.example.net",
+      "EmailAddress": "logan.ellis@post.example.org",
+      "VesselType": "Motor Cruiser",
+      "MemberRef": "BH-0479",
+      "PaymentStatus": "Paid",
+      "VesselName": "Bluebell"
+    },
+    {
+      "Forename": "Dylan",
+      "BerthStart": "09/02/2021",
+      "RenewalDue": "11/12/2026",
+      "MobileTel": "07700 937665",
+      "BerthStatus": "Annual Berth",
+      "Title": "Dr",
+      "MemberRef": "BH-0482",
+      "VesselType": "Sailing Yacht",
+      "Surname": "Griffin ",
+      "VesselName": "Kestrel",
+      "Marketing": "Opted out",
+      "EmailAddress": "dylan.griffin@post.example.org",
+      "RowNo": 25,
+      "HarbourMaster": "Ian McBride",
+      "LegacyRef": "M4686",
+      "AltEmail": "d.griffin@work.example.net",
+      "PaymentStatus": "Paid"
+    },
+    {
+      "EmailAddress": "ryan.barker@post.example.org",
+      "MobileTel": "07700 937564",
+      "VesselName": "Lapwing",
+      "RowNo": 26,
+      "LegacyRef": "M8493",
+      "HarbourMaster": "Ian McBride",
+      "BerthStatus": "Visitor - Seasonal",
+      "MemberRef": "BH-0485",
+      "Surname": "  Barker ",
+      "VesselType": "Motor Cruiser",
+      "Marketing": "Opted in",
+      "BerthStart": "30/06/2019",
+      "Forename": "Ryan",
+      "Title": "Mrs",
+      "AltEmail": "r.barker@work.example.net",
+      "PaymentStatus": "Paid",
+      "RenewalDue": "04/02/2027"
+    },
+    {
+      "BerthStatus": "Visitor - Seasonal",
+      "VesselName": "Dunlin",
+      "EmailAddress": "Hannah.Hayes@Post.Example.Org",
+      "Title": "Dr",
+      "RenewalDue": "06/09/2026",
+      "AltEmail": "h.hayes@work.example.net",
+      "BerthStart": "18/12/2017",
+      "MemberRef": "BH-0488",
+      "Marketing": "Opted out",
+      "Surname": "Hayes",
+      "VesselType": "Sailing Yacht",
+      "RowNo": 27,
+      "PaymentStatus": "Arrears",
+      "Forename": "Hannah",
+      "MobileTel": "07700 959394",
+      "HarbourMaster": "Gareth Pryce",
+      "LegacyRef": null
+    },
+    {
+      "EmailAddress": "lauren.griffin@post.example.org",
+      "PaymentStatus": "Paid",
+      "Title": "Mr",
+      "Forename": "Lauren",
+      "AltEmail": "l.griffin@work.example.net",
+      "Surname": "Griffin",
+      "HarbourMaster": "Fiona Lockhart",
+      "VesselType": "Sailing Yacht",
+      "MobileTel": "07700 930681",
+      "VesselName": "Skua",
+      "RenewalDue": "11/04/2026",
+      "BerthStart": "19/04/2020",
+      "BerthStatus": "Waiting List",
+      "RowNo": 28,
+      "LegacyRef": "M7134",
+      "Marketing": "Opted out",
+      "MemberRef": "BH-0491"
+    },
+    {
+      "RowNo": 29,
+      "LegacyRef": "M1565",
+      "EmailAddress": "chloe.hughes@post.example.org",
+      "MemberRef": "BH-0494",
+      "Forename": "Chloe",
+      "HarbourMaster": "Ian McBride",
+      "MobileTel": null,
+      "VesselType": "RIB",
+      "Marketing": "Opted in",
+      "Title": "Dr",
+      "BerthStatus": "Annual Berth",
+      "RenewalDue": "20/01/2027",
+      "PaymentStatus": "Paid",
+      "BerthStart": "06/06/2025",
+      "Surname": "Hughes",
+      "AltEmail": "c.hughes@work.example.net",
+      "VesselName": "Plover"
+    },
+    {
+      "VesselType": "Sailing Yacht",
+      "Surname": "Morris",
+      "Title": "Mrs",
+      "MobileTel": "07700 971742",
+      "VesselName": "Sandpiper",
+      "AltEmail": "l.morris@work.example.net",
+      "Forename": "Lauren",
+      "BerthStart": "30/10/2022",
+      "BerthStatus": "Annual Berth",
+      "MemberRef": "BH-0497",
+      "RenewalDue": "11/11/2026",
+      "EmailAddress": null,
+      "LegacyRef": "M4031",
+      "HarbourMaster": "Fiona Lockhart",
+      "RowNo": 30,
+      "PaymentStatus": "Paid",
+      "Marketing": "Opted in"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "externalId": {
+        "type": "string",
+        "description": "Identifier of the customer in the marina's own records."
+      },
+      "firstName": {
+        "type": "string",
+        "description": "Given name of the end user."
+      },
+      "lastName": {
+        "type": "string",
+        "description": "Family name of the end user."
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "description": "Main email address of the end user; required to raise requests."
+      },
+      "phone": {
+        "type": "string",
+        "description": "Mobile number of the end user."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "seasonal",
+          "inactive"
+        ],
+        "description": "Whether the customer currently holds a berth, holds one seasonally, or has left."
+      },
+      "boatType": {
+        "type": "string",
+        "enum": [
+          "sail",
+          "power"
+        ],
+        "description": "Type."
+      },
+      "customerSince": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the customer's first berth agreement began."
+      },
+      "preferredLanguage": {
+        "type": "string"
+      },
+      "membershipYears": {
+        "type": "integer",
+        "description": "Number of full years the customer has held a berth."
+      }
+    },
+    "required": [
+      "externalId",
+      "firstName",
+      "lastName",
+      "email",
+      "status"
+    ]
+  },
+  "groundTruth": {
+    "externalId": {
+      "source": "MemberRef",
+      "transform": "copy",
+      "why": "berth-holder reference; LegacyRef is an old system key and RowNo the export row"
+    },
+    "firstName": {
+      "source": "Forename",
+      "transform": "copy",
+      "why": "given name; HarbourMaster is staff"
+    },
+    "lastName": {
+      "source": "Surname",
+      "transform": "trim",
+      "why": "family name, padded"
+    },
+    "email": {
+      "source": "EmailAddress",
+      "transform": "normalize_email",
+      "why": "main email, mixed case; null in a few rows, which are held; AltEmail is a secondary work address"
+    },
+    "phone": {
+      "source": "MobileTel",
+      "transform": "copy",
+      "why": "mobile, null or missing for some"
+    },
+    "status": {
+      "source": "BerthStatus",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Annual Berth": "active",
+        "Winter Lay-up": "seasonal",
+        "Visitor - Seasonal": "seasonal",
+        "Left Marina": "inactive",
+        "Waiting List": null
+      },
+      "why": "berth state; people on the waiting list are not customers yet and need review; PaymentStatus is the fee state"
+    },
+    "boatType": {
+      "source": "VesselType",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Sailing Yacht": "sail",
+        "Motor Cruiser": "power",
+        "RIB": "power",
+        "Narrowboat": "power"
+      },
+      "why": "vessel type; VesselName is the boat's name"
+    },
+    "customerSince": {
+      "source": "BerthStart",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "first berth agreement (UK day-first); RenewalDue is the next renewal"
+    },
+    "preferredLanguage": {
+      "source": null,
+      "transform": "none",
+      "why": "no language is exported"
+    },
+    "membershipYears": {
+      "source": null,
+      "transform": "none",
+      "why": "not exported",
+      "unsupportedReason": "would need the number of full years between BerthStart and the import date"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "MemberRef",
+        "LegacyRef"
+      ],
+      "correctFor": "externalId"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "MemberRef",
+        "RowNo"
+      ],
+      "correctFor": "externalId"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "EmailAddress",
+        "AltEmail"
+      ],
+      "correctFor": "email"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "Forename",
+        "HarbourMaster"
+      ],
+      "correctFor": "firstName"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "BerthStatus",
+        "PaymentStatus"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "BerthStart",
+        "RenewalDue"
+      ],
+      "correctFor": "customerSince"
+    }
+  ],
+  "sourceConcepts": {
+    "RowNo": "other-identifier",
+    "MemberRef": "customer-id",
+    "LegacyRef": "other-identifier",
+    "Title": "category",
+    "Forename": "given-name",
+    "Surname": "family-name",
+    "EmailAddress": "email",
+    "AltEmail": "email",
+    "MobileTel": "phone",
+    "BerthStatus": "account-status",
+    "PaymentStatus": "payment-status",
+    "VesselName": "other",
+    "VesselType": "category",
+    "BerthStart": "start-date",
+    "RenewalDue": "end-date",
+    "HarbourMaster": "person-name",
+    "Marketing": "consent-flag"
+  },
+  "destinationConcepts": {
+    "externalId": "customer-id",
+    "firstName": "given-name",
+    "lastName": "family-name",
+    "email": "email",
+    "phone": "phone",
+    "status": "account-status",
+    "boatType": "category",
+    "customerSince": "start-date",
+    "preferredLanguage": "language-code",
+    "membershipYears": "quantity"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 2,
+      "outcome": "transformed",
+      "output": {
+        "externalId": "BH-0416",
+        "firstName": "Grace",
+        "lastName": "Reed",
+        "email": "grace.reed@post.example.org",
+        "phone": "07700 952400",
+        "status": "active",
+        "boatType": "sail",
+        "customerSince": "2016-05-07"
+      }
+    },
+    {
+      "recordIndex": 15,
+      "outcome": "transformed",
+      "output": {
+        "externalId": "BH-0455",
+        "firstName": "Grace",
+        "lastName": "Foster",
+        "email": "grace.foster@post.example.org",
+        "phone": "07700 925837",
+        "status": "seasonal",
+        "boatType": "power",
+        "customerSince": "2020-06-08"
+      }
+    },
+    {
+      "recordIndex": 19,
+      "outcome": "transformed",
+      "output": {
+        "externalId": "BH-0467",
+        "firstName": "Hannah",
+        "lastName": "Palmer",
+        "email": "hannah.palmer@post.example.org",
+        "status": "seasonal",
+        "boatType": "power",
+        "customerSince": "2019-04-25"
+      }
+    },
+    {
+      "recordIndex": 27,
+      "outcome": "held"
+    }
+  ]
+}

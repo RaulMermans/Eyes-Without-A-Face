@@ -1,0 +1,893 @@
+{
+  "scenarioId": "childcare-parent-accounts-to-helpdesk-contacts",
+  "split": "holdout",
+  "track": "wedge",
+  "industry": "childcare centre parent accounts",
+  "sourceLanguage": "nl",
+  "description": "Parent-account export of a fictional childcare organisation (Dutch camelCase, nested parent, child and emergency contact) to be loaded as helpdesk contacts; the parents' mobile numbers are not exported.",
+  "fictional": true,
+  "completable": false,
+  "records": [
+    {
+      "ouder": {
+        "voornaam": "Koen",
+        "tweedeEmail": "kim.verhoeven@thuis.example.net",
+        "email": "koen.verhoeven@thuis.example.net",
+        "achternaam": "Verhoeven"
+      },
+      "locatie": "BSO Het Kompas",
+      "kind": {
+        "geboortedatum": "12/05/2023",
+        "voornaam": "Jesse"
+      },
+      "plaatsingsstatus": "Wachtlijst",
+      "pedagogischMedewerker": "Yvonne Kramer",
+      "relatieNummer": "R-40011",
+      "betaalstatus": "Betaald",
+      "noodcontact": {
+        "naam": "Thijs Peters",
+        "telefoon": "06-52306933"
+      },
+      "startdatum": "12/04/2024",
+      "regel": 1,
+      "contractNummer": "PC-2020-4642",
+      "locatieTelefoon": "030-2967081"
+    },
+    {
+      "relatieNummer": "R-40016",
+      "locatieTelefoon": "030-2965530",
+      "betaalstatus": "Achterstand",
+      "noodcontact": {
+        "naam": "Joris Vos",
+        "telefoon": "06-64500780"
+      },
+      "kind": {
+        "geboortedatum": "04/09/2024",
+        "voornaam": "Levi"
+      },
+      "plaatsingsstatus": "Intake gepland",
+      "contractNummer": "PC-2020-7440",
+      "pedagogischMedewerker": "Hanneke Post",
+      "startdatum": "02/04/2021",
+      "regel": 2,
+      "locatie": "KDV Kleine Reus",
+      "ouder": {
+        "achternaam": "Meijer",
+        "tweedeEmail": "kim.meijer@thuis.example.net",
+        "email": "ruben.meijer@thuis.example.net",
+        "voornaam": "Ruben"
+      }
+    },
+    {
+      "betaalstatus": "Betaald",
+      "ouder": {
+        "voornaam": "Lieke",
+        "email": "lieke.meijer@thuis.example.net",
+        "achternaam": "Meijer",
+        "tweedeEmail": "mark.meijer@thuis.example.net"
+      },
+      "kind": {
+        "geboortedatum": "09/06/2023",
+        "voornaam": "Siem"
+      },
+      "startdatum": "06/07/2022",
+      "locatie": "KDV De Speelboom",
+      "relatieNummer": "R-40019",
+      "contractNummer": "PC-2020-9519",
+      "regel": 3,
+      "pedagogischMedewerker": "Yvonne Kramer",
+      "locatieTelefoon": "030-2961144",
+      "plaatsingsstatus": "Wachtlijst",
+      "noodcontact": {
+        "naam": "Ruben Dekker",
+        "telefoon": "06-71282280"
+      }
+    },
+    {
+      "pedagogischMedewerker": "Hanneke Post",
+      "regel": 4,
+      "kind": {
+        "voornaam": "Levi",
+        "geboortedatum": "12/12/2023"
+      },
+      "relatieNummer": "R-40022",
+      "betaalstatus": "Betaald",
+      "noodcontact": {
+        "naam": "Sem Bakker",
+        "telefoon": "06-38626608"
+      },
+      "locatieTelefoon": "030-2965530",
+      "ouder": {
+        "achternaam": "Brouwer",
+        "voornaam": "Joris",
+        "tweedeEmail": null,
+        "email": "joris.brouwer@thuis.example.net"
+      },
+      "startdatum": "12/10/2021",
+      "contractNummer": "PC-2021-7690",
+      "plaatsingsstatus": "Geplaatst",
+      "locatie": "KDV Kleine Reus"
+    },
+    {
+      "plaatsingsstatus": "Geplaatst",
+      "locatieTelefoon": "030-2961144",
+      "pedagogischMedewerker": "Marloes Timmer",
+      "regel": 5,
+      "contractNummer": "PC-2020-6805",
+      "ouder": {
+        "email": "BRAM.JANSEN@THUIS.EXAMPLE.NET",
+        "achternaam": " Jansen",
+        "voornaam": "Bram",
+        "tweedeEmail": null
+      },
+      "noodcontact": {
+        "naam": "Bram Mulder",
+        "telefoon": "06-49236888"
+      },
+      "locatie": "KDV De Speelboom",
+      "relatieNummer": "R-40027",
+      "startdatum": "05/01/2023",
+      "betaalstatus": "Incasso gestorneerd",
+      "kind": {
+        "voornaam": "Levi",
+        "geboortedatum": "12/11/2023"
+      }
+    },
+    {
+      "contractNummer": "PC-2025-4305",
+      "plaatsingsstatus": "Geplaatst",
+      "noodcontact": {
+        "naam": "Daan Hendriks",
+        "telefoon": "06-64557328"
+      },
+      "locatie": "KDV De Speelboom",
+      "regel": 6,
+      "ouder": {
+        "tweedeEmail": "kim.mulder@thuis.example.net",
+        "achternaam": " Mulder  ",
+        "voornaam": "Lieke",
+        "email": "lieke.mulder@thuis.example.net"
+      },
+      "locatieTelefoon": "030-2961144",
+      "pedagogischMedewerker": "Yvonne Kramer",
+      "betaalstatus": "Betaald",
+      "startdatum": "03/01/2026",
+      "relatieNummer": "R-40031",
+      "kind": {
+        "geboortedatum": "03/05/2020",
+        "voornaam": "Luuk"
+      }
+    },
+    {
+      "startdatum": "03/12/2020",
+      "regel": 7,
+      "relatieNummer": "R-40035",
+      "plaatsingsstatus": "Wachtlijst",
+      "pedagogischMedewerker": "Hanneke Post",
+      "contractNummer": "PC-2026-2697",
+      "ouder": {
+        "voornaam": "Sem",
+        "email": "SEM.VERHOEVEN@THUIS.EXAMPLE.NET",
+        "achternaam": "Verhoeven ",
+        "tweedeEmail": "kim.verhoeven@thuis.example.net"
+      },
+      "noodcontact": {
+        "naam": "Koen Kok",
+        "telefoon": "06-25875939"
+      },
+      "locatieTelefoon": "030-2965530",
+      "locatie": "KDV Kleine Reus",
+      "kind": {
+        "voornaam": "Julia",
+        "geboortedatum": "03/04/2023"
+      },
+      "betaalstatus": "Achterstand"
+    },
+    {
+      "noodcontact": {
+        "telefoon": "06-77559236",
+        "naam": "Lotte Hendriks"
+      },
+      "plaatsingsstatus": "Opgezegd",
+      "locatieTelefoon": "030-2967081",
+      "regel": 8,
+      "kind": {
+        "voornaam": "Noor",
+        "geboortedatum": "10/12/2024"
+      },
+      "ouder": {
+        "achternaam": "Verhoeven",
+        "voornaam": "Esther",
+        "email": "Esther.Verhoeven@Thuis.Example.Net"
+      },
+      "contractNummer": "PC-2020-1170",
+      "startdatum": "06/08/2023",
+      "locatie": "BSO Het Kompas",
+      "betaalstatus": "Betaald",
+      "relatieNummer": "R-40039",
+      "pedagogischMedewerker": "Marloes Timmer"
+    },
+    {
+      "pedagogischMedewerker": "Yvonne Kramer",
+      "plaatsingsstatus": "Geplaatst",
+      "locatie": "BSO Het Kompas",
+      "contractNummer": "PC-2026-6673",
+      "startdatum": "08/03/2020",
+      "ouder": {
+        "tweedeEmail": "kim.kok@thuis.example.net",
+        "email": "ruben.kok@thuis.example.net",
+        "achternaam": "Kok",
+        "voornaam": "Ruben"
+      },
+      "relatieNummer": "R-40044",
+      "noodcontact": {
+        "telefoon": "06-31944161",
+        "naam": "Bram Willems"
+      },
+      "kind": {
+        "geboortedatum": "02/06/2020",
+        "voornaam": "Lotte"
+      },
+      "locatieTelefoon": "030-2967081",
+      "regel": 9,
+      "betaalstatus": "Incasso gestorneerd"
+    },
+    {
+      "locatie": "BSO Het Kompas",
+      "pedagogischMedewerker": "Marloes Timmer",
+      "contractNummer": "PC-2021-5610",
+      "noodcontact": {
+        "naam": "Daan de Vries",
+        "telefoon": "06-44938457"
+      },
+      "ouder": {
+        "email": "koen.hendriks@thuis.example.net",
+        "achternaam": "Hendriks",
+        "voornaam": "Koen"
+      },
+      "regel": 10,
+      "relatieNummer": "R-40047",
+      "plaatsingsstatus": "Wachtlijst",
+      "startdatum": "10/03/2026",
+      "betaalstatus": "Betaald",
+      "locatieTelefoon": "030-2967081",
+      "kind": {
+        "geboortedatum": "11/02/2021",
+        "voornaam": "Jesse"
+      }
+    },
+    {
+      "locatieTelefoon": "030-2961144",
+      "betaalstatus": "Betaald",
+      "relatieNummer": "R-40051",
+      "pedagogischMedewerker": "Hanneke Post",
+      "locatie": "KDV De Speelboom",
+      "contractNummer": "PC-2022-1800",
+      "noodcontact": {
+        "telefoon": "06-34984285",
+        "naam": "Joris Meijer"
+      },
+      "startdatum": "09/05/2021",
+      "kind": {
+        "voornaam": "Roos",
+        "geboortedatum": "01/10/2019"
+      },
+      "ouder": {
+        "voornaam": "Floor",
+        "email": "floor.verhoeven@thuis.example.net",
+        "tweedeEmail": "linda.verhoeven@thuis.example.net",
+        "achternaam": "Verhoeven"
+      },
+      "plaatsingsstatus": "Geplaatst",
+      "regel": 11
+    },
+    {
+      "locatie": "KDV De Speelboom",
+      "betaalstatus": "Betaald",
+      "relatieNummer": "R-40054",
+      "noodcontact": {
+        "naam": "Sem Prins",
+        "telefoon": "06-83061745"
+      },
+      "pedagogischMedewerker": "Hanneke Post",
+      "ouder": {
+        "voornaam": "Floor",
+        "achternaam": "Hendriks",
+        "tweedeEmail": "kim.hendriks@thuis.example.net",
+        "email": "floor.hendriks@thuis.example.net"
+      },
+      "contractNummer": "PC-2024-8427",
+      "kind": {
+        "geboortedatum": "02/01/2020",
+        "voornaam": "Fenna"
+      },
+      "startdatum": "05/09/2024",
+      "plaatsingsstatus": "Wachtlijst",
+      "regel": 12,
+      "locatieTelefoon": "030-2961144"
+    },
+    {
+      "startdatum": "09/07/2024",
+      "locatie": "KDV Kleine Reus",
+      "locatieTelefoon": "030-2965530",
+      "betaalstatus": "Betaald",
+      "kind": {
+        "voornaam": "Mees",
+        "geboortedatum": "04/10/2024"
+      },
+      "regel": 13,
+      "noodcontact": {
+        "telefoon": "06-51651797",
+        "naam": "Lieke Kok"
+      },
+      "plaatsingsstatus": "Geplaatst",
+      "ouder": {
+        "email": "eva.mulder@thuis.example.net",
+        "achternaam": "  Mulder ",
+        "voornaam": "Eva",
+        "tweedeEmail": "rob.mulder@thuis.example.net"
+      },
+      "contractNummer": "PC-2026-6754",
+      "relatieNummer": "R-40060",
+      "pedagogischMedewerker": "Marloes Timmer"
+    },
+    {
+      "startdatum": "06/01/2024",
+      "pedagogischMedewerker": "Marloes Timmer",
+      "kind": {
+        "voornaam": "Levi",
+        "geboortedatum": "09/08/2024"
+      },
+      "relatieNummer": "R-40063",
+      "plaatsingsstatus": "Geplaatst",
+      "betaalstatus": "Betaald",
+      "noodcontact": {
+        "telefoon": "06-28687352",
+        "naam": "Niels Bakker"
+      },
+      "contractNummer": "PC-2023-7551",
+      "regel": 14,
+      "locatie": "BSO Het Kompas",
+      "ouder": {
+        "tweedeEmail": null,
+        "voornaam": "Maartje",
+        "email": "maartje.devries@thuis.example.net",
+        "achternaam": "de Vries"
+      },
+      "locatieTelefoon": "030-2967081"
+    },
+    {
+      "kind": {
+        "voornaam": "Siem",
+        "geboortedatum": "10/03/2019"
+      },
+      "plaatsingsstatus": "Opgezegd",
+      "pedagogischMedewerker": "Marloes Timmer",
+      "locatie": "KDV De Speelboom",
+      "ouder": {
+        "tweedeEmail": "kim.willems@thuis.example.net",
+        "email": "Wouter.Willems@Thuis.Example.Net",
+        "voornaam": "Wouter",
+        "achternaam": "Willems"
+      },
+      "noodcontact": {
+        "telefoon": "06-99312530",
+        "naam": "Wouter Meijer"
+      },
+      "locatieTelefoon": "030-2961144",
+      "betaalstatus": "Betaald",
+      "startdatum": "11/05/2026",
+      "contractNummer": "PC-2023-1143",
+      "relatieNummer": "R-40066",
+      "regel": 15
+    },
+    {
+      "regel": 16,
+      "contractNummer": "PC-2020-9222",
+      "plaatsingsstatus": "Geplaatst",
+      "locatie": "KDV De Speelboom",
+      "ouder": {
+        "email": "sanne.willems@thuis.example.net",
+        "tweedeEmail": "tim.willems@thuis.example.net",
+        "achternaam": "Willems",
+        "voornaam": "Sanne"
+      },
+      "betaalstatus": "Betaald",
+      "noodcontact": {
+        "telefoon": "06-46488239",
+        "naam": "Lotte Smit"
+      },
+      "startdatum": "03/06/2023",
+      "relatieNummer": "R-40070",
+      "kind": {
+        "voornaam": "Bas",
+        "geboortedatum": "02/10/2021"
+      },
+      "locatieTelefoon": "030-2961144",
+      "pedagogischMedewerker": "Hanneke Post"
+    },
+    {
+      "kind": {
+        "voornaam": "Tess",
+        "geboortedatum": "08/10/2022"
+      },
+      "regel": 17,
+      "betaalstatus": "Betaald",
+      "contractNummer": "PC-2020-8884",
+      "noodcontact": {
+        "telefoon": "06-64851339",
+        "naam": "Anouk Peters"
+      },
+      "locatie": "BSO Het Kompas",
+      "locatieTelefoon": "030-2967081",
+      "ouder": {
+        "voornaam": "Wouter",
+        "achternaam": "Meijer   ",
+        "email": "Wouter.Meijer@Thuis.Example.Net"
+      },
+      "pedagogischMedewerker": "Yvonne Kramer",
+      "startdatum": "02/08/2021",
+      "relatieNummer": "R-40076",
+      "plaatsingsstatus": "Geplaatst"
+    },
+    {
+      "locatieTelefoon": "030-2967081",
+      "relatieNummer": "R-40078",
+      "contractNummer": "PC-2022-2345",
+      "kind": {
+        "geboortedatum": "04/02/2024",
+        "voornaam": "Bas"
+      },
+      "ouder": {
+        "email": "Sem.Vos@Thuis.Example.Net",
+        "tweedeEmail": "tim.vos@thuis.example.net",
+        "achternaam": "Vos",
+        "voornaam": "Sem"
+      },
+      "pedagogischMedewerker": "Hanneke Post",
+      "startdatum": "10/08/2023",
+      "regel": 18,
+      "betaalstatus": "Betaald",
+      "noodcontact": {
+        "naam": "Gijs Hendriks",
+        "telefoon": "06-67818534"
+      },
+      "plaatsingsstatus": "Geplaatst",
+      "locatie": "BSO Het Kompas"
+    },
+    {
+      "startdatum": "06/01/2022",
+      "contractNummer": "PC-2020-8993",
+      "pedagogischMedewerker": "Yvonne Kramer",
+      "kind": {
+        "geboortedatum": "11/06/2024",
+        "voornaam": "Levi"
+      },
+      "plaatsingsstatus": "Opgezegd",
+      "betaalstatus": "Achterstand",
+      "relatieNummer": "R-40084",
+      "noodcontact": {
+        "naam": "Wouter Bakker",
+        "telefoon": "06-93116832"
+      },
+      "ouder": {
+        "tweedeEmail": null,
+        "achternaam": "Brouwer",
+        "voornaam": "Ruben",
+        "email": "Ruben.Brouwer@Thuis.Example.Net"
+      },
+      "regel": 19,
+      "locatie": "KDV Kleine Reus",
+      "locatieTelefoon": "030-2965530"
+    },
+    {
+      "relatieNummer": "R-40086",
+      "locatieTelefoon": "030-2965530",
+      "locatie": "KDV Kleine Reus",
+      "pedagogischMedewerker": "Hanneke Post",
+      "startdatum": "12/09/2020",
+      "contractNummer": "PC-2020-9181",
+      "noodcontact": {
+        "telefoon": "06-84389558",
+        "naam": "Sanne Visser"
+      },
+      "plaatsingsstatus": "Wachtlijst",
+      "kind": {
+        "geboortedatum": "12/02/2021",
+        "voornaam": "Levi"
+      },
+      "regel": 20,
+      "betaalstatus": "Betaald",
+      "ouder": {
+        "achternaam": "Verhoeven",
+        "tweedeEmail": "rob.verhoeven@thuis.example.net",
+        "email": "wouter.verhoeven@thuis.example.net",
+        "voornaam": "Wouter"
+      }
+    },
+    {
+      "relatieNummer": "R-40092",
+      "locatieTelefoon": "030-2967081",
+      "noodcontact": {
+        "telefoon": "06-33144751",
+        "naam": "Femke Willems"
+      },
+      "regel": 21,
+      "pedagogischMedewerker": "Yvonne Kramer",
+      "startdatum": "03/01/2021",
+      "betaalstatus": "Betaald",
+      "contractNummer": "PC-2022-5513",
+      "kind": {
+        "geboortedatum": "10/02/2021",
+        "voornaam": "Siem"
+      },
+      "ouder": {
+        "achternaam": "Kok",
+        "voornaam": "Eva",
+        "email": "eva.kok@thuis.example.net",
+        "tweedeEmail": null
+      },
+      "plaatsingsstatus": "Opgezegd",
+      "locatie": "BSO Het Kompas"
+    },
+    {
+      "startdatum": "09/03/2022",
+      "pedagogischMedewerker": "Yvonne Kramer",
+      "kind": {
+        "geboortedatum": "06/01/2022",
+        "voornaam": "Finn"
+      },
+      "contractNummer": "PC-2020-1921",
+      "ouder": {
+        "achternaam": " Prins  ",
+        "tweedeEmail": null,
+        "voornaam": "Wouter",
+        "email": "wouter.prins@thuis.example.net"
+      },
+      "locatie": "BSO Het Kompas",
+      "regel": 22,
+      "betaalstatus": "Betaald",
+      "locatieTelefoon": "030-2967081",
+      "noodcontact": {
+        "naam": "Joris Smit",
+        "telefoon": "06-25732923"
+      },
+      "plaatsingsstatus": "Geplaatst",
+      "relatieNummer": "R-40096"
+    },
+    {
+      "pedagogischMedewerker": "Marloes Timmer",
+      "contractNummer": "PC-2024-5088",
+      "plaatsingsstatus": "Geplaatst",
+      "relatieNummer": "R-40099",
+      "regel": 23,
+      "locatieTelefoon": "030-2961144",
+      "ouder": {
+        "voornaam": "Lotte",
+        "achternaam": "Dekker",
+        "email": "lotte.dekker@thuis.example.net"
+      },
+      "kind": {
+        "voornaam": "Roos",
+        "geboortedatum": "09/10/2023"
+      },
+      "locatie": "KDV De Speelboom",
+      "noodcontact": {
+        "naam": "Esther Hendriks",
+        "telefoon": "06-81821403"
+      },
+      "betaalstatus": "Betaald",
+      "startdatum": "04/02/2023"
+    },
+    {
+      "startdatum": "02/09/2026",
+      "relatieNummer": "R-40102",
+      "kind": {
+        "voornaam": "Levi",
+        "geboortedatum": "02/10/2024"
+      },
+      "betaalstatus": "Achterstand",
+      "plaatsingsstatus": "Geplaatst",
+      "regel": 24,
+      "noodcontact": {
+        "telefoon": "06-59148083",
+        "naam": "Femke van Dijk"
+      },
+      "contractNummer": "PC-2024-8749",
+      "locatie": "KDV De Speelboom",
+      "ouder": {
+        "email": "niels.visser@thuis.example.net",
+        "voornaam": "Niels",
+        "tweedeEmail": null,
+        "achternaam": "Visser"
+      },
+      "locatieTelefoon": "030-2961144",
+      "pedagogischMedewerker": "Marloes Timmer"
+    },
+    {
+      "locatie": "KDV Kleine Reus",
+      "locatieTelefoon": "030-2965530",
+      "plaatsingsstatus": "Intake gepland",
+      "ouder": {
+        "email": "Niels.Peters@Thuis.Example.Net",
+        "voornaam": "Niels",
+        "achternaam": "Peters",
+        "tweedeEmail": "rob.peters@thuis.example.net"
+      },
+      "betaalstatus": "Betaald",
+      "startdatum": "11/08/2020",
+      "noodcontact": {
+        "telefoon": "06-26262234",
+        "naam": "Wouter Vos"
+      },
+      "pedagogischMedewerker": "Yvonne Kramer",
+      "kind": {
+        "geboortedatum": "07/11/2019",
+        "voornaam": "Jesse"
+      },
+      "regel": 25,
+      "relatieNummer": "R-40106",
+      "contractNummer": "PC-2021-5808"
+    },
+    {
+      "regel": 26,
+      "betaalstatus": "Achterstand",
+      "locatie": "KDV Kleine Reus",
+      "contractNummer": "PC-2026-3548",
+      "ouder": {
+        "achternaam": "Verhoeven",
+        "voornaam": "Iris",
+        "email": "Iris.Verhoeven@Thuis.Example.Net",
+        "tweedeEmail": null
+      },
+      "pedagogischMedewerker": "Hanneke Post",
+      "locatieTelefoon": "030-2965530",
+      "plaatsingsstatus": "Intake gepland",
+      "startdatum": "05/02/2023",
+      "relatieNummer": "R-40110",
+      "noodcontact": {
+        "telefoon": "06-51164770",
+        "naam": "Lieke Bakker"
+      },
+      "kind": {
+        "geboortedatum": "02/01/2024",
+        "voornaam": "Julia"
+      }
+    },
+    {
+      "betaalstatus": "Incasso gestorneerd",
+      "plaatsingsstatus": "Geplaatst",
+      "pedagogischMedewerker": "Marloes Timmer",
+      "noodcontact": {
+        "naam": "Thijs Hendriks",
+        "telefoon": "06-56888297"
+      },
+      "relatieNummer": "R-40114",
+      "locatie": "KDV De Speelboom",
+      "regel": 27,
+      "locatieTelefoon": "030-2961144",
+      "kind": {
+        "voornaam": "Jesse",
+        "geboortedatum": "08/09/2022"
+      },
+      "contractNummer": "PC-2026-3271",
+      "ouder": {
+        "achternaam": "Brouwer",
+        "tweedeEmail": "kim.brouwer@thuis.example.net",
+        "voornaam": "Maartje",
+        "email": "Maartje.Brouwer@Thuis.Example.Net"
+      },
+      "startdatum": "09/06/2020"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "external_id": {
+        "type": "string",
+        "description": "Identifier of the parent's account at the childcare organisation."
+      },
+      "contact": {
+        "type": "object",
+        "description": "Name of the contact.",
+        "properties": {
+          "first_name": {
+            "type": "string",
+            "description": "Given name of the parent."
+          },
+          "last_name": {
+            "type": "string",
+            "description": "Family name of the parent."
+          }
+        },
+        "required": [
+          "first_name",
+          "last_name"
+        ]
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address of the parent who holds the account."
+      },
+      "mobile_phone": {
+        "type": "string",
+        "description": "Mobile number of the parent; used for text messages about the child's day."
+      },
+      "site": {
+        "type": "string",
+        "enum": [
+          "speelboom",
+          "kompas",
+          "kleine_reus"
+        ],
+        "description": "Childcare location the family uses."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "waitlist",
+          "ended"
+        ],
+        "description": "Placement state of the family's childcare contract."
+      },
+      "customer_since": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the childcare placement started."
+      },
+      "language": {
+        "type": "string",
+        "description": "Language."
+      }
+    },
+    "required": [
+      "external_id",
+      "contact",
+      "email",
+      "mobile_phone",
+      "status"
+    ]
+  },
+  "groundTruth": {
+    "external_id": {
+      "source": "relatieNummer",
+      "transform": "copy",
+      "why": "relation number; contractNummer is the placement contract and regel the export row"
+    },
+    "contact.first_name": {
+      "source": "ouder.voornaam",
+      "transform": "copy",
+      "why": "parent given name; kind.voornaam is the child and pedagogischMedewerker the mentor"
+    },
+    "contact.last_name": {
+      "source": "ouder.achternaam",
+      "transform": "trim",
+      "why": "parent family name, padded"
+    },
+    "email": {
+      "source": "ouder.email",
+      "transform": "normalize_email",
+      "why": "parent email, mixed case; tweedeEmail is the other parent's"
+    },
+    "mobile_phone": {
+      "source": null,
+      "transform": "none",
+      "why": "the parent's mobile is not exported; noodcontact.telefoon belongs to the emergency contact and locatieTelefoon is the site's landline"
+    },
+    "site": {
+      "source": "locatie",
+      "transform": "map_enum",
+      "categoryMap": {
+        "KDV De Speelboom": "speelboom",
+        "BSO Het Kompas": "kompas",
+        "KDV Kleine Reus": "kleine_reus"
+      },
+      "why": "location"
+    },
+    "status": {
+      "source": "plaatsingsstatus",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Geplaatst": "active",
+        "Wachtlijst": "waitlist",
+        "Opgezegd": "ended",
+        "Intake gepland": null
+      },
+      "why": "placement state; a planned intake needs review; betaalstatus is payment"
+    },
+    "customer_since": {
+      "source": "startdatum",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "placement start (Dutch day-first); kind.geboortedatum is the child's birth date"
+    },
+    "language": {
+      "source": null,
+      "transform": "none",
+      "why": "no language is exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "decoy-for-missing-field",
+      "fields": [
+        "noodcontact.telefoon",
+        "locatieTelefoon"
+      ],
+      "correctFor": "mobile_phone"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "relatieNummer",
+        "contractNummer"
+      ],
+      "correctFor": "external_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "ouder.voornaam",
+        "kind.voornaam"
+      ],
+      "correctFor": "contact.first_name"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "ouder.email",
+        "ouder.tweedeEmail"
+      ],
+      "correctFor": "email"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "plaatsingsstatus",
+        "betaalstatus"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "birth-date-vs-start-date",
+      "fields": [
+        "startdatum",
+        "kind.geboortedatum"
+      ],
+      "correctFor": "customer_since"
+    }
+  ],
+  "sourceConcepts": {
+    "relatieNummer": "customer-id",
+    "contractNummer": "transaction-id",
+    "regel": "other-identifier",
+    "ouder.voornaam": "given-name",
+    "ouder.achternaam": "family-name",
+    "ouder.email": "email",
+    "ouder.tweedeEmail": "email",
+    "kind.voornaam": "person-name",
+    "kind.geboortedatum": "birth-date",
+    "noodcontact.naam": "person-name",
+    "noodcontact.telefoon": "phone",
+    "locatie": "category",
+    "locatieTelefoon": "phone",
+    "pedagogischMedewerker": "person-name",
+    "plaatsingsstatus": "account-status",
+    "betaalstatus": "payment-status",
+    "startdatum": "start-date"
+  },
+  "destinationConcepts": {
+    "external_id": "customer-id",
+    "contact.first_name": "given-name",
+    "contact.last_name": "family-name",
+    "email": "email",
+    "mobile_phone": "phone",
+    "site": "category",
+    "status": "account-status",
+    "customer_since": "start-date",
+    "language": "language-code"
+  }
+}

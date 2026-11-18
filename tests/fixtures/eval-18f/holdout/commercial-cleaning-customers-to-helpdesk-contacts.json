@@ -1,0 +1,698 @@
+{
+  "scenarioId": "commercial-cleaning-customers-to-helpdesk-contacts",
+  "split": "holdout",
+  "track": "wedge",
+  "industry": "commercial cleaning company business customers",
+  "sourceLanguage": "da",
+  "description": "Flat customer export of a fictional commercial cleaning company (Danish snake_case with a crm_ prefix) to be loaded as helpdesk contacts; the agreement end date is not exported.",
+  "fictional": true,
+  "completable": false,
+  "records": [
+    {
+      "naeste_besoeg": "04/12/2026",
+      "frekvens": "Ugentlig",
+      "virksomhed": "Revisionshuset Lund",
+      "kontakt_email": "JONAS.PETERSEN@FIRMA.EXAMPLE.COM",
+      "kontakt_efternavn": "Petersen",
+      "kontakt_fornavn": "Jonas",
+      "kundestatus": "Aktiv",
+      "crm_kundenr": "RG-3100",
+      "betalingsstatus": "Rykker 1",
+      "aftale_start": "09/12/2024",
+      "bindingsperiode_mdr": 12,
+      "ydelse": "Kontorrengøring",
+      "crm_cvr": "42380870",
+      "crm_raekke": 1,
+      "kontakt_tlf": "77 90 35 48",
+      "formand": "Hanne Riis"
+    },
+    {
+      "formand": "Hanne Riis",
+      "crm_raekke": 2,
+      "frekvens": "Hver 14. dag",
+      "crm_kundenr": "RG-3104",
+      "kontakt_tlf": null,
+      "crm_cvr": "25920414",
+      "kontakt_fornavn": "Line",
+      "virksomhed": "Kontorfællesskabet Krogh   ",
+      "kundestatus": "Tilbud sendt",
+      "betalingsstatus": "Rykker 1",
+      "naeste_besoeg": "11/12/2026",
+      "bindingsperiode_mdr": 12,
+      "kontakt_efternavn": "Jørgensen",
+      "kontakt_email": "Line.Jrgensen@Firma.Example.Com",
+      "aftale_start": "08/05/2023",
+      "ydelse": "Kontorrengøring"
+    },
+    {
+      "kundestatus": "Opsagt",
+      "crm_kundenr": "RG-3110",
+      "kontakt_tlf": null,
+      "formand": "Ole Bundgaard",
+      "bindingsperiode_mdr": 6,
+      "crm_raekke": 3,
+      "naeste_besoeg": "06/11/2026",
+      "kontakt_fornavn": "Kasper",
+      "kontakt_email": "kasper.nielsen@firma.example.com",
+      "aftale_start": "10/04/2022",
+      "crm_cvr": "66043871",
+      "ydelse": "Trappevask",
+      "virksomhed": "Advokatfirma Lund",
+      "kontakt_efternavn": "Nielsen",
+      "frekvens": "Månedlig",
+      "betalingsstatus": "Betalt"
+    },
+    {
+      "kontakt_tlf": null,
+      "aftale_start": "02/05/2021",
+      "virksomhed": "Tandklinik Bech",
+      "formand": "Ole Bundgaard",
+      "kontakt_fornavn": "Emma",
+      "naeste_besoeg": "01/11/2026",
+      "kundestatus": "Aktiv",
+      "ydelse": "Vinduespolering",
+      "bindingsperiode_mdr": 36,
+      "frekvens": "Ugentlig",
+      "kontakt_email": "Emma.Johansen@Firma.Example.Com",
+      "crm_raekke": 4,
+      "crm_cvr": "61691345",
+      "betalingsstatus": "Betalt",
+      "crm_kundenr": "RG-3112",
+      "kontakt_efternavn": "Johansen"
+    },
+    {
+      "kundestatus": "Pause",
+      "kontakt_email": "mads.hansen@firma.example.com",
+      "kontakt_fornavn": "Mads",
+      "crm_cvr": "31714989",
+      "betalingsstatus": "Betalt",
+      "kontakt_efternavn": "Hansen",
+      "crm_kundenr": "RG-3116",
+      "frekvens": "Månedlig",
+      "aftale_start": "05/07/2021",
+      "kontakt_tlf": "86 90 95 97",
+      "formand": "Hanne Riis",
+      "ydelse": "Trappevask",
+      "naeste_besoeg": "11/11/2026",
+      "crm_raekke": 5,
+      "bindingsperiode_mdr": 6,
+      "virksomhed": "Arkitekterne Bech"
+    },
+    {
+      "crm_cvr": "43218830",
+      "kundestatus": "Aktiv",
+      "betalingsstatus": "Betalt",
+      "kontakt_efternavn": "Møller",
+      "aftale_start": "02/04/2020",
+      "kontakt_email": "Frederik.Mller@Firma.Example.Com",
+      "ydelse": "Vinduespolering",
+      "frekvens": "Ugentlig",
+      "naeste_besoeg": "06/11/2026",
+      "kontakt_tlf": "21 37 89 56",
+      "virksomhed": "Kontorfællesskabet Bech   ",
+      "bindingsperiode_mdr": 24,
+      "formand": "Ole Bundgaard",
+      "crm_kundenr": "RG-3121",
+      "crm_raekke": 6,
+      "kontakt_fornavn": "Frederik"
+    },
+    {
+      "aftale_start": "01/04/2026",
+      "crm_cvr": "50492674",
+      "kontakt_fornavn": "Jonas",
+      "kontakt_efternavn": "Sørensen",
+      "frekvens": "Ugentlig",
+      "betalingsstatus": "Rykker 1",
+      "ydelse": "Kontorrengøring",
+      "kontakt_tlf": "37 45 62 53",
+      "crm_kundenr": "RG-3126",
+      "formand": "Hanne Riis",
+      "kontakt_email": "Jonas.Srensen@Firma.Example.Com",
+      "naeste_besoeg": "05/11/2026",
+      "crm_raekke": 7,
+      "bindingsperiode_mdr": 6,
+      "virksomhed": "Revisionshuset Vestergaard",
+      "kundestatus": "Aktiv"
+    },
+    {
+      "aftale_start": "02/11/2025",
+      "kontakt_tlf": "83 16 92 43",
+      "crm_raekke": 8,
+      "kontakt_efternavn": "Poulsen",
+      "kontakt_email": "Kasper.Poulsen@Firma.Example.Com",
+      "naeste_besoeg": "11/11/2026",
+      "virksomhed": "Advokatfirma Krogh",
+      "frekvens": "Ugentlig",
+      "formand": "Ole Bundgaard",
+      "crm_cvr": "88524492",
+      "kundestatus": "Opsagt",
+      "ydelse": "Kontorrengøring",
+      "betalingsstatus": "Betalt",
+      "kontakt_fornavn": "Kasper",
+      "crm_kundenr": "RG-3128",
+      "bindingsperiode_mdr": 24
+    },
+    {
+      "aftale_start": "06/05/2019",
+      "betalingsstatus": "Rykker 1",
+      "bindingsperiode_mdr": 6,
+      "kontakt_efternavn": "Andersen",
+      "crm_raekke": 9,
+      "kontakt_fornavn": "Laura",
+      "crm_kundenr": "RG-3132",
+      "frekvens": "Ugentlig",
+      "kontakt_email": "Laura.Andersen@Firma.Example.Com",
+      "virksomhed": " Arkitekterne Lund  ",
+      "kontakt_tlf": "59 14 93 56",
+      "ydelse": "Kontorrengøring",
+      "crm_cvr": "83684404",
+      "naeste_besoeg": "12/12/2026",
+      "kundestatus": "Aktiv",
+      "formand": "Birgitte Kjær"
+    },
+    {
+      "frekvens": "Månedlig",
+      "aftale_start": "09/04/2025",
+      "kontakt_email": "freja.olsen@firma.example.com",
+      "crm_cvr": "30393016",
+      "kundestatus": "Aktiv",
+      "naeste_besoeg": "02/12/2026",
+      "ydelse": "Vinduespolering",
+      "crm_kundenr": "RG-3137",
+      "kontakt_efternavn": "Olsen",
+      "bindingsperiode_mdr": 12,
+      "virksomhed": "Tandklinik Vestergaard",
+      "crm_raekke": 10,
+      "formand": "Hanne Riis",
+      "kontakt_fornavn": "Freja",
+      "betalingsstatus": "Rykker 1"
+    },
+    {
+      "kundestatus": "Aktiv",
+      "virksomhed": " Boligforeningen Krogh",
+      "kontakt_efternavn": "Møller",
+      "formand": "Ole Bundgaard",
+      "betalingsstatus": "Betalt",
+      "crm_kundenr": "RG-3141",
+      "ydelse": "Vinduespolering",
+      "bindingsperiode_mdr": 24,
+      "crm_raekke": 11,
+      "kontakt_tlf": "28 98 83 74",
+      "frekvens": "Månedlig",
+      "kontakt_email": "anne.mller@firma.example.com",
+      "kontakt_fornavn": "Anne",
+      "aftale_start": "08/02/2024",
+      "naeste_besoeg": "09/11/2026",
+      "crm_cvr": "68687252"
+    },
+    {
+      "bindingsperiode_mdr": 24,
+      "betalingsstatus": "Betalt",
+      "crm_cvr": "59134623",
+      "naeste_besoeg": "08/12/2026",
+      "kontakt_email": "sren.kristensen@firma.example.com",
+      "kontakt_tlf": "86 33 67 31",
+      "virksomhed": "Kontorfællesskabet Dahl",
+      "kontakt_fornavn": "Søren",
+      "frekvens": "Hver 14. dag",
+      "kundestatus": "Aktiv",
+      "aftale_start": "03/05/2018",
+      "ydelse": "Kontorrengøring",
+      "formand": "Hanne Riis",
+      "crm_raekke": 12,
+      "crm_kundenr": "RG-3146",
+      "kontakt_efternavn": "Kristensen"
+    },
+    {
+      "crm_cvr": "75143944",
+      "kontakt_fornavn": "Laura",
+      "betalingsstatus": "Betalt",
+      "formand": "Ole Bundgaard",
+      "naeste_besoeg": "08/11/2026",
+      "bindingsperiode_mdr": 12,
+      "kundestatus": "Pause",
+      "kontakt_tlf": "50 40 90 57",
+      "frekvens": "Ugentlig",
+      "crm_kundenr": "RG-3148",
+      "virksomhed": "Boligforeningen Dahl",
+      "aftale_start": "08/05/2018",
+      "ydelse": "Kontorrengøring",
+      "crm_raekke": 13,
+      "kontakt_efternavn": "Poulsen",
+      "kontakt_email": "laura.poulsen@firma.example.com"
+    },
+    {
+      "formand": "Birgitte Kjær",
+      "kontakt_email": "rasmus.jrgensen@firma.example.com",
+      "virksomhed": "Arkitekterne Dahl",
+      "frekvens": "Ugentlig",
+      "ydelse": "Vinduespolering",
+      "kontakt_fornavn": "Rasmus",
+      "crm_kundenr": "RG-3154",
+      "crm_raekke": 14,
+      "kundestatus": "Pause",
+      "kontakt_tlf": "22 84 87 42",
+      "crm_cvr": "16459704",
+      "aftale_start": "11/07/2024",
+      "kontakt_efternavn": "Jørgensen",
+      "bindingsperiode_mdr": 36,
+      "betalingsstatus": "Rykker 1",
+      "naeste_besoeg": "06/11/2026"
+    },
+    {
+      "kontakt_email": "freja.mortensen@firma.example.com",
+      "crm_cvr": "95728285",
+      "kontakt_fornavn": "Freja",
+      "crm_kundenr": "RG-3157",
+      "kontakt_tlf": "57 13 15 83",
+      "kundestatus": "Aktiv",
+      "kontakt_efternavn": "Mortensen",
+      "formand": "Hanne Riis",
+      "naeste_besoeg": "09/12/2026",
+      "aftale_start": "01/06/2021",
+      "crm_raekke": 15,
+      "bindingsperiode_mdr": 36,
+      "frekvens": "Månedlig",
+      "ydelse": "Trappevask",
+      "virksomhed": "Boligforeningen Lund",
+      "betalingsstatus": "Betalt"
+    },
+    {
+      "crm_kundenr": "RG-3162",
+      "crm_raekke": 16,
+      "aftale_start": "04/02/2018",
+      "kontakt_tlf": "84 71 26 58",
+      "formand": "Birgitte Kjær",
+      "crm_cvr": "56079430",
+      "bindingsperiode_mdr": 6,
+      "virksomhed": "Advokatfirma Dahl",
+      "frekvens": "Ugentlig",
+      "kontakt_email": "Anne.Kristensen@Firma.Example.Com",
+      "kontakt_fornavn": "Anne",
+      "kontakt_efternavn": "Kristensen",
+      "betalingsstatus": "Inkasso",
+      "naeste_besoeg": "03/12/2026",
+      "ydelse": "Trappevask",
+      "kundestatus": "Tilbud sendt"
+    },
+    {
+      "naeste_besoeg": "03/11/2026",
+      "bindingsperiode_mdr": 24,
+      "ydelse": "Trappevask",
+      "aftale_start": "01/09/2024",
+      "betalingsstatus": "Betalt",
+      "kundestatus": "Aktiv",
+      "kontakt_tlf": "50 60 73 51",
+      "crm_raekke": 17,
+      "crm_cvr": "19469075",
+      "kontakt_efternavn": "Thomsen",
+      "crm_kundenr": "RG-3164",
+      "formand": "Hanne Riis",
+      "kontakt_email": "ida.thomsen@firma.example.com",
+      "kontakt_fornavn": "Ida",
+      "virksomhed": "Advokatfirma Holm",
+      "frekvens": "Ugentlig"
+    },
+    {
+      "ydelse": "Kontorrengøring",
+      "bindingsperiode_mdr": 12,
+      "naeste_besoeg": "09/11/2026",
+      "aftale_start": "07/05/2025",
+      "virksomhed": "Arkitekterne Vestergaard",
+      "betalingsstatus": "Betalt",
+      "formand": "Ole Bundgaard",
+      "kontakt_efternavn": "Jørgensen",
+      "crm_kundenr": "RG-3168",
+      "frekvens": "Hver 14. dag",
+      "kundestatus": "Pause",
+      "crm_raekke": 18,
+      "kontakt_fornavn": "Kasper",
+      "kontakt_email": "kasper.jrgensen@firma.example.com",
+      "crm_cvr": "33801428",
+      "kontakt_tlf": "40 74 93 26"
+    },
+    {
+      "ydelse": "Trappevask",
+      "kontakt_efternavn": "Olsen",
+      "frekvens": "Hver 14. dag",
+      "kontakt_fornavn": "Laura",
+      "naeste_besoeg": "12/12/2026",
+      "crm_cvr": "58432909",
+      "bindingsperiode_mdr": 12,
+      "kontakt_email": "laura.olsen@firma.example.com",
+      "betalingsstatus": "Betalt",
+      "virksomhed": "Kontorfællesskabet Holm",
+      "aftale_start": "07/01/2022",
+      "kundestatus": "Opsagt",
+      "kontakt_tlf": "66 65 17 90",
+      "crm_raekke": 19,
+      "formand": "Birgitte Kjær",
+      "crm_kundenr": "RG-3173"
+    },
+    {
+      "bindingsperiode_mdr": 36,
+      "kontakt_email": "frederik.thomsen@firma.example.com",
+      "crm_kundenr": "RG-3178",
+      "formand": "Birgitte Kjær",
+      "crm_cvr": "66280213",
+      "kontakt_tlf": "29 75 86 41",
+      "frekvens": "Hver 14. dag",
+      "naeste_besoeg": "05/12/2026",
+      "kundestatus": "Pause",
+      "virksomhed": "Boligforeningen Vestergaard",
+      "crm_raekke": 20,
+      "kontakt_fornavn": "Frederik",
+      "kontakt_efternavn": "Thomsen",
+      "betalingsstatus": "Betalt",
+      "ydelse": "Trappevask",
+      "aftale_start": "09/01/2021"
+    },
+    {
+      "kontakt_fornavn": "Rasmus",
+      "bindingsperiode_mdr": 6,
+      "kontakt_efternavn": "Larsen",
+      "crm_raekke": 21,
+      "kontakt_email": "Rasmus.Larsen@Firma.Example.Com",
+      "frekvens": "Månedlig",
+      "betalingsstatus": "Betalt",
+      "kundestatus": "Aktiv",
+      "crm_kundenr": "RG-3182",
+      "ydelse": "Kontorrengøring",
+      "naeste_besoeg": "02/11/2026",
+      "formand": "Ole Bundgaard",
+      "kontakt_tlf": "75 19 86 69",
+      "crm_cvr": "51485046",
+      "virksomhed": "Kontorfællesskabet Lund",
+      "aftale_start": "12/04/2019"
+    },
+    {
+      "kontakt_efternavn": "Sørensen",
+      "formand": "Hanne Riis",
+      "crm_raekke": 22,
+      "kontakt_fornavn": "Cecilie",
+      "crm_kundenr": "RG-3186",
+      "kundestatus": "Aktiv",
+      "aftale_start": "11/01/2023",
+      "kontakt_tlf": "96 79 27 40",
+      "kontakt_email": "cecilie.srensen@firma.example.com",
+      "virksomhed": "Revisionshuset Dahl",
+      "frekvens": "Hver 14. dag",
+      "crm_cvr": "42256140",
+      "bindingsperiode_mdr": 36,
+      "naeste_besoeg": "04/11/2026",
+      "betalingsstatus": "Betalt",
+      "ydelse": "Trappevask"
+    },
+    {
+      "ydelse": "Kontorrengøring",
+      "formand": "Ole Bundgaard",
+      "naeste_besoeg": "08/12/2026",
+      "kontakt_efternavn": "Christensen",
+      "betalingsstatus": "Inkasso",
+      "virksomhed": "Boligforeningen Holm   ",
+      "crm_raekke": 23,
+      "aftale_start": "12/12/2019",
+      "bindingsperiode_mdr": 24,
+      "kontakt_fornavn": "Anders",
+      "kontakt_email": "anders.christensen@firma.example.com",
+      "frekvens": "Ugentlig",
+      "kundestatus": "Aktiv",
+      "kontakt_tlf": "92 84 23 72",
+      "crm_kundenr": "RG-3188",
+      "crm_cvr": "92995428"
+    },
+    {
+      "frekvens": "Hver 14. dag",
+      "ydelse": "Kontorrengøring",
+      "kontakt_efternavn": "Christensen",
+      "formand": "Hanne Riis",
+      "virksomhed": "Advokatfirma Vestergaard",
+      "crm_cvr": "58884365",
+      "crm_kundenr": "RG-3192",
+      "crm_raekke": 24,
+      "kundestatus": "Opsagt",
+      "naeste_besoeg": "02/11/2026",
+      "kontakt_fornavn": "Rasmus",
+      "kontakt_email": "rasmus.christensen@firma.example.com",
+      "bindingsperiode_mdr": 36,
+      "betalingsstatus": "Inkasso",
+      "aftale_start": "04/11/2019"
+    },
+    {
+      "crm_kundenr": "RG-3197",
+      "crm_cvr": "99607670",
+      "kontakt_email": "FREJA.NIELSEN@FIRMA.EXAMPLE.COM",
+      "virksomhed": " Arkitekterne Krogh  ",
+      "bindingsperiode_mdr": 36,
+      "formand": "Ole Bundgaard",
+      "aftale_start": "12/08/2022",
+      "crm_raekke": 25,
+      "frekvens": "Hver 14. dag",
+      "naeste_besoeg": "12/12/2026",
+      "kundestatus": "Aktiv",
+      "kontakt_efternavn": "Nielsen",
+      "kontakt_fornavn": "Freja",
+      "betalingsstatus": "Betalt",
+      "ydelse": "Trappevask"
+    },
+    {
+      "formand": "Birgitte Kjær",
+      "kundestatus": "Tilbud sendt",
+      "virksomhed": "Tandklinik Krogh",
+      "crm_kundenr": "RG-3202",
+      "betalingsstatus": "Betalt",
+      "bindingsperiode_mdr": 12,
+      "kontakt_email": "laura.jrgensen@firma.example.com",
+      "crm_raekke": 26,
+      "aftale_start": "07/06/2025",
+      "ydelse": "Vinduespolering",
+      "crm_cvr": "44772230",
+      "naeste_besoeg": "02/11/2026",
+      "frekvens": "Hver 14. dag",
+      "kontakt_efternavn": "Jørgensen",
+      "kontakt_fornavn": "Laura",
+      "kontakt_tlf": "86 89 44 99"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "customer_id": {
+        "type": "string",
+        "description": "Identifier of the customer at the cleaning company."
+      },
+      "organization": {
+        "type": "string",
+        "description": "Business that buys the cleaning service."
+      },
+      "first_name": {
+        "type": "string",
+        "description": "Given name of the customer's contact person."
+      },
+      "last_name": {
+        "type": "string",
+        "description": "Family name of the customer's contact person."
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address of the contact person."
+      },
+      "phone": {
+        "type": "string",
+        "description": "Phone number of the contact person."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "paused",
+          "terminated"
+        ],
+        "description": "Whether the cleaning agreement is running, paused or terminated."
+      },
+      "service": {
+        "type": "string",
+        "enum": [
+          "office",
+          "stairwell",
+          "windows"
+        ],
+        "description": "Main cleaning service delivered."
+      },
+      "customer_since": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the first cleaning agreement started."
+      },
+      "contract_end_date": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the current binding agreement period ends; needed to plan renewals."
+      },
+      "cleaning_notes": {
+        "type": "string",
+        "description": "Notes."
+      }
+    },
+    "required": [
+      "customer_id",
+      "organization",
+      "email",
+      "status",
+      "contract_end_date"
+    ]
+  },
+  "groundTruth": {
+    "customer_id": {
+      "source": "crm_kundenr",
+      "transform": "copy",
+      "why": "customer number; crm_cvr is the company registration number and crm_raekke the export row"
+    },
+    "organization": {
+      "source": "virksomhed",
+      "transform": "trim",
+      "why": "business name, padded"
+    },
+    "first_name": {
+      "source": "kontakt_fornavn",
+      "transform": "copy",
+      "why": "contact given name; formand is the cleaning team lead"
+    },
+    "last_name": {
+      "source": "kontakt_efternavn",
+      "transform": "copy",
+      "why": "contact family name"
+    },
+    "email": {
+      "source": "kontakt_email",
+      "transform": "normalize_email",
+      "why": "contact email, mixed case"
+    },
+    "phone": {
+      "source": "kontakt_tlf",
+      "transform": "copy",
+      "why": "phone, null or missing for some"
+    },
+    "status": {
+      "source": "kundestatus",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Aktiv": "active",
+        "Pause": "paused",
+        "Opsagt": "terminated",
+        "Tilbud sendt": null
+      },
+      "why": "agreement state; a sent offer is not a customer; betalingsstatus is payment"
+    },
+    "service": {
+      "source": "ydelse",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Kontorrengøring": "office",
+        "Trappevask": "stairwell",
+        "Vinduespolering": "windows"
+      },
+      "why": "service; frekvens is the visit frequency"
+    },
+    "customer_since": {
+      "source": "aftale_start",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "agreement start (Danish day-first)"
+    },
+    "contract_end_date": {
+      "source": null,
+      "transform": "none",
+      "why": "the end date is not exported; naeste_besoeg is the next visit and aftale_start the start",
+      "unsupportedReason": "would need aftale_start plus bindingsperiode_mdr months"
+    },
+    "cleaning_notes": {
+      "source": null,
+      "transform": "none",
+      "why": "no notes are exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "decoy-for-missing-field",
+      "fields": [
+        "naeste_besoeg",
+        "aftale_start"
+      ],
+      "correctFor": "contract_end_date"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "crm_kundenr",
+        "crm_cvr"
+      ],
+      "correctFor": "customer_id"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "crm_kundenr",
+        "crm_raekke"
+      ],
+      "correctFor": "customer_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "kontakt_fornavn",
+        "formand"
+      ],
+      "correctFor": "first_name"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "kundestatus",
+        "betalingsstatus"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "ydelse",
+        "frekvens"
+      ],
+      "correctFor": "service"
+    }
+  ],
+  "sourceConcepts": {
+    "crm_kundenr": "customer-id",
+    "crm_cvr": "other-identifier",
+    "crm_raekke": "other-identifier",
+    "virksomhed": "organization-name",
+    "kontakt_fornavn": "given-name",
+    "kontakt_efternavn": "family-name",
+    "kontakt_email": "email",
+    "kontakt_tlf": "phone",
+    "formand": "person-name",
+    "kundestatus": "account-status",
+    "betalingsstatus": "payment-status",
+    "ydelse": "category",
+    "frekvens": "category",
+    "aftale_start": "start-date",
+    "bindingsperiode_mdr": "quantity",
+    "naeste_besoeg": "other"
+  },
+  "destinationConcepts": {
+    "customer_id": "customer-id",
+    "organization": "organization-name",
+    "first_name": "given-name",
+    "last_name": "family-name",
+    "email": "email",
+    "phone": "phone",
+    "status": "account-status",
+    "service": "category",
+    "customer_since": "start-date",
+    "contract_end_date": "end-date",
+    "cleaning_notes": "other"
+  }
+}

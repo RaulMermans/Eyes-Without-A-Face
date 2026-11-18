@@ -1,0 +1,747 @@
+{
+  "scenarioId": "timber-deliveries-to-sawmill-intake",
+  "split": "holdout",
+  "track": "general",
+  "industry": "forest owners' timber deliveries to a sawmill",
+  "sourceLanguage": "sv",
+  "description": "Flat timber delivery export of a fictional forest owners' association (Swedish snake_case) to be loaded into a sawmill intake system; the tree species is not exported.",
+  "fictional": true,
+  "completable": false,
+  "records": [
+    {
+      "skogsagare_nr": "SO-1149",
+      "chauffor": "Kent Wikström",
+      "betalstatus": "Ej avräknad",
+      "akare": "Norrlands Åkeri AB",
+      "certifiering": "Ej certifierad",
+      "volym_m3fub": 33.22,
+      "leveransdatum": "10/04/2026",
+      "leveransnr": "LV-26-3300",
+      "vagsedel_nr": "853919",
+      "volym_m3to": 37.21,
+      "avverkningsdatum": "09/01/2026",
+      "sortiment": "Energived",
+      "skogsagare": "Klara Johansson",
+      "rad": 1,
+      "skogsagare_epost": "klara.johansson@skog.example.net",
+      "kvalitet": "Klass 1"
+    },
+    {
+      "volym_m3fub": 22.14,
+      "betalstatus": "Betald",
+      "avverkningsdatum": "02/03/2026",
+      "skogsagare_nr": "SO-1128",
+      "volym_m3to": 24.8,
+      "kvalitet": "Vrak",
+      "leveransdatum": "02/09/2026",
+      "certifiering": "Ej certifierad",
+      "vagsedel_nr": "865517",
+      "akare": "Skogstransport i Mellanbygden",
+      "skogsagare": "  Anton Gustafsson ",
+      "rad": 2,
+      "leveransnr": "LV-26-3302",
+      "skogsagare_epost": "anton.gustafsson@skog.example.net",
+      "sortiment": "Energived",
+      "chauffor": "Stina Dahl"
+    },
+    {
+      "skogsagare_nr": "SO-1135",
+      "betalstatus": "Avräknad",
+      "leveransdatum": "10/05/2026",
+      "volym_m3to": 35.99,
+      "akare": "Skogstransport i Mellanbygden",
+      "skogsagare": "Maja Johansson",
+      "volym_m3fub": 32.13,
+      "certifiering": "Certifierad",
+      "sortiment": "Klentimmer",
+      "avverkningsdatum": "09/01/2026",
+      "rad": 3,
+      "leveransnr": "LV-26-3304",
+      "chauffor": "Roger Ek",
+      "vagsedel_nr": "849036",
+      "kvalitet": "Vrak",
+      "skogsagare_epost": "maja.johansson@skog.example.net"
+    },
+    {
+      "leveransdatum": "12/06/2026",
+      "vagsedel_nr": "878654",
+      "akare": "Norrlands Åkeri AB",
+      "kvalitet": "Klass 2",
+      "rad": 4,
+      "certifiering": "Ej certifierad",
+      "volym_m3to": 28.13,
+      "sortiment": "Sågtimmer",
+      "skogsagare": "Måns Holm",
+      "skogsagare_nr": "SO-1121",
+      "chauffor": "Stina Dahl",
+      "avverkningsdatum": "06/12/2025",
+      "leveransnr": "LV-26-3306",
+      "betalstatus": "Betald",
+      "volym_m3fub": 25.12,
+      "skogsagare_epost": "MANS.HOLM@SKOG.EXAMPLE.NET"
+    },
+    {
+      "akare": "Skogstransport i Mellanbygden",
+      "rad": 5,
+      "vagsedel_nr": "820590",
+      "sortiment": "Klentimmer",
+      "leveransdatum": "12/01/2026",
+      "chauffor": "Stina Dahl",
+      "betalstatus": "Betald",
+      "volym_m3to": 40.1,
+      "skogsagare_epost": "anton.gustafsson@skog.example.net",
+      "skogsagare_nr": "SO-1128",
+      "certifiering": null,
+      "avverkningsdatum": "08/06/2026",
+      "volym_m3fub": 35.8,
+      "skogsagare": "Anton Gustafsson",
+      "kvalitet": "Klass 1",
+      "leveransnr": "LV-26-3308"
+    },
+    {
+      "betalstatus": "Ej avräknad",
+      "volym_m3fub": 20.23,
+      "sortiment": "Sågtimmer",
+      "leveransdatum": "10/04/2026",
+      "kvalitet": "Klass 2",
+      "vagsedel_nr": "828077",
+      "akare": "Norrlands Åkeri AB",
+      "skogsagare_epost": "Klara.Johansson@Skog.Example.Net",
+      "volym_m3to": 22.66,
+      "chauffor": "Roger Ek",
+      "rad": 6,
+      "leveransnr": "LV-26-3310",
+      "avverkningsdatum": "02/09/2026",
+      "skogsagare_nr": "SO-1149",
+      "skogsagare": "Klara Johansson"
+    },
+    {
+      "kvalitet": "Klass 1",
+      "vagsedel_nr": "883537",
+      "skogsagare_epost": "erik.berg@skog.example.net",
+      "rad": 7,
+      "skogsagare_nr": "SO-1107",
+      "sortiment": "Sågtimmer",
+      "leveransnr": "LV-26-3312",
+      "skogsagare": "Erik Berg",
+      "volym_m3fub": 30.08,
+      "betalstatus": "Ej avräknad",
+      "akare": "Bröderna Falks Åkeri",
+      "leveransdatum": "01/09/2026",
+      "chauffor": "Stina Dahl",
+      "volym_m3to": 33.69,
+      "certifiering": "Ej certifierad",
+      "avverkningsdatum": "01/09/2026"
+    },
+    {
+      "skogsagare_epost": "mans.holm@skog.example.net",
+      "betalstatus": "Avräknad",
+      "vagsedel_nr": "830931",
+      "kvalitet": "Klass 2",
+      "certifiering": "Ej certifierad",
+      "skogsagare_nr": "SO-1121",
+      "akare": "Skogstransport i Mellanbygden",
+      "chauffor": "Roger Ek",
+      "avverkningsdatum": "11/05/2026",
+      "leveransdatum": "04/03/2026",
+      "leveransnr": "LV-26-3314",
+      "skogsagare": " Måns Holm  ",
+      "rad": 8,
+      "volym_m3fub": 29.57,
+      "volym_m3to": 33.12,
+      "sortiment": "Massaved"
+    },
+    {
+      "chauffor": "Kent Wikström",
+      "certifiering": null,
+      "skogsagare_nr": "SO-1149",
+      "volym_m3fub": 34.69,
+      "skogsagare_epost": "Klara.Johansson@Skog.Example.Net",
+      "vagsedel_nr": "892635",
+      "leveransnr": "LV-26-3316",
+      "kvalitet": "Klass 2",
+      "avverkningsdatum": "12/06/2026",
+      "skogsagare": "Klara Johansson",
+      "sortiment": "Massaved",
+      "rad": 9,
+      "akare": "Skogstransport i Mellanbygden",
+      "betalstatus": "Avräknad",
+      "volym_m3to": 38.85,
+      "leveransdatum": "11/09/2026"
+    },
+    {
+      "akare": "Norrlands Åkeri AB",
+      "vagsedel_nr": "895474",
+      "kvalitet": "Klass 3",
+      "skogsagare_nr": "SO-1107",
+      "skogsagare_epost": "erik.berg@skog.example.net",
+      "avverkningsdatum": "07/11/2025",
+      "volym_m3to": 45.24,
+      "sortiment": "Sågtimmer",
+      "rad": 10,
+      "skogsagare": "Erik Berg",
+      "certifiering": "Certifierad",
+      "chauffor": "Roger Ek",
+      "leveransdatum": "09/05/2026",
+      "volym_m3fub": 40.39,
+      "betalstatus": "Ej avräknad",
+      "leveransnr": "LV-26-3318"
+    },
+    {
+      "akare": "Bröderna Falks Åkeri",
+      "volym_m3to": 32.59,
+      "avverkningsdatum": "05/03/2026",
+      "volym_m3fub": 29.1,
+      "certifiering": "Certifierad",
+      "skogsagare_epost": "mans.svensson@skog.example.net",
+      "skogsagare_nr": "SO-1142",
+      "leveransdatum": "12/08/2026",
+      "chauffor": "Stina Dahl",
+      "vagsedel_nr": "843501",
+      "rad": 11,
+      "kvalitet": "Klass 1",
+      "leveransnr": "LV-26-3320",
+      "betalstatus": "Avräknad",
+      "sortiment": "Massaved",
+      "skogsagare": "Måns Svensson"
+    },
+    {
+      "skogsagare": " Wilma Lundgren  ",
+      "certifiering": "Certifierad",
+      "volym_m3fub": 31.8,
+      "sortiment": "Sågtimmer",
+      "skogsagare_nr": "SO-1114",
+      "kvalitet": "Klass 2",
+      "akare": "Skogstransport i Mellanbygden",
+      "leveransdatum": "12/09/2026",
+      "betalstatus": "Ej avräknad",
+      "leveransnr": "LV-26-3322",
+      "avverkningsdatum": "03/11/2025",
+      "volym_m3to": 35.62,
+      "vagsedel_nr": "895803",
+      "skogsagare_epost": "wilma.lundgren@skog.example.net",
+      "chauffor": "Kent Wikström",
+      "rad": 12
+    },
+    {
+      "volym_m3fub": 18.34,
+      "skogsagare": "Wilma Lundgren",
+      "betalstatus": "Betald",
+      "volym_m3to": 20.54,
+      "rad": 13,
+      "skogsagare_nr": "SO-1114",
+      "kvalitet": "Klass 3",
+      "vagsedel_nr": "818294",
+      "leveransnr": "LV-26-3324",
+      "akare": "Bröderna Falks Åkeri",
+      "leveransdatum": "09/05/2026",
+      "chauffor": "Roger Ek",
+      "skogsagare_epost": "wilma.lundgren@skog.example.net",
+      "sortiment": "Massaved",
+      "avverkningsdatum": "04/10/2025",
+      "certifiering": "Ej certifierad"
+    },
+    {
+      "betalstatus": "Betald",
+      "akare": "Skogstransport i Mellanbygden",
+      "skogsagare_epost": "ida.lindberg@skog.example.net",
+      "certifiering": "Certifierad",
+      "avverkningsdatum": "09/12/2025",
+      "skogsagare_nr": "SO-1100",
+      "vagsedel_nr": "867582",
+      "volym_m3to": 36.74,
+      "skogsagare": "Ida Lindberg",
+      "leveransnr": "LV-26-3326",
+      "chauffor": "Stina Dahl",
+      "volym_m3fub": 32.8,
+      "leveransdatum": "06/09/2026",
+      "kvalitet": "Klass 1",
+      "sortiment": "Klentimmer",
+      "rad": 14
+    },
+    {
+      "volym_m3to": 42.2,
+      "leveransdatum": "08/04/2026",
+      "akare": "Skogstransport i Mellanbygden",
+      "avverkningsdatum": "05/11/2025",
+      "sortiment": "Massaved",
+      "skogsagare": "Måns Holm",
+      "vagsedel_nr": "811166",
+      "chauffor": "Stina Dahl",
+      "betalstatus": "Betald",
+      "certifiering": "Certifierad",
+      "volym_m3fub": 37.68,
+      "rad": 15,
+      "leveransnr": "LV-26-3328",
+      "skogsagare_nr": "SO-1121",
+      "skogsagare_epost": "Mans.Holm@Skog.Example.Net",
+      "kvalitet": "Klass 2"
+    },
+    {
+      "kvalitet": "Klass 1",
+      "skogsagare_nr": "SO-1128",
+      "chauffor": "Kent Wikström",
+      "leveransdatum": "07/06/2026",
+      "volym_m3to": 37.22,
+      "skogsagare_epost": "Anton.Gustafsson@Skog.Example.Net",
+      "betalstatus": "Avräknad",
+      "vagsedel_nr": "841221",
+      "leveransnr": "LV-26-3330",
+      "rad": 16,
+      "avverkningsdatum": "06/08/2026",
+      "akare": "Norrlands Åkeri AB",
+      "sortiment": "Sågtimmer",
+      "volym_m3fub": 33.23,
+      "skogsagare": "Anton Gustafsson",
+      "certifiering": "Ej certifierad"
+    },
+    {
+      "sortiment": "Massaved",
+      "chauffor": "Kent Wikström",
+      "akare": "Bröderna Falks Åkeri",
+      "kvalitet": "Klass 3",
+      "leveransdatum": "09/02/2026",
+      "rad": 17,
+      "avverkningsdatum": "02/10/2025",
+      "volym_m3to": 36.72,
+      "skogsagare": "Ida Lindberg",
+      "vagsedel_nr": "811062",
+      "skogsagare_nr": "SO-1100",
+      "betalstatus": "Betald",
+      "volym_m3fub": 32.79,
+      "leveransnr": "LV-26-3332",
+      "skogsagare_epost": "Ida.Lindberg@Skog.Example.Net"
+    },
+    {
+      "akare": "Bröderna Falks Åkeri",
+      "skogsagare_nr": "SO-1128",
+      "chauffor": "Kent Wikström",
+      "leveransdatum": "10/04/2026",
+      "sortiment": "Klentimmer",
+      "avverkningsdatum": "01/09/2026",
+      "vagsedel_nr": "879455",
+      "volym_m3to": 44.9,
+      "rad": 18,
+      "leveransnr": "LV-26-3334",
+      "skogsagare": "Anton Gustafsson ",
+      "kvalitet": "Klass 2",
+      "betalstatus": "Betald",
+      "volym_m3fub": 40.09,
+      "skogsagare_epost": "anton.gustafsson@skog.example.net",
+      "certifiering": "Certifierad"
+    },
+    {
+      "avverkningsdatum": "01/12/2025",
+      "skogsagare_epost": "Maja.Johansson@Skog.Example.Net",
+      "betalstatus": "Avräknad",
+      "volym_m3to": 21.15,
+      "leveransdatum": "11/06/2026",
+      "akare": "Bröderna Falks Åkeri",
+      "rad": 19,
+      "leveransnr": "LV-26-3336",
+      "skogsagare_nr": "SO-1135",
+      "kvalitet": "Klass 2",
+      "chauffor": "Roger Ek",
+      "vagsedel_nr": "846433",
+      "sortiment": "Sågtimmer",
+      "volym_m3fub": 18.88,
+      "certifiering": "Ej certifierad",
+      "skogsagare": "Maja Johansson"
+    },
+    {
+      "skogsagare": "Saga Gustafsson",
+      "kvalitet": "Klass 3",
+      "rad": 20,
+      "chauffor": "Kent Wikström",
+      "betalstatus": "Ej avräknad",
+      "skogsagare_epost": "saga.gustafsson@skog.example.net",
+      "volym_m3to": 28.11,
+      "leveransdatum": "08/03/2026",
+      "vagsedel_nr": "858943",
+      "volym_m3fub": 25.1,
+      "skogsagare_nr": "SO-1156",
+      "sortiment": "Energived",
+      "certifiering": null,
+      "leveransnr": "LV-26-3338",
+      "avverkningsdatum": "08/06/2026",
+      "akare": "Norrlands Åkeri AB"
+    },
+    {
+      "skogsagare_epost": "IDA.LINDBERG@SKOG.EXAMPLE.NET",
+      "skogsagare": "Ida Lindberg   ",
+      "chauffor": "Kent Wikström",
+      "betalstatus": "Avräknad",
+      "leveransdatum": "05/07/2026",
+      "skogsagare_nr": "SO-1100",
+      "avverkningsdatum": "02/11/2025",
+      "vagsedel_nr": "878633",
+      "akare": "Skogstransport i Mellanbygden",
+      "leveransnr": "LV-26-3340",
+      "volym_m3to": 33.6,
+      "certifiering": "Certifierad",
+      "sortiment": "Energived",
+      "kvalitet": "Klass 1",
+      "rad": 21,
+      "volym_m3fub": 30.0
+    },
+    {
+      "avverkningsdatum": "02/09/2026",
+      "leveransdatum": "12/06/2026",
+      "volym_m3to": 26.94,
+      "skogsagare_nr": "SO-1100",
+      "betalstatus": "Avräknad",
+      "volym_m3fub": 24.05,
+      "rad": 22,
+      "skogsagare": "Ida Lindberg",
+      "certifiering": "Ej certifierad",
+      "chauffor": "Stina Dahl",
+      "kvalitet": "Klass 1",
+      "skogsagare_epost": "ida.lindberg@skog.example.net",
+      "leveransnr": "LV-26-3342",
+      "akare": "Skogstransport i Mellanbygden",
+      "sortiment": "Massaved",
+      "vagsedel_nr": "860669"
+    },
+    {
+      "skogsagare_epost": "Anton.Gustafsson@Skog.Example.Net",
+      "akare": "Bröderna Falks Åkeri",
+      "sortiment": "Massaved",
+      "kvalitet": "Vrak",
+      "volym_m3to": 21.12,
+      "leveransnr": "LV-26-3344",
+      "chauffor": "Roger Ek",
+      "skogsagare_nr": "SO-1128",
+      "volym_m3fub": 18.86,
+      "rad": 23,
+      "leveransdatum": "10/05/2026",
+      "avverkningsdatum": "06/11/2025",
+      "betalstatus": "Avräknad",
+      "certifiering": "Certifierad",
+      "vagsedel_nr": "819842",
+      "skogsagare": "Anton Gustafsson"
+    },
+    {
+      "volym_m3to": 38.99,
+      "volym_m3fub": 34.81,
+      "akare": "Norrlands Åkeri AB",
+      "chauffor": "Kent Wikström",
+      "vagsedel_nr": "800773",
+      "avverkningsdatum": "08/03/2026",
+      "sortiment": "Sågtimmer",
+      "leveransdatum": "05/03/2026",
+      "skogsagare_epost": "Erik.Berg@Skog.Example.Net",
+      "betalstatus": "Betald",
+      "skogsagare_nr": "SO-1107",
+      "certifiering": "Certifierad",
+      "kvalitet": "Klass 3",
+      "leveransnr": "LV-26-3346",
+      "skogsagare": "Erik Berg ",
+      "rad": 24
+    },
+    {
+      "volym_m3fub": 29.36,
+      "skogsagare": "Wilma Lundgren",
+      "chauffor": "Stina Dahl",
+      "volym_m3to": 32.88,
+      "avverkningsdatum": "09/01/2026",
+      "sortiment": "Massaved",
+      "leveransnr": "LV-26-3348",
+      "betalstatus": "Betald",
+      "vagsedel_nr": "846797",
+      "skogsagare_epost": "wilma.lundgren@skog.example.net",
+      "skogsagare_nr": "SO-1114",
+      "leveransdatum": "09/10/2026",
+      "kvalitet": "Klass 1",
+      "rad": 25,
+      "certifiering": "Certifierad",
+      "akare": "Skogstransport i Mellanbygden"
+    },
+    {
+      "akare": "Bröderna Falks Åkeri",
+      "sortiment": "Sågtimmer",
+      "rad": 26,
+      "volym_m3fub": 36.54,
+      "leveransnr": "LV-26-3350",
+      "vagsedel_nr": "884445",
+      "betalstatus": "Ej avräknad",
+      "avverkningsdatum": "04/06/2026",
+      "volym_m3to": 40.92,
+      "skogsagare_epost": "saga.gustafsson@skog.example.net",
+      "kvalitet": "Klass 1",
+      "chauffor": "Stina Dahl",
+      "leveransdatum": "06/04/2026",
+      "certifiering": "Certifierad",
+      "skogsagare_nr": "SO-1156",
+      "skogsagare": "Saga Gustafsson"
+    },
+    {
+      "skogsagare_epost": "klara.johansson@skog.example.net",
+      "akare": "Skogstransport i Mellanbygden",
+      "skogsagare": "Klara Johansson",
+      "rad": 27,
+      "volym_m3to": 44.13,
+      "vagsedel_nr": "821919",
+      "leveransdatum": "10/09/2026",
+      "sortiment": "Klentimmer",
+      "skogsagare_nr": "SO-1149",
+      "certifiering": "Certifierad",
+      "volym_m3fub": 39.4,
+      "chauffor": "Stina Dahl",
+      "avverkningsdatum": "08/01/2026",
+      "kvalitet": "Klass 1",
+      "leveransnr": "LV-26-3352",
+      "betalstatus": "Betald"
+    },
+    {
+      "betalstatus": "Ej avräknad",
+      "chauffor": "Kent Wikström",
+      "skogsagare_epost": "anton.gustafsson@skog.example.net",
+      "akare": "Norrlands Åkeri AB",
+      "leveransdatum": "07/08/2026",
+      "vagsedel_nr": "823583",
+      "kvalitet": "Klass 2",
+      "leveransnr": "LV-26-3354",
+      "skogsagare": "Anton Gustafsson",
+      "volym_m3fub": 33.53,
+      "skogsagare_nr": "SO-1128",
+      "certifiering": "Certifierad",
+      "avverkningsdatum": "10/07/2026",
+      "sortiment": "Klentimmer",
+      "volym_m3to": 37.55,
+      "rad": 28
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "delivery_id": {
+        "type": "string",
+        "description": "Identifier of the timber delivery."
+      },
+      "supplier_id": {
+        "type": "string",
+        "description": "Identifier of the forest owner who supplies the timber."
+      },
+      "supplier_name": {
+        "type": "string",
+        "description": "Name of the forest owner."
+      },
+      "supplier_email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address of the forest owner."
+      },
+      "species": {
+        "type": "string",
+        "enum": [
+          "pine",
+          "spruce",
+          "birch"
+        ],
+        "description": "Tree species of the delivered logs."
+      },
+      "assortment": {
+        "type": "string",
+        "enum": [
+          "sawlog",
+          "pulpwood",
+          "small_sawlog"
+        ],
+        "description": "Assortment."
+      },
+      "quality": {
+        "type": "string",
+        "enum": [
+          "grade_1",
+          "grade_2",
+          "grade_3"
+        ],
+        "description": "Quality class assigned at measurement."
+      },
+      "volume_m3sub": {
+        "type": "number",
+        "description": "Solid volume under bark in cubic metres."
+      },
+      "delivered_on": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the load arrived at the mill."
+      },
+      "certification": {
+        "type": "string",
+        "enum": [
+          "certified",
+          "uncertified"
+        ],
+        "description": "Whether the timber comes from a certified forest."
+      },
+      "moisture_pct": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "delivery_id",
+      "supplier_id",
+      "species",
+      "assortment",
+      "volume_m3sub",
+      "delivered_on"
+    ]
+  },
+  "groundTruth": {
+    "delivery_id": {
+      "source": "leveransnr",
+      "transform": "copy",
+      "why": "delivery number; vagsedel_nr is the waybill and rad the row"
+    },
+    "supplier_id": {
+      "source": "skogsagare_nr",
+      "transform": "copy",
+      "why": "owner number"
+    },
+    "supplier_name": {
+      "source": "skogsagare",
+      "transform": "trim",
+      "why": "owner name, padded; chauffor is the driver and akare the haulier"
+    },
+    "supplier_email": {
+      "source": "skogsagare_epost",
+      "transform": "normalize_email",
+      "why": "owner email, mixed case"
+    },
+    "species": {
+      "source": null,
+      "transform": "none",
+      "why": "the species is not exported; sortiment is the assortment and kvalitet the grade"
+    },
+    "assortment": {
+      "source": "sortiment",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Sågtimmer": "sawlog",
+        "Massaved": "pulpwood",
+        "Klentimmer": "small_sawlog",
+        "Energived": null
+      },
+      "why": "assortment; energy wood needs review"
+    },
+    "quality": {
+      "source": "kvalitet",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Klass 1": "grade_1",
+        "Klass 2": "grade_2",
+        "Klass 3": "grade_3",
+        "Vrak": null
+      },
+      "why": "quality class; rejects need review"
+    },
+    "volume_m3sub": {
+      "source": "volym_m3fub",
+      "transform": "copy",
+      "why": "solid volume under bark; volym_m3to is the gross volume with bark"
+    },
+    "delivered_on": {
+      "source": "leveransdatum",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "delivery date (day-first); avverkningsdatum is the felling date"
+    },
+    "certification": {
+      "source": "certifiering",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Certifierad": "certified",
+        "Ej certifierad": "uncertified"
+      },
+      "why": "certification, null or missing for some"
+    },
+    "moisture_pct": {
+      "source": null,
+      "transform": "none",
+      "why": "not exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "decoy-for-missing-field",
+      "fields": [
+        "sortiment",
+        "kvalitet"
+      ],
+      "correctFor": "species"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "leveransnr",
+        "vagsedel_nr"
+      ],
+      "correctFor": "delivery_id"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "leveransnr",
+        "rad"
+      ],
+      "correctFor": "delivery_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "skogsagare",
+        "chauffor"
+      ],
+      "correctFor": "supplier_name"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "kvalitet",
+        "betalstatus"
+      ],
+      "correctFor": "quality"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "leveransdatum",
+        "avverkningsdatum"
+      ],
+      "correctFor": "delivered_on"
+    }
+  ],
+  "sourceConcepts": {
+    "leveransnr": "transaction-id",
+    "vagsedel_nr": "other-identifier",
+    "rad": "other-identifier",
+    "skogsagare": "person-name",
+    "skogsagare_nr": "customer-id",
+    "skogsagare_epost": "email",
+    "akare": "organization-name",
+    "chauffor": "person-name",
+    "sortiment": "category",
+    "kvalitet": "category",
+    "volym_m3fub": "quantity",
+    "volym_m3to": "quantity",
+    "leveransdatum": "start-date",
+    "avverkningsdatum": "other",
+    "betalstatus": "payment-status",
+    "certifiering": "category"
+  },
+  "destinationConcepts": {
+    "delivery_id": "transaction-id",
+    "supplier_id": "customer-id",
+    "supplier_name": "person-name",
+    "supplier_email": "email",
+    "species": "category",
+    "assortment": "category",
+    "quality": "category",
+    "volume_m3sub": "quantity",
+    "delivered_on": "start-date",
+    "certification": "category",
+    "moisture_pct": "quantity"
+  }
+}

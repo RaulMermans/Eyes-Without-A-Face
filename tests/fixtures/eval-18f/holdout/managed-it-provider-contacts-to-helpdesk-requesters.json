@@ -1,0 +1,1224 @@
+{
+  "scenarioId": "managed-it-provider-contacts-to-helpdesk-requesters",
+  "split": "holdout",
+  "track": "wedge",
+  "industry": "managed IT services provider customer contacts",
+  "sourceLanguage": "mixed",
+  "description": "Customer-contact export of a fictional managed IT services provider (mixed English and Dutch field names and labels, nested company and contact) to be loaded as helpdesk requesters with their organization.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "InvoiceStatus": "Paid",
+      "volgnr": 1,
+      "Contact": {
+        "EmailPrive": "thijs.degraaf@prive.example.net",
+        "Mobiel": "+31 6 75567020",
+        "FirstName": "Thijs",
+        "Email": "thijs.degraaf@waterlandtandartsen.example.com",
+        "Achternaam": "de Graaf",
+        "Rol": "Technisch contact"
+      },
+      "crm_guid": "dda372eee64d",
+      "ContractEnd": "24/07/2027",
+      "Seats": 107,
+      "Company": {
+        "KvK": "30174838",
+        "Naam": "  Waterland Tandartsen "
+      },
+      "AccountID": "MSP-0290",
+      "SLA": "Gold 24x7",
+      "StartDatum": "16/06/2017",
+      "ContractStatus": "Active",
+      "AccountManager": "Jeroen Blom"
+    },
+    {
+      "StartDatum": "26/06/2023",
+      "AccountManager": "Jeroen Blom",
+      "Company": {
+        "KvK": "94594455",
+        "Naam": "  Kempen Makelaardij "
+      },
+      "AccountID": "MSP-0293",
+      "InvoiceStatus": "Paid",
+      "volgnr": 2,
+      "SLA": "Silver 12x5",
+      "crm_guid": "d9138ff334fd",
+      "Contact": {
+        "Email": "maartje.bakker@kempenmakelaardij.example.com",
+        "EmailPrive": "maartje.bakker@prive.example.net",
+        "Achternaam": "Bakker",
+        "FirstName": "Maartje",
+        "Rol": "Billing contact",
+        "Mobiel": "+31 6 95266868"
+      },
+      "ContractEnd": "18/11/2028",
+      "ContractStatus": "Actief",
+      "Seats": 75
+    },
+    {
+      "crm_guid": "ce4a91e52599",
+      "SLA": "Bronze 8x5",
+      "InvoiceStatus": "Openstaand",
+      "Seats": 120,
+      "ContractEnd": "07/11/2027",
+      "AccountManager": "Jeroen Blom",
+      "StartDatum": "22/09/2018",
+      "Company": {
+        "KvK": "75704451",
+        "Naam": "Zuidas Installatietechniek"
+      },
+      "Contact": {
+        "Achternaam": "Jansen",
+        "Mobiel": null,
+        "Rol": "Beslisser",
+        "FirstName": "Joris",
+        "Email": "Joris.Jansen@Zuidasinstallatietechniek.Example.Com",
+        "EmailPrive": "joris.jansen@prive.example.net"
+      },
+      "ContractStatus": "On hold - wanbetaling",
+      "volgnr": 3,
+      "AccountID": "MSP-0296"
+    },
+    {
+      "crm_guid": "8b5134f0a9a0",
+      "AccountManager": "Jeroen Blom",
+      "volgnr": 4,
+      "ContractStatus": "Active",
+      "SLA": "Bronze 8x5",
+      "ContractEnd": "19/09/2028",
+      "Contact": {
+        "Mobiel": null,
+        "EmailPrive": "iris.prins@prive.example.net",
+        "FirstName": "Iris",
+        "Achternaam": "Prins",
+        "Rol": "Primary Contact",
+        "Email": "iris.prins@zuidasmakelaardij.example.com"
+      },
+      "Seats": 70,
+      "InvoiceStatus": "Paid",
+      "StartDatum": "11/07/2020",
+      "AccountID": "MSP-0299",
+      "Company": {
+        "KvK": "71587110",
+        "Naam": "Zuidas Makelaardij"
+      }
+    },
+    {
+      "crm_guid": "cd7b14c668d1",
+      "volgnr": 5,
+      "AccountManager": "Sandra Oosterhuis",
+      "Contact": {
+        "FirstName": "Thijs",
+        "Email": "thijs.smit@eemlandlogistics.example.com",
+        "EmailPrive": "thijs.smit@prive.example.net",
+        "Achternaam": "Smit",
+        "Rol": "Billing contact"
+      },
+      "ContractEnd": "13/09/2027",
+      "ContractStatus": "On hold - wanbetaling",
+      "AccountID": "MSP-0302",
+      "Seats": 82,
+      "InvoiceStatus": "Openstaand",
+      "StartDatum": "19/07/2022",
+      "SLA": "Gold 24x7",
+      "Company": {
+        "KvK": "16617554",
+        "Naam": "Eemland Logistics B.V. "
+      }
+    },
+    {
+      "AccountManager": "Rick Haverkamp",
+      "crm_guid": "f20826605620",
+      "SLA": "Bronze 8x5",
+      "StartDatum": "19/10/2025",
+      "Company": {
+        "Naam": "Eemland Accountants",
+        "KvK": "12090253"
+      },
+      "volgnr": 6,
+      "AccountID": "MSP-0305",
+      "Seats": 81,
+      "Contact": {
+        "Rol": "Primary Contact",
+        "Mobiel": "+31 6 57701950",
+        "EmailPrive": "iris.willems@prive.example.net",
+        "FirstName": "Iris",
+        "Achternaam": "Willems",
+        "Email": "iris.willems@eemlandaccountants.example.com"
+      },
+      "ContractStatus": "Active",
+      "ContractEnd": "04/05/2027",
+      "InvoiceStatus": "Openstaand"
+    },
+    {
+      "ContractEnd": "24/03/2028",
+      "AccountManager": "Rick Haverkamp",
+      "AccountID": "MSP-0308",
+      "InvoiceStatus": "Paid",
+      "crm_guid": "0db48fd16ce3",
+      "Company": {
+        "Naam": "Eemland Installatietechniek",
+        "KvK": "90037672"
+      },
+      "StartDatum": "22/06/2024",
+      "Seats": 103,
+      "SLA": "Bronze 8x5",
+      "ContractStatus": "Actief",
+      "Contact": {
+        "EmailPrive": "thijs.mulder@prive.example.net",
+        "Rol": "Primary Contact",
+        "FirstName": "Thijs",
+        "Email": " thijs.mulder@eemlandinstallatietechniek.example.com  ",
+        "Mobiel": "+31 6 75772611",
+        "Achternaam": "Mulder"
+      },
+      "volgnr": 7
+    },
+    {
+      "SLA": "Silver 12x5",
+      "ContractEnd": "23/03/2027",
+      "ContractStatus": "Actief",
+      "AccountID": "MSP-0311",
+      "crm_guid": "8c195037cba8",
+      "StartDatum": "06/03/2025",
+      "volgnr": 8,
+      "Contact": {
+        "FirstName": "Lieke",
+        "Email": "LIEKE.MULDER@KEMPENACCOUNTANTS.EXAMPLE.COM",
+        "Mobiel": "+31 6 63971666",
+        "Achternaam": "Mulder",
+        "Rol": "Primary Contact",
+        "EmailPrive": "lieke.mulder@prive.example.net"
+      },
+      "AccountManager": "Sandra Oosterhuis",
+      "Seats": 103,
+      "Company": {
+        "Naam": "Kempen Accountants",
+        "KvK": "23614300"
+      },
+      "InvoiceStatus": "Paid"
+    },
+    {
+      "Seats": 71,
+      "volgnr": 9,
+      "Contact": {
+        "Mobiel": "+31 6 96235478",
+        "Achternaam": "Meijer",
+        "EmailPrive": "sanne.meijer@prive.example.net",
+        "FirstName": "Sanne",
+        "Rol": "Primary Contact",
+        "Email": "sanne.meijer@delinde.example.com   "
+      },
+      "ContractStatus": "On hold - wanbetaling",
+      "crm_guid": "3f02967e337f",
+      "Company": {
+        "Naam": "De Linde Tandartsen",
+        "KvK": "48761723"
+      },
+      "SLA": "Gold 24x7",
+      "AccountManager": "Jeroen Blom",
+      "ContractEnd": "31/01/2027",
+      "InvoiceStatus": "Herinnering",
+      "AccountID": "MSP-0314",
+      "StartDatum": "28/03/2021"
+    },
+    {
+      "Company": {
+        "KvK": "34121443",
+        "Naam": "De Linde Logistics B.V."
+      },
+      "StartDatum": "02/03/2019",
+      "AccountManager": "Sandra Oosterhuis",
+      "ContractEnd": "18/11/2027",
+      "SLA": "Silver 12x5",
+      "AccountID": "MSP-0317",
+      "Seats": 9,
+      "InvoiceStatus": "Paid",
+      "volgnr": 10,
+      "crm_guid": "86c8f758493b",
+      "ContractStatus": "Opgezegd",
+      "Contact": {
+        "FirstName": "Thijs",
+        "Mobiel": "+31 6 85479951",
+        "Rol": "Primary Contact",
+        "EmailPrive": "thijs.hendriks@prive.example.net",
+        "Email": "Thijs.Hendriks@Delinde.Example.Com",
+        "Achternaam": "Hendriks"
+      }
+    },
+    {
+      "InvoiceStatus": "Openstaand",
+      "ContractEnd": "18/12/2028",
+      "crm_guid": "53487e3ab2ba",
+      "SLA": "Bronze 8x5",
+      "Company": {
+        "KvK": "39444144",
+        "Naam": "Waterland Makelaardij"
+      },
+      "Contact": {
+        "Mobiel": "+31 6 25686810",
+        "FirstName": "Lieke",
+        "EmailPrive": "lieke.meijer@prive.example.net",
+        "Email": "lieke.meijer@waterlandmakelaardij.example.com",
+        "Rol": "Billing contact",
+        "Achternaam": "Meijer"
+      },
+      "volgnr": 11,
+      "Seats": 89,
+      "StartDatum": "13/08/2024",
+      "AccountID": "MSP-0320",
+      "ContractStatus": "On hold - wanbetaling",
+      "AccountManager": "Sandra Oosterhuis"
+    },
+    {
+      "SLA": "Bronze 8x5",
+      "Seats": 66,
+      "Company": {
+        "KvK": "10816521",
+        "Naam": "Eemland Architecten   "
+      },
+      "AccountID": "MSP-0323",
+      "ContractEnd": "02/06/2028",
+      "InvoiceStatus": "Paid",
+      "ContractStatus": "Active",
+      "volgnr": 12,
+      "AccountManager": "Jeroen Blom",
+      "Contact": {
+        "EmailPrive": "lieke.dekker@prive.example.net",
+        "FirstName": "Lieke",
+        "Rol": null,
+        "Email": "lieke.dekker@eemlandarchitecten.example.com",
+        "Mobiel": "+31 6 16668425",
+        "Achternaam": "Dekker"
+      },
+      "crm_guid": "0a79e6ac6f3f",
+      "StartDatum": "07/02/2017"
+    },
+    {
+      "AccountManager": "Jeroen Blom",
+      "InvoiceStatus": "Paid",
+      "ContractStatus": "Active",
+      "crm_guid": "6a637af3807e",
+      "Seats": 86,
+      "Company": {
+        "KvK": "45916031",
+        "Naam": "Hofstede Makelaardij"
+      },
+      "Contact": {
+        "FirstName": "Gijs",
+        "Rol": "Primary Contact",
+        "EmailPrive": "gijs.peters@prive.example.net",
+        "Achternaam": "Peters",
+        "Mobiel": "+31 6 60488254",
+        "Email": "Gijs.Peters@Hofstedemakelaardij.Example.Com"
+      },
+      "SLA": "Bronze 8x5",
+      "StartDatum": "21/02/2021",
+      "ContractEnd": "06/06/2028",
+      "volgnr": 13,
+      "AccountID": "MSP-0326"
+    },
+    {
+      "StartDatum": "28/07/2019",
+      "Seats": 100,
+      "ContractStatus": "Actief",
+      "InvoiceStatus": "Openstaand",
+      "AccountID": "MSP-0329",
+      "crm_guid": "1b11c14608ef",
+      "AccountManager": "Jeroen Blom",
+      "ContractEnd": "15/10/2027",
+      "SLA": "Bronze 8x5",
+      "Company": {
+        "KvK": "55800163",
+        "Naam": "Van Loon Installatietechniek"
+      },
+      "volgnr": 14,
+      "Contact": {
+        "FirstName": "Niels",
+        "Achternaam": "Mulder",
+        "Mobiel": "+31 6 11593604",
+        "Rol": "Primary Contact",
+        "EmailPrive": "niels.mulder@prive.example.net",
+        "Email": "niels.mulder@vanloon.example.com"
+      }
+    },
+    {
+      "AccountID": "MSP-0332",
+      "Contact": {
+        "Achternaam": "de Graaf",
+        "Rol": "Primary Contact",
+        "FirstName": "Ruben",
+        "EmailPrive": "ruben.degraaf@prive.example.net",
+        "Email": "ruben.degraaf@waterlandinstallatietechniek.example.com",
+        "Mobiel": "+31 6 51816390"
+      },
+      "Seats": 48,
+      "ContractStatus": "Active",
+      "AccountManager": "Jeroen Blom",
+      "SLA": "Bronze 8x5",
+      "crm_guid": "7e331eca5b54",
+      "InvoiceStatus": "Openstaand",
+      "StartDatum": "11/02/2019",
+      "Company": {
+        "Naam": "Waterland Installatietechniek",
+        "KvK": "37856336"
+      },
+      "volgnr": 15,
+      "ContractEnd": "18/08/2028"
+    },
+    {
+      "Seats": 27,
+      "AccountManager": "Sandra Oosterhuis",
+      "AccountID": "MSP-0335",
+      "StartDatum": "29/06/2023",
+      "crm_guid": "e0cb3b47b6af",
+      "volgnr": 16,
+      "InvoiceStatus": "Openstaand",
+      "SLA": "Bronze 8x5",
+      "ContractStatus": "Actief",
+      "Company": {
+        "KvK": "78660927",
+        "Naam": "Hofstede Installatietechniek"
+      },
+      "ContractEnd": "20/04/2027",
+      "Contact": {
+        "Rol": "Technisch contact",
+        "Email": "Koen.Deboer@Hofstedeinstallatietechniek.Example.Com",
+        "Achternaam": "de Boer",
+        "Mobiel": "+31 6 27600846",
+        "EmailPrive": "koen.deboer@prive.example.net",
+        "FirstName": "Koen"
+      }
+    },
+    {
+      "AccountID": "MSP-0338",
+      "crm_guid": "913b6d783bcb",
+      "volgnr": 17,
+      "ContractStatus": "Active",
+      "Contact": {
+        "Email": "lotte.verhoeven@vanloon.example.com",
+        "Rol": "Technisch contact",
+        "EmailPrive": "lotte.verhoeven@prive.example.net",
+        "FirstName": "Lotte",
+        "Achternaam": "Verhoeven",
+        "Mobiel": "+31 6 62312997"
+      },
+      "SLA": "Gold 24x7",
+      "ContractEnd": "07/01/2028",
+      "InvoiceStatus": "Paid",
+      "Company": {
+        "KvK": "30323588",
+        "Naam": "Van Loon Accountants"
+      },
+      "AccountManager": "Sandra Oosterhuis",
+      "Seats": 47,
+      "StartDatum": "16/04/2017"
+    },
+    {
+      "ContractEnd": "13/02/2027",
+      "volgnr": 18,
+      "crm_guid": "39ba65836445",
+      "Seats": 77,
+      "Company": {
+        "KvK": "94318299",
+        "Naam": "Waterland Logistics B.V."
+      },
+      "ContractStatus": "Actief",
+      "InvoiceStatus": "Paid",
+      "StartDatum": "30/08/2016",
+      "AccountID": "MSP-0341",
+      "Contact": {
+        "Email": "koen.hendriks@waterlandlogistics.example.com",
+        "Mobiel": null,
+        "FirstName": "Koen",
+        "EmailPrive": "koen.hendriks@prive.example.net",
+        "Rol": "Primary Contact",
+        "Achternaam": "Hendriks"
+      },
+      "AccountManager": "Sandra Oosterhuis",
+      "SLA": "Bronze 8x5"
+    },
+    {
+      "StartDatum": "26/10/2018",
+      "SLA": "Silver 12x5",
+      "crm_guid": "0746821edd58",
+      "Company": {
+        "KvK": "29385569",
+        "Naam": "Hofstede Logistics B.V."
+      },
+      "ContractStatus": "Lead",
+      "Seats": 69,
+      "AccountID": "MSP-0344",
+      "AccountManager": "Rick Haverkamp",
+      "Contact": {
+        "EmailPrive": "joris.willems@prive.example.net",
+        "Achternaam": "Willems",
+        "FirstName": "Joris",
+        "Rol": "Technisch contact",
+        "Email": "joris.willems@hofstedelogistics.example.com"
+      },
+      "volgnr": 19,
+      "ContractEnd": "16/02/2028",
+      "InvoiceStatus": "Paid"
+    },
+    {
+      "Company": {
+        "KvK": "48333172",
+        "Naam": "Zuidas Tandartsen"
+      },
+      "StartDatum": "08/09/2023",
+      "ContractEnd": "23/12/2028",
+      "crm_guid": "2f7cd7f8c61b",
+      "InvoiceStatus": "Paid",
+      "Contact": {
+        "Email": "niels.deboer@zuidastandartsen.example.com",
+        "Mobiel": "+31 6 94439321",
+        "Achternaam": "de Boer",
+        "Rol": "Technisch contact",
+        "FirstName": "Niels",
+        "EmailPrive": "niels.deboer@prive.example.net"
+      },
+      "SLA": "Bronze 8x5",
+      "AccountManager": "Rick Haverkamp",
+      "Seats": 107,
+      "volgnr": 20,
+      "AccountID": "MSP-0347",
+      "ContractStatus": "Opgezegd"
+    },
+    {
+      "ContractEnd": "04/08/2027",
+      "Seats": 20,
+      "AccountManager": "Sandra Oosterhuis",
+      "crm_guid": "0eb4e69900ff",
+      "AccountID": "MSP-0350",
+      "SLA": "Bronze 8x5",
+      "Company": {
+        "KvK": "62035326",
+        "Naam": "Kempen Architecten"
+      },
+      "StartDatum": "21/03/2017",
+      "ContractStatus": "Actief",
+      "InvoiceStatus": "Paid",
+      "volgnr": 21,
+      "Contact": {
+        "Email": "anouk.meijer@kempenarchitecten.example.com",
+        "FirstName": "Anouk",
+        "Achternaam": "Meijer",
+        "Mobiel": "+31 6 73776258",
+        "EmailPrive": "anouk.meijer@prive.example.net",
+        "Rol": "Technisch contact"
+      }
+    },
+    {
+      "ContractEnd": "08/12/2026",
+      "Seats": 83,
+      "Company": {
+        "Naam": " Waterland Architecten",
+        "KvK": "51507676"
+      },
+      "InvoiceStatus": "Paid",
+      "SLA": "Bronze 8x5",
+      "ContractStatus": "Active",
+      "AccountID": "MSP-0353",
+      "AccountManager": "Sandra Oosterhuis",
+      "StartDatum": "03/03/2023",
+      "Contact": {
+        "FirstName": "Koen",
+        "Achternaam": "Mulder",
+        "Mobiel": "+31 6 63097760",
+        "EmailPrive": "koen.mulder@prive.example.net",
+        "Rol": "Primary Contact",
+        "Email": "koen.mulder@waterlandarchitecten.example.com"
+      },
+      "crm_guid": "24331fce2ad3",
+      "volgnr": 22
+    },
+    {
+      "SLA": "Silver 12x5",
+      "Company": {
+        "Naam": "Van Loon Makelaardij",
+        "KvK": "25849432"
+      },
+      "crm_guid": "794a264f9521",
+      "InvoiceStatus": "Paid",
+      "Contact": {
+        "Rol": "Primary Contact",
+        "Achternaam": "Brouwer",
+        "Email": "thijs.brouwer@vanloon.example.com",
+        "Mobiel": "+31 6 98838225",
+        "EmailPrive": "thijs.brouwer@prive.example.net",
+        "FirstName": "Thijs"
+      },
+      "ContractEnd": "18/03/2028",
+      "StartDatum": "11/05/2019",
+      "AccountManager": "Rick Haverkamp",
+      "Seats": 23,
+      "volgnr": 23,
+      "ContractStatus": "Actief",
+      "AccountID": "MSP-0356"
+    },
+    {
+      "AccountManager": "Sandra Oosterhuis",
+      "ContractStatus": "Active",
+      "ContractEnd": "29/11/2027",
+      "crm_guid": "5c118721660b",
+      "Seats": 4,
+      "Company": {
+        "Naam": "Van Loon Logistics B.V.",
+        "KvK": "57630807"
+      },
+      "StartDatum": "19/02/2019",
+      "volgnr": 24,
+      "AccountID": "MSP-0359",
+      "SLA": "Bronze 8x5",
+      "Contact": {
+        "Achternaam": "Bakker",
+        "EmailPrive": "femke.bakker@prive.example.net",
+        "Mobiel": "+31 6 39460019",
+        "Rol": "Beslisser",
+        "Email": "Femke.Bakker@Vanloon.Example.Com",
+        "FirstName": "Femke"
+      },
+      "InvoiceStatus": "Herinnering"
+    },
+    {
+      "Seats": 69,
+      "crm_guid": "fe12ff8b41dd",
+      "StartDatum": "01/10/2025",
+      "InvoiceStatus": "Paid",
+      "Contact": {
+        "Rol": "Beslisser",
+        "Achternaam": "Kok",
+        "Mobiel": "+31 6 96951493",
+        "Email": "floor.kok@delinde.example.com",
+        "FirstName": "Floor",
+        "EmailPrive": "floor.kok@prive.example.net"
+      },
+      "AccountID": "MSP-0362",
+      "volgnr": 25,
+      "AccountManager": "Rick Haverkamp",
+      "ContractEnd": "06/03/2027",
+      "Company": {
+        "Naam": "De Linde Makelaardij",
+        "KvK": "39604117"
+      },
+      "ContractStatus": "Opgezegd",
+      "SLA": "Bronze 8x5"
+    },
+    {
+      "ContractEnd": "29/06/2027",
+      "StartDatum": "25/05/2020",
+      "Contact": {
+        "Email": "Sanne.Vandijk@Zuidasarchitecten.Example.Com",
+        "Mobiel": "+31 6 90886261",
+        "Achternaam": "van Dijk",
+        "Rol": "Beslisser",
+        "FirstName": "Sanne",
+        "EmailPrive": "sanne.vandijk@prive.example.net"
+      },
+      "crm_guid": "4180b77d3c16",
+      "Company": {
+        "KvK": "84431193",
+        "Naam": "Zuidas Architecten"
+      },
+      "SLA": "Silver 12x5",
+      "Seats": 70,
+      "AccountID": "MSP-0365",
+      "InvoiceStatus": "Paid",
+      "ContractStatus": "Lead",
+      "volgnr": 26,
+      "AccountManager": "Rick Haverkamp"
+    },
+    {
+      "Contact": {
+        "Email": "iris.dekker@eemlandmakelaardij.example.com",
+        "Achternaam": "Dekker",
+        "EmailPrive": "iris.dekker@prive.example.net",
+        "FirstName": "Iris",
+        "Rol": "Primary Contact",
+        "Mobiel": null
+      },
+      "AccountID": "MSP-0368",
+      "ContractEnd": "05/04/2028",
+      "InvoiceStatus": "Paid",
+      "SLA": "Silver 12x5",
+      "Company": {
+        "KvK": "42799752",
+        "Naam": "Eemland Makelaardij"
+      },
+      "ContractStatus": "Active",
+      "StartDatum": "11/02/2022",
+      "Seats": 65,
+      "crm_guid": "e6278aab9769",
+      "AccountManager": "Sandra Oosterhuis",
+      "volgnr": 27
+    },
+    {
+      "SLA": "Silver 12x5",
+      "ContractStatus": "Active",
+      "InvoiceStatus": "Paid",
+      "AccountManager": "Rick Haverkamp",
+      "Contact": {
+        "Email": "Maartje.Hendriks@Hofstedearchitecten.Example.Com",
+        "Rol": "Billing contact",
+        "Mobiel": "+31 6 56367187",
+        "EmailPrive": "maartje.hendriks@prive.example.net",
+        "FirstName": "Maartje",
+        "Achternaam": "Hendriks"
+      },
+      "ContractEnd": "21/01/2028",
+      "AccountID": "MSP-0371",
+      "Seats": 75,
+      "crm_guid": "c1823ec58b38",
+      "StartDatum": "06/08/2020",
+      "Company": {
+        "KvK": "94705555",
+        "Naam": "Hofstede Architecten"
+      },
+      "volgnr": 28
+    },
+    {
+      "ContractEnd": "02/08/2028",
+      "StartDatum": "20/11/2021",
+      "crm_guid": "644fde61d1f5",
+      "Seats": 88,
+      "ContractStatus": "Active",
+      "AccountID": "MSP-0374",
+      "AccountManager": "Jeroen Blom",
+      "InvoiceStatus": "Herinnering",
+      "Company": {
+        "Naam": "De Linde Architecten",
+        "KvK": "48689604"
+      },
+      "Contact": {
+        "FirstName": "Gijs",
+        "Achternaam": "van Dijk",
+        "Email": "gijs.vandijk@delinde.example.com",
+        "EmailPrive": "gijs.vandijk@prive.example.net",
+        "Rol": "Primary Contact",
+        "Mobiel": "+31 6 52489809"
+      },
+      "volgnr": 29,
+      "SLA": "Bronze 8x5"
+    },
+    {
+      "AccountID": "MSP-0377",
+      "volgnr": 30,
+      "Contact": {
+        "FirstName": "Wouter",
+        "EmailPrive": "wouter.devries@prive.example.net",
+        "Email": "wouter.devries@vanloon.example.com",
+        "Mobiel": "+31 6 62894653",
+        "Achternaam": "de Vries"
+      },
+      "AccountManager": "Jeroen Blom",
+      "ContractEnd": "14/08/2027",
+      "ContractStatus": "Active",
+      "Seats": 9,
+      "InvoiceStatus": "Herinnering",
+      "SLA": "Gold 24x7",
+      "Company": {
+        "KvK": "12660951",
+        "Naam": "Van Loon Architecten"
+      },
+      "StartDatum": "02/04/2019",
+      "crm_guid": "0b840ac4f33c"
+    },
+    {
+      "StartDatum": "02/08/2025",
+      "AccountManager": "Sandra Oosterhuis",
+      "InvoiceStatus": "Paid",
+      "ContractStatus": "Active",
+      "volgnr": 31,
+      "ContractEnd": "30/06/2027",
+      "crm_guid": "805c3239e6c7",
+      "Company": {
+        "KvK": "97113586",
+        "Naam": "Kempen Logistics B.V."
+      },
+      "Contact": {
+        "Achternaam": "Kok",
+        "EmailPrive": "esther.kok@prive.example.net",
+        "FirstName": "Esther",
+        "Email": "esther.kok@kempenlogistics.example.com"
+      },
+      "Seats": 11,
+      "SLA": "Bronze 8x5",
+      "AccountID": "MSP-0380"
+    },
+    {
+      "InvoiceStatus": "Paid",
+      "SLA": "Silver 12x5",
+      "StartDatum": "09/04/2025",
+      "ContractStatus": "Lead",
+      "AccountID": "MSP-0383",
+      "Seats": 60,
+      "crm_guid": "37d19e4c14fc",
+      "ContractEnd": "30/05/2027",
+      "volgnr": 32,
+      "AccountManager": "Jeroen Blom",
+      "Company": {
+        "Naam": "Kempen Installatietechniek",
+        "KvK": "22675747"
+      },
+      "Contact": {
+        "Achternaam": "Brouwer",
+        "Mobiel": "+31 6 90066195",
+        "Rol": "Primary Contact",
+        "Email": "niels.brouwer@kempeninstallatietechniek.example.com",
+        "EmailPrive": "niels.brouwer@prive.example.net",
+        "FirstName": "Niels"
+      }
+    },
+    {
+      "ContractStatus": "Actief",
+      "volgnr": 33,
+      "AccountManager": "Sandra Oosterhuis",
+      "ContractEnd": "11/11/2028",
+      "InvoiceStatus": "Paid",
+      "Seats": 82,
+      "SLA": "Bronze 8x5",
+      "Contact": {
+        "FirstName": "Lieke",
+        "EmailPrive": "lieke.bakker@prive.example.net",
+        "Mobiel": "+31 6 66826983",
+        "Rol": "Beslisser",
+        "Email": "LIEKE.BAKKER@ZUIDASLOGISTICS.EXAMPLE.COM",
+        "Achternaam": "Bakker"
+      },
+      "StartDatum": "16/08/2021",
+      "Company": {
+        "Naam": "Zuidas Logistics B.V.",
+        "KvK": "24644670"
+      },
+      "AccountID": "MSP-0386",
+      "crm_guid": "69399f7b6464"
+    },
+    {
+      "Contact": {
+        "Rol": "Technisch contact",
+        "FirstName": "Lotte",
+        "Achternaam": "de Boer",
+        "EmailPrive": "lotte.deboer@prive.example.net",
+        "Mobiel": "+31 6 15105151",
+        "Email": "lotte.deboer@eemlandtandartsen.example.com"
+      },
+      "InvoiceStatus": "Paid",
+      "AccountManager": "Rick Haverkamp",
+      "Seats": 118,
+      "AccountID": "MSP-0389",
+      "StartDatum": "08/04/2023",
+      "SLA": "Silver 12x5",
+      "Company": {
+        "KvK": "22646410",
+        "Naam": " Eemland Tandartsen"
+      },
+      "ContractEnd": "15/09/2028",
+      "ContractStatus": "Active",
+      "crm_guid": "962e02a4c071",
+      "volgnr": 34
+    },
+    {
+      "ContractStatus": "Active",
+      "AccountID": "MSP-0392",
+      "volgnr": 35,
+      "Seats": 32,
+      "InvoiceStatus": "Paid",
+      "Company": {
+        "Naam": "Hofstede Tandartsen ",
+        "KvK": "48841828"
+      },
+      "Contact": {
+        "Mobiel": "+31 6 33586244",
+        "Email": "sanne.visser@hofstedetandartsen.example.com",
+        "EmailPrive": "sanne.visser@prive.example.net",
+        "FirstName": "Sanne",
+        "Achternaam": "Visser",
+        "Rol": "Primary Contact"
+      },
+      "SLA": "Bronze 8x5",
+      "StartDatum": "28/07/2016",
+      "crm_guid": "c3cb6d8687a0",
+      "ContractEnd": "25/12/2027",
+      "AccountManager": "Sandra Oosterhuis"
+    },
+    {
+      "volgnr": 36,
+      "ContractStatus": "Opgezegd",
+      "ContractEnd": "02/01/2028",
+      "StartDatum": "08/07/2019",
+      "Company": {
+        "KvK": "65676295",
+        "Naam": "Van Loon Tandartsen"
+      },
+      "AccountManager": "Jeroen Blom",
+      "crm_guid": "cceacab81aab",
+      "Seats": 37,
+      "Contact": {
+        "EmailPrive": "thijs.devries@prive.example.net",
+        "Achternaam": "de Vries",
+        "FirstName": "Thijs",
+        "Email": "Thijs.Devries@Vanloon.Example.Com",
+        "Rol": "Technisch contact",
+        "Mobiel": "+31 6 23820024"
+      },
+      "SLA": "Gold 24x7",
+      "AccountID": "MSP-0395",
+      "InvoiceStatus": "Paid"
+    },
+    {
+      "Contact": {
+        "Email": "Bram.Jansen@Delinde.Example.Com",
+        "Mobiel": "+31 6 14223993",
+        "Rol": null,
+        "FirstName": "Bram",
+        "EmailPrive": "bram.jansen@prive.example.net",
+        "Achternaam": "Jansen"
+      },
+      "Seats": 39,
+      "StartDatum": "14/04/2020",
+      "crm_guid": "9677b948cc42",
+      "AccountID": "MSP-0398",
+      "volgnr": 37,
+      "Company": {
+        "Naam": "De Linde Installatietechniek",
+        "KvK": "72372445"
+      },
+      "InvoiceStatus": "Paid",
+      "SLA": "Bronze 8x5",
+      "AccountManager": "Rick Haverkamp",
+      "ContractStatus": "Active",
+      "ContractEnd": "05/12/2028"
+    },
+    {
+      "AccountID": "MSP-0401",
+      "Seats": 74,
+      "SLA": "Bronze 8x5",
+      "volgnr": 38,
+      "StartDatum": "10/03/2024",
+      "ContractStatus": "Active",
+      "AccountManager": "Jeroen Blom",
+      "InvoiceStatus": "Paid",
+      "crm_guid": "286978b70b88",
+      "Company": {
+        "KvK": "48923218",
+        "Naam": "Kempen Tandartsen"
+      },
+      "Contact": {
+        "FirstName": "Femke",
+        "EmailPrive": "femke.jansen@prive.example.net",
+        "Rol": "Billing contact",
+        "Achternaam": "Jansen",
+        "Email": "femke.jansen@kempentandartsen.example.com",
+        "Mobiel": "+31 6 26000471"
+      },
+      "ContractEnd": "20/07/2028"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "requester_name": {
+        "type": "string",
+        "description": "Full name of the requester, given name first."
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "description": "Business email address of the requester."
+      },
+      "phone": {
+        "type": "string",
+        "description": "Mobile number of the requester."
+      },
+      "role": {
+        "type": "string",
+        "enum": [
+          "primary",
+          "technical",
+          "billing"
+        ],
+        "description": "Role."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "suspended",
+          "cancelled"
+        ],
+        "description": "State of the customer's support contract."
+      },
+      "customer_since": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the support contract started."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Organization the requester belongs to.",
+        "properties": {
+          "external_id": {
+            "type": "string",
+            "description": "Identifier of the customer organization in the provider's system."
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the customer organization."
+          },
+          "support_level": {
+            "type": "string",
+            "enum": [
+              "bronze",
+              "silver",
+              "gold"
+            ],
+            "description": "Support level the organization has bought, which sets response hours."
+          },
+          "seats": {
+            "type": "integer",
+            "description": "Number of workplaces covered by the contract."
+          }
+        },
+        "required": [
+          "external_id",
+          "name",
+          "support_level"
+        ]
+      },
+      "time_zone": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "requester_name",
+      "email",
+      "status",
+      "organization"
+    ]
+  },
+  "groundTruth": {
+    "requester_name": {
+      "source": null,
+      "sources": [
+        "Contact.FirstName",
+        "Contact.Achternaam"
+      ],
+      "transform": "concat",
+      "separator": " ",
+      "why": "contact names; AccountManager is the provider's own staff"
+    },
+    "email": {
+      "source": "Contact.Email",
+      "transform": "normalize_email",
+      "why": "business email, mixed case and padded; EmailPrive is private"
+    },
+    "phone": {
+      "source": "Contact.Mobiel",
+      "transform": "copy",
+      "why": "mobile, null or missing for some"
+    },
+    "role": {
+      "source": "Contact.Rol",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Primary Contact": "primary",
+        "Beslisser": "primary",
+        "Technisch contact": "technical",
+        "Billing contact": "billing"
+      },
+      "why": "contact role, null or missing for some"
+    },
+    "status": {
+      "source": "ContractStatus",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Active": "active",
+        "Actief": "active",
+        "On hold - wanbetaling": "suspended",
+        "Opgezegd": "cancelled",
+        "Lead": null
+      },
+      "why": "contract state in two languages; leads need review; InvoiceStatus is billing"
+    },
+    "customer_since": {
+      "source": "StartDatum",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "contract start (Dutch day-first); ContractEnd is the end"
+    },
+    "organization.external_id": {
+      "source": "AccountID",
+      "transform": "copy",
+      "why": "account id; crm_guid is the CRM key and volgnr the export row"
+    },
+    "organization.name": {
+      "source": "Company.Naam",
+      "transform": "trim",
+      "why": "company name, padded"
+    },
+    "organization.support_level": {
+      "source": "SLA",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Bronze 8x5": "bronze",
+        "Silver 12x5": "silver",
+        "Gold 24x7": "gold"
+      },
+      "why": "SLA level"
+    },
+    "organization.seats": {
+      "source": "Seats",
+      "transform": "copy",
+      "why": "seat count"
+    },
+    "time_zone": {
+      "source": null,
+      "transform": "none",
+      "why": "no time zone is exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "AccountID",
+        "crm_guid"
+      ],
+      "correctFor": "organization.external_id"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "AccountID",
+        "Company.KvK"
+      ],
+      "correctFor": "organization.external_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "Contact.Email",
+        "Contact.EmailPrive"
+      ],
+      "correctFor": "email"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "Contact.FirstName",
+        "AccountManager"
+      ],
+      "correctFor": "requester_name"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "ContractStatus",
+        "InvoiceStatus"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "StartDatum",
+        "ContractEnd"
+      ],
+      "correctFor": "customer_since"
+    }
+  ],
+  "sourceConcepts": {
+    "AccountID": "customer-id",
+    "crm_guid": "other-identifier",
+    "volgnr": "other-identifier",
+    "Company.Naam": "organization-name",
+    "Company.KvK": "other-identifier",
+    "Contact.FirstName": "given-name",
+    "Contact.Achternaam": "family-name",
+    "Contact.Email": "email",
+    "Contact.EmailPrive": "email",
+    "Contact.Mobiel": "phone",
+    "Contact.Rol": "category",
+    "AccountManager": "person-name",
+    "ContractStatus": "account-status",
+    "InvoiceStatus": "payment-status",
+    "SLA": "category",
+    "StartDatum": "start-date",
+    "ContractEnd": "end-date",
+    "Seats": "quantity"
+  },
+  "destinationConcepts": {
+    "requester_name": "person-name",
+    "email": "email",
+    "phone": "phone",
+    "role": "category",
+    "status": "account-status",
+    "customer_since": "start-date",
+    "organization.external_id": "customer-id",
+    "organization.name": "organization-name",
+    "organization.support_level": "category",
+    "organization.seats": "quantity",
+    "time_zone": "other"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 17,
+      "outcome": "transformed",
+      "output": {
+        "requester_name": "Koen Hendriks",
+        "email": "koen.hendriks@waterlandlogistics.example.com",
+        "role": "primary",
+        "status": "active",
+        "customer_since": "2016-08-30",
+        "organization": {
+          "external_id": "MSP-0341",
+          "name": "Waterland Logistics B.V.",
+          "support_level": "bronze",
+          "seats": 77
+        }
+      }
+    },
+    {
+      "recordIndex": 22,
+      "outcome": "transformed",
+      "output": {
+        "requester_name": "Thijs Brouwer",
+        "email": "thijs.brouwer@vanloon.example.com",
+        "phone": "+31 6 98838225",
+        "role": "primary",
+        "status": "active",
+        "customer_since": "2019-05-11",
+        "organization": {
+          "external_id": "MSP-0356",
+          "name": "Van Loon Makelaardij",
+          "support_level": "silver",
+          "seats": 23
+        }
+      }
+    },
+    {
+      "recordIndex": 29,
+      "outcome": "transformed",
+      "output": {
+        "requester_name": "Wouter de Vries",
+        "email": "wouter.devries@vanloon.example.com",
+        "phone": "+31 6 62894653",
+        "status": "active",
+        "customer_since": "2019-04-02",
+        "organization": {
+          "external_id": "MSP-0377",
+          "name": "Van Loon Architecten",
+          "support_level": "gold",
+          "seats": 9
+        }
+      }
+    },
+    {
+      "recordIndex": 31,
+      "outcome": "held"
+    }
+  ]
+}

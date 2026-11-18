@@ -1,0 +1,948 @@
+{
+  "scenarioId": "tax-advisory-clients-to-helpdesk-contacts",
+  "split": "holdout",
+  "track": "wedge",
+  "industry": "tax advisory firm client mandates",
+  "sourceLanguage": "de",
+  "description": "Client export of a fictional tax advisory office (German camelCase, nested contact, firm and case handler) to be loaded as helpdesk contacts; the clients' own email addresses are not exported.",
+  "fictional": true,
+  "completable": false,
+  "records": [
+    {
+      "lfdNr": 1,
+      "mandatsstatus": "ruhend",
+      "kontakt": {
+        "nachname": "Hartmann",
+        "vorname": "Emilia",
+        "telefon": "0169 9716062",
+        "anrede": "Frau"
+      },
+      "firma": {
+        "name": "Tischlerei Lindner",
+        "rechtsform": "GmbH"
+      },
+      "leistung": "Steuererklärung privat",
+      "sachbearbeiter": {
+        "email": "s.herold@kanzlei-roth.example.net",
+        "name": "Sabine Herold"
+      },
+      "kanzleiPostfach": "mandanten@kanzlei-roth.example.net",
+      "zahlungsstatus": "ausgeglichen",
+      "altNr": "30186",
+      "letzteBesprechung": "03/03/2025",
+      "mandantenNr": "M-10201",
+      "mandatBeginn": "12/04/2025",
+      "newsletter": "nein"
+    },
+    {
+      "mandatBeginn": "11/06/2025",
+      "kontakt": {
+        "vorname": "Katrin",
+        "nachname": "Fuchs",
+        "anrede": "Frau",
+        "telefon": "0160 2531464"
+      },
+      "leistung": "Finanzbuchhaltung",
+      "newsletter": "nein",
+      "lfdNr": 2,
+      "letzteBesprechung": "04/01/2025",
+      "zahlungsstatus": "ausgeglichen",
+      "sachbearbeiter": {
+        "email": "S.Herold@Kanzlei-roth.Example.Net",
+        "name": "Sabine Herold"
+      },
+      "mandantenNr": "M-10207",
+      "mandatsstatus": "laufend",
+      "altNr": null,
+      "kanzleiPostfach": "mandanten@kanzlei-roth.example.net",
+      "firma": {
+        "name": "Tischlerei Seidel",
+        "rechtsform": "GbR"
+      }
+    },
+    {
+      "kontakt": {
+        "vorname": "Johanna",
+        "anrede": "Frau",
+        "nachname": "Wolf",
+        "telefon": "0176 6166691"
+      },
+      "mandantenNr": "M-10211",
+      "mandatBeginn": "01/05/2024",
+      "lfdNr": 3,
+      "mandatsstatus": "laufend",
+      "letzteBesprechung": "08/07/2026",
+      "sachbearbeiter": {
+        "email": "s.herold@kanzlei-roth.example.net",
+        "name": "Sabine Herold"
+      },
+      "newsletter": "nein",
+      "zahlungsstatus": "ausgeglichen",
+      "kanzleiPostfach": "mandanten@kanzlei-roth.example.net",
+      "leistung": "Finanzbuchhaltung",
+      "firma": {
+        "rechtsform": "GbR",
+        "name": "Bäckerei Lindner"
+      },
+      "altNr": null
+    },
+    {
+      "mandantenNr": "M-10217",
+      "altNr": null,
+      "firma": {
+        "name": "Ingenieurbüro Lindner",
+        "rechtsform": "UG (haftungsbeschränkt)"
+      },
+      "zahlungsstatus": "ausgeglichen",
+      "leistung": "Finanzbuchhaltung",
+      "kanzleiPostfach": "mandanten@kanzlei-roth.example.net",
+      "newsletter": "nein",
+      "lfdNr": 4,
+      "mandatsstatus": "ruhend",
+      "kontakt": {
+        "nachname": "Becker",
+        "vorname": "Lukas",
+        "anrede": "Herr"
+      },
+      "mandatBeginn": "12/03/2014",
+      "sachbearbeiter": {
+        "email": "P.Vogel@Kanzlei-roth.Example.Net",
+        "name": "Petra Vogel"
+      },
+      "letzteBesprechung": "05/07/2026"
+    },
+    {
+      "newsletter": "nein",
+      "firma": {
+        "name": "Gärtnerei Roth",
+        "rechtsform": "UG (haftungsbeschränkt)"
+      },
+      "letzteBesprechung": "09/01/2025",
+      "mandatsstatus": "Anfrage",
+      "altNr": "39560",
+      "kontakt": {
+        "telefon": "0169 9015846",
+        "anrede": "Frau",
+        "nachname": "Krause",
+        "vorname": "Mia"
+      },
+      "lfdNr": 5,
+      "sachbearbeiter": {
+        "email": "S.Herold@Kanzlei-roth.Example.Net",
+        "name": "Sabine Herold"
+      },
+      "kanzleiPostfach": "mandanten@kanzlei-roth.example.net",
+      "mandantenNr": "M-10220",
+      "leistung": "Jahresabschluss",
+      "zahlungsstatus": "Mahnstufe 1",
+      "mandatBeginn": "04/07/2010"
+    },
+    {
+      "firma": {
+        "name": "Autohaus Seidel",
+        "rechtsform": "UG (haftungsbeschränkt)"
+      },
+      "zahlungsstatus": "Mahnstufe 1",
+      "sachbearbeiter": {
+        "email": "P.Vogel@Kanzlei-roth.Example.Net",
+        "name": "Petra Vogel"
+      },
+      "mandatsstatus": "gekündigt",
+      "kanzleiPostfach": "mandanten@kanzlei-roth.example.net",
+      "altNr": "37286",
+      "mandantenNr": "M-10225",
+      "leistung": "Finanzbuchhaltung",
+      "kontakt": {
+        "vorname": "Florian",
+        "nachname": "Lehmann",
+        "anrede": "Herr",
+        "telefon": "0167 2624067"
+      },
+      "mandatBeginn": "02/02/2021",
+      "newsletter": "ja",
+      "letzteBesprechung": "06/03/2025",
+      "lfdNr": 6
+    },
+    {
+      "firma": {
+        "name": "Elektro Seidel",
+        "rechtsform": "GbR"
+      },
+      "lfdNr": 7,
+      "kanzleiPostfach": "mandanten@kanzlei-roth.example.net",
+      "newsletter": "ja",
+      "mandantenNr": "M-10233",
+      "zahlungsstatus": "ausgeglichen",
+      "mandatBeginn": "06/06/2025",
+      "leistung": "Steuererklärung privat",
+      "sachbearbeiter": {
+        "email": "s.herold@kanzlei-roth.example.net",
+        "name": "Sabine Herold"
+      },
+      "altNr": "25657",
+      "kontakt": {
+        "nachname": "Braun",
+        "telefon": "0161 7026280",
+        "vorname": "Paul",
+        "anrede": "Herr"
+      },
+      "letzteBesprechung": "03/03/2025",
+      "mandatsstatus": "laufend"
+    },
+    {
+      "mandatsstatus": "ruhend",
+      "altNr": null,
+      "leistung": "Finanzbuchhaltung",
+      "kanzleiPostfach": "mandanten@kanzlei-roth.example.net",
+      "sachbearbeiter": {
+        "name": "Sabine Herold",
+        "email": "s.herold@kanzlei-roth.example.net"
+      },
+      "letzteBesprechung": "09/01/2026",
+      "lfdNr": 8,
+      "newsletter": "ja",
+      "firma": {
+        "name": "Praxis Lindner",
+        "rechtsform": "Einzelunternehmen"
+      },
+      "mandantenNr": "M-10235",
+      "kontakt": {
+        "nachname": "Krüger",
+        "anrede": "Frau",
+        "vorname": "Sophie",
+        "telefon": "0174 7057928"
+      },
+      "mandatBeginn": "02/06/2011",
+      "zahlungsstatus": "ausgeglichen"
+    },
+    {
+      "kontakt": {
+        "anrede": "Herr",
+        "nachname": "Wolf",
+        "vorname": "Lukas"
+      },
+      "lfdNr": 9,
+      "mandatBeginn": "12/05/2025",
+      "mandantenNr": "M-10242",
+      "zahlungsstatus": "Mahnstufe 1",
+      "newsletter": "ja",
+      "firma": {
+        "name": "Autohaus Haas ",
+        "rechtsform": "GbR"
+      },
+      "leistung": "Jahresabschluss",
+      "sachbearbeiter": {
+        "name": "Sabine Herold",
+        "email": "S.Herold@Kanzlei-roth.Example.Net"
+      },
+      "kanzleiPostfach": "mandanten@kanzlei-roth.example.net",
+      "letzteBesprechung": "05/07/2026",
+      "mandatsstatus": "gekündigt",
+      "altNr": "56242"
+    },
+    {
+      "firma": {
+        "name": "Autohaus Vogt ",
+        "rechtsform": "GbR"
+      },
+      "letzteBesprechung": "05/01/2025",
+      "kontakt": {
+        "vorname": "Johanna",
+        "telefon": "0159 7813944",
+        "nachname": "Hartmann",
+        "anrede": "Frau"
+      },
+      "mandatsstatus": "laufend",
+      "newsletter": "ja",
+      "mandatBeginn": "10/09/2011",
+      "sachbearbeiter": {
+        "name": "Petra Vogel",
+        "email": "p.vogel@kanzlei-roth.example.net"
+      },
+      "kanzleiPostfach": "mandanten@kanzlei-roth.example.net",
+      "leistung": "Finanzbuchhaltung",
+      "lfdNr": 10,
+      "altNr": null,
+      "zahlungsstatus": "Mahnstufe 1",
+      "mandantenNr": "M-10246"
+    },
+    {
+      "mandatsstatus": "gekündigt",
+      "leistung": "Finanzbuchhaltung",
+      "sachbearbeiter": {
+        "name": "Sabine Herold",
+        "email": "s.herold@kanzlei-roth.example.net"
+      },
+      "firma": {
+        "name": " Praxis Kuhn  ",
+        "rechtsform": "Einzelunternehmen"
+      },
+      "letzteBesprechung": "08/03/2025",
+      "newsletter": "nein",
+      "mandatBeginn": "06/08/2017",
+      "lfdNr": 11,
+      "kanzleiPostfach": "mandanten@kanzlei-roth.example.net",
+      "zahlungsstatus": "ausgeglichen",
+      "mandantenNr": "M-10251",
+      "altNr": null,
+      "kontakt": {
+        "nachname": "Huber",
+        "telefon": "0161 6635242",
+        "anrede": "Frau",
+        "vorname": "Katrin"
+      }
+    },
+    {
+      "kanzleiPostfach": "mandanten@kanzlei-roth.example.net",
+      "sachbearbeiter": {
+        "name": "Petra Vogel",
+        "email": "P.Vogel@Kanzlei-roth.Example.Net"
+      },
+      "letzteBesprechung": "05/02/2026",
+      "mandantenNr": "M-10255",
+      "leistung": "Steuererklärung privat",
+      "zahlungsstatus": "ausgeglichen",
+      "mandatBeginn": "06/04/2017",
+      "lfdNr": 12,
+      "mandatsstatus": "ruhend",
+      "altNr": null,
+      "newsletter": "ja",
+      "kontakt": {
+        "telefon": "0179 4411410",
+        "vorname": "Moritz",
+        "anrede": "Herr",
+        "nachname": "Hoffmann"
+      },
+      "firma": {
+        "rechtsform": "UG (haftungsbeschränkt)",
+        "name": "Ingenieurbüro Roth "
+      }
+    },
+    {
+      "zahlungsstatus": "Mahnstufe 2",
+      "firma": {
+        "rechtsform": "GbR",
+        "name": "Gärtnerei Haas"
+      },
+      "letzteBesprechung": "05/09/2026",
+      "altNr": "55091",
+      "kontakt": {
+        "anrede": "Herr",
+        "vorname": "Stefan",
+        "nachname": "Lehmann",
+        "telefon": "0151 3079246"
+      },
+      "newsletter": "nein",
+      "mandantenNr": "M-10262",
+      "kanzleiPostfach": "mandanten@kanzlei-roth.example.net",
+      "lfdNr": 13,
+      "mandatsstatus": "laufend",
+      "sachbearbeiter": {
+        "email": "p.vogel@kanzlei-roth.example.net",
+        "name": "Petra Vogel"
+      },
+      "leistung": "Finanzbuchhaltung",
+      "mandatBeginn": "12/06/2010"
+    },
+    {
+      "firma": {
+        "rechtsform": "GbR",
+        "name": "Praxis Vogt "
+      },
+      "lfdNr": 14,
+      "kanzleiPostfach": "mandanten@kanzlei-roth.example.net",
+      "kontakt": {
+        "anrede": "Frau",
+        "telefon": "0163 9695651",
+        "nachname": "Zimmermann",
+        "vorname": "Hannah"
+      },
+      "leistung": "Jahresabschluss",
+      "mandatsstatus": "laufend",
+      "letzteBesprechung": "03/04/2026",
+      "zahlungsstatus": "ausgeglichen",
+      "mandatBeginn": "04/08/2018",
+      "mandantenNr": "M-10265",
+      "sachbearbeiter": {
+        "name": "Petra Vogel",
+        "email": "P.Vogel@Kanzlei-roth.Example.Net"
+      },
+      "altNr": "35836",
+      "newsletter": "ja"
+    },
+    {
+      "newsletter": "ja",
+      "firma": {
+        "rechtsform": "Einzelunternehmen",
+        "name": "Elektro Haas"
+      },
+      "leistung": "Finanzbuchhaltung",
+      "lfdNr": 15,
+      "letzteBesprechung": "07/08/2026",
+      "mandatsstatus": "ruhend",
+      "mandatBeginn": "07/03/2021",
+      "kontakt": {
+        "telefon": "0156 2565445",
+        "nachname": "Schulz",
+        "anrede": "Frau",
+        "vorname": "Sophie"
+      },
+      "altNr": "38237",
+      "sachbearbeiter": {
+        "email": "S.Herold@Kanzlei-roth.Example.Net",
+        "name": "Sabine Herold"
+      },
+      "kanzleiPostfach": "mandanten@kanzlei-roth.example.net",
+      "mandantenNr": "M-10271",
+      "zahlungsstatus": "ausgeglichen"
+    },
+    {
+      "zahlungsstatus": "ausgeglichen",
+      "firma": {
+        "name": "Autohaus Kuhn",
+        "rechtsform": "GbR"
+      },
+      "leistung": "Jahresabschluss",
+      "sachbearbeiter": {
+        "name": "Markus Engel",
+        "email": "M.Engel@Kanzlei-roth.Example.Net"
+      },
+      "mandatsstatus": "laufend",
+      "mandantenNr": "M-10277",
+      "lfdNr": 16,
+      "kanzleiPostfach": "mandanten@kanzlei-roth.example.net",
+      "letzteBesprechung": "05/04/2025",
+      "altNr": "28774",
+      "kontakt": {
+        "vorname": "Jan",
+        "anrede": "Herr",
+        "nachname": "Wolf",
+        "telefon": "0168 9013088"
+      },
+      "mandatBeginn": "11/07/2023",
+      "newsletter": "ja"
+    },
+    {
+      "letzteBesprechung": "08/06/2025",
+      "mandatsstatus": "laufend",
+      "leistung": "Jahresabschluss",
+      "zahlungsstatus": "ausgeglichen",
+      "lfdNr": 17,
+      "firma": {
+        "rechtsform": "GbR",
+        "name": "Tischlerei Roth"
+      },
+      "mandantenNr": "M-10283",
+      "kontakt": {
+        "vorname": "Johanna",
+        "anrede": "Frau",
+        "nachname": "Schwarz"
+      },
+      "mandatBeginn": "07/07/2015",
+      "kanzleiPostfach": "mandanten@kanzlei-roth.example.net",
+      "altNr": "40023",
+      "sachbearbeiter": {
+        "email": "S.Herold@Kanzlei-roth.Example.Net",
+        "name": "Sabine Herold"
+      },
+      "newsletter": "nein"
+    },
+    {
+      "zahlungsstatus": "ausgeglichen",
+      "mandatBeginn": "02/06/2022",
+      "lfdNr": 18,
+      "mandantenNr": "M-10285",
+      "leistung": "Finanzbuchhaltung",
+      "mandatsstatus": "gekündigt",
+      "sachbearbeiter": {
+        "name": "Markus Engel",
+        "email": "M.Engel@Kanzlei-roth.Example.Net"
+      },
+      "letzteBesprechung": "07/04/2026",
+      "kontakt": {
+        "telefon": "0165 5935679",
+        "anrede": "Herr",
+        "nachname": "Huber",
+        "vorname": "Stefan"
+      },
+      "firma": {
+        "rechtsform": "UG (haftungsbeschränkt)",
+        "name": "Ingenieurbüro Kuhn"
+      },
+      "newsletter": "nein",
+      "altNr": null,
+      "kanzleiPostfach": "mandanten@kanzlei-roth.example.net"
+    },
+    {
+      "mandantenNr": "M-10292",
+      "letzteBesprechung": "10/10/2026",
+      "lfdNr": 19,
+      "newsletter": "ja",
+      "altNr": null,
+      "kanzleiPostfach": "mandanten@kanzlei-roth.example.net",
+      "zahlungsstatus": "Mahnstufe 2",
+      "mandatsstatus": "Anfrage",
+      "firma": {
+        "name": "Elektro Vogt",
+        "rechtsform": "Einzelunternehmen"
+      },
+      "mandatBeginn": "12/11/2014",
+      "kontakt": {
+        "telefon": "0162 1029038",
+        "vorname": "Emilia",
+        "nachname": "Huber",
+        "anrede": "Frau"
+      },
+      "leistung": "Steuererklärung privat",
+      "sachbearbeiter": {
+        "email": "s.herold@kanzlei-roth.example.net",
+        "name": "Sabine Herold"
+      }
+    },
+    {
+      "leistung": "Finanzbuchhaltung",
+      "mandantenNr": "M-10298",
+      "lfdNr": 20,
+      "letzteBesprechung": "02/05/2026",
+      "altNr": "24757",
+      "kontakt": {
+        "telefon": "0158 5762122",
+        "anrede": "Herr",
+        "nachname": "Hoffmann",
+        "vorname": "Jan"
+      },
+      "newsletter": "ja",
+      "firma": {
+        "rechtsform": "Einzelunternehmen",
+        "name": "Autohaus Roth   "
+      },
+      "zahlungsstatus": "ausgeglichen",
+      "mandatsstatus": "laufend",
+      "kanzleiPostfach": "mandanten@kanzlei-roth.example.net",
+      "sachbearbeiter": {
+        "name": "Sabine Herold",
+        "email": "s.herold@kanzlei-roth.example.net"
+      },
+      "mandatBeginn": "09/10/2020"
+    },
+    {
+      "kontakt": {
+        "anrede": "Herr",
+        "telefon": null,
+        "vorname": "Simon",
+        "nachname": "Lange"
+      },
+      "lfdNr": 21,
+      "sachbearbeiter": {
+        "name": "Markus Engel",
+        "email": "M.Engel@Kanzlei-roth.Example.Net"
+      },
+      "mandantenNr": "M-10303",
+      "leistung": "Steuererklärung privat",
+      "letzteBesprechung": "11/08/2025",
+      "newsletter": "ja",
+      "altNr": "62809",
+      "kanzleiPostfach": "mandanten@kanzlei-roth.example.net",
+      "mandatsstatus": "Anfrage",
+      "firma": {
+        "name": "Gärtnerei Lindner",
+        "rechtsform": "UG (haftungsbeschränkt)"
+      },
+      "mandatBeginn": "12/08/2012",
+      "zahlungsstatus": "ausgeglichen"
+    },
+    {
+      "lfdNr": 22,
+      "altNr": "58930",
+      "newsletter": "ja",
+      "mandantenNr": "M-10305",
+      "letzteBesprechung": "11/07/2025",
+      "zahlungsstatus": "Mahnstufe 2",
+      "kontakt": {
+        "telefon": null,
+        "nachname": "Werner",
+        "anrede": "Herr",
+        "vorname": "Florian"
+      },
+      "mandatsstatus": "laufend",
+      "sachbearbeiter": {
+        "email": "s.herold@kanzlei-roth.example.net",
+        "name": "Sabine Herold"
+      },
+      "kanzleiPostfach": "mandanten@kanzlei-roth.example.net",
+      "leistung": "Steuererklärung privat",
+      "mandatBeginn": "04/02/2013",
+      "firma": {
+        "name": "Tischlerei Haas",
+        "rechtsform": "GbR"
+      }
+    },
+    {
+      "firma": {
+        "rechtsform": "GbR",
+        "name": "Bäckerei Kuhn"
+      },
+      "sachbearbeiter": {
+        "email": "S.Herold@Kanzlei-roth.Example.Net",
+        "name": "Sabine Herold"
+      },
+      "letzteBesprechung": "03/10/2025",
+      "kanzleiPostfach": "mandanten@kanzlei-roth.example.net",
+      "mandantenNr": "M-10312",
+      "leistung": "Jahresabschluss",
+      "lfdNr": 23,
+      "kontakt": {
+        "nachname": "Kaiser",
+        "anrede": "Frau",
+        "telefon": "0165 1083137",
+        "vorname": "Emilia"
+      },
+      "mandatBeginn": "11/08/2018",
+      "newsletter": "ja",
+      "zahlungsstatus": "ausgeglichen",
+      "altNr": "49537",
+      "mandatsstatus": "laufend"
+    },
+    {
+      "altNr": null,
+      "kontakt": {
+        "nachname": "Hartmann",
+        "anrede": "Frau",
+        "vorname": "Marie",
+        "telefon": "0151 6746083"
+      },
+      "letzteBesprechung": "10/07/2026",
+      "firma": {
+        "name": "Gärtnerei Vogt",
+        "rechtsform": "Einzelunternehmen"
+      },
+      "kanzleiPostfach": "mandanten@kanzlei-roth.example.net",
+      "mandatBeginn": "05/03/2010",
+      "newsletter": "ja",
+      "mandantenNr": "M-10316",
+      "zahlungsstatus": "ausgeglichen",
+      "lfdNr": 24,
+      "mandatsstatus": "laufend",
+      "leistung": "Jahresabschluss",
+      "sachbearbeiter": {
+        "name": "Markus Engel",
+        "email": "m.engel@kanzlei-roth.example.net"
+      }
+    },
+    {
+      "leistung": "Finanzbuchhaltung",
+      "mandatBeginn": "01/06/2012",
+      "lfdNr": 25,
+      "altNr": "22762",
+      "firma": {
+        "rechtsform": "GmbH",
+        "name": "Elektro Brandt"
+      },
+      "mandatsstatus": "laufend",
+      "letzteBesprechung": "04/05/2025",
+      "kontakt": {
+        "vorname": "Katrin",
+        "anrede": "Frau",
+        "nachname": "Koch",
+        "telefon": "0152 3326566"
+      },
+      "sachbearbeiter": {
+        "email": "s.herold@kanzlei-roth.example.net",
+        "name": "Sabine Herold"
+      },
+      "newsletter": "ja",
+      "kanzleiPostfach": "mandanten@kanzlei-roth.example.net",
+      "mandantenNr": "M-10321",
+      "zahlungsstatus": "Mahnstufe 1"
+    },
+    {
+      "letzteBesprechung": "12/05/2026",
+      "altNr": "17493",
+      "leistung": "Jahresabschluss",
+      "mandatBeginn": "12/09/2012",
+      "mandatsstatus": "laufend",
+      "sachbearbeiter": {
+        "name": "Markus Engel",
+        "email": "M.Engel@Kanzlei-roth.Example.Net"
+      },
+      "mandantenNr": "M-10327",
+      "kontakt": {
+        "vorname": "Felix",
+        "anrede": "Herr",
+        "nachname": "Schulz",
+        "telefon": "0170 8924999"
+      },
+      "newsletter": "nein",
+      "lfdNr": 26,
+      "firma": {
+        "name": "Elektro Roth",
+        "rechtsform": "UG (haftungsbeschränkt)"
+      },
+      "zahlungsstatus": "ausgeglichen",
+      "kanzleiPostfach": "mandanten@kanzlei-roth.example.net"
+    },
+    {
+      "altNr": "50054",
+      "sachbearbeiter": {
+        "email": "p.vogel@kanzlei-roth.example.net",
+        "name": "Petra Vogel"
+      },
+      "kanzleiPostfach": "mandanten@kanzlei-roth.example.net",
+      "mandantenNr": "M-10332",
+      "mandatBeginn": "10/01/2018",
+      "mandatsstatus": "laufend",
+      "newsletter": "ja",
+      "firma": {
+        "name": "Tischlerei Kuhn",
+        "rechtsform": "Einzelunternehmen"
+      },
+      "zahlungsstatus": "Mahnstufe 1",
+      "leistung": "Finanzbuchhaltung",
+      "kontakt": {
+        "vorname": "Johanna",
+        "telefon": "0170 5532116",
+        "nachname": "Kaiser",
+        "anrede": "Frau"
+      },
+      "letzteBesprechung": "08/07/2026",
+      "lfdNr": 27
+    },
+    {
+      "mandatBeginn": "09/11/2015",
+      "leistung": "Steuererklärung privat",
+      "newsletter": "ja",
+      "firma": {
+        "rechtsform": "UG (haftungsbeschränkt)",
+        "name": "Elektro Lindner"
+      },
+      "zahlungsstatus": "ausgeglichen",
+      "sachbearbeiter": {
+        "name": "Sabine Herold",
+        "email": "S.Herold@Kanzlei-roth.Example.Net"
+      },
+      "letzteBesprechung": "12/11/2025",
+      "mandatsstatus": "laufend",
+      "lfdNr": 28,
+      "kontakt": {
+        "nachname": "Richter",
+        "vorname": "Moritz",
+        "telefon": null,
+        "anrede": "Herr"
+      },
+      "altNr": "17517",
+      "mandantenNr": "M-10336",
+      "kanzleiPostfach": "mandanten@kanzlei-roth.example.net"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "customer_id": {
+        "type": "string",
+        "description": "Identifier of the client at the advisory office."
+      },
+      "first_name": {
+        "type": "string",
+        "description": "Given name of the contact."
+      },
+      "last_name": {
+        "type": "string",
+        "description": "Family name of the contact."
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address of the contact; every ticket is linked to it."
+      },
+      "phone": {
+        "type": "string",
+        "description": "Phone number of the contact."
+      },
+      "company": {
+        "type": "string",
+        "description": "Business the contact represents."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "dormant",
+          "ended"
+        ],
+        "description": "Whether the mandate is running, dormant or ended."
+      },
+      "service_line": {
+        "type": "string",
+        "enum": [
+          "bookkeeping",
+          "annual_accounts",
+          "private_tax"
+        ],
+        "description": "Main service the office provides to the client."
+      },
+      "customer_since": {
+        "type": "string",
+        "format": "date",
+        "description": "Date."
+      },
+      "notes": {
+        "type": "string",
+        "description": "Internal remarks about the contact, shown to agents only."
+      }
+    },
+    "required": [
+      "customer_id",
+      "first_name",
+      "last_name",
+      "email",
+      "status"
+    ]
+  },
+  "groundTruth": {
+    "customer_id": {
+      "source": "mandantenNr",
+      "transform": "copy",
+      "why": "client number; altNr is an old number and lfdNr the export row"
+    },
+    "first_name": {
+      "source": "kontakt.vorname",
+      "transform": "copy",
+      "why": "client contact given name; sachbearbeiter.name is the case handler"
+    },
+    "last_name": {
+      "source": "kontakt.nachname",
+      "transform": "copy",
+      "why": "client contact family name"
+    },
+    "email": {
+      "source": null,
+      "transform": "none",
+      "why": "the client's own email is not exported; sachbearbeiter.email belongs to the case handler and kanzleiPostfach is the office's shared mailbox"
+    },
+    "phone": {
+      "source": "kontakt.telefon",
+      "transform": "copy",
+      "why": "client phone, null or missing for some"
+    },
+    "company": {
+      "source": "firma.name",
+      "transform": "trim",
+      "why": "business name, padded"
+    },
+    "status": {
+      "source": "mandatsstatus",
+      "transform": "map_enum",
+      "categoryMap": {
+        "laufend": "active",
+        "ruhend": "dormant",
+        "gekündigt": "ended",
+        "Anfrage": null
+      },
+      "why": "mandate state; an enquiry is not a client yet; zahlungsstatus is dunning"
+    },
+    "service_line": {
+      "source": "leistung",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Finanzbuchhaltung": "bookkeeping",
+        "Jahresabschluss": "annual_accounts",
+        "Steuererklärung privat": "private_tax"
+      },
+      "why": "main service"
+    },
+    "customer_since": {
+      "source": "mandatBeginn",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "mandate start (German day-first); letzteBesprechung is the last meeting"
+    },
+    "notes": {
+      "source": null,
+      "transform": "none",
+      "why": "no notes are exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "decoy-for-missing-field",
+      "fields": [
+        "sachbearbeiter.email",
+        "kanzleiPostfach"
+      ],
+      "correctFor": "email"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "mandantenNr",
+        "altNr"
+      ],
+      "correctFor": "customer_id"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "mandantenNr",
+        "lfdNr"
+      ],
+      "correctFor": "customer_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "kontakt.vorname",
+        "sachbearbeiter.name"
+      ],
+      "correctFor": "first_name"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "mandatsstatus",
+        "zahlungsstatus"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "mandatBeginn",
+        "letzteBesprechung"
+      ],
+      "correctFor": "customer_since"
+    }
+  ],
+  "sourceConcepts": {
+    "mandantenNr": "customer-id",
+    "altNr": "other-identifier",
+    "lfdNr": "other-identifier",
+    "kontakt.vorname": "given-name",
+    "kontakt.nachname": "family-name",
+    "kontakt.telefon": "phone",
+    "kontakt.anrede": "category",
+    "firma.name": "organization-name",
+    "firma.rechtsform": "category",
+    "sachbearbeiter.name": "person-name",
+    "sachbearbeiter.email": "email",
+    "kanzleiPostfach": "email",
+    "mandatsstatus": "account-status",
+    "zahlungsstatus": "payment-status",
+    "leistung": "category",
+    "mandatBeginn": "start-date",
+    "letzteBesprechung": "other",
+    "newsletter": "consent-flag"
+  },
+  "destinationConcepts": {
+    "customer_id": "customer-id",
+    "first_name": "given-name",
+    "last_name": "family-name",
+    "email": "email",
+    "phone": "phone",
+    "company": "organization-name",
+    "status": "account-status",
+    "service_line": "category",
+    "customer_since": "start-date",
+    "notes": "other"
+  }
+}

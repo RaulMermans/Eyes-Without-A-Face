@@ -1,0 +1,1159 @@
+{
+  "scenarioId": "hvac-contractor-accounts-to-helpdesk-requesters",
+  "split": "holdout",
+  "track": "wedge",
+  "industry": "commercial heating and cooling maintenance contractor customer accounts",
+  "sourceLanguage": "en",
+  "description": "Customer-account export of a fictional commercial HVAC maintenance contractor (US CRM, snake_case with c_ custom fields, nested account and contacts) to be loaded as helpdesk requesters.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "created_at": "2016-03-07T15:33:00Z",
+      "row_num": 1,
+      "c_email_optin": "Yes",
+      "account": {
+        "name": "Summit Office Park",
+        "city": "Tempe",
+        "c_segment": "Restaurant",
+        "c_service_tier": "Gold PM"
+      },
+      "contract_start": "05/19/2022",
+      "billing_contact": {
+        "email": "ap0@summit.example.net"
+      },
+      "account_manager": "Brian Kessler",
+      "c_payment_status": "30 Days",
+      "account_no": "HV-20403",
+      "primary_contact": {
+        "last_name": "Gibson",
+        "mobile": "(307) 555-0199",
+        "email": "brooke.gibson@mail.example.com",
+        "first_name": "Brooke"
+      },
+      "c_account_status": "Active",
+      "contract_renewal": "11/25/2026",
+      "crm_record_id": "0017Q00000D50560"
+    },
+    {
+      "c_email_optin": "Yes",
+      "c_payment_status": "Current",
+      "account_no": "HV-20412",
+      "primary_contact": {
+        "mobile": "(449) 555-0159",
+        "last_name": "Hayes",
+        "email": "abigail.hayes@mail.example.com",
+        "first_name": "Abigail"
+      },
+      "c_account_status": "Closed - Lost",
+      "created_at": "2017-05-26T12:18:00Z",
+      "contract_renewal": "10/21/2027",
+      "crm_record_id": "0017Q00000D83012",
+      "contract_start": "11/04/2018",
+      "row_num": 2,
+      "billing_contact": {
+        "email": "ap1@harbor.example.net"
+      },
+      "account_manager": "Luis Ortega",
+      "account": {
+        "name": "Harbor Dental Group",
+        "c_service_tier": "Gold PM",
+        "c_segment": "Retail",
+        "city": "Chandler"
+      }
+    },
+    {
+      "crm_record_id": "0017Q00000C58184",
+      "c_email_optin": "No",
+      "contract_start": "08/23/2023",
+      "created_at": "2021-11-12T11:54:00Z",
+      "billing_contact": {
+        "email": "ap2@copper.example.net"
+      },
+      "account": {
+        "city": "Mesa",
+        "c_service_tier": "Gold PM",
+        "c_segment": "Property Mgmt",
+        "name": "Copper Storage Co"
+      },
+      "row_num": 3,
+      "primary_contact": {
+        "mobile": "(213) 555-0142",
+        "last_name": "Carter",
+        "email": "hannah.carter@mail.example.com",
+        "first_name": "Hannah"
+      },
+      "c_account_status": "Do Not Service",
+      "account_no": "HV-20419",
+      "contract_renewal": "11/15/2026",
+      "c_payment_status": "Current",
+      "account_manager": "Dana Whitcomb"
+    },
+    {
+      "c_account_status": "Seasonal Hold",
+      "c_payment_status": "Collections",
+      "row_num": 4,
+      "account_no": "HV-20426",
+      "primary_contact": {
+        "first_name": "James",
+        "email": "James.Gibson@Mail.Example.Com",
+        "last_name": "Gibson"
+      },
+      "contract_renewal": "06/07/2026",
+      "crm_record_id": "0017Q00000F65580",
+      "account_manager": "Dana Whitcomb",
+      "created_at": "2013-03-14T14:41:00Z",
+      "billing_contact": {
+        "email": "ap3@summit.example.net"
+      },
+      "contract_start": "10/07/2023",
+      "account": {
+        "c_service_tier": "Bronze PM",
+        "name": "Summit Dental Group",
+        "c_segment": "Retail",
+        "city": "Tempe"
+      },
+      "c_email_optin": "Yes"
+    },
+    {
+      "billing_contact": {
+        "email": "ap4@summit.example.net"
+      },
+      "account_no": "HV-20429",
+      "c_payment_status": "Current",
+      "c_email_optin": "Yes",
+      "primary_contact": {
+        "email": "logan.hughes@mail.example.com",
+        "mobile": "(984) 555-0166",
+        "last_name": "Hughes",
+        "first_name": "Logan"
+      },
+      "c_account_status": "Seasonal Hold",
+      "account": {
+        "name": " Summit Plaza LLC  ",
+        "city": "Tucson",
+        "c_service_tier": "Silver PM",
+        "c_segment": "Healthcare"
+      },
+      "created_at": "2021-12-19T20:44:00Z",
+      "row_num": 5,
+      "crm_record_id": "0017Q00000F91268",
+      "contract_renewal": "02/02/2026",
+      "account_manager": "Brian Kessler",
+      "contract_start": "05/22/2023"
+    },
+    {
+      "primary_contact": {
+        "email": "aaron.hughes@mail.example.com",
+        "mobile": "(432) 555-0142",
+        "last_name": "Hughes",
+        "first_name": "Aaron"
+      },
+      "c_email_optin": "No",
+      "account_no": "HV-20438",
+      "account_manager": "Luis Ortega",
+      "c_payment_status": "Current",
+      "account": {
+        "c_service_tier": "Silver PM",
+        "city": "Tucson",
+        "c_segment": "Healthcare",
+        "name": " Lakeside Storage Co"
+      },
+      "contract_start": "03/01/2021",
+      "row_num": 6,
+      "created_at": "2015-09-08T07:20:00Z",
+      "crm_record_id": "0017Q00000C95124",
+      "contract_renewal": "10/01/2027",
+      "c_account_status": "Active",
+      "billing_contact": {
+        "email": "ap5@lakeside.example.net"
+      }
+    },
+    {
+      "c_email_optin": "Yes",
+      "created_at": "2018-08-19T16:17:00Z",
+      "primary_contact": {
+        "first_name": "Dylan",
+        "email": "dylan.hayes@mail.example.com",
+        "mobile": "(386) 555-0111",
+        "last_name": "Hayes"
+      },
+      "row_num": 7,
+      "account_no": "HV-20443",
+      "billing_contact": {
+        "email": "ap6@oakmont.example.net"
+      },
+      "contract_renewal": "02/26/2026",
+      "c_account_status": "Closed - Lost",
+      "crm_record_id": "0017Q00000F24846",
+      "contract_start": "04/15/2022",
+      "account": {
+        "name": "Oakmont Bistro",
+        "c_service_tier": "Bronze PM",
+        "c_segment": "Healthcare",
+        "city": "Tempe"
+      },
+      "c_payment_status": "Current",
+      "account_manager": "Luis Ortega"
+    },
+    {
+      "crm_record_id": "0017Q00000C39983",
+      "c_account_status": "Duplicate",
+      "row_num": 8,
+      "contract_start": "11/28/2021",
+      "account_no": "HV-20453",
+      "billing_contact": {
+        "email": "ap7@pioneer.example.net"
+      },
+      "primary_contact": {
+        "email": " ryan.foster@mail.example.com  ",
+        "last_name": "Foster",
+        "first_name": "Ryan",
+        "mobile": "(304) 555-0189"
+      },
+      "account_manager": "Brian Kessler",
+      "c_email_optin": "Yes",
+      "created_at": "2013-01-09T12:29:00Z",
+      "contract_renewal": "01/25/2027",
+      "account": {
+        "c_segment": "Healthcare",
+        "name": "Pioneer Plaza LLC",
+        "c_service_tier": "Silver PM",
+        "city": "Tucson"
+      },
+      "c_payment_status": "30 Days"
+    },
+    {
+      "account": {
+        "city": "Mesa",
+        "c_service_tier": "Gold PM",
+        "c_segment": "Property Mgmt",
+        "name": "Oakmont Plaza LLC"
+      },
+      "account_no": "HV-20459",
+      "contract_renewal": "02/10/2027",
+      "billing_contact": {
+        "email": "ap8@oakmont.example.net"
+      },
+      "c_email_optin": "Yes",
+      "created_at": "2013-05-06T06:06:00Z",
+      "crm_record_id": "0017Q00000H69854",
+      "contract_start": "10/22/2019",
+      "c_account_status": "Closed - Lost",
+      "row_num": 9,
+      "account_manager": "Dana Whitcomb",
+      "c_payment_status": "30 Days",
+      "primary_contact": {
+        "email": "owen.hughes@mail.example.com   ",
+        "last_name": "Hughes",
+        "first_name": "Owen",
+        "mobile": "(957) 555-0193"
+      }
+    },
+    {
+      "c_payment_status": "Current",
+      "c_email_optin": "No",
+      "billing_contact": {
+        "email": "ap9@ridgeview.example.net"
+      },
+      "c_account_status": "Do Not Service",
+      "account": {
+        "c_segment": "Restaurant",
+        "city": "Chandler",
+        "name": "Ridgeview Dental Group",
+        "c_service_tier": "Silver PM"
+      },
+      "contract_start": "04/05/2015",
+      "account_no": "HV-20466",
+      "row_num": 10,
+      "crm_record_id": "0017Q00000E86762",
+      "primary_contact": {
+        "first_name": "Ryan",
+        "email": "ryan.griffin@mail.example.com",
+        "mobile": "(752) 555-0169",
+        "last_name": "Griffin"
+      },
+      "contract_renewal": "12/22/2026",
+      "account_manager": "Dana Whitcomb",
+      "created_at": "2014-07-21T17:43:00Z"
+    },
+    {
+      "c_account_status": "Active",
+      "row_num": 11,
+      "c_email_optin": "No",
+      "crm_record_id": "0017Q00000A11745",
+      "created_at": "2018-12-23T07:57:00Z",
+      "c_payment_status": "Current",
+      "account": {
+        "c_service_tier": "Bronze PM",
+        "c_segment": "Property Mgmt",
+        "city": "Chandler",
+        "name": "Maple Medical Suites"
+      },
+      "primary_contact": {
+        "email": "Natalie.Fisher@Mail.Example.Com",
+        "mobile": "(909) 555-0193",
+        "last_name": "Fisher",
+        "first_name": "Natalie"
+      },
+      "account_no": "HV-20473",
+      "billing_contact": {
+        "email": "ap10@maple.example.net"
+      },
+      "account_manager": "Dana Whitcomb",
+      "contract_renewal": "06/14/2026"
+    },
+    {
+      "c_email_optin": "No",
+      "billing_contact": {
+        "email": "ap11@oakmont.example.net"
+      },
+      "contract_start": null,
+      "account": {
+        "c_segment": "Restaurant",
+        "c_service_tier": "Time & Materials",
+        "name": "Oakmont Storage Co",
+        "city": "Tempe"
+      },
+      "contract_renewal": "08/12/2026",
+      "crm_record_id": "0017Q00000G46853",
+      "c_payment_status": "Collections",
+      "row_num": 12,
+      "account_no": "HV-20481",
+      "primary_contact": {
+        "mobile": "(379) 555-0148",
+        "email": "emily.ellis@mail.example.com",
+        "first_name": "Emily",
+        "last_name": "Ellis"
+      },
+      "account_manager": "Luis Ortega",
+      "created_at": "2017-04-01T10:21:00Z",
+      "c_account_status": "Active"
+    },
+    {
+      "primary_contact": {
+        "first_name": "Lauren",
+        "last_name": "Hayes",
+        "mobile": "(226) 555-0155",
+        "email": "Lauren.Hayes@Mail.Example.Com"
+      },
+      "contract_start": "05/07/2020",
+      "account": {
+        "city": "Tempe",
+        "name": "Ridgeview Plaza LLC",
+        "c_segment": "Property Mgmt",
+        "c_service_tier": "Gold PM"
+      },
+      "contract_renewal": "02/11/2027",
+      "c_payment_status": "Current",
+      "crm_record_id": "0017Q00000B43121",
+      "created_at": "2017-11-04T14:06:00Z",
+      "account_manager": "Luis Ortega",
+      "billing_contact": {
+        "email": "ap12@ridgeview.example.net"
+      },
+      "account_no": "HV-20485",
+      "row_num": 13,
+      "c_account_status": "Active",
+      "c_email_optin": "No"
+    },
+    {
+      "row_num": 14,
+      "account_no": "HV-20493",
+      "contract_start": "05/30/2016",
+      "account": {
+        "c_service_tier": "Time & Materials",
+        "city": "Mesa",
+        "c_segment": "Property Mgmt",
+        "name": "Lakeside Bistro"
+      },
+      "created_at": "2013-07-03T10:55:00Z",
+      "contract_renewal": "02/27/2027",
+      "c_account_status": "Duplicate",
+      "primary_contact": {
+        "mobile": "(224) 555-0124",
+        "first_name": "Logan",
+        "email": "logan.collins@mail.example.com",
+        "last_name": "Collins"
+      },
+      "crm_record_id": "0017Q00000E56408",
+      "c_email_optin": "No",
+      "account_manager": "Luis Ortega",
+      "billing_contact": {
+        "email": "ap13@lakeside.example.net"
+      },
+      "c_payment_status": "30 Days"
+    },
+    {
+      "primary_contact": {
+        "email": "noah.barker@mail.example.com",
+        "first_name": "Noah",
+        "last_name": "Barker",
+        "mobile": "(713) 555-0145"
+      },
+      "contract_start": "11/06/2022",
+      "row_num": 15,
+      "account_manager": "Dana Whitcomb",
+      "c_payment_status": "Current",
+      "c_account_status": "Active",
+      "account": {
+        "name": "Maple Office Park",
+        "c_segment": "Restaurant",
+        "city": "Chandler",
+        "c_service_tier": "Silver PM"
+      },
+      "account_no": "HV-20499",
+      "created_at": "2013-07-04T15:22:00Z",
+      "crm_record_id": "0017Q00000F89939",
+      "billing_contact": {
+        "email": "ap14@maple.example.net"
+      },
+      "c_email_optin": "Yes",
+      "contract_renewal": "01/13/2027"
+    },
+    {
+      "created_at": "2013-12-09T06:00:00Z",
+      "contract_renewal": "06/12/2027",
+      "account_manager": "Dana Whitcomb",
+      "billing_contact": {
+        "email": "ap15@oakmont.example.net"
+      },
+      "crm_record_id": "0017Q00000H73156",
+      "account_no": "HV-20505",
+      "c_email_optin": "Yes",
+      "c_account_status": "Active",
+      "account": {
+        "city": "Chandler",
+        "c_segment": "Property Mgmt",
+        "name": " Oakmont Dental Group",
+        "c_service_tier": "Silver PM"
+      },
+      "row_num": 16,
+      "contract_start": "02/08/2015",
+      "primary_contact": {
+        "first_name": "Natalie",
+        "mobile": null,
+        "last_name": "Collins",
+        "email": "Natalie.Collins@Mail.Example.Com"
+      },
+      "c_payment_status": "Current"
+    },
+    {
+      "account_no": "HV-20515",
+      "c_payment_status": "30 Days",
+      "billing_contact": {
+        "email": "ap16@pioneer.example.net"
+      },
+      "c_account_status": "Active",
+      "c_email_optin": "Yes",
+      "crm_record_id": "0017Q00000E98818",
+      "contract_renewal": "02/24/2026",
+      "account_manager": "Luis Ortega",
+      "primary_contact": {
+        "email": "ETHAN.GRIFFIN@MAIL.EXAMPLE.COM",
+        "last_name": "Griffin",
+        "mobile": "(590) 555-0189",
+        "first_name": "Ethan"
+      },
+      "row_num": 17,
+      "contract_start": "07/04/2023",
+      "account": {
+        "c_service_tier": "Silver PM",
+        "c_segment": "Restaurant",
+        "city": "Mesa",
+        "name": "Pioneer Storage Co"
+      },
+      "created_at": "2021-09-11T14:30:00Z"
+    },
+    {
+      "account": {
+        "c_segment": "Retail",
+        "c_service_tier": "Bronze PM",
+        "name": "Pioneer Bistro",
+        "city": "Tempe"
+      },
+      "row_num": 18,
+      "contract_renewal": "11/19/2026",
+      "c_payment_status": "Current",
+      "c_email_optin": "No",
+      "c_account_status": "Do Not Service",
+      "created_at": "2014-02-24T13:36:00Z",
+      "crm_record_id": "0017Q00000E76782",
+      "billing_contact": {
+        "email": "ap17@pioneer.example.net"
+      },
+      "contract_start": "03/17/2015",
+      "account_no": "HV-20521",
+      "account_manager": "Dana Whitcomb",
+      "primary_contact": {
+        "mobile": null,
+        "email": "Lauren.Harper@Mail.Example.Com",
+        "last_name": "Harper",
+        "first_name": "Lauren"
+      }
+    },
+    {
+      "c_account_status": "Active",
+      "primary_contact": {
+        "email": "Ryan.Marsh@Mail.Example.Com",
+        "first_name": "Ryan",
+        "mobile": "(629) 555-0102",
+        "last_name": "Marsh"
+      },
+      "account": {
+        "c_service_tier": "Silver PM",
+        "city": "Tucson",
+        "name": "Pioneer Dental Group",
+        "c_segment": "Retail"
+      },
+      "c_payment_status": "Current",
+      "c_email_optin": "Yes",
+      "crm_record_id": "0017Q00000D67150",
+      "billing_contact": {
+        "email": "ap18@pioneer.example.net"
+      },
+      "contract_start": "12/17/2021",
+      "account_no": "HV-20528",
+      "row_num": 19,
+      "created_at": "2016-07-28T09:34:00Z",
+      "contract_renewal": "06/16/2026",
+      "account_manager": "Dana Whitcomb"
+    },
+    {
+      "contract_renewal": "06/26/2027",
+      "contract_start": "12/14/2022",
+      "account_manager": "Luis Ortega",
+      "crm_record_id": "0017Q00000B66006",
+      "account": {
+        "c_service_tier": "Bronze PM",
+        "name": "Harbor Bistro",
+        "city": "Tempe",
+        "c_segment": "Restaurant"
+      },
+      "c_email_optin": "No",
+      "created_at": "2022-04-14T11:01:00Z",
+      "account_no": "HV-20534",
+      "primary_contact": {
+        "first_name": "Olivia",
+        "email": "Olivia.Bennett@Mail.Example.Com",
+        "mobile": "(433) 555-0179",
+        "last_name": "Bennett"
+      },
+      "row_num": 20,
+      "c_payment_status": "Current",
+      "billing_contact": {
+        "email": "ap19@harbor.example.net"
+      },
+      "c_account_status": "Active"
+    },
+    {
+      "c_email_optin": "Yes",
+      "contract_renewal": "11/15/2027",
+      "row_num": 21,
+      "account": {
+        "name": "Summit Medical Suites",
+        "city": "Tucson",
+        "c_service_tier": "Time & Materials",
+        "c_segment": "Property Mgmt"
+      },
+      "account_no": "HV-20540",
+      "billing_contact": {
+        "email": "ap20@summit.example.net"
+      },
+      "created_at": "2018-02-17T07:59:00Z",
+      "c_account_status": "Active",
+      "c_payment_status": "Current",
+      "crm_record_id": "0017Q00000G50282",
+      "account_manager": "Brian Kessler",
+      "primary_contact": {
+        "email": "Logan.Morris@Mail.Example.Com",
+        "last_name": "Morris",
+        "mobile": "(942) 555-0194",
+        "first_name": "Logan"
+      }
+    },
+    {
+      "c_email_optin": "No",
+      "c_account_status": "Active",
+      "account_manager": "Brian Kessler",
+      "contract_renewal": "01/19/2027",
+      "billing_contact": {
+        "email": "ap21@harbor.example.net"
+      },
+      "contract_start": "08/24/2023",
+      "primary_contact": {
+        "mobile": null,
+        "email": "natalie.palmer@mail.example.com",
+        "last_name": "Palmer",
+        "first_name": "Natalie"
+      },
+      "crm_record_id": "0017Q00000E22981",
+      "account": {
+        "city": "Tempe",
+        "name": " Harbor Storage Co",
+        "c_segment": "Retail",
+        "c_service_tier": "Time & Materials"
+      },
+      "row_num": 22,
+      "created_at": "2017-07-24T07:00:00Z",
+      "account_no": "HV-20549",
+      "c_payment_status": "Current"
+    },
+    {
+      "created_at": "2016-01-19T17:39:00Z",
+      "account_no": "HV-20554",
+      "c_email_optin": "Yes",
+      "contract_renewal": "10/04/2026",
+      "account": {
+        "name": "Summit Storage Co",
+        "c_service_tier": "Bronze PM",
+        "city": "Tucson",
+        "c_segment": "Property Mgmt"
+      },
+      "c_account_status": "Active",
+      "contract_start": "01/12/2020",
+      "primary_contact": {
+        "last_name": "Walsh",
+        "mobile": "(705) 555-0194",
+        "first_name": "Owen",
+        "email": "owen.walsh@mail.example.com"
+      },
+      "row_num": 23,
+      "billing_contact": {
+        "email": "ap22@summit.example.net"
+      },
+      "crm_record_id": "0017Q00000G78522",
+      "c_payment_status": "60+ Days",
+      "account_manager": "Brian Kessler"
+    },
+    {
+      "created_at": "2013-01-16T06:32:00Z",
+      "account": {
+        "city": "Tucson",
+        "name": "Harbor Plaza LLC   ",
+        "c_segment": "Property Mgmt",
+        "c_service_tier": "Silver PM"
+      },
+      "c_email_optin": "No",
+      "contract_start": null,
+      "contract_renewal": "04/11/2026",
+      "account_no": "HV-20561",
+      "c_account_status": "Seasonal Hold",
+      "crm_record_id": "0017Q00000E13048",
+      "row_num": 24,
+      "primary_contact": {
+        "mobile": "(738) 555-0102",
+        "email": "noah.palmer@mail.example.com",
+        "first_name": "Noah",
+        "last_name": "Palmer"
+      },
+      "account_manager": "Brian Kessler",
+      "billing_contact": {
+        "email": "ap23@harbor.example.net"
+      },
+      "c_payment_status": "30 Days"
+    },
+    {
+      "billing_contact": {
+        "email": "ap24@ridgeview.example.net"
+      },
+      "created_at": "2021-10-07T08:44:00Z",
+      "primary_contact": {
+        "last_name": "Doyle",
+        "email": "tyler.doyle@mail.example.com",
+        "mobile": null,
+        "first_name": "Tyler"
+      },
+      "c_email_optin": "No",
+      "account_manager": "Dana Whitcomb",
+      "account": {
+        "city": "Chandler",
+        "name": "Ridgeview Storage Co",
+        "c_service_tier": "Silver PM",
+        "c_segment": "Property Mgmt"
+      },
+      "account_no": "HV-20569",
+      "c_payment_status": "Current",
+      "contract_start": "04/24/2024",
+      "contract_renewal": "10/26/2026",
+      "row_num": 25,
+      "crm_record_id": "0017Q00000H95099",
+      "c_account_status": "Active"
+    },
+    {
+      "crm_record_id": "0017Q00000G69825",
+      "row_num": 26,
+      "created_at": "2014-06-04T06:41:00Z",
+      "primary_contact": {
+        "last_name": "Reed",
+        "email": "caleb.reed@mail.example.com",
+        "first_name": "Caleb"
+      },
+      "c_account_status": "Duplicate",
+      "c_payment_status": "60+ Days",
+      "c_email_optin": "No",
+      "contract_start": "03/01/2023",
+      "account": {
+        "c_service_tier": "Time & Materials",
+        "city": "Chandler",
+        "c_segment": "Restaurant",
+        "name": "Harbor Office Park"
+      },
+      "account_no": "HV-20578",
+      "contract_renewal": "09/02/2026",
+      "account_manager": "Luis Ortega",
+      "billing_contact": {
+        "email": "ap25@harbor.example.net"
+      }
+    },
+    {
+      "c_email_optin": "Yes",
+      "c_payment_status": "Current",
+      "contract_start": "12/12/2022",
+      "c_account_status": "Active",
+      "account_manager": "Luis Ortega",
+      "created_at": "2021-10-04T10:42:00Z",
+      "crm_record_id": "0017Q00000A83089",
+      "row_num": 27,
+      "contract_renewal": "02/13/2026",
+      "billing_contact": {
+        "email": "ap26@lakeside.example.net"
+      },
+      "account_no": "HV-20584",
+      "account": {
+        "c_service_tier": "Silver PM",
+        "c_segment": "Retail",
+        "city": "Tempe",
+        "name": "Lakeside Plaza LLC"
+      },
+      "primary_contact": {
+        "last_name": "Doyle",
+        "mobile": "(614) 555-0165",
+        "email": "LOGAN.DOYLE@MAIL.EXAMPLE.COM",
+        "first_name": "Logan"
+      }
+    },
+    {
+      "account_manager": "Luis Ortega",
+      "primary_contact": {
+        "last_name": "Collins",
+        "first_name": "Caleb",
+        "mobile": "(778) 555-0167",
+        "email": "Caleb.Collins@Mail.Example.Com"
+      },
+      "account_no": "HV-20592",
+      "c_account_status": "Seasonal Hold",
+      "c_payment_status": "60+ Days",
+      "contract_start": "11/26/2017",
+      "c_email_optin": "Yes",
+      "billing_contact": {
+        "email": "ap27@ridgeview.example.net"
+      },
+      "account": {
+        "c_service_tier": "Gold PM",
+        "name": "Ridgeview Medical Suites",
+        "c_segment": "Healthcare",
+        "city": "Mesa"
+      },
+      "created_at": "2017-01-12T14:35:00Z",
+      "row_num": 28,
+      "contract_renewal": "09/02/2027",
+      "crm_record_id": "0017Q00000A57909"
+    },
+    {
+      "row_num": 29,
+      "account_no": "HV-20599",
+      "account": {
+        "city": "Tucson",
+        "c_service_tier": "Silver PM",
+        "c_segment": "Healthcare",
+        "name": "  Copper Plaza LLC "
+      },
+      "contract_renewal": "06/22/2027",
+      "account_manager": "Dana Whitcomb",
+      "crm_record_id": "0017Q00000G24083",
+      "created_at": "2018-12-29T14:40:00Z",
+      "c_account_status": "Active",
+      "contract_start": "02/06/2020",
+      "billing_contact": {
+        "email": "ap28@copper.example.net"
+      },
+      "c_payment_status": "60+ Days",
+      "c_email_optin": "Yes",
+      "primary_contact": {
+        "last_name": "Ellis",
+        "mobile": "(557) 555-0150",
+        "email": "tyler.ellis@mail.example.com",
+        "first_name": "Tyler"
+      }
+    },
+    {
+      "contract_start": "03/05/2024",
+      "account_manager": "Dana Whitcomb",
+      "primary_contact": {
+        "first_name": "James",
+        "email": "james.hughes@mail.example.com",
+        "last_name": "Hughes",
+        "mobile": "(494) 555-0182"
+      },
+      "created_at": "2021-05-06T09:31:00Z",
+      "c_payment_status": "Current",
+      "row_num": 30,
+      "c_email_optin": "No",
+      "account": {
+        "c_segment": "Healthcare",
+        "c_service_tier": "Bronze PM",
+        "name": "Harbor Medical Suites",
+        "city": "Tempe"
+      },
+      "contract_renewal": "10/22/2026",
+      "crm_record_id": "0017Q00000B95273",
+      "c_account_status": "Active",
+      "account_no": "HV-20608",
+      "billing_contact": {
+        "email": "ap29@harbor.example.net"
+      }
+    },
+    {
+      "account_no": "HV-20613",
+      "c_email_optin": "Yes",
+      "billing_contact": {
+        "email": "ap30@lakeside.example.net"
+      },
+      "c_account_status": "Closed - Lost",
+      "row_num": 31,
+      "primary_contact": {
+        "last_name": "Hayes",
+        "first_name": "Noah",
+        "email": "noah.hayes@mail.example.com"
+      },
+      "crm_record_id": "0017Q00000A63906",
+      "account_manager": "Dana Whitcomb",
+      "account": {
+        "c_segment": "Property Mgmt",
+        "c_service_tier": "Silver PM",
+        "city": "Chandler",
+        "name": "  Lakeside Office Park "
+      },
+      "contract_renewal": "06/09/2026",
+      "created_at": "2014-06-11T17:53:00Z",
+      "contract_start": "06/22/2021",
+      "c_payment_status": "Current"
+    },
+    {
+      "account_no": "HV-20621",
+      "account_manager": "Brian Kessler",
+      "crm_record_id": "0017Q00000A40235",
+      "c_payment_status": "Collections",
+      "row_num": 32,
+      "contract_renewal": "06/09/2027",
+      "primary_contact": {
+        "last_name": "Barker",
+        "email": "olivia.barker@mail.example.com",
+        "mobile": "(264) 555-0162",
+        "first_name": "Olivia"
+      },
+      "billing_contact": {
+        "email": "ap31@lakeside.example.net"
+      },
+      "created_at": "2014-07-02T18:45:00Z",
+      "contract_start": null,
+      "c_account_status": "Active",
+      "account": {
+        "c_service_tier": "Bronze PM",
+        "city": "Tempe",
+        "c_segment": "Restaurant",
+        "name": "Lakeside Dental Group"
+      },
+      "c_email_optin": "No"
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "external_id": {
+        "type": "string",
+        "description": "Identifier of the customer account in your own system, used to match future imports."
+      },
+      "name": {
+        "type": "string",
+        "description": "Full name of the requester, given name first."
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "description": "Address the requester writes from; ticket replies go here."
+      },
+      "phone": {
+        "type": "string",
+        "description": "Mobile number used for urgent callbacks about a breakdown."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Company the requester belongs to.",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the business the requester works for."
+          },
+          "tier": {
+            "type": "string",
+            "enum": [
+              "basic",
+              "standard",
+              "priority"
+            ],
+            "description": "Maintenance plan the business pays for, which sets response targets."
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "paused",
+          "closed"
+        ],
+        "description": "Status."
+      },
+      "customer_since": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the customer's first service contract started."
+      },
+      "timezone": {
+        "type": "string"
+      },
+      "lifetime_months": {
+        "type": "integer",
+        "description": "Number of whole months the account has been a customer."
+      }
+    },
+    "required": [
+      "external_id",
+      "name",
+      "email",
+      "organization",
+      "status"
+    ]
+  },
+  "groundTruth": {
+    "external_id": {
+      "source": "account_no",
+      "transform": "copy",
+      "why": "account number; crm_record_id is the CRM's internal key and row_num the export row"
+    },
+    "name": {
+      "source": null,
+      "sources": [
+        "primary_contact.first_name",
+        "primary_contact.last_name"
+      ],
+      "transform": "concat",
+      "separator": " ",
+      "why": "primary contact given and family name; account_manager is the contractor's own rep"
+    },
+    "email": {
+      "source": "primary_contact.email",
+      "transform": "normalize_email",
+      "why": "primary contact email, mixed case and padded; billing_contact.email is accounts payable"
+    },
+    "phone": {
+      "source": "primary_contact.mobile",
+      "transform": "copy",
+      "why": "contact mobile, null or missing for some"
+    },
+    "organization.name": {
+      "source": "account.name",
+      "transform": "trim",
+      "why": "business name, padded in some rows"
+    },
+    "organization.tier": {
+      "source": "account.c_service_tier",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Bronze PM": "basic",
+        "Time & Materials": "basic",
+        "Silver PM": "standard",
+        "Gold PM": "priority"
+      },
+      "why": "maintenance plan; c_segment is the market segment"
+    },
+    "status": {
+      "source": "c_account_status",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Active": "active",
+        "Seasonal Hold": "paused",
+        "Closed - Lost": "closed",
+        "Do Not Service": "closed",
+        "Duplicate": null
+      },
+      "why": "account lifecycle; duplicates need review; c_payment_status is receivables"
+    },
+    "customer_since": {
+      "source": "contract_start",
+      "transform": "parse_date",
+      "dateFormat": "MM/DD/YYYY",
+      "why": "first contract start (US month-first); contract_renewal is the next renewal and created_at the lead creation"
+    },
+    "timezone": {
+      "source": null,
+      "transform": "none",
+      "why": "no time zone is exported; the city alone is not a supported transformation"
+    },
+    "lifetime_months": {
+      "source": null,
+      "transform": "none",
+      "why": "not exported",
+      "unsupportedReason": "would need the difference in months between contract_start and the import date"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "account_no",
+        "crm_record_id"
+      ],
+      "correctFor": "external_id"
+    },
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "account_no",
+        "row_num"
+      ],
+      "correctFor": "external_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "primary_contact.email",
+        "billing_contact.email"
+      ],
+      "correctFor": "email"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "primary_contact.first_name",
+        "account_manager"
+      ],
+      "correctFor": "name"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "c_account_status",
+        "c_payment_status"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "account.c_service_tier",
+        "account.c_segment"
+      ],
+      "correctFor": "organization.tier"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "contract_start",
+        "contract_renewal"
+      ],
+      "correctFor": "customer_since"
+    }
+  ],
+  "sourceConcepts": {
+    "row_num": "other-identifier",
+    "account_no": "customer-id",
+    "crm_record_id": "other-identifier",
+    "account.name": "organization-name",
+    "account.c_segment": "category",
+    "account.c_service_tier": "category",
+    "account.city": "city",
+    "primary_contact.first_name": "given-name",
+    "primary_contact.last_name": "family-name",
+    "primary_contact.email": "email",
+    "primary_contact.mobile": "phone",
+    "billing_contact.email": "email",
+    "account_manager": "person-name",
+    "c_account_status": "account-status",
+    "c_payment_status": "payment-status",
+    "contract_start": "start-date",
+    "contract_renewal": "end-date",
+    "created_at": "created-date",
+    "c_email_optin": "consent-flag"
+  },
+  "destinationConcepts": {
+    "external_id": "customer-id",
+    "name": "person-name",
+    "email": "email",
+    "phone": "phone",
+    "organization.name": "organization-name",
+    "organization.tier": "category",
+    "status": "account-status",
+    "customer_since": "start-date",
+    "timezone": "other",
+    "lifetime_months": "quantity"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 15,
+      "outcome": "transformed",
+      "output": {
+        "external_id": "HV-20505",
+        "name": "Natalie Collins",
+        "email": "natalie.collins@mail.example.com",
+        "organization": {
+          "name": "Oakmont Dental Group",
+          "tier": "standard"
+        },
+        "status": "active",
+        "customer_since": "2015-02-08"
+      }
+    },
+    {
+      "recordIndex": 16,
+      "outcome": "transformed",
+      "output": {
+        "external_id": "HV-20515",
+        "name": "Ethan Griffin",
+        "email": "ethan.griffin@mail.example.com",
+        "phone": "(590) 555-0189",
+        "organization": {
+          "name": "Pioneer Storage Co",
+          "tier": "standard"
+        },
+        "status": "active",
+        "customer_since": "2023-07-04"
+      }
+    },
+    {
+      "recordIndex": 25,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 31,
+      "outcome": "transformed",
+      "output": {
+        "external_id": "HV-20621",
+        "name": "Olivia Barker",
+        "email": "olivia.barker@mail.example.com",
+        "phone": "(264) 555-0162",
+        "organization": {
+          "name": "Lakeside Dental Group",
+          "tier": "basic"
+        },
+        "status": "active"
+      }
+    }
+  ]
+}

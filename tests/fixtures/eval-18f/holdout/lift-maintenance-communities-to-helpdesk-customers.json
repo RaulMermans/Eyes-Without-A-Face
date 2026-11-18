@@ -1,0 +1,1260 @@
+{
+  "scenarioId": "lift-maintenance-communities-to-helpdesk-customers",
+  "split": "holdout",
+  "track": "wedge",
+  "industry": "lift maintenance company residential community accounts",
+  "sourceLanguage": "es",
+  "description": "Customer-account export of a fictional lift maintenance company (Spanish PascalCase, nested community, president and property administrator) to be loaded as helpdesk customers.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "TipoContrato": "Mantenimiento básico",
+      "IdContrato": "CT-2017-906",
+      "EstadoContrato": "Presupuesto enviado",
+      "EstadoCobro": "Pendiente",
+      "NumFila": 1,
+      "CodigoCliente": "ASC-5501",
+      "Presidente": {
+        "Apellidos": "Serrano",
+        "Nombre": "Nuria",
+        "Movil": "680 261 711",
+        "Email": "nuria.serrano@correo.example.com"
+      },
+      "Administrador": {
+        "Nombre": "Rosa Calderón",
+        "Email": "rcalderon@fincas-levante.example.org"
+      },
+      "Comunidad": {
+        "Direccion": {
+          "Municipio": "Torrevieja"
+        },
+        "Nombre": "  C.P. Calle Real 21 "
+      },
+      "FechaInicio": "05/05/2021",
+      "NumAscensores": 3,
+      "FechaVencimiento": "04/12/2026"
+    },
+    {
+      "FechaVencimiento": "05/09/2028",
+      "TipoContrato": "Mantenimiento básico",
+      "IdContrato": "CT-2022-340",
+      "EstadoCobro": "Al corriente",
+      "Administrador": {
+        "Email": "blozano@fincas-levante.example.org",
+        "Nombre": "Beatriz Lozano"
+      },
+      "EstadoContrato": "Vigente - renovación pendiente",
+      "Comunidad": {
+        "Nombre": "Comunidad de Propietarios Avenida Castilla 15",
+        "Direccion": {
+          "Municipio": "Torrevieja"
+        }
+      },
+      "NumAscensores": 4,
+      "FechaInicio": "08/12/2016",
+      "CodigoCliente": "ASC-5508",
+      "Presidente": {
+        "Email": "Raul.Ruiz@Correo.Example.Com",
+        "Apellidos": "Ruiz",
+        "Nombre": "Raúl",
+        "Movil": "658 816 278"
+      },
+      "NumFila": 2
+    },
+    {
+      "TipoContrato": "Mantenimiento integral",
+      "FechaVencimiento": "09/12/2028",
+      "Administrador": {
+        "Email": "taguirre@gestion-aguirre.example.net",
+        "Nombre": "Tomás Aguirre"
+      },
+      "NumAscensores": 1,
+      "NumFila": 3,
+      "EstadoCobro": "Al corriente",
+      "CodigoCliente": "ASC-5513",
+      "Presidente": {
+        "Movil": "614 103 311",
+        "Nombre": "Raúl",
+        "Apellidos": "Gil",
+        "Email": "RAUL.GIL@CORREO.EXAMPLE.COM"
+      },
+      "Comunidad": {
+        "Nombre": "Comunidad de Propietarios Ronda Norte 15",
+        "Direccion": {
+          "Municipio": "Elche"
+        }
+      },
+      "IdContrato": "CT-2021-289",
+      "EstadoContrato": "Vigente",
+      "FechaInicio": "12/01/2024"
+    },
+    {
+      "EstadoContrato": "Vigente",
+      "Presidente": {
+        "Nombre": "Mateo",
+        "Apellidos": "Cabrera",
+        "Email": "mateo.cabrera@correo.example.com",
+        "Movil": "652 265 725"
+      },
+      "IdContrato": "CT-2018-384",
+      "Comunidad": {
+        "Nombre": "C.P. Ronda Norte 12",
+        "Direccion": {
+          "Municipio": "Alicante"
+        }
+      },
+      "CodigoCliente": "ASC-5519",
+      "FechaInicio": "02/04/2009",
+      "FechaVencimiento": "06/12/2026",
+      "Administrador": {
+        "Nombre": "Tomás Aguirre",
+        "Email": "taguirre@gestion-aguirre.example.net"
+      },
+      "EstadoCobro": "Al corriente",
+      "TipoContrato": "Mantenimiento básico",
+      "NumAscensores": 4,
+      "NumFila": 4
+    },
+    {
+      "CodigoCliente": "ASC-5524",
+      "IdContrato": "CT-2018-735",
+      "FechaVencimiento": "10/04/2026",
+      "FechaInicio": "03/09/2024",
+      "TipoContrato": "Todo riesgo",
+      "Presidente": {
+        "Apellidos": "Vidal",
+        "Movil": "627 241 507",
+        "Nombre": "Irene",
+        "Email": "irene.vidal@correo.example.com"
+      },
+      "Administrador": {
+        "Nombre": "Beatriz Lozano",
+        "Email": "blozano@fincas-levante.example.org"
+      },
+      "NumFila": 5,
+      "EstadoContrato": "Rescindido",
+      "Comunidad": {
+        "Direccion": {
+          "Municipio": "San Vicente"
+        },
+        "Nombre": "C.P. Calle Real 5"
+      },
+      "NumAscensores": 4,
+      "EstadoCobro": "Al corriente"
+    },
+    {
+      "NumFila": 6,
+      "FechaVencimiento": "08/05/2027",
+      "Administrador": {
+        "Nombre": "Tomás Aguirre",
+        "Email": "taguirre@gestion-aguirre.example.net"
+      },
+      "Presidente": {
+        "Movil": "672 118 302",
+        "Apellidos": "Herrero",
+        "Email": "Lucia.Herrero@Correo.Example.Com",
+        "Nombre": "Lucía"
+      },
+      "CodigoCliente": "ASC-5530",
+      "NumAscensores": 1,
+      "IdContrato": "CT-2024-950",
+      "FechaInicio": "03/09/2021",
+      "EstadoContrato": "Vigente",
+      "TipoContrato": "Mantenimiento básico",
+      "Comunidad": {
+        "Direccion": {
+          "Municipio": "Torrevieja"
+        },
+        "Nombre": "Comunidad de Propietarios Calle Sol 21"
+      },
+      "EstadoCobro": "Al corriente"
+    },
+    {
+      "IdContrato": "CT-2024-444",
+      "NumFila": 7,
+      "Administrador": {
+        "Nombre": "Beatriz Lozano",
+        "Email": "blozano@fincas-levante.example.org"
+      },
+      "EstadoCobro": "Al corriente",
+      "Presidente": {
+        "Nombre": "Paula",
+        "Apellidos": "Vidal",
+        "Email": "paula.vidal@correo.example.com"
+      },
+      "FechaVencimiento": "11/08/2028",
+      "EstadoContrato": "Rescindido",
+      "Comunidad": {
+        "Nombre": "Comunidad de Propietarios Calle Olmos 5",
+        "Direccion": {
+          "Municipio": "Alicante"
+        }
+      },
+      "FechaInicio": "10/11/2018",
+      "TipoContrato": "Mantenimiento básico",
+      "NumAscensores": 1,
+      "CodigoCliente": "ASC-5536"
+    },
+    {
+      "Comunidad": {
+        "Nombre": "Comunidad de Propietarios Calle Olmos 58",
+        "Direccion": {
+          "Municipio": "Torrevieja"
+        }
+      },
+      "FechaInicio": "04/06/2020",
+      "EstadoContrato": "Rescindido",
+      "FechaVencimiento": "11/05/2027",
+      "EstadoCobro": "Al corriente",
+      "TipoContrato": "Mantenimiento básico",
+      "IdContrato": "CT-2021-960",
+      "NumFila": 8,
+      "Administrador": {
+        "Nombre": "Beatriz Lozano",
+        "Email": "blozano@fincas-levante.example.org"
+      },
+      "NumAscensores": 1,
+      "Presidente": {
+        "Apellidos": "Moreno",
+        "Movil": "649 586 705",
+        "Nombre": "Hugo",
+        "Email": "Hugo.Moreno@Correo.Example.Com"
+      },
+      "CodigoCliente": "ASC-5546"
+    },
+    {
+      "Presidente": {
+        "Apellidos": "Soler",
+        "Nombre": "Paula",
+        "Email": "Paula.Soler@Correo.Example.Com"
+      },
+      "IdContrato": "CT-2019-140",
+      "NumAscensores": 4,
+      "FechaVencimiento": "10/12/2028",
+      "Administrador": {
+        "Nombre": "Beatriz Lozano",
+        "Email": "blozano@fincas-levante.example.org"
+      },
+      "CodigoCliente": "ASC-5552",
+      "NumFila": 9,
+      "EstadoContrato": "Rescindido",
+      "FechaInicio": "06/06/2019",
+      "TipoContrato": "Mantenimiento básico",
+      "EstadoCobro": "Pendiente",
+      "Comunidad": {
+        "Direccion": {
+          "Municipio": "Torrevieja"
+        },
+        "Nombre": "C.P. Calle Mayor 15"
+      }
+    },
+    {
+      "FechaInicio": "12/03/2016",
+      "Administrador": {
+        "Email": "blozano@fincas-levante.example.org",
+        "Nombre": "Beatriz Lozano"
+      },
+      "Comunidad": {
+        "Nombre": "C.P. Ronda Norte 58",
+        "Direccion": {
+          "Municipio": "San Vicente"
+        }
+      },
+      "NumFila": 10,
+      "CodigoCliente": "ASC-5557",
+      "EstadoCobro": "Al corriente",
+      "TipoContrato": "Mantenimiento básico",
+      "EstadoContrato": "Vigente",
+      "NumAscensores": 1,
+      "Presidente": {
+        "Email": "ELENA.FERNANDEZ@CORREO.EXAMPLE.COM",
+        "Movil": "633 518 617",
+        "Nombre": "Elena",
+        "Apellidos": "Fernández"
+      },
+      "IdContrato": "CT-2020-755",
+      "FechaVencimiento": "03/04/2026"
+    },
+    {
+      "TipoContrato": "Mantenimiento integral",
+      "Administrador": {
+        "Nombre": "Beatriz Lozano",
+        "Email": "blozano@fincas-levante.example.org"
+      },
+      "EstadoCobro": "Al corriente",
+      "NumFila": 11,
+      "FechaVencimiento": "07/01/2028",
+      "FechaInicio": "08/03/2024",
+      "NumAscensores": 3,
+      "EstadoContrato": "Vigente",
+      "IdContrato": "CT-2019-196",
+      "CodigoCliente": "ASC-5564",
+      "Presidente": {
+        "Apellidos": "Soler",
+        "Email": "alba.soler@correo.example.com",
+        "Nombre": "Alba",
+        "Movil": "680 579 174"
+      },
+      "Comunidad": {
+        "Direccion": {
+          "Municipio": "San Vicente"
+        },
+        "Nombre": "C.P. Calle Sol 58"
+      }
+    },
+    {
+      "NumAscensores": 1,
+      "FechaInicio": "06/01/2015",
+      "EstadoCobro": "Impagado",
+      "IdContrato": "CT-2018-482",
+      "Comunidad": {
+        "Nombre": "C.P. Avenida del Puerto 21",
+        "Direccion": {
+          "Municipio": "Elche"
+        }
+      },
+      "EstadoContrato": "Vigente - renovación pendiente",
+      "FechaVencimiento": "06/10/2026",
+      "NumFila": 12,
+      "TipoContrato": "Mantenimiento básico",
+      "Administrador": {
+        "Nombre": "Beatriz Lozano",
+        "Email": "blozano@fincas-levante.example.org"
+      },
+      "Presidente": {
+        "Nombre": "Diego",
+        "Apellidos": "Ortiz",
+        "Movil": "694 615 682",
+        "Email": "diego.ortiz@correo.example.com"
+      },
+      "CodigoCliente": "ASC-5569"
+    },
+    {
+      "Presidente": {
+        "Email": "elena.navarro@correo.example.com",
+        "Apellidos": "Navarro",
+        "Nombre": "Elena",
+        "Movil": "623 784 355"
+      },
+      "EstadoContrato": "Suspendido",
+      "CodigoCliente": "ASC-5572",
+      "NumFila": 13,
+      "FechaVencimiento": "01/09/2026",
+      "NumAscensores": 4,
+      "EstadoCobro": "Al corriente",
+      "FechaInicio": "06/10/2018",
+      "Comunidad": {
+        "Nombre": "C.P. Travesía Molino 5",
+        "Direccion": {
+          "Municipio": "Elche"
+        }
+      },
+      "IdContrato": "CT-2017-989",
+      "Administrador": {
+        "Nombre": "Rosa Calderón",
+        "Email": "rcalderon@fincas-levante.example.org"
+      },
+      "TipoContrato": "Mantenimiento básico"
+    },
+    {
+      "Comunidad": {
+        "Direccion": {
+          "Municipio": "San Vicente"
+        },
+        "Nombre": "Comunidad de Propietarios Ronda Norte 21"
+      },
+      "NumAscensores": 1,
+      "FechaInicio": "06/08/2012",
+      "Administrador": {
+        "Email": "rcalderon@fincas-levante.example.org",
+        "Nombre": "Rosa Calderón"
+      },
+      "NumFila": 14,
+      "Presidente": {
+        "Email": "jorge.prieto@correo.example.com",
+        "Nombre": "Jorge",
+        "Movil": "651 983 186",
+        "Apellidos": "Prieto"
+      },
+      "CodigoCliente": "ASC-5581",
+      "IdContrato": "CT-2017-729",
+      "FechaVencimiento": "02/04/2026",
+      "TipoContrato": "Mantenimiento básico",
+      "EstadoCobro": "Pendiente",
+      "EstadoContrato": "Suspendido"
+    },
+    {
+      "NumAscensores": 2,
+      "IdContrato": "CT-2016-799",
+      "TipoContrato": "Todo riesgo",
+      "CodigoCliente": "ASC-5584",
+      "NumFila": 15,
+      "Comunidad": {
+        "Nombre": "Comunidad de Propietarios Paseo Marítimo 15",
+        "Direccion": {
+          "Municipio": "Elche"
+        }
+      },
+      "EstadoContrato": "Vigente",
+      "EstadoCobro": "Pendiente",
+      "FechaInicio": "11/03/2019",
+      "Presidente": {
+        "Nombre": "Carmen",
+        "Movil": "618 158 593",
+        "Email": "carmen.serrano@correo.example.com",
+        "Apellidos": "Serrano"
+      },
+      "Administrador": {
+        "Email": "blozano@fincas-levante.example.org",
+        "Nombre": "Beatriz Lozano"
+      },
+      "FechaVencimiento": "11/09/2026"
+    },
+    {
+      "IdContrato": "CT-2015-430",
+      "NumFila": 16,
+      "FechaInicio": "09/03/2009",
+      "EstadoCobro": "Al corriente",
+      "EstadoContrato": "Vigente",
+      "Comunidad": {
+        "Nombre": "Comunidad de Propietarios Travesía Molino 2",
+        "Direccion": {
+          "Municipio": "Torrevieja"
+        }
+      },
+      "NumAscensores": 2,
+      "Administrador": {
+        "Nombre": "Tomás Aguirre",
+        "Email": "taguirre@gestion-aguirre.example.net"
+      },
+      "Presidente": {
+        "Nombre": "Irene",
+        "Apellidos": "Serrano",
+        "Movil": "661 368 950",
+        "Email": "irene.serrano@correo.example.com"
+      },
+      "FechaVencimiento": "12/08/2027",
+      "TipoContrato": "Mantenimiento básico",
+      "CodigoCliente": "ASC-5590"
+    },
+    {
+      "NumAscensores": 4,
+      "NumFila": 17,
+      "FechaVencimiento": "09/12/2027",
+      "FechaInicio": "04/09/2013",
+      "EstadoCobro": "Al corriente",
+      "CodigoCliente": "ASC-5599",
+      "Comunidad": {
+        "Direccion": {
+          "Municipio": "Torrevieja"
+        },
+        "Nombre": "Comunidad de Propietarios Plaza de la Fuente 41"
+      },
+      "IdContrato": "CT-2020-105",
+      "Presidente": {
+        "Apellidos": "Gil",
+        "Movil": "616 676 971",
+        "Nombre": "Paula",
+        "Email": "Paula.Gil@Correo.Example.Com"
+      },
+      "Administrador": {
+        "Nombre": "Beatriz Lozano",
+        "Email": "blozano@fincas-levante.example.org"
+      },
+      "TipoContrato": "Mantenimiento básico",
+      "EstadoContrato": "Vigente"
+    },
+    {
+      "NumAscensores": 2,
+      "EstadoCobro": "Al corriente",
+      "NumFila": 18,
+      "FechaInicio": "04/03/2011",
+      "Administrador": {
+        "Email": "blozano@fincas-levante.example.org",
+        "Nombre": "Beatriz Lozano"
+      },
+      "EstadoContrato": "Vigente - renovación pendiente",
+      "Presidente": {
+        "Movil": "660 607 765",
+        "Email": "carmen.moreno@correo.example.com",
+        "Apellidos": "Moreno",
+        "Nombre": "Carmen"
+      },
+      "FechaVencimiento": "03/01/2028",
+      "TipoContrato": "Todo riesgo",
+      "Comunidad": {
+        "Nombre": "C.P. Paseo Marítimo 2",
+        "Direccion": {
+          "Municipio": "San Vicente"
+        }
+      },
+      "CodigoCliente": "ASC-5606",
+      "IdContrato": "CT-2022-569"
+    },
+    {
+      "NumAscensores": 1,
+      "CodigoCliente": "ASC-5609",
+      "Comunidad": {
+        "Nombre": "C.P. Calle Sol 33",
+        "Direccion": {
+          "Municipio": "San Vicente"
+        }
+      },
+      "NumFila": 19,
+      "EstadoContrato": "Vigente",
+      "Presidente": {
+        "Movil": "614 149 962",
+        "Nombre": "Álvaro",
+        "Apellidos": "Navarro",
+        "Email": "alvaro.navarro@correo.example.com"
+      },
+      "Administrador": {
+        "Email": "blozano@fincas-levante.example.org",
+        "Nombre": "Beatriz Lozano"
+      },
+      "FechaVencimiento": "09/02/2028",
+      "EstadoCobro": "Al corriente",
+      "FechaInicio": "01/10/2012",
+      "TipoContrato": "Mantenimiento básico",
+      "IdContrato": "CT-2024-230"
+    },
+    {
+      "EstadoCobro": "Pendiente",
+      "FechaInicio": "10/04/2015",
+      "Comunidad": {
+        "Nombre": "C.P. Calle Prado 12",
+        "Direccion": {
+          "Municipio": "Alicante"
+        }
+      },
+      "Administrador": {
+        "Nombre": "Rosa Calderón",
+        "Email": "rcalderon@fincas-levante.example.org"
+      },
+      "CodigoCliente": "ASC-5614",
+      "FechaVencimiento": "04/08/2028",
+      "TipoContrato": "Mantenimiento integral",
+      "NumFila": 20,
+      "EstadoContrato": "Vigente",
+      "NumAscensores": 1,
+      "IdContrato": "CT-2020-779",
+      "Presidente": {
+        "Email": "inigo.vega@correo.example.com",
+        "Movil": "687 451 964",
+        "Apellidos": "Vega",
+        "Nombre": "Íñigo"
+      }
+    },
+    {
+      "TipoContrato": "Todo riesgo",
+      "EstadoCobro": "Impagado",
+      "FechaVencimiento": "05/11/2028",
+      "NumFila": 21,
+      "NumAscensores": 2,
+      "Presidente": {
+        "Nombre": "Sergio",
+        "Movil": "639 791 948",
+        "Email": "sergio.ortiz@correo.example.com",
+        "Apellidos": "Ortiz"
+      },
+      "EstadoContrato": "Vigente",
+      "IdContrato": "CT-2022-515",
+      "CodigoCliente": "ASC-5620",
+      "FechaInicio": "02/12/2012",
+      "Comunidad": {
+        "Nombre": "C.P. Calle Cerezo 5",
+        "Direccion": {
+          "Municipio": "San Vicente"
+        }
+      },
+      "Administrador": {
+        "Nombre": "Tomás Aguirre",
+        "Email": "taguirre@gestion-aguirre.example.net"
+      }
+    },
+    {
+      "IdContrato": "CT-2019-350",
+      "Presidente": {
+        "Movil": "619 166 915",
+        "Nombre": "Hugo",
+        "Apellidos": "Molina",
+        "Email": "hugo.molina@correo.example.com"
+      },
+      "EstadoCobro": "Al corriente",
+      "NumFila": 22,
+      "Comunidad": {
+        "Direccion": {
+          "Municipio": "Elche"
+        },
+        "Nombre": "C.P. Avenida del Puerto 15"
+      },
+      "Administrador": {
+        "Email": "blozano@fincas-levante.example.org",
+        "Nombre": "Beatriz Lozano"
+      },
+      "EstadoContrato": "Suspendido",
+      "FechaInicio": "09/12/2023",
+      "TipoContrato": "Mantenimiento integral",
+      "CodigoCliente": "ASC-5626",
+      "NumAscensores": 2,
+      "FechaVencimiento": "09/08/2027"
+    },
+    {
+      "TipoContrato": "Mantenimiento integral",
+      "IdContrato": "CT-2021-425",
+      "EstadoCobro": "Al corriente",
+      "EstadoContrato": "Presupuesto enviado",
+      "NumAscensores": 4,
+      "NumFila": 23,
+      "CodigoCliente": "ASC-5636",
+      "Presidente": {
+        "Nombre": "Diego",
+        "Email": "diego.moreno@correo.example.com   ",
+        "Movil": null,
+        "Apellidos": "Moreno"
+      },
+      "FechaVencimiento": "09/12/2027",
+      "FechaInicio": "02/09/2019",
+      "Comunidad": {
+        "Direccion": {
+          "Municipio": "San Vicente"
+        },
+        "Nombre": "C.P. Calle Olmos 2"
+      },
+      "Administrador": {
+        "Email": "taguirre@gestion-aguirre.example.net",
+        "Nombre": "Tomás Aguirre"
+      }
+    },
+    {
+      "Presidente": {
+        "Nombre": "Sara",
+        "Email": "Sara.Castro@Correo.Example.Com",
+        "Movil": "687 670 291",
+        "Apellidos": "Castro"
+      },
+      "IdContrato": "CT-2025-249",
+      "Administrador": {
+        "Nombre": "Beatriz Lozano",
+        "Email": "blozano@fincas-levante.example.org"
+      },
+      "Comunidad": {
+        "Nombre": "C.P. Calle Olmos 21",
+        "Direccion": {
+          "Municipio": "San Vicente"
+        }
+      },
+      "FechaInicio": "04/02/2010",
+      "NumAscensores": 3,
+      "NumFila": 24,
+      "FechaVencimiento": "03/02/2028",
+      "EstadoContrato": "Vigente",
+      "CodigoCliente": "ASC-5639",
+      "TipoContrato": "Mantenimiento básico",
+      "EstadoCobro": "Al corriente"
+    },
+    {
+      "TipoContrato": "Mantenimiento básico",
+      "Comunidad": {
+        "Direccion": {
+          "Municipio": "San Vicente"
+        },
+        "Nombre": "C.P. Calle Prado 8"
+      },
+      "NumAscensores": 1,
+      "Presidente": {
+        "Apellidos": "Molina",
+        "Movil": "680 286 873",
+        "Email": "nuria.molina@correo.example.com",
+        "Nombre": "Nuria"
+      },
+      "CodigoCliente": "ASC-5646",
+      "EstadoContrato": "Vigente",
+      "FechaVencimiento": "03/08/2027",
+      "NumFila": 25,
+      "IdContrato": "CT-2015-371",
+      "FechaInicio": "05/03/2020",
+      "EstadoCobro": "Pendiente",
+      "Administrador": {
+        "Nombre": "Beatriz Lozano",
+        "Email": "blozano@fincas-levante.example.org"
+      }
+    },
+    {
+      "Presidente": {
+        "Apellidos": "Prieto",
+        "Movil": "615 406 938",
+        "Nombre": "Álvaro",
+        "Email": "alvaro.prieto@correo.example.com"
+      },
+      "IdContrato": "CT-2020-272",
+      "Administrador": {
+        "Email": "taguirre@gestion-aguirre.example.net",
+        "Nombre": "Tomás Aguirre"
+      },
+      "EstadoContrato": "Vigente",
+      "NumFila": 26,
+      "CodigoCliente": "ASC-5651",
+      "FechaVencimiento": "05/09/2028",
+      "EstadoCobro": "Pendiente",
+      "NumAscensores": 1,
+      "FechaInicio": "11/10/2010",
+      "TipoContrato": "Mantenimiento básico",
+      "Comunidad": {
+        "Direccion": {
+          "Municipio": "Alicante"
+        },
+        "Nombre": "Comunidad de Propietarios Calle Sol 2"
+      }
+    },
+    {
+      "FechaInicio": "07/10/2008",
+      "EstadoCobro": "Al corriente",
+      "NumAscensores": 2,
+      "CodigoCliente": "ASC-5658",
+      "TipoContrato": "Mantenimiento integral",
+      "Presidente": {
+        "Email": "marta.prieto@correo.example.com",
+        "Movil": null,
+        "Nombre": "Marta",
+        "Apellidos": "Prieto"
+      },
+      "FechaVencimiento": "05/11/2027",
+      "Administrador": {
+        "Nombre": "Beatriz Lozano",
+        "Email": "blozano@fincas-levante.example.org"
+      },
+      "IdContrato": "CT-2019-997",
+      "Comunidad": {
+        "Direccion": {
+          "Municipio": "Elche"
+        },
+        "Nombre": "Comunidad de Propietarios Calle Cerezo 12"
+      },
+      "EstadoContrato": "Vigente",
+      "NumFila": 27
+    },
+    {
+      "NumFila": 28,
+      "FechaInicio": "05/05/2020",
+      "Comunidad": {
+        "Nombre": "  Comunidad de Propietarios Calle Cerezo 41 ",
+        "Direccion": {
+          "Municipio": "Alicante"
+        }
+      },
+      "TipoContrato": "Todo riesgo",
+      "EstadoContrato": "Vigente - renovación pendiente",
+      "CodigoCliente": "ASC-5666",
+      "Administrador": {
+        "Email": "blozano@fincas-levante.example.org",
+        "Nombre": "Beatriz Lozano"
+      },
+      "NumAscensores": 2,
+      "Presidente": {
+        "Email": "Adrian.Herrero@Correo.Example.Com",
+        "Nombre": "Adrián",
+        "Movil": null,
+        "Apellidos": "Herrero"
+      },
+      "EstadoCobro": "Impagado",
+      "FechaVencimiento": "09/12/2027",
+      "IdContrato": "CT-2019-850"
+    },
+    {
+      "Administrador": {
+        "Email": "taguirre@gestion-aguirre.example.net",
+        "Nombre": "Tomás Aguirre"
+      },
+      "Comunidad": {
+        "Direccion": {
+          "Municipio": "Torrevieja"
+        },
+        "Nombre": "Comunidad de Propietarios Travesía Molino 27"
+      },
+      "IdContrato": "CT-2021-171",
+      "EstadoCobro": "Al corriente",
+      "EstadoContrato": "Suspendido",
+      "TipoContrato": "Mantenimiento básico",
+      "FechaInicio": "08/07/2024",
+      "NumFila": 29,
+      "Presidente": {
+        "Apellidos": "Ramos",
+        "Movil": "646 485 946",
+        "Nombre": "Lucía",
+        "Email": "lucia.ramos@correo.example.com"
+      },
+      "CodigoCliente": "ASC-5670",
+      "FechaVencimiento": "08/07/2026",
+      "NumAscensores": 1
+    },
+    {
+      "FechaInicio": "05/02/2024",
+      "Administrador": {
+        "Nombre": "Beatriz Lozano",
+        "Email": "blozano@fincas-levante.example.org"
+      },
+      "NumFila": 30,
+      "FechaVencimiento": "11/11/2027",
+      "Comunidad": {
+        "Nombre": "Comunidad de Propietarios Plaza de la Fuente 58",
+        "Direccion": {
+          "Municipio": "Alicante"
+        }
+      },
+      "CodigoCliente": "ASC-5675",
+      "NumAscensores": 1,
+      "EstadoCobro": "Al corriente",
+      "Presidente": {
+        "Apellidos": "Castro",
+        "Email": "hugo.castro@correo.example.com",
+        "Movil": null,
+        "Nombre": "Hugo"
+      },
+      "TipoContrato": "Todo riesgo",
+      "IdContrato": "CT-2024-989",
+      "EstadoContrato": "Vigente"
+    },
+    {
+      "EstadoCobro": "Al corriente",
+      "Administrador": {
+        "Email": "taguirre@gestion-aguirre.example.net",
+        "Nombre": "Tomás Aguirre"
+      },
+      "IdContrato": "CT-2022-359",
+      "Presidente": {
+        "Nombre": "Hugo",
+        "Email": "hugo.gil@correo.example.com",
+        "Apellidos": "Gil"
+      },
+      "NumFila": 31,
+      "NumAscensores": 1,
+      "Comunidad": {
+        "Nombre": "Comunidad de Propietarios Calle Real 2",
+        "Direccion": {
+          "Municipio": "Alicante"
+        }
+      },
+      "FechaInicio": "02/10/2010",
+      "CodigoCliente": "ASC-5680",
+      "EstadoContrato": "Presupuesto enviado",
+      "TipoContrato": "Mantenimiento integral",
+      "FechaVencimiento": "07/07/2027"
+    },
+    {
+      "TipoContrato": "Mantenimiento integral",
+      "FechaVencimiento": "03/09/2028",
+      "EstadoContrato": "Vigente",
+      "IdContrato": "CT-2017-231",
+      "Comunidad": {
+        "Nombre": " Comunidad de Propietarios Calle Cerezo 8",
+        "Direccion": {
+          "Municipio": "Alicante"
+        }
+      },
+      "NumFila": 32,
+      "Administrador": {
+        "Email": "blozano@fincas-levante.example.org",
+        "Nombre": "Beatriz Lozano"
+      },
+      "NumAscensores": 1,
+      "FechaInicio": "05/03/2008",
+      "CodigoCliente": "ASC-5688",
+      "EstadoCobro": "Al corriente",
+      "Presidente": {
+        "Movil": "627 432 792",
+        "Apellidos": "Molina",
+        "Nombre": "Mateo",
+        "Email": "  mateo.molina@correo.example.com "
+      }
+    },
+    {
+      "EstadoCobro": "Al corriente",
+      "CodigoCliente": "ASC-5693",
+      "NumFila": 33,
+      "Presidente": {
+        "Apellidos": "Iglesias",
+        "Nombre": "Carmen",
+        "Email": "carmen.iglesias@correo.example.com",
+        "Movil": "620 321 685"
+      },
+      "EstadoContrato": "Vigente",
+      "FechaVencimiento": "01/07/2026",
+      "IdContrato": "CT-2022-529",
+      "Comunidad": {
+        "Nombre": "C.P. Paseo Marítimo 27 ",
+        "Direccion": {
+          "Municipio": "San Vicente"
+        }
+      },
+      "NumAscensores": 1,
+      "FechaInicio": "05/01/2013",
+      "Administrador": {
+        "Nombre": "Rosa Calderón",
+        "Email": "rcalderon@fincas-levante.example.org"
+      },
+      "TipoContrato": "Mantenimiento básico"
+    },
+    {
+      "Presidente": {
+        "Email": "clara.molina@correo.example.com",
+        "Apellidos": "Molina",
+        "Nombre": "Clara",
+        "Movil": "658 610 973"
+      },
+      "CodigoCliente": "ASC-5702",
+      "Administrador": {
+        "Nombre": "Tomás Aguirre",
+        "Email": "taguirre@gestion-aguirre.example.net"
+      },
+      "FechaInicio": "05/02/2013",
+      "EstadoCobro": "Al corriente",
+      "TipoContrato": "Mantenimiento integral",
+      "EstadoContrato": "Vigente - renovación pendiente",
+      "FechaVencimiento": "04/03/2028",
+      "IdContrato": "CT-2018-648",
+      "Comunidad": {
+        "Nombre": "  C.P. Paseo Marítimo 8 ",
+        "Direccion": {
+          "Municipio": "San Vicente"
+        }
+      },
+      "NumAscensores": 2,
+      "NumFila": 34
+    },
+    {
+      "EstadoCobro": "Al corriente",
+      "CodigoCliente": "ASC-5705",
+      "Comunidad": {
+        "Nombre": "C.P. Travesía Molino 21",
+        "Direccion": {
+          "Municipio": "Torrevieja"
+        }
+      },
+      "TipoContrato": "Mantenimiento integral",
+      "NumAscensores": 1,
+      "FechaVencimiento": "04/09/2027",
+      "Administrador": {
+        "Email": "rcalderon@fincas-levante.example.org",
+        "Nombre": "Rosa Calderón"
+      },
+      "EstadoContrato": "Vigente",
+      "IdContrato": "CT-2020-165",
+      "FechaInicio": "10/01/2022",
+      "Presidente": {
+        "Movil": "671 185 210",
+        "Nombre": "Íñigo",
+        "Apellidos": "Ortiz",
+        "Email": "inigo.ortiz@correo.example.com"
+      },
+      "NumFila": 35
+    },
+    {
+      "NumFila": 36,
+      "NumAscensores": 3,
+      "FechaVencimiento": "02/06/2027",
+      "Presidente": {
+        "Email": "Hugo.Garcia@Correo.Example.Com",
+        "Movil": "695 456 520",
+        "Nombre": "Hugo",
+        "Apellidos": "García"
+      },
+      "EstadoContrato": "Vigente",
+      "IdContrato": "CT-2022-693",
+      "TipoContrato": "Mantenimiento básico",
+      "Comunidad": {
+        "Direccion": {
+          "Municipio": "Alicante"
+        },
+        "Nombre": "  Comunidad de Propietarios Calle Prado 2 "
+      },
+      "CodigoCliente": "ASC-5710",
+      "FechaInicio": "10/03/2016",
+      "EstadoCobro": "Impagado",
+      "Administrador": {
+        "Email": "rcalderon@fincas-levante.example.org",
+        "Nombre": "Rosa Calderón"
+      }
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "external_id": {
+        "type": "string",
+        "description": "Identifier of the customer at the maintenance company."
+      },
+      "name": {
+        "type": "string",
+        "description": "Full name of the person who reports issues for the customer."
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address of that person."
+      },
+      "phone": {
+        "type": "string",
+        "description": "Mobile number for breakdown callbacks."
+      },
+      "organization": {
+        "type": "string",
+        "description": "Name of the residential community or building the customer represents."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "on_hold",
+          "terminated"
+        ],
+        "description": "Whether the maintenance contract is in force, on hold or terminated."
+      },
+      "custom_fields": {
+        "type": "object",
+        "description": "Account-specific fields.",
+        "properties": {
+          "plan": {
+            "type": "string",
+            "enum": [
+              "basic",
+              "full",
+              "all_risk"
+            ],
+            "description": "Maintenance contract type, which sets what repairs are covered."
+          },
+          "lift_count": {
+            "type": "integer",
+            "description": "Number of lifts covered by the contract."
+          },
+          "contract_start": {
+            "type": "string",
+            "format": "date",
+            "description": "Date."
+          },
+          "contract_years": {
+            "type": "integer",
+            "description": "Full years the customer has held a contract."
+          }
+        }
+      },
+      "time_zone": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "external_id",
+      "name",
+      "email",
+      "status"
+    ]
+  },
+  "groundTruth": {
+    "external_id": {
+      "source": "CodigoCliente",
+      "transform": "copy",
+      "why": "customer code; IdContrato is the contract and NumFila the export row"
+    },
+    "name": {
+      "source": null,
+      "sources": [
+        "Presidente.Nombre",
+        "Presidente.Apellidos"
+      ],
+      "transform": "concat",
+      "separator": " ",
+      "why": "community president; Administrador.Nombre is the external property administrator"
+    },
+    "email": {
+      "source": "Presidente.Email",
+      "transform": "normalize_email",
+      "why": "president email, mixed case and padded; Administrador.Email belongs to the administrator"
+    },
+    "phone": {
+      "source": "Presidente.Movil",
+      "transform": "copy",
+      "why": "mobile, null or missing for some"
+    },
+    "organization": {
+      "source": "Comunidad.Nombre",
+      "transform": "trim",
+      "why": "community name, padded"
+    },
+    "status": {
+      "source": "EstadoContrato",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Vigente": "active",
+        "Vigente - renovación pendiente": "active",
+        "Suspendido": "on_hold",
+        "Rescindido": "terminated",
+        "Presupuesto enviado": null
+      },
+      "why": "contract state; a sent quote is not a customer and needs review; EstadoCobro is collection"
+    },
+    "custom_fields.plan": {
+      "source": "TipoContrato",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Mantenimiento básico": "basic",
+        "Mantenimiento integral": "full",
+        "Todo riesgo": "all_risk"
+      },
+      "why": "contract type"
+    },
+    "custom_fields.lift_count": {
+      "source": "NumAscensores",
+      "transform": "copy",
+      "why": "number of lifts"
+    },
+    "custom_fields.contract_start": {
+      "source": "FechaInicio",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "contract start (Spanish day-first); FechaVencimiento is the expiry"
+    },
+    "custom_fields.contract_years": {
+      "source": null,
+      "transform": "none",
+      "why": "not exported",
+      "unsupportedReason": "would need the number of full years between FechaInicio and the import date"
+    },
+    "time_zone": {
+      "source": null,
+      "transform": "none",
+      "why": "no time zone is exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "CodigoCliente",
+        "IdContrato"
+      ],
+      "correctFor": "external_id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "Presidente.Email",
+        "Administrador.Email"
+      ],
+      "correctFor": "email"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "Presidente.Nombre",
+        "Administrador.Nombre"
+      ],
+      "correctFor": "name"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "EstadoContrato",
+        "EstadoCobro"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "FechaInicio",
+        "FechaVencimiento"
+      ],
+      "correctFor": "custom_fields.contract_start"
+    }
+  ],
+  "sourceConcepts": {
+    "CodigoCliente": "customer-id",
+    "IdContrato": "transaction-id",
+    "NumFila": "other-identifier",
+    "Comunidad.Nombre": "organization-name",
+    "Comunidad.Direccion.Municipio": "city",
+    "Presidente.Nombre": "given-name",
+    "Presidente.Apellidos": "family-name",
+    "Presidente.Email": "email",
+    "Presidente.Movil": "phone",
+    "Administrador.Nombre": "person-name",
+    "Administrador.Email": "email",
+    "EstadoContrato": "account-status",
+    "EstadoCobro": "payment-status",
+    "TipoContrato": "category",
+    "FechaInicio": "start-date",
+    "FechaVencimiento": "end-date",
+    "NumAscensores": "quantity"
+  },
+  "destinationConcepts": {
+    "external_id": "customer-id",
+    "name": "person-name",
+    "email": "email",
+    "phone": "phone",
+    "organization": "organization-name",
+    "status": "account-status",
+    "custom_fields.plan": "category",
+    "custom_fields.lift_count": "quantity",
+    "custom_fields.contract_start": "start-date",
+    "custom_fields.contract_years": "quantity",
+    "time_zone": "other"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 8,
+      "outcome": "transformed",
+      "output": {
+        "external_id": "ASC-5552",
+        "name": "Paula Soler",
+        "email": "paula.soler@correo.example.com",
+        "organization": "C.P. Calle Mayor 15",
+        "status": "terminated",
+        "custom_fields": {
+          "plan": "basic",
+          "lift_count": 4,
+          "contract_start": "2019-06-06"
+        }
+      }
+    },
+    {
+      "recordIndex": 22,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 28,
+      "outcome": "transformed",
+      "output": {
+        "external_id": "ASC-5670",
+        "name": "Lucía Ramos",
+        "email": "lucia.ramos@correo.example.com",
+        "phone": "646 485 946",
+        "organization": "Comunidad de Propietarios Travesía Molino 27",
+        "status": "on_hold",
+        "custom_fields": {
+          "plan": "basic",
+          "lift_count": 1,
+          "contract_start": "2024-07-08"
+        }
+      }
+    },
+    {
+      "recordIndex": 32,
+      "outcome": "transformed",
+      "output": {
+        "external_id": "ASC-5693",
+        "name": "Carmen Iglesias",
+        "email": "carmen.iglesias@correo.example.com",
+        "phone": "620 321 685",
+        "organization": "C.P. Paseo Marítimo 27",
+        "status": "active",
+        "custom_fields": {
+          "plan": "basic",
+          "lift_count": 1,
+          "contract_start": "2013-01-05"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1279 @@
+{
+  "scenarioId": "business-travel-agency-accounts-to-service-desk-requesters",
+  "split": "holdout",
+  "track": "wedge",
+  "industry": "corporate travel agency client accounts",
+  "sourceLanguage": "fr",
+  "description": "Client-account export of a fictional business travel agency (French snake_case CRM, nested company and contact with a nested contact-details block) to be loaded as service-desk requesters.",
+  "fictional": true,
+  "completable": true,
+  "records": [
+    {
+      "societe": {
+        "siret": "385 346 154 58074",
+        "raison_sociale": "Atelier Collin"
+      },
+      "contact": {
+        "coordonnees": {
+          "email_secondaire": "chloe.dupuis@perso.example.org",
+          "portable": "06 81 23 33 54",
+          "email": "chloe.dupuis@pro.example.com"
+        },
+        "nom": "Dupuis",
+        "prenom": "Chloé"
+      },
+      "assistante": {
+        "nom": "Hugo Lefèvre",
+        "email": "hugo.lefevre@pro.example.com"
+      },
+      "ligne": 1,
+      "num_client": "CL-3010",
+      "conseiller": "Olivier Gaillard",
+      "date_ouverture": "11/04/2025",
+      "langue": "FR",
+      "statut_compte": "Actif",
+      "formule": "Essentiel",
+      "id_fiche": 420767,
+      "date_dernier_voyage": "25/01/2026",
+      "statut_paiement": "À jour"
+    },
+    {
+      "contact": {
+        "prenom": "Chloé",
+        "coordonnees": {
+          "portable": "06 41 95 43 89",
+          "email_secondaire": "chloe.garnier@perso.example.org",
+          "email": "Chloe.Garnier@Pro.Example.Com"
+        },
+        "nom": "Garnier"
+      },
+      "num_client": "CL-3015",
+      "date_dernier_voyage": "02/08/2025",
+      "date_ouverture": "22/04/2019",
+      "ligne": 2,
+      "statut_compte": "Suspendu (impayé)",
+      "statut_paiement": "Relance",
+      "langue": "EN",
+      "assistante": {
+        "nom": "Inès Girard",
+        "email": "Ines.Girard@Pro.Example.Com"
+      },
+      "id_fiche": 452786,
+      "societe": {
+        "siret": "404 569 953 55824",
+        "raison_sociale": "Groupe Rivière"
+      },
+      "conseiller": "Olivier Gaillard",
+      "formule": "Essentiel"
+    },
+    {
+      "num_client": "CL-3019",
+      "statut_compte": "Actif",
+      "formule": "Premium 24/7",
+      "societe": {
+        "raison_sociale": "Groupe Delorme",
+        "siret": "849 320 722 92665"
+      },
+      "conseiller": "Nadia Perrot",
+      "langue": "FR",
+      "ligne": 3,
+      "date_dernier_voyage": "19/06/2026",
+      "date_ouverture": "05/07/2025",
+      "contact": {
+        "prenom": "Lucas",
+        "nom": "Laurent",
+        "coordonnees": {
+          "email_secondaire": "lucas.laurent@perso.example.org",
+          "portable": "06 93 26 72 78",
+          "email": "Lucas.Laurent@Pro.Example.Com"
+        }
+      },
+      "assistante": {
+        "email": "Chloe.Chevalier@Pro.Example.Com",
+        "nom": "Chloé Chevalier"
+      },
+      "statut_paiement": "À jour",
+      "id_fiche": 464979
+    },
+    {
+      "date_dernier_voyage": "29/11/2025",
+      "num_client": "CL-3023",
+      "langue": "FR",
+      "id_fiche": 430742,
+      "contact": {
+        "prenom": "Nicolas",
+        "nom": "Roux",
+        "coordonnees": {
+          "email_secondaire": "nicolas.roux@perso.example.org",
+          "portable": "06 87 95 73 33",
+          "email": "Nicolas.Roux@Pro.Example.Com"
+        }
+      },
+      "societe": {
+        "siret": "245 112 794 84825",
+        "raison_sociale": "Laboratoires Barre"
+      },
+      "formule": "Confort",
+      "assistante": {
+        "email": "Remi.Gauthier@Pro.Example.Com",
+        "nom": "Rémi Gauthier"
+      },
+      "statut_compte": "Actif",
+      "conseiller": "Sylvie Brun",
+      "statut_paiement": "À jour",
+      "date_ouverture": "27/07/2014",
+      "ligne": 4
+    },
+    {
+      "date_ouverture": "20/07/2015",
+      "num_client": "CL-3026",
+      "statut_compte": "Actif",
+      "date_dernier_voyage": "20/04/2025",
+      "societe": {
+        "siret": "751 765 159 61651",
+        "raison_sociale": "Cabinet Delorme"
+      },
+      "langue": null,
+      "conseiller": "Olivier Gaillard",
+      "statut_paiement": "À jour",
+      "id_fiche": 432233,
+      "formule": "Essentiel",
+      "contact": {
+        "nom": "Morel",
+        "prenom": "Antoine",
+        "coordonnees": {
+          "email": "Antoine.Morel@Pro.Example.Com",
+          "email_secondaire": "antoine.morel@perso.example.org",
+          "portable": null
+        }
+      },
+      "assistante": {
+        "email": "Julien.Blanc@Pro.Example.Com",
+        "nom": "Julien Blanc"
+      },
+      "ligne": 5
+    },
+    {
+      "ligne": 6,
+      "langue": "FR",
+      "date_dernier_voyage": "06/02/2026",
+      "assistante": {
+        "email": "Remi.Girard@Pro.Example.Com",
+        "nom": "Rémi Girard"
+      },
+      "conseiller": "Sylvie Brun",
+      "contact": {
+        "coordonnees": {
+          "email_secondaire": "manon.perrin@perso.example.org",
+          "portable": "06 95 74 68 89",
+          "email": "manon.perrin@pro.example.com"
+        },
+        "prenom": "Manon",
+        "nom": "Perrin"
+      },
+      "date_ouverture": "03/08/2017",
+      "statut_paiement": "Relance",
+      "statut_compte": "Résilié",
+      "societe": {
+        "raison_sociale": "Studio Delorme",
+        "siret": "877 355 885 23893"
+      },
+      "num_client": "CL-3031",
+      "formule": "Premium 24/7",
+      "id_fiche": 444759
+    },
+    {
+      "date_ouverture": "22/03/2025",
+      "langue": "FR",
+      "conseiller": "Sylvie Brun",
+      "statut_paiement": "Relance",
+      "id_fiche": 489017,
+      "num_client": "CL-3034",
+      "societe": {
+        "raison_sociale": "Atelier Delorme",
+        "siret": "390 340 580 42950"
+      },
+      "date_dernier_voyage": "05/12/2025",
+      "ligne": 7,
+      "statut_compte": "Actif - grand compte",
+      "assistante": {
+        "email": "antoine.garnier@pro.example.com",
+        "nom": "Antoine Garnier"
+      },
+      "formule": "Essentiel",
+      "contact": {
+        "prenom": "Manon",
+        "coordonnees": {
+          "portable": "06 83 70 62 57",
+          "email": "manon.lefevre@pro.example.com"
+        },
+        "nom": "Lefèvre"
+      }
+    },
+    {
+      "date_dernier_voyage": "20/08/2025",
+      "date_ouverture": "14/04/2019",
+      "statut_compte": "Actif",
+      "societe": {
+        "siret": "816 886 565 48581",
+        "raison_sociale": "Laboratoires Lacombe "
+      },
+      "ligne": 8,
+      "num_client": "CL-3040",
+      "contact": {
+        "prenom": "Théo",
+        "nom": "Dubois",
+        "coordonnees": {
+          "email": "theo.dubois@pro.example.com",
+          "portable": "06 25 73 57 13",
+          "email_secondaire": "theo.dubois@perso.example.org"
+        }
+      },
+      "langue": "FR",
+      "formule": "Confort",
+      "id_fiche": 423535,
+      "statut_paiement": "À jour",
+      "assistante": {
+        "email": "juliette.dupuis@pro.example.com",
+        "nom": "Juliette Dupuis"
+      },
+      "conseiller": "Olivier Gaillard"
+    },
+    {
+      "id_fiche": 499077,
+      "num_client": "CL-3044",
+      "statut_compte": "Actif",
+      "conseiller": "Nadia Perrot",
+      "societe": {
+        "siret": "992 393 707 61908",
+        "raison_sociale": "Cabinet Lacombe"
+      },
+      "statut_paiement": "À jour",
+      "date_ouverture": "03/03/2021",
+      "ligne": 9,
+      "formule": "Confort",
+      "assistante": {
+        "nom": "Sarah Marchand",
+        "email": "sarah.marchand@pro.example.com"
+      },
+      "contact": {
+        "nom": "Roux",
+        "coordonnees": {
+          "portable": "06 27 98 93 89",
+          "email_secondaire": "baptiste.roux@perso.example.org",
+          "email": "Baptiste.Roux@Pro.Example.Com"
+        },
+        "prenom": "Baptiste"
+      },
+      "langue": "FR",
+      "date_dernier_voyage": "23/09/2025"
+    },
+    {
+      "formule": "Essentiel",
+      "num_client": "CL-3046",
+      "conseiller": "Sylvie Brun",
+      "societe": {
+        "siret": "939 133 942 32425",
+        "raison_sociale": "Imprimerie Rivière"
+      },
+      "date_ouverture": "11/03/2016",
+      "contact": {
+        "coordonnees": {
+          "email_secondaire": "theo.masson@perso.example.org",
+          "portable": "06 42 45 52 26",
+          "email": "theo.masson@pro.example.com"
+        },
+        "nom": "Masson",
+        "prenom": "Théo"
+      },
+      "langue": "DE",
+      "ligne": 10,
+      "id_fiche": 435124,
+      "statut_paiement": "À jour",
+      "date_dernier_voyage": "18/05/2025",
+      "assistante": {
+        "nom": "Manon Garnier",
+        "email": "manon.garnier@pro.example.com"
+      },
+      "statut_compte": "Actif - grand compte"
+    },
+    {
+      "date_dernier_voyage": "20/06/2025",
+      "statut_paiement": "À jour",
+      "id_fiche": 480513,
+      "date_ouverture": "16/08/2018",
+      "statut_compte": "Actif - grand compte",
+      "contact": {
+        "nom": "Garnier",
+        "coordonnees": {
+          "email": "pauline.garnier@pro.example.com   ",
+          "email_secondaire": null
+        },
+        "prenom": "Pauline"
+      },
+      "langue": "FR",
+      "assistante": {
+        "email": "mathis.laurent@pro.example.com",
+        "nom": "Mathis Laurent"
+      },
+      "conseiller": "Nadia Perrot",
+      "societe": {
+        "siret": "730 125 499 86185",
+        "raison_sociale": "Imprimerie Vernet"
+      },
+      "num_client": "CL-3051",
+      "ligne": 11,
+      "formule": "Essentiel"
+    },
+    {
+      "societe": {
+        "raison_sociale": " Cabinet Rivière  ",
+        "siret": "800 218 823 72624"
+      },
+      "assistante": {
+        "email": "remi.roux@pro.example.com",
+        "nom": "Rémi Roux"
+      },
+      "formule": "Confort",
+      "ligne": 12,
+      "statut_compte": "Résilié",
+      "id_fiche": 472658,
+      "num_client": "CL-3056",
+      "date_dernier_voyage": "10/02/2026",
+      "contact": {
+        "coordonnees": {
+          "portable": "06 74 65 79 78",
+          "email": "mathis.perrin@pro.example.com"
+        },
+        "prenom": "Mathis",
+        "nom": "Perrin"
+      },
+      "date_ouverture": "03/09/2016",
+      "statut_paiement": "À jour",
+      "conseiller": "Nadia Perrot"
+    },
+    {
+      "formule": "Confort",
+      "contact": {
+        "coordonnees": {
+          "portable": "06 31 10 94 84",
+          "email": "margaux.robin@pro.example.com",
+          "email_secondaire": null
+        },
+        "prenom": "Margaux",
+        "nom": "Robin"
+      },
+      "date_ouverture": "08/04/2022",
+      "conseiller": "Olivier Gaillard",
+      "num_client": "CL-3058",
+      "date_dernier_voyage": "20/05/2026",
+      "statut_compte": "Actif",
+      "societe": {
+        "siret": "137 953 131 86140",
+        "raison_sociale": "Imprimerie Delorme"
+      },
+      "id_fiche": 438350,
+      "statut_paiement": "À jour",
+      "ligne": 13,
+      "assistante": {
+        "email": "camille.faure@pro.example.com",
+        "nom": "Camille Faure"
+      },
+      "langue": "EN"
+    },
+    {
+      "langue": "FR",
+      "contact": {
+        "nom": "Morel",
+        "coordonnees": {
+          "portable": "06 90 23 17 50",
+          "email": "hugo.morel@pro.example.com"
+        },
+        "prenom": "Hugo"
+      },
+      "date_dernier_voyage": "06/11/2025",
+      "assistante": {
+        "nom": "Elise Gauthier",
+        "email": "Elise.Gauthier@Pro.Example.Com"
+      },
+      "date_ouverture": "26/09/2023",
+      "num_client": "CL-3062",
+      "statut_paiement": "À jour",
+      "formule": "Essentiel",
+      "id_fiche": 496542,
+      "ligne": 14,
+      "conseiller": "Nadia Perrot",
+      "societe": {
+        "siret": "256 896 623 69276",
+        "raison_sociale": "Transports Aubert"
+      },
+      "statut_compte": "Actif"
+    },
+    {
+      "contact": {
+        "prenom": "Nicolas",
+        "nom": "Gauthier",
+        "coordonnees": {
+          "portable": "06 51 29 42 16",
+          "email": "nicolas.gauthier@pro.example.com"
+        }
+      },
+      "conseiller": "Nadia Perrot",
+      "societe": {
+        "siret": "919 371 768 77065",
+        "raison_sociale": "Transports Collin"
+      },
+      "date_dernier_voyage": "07/03/2026",
+      "id_fiche": 499050,
+      "langue": "DE",
+      "date_ouverture": "25/12/2015",
+      "num_client": "CL-3068",
+      "statut_paiement": "À jour",
+      "ligne": 15,
+      "assistante": {
+        "nom": "Elise Dubois",
+        "email": "Elise.Dubois@Pro.Example.Com"
+      },
+      "statut_compte": "Prospect",
+      "formule": "Premium 24/7"
+    },
+    {
+      "contact": {
+        "coordonnees": {
+          "portable": "06 43 70 67 19",
+          "email_secondaire": null,
+          "email": "lucas.marchand@pro.example.com"
+        },
+        "prenom": "Lucas",
+        "nom": "Marchand"
+      },
+      "conseiller": "Nadia Perrot",
+      "ligne": 16,
+      "statut_compte": "Résilié",
+      "formule": "Essentiel",
+      "societe": {
+        "siret": "539 939 301 10794",
+        "raison_sociale": "Transports Vernet"
+      },
+      "date_dernier_voyage": "16/09/2025",
+      "date_ouverture": "10/03/2014",
+      "num_client": "CL-3072",
+      "statut_paiement": "À jour",
+      "assistante": {
+        "email": "theo.dupuis@pro.example.com",
+        "nom": "Théo Dupuis"
+      },
+      "id_fiche": 430000,
+      "langue": "FR"
+    },
+    {
+      "id_fiche": 428255,
+      "statut_paiement": "Relance",
+      "statut_compte": "Actif",
+      "contact": {
+        "coordonnees": {
+          "email": "antoine.marchand@pro.example.com",
+          "portable": "06 29 28 86 19",
+          "email_secondaire": "antoine.marchand@perso.example.org"
+        },
+        "prenom": "Antoine",
+        "nom": "Marchand"
+      },
+      "date_dernier_voyage": "27/06/2026",
+      "formule": "Confort",
+      "conseiller": "Olivier Gaillard",
+      "ligne": 17,
+      "date_ouverture": "21/09/2016",
+      "langue": "EN",
+      "societe": {
+        "raison_sociale": "Laboratoires Aubert ",
+        "siret": "477 942 855 30379"
+      },
+      "assistante": {
+        "email": "chloe.moreau@pro.example.com",
+        "nom": "Chloé Moreau"
+      },
+      "num_client": "CL-3074"
+    },
+    {
+      "statut_paiement": "À jour",
+      "statut_compte": "Actif",
+      "contact": {
+        "prenom": "Nicolas",
+        "nom": "Perrin",
+        "coordonnees": {
+          "email": "Nicolas.Perrin@Pro.Example.Com",
+          "portable": "06 16 30 47 15",
+          "email_secondaire": "nicolas.perrin@perso.example.org"
+        }
+      },
+      "num_client": "CL-3079",
+      "conseiller": "Sylvie Brun",
+      "formule": "Confort",
+      "societe": {
+        "siret": "365 152 934 99764",
+        "raison_sociale": "Groupe Vernet"
+      },
+      "langue": null,
+      "date_dernier_voyage": "04/06/2026",
+      "id_fiche": 426704,
+      "assistante": {
+        "email": "Remi.Dubois@Pro.Example.Com",
+        "nom": "Rémi Dubois"
+      },
+      "ligne": 18,
+      "date_ouverture": "17/05/2025"
+    },
+    {
+      "ligne": 19,
+      "date_dernier_voyage": "22/05/2025",
+      "formule": "Essentiel",
+      "societe": {
+        "raison_sociale": "Imprimerie Collin",
+        "siret": "767 573 900 65082"
+      },
+      "assistante": {
+        "email": "chloe.faure@pro.example.com",
+        "nom": "Chloé Faure"
+      },
+      "conseiller": "Olivier Gaillard",
+      "statut_paiement": "À jour",
+      "num_client": "CL-3084",
+      "langue": "FR",
+      "id_fiche": 412720,
+      "contact": {
+        "prenom": "Camille",
+        "nom": "Blanc",
+        "coordonnees": {
+          "email": "camille.blanc@pro.example.com ",
+          "portable": null,
+          "email_secondaire": "camille.blanc@perso.example.org"
+        }
+      },
+      "statut_compte": "Résilié",
+      "date_ouverture": "24/04/2024"
+    },
+    {
+      "conseiller": "Olivier Gaillard",
+      "num_client": "CL-3088",
+      "date_ouverture": "05/04/2025",
+      "ligne": 20,
+      "langue": "FR",
+      "societe": {
+        "raison_sociale": "Atelier Vernet",
+        "siret": "323 179 310 48973"
+      },
+      "assistante": {
+        "nom": "Margaux Masson",
+        "email": "Margaux.Masson@Pro.Example.Com"
+      },
+      "statut_compte": "Actif",
+      "contact": {
+        "coordonnees": {
+          "portable": "06 92 71 26 51",
+          "email": "lucas.fournier@pro.example.com",
+          "email_secondaire": "lucas.fournier@perso.example.org"
+        },
+        "prenom": "Lucas",
+        "nom": "Fournier"
+      },
+      "formule": "Essentiel",
+      "date_dernier_voyage": "23/10/2025",
+      "id_fiche": 463935,
+      "statut_paiement": "Relance"
+    },
+    {
+      "conseiller": "Nadia Perrot",
+      "societe": {
+        "siret": "311 862 279 88463",
+        "raison_sociale": " Laboratoires Vernet"
+      },
+      "date_ouverture": "25/08/2017",
+      "assistante": {
+        "nom": "Elise Blanc",
+        "email": "elise.blanc@pro.example.com"
+      },
+      "date_dernier_voyage": "04/08/2026",
+      "num_client": "CL-3092",
+      "statut_paiement": "À jour",
+      "id_fiche": 498735,
+      "ligne": 21,
+      "formule": "Essentiel",
+      "contact": {
+        "prenom": "Manon",
+        "coordonnees": {
+          "email_secondaire": "manon.blanc@perso.example.org",
+          "portable": "06 58 45 14 32",
+          "email": "Manon.Blanc@Pro.Example.Com"
+        },
+        "nom": "Blanc"
+      },
+      "statut_compte": "Suspendu (impayé)"
+    },
+    {
+      "langue": "FR",
+      "ligne": 22,
+      "statut_paiement": "Relance",
+      "date_dernier_voyage": "12/08/2025",
+      "num_client": "CL-3094",
+      "id_fiche": 488832,
+      "assistante": {
+        "nom": "Hugo Roux",
+        "email": "hugo.roux@pro.example.com"
+      },
+      "date_ouverture": "15/07/2022",
+      "conseiller": "Olivier Gaillard",
+      "statut_compte": "Prospect",
+      "societe": {
+        "raison_sociale": " Transports Lacombe  ",
+        "siret": "853 915 431 47983"
+      },
+      "formule": "Essentiel",
+      "contact": {
+        "prenom": "Manon",
+        "nom": "Roux",
+        "coordonnees": {
+          "email_secondaire": "manon.roux@perso.example.org",
+          "portable": "06 55 89 10 43",
+          "email": "manon.roux@pro.example.com"
+        }
+      }
+    },
+    {
+      "statut_compte": "Suspendu (impayé)",
+      "num_client": "CL-3100",
+      "langue": "EN",
+      "assistante": {
+        "nom": "Théo Garnier",
+        "email": "theo.garnier@pro.example.com"
+      },
+      "societe": {
+        "siret": "392 889 815 99580",
+        "raison_sociale": "Atelier Barre"
+      },
+      "ligne": 23,
+      "formule": "Confort",
+      "conseiller": "Sylvie Brun",
+      "date_ouverture": "27/02/2021",
+      "date_dernier_voyage": "14/02/2025",
+      "statut_paiement": "Relance",
+      "contact": {
+        "prenom": "Lucas",
+        "coordonnees": {
+          "email_secondaire": "lucas.roux@perso.example.org",
+          "email": "Lucas.Roux@Pro.Example.Com",
+          "portable": "06 70 23 80 48"
+        },
+        "nom": "Roux"
+      },
+      "id_fiche": 437229
+    },
+    {
+      "statut_compte": "Actif - grand compte",
+      "date_dernier_voyage": "13/10/2025",
+      "date_ouverture": "04/07/2017",
+      "assistante": {
+        "nom": "Sarah Gauthier",
+        "email": "Sarah.Gauthier@Pro.Example.Com"
+      },
+      "ligne": 24,
+      "societe": {
+        "siret": "508 863 572 83802",
+        "raison_sociale": "Studio Lacombe"
+      },
+      "statut_paiement": "À jour",
+      "num_client": "CL-3104",
+      "contact": {
+        "prenom": "Rémi",
+        "coordonnees": {
+          "portable": "06 88 38 74 79",
+          "email": "remi.marchand@pro.example.com",
+          "email_secondaire": "remi.marchand@perso.example.org"
+        },
+        "nom": "Marchand"
+      },
+      "id_fiche": 407141,
+      "formule": "Essentiel",
+      "langue": "FR",
+      "conseiller": "Nadia Perrot"
+    },
+    {
+      "formule": "Premium 24/7",
+      "contact": {
+        "nom": "Bernard",
+        "coordonnees": {
+          "email_secondaire": null,
+          "email": "margaux.bernard@pro.example.com",
+          "portable": null
+        },
+        "prenom": "Margaux"
+      },
+      "societe": {
+        "siret": "785 668 913 51917",
+        "raison_sociale": "Atelier Aubert"
+      },
+      "statut_compte": "Actif",
+      "id_fiche": 438090,
+      "assistante": {
+        "email": "ines.perrin@pro.example.com",
+        "nom": "Inès Perrin"
+      },
+      "langue": "FR",
+      "ligne": 25,
+      "date_dernier_voyage": "22/10/2026",
+      "conseiller": "Olivier Gaillard",
+      "num_client": "CL-3107",
+      "date_ouverture": "02/06/2020",
+      "statut_paiement": "À jour"
+    },
+    {
+      "statut_paiement": "Contentieux",
+      "ligne": 26,
+      "date_ouverture": "10/08/2021",
+      "num_client": "CL-3110",
+      "societe": {
+        "siret": "885 189 163 72650",
+        "raison_sociale": "Transports Barre"
+      },
+      "conseiller": "Sylvie Brun",
+      "assistante": {
+        "email": "baptiste.blanc@pro.example.com",
+        "nom": "Baptiste Blanc"
+      },
+      "formule": "Premium 24/7",
+      "statut_compte": "Suspendu (impayé)",
+      "contact": {
+        "prenom": "Nicolas",
+        "nom": "Lefèvre",
+        "coordonnees": {
+          "email": "nicolas.lefevre@pro.example.com",
+          "email_secondaire": null
+        }
+      },
+      "date_dernier_voyage": "20/07/2026",
+      "id_fiche": 440492,
+      "langue": "FR"
+    },
+    {
+      "ligne": 27,
+      "societe": {
+        "siret": "231 145 834 17391",
+        "raison_sociale": "Laboratoires Collin"
+      },
+      "statut_compte": "Actif",
+      "contact": {
+        "prenom": "Quentin",
+        "nom": "Robin",
+        "coordonnees": {
+          "email": " quentin.robin@pro.example.com",
+          "email_secondaire": "quentin.robin@perso.example.org",
+          "portable": "06 79 48 13 42"
+        }
+      },
+      "num_client": "CL-3115",
+      "statut_paiement": "Contentieux",
+      "conseiller": "Sylvie Brun",
+      "assistante": {
+        "email": "Baptiste.Moreau@Pro.Example.Com",
+        "nom": "Baptiste Moreau"
+      },
+      "date_ouverture": "29/05/2016",
+      "date_dernier_voyage": "21/03/2025",
+      "langue": "FR",
+      "formule": "Essentiel",
+      "id_fiche": 416784
+    },
+    {
+      "formule": "Essentiel",
+      "conseiller": "Sylvie Brun",
+      "date_ouverture": "02/08/2022",
+      "assistante": {
+        "email": "margaux.blanc@pro.example.com",
+        "nom": "Margaux Blanc"
+      },
+      "contact": {
+        "nom": "Mercier",
+        "prenom": "Nicolas",
+        "coordonnees": {
+          "email": "nicolas.mercier@pro.example.com",
+          "email_secondaire": "nicolas.mercier@perso.example.org",
+          "portable": "06 54 91 60 12"
+        }
+      },
+      "statut_compte": "Actif",
+      "statut_paiement": "Contentieux",
+      "date_dernier_voyage": "25/05/2026",
+      "langue": "FR",
+      "num_client": "CL-3119",
+      "ligne": 28,
+      "id_fiche": 495978,
+      "societe": {
+        "siret": "119 609 621 29745",
+        "raison_sociale": "Groupe Lacombe"
+      }
+    },
+    {
+      "ligne": 29,
+      "id_fiche": 430310,
+      "num_client": "CL-3123",
+      "assistante": {
+        "nom": "Julien Perrin",
+        "email": "Julien.Perrin@Pro.Example.Com"
+      },
+      "contact": {
+        "coordonnees": {
+          "email": "camille.lefevre@pro.example.com",
+          "portable": "06 66 26 27 92",
+          "email_secondaire": "camille.lefevre@perso.example.org"
+        },
+        "prenom": "Camille",
+        "nom": "Lefèvre"
+      },
+      "date_ouverture": "25/07/2022",
+      "statut_paiement": "À jour",
+      "statut_compte": "Actif",
+      "date_dernier_voyage": "26/05/2025",
+      "societe": {
+        "raison_sociale": " Cabinet Aubert  ",
+        "siret": "347 763 668 26848"
+      },
+      "formule": "Essentiel",
+      "langue": "EN",
+      "conseiller": "Olivier Gaillard"
+    },
+    {
+      "date_ouverture": "03/04/2015",
+      "ligne": 30,
+      "statut_compte": "Actif - grand compte",
+      "num_client": "CL-3127",
+      "id_fiche": 450983,
+      "conseiller": "Olivier Gaillard",
+      "societe": {
+        "siret": "724 531 998 19002",
+        "raison_sociale": "Imprimerie Barre"
+      },
+      "assistante": {
+        "email": "Manon.Blanc@Pro.Example.Com",
+        "nom": "Manon Blanc"
+      },
+      "formule": "Essentiel",
+      "statut_paiement": "À jour",
+      "langue": "FR",
+      "date_dernier_voyage": "02/10/2026",
+      "contact": {
+        "prenom": "Elise",
+        "coordonnees": {
+          "email": "elise.garnier@pro.example.com",
+          "email_secondaire": "elise.garnier@perso.example.org",
+          "portable": "06 55 85 25 99"
+        },
+        "nom": "Garnier"
+      }
+    },
+    {
+      "date_dernier_voyage": "09/07/2026",
+      "ligne": 31,
+      "date_ouverture": "09/06/2023",
+      "formule": "Premium 24/7",
+      "societe": {
+        "raison_sociale": "Groupe Barre",
+        "siret": "312 793 228 15407"
+      },
+      "id_fiche": 448334,
+      "assistante": {
+        "nom": "Quentin Roux",
+        "email": "quentin.roux@pro.example.com"
+      },
+      "num_client": "CL-3131",
+      "statut_paiement": "À jour",
+      "langue": "DE",
+      "contact": {
+        "prenom": "Elise",
+        "coordonnees": {
+          "email": "elise.morel@pro.example.com",
+          "email_secondaire": "elise.morel@perso.example.org",
+          "portable": "06 74 22 31 48"
+        },
+        "nom": "Morel"
+      },
+      "conseiller": "Nadia Perrot",
+      "statut_compte": "Prospect"
+    },
+    {
+      "date_dernier_voyage": "14/10/2026",
+      "statut_paiement": "À jour",
+      "ligne": 32,
+      "statut_compte": "Actif - grand compte",
+      "num_client": "CL-3135",
+      "langue": "EN",
+      "conseiller": "Olivier Gaillard",
+      "date_ouverture": "05/04/2023",
+      "contact": {
+        "coordonnees": {
+          "email": "baptiste.laurent@pro.example.com",
+          "portable": "06 75 53 30 40"
+        },
+        "nom": "Laurent",
+        "prenom": "Baptiste"
+      },
+      "societe": {
+        "raison_sociale": "Transports Delorme",
+        "siret": "198 159 683 46812"
+      },
+      "formule": "Confort",
+      "id_fiche": 439377,
+      "assistante": {
+        "email": "Nicolas.Masson@Pro.Example.Com",
+        "nom": "Nicolas Masson"
+      }
+    },
+    {
+      "num_client": "CL-3139",
+      "formule": "Confort",
+      "date_ouverture": "14/01/2020",
+      "id_fiche": 403970,
+      "contact": {
+        "coordonnees": {
+          "email_secondaire": "julien.garnier@perso.example.org",
+          "portable": "06 40 11 97 67",
+          "email": "Julien.Garnier@Pro.Example.Com"
+        },
+        "nom": "Garnier",
+        "prenom": "Julien"
+      },
+      "assistante": {
+        "email": "Elise.Faure@Pro.Example.Com",
+        "nom": "Elise Faure"
+      },
+      "date_dernier_voyage": "10/10/2026",
+      "societe": {
+        "siret": "367 680 624 83989",
+        "raison_sociale": "Studio Aubert"
+      },
+      "statut_paiement": "À jour",
+      "statut_compte": "Actif",
+      "langue": "FR",
+      "ligne": 33,
+      "conseiller": "Nadia Perrot"
+    },
+    {
+      "conseiller": "Sylvie Brun",
+      "num_client": "CL-3144",
+      "ligne": 34,
+      "langue": "FR",
+      "formule": "Essentiel",
+      "date_ouverture": "09/12/2017",
+      "societe": {
+        "siret": "461 411 186 99922",
+        "raison_sociale": " Groupe Aubert"
+      },
+      "statut_paiement": "À jour",
+      "date_dernier_voyage": "22/01/2026",
+      "statut_compte": "Actif",
+      "assistante": {
+        "nom": "Inès Gauthier",
+        "email": "Ines.Gauthier@Pro.Example.Com"
+      },
+      "id_fiche": 400599,
+      "contact": {
+        "coordonnees": {
+          "email_secondaire": null,
+          "email": "lea.bernard@pro.example.com",
+          "portable": "06 68 79 63 54"
+        },
+        "nom": "Bernard",
+        "prenom": "Léa"
+      }
+    }
+  ],
+  "destination": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "Stable identifier of the requester's account in the source system."
+      },
+      "displayName": {
+        "type": "string",
+        "description": "Name shown on tickets: given name followed by family name."
+      },
+      "primaryEmail": {
+        "type": "string",
+        "format": "email",
+        "description": "Work email the requester uses to contact the agency."
+      },
+      "secondaryEmail": {
+        "type": "string",
+        "format": "email",
+        "description": "Alternative personal address of the requester, used only if the work address bounces."
+      },
+      "phone": {
+        "type": "string",
+        "description": "Mobile number of the requester for urgent travel changes."
+      },
+      "company": {
+        "type": "string",
+        "description": "Client company the requester travels for."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "suspended",
+          "closed"
+        ],
+        "description": "Account state of the client company."
+      },
+      "supportPlan": {
+        "type": "string",
+        "enum": [
+          "standard",
+          "extended",
+          "round_the_clock"
+        ],
+        "description": "Assistance package the client has bought, which sets opening hours."
+      },
+      "language": {
+        "type": "string",
+        "enum": [
+          "fr",
+          "en",
+          "de"
+        ],
+        "description": "Language."
+      },
+      "customerSince": {
+        "type": "string",
+        "format": "date",
+        "description": "Date the client account was opened."
+      },
+      "travelPolicy": {
+        "type": "string",
+        "description": "Travel policy that applies to the requester's bookings."
+      }
+    },
+    "required": [
+      "id",
+      "displayName",
+      "primaryEmail",
+      "status",
+      "supportPlan"
+    ]
+  },
+  "groundTruth": {
+    "id": {
+      "source": "num_client",
+      "transform": "copy",
+      "why": "client number; id_fiche is the CRM record key and ligne the export row"
+    },
+    "displayName": {
+      "source": null,
+      "sources": [
+        "contact.prenom",
+        "contact.nom"
+      ],
+      "transform": "concat",
+      "separator": " ",
+      "why": "client contact names; assistante.nom is the assistant who books and conseiller the agency's consultant"
+    },
+    "primaryEmail": {
+      "source": "contact.coordonnees.email",
+      "transform": "normalize_email",
+      "why": "work email, mixed case and padded; assistante.email belongs to the assistant"
+    },
+    "secondaryEmail": {
+      "source": "contact.coordonnees.email_secondaire",
+      "transform": "normalize_email",
+      "why": "personal address, null or missing for some"
+    },
+    "phone": {
+      "source": "contact.coordonnees.portable",
+      "transform": "copy",
+      "why": "mobile, null or missing for some"
+    },
+    "company": {
+      "source": "societe.raison_sociale",
+      "transform": "trim",
+      "why": "company name, padded"
+    },
+    "status": {
+      "source": "statut_compte",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Actif": "active",
+        "Actif - grand compte": "active",
+        "Suspendu (impayé)": "suspended",
+        "Résilié": "closed",
+        "Prospect": null
+      },
+      "why": "account state; prospects need review; statut_paiement is payment"
+    },
+    "supportPlan": {
+      "source": "formule",
+      "transform": "map_enum",
+      "categoryMap": {
+        "Essentiel": "standard",
+        "Confort": "extended",
+        "Premium 24/7": "round_the_clock"
+      },
+      "why": "assistance package"
+    },
+    "language": {
+      "source": "langue",
+      "transform": "map_enum",
+      "categoryMap": {
+        "FR": "fr",
+        "EN": "en",
+        "DE": "de"
+      },
+      "why": "language, null or missing for some"
+    },
+    "customerSince": {
+      "source": "date_ouverture",
+      "transform": "parse_date",
+      "dateFormat": "DD/MM/YYYY",
+      "why": "account opening (French day-first); date_dernier_voyage is the last trip"
+    },
+    "travelPolicy": {
+      "source": null,
+      "transform": "none",
+      "why": "no travel policy is exported"
+    }
+  },
+  "confusablePairs": [
+    {
+      "kind": "customer-id-vs-transaction-id",
+      "fields": [
+        "num_client",
+        "id_fiche"
+      ],
+      "correctFor": "id"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "contact.coordonnees.email",
+        "assistante.email"
+      ],
+      "correctFor": "primaryEmail"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "contact.coordonnees.email",
+        "contact.coordonnees.email_secondaire"
+      ],
+      "correctFor": "primaryEmail"
+    },
+    {
+      "kind": "nested-entity-relationship",
+      "fields": [
+        "contact.prenom",
+        "assistante.nom"
+      ],
+      "correctFor": "displayName"
+    },
+    {
+      "kind": "competing-category-fields",
+      "fields": [
+        "statut_compte",
+        "statut_paiement"
+      ],
+      "correctFor": "status"
+    },
+    {
+      "kind": "modified-date-vs-created-date",
+      "fields": [
+        "date_ouverture",
+        "date_dernier_voyage"
+      ],
+      "correctFor": "customerSince"
+    }
+  ],
+  "sourceConcepts": {
+    "num_client": "customer-id",
+    "id_fiche": "other-identifier",
+    "ligne": "other-identifier",
+    "societe.raison_sociale": "organization-name",
+    "societe.siret": "other-identifier",
+    "contact.prenom": "given-name",
+    "contact.nom": "family-name",
+    "contact.coordonnees.email": "email",
+    "contact.coordonnees.email_secondaire": "email",
+    "contact.coordonnees.portable": "phone",
+    "assistante.nom": "person-name",
+    "assistante.email": "email",
+    "conseiller": "person-name",
+    "statut_compte": "account-status",
+    "statut_paiement": "payment-status",
+    "formule": "category",
+    "langue": "language-code",
+    "date_ouverture": "start-date",
+    "date_dernier_voyage": "other"
+  },
+  "destinationConcepts": {
+    "id": "customer-id",
+    "displayName": "person-name",
+    "primaryEmail": "email",
+    "secondaryEmail": "email",
+    "phone": "phone",
+    "company": "organization-name",
+    "status": "account-status",
+    "supportPlan": "category",
+    "language": "language-code",
+    "customerSince": "start-date",
+    "travelPolicy": "other"
+  },
+  "expectedSamples": [
+    {
+      "recordIndex": 10,
+      "outcome": "transformed",
+      "output": {
+        "id": "CL-3051",
+        "displayName": "Pauline Garnier",
+        "primaryEmail": "pauline.garnier@pro.example.com",
+        "company": "Imprimerie Vernet",
+        "status": "active",
+        "supportPlan": "standard",
+        "language": "fr",
+        "customerSince": "2018-08-16"
+      }
+    },
+    {
+      "recordIndex": 28,
+      "outcome": "transformed",
+      "output": {
+        "id": "CL-3123",
+        "displayName": "Camille Lefèvre",
+        "primaryEmail": "camille.lefevre@pro.example.com",
+        "secondaryEmail": "camille.lefevre@perso.example.org",
+        "phone": "06 66 26 27 92",
+        "company": "Cabinet Aubert",
+        "status": "active",
+        "supportPlan": "standard",
+        "language": "en",
+        "customerSince": "2022-07-25"
+      }
+    },
+    {
+      "recordIndex": 30,
+      "outcome": "held"
+    },
+    {
+      "recordIndex": 33,
+      "outcome": "transformed",
+      "output": {
+        "id": "CL-3144",
+        "displayName": "Léa Bernard",
+        "primaryEmail": "lea.bernard@pro.example.com",
+        "phone": "06 68 79 63 54",
+        "company": "Groupe Aubert",
+        "status": "active",
+        "supportPlan": "standard",
+        "language": "fr",
+        "customerSince": "2017-12-09"
+      }
+    }
+  ]
+}
