@@ -289,3 +289,80 @@ describe.runIf(process.env.EYES_EVAL_18D_STAGE1 === "1")("EVAL-307 Stage 1 dev s
     for (const leak of Object.values(provider)) expect(leak.leaks).toBe(0);
   }, 300_000);
 });
+
+/* EVAL-308: confirmatory holdout scoring (docs/evaluation/sprint-18d-rescue-confirmatory.md) — EYES_EVAL_18D_STAGE2=1. Aggregates and per-index rows only. */
+import { indexRow18d } from "../../src/evaluation/eval-18d.ts";
+
+describe.runIf(process.env.EYES_EVAL_18D_STAGE2 === "1")("EVAL-308 confirmatory holdout scoring", () => {
+  it("baseline A/base vs candidate RB/local, pre-registered gate", async () => {
+    const dir = "tests/fixtures/eval-18d/holdout";
+    const holdout = fs.readdirSync(dir).filter((name) => name.endsWith(".json")).sort().map((name) => JSON.parse(fs.readFileSync(`${dir}/${name}`, "utf8")) as Eval18dScenario);
+    const entries = JSON.parse(fs.readFileSync("docs/evidence/sprint-18d/stage2-live.json", "utf8")) as Array<StageEntry & { trial: number }>;
+    const runs = [
+      { config: "A", policy: POLICIES_18D.base! },
+      { config: "RB", policy: POLICIES_18D.local! },
+    ];
+    const out: Record<string, unknown> = { scoredAt: new Date().toISOString(), scenarios: holdout.length };
+    const result: Record<string, { summary: Summary18d; wedge: Summary18d; general: Summary18d; requests: number; ok: number; http400: number; http429: number; leaks: number; mismatches: number; prompt: number; output: number; medianMs: number; rows: Array<Record<string, unknown>> }> = {};
+    for (const { config, policy } of runs) {
+      const arm = ARMS_18D[config]!;
+      const mine = entries.filter((item) => item.config === config);
+      const scores: Score18d[] = [];
+      const stat = { requests: 0, ok: 0, http400: 0, http429: 0, leaks: 0, mismatches: 0, prompt: 0, output: 0, ms: [] as number[] };
+      for (const entry of mine) {
+        stat.requests += entry.requests;
+        stat.leaks += entry.leakCount;
+        stat.ms.push(entry.ms);
+        for (const code of entry.httpStatus) {
+          if (code === 200) stat.ok += 1;
+          if (code === 400) stat.http400 += 1;
+          if (code === 429) stat.http429 += 1;
+        }
+        for (const usage of entry.usage ?? []) {
+          stat.prompt += usage.prompt;
+          stat.output += usage.output;
+        }
+      }
+      for (const trial of [1, 2]) {
+        for (let index = 0; index < holdout.length; index += 1) {
+          const attempts = mine.filter((item) => item.trial === trial && item.index === index).sort((a, b) => a.attempt - b.attempt);
+          const last = attempts.at(-1);
+          const scenario = holdout[index]!;
+          const built = (await buildScenario18d(scenario, arm))!;
+          for (const attempt of attempts) if (attempt.promptSha256[0] && attempt.promptSha256[0] !== built.promptSha256) stat.mismatches += 1;
+          const text = last && last.httpStatus.at(-1) === 200 ? (last.answers.at(-1) ?? "") : "";
+          scores.push(text ? scorePlan18d(scenario, built, text, { arm, policy, trial, index }) : { ...scorePlan18d(scenario, built, "{}", { arm, policy, trial, index }), answered: false });
+        }
+      }
+      const sorted = [...stat.ms].sort((a, b) => a - b);
+      result[config] = {
+        summary: summarize18d(scores),
+        wedge: summarize18d(scores.filter((s) => s.track === "wedge")),
+        general: summarize18d(scores.filter((s) => s.track === "general")),
+        requests: stat.requests, ok: stat.ok, http400: stat.http400, http429: stat.http429, leaks: stat.leaks, mismatches: stat.mismatches, prompt: stat.prompt, output: stat.output,
+        medianMs: sorted[Math.floor(sorted.length / 2)] ?? 0,
+        rows: scores.map(indexRow18d),
+      };
+    }
+    const a = result.A!, c = result.RB!;
+    const gate = {
+      G1: c.summary.e2eRate - a.summary.e2eRate >= 0.2,
+      G2: c.wedge.e2eRate > a.wedge.e2eRate,
+      S5: c.summary.falseVerified === 0,
+      E3: c.summary.falseComplete === 0,
+      M4: c.summary.invented === 0,
+      E2: c.summary.incorrectRate < a.summary.incorrectRate,
+      U2: c.summary.answersPerTrial <= 0.6 * c.summary.baselineAnswersPerTrial,
+      R1: c.requests > 0 && c.ok / c.requests >= 0.9,
+      S1: c.leaks === 0 && a.leaks === 0,
+      S2: c.mismatches === 0 && a.mismatches === 0 && entries.length >= 80,
+      S3: entries.every((item) => item.requests <= 1),
+    };
+    const milestone1 = c.wedge.e2eRate >= 0.7 && c.general.e2eRate >= 0.7;
+    const verdict = Object.values(gate).every(Boolean) ? "rescue improvement confirmed" : "rescue not confirmed";
+    Object.assign(out, { result, gate, verdict, milestone1 });
+    fs.writeFileSync("docs/evidence/sprint-18d/stage2-summary.json", `${JSON.stringify(out, null, 2)}\n`);
+    console.log(JSON.stringify({ gate, verdict, milestone1, A: { e2e: a.summary.e2eRate, wedge: a.wedge.e2eRate, general: a.general.e2eRate }, RB: { e2e: c.summary.e2eRate, wedge: c.wedge.e2eRate, general: c.general.e2eRate } }));
+    expect(c.leaks + a.leaks).toBe(0);
+  }, 600_000);
+});

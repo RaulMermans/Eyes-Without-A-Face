@@ -75,6 +75,18 @@ const SETS = {
     statement:
       "Frozen before any model saw this evaluation set. The set was written by an independent author without access to the implementation, prompts or earlier holdouts. The engineer never opened the holdout or the author's holdout spec scripts (sealed in the holdout digest); the frozen harness and scorer read the holdout and emit aggregates and per-index rows only.",
   },
+  d2: {
+    out: "docs/evidence/sprint-18d/rescue-confirmatory-freeze.json",
+    root: "tests/fixtures/eval-18d",
+    preregistration: "docs/evaluation/sprint-18d-rescue-confirmatory.md",
+    experiment: "sprint-18d-rescue-confirmatory",
+    dev: true,
+    sealed: ["author/specs_holdout_wedge.py", "author/specs_holdout_general.py"],
+    listed: ["author/lib.py", "author/specs_dev.py", "author/build.py", "author/check.mjs"],
+    code: ["src/evaluation/eval-18d.ts", "src/plan/compile.ts", "src/matching/local-matcher.ts", "src/matching/lexicon.ts", "src/inference/intent-prompt.ts", "src/twin/target-semantics.ts", "src/semantics/verify.ts", "tests/evaluation/eval-18d.test.ts"],
+    statement:
+      "Frozen before any model saw the 18D holdout. Candidate (RB + local) and baseline (A + base) fixed at the listed code hashes. The engineer never opened the holdout or the author's holdout specs; the frozen scorer emits aggregates and per-index rows only.",
+  },
 };
 const setIndex = process.argv.indexOf("--set");
 const setName = setIndex >= 0 ? process.argv[setIndex + 1] : "18a";
@@ -118,7 +130,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     frozenFromCommit: previous?.frozenFromCommit ?? execSync("git rev-parse HEAD").toString().trim(),
     statement: SET.statement,
     preregistration: { path: preregistration, sha256AboveResults: preregistrationDigest() },
-    files: Object.fromEntries([path.join(root, "README.md"), ...(SET.dev ? list("dev") : []), ...(SET.listed ?? []).map((name) => path.join(root, name))].map((file) => [file, sha(fs.readFileSync(file))])),
+    files: Object.fromEntries([path.join(root, "README.md"), ...(SET.dev ? list("dev") : []), ...(SET.listed ?? []).map((name) => path.join(root, name)), ...(SET.code ?? [])].map((file) => [file, sha(fs.readFileSync(file))])),
     holdout: holdoutDigest(),
     amendments: [...(previous?.amendments ?? [])],
   };
