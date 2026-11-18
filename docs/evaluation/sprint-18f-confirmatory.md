@@ -86,4 +86,71 @@ Does the ADR 0022 pipeline deliver complete, correct integrations on fresh data 
 
 ## Results
 
-(none yet)
+### Confirmatory run (2026-11-18, owner-approved; gate unchanged)
+
+**Requests: 53 of 60.**
+- 48 first requests, interleaved per scenario.
+- 5 recovery requests: 4 after HTTP 500 `INTERNAL` (all recovered) and 1 after a 45 s client timeout (it then returned HTTP 500).
+- No stop rule fired. 0 privacy findings, 0 prompt mismatches, 0 unauthorized requests.
+- Recorded tokens: A 68.5 k in / 19.6 k out; RB 69.8 k in / 21.3 k out. **≈ $0.15.**
+- Evidence: [live.json](../evidence/sprint-18f/live.json). Official scoring (EVAL-402, frozen code): [summary-official.json](../evidence/sprint-18f/summary-official.json).
+
+**Improvement gate (F): PASS. Improvement confirmed.**
+
+| ID | Metric | Baseline A / `base` | Candidate RB / `local` | Verdict |
+| --- | --- | --- | --- | --- |
+| **F1** | E1, completable | 1 / 18 (0.056) | **9 / 18 (0.500)** (+0.44) | pass |
+| **F2** | E1, wedge | 0 / 9 | **4 / 9** | pass |
+| — | E1, general | 1 / 9 | 5 / 9 | reported |
+| **F3 / F4 / F5** | Falsely verified records / false completes / invented values | 0 / 2 / 0 | **0 / 0 / 0** | pass |
+| **F6** | Incorrect among transformed records | 361 / 402 (0.898) | **177 / 452 (0.392)** | pass |
+
+**Milestone 1 (original Gate D, unchanged): NOT MET.**
+
+| Row | Candidate | Bound | Verdict |
+| --- | --- | --- | --- |
+| E1-W / E1-G | 0.44 / 0.56 | ≥ 0.70 each | fail |
+| E2 | 0.392 | ≤ 0.05 | fail |
+| S5, E3, M4 | 0, 0, 0 | 0 | pass |
+| M1 | 0.354 (A: 0.339) | ≥ A − 0.05 | pass |
+| M10 | 0 | ≤ A | pass |
+| U1 | 5.75 (manual flow 8.75) | ≤ 0.5 × | fail |
+| U2 | 8.58 (manual flow 11.58) | ≤ 0.6 × | fail |
+| R1 | 23 / 27 = 0.85 (HTTP 500 `INTERNAL`, client timeout) | ≥ 0.90 | fail |
+| S1 / S2 / S3 | 0 / proven / 0 | | pass |
+
+**Other measures:**
+- Correspondence, candidate: M2 0.368, M3 0.190.
+- Top-1 / top-3 recall: Gemini 0.488 / 0.711, local 0.668 / 0.834, combined top-3 0.855.
+
+**The holdout is now inspected.**
+
+### Trace (aggregate only, after scoring)
+
+**Candidate, 18 completable scenarios:**
+- 9 complete;
+- 1 had no answer (provider);
+- **2 lost to whole-plan rejection**;
+- 6 failed with a single cause each:
+
+| Cause | Scenarios |
+| --- | --- |
+| A field with no valid source filled by a decoy | 2 |
+| Wrong value source | 2 |
+| Wrong date source | 1 |
+| Wrong combined field | 1 |
+
+In all six, Gemini and the local matcher agreed on the wrong field.
+
+**Whole-plan rejections, across both configurations: 7.** Each was one entry listing more candidate fields than the canonical bound (`from` > 4, `alternatives` > 2). The decoder cannot enforce nested bounds (ADR 0018), so the validator rejected the whole plan, against ADR 0018's own entry-level rule.
+
+### Correction after the run (not evidence)
+
+- **Change.** `validateIntentPlan` now rejects only the over-long entry: its field is asked, and nothing is repaired. Any other schema violation still rejects the plan.
+- **Exploratory rescore of these recorded answers with the correction:**
+  - candidate 10 / 18 (wedge 5 / 9);
+  - false completes 0 → **1**: a rescued plan for a non-completable scenario met a decoy;
+  - baseline 2 / 18.
+- The replay corpus is unchanged (66 / 95).
+- None of this is evidence. A claim needs another fresh holdout.
+

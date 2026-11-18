@@ -104,3 +104,21 @@ describe("18F local contradictions", () => {
     expect(byTarget.get("full_name")!.contradicted).toEqual(expect.arrayContaining(["vorname", "nachname"]));
   });
 });
+
+describe("18F validator: an over-long candidate list rejects only its entry", () => {
+  it("sets the entry aside and keeps the plan; other schema violations still reject the plan", () => {
+    const prep = prepareTwin({ records: RECORDS, datasetLabel: "imported.json", seed: 11 });
+    if (!prep.ok) throw new Error("twin");
+    const draft = buildDisclosureDraft({ prepared: prep.value, targetSchema: DESTINATION, destinationSemantics: false });
+    if (!draft.ok) throw new Error("draft");
+    const alias = (path: string) => prep.value.twin.bindings.aliasForPath(path)!;
+    const five = ["code", "vorname", "nachname", "firma", "plz"].map(alias);
+    const plan = { fields: [ready("id", [alias("code")], "copy"), { target: "full_name", status: "needs_clarification", from: five, transform: "none", confidence: "low", evidence: [], missing: ["field-meaning"] }], summary: "x" };
+    const validated = validateIntentPlan(plan, draft.value.payload);
+    expect(validated.ok).toBe(true);
+    if (!validated.ok) return;
+    expect(validated.value.entries.map((item) => item.verdict)).toEqual(["accepted", "rejected"]);
+    expect(validated.value.unaddressed).toContain("full_name");
+    expect(validateIntentPlan({ ...plan, fields: [{ ...plan.fields[0], status: "maybe" }, plan.fields[1]] }, draft.value.payload).ok).toBe(false);
+  });
+});

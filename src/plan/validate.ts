@@ -113,7 +113,22 @@ export function validateIntentPlan(raw: unknown, disclosure: CloudDisclosurePayl
       issues: executable.map((item) => malformed(`Executable content at ${clipPath(item.path)}. Plans are never executed.`)),
     };
   }
-  const structured = validateStructuredOutput(ranked ? "integration-intent-plan-ranked" : "integration-intent-plan", raw);
+  const kind = ranked ? "integration-intent-plan-ranked" : "integration-intent-plan";
+  let structured = validateStructuredOutput(kind, raw);
+  // Sprint 18F (recorded live failure: 7 whole plans lost to one over-long candidate list). The decoder cannot carry
+  // array bounds (ADR 0018), so a list longer than the canonical bound is an ENTRY problem: that entry is rejected,
+  // its field gets a normal question, and nothing is repaired. Any other schema violation still rejects the plan.
+  const overLong = new Set<number>();
+  if (!structured.valid && raw && typeof raw === "object" && Array.isArray((raw as { fields?: unknown }).fields)) {
+    const bound = /^\/fields\/(\d+)\/(from|alternatives|evidence|missing): must NOT have more than \d+ items$/;
+    const matches = structured.issues.map((issue) => bound.exec(issue));
+    if (matches.every((match) => match !== null)) {
+      for (const match of matches) overLong.add(Number(match![1]));
+      const fields = (raw as { fields: unknown[] }).fields;
+      const rest = { ...(raw as object), fields: fields.filter((_, index) => !overLong.has(index)) };
+      if (rest.fields.length > 0) structured = validateStructuredOutput(kind, rest);
+    }
+  }
   if (!structured.valid) {
     return {
       ok: false,
@@ -130,7 +145,14 @@ export function validateIntentPlan(raw: unknown, disclosure: CloudDisclosurePayl
   for (const entry of plan.fields) perTarget.set(entry.target, (perTarget.get(entry.target) ?? 0) + 1);
 
   const entries: ValidatedEntry[] = plan.fields.map((entry, entryIndex) =>
-    judgeEntry(entry, entryIndex, targets.get(entry.target), (perTarget.get(entry.target) ?? 0) > 1, aliases),
+    overLong.has(entryIndex)
+      ? {
+          entryIndex,
+          entry,
+          verdict: "rejected" as const,
+          issues: [{ code: "INCONSISTENT_ENTRY" as const, entryIndex, ...(targets.has(entry.target) ? { target: entry.target } : {}), message: `Entry ${entryIndex + 1}: more candidate fields than a plan entry allows; this entry was set aside and its field will be asked.` }],
+        }
+      : judgeEntry(entry, entryIndex, targets.get(entry.target), (perTarget.get(entry.target) ?? 0) > 1, aliases),
   );
 
   const addressed = new Set(entries.filter((item) => item.verdict !== "rejected").map((item) => item.entry.target));
