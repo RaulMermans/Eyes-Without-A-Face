@@ -20,3 +20,4 @@
 | 10 | [sprint-10.md](sprint-10.md) — CONNECT / OBSERVE / OUTCOME, Live Intelligence Runtime, Black Halo |
 | 11 | [sprint-11.md](sprint-11.md) — compact OBSERVE, Nano before the request, outcome verdict, export hand-off, Privacy Boundary |
 | 12 | [sprint-12.md](sprint-12.md) — first public deployment and hosted acceptance on real models, Nano-value experiment (neutral), business impact, demo script, Official Rules compliance |
+| 19 | [sprint-19.md](sprint-19.md) — three-stage guided presentation, export check summary, phone-width fixes, README rewrite |

@@ -47,7 +47,7 @@ test.describe("E2E-130 guided journey", () => {
   test("five steps: connect, destination, generate, verify, deliver — with one contextual approval", async ({ page }) => {
     const providerRequests = attachProviderWatch(page);
     await boot(page);
-    await expect(page.getByRole("heading", { level: 2, name: "Where is your data?" })).toBeVisible();
+    await expect(page.getByRole("heading", { level: 2, name: "Add your data" })).toBeVisible();
     await expect(page.getByRole("navigation", { name: "Steps" })).toBeVisible();
     await expect(page.getByTestId("step-destination")).toBeDisabled();
     await page.screenshot({ path: path.join(shots, "01-your-data.png"), fullPage: true });
