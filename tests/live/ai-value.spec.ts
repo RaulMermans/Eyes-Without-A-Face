@@ -108,7 +108,7 @@ test.describe("S18A-LIVE G0/G1 holdout run", () => {
         ...(arm ? { stage, model: arm.model.model, thinkingLevel: arm.model.thinkingLevel ?? null, semantics: arm.semantics, planner: arm.planner } : {}),
         at: new Date().toISOString(),
       };
-      const net = { requests: 0, leakCount: 0, promptSha256: [] as string[], answers: [] as string[], httpStatus: [] as number[], usage: [] as Array<{ prompt: number; output: number }> };
+      const net = { requests: 0, leakCount: 0, promptSha256: [] as string[], answers: [] as string[], httpStatus: [] as number[], usage: [] as Array<{ prompt: number; output: number }>, providerError: [] as Array<{ status: string; code: number } | null> };
       page.on("request", (request) => {
         if (!request.url().includes("generateContent")) return;
         net.requests += 1;
@@ -130,7 +130,10 @@ test.describe("S18A-LIVE G0/G1 holdout run", () => {
           const body = (await response.json()) as {
             candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }>;
             usageMetadata?: { promptTokenCount?: number; candidatesTokenCount?: number; thoughtsTokenCount?: number };
+            error?: { status?: unknown; code?: unknown };
           };
+          // Sprint 18E diagnosis: the provider's error status and code only (never its message text, which may echo input).
+          net.providerError.push(body.error ? { status: typeof body.error.status === "string" ? body.error.status.slice(0, 40) : "", code: typeof body.error.code === "number" ? body.error.code : 0 } : null);
           // Token counts only (cost evidence); output includes any thinking tokens.
           net.usage.push({ prompt: body.usageMetadata?.promptTokenCount ?? 0, output: (body.usageMetadata?.candidatesTokenCount ?? 0) + (body.usageMetadata?.thoughtsTokenCount ?? 0) });
           net.answers.push(body.candidates?.[0]?.content?.parts?.map((part) => part.text ?? "").join("") ?? "");
@@ -205,6 +208,7 @@ test.describe("S18A-LIVE G0/G1 holdout run", () => {
         entry.httpStatus = net.httpStatus;
         entry.answers = net.answers;
         if (set === "c" || set === "d") entry.usage = net.usage;
+        if (set === "d") entry.providerError = net.providerError;
         if (dryRun) console.log(`dry ${config} #${index + 1} preview=${String(entry.previewSha256 ?? "").slice(0, 16)}: ${entry.dry ?? `harness error (${String(entry.harnessError ?? "").slice(0, 80)})`}, requests=${net.requests}`);
         else append(entry);
       }

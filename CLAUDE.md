@@ -52,4 +52,6 @@ Read, in order:
 
 45. `docs/decisions/0021-semantic-intelligence-recovery.md`, `docs/evaluation/sprint-18d-semantic-intelligence.md`, `docs/evaluation/sprint-18d-local-matching.md`, `docs/sprints/sprint-18d.md` — Sprint 18D: model configurations, destination semantics, local matching, ranked plans, pre-registration
 
+46. `docs/evaluation/sprint-18e-disagreement.md` — Sprint 18E: disagreement statistics, agreement classes, counterfactual replay, provider diagnosis
+
 Every sprint ends with an evidence-backed release status (`CODE_READY`, `DEPLOYMENT_PENDING`, `DEPLOYED_UNVERIFIED`, `PRODUCTION_ACCEPTED`, `RELEASE_FAILED`); rules in `AGENTS.md`. Do not duplicate architecture here. Do not start Sprint 16 automatically.

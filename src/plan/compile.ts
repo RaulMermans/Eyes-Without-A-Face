@@ -38,6 +38,7 @@ import type { PreparedTwin } from "../workflow/pipeline.ts";
 import type { ProposalResult } from "../app/workspace-state.ts";
 import { deriveRule, rankCandidates } from "../app/guided/field-plan.ts";
 import { buildClarifications } from "./clarify.ts";
+import { classifyAgreement, noSourceNeedsQuestion } from "./agreement.ts";
 import type { LocalCandidateSet } from "../matching/types.ts";
 import { classifyPlanIssue, nextActionFor } from "./failures.ts";
 import {
@@ -72,12 +73,12 @@ export interface CompileInput {
    * Absent = the Sprint 18C behaviour, unchanged.
    *   localCandidates      local matcher output; orders choose-field candidates.
    *   askOnLocalEvidence   local evidence may turn a field into ONE question
-   *                        (never into an executed match):
-   *     - Gemini's single pick is a field the local evidence contradicts
-   *       (row counter, person names, email as identifier, type/format);
-   *     - an optional field Gemini gave no source, with a clear local candidate;
-   *     - a category match awaiting translation whose clear local top-1 is
-   *       another field (asked as "which field" before the translation).
+   *                        (never into an executed match), by `classifyAgreement`
+   *                        (src/plan/agreement.ts, Sprint 18E):
+   *     - significant disagreement with Gemini's single pick (contradicted, local
+   *       clear about another field, or the pick not listed): asked whatever
+   *       Gemini's confidence, also before a category translation;
+   *     - an optional field Gemini gave no source, with a clear local candidate.
    *   Agreement never upgrades a match: both can be wrong in the same way.
    */
   local?: {
@@ -271,22 +272,19 @@ export function compileIntentPlan(input: CompileInput): CompiledIntegration {
     });
 
     if (entry.status === "no_source") {
-      // A clear local candidate opens one question on an optional field (a required one is already asked).
-      if (asking && !target.required && set?.uncertainty === "clear") return ask();
+      // Class 4 (no valid source) stands unless the local matcher is clear; a required field is already asked.
+      if (asking && !target.required && noSourceNeedsQuestion(set)) return ask();
       return { ...base, readiness: "no_source", operation: null, origin: null, missing: [...entry.missing] };
     }
 
-    // Independent local evidence contradicts Gemini's pick: ask, never execute it silently.
-    if (asking && single && path && set?.contradicted?.includes(path)) return ask({}, "LOCAL_EVIDENCE_CONTRADICTS");
+    // Sprint 18E: a significant, evidence-backed disagreement is one question, whatever Gemini's confidence (also
+    // before a category translation). Never a switch to the local candidate; agreement never upgrades a match.
+    if (asking && single && path && classifyAgreement(path, set) === "significant-disagreement") return ask({}, "LOCAL_EVIDENCE_DISAGREES");
 
     // ADR 0020 §7: a single-field match Gemini is not highly confident about is a question (Gemini's pick listed first),
     // never an executed match. Sprint 18C live: high 86 % right, medium 38 %, low 21 %. Exempt: a category match still
     // awaiting the user's translation, whose question already shows that field's own values (no record runs without it).
     const awaitsTranslation = entry.transform === "map_enum" && entry.status !== "ready";
-    if (asking && single && path && awaitsTranslation) {
-      const top = set?.candidates[0];
-      if (set?.uncertainty === "clear" && top && top.path !== path) return ask({}, "LOCAL_MATCHER_DISAGREES");
-    }
     const heldOperation = entry.status === "ready" && usable.verdict === "accepted" && HOLDABLE.has(entry.transform) ? (proposalOperation(entry) as unknown as MappingOperation | null) : null;
     const held = heldOperation ? { held: heldOperation } : {};
     if (single && entry.confidence !== "high" && !awaitsTranslation) return { ...base, ...held, readiness: "needs_clarification", operation: null, origin: null, missing: unique([...entry.missing, "field-meaning"]) };
