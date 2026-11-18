@@ -117,3 +117,61 @@ describe("EVAL-304 ranked plans", () => {
     expect(scorePlan18d(scenario, built, text, { arm: ARMS_18D.B!, policy: POLICIES_18D.base!, trial: 1, index: 0 }).wholePlanRejected).toBe(true);
   });
 });
+
+/* EVAL-305: the frozen inputs. EVAL-306: holdout rehearsal, counts only (EYES_EVAL_18D_REHEARSE=1, scripts/eval-18d.mjs). */
+import { createHash } from "node:crypto";
+import { sampleMismatches } from "../../src/evaluation/eval-18c.ts";
+
+const FREEZE = "docs/evidence/sprint-18d/semantic-freeze.json";
+const sha = (data: Buffer | string) => createHash("sha256").update(data).digest("hex");
+
+describe("EVAL-305 the Sprint 18D set and pre-registration match the freeze", () => {
+  const manifest = JSON.parse(fs.readFileSync(FREEZE, "utf8")) as { files: Record<string, string>; holdout: { count: number; sha256: string }; preregistration: { path: string; sha256AboveResults: string } };
+  it("listed files", () => {
+    for (const [file, digest] of Object.entries(manifest.files)) expect(sha(fs.readFileSync(file)), file).toBe(digest);
+  });
+  it("sealed holdout digest (files are hashed, never parsed here)", () => {
+    const root = "tests/fixtures/eval-18d";
+    const files = [
+      ...fs.readdirSync(`${root}/holdout`).filter((name) => name.endsWith(".json")).sort().map((name) => `${root}/holdout/${name}`),
+      `${root}/author/specs_holdout_wedge.py`,
+      `${root}/author/specs_holdout_general.py`,
+    ];
+    expect(files.length).toBe(manifest.holdout.count);
+    expect(sha(files.map((file) => sha(fs.readFileSync(file))).join("\n"))).toBe(manifest.holdout.sha256);
+  });
+  it("pre-registration above Results", () => {
+    const text = fs.readFileSync(manifest.preregistration.path, "utf8");
+    const cut = text.indexOf("\n## Results");
+    expect(sha(cut >= 0 ? text.slice(0, cut) : text)).toBe(manifest.preregistration.sha256AboveResults);
+  });
+});
+
+describe.runIf(process.env.EYES_EVAL_18D_REHEARSE === "1")("EVAL-306 holdout rehearsal (zero requests, counts only)", () => {
+  it("every arm builds every holdout scenario, no privacy finding, author samples agree", async () => {
+    const dir = "tests/fixtures/eval-18d/holdout";
+    const scenarios = fs.readdirSync(dir).filter((name) => name.endsWith(".json")).sort().map((name) => JSON.parse(fs.readFileSync(`${dir}/${name}`, "utf8")) as Eval18dScenario);
+    const counts: Record<string, { built: number; leaks: number; v14: number; described: number }> = {};
+    let mismatches = 0;
+    for (const scenario of scenarios) mismatches += sampleMismatches(scenario);
+    for (const arm of Object.values(ARMS_18D)) {
+      const row = { built: 0, leaks: 0, v14: 0, described: 0 };
+      for (const scenario of scenarios) {
+        const built = await buildScenario18d(scenario, arm);
+        if (!built) continue;
+        row.built += 1;
+        row.leaks += prescanPrivacy(built, scenario);
+        if (built.payload.schemaVersion === "1.4.0") row.v14 += 1;
+        if (built.payload.target!.fields.some((field) => field.description)) row.described += 1;
+      }
+      counts[arm.id] = row;
+    }
+    console.log(JSON.stringify({ scenarios: scenarios.length, sampleMismatches: mismatches, arms: counts }));
+    expect(scenarios.length).toBe(20);
+    expect(mismatches).toBe(0);
+    for (const row of Object.values(counts)) {
+      expect(row.built).toBe(20);
+      expect(row.leaks).toBe(0);
+    }
+  });
+});
