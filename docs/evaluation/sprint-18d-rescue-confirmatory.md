@@ -36,8 +36,10 @@ Context:
 
 ## Run
 
-- Each configuration runs 20 scenarios × 2 trials = **80 first requests**. Order ABBA: A t1, RB t1, RB t2, A t2.
-- **Recovery.** A provider failure (anything other than HTTP 200 with readable text) gets at most **one** new request, re-approved in-app. There is a hard cap of 20 recovery requests, and the last attempt decides.
+- **Amendment 1 (owner, before any holdout request):** one trial per configuration, the smallest run that still answers G1/G2.
+  - 20 scenarios × 2 configurations × 1 trial = **40 first requests**.
+  - Order: interleaved per scenario (A, then RB).
+- **Recovery.** A provider failure (anything other than HTTP 200 with readable text) gets at most **one** new request, re-approved in-app. There is a hard cap of 10 recovery requests, and the last attempt decides.
 - No automatic retry and no model fallback.
 
 ## Metrics and thresholds
@@ -46,8 +48,8 @@ Unit: one scenario-trial. **Bold rows are the gate.** An unrecovered provider fa
 
 | ID | Metric | Pass condition |
 | --- | --- | --- |
-| **G1** | E1 improvement: candidate E1 − baseline E1, completable scenario-trials (30 each) | **≥ +0.20** |
-| **G2** | E1 improvement, wedge track (18 each) | **candidate > baseline** |
+| **G1** | E1 improvement: candidate E1 − baseline E1, completable scenarios (15 each) | **≥ +0.20** |
+| **G2** | E1 improvement, wedge track (9 each) | **candidate > baseline** |
 | **S5** | Falsely verified records (candidate) | **= 0** |
 | **E3** | False completes (candidate) | **= 0** |
 | **M4** | Invented executable values (candidate) | **= 0** |
@@ -67,9 +69,9 @@ Unit: one scenario-trial. **Bold rows are the gate.** An unrecovered provider fa
 | Item | Value |
 | --- | --- |
 | Model | `gemini-3.5-flash-lite`, default thinking (MINIMAL), via Firebase AI Logic, `ONLY_IN_CLOUD`, App Check |
-| Requests | 80 first, plus ≤ 20 recovery = **≤ 100** |
-| Expected cost | Stage 1 measured about $0.003 per request, so **≈ $0.30** |
-| Worst case | 100 × (3.2 k in at $0.30 + 8 192 out at $2.50 per 1 M), so **≤ $2.15** |
+| Requests | 40 first, plus ≤ 10 recovery = **≤ 50** (amendment 1) |
+| Expected cost | Stage 1 measured about $0.003 per request, so **≈ $0.15** |
+| Worst case | 50 × (3.2 k in at $0.30 + 8 192 out at $2.50 per 1 M), so **≤ $1.10** |
 | Stop rules | Stop on any source-derived privacy finding (trace it before drawing any conclusion). Stop a configuration after 4 consecutive HTTP 400 or 429. Never loop requests until one passes |
 
 **Rehearsals before the run (zero requests):**

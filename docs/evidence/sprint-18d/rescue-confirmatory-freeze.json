@@ -6,7 +6,7 @@
   "statement": "Frozen before any model saw the 18D holdout. Candidate (RB + local) and baseline (A + base) fixed at the listed code hashes. The engineer never opened the holdout or the author's holdout specs; the frozen scorer emits aggregates and per-index rows only.",
   "preregistration": {
     "path": "docs/evaluation/sprint-18d-rescue-confirmatory.md",
-    "sha256AboveResults": "84d1480264a23a0cf25b1abb591811b0141d79c943713c57664734afc4bfca45"
+    "sha256AboveResults": "309548406e2a1b5c4e482a574ba50db0bc9dcaf40e998709553d97c421aba5c6"
   },
   "files": {
     "tests/fixtures/eval-18d/README.md": "d289fa2f5772a11858453232da4b0b2595f3080ce9d50f72ac6d0a24f38abfb3",
@@ -27,11 +27,16 @@
     "src/inference/intent-prompt.ts": "1e58ba49a50bad59c6ed2b7346cd865cba90f7fe2be9e704a1adc699da45db11",
     "src/twin/target-semantics.ts": "f75ccc8072fa011268718fb6c16fdd4d4739f617f588d5cc693be24c22941b2c",
     "src/semantics/verify.ts": "7c628990c79d7ef653a057c975bf130dc2551712e50bc125dc567340f3124fed",
-    "tests/evaluation/eval-18d.test.ts": "c2048037f4ba6f9d1eaece26713f92a6fec8ea9fc4b7b22f8733ddd4aea8723e"
+    "tests/evaluation/eval-18d.test.ts": "4df562e78eb67f0d26932248218f7e0345d9a01321f1e81b2dd9da1d02ab856d"
   },
   "holdout": {
     "count": 22,
     "sha256": "d47296f48b9e97bbd4df1134b24932bfe7943f0afc8bf8ede203dfe5b8a39611"
   },
-  "amendments": []
+  "amendments": [
+    {
+      "at": "2026-11-18T14:54:23.163Z",
+      "reason": "Amendment 1 (owner, 2026-11-18, before any holdout request): one trial per configuration (40 first requests, ≤ 10 recovery, ≤ 50 total, ≤ $1.10); G1/G2 denominators 15 and 9; scorer scores trial 1 and checks 40 first attempts."
+    }
+  ]
 }

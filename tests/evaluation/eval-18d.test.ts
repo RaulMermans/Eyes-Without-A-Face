@@ -323,7 +323,8 @@ describe.runIf(process.env.EYES_EVAL_18D_STAGE2 === "1")("EVAL-308 confirmatory 
           stat.output += usage.output;
         }
       }
-      for (const trial of [1, 2]) {
+      // Amendment 1: one trial per configuration.
+      for (const trial of [1]) {
         for (let index = 0; index < holdout.length; index += 1) {
           const attempts = mine.filter((item) => item.trial === trial && item.index === index).sort((a, b) => a.attempt - b.attempt);
           const last = attempts.at(-1);
@@ -355,7 +356,7 @@ describe.runIf(process.env.EYES_EVAL_18D_STAGE2 === "1")("EVAL-308 confirmatory 
       U2: c.summary.answersPerTrial <= 0.6 * c.summary.baselineAnswersPerTrial,
       R1: c.requests > 0 && c.ok / c.requests >= 0.9,
       S1: c.leaks === 0 && a.leaks === 0,
-      S2: c.mismatches === 0 && a.mismatches === 0 && entries.length >= 80,
+      S2: c.mismatches === 0 && a.mismatches === 0 && entries.filter((item) => item.attempt === 1).length === 40,
       S3: entries.every((item) => item.requests <= 1),
     };
     const milestone1 = c.wedge.e2eRate >= 0.7 && c.general.e2eRate >= 0.7;
