@@ -23,3 +23,4 @@
 | [0019](0019-optional-destination-absent-input.md) | An absent input for an optional destination field omits the field instead of refusing the record |
 | [0020](0020-category-groupings-and-plan-recovery.md) | Category groupings, "Choose another field" on plan questions, plan output cap, uncertain matches become questions (Gate C failed; not shipped) |
 | [0021](0021-semantic-intelligence-recovery.md) | Allowlisted model configurations, destination semantics (disclosure 1.4.0), Local Semantic Matcher, ranked plans (prompt v6, plan 1.1.0); not shipped pending a pre-registered live comparison |
+| [0022](0022-answerable-questions-and-local-evidence.md) | Answerable questions, user field combinations, labelled trim, local evidence that asks (exploratory replay 66 / 95; not shipped) |

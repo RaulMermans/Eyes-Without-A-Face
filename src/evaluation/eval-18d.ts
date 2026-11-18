@@ -27,7 +27,11 @@ import type { CloudModelConfig } from "../inference/cloud-models.ts";
 import { localCandidatesForDestination } from "../matching/destination-candidates.ts";
 import type { LocalCandidateSet } from "../matching/types.ts";
 import { baselineEffort, classifyTarget, correspondenceCorrect, expectedOutcomes, gtPaths, p2Correspondences, planEffort, sha256Hex, type Built18b } from "./eval-18b.ts";
-import { e2eSuccess18c, runEndToEnd18c, runOracle18c, type EndToEnd18c, type Eval18cScenario } from "./eval-18c.ts";
+import { e2eSuccess18c, oracleAnswer18c, runEndToEnd18c, runOracle18c, type EndToEnd18c, type Eval18cScenario, type OracleRun18c } from "./eval-18c.ts";
+import { compileIntentPlan } from "../plan/compile.ts";
+import type { Clarification, PlanAnswers } from "../plan/types.ts";
+import { COMBINE_SEPARATORS, distinctLabels, type CategoryMeaning } from "../app/guided/field-plan.ts";
+import { ORACLE_MAX_ROUNDS } from "./eval-18b.ts";
 
 export interface Eval18dScenario extends Eval18cScenario {
   track?: "wedge" | "general";
@@ -148,6 +152,82 @@ export function localRecall(scenario: Pick<Eval18dScenario, "groundTruth">, sets
 }
 
 /* ------------------------------------------------------------------ */
+/* Oracle user (18D): the 18C oracle + the "Not the right field" escape */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Scoring choice (Sprint 18F): a translation or date question names the source field it is about
+ * (PlanReview shows it, with "Not the right field? Use another"). A truthful user shown the WRONG
+ * field names the right one instead of leaving the question unanswered. Every other answer is the
+ * 18C oracle's. A question is "done" per (id, field), so the follow-up question about the right
+ * field is answered too.
+ */
+type Answer18d = (NonNullable<ReturnType<typeof oracleAnswer18c>> & { fieldCombination?: [string, { paths: string[]; separator: string }] }) | null;
+
+export function oracleAnswer18d(clarification: Clarification, scenario: Pick<Eval18dScenario, "groundTruth" | "records">, prepared: PreparedTwin): Answer18d {
+  // Sprint 18F: a field question for a combined destination value is answered with "Combine several fields"
+  // (the true parts, in order, with a separator the question offers).
+  if (clarification.kind === "choose-field" || clarification.kind === "missing-required-source") {
+    const truth = scenario.groundTruth[clarification.target];
+    const offered: readonly string[] = COMBINE_SEPARATORS;
+    if (truth?.transform === "concat" && truth.sources && offered.includes(truth.separator ?? "") && truth.sources.every((path) => prepared.profile.fields.some((field) => field.path === path && field.supported))) {
+      return { fieldCombination: [clarification.target, { paths: [...truth.sources], separator: truth.separator! }] };
+    }
+  }
+  if (clarification.kind === "translate-categories" || clarification.kind === "confirm-date-order") {
+    const truth = scenario.groundTruth[clarification.target];
+    const shown = clarification.localPaths.length === 1 ? clarification.localPaths[0]! : null;
+    // A category field whose labels already ARE the destination's values (ground truth: plain copy): a truthful
+    // user maps each label to itself.
+    if (clarification.kind === "translate-categories" && truth && (truth.transform === "copy" || truth.transform === "trim") && shown !== null && shown === truth.source) {
+      const field = prepared.profile.fields.find((item) => item.path === shown);
+      const labels = field ? distinctLabels(scenario.records, field) : null;
+      if (labels) return { categoryMeaning: [clarification.target, { source: shown, values: Object.fromEntries(labels.map(({ value }) => [value, value])) }] };
+    }
+    if (truth && truth.transform !== "concat" && truth.source && shown && shown !== truth.source && prepared.profile.fields.some((field) => field.path === truth.source && field.supported)) {
+      return { fieldMatch: [clarification.target, truth.source] };
+    }
+  }
+  return oracleAnswer18c(clarification, scenario, prepared);
+}
+
+export function runOracle18d(base: Omit<CompileInput, "answers">, scenario: Pick<Eval18dScenario, "groundTruth" | "records">): OracleRun18c {
+  const fieldMatches: Record<string, string | null> = {};
+  const fieldCombinations: Record<string, { paths: string[]; separator: string }> = {};
+  const categoryMeanings: Record<string, CategoryMeaning> = {};
+  const semanticConfirmations: Record<string, "MM/DD/YYYY" | "DD/MM/YYYY"> = {};
+  const answers = (): PlanAnswers => ({ fieldMatches: { ...fieldMatches }, fieldCombinations: { ...fieldCombinations }, categoryMeanings: { ...categoryMeanings }, semanticConfirmations: { ...semanticConfirmations } });
+  const asked = new Map<string, Clarification>();
+  const done = new Set<string>();
+  let answered = 0;
+  let compiled = compileIntentPlan({ ...base, answers: answers() });
+  for (let round = 0; round < ORACLE_MAX_ROUNDS + 2; round += 1) {
+    let progressed = false;
+    for (const clarification of compiled.clarifications) {
+      const key = `${clarification.id}|${clarification.localPaths.join(",")}`;
+      if (!asked.has(key)) asked.set(key, clarification);
+      if (done.has(key)) continue;
+      done.add(key);
+      const answer = oracleAnswer18d(clarification, scenario, base.prepared);
+      if (!answer) continue;
+      if (answer.fieldMatch) fieldMatches[answer.fieldMatch[0]] = answer.fieldMatch[1];
+      if (answer.fieldCombination) fieldCombinations[answer.fieldCombination[0]] = answer.fieldCombination[1];
+      if (answer.categoryMeaning) categoryMeanings[answer.categoryMeaning[0]] = answer.categoryMeaning[1];
+      if (answer.dateOrder) semanticConfirmations[answer.dateOrder[0]] = answer.dateOrder[1];
+      answered += 1;
+      progressed = true;
+    }
+    if (!progressed) break;
+    compiled = compileIntentPlan({ ...base, answers: answers() });
+  }
+  for (const clarification of compiled.clarifications) {
+    const key = `${clarification.id}|${clarification.localPaths.join(",")}`;
+    if (!asked.has(key)) asked.set(key, clarification);
+  }
+  return { compiled, answers: answers(), asked: [...asked.values()], answered };
+}
+
+/* ------------------------------------------------------------------ */
 /* Scoring one answer under one policy                                 */
 /* ------------------------------------------------------------------ */
 
@@ -187,7 +267,7 @@ export function scorePlan18d(
   scenario: Eval18dScenario,
   built: Built18b,
   answerText: string,
-  context: { arm: Arm18d; policy: Policy18d; trial: number; index: number },
+  context: { arm: Arm18d; policy: Policy18d; trial: number; index: number; /** "18c" reproduces the frozen confirmatory scoring. Default "18d". */ oracle?: "18c" | "18d" },
 ): Score18d {
   const classes = Object.values(scenario.groundTruth).map(classifyTarget);
   const sets = localCandidates18d(scenario, built.prepared);
@@ -277,7 +357,7 @@ export function scorePlan18d(
       ? { local: { localCandidates: sets, askOnLocalEvidence: context.policy.askOnLocalEvidence } }
       : {}),
   };
-  const oracle = runOracle18c(base, scenario);
+  const oracle = context.oracle === "18c" ? runOracle18c(base, scenario) : runOracle18d(base, scenario);
   const compiled = oracle.compiled;
   const enumLabels = new Map(built.payload.fields.map((field) => [field.alias, new Set(field.enumValues ?? [])]));
   for (const operation of compiled.aliasContract?.operations ?? []) {

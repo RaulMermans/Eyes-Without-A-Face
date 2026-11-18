@@ -26,13 +26,13 @@
     },
     "local": {
       "sourced": 131,
-      "top1": 107,
+      "top1": 110,
       "top3": 122,
       "noSource": 16,
-      "offered": 7,
-      "top1Rate": 0.817,
+      "offered": 5,
+      "top1Rate": 0.84,
       "top3Rate": 0.931,
-      "falseOfferRate": 0.438
+      "falseOfferRate": 0.313
     }
   },
   "bySet": {
@@ -93,13 +93,13 @@
       },
       "local": {
         "sourced": 38,
-        "top1": 32,
+        "top1": 33,
         "top3": 35,
         "noSource": 5,
-        "offered": 4,
-        "top1Rate": 0.842,
+        "offered": 3,
+        "top1Rate": 0.868,
         "top3Rate": 0.921,
-        "falseOfferRate": 0.8
+        "falseOfferRate": 0.6
       }
     },
     "eval-18d": {
@@ -126,13 +126,13 @@
       },
       "local": {
         "sourced": 51,
-        "top1": 40,
+        "top1": 42,
         "top3": 47,
         "noSource": 7,
-        "offered": 3,
-        "top1Rate": 0.784,
+        "offered": 2,
+        "top1Rate": 0.824,
         "top3Rate": 0.922,
-        "falseOfferRate": 0.429
+        "falseOfferRate": 0.286
       }
     }
   },
@@ -192,11 +192,11 @@
       },
       "local": {
         "sourced": 53,
-        "top1": 45,
+        "top1": 47,
         "top3": 51,
         "noSource": 0,
         "offered": 0,
-        "top1Rate": 0.849,
+        "top1Rate": 0.887,
         "top3Rate": 0.962,
         "falseOfferRate": null
       }
@@ -259,10 +259,10 @@
         "top1": 0,
         "top3": 0,
         "noSource": 16,
-        "offered": 7,
+        "offered": 5,
         "top1Rate": null,
         "top3Rate": null,
-        "falseOfferRate": 0.438
+        "falseOfferRate": 0.313
       }
     },
     "normalize_email": {
@@ -320,11 +320,11 @@
       },
       "local": {
         "sourced": 19,
-        "top1": 13,
+        "top1": 14,
         "top3": 19,
         "noSource": 0,
         "offered": 0,
-        "top1Rate": 0.684,
+        "top1Rate": 0.737,
         "top3Rate": 1,
         "falseOfferRate": null
       }
@@ -364,7 +364,7 @@
   },
   "localMatcherLatencyMs": {
     "scenarios": 14,
-    "median": 1.94,
-    "max": 6.38
+    "median": 1.26,
+    "max": 5.11
   }
 }

@@ -5,8 +5,8 @@
  */
 import { describe, expect, it } from "vitest";
 import { loadDevCorpus } from "../../src/evaluation/dev-corpus.ts";
-import { ARMS_18D, localCandidates18d, POLICIES_18D, scorePlan18d, summarize18d, type Score18d } from "../../src/evaluation/eval-18d.ts";
-import { runOracle18c } from "../../src/evaluation/eval-18c.ts";
+import { ARMS_18D, localCandidates18d, POLICIES_18D, runOracle18d, scorePlan18d, summarize18d, type Score18d } from "../../src/evaluation/eval-18d.ts";
+
 import { gtPaths } from "../../src/evaluation/eval-18b.ts";
 import { parseIntentPlanText, validateIntentPlan } from "../../src/plan/validate.ts";
 
@@ -33,7 +33,7 @@ describe.runIf(process.env.EYES_DIAGNOSE === "1")("DIAG-18D failure dissection",
         continue;
       }
       const sets = localCandidates18d(item.scenario, item.built.prepared);
-      const oracle = runOracle18c(
+      const oracle = runOracle18d(
         { validated: validation.value, disclosure: item.built.payload, prepared: item.built.prepared, records: item.scenario.records, requestId: "diag0000", ...(policy.local ? { local: { localCandidates: sets, askOnLocalEvidence: policy.askOnLocalEvidence } } : {}) },
         item.scenario,
       );

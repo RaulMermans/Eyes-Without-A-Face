@@ -96,7 +96,7 @@ function withLocalEvidence(workspace: WorkspaceState, prepared: PreparedTwin): P
 
 /** The user's answers held in the workspace (the guided decision maps). Local only. */
 function planAnswers(workspace: WorkspaceState): PlanAnswers {
-  return { fieldMatches: workspace.fieldMatches, categoryMeanings: workspace.categoryMeanings, semanticConfirmations: workspace.semanticConfirmations };
+  return { fieldMatches: workspace.fieldMatches, fieldCombinations: workspace.fieldCombinations ?? {}, categoryMeanings: workspace.categoryMeanings, semanticConfirmations: workspace.semanticConfirmations };
 }
 
 /** Counts of a compiled plan for the workflow log (numbers only, never names). */

@@ -246,8 +246,10 @@ describe("18D-D ranked plans and compile policies", () => {
     expect(contradicted.clarifications[0]).toMatchObject({ kind: "choose-field", rankedPaths: ["zeile", "kundennummer"] });
     // Sprint 18E: local clear about another field is a significant disagreement too — asked despite high confidence.
     expect(compileWith(entries, { askOnLocalEvidence: true, localCandidates: [localSet("external_id", ["kundennummer"], "clear")] }).fields[0]!.operation).toBeNull();
-    // Insufficient evidence (local unsure, Gemini's pick listed): the existing rules decide, a confident match runs.
-    expect(compileWith(entries, { askOnLocalEvidence: true, localCandidates: [localSet("external_id", ["kundennummer", "zeile"], "ambiguous")] }).fields[0]!.operation).not.toBeNull();
+    // Sprint 18F: any disagreement with the local top-1 is asked, also when the local matcher is unsure.
+    expect(compileWith(entries, { askOnLocalEvidence: true, localCandidates: [localSet("external_id", ["kundennummer", "zeile"], "ambiguous")] }).fields[0]!.operation).toBeNull();
+    // Insufficient evidence (no local candidate at all): the existing rules decide, a confident match runs.
+    expect(compileWith(entries, { askOnLocalEvidence: true, localCandidates: [localSet("external_id", [], "none")] }).fields[0]!.operation).not.toBeNull();
     // Without the option, ranking only.
     expect(compileWith(entries, { localCandidates: [localSet("external_id", ["kundennummer"], "clear", ["zeile"])] }).fields[0]!.operation).not.toBeNull();
     // Once the user answered, local evidence never re-asks.
@@ -353,13 +355,14 @@ describe("18E agreement classes", () => {
     expect(classifyAgreement("a", set(["b"], "clear"))).toBe("significant-disagreement");
     expect(classifyAgreement("a", set(["b", "a"], "clear"))).toBe("significant-disagreement");
     expect(classifyAgreement("a", set(["b", "c"], "ambiguous"))).toBe("significant-disagreement");
-    expect(classifyAgreement("a", set(["b", "a"], "ambiguous"))).toBe("insufficient-evidence");
+    expect(classifyAgreement("a", set(["b", "a"], "ambiguous"))).toBe("significant-disagreement");
     expect(classifyAgreement("a", set([], "none"))).toBe("insufficient-evidence");
     expect(classifyAgreement("a", undefined)).toBe("insufficient-evidence");
     expect(classifyAgreement("a", set(["a"], "clear", ["a"]))).toBe("significant-disagreement");
     expect(classifyAgreement("a", set([], "none", ["a"]))).toBe("significant-disagreement");
     expect(noSourceNeedsQuestion(set(["b"], "clear"))).toBe(true);
-    expect(noSourceNeedsQuestion(set(["b"], "ambiguous"))).toBe(false);
+    expect(noSourceNeedsQuestion(set(["b"], "ambiguous"))).toBe(true);
+    expect(noSourceNeedsQuestion(set([], "none"))).toBe(false);
     expect(noSourceNeedsQuestion(undefined)).toBe(false);
   });
 });

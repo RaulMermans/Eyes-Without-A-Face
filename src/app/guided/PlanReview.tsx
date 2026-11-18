@@ -1,9 +1,10 @@
+import { useState } from "react";
 import { Button } from "../../components/ui/button.tsx";
 import { CLARIFICATION_COPY } from "../../plan/clarify.ts";
 import type { Clarification, CompiledField } from "../../plan/types.ts";
 import type { PreparedTwin } from "../../workflow/pipeline.ts";
 import type { ProposalState } from "../workspace-state.ts";
-import { describeRule, type CategoryMeaning, type FieldPlan } from "./field-plan.ts";
+import { COMBINE_SEPARATORS, describeRule, type CategoryMeaning, type FieldPlan } from "./field-plan.ts";
 import { CategoryTranslation, DateOrderQuestion, NO_FIELD, type FieldQuestionHandlers, type SlashOrder } from "./FieldQuestions.tsx";
 
 /**
@@ -214,6 +215,9 @@ function Question({
             Change the destination
           </Button>
         ) : null}
+        {handlers.onCombine && target?.target.type === "string" && !target.target.format ? (
+          <CombineFields target={question.target} fields={[...options, ...others]} onCombine={handlers.onCombine} />
+        ) : null}
       </div>
     );
   }
@@ -230,6 +234,28 @@ function Question({
       </p>
       <p className="text-xs text-mute">{copy.help}</p>
       {body}
+      {(question.kind === "translate-categories" || question.kind === "confirm-date-order") && path ? (
+        // Sprint 18F: a question about the wrong field must be answerable — the user can name the right one.
+        <label className="flex flex-wrap items-center gap-2 text-xs text-mute">
+          <span>Not the right field for “{question.target}”? Use another:</span>
+          <select
+            aria-label={`Another source for ${question.target}`}
+            defaultValue=""
+            onChange={(event) => {
+              if (event.target.value) handlers.onMatch(question.target, event.target.value);
+            }}
+            className="min-h-8 rounded-[3px] border border-ink-3 bg-void px-2 text-xs text-ink focus:border-violet-soft focus:outline-none"
+            data-testid={`clarify-other-field-${question.target}`}
+          >
+            <option value="">Choose…</option>
+            {[...options, ...others].filter((option) => option !== path).map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </label>
+      ) : null}
     </section>
   );
 }
@@ -242,5 +268,63 @@ function MapInstead({ text, onMapManually }: { text: string; onMapManually: () =
         Map fields yourself
       </Button>
     </p>
+  );
+}
+
+/**
+ * Sprint 18F: "Combine several fields" — 2–4 source fields in order plus a fixed separator, applied
+ * only on the user's click. Compiled as the existing concat operation; nothing is pre-selected.
+ */
+function CombineFields({ target, fields, onCombine }: { target: string; fields: readonly string[]; onCombine: NonNullable<FieldQuestionHandlers["onCombine"]> }) {
+  const [paths, setPaths] = useState<string[]>(["", ""]);
+  const [separator, setSeparator] = useState<(typeof COMBINE_SEPARATORS)[number] | "">("");
+  const chosen = paths.filter(Boolean);
+  const valid = chosen.length >= 2 && new Set(chosen).size === chosen.length && separator !== "";
+  const label = (value: string) => (value === " " ? "space" : JSON.stringify(value));
+  return (
+    <details className="w-full text-xs" data-testid={`clarify-combine-${target}`}>
+      <summary className="cursor-pointer text-mute">Combine several fields…</summary>
+      <div className="mt-2 flex flex-wrap items-center gap-2">
+        {paths.map((value, index) => (
+          <select
+            key={index}
+            aria-label={`Part ${index + 1} of ${target}`}
+            value={value}
+            onChange={(event) => setPaths(paths.map((item, at) => (at === index ? event.target.value : item)))}
+            className="min-h-8 rounded-[3px] border border-ink-3 bg-void px-2 text-xs text-ink"
+            data-testid={`clarify-combine-${target}-part-${index + 1}`}
+          >
+            <option value="">Part {index + 1}…</option>
+            {fields.map((field) => (
+              <option key={field} value={field}>
+                {field}
+              </option>
+            ))}
+          </select>
+        ))}
+        {paths.length < 4 ? (
+          <Button size="sm" variant="ghost" onClick={() => setPaths([...paths, ""])}>
+            Add a part
+          </Button>
+        ) : null}
+        <select
+          aria-label={`Separator for ${target}`}
+          value={separator}
+          onChange={(event) => setSeparator(event.target.value as (typeof COMBINE_SEPARATORS)[number] | "")}
+          className="min-h-8 rounded-[3px] border border-ink-3 bg-void px-2 text-xs text-ink"
+          data-testid={`clarify-combine-${target}-separator`}
+        >
+          <option value="">Separator…</option>
+          {COMBINE_SEPARATORS.map((item) => (
+            <option key={item} value={item}>
+              {label(item)}
+            </option>
+          ))}
+        </select>
+        <Button size="sm" variant="outline" disabled={!valid} onClick={() => valid && onCombine(target, { paths: chosen, separator: separator as (typeof COMBINE_SEPARATORS)[number] })} data-testid={`clarify-combine-${target}-apply`}>
+          Combine
+        </Button>
+      </div>
+    </details>
   );
 }

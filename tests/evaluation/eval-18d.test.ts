@@ -332,7 +332,7 @@ describe.runIf(process.env.EYES_EVAL_18D_STAGE2 === "1")("EVAL-308 confirmatory 
           const built = (await buildScenario18d(scenario, arm))!;
           for (const attempt of attempts) if (attempt.promptSha256[0] && attempt.promptSha256[0] !== built.promptSha256) stat.mismatches += 1;
           const text = last && last.httpStatus.at(-1) === 200 ? (last.answers.at(-1) ?? "") : "";
-          scores.push(text ? scorePlan18d(scenario, built, text, { arm, policy, trial, index }) : { ...scorePlan18d(scenario, built, "{}", { arm, policy, trial, index }), answered: false });
+          scores.push(text ? scorePlan18d(scenario, built, text, { arm, policy, trial, index, oracle: "18c" }) : { ...scorePlan18d(scenario, built, "{}", { arm, policy, trial, index, oracle: "18c" }), answered: false });
         }
       }
       const sorted = [...stat.ms].sort((a, b) => a - b);

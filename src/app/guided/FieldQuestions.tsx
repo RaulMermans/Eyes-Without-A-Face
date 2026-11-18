@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "../../components/ui/button.tsx";
 import { CheckIcon, DashIcon, LockIcon } from "../../components/icons.tsx";
 import type { DateInputFormat } from "../../domain/profile/profile.ts";
-import { describeRule, translationComplete, type CategoryMeaning, type FieldPlan, type SourceCandidate, type TargetPlan } from "./field-plan.ts";
+import { describeRule, translationComplete, type CategoryMeaning, type FieldPlan, type SourceCandidate, type TargetPlan, type FieldCombination } from "./field-plan.ts";
 
 /**
  * Sprint 15 (Workstreams A, B, C) — the guided questions.
@@ -24,6 +24,8 @@ export interface FieldQuestionHandlers {
   onMeaning: (target: string, meaning: CategoryMeaning | null) => void;
   onShareCategories: (paths: string[], share: boolean) => void;
   onDateOrder: (path: string, order: SlashOrder) => void;
+  /** Sprint 18F: combine 2–4 fields into one text destination field (null = remove the combination). */
+  onCombine?: (target: string, combination: FieldCombination | null) => void;
 }
 
 const SET_ASIDE = "__set_aside__";

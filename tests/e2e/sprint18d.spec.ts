@@ -100,3 +100,32 @@ test.describe("E2E-191 destination semantics (cloud-disclosure 1.4.0) in the rev
     expect(prompt).not.toContain("Ignore previous");
   });
 });
+
+test.describe("E2E-192 combine several fields (Sprint 18F)", () => {
+  test("a required whole-name field Gemini left open is built from the user's combination, nothing pre-selected", async ({ page }) => {
+    const providerRequests = attachProviderWatch(page);
+    const plan = {
+      ...RANKED_PLAN,
+      fields: RANKED_PLAN.fields.map((field) =>
+        field.target === "name" ? { target: "name", status: "no_source", from: [], alternatives: [], transform: "none", confidence: "low", evidence: [], missing: ["no-matching-source"] } : field,
+      ),
+    };
+    await boot(page, { planOutput: plan, initialPlanner: "intent-plan-2" });
+    await page.getByTestId("guided-build").click();
+    await expect(page.getByTestId("approval-card")).toBeVisible();
+    await page.getByTestId("guided-approve").click();
+    const combine = page.getByTestId("clarify-combine-name");
+    await expect(combine).toBeVisible();
+    await combine.locator("summary").click();
+    await expect(page.getByTestId("clarify-combine-name-apply")).toBeDisabled();
+    await page.getByTestId("clarify-combine-name-part-1").selectOption("c_FirstName");
+    await page.getByTestId("clarify-combine-name-part-2").selectOption("c_LastName");
+    await expect(page.getByTestId("clarify-combine-name-apply")).toBeDisabled();
+    await page.getByTestId("clarify-combine-name-separator").selectOption(" ");
+    await page.getByTestId("clarify-combine-name-apply").click();
+    await expect(page.getByTestId("clarify-missing-required-source-name")).toHaveCount(0);
+    await expect(page.getByTestId("plan-field-name")).toHaveAttribute("data-status", "ready");
+    await expect(page.getByTestId("plan-field-name")).toHaveAttribute("data-by", "user");
+    expect(providerRequests).toEqual([]);
+  });
+});

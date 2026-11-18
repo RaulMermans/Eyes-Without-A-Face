@@ -250,6 +250,8 @@ export interface CompiledField {
   /** What still blocks this field. Empty when `operation` is set. */
   missing: MissingCode[];
   failures: ClassifiedFailure[];
+  /** ADR 0022: Gemini's `copy` compiled as `trim` because the local profile observed padded whitespace. Shown, never hidden. */
+  refinement?: "trim-padded-whitespace";
 }
 
 export interface CompiledIntegration {
@@ -320,4 +322,6 @@ export interface PlanAnswers {
   categoryMeanings: Readonly<Record<string, { source: string; values: Record<string, string | null> }>>;
   /** local source path → the confirmed slash-date order. */
   semanticConfirmations: Readonly<Record<string, Extract<DateInputFormat, "MM/DD/YYYY" | "DD/MM/YYYY">>>;
+  /** Sprint 18F: destination text field → the user's "combine these fields" answer (overrides fieldMatches for that field). */
+  fieldCombinations?: Readonly<Record<string, { paths: readonly string[]; separator: string }>>;
 }

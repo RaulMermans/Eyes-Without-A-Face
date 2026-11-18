@@ -68,6 +68,7 @@ export function ResultStep({
   newRequestAllowed = true,
   onGenerate = () => {},
   onMatch = () => {},
+  onCombine,
   onMapManually = () => {},
   onToVerify = () => {},
   onToDeliver = () => {},
@@ -78,6 +79,7 @@ export function ResultStep({
   newRequestAllowed?: boolean;
   onGenerate?: () => void;
   onMatch?: FieldQuestionHandlers["onMatch"];
+  onCombine?: FieldQuestionHandlers["onCombine"];
   onMapManually?: () => void;
   onToVerify?: () => void;
   onToDeliver?: () => void;
@@ -280,7 +282,7 @@ export function ResultStep({
           meanings={meanings}
           confirmations={confirmations}
           dateExamples={dateExamples}
-          handlers={{ onMatch, onMeaning, onDateOrder, onShareCategories: () => {} }}
+          handlers={{ onMatch, onMeaning, onDateOrder, onShareCategories: () => {}, ...(onCombine ? { onCombine } : {}) }}
           onMapManually={onMapManually}
           onEditDestination={onEditDestination}
         />

@@ -329,6 +329,20 @@ function scoreField(
     contradictions.add("person-name-values");
   }
 
+  // Sprint 18F: a field about ANOTHER party (the manager's email, a staff name, a guardian's phone) is no evidence for a
+  // destination field that names no such party — the classic CRM decoy. Fixed party concepts only.
+  const wanted = new Set([...t.toks.map((item) => item.token), ...t.desc]);
+  if (source.toks.some((item) => OTHER_PARTY.has(item.token) && !wanted.has(item.token))) {
+    score -= 3;
+    contradictions.add("different-party");
+  }
+  // Sprint 18F: the opposite qualifier ("amount excl. tax" for "amount incl. VAT", a billing address for shipping).
+  const sourceTokens = new Set(source.toks.map((item) => item.token));
+  if (OPPOSED.some(([a, b]) => (wanted.has(a) && sourceTokens.has(b) && !sourceTokens.has(a)) || (wanted.has(b) && sourceTokens.has(a) && !sourceTokens.has(b)))) {
+    score -= 3;
+    contradictions.add("opposed-qualifier");
+  }
+
   if (target.required && field.missingCount === 0 && field.nullCount === 0) {
     score += 0.5;
     evidence.add("completeness");
@@ -340,12 +354,43 @@ function scoreField(
 }
 
 const EVIDENCE_ORDER: readonly LocalEvidenceCode[] = ["name-lexical", "name-translated", "description-lexical", "type", "format", "concept", "category-shape", "label-overlap", "identifier-shape", "completeness", "embedding"];
-const CONTRADICTION_ORDER: readonly LocalContradictionCode[] = ["type-mismatch", "format-mismatch", "person-name-values", "row-counter", "email-as-identifier"];
+const CONTRADICTION_ORDER: readonly LocalContradictionCode[] = ["type-mismatch", "format-mismatch", "person-name-values", "row-counter", "email-as-identifier", "different-party", "opposed-qualifier", "name-part"];
+/** Destination concepts that make a "name" something other than a person's whole name. */
+const NOT_PERSON_NAME: ReadonlySet<string> = new Set(["company", "product", "account", "manager", "employee", "broker", "file", "user"]);
+
+/**
+ * Sprint 18F: first/last-name parts, grouped by parent path. A field is a part when its name carries the
+ * first or last concept, or when it is a plain "name" field beside one (French nom + prénom, Spanish
+ * nombre + apellido). Parts count only when a group has at least two.
+ */
+function namePartPaths(fields: readonly FieldProfile[]): Set<string> {
+  const byParent = new Map<string, Array<{ path: string; tokens: Set<string> }>>();
+  for (const field of fields) {
+    if (field.type !== "string" && field.type !== "enum") continue;
+    const parent = field.path.includes(".") ? field.path.slice(0, field.path.lastIndexOf(".")) : "";
+    const tokens = new Set(nameTokens(field.path.split(".").at(-1) ?? "", 0.6).toks.map((item) => item.token));
+    (byParent.get(parent) ?? byParent.set(parent, []).get(parent)!).push({ path: field.path, tokens });
+  }
+  const out = new Set<string>();
+  for (const group of byParent.values()) {
+    const qualified = group.filter((item) => item.tokens.has("first") || item.tokens.has("last"));
+    if (qualified.length === 0) continue;
+    const plain = group.filter((item) => item.tokens.has("name") && !item.tokens.has("first") && !item.tokens.has("last") && [...item.tokens].every((token) => token === "name" || GENERIC_TOKENS.has(token)));
+    const parts = [...qualified, ...plain];
+    if (parts.length >= 2) for (const item of parts) out.add(item.path);
+  }
+  return out;
+}
+/** Qualifier concepts whose members contradict each other. */
+const OPPOSED: ReadonlyArray<readonly [string, string]> = [["incl", "excl"], ["primary", "secondary"], ["billing", "shipping"], ["home", "work"], ["start", "end"], ["min", "max"]];
+/** Concepts that name a party other than the record's own subject. */
+const OTHER_PARTY: ReadonlySet<string> = new Set(["manager", "employee", "broker", "guardian", "emergency"]);
 
 export const matchLocally: LocalMatcher = (input) => {
   const fields = input.profile.fields.slice(0, LOCAL_MATCHER_LIMITS.maxFields).filter((field) => field.supported);
   const records = input.records.slice(0, LOCAL_MATCHER_LIMITS.maxRecords);
   const stats = new Map(fields.map((field) => [field.path, fieldStats(field, records)]));
+  const parts = namePartPaths(fields);
   const concepts = input.conceptsByPath;
   const conceptOf = (path: string): string | undefined => (concepts && Object.hasOwn(concepts, path) && typeof concepts[path] === "string" ? concepts[path] : undefined);
 
@@ -361,6 +406,10 @@ export const matchLocally: LocalMatcher = (input) => {
     const all = fields
       .map((field) => scoreField(target, t, field, stats.get(field.path) as FieldStats, conceptOf(field.path)))
       .filter((item): item is Scored => item !== null);
+    // A whole-name destination (a person's name, no first/last qualifier): a single name part is only part of it.
+    const tokens = new Set(t.toks.map((item) => item.token));
+    const wholeName = target.type === "string" && tokens.has("name") && !tokens.has("first") && !tokens.has("last") && ![...tokens].some((token) => NOT_PERSON_NAME.has(token));
+    if (wholeName) for (const item of all) if (parts.has(item.path)) item.contradictions.add("name-part");
     const contradicted = all.filter((item) => item.contradictions.size > 0).map((item) => item.path).sort();
     const scored = all
       .filter((item) => item.offered)

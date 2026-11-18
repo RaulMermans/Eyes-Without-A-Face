@@ -60,7 +60,13 @@ export type LocalContradictionCode =
   /** A row-counter-like integer sequence offered for an identifier. */
   | "row-counter"
   /** An email column offered for an identifier. */
-  | "email-as-identifier";
+  | "email-as-identifier"
+  /** Sprint 18F: the source name marks another party (manager, staff, broker, guardian, emergency contact) the destination does not mention. */
+  | "different-party"
+  /** Sprint 18F: the source name carries the OPPOSITE qualifier of the destination (incl/excl, gross/net, primary/secondary, billing/shipping, home/work, start/end, min/max). */
+  | "opposed-qualifier"
+  /** Sprint 18F: a first- or last-name part offered for a WHOLE-name destination while the other part exists (a combination is needed). */
+  | "name-part";
 
 export interface LocalCandidate {
   /** Local source path. LOCAL ONLY. */

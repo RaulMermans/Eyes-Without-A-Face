@@ -16,7 +16,7 @@ import type { SemanticConstraint } from "../semantics/contract.ts";
 import type { DateInputFormat } from "../domain/profile/profile.ts";
 import type { RevisionDecision } from "../revision/decision.ts";
 import type { SemanticWithheld } from "../revision/semantic-feedback.ts";
-import { isLocalMapping, type CategoryMeaning, type FieldMatch } from "./guided/field-plan.ts";
+import { isLocalMapping, type CategoryMeaning, type FieldCombination, type FieldMatch } from "./guided/field-plan.ts";
 import { summarizeDestination } from "./guided/destinations.ts";
 import type { PlanIssue, PlanReceipt } from "../plan/types.ts";
 
@@ -123,6 +123,8 @@ export interface WorkspaceState {
    * explicit choice in the guided flow. Local only; never part of a request.
    */
   fieldMatches: Record<string, FieldMatch>;
+  /** Sprint 18F: destination text field → the user's explicit "combine these fields" answer. Local only. */
+  fieldCombinations: Record<string, FieldCombination>;
   /**
    * Sprint 15: destination enum field → the user's declared translation of a
    * source field's categories. Local only. It is both the on-device mapping
@@ -137,8 +139,8 @@ export interface WorkspaceState {
 }
 
 /** Decisions that belong to one source. A new source starts without them. */
-export function freshSourceDecisions(): Pick<WorkspaceState, "overrides" | "semanticConfirmations" | "fieldMatches" | "categoryMeanings" | "packageLabelSources"> {
-  return { overrides: {}, semanticConfirmations: {}, fieldMatches: {}, categoryMeanings: {}, packageLabelSources: [] };
+export function freshSourceDecisions(): Pick<WorkspaceState, "overrides" | "semanticConfirmations" | "fieldMatches" | "fieldCombinations" | "categoryMeanings" | "packageLabelSources"> {
+  return { overrides: {}, semanticConfirmations: {}, fieldMatches: {}, fieldCombinations: {}, categoryMeanings: {}, packageLabelSources: [] };
 }
 
 export function initialWorkspaceState(): WorkspaceState {
@@ -161,6 +163,7 @@ export function initialWorkspaceState(): WorkspaceState {
     semanticConfirmations: {},
     revisionConstraintIds: [],
     fieldMatches: {},
+    fieldCombinations: {},
     categoryMeanings: {},
     packageLabelSources: [],
   };
@@ -192,7 +195,7 @@ export function applyTwinOverride(state: WorkspaceState, path: string, patch: Re
  * device from the old decisions and its result, and any blind revision run
  * (its evaluations used the old semantic context).
  */
-export function applyFieldDecision(state: WorkspaceState, patch: Partial<Pick<WorkspaceState, "fieldMatches" | "categoryMeanings" | "semanticConfirmations">>): WorkspaceState {
+export function applyFieldDecision(state: WorkspaceState, patch: Partial<Pick<WorkspaceState, "fieldMatches" | "fieldCombinations" | "categoryMeanings" | "semanticConfirmations">>): WorkspaceState {
   const next = { ...state, ...patch, revision: null, revisionConstraintIds: [] };
   if (state.mappingChoice === "manual" && isLocalMapping(state.mappingText)) return { ...next, report: null, mappingRunError: null };
   return next;
@@ -217,5 +220,6 @@ export function withDestination(state: WorkspaceState, destinationText: string):
   const same = (name: string) => before.has(name) && before.get(name) === after.get(name);
   const fieldMatches = Object.fromEntries(Object.entries(state.fieldMatches).filter(([name]) => same(name)));
   const categoryMeanings = Object.fromEntries(Object.entries(state.categoryMeanings).filter(([name]) => same(name)));
-  return invalidateDownstream({ ...state, destinationText, fieldMatches, categoryMeanings });
+  const fieldCombinations = Object.fromEntries(Object.entries(state.fieldCombinations ?? {}).filter(([name]) => same(name)));
+  return invalidateDownstream({ ...state, destinationText, fieldMatches, fieldCombinations, categoryMeanings });
 }

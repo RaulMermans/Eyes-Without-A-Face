@@ -131,3 +131,10 @@ Unchanged:
 - What is left is no longer silent wrong picks: it is the five causes above.
 
 Exploratory replay only. Confirming it needs a fresh holdout.
+
+## Sprint 18F follow-up
+
+See [ADR 0022](../decisions/0022-answerable-questions-and-local-evidence.md). The policy now asks on every disagreement and on "no source" with any local candidate, alongside answerable questions, field combinations, the labelled `trim` and three new local contradictions.
+
+Exploratory replay: complete integrations **11 → 66 / 95** (wedge 0.70, general 0.69), with 0 false verifications, 0 invented values and 1 false complete.
+

@@ -51,6 +51,20 @@ export interface CategoryMeaning {
  */
 export type FieldMatch = string | null;
 
+/**
+ * Sprint 18F: the user's explicit "combine these fields" answer for one text destination field
+ * (e.g. a full name from first and last name). Local only. Compiled as the existing `concat`
+ * operation through the unchanged gate; never inferred, never pre-filled.
+ */
+export interface FieldCombination {
+  /** 2–4 local source paths, in output order. */
+  paths: string[];
+  separator: (typeof COMBINE_SEPARATORS)[number];
+}
+
+/** The separators the combine question offers (fixed; the user picks one). */
+export const COMBINE_SEPARATORS = [" ", ", ", " - ", " / "] as const;
+
 /** Guided field decisions held in `WorkspaceState`. Local only; never serialized into a request. */
 export interface GuidedFieldDecisions {
   /** destination field → local source path (or `null` = explicitly none), set only by an explicit user choice. */
@@ -355,7 +369,8 @@ export function deriveRule(
   if (target.format === "uri" || target.format === "uuid") return { rule: null, need: "unsupported" };
   if (target.type === "string") {
     if (!isTextual(field)) return { rule: null, need: "unsupported" };
-    return { rule: field.type === "string" && field.hasPaddedWhitespace ? { op: "trim", from: source, to: target.name } : { op: "copy", from: source, to: target.name }, need: null };
+    // Sprint 18F: a padded category-like text field (repeated names) is text too — trim it as a string field.
+    return { rule: (field.type === "string" || field.type === "enum") && field.hasPaddedWhitespace ? { op: "trim", from: source, to: target.name } : { op: "copy", from: source, to: target.name }, need: null };
   }
   return { rule: { op: "copy", from: source, to: target.name }, need: null };
 }

@@ -54,4 +54,6 @@ Read, in order:
 
 46. `docs/evaluation/sprint-18e-disagreement.md` — Sprint 18E: disagreement statistics, agreement classes, counterfactual replay, provider diagnosis
 
+47. `docs/decisions/0022-answerable-questions-and-local-evidence.md` — Sprint 18F: what fixed the failures, replay results, residuals
+
 Every sprint ends with an evidence-backed release status (`CODE_READY`, `DEPLOYMENT_PENDING`, `DEPLOYED_UNVERIFIED`, `PRODUCTION_ACCEPTED`, `RELEASE_FAILED`); rules in `AGENTS.md`. Do not duplicate architecture here. Do not start Sprint 16 automatically.
