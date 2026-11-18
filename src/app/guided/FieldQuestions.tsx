@@ -75,8 +75,8 @@ export function CategoryTranslation({
   };
   return (
     <div className="space-y-2" data-testid={`translation-${target.name}`} data-complete={String(complete)}>
-      <p className="flex items-center gap-1.5 text-xs text-ink-text">
-        <LockIcon size={12} className="shrink-0" /> Stays on this device. Choose what each value of <span className="font-mono text-ink">{candidate.path}</span> means for{" "}
+      <p className="text-xs leading-5 text-ink-text">
+        <LockIcon size={12} className="mr-1.5 inline align-[-1px]" />Stays on this device. Choose what each value of <span className="font-mono text-ink">{candidate.path}</span> means for{" "}
         <span className="font-mono text-ink">{target.name}</span>.
       </p>
       <table className="w-full max-w-xl text-left text-sm">

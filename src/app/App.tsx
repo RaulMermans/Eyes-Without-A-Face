@@ -29,7 +29,7 @@ import { summarizeDestination } from "./guided/destinations.ts";
 import { approveReview, cancelWaiting, prepareFreshReview, recompilePlan, rejectReview, runLocalVerification, sendApprovedRequest, spendApproval } from "./run-actions.ts";
 import { isIntentPlanRequest } from "../inference/intent-prompt.ts";
 import { planRequestBudget } from "../plan/compare.ts";
-import { GUIDED_STEPS, initialView, viewHash, type GuidedStep, type View } from "./experience.ts";
+import { GUIDED_STAGES, GUIDED_STEPS, initialView, viewHash, type GuidedStep, type View } from "./experience.ts";
 import { applyFieldDecision, initialWorkspaceState, invalidateDownstream, withDestination, type WorkspaceState } from "./workspace-state.ts";
 import { localContract, isLocalMapping, planFields, type CategoryMeaning, type FieldCombination } from "./guided/field-plan.ts";
 import type { SlashOrder } from "./guided/FieldQuestions.tsx";
@@ -702,7 +702,7 @@ export default function App() {
             <div className="min-w-0">
               <h1 className="text-[15px] font-semibold uppercase leading-none tracking-[0.12em] sm:text-base">Eyes Without a Face</h1>
               <p className="mt-1 hidden truncate font-mono text-[10px] uppercase tracking-[0.16em] text-gold sm:block sm:text-[11px]">
-                {view === "guided" ? "Connect your data. Choose where it goes. Get a working integration." : landing ? "Phantom Twin Engine" : "Build integrations for systems your AI cannot see."}
+                {view === "technical" && landing ? "Phantom Twin Engine" : "Build integrations for systems your AI cannot see."}
               </p>
             </div>
           </div>
@@ -729,20 +729,42 @@ export default function App() {
           ) : (
             <div className="flex flex-wrap items-center gap-2">
               <nav aria-label="Steps" className="guided-steps" data-testid="guided-steps">
-                {GUIDED_STEPS.map((item) => (
-                  <button
-                    key={item.id}
-                    type="button"
-                    aria-current={guidedStep === item.id ? "step" : undefined}
-                    disabled={!stepReachable(item.id)}
-                    onClick={() => goGuided(item.id)}
-                    data-testid={`step-${item.id}`}
-                    aria-label={item.label}
-                  >
-                    <span className="step-number">{item.number}</span>
-                    <span className="step-label">{item.label}</span>
-                  </button>
-                ))}
+                {GUIDED_STAGES.map((stage) => {
+                  const steps = GUIDED_STEPS.filter((item) => item.stage === stage.stage);
+                  const single = steps.length === 1;
+                  const current = steps.some((item) => item.id === guidedStep);
+                  return (
+                    <div
+                      key={stage.stage}
+                      role="group"
+                      aria-label={`Stage ${stage.stage} of ${GUIDED_STAGES.length}: ${stage.label}`}
+                      className="guided-stage"
+                      data-current={current ? "true" : undefined}
+                      data-testid={`guided-stage-${stage.stage}`}
+                    >
+                      {single ? null : (
+                        <span className="stage-label" aria-hidden="true">
+                          <span className="step-number">{stage.stage}</span>
+                          <span className="stage-name">{stage.label}</span>
+                        </span>
+                      )}
+                      {steps.map((item) => (
+                        <button
+                          key={item.id}
+                          type="button"
+                          aria-current={guidedStep === item.id ? "step" : undefined}
+                          disabled={!stepReachable(item.id)}
+                          onClick={() => goGuided(item.id)}
+                          data-testid={`step-${item.id}`}
+                          aria-label={single ? stage.label : item.label}
+                        >
+                          {single ? <span className="step-number">{stage.stage}</span> : <span className="step-dot" aria-hidden="true" />}
+                          <span className="step-label">{single ? stage.label : item.label}</span>
+                        </button>
+                      ))}
+                    </div>
+                  );
+                })}
               </nav>
               <Button variant="ghost" size="sm" className="text-ink-text" onClick={() => switchView("technical", workspace.review || workspace.report ? "observe" : "connect")} data-testid="view-technical">
                 Technical details

@@ -17,7 +17,7 @@ import crmJsonUrl from "../../examples/crm/source-records.json?url";
 import { stepCaption } from "../experience.ts";
 
 /**
- * Guided step 1 — "Where is your data?" (Sprint 13, A2 / B / C).
+ * Guided step 1 — "Add your data" (was "Where is your data?") (Sprint 13, A2 / B / C).
  *
  * Every path goes through the Source Adapter Layer and produces the same
  * engine input. Parsing happens in this tab; the REST connector performs one
@@ -132,9 +132,11 @@ export function DataStep({
       <header className="max-w-3xl">
         <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-gold">{stepCaption("data")}</p>
         <h2 id="data-heading" tabIndex={-1} className="focus:outline-none mt-2 font-display text-4xl leading-[1.05] tracking-[-0.01em] sm:text-5xl">
-          Where is your data?
+          Add your data
         </h2>
-        <p className="mt-3 text-base leading-7 text-ink-text">Your records are read in this browser. Nothing is uploaded.</p>
+        <p className="mt-3 text-base leading-7 text-ink-text">
+          Upload a file or try an example. Your original records stay on your device: they are read in this browser and never uploaded.
+        </p>
         <p className="mt-1 text-xs text-mute" data-testid="guided-session-note">Nothing is saved: reloading or closing this tab clears your work.</p>
       </header>
 
@@ -208,7 +210,7 @@ export function DataStep({
           )}
 
           <div className="flex flex-wrap items-center gap-2 text-sm" data-testid="demo-picker">
-            <span className="text-mute">No data at hand? Try fictional CRM data:</span>
+            <span className="text-mute">No file at hand? Try an example with fictional CRM data:</span>
             {DEMOS.map((demo) => (
               <Button key={demo.id} size="sm" variant="outline" onClick={() => void loadDemo(demo)} disabled={reading} data-testid={`demo-${demo.id}`}>
                 {demo.label}

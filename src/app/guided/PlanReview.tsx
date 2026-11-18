@@ -55,12 +55,12 @@ export function PlanReview({
           Field matches
         </h3>
         <div className="mt-2 overflow-x-auto">
-          <table className="w-full min-w-[30rem] text-left text-sm" data-testid="plan-fields">
+          <table className="w-full text-left text-sm sm:min-w-[30rem]" data-testid="plan-fields">
             <thead>
               <tr className="border-b border-rule text-xs text-mute">
                 <th scope="col" className="py-1.5 pr-3 font-normal">Destination</th>
                 <th scope="col" className="py-1.5 pr-3 font-normal">From your data</th>
-                <th scope="col" className="py-1.5 pr-3 font-normal">Matched by</th>
+                <th scope="col" className="hidden py-1.5 pr-3 font-normal sm:table-cell">Matched by</th>
                 <th scope="col" className="py-1.5 font-normal">Status</th>
               </tr>
             </thead>
@@ -80,8 +80,10 @@ export function PlanReview({
                   <td className="py-2 pr-3 font-mono text-xs">
                     {field.correspondence ? local(field.correspondence.aliases) : "—"}
                     {field.operation ? <span className="block font-sans text-[11px] text-mute">{describeRule(field.operation)}</span> : null}
+                    {/* Sprint 19: at phone width the "Matched by" column folds under the source field. */}
+                    {field.correspondence ? <span className="block font-sans text-[11px] text-mute sm:hidden">matched by {who(field)}</span> : null}
                   </td>
-                  <td className="py-2 pr-3 text-xs">{who(field)}</td>
+                  <td className="hidden py-2 pr-3 text-xs sm:table-cell">{who(field)}</td>
                   <td className={`py-2 text-xs ${field.operation ? "text-pass" : field.required ? "text-warn" : "text-mute"}`}>{STATUS[field.readiness]}</td>
                 </tr>
               ))}

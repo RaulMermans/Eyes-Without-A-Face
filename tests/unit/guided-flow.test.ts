@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { exportCandidates } from "../../src/app/export-context.ts";
 import { draftSchemaFromSample, EXAMPLE_DESTINATIONS, exampleFor, summarizeDestination } from "../../src/app/guided/destinations.ts";
 import { guidedStatus, type InFlight } from "../../src/app/guided/guided-status.ts";
-import { initialView, viewHash } from "../../src/app/experience.ts";
+import { GUIDED_STAGES, GUIDED_STEPS, initialView, stepCaption, viewHash } from "../../src/app/experience.ts";
 import { deriveRuntime } from "../../src/app/runtime-model.ts";
 import { initialWorkspaceState, invalidateDownstream, type WorkspaceState } from "../../src/app/workspace-state.ts";
 import { approveReview, cancelWaiting, rejectReview, runLocalVerification, spendApproval } from "../../src/app/run-actions.ts";
@@ -121,5 +121,16 @@ describe("GUI-VIEW views are navigation only", () => {
     expect(initialView("#anything")).toBe("guided");
     expect(viewHash("technical")).toBe("#technical");
     expect(viewHash("guided")).toBe("");
+  });
+});
+
+describe("GUI-STAGE Sprint 19: five steps are presented as three stages", () => {
+  it("GUI-STAGE-001 every step belongs to one stage, in order, and the steps are unchanged", () => {
+    expect(GUIDED_STEPS.map((step) => step.id)).toEqual(["data", "destination", "generate", "verify", "deliver"]);
+    expect(GUIDED_STAGES.map((stage) => stage.label)).toEqual(["Add your data", "Build & review", "Check & export"]);
+    expect(GUIDED_STEPS.map((step) => step.stage)).toEqual([1, 2, 2, 2, 3]);
+    expect(stepCaption("data")).toBe("Step 1 of 3 · Add your data");
+    expect(stepCaption("verify")).toBe("Step 2 of 3 · Build & review");
+    expect(stepCaption("deliver")).toBe("Step 3 of 3 · Check & export");
   });
 });

@@ -979,32 +979,47 @@ body {
 }
 .guided-steps {
   display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
   gap: 2px;
   padding: 3px;
   border: 1px solid var(--color-ink-3);
   border-radius: 999px;
   background: rgb(5 6 11 / 0.6);
 }
+/* Sprint 19: five steps shown as three stages; a hairline separates the stages. */
+.guided-stage { display: inline-flex; align-items: center; gap: 2px; }
+.guided-stage + .guided-stage { margin-left: 3px; padding-left: 5px; border-left: 1px solid var(--color-ink-3); }
+.guided-stage .stage-label { display: inline-flex; align-items: center; padding: 0 0.35rem 0 0.7rem; font-size: 13px; color: var(--color-ink-text); white-space: nowrap; }
+.guided-stage[data-current="true"] .stage-label { color: var(--color-ink); }
 .guided-steps button {
+  display: inline-flex;
+  align-items: center;
   min-height: 2.25rem;
   padding: 0 0.85rem;
   border-radius: 999px;
   font-size: 13px;
+  white-space: nowrap;
   color: var(--color-ink-text);
   transition: background-color 160ms var(--ease-instrument), color 160ms var(--ease-instrument);
 }
 .guided-steps button:hover:not(:disabled) { color: var(--color-ink); }
+.guided-steps button:focus-visible { outline: 2px solid var(--color-violet-soft); outline-offset: 2px; }
 .guided-steps button:disabled { opacity: 0.45; cursor: not-allowed; }
 .guided-steps button[aria-current="step"] {
   background: var(--color-ink);
   color: var(--color-obsidian);
+  opacity: 1;
 }
 .guided-steps .step-number { font-family: var(--font-mono); margin-right: 0.35rem; opacity: 0.7; }
-@media (max-width: 30rem) {
+.guided-steps .step-dot { display: none; width: 5px; height: 5px; border-radius: 999px; background: currentColor; }
+@media (max-width: 40rem) {
   .guided-steps button { padding: 0 0.55rem; font-size: 12px; }
-  .guided-steps .step-label-long { display: none; }
-  /* Five steps fit at 375px: only the current step shows its name (each button keeps it as aria-label). */
+  .guided-stage .stage-label { padding-left: 0.55rem; font-size: 12px; }
+  /* Only the current step shows its name at phone width (each button keeps it as aria-label). */
+  .guided-stage .stage-name { display: none; }
   .guided-steps button:not([aria-current="step"]) .step-label { display: none; }
+  .guided-steps button:not([aria-current="step"]) .step-dot { display: inline-block; }
   .guided-steps .step-number { margin-right: 0; }
   .guided-steps button[aria-current="step"] .step-number { margin-right: 0.35rem; }
 }

@@ -260,14 +260,14 @@ export function ResultStep({
         <p className="flex flex-wrap items-center gap-3 text-sm text-ink-text">
           The request was sent and answered.
           <Button size="sm" variant="primary" onClick={onToVerify} data-testid="generate-to-verify">
-            See the result in Verify
+            Review the field matches
           </Button>
         </p>
       ) : null}
 
       {ver && !workspace.proposal && !workspace.report ? (
         <p className="text-sm text-ink-text" data-testid="verify-empty">
-          Nothing to verify yet. Generate the integration first.{" "}
+          Nothing to review yet. Generate the integration first.{" "}
           <button type="button" className="underline" onClick={onGenerate}>
             Generate my integration
           </button>
@@ -328,7 +328,7 @@ export function ResultStep({
 
       {section === "deliver" && !showOutcome ? (
         <p className="text-sm text-ink-text" data-testid="deliver-empty">
-          Nothing to deliver yet: nothing has been checked on your records.
+          Nothing to export yet: nothing has been checked on your records.
         </p>
       ) : null}
 
@@ -1001,15 +1001,35 @@ function Outcome({
       <BeforeAfter examples={examples} />
       <div className="flex flex-wrap items-center gap-3">
         <Button variant="primary" onClick={onToDeliver} data-testid="verify-continue">
-          Continue to Deliver <ArrowRightIcon />
+          Continue to check &amp; export <ArrowRightIcon />
         </Button>
-        <span className="text-xs text-mute">Download the transformed data and the reusable integration.</span>
+        <span className="text-xs text-mute">See what was checked, then download the transformed data and the reusable integration.</span>
       </div>
       </>
       ) : null}
 
       {part === "deliver" ? (
       <>
+      <section aria-labelledby="checked-heading" className="space-y-3 rounded-[3px] border border-rule bg-panel p-4" data-testid="deliver-checks">
+        <h3 id="checked-heading" className="text-base font-semibold">What was checked</h3>
+        <p className="text-sm text-ink-text" data-testid="deliver-checks-counts">
+          On this device, against your {imported.length} record{imported.length === 1 ? "" : "s"}: {transformed} transformed, {metrics.quarantined} set aside for review, {needsReview} need
+          attention.
+        </p>
+        <ul className="space-y-2 text-sm">
+          <CheckRow
+            ok={structureOk}
+            label="Structure"
+            detail={structureOk ? "Every record has the destination's shape." : `${importedValid} of ${importedRows.length} records have the destination's shape.`}
+            testId="deliver-check-structure"
+          />
+          <CheckRow ok={meaning.complete ? true : mismatch ? false : null} label="Meaning" detail={meaning.text} testId="deliver-check-meaning" />
+        </ul>
+        <p className="text-xs text-mute">
+          A record with the right shape can still mean the wrong thing. EYES calls meaning verified only from your own answers, never from an AI suggestion.
+        </p>
+      </section>
+
       <section aria-labelledby="downloads-heading" className="space-y-3 border-t border-rule pt-5" data-testid="guided-downloads">
         <h3 id="downloads-heading" className="text-lg font-semibold">Downloads</h3>
         <p className="text-sm text-ink-text">
