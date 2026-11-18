@@ -70,7 +70,7 @@ export interface TestHarness {
   /** Delay before the simulated cloud answer, in ms (E2E only: pending state and Stop waiting). */
   cloudDelayMs?: number;
   /** LEGACY-PATH REGRESSION ONLY: dev builds use the Sprint 3 initial planner (src/inference/harness-planner.ts). */
-  initialPlanner?: "mapping-proposal-sprint3" | "intent-plan-2";
+  initialPlanner?: "mapping-proposal-sprint3" | "intent-plan-1" | "intent-plan-2";
 }
 
 export function createTestOnDeviceAdapter(

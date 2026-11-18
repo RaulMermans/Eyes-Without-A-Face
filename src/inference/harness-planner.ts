@@ -1,4 +1,4 @@
-import { INITIAL_PLANNER, type InitialPlanner } from "./planner-selection.ts";
+import { INITIAL_PLANNER, PRODUCT_INITIAL_PLANNER, type InitialPlanner } from "./planner-selection.ts";
 import { evaluationHarness } from "./cloud-models.ts";
 
 /**
@@ -14,13 +14,15 @@ import { evaluationHarness } from "./cloud-models.ts";
  * (`import.meta.env.DEV === false`) never read the harness.
  */
 export function effectiveInitialPlanner(
-  env: { dev: boolean; harness: { initialPlanner?: unknown } | null | undefined } = currentEnv(),
+  env: { dev: boolean; app?: boolean; harness: { initialPlanner?: unknown } | null | undefined } = currentEnv(),
 ): InitialPlanner {
-  if (!env.dev || !env.harness) return INITIAL_PLANNER;
+  // Outside the running app (scorers, replays, unit tests) the library default stays prompt v5.
+  if (env.app === false) return INITIAL_PLANNER;
+  if (!env.dev || !env.harness) return PRODUCT_INITIAL_PLANNER;
   const asked = env.harness.initialPlanner;
-  return asked === "mapping-proposal-sprint3" || asked === "intent-plan-2" ? asked : INITIAL_PLANNER;
+  return asked === "mapping-proposal-sprint3" || asked === "intent-plan-1" || asked === "intent-plan-2" ? asked : PRODUCT_INITIAL_PLANNER;
 }
 
-function currentEnv(): { dev: boolean; harness: { initialPlanner?: unknown } | null } {
-  return { dev: Boolean(import.meta.env?.DEV), harness: evaluationHarness() };
+function currentEnv(): { dev: boolean; app: boolean; harness: { initialPlanner?: unknown } | null } {
+  return { dev: Boolean(import.meta.env?.DEV), app: typeof window !== "undefined", harness: evaluationHarness() };
 }

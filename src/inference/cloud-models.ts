@@ -68,19 +68,23 @@ export function evaluationHarness(): Harness | null {
   return scope.__EYES_EVAL_CONFIG__ ?? scope.__EYES_WITHOUT_A_FACE_TEST__ ?? null;
 }
 
-function currentEnv(): { dev: boolean; harness: Harness | null } {
-  return { dev: Boolean(import.meta.env?.DEV), harness: evaluationHarness() };
+function currentEnv(): { dev: boolean; app: boolean; harness: Harness | null } {
+  return { dev: Boolean(import.meta.env?.DEV), app: typeof window !== "undefined", harness: evaluationHarness() };
 }
 
 /**
- * Sprint 18D (ADR 0021 §B): whether a new initial request carries sanitized
- * destination descriptions (cloud-disclosure 1.4.0). Off in the product until
- * the pre-registered comparison selects it; a dev harness may turn it on.
+ * Whether a new initial request carries sanitized destination descriptions (cloud-disclosure 1.4.0).
+ * Sprint 18F release decision: ON in the product (confirmed with RB + local on the fresh eval-18f holdout).
+ * A dev harness may turn it off explicitly (`destinationSemantics: false`) for historical paths.
  */
 export function effectiveDestinationSemantics(
-  env: { dev: boolean; harness: { destinationSemantics?: unknown } | null | undefined } = currentEnv(),
+  env: { dev: boolean; app?: boolean; harness: { destinationSemantics?: unknown } | null | undefined } = currentEnv(),
 ): boolean {
-  return Boolean(env.dev && env.harness && env.harness.destinationSemantics === true);
+  if (env.app === false) return false; // library default outside the running app (replays, scorers)
+  const harness = env.dev ? (env.harness as { destinationSemantics?: unknown; initialPlanner?: unknown } | null | undefined) : null;
+  // 1.4.0 is a plan request only (ADR 0021): never with the legacy Sprint 3 planner a dev harness may select.
+  if (harness && (harness.destinationSemantics === false || harness.initialPlanner === "mapping-proposal-sprint3")) return false;
+  return true;
 }
 
 /**
@@ -100,9 +104,13 @@ export function planMaxOutputTokens(config: CloudModelConfig, defaultCap: number
  * selects a policy; a dev harness may set `localPolicy`.
  */
 export function effectiveLocalPolicy(
-  env: { dev: boolean; harness: { localPolicy?: unknown } | null | undefined } = currentEnv(),
+  env: { dev: boolean; app?: boolean; harness: { localPolicy?: unknown } | null | undefined } = currentEnv(),
 ): { askOnLocalEvidence: boolean } | null {
+  if (env.app === false) return null;
+  // Sprint 18F release decision: local evidence asks in the product (ADR 0022, confirmed on eval-18f).
+  // A dev harness may pass `localPolicy: false` (the Sprint 18C behaviour) or an explicit policy object.
   const value = env.dev && env.harness ? env.harness.localPolicy : undefined;
-  if (!value || typeof value !== "object") return null;
+  if (value === false) return null;
+  if (!value || typeof value !== "object") return { askOnLocalEvidence: true };
   return { askOnLocalEvidence: (value as Record<string, unknown>).askOnLocalEvidence === true };
 }

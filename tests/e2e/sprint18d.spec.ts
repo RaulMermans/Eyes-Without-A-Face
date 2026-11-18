@@ -129,3 +129,63 @@ test.describe("E2E-192 combine several fields (Sprint 18F)", () => {
     expect(providerRequests).toEqual([]);
   });
 });
+
+const GROUND_TRUTH = (JSON.parse(readFileSync("tests/fixtures/eval-18b/dev/crm-contacts-to-helpdesk-requester.json", "utf8")) as {
+  groundTruth: Record<string, { source: string | null; sources?: string[]; transform: string; separator?: string; dateFormat?: string; categoryMap?: Record<string, string | null> }>;
+}).groundTruth;
+const KINDS = ["missing-required-source", "translate-categories", "confirm-date-order", "choose-field"] as const;
+
+test.describe("E2E-193 the shipped configuration end to end (Sprint 18F release)", () => {
+  test("Generate → answer only what EYES asks (truthfully) → checked locally → deliver; nothing sent but the approved request", async ({ page }) => {
+    const providerRequests = attachProviderWatch(page);
+    // Shipped defaults: ranked prompt, destination semantics, local evidence. Only the planner is simulated (labelled, never Gemini).
+    await boot(page, { planOutput: RANKED_PLAN });
+    await page.getByTestId("guided-build").click();
+    await expect(page.getByTestId("approval-card")).toBeVisible();
+    await page.getByTestId("guided-approve").click();
+    await expect(page.locator("#verify-heading")).toBeVisible();
+    let answered = 0;
+    for (let round = 0; round < 20; round += 1) {
+      if ((await page.getByTestId("guided-outcome").count()) > 0) break;
+      const ids = await page.locator('section[data-testid^="clarify-"]').evaluateAll((items) => items.map((item) => item.getAttribute("data-testid") ?? ""));
+      if (ids.length === 0) break;
+      const id = ids[0]!.slice("clarify-".length);
+      const kind = KINDS.find((item) => id.startsWith(`${item}-`))!;
+      const target = id.slice(kind.length + 1);
+      const truth = GROUND_TRUTH[target]!;
+      answered += 1;
+      if (kind === "choose-field" || kind === "missing-required-source") {
+        if (truth.transform === "concat") {
+          await page.getByTestId(`clarify-combine-${target}`).locator("summary").click();
+          for (const [index, part] of (truth.sources ?? []).entries()) {
+            if (index >= 2) await page.getByRole("button", { name: "Add a part" }).click();
+            await page.getByTestId(`clarify-combine-${target}-part-${index + 1}`).selectOption(part);
+          }
+          await page.getByTestId(`clarify-combine-${target}-separator`).selectOption(truth.separator!);
+          await page.getByTestId(`clarify-combine-${target}-apply`).click();
+        } else await page.getByTestId(`clarify-pick-${target}`).selectOption(truth.source ?? "__no_field__");
+      } else {
+        const other = page.getByTestId(`clarify-other-field-${target}`);
+        const offeredElsewhere = truth.source !== null && (await other.locator(`option[value="${truth.source}"]`).count()) > 0;
+        if (offeredElsewhere) {
+          await other.selectOption(truth.source!); // the question shows the wrong field: name the right one
+        } else if (kind === "confirm-date-order") {
+          await page.getByTestId(`date-order-${truth.source}-${truth.dateFormat === "DD/MM/YYYY" ? "dmy" : "mdy"}`).check();
+        } else {
+          const open = page.getByTestId(`translate-open-${target}`);
+          if ((await open.count()) > 0) await open.click();
+          for (const [label, value] of Object.entries(truth.categoryMap ?? {})) {
+            const select = page.getByTestId(`translate-${target}-${label}`);
+            if ((await select.count()) > 0) await select.selectOption(value ?? "__set_aside__");
+          }
+        }
+      }
+    }
+    await expect(page.getByTestId("guided-outcome")).toBeVisible();
+    expect(answered).toBeGreaterThan(0);
+    expect(Number(await page.getByTestId("guided-count-transformed").innerText())).toBeGreaterThan(0);
+    await page.getByTestId("verify-continue").click();
+    await expect(page.locator("#deliver-heading")).toBeVisible();
+    expect(providerRequests).toEqual([]);
+  });
+});

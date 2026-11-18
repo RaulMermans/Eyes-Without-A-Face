@@ -16,4 +16,11 @@ export type InitialPlanner = "intent-plan-1" | "intent-plan-2" | "mapping-propos
 // "intent-plan-2" (Sprint 18D, ADR 0021): prompt v6, ranked alternatives, answered with plan 1.1.0.
 // Evaluation-only until the pre-registered comparison selects it; never the default by intuition.
 
+/** Library default (replays, scorers, unit tests): prompt v5. */
 export const INITIAL_PLANNER = "intent-plan-1" as const satisfies InitialPlanner;
+
+/**
+ * Sprint 18F release decision: the running app uses prompt v6 (ranked alternatives), confirmed on the fresh
+ * eval-18f holdout as part of RB + local (docs/evaluation/sprint-18f-confirmatory.md).
+ */
+export const PRODUCT_INITIAL_PLANNER = "intent-plan-2" as const satisfies InitialPlanner;

@@ -146,7 +146,8 @@ test.describe("E2E-053 disclosure approval stays explicit", () => {
     await expect(toggle).toHaveAttribute("aria-expanded", "true");
     await expect(page.getByTestId("review-prompt")).toBeVisible();
     await expect(page.getByTestId("review-hashes")).toContainText(/prompt sha256 [0-9a-f]{64}/);
-    await expect(page.getByTestId("review-advanced")).toContainText("cloud-disclosure 1.1.0");
+    // Sprint 18F release: the shipped initial request is cloud-disclosure 1.4.0 (destination semantics).
+    await expect(page.getByTestId("review-advanced")).toContainText("cloud-disclosure 1.4.0");
     await page.getByTestId("approve-disclosure").click();
     await expect(page.getByTestId("ledger-approved")).toContainText("approved for one request");
 

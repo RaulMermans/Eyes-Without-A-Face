@@ -54,8 +54,10 @@ describe("18D-A model configuration", () => {
     expect(effectiveCloudModelConfig({ dev: false, harness })).toEqual({ model: "gemini-3.5-flash-lite" });
     expect(effectiveCloudModelConfig({ dev: true, harness })).toEqual(harness.cloudModel);
     expect(effectiveCloudModelConfig({ dev: true, harness: { cloudModel: { model: "gemini-9-ultra" } } }).model).toBe("gemini-3.5-flash-lite");
-    expect(effectiveDestinationSemantics({ dev: false, harness: { destinationSemantics: true } })).toBe(false);
-    expect(effectiveDestinationSemantics({ dev: true, harness: { destinationSemantics: true } })).toBe(true);
+    // Sprint 18F release: ON in the running app; a dev harness may turn it off; library calls outside the app stay off.
+    expect(effectiveDestinationSemantics({ dev: false, harness: null })).toBe(true);
+    expect(effectiveDestinationSemantics({ dev: true, harness: { destinationSemantics: false } })).toBe(false);
+    expect(effectiveDestinationSemantics({ dev: false, app: false, harness: null })).toBe(false);
   });
 
   it("keeps the 18C plan output cap for Flash-Lite at default thinking only", () => {

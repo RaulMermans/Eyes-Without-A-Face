@@ -122,6 +122,13 @@ The package status is computed, never asserted: `VERIFIED`, `VERIFIED_WITH_EXCEP
 
 ## Status
 
+**Sprint 18F (assisted mapper): release candidate, not yet deployed.** [Report](docs/sprints/sprint-18f.md).
+
+- On a fresh, independently written test set, complete correct integrations rose from 1 / 18 to **9 / 18**. There were no falsely verified records, no invented values and no data leaks.
+- When the on-device matcher, which sees the real field names, disagrees with Gemini, EYES asks one targeted question instead of guessing.
+- About half of hard integrations still need review, and EYES says so.
+- Milestone 1 (≥ 70 % complete) is **not** met. Production stays `c722076` until the owner approves a deployment.
+
 **Sprint 17A (hybrid journey recovery): `PRODUCTION_ACCEPTED`.** Live as `c722076` since 2026-11-16, deployed with the owner's approval of that exact SHA.
 
 - A Gemini request that can't fill a required field (for example `status` when its category names aren't chosen or shared) is not offered for approval. The screen names what is missing and offers routes.
