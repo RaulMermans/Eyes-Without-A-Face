@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>EYES — scene</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --obsidian: #090a12;
+        --void: #05060b;
+        --ink: #eeeaf7;
+        --ink-text: #b9b5cc;
+        --mute: #9c99b0;
+        --panel: #10111c;
+        --violet: #823dff;
+        --violet-soft: #b88aff;
+        --gold: #e8bf72;
+        --cyan: #7dd3da;
+        --pass: #5cc48a;
+        --fail: #ff7b7b;
+        --d: 8s;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--obsidian); color: var(--ink); font-family: "IBM Plex Sans", sans-serif; }
+      body {
+        background:
+          radial-gradient(ellipse 70% 42% at 50% -8%, rgb(130 61 255 / 0.16), transparent 70%),
+          var(--obsidian);
+      }
+      .grain {
+        pointer-events: none;
+        position: fixed; inset: 0;
+        opacity: 0.07;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+        mix-blend-mode: overlay;
+      }
+      .stage { position: relative; width: 1920px; height: 1080px; }
+      .caption { display: none; }
+      .kicker {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 15px; letter-spacing: 0.28em; text-transform: uppercase;
+        color: var(--gold);
+      }
+      h1 {
+        font-family: "Instrument Serif", serif;
+        font-weight: 400;
+        font-size: 92px;
+        line-height: 0.95;
+        letter-spacing: -0.02em;
+      }
+      h1 em { font-style: italic; color: var(--violet-soft); }
+      .sub { margin-top: 28px; font-size: 32px; color: var(--ink-text); max-width: 1100px; line-height: 1.35; }
+      .emblem {
+        width: 128px; height: 128px;
+        filter: drop-shadow(0 0 28px rgb(232 191 114 / 0.45));
+        animation: pulse 3.6s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%, 100% { filter: drop-shadow(0 0 18px rgb(232 191 114 / 0.28)); }
+        50% { filter: drop-shadow(0 0 36px rgb(130 61 255 / 0.5)); }
+      }
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(18px); }
+        to { opacity: 1; transform: none; }
+      }
+      @keyframes fade {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      .center { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center; padding: 80px; }
+      .left { padding: 140px 120px; }
+      .scene { display: none; }
+      .scene.on { display: block; }
+
+      /* architecture */
+      .cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 36px; margin-top: 72px; }
+      .card {
+        background: var(--panel);
+        border: 1px solid #272938;
+        border-radius: 18px;
+        padding: 36px 32px 40px;
+        min-height: 420px;
+        opacity: 0;
+        animation: fadeUp 800ms cubic-bezier(0.2, 0.7, 0.1, 1) forwards;
+      }
+      .card.private { border-left: 4px solid var(--ink); animation-delay: 200ms; }
+      .card.twin { border-left: 4px dashed var(--cyan); animation-delay: 700ms; }
+      .card.cloud { border-left: 4px double var(--gold); border-left-width: 6px; animation-delay: 1200ms; }
+      .card h2 { font-family: "Instrument Serif", serif; font-size: 40px; margin: 18px 0 16px; }
+      .card ul { list-style: none; color: var(--ink-text); font-size: 22px; line-height: 1.55; }
+      .card .tag { font-family: "IBM Plex Mono", monospace; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; }
+      .card.private .tag { color: var(--ink); }
+      .card.twin .tag { color: var(--cyan); }
+      .card.cloud .tag { color: var(--gold); }
+      .alias { font-family: "IBM Plex Mono", monospace; color: var(--cyan); }
+
+      /* problem */
+      .leak {
+        margin-top: 56px;
+        display: flex; align-items: center; gap: 24px;
+        font-family: "IBM Plex Mono", monospace; font-size: 20px; color: var(--mute);
+      }
+      .pill {
+        border: 1px solid #272938; background: #181928; padding: 14px 22px; border-radius: 999px;
+      }
+      .pill.hot { border-color: var(--fail); color: var(--fail); text-decoration: line-through; opacity: 0.85; }
+      .arrow { color: var(--gold); font-size: 28px; }
+
+      /* proof */
+      .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 64px; }
+      .stat { background: var(--void); border: 1px solid #272938; border-radius: 16px; padding: 36px; }
+      .stat b { display: block; font-family: "Instrument Serif", serif; font-size: 72px; color: var(--ink); }
+      .stat span { color: var(--mute); font-size: 20px; display: block; margin-top: 8px; }
+      .stat.good b { color: var(--pass); }
+      .note { margin-top: 40px; color: var(--ink-text); font-size: 26px; max-width: 1400px; }
+
+      /* close */
+      .urls { margin-top: 40px; font-family: "IBM Plex Mono", monospace; font-size: 22px; color: var(--gold); line-height: 1.7; }
+    </style>
+  </head>
+  <body>
+    <div class="grain"></div>
+    <div class="stage">
+      <section class="scene" id="title">
+        <div class="center">
+          <img class="emblem" src="../assets/emblem.png" alt="" />
+          <p class="kicker" style="margin-top: 36px; animation: fade 1s ease 0.2s both">#BuildHybridAI 2026</p>
+          <h1 style="margin-top: 18px; animation: fadeUp 900ms cubic-bezier(0.2,0.7,0.1,1) 0.3s both">
+            Eyes Without a Face
+          </h1>
+          <p class="sub" style="animation: fadeUp 900ms cubic-bezier(0.2,0.7,0.1,1) 0.55s both">
+            Build integrations for systems your <em>AI cannot see</em>.
+          </p>
+        </div>
+      </section>
+
+      <section class="scene" id="problem">
+        <div class="left">
+          <p class="kicker">The problem</p>
+          <h1 style="margin-top: 20px; font-size: 76px; animation: fadeUp 800ms both">
+            The mapping is easy.<br /><em>The leak is not.</em>
+          </h1>
+          <p class="sub">A cloud model can design a CRM-to-helpdesk integration in seconds — if you are willing to show it the customers.</p>
+          <div class="leak">
+            <span class="pill">email_address</span>
+            <span class="pill">ALICE_KOYAMA</span>
+            <span class="arrow">→</span>
+            <span class="pill hot">must not cross this line</span>
+          </div>
+          <p class="caption" id="caption-problem"></p>
+        </div>
+      </section>
+
+      <section class="scene" id="architecture">
+        <div class="left" style="padding-top: 88px">
+          <p class="kicker">Hybrid by construction</p>
+          <h1 style="font-size: 64px; margin-top: 12px">Private in the browser. Design in the cloud.</h1>
+          <div class="cols">
+            <article class="card private">
+              <p class="tag">Private · this browser</p>
+              <h2>Your records</h2>
+              <ul>
+                <li>JSON, CSV, Excel</li>
+                <li>Real field names</li>
+                <li>Gemini Nano, on-device only</li>
+                <li>Local engine and verifier</li>
+              </ul>
+            </article>
+            <article class="card twin">
+              <p class="tag">Synthetic · generated locally</p>
+              <h2>Phantom Twin</h2>
+              <ul>
+                <li>Aliases <span class="alias">f_01 … f_06</span></li>
+                <li>Invented example values</li>
+                <li>Bindings never leave the page</li>
+                <li>You review the exact request</li>
+              </ul>
+            </article>
+            <article class="card cloud">
+              <p class="tag">Cloud-bound · approved only</p>
+              <h2>Gemini</h2>
+              <ul>
+                <li>One approval, one request</li>
+                <li>Declarative operations</li>
+                <li>No generated JavaScript</li>
+                <li>No automatic fallback</li>
+              </ul>
+            </article>
+          </div>
+          <p class="caption" id="caption-architecture"></p>
+        </div>
+      </section>
+
+      <section class="scene" id="proof">
+        <div class="left">
+          <p class="kicker">Measured, not claimed</p>
+          <h1 style="font-size: 64px; margin-top: 16px">Assisted mapper. Honest about the rest.</h1>
+          <div class="stats">
+            <div class="stat good"><b>9 / 18</b><span>complete integrations on a frozen holdout, up from 1 / 18</span></div>
+            <div class="stat good"><b>0</b><span>falsely verified records · 0 invented values · 0 privacy findings</span></div>
+            <div class="stat"><b>~½</b><span>of hard cases still need a person. Milestone 1 was not met.</span></div>
+          </div>
+          <p class="note">Numbers from the Sprint 18F confirmatory run. End-to-end semantic correctness is not established in general.</p>
+          <p class="caption" id="caption-proof"></p>
+        </div>
+      </section>
+
+      <section class="scene" id="close">
+        <div class="center">
+          <img class="emblem" src="../assets/emblem.png" alt="" />
+          <h1 style="margin-top: 28px; font-size: 72px; animation: fadeUp 800ms both">
+            Local for understanding.<br />Cloud for design.<br /><em>The device for the truth.</em>
+          </h1>
+          <p class="urls">
+            eyes-without-a-face-b7281.web.app<br />
+            github.com/RaulMermans/Eyes-Without-A-Face
+          </p>
+        </div>
+      </section>
+    </div>
+    <script>
+      const params = new URLSearchParams(location.search);
+      const scene = params.get("scene") || "title";
+      const caption = params.get("caption") || "";
+      const el = document.getElementById(scene);
+      if (el) el.classList.add("on");
+      const cap = document.getElementById("caption-" + scene);
+      if (cap) cap.textContent = caption;
+    </script>
+  </body>
+</html>

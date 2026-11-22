@@ -1,0 +1,13 @@
+Eyes Without a Face — a privacy-first hybrid AI integration builder for #BuildHybridAI 2026.
+
+Private CRM records stay in the browser. Gemini Nano can read field names on-device. Gemini in the cloud sees only a Phantom Twin — aliases and invented examples — after you approve one exact request. The mapping runs locally. Structure and meaning are reported separately. The export is a Node package with no records inside.
+
+This video walks the current three-stage product on fictional data. The on-screen mapping in the product segment is the labelled simulated test planner, not a live Gemini call, so every screen is visible without waiting on the provider. Architecture, checks, and privacy rules are the real product.
+
+Live demo: https://eyes-without-a-face-b7281.web.app
+Code: https://github.com/RaulMermans/Eyes-Without-A-Face
+
+Voice: Kokoro-82M (Apache-2.0), voice am_michael.
+All data is fictional.
+
+Edits: motion-graphics scenes cut to voice; product walkthrough is one Playwright capture of the real UI; idle waits trimmed; no results were patched.
