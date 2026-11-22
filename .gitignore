@@ -38,3 +38,11 @@ live-evidence
 
 # Sprint 16A QA generated datasets, private canary registry and raw downloads (regenerate with scripts/qa/s16a/generate.mjs)
 qa-artifacts
+
+# Local YouTube master pipeline (models, ffmpeg, recordings)
+video/.cache/
+video/vendor/
+video/audio/
+video/capture/
+video/out/frames/
+video/node_modules/

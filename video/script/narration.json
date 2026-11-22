@@ -1,0 +1,116 @@
+{
+  "voice": "am_michael",
+  "speed": 0.93,
+  "lang": "en-us",
+  "gapMs": 320,
+  "sceneGapMs": 480,
+  "title": "Eyes Without a Face",
+  "youtubeDescription": "Eyes Without a Face — a privacy-first hybrid AI integration builder for #BuildHybridAI 2026.\n\nPrivate CRM records stay in the browser. Gemini Nano can read field names on-device. Gemini in the cloud sees only a Phantom Twin — aliases and invented examples — after you approve one exact request. The mapping runs locally. Structure and meaning are reported separately. The export is a Node package with no records inside.\n\nThis video walks the current three-stage product on fictional data. The on-screen mapping in the product segment is the labelled simulated test planner, not a live Gemini call, so every screen is visible without waiting on the provider. Architecture, checks, and privacy rules are the real product.\n\nLive demo: https://eyes-without-a-face-b7281.web.app\nCode: https://github.com/RaulMermans/Eyes-Without-A-Face\n\nVoice: Kokoro-82M (Apache-2.0), voice am_michael.\nAll data is fictional.\n\nEdits: motion-graphics scenes cut to voice; product walkthrough is one Playwright capture of the real UI; idle waits trimmed; no results were patched.",
+  "lines": [
+    {
+      "id": "title",
+      "scene": "title",
+      "kind": "graphics",
+      "text": "Eyes Without a Face. Build integrations for systems your A.I. cannot see.",
+      "caption": "Phantom Twin Engine · #BuildHybridAI 2026"
+    },
+    {
+      "id": "problem-1",
+      "scene": "problem",
+      "kind": "graphics",
+      "text": "You need to move private records into a new system. A cloud model could write that mapping in seconds.",
+      "caption": "A cloud model could map it in seconds."
+    },
+    {
+      "id": "problem-2",
+      "scene": "problem",
+      "kind": "graphics",
+      "text": "But names, emails, internal notes are not allowed to leave this machine. Pasting a few rows into a chat is the leak you were trying to avoid.",
+      "caption": "Private records cannot leave this machine."
+    },
+    {
+      "id": "arch-1",
+      "scene": "architecture",
+      "kind": "graphics",
+      "text": "EYES is a hybrid A.I. integration builder. Private data stays in the browser. Gemini Nano can read field names on the device.",
+      "caption": "On-device understanding. Records never leave."
+    },
+    {
+      "id": "arch-2",
+      "scene": "architecture",
+      "kind": "graphics",
+      "text": "The cloud sees only a Phantom Twin: meaningless aliases and invented examples. And only after you approve one exact request.",
+      "caption": "Phantom Twin · aliases + invented examples · one approval."
+    },
+    {
+      "id": "data",
+      "scene": "product",
+      "kind": "product",
+      "beat": "data",
+      "text": "Stage one. Add your data. A fictional C.R.M. Three records, six fields. Parsed here. Nothing has left the browser.",
+      "caption": "Stage 1 · Add your data · stays in this browser"
+    },
+    {
+      "id": "dest",
+      "scene": "product",
+      "kind": "product",
+      "beat": "destination",
+      "text": "Stage two. Choose a destination. The helpdesk schema is on screen. Build prepares the request, and stops.",
+      "caption": "Stage 2 · Destination · Build stops at approval"
+    },
+    {
+      "id": "approval",
+      "scene": "product",
+      "kind": "product",
+      "beat": "approval",
+      "text": "This is the trust boundary. Gemini will receive aliases, invented rows, and the destination. Not your records. Not your field names. You approve this exact prompt. One use.",
+      "caption": "One request · approved by you · single use"
+    },
+    {
+      "id": "plan",
+      "scene": "product",
+      "kind": "product",
+      "beat": "review",
+      "text": "A planner proposes how each destination field gets its value. Eight allowed operations. Data, not generated code. In this walkthrough, that planner is the labelled test adapter, not a live Gemini call, so you can see every screen.",
+      "caption": "Declarative operations · labelled test planner (not Gemini)"
+    },
+    {
+      "id": "questions",
+      "scene": "product",
+      "kind": "product",
+      "beat": "questions",
+      "text": "Where a match is unsure, EYES asks. You translate the business states. A suggestion is never treated as a decision.",
+      "caption": "You decide meaning. Suggestions are not decisions."
+    },
+    {
+      "id": "check",
+      "scene": "product",
+      "kind": "product",
+      "beat": "check",
+      "text": "The mapping runs on your records, on this device. Structure and meaning are reported separately. Schema-valid is not the same as correct. Unknown is never a pass.",
+      "caption": "Local checks · structure ≠ meaning · unknown ≠ pass"
+    },
+    {
+      "id": "export",
+      "scene": "product",
+      "kind": "product",
+      "beat": "export",
+      "text": "Stage three. Download the transformed records, and a portable package that runs with plain Node. No records in the zip. No field names. Hashes pinned.",
+      "caption": "Stage 3 · Check & export · package has no records"
+    },
+    {
+      "id": "proof",
+      "scene": "proof",
+      "kind": "graphics",
+      "text": "On a frozen holdout, complete integrations rose from one in eighteen to nine in eighteen. Zero falsely verified records. Zero invented values. About half of hard cases still need a person. EYES is an assisted mapper, not an autonomous one.",
+      "caption": "9 / 18 complete · 0 false verification · assisted mapper"
+    },
+    {
+      "id": "close",
+      "scene": "close",
+      "kind": "graphics",
+      "text": "Local A.I. for private understanding. Cloud A.I. for design. Deterministic checks for the truth. Eyes Without a Face.",
+      "caption": "eyes-without-a-face-b7281.web.app"
+    }
+  ]
+}
